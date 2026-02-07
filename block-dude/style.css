@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #170029;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0e17;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ body {
 h1 {
   font-size: 42px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
   margin-bottom: 12px;
 }
 
@@ -32,12 +32,12 @@ h1 {
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 8px 16px;
-  background: #2E0051;
+  background: #111827;
   border-radius: 6px;
 }
 
 .info-bar span {
-  color: #E3CCF5;
+  color: #e2e8f0;
   font-size: 14px;
   font-weight: 700;
 }
@@ -47,9 +47,9 @@ h1 {
   width: 100%;
   max-width: 672px;
   margin: 0 auto 10px;
-  border: 3px solid #5B00A2;
+  border: 3px solid #334155;
   border-radius: 6px;
-  background: #0d001a;
+  background: #060910;
   image-rendering: pixelated;
 }
 
@@ -61,8 +61,8 @@ h1 {
 }
 
 .ctrl-btn {
-  background: #2E0051;
-  color: #C799EA;
+  background: #111827;
+  color: #94a3b8;
   border: none;
   border-radius: 6px;
   padding: 8px 16px;
@@ -73,7 +73,7 @@ h1 {
 }
 
 .ctrl-btn:hover {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
 }
 
@@ -93,8 +93,8 @@ h1 {
 .arrow-btn {
   width: 64px;
   height: 52px;
-  background: #2E0051;
-  color: #C799EA;
+  background: #111827;
+  color: #94a3b8;
   border: none;
   border-radius: 8px;
   font-size: 18px;
@@ -105,7 +105,7 @@ h1 {
 }
 
 .arrow-btn:active {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
 }
 
@@ -114,11 +114,11 @@ h1 {
 }
 
 .instructions {
-  color: #5B00A2;
+  color: #334155;
   font-size: 13px;
   line-height: 1.6;
 }
 
 .instructions strong {
-  color: #C799EA;
+  color: #94a3b8;
 }

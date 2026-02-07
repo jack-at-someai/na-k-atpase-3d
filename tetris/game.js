@@ -22,12 +22,12 @@
 
   // Sounder-themed piece colors
   const PIECE_COLORS = {
-    I: '#21D6C6',  // teal
-    O: '#F000D2',  // magenta
-    T: '#8E33D5',  // purple
+    I: '#22d3ee',  // teal
+    O: '#ec4899',  // magenta
+    T: '#818cf8',  // purple
     S: '#7AE6DD',  // light teal
-    Z: '#CE4F51',  // red
-    J: '#5B00A2',  // dark purple
+    Z: '#f43f5e',  // red
+    J: '#334155',  // dark purple
     L: '#AA66E0'   // medium purple
   };
 
@@ -257,7 +257,7 @@
 
   function draw() {
     // Board background
-    ctx.fillStyle = '#0d001a';
+    ctx.fillStyle = '#060910';
     ctx.fillRect(0, 0, boardCanvas.width, boardCanvas.height);
 
     // Grid lines
@@ -304,7 +304,7 @@
   }
 
   function drawMini(context, canvas, type) {
-    context.fillStyle = '#2E0051';
+    context.fillStyle = '#111827';
     context.fillRect(0, 0, canvas.width, canvas.height);
     if (!type) return;
     const shape = SHAPES[type];
@@ -320,7 +320,7 @@
   }
 
   function drawNextQueue() {
-    nctx.fillStyle = '#2E0051';
+    nctx.fillStyle = '#111827';
     nctx.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
     const bs = 18;
     for (let i = 0; i < Math.min(3, nextPieces.length); i++) {

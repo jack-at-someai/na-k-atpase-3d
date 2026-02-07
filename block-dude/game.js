@@ -16,19 +16,19 @@
 
   // Sounder colors
   const COL = {
-    bg: '#0d001a',
-    wall: '#44007A',
-    wallHi: '#5B00A2',
-    wallSh: '#2E0051',
-    block: '#8E33D5',
+    bg: '#060910',
+    wall: '#1e293b',
+    wallHi: '#334155',
+    wallSh: '#111827',
+    block: '#818cf8',
     blockHi: '#AA66E0',
-    blockSh: '#7200CB',
-    player: '#21D6C6',
+    blockSh: '#6366f1',
+    player: '#22d3ee',
     playerDark: '#148077',
-    door: '#F000D2',
-    doorGlow: 'rgba(240, 0, 210, 0.25)',
-    eye: '#0d001a',
-    carried: '#C799EA',
+    door: '#ec4899',
+    doorGlow: 'rgba(236, 72, 153, 0.25)',
+    eye: '#060910',
+    carried: '#94a3b8',
     grid: '#1a003a'
   };
 

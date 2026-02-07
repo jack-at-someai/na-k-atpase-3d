@@ -1,22 +1,22 @@
 /* === Hex Grid Explorer — Sounder Dark Theme === */
 
 :root {
-    --bg: #170029;
-    --bg-canvas: #0d001a;
-    --panel: #2E0051;
-    --panel-light: #3a0068;
-    --teal: #21D6C6;
-    --purple: #7200CB;
-    --purple-light: #8E33D5;
-    --magenta: #F000D2;
-    --text: #E3CCF5;
-    --text-dim: #C799EA;
-    --text-muted: #AA66E0;
-    --border: #4a0080;
-    --btn-bg: #3a0068;
-    --btn-hover: #4a0080;
-    --tab-active: #7200CB;
-    --highlight: #21D6C6;
+    --bg: #0a0e17;
+    --bg-canvas: #060910;
+    --panel: #111827;
+    --panel-light: #1e293b;
+    --teal: #22d3ee;
+    --purple: #6366f1;
+    --purple-light: #818cf8;
+    --magenta: #ec4899;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --btn-bg: #1e293b;
+    --btn-hover: #334155;
+    --tab-active: #6366f1;
+    --highlight: #22d3ee;
     --radius: 6px;
 }
 
@@ -32,7 +32,7 @@ html, body {
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     display: flex;
@@ -111,13 +111,13 @@ header h1 {
 
 .tab:hover {
     color: var(--text);
-    background: rgba(114, 0, 203, 0.15);
+    background: rgba(99, 102, 241, 0.15);
 }
 
 .tab.active {
     color: var(--teal);
     border-bottom-color: var(--teal);
-    background: rgba(33, 214, 198, 0.08);
+    background: rgba(34, 211, 238, 0.08);
 }
 
 /* === Demo Container === */
@@ -223,7 +223,7 @@ header h1 {
 }
 
 .btn-toggle:hover {
-    background: rgba(33, 214, 198, 0.12);
+    background: rgba(34, 211, 238, 0.12);
 }
 
 /* === Range Sliders === */

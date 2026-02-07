@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #170029;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0e17;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ body {
 h1 {
   font-size: 48px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
   margin-bottom: 12px;
 }
 
@@ -39,7 +39,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #2E0051;
+  background: #111827;
   padding: 8px 24px;
   border-radius: 8px;
   min-width: 80px;
@@ -48,20 +48,20 @@ h1 {
 .player-score .label {
   font-size: 11px;
   font-weight: 700;
-  color: #5B00A2;
+  color: #334155;
   letter-spacing: 2px;
 }
 
 .player-score .score {
   font-size: 36px;
   font-weight: 700;
-  color: #E3CCF5;
+  color: #e2e8f0;
 }
 
 .divider {
   font-size: 36px;
   font-weight: 700;
-  color: #5B00A2;
+  color: #334155;
 }
 
 .canvas-wrap {
@@ -72,9 +72,9 @@ h1 {
 
 #canvas {
   display: block;
-  border: 3px solid #5B00A2;
+  border: 3px solid #334155;
   border-radius: 6px;
-  background: #0d001a;
+  background: #060910;
   width: 100%;
   max-width: 600px;
   cursor: none;
@@ -83,7 +83,7 @@ h1 {
 .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(23, 0, 41, 0.88);
+  background: rgba(10, 14, 23, 0.88);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +99,7 @@ h1 {
 .overlay p {
   font-size: 24px;
   font-weight: 700;
-  color: #E3CCF5;
+  color: #e2e8f0;
   margin-bottom: 16px;
 }
 
@@ -110,7 +110,7 @@ h1 {
 }
 
 .mode-btn {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -122,7 +122,7 @@ h1 {
 }
 
 .mode-btn:hover {
-  background: #8E33D5;
+  background: #818cf8;
   transform: scale(1.05);
 }
 
@@ -131,7 +131,7 @@ h1 {
 }
 
 #start-btn {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -143,7 +143,7 @@ h1 {
 }
 
 #start-btn:hover {
-  background: #8E33D5;
+  background: #818cf8;
 }
 
 #start-btn.hidden {
@@ -151,7 +151,7 @@ h1 {
 }
 
 .instructions {
-  color: #5B00A2;
+  color: #334155;
   font-size: 13px;
   font-weight: 600;
 }

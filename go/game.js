@@ -398,35 +398,35 @@
         const x = margin + m.c * tileSize, y = margin + m.r * tileSize;
         const r = tileSize * 0.15;
         if (m.type === 'liberty' || m.type === 'liberty2') {
-          lessonCtx.fillStyle = m.type === 'liberty' ? '#21D6C6' : '#F000D2';
+          lessonCtx.fillStyle = m.type === 'liberty' ? '#22d3ee' : '#ec4899';
           lessonCtx.beginPath(); lessonCtx.arc(x, y, r + 2, 0, Math.PI * 2); lessonCtx.fill();
         } else if (m.type === 'atari') {
-          lessonCtx.strokeStyle = '#CE4F51';
+          lessonCtx.strokeStyle = '#f43f5e';
           lessonCtx.lineWidth = 3;
           lessonCtx.beginPath(); lessonCtx.arc(x, y, tileSize * 0.35, 0, Math.PI * 2); lessonCtx.stroke();
         } else if (m.type === 'captured') {
-          lessonCtx.strokeStyle = '#CE4F51';
+          lessonCtx.strokeStyle = '#f43f5e';
           lessonCtx.lineWidth = 2;
           const s = tileSize * 0.25;
           lessonCtx.beginPath(); lessonCtx.moveTo(x-s,y-s); lessonCtx.lineTo(x+s,y+s); lessonCtx.stroke();
           lessonCtx.beginPath(); lessonCtx.moveTo(x+s,y-s); lessonCtx.lineTo(x-s,y+s); lessonCtx.stroke();
         } else if (m.type === 'illegal') {
-          lessonCtx.strokeStyle = '#CE4F51';
+          lessonCtx.strokeStyle = '#f43f5e';
           lessonCtx.lineWidth = 3;
           const s = tileSize * 0.2;
           lessonCtx.beginPath(); lessonCtx.moveTo(x-s,y-s); lessonCtx.lineTo(x+s,y+s); lessonCtx.stroke();
           lessonCtx.beginPath(); lessonCtx.moveTo(x+s,y-s); lessonCtx.lineTo(x-s,y+s); lessonCtx.stroke();
         } else if (m.type === 'good') {
-          lessonCtx.fillStyle = '#21D6C6';
+          lessonCtx.fillStyle = '#22d3ee';
           lessonCtx.beginPath(); lessonCtx.arc(x, y, r + 3, 0, Math.PI * 2); lessonCtx.fill();
         } else if (m.type === 'ko') {
-          lessonCtx.strokeStyle = '#F000D2';
+          lessonCtx.strokeStyle = '#ec4899';
           lessonCtx.lineWidth = 2;
           lessonCtx.setLineDash([3, 3]);
           lessonCtx.beginPath(); lessonCtx.arc(x, y, tileSize * 0.35, 0, Math.PI * 2); lessonCtx.stroke();
           lessonCtx.setLineDash([]);
         } else if (m.type === 'eye') {
-          lessonCtx.fillStyle = 'rgba(33,214,198,0.4)';
+          lessonCtx.fillStyle = 'rgba(34,211,238,0.4)';
           lessonCtx.fillRect(x - tileSize * 0.35, y - tileSize * 0.35, tileSize * 0.7, tileSize * 0.7);
         } else if (m.type === 'territory-b') {
           lessonCtx.fillStyle = 'rgba(0,0,0,0.3)';
@@ -435,10 +435,10 @@
           lessonCtx.fillStyle = 'rgba(255,255,255,0.5)';
           lessonCtx.fillRect(x - tileSize * 0.2, y - tileSize * 0.2, tileSize * 0.4, tileSize * 0.4);
         } else if (m.type === 'dot') {
-          lessonCtx.fillStyle = '#7200CB';
+          lessonCtx.fillStyle = '#6366f1';
           lessonCtx.beginPath(); lessonCtx.arc(x, y, r + 2, 0, Math.PI * 2); lessonCtx.fill();
         } else if (m.type === 'star') {
-          lessonCtx.fillStyle = '#F000D2';
+          lessonCtx.fillStyle = '#ec4899';
           const s = tileSize * 0.18;
           lessonCtx.beginPath();
           for (let i = 0; i < 5; i++) {

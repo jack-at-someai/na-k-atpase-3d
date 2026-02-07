@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #170029;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0e17;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ body {
 h1 {
   font-size: 48px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
   margin-bottom: 16px;
 }
 
@@ -44,8 +44,8 @@ h1 {
 }
 
 .diff-btn {
-  background: #2E0051;
-  color: #C799EA;
+  background: #111827;
+  color: #94a3b8;
   border: none;
   border-radius: 6px;
   padding: 8px 14px;
@@ -56,16 +56,16 @@ h1 {
 }
 
 .diff-btn:hover {
-  background: #44007A;
+  background: #1e293b;
 }
 
 .diff-btn.active {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
 }
 
 #new-game-btn, #play-again-btn {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -77,7 +77,7 @@ h1 {
 }
 
 #new-game-btn:hover, #play-again-btn:hover {
-  background: #8E33D5;
+  background: #818cf8;
 }
 
 /* Info bar */
@@ -86,12 +86,12 @@ h1 {
   justify-content: space-between;
   margin-bottom: 12px;
   padding: 8px 16px;
-  background: #2E0051;
+  background: #111827;
   border-radius: 6px;
 }
 
 .info-bar span {
-  color: #E3CCF5;
+  color: #e2e8f0;
   font-size: 16px;
   font-weight: 700;
 }
@@ -104,8 +104,8 @@ h1 {
 .board {
   display: inline-grid;
   gap: 2px;
-  background: #5B00A2;
-  border: 3px solid #5B00A2;
+  background: #334155;
+  border: 3px solid #334155;
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 16px;
@@ -120,23 +120,23 @@ h1 {
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  background: #44007A;
+  background: #1e293b;
   color: transparent;
   transition: background 0.1s;
   user-select: none;
 }
 
 .cell:hover:not(.revealed):not(.flagged) {
-  background: #5B00A2;
+  background: #334155;
 }
 
 .cell.revealed {
-  background: #2E0051;
+  background: #111827;
   cursor: default;
 }
 
 .cell.flagged {
-  background: #44007A;
+  background: #1e293b;
 }
 
 .cell.flagged::after {
@@ -145,7 +145,7 @@ h1 {
 }
 
 .cell.mine-hit {
-  background: #CE4F51;
+  background: #f43f5e;
 }
 
 .cell.mine-shown::after {
@@ -154,20 +154,20 @@ h1 {
 }
 
 /* Number colors — Sounder palette */
-.cell.n1 { color: #21D6C6; }
+.cell.n1 { color: #22d3ee; }
 .cell.n2 { color: #7AE6DD; }
-.cell.n3 { color: #F000D2; }
+.cell.n3 { color: #ec4899; }
 .cell.n4 { color: #AA66E0; }
-.cell.n5 { color: #CE4F51; }
-.cell.n6 { color: #21D6C6; }
-.cell.n7 { color: #E3CCF5; }
-.cell.n8 { color: #C799EA; }
+.cell.n5 { color: #f43f5e; }
+.cell.n6 { color: #22d3ee; }
+.cell.n7 { color: #e2e8f0; }
+.cell.n8 { color: #94a3b8; }
 
 /* Game message overlay */
 .game-message {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(23, 0, 41, 0.9);
+  background: rgba(10, 14, 23, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -183,12 +183,12 @@ h1 {
 .game-message p {
   font-size: 36px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
   margin-bottom: 20px;
 }
 
 .game-message.lost p {
-  color: #CE4F51;
+  color: #f43f5e;
 }
 
 @keyframes fadeIn {

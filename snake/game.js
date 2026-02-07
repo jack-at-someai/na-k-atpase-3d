@@ -15,14 +15,14 @@
 
   // Sounder colors
   const COLORS = {
-    bg: '#0d001a',
+    bg: '#060910',
     grid: '#1a003a',
-    snakeHead: '#21D6C6',
+    snakeHead: '#22d3ee',
     snakeBody: '#1AAB9E',
     snakeTail: '#148077',
-    food: '#F000D2',
-    foodGlow: 'rgba(240, 0, 210, 0.3)',
-    particle: '#F000D2'
+    food: '#ec4899',
+    foodGlow: 'rgba(236, 72, 153, 0.3)',
+    particle: '#ec4899'
   };
 
   let snake, dir, nextDir, food, score, highScore, gameLoop, running, speed, particles;
@@ -195,7 +195,7 @@
     const eyeOff = cs * 0.18;
     const eyeR = cs * 0.08;
 
-    ctx.fillStyle = '#0d001a';
+    ctx.fillStyle = '#060910';
     if (dir.x === 1) {
       ctx.beginPath(); ctx.arc(ex + eyeOff, ey - eyeOff, eyeR, 0, Math.PI * 2); ctx.fill();
       ctx.beginPath(); ctx.arc(ex + eyeOff, ey + eyeOff, eyeR, 0, Math.PI * 2); ctx.fill();

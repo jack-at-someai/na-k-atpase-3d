@@ -1,25 +1,25 @@
 :root {
-  --bg: #170029;
-  --bg-canvas: #0d001a;
-  --panel: #2E0051;
-  --panel-light: #3a0068;
-  --teal: #21D6C6;
-  --teal-dim: #1AAB9E;
-  --purple: #7200CB;
-  --purple-light: #8E33D5;
-  --magenta: #F000D2;
-  --red: #CE4F51;
-  --text: #E3CCF5;
-  --text-dim: #C799EA;
-  --text-muted: #AA66E0;
-  --border: #4a0080;
+  --bg: #0a0e17;
+  --bg-canvas: #060910;
+  --panel: #111827;
+  --panel-light: #1e293b;
+  --teal: #22d3ee;
+  --teal-dim: #06b6d4;
+  --purple: #6366f1;
+  --purple-light: #818cf8;
+  --magenta: #ec4899;
+  --red: #f43f5e;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
   --radius: 6px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -120,7 +120,7 @@ body {
 
 .tab-btn:hover {
   color: var(--text);
-  background: rgba(114, 0, 203, 0.1);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .tab-btn.active {
@@ -259,7 +259,7 @@ body {
 .card:hover {
   border-color: var(--purple);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(114, 0, 203, 0.25);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
 }
 
 .card-top {
@@ -292,8 +292,8 @@ body {
   margin-left: auto;
 }
 
-.level-beginner     { background: rgba(33,214,198,0.15); color: var(--teal); }
-.level-intermediate { background: rgba(142,51,213,0.15); color: var(--purple-light); }
+.level-beginner     { background: rgba(34,211,238,0.15); color: var(--teal); }
+.level-intermediate { background: rgba(129,140,248,0.15); color: var(--purple-light); }
 .level-advanced     { background: rgba(240,0,210,0.15); color: var(--magenta); }
 
 .card-title {
@@ -315,7 +315,7 @@ body {
 }
 
 .card mark {
-  background: rgba(240, 0, 210, 0.3);
+  background: rgba(236, 72, 153, 0.3);
   color: var(--text);
   border-radius: 2px;
   padding: 0 2px;

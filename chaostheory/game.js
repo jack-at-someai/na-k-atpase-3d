@@ -47,7 +47,7 @@
     }
 
     function clearCanvas(ctx, w, h) {
-        ctx.fillStyle = '#0d001a';
+        ctx.fillStyle = '#060910';
         ctx.fillRect(0, 0, w, h);
     }
 
@@ -549,7 +549,7 @@
             }
 
             // Pendulum colors for multi-pendulum
-            const colors = ['#21D6C6', '#F000D2', '#8E33D5', '#FFD700', '#FF6347'];
+            const colors = ['#22d3ee', '#ec4899', '#818cf8', '#FFD700', '#FF6347'];
 
             for (let pi = 0; pi < this.pendulums.length; pi++) {
                 const p = this.pendulums[pi];
@@ -579,7 +579,7 @@
             }
 
             // Pivot
-            ctx.fillStyle = '#AA66E0';
+            ctx.fillStyle = '#94a3b8';
             ctx.beginPath();
             ctx.arc(ox, oy, 4, 0, Math.PI * 2);
             ctx.fill();
@@ -776,7 +776,7 @@
 
         drawVerts() {
             const ctx = this.ctx;
-            ctx.fillStyle = '#F000D2';
+            ctx.fillStyle = '#ec4899';
             for (const v of this.verts) {
                 ctx.beginPath();
                 ctx.arc(v.x, v.y, 4, 0, Math.PI * 2);
@@ -1152,7 +1152,7 @@
                 for (let y = 0; y < rows; y++) {
                     for (let x = 0; x < cols; x++) {
                         if (this.lifeGrid[y * cols + x]) {
-                            ctx.fillStyle = '#21D6C6';
+                            ctx.fillStyle = '#22d3ee';
                             ctx.fillRect(x * cs, y * cs, cs - 0.5, cs - 0.5);
                         }
                     }
@@ -1384,7 +1384,7 @@
 
                     if (a < 0 || a > 4 || b < 0 || b > 4) {
                         const idx = (py * pw + px) * 4;
-                        data[idx] = 13; data[idx + 1] = 0; data[idx + 2] = 26; data[idx + 3] = 255;
+                        data[idx] = 6; data[idx + 1] = 9; data[idx + 2] = 16; data[idx + 3] = 255;
                         continue;
                     }
 

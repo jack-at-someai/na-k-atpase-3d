@@ -17,7 +17,7 @@
   const swatches = document.querySelectorAll('.swatch');
 
   let currentPattern = 'flowerOfLife';
-  let strokeColor = '#21D6C6';
+  let strokeColor = '#22d3ee';
   let angle = 0;
   let animFrameId;
 
@@ -336,7 +336,7 @@
     // Subtle radial gradient background
     const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h) * 0.6);
     grad.addColorStop(0, '#1a003a');
-    grad.addColorStop(1, '#0d001a');
+    grad.addColorStop(1, '#060910');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
 

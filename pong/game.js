@@ -29,14 +29,14 @@
   const AI_SPEED = 4.5;
 
   const COL = {
-    bg: '#0d001a',
-    center: '#2E0051',
-    paddle1: '#21D6C6',
-    paddle2: '#F000D2',
-    ball: '#E3CCF5',
-    ballGlow: 'rgba(227, 204, 245, 0.3)',
-    trail: '#7200CB',
-    net: '#44007A'
+    bg: '#060910',
+    center: '#111827',
+    paddle1: '#22d3ee',
+    paddle2: '#ec4899',
+    ball: '#e2e8f0',
+    ballGlow: 'rgba(226, 232, 240, 0.3)',
+    trail: '#6366f1',
+    net: '#1e293b'
   };
 
   let gameMode = 'ai'; // 'ai' or '2p'

@@ -35,7 +35,7 @@
     }
 
     function clearCanvas(ctx, w, h) {
-        ctx.fillStyle = '#0d001a';
+        ctx.fillStyle = '#060910';
         ctx.fillRect(0, 0, w, h);
     }
 
@@ -89,12 +89,12 @@
             const c = circles[i];
             const cx = c.cx + offsetX, cy = c.cy + offsetY;
             if (c.r < 0.5) continue;
-            ctx.strokeStyle = `rgba(142, 51, 213, ${(0.5 * o).toFixed(2)})`;
+            ctx.strokeStyle = `rgba(129, 140, 248, ${(0.5 * o).toFixed(2)})`;
             ctx.lineWidth = 1 + o;
             ctx.beginPath();
             ctx.arc(cx, cy, c.r, 0, 2 * Math.PI);
             ctx.stroke();
-            ctx.strokeStyle = `rgba(33, 214, 198, ${(0.8 * o).toFixed(2)})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${(0.8 * o).toFixed(2)})`;
             ctx.lineWidth = 1.5 + o * 0.5;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
@@ -358,7 +358,7 @@
             drawEpicycleCircles(ctx, circles, cx, cy, this.circleOpacity);
 
             const tipX = x + cx, tipY = y + cy;
-            ctx.fillStyle = '#21D6C6';
+            ctx.fillStyle = '#22d3ee';
             ctx.beginPath();
             ctx.arc(tipX, tipY, 3, 0, 2 * Math.PI);
             ctx.fill();
@@ -381,7 +381,7 @@
 
             if (this.showWave) {
                 const waveX = w * 0.6;
-                ctx.strokeStyle = 'rgba(142, 51, 213, 0.3)';
+                ctx.strokeStyle = 'rgba(129, 140, 248, 0.3)';
                 ctx.setLineDash([4, 4]);
                 ctx.beginPath();
                 ctx.moveTo(tipX, tipY);
@@ -482,7 +482,7 @@
             drawEpicycleCircles(ctx, circles, cx, cy);
 
             const tipX = x + cx, tipY = y + cy;
-            ctx.fillStyle = '#21D6C6';
+            ctx.fillStyle = '#22d3ee';
             ctx.beginPath();
             ctx.arc(tipX, tipY, 3, 0, 2 * Math.PI);
             ctx.fill();
@@ -491,7 +491,7 @@
             while (this.wave.length > w * 0.55) this.wave.pop();
 
             const waveStart = w * 0.45;
-            ctx.strokeStyle = 'rgba(142, 51, 213, 0.3)';
+            ctx.strokeStyle = 'rgba(129, 140, 248, 0.3)';
             ctx.setLineDash([4, 4]);
             ctx.beginPath();
             ctx.moveTo(tipX, tipY);
@@ -500,7 +500,7 @@
             ctx.setLineDash([]);
 
             if (this.showTarget) {
-                ctx.strokeStyle = 'rgba(240, 0, 210, 0.25)';
+                ctx.strokeStyle = 'rgba(236, 72, 153, 0.25)';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 for (let i = 0; i < this.wave.length; i++) {
@@ -611,7 +611,7 @@
             drawEpicycleCircles(ctx, circles, cx, cy);
 
             const tipX = x + cx, tipY = y + cy;
-            ctx.fillStyle = '#21D6C6';
+            ctx.fillStyle = '#22d3ee';
             ctx.beginPath();
             ctx.arc(tipX, tipY, 3, 0, 2 * Math.PI);
             ctx.fill();
@@ -620,7 +620,7 @@
             while (this.wave.length > w * 0.55) this.wave.pop();
 
             const waveStart = w * 0.45;
-            ctx.strokeStyle = 'rgba(142, 51, 213, 0.3)';
+            ctx.strokeStyle = 'rgba(129, 140, 248, 0.3)';
             ctx.setLineDash([4, 4]);
             ctx.beginPath();
             ctx.moveTo(tipX, tipY);
@@ -629,7 +629,7 @@
             ctx.setLineDash([]);
 
             if (this.showTarget) {
-                ctx.strokeStyle = 'rgba(240, 0, 210, 0.25)';
+                ctx.strokeStyle = 'rgba(236, 72, 153, 0.25)';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 for (let i = 0; i < this.wave.length; i++) {
@@ -784,7 +784,7 @@
 
             if (this.drawMode) {
                 if (this.rawPoints.length > 1) {
-                    ctx.strokeStyle = 'rgba(33, 214, 198, 0.6)';
+                    ctx.strokeStyle = 'rgba(34, 211, 238, 0.6)';
                     ctx.lineWidth = 2;
                     ctx.beginPath();
                     ctx.moveTo(this.rawPoints[0].x + cx, this.rawPoints[0].y + cy);
@@ -794,7 +794,7 @@
                     ctx.stroke();
                 }
                 if (this.rawPoints.length === 0) {
-                    ctx.fillStyle = 'rgba(199, 153, 234, 0.4)';
+                    ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
                     ctx.font = '18px Segoe UI, sans-serif';
                     ctx.textAlign = 'center';
                     ctx.fillText('Click and drag to draw a shape', cx, cy);
@@ -806,7 +806,7 @@
                 const result = evaluateEpicycles(this.dft, this.time, this.numEpicycles);
                 drawEpicycleCircles(ctx, result.circles, cx, cy, this.circleOpacity);
 
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.beginPath();
                 ctx.arc(result.x + cx, result.y + cy, 3, 0, 2 * Math.PI);
                 ctx.fill();
@@ -910,7 +910,7 @@
             const result = evaluateEpicycles(this.dft, this.time, this.numEpicycles);
             drawEpicycleCircles(ctx, result.circles, cx, cy, this.circleOpacity);
 
-            ctx.fillStyle = '#21D6C6';
+            ctx.fillStyle = '#22d3ee';
             ctx.beginPath();
             ctx.arc(result.x + cx, result.y + cy, 3, 0, 2 * Math.PI);
             ctx.fill();
@@ -995,7 +995,7 @@
             const barX = w * 0.1;
             const maxAmp = 100;
 
-            ctx.fillStyle = 'rgba(142, 51, 213, 0.15)';
+            ctx.fillStyle = 'rgba(129, 140, 248, 0.15)';
             ctx.fillRect(barX - 5, 10, barW * 8 + 10, barH + 10);
 
             let activeCount = 0;
@@ -1008,7 +1008,7 @@
                 ctx.fillStyle = `rgba(${r},${g},${b},0.7)`;
                 ctx.fillRect(bx + 4, 15 + barH - bh, barW - 8, bh);
 
-                ctx.fillStyle = 'rgba(199, 153, 234, 0.7)';
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.7)';
                 ctx.font = '11px Segoe UI, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.fillText('f' + (i + 1), bx + barW / 2, 15 + barH + 15);
@@ -1033,7 +1033,7 @@
             drawEpicycleCircles(ctx, circles, epiCx, epiCy);
 
             const tipX = x + epiCx, tipY = y + epiCy;
-            ctx.fillStyle = '#21D6C6';
+            ctx.fillStyle = '#22d3ee';
             ctx.beginPath();
             ctx.arc(tipX, tipY, 3, 0, 2 * Math.PI);
             ctx.fill();
@@ -1043,7 +1043,7 @@
             while (this.wave.length > w * 0.45) this.wave.pop();
 
             const waveStart = w * 0.5;
-            ctx.strokeStyle = 'rgba(142, 51, 213, 0.3)';
+            ctx.strokeStyle = 'rgba(129, 140, 248, 0.3)';
             ctx.setLineDash([4, 4]);
             ctx.beginPath();
             ctx.moveTo(tipX, tipY);
@@ -1137,7 +1137,7 @@
             const maxAmp = 200;
 
             // Axes
-            ctx.strokeStyle = 'rgba(74, 0, 128, 0.5)';
+            ctx.strokeStyle = 'rgba(51, 65, 85, 0.5)';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(margin, cy);
@@ -1149,7 +1149,7 @@
             ctx.stroke();
 
             // Grid lines
-            ctx.strokeStyle = 'rgba(74, 0, 128, 0.2)';
+            ctx.strokeStyle = 'rgba(51, 65, 85, 0.2)';
             for (let i = -3; i <= 3; i++) {
                 if (i === 0) continue;
                 const gy = cy - (i / 3) * (plotH / 2);
@@ -1163,10 +1163,10 @@
             let activeCount = 0;
             let peak = 0;
             const compColors = [
-                [33, 214, 198],
-                [142, 51, 213],
-                [240, 0, 210],
-                [114, 0, 203]
+                [34, 211, 238],
+                [129, 140, 248],
+                [236, 72, 153],
+                [99, 102, 241]
             ];
 
             if (this.showComponents) {
@@ -1209,7 +1209,7 @@
                     ctx.lineTo(margin + px, sy);
                 }
             }
-            ctx.strokeStyle = '#21D6C6';
+            ctx.strokeStyle = '#22d3ee';
             ctx.stroke();
 
             // Time marker
@@ -1220,7 +1220,7 @@
                 markerVal += this.comps[c].amp * Math.sin(this.comps[c].freq * this.time + this.comps[c].phase);
             }
             const markerY = cy - markerVal * (plotH / 2) / maxAmp;
-            ctx.fillStyle = '#F000D2';
+            ctx.fillStyle = '#ec4899';
             ctx.beginPath();
             ctx.arc(markerX, markerY, 5, 0, 2 * Math.PI);
             ctx.fill();
@@ -1324,7 +1324,7 @@
                 const R = this.R1, r = this.R2, d = this.pen;
 
                 // Outer circle
-                ctx.strokeStyle = 'rgba(142, 51, 213, 0.25)';
+                ctx.strokeStyle = 'rgba(129, 140, 248, 0.25)';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.arc(cx, cy, R, 0, 2 * Math.PI);
@@ -1334,7 +1334,7 @@
                 const innerCx = cx + (R - r) * Math.cos(t);
                 const innerCy = cy + (R - r) * Math.sin(t);
 
-                ctx.strokeStyle = 'rgba(142, 51, 213, 0.35)';
+                ctx.strokeStyle = 'rgba(129, 140, 248, 0.35)';
                 ctx.beginPath();
                 ctx.arc(innerCx, innerCy, r, 0, 2 * Math.PI);
                 ctx.stroke();
@@ -1343,14 +1343,14 @@
                 const penX = cx + (R - r) * Math.cos(t) + d * Math.cos((R - r) / r * t);
                 const penY = cy + (R - r) * Math.sin(t) - d * Math.sin((R - r) / r * t);
 
-                ctx.strokeStyle = 'rgba(33, 214, 198, 0.5)';
+                ctx.strokeStyle = 'rgba(34, 211, 238, 0.5)';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
                 ctx.moveTo(innerCx, innerCy);
                 ctx.lineTo(penX, penY);
                 ctx.stroke();
 
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.beginPath();
                 ctx.arc(penX, penY, 3, 0, 2 * Math.PI);
                 ctx.fill();

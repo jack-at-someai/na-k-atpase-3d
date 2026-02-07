@@ -295,13 +295,13 @@
 
     function drawGrid(ctx, hexes, layout, fill, stroke) {
         for (const h of hexes) {
-            drawHex(ctx, h, layout, fill || '#1a0033', stroke || '#4a0080', 1);
+            drawHex(ctx, h, layout, fill || '#111827', stroke || '#1e293b', 1);
         }
     }
 
     function drawLabel(ctx, h, layout, text, color, fontSize) {
         const p = hexToPixel(h, layout);
-        ctx.fillStyle = color || '#C799EA';
+        ctx.fillStyle = color || '#94a3b8';
         ctx.font = (fontSize || 10) + 'px monospace';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -311,7 +311,7 @@
     function drawPath(ctx, hexes, layout, color, width) {
         if (hexes.length < 2) return;
         ctx.beginPath();
-        ctx.strokeStyle = color || '#21D6C6';
+        ctx.strokeStyle = color || '#22d3ee';
         ctx.lineWidth = width || 2;
         const p0 = hexToPixel(hexes[0], layout);
         ctx.moveTo(p0.x, p0.y);
@@ -323,7 +323,7 @@
     }
 
     function clearCanvas(ctx, w, h) {
-        ctx.fillStyle = '#0d001a';
+        ctx.fillStyle = '#060910';
         ctx.fillRect(0, 0, w, h);
     }
 
@@ -534,8 +534,8 @@
             for (const h of this.grid) {
                 const isHov = this.hovered && Hex.eq(h, this.hovered);
                 drawHex(ctx, h, layout,
-                    isHov ? 'rgba(33,214,198,0.2)' : '#1a0033',
-                    isHov ? '#21D6C6' : '#4a0080', isHov ? 2 : 1);
+                    isHov ? 'rgba(34,211,238,0.2)' : '#111827',
+                    isHov ? '#22d3ee' : '#1e293b', isHov ? 2 : 1);
             }
 
             if (this.hovered) {
@@ -543,7 +543,7 @@
                 const center = hexToPixel(this.hovered, layout);
 
                 // Draw edge dimension lines
-                ctx.strokeStyle = 'rgba(142,51,213,0.5)';
+                ctx.strokeStyle = 'rgba(129,140,248,0.5)';
                 ctx.lineWidth = 1;
                 ctx.setLineDash([3, 3]);
                 for (let i = 0; i < 6; i++) {
@@ -589,32 +589,32 @@
 
                 if (SharedState.flat) {
                     drawDimLine(center.x - s, center.y, center.x + s, center.y,
-                        (2 * s).toFixed(0) + 'w', '#F000D2');
+                        (2 * s).toFixed(0) + 'w', '#ec4899');
                     const hh = Math.sqrt(3) / 2 * s;
                     drawDimLine(center.x, center.y - hh, center.x, center.y + hh,
-                        (2 * hh).toFixed(0) + 'h', '#21D6C6');
+                        (2 * hh).toFixed(0) + 'h', '#22d3ee');
                 } else {
                     const ww = Math.sqrt(3) / 2 * s;
                     drawDimLine(center.x - ww, center.y, center.x + ww, center.y,
-                        (2 * ww).toFixed(0) + 'w', '#F000D2');
+                        (2 * ww).toFixed(0) + 'w', '#ec4899');
                     drawDimLine(center.x, center.y - s, center.x, center.y + s,
-                        (2 * s).toFixed(0) + 'h', '#21D6C6');
+                        (2 * s).toFixed(0) + 'h', '#22d3ee');
                 }
 
                 // Draw corner dots and angles
                 for (let i = 0; i < 6; i++) {
                     ctx.beginPath();
                     ctx.arc(corners[i].x, corners[i].y, 5, 0, Math.PI * 2);
-                    ctx.fillStyle = '#F000D2';
+                    ctx.fillStyle = '#ec4899';
                     ctx.fill();
                     ctx.beginPath();
                     ctx.arc(corners[i].x, corners[i].y, 5, 0, Math.PI * 2);
-                    ctx.strokeStyle = '#E3CCF5';
+                    ctx.strokeStyle = '#e2e8f0';
                     ctx.lineWidth = 1;
                     ctx.stroke();
 
                     const angle = (360 / 6 * i + (SharedState.flat ? 0 : 30)).toFixed(0);
-                    ctx.fillStyle = '#E3CCF5';
+                    ctx.fillStyle = '#e2e8f0';
                     ctx.font = 'bold 10px monospace';
                     ctx.textAlign = 'center';
                     const ox = (corners[i].x - center.x) * 0.35;
@@ -625,7 +625,7 @@
                 // Center dot
                 ctx.beginPath();
                 ctx.arc(center.x, center.y, 4, 0, Math.PI * 2);
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.fill();
             }
         }
@@ -720,7 +720,7 @@
             const qDir = SharedState.flat
                 ? { x: layout.size * 1.5, y: layout.size * Math.sqrt(3) / 2 }
                 : { x: layout.size * Math.sqrt(3), y: 0 };
-            ctx.strokeStyle = '#21D6C6';
+            ctx.strokeStyle = '#22d3ee';
             ctx.beginPath();
             ctx.moveTo(origin.x - qDir.x * 4, origin.y - qDir.y * 4);
             ctx.lineTo(origin.x + qDir.x * 4, origin.y + qDir.y * 4);
@@ -729,7 +729,7 @@
             const rDir = SharedState.flat
                 ? { x: 0, y: layout.size * Math.sqrt(3) }
                 : { x: layout.size * Math.sqrt(3) / 2, y: layout.size * 1.5 };
-            ctx.strokeStyle = '#F000D2';
+            ctx.strokeStyle = '#ec4899';
             ctx.beginPath();
             ctx.moveTo(origin.x - rDir.x * 4, origin.y - rDir.y * 4);
             ctx.lineTo(origin.x + rDir.x * 4, origin.y + rDir.y * 4);
@@ -741,10 +741,10 @@
                 const isSel = this.selected && Hex.eq(h, this.selected);
                 const isHov = this.hovered && Hex.eq(h, this.hovered) && !isSel;
                 const isOrigin = h.q === 0 && h.r === 0 && h.s === 0;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
-                if (isSel) { fill = 'rgba(142,51,213,0.4)'; stroke = '#F000D2'; lw = 2; }
-                else if (isHov) { fill = 'rgba(33,214,198,0.12)'; stroke = '#21D6C6'; lw = 1.5; }
-                else if (isOrigin) { fill = 'rgba(33,214,198,0.1)'; stroke = '#21D6C6'; lw = 1.5; }
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
+                if (isSel) { fill = 'rgba(129,140,248,0.4)'; stroke = '#ec4899'; lw = 2; }
+                else if (isHov) { fill = 'rgba(34,211,238,0.12)'; stroke = '#22d3ee'; lw = 1.5; }
+                else if (isOrigin) { fill = 'rgba(34,211,238,0.1)'; stroke = '#22d3ee'; lw = 1.5; }
                 drawHex(ctx, h, layout, fill, stroke, lw);
 
                 // Color-coded multi-line labels
@@ -752,15 +752,15 @@
                 ctx.textAlign = 'center';
                 ctx.font = '9px monospace';
                 let lines = [];
-                if (showCube) lines.push({ text: `${h.q},${h.r},${h.s}`, color: '#C799EA' });
-                else if (showAxial) lines.push({ text: `${h.q},${h.r}`, color: '#C799EA' });
+                if (showCube) lines.push({ text: `${h.q},${h.r},${h.s}`, color: '#94a3b8' });
+                else if (showAxial) lines.push({ text: `${h.q},${h.r}`, color: '#94a3b8' });
                 if (showOffset) {
                     const off = Hex.cubeToOffsetEvenR(h);
-                    lines.push({ text: `${off.col},${off.row}`, color: '#AA66E0' });
+                    lines.push({ text: `${off.col},${off.row}`, color: '#94a3b8' });
                 }
                 if (showDoubled) {
                     const dbl = Hex.cubeToDoubledCol(h);
-                    lines.push({ text: `d:${dbl.col},${dbl.row}`, color: '#8E33D5' });
+                    lines.push({ text: `d:${dbl.col},${dbl.row}`, color: '#818cf8' });
                 }
                 const lineH = 11;
                 const startY = p.y - (lines.length - 1) * lineH / 2;
@@ -843,10 +843,10 @@
                 const isSel = this.selected && Hex.eq(h, this.selected);
                 const isNb = nbSet.has(key);
                 const isDiag = diagSet.has(key);
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
-                if (isSel) { fill = 'rgba(240,0,210,0.3)'; stroke = '#F000D2'; lw = 2; }
-                else if (isNb) { fill = 'rgba(33,214,198,0.25)'; stroke = '#21D6C6'; lw = 2; }
-                else if (isDiag) { fill = 'rgba(142,51,213,0.25)'; stroke = '#8E33D5'; lw = 2; }
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
+                if (isSel) { fill = 'rgba(236,72,153,0.3)'; stroke = '#ec4899'; lw = 2; }
+                else if (isNb) { fill = 'rgba(34,211,238,0.25)'; stroke = '#22d3ee'; lw = 2; }
+                else if (isDiag) { fill = 'rgba(129,140,248,0.25)'; stroke = '#818cf8'; lw = 2; }
                 drawHex(ctx, h, layout, fill, stroke, lw);
             }
 
@@ -857,7 +857,7 @@
                 for (const dh of diagHexes) {
                     const dc = hexToPixel(dh, layout);
                     ctx.beginPath();
-                    ctx.strokeStyle = 'rgba(142,51,213,0.5)';
+                    ctx.strokeStyle = 'rgba(129,140,248,0.5)';
                     ctx.lineWidth = 1.5;
                     ctx.setLineDash([4, 4]);
                     ctx.moveTo(sc.x, sc.y);
@@ -869,7 +869,7 @@
                 for (const nb of nbHexes) {
                     const nc = hexToPixel(nb, layout);
                     ctx.beginPath();
-                    ctx.strokeStyle = 'rgba(33,214,198,0.6)';
+                    ctx.strokeStyle = 'rgba(34,211,238,0.6)';
                     ctx.lineWidth = 2;
                     ctx.moveTo(sc.x, sc.y);
                     ctx.lineTo(nc.x, nc.y);
@@ -879,7 +879,7 @@
                     const my = (sc.y + nc.y) / 2;
                     ctx.beginPath();
                     ctx.arc(mx, my, 3, 0, Math.PI * 2);
-                    ctx.fillStyle = '#21D6C6';
+                    ctx.fillStyle = '#22d3ee';
                     ctx.fill();
                 }
 
@@ -889,19 +889,19 @@
                     if (dir >= 0) {
                         const dirNames = ['E', 'NE', 'NW', 'W', 'SW', 'SE'];
                         const p = hexToPixel(nb, layout);
-                        ctx.fillStyle = '#21D6C6';
+                        ctx.fillStyle = '#22d3ee';
                         ctx.font = 'bold 11px monospace';
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'middle';
                         ctx.fillText(dirNames[dir], p.x, p.y - 6);
-                        ctx.fillStyle = '#C799EA';
+                        ctx.fillStyle = '#94a3b8';
                         ctx.font = '9px monospace';
                         ctx.fillText('dir ' + dir, p.x, p.y + 7);
                     }
                 }
 
                 for (const dh of diagHexes) {
-                    drawLabel(ctx, dh, layout, 'diag', '#8E33D5', 9);
+                    drawLabel(ctx, dh, layout, 'diag', '#818cf8', 9);
                 }
             }
         }
@@ -951,7 +951,7 @@
 
         // Color per distance ring
         ringColor(d, maxD) {
-            if (maxD === 0) return { fill: 'rgba(33,214,198,0.25)', stroke: '#21D6C6' };
+            if (maxD === 0) return { fill: 'rgba(34,211,238,0.25)', stroke: '#22d3ee' };
             const t = d / maxD;
             const r = Math.floor(33 + t * (240 - 33));
             const g = Math.floor(214 - t * 180);
@@ -987,11 +987,11 @@
                 const isStart = this.start && Hex.eq(h, this.start);
                 const isEnd = this.end && Hex.eq(h, this.end);
                 const isPath = pathSet.has(Hex.key(h)) && !isStart && !isEnd;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
 
-                if (isStart) { fill = 'rgba(33,214,198,0.4)'; stroke = '#21D6C6'; lw = 2; }
-                else if (isEnd) { fill = 'rgba(240,0,210,0.4)'; stroke = '#F000D2'; lw = 2; }
-                else if (isPath) { fill = 'rgba(142,51,213,0.3)'; stroke = '#8E33D5'; lw = 2; }
+                if (isStart) { fill = 'rgba(34,211,238,0.4)'; stroke = '#22d3ee'; lw = 2; }
+                else if (isEnd) { fill = 'rgba(236,72,153,0.4)'; stroke = '#ec4899'; lw = 2; }
+                else if (isPath) { fill = 'rgba(129,140,248,0.3)'; stroke = '#818cf8'; lw = 2; }
                 else if (refHex) {
                     const d = Hex.distance(refHex, h);
                     const c = this.ringColor(d, maxD);
@@ -1008,13 +1008,13 @@
             }
 
             if (pathHexes.length > 1) {
-                drawPath(ctx, pathHexes, layout, '#F000D2', 2.5);
+                drawPath(ctx, pathHexes, layout, '#ec4899', 2.5);
                 // Dot at each step
                 for (const h of pathHexes) {
                     const p = hexToPixel(h, layout);
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-                    ctx.fillStyle = '#F000D2';
+                    ctx.fillStyle = '#ec4899';
                     ctx.fill();
                 }
             }
@@ -1078,10 +1078,10 @@
                 const isStart = this.start && Hex.eq(h, this.start);
                 const isEnd = this.end && Hex.eq(h, this.end);
                 const isLine = lineSet.has(Hex.key(h)) && !isStart && !isEnd;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
-                if (isStart) { fill = 'rgba(33,214,198,0.35)'; stroke = '#21D6C6'; lw = 2; }
-                else if (isEnd) { fill = 'rgba(240,0,210,0.35)'; stroke = '#F000D2'; lw = 2; }
-                else if (isLine) { fill = 'rgba(142,51,213,0.25)'; stroke = '#8E33D5'; lw = 2; }
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
+                if (isStart) { fill = 'rgba(34,211,238,0.35)'; stroke = '#22d3ee'; lw = 2; }
+                else if (isEnd) { fill = 'rgba(236,72,153,0.35)'; stroke = '#ec4899'; lw = 2; }
+                else if (isLine) { fill = 'rgba(129,140,248,0.25)'; stroke = '#818cf8'; lw = 2; }
                 drawHex(ctx, h, layout, fill, stroke, lw);
             }
 
@@ -1090,7 +1090,7 @@
                 const ps = hexToPixel(this.start, layout);
                 const pe = hexToPixel(this.end, layout);
                 ctx.beginPath();
-                ctx.strokeStyle = 'rgba(240,0,210,0.35)';
+                ctx.strokeStyle = 'rgba(236,72,153,0.35)';
                 ctx.lineWidth = 1;
                 ctx.setLineDash([6, 4]);
                 ctx.moveTo(ps.x, ps.y);
@@ -1101,7 +1101,7 @@
 
             // Draw hex path with numbered steps
             if (lineHexes.length > 1) {
-                drawPath(ctx, lineHexes, layout, '#F000D2', 2.5);
+                drawPath(ctx, lineHexes, layout, '#ec4899', 2.5);
             }
             for (let i = 0; i < lineHexes.length; i++) {
                 const p = hexToPixel(lineHexes[i], layout);
@@ -1109,12 +1109,12 @@
                 const radius = 9;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(13,0,26,0.8)';
+                ctx.fillStyle = 'rgba(6,9,16,0.8)';
                 ctx.fill();
-                ctx.strokeStyle = '#21D6C6';
+                ctx.strokeStyle = '#22d3ee';
                 ctx.lineWidth = 1.5;
                 ctx.stroke();
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.font = 'bold 10px monospace';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -1231,12 +1231,12 @@
                 const isObs = this.obstacles.has(key);
                 const dist = reachDist.get(key);
                 const isReach = dist !== undefined;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
 
                 if (isObs) {
-                    fill = 'rgba(240,0,210,0.35)'; stroke = '#F000D2'; lw = 2;
+                    fill = 'rgba(236,72,153,0.35)'; stroke = '#ec4899'; lw = 2;
                 } else if (isCenter) {
-                    fill = 'rgba(33,214,198,0.4)'; stroke = '#21D6C6'; lw = 2;
+                    fill = 'rgba(34,211,238,0.4)'; stroke = '#22d3ee'; lw = 2;
                 } else if (isReach) {
                     // Gradient from teal (close) to purple (far)
                     const t = dist / Math.max(range, 1);
@@ -1255,7 +1255,7 @@
                 }
                 if (isObs) {
                     const p = hexToPixel(h, layout);
-                    ctx.fillStyle = '#F000D2';
+                    ctx.fillStyle = '#ec4899';
                     ctx.font = 'bold 14px monospace';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
@@ -1348,8 +1348,8 @@
             for (const h of this.grid) {
                 const key = Hex.key(h);
                 drawHex(this.ctx, h, layout,
-                    targetSet.has(key) ? 'rgba(114,0,203,0.15)' : '#1a0033',
-                    '#4a0080', 1);
+                    targetSet.has(key) ? 'rgba(99,102,241,0.15)' : '#111827',
+                    '#1e293b', 1);
             }
 
             const limit = this.animating ? this.animFrame : target.length;
@@ -1360,7 +1360,7 @@
                 const g = Math.floor(214 - t * 214);
                 const b = Math.floor(198 - t * (198 - 210));
                 drawHex(this.ctx, h, layout, `rgba(${r},${g},${b},0.35)`, `rgb(${r},${g},${b})`, 2);
-                drawLabel(this.ctx, h, layout, '' + i, '#E3CCF5', 9);
+                drawLabel(this.ctx, h, layout, '' + i, '#e2e8f0', 9);
             }
         }
     });
@@ -1426,10 +1426,10 @@
                 const isSel = this.selected && Hex.eq(h, this.selected);
                 const isRot = rotSet.has(key) && !isSel;
                 const isRefl = reflSet.has(key) && !isSel && !isRot;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
-                if (isSel) { fill = 'rgba(240,0,210,0.35)'; stroke = '#F000D2'; lw = 2; }
-                else if (isRot) { fill = 'rgba(33,214,198,0.25)'; stroke = '#21D6C6'; lw = 2; }
-                else if (isRefl) { fill = 'rgba(142,51,213,0.25)'; stroke = '#8E33D5'; lw = 2; }
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
+                if (isSel) { fill = 'rgba(236,72,153,0.35)'; stroke = '#ec4899'; lw = 2; }
+                else if (isRot) { fill = 'rgba(34,211,238,0.25)'; stroke = '#22d3ee'; lw = 2; }
+                else if (isRefl) { fill = 'rgba(129,140,248,0.25)'; stroke = '#818cf8'; lw = 2; }
                 drawHex(this.ctx, h, layout, fill, stroke, lw);
             }
 
@@ -1437,13 +1437,13 @@
                 const rots = Hex.rotations(this.selected);
                 rots.forEach((r, i) => {
                     if (gridSet.has(Hex.key(r))) {
-                        drawLabel(this.ctx, r, layout, i * 60 + '°', '#21D6C6', 10);
+                        drawLabel(this.ctx, r, layout, i * 60 + '°', '#22d3ee', 10);
                     }
                 });
                 // draw reflection axes through center
                 const center = hexToPixel(Hex.cube(0, 0, 0), layout);
                 this.ctx.setLineDash([4, 4]);
-                this.ctx.strokeStyle = '#8E33D5';
+                this.ctx.strokeStyle = '#818cf8';
                 this.ctx.lineWidth = 1;
                 for (let i = 0; i < 3; i++) {
                     const angle = (SharedState.flat ? 0 : 30) + i * 60;
@@ -1573,30 +1573,30 @@
 
                 if (isWall && isVisible) {
                     // Wall that's visible — bright wall
-                    fill = 'rgba(240,0,210,0.5)'; stroke = '#F000D2'; lw = 2;
+                    fill = 'rgba(236,72,153,0.5)'; stroke = '#ec4899'; lw = 2;
                 } else if (isWall) {
                     // Wall in shadow
-                    fill = 'rgba(240,0,210,0.15)'; stroke = 'rgba(240,0,210,0.4)'; lw = 1.5;
+                    fill = 'rgba(236,72,153,0.15)'; stroke = 'rgba(236,72,153,0.4)'; lw = 1.5;
                 } else if (isViewer) {
-                    fill = 'rgba(33,214,198,0.45)'; stroke = '#21D6C6'; lw = 2.5;
+                    fill = 'rgba(34,211,238,0.45)'; stroke = '#22d3ee'; lw = 2.5;
                 } else if (isVisible) {
                     // Lit — brightness fades with distance
                     const d = this.viewer ? Hex.distance(this.viewer, h) : 0;
                     const t = d / Math.max(range, 1);
                     const alpha = 0.3 - t * 0.15;
-                    fill = `rgba(33,214,198,${alpha})`; stroke = `rgba(33,214,198,${0.7 - t * 0.3})`; lw = 1;
+                    fill = `rgba(34,211,238,${alpha})`; stroke = `rgba(34,211,238,${0.7 - t * 0.3})`; lw = 1;
                 } else if (inRange) {
                     // In range but shadowed
-                    fill = '#0a0015'; stroke = '#1f0035'; lw = 1;
+                    fill = '#060910'; stroke = '#0a0e17'; lw = 1;
                 } else {
                     // Out of range
-                    fill = '#070010'; stroke = '#150025'; lw = 0.5;
+                    fill = '#060910'; stroke = '#0a0e17'; lw = 0.5;
                 }
                 drawHex(ctx, h, layout, fill, stroke, lw);
 
                 if (isWall && isVisible) {
                     const p = hexToPixel(h, layout);
-                    ctx.fillStyle = '#F000D2';
+                    ctx.fillStyle = '#ec4899';
                     ctx.font = 'bold 14px monospace';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
@@ -1608,13 +1608,13 @@
             if (this.viewer) {
                 const vc = hexToPixel(this.viewer, layout);
                 const grad = ctx.createRadialGradient(vc.x, vc.y, 0, vc.x, vc.y, layout.size * range * 2);
-                grad.addColorStop(0, 'rgba(33,214,198,0.08)');
-                grad.addColorStop(1, 'rgba(33,214,198,0)');
+                grad.addColorStop(0, 'rgba(34,211,238,0.08)');
+                grad.addColorStop(1, 'rgba(34,211,238,0)');
                 ctx.fillStyle = grad;
                 ctx.fillRect(0, 0, this.w, this.h);
 
                 // Eye icon at viewer
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.font = 'bold 16px monospace';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -1760,16 +1760,16 @@
                 const isPath = pathSet.has(key) && !isStart && !isEnd;
                 const exploreIdx = exploredMap.get(key);
                 const isExplored = exploreIdx !== undefined && !isPath && !isStart && !isEnd;
-                let fill = '#1a0033', stroke = '#4a0080', lw = 1;
+                let fill = '#111827', stroke = '#1e293b', lw = 1;
 
                 if (isWall) {
-                    fill = '#2a0050'; stroke = '#F000D2'; lw = 2;
+                    fill = '#111827'; stroke = '#ec4899'; lw = 2;
                 } else if (isStart) {
-                    fill = 'rgba(33,214,198,0.45)'; stroke = '#21D6C6'; lw = 2.5;
+                    fill = 'rgba(34,211,238,0.45)'; stroke = '#22d3ee'; lw = 2.5;
                 } else if (isEnd) {
-                    fill = 'rgba(240,0,210,0.45)'; stroke = '#F000D2'; lw = 2.5;
+                    fill = 'rgba(236,72,153,0.45)'; stroke = '#ec4899'; lw = 2.5;
                 } else if (isPath) {
-                    fill = 'rgba(33,214,198,0.3)'; stroke = '#21D6C6'; lw = 2;
+                    fill = 'rgba(34,211,238,0.3)'; stroke = '#22d3ee'; lw = 2;
                 } else if (isExplored) {
                     // Color by exploration order — early = purple, late = teal
                     const t = exploreIdx / maxExplored;
@@ -1784,7 +1784,7 @@
 
                 if (isWall) {
                     const p = hexToPixel(h, layout);
-                    ctx.fillStyle = '#F000D2';
+                    ctx.fillStyle = '#ec4899';
                     ctx.font = 'bold 14px monospace';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
@@ -1794,13 +1794,13 @@
 
             // Draw path with directional markers
             if (this.result && this.result.path.length > 1 && !this.animating) {
-                drawPath(ctx, this.result.path, layout, '#21D6C6', 3);
+                drawPath(ctx, this.result.path, layout, '#22d3ee', 3);
                 // Step dots along path
                 for (let i = 0; i < this.result.path.length; i++) {
                     const p = hexToPixel(this.result.path[i], layout);
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-                    ctx.fillStyle = '#21D6C6';
+                    ctx.fillStyle = '#22d3ee';
                     ctx.fill();
                 }
             }
@@ -1808,7 +1808,7 @@
             // Labels for start/end
             if (this.start) {
                 const p = hexToPixel(this.start, layout);
-                ctx.fillStyle = '#21D6C6';
+                ctx.fillStyle = '#22d3ee';
                 ctx.font = 'bold 13px monospace';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -1816,7 +1816,7 @@
             }
             if (this.end) {
                 const p = hexToPixel(this.end, layout);
-                ctx.fillStyle = '#F000D2';
+                ctx.fillStyle = '#ec4899';
                 ctx.font = 'bold 13px monospace';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -1938,14 +1938,14 @@
 
                 let fill, stroke, lw;
                 if (isHov) {
-                    fill = 'rgba(33,214,198,0.3)'; stroke = '#21D6C6'; lw = 2;
+                    fill = 'rgba(34,211,238,0.3)'; stroke = '#22d3ee'; lw = 2;
                 } else if (isBorder) {
-                    fill = 'rgba(114,0,203,0.25)'; stroke = '#8E33D5'; lw = 1.5;
+                    fill = 'rgba(99,102,241,0.25)'; stroke = '#818cf8'; lw = 1.5;
                 } else {
-                    fill = 'rgba(114,0,203,0.12)'; stroke = '#6600b3'; lw = 1;
+                    fill = 'rgba(99,102,241,0.12)'; stroke = '#334155'; lw = 1;
                 }
                 drawHex(ctx, h, layout, fill, stroke, lw);
-                drawLabel(ctx, h, layout, `${h.q},${h.r}`, isHov ? '#21D6C6' : '#AA66E0', 8);
+                drawLabel(ctx, h, layout, `${h.q},${h.r}`, isHov ? '#22d3ee' : '#94a3b8', 8);
             }
         }
     });
@@ -2015,9 +2015,9 @@
             for (const h of this.grid) {
                 const isHov = this.roundedHex && Hex.eq(h, this.roundedHex);
                 drawHex(ctx, h, layout,
-                    isHov ? 'rgba(33,214,198,0.25)' : '#1a0033',
-                    isHov ? '#21D6C6' : '#4a0080', isHov ? 2 : 1);
-                drawLabel(ctx, h, layout, `${h.q},${h.r}`, '#AA66E0', 9);
+                    isHov ? 'rgba(34,211,238,0.25)' : '#111827',
+                    isHov ? '#22d3ee' : '#1e293b', isHov ? 2 : 1);
+                drawLabel(ctx, h, layout, `${h.q},${h.r}`, '#94a3b8', 9);
             }
 
             if (this.mousePos && this.fracHex) {
@@ -2025,7 +2025,7 @@
                 const inGrid = this.grid.some(h => Hex.eq(h, this.roundedHex));
 
                 // Draw crosshair
-                ctx.strokeStyle = 'rgba(240,0,210,0.4)';
+                ctx.strokeStyle = 'rgba(236,72,153,0.4)';
                 ctx.lineWidth = 1;
                 ctx.setLineDash([4, 4]);
                 ctx.beginPath();
@@ -2038,7 +2038,7 @@
 
                 // Draw line from grid center (origin) to mouse to show conversion
                 const origin = layout.origin;
-                ctx.strokeStyle = 'rgba(142,51,213,0.3)';
+                ctx.strokeStyle = 'rgba(129,140,248,0.3)';
                 ctx.lineWidth = 1;
                 ctx.setLineDash([2, 4]);
                 ctx.beginPath();
@@ -2051,7 +2051,7 @@
                 if (inGrid) {
                     const rc = hexToPixel(this.roundedHex, layout);
                     // Line from mouse to rounded center
-                    ctx.strokeStyle = 'rgba(33,214,198,0.5)';
+                    ctx.strokeStyle = 'rgba(34,211,238,0.5)';
                     ctx.lineWidth = 1.5;
                     ctx.setLineDash([3, 3]);
                     ctx.beginPath();
@@ -2063,21 +2063,21 @@
                     // Rounded center dot
                     ctx.beginPath();
                     ctx.arc(rc.x, rc.y, 5, 0, Math.PI * 2);
-                    ctx.fillStyle = '#21D6C6';
+                    ctx.fillStyle = '#22d3ee';
                     ctx.fill();
                 }
 
                 // Mouse dot
                 ctx.beginPath();
                 ctx.arc(this.mousePos.x, this.mousePos.y, 5, 0, Math.PI * 2);
-                ctx.fillStyle = '#F000D2';
+                ctx.fillStyle = '#ec4899';
                 ctx.fill();
-                ctx.strokeStyle = '#E3CCF5';
+                ctx.strokeStyle = '#e2e8f0';
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
                 // Fractional coords label near mouse
-                ctx.fillStyle = '#E3CCF5';
+                ctx.fillStyle = '#e2e8f0';
                 ctx.font = '10px monospace';
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'bottom';

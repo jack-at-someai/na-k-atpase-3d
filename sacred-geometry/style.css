@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #0d001a;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #060910;
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -16,19 +16,19 @@ body {
 .sidebar {
   width: 280px;
   min-width: 280px;
-  background: #170029;
+  background: #0a0e17;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   overflow-y: auto;
-  border-right: 2px solid #2E0051;
+  border-right: 2px solid #111827;
 }
 
 h1 {
   font-size: 22px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
 }
 
 /* Pattern buttons */
@@ -39,8 +39,8 @@ h1 {
 }
 
 .pattern-btn {
-  background: #2E0051;
-  color: #C799EA;
+  background: #111827;
+  color: #94a3b8;
   border: none;
   border-radius: 6px;
   padding: 8px 12px;
@@ -52,11 +52,11 @@ h1 {
 }
 
 .pattern-btn:hover {
-  background: #44007A;
+  background: #1e293b;
 }
 
 .pattern-btn.active {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
 }
 
@@ -74,7 +74,7 @@ h1 {
 }
 
 .controls label span:first-child {
-  color: #C799EA;
+  color: #94a3b8;
   font-size: 12px;
   font-weight: 600;
   min-width: 90px;
@@ -82,12 +82,12 @@ h1 {
 
 .controls input[type="range"] {
   flex: 1;
-  accent-color: #7200CB;
+  accent-color: #6366f1;
   height: 4px;
 }
 
 .val {
-  color: #E3CCF5;
+  color: #e2e8f0;
   font-size: 12px;
   font-weight: 700;
   min-width: 24px;
@@ -107,18 +107,18 @@ h1 {
 }
 
 .toggle-label input[type="checkbox"] {
-  accent-color: #7200CB;
+  accent-color: #6366f1;
 }
 
 .toggle-label span {
-  color: #C799EA;
+  color: #94a3b8;
   font-size: 12px;
   font-weight: 600;
 }
 
 /* Color swatches */
 .color-section span {
-  color: #C799EA;
+  color: #94a3b8;
   font-size: 12px;
   font-weight: 600;
   display: block;
@@ -149,7 +149,7 @@ h1 {
 
 /* Save button */
 #save-btn {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -161,7 +161,7 @@ h1 {
 }
 
 #save-btn:hover {
-  background: #8E33D5;
+  background: #818cf8;
 }
 
 /* Canvas */
@@ -180,7 +180,7 @@ h1 {
     min-width: unset;
     max-height: 45vh;
     border-right: none;
-    border-bottom: 2px solid #2E0051;
+    border-bottom: 2px solid #111827;
   }
   #canvas {
     height: 55vh;

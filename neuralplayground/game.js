@@ -9,18 +9,18 @@
         const a = alpha !== undefined ? alpha : 1;
         const t = Math.max(-1, Math.min(1, v));
         if (t > 0) {
-            // Teal (#21D6C6) blended with dark
+            // Teal (#22d3ee) blended with dark
             const s = t;
-            const r = Math.floor(13 + s * (33 - 13));
-            const g = Math.floor(0 + s * (214 - 0));
-            const b = Math.floor(26 + s * (198 - 26));
+            const r = Math.floor(6 + s * (34 - 6));
+            const g = Math.floor(9 + s * (211 - 9));
+            const b = Math.floor(16 + s * (238 - 16));
             return `rgba(${r},${g},${b},${a})`;
         } else {
-            // Magenta (#F000D2) blended with dark
+            // Magenta (#ec4899) blended with dark
             const s = -t;
-            const r = Math.floor(13 + s * (240 - 13));
-            const g = Math.floor(0 + s * 0);
-            const b = Math.floor(26 + s * (210 - 26));
+            const r = Math.floor(6 + s * (236 - 6));
+            const g = Math.floor(9 + s * (72 - 9));
+            const b = Math.floor(16 + s * (153 - 16));
             return `rgba(${r},${g},${b},${a})`;
         }
     }
@@ -29,10 +29,10 @@
         const t = Math.max(-1, Math.min(1, v));
         if (t > 0) {
             const s = t;
-            return [Math.floor(13 + s * 20), Math.floor(s * 214), Math.floor(26 + s * 172)];
+            return [Math.floor(6 + s * 28), Math.floor(9 + s * 202), Math.floor(16 + s * 222)];
         } else {
             const s = -t;
-            return [Math.floor(13 + s * 227), Math.floor(s * 0), Math.floor(26 + s * 184)];
+            return [Math.floor(6 + s * 230), Math.floor(9 + s * 63), Math.floor(16 + s * 137)];
         }
     }
 
@@ -420,7 +420,7 @@
             const canvas = document.querySelector(`.dataset-thumb[data-set="${type}"]`);
             const ctx = canvas.getContext('2d');
             const w = canvas.width, h = canvas.height;
-            ctx.fillStyle = '#0d001a';
+            ctx.fillStyle = '#060910';
             ctx.fillRect(0, 0, w, h);
 
             const pts = generateDataset(type, 80, 5);
@@ -429,7 +429,7 @@
                 const py = (1 - (p.y + 1) / 2) * h;
                 ctx.beginPath();
                 ctx.arc(px, py, 2, 0, Math.PI * 2);
-                ctx.fillStyle = p.label > 0 ? '#21D6C6' : '#F000D2';
+                ctx.fillStyle = p.label > 0 ? '#22d3ee' : '#ec4899';
                 ctx.fill();
             }
         });
@@ -483,9 +483,9 @@
         const showTest = document.getElementById('chk-test-data').checked;
 
         if (!State.network || State.activeFeatures.length === 0) {
-            ctx.fillStyle = '#0d001a';
+            ctx.fillStyle = '#060910';
             ctx.fillRect(0, 0, w, h);
-            ctx.fillStyle = '#AA66E0';
+            ctx.fillStyle = '#94a3b8';
             ctx.font = '13px sans-serif';
             ctx.textAlign = 'center';
             ctx.fillText('Select at least one feature', w / 2, h / 2);
@@ -515,9 +515,9 @@
                 const py = (1 - (p.y + 1) / 2) * h;
                 ctx.beginPath();
                 ctx.arc(px, py, radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.label > 0 ? `rgba(33,214,198,${alpha})` : `rgba(240,0,210,${alpha})`;
+                ctx.fillStyle = p.label > 0 ? `rgba(34,211,238,${alpha})` : `rgba(236,72,153,${alpha})`;
                 ctx.fill();
-                ctx.strokeStyle = `rgba(227,204,245,${alpha * 0.6})`;
+                ctx.strokeStyle = `rgba(226,232,240,${alpha * 0.6})`;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
             }
@@ -541,7 +541,7 @@
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         const w = rect.width, h = rect.height;
 
-        ctx.fillStyle = '#0d001a';
+        ctx.fillStyle = '#060910';
         ctx.fillRect(0, 0, w, h);
 
         if (!State.network) return;
@@ -608,19 +608,19 @@
                 // Neuron border
                 ctx.beginPath();
                 ctx.arc(pos.x, pos.y, neuronRadius, 0, Math.PI * 2);
-                ctx.strokeStyle = isInput ? '#8E33D5' : (isOutput ? '#21D6C6' : '#7200CB');
+                ctx.strokeStyle = isInput ? '#818cf8' : (isOutput ? '#22d3ee' : '#6366f1');
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
                 // Neuron fill (dark center)
                 ctx.beginPath();
                 ctx.arc(pos.x, pos.y, neuronRadius - 3, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(13,0,26,0.7)';
+                ctx.fillStyle = 'rgba(6,9,16,0.7)';
                 ctx.fill();
 
                 // Label
                 if (isInput && State.activeFeatures[i]) {
-                    ctx.fillStyle = '#C799EA';
+                    ctx.fillStyle = '#94a3b8';
                     ctx.font = '9px monospace';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
@@ -628,7 +628,7 @@
                     ctx.fillText(labels[State.activeFeatures[i]] || State.activeFeatures[i], pos.x, pos.y);
                 }
                 if (isOutput) {
-                    ctx.fillStyle = '#21D6C6';
+                    ctx.fillStyle = '#22d3ee';
                     ctx.font = '9px monospace';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
@@ -647,12 +647,12 @@
             if (l === 0) label = 'Input';
             else if (l === numLayers - 1) label = 'Output';
             else label = `Hidden ${l}`;
-            ctx.fillStyle = '#AA66E0';
+            ctx.fillStyle = '#94a3b8';
             ctx.fillText(label, x, 8);
 
             // +/- buttons for hidden layers
             if (l > 0 && l < numLayers - 1) {
-                ctx.fillStyle = '#AA66E0';
+                ctx.fillStyle = '#94a3b8';
                 ctx.font = '10px monospace';
                 ctx.fillText(`[${layers[l]}]`, x, 22);
             }
@@ -672,13 +672,13 @@
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         const w = rect.width, h = rect.height;
 
-        ctx.fillStyle = '#0d001a';
+        ctx.fillStyle = '#060910';
         ctx.fillRect(0, 0, w, h);
 
         const trainH = State.trainLossHistory;
         const testH = State.testLossHistory;
         if (trainH.length < 2) {
-            ctx.fillStyle = '#AA66E0';
+            ctx.fillStyle = '#94a3b8';
             ctx.font = '11px sans-serif';
             ctx.textAlign = 'center';
             ctx.fillText('Loss graph appears during training', w / 2, h / 2);
@@ -693,7 +693,7 @@
         const gh = h - padT - padB;
 
         // Grid lines
-        ctx.strokeStyle = '#2E0051';
+        ctx.strokeStyle = '#111827';
         ctx.lineWidth = 0.5;
         for (let i = 0; i <= 4; i++) {
             const y = padT + gh * (1 - i / 4);
@@ -701,7 +701,7 @@
             ctx.moveTo(padL, y);
             ctx.lineTo(w - padR, y);
             ctx.stroke();
-            ctx.fillStyle = '#AA66E0';
+            ctx.fillStyle = '#94a3b8';
             ctx.font = '8px monospace';
             ctx.textAlign = 'right';
             ctx.textBaseline = 'middle';
@@ -724,15 +724,15 @@
             ctx.stroke();
         };
 
-        drawLine(trainH, '#21D6C6');
-        drawLine(testH, '#F000D2');
+        drawLine(trainH, '#22d3ee');
+        drawLine(testH, '#ec4899');
 
         // Legend
         ctx.font = '9px sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillStyle = '#21D6C6';
+        ctx.fillStyle = '#22d3ee';
         ctx.fillText('Train', padL + 4, padT + 10);
-        ctx.fillStyle = '#F000D2';
+        ctx.fillStyle = '#ec4899';
         ctx.fillText('Test', padL + 40, padT + 10);
     }
 

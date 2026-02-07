@@ -1,22 +1,22 @@
 /* === Neural Network Playground — Sounder Dark Theme === */
 
 :root {
-    --bg: #170029;
-    --bg-canvas: #0d001a;
-    --panel: #2E0051;
-    --panel-light: #3a0068;
-    --teal: #21D6C6;
-    --purple: #7200CB;
-    --purple-light: #8E33D5;
-    --magenta: #F000D2;
-    --text: #E3CCF5;
-    --text-dim: #C799EA;
-    --text-muted: #AA66E0;
-    --border: #4a0080;
-    --btn-bg: #3a0068;
-    --btn-hover: #4a0080;
-    --positive: #21D6C6;
-    --negative: #F000D2;
+    --bg: #0a0e17;
+    --bg-canvas: #060910;
+    --panel: #111827;
+    --panel-light: #1e293b;
+    --teal: #22d3ee;
+    --purple: #6366f1;
+    --purple-light: #818cf8;
+    --magenta: #ec4899;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --btn-bg: #1e293b;
+    --btn-hover: #334155;
+    --positive: #22d3ee;
+    --negative: #ec4899;
     --radius: 6px;
 }
 
@@ -32,7 +32,7 @@ html, body {
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     font-size: 13px;
@@ -120,7 +120,7 @@ header h1 .accent {
 }
 
 .btn-play:hover {
-    background: #28f0dd;
+    background: #67e8f9;
     transform: scale(1.05);
 }
 
@@ -129,7 +129,7 @@ header h1 .accent {
 }
 
 .btn-play.playing:hover {
-    background: #ff20e0;
+    background: #f472b6;
 }
 
 .epoch-display {
@@ -239,7 +239,7 @@ header h1 .accent {
 
 .dataset-thumb.active {
     border-color: var(--teal);
-    box-shadow: 0 0 8px rgba(33, 214, 198, 0.3);
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.3);
 }
 
 .data-controls {
@@ -333,7 +333,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .feature-item:hover {
-    background: rgba(114, 0, 203, 0.15);
+    background: rgba(99, 102, 241, 0.15);
 }
 
 .feature-item.active {
@@ -390,12 +390,12 @@ input[type="range"]::-moz-range-thumb {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(114, 0, 203, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(99, 102, 241, 0.15);
     transition: box-shadow 0.2s, transform 0.15s;
 }
 
 .layer-header:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(114, 0, 203, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(99, 102, 241, 0.25);
     transform: translateY(-1px);
 }
 
@@ -435,7 +435,7 @@ input[type="range"]::-moz-range-thumb {
     background: var(--btn-hover);
     color: var(--teal);
     border-color: var(--teal);
-    box-shadow: 0 2px 6px rgba(33, 214, 198, 0.2);
+    box-shadow: 0 2px 6px rgba(34, 211, 238, 0.2);
     transform: scale(1.1);
 }
 

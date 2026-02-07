@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #170029;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0e17;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ body {
 h1 {
   font-size: 42px;
   font-weight: 700;
-  color: #21D6C6;
+  color: #22d3ee;
   margin-bottom: 12px;
 }
 
@@ -47,19 +47,19 @@ h1 {
   align-items: center;
   gap: 10px;
   padding: 6px 10px;
-  background: #2E0051;
+  background: #111827;
   border-radius: 6px;
 }
 
 .player-label {
-  color: #C799EA;
+  color: #94a3b8;
   font-size: 14px;
   font-weight: 700;
   min-width: 50px;
 }
 
 .player-label.active-player {
-  color: #21D6C6;
+  color: #22d3ee;
 }
 
 .captured {
@@ -88,7 +88,7 @@ h1 {
 }
 
 .coords span {
-  color: #5B00A2;
+  color: #334155;
   font-size: 11px;
   font-weight: 700;
 }
@@ -132,7 +132,7 @@ h1 {
   width: 100%;
   max-width: 400px;
   aspect-ratio: 1;
-  border: 3px solid #5B00A2;
+  border: 3px solid #334155;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -150,15 +150,15 @@ h1 {
 }
 
 .square.light {
-  background: #44007A;
+  background: #1e293b;
 }
 
 .square.dark {
-  background: #2E0051;
+  background: #111827;
 }
 
 .square.selected {
-  background: #7200CB !important;
+  background: #6366f1 !important;
 }
 
 .square.legal-move::after {
@@ -167,7 +167,7 @@ h1 {
   width: 30%;
   height: 30%;
   border-radius: 50%;
-  background: rgba(33, 214, 198, 0.4);
+  background: rgba(34, 211, 238, 0.4);
 }
 
 .square.legal-capture::after {
@@ -176,16 +176,16 @@ h1 {
   width: 85%;
   height: 85%;
   border-radius: 50%;
-  border: 4px solid rgba(33, 214, 198, 0.4);
+  border: 4px solid rgba(34, 211, 238, 0.4);
   background: transparent;
 }
 
 .square.last-move {
-  background: rgba(114, 0, 203, 0.5) !important;
+  background: rgba(99, 102, 241, 0.5) !important;
 }
 
 .square.in-check {
-  background: rgba(206, 79, 81, 0.6) !important;
+  background: rgba(244, 63, 94, 0.6) !important;
 }
 
 .square:hover {
@@ -202,7 +202,7 @@ h1 {
 
 /* Status */
 .status {
-  color: #C799EA;
+  color: #94a3b8;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -210,16 +210,16 @@ h1 {
 }
 
 .status.check {
-  color: #CE4F51;
+  color: #f43f5e;
 }
 
 .status.win {
-  color: #21D6C6;
+  color: #22d3ee;
   font-weight: 700;
 }
 
 .status.draw {
-  color: #F000D2;
+  color: #ec4899;
   font-weight: 700;
 }
 
@@ -232,7 +232,7 @@ h1 {
 }
 
 #new-game-btn, #undo-btn {
-  background: #7200CB;
+  background: #6366f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -244,51 +244,51 @@ h1 {
 }
 
 #new-game-btn:hover, #undo-btn:hover {
-  background: #8E33D5;
+  background: #818cf8;
 }
 
 #undo-btn {
-  background: #2E0051;
-  color: #C799EA;
+  background: #111827;
+  color: #94a3b8;
 }
 
 #undo-btn:hover {
-  background: #44007A;
+  background: #1e293b;
 }
 
 /* Move log */
 .move-log {
   max-height: 120px;
   overflow-y: auto;
-  background: #2E0051;
+  background: #111827;
   border-radius: 6px;
   padding: 8px 12px;
   text-align: left;
   font-size: 13px;
-  color: #C799EA;
+  color: #94a3b8;
   font-family: 'Consolas', 'Courier New', monospace;
   line-height: 1.6;
 }
 
 .move-log .move-num {
-  color: #5B00A2;
+  color: #334155;
   margin-right: 4px;
 }
 
 .move-log .white-move {
-  color: #E3CCF5;
+  color: #e2e8f0;
   margin-right: 12px;
 }
 
 .move-log .black-move {
-  color: #21D6C6;
+  color: #22d3ee;
 }
 
 /* Promotion modal */
 .promotion-modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(23, 0, 41, 0.9);
+  background: rgba(10, 14, 23, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,10 +302,10 @@ h1 {
 .promotion-choices {
   display: flex;
   gap: 8px;
-  background: #2E0051;
+  background: #111827;
   padding: 16px;
   border-radius: 8px;
-  border: 2px solid #5B00A2;
+  border: 2px solid #334155;
 }
 
 .promo-option {
@@ -315,7 +315,7 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  background: #44007A;
+  background: #1e293b;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -323,7 +323,7 @@ h1 {
 }
 
 .promo-option:hover {
-  background: #7200CB;
+  background: #6366f1;
 }
 
 /* Responsive */
