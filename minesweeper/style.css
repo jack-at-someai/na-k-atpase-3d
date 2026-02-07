@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #170029;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #21D6C6;
+  margin-bottom: 16px;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.difficulty {
+  display: flex;
+  gap: 4px;
+}
+
+.diff-btn {
+  background: #2E0051;
+  color: #C799EA;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.diff-btn:hover {
+  background: #44007A;
+}
+
+.diff-btn.active {
+  background: #7200CB;
+  color: #fff;
+}
+
+#new-game-btn, #play-again-btn {
+  background: #7200CB;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#new-game-btn:hover, #play-again-btn:hover {
+  background: #8E33D5;
+}
+
+/* Info bar */
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background: #2E0051;
+  border-radius: 6px;
+}
+
+.info-bar span {
+  color: #E3CCF5;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#mine-count::before {
+  content: '\1F4A3 ';
+}
+
+/* Board */
+.board {
+  display: inline-grid;
+  gap: 2px;
+  background: #5B00A2;
+  border: 3px solid #5B00A2;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #44007A;
+  color: transparent;
+  transition: background 0.1s;
+  user-select: none;
+}
+
+.cell:hover:not(.revealed):not(.flagged) {
+  background: #5B00A2;
+}
+
+.cell.revealed {
+  background: #2E0051;
+  cursor: default;
+}
+
+.cell.flagged {
+  background: #44007A;
+}
+
+.cell.flagged::after {
+  content: '\1F6A9';
+  font-size: 16px;
+}
+
+.cell.mine-hit {
+  background: #CE4F51;
+}
+
+.cell.mine-shown::after {
+  content: '\1F4A3';
+  font-size: 14px;
+}
+
+/* Number colors — Sounder palette */
+.cell.n1 { color: #21D6C6; }
+.cell.n2 { color: #7AE6DD; }
+.cell.n3 { color: #F000D2; }
+.cell.n4 { color: #AA66E0; }
+.cell.n5 { color: #CE4F51; }
+.cell.n6 { color: #21D6C6; }
+.cell.n7 { color: #E3CCF5; }
+.cell.n8 { color: #C799EA; }
+
+/* Game message overlay */
+.game-message {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(23, 0, 41, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+.game-message.hidden {
+  display: none;
+}
+
+.game-message p {
+  font-size: 36px;
+  font-weight: 700;
+  color: #21D6C6;
+  margin-bottom: 20px;
+}
+
+.game-message.lost p {
+  color: #CE4F51;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  h1 { font-size: 36px; }
+  .cell { width: 26px; height: 26px; font-size: 12px; }
+}

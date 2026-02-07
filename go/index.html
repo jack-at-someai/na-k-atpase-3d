@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Go</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="play">Play</button>
+      <button class="tab-btn" data-tab="learn">Learn to Play</button>
+    </div>
+
+    <!-- PLAY TAB -->
+    <div id="play-tab">
+      <div class="game-layout">
+        <div class="sidebar">
+          <div class="panel">
+            <label>Board Size</label>
+            <select id="sel-size">
+              <option value="9" selected>9×9 (Beginner)</option>
+              <option value="13">13×13 (Intermediate)</option>
+              <option value="19">19×19 (Full)</option>
+            </select>
+            <label>AI Difficulty</label>
+            <select id="sel-ai">
+              <option value="random">Random</option>
+              <option value="easy" selected>Easy</option>
+              <option value="medium">Medium (MCTS)</option>
+              <option value="hard">Hard (MCTS)</option>
+            </select>
+            <label>Your Color</label>
+            <select id="sel-color">
+              <option value="1" selected>Black (plays first)</option>
+              <option value="2">White (plays second)</option>
+            </select>
+            <div style="margin-top:10px">
+              <button class="ctrl-btn primary" id="btn-new-game" style="width:100%">New Game</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div id="turn-display">Black's turn (You)</div>
+            <div id="move-count" style="margin-bottom:6px">Move 0</div>
+            <div class="info-row">
+              <span>Black captures</span> <span class="val" id="cap-black">0</span>
+            </div>
+            <div class="info-row">
+              <span>White captures</span> <span class="val" id="cap-white">0</span>
+            </div>
+            <div class="info-row">
+              <span>Black score</span> <span class="val" id="score-black">0</span>
+            </div>
+            <div class="info-row">
+              <span>White score</span> <span class="val" id="score-white">0</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="btn-row">
+              <button class="ctrl-btn" id="btn-pass">Pass</button>
+              <button class="ctrl-btn" id="btn-undo">Undo</button>
+              <button class="ctrl-btn danger" id="btn-resign">Resign</button>
+            </div>
+            <div class="check-row" style="margin-top:8px">
+              <input type="checkbox" id="show-territory">
+              <label for="show-territory" style="margin:0;color:#AA66E0;font-size:12px">Show territory estimate</label>
+            </div>
+          </div>
+        </div>
+
+        <canvas id="board-canvas"></canvas>
+      </div>
+    </div>
+
+    <!-- LEARN TAB -->
+    <div id="learn-tab">
+      <div class="learn-layout">
+        <div class="lesson-sidebar">
+          <div id="lesson-list"></div>
+        </div>
+        <div class="lesson-main">
+          <div id="lesson-title"></div>
+          <div id="lesson-text"></div>
+          <canvas id="lesson-canvas"></canvas>
+          <div class="lesson-nav">
+            <button class="ctrl-btn" id="lesson-prev-step">&larr; Previous</button>
+            <span id="lesson-progress"></span>
+            <button class="ctrl-btn" id="lesson-next-step">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="engine.js"></script>
+  <script src="ai.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

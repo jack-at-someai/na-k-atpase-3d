@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Grid Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Hex Grid Explorer</h1>
+        <div class="global-controls">
+            <label class="toggle-label">
+                <span>Orientation:</span>
+                <button id="orientation-toggle" class="btn btn-toggle">Flat Top</button>
+            </label>
+            <label class="toggle-label">
+                <span>Size:</span>
+                <input type="range" id="hex-size-slider" min="20" max="60" value="35">
+                <span id="hex-size-value">35</span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="tab-bar" id="tab-bar">
+        <button class="tab active" data-tab="0">Geometry</button>
+        <button class="tab" data-tab="1">Coordinates</button>
+        <button class="tab" data-tab="2">Neighbors</button>
+        <button class="tab" data-tab="3">Distances</button>
+        <button class="tab" data-tab="4">Line Drawing</button>
+        <button class="tab" data-tab="5">Range</button>
+        <button class="tab" data-tab="6">Rings &amp; Spirals</button>
+        <button class="tab" data-tab="7">Rotation</button>
+        <button class="tab" data-tab="8">Field of View</button>
+        <button class="tab" data-tab="9">Pathfinding</button>
+        <button class="tab" data-tab="10">Map Shapes</button>
+        <button class="tab" data-tab="11">Pixel&#x2011;Hex</button>
+    </nav>
+
+    <main id="demo-container">
+        <!-- Demo 0: Geometry -->
+        <section class="demo-panel active" data-demo="0">
+            <aside class="sidebar">
+                <h2>Hex Geometry</h2>
+                <p>Explore the fundamental geometry of hexagons. Toggle between flat-top and pointy-top orientations.</p>
+                <p>Hover over a hex to see corner angles and dimensions.</p>
+                <div class="info-box" id="info-geometry">
+                    <div>Width: <span id="geo-width">—</span></div>
+                    <div>Height: <span id="geo-height">—</span></div>
+                    <div>Corner Angle: <span id="geo-angle">—</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-0"></canvas></div>
+        </section>
+
+        <!-- Demo 1: Coordinates -->
+        <section class="demo-panel" data-demo="1">
+            <aside class="sidebar">
+                <h2>Coordinate Systems</h2>
+                <p>Click any hex to see its position in four coordinate systems.</p>
+                <div class="controls">
+                    <label><input type="checkbox" id="coord-cube" checked> Cube (q, r, s)</label>
+                    <label><input type="checkbox" id="coord-axial" checked> Axial (q, r)</label>
+                    <label><input type="checkbox" id="coord-offset"> Offset (col, row)</label>
+                    <label><input type="checkbox" id="coord-doubled"> Doubled</label>
+                </div>
+                <div class="info-box" id="info-coords">Click a hex to inspect</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-1"></canvas></div>
+        </section>
+
+        <!-- Demo 2: Neighbors -->
+        <section class="demo-panel" data-demo="2">
+            <aside class="sidebar">
+                <h2>Neighbors</h2>
+                <p>Click a hex to highlight its 6 adjacent neighbors.</p>
+                <div class="controls">
+                    <label><input type="checkbox" id="diag-toggle"> Show diagonals</label>
+                </div>
+                <div class="info-box" id="info-neighbors">Click a hex to see neighbors</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-2"></canvas></div>
+        </section>
+
+        <!-- Demo 3: Distances -->
+        <section class="demo-panel" data-demo="3">
+            <aside class="sidebar">
+                <h2>Distances</h2>
+                <p>Click two hexes to measure the distance between them.</p>
+                <div class="info-box" id="info-distances">Click first hex (start)</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-3"></canvas></div>
+        </section>
+
+        <!-- Demo 4: Line Drawing -->
+        <section class="demo-panel" data-demo="4">
+            <aside class="sidebar">
+                <h2>Line Drawing</h2>
+                <p>Click two hexes to draw a line using linear interpolation.</p>
+                <div class="info-box" id="info-lines">Click first hex (start)</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-4"></canvas></div>
+        </section>
+
+        <!-- Demo 5: Range -->
+        <section class="demo-panel" data-demo="5">
+            <aside class="sidebar">
+                <h2>Range / Flood Fill</h2>
+                <p>Click a center hex. Right-click to toggle obstacles. Range shows reachable hexes via BFS.</p>
+                <div class="controls">
+                    <label>Range: <input type="range" id="range-slider" min="1" max="5" value="3">
+                        <span id="range-value">3</span>
+                    </label>
+                    <button id="range-clear" class="btn">Clear Obstacles</button>
+                </div>
+                <div class="info-box" id="info-range">Click to set center</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-5"></canvas></div>
+        </section>
+
+        <!-- Demo 6: Rings & Spirals -->
+        <section class="demo-panel" data-demo="6">
+            <aside class="sidebar">
+                <h2>Rings &amp; Spirals</h2>
+                <p>View ring outlines and spiral traversal order. Use slider to set ring radius.</p>
+                <div class="controls">
+                    <label>Radius: <input type="range" id="ring-slider" min="1" max="5" value="2">
+                        <span id="ring-value">2</span>
+                    </label>
+                    <label><input type="checkbox" id="spiral-toggle"> Show spiral</label>
+                    <button id="ring-animate" class="btn">Animate</button>
+                </div>
+                <div class="info-box" id="info-rings">Ring hexes: —</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-6"></canvas></div>
+        </section>
+
+        <!-- Demo 7: Rotation -->
+        <section class="demo-panel" data-demo="7">
+            <aside class="sidebar">
+                <h2>Rotation &amp; Reflection</h2>
+                <p>Click a hex to see its 6 rotational positions and reflection axes.</p>
+                <div class="info-box" id="info-rotation">Click a hex to rotate</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-7"></canvas></div>
+        </section>
+
+        <!-- Demo 8: Field of View -->
+        <section class="demo-panel" data-demo="8">
+            <aside class="sidebar">
+                <h2>Field of View</h2>
+                <p>Click to set viewer position. Right-click to place walls. Raycasting reveals visible hexes.</p>
+                <div class="controls">
+                    <label>Vision range: <input type="range" id="fov-slider" min="1" max="5" value="4">
+                        <span id="fov-value">4</span>
+                    </label>
+                    <button id="fov-clear" class="btn">Clear Walls</button>
+                </div>
+                <div class="info-box" id="info-fov">Click to set viewer</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-8"></canvas></div>
+        </section>
+
+        <!-- Demo 9: Pathfinding -->
+        <section class="demo-panel" data-demo="9">
+            <aside class="sidebar">
+                <h2>A* Pathfinding</h2>
+                <p>Click to set start (green), then end (red). Right-click to toggle walls. Watch A* explore.</p>
+                <div class="controls">
+                    <label>Heuristic:
+                        <select id="heuristic-select">
+                            <option value="hex">Hex Distance</option>
+                            <option value="euclidean">Euclidean</option>
+                            <option value="dijkstra">Dijkstra (h=0)</option>
+                        </select>
+                    </label>
+                    <button id="path-animate" class="btn">Animate</button>
+                    <button id="path-clear" class="btn">Clear All</button>
+                </div>
+                <div class="info-box" id="info-path">Click to set start</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-9"></canvas></div>
+        </section>
+
+        <!-- Demo 10: Map Shapes -->
+        <section class="demo-panel" data-demo="10">
+            <aside class="sidebar">
+                <h2>Map Shapes</h2>
+                <p>Generate different map shapes from hex grids.</p>
+                <div class="controls">
+                    <label>Shape:
+                        <select id="shape-select">
+                            <option value="hexagonal">Hexagonal</option>
+                            <option value="rectangular">Rectangular</option>
+                            <option value="triangular">Triangular</option>
+                            <option value="rhombus">Rhombus</option>
+                        </select>
+                    </label>
+                    <label>Size: <input type="range" id="shape-slider" min="2" max="6" value="3">
+                        <span id="shape-value">3</span>
+                    </label>
+                </div>
+                <div class="info-box" id="info-shapes">Hexes: —</div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-10"></canvas></div>
+        </section>
+
+        <!-- Demo 11: Pixel-Hex -->
+        <section class="demo-panel" data-demo="11">
+            <aside class="sidebar">
+                <h2>Pixel ↔ Hex</h2>
+                <p>Move your mouse over the grid. See live pixel-to-hex conversion with fractional coordinates and rounding.</p>
+                <div class="info-box" id="info-pixel">
+                    <div>Pixel: <span id="px-pixel">—</span></div>
+                    <div>Fractional: <span id="px-frac">—</span></div>
+                    <div>Rounded: <span id="px-round">—</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap"><canvas id="canvas-11"></canvas></div>
+        </section>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>

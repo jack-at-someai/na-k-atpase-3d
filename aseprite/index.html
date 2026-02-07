@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu Bar -->
+    <div id="menubar">
+        <div class="menu-item" data-menu="file">File</div>
+        <div class="menu-item" data-menu="edit">Edit</div>
+        <div class="menu-item" data-menu="view">View</div>
+    </div>
+    <div id="menu-dropdown" class="hidden"></div>
+
+    <!-- Main Workspace -->
+    <div id="workspace">
+        <!-- Left Toolbar -->
+        <div id="toolbar">
+            <button class="tool-btn active" data-tool="pencil" title="Pencil (B)">
+                <svg viewBox="0 0 16 16"><path d="M12.1 1.5l2.4 2.4-9.2 9.2-3.1.7.7-3.1z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="eraser" title="Eraser (E)">
+                <svg viewBox="0 0 16 16"><rect x="2" y="6" width="12" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(-30 8 9)"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="line" title="Line (L)">
+                <svg viewBox="0 0 16 16"><line x1="2" y1="14" x2="14" y2="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="rect" title="Rectangle (R)">
+                <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="ellipse" title="Ellipse (O)">
+                <svg viewBox="0 0 16 16"><ellipse cx="8" cy="8" rx="6" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="fill" title="Fill Bucket (G)">
+                <svg viewBox="0 0 16 16"><path d="M3 12l4-9 4 9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 10q2 2 0 4t0-4" fill="currentColor"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="eyedropper" title="Eyedropper (I)">
+                <svg viewBox="0 0 16 16"><path d="M11 2l3 3-8 8H3v-3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+            <button class="tool-btn" data-tool="selection" title="Selection (M)">
+                <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
+            </button>
+        </div>
+
+        <!-- Center Canvas Area -->
+        <div id="canvas-container">
+            <canvas id="main-canvas"></canvas>
+            <div id="canvas-info">
+                <span id="cursor-pos">0, 0</span>
+                <span id="canvas-size">32x32</span>
+                <span id="zoom-level">1x</span>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div id="right-panel">
+            <!-- Color Panel -->
+            <div class="panel" id="color-panel">
+                <div class="panel-header">Color</div>
+                <div class="panel-body">
+                    <div id="color-picker-area">
+                        <canvas id="sv-canvas" width="160" height="128"></canvas>
+                        <canvas id="hue-canvas" width="20" height="128"></canvas>
+                    </div>
+                    <div id="color-swatches">
+                        <div id="fg-color" title="Foreground Color"></div>
+                        <div id="bg-color" title="Background Color"></div>
+                        <div id="swap-colors" title="Swap Colors (X)">&#x21C4;</div>
+                    </div>
+                    <div id="color-inputs">
+                        <label>R <input type="number" id="color-r" min="0" max="255" value="0"></label>
+                        <label>G <input type="number" id="color-g" min="0" max="255" value="0"></label>
+                        <label>B <input type="number" id="color-b" min="0" max="255" value="0"></label>
+                        <label># <input type="text" id="color-hex" value="000000" maxlength="6"></label>
+                    </div>
+                    <div id="palette-grid"></div>
+                </div>
+            </div>
+
+            <!-- Layers Panel -->
+            <div class="panel" id="layers-panel">
+                <div class="panel-header">Layers</div>
+                <div class="panel-body">
+                    <div id="layers-list"></div>
+                    <div id="layer-controls">
+                        <button id="add-layer" title="Add Layer">+</button>
+                        <button id="remove-layer" title="Remove Layer">&minus;</button>
+                        <button id="move-layer-up" title="Move Up">&uarr;</button>
+                        <button id="move-layer-down" title="Move Down">&darr;</button>
+                    </div>
+                    <div id="layer-opacity">
+                        <label>Opacity: <input type="range" id="opacity-slider" min="0" max="100" value="100"><span id="opacity-value">100%</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Timeline -->
+    <div id="timeline">
+        <div id="timeline-controls">
+            <button id="add-frame" title="Add Frame">+</button>
+            <button id="dup-frame" title="Duplicate Frame">&#x2398;</button>
+            <button id="remove-frame" title="Remove Frame">&minus;</button>
+            <button id="play-btn" title="Play/Pause">&#x25B6;</button>
+            <label>FPS: <input type="number" id="fps-input" min="1" max="60" value="8"></label>
+            <label><input type="checkbox" id="onion-skin"> Onion</label>
+        </div>
+        <div id="frames-container"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-overlay" class="hidden">
+        <div id="modal">
+            <div id="modal-title"></div>
+            <div id="modal-body"></div>
+            <div id="modal-actions">
+                <button id="modal-ok">OK</button>
+                <button id="modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

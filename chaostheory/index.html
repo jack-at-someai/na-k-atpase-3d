@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos Theory Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Chaos Theory Visualizer</h1>
+    </header>
+
+    <nav class="tab-bar" id="tab-bar">
+        <button class="tab active" data-tab="0">Lorenz</button>
+        <button class="tab" data-tab="1">Mandelbrot</button>
+        <button class="tab" data-tab="2">Bifurcation</button>
+        <button class="tab" data-tab="3">Pendulum</button>
+        <button class="tab" data-tab="4">Barnsley</button>
+        <button class="tab" data-tab="5">Chaos Game</button>
+        <button class="tab" data-tab="6">Henon</button>
+        <button class="tab" data-tab="7">Rossler</button>
+        <button class="tab" data-tab="8">Automata</button>
+        <button class="tab" data-tab="9">L&#8209;System</button>
+        <button class="tab" data-tab="10">Lyapunov</button>
+        <button class="tab" data-tab="11">Clifford</button>
+    </nav>
+
+    <main id="demo-container">
+
+        <!-- 0: Lorenz Attractor -->
+        <section class="demo-panel active" data-demo="0">
+            <aside class="sidebar">
+                <h2>Lorenz Attractor</h2>
+                <p>The Lorenz system is a set of three coupled differential equations that exhibit chaotic behavior. Tiny changes in initial conditions produce wildly different trajectories.</p>
+                <div class="controls">
+                    <label>
+                        <span>&sigma;:</span>
+                        <input type="range" id="lorenz-sigma" min="1" max="30" step="0.1" value="10">
+                        <span id="lorenz-sigma-val">10</span>
+                    </label>
+                    <label>
+                        <span>&rho;:</span>
+                        <input type="range" id="lorenz-rho" min="0" max="50" step="0.1" value="28">
+                        <span id="lorenz-rho-val">28</span>
+                    </label>
+                    <label>
+                        <span>&beta;:</span>
+                        <input type="range" id="lorenz-beta" min="0" max="10" step="0.01" value="2.67">
+                        <span id="lorenz-beta-val">2.67</span>
+                    </label>
+                    <label>
+                        <span>Trail:</span>
+                        <input type="range" id="lorenz-trail" min="200" max="5000" step="100" value="2000">
+                        <span id="lorenz-trail-val">2000</span>
+                    </label>
+                    <label>
+                        <span>Rotate:</span>
+                        <input type="range" id="lorenz-rotate" min="0" max="360" step="1" value="0">
+                        <span id="lorenz-rotate-val">0&deg;</span>
+                    </label>
+                    <button class="btn" id="lorenz-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-lorenz">
+                    <div>x: <span id="lorenz-x">&mdash;</span></div>
+                    <div>y: <span id="lorenz-y">&mdash;</span></div>
+                    <div>z: <span id="lorenz-z">&mdash;</span></div>
+                    <div>Points: <span id="lorenz-pts">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-0"></canvas>
+            </div>
+        </section>
+
+        <!-- 1: Mandelbrot -->
+        <section class="demo-panel" data-demo="1">
+            <aside class="sidebar">
+                <h2>Mandelbrot &amp; Julia Sets</h2>
+                <p>The Mandelbrot set is the set of complex numbers c for which z&sup2;+c does not diverge. Click to zoom in, right-click to zoom out. Toggle Julia mode to explore Julia sets.</p>
+                <div class="controls">
+                    <label>
+                        <span>Max Iter:</span>
+                        <input type="range" id="mandel-iter" min="50" max="1000" step="10" value="200">
+                        <span id="mandel-iter-val">200</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="mandel-julia">
+                        <span>Julia Mode</span>
+                    </label>
+                    <label>
+                        <span>Julia Re:</span>
+                        <input type="range" id="mandel-julia-re" min="-2" max="2" step="0.001" value="-0.7">
+                        <span id="mandel-julia-re-val">-0.7</span>
+                    </label>
+                    <label>
+                        <span>Julia Im:</span>
+                        <input type="range" id="mandel-julia-im" min="-2" max="2" step="0.001" value="0.27015">
+                        <span id="mandel-julia-im-val">0.27</span>
+                    </label>
+                    <button class="btn" id="mandel-reset">Reset View</button>
+                </div>
+                <div class="info-box" id="info-mandel">
+                    <div>Center: <span id="mandel-center">&mdash;</span></div>
+                    <div>Zoom: <span id="mandel-zoom">&mdash;</span></div>
+                    <div>Mode: <span id="mandel-mode">Mandelbrot</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-1"></canvas>
+            </div>
+        </section>
+
+        <!-- 2: Bifurcation -->
+        <section class="demo-panel" data-demo="2">
+            <aside class="sidebar">
+                <h2>Bifurcation Diagram</h2>
+                <p>The logistic map x&rarr;rx(1&minus;x) undergoes period-doubling bifurcations as r increases, eventually becoming chaotic. Click to zoom in, right-click to zoom out.</p>
+                <div class="controls">
+                    <label>
+                        <span>Warmup:</span>
+                        <input type="range" id="bifur-warmup" min="100" max="2000" step="100" value="500">
+                        <span id="bifur-warmup-val">500</span>
+                    </label>
+                    <label>
+                        <span>Plot Iters:</span>
+                        <input type="range" id="bifur-iters" min="100" max="2000" step="100" value="500">
+                        <span id="bifur-iters-val">500</span>
+                    </label>
+                    <button class="btn" id="bifur-reset">Reset View</button>
+                </div>
+                <div class="info-box" id="info-bifur">
+                    <div>r range: <span id="bifur-range">&mdash;</span></div>
+                    <div>x range: <span id="bifur-xrange">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-2"></canvas>
+            </div>
+        </section>
+
+        <!-- 3: Double Pendulum -->
+        <section class="demo-panel" data-demo="3">
+            <aside class="sidebar">
+                <h2>Double Pendulum</h2>
+                <p>A pendulum attached to another pendulum exhibits chaotic motion. Even tiny differences in starting angle lead to completely different paths.</p>
+                <div class="controls">
+                    <label>
+                        <span>Length 1:</span>
+                        <input type="range" id="pend-l1" min="50" max="200" step="1" value="120">
+                        <span id="pend-l1-val">120</span>
+                    </label>
+                    <label>
+                        <span>Length 2:</span>
+                        <input type="range" id="pend-l2" min="50" max="200" step="1" value="120">
+                        <span id="pend-l2-val">120</span>
+                    </label>
+                    <label>
+                        <span>Mass 1:</span>
+                        <input type="range" id="pend-m1" min="1" max="20" step="0.5" value="10">
+                        <span id="pend-m1-val">10</span>
+                    </label>
+                    <label>
+                        <span>Mass 2:</span>
+                        <input type="range" id="pend-m2" min="1" max="20" step="0.5" value="10">
+                        <span id="pend-m2-val">10</span>
+                    </label>
+                    <label>
+                        <span>Damping:</span>
+                        <input type="range" id="pend-damp" min="0" max="0.02" step="0.001" value="0">
+                        <span id="pend-damp-val">0</span>
+                    </label>
+                    <label>
+                        <span>Count:</span>
+                        <input type="range" id="pend-count" min="1" max="5" step="1" value="1">
+                        <span id="pend-count-val">1</span>
+                    </label>
+                    <button class="btn" id="pend-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-pend">
+                    <div>&theta;1: <span id="pend-a1">&mdash;</span></div>
+                    <div>&theta;2: <span id="pend-a2">&mdash;</span></div>
+                    <div>Energy: <span id="pend-energy">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-3"></canvas>
+            </div>
+        </section>
+
+        <!-- 4: Barnsley Fern -->
+        <section class="demo-panel" data-demo="4">
+            <aside class="sidebar">
+                <h2>IFS Fractals</h2>
+                <p>Iterated Function Systems generate fractals by repeatedly applying random affine transformations. The Barnsley fern is the most famous example.</p>
+                <div class="controls">
+                    <label>
+                        <span>Preset:</span>
+                        <select id="barnsley-preset">
+                            <option value="fern">Barnsley Fern</option>
+                            <option value="sierpinski">Sierpinski Triangle</option>
+                            <option value="tree">Binary Tree</option>
+                            <option value="dragon">Dragon Curve</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Speed:</span>
+                        <input type="range" id="barnsley-speed" min="100" max="5000" step="100" value="1000">
+                        <span id="barnsley-speed-val">1000</span>
+                    </label>
+                    <label>
+                        <span>Pt Size:</span>
+                        <input type="range" id="barnsley-size" min="1" max="4" step="0.5" value="1">
+                        <span id="barnsley-size-val">1</span>
+                    </label>
+                    <label>
+                        <span>Color:</span>
+                        <select id="barnsley-color">
+                            <option value="green">Green</option>
+                            <option value="rainbow">Rainbow</option>
+                            <option value="fire">Fire</option>
+                        </select>
+                    </label>
+                    <button class="btn" id="barnsley-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-barnsley">
+                    <div>Points: <span id="barnsley-pts">&mdash;</span></div>
+                    <div>Transform: <span id="barnsley-tf">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-4"></canvas>
+            </div>
+        </section>
+
+        <!-- 5: Chaos Game -->
+        <section class="demo-panel" data-demo="5">
+            <aside class="sidebar">
+                <h2>Chaos Game</h2>
+                <p>Pick a random vertex and jump a fraction of the distance toward it. Repeat. Simple rules produce stunning fractals like the Sierpinski triangle.</p>
+                <div class="controls">
+                    <label>
+                        <span>Vertices:</span>
+                        <input type="range" id="chaos-verts" min="3" max="8" step="1" value="3">
+                        <span id="chaos-verts-val">3</span>
+                    </label>
+                    <label>
+                        <span>Jump:</span>
+                        <input type="range" id="chaos-jump" min="0.2" max="0.8" step="0.01" value="0.5">
+                        <span id="chaos-jump-val">0.5</span>
+                    </label>
+                    <label>
+                        <span>Speed:</span>
+                        <input type="range" id="chaos-speed" min="100" max="5000" step="100" value="1000">
+                        <span id="chaos-speed-val">1000</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="chaos-restrict">
+                        <span>No repeat vertex</span>
+                    </label>
+                    <button class="btn" id="chaos-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-chaos">
+                    <div>Points: <span id="chaos-pts">&mdash;</span></div>
+                    <div>Last vertex: <span id="chaos-last">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-5"></canvas>
+            </div>
+        </section>
+
+        <!-- 6: Henon Map -->
+        <section class="demo-panel" data-demo="6">
+            <aside class="sidebar">
+                <h2>Henon Map</h2>
+                <p>The Henon map is a 2D discrete-time dynamical system: x&rarr;1&minus;ax&sup2;+y, y&rarr;bx. Its attractor has a fractal structure.</p>
+                <div class="controls">
+                    <label>
+                        <span>a:</span>
+                        <input type="range" id="henon-a" min="0.5" max="1.8" step="0.01" value="1.4">
+                        <span id="henon-a-val">1.4</span>
+                    </label>
+                    <label>
+                        <span>b:</span>
+                        <input type="range" id="henon-b" min="0" max="0.5" step="0.01" value="0.3">
+                        <span id="henon-b-val">0.3</span>
+                    </label>
+                    <label>
+                        <span>Iterations:</span>
+                        <input type="range" id="henon-iters" min="1000" max="100000" step="1000" value="50000">
+                        <span id="henon-iters-val">50000</span>
+                    </label>
+                    <button class="btn" id="henon-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-henon">
+                    <div>Points: <span id="henon-pts">&mdash;</span></div>
+                    <div>x range: <span id="henon-xr">&mdash;</span></div>
+                    <div>y range: <span id="henon-yr">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-6"></canvas>
+            </div>
+        </section>
+
+        <!-- 7: Rossler Attractor -->
+        <section class="demo-panel" data-demo="7">
+            <aside class="sidebar">
+                <h2>R&ouml;ssler Attractor</h2>
+                <p>The R&ouml;ssler system is a simpler chaotic attractor than Lorenz, producing a band-like spiral with an occasional fold.</p>
+                <div class="controls">
+                    <label>
+                        <span>a:</span>
+                        <input type="range" id="rossler-a" min="0.05" max="0.5" step="0.01" value="0.2">
+                        <span id="rossler-a-val">0.2</span>
+                    </label>
+                    <label>
+                        <span>b:</span>
+                        <input type="range" id="rossler-b" min="0.05" max="0.5" step="0.01" value="0.2">
+                        <span id="rossler-b-val">0.2</span>
+                    </label>
+                    <label>
+                        <span>c:</span>
+                        <input type="range" id="rossler-c" min="1" max="18" step="0.1" value="5.7">
+                        <span id="rossler-c-val">5.7</span>
+                    </label>
+                    <label>
+                        <span>Trail:</span>
+                        <input type="range" id="rossler-trail" min="200" max="5000" step="100" value="2000">
+                        <span id="rossler-trail-val">2000</span>
+                    </label>
+                    <label>
+                        <span>Rotate:</span>
+                        <input type="range" id="rossler-rotate" min="0" max="360" step="1" value="0">
+                        <span id="rossler-rotate-val">0&deg;</span>
+                    </label>
+                    <button class="btn" id="rossler-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-rossler">
+                    <div>x: <span id="rossler-x">&mdash;</span></div>
+                    <div>y: <span id="rossler-y">&mdash;</span></div>
+                    <div>z: <span id="rossler-z">&mdash;</span></div>
+                    <div>Points: <span id="rossler-pts">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-7"></canvas>
+            </div>
+        </section>
+
+        <!-- 8: Cellular Automata -->
+        <section class="demo-panel" data-demo="8">
+            <aside class="sidebar">
+                <h2>Cellular Automata</h2>
+                <p>Elementary CA applies a simple rule to a 1D row of cells, stacking rows to create complex patterns. Game of Life is a 2D variant. Click cells to toggle them.</p>
+                <div class="controls">
+                    <label>
+                        <span>Mode:</span>
+                        <select id="ca-mode">
+                            <option value="elementary">Elementary CA</option>
+                            <option value="life">Game of Life</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Rule #:</span>
+                        <input type="range" id="ca-rule" min="0" max="255" step="1" value="30">
+                        <span id="ca-rule-val">30</span>
+                    </label>
+                    <label>
+                        <span>Cell Size:</span>
+                        <input type="range" id="ca-size" min="2" max="12" step="1" value="4">
+                        <span id="ca-size-val">4</span>
+                    </label>
+                    <label>
+                        <span>Speed:</span>
+                        <input type="range" id="ca-speed" min="1" max="30" step="1" value="10">
+                        <span id="ca-speed-val">10</span>
+                    </label>
+                    <button class="btn" id="ca-step">Step</button>
+                    <button class="btn" id="ca-play">Play</button>
+                    <button class="btn" id="ca-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-ca">
+                    <div>Generation: <span id="ca-gen">&mdash;</span></div>
+                    <div>Live cells: <span id="ca-live">&mdash;</span></div>
+                    <div>Rule: <span id="ca-rule-disp">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-8"></canvas>
+            </div>
+        </section>
+
+        <!-- 9: L-Systems -->
+        <section class="demo-panel" data-demo="9">
+            <aside class="sidebar">
+                <h2>L&#8209;Systems</h2>
+                <p>Lindenmayer systems use simple string-rewriting rules to generate fractal curves and plant-like structures via turtle graphics.</p>
+                <div class="controls">
+                    <label>
+                        <span>Preset:</span>
+                        <select id="lsys-preset">
+                            <option value="koch">Koch Snowflake</option>
+                            <option value="sierpinski">Sierpinski Triangle</option>
+                            <option value="dragon">Dragon Curve</option>
+                            <option value="plant">Fractal Plant</option>
+                            <option value="hilbert">Hilbert Curve</option>
+                            <option value="penrose">Penrose Tile</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Iterations:</span>
+                        <input type="range" id="lsys-iters" min="1" max="8" step="1" value="4">
+                        <span id="lsys-iters-val">4</span>
+                    </label>
+                    <label>
+                        <span>Angle:</span>
+                        <input type="range" id="lsys-angle" min="1" max="180" step="1" value="60">
+                        <span id="lsys-angle-val">60&deg;</span>
+                    </label>
+                    <label>
+                        <span>Length:</span>
+                        <input type="range" id="lsys-length" min="1" max="20" step="0.5" value="5">
+                        <span id="lsys-length-val">5</span>
+                    </label>
+                    <button class="btn" id="lsys-draw">Redraw</button>
+                </div>
+                <div class="info-box" id="info-lsys">
+                    <div>String len: <span id="lsys-strlen">&mdash;</span></div>
+                    <div>Segments: <span id="lsys-segs">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-9"></canvas>
+            </div>
+        </section>
+
+        <!-- 10: Lyapunov Fractal -->
+        <section class="demo-panel" data-demo="10">
+            <aside class="sidebar">
+                <h2>Lyapunov Fractal</h2>
+                <p>Lyapunov fractals visualize the stability of the logistic map under alternating parameters. Positive exponents (warm colors) indicate chaos.</p>
+                <div class="controls">
+                    <label>
+                        <span>Sequence:</span>
+                        <input type="text" id="lyap-seq" value="AB" class="text-input">
+                    </label>
+                    <label>
+                        <span>Iterations:</span>
+                        <input type="range" id="lyap-iters" min="20" max="200" step="10" value="80">
+                        <span id="lyap-iters-val">80</span>
+                    </label>
+                    <button class="btn" id="lyap-reset">Reset View</button>
+                    <button class="btn" id="lyap-render">Render</button>
+                </div>
+                <div class="info-box" id="info-lyap">
+                    <div>a range: <span id="lyap-arange">&mdash;</span></div>
+                    <div>b range: <span id="lyap-brange">&mdash;</span></div>
+                    <div>Sequence: <span id="lyap-seqdisp">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-10"></canvas>
+            </div>
+        </section>
+
+        <!-- 11: Clifford Attractor -->
+        <section class="demo-panel" data-demo="11">
+            <aside class="sidebar">
+                <h2>Clifford Attractor</h2>
+                <p>The Clifford attractor uses trigonometric functions: x&rarr;sin(ay)+c&middot;cos(ax), y&rarr;sin(bx)+d&middot;cos(by). Density mapping reveals intricate structure.</p>
+                <div class="controls">
+                    <label>
+                        <span>a:</span>
+                        <input type="range" id="cliff-a" min="-3" max="3" step="0.01" value="-1.4">
+                        <span id="cliff-a-val">-1.4</span>
+                    </label>
+                    <label>
+                        <span>b:</span>
+                        <input type="range" id="cliff-b" min="-3" max="3" step="0.01" value="1.6">
+                        <span id="cliff-b-val">1.6</span>
+                    </label>
+                    <label>
+                        <span>c:</span>
+                        <input type="range" id="cliff-c" min="-3" max="3" step="0.01" value="1.0">
+                        <span id="cliff-c-val">1.0</span>
+                    </label>
+                    <label>
+                        <span>d:</span>
+                        <input type="range" id="cliff-d" min="-3" max="3" step="0.01" value="0.7">
+                        <span id="cliff-d-val">0.7</span>
+                    </label>
+                    <label>
+                        <span>Speed:</span>
+                        <input type="range" id="cliff-speed" min="1000" max="100000" step="1000" value="20000">
+                        <span id="cliff-speed-val">20000</span>
+                    </label>
+                    <label>
+                        <span>Color:</span>
+                        <select id="cliff-color">
+                            <option value="purple">Purple</option>
+                            <option value="fire">Fire</option>
+                            <option value="ice">Ice</option>
+                            <option value="rainbow">Rainbow</option>
+                        </select>
+                    </label>
+                    <button class="btn" id="cliff-reset">Reset</button>
+                </div>
+                <div class="info-box" id="info-cliff">
+                    <div>Points: <span id="cliff-pts">&mdash;</span></div>
+                    <div>Max density: <span id="cliff-maxd">&mdash;</span></div>
+                </div>
+            </aside>
+            <div class="canvas-wrap">
+                <canvas id="canvas-11"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>

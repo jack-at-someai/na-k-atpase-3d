@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tetris</h1>
+    <div class="game-layout">
+      <div class="side-panel left-panel">
+        <div class="panel-box">
+          <span class="panel-label">HOLD</span>
+          <canvas id="hold-canvas" width="100" height="80"></canvas>
+        </div>
+      </div>
+      <div class="board-area">
+        <canvas id="board"></canvas>
+      </div>
+      <div class="side-panel right-panel">
+        <div class="panel-box">
+          <span class="panel-label">NEXT</span>
+          <canvas id="next-canvas" width="100" height="260"></canvas>
+        </div>
+        <div class="panel-box stats">
+          <span class="panel-label">SCORE</span>
+          <span class="stat-val" id="score">0</span>
+        </div>
+        <div class="panel-box stats">
+          <span class="panel-label">LEVEL</span>
+          <span class="stat-val" id="level">1</span>
+        </div>
+        <div class="panel-box stats">
+          <span class="panel-label">LINES</span>
+          <span class="stat-val" id="lines">0</span>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" class="overlay">
+      <p id="overlay-text">Tetris</p>
+      <button id="start-btn">Play</button>
+    </div>
+    <div class="controls-mobile">
+      <div class="mobile-row">
+        <button class="ctrl-btn" data-action="left">&#9664;</button>
+        <button class="ctrl-btn" data-action="rotate">&#8635;</button>
+        <button class="ctrl-btn" data-action="right">&#9654;</button>
+      </div>
+      <div class="mobile-row">
+        <button class="ctrl-btn" data-action="hold">HOLD</button>
+        <button class="ctrl-btn wide" data-action="soft">&#9660;</button>
+        <button class="ctrl-btn" data-action="hard">&#9660;&#9660;</button>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champion Pig Breeder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>🐷 Champion Pig Breeder</h1>
+    <div id="rep-display">⭐ <span id="rep-count">0</span> Reputation</div>
+  </header>
+  <nav id="tab-bar">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="herd">Herd</button>
+    <button class="tab" data-tab="breeding">Breeding</button>
+    <button class="tab" data-tab="litters">Litters</button>
+    <button class="tab" data-tab="shows">Shows</button>
+    <button class="tab" data-tab="pedigree">Pedigree</button>
+  </nav>
+  <main>
+    <section id="panel-dashboard" class="panel active"></section>
+    <section id="panel-herd" class="panel"></section>
+    <section id="panel-breeding" class="panel"></section>
+    <section id="panel-litters" class="panel"></section>
+    <section id="panel-shows" class="panel"></section>
+    <section id="panel-pedigree" class="panel"></section>
+  </main>
+</div>
+<div id="modal-overlay" class="hidden">
+  <div id="modal">
+    <div id="modal-header">
+      <h2 id="modal-title"></h2>
+      <button id="modal-close">&times;</button>
+    </div>
+    <div id="modal-body"></div>
+    <div id="modal-footer"></div>
+  </div>
+</div>
+<div id="toast-container"></div>
+<script src="game.js"></script>
+</body>
+</html>
