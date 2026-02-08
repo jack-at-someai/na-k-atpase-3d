@@ -1,0 +1,56 @@
+[
+  {
+    "prompt": "a cat wearing a top hat, photorealistic --ar 16:9 --s 500 --v 6.1",
+    "text": "a cat wearing a top hat, photorealistic",
+    "params": {
+      "ar": "16:9",
+      "v": "6.1",
+      "stylize": "500"
+    },
+    "timestamp": "2026-02-07T17:38:04.576150"
+  },
+  {
+    "prompt": "a landscape --ar 3:2 --c 10",
+    "text": "a landscape",
+    "params": {
+      "ar": "3:2"
+    },
+    "timestamp": "2026-02-07T17:38:05.519805"
+  },
+  {
+    "prompt": "a landscape --ar 3:2 --c 45",
+    "text": "a landscape",
+    "params": {
+      "ar": "3:2"
+    },
+    "timestamp": "2026-02-07T17:38:05.520306"
+  },
+  {
+    "prompt": "a landscape --ar 3:2 --c 80",
+    "text": "a landscape",
+    "params": {
+      "ar": "3:2"
+    },
+    "timestamp": "2026-02-07T17:38:05.520805"
+  },
+  {
+    "prompt": "a samurai on a motorcycle, neon city, rain, reflections, volumetric lighting --ar 16:9 --style raw --s 750",
+    "text": "a samurai on a motorcycle, neon city, rain, reflections, volumetric lighting",
+    "params": {
+      "ar": "16:9",
+      "style": "raw",
+      "stylize": "750"
+    },
+    "timestamp": "2026-02-07T17:38:21.873849"
+  },
+  {
+    "prompt": "Isometric bird's-eye view of a three-acre quantum computing research campus nestled within lush terraced gardens, featuring a central hexagonal main laboratory building constructed from cross-laminated timber and floor-to-ceiling recycled glass panels that reveal quantum computing cores suspended in clean rooms, the building crowned with expansive rooftop greenhouses filled with experimental agriculture and hydroponic towers catching morning sunlight, solar panel canopies arranged in flower-petal formations extending from the main structure to provide shade for outdoor workspaces and walkways below, living green walls cascading down the eastern facade covered in dense moss and climbing vines that filter air and regulate temperature, three satellite buildings connected by elevated glass corridors supported by bamboo-wrapped steel columns housing cryogenic systems server farms and materials science labs, the western wing features a curved research tower with spiral staircases visible through transparent walls and copper patina rain chains running down its exterior, winding pathways made from recycled permeable pavers weave through the campus lined with native flowering plants pollinator gardens and embedded fiber optic cables that glow with soft bioluminescent blue-green light at dusk, central courtyard contains a circular meditation garden with raked gravel patterns surrounded by seating areas built from reclaimed teak and terracotta planters overflowing with edible herbs, secondary rooftop gardens feature wind turbines disguised as kinetic art installations and rainwater collection systems feeding into visible terracotta cisterns, parking area converted to wildflower meadow with discrete underground garage entrance, delivery docks hidden beneath living walls, bicycle storage pavilions with woven bamboo canopies, outdoor equipment testing areas shaded by solar panel pergolas dripping with hanging gardens, small amphitheater carved into hillside with moss-covered stone seating, network of elevated bamboo boardwalks connecting rooftop levels, warm golden hour lighting casting long shadows across verdant landscape, visible geothermal exchange wells integrated as sculptural elements, composting facilities disguised as garden follies, all buildings featuring natural ventilation towers wrapped in copper mesh with trailing plants, the entire campus radiating utopian harmony between cutting-edge quantum research and regenerative ecological design, isometric illustration, architectural visualization, highly detailed, miniature diorama feel, tilt-shift --ar 16:9 --s 600 --v 6.1",
+    "text": "Isometric bird's-eye view of a three-acre quantum computing research campus nestled within lush terraced gardens, featuring a central hexagonal main laboratory building constructed from cross-laminated timber and floor-to-ceiling recycled glass panels that reveal quantum computing cores suspended in clean rooms, the building crowned with expansive rooftop greenhouses filled with experimental agriculture and hydroponic towers catching morning sunlight, solar panel canopies arranged in flower-petal formations extending from the main structure to provide shade for outdoor workspaces and walkways below, living green walls cascading down the eastern facade covered in dense moss and climbing vines that filter air and regulate temperature, three satellite buildings connected by elevated glass corridors supported by bamboo-wrapped steel columns housing cryogenic systems server farms and materials science labs, the western wing features a curved research tower with spiral staircases visible through transparent walls and copper patina rain chains running down its exterior, winding pathways made from recycled permeable pavers weave through the campus lined with native flowering plants pollinator gardens and embedded fiber optic cables that glow with soft bioluminescent blue-green light at dusk, central courtyard contains a circular meditation garden with raked gravel patterns surrounded by seating areas built from reclaimed teak and terracotta planters overflowing with edible herbs, secondary rooftop gardens feature wind turbines disguised as kinetic art installations and rainwater collection systems feeding into visible terracotta cisterns, parking area converted to wildflower meadow with discrete underground garage entrance, delivery docks hidden beneath living walls, bicycle storage pavilions with woven bamboo canopies, outdoor equipment testing areas shaded by solar panel pergolas dripping with hanging gardens, small amphitheater carved into hillside with moss-covered stone seating, network of elevated bamboo boardwalks connecting rooftop levels, warm golden hour lighting casting long shadows across verdant landscape, visible geothermal exchange wells integrated as sculptural elements, composting facilities disguised as garden follies, all buildings featuring natural ventilation towers wrapped in copper mesh with trailing plants, the entire campus radiating utopian harmony between cutting-edge quantum research and regenerative ecological design, isometric illustration, architectural visualization, highly detailed, miniature diorama feel, tilt-shift",
+    "params": {
+      "ar": "16:9",
+      "v": "6.1",
+      "stylize": "600"
+    },
+    "timestamp": "2026-02-07T18:10:42.294458"
+  }
+]

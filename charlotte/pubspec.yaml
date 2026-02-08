@@ -1,0 +1,45 @@
+name: charlotte
+description: "Charlotte - Infrastructure for Observable Reality"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0-286.0.dev
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Firebase Core
+  firebase_core: ^3.8.1
+  firebase_auth: ^5.3.4
+  cloud_firestore: ^5.6.0
+  cloud_functions: ^5.2.0
+  firebase_messaging: ^15.1.6
+
+  # SVG Support
+  flutter_svg: ^2.0.17
+
+  # Google Fonts (Oswald + Inter)
+  google_fonts: ^6.2.1
+
+  # Graph visualization
+  graphview: ^1.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/SOUNDER_BRAND_ICON.png
+    - assets/SOUNDER_BRAND_BACKGROUND.png
+    - assets/SOUNDER_BRAND_IMAGE.png
+    - assets/SOUNDER_BRAND_ILLUSTRATION.svg
+    - assets/SOUNDER_COLORS_AND_TYPOGRAPHY.svg
