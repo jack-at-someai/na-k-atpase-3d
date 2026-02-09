@@ -65,6 +65,26 @@ body{background:#0a0a0f;color:#e0ddd5;font-family:'Courier New',monospace;overfl
 </style>
 </head>
 <body>
+
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;transition:opacity 0.5s;">
+  <div style="width:100px;height:100px;border-radius:20px;background:#151518;border:1px solid #d4a37330;display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:28px;">🐗</div>
+  <p style="color:#8a8578;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;">Enter Access Code</p>
+  <input id="gate-input" type="password" autocomplete="off" autofocus placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;" style="background:#151518;border:1px solid #d4a37330;border-radius:12px;padding:14px 24px;font-size:18px;color:#e0ddd5;text-align:center;letter-spacing:4px;width:220px;outline:none;font-family:inherit;">
+  <p id="gate-error" style="color:#ef4444;font-size:12px;margin-top:12px;opacity:0;transition:opacity 0.3s;">&nbsp;</p>
+</div>
+<script>
+(function(){
+  var code='trogdon',g=document.getElementById('gate'),inp=document.getElementById('gate-input'),err=document.getElementById('gate-error');
+  if(sessionStorage.getItem('sounder_auth')==='1'){g.style.display='none';}
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){
+      if(inp.value.toLowerCase().trim()===code){sessionStorage.setItem('sounder_auth','1');g.style.opacity='0';setTimeout(function(){g.style.display='none';},500);}
+      else{inp.value='';inp.style.borderColor='#ef4444';err.textContent='Invalid code';err.style.opacity='1';setTimeout(function(){inp.style.borderColor='#d4a37330';err.style.opacity='0';},1500);}
+    }
+  });
+})();
+</script>
+
 <div id="canvas-container"></div>
 <div id="dashboard">
     <div id="header">
