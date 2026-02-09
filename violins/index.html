@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPP Instruments LLC — Charlotte Substrate</title>
+<style>
+  :root {
+    --bg: #1a1210; --surface: #2a2018; --card: #332a1f; --border: #4a3d2e;
+    --gold: #c9a84c; --gold-dim: #8a7234; --cream: #f5e6c8; --warm: #d4a574;
+    --red: #c0392b; --green: #27ae60; --blue: #5dade2; --purple: #9b59b6;
+    --text: #e8dcc8; --text-dim: #9a8b76; --text-bright: #fff8ee;
+    --violin: #c0392b; --bow: #2980b9; --cello: #8e44ad; --viola: #27ae60;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', 'Times New Roman', serif; min-height: 100vh; }
+
+  .header {
+    background: linear-gradient(135deg, #1a1210 0%, #2a1a10 50%, #1a1210 100%);
+    border-bottom: 2px solid var(--gold-dim);
+    padding: 2rem;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 2.4rem; color: var(--gold); letter-spacing: 0.08em;
+    text-shadow: 0 2px 8px rgba(201,168,76,0.3);
+    font-weight: 400;
+  }
+  .header .subtitle {
+    color: var(--warm); font-size: 1rem; margin-top: 0.3rem;
+    font-style: italic; letter-spacing: 0.05em;
+  }
+  .header .location { color: var(--text-dim); font-size: 0.85rem; margin-top: 0.2rem; }
+  .header .team {
+    display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .header .team span {
+    color: var(--text-dim); font-size: 0.8rem;
+  }
+  .header .team strong { color: var(--cream); }
+
+  /* Dashboard */
+  .dashboard {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem; padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1rem; text-align: center;
+  }
+  .stat-card .label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+  .stat-card .value { font-size: 1.6rem; color: var(--gold); font-weight: 700; margin: 0.3rem 0; font-family: 'Courier New', monospace; }
+  .stat-card .sub { font-size: 0.75rem; color: var(--warm); }
+
+  /* Controls */
+  .controls {
+    display: flex; justify-content: center; gap: 0.5rem; padding: 1rem 2rem;
+    flex-wrap: wrap; max-width: 1400px; margin: 0 auto;
+  }
+  .controls button {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;
+    font-family: Georgia, serif; font-size: 0.85rem; transition: all 0.2s;
+  }
+  .controls button:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .controls button.active { background: var(--gold-dim); color: var(--bg); border-color: var(--gold); font-weight: 700; }
+  .search-box {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 0.5rem 1rem; border-radius: 6px; font-family: Georgia, serif;
+    font-size: 0.85rem; width: 220px;
+  }
+  .search-box::placeholder { color: var(--text-dim); }
+
+  /* Section headers */
+  .section-title {
+    font-size: 1.3rem; color: var(--gold); padding: 1.5rem 2rem 0.5rem;
+    max-width: 1400px; margin: 0 auto; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .section-title .count { font-size: 0.85rem; color: var(--text-dim); font-weight: 400; }
+
+  /* Cards grid */
+  .cards-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem; padding: 1rem 2rem; max-width: 1400px; margin: 0 auto;
+  }
+
+  .instrument-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; cursor: pointer;
+    transition: all 0.3s; position: relative;
+  }
+  .instrument-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-color: var(--gold-dim); }
+
+  .card-header {
+    padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-name {
+    font-size: 1rem; color: var(--text-bright); font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;
+  }
+  .card-category {
+    font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;
+    font-family: 'Courier New', monospace;
+  }
+  .cat-violin { background: rgba(192,57,43,0.2); color: var(--violin); border: 1px solid var(--violin); }
+  .cat-bow { background: rgba(41,128,185,0.2); color: var(--bow); border: 1px solid var(--bow); }
+  .cat-cello { background: rgba(142,68,173,0.2); color: var(--cello); border: 1px solid var(--cello); }
+  .cat-viola { background: rgba(39,174,96,0.2); color: var(--viola); border: 1px solid var(--viola); }
+
+  .card-body { padding: 0.8rem 1rem; }
+  .card-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.2rem 0; font-size: 0.85rem;
+  }
+  .card-row .label { color: var(--text-dim); }
+  .card-row .val { color: var(--cream); font-family: 'Courier New', monospace; font-weight: 600; }
+  .card-row .val.positive { color: var(--green); }
+  .card-row .val.negative { color: var(--red); }
+
+  .card-bar {
+    height: 4px; background: var(--border); border-radius: 2px; margin: 0.5rem 0;
+    overflow: hidden;
+  }
+  .card-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+
+  .card-footer {
+    padding: 0.5rem 1rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem;
+  }
+  .owner-badge {
+    padding: 0.15rem 0.5rem; border-radius: 8px; font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .owner-pill { background: rgba(201,168,76,0.2); color: var(--gold); }
+  .owner-emily { background: rgba(93,173,226,0.2); color: var(--blue); }
+  .owner-ppp { background: rgba(155,89,182,0.2); color: var(--purple); }
+  .status-badge {
+    padding: 0.15rem 0.5rem; border-radius: 8px; font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .status-sold { background: rgba(39,174,96,0.15); color: var(--green); }
+  .status-hold { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+  /* Expanded detail */
+  .card-detail {
+    display: none; padding: 0.8rem 1rem; border-top: 1px solid var(--border);
+    background: rgba(0,0,0,0.15);
+  }
+  .card-detail.open { display: block; }
+  .fact-row {
+    display: grid; grid-template-columns: 90px 1fr; gap: 0.3rem;
+    padding: 0.15rem 0; font-size: 0.75rem;
+  }
+  .fact-label { color: var(--gold-dim); font-family: 'Courier New', monospace; text-transform: uppercase; }
+  .fact-value { color: var(--cream); font-family: 'Courier New', monospace; }
+
+  /* Historical section */
+  .historical-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem; padding: 1rem 2rem; max-width: 1400px; margin: 0 auto;
+  }
+  .historical-card {
+    background: linear-gradient(135deg, var(--surface), #2a1a10);
+    border: 1px solid var(--gold-dim); border-radius: 10px; padding: 1.2rem;
+    position: relative; overflow: hidden;
+  }
+  .historical-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+  }
+  .historical-name { font-size: 1.05rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .historical-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.15rem 0; }
+  .historical-row .label { color: var(--text-dim); }
+  .historical-row .val { color: var(--cream); font-family: 'Courier New', monospace; }
+
+  /* Substrate section */
+  .substrate {
+    max-width: 1400px; margin: 2rem auto; padding: 0 2rem;
+  }
+  .substrate-panel {
+    background: linear-gradient(135deg, #0d1117, #161b22);
+    border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+  }
+  .substrate-title {
+    color: #58a6ff; font-size: 1.1rem; margin-bottom: 1rem;
+    border-bottom: 1px solid #30363d; padding-bottom: 0.5rem;
+  }
+  .primitive-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .primitive {
+    background: rgba(255,255,255,0.03); border: 1px solid #30363d;
+    border-radius: 8px; padding: 1rem;
+  }
+  .primitive-name { color: #79c0ff; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .primitive-desc { color: #8b949e; font-size: 0.75rem; line-height: 1.5; }
+  .primitive-example { color: #7ee787; font-size: 0.7rem; margin-top: 0.4rem; padding: 0.3rem 0.5rem; background: rgba(0,0,0,0.3); border-radius: 4px; }
+
+  /* Appreciation chart */
+  .chart-section {
+    max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem;
+  }
+  .chart-container {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.5rem; position: relative;
+    height: 300px;
+  }
+  .chart-title { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+  .bar-chart {
+    display: flex; align-items: flex-end; gap: 8px; height: 220px;
+    padding: 0 10px;
+  }
+  .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .bar {
+    width: 100%; max-width: 60px; border-radius: 4px 4px 0 0;
+    transition: height 0.5s; position: relative; min-height: 2px;
+  }
+  .bar:hover { opacity: 0.85; }
+  .bar-label {
+    font-size: 0.65rem; color: var(--text-dim); margin-top: 0.4rem;
+    text-align: center; font-family: 'Courier New', monospace;
+    max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .bar-value {
+    position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+    font-size: 0.6rem; color: var(--cream); font-family: 'Courier New', monospace;
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 2rem; color: var(--text-dim);
+    font-size: 0.75rem; border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .footer a { color: var(--gold-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.6rem; }
+    .dashboard { grid-template-columns: repeat(2, 1fr); padding: 1rem; }
+    .cards-grid { grid-template-columns: 1fr; padding: 0.5rem; }
+    .controls { padding: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>PPP Instruments LLC</h1>
+  <div class="subtitle">Rare String Instrument Fund &mdash; Charlotte Substrate</div>
+  <div class="location">Burley, Idaho</div>
+  <div class="team">
+    <span>CEO: <strong>Dr. Brek A. Pilling, Ph.D.</strong></span>
+    <span>VP Certs: <strong>Paul Stewart Prier</strong></span>
+    <span>VP Sales: <strong>Chris Johnson</strong></span>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard"></div>
+
+<div class="chart-section">
+  <div class="chart-container">
+    <div class="chart-title">Top Instruments by 2025 Valuation</div>
+    <div class="bar-chart" id="valuation-chart"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <input type="text" class="search-box" id="search" placeholder="Search instruments...">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="violin">Violins</button>
+  <button data-filter="bow">Bows</button>
+  <button data-filter="cello">Cellos</button>
+  <button data-filter="viola">Violas</button>
+  <button data-filter="sold">Sold</button>
+  <button data-filter="hold">Held</button>
+</div>
+
+<div class="section-title" id="portfolio-title">
+  <span>Current Portfolio</span>
+  <span class="count" id="portfolio-count"></span>
+</div>
+<div class="cards-grid" id="portfolio-grid"></div>
+
+<div class="section-title">
+  <span>Instrument Turn History</span>
+  <span class="count" id="turn-count"></span>
+</div>
+<div class="cards-grid" id="turn-grid"></div>
+
+<div class="section-title">
+  <span>Legendary Instruments &mdash; Historical Appreciation</span>
+</div>
+<div class="historical-grid" id="historical-grid"></div>
+
+<div class="substrate">
+  <div class="substrate-panel">
+    <div class="substrate-title">CHARLOTTE SUBSTRATE ENCODING &mdash; PPP Instruments Domain</div>
+    <div class="primitive-grid">
+      <div class="primitive">
+        <div class="primitive-name">NODE</div>
+        <div class="primitive-desc">Each instrument is a node &mdash; a unique identity with provenance, maker, year, and physical properties. Players, dealers, and owners are also nodes.</div>
+        <div class="primitive-example">NODE: { id: "amati-1657", type: "violin", maker: "Amati", year: 1657, owner: "ppp" }</div>
+      </div>
+      <div class="primitive">
+        <div class="primitive-name">EDGE</div>
+        <div class="primitive-desc">Ownership transfers, certifications, and lineage. Each sale creates an edge from seller to buyer through the instrument.</div>
+        <div class="primitive-example">EDGE: { from: "dealer-A", to: "ppp", instrument: "amati-1657", type: "purchase" }</div>
+      </div>
+      <div class="primitive">
+        <div class="primitive-name">METRIC</div>
+        <div class="primitive-desc">Purchase price, retail value, discount percentage, appreciation rate, days held, annual return &mdash; all quantitative signals.</div>
+        <div class="primitive-example">METRIC: { node: "amati-1657", purchase: 2500000, retail: 3500000, discount: 0.40 }</div>
+      </div>
+      <div class="primitive">
+        <div class="primitive-name">SIGNAL</div>
+        <div class="primitive-desc">Buy/sell events, appraisals, certification updates, market price discoveries. Each transaction is a signal emitted by the instrument.</div>
+        <div class="primitive-example">SIGNAL: { node: "amati-1657", type: "appraisal", value: 3500000, date: "2025-01" }</div>
+      </div>
+      <div class="primitive">
+        <div class="primitive-name">PROTOCOL</div>
+        <div class="primitive-desc">The buy-at-discount, hold-for-appreciation, sell-at-market model. Rules for certification, authentication, and fund management.</div>
+        <div class="primitive-example">PROTOCOL: { rule: "buy_below_retail", threshold: 0.15, action: "acquire" }</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>PPP Instruments LLC &mdash; Charlotte Substrate Visualization</p>
+  <p style="margin-top: 0.3rem">Model: Buy rare instruments at 15&ndash;35% below retail, hold for appreciation, sell at market. Target fund: $100M.</p>
+  <p style="margin-top: 0.5rem"><a href="../">&#8592; Back to Portfolio</a></p>
+</div>
+
+<script>
+const DATA = {"summary": {"total_purchase": 3841830, "total_retail": 5319000, "total_equity": 1477170, "avg_discount_pct": 27.8, "total_sold_profit": 19355, "num_sold": 7, "num_hold": 14, "total_portfolio_instruments": 21, "turn_total_instruments": 32, "avg_appreciation_pct": 88.3, "highest_value": ["Violin #16", 13500000.0], "top_5_values": [["Violin #16", 13500000.0], ["Violin #17", 13000000.0], ["Violin #6", 12000000.0], ["Violin #15", 6500000.0], ["Violin #1", 4000000.0]]}, "turn_data": [{"id": "turn-violin-1", "name": "Violin #1", "category": "Violin", "subcategory": "Violin", "buy_year": null, "buy_price": null, "sell_year": 2023, "sell_price": 2800000.0, "value_2025": 4000000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}, {"id": "turn-violin-2", "name": "Violin #2", "category": "Violin", "subcategory": "Violin", "buy_year": 2018, "buy_price": 15000.0, "sell_year": 2025, "sell_price": 20000.0, "value_2025": 22000.0, "appreciation_pct": 46.7, "annual_return_pct": 5.6, "source": "turn_data"}, {"id": "turn-violin-3", "name": "Violin #3", "category": "Violin", "subcategory": "Violin", "buy_year": 2000, "buy_price": 21700.0, "sell_year": 2023, "sell_price": 24000.0, "value_2025": 27000.0, "appreciation_pct": 24.4, "annual_return_pct": 0.9, "source": "turn_data"}, {"id": "turn-violin-4", "name": "Violin #4", "category": "Violin", "subcategory": "Violin", "buy_year": 2018, "buy_price": 250000.0, "sell_year": 2022, "sell_price": 330000.0, "value_2025": 380000.0, "appreciation_pct": 52.0, "annual_return_pct": 6.2, "source": "turn_data"}, {"id": "turn-violin-5", "name": "Violin #5", "category": "Violin", "subcategory": "Violin", "buy_year": 2015, "buy_price": 180000.0, "sell_year": null, "sell_price": null, "value_2025": 270000.0, "appreciation_pct": 50.0, "annual_return_pct": 4.1, "source": "turn_data"}, {"id": "turn-violin-6", "name": "Violin #6", "category": "Violin", "subcategory": "Violin", "buy_year": 2012, "buy_price": 4000000.0, "sell_year": 2022, "sell_price": 10000000.0, "value_2025": 12000000.0, "appreciation_pct": 200.0, "annual_return_pct": 8.8, "source": "turn_data"}, {"id": "turn-violin-7", "name": "Violin #7", "category": "Violin", "subcategory": "Violin", "buy_year": 2023, "buy_price": 19400.0, "sell_year": 2023, "sell_price": 25000.0, "value_2025": 28000.0, "appreciation_pct": 44.3, "annual_return_pct": 20.1, "source": "turn_data"}, {"id": "turn-violin-8", "name": "Violin #8", "category": "Violin", "subcategory": "Violin", "buy_year": 2020, "buy_price": 18000.0, "sell_year": 2024, "sell_price": 20000.0, "value_2025": 22000.0, "appreciation_pct": 22.2, "annual_return_pct": 4.1, "source": "turn_data"}, {"id": "turn-violin-9", "name": "Violin #9", "category": "Violin", "subcategory": "Violin", "buy_year": 2019, "buy_price": 55000.0, "sell_year": 2022, "sell_price": 68000.0, "value_2025": 95000.0, "appreciation_pct": 72.7, "annual_return_pct": 9.5, "source": "turn_data"}, {"id": "turn-violin-10", "name": "Violin #10", "category": "Violin", "subcategory": "Violin", "buy_year": 2018, "buy_price": 45000.0, "sell_year": 2024, "sell_price": 75000.0, "value_2025": 78000.0, "appreciation_pct": 73.3, "annual_return_pct": 8.2, "source": "turn_data"}, {"id": "turn-violin-11", "name": "Violin #11", "category": "Violin", "subcategory": "Violin", "buy_year": 2022, "buy_price": 35000.0, "sell_year": 2025, "sell_price": 55000.0, "value_2025": 55000.0, "appreciation_pct": 57.1, "annual_return_pct": 16.3, "source": "turn_data"}, {"id": "turn-violin-12", "name": "Violin #12", "category": "Violin", "subcategory": "Violin", "buy_year": 2019, "buy_price": 14000.0, "sell_year": 2024, "sell_price": 18000.0, "value_2025": 22000.0, "appreciation_pct": 57.1, "annual_return_pct": 7.8, "source": "turn_data"}, {"id": "turn-violin-13", "name": "Violin #13", "category": "Violin", "subcategory": "Violin", "buy_year": 2015, "buy_price": 280000.0, "sell_year": 2025, "sell_price": 380000.0, "value_2025": 475000.0, "appreciation_pct": 69.6, "annual_return_pct": 5.4, "source": "turn_data"}, {"id": "turn-violin-14", "name": "Violin #14", "category": "Violin", "subcategory": "Violin", "buy_year": 2005, "buy_price": 150000.0, "sell_year": 2022, "sell_price": 330000.0, "value_2025": 375000.0, "appreciation_pct": 150.0, "annual_return_pct": 4.7, "source": "turn_data"}, {"id": "turn-violin-15", "name": "Violin #15", "category": "Violin", "subcategory": "Violin", "buy_year": 2012, "buy_price": 2500000.0, "sell_year": 2023, "sell_price": 4800000.0, "value_2025": 6500000.0, "appreciation_pct": 160.0, "annual_return_pct": 7.6, "source": "turn_data"}, {"id": "turn-violin-16", "name": "Violin #16", "category": "Violin", "subcategory": "Violin", "buy_year": 2010, "buy_price": 4000000.0, "sell_year": 2019, "sell_price": 10000000.0, "value_2025": 13500000.0, "appreciation_pct": 237.5, "annual_return_pct": 8.4, "source": "turn_data"}, {"id": "turn-violin-17", "name": "Violin #17", "category": "Violin", "subcategory": "Violin", "buy_year": 2010, "buy_price": 5000000.0, "sell_year": 2020, "sell_price": 12000000.0, "value_2025": 13000000.0, "appreciation_pct": 160.0, "annual_return_pct": 6.6, "source": "turn_data"}, {"id": "turn-violin-18", "name": "Violin #18", "category": "Violin", "subcategory": "Violin", "buy_year": 2001, "buy_price": 98000.0, "sell_year": 2025, "sell_price": 275000.0, "value_2025": 335000.0, "appreciation_pct": 241.8, "annual_return_pct": 5.3, "source": "turn_data"}, {"id": "turn-viola-1", "name": "Viola #1", "category": "Viola", "subcategory": "Viola", "buy_year": null, "buy_price": null, "sell_year": 2023, "sell_price": 37000.0, "value_2025": 48000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}, {"id": "turn-cello-1", "name": "Cello #1", "category": "Cello", "subcategory": "Cello", "buy_year": null, "buy_price": null, "sell_year": 2025, "sell_price": 205000.0, "value_2025": 275000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}, {"id": "turn-cello-2", "name": "Cello #2", "category": "Cello", "subcategory": "Cello", "buy_year": 2015, "buy_price": 90000.0, "sell_year": 2022, "sell_price": 146000.0, "value_2025": 175000.0, "appreciation_pct": 94.4, "annual_return_pct": 6.9, "source": "turn_data"}, {"id": "turn-bow-1", "name": "Bow #1", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2018, "buy_price": 7000.0, "sell_year": 2025, "sell_price": 10000.0, "value_2025": 12000.0, "appreciation_pct": 71.4, "annual_return_pct": 8.0, "source": "turn_data"}, {"id": "turn-bow-2", "name": "Bow #2", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2020, "buy_price": 35000.0, "sell_year": 2024, "sell_price": 45000.0, "value_2025": 47000.0, "appreciation_pct": 34.3, "annual_return_pct": 6.1, "source": "turn_data"}, {"id": "turn-bow-3", "name": "Bow #3", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2023, "buy_price": 15200.0, "sell_year": 2024, "sell_price": 24000.0, "value_2025": 26000.0, "appreciation_pct": 71.1, "annual_return_pct": 30.8, "source": "turn_data"}, {"id": "turn-bow-4", "name": "Bow #4", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2019, "buy_price": 28000.0, "sell_year": 2023, "sell_price": 40000.0, "value_2025": 55000.0, "appreciation_pct": 96.4, "annual_return_pct": 11.9, "source": "turn_data"}, {"id": "turn-bow-5", "name": "Bow #5", "category": "Bow", "subcategory": "Violin Bow", "buy_year": null, "buy_price": null, "sell_year": 2022, "sell_price": 65000.0, "value_2025": 85000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}, {"id": "turn-bow-6", "name": "Bow #6", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2019, "buy_price": 12000.0, "sell_year": 2025, "sell_price": 18000.0, "value_2025": 20000.0, "appreciation_pct": 66.7, "annual_return_pct": 8.9, "source": "turn_data"}, {"id": "turn-bow-7", "name": "Bow #7", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2018, "buy_price": 14000.0, "sell_year": 2024, "sell_price": 18000.0, "value_2025": 20000.0, "appreciation_pct": 42.9, "annual_return_pct": 5.2, "source": "turn_data"}, {"id": "turn-bow-8", "name": "Bow #8", "category": "Bow", "subcategory": "Violin Bow", "buy_year": 2019, "buy_price": 22000.0, "sell_year": 2025, "sell_price": 25000.0, "value_2025": 25000.0, "appreciation_pct": 13.6, "annual_return_pct": 2.2, "source": "turn_data"}, {"id": "turn-bow-1", "name": "Bow #1", "category": "Bow", "subcategory": "Viola Bow", "buy_year": 2020, "buy_price": 15000.0, "sell_year": 2023, "sell_price": 19000.0, "value_2025": 28000.0, "appreciation_pct": 86.7, "annual_return_pct": 13.3, "source": "turn_data"}, {"id": "turn-bow-1", "name": "Bow #1", "category": "Bow", "subcategory": "Cello Bow", "buy_year": null, "buy_price": null, "sell_year": 2023, "sell_price": 45000.0, "value_2025": 55000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}, {"id": "turn-bow-2", "name": "Bow #2", "category": "Bow", "subcategory": "Cello Bow", "buy_year": null, "buy_price": null, "sell_year": 2023, "sell_price": 18000.0, "value_2025": 25000.0, "appreciation_pct": null, "annual_return_pct": null, "source": "turn_data"}], "portfolio": [{"id": "sold-kloz-c.-1780", "name": "Kloz c. 1780", "category": "Violin", "status": "sold", "owner": "pill", "purchase_price": 19400, "retail_value": 25000, "sold_price": 24400, "profit": 5000, "discount_pct": 28.9, "days_held": 18, "annual_return_pct": 5.2, "source": "portfolio"}, {"id": "sold-b.-m-dolling-bow-#1", "name": "B. M Dolling Bow #1", "category": "Bow", "status": "sold", "owner": "pill", "purchase_price": 3600, "retail_value": 5000, "sold_price": 4650, "profit": 1050, "discount_pct": 38.9, "days_held": 26, "annual_return_pct": 4.1, "source": "portfolio"}, {"id": "sold-b.-m-dolling-bow-#2", "name": "B. M Dolling Bow #2", "category": "Bow", "status": "sold", "owner": "pill", "purchase_price": 3600, "retail_value": 5000, "sold_price": 4380, "profit": 780, "discount_pct": 38.9, "days_held": 77, "annual_return_pct": 1.0, "source": "portfolio"}, {"id": "sold-benoit-rolland-bow", "name": "Benoit Rolland Bow", "category": "Bow", "status": "sold", "owner": "pill", "purchase_price": 15200, "retail_value": 20000, "sold_price": 20325, "profit": 5125, "discount_pct": 31.6, "days_held": 740, "annual_return_pct": 0.2, "source": "portfolio"}, {"id": "sold-w.-salchow-bow", "name": "W. Salchow Bow", "category": "Bow", "status": "sold", "owner": "pill", "purchase_price": 8750, "retail_value": 11000, "sold_price": 11200, "profit": 2450, "discount_pct": 25.7, "days_held": 298, "annual_return_pct": 0.3, "source": "portfolio"}, {"id": "sold-g.-kagan-bow", "name": "G. Kagan Bow", "category": "Bow", "status": "sold", "owner": "pill", "purchase_price": 3650, "retail_value": 5000, "sold_price": 5600, "profit": 1950, "discount_pct": 37.0, "days_held": 23, "annual_return_pct": 8.5, "source": "portfolio"}, {"id": "sold-gaillard-violin", "name": "Gaillard Violin", "category": "Violin", "status": "sold", "owner": "pill", "purchase_price": 21000, "retail_value": 24000, "sold_price": 24000, "profit": 3000, "discount_pct": 14.3, "days_held": 7, "annual_return_pct": 7.5, "source": "portfolio"}, {"id": "hold-peter-paul-prier-vio", "name": "Peter Paul Prier Viola", "category": "Viola", "status": "hold", "owner": "pill", "purchase_price": 37000, "retail_value": 48000, "instant_equity": 11000, "discount_pct": 29.7, "source": "portfolio"}, {"id": "hold-pedrazzini-1945", "name": "Pedrazzini 1945", "category": "Violin", "status": "hold", "owner": "pill", "purchase_price": 68000, "retail_value": 85000, "instant_equity": 17000, "discount_pct": 25.0, "source": "portfolio"}, {"id": "hold-a.-lamy-viola-bow", "name": "A. Lamy Viola Bow", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 19000, "retail_value": 28000, "instant_equity": 9000, "discount_pct": 47.4, "source": "portfolio"}, {"id": "hold-e.-a-ouchard-cello-b", "name": "E. A Ouchard Cello Bow", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 45000, "retail_value": 55000, "instant_equity": 10000, "discount_pct": 22.2, "source": "portfolio"}, {"id": "hold-bernard-ouchard-cell", "name": "Bernard Ouchard Cello Bow", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 18000, "retail_value": 22000, "instant_equity": 4000, "discount_pct": 22.2, "source": "portfolio"}, {"id": "hold-a.-suard-violin-bow-", "name": "A. Suard Violin Bow #1", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 8760, "retail_value": 12000, "instant_equity": 3240, "discount_pct": 37.0, "source": "portfolio"}, {"id": "hold-a.-suard-violin-bow-", "name": "A. Suard Violin Bow #2", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 8760, "retail_value": 12000, "instant_equity": 3240, "discount_pct": 37.0, "source": "portfolio"}, {"id": "hold-john-n.-lee-bow", "name": "John N. Lee Bow", "category": "Bow", "status": "hold", "owner": "pill", "purchase_price": 5110, "retail_value": 7000, "instant_equity": 1890, "discount_pct": 37.0, "source": "portfolio"}, {"id": "hold-soffritti-cello", "name": "Soffritti Cello", "category": "Cello", "status": "hold", "owner": "pill", "purchase_price": 205000, "retail_value": 275000, "instant_equity": 70000, "discount_pct": 34.1, "source": "portfolio"}, {"id": "emily-steiner-1662", "name": "Steiner 1662", "category": "Violin", "status": "hold", "owner": "emily", "purchase_price": 360000, "retail_value": 450000, "instant_equity": 90000, "discount_pct": 20.0, "purchase_date": "2022-08-04", "source": "portfolio"}, {"id": "emily-ponormo", "name": "Ponormo", "category": "Violin", "status": "hold", "owner": "emily", "purchase_price": 69000, "retail_value": 95000, "instant_equity": 26000, "discount_pct": 27.4, "purchase_date": "2021-07-01", "source": "portfolio"}, {"id": "emily-peccatte-bow", "name": "Peccatte Bow", "category": "Bow", "status": "hold", "owner": "emily", "purchase_price": 123000, "retail_value": 185000, "instant_equity": 62000, "discount_pct": 33.5, "purchase_date": "2023-08-17", "source": "portfolio"}, {"id": "emily-grancino-violin-1703", "name": "Grancino Violin 1703", "category": "Violin", "status": "hold", "owner": "emily", "purchase_price": 300000, "retail_value": 450000, "instant_equity": 150000, "discount_pct": 33.3, "purchase_date": "2023-03-17", "source": "portfolio"}, {"id": "ppp-amati-1657", "name": "Amati 1657", "category": "Violin", "status": "hold", "owner": "ppp", "purchase_price": 2500000, "retail_value": 3500000, "instant_equity": 1000000, "discount_pct": 40.0, "source": "portfolio"}], "historical": [{"name": "Glennie Strad 1704", "year_bought": 1971, "price_bought": 68000, "year_valued": 2021, "price_valued": 12000000, "annual_return_pct": 10.9, "total_return_pct": 17547.1}, {"name": "Huberman Strad 1713", "year_bought": 1936, "price_bought": 28000, "year_valued": 2001, "price_valued": 4000000, "annual_return_pct": 7.9, "total_return_pct": 14185.7}, {"name": "Kreisler del Gesu 1733", "year_bought": 2000, "price_bought": 900000, "year_valued": 2010, "price_valued": 3500000, "annual_return_pct": 14.5, "total_return_pct": 288.9}, {"name": "Vieuxtemps del Gesu 1741", "year_bought": 2012, "price_bought": 16000000, "year_valued": 2025, "price_valued": 22000000, "annual_return_pct": 2.5, "total_return_pct": 37.5}], "company": {"name": "PPP Instruments LLC", "location": "Burley, Idaho", "ceo": "Dr. Brek A. Pilling, Ph.D.", "vp_certs": "Paul Stewart Prier", "vp_sales": "Chris Johnson", "target_fund": 100000000, "model": "Buy rare string instruments at 15-35% below retail, hold for appreciation, sell at market"}};
+
+function fmt(n) {
+  if (n == null) return '—';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toLocaleString();
+}
+function pct(n) { return n != null ? n.toFixed(1) + '%' : '—'; }
+
+// Dashboard
+function renderDashboard() {
+  const s = DATA.summary;
+  const stats = [
+    { label: 'Portfolio Value', value: fmt(s.total_retail), sub: 'Retail valuation' },
+    { label: 'Total Invested', value: fmt(s.total_purchase), sub: 'Purchase cost' },
+    { label: 'Instant Equity', value: fmt(s.total_equity), sub: pct(s.avg_discount_pct) + ' avg discount' },
+    { label: 'Instruments', value: s.total_portfolio_instruments, sub: s.num_hold + ' held, ' + s.num_sold + ' sold' },
+    { label: 'Tracked Turns', value: s.turn_total_instruments, sub: 'Historical transactions' },
+    { label: 'Avg Appreciation', value: pct(s.avg_appreciation_pct), sub: 'Across all turns' },
+    { label: 'Sold Profit', value: fmt(s.total_sold_profit), sub: s.num_sold + ' completed trades' },
+    { label: 'Highest Value', value: fmt(s.highest_value?.[1]), sub: s.highest_value?.[0] || '' },
+  ];
+  document.getElementById('dashboard').innerHTML = stats.map(s => `
+    <div class="stat-card">
+      <div class="label">${s.label}</div>
+      <div class="value">${s.value}</div>
+      <div class="sub">${s.sub}</div>
+    </div>
+  `).join('');
+}
+
+// Valuation chart
+function renderChart() {
+  const top = DATA.turn_data
+    .filter(t => t.value_2025)
+    .sort((a,b) => b.value_2025 - a.value_2025)
+    .slice(0, 12);
+  const max = top[0]?.value_2025 || 1;
+  const colors = { Violin: 'var(--violin)', Bow: 'var(--bow)', Cello: 'var(--cello)', Viola: 'var(--viola)' };
+  document.getElementById('valuation-chart').innerHTML = top.map(t => {
+    const h = Math.max(4, (t.value_2025 / max) * 200);
+    return `<div class="bar-group">
+      <div class="bar" style="height:${h}px; background:${colors[t.category] || 'var(--gold)'}">
+        <span class="bar-value">${fmt(t.value_2025)}</span>
+      </div>
+      <div class="bar-label">${t.name}</div>
+    </div>`;
+  }).join('');
+}
+
+// Cards
+function catClass(cat) {
+  return 'cat-' + cat.toLowerCase();
+}
+function ownerClass(o) {
+  if (!o) return 'owner-pill';
+  return 'owner-' + o.toLowerCase();
+}
+
+function renderPortfolioCard(p) {
+  const mainVal = p.status === 'sold' ? p.sold_price : p.retail_value;
+  const discBar = p.discount_pct ? Math.min(p.discount_pct / 50 * 100, 100) : 0;
+  const barColor = p.status === 'sold' ? 'var(--green)' : 'var(--gold)';
+  const appreciation = p.status === 'sold'
+    ? (p.profit && p.purchase_price ? ((p.profit/p.purchase_price)*100).toFixed(1) + '%' : '—')
+    : (p.instant_equity && p.purchase_price ? ((p.instant_equity/p.purchase_price)*100).toFixed(1) + '%' : '—');
+
+  return `<div class="instrument-card" data-cat="${p.category.toLowerCase()}" data-status="${p.status}" data-name="${p.name.toLowerCase()}" onclick="toggleDetail(this)">
+    <div class="card-header">
+      <span class="card-name" title="${p.name}">${p.name}</span>
+      <span class="card-category ${catClass(p.category)}">${p.category}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-row"><span class="label">Purchase</span><span class="val">${fmt(p.purchase_price)}</span></div>
+      <div class="card-row"><span class="label">${p.status==='sold' ? 'Sold For' : 'Retail Value'}</span><span class="val">${fmt(mainVal)}</span></div>
+      <div class="card-row"><span class="label">${p.status==='sold' ? 'Profit' : 'Instant Equity'}</span><span class="val positive">${fmt(p.status==='sold' ? p.profit : p.instant_equity)}</span></div>
+      <div class="card-row"><span class="label">Return</span><span class="val positive">${appreciation}</span></div>
+      <div class="card-bar"><div class="card-bar-fill" style="width:${discBar}%; background:${barColor}"></div></div>
+      <div class="card-row"><span class="label">Discount</span><span class="val">${pct(p.discount_pct)}</span></div>
+      ${p.days_held ? `<div class="card-row"><span class="label">Days Held</span><span class="val">${p.days_held}</span></div>` : ''}
+      ${p.annual_return_pct ? `<div class="card-row"><span class="label">Annual Return</span><span class="val positive">${pct(p.annual_return_pct)}</span></div>` : ''}
+    </div>
+    <div class="card-footer">
+      <span class="owner-badge ${ownerClass(p.owner)}">${p.owner || 'unknown'}</span>
+      <span class="status-badge status-${p.status}">${p.status}</span>
+    </div>
+    <div class="card-detail">
+      <div class="fact-row"><span class="fact-label">NODE</span><span class="fact-value">${p.name} (${p.category})</span></div>
+      <div class="fact-row"><span class="fact-label">EDGE</span><span class="fact-value">${p.status === 'sold' ? 'dealer → ppp → buyer' : 'dealer → ' + (p.owner || 'ppp')}</span></div>
+      <div class="fact-row"><span class="fact-label">METRIC</span><span class="fact-value">purchase=${fmt(p.purchase_price)} retail=${fmt(p.retail_value)} disc=${pct(p.discount_pct)}</span></div>
+      <div class="fact-row"><span class="fact-label">SIGNAL</span><span class="fact-value">${p.status === 'sold' ? 'SELL @ ' + fmt(p.sold_price) + ' (+' + fmt(p.profit) + ')' : 'HOLD — equity ' + fmt(p.instant_equity)}</span></div>
+      <div class="fact-row"><span class="fact-label">PROTOCOL</span><span class="fact-value">buy_below_retail → ${p.status === 'sold' ? 'sell_at_market' : 'hold_for_appreciation'}</span></div>
+    </div>
+  </div>`;
+}
+
+function renderTurnCard(t) {
+  const hasAppreciation = t.appreciation_pct != null;
+  const appBar = hasAppreciation ? Math.min(t.appreciation_pct / 250 * 100, 100) : 0;
+  const barColor = t.category === 'Violin' ? 'var(--violin)' : t.category === 'Bow' ? 'var(--bow)' : t.category === 'Cello' ? 'var(--cello)' : 'var(--viola)';
+
+  return `<div class="instrument-card" data-cat="${t.category.toLowerCase()}" data-status="turn" data-name="${t.name.toLowerCase()} ${(t.subcategory||'').toLowerCase()}" onclick="toggleDetail(this)">
+    <div class="card-header">
+      <span class="card-name">${t.name}</span>
+      <span class="card-category ${catClass(t.category)}">${t.subcategory || t.category}</span>
+    </div>
+    <div class="card-body">
+      ${t.buy_price ? `<div class="card-row"><span class="label">Bought (${t.buy_year || '?'})</span><span class="val">${fmt(t.buy_price)}</span></div>` : ''}
+      ${t.sell_price ? `<div class="card-row"><span class="label">Sold (${t.sell_year || '?'})</span><span class="val">${fmt(t.sell_price)}</span></div>` : ''}
+      <div class="card-row"><span class="label">Value 2025</span><span class="val" style="color: var(--gold)">${fmt(t.value_2025)}</span></div>
+      ${hasAppreciation ? `
+        <div class="card-bar"><div class="card-bar-fill" style="width:${appBar}%; background:${barColor}"></div></div>
+        <div class="card-row"><span class="label">Total Appreciation</span><span class="val positive">+${pct(t.appreciation_pct)}</span></div>
+      ` : ''}
+      ${t.annual_return_pct ? `<div class="card-row"><span class="label">Annual Return</span><span class="val positive">${pct(t.annual_return_pct)}</span></div>` : ''}
+    </div>
+    <div class="card-detail">
+      <div class="fact-row"><span class="fact-label">NODE</span><span class="fact-value">${t.name} — ${t.subcategory || t.category}</span></div>
+      <div class="fact-row"><span class="fact-label">METRIC</span><span class="fact-value">${t.buy_price ? 'buy=' + fmt(t.buy_price) : ''} ${t.sell_price ? 'sell=' + fmt(t.sell_price) : ''} val2025=${fmt(t.value_2025)}</span></div>
+      <div class="fact-row"><span class="fact-label">SIGNAL</span><span class="fact-value">${t.buy_year ? 'BUY(' + t.buy_year + ')' : ''} ${t.sell_year ? '→ SELL(' + t.sell_year + ')' : ''} → VAL(2025)</span></div>
+      <div class="fact-row"><span class="fact-label">RETURN</span><span class="fact-value">${hasAppreciation ? '+' + pct(t.appreciation_pct) + ' total' : 'N/A'} ${t.annual_return_pct ? '| ' + pct(t.annual_return_pct) + ' CAGR' : ''}</span></div>
+    </div>
+  </div>`;
+}
+
+function renderHistorical() {
+  document.getElementById('historical-grid').innerHTML = DATA.historical.map(h => `
+    <div class="historical-card">
+      <div class="historical-name">${h.name}</div>
+      <div class="historical-row"><span class="label">Bought (${h.year_bought})</span><span class="val">${fmt(h.price_bought)}</span></div>
+      <div class="historical-row"><span class="label">Valued (${h.year_valued})</span><span class="val">${fmt(h.price_valued)}</span></div>
+      <div class="historical-row"><span class="label">Total Return</span><span class="val" style="color:var(--green)">+${h.total_return_pct.toLocaleString()}%</span></div>
+      <div class="historical-row"><span class="label">Annual (CAGR)</span><span class="val" style="color:var(--green)">${pct(h.annual_return_pct)}</span></div>
+      <div class="historical-row"><span class="label">Hold Period</span><span class="val">${h.year_valued - h.year_bought} years</span></div>
+    </div>
+  `).join('');
+}
+
+function toggleDetail(card) {
+  const detail = card.querySelector('.card-detail');
+  if (detail) detail.classList.toggle('open');
+}
+
+// Filter / search
+let currentFilter = 'all';
+let currentSearch = '';
+
+function applyFilters() {
+  const portfolioCards = document.querySelectorAll('#portfolio-grid .instrument-card');
+  const turnCards = document.querySelectorAll('#turn-grid .instrument-card');
+  let pCount = 0, tCount = 0;
+
+  function shouldShow(card) {
+    const cat = card.dataset.cat;
+    const status = card.dataset.status;
+    const name = card.dataset.name;
+    if (currentSearch && !name.includes(currentSearch.toLowerCase())) return false;
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'sold') return status === 'sold';
+    if (currentFilter === 'hold') return status === 'hold';
+    return cat === currentFilter;
+  }
+
+  portfolioCards.forEach(c => {
+    const show = shouldShow(c);
+    c.style.display = show ? '' : 'none';
+    if (show) pCount++;
+  });
+  turnCards.forEach(c => {
+    const show = shouldShow(c);
+    c.style.display = show ? '' : 'none';
+    if (show) tCount++;
+  });
+
+  document.getElementById('portfolio-count').textContent = pCount + ' instruments';
+  document.getElementById('turn-count').textContent = tCount + ' instruments';
+}
+
+document.querySelectorAll('.controls button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  applyFilters();
+});
+
+// Render
+renderDashboard();
+renderChart();
+
+// Sort portfolio: PPP owned first (highest value), then emily, then pill hold, then sold
+const sortOrder = { ppp: 0, emily: 1, pill: 2 };
+const portfolioSorted = [...DATA.portfolio].sort((a, b) => {
+  // Hold before sold
+  if (a.status !== b.status) return a.status === 'hold' ? -1 : 1;
+  // By owner priority
+  const oa = sortOrder[a.owner] ?? 9;
+  const ob = sortOrder[b.owner] ?? 9;
+  if (oa !== ob) return oa - ob;
+  // By value descending
+  return (b.retail_value || 0) - (a.retail_value || 0);
+});
+
+document.getElementById('portfolio-grid').innerHTML = portfolioSorted.map(renderPortfolioCard).join('');
+
+// Sort turn data by value descending
+const turnSorted = [...DATA.turn_data].sort((a,b) => (b.value_2025 || 0) - (a.value_2025 || 0));
+document.getElementById('turn-grid').innerHTML = turnSorted.map(renderTurnCard).join('');
+
+renderHistorical();
+applyFilters();
+</script>
+
+</body>
+</html>
