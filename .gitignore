@@ -32,5 +32,8 @@ assets/JOURNEY/**/*.m4v
 assets/GRANDAD_BOOK/
 assets/_thumbs/
 
+# Large image assets (people docs — markdown IS tracked)
+charlotte/docs/people/donald_almquist_assets/
+
 # Large JSON observation data (knowledge graph .md and .json ARE tracked)
 charlotte/docs/artifacts/JOURNEY_OBSERVATIONS.json
