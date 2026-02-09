@@ -71,6 +71,14 @@ cd knowledge-graph && python -m http.server 8080
 
 Read **[CONCLUSION.md](CONCLUSION.md)** — a function-by-function proof that every role at LineLeap can be automated through Charlotte's substrate. 100 employees → 5. Not through cost-cutting. Through architecture.
 
+## The Market
+
+Read **[COMPETITOR_ANALYSIS.md](COMPETITOR_ANALYSIS.md)** — full competitive landscape: Discotech, TablelistPro, SevenRooms (acquired by DoorDash for $1.2B), Toast (140K+ locations, $2B ARR), and the emerging voice AI wave. LineLeap is well-positioned but incomplete. It owns the door, not the bar top.
+
+## The Strategy
+
+Read **[STRATEGY.md](STRATEGY.md)** — three 12-month paths for introducing Charlotte as LineLeap's autonomous infrastructure layer. From inside play (pitch the board) to standalone analytics (PowerBI for bars) to full replacement. Month-by-month calendar, investor approach sequences, and equity math.
+
 ---
 
 *Built with Claude Code (Opus 4.6) on February 9, 2026.*
