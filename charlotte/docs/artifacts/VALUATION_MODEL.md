@@ -12,7 +12,9 @@
 
 Charlotte is not a SaaS product. Charlotte is **infrastructure for observable reality** — a universal substrate that models any domain where identities emit signals over time. Five primitives. One architecture. Every vertical. No rewrites between domains.
 
-The endgame is not a software company. It is a **civilization-scale operating system** — deployed first as a research lab and smart village, then replicated as self-sustaining clusters across the country, each running the same substrate, each generating intelligence that compounds across the network.
+There are 33.2 million small businesses in the United States. Ninety-seven percent were built before AI existed. Most predate high-speed internet. Many predate the personal computer. These businesses — the corner-store library with fifty patrons, the coffee shop where a human hands you a cup, the third-generation hardware store — do not need more technology. They need the complexity of the modern world to stop eroding them. Charlotte is **titanium injected directly into the bone**: the business does not change, the owner learns nothing new, but the substrate observes every operational signal the business already emits and converts it into structural intelligence. Devices manage themselves. The infrastructure thinks so the owner doesn't have to. The endgame is not a world with more screens. It is a world with **less visible technology and more underlying intelligence**.
+
+We go to market through private equity — eliminating integration tax across PE portfolios — then expand to the 33 million businesses that have never had access to this kind of infrastructure and never should have needed to ask. The smart village is the proof. The PE network is the beachhead. The 97% is the opportunity.
 
 This document presents two valuation scenarios grounded in comparable company analysis, market sizing, and a bottoms-up financial model that scales from a single property to a national infrastructure network.
 
@@ -23,7 +25,45 @@ This document presents two valuation scenarios grounded in comparable company an
 
 ---
 
-## II. The Smart Village Thesis
+## II. The 97% Thesis
+
+There are 33.2 million small businesses in the United States. Ninety-seven percent of them were built before AI existed. Most were built before high-speed internet. Many were built before the personal computer. A corner-store library serves fifty patrons who come in because screens hurt their eyes and they prefer the weight of a book in their hands. A coffee shop thrives because people want a human being to hand them a cup, not a kiosk. A third-generation hardware store survives because the owner knows every contractor in town by name.
+
+These businesses do not need more technology. They do not need dashboards. They do not need another app, another login, another screen bolted to the counter. What they need is for the complexity of the modern world — supply chains, regulations, insurance, payroll, inventory, taxes — to stop bleeding them dry while they do what they were built to do.
+
+Charlotte is titanium injected directly into the bone. The business does not change. The owner does not learn new software. The coffee shop stays a coffee shop. The library stays a library. But underneath — invisibly, autonomously — Charlotte observes the operational signals the business already emits (transactions, schedules, inventory movements, supplier deliveries) and converts them into structural intelligence. The devices manage themselves. The infrastructure thinks so the owner doesn't have to.
+
+This is the thesis that private equity cannot see yet, because PE looks at businesses through the lens of what can be optimized, consolidated, and flipped. Charlotte sees something else: **what can be preserved**. The 33.2 million small businesses in this country are not problems to be solved. They are organisms that have survived decades of economic pressure. Charlotte makes them sturdier without making them different.
+
+### The Invisible Infrastructure Model
+
+The endgame is not a world with more technology everywhere blinding people. The endgame is a world with **less visible technology and more underlying intelligence**:
+
+| What the Owner Sees | What Charlotte Does Underneath |
+|---|---|
+| The same shop they've always run | Continuously observes every operational signal |
+| No new screens, no new logins | Devices communicate autonomously via the substrate |
+| Their regulars, their rhythm, their craft | Pattern recognition across signal history identifies waste, risk, and opportunity |
+| A monthly summary they can read in 5 minutes | Real-time graph of every identity, relationship, and temporal pattern in the business |
+| Lower costs, fewer surprises | Supplier optimization, predictive maintenance, anomaly detection — all automated |
+
+### Why This Is Larger Than PE
+
+PE firms manage approximately 26,000 portfolio companies in the United States — roughly 0.08% of all businesses. Charlotte's PE play is the beachhead, not the ceiling:
+
+| Market | Businesses | Charlotte Opportunity |
+|---|---|---|
+| PE portfolio companies | ~26,000 | **Beachhead** — relationship-driven, high-touch, $100K+/mo |
+| Mid-market companies ($10M–$1B revenue) | ~200,000 | **Expansion** — integration tax displacement, $5K–$50K/mo |
+| Small businesses (< $10M revenue) | ~33,000,000 | **The real market** — invisible infrastructure, $500–$3K/mo |
+
+At $1K/month average across just **1% of American small businesses**, Charlotte generates **$4 billion in annual recurring revenue** — without a single business changing how it operates. No new hardware. No training. No migration. The substrate observes what already exists and makes it legible.
+
+The new businesses will come endlessly. AI will generate them by the thousands. But the businesses that matter — the ones that hold communities together, the ones that keep small-town America alive — those are already here. They have been here for decades. Charlotte does not disrupt them. Charlotte is the reason they survive the next fifty years.
+
+---
+
+## III. The Smart Village Thesis
 
 ### What It Is
 
@@ -71,7 +111,7 @@ The network effect is **superlinear**: each business added to a cluster makes ev
 
 ---
 
-## III. Competitive Landscape (Current Valuations)
+## IV. Competitive Landscape (Current Valuations)
 
 ### Infrastructure Software Benchmarks (February 2026)
 
@@ -127,7 +167,7 @@ Google/Alphabet's Sidewalk Labs attempted a smart city project in Toronto (2017�
 
 ---
 
-## IV. Market Sizing
+## V. Market Sizing
 
 ### Charlotte's Addressable Markets
 
@@ -146,11 +186,24 @@ Google/Alphabet's Sidewalk Labs attempted a smart city project in Toronto (2017�
 **Charlotte Extended TAM (+ spatial + digital twin):** $15B (2025) → $40B+ (2030)
 **Charlotte Full TAM (+ smart city + PoS + vertical SaaS):** $250B+ (2025) → $600B+ (2030)
 
-Charlotte does not need to capture a large share of these markets. At **0.01% of the smart city TAM alone**, Charlotte generates $70M–$230M in annual revenue.
+### The 97% Market: Small Business America
+
+The technology industry builds for the 3% of businesses born digital. Charlotte builds for the other 97%.
+
+| Segment | Count | Avg Monthly | 1% Penetration ARR | 5% Penetration ARR |
+|---|---|---|---|---|
+| Micro-businesses (1–9 employees) | 27,100,000 | $500 | $1.6B | $8.1B |
+| Small businesses (10–99 employees) | 5,400,000 | $2,000 | $1.3B | $6.5B |
+| Mid-market (100–499 employees) | 650,000 | $8,000 | $624M | $3.1B |
+| **Total** | **33,150,000** | — | **$3.5B** | **$17.7B** |
+
+These businesses do not buy software. They never have. Charlotte does not ask them to. The substrate observes what they already do and makes it legible — no screens, no logins, no training. At 1% penetration with invisible infrastructure pricing, the 97% market alone generates more ARR than Palantir's entire 2025 revenue.
+
+Charlotte does not need to capture a large share of the technology markets listed above. The real market is the one technology has never served.
 
 ---
 
-## V. Financial Model
+## VI. Financial Model
 
 ### Phase 1: Research Lab / Smart Village (Years 0–2)
 
@@ -217,7 +270,7 @@ Revenue compounds as external clusters come online and PE portfolio deployments 
 
 ---
 
-## VI. Valuation Scenarios
+## VII. Valuation Scenarios
 
 ### Methodology
 
@@ -294,7 +347,7 @@ For the initial PE conversation — what Charlotte is worth today with:
 
 ---
 
-## VII. The Sounder Example: What Cluster Economics Look Like
+## VIII. The Sounder Example: What Cluster Economics Look Like
 
 **Use case:** Streamline all semen delivery in the Midwest for pig breeders with Sounder (Charlotte-powered).
 
@@ -317,7 +370,7 @@ This is ONE vertical in ONE region. Charlotte's architecture handles this identi
 
 ---
 
-## VIII. Why PE Should Fund This (Not VC)
+## IX. Why PE Should Fund This (Not VC)
 
 | VC Model | PE Model (Charlotte) |
 |---|---|
@@ -333,13 +386,13 @@ This is ONE vertical in ONE region. Charlotte's architecture handles this identi
 
 ---
 
-## IX. The Pitch in One Paragraph
+## X. The Pitch in One Paragraph
 
-Charlotte is infrastructure for observable reality — a universal substrate that models any domain where identities emit signals over time. We deploy it first as a purpose-built smart village: 20–40 businesses all running the same operating system, proving that a coffee shop, a salon, a veterinary clinic, and a restaurant can share one substrate, one PoS, one intelligence layer. We then replicate that cluster model nationally through PE portfolio deployments, eliminating $770K–$3.4M in annual integration tax per company while generating cross-portfolio intelligence that no competitor can replicate. The architecture is proven across four domains (human behavior, biological systems, industrial equipment, cultural artifacts). The moat is structural: signal history is append-only and irreproducible, the substrate is universal, and each business added to the network makes every other business smarter. At Year 5, we project $82M–$108M in revenue with 74% gross margins. At Year 10, we project $920M–$1.2B in revenue with 82% gross margins. Low-end valuation at Year 10: $4B–$8B. High-end: $25B–$50B. We are not building a software product. We are building the operating system for American small business — one village at a time.
+There are 33.2 million small businesses in the United States. Ninety-seven percent of them were built before AI. Most were built before high-speed internet. Many were built before the personal computer. They do not need more technology — they need the complexity of the modern world to stop bleeding them dry while they do what they were built to do. Charlotte is infrastructure for observable reality — a universal substrate that models any domain where identities emit signals over time. It is titanium injected directly into the bone: the business does not change, the owner learns nothing new, but underneath, the substrate observes every operational signal the business already emits and converts it into structural intelligence. Devices manage themselves. The infrastructure thinks so the owner doesn't have to. We deploy first through PE portfolio companies — eliminating $770K–$3.4M in annual integration tax while generating cross-portfolio intelligence no competitor can replicate — then expand to the 33 million businesses that have never had access to this kind of infrastructure and never should have needed to ask. The architecture is proven across five domains (human behavior, biological systems, industrial equipment, cultural artifacts, swarm intelligence). The moat is structural: signal history is append-only and irreproducible, the substrate is universal, and each business added to the network makes every other business sturdier. At 1% of American small businesses paying $1K/month, Charlotte generates $4B in ARR — without a single business changing how it operates. We are not building a software product. We are building the invisible operating system for the businesses that hold this country together.
 
 ---
 
-## X. Comparable Exits & Multiples Reference
+## XI. Comparable Exits & Multiples Reference
 
 | Company | Exit/Valuation Event | Revenue at Event | Multiple | Year |
 |---|---|---|---|---|
@@ -362,7 +415,7 @@ Charlotte is infrastructure for observable reality — a universal substrate tha
 
 ---
 
-## XI. Key Risk Factors
+## XII. Key Risk Factors
 
 | Risk | Mitigation |
 |---|---|
