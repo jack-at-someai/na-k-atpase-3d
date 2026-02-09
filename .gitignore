@@ -32,6 +32,9 @@ assets/JOURNEY/**/*.m4v
 assets/GRANDAD_BOOK/
 assets/_thumbs/
 
+# GitHub Pages site (separate repo, pushed independently)
+jack-at-someai.github.io/
+
 # Large image assets (people docs — markdown IS tracked)
 charlotte/docs/people/donald_almquist_assets/
 
