@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Market Bazaar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Fish Market Bazaar</h1>
+
+    <div class="channel-bar" id="channel-bar"></div>
+
+    <div class="info-bar">
+      <span id="vendor-count">0 vendors</span>
+      <span id="channel-label">Tsukiji Lane</span>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="game"></canvas>
+    </div>
+
+    <div class="shop-overlay hidden" id="shop-overlay">
+      <div class="shop-window">
+        <div class="shop-title-bar">
+          <span class="shop-title" id="shop-title">Vendor</span>
+          <button class="shop-close" id="shop-close">&times;</button>
+        </div>
+        <p class="shop-greeting" id="shop-greeting">Welcome!</p>
+        <div class="shop-grid" id="shop-grid"></div>
+      </div>
+    </div>
+
+    <div class="controls-mobile">
+      <button class="ctrl-btn" data-action="left">&#9664;</button>
+      <button class="ctrl-btn interact" data-action="shop">SHOP</button>
+      <button class="ctrl-btn" data-action="right">&#9654;</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

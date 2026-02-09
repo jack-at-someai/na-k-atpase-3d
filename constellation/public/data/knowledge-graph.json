@@ -1,0 +1,764 @@
+{
+  "meta": {
+    "name": "Journey Brain",
+    "description": "Knowledge graph extracted from Jack Richard's JOURNEY archive — 1754 images spanning origin, ventures, philosophy, and convergence into Charlotte",
+    "extracted": "2026-02-09",
+    "seed_images_analyzed": 20,
+    "total_images": 1754,
+    "version": "0.1.0-seed"
+  },
+  "nodes": [
+    {
+      "id": "jack-richard",
+      "type": "person",
+      "label": "Jack Richard",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 12,
+      "properties": {
+        "role": "Founder, architect of Charlotte",
+        "education": "Northwestern University",
+        "origin": "Lake Forest, IL",
+        "spotify_minutes_2021": 93308,
+        "spotify_percentile": 98,
+        "ventures": ["LineLeap", "Sounder", "Trogdon", "ISG", "Prier Violins", "Charlotte", "SomeAI", "Serengeti Enterprises"]
+      },
+      "temporal": { "start": "~1996", "ongoing": true },
+      "sources": ["08_TORUS/jack-richard/unknown_personal_001.jpg", "10_SOCIAL/instagram/2021-08-16_ig_001.jpg"]
+    },
+    {
+      "id": "jim-richard",
+      "type": "person",
+      "label": "Jim Richard",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 7,
+      "properties": {
+        "role": "Father, ISG / Richard Enterprises",
+        "relationship": "Father of Jack and Joseph"
+      },
+      "temporal": { "start": "~1965" },
+      "sources": ["_unsorted/numbered_opaque/unknown_numbered_030.png"]
+    },
+    {
+      "id": "joseph-richard",
+      "type": "person",
+      "label": "Joseph Richard",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 5,
+      "properties": {
+        "role": "Brother of Jack Richard",
+        "relationship": "Brother"
+      },
+      "temporal": { "start": "~1994" },
+      "sources": ["_unsorted/numbered_opaque/unknown_numbered_030.png"]
+    },
+    {
+      "id": "donald-almquist",
+      "type": "person",
+      "label": "Donald Almquist",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 6,
+      "properties": {
+        "role": "Grandfather, generational legacy",
+        "relationship": "Maternal grandfather"
+      },
+      "sources": ["GRANDAD_BOOK/"]
+    },
+    {
+      "id": "nick-becker",
+      "type": "person",
+      "label": "Nick Becker",
+      "cluster": "social",
+      "color": "#818cf8",
+      "size": 3,
+      "properties": {
+        "handle": "beckernick34",
+        "context": "LineLeap era friend, Kilroy's on Kirkwood"
+      },
+      "sources": ["10_SOCIAL/instagram/2021-08-16_ig_001.jpg"]
+    },
+    {
+      "id": "john-sutor",
+      "type": "person",
+      "label": "John Sutor",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 3,
+      "properties": {
+        "role": "FSU sales rep for LineLeap",
+        "background": "CS student at Florida State University",
+        "message": "Praised Jack's app redesign, wanted to learn how he did it"
+      },
+      "temporal": { "date": "2019-08-17" },
+      "sources": ["10_SOCIAL/misc/2019-08-17_screenshot_001.png"]
+    },
+    {
+      "id": "patrick-kelly",
+      "type": "person",
+      "label": "Patrick Kelly",
+      "cluster": "social",
+      "color": "#818cf8",
+      "size": 2,
+      "properties": {
+        "handle": "patrickskelly24",
+        "context": "Instagram connection, liked LineLeap content"
+      },
+      "sources": ["10_SOCIAL/instagram/2021-08-16_ig_001.jpg"]
+    },
+    {
+      "id": "northwestern-cohort",
+      "type": "group",
+      "label": "Northwestern Cohort",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 6,
+      "properties": {
+        "count": "~20 people",
+        "setting": "Academic classroom, concrete walls",
+        "context": "Graduate program cohort photo, Farley Center"
+      },
+      "temporal": { "date": "2018-10-04" },
+      "sources": ["10_SOCIAL/facebook/2018-10-04_fb_001.jpg"]
+    },
+    {
+      "id": "lineleap",
+      "type": "company",
+      "label": "LineLeap",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 9,
+      "properties": {
+        "domain": "Human behavior — nightlife, skip-the-line",
+        "convex_hull_vertex": "Human Behavior",
+        "key_insight": "Signal processing on human crowds — demand, attention, willingness to pay",
+        "markets": ["Indiana University (Kilroy's on Kirkwood)", "Florida State University"],
+        "evidence": "Blue LineLeap t-shirt, FSU sales rep messages, app redesign"
+      },
+      "temporal": { "start": "~2019", "end": "~2022" },
+      "sources": ["10_SOCIAL/instagram/2021-08-16_ig_001.jpg", "10_SOCIAL/misc/2019-08-17_screenshot_001.png", "10_SOCIAL/misc/2020-06-25_screenshot_001.jpg"]
+    },
+    {
+      "id": "sounder-trogdon",
+      "type": "company",
+      "label": "Sounder / Trogdon",
+      "cluster": "sounder",
+      "color": "#10b981",
+      "size": 8,
+      "properties": {
+        "domain": "Biological systems — livestock intelligence",
+        "convex_hull_vertex": "Biological Systems",
+        "key_insight": "Biological signals (weight, genetics, health) as language",
+        "production_data": "~27,200 nodes, ~46,100 edges (unified swine registry)"
+      },
+      "temporal": { "start": "~2020" },
+      "sources": []
+    },
+    {
+      "id": "isg",
+      "type": "company",
+      "label": "ISG / Industrial Services Group",
+      "cluster": "isg",
+      "color": "#ef4444",
+      "size": 7,
+      "properties": {
+        "domain": "Mechanical systems — machine telemetry",
+        "convex_hull_vertex": "Mechanical Systems",
+        "key_insight": "Charlotte learned to listen to things that don't breathe",
+        "parent": "Richard Enterprises"
+      },
+      "sources": []
+    },
+    {
+      "id": "prier-violins",
+      "type": "company",
+      "label": "Prier Violins",
+      "cluster": "prier",
+      "color": "#ec4899",
+      "size": 7,
+      "properties": {
+        "domain": "Cultural artifacts — instrument provenance",
+        "convex_hull_vertex": "Cultural Artifacts",
+        "key_insight": "Instruments as nodes with centuries of provenance — objects with souls"
+      },
+      "sources": []
+    },
+    {
+      "id": "charlotte",
+      "type": "company",
+      "label": "Charlotte",
+      "cluster": "charlotte",
+      "color": "#22d3ee",
+      "size": 11,
+      "properties": {
+        "domain": "Universal substrate for observable reality",
+        "thesis": "Infrastructure for modeling any domain where identities emit signals over time",
+        "primitives": ["NODE", "EDGE", "METRIC", "SIGNAL", "PROTOCOL"],
+        "convergence": "The moment the convex hull closed"
+      },
+      "temporal": { "start": "~2023", "ongoing": true },
+      "sources": []
+    },
+    {
+      "id": "someai",
+      "type": "company",
+      "label": "SomeAI",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 5,
+      "properties": {
+        "domain": "AI advisory",
+        "role": "Advisory context for Charlotte"
+      },
+      "sources": []
+    },
+    {
+      "id": "serengeti",
+      "type": "company",
+      "label": "Serengeti Enterprises",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 5,
+      "properties": {
+        "domain": "Operational framework",
+        "drafts": ["SERENGETI_DRAFT_7.pdf", "SERENGETI_DRAFT_8.pdf"]
+      },
+      "sources": ["SERENGETI_DRAFT_7.pdf", "SERENGETI_DRAFT_8.pdf"]
+    },
+    {
+      "id": "northwestern",
+      "type": "place",
+      "label": "Northwestern University",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 6,
+      "properties": {
+        "location": "Evanston, IL",
+        "context": "Farley Center, capstone presentation",
+        "significance": "Where the convex hull was first articulated"
+      },
+      "temporal": { "date": "2018" },
+      "sources": ["10_SOCIAL/facebook/2018-10-04_fb_001.jpg", "NORTHWESTERN_CAPSTONE.pptx"]
+    },
+    {
+      "id": "lake-forest",
+      "type": "place",
+      "label": "Lake Forest, IL",
+      "cluster": "origin",
+      "color": "#64748b",
+      "size": 4,
+      "properties": {
+        "significance": "Origin point — childhood, family roots",
+        "temporal_torus": "Start of the temporal torus"
+      },
+      "sources": []
+    },
+    {
+      "id": "kilroys",
+      "type": "place",
+      "label": "Kilroy's on Kirkwood",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 4,
+      "properties": {
+        "location": "Bloomington, IN (Indiana University)",
+        "context": "LineLeap venue — hot wing competition, field operations"
+      },
+      "temporal": { "date": "2021-08-16" },
+      "sources": ["10_SOCIAL/instagram/2021-08-16_ig_001.jpg"]
+    },
+    {
+      "id": "fsu",
+      "type": "place",
+      "label": "Florida State University",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 3,
+      "properties": {
+        "context": "LineLeap market, John Sutor as sales rep"
+      },
+      "sources": ["10_SOCIAL/misc/2019-08-17_screenshot_001.png"]
+    },
+    {
+      "id": "marcus-aurelius",
+      "type": "philosopher",
+      "label": "Marcus Aurelius",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 6,
+      "properties": {
+        "tradition": "Stoicism",
+        "quote": "Why should we feel anger at the world? As if the world would notice.",
+        "influence": "Core philosophical influence — equanimity, detachment from external validation"
+      },
+      "sources": ["10_SOCIAL/facebook/2024-05-08_fb_001.jpg"]
+    },
+    {
+      "id": "william-faulkner",
+      "type": "philosopher",
+      "label": "William Faulkner",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 4,
+      "properties": {
+        "tradition": "Literature / Existentialism",
+        "quote": "You cannot swim for new horizons until you have courage to lose sight of the shore.",
+        "source_account": "@stoicsanity",
+        "influence": "Courage to leave comfort zone, explorer mindset"
+      },
+      "temporal": { "date": "2024-01-23" },
+      "sources": ["10_SOCIAL/facebook/2024-01-23_fb_001.jpg"]
+    },
+    {
+      "id": "benjamin-franklin",
+      "type": "philosopher",
+      "label": "Benjamin Franklin",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 4,
+      "properties": {
+        "tradition": "American Enlightenment / Pragmatism",
+        "quote": "Be at war with your vices, at peace with your neighbors, and let every new year find you a better man.",
+        "influence": "Self-improvement, annual renewal"
+      },
+      "temporal": { "date": "2024-04-17" },
+      "sources": ["10_SOCIAL/facebook/2024-04-17_fb_001.jpg"]
+    },
+    {
+      "id": "mike-tyson",
+      "type": "philosopher",
+      "label": "Mike Tyson",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 3,
+      "properties": {
+        "tradition": "Martial philosophy / Mental discipline",
+        "quote": "You have to train your mind to be stronger than your feelings or else you gone lose yourself.",
+        "influence": "Emotional mastery, mental fortitude"
+      },
+      "temporal": { "date": "2024-02-19" },
+      "sources": ["10_SOCIAL/facebook/2024-02-19_fb_001.jpg"]
+    },
+    {
+      "id": "buckminster-fuller",
+      "type": "philosopher",
+      "label": "Buckminster Fuller",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 6,
+      "properties": {
+        "tradition": "Systems thinking / Design science",
+        "quote": "It is now highly feasible to take care of everybody on Earth at a higher standard of living than any have ever known. It no longer has to be you or me. Selfishness is unnecessary. War is obsolete. It is a matter of converting our high technology from WEAPONRY to LIVINGRY.",
+        "concepts": ["Geodesic structures", "Tensegrity", "Synergetics", "Livingry"],
+        "influence": "Technology serving humanity, systems-level design, structural innovation"
+      },
+      "temporal": { "date": "2024-05-28" },
+      "sources": ["10_SOCIAL/facebook/2024-05-28_fb_001.jpg"]
+    },
+    {
+      "id": "stoicism",
+      "type": "concept",
+      "label": "Stoicism",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 7,
+      "properties": {
+        "description": "Philosophical operating system — recurrent theme across Facebook shares",
+        "practitioners": ["Marcus Aurelius", "Seneca", "Epictetus"],
+        "accounts_followed": ["@stoicsanity"],
+        "application": "Entrepreneurial resilience, emotional regulation, detachment from external validation"
+      },
+      "sources": ["10_SOCIAL/facebook/2024-05-08_fb_001.jpg", "10_SOCIAL/facebook/2024-01-23_fb_001.jpg"]
+    },
+    {
+      "id": "entrepreneurial-resilience",
+      "type": "concept",
+      "label": "Entrepreneurial Resilience",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 6,
+      "properties": {
+        "description": "Recurring theme: dreams vs obstacles, risking everything for invisible visions, training mind over feelings",
+        "evidence": ["Goals vs obstacles meme", "Risking everything quote", "Train your mind quote", "LineLeap emotional support message"]
+      },
+      "sources": ["10_SOCIAL/facebook/2024-06-17_fb_001.jpg", "10_SOCIAL/facebook/2023-12-25_fb_001.jpg", "10_SOCIAL/misc/2020-06-25_screenshot_001.jpg"]
+    },
+    {
+      "id": "convex-hull",
+      "type": "concept",
+      "label": "Convex Hull Journey",
+      "cluster": "charlotte",
+      "color": "#22d3ee",
+      "size": 9,
+      "properties": {
+        "description": "The four vertices of experience that converged into Charlotte: human behavior (LineLeap), biological systems (Sounder/Trogdon), mechanical systems (ISG), cultural artifacts (Prier Violins)",
+        "vertices": ["LineLeap", "Sounder/Trogdon", "ISG", "Prier Violins"],
+        "articulated_at": "Northwestern Capstone"
+      },
+      "sources": ["NORTHWESTERN_CAPSTONE.pptx"]
+    },
+    {
+      "id": "temporal-torus",
+      "type": "concept",
+      "label": "Temporal Torus",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 8,
+      "properties": {
+        "description": "The topology of the journey — from Lake Forest through all vertices back to Charlotte. The people whose timelines weave through: Almquist lineage, Jim Richard, Joseph Richard, Jack Richard.",
+        "topology": "Torus — cyclical, generational, looping through time"
+      },
+      "sources": []
+    },
+    {
+      "id": "cognitive-hexagon",
+      "type": "concept",
+      "label": "Cognitive Science Hexagon",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 5,
+      "properties": {
+        "disciplines": ["Philosophy", "Psychology", "Linguistics", "Computer Science", "Anthropology", "Neuroscience"],
+        "key_figures": ["Hinton", "McCarthy", "Chomsky", "Marr", "Piaget", "Hofstadter", "Poggio", "Rumelhart", "Simon", "Newell", "Varela", "Freeman", "Maturana"],
+        "paradigms": ["Cognitivism", "Emergence", "Enactive"],
+        "description": "Interdisciplinary map of cognitive science — saved as reference for Charlotte's theoretical foundations"
+      },
+      "sources": ["10_SOCIAL/misc/2022-06-05_screenshot_001.jpg"]
+    },
+    {
+      "id": "systems-thinking",
+      "type": "concept",
+      "label": "Systems Thinking",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 6,
+      "properties": {
+        "description": "Buckminster Fuller's geodesics, Charlotte's substrate architecture, the convex hull as a systems-level insight",
+        "practitioners": ["Buckminster Fuller", "Jack Richard"],
+        "artifacts": ["Geodesic structures", "Charlotte primitives", "FINN data model"]
+      },
+      "sources": ["10_SOCIAL/facebook/2024-05-28_fb_001.jpg"]
+    },
+    {
+      "id": "network-graph-aesthetic",
+      "type": "concept",
+      "label": "Network/Graph Aesthetic",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 5,
+      "properties": {
+        "description": "Recurring visual fascination with network structures: spider webs, neural networks, physical 3D knowledge graphs, geodesic spheres, tree-city bridges",
+        "evidence": ["Midjourney spider webs", "African family 3D model", "Fuller's geodesic sphere", "Fantasy treehouse bridges", "Cognitive science hexagon"]
+      },
+      "sources": ["09_CREATIVE/ai-art/unknown_midjourney_001.png", "10_SOCIAL/snapchat/unknown_snap_001.jpg", "10_SOCIAL/facebook/2024-05-28_fb_001.jpg"]
+    },
+    {
+      "id": "viking-craftsmanship",
+      "type": "concept",
+      "label": "Viking Craftsmanship",
+      "cluster": "philosophy",
+      "color": "#c084fc",
+      "size": 3,
+      "properties": {
+        "description": "Counternarrative — 'the Vikings were primitive barbarians' contradicted by gold art from Denmark (800-900 CE). Hidden sophistication in things dismissed by conventional wisdom.",
+        "meta_lesson": "Don't judge by surface narrative — look deeper"
+      },
+      "temporal": { "date": "2024-05-13" },
+      "sources": ["10_SOCIAL/facebook/2024-05-13_fb_001.jpg"]
+    },
+    {
+      "id": "biomimicry",
+      "type": "concept",
+      "label": "Biomimicry",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 5,
+      "properties": {
+        "description": "Mechanical insects, spider silk research, biological systems as design templates",
+        "evidence": ["Midjourney mechanical beetle", "Midjourney mechanical spider", "Spider Silk research hub", "Sounder livestock intelligence"]
+      },
+      "sources": ["09_CREATIVE/ai-art/unknown_midjourney_005.png", "09_CREATIVE/ai-art/unknown_midjourney_003.png"]
+    },
+    {
+      "id": "music-identity",
+      "type": "concept",
+      "label": "Music as Identity",
+      "cluster": "life",
+      "color": "#38bdf8",
+      "size": 4,
+      "properties": {
+        "spotify_minutes": 93308,
+        "percentile": "Top 2% in US",
+        "artists": ["Mac Miller"],
+        "albums": ["KIDS (Mac Miller)", "Echoes in Time"],
+        "instruments": "Guitar (electric, red SG-style)",
+        "description": "Music as deeply woven thread — both listening (93K+ minutes) and playing (guitar)"
+      },
+      "sources": ["10_SOCIAL/spotify/2021-12-01_spotify_001.jpg", "10_SOCIAL/misc/2024-02-27_screenshot_001.png"]
+    },
+    {
+      "id": "mac-miller",
+      "type": "artist",
+      "label": "Mac Miller",
+      "cluster": "life",
+      "color": "#38bdf8",
+      "size": 3,
+      "properties": {
+        "genre": "Hip-hop",
+        "albums_visible": ["KIDS"],
+        "significance": "Top artist on Spotify Wrapped 2021"
+      },
+      "sources": ["10_SOCIAL/spotify/2021-12-01_spotify_001.jpg"]
+    },
+    {
+      "id": "spider-web-art",
+      "type": "artwork",
+      "label": "Spider Web Neural Networks",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 4,
+      "properties": {
+        "medium": "Midjourney AI-generated",
+        "description": "4 variations of spider web / neural network patterns on dark background — luminous threads connecting nodes in organic geometric patterns",
+        "symbolism": "Charlotte's web as knowledge infrastructure"
+      },
+      "sources": ["09_CREATIVE/ai-art/unknown_midjourney_001.png"]
+    },
+    {
+      "id": "mechanical-beetle",
+      "type": "artwork",
+      "label": "Biomechanical Beetle",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 3,
+      "properties": {
+        "medium": "Midjourney AI-generated",
+        "description": "Photorealistic mechanical beetle — biological form rendered as precision engineering",
+        "symbolism": "Nature as machine, machine as nature — biomimicry"
+      },
+      "sources": ["09_CREATIVE/ai-art/unknown_midjourney_005.png"]
+    },
+    {
+      "id": "mechanical-spider",
+      "type": "artwork",
+      "label": "Biomechanical Spider",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 4,
+      "properties": {
+        "medium": "Midjourney AI-generated",
+        "description": "Metallic mechanical spider — Charlotte personified as machine intelligence",
+        "symbolism": "Charlotte as the spider that builds the web of knowledge"
+      },
+      "sources": ["09_CREATIVE/ai-art/unknown_midjourney_003.png"]
+    },
+    {
+      "id": "family-3d-model",
+      "type": "artifact",
+      "label": "African Family 3D Knowledge Graph",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 4,
+      "properties": {
+        "description": "Museum exhibit: physical 3D model of African traditional family structure — colored nodes (red, blue, yellow, green) connected by golden edges above a miniature forest landscape",
+        "significance": "Physical manifestation of what Charlotte does digitally — entities connected by relationships in spatial context",
+        "meta": "Jack photographed the very thing he was building"
+      },
+      "sources": ["10_SOCIAL/snapchat/unknown_snap_001.jpg"]
+    },
+    {
+      "id": "fantasy-treehouse",
+      "type": "artwork",
+      "label": "Fantasy Treehouse City",
+      "cluster": "creative",
+      "color": "#f472b6",
+      "size": 2,
+      "properties": {
+        "description": "Interconnected treehouses via bridges and walkways — structures as nodes, bridges as edges, in a misty forest",
+        "symbolism": "Network architecture in organic space"
+      },
+      "temporal": { "date": "2024-03-01" },
+      "sources": ["10_SOCIAL/facebook/2024-03-01_fb_001.jpg"]
+    },
+    {
+      "id": "lineleap-support-msg",
+      "type": "event",
+      "label": "LineLeap Emotional Support Message",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 4,
+      "properties": {
+        "text": "I know words don't do it justice but I really don't want you to feel stressed, the fact that the app is in the spot that it's in is absolutely insane, you've worked so hard and you are juggling so many different things that for someone to do all that you have done in years would be insane so anything we do with the push is already a win and a half",
+        "context": "Dark-mode text screenshot — someone close acknowledging the entrepreneurial grind",
+        "significance": "Evidence of the emotional weight of building LineLeap"
+      },
+      "temporal": { "date": "2020-06-25" },
+      "sources": ["10_SOCIAL/misc/2020-06-25_screenshot_001.jpg"]
+    },
+    {
+      "id": "boat-memory",
+      "type": "event",
+      "label": "Family Boat Trip (10 Years Ago)",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 3,
+      "properties": {
+        "description": "Facebook memory — Jack, Jim, and Joseph Richard on a boat. Ocean, towels, smiles. '10 Years Ago' marker.",
+        "significance": "Generational bond, before the convex hull vertices were conscious"
+      },
+      "temporal": { "date": "~2014" },
+      "sources": ["_unsorted/numbered_opaque/unknown_numbered_030.png"]
+    },
+    {
+      "id": "northwestern-cohort-photo",
+      "type": "event",
+      "label": "Northwestern Cohort Photo",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 3,
+      "properties": {
+        "description": "Group photo of ~20 graduate students in concrete-walled academic room. Diverse cohort, collaborative energy.",
+        "significance": "The intellectual community that shaped Charlotte's thinking"
+      },
+      "temporal": { "date": "2018-10-04" },
+      "sources": ["10_SOCIAL/facebook/2018-10-04_fb_001.jpg"]
+    },
+    {
+      "id": "kilroys-lineleap-event",
+      "type": "event",
+      "label": "Kilroy's LineLeap Night",
+      "cluster": "lineleap",
+      "color": "#f59e0b",
+      "size": 3,
+      "properties": {
+        "description": "Jack in LineLeap blue t-shirt with Nick Becker at Kilroy's on Kirkwood — 'How it started VS how it's going featuring kilroys hot wing competition'",
+        "liked_by": ["patrickskelly24", "40 others"],
+        "significance": "LineLeap in the field — the product meeting the market"
+      },
+      "temporal": { "date": "2021-08-16" },
+      "sources": ["10_SOCIAL/instagram/2021-08-16_ig_001.jpg"]
+    },
+    {
+      "id": "atlas-primitives",
+      "type": "artifact",
+      "label": "Atlas Knowledge Primitives Diagram",
+      "cluster": "charlotte",
+      "color": "#22d3ee",
+      "size": 5,
+      "properties": {
+        "description": "Charlotte's knowledge primitive taxonomy — the formal diagram of NODE, EDGE, METRIC, SIGNAL, PROTOCOL"
+      },
+      "sources": ["ATLAS_KNOWLEDGE_PRIMITIVES.png"]
+    },
+    {
+      "id": "capstone-presentation",
+      "type": "artifact",
+      "label": "Northwestern Capstone Presentation",
+      "cluster": "advisory",
+      "color": "#a78bfa",
+      "size": 5,
+      "properties": {
+        "description": "The capstone presentation where the convex hull was first articulated — the moment the thesis became conscious",
+        "file": "NORTHWESTERN_CAPSTONE.pptx"
+      },
+      "temporal": { "date": "2018" },
+      "sources": ["NORTHWESTERN_CAPSTONE.pptx"]
+    },
+    {
+      "id": "grandad-book",
+      "type": "artifact",
+      "label": "Almquist Family History Book",
+      "cluster": "torus",
+      "color": "#22d3ee",
+      "size": 4,
+      "properties": {
+        "description": "Generational artifact — Almquist family history documenting the lineage and legacy"
+      },
+      "sources": ["GRANDAD_BOOK/"]
+    }
+  ],
+  "edges": [
+    { "source": "jack-richard", "target": "jim-richard", "type": "family", "label": "son of" },
+    { "source": "jack-richard", "target": "joseph-richard", "type": "family", "label": "brother of" },
+    { "source": "jack-richard", "target": "donald-almquist", "type": "family", "label": "grandson of" },
+    { "source": "jim-richard", "target": "isg", "type": "founded", "label": "runs" },
+    { "source": "jack-richard", "target": "lineleap", "type": "founded", "label": "built" },
+    { "source": "jack-richard", "target": "sounder-trogdon", "type": "founded", "label": "built" },
+    { "source": "jack-richard", "target": "charlotte", "type": "founded", "label": "created" },
+    { "source": "jack-richard", "target": "someai", "type": "works_at", "label": "advisory" },
+    { "source": "jack-richard", "target": "serengeti", "type": "founded", "label": "built" },
+    { "source": "jack-richard", "target": "northwestern", "type": "attended", "label": "graduated from" },
+    { "source": "jack-richard", "target": "lake-forest", "type": "origin", "label": "grew up in" },
+    { "source": "jack-richard", "target": "nick-becker", "type": "knows", "label": "friend" },
+    { "source": "jack-richard", "target": "patrick-kelly", "type": "knows", "label": "connection" },
+    { "source": "john-sutor", "target": "lineleap", "type": "works_at", "label": "FSU sales rep" },
+    { "source": "john-sutor", "target": "fsu", "type": "attended", "label": "student at" },
+    { "source": "john-sutor", "target": "jack-richard", "type": "admires", "label": "praised app redesign" },
+    { "source": "lineleap", "target": "kilroys", "type": "operates_at", "label": "venue" },
+    { "source": "lineleap", "target": "fsu", "type": "operates_at", "label": "market" },
+    { "source": "lineleap", "target": "convex-hull", "type": "part_of", "label": "vertex: human behavior" },
+    { "source": "sounder-trogdon", "target": "convex-hull", "type": "part_of", "label": "vertex: biological systems" },
+    { "source": "isg", "target": "convex-hull", "type": "part_of", "label": "vertex: mechanical systems" },
+    { "source": "prier-violins", "target": "convex-hull", "type": "part_of", "label": "vertex: cultural artifacts" },
+    { "source": "convex-hull", "target": "charlotte", "type": "converges_to", "label": "produced" },
+    { "source": "jack-richard", "target": "stoicism", "type": "practices", "label": "philosophical influence" },
+    { "source": "jack-richard", "target": "entrepreneurial-resilience", "type": "embodies", "label": "core trait" },
+    { "source": "jack-richard", "target": "systems-thinking", "type": "practices", "label": "design philosophy" },
+    { "source": "jack-richard", "target": "music-identity", "type": "expresses", "label": "93K+ minutes" },
+    { "source": "marcus-aurelius", "target": "stoicism", "type": "founded", "label": "practitioner" },
+    { "source": "william-faulkner", "target": "entrepreneurial-resilience", "type": "influences", "label": "courage quote" },
+    { "source": "benjamin-franklin", "target": "entrepreneurial-resilience", "type": "influences", "label": "self-improvement" },
+    { "source": "mike-tyson", "target": "entrepreneurial-resilience", "type": "influences", "label": "mental discipline" },
+    { "source": "buckminster-fuller", "target": "systems-thinking", "type": "founded", "label": "geodesics, synergetics" },
+    { "source": "buckminster-fuller", "target": "charlotte", "type": "influences", "label": "livingry, design science" },
+    { "source": "cognitive-hexagon", "target": "charlotte", "type": "influences", "label": "theoretical foundations" },
+    { "source": "network-graph-aesthetic", "target": "charlotte", "type": "influences", "label": "visual language" },
+    { "source": "spider-web-art", "target": "charlotte", "type": "symbolizes", "label": "Charlotte's web" },
+    { "source": "mechanical-spider", "target": "charlotte", "type": "symbolizes", "label": "Charlotte personified" },
+    { "source": "mechanical-beetle", "target": "biomimicry", "type": "expresses", "label": "nature as machine" },
+    { "source": "mechanical-spider", "target": "biomimicry", "type": "expresses", "label": "spider as machine" },
+    { "source": "family-3d-model", "target": "network-graph-aesthetic", "type": "exemplifies", "label": "physical knowledge graph" },
+    { "source": "family-3d-model", "target": "charlotte", "type": "foreshadows", "label": "what Charlotte does digitally" },
+    { "source": "fantasy-treehouse", "target": "network-graph-aesthetic", "type": "exemplifies", "label": "nodes and bridges" },
+    { "source": "viking-craftsmanship", "target": "entrepreneurial-resilience", "type": "relates_to", "label": "hidden sophistication" },
+    { "source": "mac-miller", "target": "music-identity", "type": "part_of", "label": "top artist" },
+    { "source": "jack-richard", "target": "mac-miller", "type": "listens_to", "label": "top artist 2021" },
+    { "source": "northwestern", "target": "northwestern-cohort", "type": "contains", "label": "graduate program" },
+    { "source": "jack-richard", "target": "northwestern-cohort", "type": "member_of", "label": "graduate cohort" },
+    { "source": "northwestern", "target": "capstone-presentation", "type": "hosted", "label": "capstone venue" },
+    { "source": "donald-almquist", "target": "grandad-book", "type": "documented_in", "label": "family history" },
+    { "source": "donald-almquist", "target": "temporal-torus", "type": "part_of", "label": "generational thread" },
+    { "source": "jim-richard", "target": "temporal-torus", "type": "part_of", "label": "generational thread" },
+    { "source": "joseph-richard", "target": "temporal-torus", "type": "part_of", "label": "generational thread" },
+    { "source": "jack-richard", "target": "temporal-torus", "type": "part_of", "label": "generational thread" },
+    { "source": "temporal-torus", "target": "charlotte", "type": "converges_to", "label": "human topology" },
+    { "source": "jack-richard", "target": "prier-violins", "type": "works_with", "label": "cultural vertex" },
+    { "source": "jack-richard", "target": "isg", "type": "works_with", "label": "mechanical vertex" },
+    { "source": "lineleap-support-msg", "target": "lineleap", "type": "about", "label": "emotional context" },
+    { "source": "lineleap-support-msg", "target": "entrepreneurial-resilience", "type": "exemplifies", "label": "the grind" },
+    { "source": "kilroys-lineleap-event", "target": "lineleap", "type": "about", "label": "field operations" },
+    { "source": "kilroys-lineleap-event", "target": "kilroys", "type": "at", "label": "location" },
+    { "source": "kilroys-lineleap-event", "target": "nick-becker", "type": "features", "label": "present" },
+    { "source": "boat-memory", "target": "jim-richard", "type": "features", "label": "present" },
+    { "source": "boat-memory", "target": "joseph-richard", "type": "features", "label": "present" },
+    { "source": "boat-memory", "target": "jack-richard", "type": "features", "label": "present" },
+    { "source": "atlas-primitives", "target": "charlotte", "type": "documents", "label": "primitive taxonomy" },
+    { "source": "capstone-presentation", "target": "convex-hull", "type": "articulates", "label": "first articulation" }
+  ],
+  "clusters": {
+    "torus": { "label": "Temporal Torus", "color": "#22d3ee", "description": "Family, generational threads, the human topology" },
+    "lineleap": { "label": "LineLeap", "color": "#f59e0b", "description": "Human behavior vertex — nightlife, crowds, demand signals" },
+    "sounder": { "label": "Sounder/Trogdon", "color": "#10b981", "description": "Biological systems vertex — livestock intelligence" },
+    "isg": { "label": "ISG", "color": "#ef4444", "description": "Mechanical systems vertex — machine telemetry" },
+    "prier": { "label": "Prier Violins", "color": "#ec4899", "description": "Cultural artifacts vertex — instrument provenance" },
+    "charlotte": { "label": "Charlotte", "color": "#22d3ee", "description": "The convergence — universal substrate" },
+    "advisory": { "label": "Advisory", "color": "#a78bfa", "description": "Northwestern, SomeAI, intellectual scaffolding" },
+    "philosophy": { "label": "Philosophy", "color": "#c084fc", "description": "Stoicism, systems thinking, entrepreneurial resilience" },
+    "creative": { "label": "Creative", "color": "#f472b6", "description": "AI art, visual language, biomimicry, network aesthetics" },
+    "social": { "label": "Social", "color": "#818cf8", "description": "Connections, friends, digital footprint" },
+    "life": { "label": "Life", "color": "#38bdf8", "description": "Music, travel, personal moments" },
+    "origin": { "label": "Origin", "color": "#64748b", "description": "Lake Forest, childhood, family roots" }
+  }
+}

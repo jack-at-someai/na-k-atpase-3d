@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isometric Grid Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <!-- ─── Header ──────────────────────────────────── -->
+    <div id="header">
+        <h1>Isometric Grid Builder</h1>
+        <span id="header-info" style="font-size:11px;color:var(--text-muted);font-family:monospace;"></span>
+    </div>
+
+    <div id="main">
+        <!-- ─── Toolbar ─────────────────────────────── -->
+        <div id="toolbar">
+            <button class="tool-btn active" data-tool="select" title="Select (V)">&#9654;</button>
+            <button class="tool-btn" data-tool="place" title="Place (P)">&#9632;</button>
+            <button class="tool-btn" data-tool="elevate" title="Elevate (E)">&#9650;</button>
+            <button class="tool-btn" data-tool="paint" title="Paint (B)">&#9835;</button>
+            <button class="tool-btn" data-tool="erase" title="Erase (X)">&#10005;</button>
+            <button class="tool-btn" data-tool="measure" title="Measure (M)">&#8674;</button>
+            <div class="tool-sep"></div>
+            <div id="tile-selector">
+                <select id="tile-type">
+                    <option value="ground">GND</option>
+                    <option value="grass">GRS</option>
+                    <option value="water">WTR</option>
+                    <option value="stone">STN</option>
+                    <option value="building">BLD</option>
+                    <option value="accent">ACC</option>
+                </select>
+            </div>
+            <div class="tool-sep"></div>
+            <button class="tool-btn" data-action="zoomfit" title="Zoom to Fit (F)">&#8982;</button>
+            <button class="tool-btn" data-action="perspective" title="Perspective Mode (/)">&#9672;</button>
+        </div>
+
+        <!-- ─── Canvas ──────────────────────────────── -->
+        <div id="canvas-wrap">
+            <canvas id="iso-canvas"></canvas>
+            <div id="canvas-info"></div>
+        </div>
+
+        <!-- ─── Chat Panel ──────────────────────────── -->
+        <div id="chat-panel">
+            <div id="chat-header">
+                <span>Agent</span>
+                <select id="theme-select">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="chat-input-row">
+                <input id="chat-input" type="text" placeholder="Type a command..." autocomplete="off">
+                <button id="mic-btn" title="Voice input">&#127908;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="themes.js"></script>
+<script src="engine.js"></script>
+<script src="agent.js"></script>
+</body>
+</html>

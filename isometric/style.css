@@ -1,0 +1,362 @@
+/* ───────────────────────────────────────────────────────
+   style.css — Sounder dark theme, glassmorphism panels
+   ─────────────────────────────────────────────────────── */
+
+:root {
+    --bg: #232324;
+    --surface: #2D2B2E;
+    --surface-alt: #383639;
+    --canvas-bg: #1A1A1B;
+    --primary: #7200CB;
+    --primary-light: #9B3FE8;
+    --secondary: #F000D2;
+    --secondary-light: #F54DE2;
+    --tertiary: #21D6C6;
+    --tertiary-light: #4DE8DB;
+    --text: #E8E6E9;
+    --text-dim: #A09DA2;
+    --text-muted: #6E6B70;
+    --border: #444246;
+    --border-light: #5A585C;
+    --btn-bg: #383639;
+    --btn-hover: #4A484C;
+    --btn-active: #7200CB;
+    --shadow: rgba(0,0,0,0.4);
+    --glass-fill: rgba(45,43,46,0.7);
+    --glass-border: rgba(255,255,255,0.1);
+    --glass-glow: rgba(114,0,203,0.08);
+    --radius: 8px;
+    --radius-lg: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: var(--glass-fill);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 10;
+    min-height: 48px;
+}
+
+#header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ─── Toolbar ────────────────────────────────────────── */
+
+#toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    background: var(--glass-fill);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-right: 1px solid var(--glass-border);
+    width: 52px;
+    align-items: center;
+    z-index: 5;
+}
+
+.tool-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.tool-btn:hover {
+    background: var(--btn-hover);
+    color: var(--text);
+}
+
+.tool-btn.active {
+    background: var(--btn-active);
+    color: #fff;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 12px var(--glass-glow);
+}
+
+.tool-btn[title]::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface);
+    color: var(--text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    border: 1px solid var(--border);
+    z-index: 100;
+}
+
+.tool-btn:hover[title]::after {
+    opacity: 1;
+}
+
+.tool-sep {
+    width: 28px;
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+}
+
+/* ─── Tile Type Selector ─────────────────────────────── */
+
+#tile-selector {
+    display: none;
+    padding: 4px 0;
+}
+
+#tile-selector.visible {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+#tile-selector select {
+    width: 36px;
+    height: 28px;
+    background: var(--btn-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 2px;
+    appearance: none;
+}
+
+/* ─── Canvas Area ────────────────────────────────────── */
+
+#canvas-wrap {
+    flex: 1;
+    position: relative;
+    background: var(--canvas-bg);
+    overflow: hidden;
+}
+
+#canvas-wrap canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#canvas-info {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ─── Chat Panel ─────────────────────────────────────── */
+
+#chat-panel {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    background: var(--glass-fill);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--glass-border);
+    z-index: 5;
+}
+
+#chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+}
+
+#chat-header select {
+    background: var(--btn-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+#chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#chat-messages::-webkit-scrollbar { width: 4px; }
+#chat-messages::-webkit-scrollbar-track { background: transparent; }
+#chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.msg {
+    max-width: 90%;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.msg.user {
+    align-self: flex-end;
+    background: var(--primary);
+    color: #fff;
+    border-bottom-right-radius: 2px;
+}
+
+.msg.agent {
+    align-self: flex-start;
+    background: var(--surface-alt);
+    color: var(--text);
+    border-bottom-left-radius: 2px;
+}
+
+.msg.error {
+    align-self: flex-start;
+    background: rgba(220,38,38,0.15);
+    color: #F87171;
+    border: 1px solid rgba(220,38,38,0.3);
+}
+
+#chat-input-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--glass-border);
+}
+
+#chat-input {
+    flex: 1;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+#chat-input:focus {
+    border-color: var(--primary);
+}
+
+#chat-input::placeholder {
+    color: var(--text-muted);
+}
+
+#mic-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--btn-bg);
+    color: var(--text-dim);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+#mic-btn:hover {
+    background: var(--btn-hover);
+    color: var(--text);
+}
+
+#mic-btn.recording {
+    background: var(--secondary);
+    color: #fff;
+    border-color: var(--secondary);
+    animation: pulse-mic 1.2s ease-in-out infinite;
+}
+
+#mic-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+@keyframes pulse-mic {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(240,0,210,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(240,0,210,0); }
+}
+
+/* ─── Utility ────────────────────────────────────────── */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+}

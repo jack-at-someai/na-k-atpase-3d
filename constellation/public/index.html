@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constellation — Journey Brain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="graph-container"></div>
+
+  <div id="hud">
+    <div id="hud-top">
+      <div id="title">CONSTELLATION</div>
+      <div id="subtitle">Journey Brain — <span id="node-count">0</span> nodes, <span id="edge-count">0</span> edges</div>
+    </div>
+
+    <div id="cluster-legend"></div>
+
+    <div id="node-info" class="hidden">
+      <button id="node-info-close">&times;</button>
+      <div id="node-info-type"></div>
+      <div id="node-info-label"></div>
+      <div id="node-info-cluster"></div>
+      <div id="node-info-properties"></div>
+      <div id="node-info-connections"></div>
+      <div id="node-info-sources"></div>
+    </div>
+  </div>
+
+  <div id="voice-panel">
+    <div id="transcript-container">
+      <div id="transcript-history"></div>
+    </div>
+    <div id="voice-controls">
+      <button id="mic-btn" title="Hold to speak (or press Space)">
+        <svg id="mic-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+        <svg id="mic-active-icon" class="hidden" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+      <div id="voice-status">Press space or click mic to speak</div>
+      <button id="clear-btn" title="Clear conversation">Clear</button>
+    </div>
+  </div>
+
+  <div id="traversal-overlay" class="hidden">
+    <div id="traversal-status">Traversing graph...</div>
+    <div id="traversal-path"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // OrbitControls inline (r128 compatible)
+    THREE.OrbitControls = function(camera, domElement) {
+      this.object = camera;
+      this.domElement = domElement;
+      this.enabled = true;
+      this.target = new THREE.Vector3();
+      this.enableDamping = false;
+      this.dampingFactor = 0.05;
+      this.rotateSpeed = 1.0;
+      this.zoomSpeed = 1.0;
+      this.autoRotate = false;
+      this.autoRotateSpeed = 2.0;
+      this.enableZoom = true;
+      this.enableRotate = true;
+      this.enablePan = true;
+
+      var scope = this;
+      var spherical = new THREE.Spherical();
+      var sphericalDelta = new THREE.Spherical();
+      var scale = 1;
+      var panOffset = new THREE.Vector3();
+      var rotateStart = new THREE.Vector2();
+      var rotateEnd = new THREE.Vector2();
+      var rotateDelta = new THREE.Vector2();
+      var panStart = new THREE.Vector2();
+      var panEnd = new THREE.Vector2();
+      var state = -1; // -1=none, 0=rotate, 1=zoom, 2=pan
+
+      var offset = new THREE.Vector3();
+      var quat = new THREE.Quaternion().setFromUnitVectors(camera.up, new THREE.Vector3(0,1,0));
+      var quatInverse = quat.clone().invert();
+
+      function getAutoRotationAngle() { return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed; }
+      function getZoomScale() { return Math.pow(0.95, scope.zoomSpeed); }
+
+      function rotateLeft(angle) { sphericalDelta.theta -= angle; }
+      function rotateUp(angle) { sphericalDelta.phi -= angle; }
+
+      function panLeft(distance, objectMatrix) {
+        var v = new THREE.Vector3();
+        v.setFromMatrixColumn(objectMatrix, 0);
+        v.multiplyScalar(-distance);
+        panOffset.add(v);
+      }
+      function panUp(distance, objectMatrix) {
+        var v = new THREE.Vector3();
+        v.setFromMatrixColumn(objectMatrix, 1);
+        v.multiplyScalar(distance);
+        panOffset.add(v);
+      }
+      function pan(deltaX, deltaY) {
+        var element = scope.domElement;
+        var position = scope.object.position;
+        var oOffset = position.clone().sub(scope.target);
+        var targetDistance = oOffset.length();
+        targetDistance *= Math.tan((scope.object.fov/2) * Math.PI / 180.0);
+        panLeft(2 * deltaX * targetDistance / element.clientHeight, scope.object.matrix);
+        panUp(2 * deltaY * targetDistance / element.clientHeight, scope.object.matrix);
+      }
+
+      this.update = function() {
+        offset.copy(scope.object.position).sub(scope.target);
+        offset.applyQuaternion(quat);
+        spherical.setFromVector3(offset);
+
+        if (scope.autoRotate && state === -1) {
+          rotateLeft(getAutoRotationAngle());
+        }
+
+        spherical.theta += sphericalDelta.theta;
+        spherical.phi += sphericalDelta.phi;
+        spherical.phi = Math.max(0.01, Math.min(Math.PI - 0.01, spherical.phi));
+        spherical.radius *= scale;
+        spherical.radius = Math.max(10, Math.min(2000, spherical.radius));
+
+        scope.target.add(panOffset);
+        offset.setFromSpherical(spherical);
+        offset.applyQuaternion(quatInverse);
+        scope.object.position.copy(scope.target).add(offset);
+        scope.object.lookAt(scope.target);
+
+        if (scope.enableDamping) {
+          sphericalDelta.theta *= (1 - scope.dampingFactor);
+          sphericalDelta.phi *= (1 - scope.dampingFactor);
+          panOffset.multiplyScalar(1 - scope.dampingFactor);
+        } else {
+          sphericalDelta.set(0,0,0);
+          panOffset.set(0,0,0);
+        }
+        scale = 1;
+        return false;
+      };
+
+      function onPointerDown(event) {
+        if (!scope.enabled) return;
+        if (event.button === 0) { state = 0; rotateStart.set(event.clientX, event.clientY); }
+        else if (event.button === 2) { state = 2; panStart.set(event.clientX, event.clientY); }
+        domElement.addEventListener('pointermove', onPointerMove);
+        domElement.addEventListener('pointerup', onPointerUp);
+      }
+
+      function onPointerMove(event) {
+        if (!scope.enabled) return;
+        if (state === 0) {
+          rotateEnd.set(event.clientX, event.clientY);
+          rotateDelta.subVectors(rotateEnd, rotateStart);
+          rotateLeft(2 * Math.PI * rotateDelta.x / domElement.clientHeight * scope.rotateSpeed);
+          rotateUp(2 * Math.PI * rotateDelta.y / domElement.clientHeight * scope.rotateSpeed);
+          rotateStart.copy(rotateEnd);
+        } else if (state === 2) {
+          panEnd.set(event.clientX, event.clientY);
+          var panDelta = new THREE.Vector2().subVectors(panEnd, panStart);
+          pan(panDelta.x, panDelta.y);
+          panStart.copy(panEnd);
+        }
+      }
+
+      function onPointerUp() {
+        state = -1;
+        domElement.removeEventListener('pointermove', onPointerMove);
+        domElement.removeEventListener('pointerup', onPointerUp);
+      }
+
+      function onWheel(event) {
+        if (!scope.enabled || !scope.enableZoom) return;
+        event.preventDefault();
+        if (event.deltaY < 0) { scale /= getZoomScale(); }
+        else if (event.deltaY > 0) { scale *= getZoomScale(); }
+      }
+
+      domElement.addEventListener('pointerdown', onPointerDown);
+      domElement.addEventListener('wheel', onWheel, {passive: false});
+      domElement.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+      this.update();
+    };
+  </script>
+  <script src="js/graph.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
