@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LineLeap Tickets — Find Your Next Night Out</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0B1012;
+  --blue: #0086FF;
+  --gold: #EFAE00;
+  --red: #FF6359;
+  --pink: #F254C1;
+  --green: #00C853;
+  --card-bg: #151A1E;
+  --card-bg-alt: #1A1F25;
+  --text: #FFFFFF;
+  --text-secondary: #8A9199;
+  --radius: 12px;
+  --nav-height: 64px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2a3038; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a4048; }
+
+/* ===================== NAVIGATION ===================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(11, 16, 18, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.nav-inner {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-brand svg { flex-shrink: 0; }
+
+.nav-search {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+}
+
+.nav-search input {
+  width: 100%;
+  height: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0 16px 0 40px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.nav-search input::placeholder { color: var(--text-secondary); }
+.nav-search input:focus {
+  border-color: var(--blue);
+  background: rgba(0, 134, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(0, 134, 255, 0.1);
+}
+
+.nav-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.nav-city-select {
+  height: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0 32px 0 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238A9199' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.2s;
+}
+
+.nav-city-select:hover { border-color: rgba(255,255,255,0.15); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  font-size: 14px;
+}
+.btn-ghost:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--text);
+  padding: 8px 20px;
+  font-size: 14px;
+}
+.btn-primary:hover { background: #0073dd; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0, 134, 255, 0.3); }
+
+.btn-primary-lg {
+  background: var(--blue);
+  color: var(--text);
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.btn-primary-lg:hover { background: #0073dd; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0, 134, 255, 0.35); }
+
+/* ===================== HERO ===================== */
+.hero {
+  margin-top: var(--nav-height);
+  position: relative;
+  padding: 80px 24px 64px;
+  background: linear-gradient(135deg, #0B1012 0%, #0a1628 20%, #1a0a3a 45%, #2d0a35 65%, #1a0520 85%, #0B1012 100%);
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse 600px 400px at 30% 60%, rgba(0, 134, 255, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 70% 40%, rgba(242, 84, 193, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(239, 174, 0, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+.hero h1 {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+.hero-search {
+  max-width: 560px;
+  margin: 0 auto 28px;
+  position: relative;
+}
+
+.hero-search input {
+  width: 100%;
+  height: 56px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 0 56px 0 48px;
+  color: var(--text);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.hero-search input::placeholder { color: var(--text-secondary); }
+.hero-search input:focus {
+  border-color: var(--blue);
+  background: rgba(0, 134, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(0, 134, 255, 0.12);
+}
+
+.hero-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.hero-search-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: var(--blue);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.hero-search-btn:hover { background: #0073dd; }
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pill {
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.pill:hover {
+  background: rgba(0, 134, 255, 0.12);
+  border-color: rgba(0, 134, 255, 0.3);
+  color: var(--blue);
+}
+
+.pill.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+/* ===================== SECTIONS ===================== */
+.section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.section-link {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.section-link:hover { color: #3da4ff; }
+
+/* ===================== FEATURED EVENTS — HORIZONTAL SCROLL ===================== */
+.featured-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.featured-scroll::-webkit-scrollbar { display: none; }
+
+.featured-card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.card-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-featured {
+  background: var(--gold);
+  color: #000;
+}
+
+.badge-soldout {
+  background: var(--red);
+  color: #fff;
+}
+
+.badge-free {
+  background: var(--green);
+  color: #000;
+}
+
+.card-body { padding: 16px; }
+
+.card-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-venue {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-location {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.7;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-price {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.card-price span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.btn-tickets {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.btn-tickets:hover { background: #0073dd; transform: translateY(-1px); }
+
+.btn-tickets.soldout {
+  background: rgba(255, 99, 89, 0.15);
+  color: var(--red);
+  cursor: not-allowed;
+}
+
+/* ===================== CITY GRID ===================== */
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.city-card {
+  position: relative;
+  height: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.city-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.city-card-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 20px;
+  position: relative;
+}
+
+.city-card-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.city-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.city-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== UPCOMING EVENTS ===================== */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-tabs {
+  display: flex;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.filter-tab {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.filter-tab:hover { color: var(--text); }
+.filter-tab.active {
+  background: var(--blue);
+  color: var(--text);
+}
+
+.filter-sort {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-sort label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.filter-sort select {
+  height: 36px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0 28px 0 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238A9199' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.event-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.04);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.event-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.event-card .card-image { height: 180px; }
+
+.load-more-wrap {
+  text-align: center;
+  padding: 40px 0 0;
+}
+
+.btn-loadmore {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  padding: 14px 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.btn-loadmore:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ===================== MODAL ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  background: var(--card-bg-alt);
+  border-radius: 20px 20px 0 0;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal-hero {
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-hero-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.modal-close:hover { background: rgba(0,0,0,0.7); }
+
+.modal-share-btn {
+  position: absolute;
+  top: 16px;
+  right: 60px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.modal-share-btn:hover { background: rgba(0,0,0,0.7); }
+
+.modal-content { padding: 28px; }
+
+.modal-event-name {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.modal-meta-row svg { flex-shrink: 0; color: var(--blue); }
+.modal-meta-row a {
+  color: var(--blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-meta-row a:hover { text-decoration: underline; }
+
+.modal-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.modal-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* Ticket tiers */
+.ticket-tiers { margin-bottom: 24px; }
+
+.ticket-tier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.ticket-tier:hover { border-color: var(--blue); }
+.ticket-tier.selected { border-color: var(--blue); background: rgba(0, 134, 255, 0.06); }
+
+.tier-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tier-info p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tier-perks {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.perk-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.perk-skip { background: rgba(0, 134, 255, 0.15); color: var(--blue); }
+.perk-drink { background: rgba(239, 174, 0, 0.15); color: var(--gold); }
+
+.tier-price {
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Quantity selector */
+.quantity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.qty-btn:hover { background: rgba(255,255,255,0.06); }
+
+.qty-value {
+  width: 48px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  line-height: 40px;
+}
+
+.total-price {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.btn-buy {
+  width: 100%;
+  height: 54px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  margin-bottom: 12px;
+}
+
+.btn-buy:hover { background: #0073dd; box-shadow: 0 6px 24px rgba(0, 134, 255, 0.35); }
+.btn-buy:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.payment-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.pay-icon {
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Venue info in modal */
+.modal-venue-info {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.modal-venue-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.venue-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.venue-detail svg { flex-shrink: 0; }
+
+/* More events in modal */
+.more-events-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.more-event-mini {
+  flex: 0 0 200px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.more-event-mini:hover {
+  border-color: var(--blue);
+  background: rgba(0, 134, 255, 0.04);
+}
+
+.more-event-mini h5 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.more-event-mini p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ===================== VENUE PAGE VIEW ===================== */
+.venue-view {
+  display: none;
+}
+
+.venue-view.active {
+  display: block;
+}
+
+.venue-header {
+  padding: 100px 24px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.venue-header-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.venue-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.venue-header h1 {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.venue-header p {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.venue-back {
+  position: absolute;
+  top: 80px;
+  left: 24px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  z-index: 1;
+  transition: background 0.2s;
+}
+.venue-back:hover { background: rgba(255,255,255,0.12); }
+
+.venue-about {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.venue-about-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 32px;
+}
+
+.venue-about-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.venue-about-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 24px 32px;
+  margin-top: 40px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.footer-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 300px;
+  margin-bottom: 16px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.social-icon:hover { background: var(--blue); color: white; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--blue); }
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-bottom-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-bottom-links a:hover { color: var(--text); }
+
+/* ===================== TOAST ===================== */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--card-bg-alt);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 3000;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #000;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .city-grid { grid-template-columns: repeat(3, 1fr); }
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-search { display: none; }
+  .nav-city-select { display: none; }
+  .hero { padding: 60px 20px 48px; }
+  .hero h1 { font-size: 32px; }
+  .section { padding: 40px 16px; }
+  .featured-card { flex: 0 0 290px; }
+  .city-grid { grid-template-columns: repeat(2, 1fr); }
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .filter-bar { gap: 8px; }
+  .filter-sort { margin-left: 0; width: 100%; justify-content: flex-end; }
+  .modal { max-height: 95vh; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 480px) {
+  .nav-right .btn-ghost { display: none; }
+  .city-grid { grid-template-columns: 1fr; }
+  .events-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .modal-event-name { font-size: 22px; }
+}
+
+/* ===================== ANIMATION UTILITY ===================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active city highlight */
+.city-card.active-city {
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 20px rgba(0, 134, 255, 0.2);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" onclick="goHome()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="4" width="20" height="16" rx="3" stroke="#0086FF" stroke-width="2"/>
+        <path d="M2 10h20" stroke="#0086FF" stroke-width="2"/>
+        <circle cx="7" cy="7" r="1" fill="#0086FF"/>
+        <circle cx="11" cy="7" r="1" fill="#0086FF"/>
+        <rect x="6" y="13" width="5" height="4" rx="1" fill="#0086FF" opacity="0.4"/>
+        <rect x="13" y="13" width="5" height="4" rx="1" fill="#0086FF" opacity="0.4"/>
+      </svg>
+      LineLeap Tickets
+    </a>
+    <div class="nav-search">
+      <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="navSearchInput" placeholder="Search events, venues, or cities..." oninput="handleSearch(this.value)">
+    </div>
+    <div class="nav-right">
+      <select class="nav-city-select" id="citySelect" onchange="filterByCity(this.value)">
+        <option value="">All Cities</option>
+        <option value="Madison WI">Madison, WI</option>
+        <option value="Nashville TN">Nashville, TN</option>
+        <option value="New York NY">New York, NY</option>
+        <option value="Austin TX">Austin, TX</option>
+        <option value="Clemson SC">Clemson, SC</option>
+        <option value="State College PA">State College, PA</option>
+        <option value="Ann Arbor MI">Ann Arbor, MI</option>
+        <option value="Charleston SC">Charleston, SC</option>
+        <option value="Auburn AL">Auburn, AL</option>
+        <option value="Lexington KY">Lexington, KY</option>
+        <option value="Ocean City MD">Ocean City, MD</option>
+        <option value="Minneapolis MN">Minneapolis, MN</option>
+        <option value="New Orleans LA">New Orleans, LA</option>
+        <option value="Tucson AZ">Tucson, AZ</option>
+      </select>
+      <button class="btn btn-ghost" onclick="showToast('Login coming soon!')">Log In</button>
+      <button class="btn btn-primary">Sign Up</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ MAIN VIEW ============ -->
+<div id="mainView">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Find Your <span>Next Night Out</span></h1>
+    <p>Skip lines, grab tickets, and get VIP access to the best events — only on LineLeap.</p>
+    <div class="hero-search">
+      <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="heroSearchInput" placeholder="Search events, venues, or cities..." oninput="handleSearch(this.value)">
+      <button class="hero-search-btn" onclick="handleSearch(document.getElementById('heroSearchInput').value)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+    <div class="hero-pills">
+      <button class="pill" onclick="handlePill('This Weekend')">This Weekend</button>
+      <button class="pill" onclick="handlePill('Tonight')">Tonight</button>
+      <button class="pill" onclick="handlePill('Free Events')">Free Events</button>
+      <button class="pill" onclick="handlePill('VIP')">VIP</button>
+      <button class="pill" onclick="handlePill('Concerts')">Concerts</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED EVENTS ============ -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Featured Events</h2>
+    <a class="section-link" onclick="scrollToUpcoming()">View all events &rarr;</a>
+  </div>
+  <div class="featured-scroll" id="featuredScroll"></div>
+</section>
+
+<!-- ============ EXPLORE CITIES ============ -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Explore Cities</h2>
+  </div>
+  <div class="city-grid" id="cityGrid"></div>
+</section>
+
+<!-- ============ UPCOMING EVENTS ============ -->
+<section class="section" id="upcomingSection">
+  <div class="section-header">
+    <h2 class="section-title" id="upcomingTitle">Upcoming Events</h2>
+  </div>
+  <div class="filter-bar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterTab('all', this)">All</button>
+      <button class="filter-tab" onclick="filterTab('tonight', this)">Tonight</button>
+      <button class="filter-tab" onclick="filterTab('this-week', this)">This Week</button>
+      <button class="filter-tab" onclick="filterTab('this-month', this)">This Month</button>
+    </div>
+    <div class="filter-sort">
+      <label>Sort by:</label>
+      <select id="sortSelect" onchange="sortEvents(this.value)">
+        <option value="date">Date</option>
+        <option value="price">Price</option>
+        <option value="popularity">Popularity</option>
+      </select>
+    </div>
+  </div>
+  <div class="events-grid" id="eventsGrid"></div>
+  <div class="load-more-wrap">
+    <button class="btn-loadmore" id="loadMoreBtn" onclick="loadMore()">Load More Events</button>
+  </div>
+</section>
+
+</div><!-- end mainView -->
+
+<!-- ============ VENUE VIEW ============ -->
+<div id="venueView" class="venue-view">
+  <div class="venue-header" id="venueHeader">
+    <div class="venue-header-bg" id="venueHeaderBg"></div>
+    <button class="venue-back" onclick="goHome()">&larr; Back to Events</button>
+    <div class="venue-header-content">
+      <h1 id="venueNameHeader"></h1>
+      <p id="venueLocationHeader"></p>
+    </div>
+  </div>
+  <div class="venue-about">
+    <div class="venue-about-card">
+      <h3>About this Venue</h3>
+      <p id="venueAbout"></p>
+    </div>
+    <h2 class="section-title" style="margin-bottom:20px">Upcoming Events</h2>
+    <div class="events-grid" id="venueEventsGrid"></div>
+  </div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hero" id="modalHero">
+      <div class="modal-hero-bg" id="modalHeroBg"></div>
+      <button class="modal-share-btn" onclick="shareEvent()" title="Share">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      </button>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-event-name" id="modalEventName"></h2>
+      <div class="modal-meta">
+        <div class="modal-meta-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a id="modalVenueLink" onclick="openVenueFromModal()"></a>
+        </div>
+        <div class="modal-meta-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span id="modalDate"></span>
+        </div>
+        <div class="modal-meta-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="modalTime"></span>
+        </div>
+      </div>
+      <p class="modal-desc" id="modalDesc"></p>
+
+      <h3 class="modal-section-title">Select Tickets</h3>
+      <div class="ticket-tiers" id="ticketTiers"></div>
+
+      <div class="quantity-row">
+        <div>
+          <span style="font-size:14px;color:var(--text-secondary)">Quantity</span>
+          <div class="quantity-selector" style="margin-top:6px">
+            <button class="qty-btn" onclick="changeQty(-1)">-</button>
+            <div class="qty-value" id="qtyValue">1</div>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <span style="font-size:14px;color:var(--text-secondary)">Total</span>
+          <div class="total-price" id="totalPrice">$0</div>
+        </div>
+      </div>
+
+      <button class="btn-buy" id="buyBtn" onclick="buyTickets()">Buy Tickets</button>
+      <div class="payment-note">
+        Pay with your preferred method
+        <div class="payment-icons">
+          <span class="pay-icon">Venmo</span>
+          <span class="pay-icon">PayPal</span>
+          <span class="pay-icon">Apple Pay</span>
+          <span class="pay-icon">Credit Card</span>
+        </div>
+      </div>
+
+      <div class="modal-venue-info">
+        <h4 id="modalVenueInfoName"></h4>
+        <div class="venue-detail">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="modalVenueAddr"></span>
+        </div>
+        <div class="venue-detail">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="modalVenueHours"></span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">More Events at This Venue</h3>
+      <div class="more-events-row" id="moreEventsRow"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast">
+  <div class="toast-icon">&#10003;</div>
+  <span id="toastMsg">Opening LineLeap app...</span>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="4" width="20" height="16" rx="3" stroke="#0086FF" stroke-width="2"/>
+          <path d="M2 10h20" stroke="#0086FF" stroke-width="2"/>
+          <circle cx="7" cy="7" r="1" fill="#0086FF"/>
+          <circle cx="11" cy="7" r="1" fill="#0086FF"/>
+        </svg>
+        LineLeap Tickets
+      </div>
+      <p class="footer-desc">Skip the line and get into the best nightlife events across the country. Download the LineLeap app for the fastest entry experience.</p>
+      <div class="footer-social">
+        <a class="social-icon" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="social-icon" title="Twitter/X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l6.5 8L4 20h2l5.5-6.8L16 20h4l-6.8-8.5L20 4h-2l-5.2 6.3L8 4H4z"/></svg>
+        </a>
+        <a class="social-icon" title="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <a class="social-icon" title="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#">Home</a>
+      <a href="#">Browse Events</a>
+      <a href="#">Venues</a>
+      <a href="#">Cities</a>
+      <a href="#">Download App</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About LineLeap</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Partners</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">FAQ</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">Venue Owners</a>
+      <a href="#">Promoter Portal</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 LineLeap. All Rights Reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const EVENTS = [
+  {
+    id: 1, name: "NEON NIGHTS: DJ Snake", venue: "Stage West", city: "Nashville TN",
+    date: "2025-02-15", time: "10:00 PM", doorsOpen: "9:00 PM",
+    price: 25, soldOut: false, featured: true, popularity: 95,
+    gradient: "linear-gradient(135deg, #0a0040 0%, #3a0080 40%, #0086FF 100%)",
+    emoji: "\uD83C\uDFB5",
+    desc: "Nashville's biggest electronic night returns with DJ Snake headlining a two-stage production at Stage West. Expect jaw-dropping visuals, pyrotechnics, and a packed dance floor from open to close. VIP bottle service available for groups of 4+.",
+    address: "167 1st Ave S, Nashville, TN 37201",
+    hours: "Open 9 PM - 3 AM",
+    tags: ["concert", "edm", "vip"]
+  },
+  {
+    id: 2, name: "College Night Takeover", venue: "Kollege Klub", city: "Madison WI",
+    date: "2025-02-13", time: "9:00 PM", doorsOpen: "8:30 PM",
+    price: 10, soldOut: false, featured: true, popularity: 88,
+    gradient: "linear-gradient(135deg, #1a0a00 0%, #cc4400 50%, #EFAE00 100%)",
+    emoji: "\uD83C\uDF7A",
+    desc: "Madison's legendary Thursday night tradition continues at KK. Three floors of music, $3 rails before 10, and the city's best college crowd. Bring your student ID for priority lane access through the LineLeap app.",
+    address: "529 N Lake St, Madison, WI 53703",
+    hours: "Open 8 PM - 2:30 AM",
+    tags: ["college", "nightlife"]
+  },
+  {
+    id: 3, name: "ONE NIGHT IN VEGAS", venue: "Whiskey Jacks", city: "Madison WI",
+    date: "2025-02-14", time: "9:00 PM", doorsOpen: "8:30 PM",
+    price: 15, soldOut: false, featured: true, popularity: 82,
+    gradient: "linear-gradient(135deg, #2a0020 0%, #cc0066 40%, #EFAE00 100%)",
+    emoji: "\uD83C\uDFB0",
+    desc: "Transform your Valentine's Day with a Vegas-themed blowout at Whiskey Jacks. Casino tables, themed cocktails, and a DJ spinning the hottest tracks all night. Dress code: dress to impress. Best costume wins a VIP table.",
+    address: "548 State St, Madison, WI 53703",
+    hours: "Open 8 PM - 2:30 AM",
+    tags: ["themed", "valentines", "nightlife"]
+  },
+  {
+    id: 4, name: "Mardi Gras Madness", venue: "The Boot", city: "New Orleans LA",
+    date: "2025-02-22", time: "8:00 PM", doorsOpen: "7:00 PM",
+    price: 20, soldOut: false, featured: true, popularity: 91,
+    gradient: "linear-gradient(135deg, #0a2a00 0%, #006633 40%, #EFAE00 80%, #9900cc 100%)",
+    emoji: "\uD83C\uDF8A",
+    desc: "It's Mardi Gras season and The Boot is going all out. Live brass band, bead throws, hurricane specials, and a second-line parade through the venue. This is the authentic New Orleans experience — costumes and masks strongly encouraged.",
+    address: "1039 Broadway St, New Orleans, LA 70118",
+    hours: "Open 7 PM - 4 AM",
+    tags: ["themed", "live-music", "holiday"]
+  },
+  {
+    id: 5, name: "Spring Break Kickoff", venue: "Seacrets", city: "Ocean City MD",
+    date: "2025-03-07", time: "7:00 PM", doorsOpen: "6:00 PM",
+    price: 30, soldOut: false, featured: true, popularity: 86,
+    gradient: "linear-gradient(135deg, #002a2a 0%, #00b8d4 50%, #0086FF 100%)",
+    emoji: "\uD83C\uDFD6\uFE0F",
+    desc: "Kick off spring break at the East Coast's biggest oceanfront venue. Seacrets brings four stages of live music, a foam zone, swim-up bars, and the iconic Jamaica-themed atmosphere. Day-to-night tickets include all-access wristband.",
+    address: "117 49th St, Ocean City, MD 21842",
+    hours: "Open 6 PM - 2 AM",
+    tags: ["spring-break", "outdoor", "multi-stage"]
+  },
+  {
+    id: 6, name: "St. Patrick's Bar Crawl", venue: "Multiple Venues", city: "Nashville TN",
+    date: "2025-03-15", time: "12:00 PM", doorsOpen: "11:30 AM",
+    price: 35, soldOut: true, featured: true, popularity: 99,
+    gradient: "linear-gradient(135deg, #002200 0%, #00C853 50%, #EFAE00 100%)",
+    emoji: "\u2618\uFE0F",
+    desc: "Nashville's biggest St. Patrick's Day bar crawl hits Broadway with 10+ participating venues. Your wristband gets you free cover, drink specials, and a commemorative green cup at every stop. This event sells out every year — don't wait.",
+    address: "Broadway Strip, Nashville, TN",
+    hours: "12 PM - 12 AM",
+    tags: ["bar-crawl", "holiday", "multi-venue"]
+  },
+  {
+    id: 7, name: "Throwback Thursday", venue: "Brothers", city: "Lexington KY",
+    date: "2025-02-13", time: "9:00 PM", doorsOpen: "8:30 PM",
+    price: 5, soldOut: false, featured: false, popularity: 72,
+    gradient: "linear-gradient(135deg, #1a0033 0%, #6600cc 50%, #F254C1 100%)",
+    emoji: "\uD83D\uDD7A",
+    desc: "It's Thursday at Brothers and that means throwback hits from the 2000s and 2010s all night. $2 wells, $3 bombs, and the best sing-along energy in Lexington. Show up early because it fills fast.",
+    address: "359 S Limestone, Lexington, KY 40508",
+    hours: "Open 8 PM - 2 AM",
+    tags: ["college", "nightlife", "throwback"]
+  },
+  {
+    id: 8, name: "EDM FRIDAYS", venue: "ROAR", city: "Clemson SC",
+    date: "2025-02-14", time: "10:00 PM", doorsOpen: "9:30 PM",
+    price: 15, soldOut: false, featured: false, popularity: 78,
+    gradient: "linear-gradient(135deg, #000033 0%, #0044cc 40%, #00ddff 100%)",
+    emoji: "\uD83D\uDE80",
+    desc: "Clemson's premier EDM night brings high-energy bass and house music every Friday. Full LED production, CO2 cannons, and guest DJs from the Southeast circuit. Get your LineSkip pass to bypass the block-long line.",
+    address: "1007 Tiger Blvd, Clemson, SC 29631",
+    hours: "Open 9 PM - 2:30 AM",
+    tags: ["edm", "college", "nightlife"]
+  },
+  {
+    id: 9, name: "Valentine's Day Bash", venue: "Dirty Dan's", city: "Madison WI",
+    date: "2025-02-14", time: "9:00 PM", doorsOpen: "8:30 PM",
+    price: 20, soldOut: false, featured: false, popularity: 80,
+    gradient: "linear-gradient(135deg, #330011 0%, #FF6359 50%, #F254C1 100%)",
+    emoji: "\u2764\uFE0F",
+    desc: "Whether you're celebrating with your person or your squad, Dirty Dan's is the Valentine's Day move. Red-themed cocktails, a photo booth, and a DJ spinning R&B and pop all night. Couples get a free champagne toast at the door.",
+    address: "1501 Monroe St, Madison, WI 53711",
+    hours: "Open 8 PM - 2:30 AM",
+    tags: ["themed", "valentines", "nightlife"]
+  },
+  {
+    id: 10, name: "Live Music: Country Night", venue: "Tin Roof", city: "Lexington KY",
+    date: "2025-02-15", time: "7:00 PM", doorsOpen: "6:30 PM",
+    price: 0, soldOut: false, featured: false, popularity: 85,
+    gradient: "linear-gradient(135deg, #1a1000 0%, #aa6600 40%, #EFAE00 100%)",
+    emoji: "\uD83E\uDE95",
+    desc: "Saturday night live country at the Tin Roof featuring local Nashville-style acts. No cover charge, cold beer on draft, and the kind of genuine country atmosphere you can't manufacture. Kitchen open until midnight.",
+    address: "303 S Limestone, Lexington, KY 40508",
+    hours: "Open 6 PM - 2 AM",
+    tags: ["live-music", "country", "free"]
+  },
+  {
+    id: 11, name: "Rooftop Sunset Party", venue: "Jason Aldean's Kitchen", city: "Nashville TN",
+    date: "2025-02-16", time: "4:00 PM", doorsOpen: "3:30 PM",
+    price: 25, soldOut: false, featured: false, popularity: 89,
+    gradient: "linear-gradient(135deg, #1a0500 0%, #FF6359 40%, #EFAE00 100%)",
+    emoji: "\uD83C\uDF05",
+    desc: "Catch golden hour from six stories above Broadway at Jason Aldean's famous rooftop bar. Live acoustic sets, craft cocktails, and panoramic views of downtown Nashville. One of the most Instagrammable spots in the city.",
+    address: "307 Broadway, Nashville, TN 37201",
+    hours: "Open 3 PM - 12 AM",
+    tags: ["rooftop", "live-music", "daytime"]
+  },
+  {
+    id: 12, name: "Morgan Wallen's Mondays", venue: "Morgan Wallen's", city: "Nashville TN",
+    date: "2025-02-17", time: "7:00 PM", doorsOpen: "6:30 PM",
+    price: 10, soldOut: false, featured: false, popularity: 84,
+    gradient: "linear-gradient(135deg, #0a0a0a 0%, #333333 40%, #0086FF 100%)",
+    emoji: "\uD83C\uDFB6",
+    desc: "Start your week right at Morgan Wallen's bar on Lower Broadway. Monday night features emerging country artists, whiskey flights, and the chance to sit in the actual writing room. Industry night pricing on select drinks.",
+    address: "300 Broadway, Nashville, TN 37201",
+    hours: "Open 6 PM - 2 AM",
+    tags: ["live-music", "country", "nightlife"]
+  },
+  {
+    id: 13, name: "Wing Wednesday", venue: "1785 Bar & Grill", city: "Madison WI",
+    date: "2025-02-19", time: "5:00 PM", doorsOpen: "5:00 PM",
+    price: 0, soldOut: false, featured: false, popularity: 65,
+    gradient: "linear-gradient(135deg, #1a0a00 0%, #FF6359 40%, #EFAE00 100%)",
+    emoji: "\uD83C\uDF57",
+    desc: "Madison's best wing deal: 75-cent wings all night with 20 sauce options. Trivia starts at 8, DJ at 10, and the rooftop deck is heated for winter. No cover — just show up hungry and stay for the party.",
+    address: "1785 Regent St, Madison, WI 53726",
+    hours: "Open 5 PM - 2 AM",
+    tags: ["food", "trivia", "free"]
+  },
+  {
+    id: 14, name: "Hip-Hop Night", venue: "Champs", city: "State College PA",
+    date: "2025-02-20", time: "10:00 PM", doorsOpen: "9:30 PM",
+    price: 10, soldOut: false, featured: false, popularity: 76,
+    gradient: "linear-gradient(135deg, #0a0a1a 0%, #1a0040 40%, #F254C1 100%)",
+    emoji: "\uD83C\uDFA4",
+    desc: "State College's biggest hip-hop night takes over Champs every Thursday. Two DJs, a hype MC, and the hardest-hitting sound system in town. LineSkip is a must — the line wraps around the block by 10:30.",
+    address: "108 W College Ave, State College, PA 16801",
+    hours: "Open 9 PM - 2 AM",
+    tags: ["hiphop", "college", "nightlife"]
+  },
+  {
+    id: 15, name: "Foam Party", venue: "Southeastern", city: "Auburn AL",
+    date: "2025-02-21", time: "10:00 PM", doorsOpen: "9:30 PM",
+    price: 15, soldOut: false, featured: false, popularity: 81,
+    gradient: "linear-gradient(135deg, #001a33 0%, #0066cc 40%, #00ddff 80%, #ffffff 100%)",
+    emoji: "\uD83E\uDDFC",
+    desc: "Auburn's craziest night out — the foam cannons fire up at 11 PM and it's wall-to-wall energy until close. Wear white, bring extra clothes, and prepare for the most fun you'll have all semester. Towels provided at the exit.",
+    address: "200 S College St, Auburn, AL 36830",
+    hours: "Open 9 PM - 2 AM",
+    tags: ["themed", "college", "party"]
+  },
+  {
+    id: 16, name: "Beach Beats", venue: "Seacrets", city: "Ocean City MD",
+    date: "2025-02-22", time: "6:00 PM", doorsOpen: "5:30 PM",
+    price: 20, soldOut: false, featured: false, popularity: 77,
+    gradient: "linear-gradient(135deg, #001a1a 0%, #006666 40%, #00b8d4 80%, #EFAE00 100%)",
+    emoji: "\uD83C\uDFDD\uFE0F",
+    desc: "Beachside beats at Seacrets with rotating DJs on the outdoor stage. Fire pits, frozen drinks, and ocean air — this is the winter beach party that makes OC a year-round destination. Heated patios keep it comfortable.",
+    address: "117 49th St, Ocean City, MD 21842",
+    hours: "Open 5 PM - 1 AM",
+    tags: ["outdoor", "beach", "dj"]
+  },
+  {
+    id: 17, name: "Sunday Funday", venue: "The Lansdowne Pub", city: "New York NY",
+    date: "2025-02-23", time: "2:00 PM", doorsOpen: "12:00 PM",
+    price: 0, soldOut: false, featured: false, popularity: 73,
+    gradient: "linear-gradient(135deg, #001a00 0%, #00C853 50%, #0086FF 100%)",
+    emoji: "\u26BD",
+    desc: "NYC's best Sunday session at The Lansdowne Pub in the East Village. Premier League on every screen, bottomless brunch specials from noon to 4, and live Irish trad music starting at 6. No cover, all vibes.",
+    address: "150 E Houston St, New York, NY 10012",
+    hours: "Open 12 PM - 12 AM",
+    tags: ["sports", "brunch", "free", "live-music"]
+  },
+  {
+    id: 18, name: "Karaoke Nights", venue: "Gentle Ben's Brewing", city: "Tucson AZ",
+    date: "2025-02-27", time: "8:00 PM", doorsOpen: "7:30 PM",
+    price: 0, soldOut: false, featured: false, popularity: 68,
+    gradient: "linear-gradient(135deg, #1a0a00 0%, #cc4400 40%, #FF6359 80%, #F254C1 100%)",
+    emoji: "\uD83C\uDFA4",
+    desc: "Thursday night karaoke at Gentle Ben's is a Tucson institution. Sign up early because the list fills fast. House-brewed pints on special, a massive song catalog, and the most supportive crowd in the Southwest.",
+    address: "865 E University Blvd, Tucson, AZ 85719",
+    hours: "Open 7 PM - 1:30 AM",
+    tags: ["karaoke", "brewery", "free"]
+  }
+];
+
+const CITIES = [
+  { name: "Madison, WI", key: "Madison WI", venues: 45, gradient: "linear-gradient(135deg, #cc0000 0%, #660000 100%)" },
+  { name: "Nashville, TN", key: "Nashville TN", venues: 38, gradient: "linear-gradient(135deg, #0086FF 0%, #003366 100%)" },
+  { name: "New York, NY", key: "New York NY", venues: 52, gradient: "linear-gradient(135deg, #EFAE00 0%, #664400 100%)" },
+  { name: "Austin, TX", key: "Austin TX", venues: 31, gradient: "linear-gradient(135deg, #F254C1 0%, #660033 100%)" },
+  { name: "Clemson, SC", key: "Clemson SC", venues: 18, gradient: "linear-gradient(135deg, #FF6359 0%, #993300 100%)" },
+  { name: "State College, PA", key: "State College PA", venues: 22, gradient: "linear-gradient(135deg, #002266 0%, #0044cc 100%)" },
+  { name: "Ann Arbor, MI", key: "Ann Arbor MI", venues: 25, gradient: "linear-gradient(135deg, #003366 0%, #EFAE00 100%)" },
+  { name: "Charleston, SC", key: "Charleston SC", venues: 20, gradient: "linear-gradient(135deg, #006633 0%, #00C853 100%)" },
+  { name: "Auburn, AL", key: "Auburn AL", venues: 15, gradient: "linear-gradient(135deg, #0a0a4a 0%, #FF6359 100%)" },
+  { name: "Lexington, KY", key: "Lexington KY", venues: 12, gradient: "linear-gradient(135deg, #0086FF 0%, #00C853 100%)" },
+  { name: "Ocean City, MD", key: "Ocean City MD", venues: 8, gradient: "linear-gradient(135deg, #00b8d4 0%, #004040 100%)" },
+  { name: "Minneapolis, MN", key: "Minneapolis MN", venues: 19, gradient: "linear-gradient(135deg, #6600cc 0%, #F254C1 100%)" }
+];
+
+const VENUE_BLURBS = {
+  "Stage West": "Stage West is Nashville's premier live music and event venue, hosting local and national acts in an intimate yet high-energy setting. Known for top-tier production and late-night performances on 1st Ave.",
+  "Kollege Klub": "A Madison institution since 1953, KK is the beating heart of UW-Madison's nightlife. Three floors, multiple bars, and a legacy that spans generations of Badgers.",
+  "Whiskey Jacks": "Whiskey Jacks on State Street delivers craft cocktails, themed nights, and one of Madison's best dance floors. The go-to for weekend events and holiday parties.",
+  "The Boot": "The Boot is a Tulane and Loyola staple, serving up New Orleans nightlife with cheap drinks and an unbeatable atmosphere. A rite of passage for every college student in NOLA.",
+  "Seacrets": "Seacrets is America's largest nightclub — a sprawling Jamaica-themed complex with swim-up bars, multiple stages, and oceanfront views in Ocean City, MD. Open rain or shine, winter through summer.",
+  "Multiple Venues": "Nashville's Broadway strip features dozens of world-class honky-tonks, rooftop bars, and live music venues. Bar crawl events cover the best spots from 1st Ave to 5th.",
+  "Brothers": "Brothers Bar & Grill in Lexington is a college nightlife staple with strong drinks, great music, and an electric atmosphere. Throwback Thursdays are legendary.",
+  "ROAR": "ROAR is Clemson's go-to for high-energy dance nights, featuring a massive sound system and LED production that rivals clubs twice its size.",
+  "Dirty Dan's": "Dirty Dan's is a Monroe Street mainstay delivering craft cocktails, creative themed events, and a lively dance floor. A Madison favorite for weekend celebrations.",
+  "Tin Roof": "Tin Roof in Lexington is where live music meets good times. Known for showcasing emerging artists, cold beer, and a laid-back Southern atmosphere.",
+  "Jason Aldean's Kitchen": "Jason Aldean's Kitchen + Rooftop Bar is a six-story Nashville landmark on Broadway with live music on every level and the city's most iconic rooftop view.",
+  "Morgan Wallen's": "Morgan Wallen's bar brings the superstar's vision to Lower Broadway with a writing room, live acts, and the authentic Nashville honky-tonk experience.",
+  "1785 Bar & Grill": "1785 Bar & Grill is a Regent Street neighborhood bar with a heated rooftop, legendary wings, and a rotation of trivia, DJs, and live entertainment.",
+  "Champs": "Champs Downtown is State College's biggest nightlife destination with multiple rooms, massive capacity, and themed nights that pack the house every week.",
+  "Southeastern": "Southeastern in Auburn delivers high-energy college nights with creative themes — from foam parties to paint nights — in the heart of the Tiger Prowl district.",
+  "The Lansdowne Pub": "The Lansdowne Pub is an authentic Irish pub in Manhattan's East Village, beloved for Premier League watch parties, live music, and weekend brunch.",
+  "Gentle Ben's Brewing": "Gentle Ben's is a Tucson icon on University Blvd, brewing craft beer on-site and hosting everything from karaoke to comedy. A U of A tradition since 1991."
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let currentFilter = 'all';
+let currentCity = '';
+let currentSearch = '';
+let currentSort = 'date';
+let displayedCount = 12;
+let selectedTierIdx = 0;
+let quantity = 1;
+let currentModalEvent = null;
+
+// ============================================================
+// RENDER
+// ============================================================
+function init() {
+  renderFeatured();
+  renderCities();
+  renderUpcoming();
+  setupScrollObserver();
+}
+
+function renderFeatured() {
+  const container = document.getElementById('featuredScroll');
+  const featured = EVENTS.filter(e => e.featured);
+  container.innerHTML = featured.map(e => buildCardHTML(e, true)).join('');
+}
+
+function renderCities() {
+  const container = document.getElementById('cityGrid');
+  container.innerHTML = CITIES.map(c => `
+    <div class="city-card ${currentCity === c.key ? 'active-city' : ''}" onclick="filterByCity('${c.key}')">
+      <div class="city-card-bg" style="background:${c.gradient}">
+        <h3>${c.name}</h3>
+        <p>${c.venues} venues</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderUpcoming() {
+  const container = document.getElementById('eventsGrid');
+  let events = getFilteredEvents();
+
+  // Sort
+  if (currentSort === 'price') events.sort((a, b) => a.price - b.price);
+  else if (currentSort === 'popularity') events.sort((a, b) => b.popularity - a.popularity);
+  else events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const toShow = events.slice(0, displayedCount);
+  container.innerHTML = toShow.map(e => buildCardHTML(e, false)).join('');
+
+  // Show/hide load more
+  document.getElementById('loadMoreBtn').style.display = events.length > displayedCount ? '' : 'none';
+
+  // Update title
+  const title = document.getElementById('upcomingTitle');
+  if (currentCity) {
+    title.textContent = `Events in ${CITIES.find(c => c.key === currentCity)?.name || currentCity}`;
+  } else if (currentSearch) {
+    title.textContent = `Search results for "${currentSearch}"`;
+  } else {
+    title.textContent = 'Upcoming Events';
+  }
+
+  // Trigger animations
+  requestAnimationFrame(() => {
+    container.querySelectorAll('.event-card').forEach((card, i) => {
+      setTimeout(() => card.classList.add('visible'), i * 60);
+    });
+  });
+}
+
+function buildCardHTML(event, isFeatured) {
+  const cls = isFeatured ? 'featured-card' : 'event-card visible';
+  const dateStr = formatDate(event.date);
+  const priceStr = event.price === 0 ? 'Free' : `From $${event.price}`;
+  const badges = [];
+  if (event.soldOut) badges.push('<span class="card-badge badge-soldout">Sold Out</span>');
+  else if (event.featured && isFeatured) badges.push('<span class="card-badge badge-featured">Featured</span>');
+  if (event.price === 0 && !event.soldOut) badges.push('<span class="card-badge badge-free">Free</span>');
+
+  return `
+    <div class="${cls}" onclick="openModal(${event.id})">
+      <div class="card-image">
+        <div class="card-image-bg" style="background:${event.gradient}">${event.emoji}</div>
+        ${badges.join('')}
+      </div>
+      <div class="card-body">
+        <div class="card-date">${dateStr} &middot; ${event.time}</div>
+        <div class="card-title">${event.name}</div>
+        <div class="card-venue">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          ${event.venue}
+        </div>
+        <div class="card-location">${event.city}</div>
+        <div class="card-footer">
+          <div class="card-price">${event.price === 0 ? '<span style="color:var(--green);font-weight:700">Free</span>' : '$' + event.price} ${event.price > 0 ? '<span>and up</span>' : ''}</div>
+          ${event.soldOut
+            ? '<button class="btn-tickets soldout" onclick="event.stopPropagation()">Sold Out</button>'
+            : '<button class="btn-tickets" onclick="event.stopPropagation(); openModal(' + event.id + ')">Get Tickets</button>'}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
+}
+
+function formatDateLong(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
+// ============================================================
+// FILTERING
+// ============================================================
+function getFilteredEvents() {
+  let events = [...EVENTS];
+
+  // City filter
+  if (currentCity) {
+    events = events.filter(e => e.city === currentCity);
+  }
+
+  // Search
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    events = events.filter(e =>
+      e.name.toLowerCase().includes(q) ||
+      e.venue.toLowerCase().includes(q) ||
+      e.city.toLowerCase().includes(q) ||
+      e.tags.some(t => t.includes(q))
+    );
+  }
+
+  // Tab filter
+  const today = new Date('2025-02-13'); // Simulated "today" for demo
+  if (currentFilter === 'tonight') {
+    events = events.filter(e => e.date === '2025-02-13');
+  } else if (currentFilter === 'this-week') {
+    const weekEnd = new Date('2025-02-19');
+    events = events.filter(e => {
+      const d = new Date(e.date);
+      return d >= today && d <= weekEnd;
+    });
+  } else if (currentFilter === 'this-month') {
+    events = events.filter(e => e.date.startsWith('2025-02'));
+  }
+
+  return events;
+}
+
+function handleSearch(val) {
+  currentSearch = val.trim();
+  // Sync both search bars
+  document.getElementById('navSearchInput').value = val;
+  document.getElementById('heroSearchInput').value = val;
+  displayedCount = 12;
+  renderUpcoming();
+  if (val.length > 0) scrollToUpcoming();
+}
+
+function filterByCity(city) {
+  if (currentCity === city) {
+    currentCity = '';
+    document.getElementById('citySelect').value = '';
+  } else {
+    currentCity = city;
+    document.getElementById('citySelect').value = city;
+  }
+  displayedCount = 12;
+  renderCities();
+  renderUpcoming();
+  scrollToUpcoming();
+}
+
+function filterTab(tab, btn) {
+  currentFilter = tab;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  displayedCount = 12;
+  renderUpcoming();
+}
+
+function sortEvents(val) {
+  currentSort = val;
+  renderUpcoming();
+}
+
+function handlePill(text) {
+  if (text === 'Tonight') {
+    currentFilter = 'tonight';
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.filter-tab').forEach(t => { if (t.textContent === 'Tonight') t.classList.add('active'); });
+    renderUpcoming();
+    scrollToUpcoming();
+  } else if (text === 'This Weekend') {
+    currentFilter = 'this-week';
+    renderUpcoming();
+    scrollToUpcoming();
+  } else if (text === 'Free Events') {
+    currentSearch = 'free';
+    document.getElementById('navSearchInput').value = '';
+    document.getElementById('heroSearchInput').value = '';
+    // Filter free events
+    currentFilter = 'all';
+    displayedCount = 12;
+    const container = document.getElementById('eventsGrid');
+    let events = EVENTS.filter(e => e.price === 0);
+    container.innerHTML = events.map(e => buildCardHTML(e, false)).join('');
+    document.getElementById('upcomingTitle').textContent = 'Free Events';
+    document.getElementById('loadMoreBtn').style.display = 'none';
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.event-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 60);
+      });
+    });
+    currentSearch = '';
+    scrollToUpcoming();
+  } else if (text === 'VIP') {
+    handleSearch('vip');
+  } else if (text === 'Concerts') {
+    handleSearch('concert');
+  }
+}
+
+function loadMore() {
+  displayedCount += 6;
+  renderUpcoming();
+}
+
+function scrollToUpcoming() {
+  document.getElementById('upcomingSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ============================================================
+// MODAL
+// ============================================================
+function openModal(eventId) {
+  const event = EVENTS.find(e => e.id === eventId);
+  if (!event) return;
+  currentModalEvent = event;
+  selectedTierIdx = 0;
+  quantity = 1;
+
+  document.getElementById('modalHeroBg').style.background = event.gradient;
+  document.getElementById('modalHeroBg').textContent = event.emoji;
+  document.getElementById('modalEventName').textContent = event.name;
+  document.getElementById('modalVenueLink').textContent = event.venue + ' — ' + event.city;
+  document.getElementById('modalDate').textContent = formatDateLong(event.date);
+  document.getElementById('modalTime').textContent = `Doors open ${event.doorsOpen} · Event starts ${event.time}`;
+  document.getElementById('modalDesc').textContent = event.desc;
+  document.getElementById('modalVenueInfoName').textContent = event.venue;
+  document.getElementById('modalVenueAddr').textContent = event.address;
+  document.getElementById('modalVenueHours').textContent = event.hours;
+
+  // Ticket tiers
+  const tiers = getTicketTiers(event);
+  const tiersContainer = document.getElementById('ticketTiers');
+  tiersContainer.innerHTML = tiers.map((tier, i) => `
+    <div class="ticket-tier ${i === selectedTierIdx ? 'selected' : ''}" onclick="selectTier(${i})">
+      <div class="tier-info">
+        <h4>${tier.name}</h4>
+        <p>${tier.desc}</p>
+        ${tier.perks.length ? '<div class="tier-perks">' + tier.perks.map(p => `<span class="perk-badge ${p.cls}">${p.label}</span>`).join('') + '</div>' : ''}
+      </div>
+      <div class="tier-price">${tier.price === 0 ? 'Free' : '$' + tier.price}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('qtyValue').textContent = quantity;
+  updateTotal();
+
+  // Buy button state
+  const buyBtn = document.getElementById('buyBtn');
+  if (event.soldOut) {
+    buyBtn.textContent = 'Sold Out';
+    buyBtn.disabled = true;
+  } else {
+    buyBtn.textContent = 'Buy Tickets';
+    buyBtn.disabled = false;
+  }
+
+  // More events at this venue
+  const related = EVENTS.filter(e => e.venue === event.venue && e.id !== event.id).slice(0, 3);
+  const moreRow = document.getElementById('moreEventsRow');
+  if (related.length > 0) {
+    moreRow.innerHTML = related.map(e => `
+      <div class="more-event-mini" onclick="openModal(${e.id})">
+        <h5>${e.name}</h5>
+        <p>${formatDate(e.date)} &middot; ${e.time}</p>
+        <p style="color:${e.price === 0 ? 'var(--green)' : 'var(--text)'};font-weight:600;margin-top:4px">${e.price === 0 ? 'Free' : '$' + e.price}</p>
+      </div>
+    `).join('');
+  } else {
+    moreRow.innerHTML = '<p style="font-size:13px;color:var(--text-secondary)">No other upcoming events at this venue.</p>';
+  }
+
+  // Open
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function getTicketTiers(event) {
+  if (event.price === 0) {
+    return [
+      { name: 'General Admission', desc: 'Standard entry', price: 0, perks: [] },
+      { name: 'LineSkip', desc: 'Skip the line + priority entry', price: 10, perks: [{ label: 'Line Skip', cls: 'perk-skip' }] },
+      { name: 'VIP', desc: 'Skip the line + 1 drink ticket + VIP area', price: 25, perks: [{ label: 'Line Skip', cls: 'perk-skip' }, { label: 'Drink Ticket', cls: 'perk-drink' }] }
+    ];
+  }
+  return [
+    { name: 'General Admission', desc: 'Standard entry', price: event.price, perks: [] },
+    { name: 'LineSkip + GA', desc: 'Skip the line + priority entry', price: event.price + 10, perks: [{ label: 'Line Skip', cls: 'perk-skip' }] },
+    { name: 'VIP', desc: 'Skip the line + 1 drink ticket + VIP area', price: event.price + 25, perks: [{ label: 'Line Skip', cls: 'perk-skip' }, { label: 'Drink Ticket', cls: 'perk-drink' }] }
+  ];
+}
+
+function selectTier(idx) {
+  selectedTierIdx = idx;
+  document.querySelectorAll('.ticket-tier').forEach((t, i) => {
+    t.classList.toggle('selected', i === idx);
+  });
+  updateTotal();
+}
+
+function changeQty(delta) {
+  quantity = Math.max(1, Math.min(10, quantity + delta));
+  document.getElementById('qtyValue').textContent = quantity;
+  updateTotal();
+}
+
+function updateTotal() {
+  if (!currentModalEvent) return;
+  const tiers = getTicketTiers(currentModalEvent);
+  const total = tiers[selectedTierIdx].price * quantity;
+  document.getElementById('totalPrice').textContent = total === 0 ? 'Free' : '$' + total;
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  // Scroll modal back to top for next open
+  setTimeout(() => document.getElementById('modal').scrollTop = 0, 400);
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function buyTickets() {
+  closeModal();
+  showToast('Opening LineLeap app...');
+}
+
+function shareEvent() {
+  if (navigator.clipboard && currentModalEvent) {
+    navigator.clipboard.writeText('https://events.lineleap.com/e/' + currentModalEvent.id).then(() => {
+      showToast('Link copied to clipboard!');
+    }).catch(() => {
+      showToast('Opening LineLeap app...');
+    });
+  } else {
+    showToast('Opening LineLeap app...');
+  }
+}
+
+function openVenueFromModal() {
+  if (!currentModalEvent) return;
+  closeModal();
+  setTimeout(() => openVenue(currentModalEvent.venue, currentModalEvent.city), 300);
+}
+
+// ============================================================
+// VENUE VIEW
+// ============================================================
+function openVenue(venueName, city) {
+  const venueEvents = EVENTS.filter(e => e.venue === venueName);
+  if (venueEvents.length === 0) return;
+
+  document.getElementById('mainView').style.display = 'none';
+  document.querySelector('.footer').style.display = 'none';
+  const venueView = document.getElementById('venueView');
+  venueView.classList.add('active');
+
+  document.getElementById('venueHeaderBg').style.background = venueEvents[0].gradient;
+  document.getElementById('venueNameHeader').textContent = venueName;
+  document.getElementById('venueLocationHeader').textContent = city || venueEvents[0].city;
+  document.getElementById('venueAbout').textContent = VENUE_BLURBS[venueName] || `${venueName} is a popular nightlife venue known for great events and an amazing atmosphere.`;
+
+  const grid = document.getElementById('venueEventsGrid');
+  grid.innerHTML = venueEvents.map(e => buildCardHTML(e, false)).join('');
+  requestAnimationFrame(() => {
+    grid.querySelectorAll('.event-card').forEach((card, i) => {
+      setTimeout(() => card.classList.add('visible'), i * 60);
+    });
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goHome() {
+  document.getElementById('mainView').style.display = '';
+  document.querySelector('.footer').style.display = '';
+  document.getElementById('venueView').classList.remove('active');
+  currentCity = '';
+  currentSearch = '';
+  currentFilter = 'all';
+  document.getElementById('citySelect').value = '';
+  document.getElementById('navSearchInput').value = '';
+  document.getElementById('heroSearchInput').value = '';
+  renderCities();
+  renderUpcoming();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ============================================================
+// SCROLL ANIMATIONS
+// ============================================================
+function setupScrollObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Also observe event cards that get dynamically added
+  const gridObserver = new MutationObserver(() => {
+    document.querySelectorAll('.event-card:not(.visible)').forEach(card => {
+      observer.observe(card);
+    });
+  });
+
+  const grid = document.getElementById('eventsGrid');
+  gridObserver.observe(grid, { childList: true });
+}
+
+// ============================================================
+// KEYBOARD
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

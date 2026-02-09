@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LineLeap — Fun, Faster.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0B1012;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-pad { padding: 100px 0; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.gradient-text {
+  background: linear-gradient(135deg, #0086FF, #4d65ff, #F254C1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   PAGE SYSTEM (hash SPA)
+   ============================================================ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 16px 0;
+  transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;
+}
+.navbar.scrolled {
+  background: rgba(11, 16, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo {
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px;
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer;
+}
+.nav-logo svg { width: 28px; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500; opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: linear-gradient(135deg, #0086FF, #4d65ff);
+  padding: 10px 22px; border-radius: 50px;
+  font-size: 0.875rem; font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,134,255,0.4); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+  background: rgba(11, 16, 18, 0.98);
+  backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+.mobile-menu.open { right: 0; }
+.mobile-menu a { font-size: 1.25rem; font-weight: 600; opacity: 0.9; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding-top: 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,134,255,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(77,101,255,0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 60% 80%, rgba(242,84,193,0.08) 0%, transparent 50%);
+  animation: heroShift 12s ease-in-out infinite alternate;
+}
+@keyframes heroShift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(-2%, 1%); }
+  100% { transform: scale(1) translate(1%, -1%); }
+}
+.hero .container {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.hero-content { max-width: 560px; }
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 1.05;
+  letter-spacing: -2px; margin-bottom: 24px;
+}
+.hero p {
+  font-size: 1.125rem; line-height: 1.7; opacity: 0.8; margin-bottom: 36px;
+  max-width: 480px;
+}
+.store-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+.store-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; color: #0B1012; padding: 12px 24px; border-radius: 50px;
+  font-weight: 600; font-size: 0.875rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.15); }
+.store-btn svg { width: 20px; height: 20px; }
+.venue-link {
+  font-size: 0.9rem; opacity: 0.6; transition: opacity 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.venue-link:hover { opacity: 1; }
+
+/* Phone mockup */
+.phone-mockup {
+  display: flex; justify-content: center; align-items: center;
+  perspective: 1000px;
+}
+.phone-frame {
+  width: 280px; height: 560px;
+  background: #1a1a2e;
+  border-radius: 40px;
+  border: 3px solid rgba(255,255,255,0.12);
+  padding: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  transform: rotateY(-5deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+.phone-frame:hover { transform: rotateY(0deg) rotateX(0deg); }
+.phone-notch {
+  width: 120px; height: 28px;
+  background: #0B1012;
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto 16px;
+  position: relative; z-index: 2;
+}
+.phone-screen {
+  background: linear-gradient(180deg, #0d1117 0%, #151b26 100%);
+  border-radius: 28px;
+  height: calc(100% - 0px);
+  padding: 40px 16px 20px;
+  overflow: hidden;
+  position: relative;
+}
+.phone-screen-header {
+  text-align: center; margin-bottom: 20px;
+}
+.phone-screen-header .ps-logo { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+.phone-screen-header .ps-sub { font-size: 0.6rem; opacity: 0.5; }
+.phone-venue-card {
+  background: linear-gradient(135deg, rgba(0,134,255,0.2), rgba(77,101,255,0.1));
+  border: 1px solid rgba(0,134,255,0.2);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.phone-venue-card .pv-name { font-size: 0.75rem; font-weight: 700; margin-bottom: 4px; }
+.phone-venue-card .pv-detail { font-size: 0.6rem; opacity: 0.5; }
+.phone-venue-card .pv-btn {
+  display: inline-block; margin-top: 8px;
+  background: #0086FF; padding: 4px 12px; border-radius: 20px;
+  font-size: 0.55rem; font-weight: 600;
+}
+.phone-bottom-nav {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-around; padding: 10px 0;
+  background: rgba(11,16,18,0.9);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.phone-bottom-nav span { font-size: 0.5rem; opacity: 0.5; text-align: center; }
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.how-it-works { background: #0B1012; position: relative; }
+.how-it-works::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.section-header p { font-size: 1.05rem; opacity: 0.6; max-width: 560px; margin: 0 auto; }
+
+.feature-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px; max-width: 1000px; margin: 0 auto;
+}
+.feature-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 40px 30px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
+  position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  border-radius: 24px 24px 0 0;
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-card:nth-child(1) { transform: rotate(-2deg); }
+.feature-card:nth-child(1)::before { background: linear-gradient(90deg, #0086FF, #4d65ff); }
+.feature-card:nth-child(1):hover { border-color: rgba(0,134,255,0.3); }
+.feature-card:nth-child(2) { transform: rotate(0deg); }
+.feature-card:nth-child(2)::before { background: linear-gradient(90deg, #EFAE00, #FFD54F); }
+.feature-card:nth-child(2):hover { border-color: rgba(239,174,0,0.3); }
+.feature-card:nth-child(3) { transform: rotate(2deg); }
+.feature-card:nth-child(3)::before { background: linear-gradient(90deg, #FF6359, #F254C1); }
+.feature-card:nth-child(3):hover { border-color: rgba(255,99,89,0.3); }
+.feature-card:hover { transform: rotate(0deg) translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+.card-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; font-size: 1.4rem;
+}
+.feature-card:nth-child(1) .card-icon { background: rgba(0,134,255,0.15); color: #0086FF; }
+.feature-card:nth-child(2) .card-icon { background: rgba(239,174,0,0.15); color: #EFAE00; }
+.feature-card:nth-child(3) .card-icon { background: rgba(255,99,89,0.15); color: #FF6359; }
+
+.feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.feature-card p { font-size: 0.925rem; opacity: 0.6; line-height: 1.6; }
+
+/* ============================================================
+   LOCATIONS / STATS
+   ============================================================ */
+.locations { position: relative; }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-bottom: 64px;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+  letter-spacing: -1px; margin-bottom: 4px;
+}
+.stat-item:nth-child(1) .stat-number { color: #0086FF; }
+.stat-item:nth-child(2) .stat-number { color: #EFAE00; }
+.stat-item:nth-child(3) .stat-number { color: #FF6359; }
+.stat-item:nth-child(4) .stat-number { color: #F254C1; }
+.stat-label { font-size: 0.85rem; opacity: 0.5; font-weight: 500; }
+
+.city-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 40px;
+}
+.city-card {
+  height: 220px; border-radius: 20px;
+  display: flex; align-items: flex-end; padding: 20px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s;
+}
+.city-card:hover { transform: scale(1.03); }
+.city-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+}
+.city-card:nth-child(1) { background: linear-gradient(135deg, #0086FF, #004080); }
+.city-card:nth-child(2) { background: linear-gradient(135deg, #EFAE00, #B07B00); }
+.city-card:nth-child(3) { background: linear-gradient(135deg, #FF6359, #CC3D33); }
+.city-card:nth-child(4) { background: linear-gradient(135deg, #F254C1, #9B2D7E); }
+.city-card span {
+  position: relative; z-index: 1;
+  font-weight: 700; font-size: 1rem; letter-spacing: 0.5px;
+}
+.location-links { display: flex; gap: 24px; justify-content: center; }
+.location-links a {
+  font-size: 0.9rem; font-weight: 600; color: #0086FF;
+  transition: opacity 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.location-links a:hover { opacity: 0.8; }
+
+/* ============================================================
+   FOR VENUES
+   ============================================================ */
+.for-venues { position: relative; }
+.for-venues .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.venue-features { list-style: none; margin: 32px 0; }
+.venue-features li {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 18px; font-size: 0.95rem; opacity: 0.85;
+}
+.venue-features li svg { flex-shrink: 0; margin-top: 3px; }
+.venue-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, #0086FF, #4d65ff);
+  padding: 14px 28px; border-radius: 50px;
+  font-weight: 600; font-size: 0.9rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,134,255,0.3); }
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 14px 28px; border-radius: 50px;
+  font-weight: 600; font-size: 0.9rem;
+  transition: border-color 0.2s, background 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+.venue-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.dashboard-mockup {
+  width: 100%; max-width: 480px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+}
+.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.dash-header h4 { font-size: 0.9rem; font-weight: 700; }
+.dash-header span { font-size: 0.7rem; opacity: 0.4; }
+.dash-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.dash-stat {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px; padding: 16px; text-align: center;
+}
+.dash-stat .ds-val { font-size: 1.3rem; font-weight: 800; color: #0086FF; }
+.dash-stat .ds-lbl { font-size: 0.65rem; opacity: 0.4; margin-top: 4px; }
+.dash-chart {
+  height: 120px;
+  background: linear-gradient(180deg, rgba(0,134,255,0.1) 0%, transparent 100%);
+  border-radius: 12px;
+  position: relative; overflow: hidden;
+}
+.dash-chart-line {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 120'%3E%3Cpath d='M0,100 C60,80 120,30 180,50 C240,70 300,20 360,40 C420,60 460,25 480,30' fill='none' stroke='%230086FF' stroke-width='2'/%3E%3Cpath d='M0,100 C60,80 120,30 180,50 C240,70 300,20 360,40 C420,60 460,25 480,30 L480,120 L0,120Z' fill='url(%23grad)'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%230086FF' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%230086FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") no-repeat center / cover;
+}
+
+/* ============================================================
+   TRUSTED BY / MARQUEE
+   ============================================================ */
+.trusted { overflow: hidden; }
+.marquee-wrapper { overflow: hidden; position: relative; margin-top: 48px; }
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: ''; position: absolute; top: 0; width: 120px; height: 100%; z-index: 2;
+}
+.marquee-wrapper::before { left: 0; background: linear-gradient(90deg, #0B1012, transparent); }
+.marquee-wrapper::after { right: 0; background: linear-gradient(270deg, #0B1012, transparent); }
+.marquee-track {
+  display: flex; gap: 16px; width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+.marquee-track.reverse { animation-direction: reverse; }
+@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 22px; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+  opacity: 0.7;
+}
+.marquee-row { margin-bottom: 14px; }
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0,134,255,0.08), rgba(77,101,255,0.06), rgba(242,84,193,0.05));
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.cta-section h2 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+  margin-bottom: 36px; letter-spacing: -1px;
+}
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 40px; margin-bottom: 60px;
+}
+.footer-col h4 {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; opacity: 0.4; margin-bottom: 20px;
+}
+.footer-col a {
+  display: block; font-size: 0.875rem; opacity: 0.6;
+  margin-bottom: 12px; transition: opacity 0.2s;
+}
+.footer-col a:hover { opacity: 1; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-bottom p { font-size: 0.8rem; opacity: 0.4; }
+.footer-socials { display: flex; gap: 16px; }
+.footer-socials a {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-socials a:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.footer-socials svg { width: 18px; height: 18px; opacity: 0.7; }
+.footer-legal { display: flex; gap: 16px; }
+.footer-legal a { font-size: 0.8rem; opacity: 0.4; transition: opacity 0.2s; }
+.footer-legal a:hover { opacity: 0.8; }
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about-hero { text-align: center; padding-top: 140px; }
+.about-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 900;
+  letter-spacing: -1.5px; max-width: 700px; margin: 0 auto 24px;
+}
+.about-hero p { font-size: 1.05rem; opacity: 0.6; max-width: 600px; margin: 0 auto; }
+
+.about-stats {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  padding: 60px 0;
+}
+.about-stat { text-align: center; }
+.about-stat .as-val { font-size: 1.8rem; font-weight: 800; color: #0086FF; }
+.about-stat .as-lbl { font-size: 0.75rem; opacity: 0.4; margin-top: 4px; }
+
+.team-section { padding: 60px 0 80px; }
+.team-section h2 { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 48px; }
+.team-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px; max-width: 900px; margin: 0 auto;
+}
+.team-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 20px; text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.team-card:hover { transform: translateY(-4px); border-color: rgba(0,134,255,0.3); }
+.team-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #0086FF, #4d65ff);
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; font-weight: 800;
+}
+.team-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.team-card p { font-size: 0.8rem; opacity: 0.5; }
+
+.careers-section {
+  text-align: center; padding: 60px 0 80px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.careers-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+.careers-section p { opacity: 0.6; font-size: 0.95rem; margin-bottom: 8px; }
+.careers-section .cs-email { color: #0086FF; font-weight: 600; }
+.careers-section .cs-loc { opacity: 0.4; font-size: 0.85rem; margin-top: 12px; }
+
+/* ============================================================
+   VENUES PAGE
+   ============================================================ */
+.venues-hero { text-align: center; padding-top: 140px; padding-bottom: 60px; }
+.venues-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 900;
+  letter-spacing: -1.5px; margin-bottom: 16px;
+}
+.venues-hero p { font-size: 1.05rem; opacity: 0.6; max-width: 650px; margin: 0 auto; }
+
+.venues-sell, .venues-marketing {
+  padding: 60px 0;
+}
+.venues-sell h2, .venues-marketing h2 {
+  font-size: 1.8rem; font-weight: 800; margin-bottom: 36px; text-align: center;
+}
+.sell-grid, .mktg-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; max-width: 1000px; margin: 0 auto;
+}
+.sell-card, .mktg-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px 20px; text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.sell-card:hover, .mktg-card:hover { transform: translateY(-4px); border-color: rgba(0,134,255,0.2); }
+.sell-card .sc-icon, .mktg-card .mc-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(0,134,255,0.1); margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sell-card h3, .mktg-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+.sell-card p, .mktg-card p { font-size: 0.8rem; opacity: 0.5; }
+
+.testimonials { padding: 80px 0; }
+.testimonials h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 48px; text-align: center; }
+.test-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; max-width: 1100px; margin: 0 auto;
+}
+.test-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 24px;
+  transition: transform 0.3s;
+}
+.test-card:hover { transform: translateY(-4px); }
+.test-card blockquote {
+  font-size: 0.9rem; opacity: 0.75; line-height: 1.7;
+  font-style: italic; margin-bottom: 20px;
+  position: relative; padding-left: 20px;
+  border-left: 3px solid #0086FF;
+}
+.test-card .tc-author { font-size: 0.8rem; font-weight: 700; }
+.test-card .tc-venue { font-size: 0.75rem; opacity: 0.4; }
+
+.venues-cta-section {
+  text-align: center; padding: 80px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.venues-cta-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   PLATFORM PAGE
+   ============================================================ */
+.platform-hero { text-align: center; padding-top: 140px; padding-bottom: 60px; }
+.platform-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 900;
+  letter-spacing: -1.5px; margin-bottom: 16px;
+}
+.platform-hero p { font-size: 1.05rem; opacity: 0.6; max-width: 600px; margin: 0 auto; }
+
+.platform-features { padding: 60px 0; }
+.platform-features h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 36px; text-align: center; }
+.pf-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; max-width: 1000px; margin: 0 auto;
+}
+.pf-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 36px 24px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.pf-card:hover { transform: translateY(-4px); border-color: rgba(0,134,255,0.2); }
+.pf-card .pf-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.pf-card:nth-child(1) .pf-icon { background: rgba(0,134,255,0.15); color: #0086FF; }
+.pf-card:nth-child(2) .pf-icon { background: rgba(239,174,0,0.15); color: #EFAE00; }
+.pf-card:nth-child(3) .pf-icon { background: rgba(255,99,89,0.15); color: #FF6359; }
+.pf-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.pf-card p { font-size: 0.875rem; opacity: 0.6; line-height: 1.6; }
+
+.platform-dashboard, .platform-ticketing { padding: 60px 0; }
+.platform-dashboard h2, .platform-ticketing h2 {
+  font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; text-align: center;
+}
+.platform-dashboard > p, .platform-ticketing > p {
+  text-align: center; opacity: 0.5; max-width: 600px; margin: 0 auto 36px; font-size: 0.95rem;
+}
+.pd-list, .pt-list {
+  max-width: 700px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 40px;
+}
+.pd-list li, .pt-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.9rem; opacity: 0.75;
+}
+.pd-list li svg, .pt-list li svg { flex-shrink: 0; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-content { margin: 0 auto; }
+  .hero p { margin: 0 auto 36px; }
+  .store-buttons { justify-content: center; }
+  .phone-mockup { margin-top: 48px; }
+  .for-venues .container { grid-template-columns: 1fr; }
+  .venue-visual { margin-top: 40px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section-pad { padding: 70px 0; }
+  .feature-cards { grid-template-columns: 1fr; max-width: 400px; }
+  .feature-card:nth-child(1),
+  .feature-card:nth-child(3) { transform: rotate(0deg); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .city-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .pf-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .pd-list, .pt-list { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .test-grid { grid-template-columns: 1fr; }
+  .sell-grid, .mktg-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-stats { gap: 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .city-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .store-buttons { flex-direction: column; align-items: center; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .phone-frame { width: 240px; height: 480px; }
+  .about-stats { flex-direction: column; gap: 16px; }
+  .team-grid { grid-template-columns: 1fr; }
+  .sell-grid, .mktg-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a class="nav-logo" href="#home" onclick="navigate('home')">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="7" fill="#0086FF"/>
+        <path d="M8 8v12h3V8H8zm9 0l-4 6 4 6h3.5l-4-6 4-6H17z" fill="#fff"/>
+      </svg>
+      LineLeap
+    </a>
+    <div class="nav-links">
+      <a href="#home" onclick="navigate('home')">Tickets</a>
+      <a href="#venues" onclick="navigate('venues')">Venues</a>
+      <a href="#platform" onclick="navigate('platform')">Platform</a>
+      <a href="#home" onclick="navigate('home')">Locations</a>
+      <a href="#about" onclick="navigate('about')">About</a>
+      <a href="#home" onclick="navigate('home')">Contact</a>
+      <a href="#home" class="nav-cta" onclick="navigate('home')">Download the App</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="navigate('home'); toggleMobile()">Tickets</a>
+  <a href="#venues" onclick="navigate('venues'); toggleMobile()">Venues</a>
+  <a href="#platform" onclick="navigate('platform'); toggleMobile()">Platform</a>
+  <a href="#home" onclick="navigate('home'); toggleMobile()">Locations</a>
+  <a href="#about" onclick="navigate('about'); toggleMobile()">About</a>
+  <a href="#home" onclick="navigate('home'); toggleMobile()">Contact</a>
+  <a href="#home" class="nav-cta" onclick="navigate('home'); toggleMobile()">Download the App</a>
+</div>
+
+<!-- ============================================================
+     HOME PAGE
+     ============================================================ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="fade-in">Fun, <span class="gradient-text">Faster.</span></h1>
+        <p class="fade-in">LineLeap is your best friend on a night out. Join over 1.5 million users at your favorite bars to skip long lines, pay for cover, get exclusive deals & more.</p>
+        <div class="store-buttons fade-in">
+          <a href="#" class="store-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M14.94 5.19A4.38 4.38 0 0 0 12.06 4c-1.94 0-2.85.93-4.24.93C6.41 4.93 5.23 4 3.73 4 2.4 4 .94 4.88.94 7.3c0 3.05 2.72 6.22 4.84 8.2.84.79 1.56 1.1 2.28 1.1.82 0 1.35-.49 2.43-.49 1.1 0 1.47.48 2.39.48.79 0 1.56-.42 2.4-1.24 1.05-1.02 1.5-2 1.52-2.06a3.54 3.54 0 0 1-2.14-3.26c0-1.7 1.12-2.8 2.28-3.37a4.01 4.01 0 0 0-2-2.47zM11.5 3.29c.65-.8 1.14-1.92 1.14-3.04 0-.16-.01-.31-.04-.44-1.09.04-2.36.73-3.14 1.64-.6.7-1.19 1.82-1.19 2.96 0 .17.03.34.04.4.07.01.18.03.3.03.98 0 2.2-.67 2.89-1.55z"/></svg>
+            App Store
+          </a>
+          <a href="#" class="store-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.18 1.28a1.2 1.2 0 0 0-.43.96v15.52c0 .38.16.72.44.96l.05.05 8.69-8.69v-.16L3.23 1.23l-.05.05z"/><path d="M14.82 13.02l-2.9-2.9v-.24l2.9-2.9.07.04 3.43 1.95c.98.55.98 1.46 0 2.02l-3.43 1.95-.07.08z"/><path d="M14.89 12.94L11.93 10 3.18 18.76c.32.34.85.38 1.45.04l10.26-5.86z"/><path d="M14.89 7.06L4.63 1.2C4.03.86 3.5.9 3.18 1.24L11.93 10l2.96-2.94z"/></svg>
+            Google Play
+          </a>
+        </div>
+        <a href="#venues" class="venue-link fade-in" onclick="navigate('venues')">Venue Owner? Learn More <span>&rarr;</span></a>
+      </div>
+      <div class="phone-mockup fade-in">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-screen-header">
+              <div class="ps-logo">LineLeap</div>
+              <div class="ps-sub">Nearby Venues</div>
+            </div>
+            <div class="phone-venue-card">
+              <div class="pv-name">Brothers Bar & Grill</div>
+              <div class="pv-detail">0.3 mi &bull; Madison, WI</div>
+              <div class="pv-btn">LineSkip &mdash; $5</div>
+            </div>
+            <div class="phone-venue-card">
+              <div class="pv-name">Kollege Klub</div>
+              <div class="pv-detail">0.5 mi &bull; Madison, WI</div>
+              <div class="pv-btn">Cover &mdash; $10</div>
+            </div>
+            <div class="phone-venue-card">
+              <div class="pv-name">Tin Roof Nashville</div>
+              <div class="pv-detail">1.2 mi &bull; Nashville, TN</div>
+              <div class="pv-btn">Tickets &mdash; $15</div>
+            </div>
+            <div class="phone-bottom-nav">
+              <span>Explore</span>
+              <span>Tickets</span>
+              <span>Wallet</span>
+              <span>Profile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works section-pad">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>How LineLeap Works</h2>
+        <p>Skip the line, pay for cover, purchase tickets & much more at your favorite bars!</p>
+      </div>
+      <div class="feature-cards">
+        <div class="feature-card fade-in">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>
+          </div>
+          <h3>LineSkip</h3>
+          <p>Skip long lines at your favorite bars, venues & events. Get to the fun faster with a LineSkip pass on your phone.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>Cover</h3>
+          <p>Ditch the cash & ATM! Pay for cover directly from your phone. No lines, no hassle, just scan and go.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5l2-9 6 18 2-9h5"/></svg>
+          </div>
+          <h3>Events</h3>
+          <p>Buy tickets to concerts & events at the best bars & venues in your area. Never miss the best nights out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS / STATS -->
+  <section class="locations section-pad">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>700+ Bars, 150+ Campuses & Cities</h2>
+        <p>LineLeap is active at your favorite bars across the United States.</p>
+      </div>
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <div class="stat-number" data-target="1500000" data-suffix="+" data-format="1.5M">0</div>
+          <div class="stat-label">Users</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="700" data-suffix="+">0</div>
+          <div class="stat-label">Venues</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="150" data-suffix="+">0</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="6" data-prefix="#">#0</div>
+          <div class="stat-label">Top App</div>
+        </div>
+      </div>
+      <div class="city-grid fade-in">
+        <div class="city-card"><span>Madison, WI</span></div>
+        <div class="city-card"><span>Nashville, TN</span></div>
+        <div class="city-card"><span>New York, NY</span></div>
+        <div class="city-card"><span>Austin, TX</span></div>
+      </div>
+      <div class="location-links fade-in">
+        <a href="#">See All Locations <span>&rarr;</span></a>
+        <a href="#">Add your favorite bar <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR VENUES -->
+  <section class="for-venues section-pad">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px;">Grow Revenue at No Cost.<br>It's a No Brainer.</h2>
+        <p style="opacity:0.6;font-size:1rem;margin-bottom:16px;max-width:500px;">LineLeap's platform was designed with venue owners & customers in mind. It's simple to set up & very easy to use.</p>
+        <ul class="venue-features">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Generate new revenue from LineSkips, cover, tickets & drinks
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Proprietary CRM to segment & target your customers
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Marketing suite: push notifications, SMS & email campaigns
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Real-time analytics dashboard
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Dynamic pricing based on demand
+          </li>
+        </ul>
+        <div class="venue-ctas">
+          <a href="#" class="btn-primary">Contact Sales <span>&rarr;</span></a>
+          <a href="#venues" class="btn-outline" onclick="navigate('venues')">Learn More <span>&rarr;</span></a>
+        </div>
+      </div>
+      <div class="venue-visual fade-in">
+        <div class="dashboard-mockup">
+          <div class="dash-header">
+            <h4>Venue Dashboard</h4>
+            <span>Last 30 days</span>
+          </div>
+          <div class="dash-stat-row">
+            <div class="dash-stat">
+              <div class="ds-val">$12.4K</div>
+              <div class="ds-lbl">Revenue</div>
+            </div>
+            <div class="dash-stat">
+              <div class="ds-val">1,847</div>
+              <div class="ds-lbl">Transactions</div>
+            </div>
+            <div class="dash-stat">
+              <div class="ds-val">94%</div>
+              <div class="ds-lbl">Satisfaction</div>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY / MARQUEE -->
+  <section class="trusted section-pad">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Trusted by 700+ Bars & 1.5M+ Users</h2>
+      </div>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-row">
+        <div class="marquee-track" id="marquee1">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+      <div class="marquee-row">
+        <div class="marquee-track reverse" id="marquee2">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section section-pad">
+    <div class="container">
+      <h2 class="fade-in">What are you waiting for?</h2>
+      <div class="cta-buttons fade-in">
+        <a href="#" class="btn-primary">Download the App</a>
+        <a href="#" class="btn-outline">Explore Ticketed Events</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ============================================================
+     ABOUT PAGE
+     ============================================================ -->
+<div class="page" id="page-about">
+
+  <section class="about-hero section-pad">
+    <div class="container">
+      <h1 class="fade-in">We've revolutionized the <span class="gradient-text">nightlife experience.</span></h1>
+      <p class="fade-in">LineLeap was founded with a simple mission: make going out easier, more fun, and more accessible for everyone. What started on one campus has grown into the nation's leading nightlife platform.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="about-stats fade-in">
+        <div class="about-stat">
+          <div class="as-val">1.5M+</div>
+          <div class="as-lbl">Downloads</div>
+        </div>
+        <div class="about-stat">
+          <div class="as-val">Top #10</div>
+          <div class="as-lbl">App Store</div>
+        </div>
+        <div class="about-stat">
+          <div class="as-val">700+</div>
+          <div class="as-lbl">Venues</div>
+        </div>
+        <div class="about-stat">
+          <div class="as-val">150+</div>
+          <div class="as-lbl">Cities</div>
+        </div>
+        <div class="about-stat">
+          <div class="as-val">Est. 2017</div>
+          <div class="as-lbl">Founded</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2 class="fade-in">The Team</h2>
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <div class="team-avatar">PS</div>
+          <h3>Patrick Skelly</h3>
+          <p>CEO & Co-Founder</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#EFAE00,#B07B00);">NB</div>
+          <h3>Nick Becker</h3>
+          <p>Co-Founder</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#FF6359,#CC3D33);">MS</div>
+          <h3>Max Schauff</h3>
+          <p>Co-Founder / CMO</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#F254C1,#9B2D7E);">JP</div>
+          <h3>Jack Pawlik</h3>
+          <p>Co-Founder</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#4d65ff,#0086FF);">JR</div>
+          <h3>Jack Richard</h3>
+          <p>Co-Founder / CTO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="careers-section">
+    <div class="container">
+      <h2 class="fade-in">Join the Team</h2>
+      <p class="fade-in">No positions currently open.</p>
+      <p class="fade-in">Send your resume to <a href="mailto:jobs@lineleap.com" class="cs-email">jobs@lineleap.com</a></p>
+      <p class="cs-loc fade-in">Nashville, TN</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section section-pad">
+    <div class="container">
+      <h2 class="fade-in">What are you waiting for?</h2>
+      <div class="cta-buttons fade-in">
+        <a href="#" class="btn-primary">Download the App</a>
+        <a href="#" class="btn-outline">Explore Ticketed Events</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-about -->
+
+
+<!-- ============================================================
+     VENUES PAGE
+     ============================================================ -->
+<div class="page" id="page-venues">
+
+  <section class="venues-hero">
+    <div class="container">
+      <h1 class="fade-in">We never send invoices,<br><span class="gradient-text">only checks.</span></h1>
+      <p class="fade-in">The busiest bars & venues rely on LineLeap to drive more sales & better engage their customers. Zero cost to you.</p>
+    </div>
+  </section>
+
+  <section class="venues-sell">
+    <div class="container">
+      <h2 class="fade-in">What You Can Sell</h2>
+      <div class="sell-grid">
+        <div class="sell-card fade-in">
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>
+          </div>
+          <h3>LineSkip Passes</h3>
+          <p>Let customers skip the line for a fee</p>
+        </div>
+        <div class="sell-card fade-in">
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-1"/><path d="M15 12V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l4-4h2a2 2 0 002-2z"/></svg>
+          </div>
+          <h3>Bundled Drinks</h3>
+          <p>Pre-sell drink packages & combos</p>
+        </div>
+        <div class="sell-card fade-in">
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>Digital Cover</h3>
+          <p>Cashless cover charge via mobile</p>
+        </div>
+        <div class="sell-card fade-in">
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5l2-9 6 18 2-9h5"/></svg>
+          </div>
+          <h3>Event Ticketing</h3>
+          <p>Sell tickets to concerts & events</p>
+        </div>
+        <div class="sell-card fade-in">
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>VIP Table RSVPs</h3>
+          <p>Manage bottle service & table reservations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="venues-marketing">
+    <div class="container">
+      <h2 class="fade-in">Marketing & Engagement</h2>
+      <div class="mktg-grid">
+        <div class="mktg-card fade-in">
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          </div>
+          <h3>Push Notifications</h3>
+          <p>Reach users directly on their phones</p>
+        </div>
+        <div class="mktg-card fade-in">
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Text Campaigns</h3>
+          <p>SMS marketing to your customer base</p>
+        </div>
+        <div class="mktg-card fade-in">
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>In-App Messages</h3>
+          <p>Targeted in-app promotions</p>
+        </div>
+        <div class="mktg-card fade-in">
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>VIP Passes</h3>
+          <p>Loyalty programs & exclusive access</p>
+        </div>
+        <div class="mktg-card fade-in">
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0086FF" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Email Marketing</h3>
+          <p>Branded email campaigns</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="fade-in">What Venue Owners Say</h2>
+      <div class="test-grid">
+        <div class="test-card fade-in">
+          <blockquote>"LineLeap has completely transformed the model for us. Revenue from LineSkips flows directly to the bottom line with no cost of goods sold. It's pure profit."</blockquote>
+          <div class="tc-author">Jordan Meier</div>
+          <div class="tc-venue">Kollege Klub</div>
+        </div>
+        <div class="test-card fade-in">
+          <blockquote>"LineLeap has now become part of the culture at our bars. It helps ensure that every customer has a great experience from the moment they arrive."</blockquote>
+          <div class="tc-author">Dante Lucchesi</div>
+          <div class="tc-venue">Champs</div>
+        </div>
+        <div class="test-card fade-in">
+          <blockquote>"It was simple to get started and the results speak for themselves. When there's free money on the table, you'd be crazy not to take it."</blockquote>
+          <div class="tc-author">Keith Benjamin</div>
+          <div class="tc-venue">Uptown Hospitality</div>
+        </div>
+        <div class="test-card fade-in">
+          <blockquote>"LineLeap really opened my eyes to the income stream that we were missing out on. The platform pays for itself on night one."</blockquote>
+          <div class="tc-author">Dade Nunnally</div>
+          <div class="tc-venue">Southeastern</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="venues-cta-section">
+    <div class="container">
+      <h2 class="fade-in">Unlock a new revenue stream at no cost to you? No brainer.</h2>
+      <div class="cta-buttons fade-in">
+        <a href="#" class="btn-primary">Contact Sales <span>&rarr;</span></a>
+        <a href="#" class="btn-outline">Request More Info <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-venues -->
+
+
+<!-- ============================================================
+     PLATFORM PAGE
+     ============================================================ -->
+<div class="page" id="page-platform">
+
+  <section class="platform-hero">
+    <div class="container">
+      <h1 class="fade-in">Get to the fun, <span class="gradient-text">faster.</span></h1>
+      <p class="fade-in">LineLeap's platform connects customers to their favorite bars & venues with tools that make every night out seamless.</p>
+    </div>
+  </section>
+
+  <section class="platform-features">
+    <div class="container">
+      <h2 class="fade-in">Core Features</h2>
+      <div class="pf-grid">
+        <div class="pf-card fade-in">
+          <div class="pf-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>
+          </div>
+          <h3>LineSkips</h3>
+          <p>Purchase a pass to skip the line at participating bars and venues. Dynamic pricing adjusts based on real-time demand so you always get a fair deal.</p>
+        </div>
+        <div class="pf-card fade-in">
+          <div class="pf-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>Cover</h3>
+          <p>Pay cover charges directly from your phone. No cash, no ATM runs, no hassle. Just scan the QR code at the door and walk in.</p>
+        </div>
+        <div class="pf-card fade-in">
+          <div class="pf-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5l2-9 6 18 2-9h5"/></svg>
+          </div>
+          <h3>Event Tickets</h3>
+          <p>Browse and purchase tickets to concerts, themed nights, and special events at bars and venues near you. All in one app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="platform-dashboard">
+    <div class="container">
+      <h2 class="fade-in">Venue Dashboard</h2>
+      <p class="fade-in">A comprehensive suite of tools built for bar owners, managers, and promoters.</p>
+      <ul class="pd-list fade-in">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Real-time sales analytics
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Customer CRM & segmentation
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Push notification campaigns
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          SMS & email marketing
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Dynamic pricing engine
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Revenue reporting & exports
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Multi-venue management
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#0086FF"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Staff access controls
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="platform-ticketing">
+    <div class="container">
+      <h2 class="fade-in">Event Ticketing Platform</h2>
+      <p class="fade-in">Everything you need to sell out your next event, built right into the LineLeap ecosystem.</p>
+      <ul class="pt-list fade-in">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          In-app event promotion
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Promo codes & discounts
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Tiered pricing (Early Bird, GA, VIP)
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Guest list management
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          QR code scanning at door
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Real-time ticket sales tracking
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Capacity management tools
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FF6359"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bundled ticket + drink packages
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section section-pad">
+    <div class="container">
+      <h2 class="fade-in">What are you waiting for?</h2>
+      <div class="cta-buttons fade-in">
+        <a href="#" class="btn-primary">Download the App</a>
+        <a href="#venues" class="btn-outline" onclick="navigate('venues')">For Venue Owners <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-platform -->
+
+
+<!-- ============================================================
+     FOOTER (global)
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#platform" onclick="navigate('platform')">Platform</a>
+        <a href="#about" onclick="navigate('about')">About</a>
+        <a href="#about" onclick="navigate('about')">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Customers</h4>
+        <a href="#home" onclick="navigate('home')">Locations</a>
+        <a href="#">FAQs</a>
+        <a href="#">Tickets</a>
+        <a href="#">Bar Crawls</a>
+      </div>
+      <div class="footer-col">
+        <h4>Venue Owners</h4>
+        <a href="#venues" onclick="navigate('venues')">Venues</a>
+        <a href="#">Request More Info</a>
+        <a href="#">Dashboard Login</a>
+      </div>
+      <div class="footer-col">
+        <h4>Download</h4>
+        <a href="#">App Store</a>
+        <a href="#">Google Play</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LineLeap. All Rights Reserved.</p>
+      <div class="footer-socials">
+        <!-- Instagram -->
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="#" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.12a8.16 8.16 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.55z"/></svg>
+        </a>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- SPA HASH ROUTER ----
+  const pages = ['home', 'about', 'venues', 'platform'];
+
+  function navigate(page) {
+    if (!pages.includes(page)) page = 'home';
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Show target
+    const target = document.getElementById('page-' + page);
+    if (target) target.classList.add('active');
+    // Update hash without triggering hashchange loop
+    if (window.location.hash !== '#' + page) {
+      history.pushState(null, '', '#' + page);
+    }
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-observe fade-in elements
+    setTimeout(observeAll, 100);
+  }
+
+  // Expose to global for onclick handlers
+  window.navigate = navigate;
+
+  // Handle hash on load and popstate
+  function handleHash() {
+    let hash = window.location.hash.replace('#', '') || 'home';
+    navigate(hash);
+  }
+  window.addEventListener('popstate', handleHash);
+  window.addEventListener('DOMContentLoaded', handleHash);
+
+  // ---- NAVBAR SCROLL ----
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    lastScroll = window.scrollY;
+  });
+
+  // ---- MOBILE MENU ----
+  window.toggleMobile = function() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    hamburger.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  };
+
+  // ---- INTERSECTION OBSERVER (fade-in) ----
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // If it's a counter, animate
+        if (entry.target.classList.contains('stats-grid')) {
+          animateCounters(entry.target);
+        }
+      }
+    });
+  }, observerOptions);
+
+  function observeAll() {
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      if (!el.classList.contains('visible')) {
+        observer.observe(el);
+      }
+    });
+  }
+
+  // ---- COUNTER ANIMATION ----
+  function animateCounters(container) {
+    const counters = container.querySelectorAll('.stat-number');
+    counters.forEach(function(counter) {
+      if (counter.dataset.animated) return;
+      counter.dataset.animated = 'true';
+      const target = parseInt(counter.dataset.target);
+      const prefix = counter.dataset.prefix || '';
+      const suffix = counter.dataset.suffix || '';
+      const format = counter.dataset.format;
+      const duration = 2000;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+
+        if (format) {
+          // For 1.5M format
+          const ratio = eased;
+          if (target === 1500000) {
+            const val = (ratio * 1.5).toFixed(1);
+            counter.textContent = prefix + val + 'M' + suffix;
+          }
+        } else {
+          counter.textContent = prefix + current.toLocaleString() + suffix;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (format) {
+            counter.textContent = prefix + format + suffix;
+          } else {
+            counter.textContent = prefix + target.toLocaleString() + suffix;
+          }
+        }
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  // ---- MARQUEE SETUP ----
+  const venueNames1 = [
+    'Brothers', 'ROAR Clemson', "Dirty Dan's", '1785 Bar & Grill',
+    'The Lansdowne Pub', "Gentle Ben's Brewing", "Jason Aldean's Kitchen + Rooftop Bar",
+    "Morgan Wallen's", 'Kollege Klub', 'Champs', 'Whiskey Jacks',
+    'Southeastern', 'The Boot', 'Tin Roof', 'Seacrets'
+  ];
+  const venueNames2 = [
+    'Wayside', 'Stage West', 'Uptown', 'Bullwinkles Bar',
+    'Champs Downtown', 'Chicken Box', 'The Swamp Restaurant',
+    'Fiddle & Steel Guitar Bar', "Rick's Cafe", 'The Red Door',
+    'Social South', 'Barley Republic', "Brother's Bar & Grill",
+    "Harry's Chocolate Shop", 'Cain\'s Ballroom'
+  ];
+
+  function buildMarquee(id, names) {
+    const track = document.getElementById(id);
+    if (!track) return;
+    // Double the content for seamless loop
+    const pills = names.concat(names).map(function(name) {
+      return '<span class="marquee-pill">' + name + '</span>';
+    }).join('');
+    track.innerHTML = pills;
+  }
+
+  // ---- INIT ----
+  window.addEventListener('DOMContentLoaded', function() {
+    buildMarquee('marquee1', venueNames1);
+    buildMarquee('marquee2', venueNames2);
+    observeAll();
+  });
+
+})();
+</script>
+</body>
+</html>

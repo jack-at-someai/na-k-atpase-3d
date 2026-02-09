@@ -1,0 +1,1571 @@
+{
+  "metadata": {
+    "title": "LineLeap Knowledge Graph",
+    "description": "Spatiotemporal knowledge graph of LineLeap (2016-2026)",
+    "created": "2026-02-09",
+    "node_count": 81,
+    "edge_count": 110
+  },
+  "nodes": [
+    {
+      "id": "person-max-schauff",
+      "type": "person",
+      "label": "Max Schauff",
+      "properties": {
+        "title": "Co-Founder / CMO",
+        "school": "UW-Madison '19",
+        "hometown": "Belleville, WI",
+        "description": "Co-Founder and Chief Marketing Officer. Wisconsin native, led growth from college dorm to 700+ venues."
+      }
+    },
+    {
+      "id": "person-patrick-skelly",
+      "type": "person",
+      "label": "Patrick Skelly",
+      "properties": {
+        "title": "Co-Founder / CEO",
+        "school": "University of Michigan",
+        "description": "Co-Founder and Chief Executive Officer. Led the company through YC S19, multiple fundraises, and $200M valuation."
+      }
+    },
+    {
+      "id": "person-nick-becker",
+      "type": "person",
+      "label": "Nick Becker",
+      "properties": {
+        "title": "Co-Founder",
+        "school": "University of Michigan",
+        "description": "Co-Founder. Early-stage builder alongside Skelly at Michigan."
+      }
+    },
+    {
+      "id": "person-jack-pawlik",
+      "type": "person",
+      "label": "Jack Pawlik",
+      "properties": {
+        "title": "Co-Founder",
+        "school": "UW-Madison '19",
+        "description": "Co-Founder. Built the original product and early technical infrastructure."
+      }
+    },
+    {
+      "id": "person-jack-richard",
+      "type": "person",
+      "label": "Jack Richard",
+      "properties": {
+        "title": "Co-Founder / CTO",
+        "description": "Co-Founder and Chief Technology Officer. Architected the platform through eight years of product evolution."
+      }
+    },
+    {
+      "id": "person-alex-pall",
+      "type": "person",
+      "label": "Alex Pall",
+      "properties": {
+        "title": "Investor (The Chainsmokers)",
+        "description": "Member of The Chainsmokers. Early believer and investor in LineLeap."
+      }
+    },
+    {
+      "id": "person-patrick-burke",
+      "type": "person",
+      "label": "Patrick Burke",
+      "properties": {
+        "title": "Chief Partnerships Officer",
+        "date": "2025-10",
+        "description": "Joined late 2025 as Chief Partnerships Officer to lead venue and brand expansion."
+      }
+    },
+    {
+      "id": "person-cole-model",
+      "type": "person",
+      "label": "Cole Model",
+      "properties": {
+        "title": "BuzzPass Co-Founder",
+        "date": "2025-07",
+        "description": "Co-Founder of BuzzPass. Joined LineLeap through the July 2025 acquisition."
+      }
+    },
+    {
+      "id": "person-brett-schoppert",
+      "type": "person",
+      "label": "Brett Schoppert",
+      "properties": {
+        "title": "BuzzPass Co-Founder",
+        "date": "2025-07",
+        "description": "Co-Founder of BuzzPass. Joined LineLeap through the July 2025 acquisition."
+      }
+    },
+    {
+      "id": "person-max-model",
+      "type": "person",
+      "label": "Max Model",
+      "properties": {
+        "title": "BuzzPass Co-Founder",
+        "date": "2025-07",
+        "description": "Co-Founder of BuzzPass. Joined LineLeap through the July 2025 acquisition."
+      }
+    },
+    {
+      "id": "person-jordan-meier",
+      "type": "person",
+      "label": "Jordan Meier",
+      "properties": {
+        "title": "Operator, Kollege Klub",
+        "description": "Kollege Klub operator. Provided testimonial on LineLeap's venue impact."
+      }
+    },
+    {
+      "id": "person-dante-lucchesi",
+      "type": "person",
+      "label": "Dante Lucchesi",
+      "properties": {
+        "title": "Operator, Champs",
+        "description": "Champs operator in State College. Provided testimonial on LineLeap's venue impact."
+      }
+    },
+    {
+      "id": "person-keith-benjamin",
+      "type": "person",
+      "label": "Keith Benjamin",
+      "properties": {
+        "title": "Uptown Hospitality Group",
+        "description": "Uptown Hospitality Group executive. Provided testimonial on LineLeap's multi-venue management capabilities."
+      }
+    },
+    {
+      "id": "person-dade-nunnally",
+      "type": "person",
+      "label": "Dade Nunnally",
+      "properties": {
+        "title": "Operator, Southeastern",
+        "description": "Southeastern (Auburn) operator. Provided testimonial on LineLeap's impact in the college market."
+      }
+    },
+    {
+      "id": "company-lineleap",
+      "type": "company",
+      "label": "LineLeap Inc.",
+      "properties": {
+        "date": "2016",
+        "hq": "New York, NY",
+        "description": "Mobile nightlife platform. Skip lines, buy tickets, pre-order drinks, book VIP. 700+ venues, 1.5M+ users, $200M valuation.",
+        "website": "lineleap.com"
+      }
+    },
+    {
+      "id": "company-buzzpass",
+      "type": "company",
+      "label": "BuzzPass",
+      "properties": {
+        "date": "2025-07-02",
+        "description": "Event ticketing and wristband platform acquired by LineLeap in July 2025. Founders Cole Model, Brett Schoppert, and Max Model joined the team.",
+        "status": "Acquired"
+      }
+    },
+    {
+      "id": "company-yc",
+      "type": "company",
+      "label": "Y Combinator",
+      "properties": {
+        "description": "Startup accelerator. LineLeap participated in Summer 2019 batch (S19).",
+        "location": "San Francisco, CA"
+      }
+    },
+    {
+      "id": "company-altair",
+      "type": "company",
+      "label": "AltaIR Capital",
+      "properties": {
+        "description": "Venture capital firm. Investor in LineLeap."
+      }
+    },
+    {
+      "id": "company-gaingels",
+      "type": "company",
+      "label": "Gaingels",
+      "properties": {
+        "description": "Venture investment syndicate. Investor in LineLeap."
+      }
+    },
+    {
+      "id": "company-maywic",
+      "type": "company",
+      "label": "Maywic Select Investments",
+      "properties": {
+        "description": "Investment firm. Investor in LineLeap."
+      }
+    },
+    {
+      "id": "company-finches",
+      "type": "company",
+      "label": "Finches",
+      "properties": {
+        "description": "Investment firm. Investor in LineLeap."
+      }
+    },
+    {
+      "id": "company-chainsmokers",
+      "type": "company",
+      "label": "The Chainsmokers",
+      "properties": {
+        "description": "DJ duo's investment entity. Alex Pall invested in LineLeap."
+      }
+    },
+    {
+      "id": "product-lineskip",
+      "type": "product",
+      "label": "LineSkip Passes",
+      "properties": {
+        "date": "2017-02",
+        "description": "Original product. Mobile skip-the-line passes sold to consumers, redeemed at nightlife venues. The product that started it all."
+      }
+    },
+    {
+      "id": "product-cover",
+      "type": "product",
+      "label": "Cover Charge Payments",
+      "properties": {
+        "date": "2020",
+        "description": "Digital cover charge payments. Cashless entry for venues, eliminating the door cash box."
+      }
+    },
+    {
+      "id": "product-events",
+      "type": "product",
+      "label": "Event Ticketing",
+      "properties": {
+        "date": "2021",
+        "description": "Full event ticketing platform. Replaced third-party ticketing for venue-hosted events and special nights."
+      }
+    },
+    {
+      "id": "product-drinks",
+      "type": "product",
+      "label": "Drink Pre-Orders",
+      "properties": {
+        "date": "2022",
+        "description": "Mobile drink pre-ordering. Customers order and pay for drinks before arriving or from within the venue."
+      }
+    },
+    {
+      "id": "product-vip",
+      "type": "product",
+      "label": "VIP / Bottle Service",
+      "properties": {
+        "date": "2022",
+        "description": "VIP table and bottle service bookings. Premium experience reservations through the app."
+      }
+    },
+    {
+      "id": "product-dashboard",
+      "type": "product",
+      "label": "Venue Dashboard & Analytics",
+      "properties": {
+        "date": "2020",
+        "description": "Real-time venue management dashboard. Analytics on sales, foot traffic, customer demographics, and revenue."
+      }
+    },
+    {
+      "id": "product-crm",
+      "type": "product",
+      "label": "Venue CRM & Marketing Suite",
+      "properties": {
+        "date": "2022",
+        "description": "Customer relationship management and marketing tools for venues. Push notifications, email campaigns, customer segmentation."
+      }
+    },
+    {
+      "id": "product-brands",
+      "type": "product",
+      "label": "Brand Partnerships Platform",
+      "properties": {
+        "date": "2024",
+        "description": "Brand advertising and sponsorship platform. Connects alcohol and lifestyle brands with venue audiences through targeted promotions."
+      }
+    },
+    {
+      "id": "product-dynamic-pricing",
+      "type": "product",
+      "label": "Dynamic Pricing Engine",
+      "properties": {
+        "date": "2023",
+        "description": "Algorithmic pricing for line skip passes and event tickets. Adjusts prices based on demand, time, and venue capacity signals."
+      }
+    },
+    {
+      "id": "event-incorporation",
+      "type": "event",
+      "label": "Company Incorporation",
+      "properties": {
+        "date": "2016",
+        "description": "LineLeap Inc. officially incorporated."
+      }
+    },
+    {
+      "id": "event-first-night",
+      "type": "event",
+      "label": "First Live Night",
+      "properties": {
+        "date": "2017-02",
+        "description": "First live night selling LineSkip passes at Whiskey Jacks Saloon in Madison, WI. The product-market fit moment."
+      }
+    },
+    {
+      "id": "event-road-trips",
+      "type": "event",
+      "label": "Road Trip Expansion Era",
+      "properties": {
+        "date": "2017",
+        "date_end": "2018",
+        "description": "Founders drove to college towns across the Midwest and East Coast, pitching venues in person. Grassroots expansion across campuses."
+      }
+    },
+    {
+      "id": "event-transcend",
+      "type": "event",
+      "label": "Transcend Innovation Competition Win",
+      "properties": {
+        "date": "2018",
+        "prize": "$15,000",
+        "description": "Won $15K at the Transcend Innovation Competition. Early validation and capital."
+      }
+    },
+    {
+      "id": "event-yc-acceptance",
+      "type": "event",
+      "label": "Y Combinator S19 Acceptance",
+      "properties": {
+        "date": "2019-06",
+        "description": "Accepted into Y Combinator Summer 2019 batch. Moved to San Francisco for the program."
+      }
+    },
+    {
+      "id": "event-yc-demo-day",
+      "type": "event",
+      "label": "YC Demo Day",
+      "properties": {
+        "date": "2019-08",
+        "description": "Presented at YC Demo Day. Reported $30K MRR. Pitched to hundreds of investors."
+      }
+    },
+    {
+      "id": "event-seed-raise",
+      "type": "event",
+      "label": "Post-YC Seed Raise",
+      "properties": {
+        "date": "2019-11",
+        "amount": "~$2M",
+        "description": "Closed approximately $2M seed round following YC Demo Day. Funded expansion beyond college towns."
+      }
+    },
+    {
+      "id": "event-covid-pivot",
+      "type": "event",
+      "label": "COVID Pivot / Product Expansion",
+      "properties": {
+        "date": "2020-03",
+        "description": "COVID-19 shut down nightlife. LineLeap used the downtime to build Cover, Dashboard, and new product lines. Emerged as a full venue OS."
+      }
+    },
+    {
+      "id": "event-300-venues",
+      "type": "event",
+      "label": "300 Venues Milestone",
+      "properties": {
+        "date": "2023-01",
+        "description": "Surpassed 300 active venue partners across 80+ cities."
+      }
+    },
+    {
+      "id": "event-100m-valuation",
+      "type": "event",
+      "label": "$100M Valuation",
+      "properties": {
+        "date": "2024-08",
+        "amount": "$100M",
+        "description": "LineLeap reached $100M valuation. Revenue at approximately $30M annual run rate."
+      }
+    },
+    {
+      "id": "event-techcrunch",
+      "type": "event",
+      "label": "TechCrunch Feature",
+      "properties": {
+        "date": "2024-09",
+        "description": "Featured in TechCrunch. Brought national tech media attention to LineLeap's growth story."
+      }
+    },
+    {
+      "id": "event-buzzpass-acquisition",
+      "type": "event",
+      "label": "BuzzPass Acquisition",
+      "properties": {
+        "date": "2025-07-02",
+        "description": "LineLeap acquired BuzzPass, bringing event ticketing and wristband technology in-house. Three BuzzPass co-founders joined the team."
+      }
+    },
+    {
+      "id": "event-burke-hired",
+      "type": "event",
+      "label": "Patrick Burke Hired as CPO",
+      "properties": {
+        "date": "2025-10",
+        "description": "Patrick Burke joined as Chief Partnerships Officer to lead venue and brand expansion."
+      }
+    },
+    {
+      "id": "event-200m-valuation",
+      "type": "event",
+      "label": "$200M Valuation / Series B-II",
+      "properties": {
+        "date": "2025-11-18",
+        "amount": "$200M",
+        "total_raised": "$35M",
+        "description": "Closed Series B-II at $200M valuation. Total raised to date: $35M. 700+ venues, 150+ cities, 1.5M+ users."
+      }
+    },
+    {
+      "id": "event-700-venues",
+      "type": "event",
+      "label": "700+ Venues / 1.5M Users",
+      "properties": {
+        "date": "2026",
+        "description": "Surpassed 700 active venue partners and 1.5 million registered users. ~100 employees. App ranked #6 Social Networking, #42 overall US."
+      }
+    },
+    {
+      "id": "location-madison",
+      "type": "location",
+      "label": "Madison, WI",
+      "properties": {
+        "date": "2017",
+        "role": "Origin city",
+        "description": "Where it all started. UW-Madison campus. Home of Whiskey Jacks, Kollege Klub, and the original LineSkip pilots."
+      }
+    },
+    {
+      "id": "location-ann-arbor",
+      "type": "location",
+      "label": "Ann Arbor, MI",
+      "properties": {
+        "date": "2017",
+        "role": "Founders' campus",
+        "description": "University of Michigan. Home campus for co-founders Patrick Skelly and Nick Becker."
+      }
+    },
+    {
+      "id": "location-nyc",
+      "type": "location",
+      "label": "New York, NY",
+      "properties": {
+        "date": "2020",
+        "role": "Headquarters",
+        "description": "LineLeap headquarters. Expanded beyond college markets into NYC nightlife."
+      }
+    },
+    {
+      "id": "location-nashville",
+      "type": "location",
+      "label": "Nashville, TN",
+      "properties": {
+        "date": "2022",
+        "role": "Office / Major market",
+        "description": "Nashville office. Home to Jason Aldean's, Morgan Wallen's, and other major entertainment venues."
+      }
+    },
+    {
+      "id": "location-sf",
+      "type": "location",
+      "label": "San Francisco, CA",
+      "properties": {
+        "date": "2019",
+        "role": "YC program",
+        "description": "Y Combinator program location. Summer 2019."
+      }
+    },
+    {
+      "id": "location-state-college",
+      "type": "location",
+      "label": "State College, PA",
+      "properties": {
+        "date": "2017",
+        "role": "Early expansion",
+        "description": "Penn State campus. Home of Champs and early road trip expansion."
+      }
+    },
+    {
+      "id": "location-charleston",
+      "type": "location",
+      "label": "Charleston, SC",
+      "properties": {
+        "date": "2022",
+        "role": "Market",
+        "description": "Uptown Hospitality Group market. Multi-venue operator partnership."
+      }
+    },
+    {
+      "id": "location-auburn",
+      "type": "location",
+      "label": "Auburn, AL",
+      "properties": {
+        "date": "2019",
+        "role": "College market",
+        "description": "Auburn University campus. Home of Southeastern and SEC nightlife."
+      }
+    },
+    {
+      "id": "location-clemson",
+      "type": "location",
+      "label": "Clemson, SC",
+      "properties": {
+        "date": "2019",
+        "role": "College market",
+        "description": "Clemson University campus. Home of ROAR Clemson."
+      }
+    },
+    {
+      "id": "location-lexington",
+      "type": "location",
+      "label": "Lexington, KY",
+      "properties": {
+        "date": "2020",
+        "role": "College market",
+        "description": "University of Kentucky campus. Home of Tin Roof Lexington."
+      }
+    },
+    {
+      "id": "location-ocean-city",
+      "type": "location",
+      "label": "Ocean City, MD",
+      "properties": {
+        "date": "2021",
+        "role": "Summer market",
+        "description": "Beach resort town. Home of Seacrets, one of the largest nightlife venues on the East Coast."
+      }
+    },
+    {
+      "id": "venue-whiskey-jacks",
+      "type": "venue",
+      "label": "Whiskey Jacks Saloon",
+      "properties": {
+        "date": "2017-02",
+        "city": "Madison, WI",
+        "description": "The first LineLeap venue. February 2017. Where the founders proved that people would pay to skip the line."
+      }
+    },
+    {
+      "id": "venue-kollege-klub",
+      "type": "venue",
+      "label": "Kollege Klub",
+      "properties": {
+        "date": "2017",
+        "city": "Madison, WI / Minneapolis, MN",
+        "description": "Iconic college bar with locations in Madison and Minneapolis. Operated by Jordan Meier."
+      }
+    },
+    {
+      "id": "venue-champs",
+      "type": "venue",
+      "label": "Champs",
+      "properties": {
+        "date": "2017",
+        "city": "State College, PA",
+        "description": "Penn State nightlife staple. Operated by Dante Lucchesi. Early expansion venue."
+      }
+    },
+    {
+      "id": "venue-brothers",
+      "type": "venue",
+      "label": "Brothers",
+      "properties": {
+        "date": "2018",
+        "city": "Multiple locations",
+        "description": "Multi-location college bar chain. Early multi-venue partner."
+      }
+    },
+    {
+      "id": "venue-roar",
+      "type": "venue",
+      "label": "ROAR Clemson",
+      "properties": {
+        "date": "2019",
+        "city": "Clemson, SC",
+        "description": "Clemson University nightlife venue. SEC market expansion."
+      }
+    },
+    {
+      "id": "venue-dirty-dans",
+      "type": "venue",
+      "label": "Dirty Dan's",
+      "properties": {
+        "date": "2018",
+        "city": "College market",
+        "description": "College bar venue partner."
+      }
+    },
+    {
+      "id": "venue-1785",
+      "type": "venue",
+      "label": "1785 Bar & Grill",
+      "properties": {
+        "date": "2018",
+        "city": "College market",
+        "description": "Bar and grill venue partner."
+      }
+    },
+    {
+      "id": "venue-lansdowne",
+      "type": "venue",
+      "label": "The Lansdowne Pub",
+      "properties": {
+        "date": "2020",
+        "city": "NYC area",
+        "description": "Pub venue partner in the Northeast market."
+      }
+    },
+    {
+      "id": "venue-gentle-bens",
+      "type": "venue",
+      "label": "Gentle Ben's Brewing",
+      "properties": {
+        "date": "2019",
+        "city": "Tucson, AZ",
+        "description": "Brewery and bar venue near University of Arizona."
+      }
+    },
+    {
+      "id": "venue-jason-aldeans",
+      "type": "venue",
+      "label": "Jason Aldean's Kitchen & Rooftop Bar",
+      "properties": {
+        "date": "2022",
+        "city": "Nashville, TN",
+        "description": "Celebrity-owned Nashville entertainment venue. Marquee partner in the Nashville market."
+      }
+    },
+    {
+      "id": "venue-morgan-wallens",
+      "type": "venue",
+      "label": "Morgan Wallen's",
+      "properties": {
+        "date": "2023",
+        "city": "Nashville, TN",
+        "description": "Country star Morgan Wallen's Nashville bar. Premium entertainment venue partner."
+      }
+    },
+    {
+      "id": "venue-southeastern",
+      "type": "venue",
+      "label": "Southeastern",
+      "properties": {
+        "date": "2019",
+        "city": "Auburn, AL",
+        "description": "Auburn nightlife venue. Operated by Dade Nunnally."
+      }
+    },
+    {
+      "id": "venue-uptown",
+      "type": "venue",
+      "label": "Uptown Hospitality Venues",
+      "properties": {
+        "date": "2022",
+        "city": "Charleston, SC / New York, NY",
+        "description": "Multi-venue hospitality group operated by Keith Benjamin. Spans Charleston and NYC locations."
+      }
+    },
+    {
+      "id": "venue-tin-roof",
+      "type": "venue",
+      "label": "Tin Roof Lexington",
+      "properties": {
+        "date": "2020",
+        "city": "Lexington, KY",
+        "description": "Live music venue and bar near University of Kentucky."
+      }
+    },
+    {
+      "id": "venue-seacrets",
+      "type": "venue",
+      "label": "Seacrets",
+      "properties": {
+        "date": "2021",
+        "city": "Ocean City, MD",
+        "description": "One of the largest nightlife venues on the East Coast. Massive summer volume."
+      }
+    },
+    {
+      "id": "venue-the-boot",
+      "type": "venue",
+      "label": "The Boot",
+      "properties": {
+        "date": "2019",
+        "city": "New Orleans, LA",
+        "description": "Iconic Tulane University bar. Southern college market."
+      }
+    },
+    {
+      "id": "venue-wayside",
+      "type": "venue",
+      "label": "Wayside Nightclub",
+      "properties": {
+        "date": "2020",
+        "city": "College market",
+        "description": "Nightclub venue partner."
+      }
+    },
+    {
+      "id": "venue-stage-west",
+      "type": "venue",
+      "label": "Stage West",
+      "properties": {
+        "date": "2021",
+        "city": "Entertainment district",
+        "description": "Entertainment venue partner."
+      }
+    },
+    {
+      "id": "metric-2017-02",
+      "type": "metric",
+      "label": "Feb 2017: Launch Metrics",
+      "properties": {
+        "date": "2017-02",
+        "venues": 1,
+        "cities": 1,
+        "description": "1 venue, 1 city. The beginning."
+      }
+    },
+    {
+      "id": "metric-2019-08",
+      "type": "metric",
+      "label": "Aug 2019: YC Demo Day Metrics",
+      "properties": {
+        "date": "2019-08",
+        "mrr": "$30K",
+        "venues": "~50",
+        "description": "$30K MRR, approximately 50 venues. Reported at YC Demo Day."
+      }
+    },
+    {
+      "id": "metric-2023-01",
+      "type": "metric",
+      "label": "Early 2023: Growth Metrics",
+      "properties": {
+        "date": "2023-01",
+        "employees": 25,
+        "venues": "300+",
+        "cities": "80+",
+        "description": "25 employees, 300+ venues across 80+ cities."
+      }
+    },
+    {
+      "id": "metric-2024-08",
+      "type": "metric",
+      "label": "Aug 2024: $100M Metrics",
+      "properties": {
+        "date": "2024-08",
+        "valuation": "$100M",
+        "revenue": "$30M",
+        "description": "$100M valuation. Approximately $30M annual revenue."
+      }
+    },
+    {
+      "id": "metric-2025-11",
+      "type": "metric",
+      "label": "Nov 2025: Series B-II Metrics",
+      "properties": {
+        "date": "2025-11",
+        "valuation": "$200M",
+        "total_raised": "$35M",
+        "venues": "700+",
+        "cities": "150+",
+        "users": "1.5M+",
+        "employees": "~100",
+        "description": "$200M valuation, $35M total raised, 700+ venues, 150+ cities, 1.5M+ users, ~100 employees."
+      }
+    },
+    {
+      "id": "metric-2025-fall-rank",
+      "type": "metric",
+      "label": "Fall 2025: App Store Ranking",
+      "properties": {
+        "date": "2025-09",
+        "app_rank_social": "#6",
+        "app_rank_overall": "#42",
+        "description": "App Store rankings: #6 Social Networking, #42 overall in the US."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-schauff-cofounded",
+      "source": "person-max-schauff",
+      "target": "company-lineleap",
+      "type": "cofounded",
+      "properties": { "date": "2016", "label": "Co-Founded" }
+    },
+    {
+      "id": "e-skelly-cofounded",
+      "source": "person-patrick-skelly",
+      "target": "company-lineleap",
+      "type": "cofounded",
+      "properties": { "date": "2016", "label": "Co-Founded" }
+    },
+    {
+      "id": "e-becker-cofounded",
+      "source": "person-nick-becker",
+      "target": "company-lineleap",
+      "type": "cofounded",
+      "properties": { "date": "2016", "label": "Co-Founded" }
+    },
+    {
+      "id": "e-pawlik-cofounded",
+      "source": "person-jack-pawlik",
+      "target": "company-lineleap",
+      "type": "cofounded",
+      "properties": { "date": "2016", "label": "Co-Founded" }
+    },
+    {
+      "id": "e-richard-cofounded",
+      "source": "person-jack-richard",
+      "target": "company-lineleap",
+      "type": "cofounded",
+      "properties": { "date": "2016", "label": "Co-Founded" }
+    },
+    {
+      "id": "e-schauff-role",
+      "source": "person-max-schauff",
+      "target": "company-lineleap",
+      "type": "role",
+      "properties": { "title": "CMO", "label": "CMO" }
+    },
+    {
+      "id": "e-skelly-role",
+      "source": "person-patrick-skelly",
+      "target": "company-lineleap",
+      "type": "role",
+      "properties": { "title": "CEO", "label": "CEO" }
+    },
+    {
+      "id": "e-richard-role",
+      "source": "person-jack-richard",
+      "target": "company-lineleap",
+      "type": "role",
+      "properties": { "title": "CTO", "label": "CTO" }
+    },
+    {
+      "id": "e-burke-role",
+      "source": "person-patrick-burke",
+      "target": "company-lineleap",
+      "type": "role",
+      "properties": { "title": "Chief Partnerships Officer", "date": "2025-10", "label": "CPO" }
+    },
+    {
+      "id": "e-burke-hired",
+      "source": "company-lineleap",
+      "target": "person-patrick-burke",
+      "type": "hired",
+      "properties": { "date": "2025-10", "label": "Hired as CPO" }
+    },
+    {
+      "id": "e-pall-invested",
+      "source": "person-alex-pall",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-chainsmokers-invested",
+      "source": "company-chainsmokers",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-pall-chainsmokers",
+      "source": "person-alex-pall",
+      "target": "company-chainsmokers",
+      "type": "role",
+      "properties": { "title": "Member / Investor", "label": "Member" }
+    },
+    {
+      "id": "e-yc-invested",
+      "source": "company-yc",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "date": "2019-06", "label": "S19 Batch" }
+    },
+    {
+      "id": "e-altair-invested",
+      "source": "company-altair",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-gaingels-invested",
+      "source": "company-gaingels",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-maywic-invested",
+      "source": "company-maywic",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-finches-invested",
+      "source": "company-finches",
+      "target": "company-lineleap",
+      "type": "invested_in",
+      "properties": { "label": "Invested" }
+    },
+    {
+      "id": "e-lineleap-acquired-buzzpass",
+      "source": "company-lineleap",
+      "target": "company-buzzpass",
+      "type": "acquired",
+      "properties": { "date": "2025-07-02", "label": "Acquired" }
+    },
+    {
+      "id": "e-cole-cofounded-buzzpass",
+      "source": "person-cole-model",
+      "target": "company-buzzpass",
+      "type": "cofounded",
+      "properties": { "label": "Co-Founded BuzzPass" }
+    },
+    {
+      "id": "e-brett-cofounded-buzzpass",
+      "source": "person-brett-schoppert",
+      "target": "company-buzzpass",
+      "type": "cofounded",
+      "properties": { "label": "Co-Founded BuzzPass" }
+    },
+    {
+      "id": "e-max-cofounded-buzzpass",
+      "source": "person-max-model",
+      "target": "company-buzzpass",
+      "type": "cofounded",
+      "properties": { "label": "Co-Founded BuzzPass" }
+    },
+    {
+      "id": "e-cole-joined",
+      "source": "person-cole-model",
+      "target": "company-lineleap",
+      "type": "joined_from",
+      "properties": { "date": "2025-07", "via": "BuzzPass acquisition", "label": "Joined via acquisition" }
+    },
+    {
+      "id": "e-brett-joined",
+      "source": "person-brett-schoppert",
+      "target": "company-lineleap",
+      "type": "joined_from",
+      "properties": { "date": "2025-07", "via": "BuzzPass acquisition", "label": "Joined via acquisition" }
+    },
+    {
+      "id": "e-max-model-joined",
+      "source": "person-max-model",
+      "target": "company-lineleap",
+      "type": "joined_from",
+      "properties": { "date": "2025-07", "via": "BuzzPass acquisition", "label": "Joined via acquisition" }
+    },
+    {
+      "id": "e-lineleap-launched-lineskip",
+      "source": "company-lineleap",
+      "target": "product-lineskip",
+      "type": "launched",
+      "properties": { "date": "2017-02", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-cover",
+      "source": "company-lineleap",
+      "target": "product-cover",
+      "type": "launched",
+      "properties": { "date": "2020", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-events",
+      "source": "company-lineleap",
+      "target": "product-events",
+      "type": "launched",
+      "properties": { "date": "2021", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-drinks",
+      "source": "company-lineleap",
+      "target": "product-drinks",
+      "type": "launched",
+      "properties": { "date": "2022", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-vip",
+      "source": "company-lineleap",
+      "target": "product-vip",
+      "type": "launched",
+      "properties": { "date": "2022", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-dashboard",
+      "source": "company-lineleap",
+      "target": "product-dashboard",
+      "type": "launched",
+      "properties": { "date": "2020", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-crm",
+      "source": "company-lineleap",
+      "target": "product-crm",
+      "type": "launched",
+      "properties": { "date": "2022", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-brands",
+      "source": "company-lineleap",
+      "target": "product-brands",
+      "type": "launched",
+      "properties": { "date": "2024", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-launched-pricing",
+      "source": "company-lineleap",
+      "target": "product-dynamic-pricing",
+      "type": "launched",
+      "properties": { "date": "2023", "label": "Launched" }
+    },
+    {
+      "id": "e-lineleap-first-venue",
+      "source": "company-lineleap",
+      "target": "venue-whiskey-jacks",
+      "type": "first_venue",
+      "properties": { "date": "2017-02", "label": "First venue" }
+    },
+    {
+      "id": "e-lineleap-partner-kk",
+      "source": "company-lineleap",
+      "target": "venue-kollege-klub",
+      "type": "partner_venue",
+      "properties": { "date": "2017", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-champs",
+      "source": "company-lineleap",
+      "target": "venue-champs",
+      "type": "partner_venue",
+      "properties": { "date": "2017", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-brothers",
+      "source": "company-lineleap",
+      "target": "venue-brothers",
+      "type": "partner_venue",
+      "properties": { "date": "2018", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-roar",
+      "source": "company-lineleap",
+      "target": "venue-roar",
+      "type": "partner_venue",
+      "properties": { "date": "2019", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-dirtydans",
+      "source": "company-lineleap",
+      "target": "venue-dirty-dans",
+      "type": "partner_venue",
+      "properties": { "date": "2018", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-1785",
+      "source": "company-lineleap",
+      "target": "venue-1785",
+      "type": "partner_venue",
+      "properties": { "date": "2018", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-lansdowne",
+      "source": "company-lineleap",
+      "target": "venue-lansdowne",
+      "type": "partner_venue",
+      "properties": { "date": "2020", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-gentlebens",
+      "source": "company-lineleap",
+      "target": "venue-gentle-bens",
+      "type": "partner_venue",
+      "properties": { "date": "2019", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-aldeans",
+      "source": "company-lineleap",
+      "target": "venue-jason-aldeans",
+      "type": "partner_venue",
+      "properties": { "date": "2022", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-wallens",
+      "source": "company-lineleap",
+      "target": "venue-morgan-wallens",
+      "type": "partner_venue",
+      "properties": { "date": "2023", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-southeastern",
+      "source": "company-lineleap",
+      "target": "venue-southeastern",
+      "type": "partner_venue",
+      "properties": { "date": "2019", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-uptown",
+      "source": "company-lineleap",
+      "target": "venue-uptown",
+      "type": "partner_venue",
+      "properties": { "date": "2022", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-tinroof",
+      "source": "company-lineleap",
+      "target": "venue-tin-roof",
+      "type": "partner_venue",
+      "properties": { "date": "2020", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-seacrets",
+      "source": "company-lineleap",
+      "target": "venue-seacrets",
+      "type": "partner_venue",
+      "properties": { "date": "2021", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-boot",
+      "source": "company-lineleap",
+      "target": "venue-the-boot",
+      "type": "partner_venue",
+      "properties": { "date": "2019", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-wayside",
+      "source": "company-lineleap",
+      "target": "venue-wayside",
+      "type": "partner_venue",
+      "properties": { "date": "2020", "label": "Partner" }
+    },
+    {
+      "id": "e-lineleap-partner-stagewest",
+      "source": "company-lineleap",
+      "target": "venue-stage-west",
+      "type": "partner_venue",
+      "properties": { "date": "2021", "label": "Partner" }
+    },
+    {
+      "id": "e-whiskeyjacks-madison",
+      "source": "venue-whiskey-jacks",
+      "target": "location-madison",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-kk-madison",
+      "source": "venue-kollege-klub",
+      "target": "location-madison",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-champs-statecollege",
+      "source": "venue-champs",
+      "target": "location-state-college",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-roar-clemson",
+      "source": "venue-roar",
+      "target": "location-clemson",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-southeastern-auburn",
+      "source": "venue-southeastern",
+      "target": "location-auburn",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-uptown-charleston",
+      "source": "venue-uptown",
+      "target": "location-charleston",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-tinroof-lexington",
+      "source": "venue-tin-roof",
+      "target": "location-lexington",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-seacrets-oc",
+      "source": "venue-seacrets",
+      "target": "location-ocean-city",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-aldeans-nashville",
+      "source": "venue-jason-aldeans",
+      "target": "location-nashville",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-wallens-nashville",
+      "source": "venue-morgan-wallens",
+      "target": "location-nashville",
+      "type": "located_in",
+      "properties": { "label": "Located in" }
+    },
+    {
+      "id": "e-meier-kk",
+      "source": "person-jordan-meier",
+      "target": "venue-kollege-klub",
+      "type": "testimonial_from",
+      "properties": { "label": "Testimonial" }
+    },
+    {
+      "id": "e-lucchesi-champs",
+      "source": "person-dante-lucchesi",
+      "target": "venue-champs",
+      "type": "testimonial_from",
+      "properties": { "label": "Testimonial" }
+    },
+    {
+      "id": "e-benjamin-uptown",
+      "source": "person-keith-benjamin",
+      "target": "venue-uptown",
+      "type": "testimonial_from",
+      "properties": { "label": "Testimonial" }
+    },
+    {
+      "id": "e-nunnally-southeastern",
+      "source": "person-dade-nunnally",
+      "target": "venue-southeastern",
+      "type": "testimonial_from",
+      "properties": { "label": "Testimonial" }
+    },
+    {
+      "id": "e-lineleap-incorporation",
+      "source": "company-lineleap",
+      "target": "event-incorporation",
+      "type": "milestone",
+      "properties": { "date": "2016", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-first-night",
+      "source": "company-lineleap",
+      "target": "event-first-night",
+      "type": "milestone",
+      "properties": { "date": "2017-02", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-road-trips",
+      "source": "company-lineleap",
+      "target": "event-road-trips",
+      "type": "milestone",
+      "properties": { "date": "2017", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-transcend",
+      "source": "company-lineleap",
+      "target": "event-transcend",
+      "type": "milestone",
+      "properties": { "date": "2018", "label": "Won" }
+    },
+    {
+      "id": "e-lineleap-yc-acceptance",
+      "source": "company-lineleap",
+      "target": "event-yc-acceptance",
+      "type": "participated_in",
+      "properties": { "date": "2019-06", "label": "Accepted" }
+    },
+    {
+      "id": "e-lineleap-yc-demo",
+      "source": "company-lineleap",
+      "target": "event-yc-demo-day",
+      "type": "participated_in",
+      "properties": { "date": "2019-08", "label": "Presented" }
+    },
+    {
+      "id": "e-lineleap-seed",
+      "source": "company-lineleap",
+      "target": "event-seed-raise",
+      "type": "milestone",
+      "properties": { "date": "2019-11", "label": "Raised" }
+    },
+    {
+      "id": "e-lineleap-covid",
+      "source": "company-lineleap",
+      "target": "event-covid-pivot",
+      "type": "milestone",
+      "properties": { "date": "2020-03", "label": "Pivoted" }
+    },
+    {
+      "id": "e-lineleap-300",
+      "source": "company-lineleap",
+      "target": "event-300-venues",
+      "type": "milestone",
+      "properties": { "date": "2023-01", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-100m",
+      "source": "company-lineleap",
+      "target": "event-100m-valuation",
+      "type": "milestone",
+      "properties": { "date": "2024-08", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-tc",
+      "source": "company-lineleap",
+      "target": "event-techcrunch",
+      "type": "milestone",
+      "properties": { "date": "2024-09", "label": "Featured" }
+    },
+    {
+      "id": "e-lineleap-buzzpass-event",
+      "source": "company-lineleap",
+      "target": "event-buzzpass-acquisition",
+      "type": "milestone",
+      "properties": { "date": "2025-07-02", "label": "Acquired BuzzPass" }
+    },
+    {
+      "id": "e-lineleap-burke-event",
+      "source": "company-lineleap",
+      "target": "event-burke-hired",
+      "type": "milestone",
+      "properties": { "date": "2025-10", "label": "Key hire" }
+    },
+    {
+      "id": "e-lineleap-200m",
+      "source": "company-lineleap",
+      "target": "event-200m-valuation",
+      "type": "milestone",
+      "properties": { "date": "2025-11-18", "label": "Milestone" }
+    },
+    {
+      "id": "e-lineleap-700",
+      "source": "company-lineleap",
+      "target": "event-700-venues",
+      "type": "milestone",
+      "properties": { "date": "2026", "label": "Milestone" }
+    },
+    {
+      "id": "e-metric-2017-firstnight",
+      "source": "metric-2017-02",
+      "target": "event-first-night",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-metric-2019-demoday",
+      "source": "metric-2019-08",
+      "target": "event-yc-demo-day",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-metric-2023-300",
+      "source": "metric-2023-01",
+      "target": "event-300-venues",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-metric-2024-100m",
+      "source": "metric-2024-08",
+      "target": "event-100m-valuation",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-metric-2025-200m",
+      "source": "metric-2025-11",
+      "target": "event-200m-valuation",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-metric-2025-rank",
+      "source": "metric-2025-fall-rank",
+      "target": "event-700-venues",
+      "type": "measured_at",
+      "properties": { "label": "Measured at" }
+    },
+    {
+      "id": "e-lineleap-madison",
+      "source": "company-lineleap",
+      "target": "location-madison",
+      "type": "operates_in",
+      "properties": { "date": "2017", "label": "Origin" }
+    },
+    {
+      "id": "e-lineleap-ann-arbor",
+      "source": "company-lineleap",
+      "target": "location-ann-arbor",
+      "type": "operates_in",
+      "properties": { "date": "2017", "label": "Founders' campus" }
+    },
+    {
+      "id": "e-lineleap-nyc",
+      "source": "company-lineleap",
+      "target": "location-nyc",
+      "type": "expansion_to",
+      "properties": { "date": "2020", "label": "HQ move" }
+    },
+    {
+      "id": "e-lineleap-nashville",
+      "source": "company-lineleap",
+      "target": "location-nashville",
+      "type": "expansion_to",
+      "properties": { "date": "2022", "label": "Office opened" }
+    },
+    {
+      "id": "e-lineleap-sf",
+      "source": "company-lineleap",
+      "target": "location-sf",
+      "type": "operates_in",
+      "properties": { "date": "2019", "label": "YC program" }
+    },
+    {
+      "id": "e-lineleap-statecollege",
+      "source": "company-lineleap",
+      "target": "location-state-college",
+      "type": "expansion_to",
+      "properties": { "date": "2017", "label": "Early expansion" }
+    },
+    {
+      "id": "e-lineleap-charleston",
+      "source": "company-lineleap",
+      "target": "location-charleston",
+      "type": "expansion_to",
+      "properties": { "date": "2022", "label": "Expansion" }
+    },
+    {
+      "id": "e-lineleap-auburn",
+      "source": "company-lineleap",
+      "target": "location-auburn",
+      "type": "expansion_to",
+      "properties": { "date": "2019", "label": "SEC market" }
+    },
+    {
+      "id": "e-lineleap-clemson",
+      "source": "company-lineleap",
+      "target": "location-clemson",
+      "type": "expansion_to",
+      "properties": { "date": "2019", "label": "SEC market" }
+    },
+    {
+      "id": "e-lineleap-lexington",
+      "source": "company-lineleap",
+      "target": "location-lexington",
+      "type": "expansion_to",
+      "properties": { "date": "2020", "label": "Expansion" }
+    },
+    {
+      "id": "e-lineleap-oc",
+      "source": "company-lineleap",
+      "target": "location-ocean-city",
+      "type": "expansion_to",
+      "properties": { "date": "2021", "label": "Summer market" }
+    },
+    {
+      "id": "e-schauff-from-madison",
+      "source": "person-max-schauff",
+      "target": "location-madison",
+      "type": "operates_in",
+      "properties": { "label": "UW-Madison" }
+    },
+    {
+      "id": "e-pawlik-from-madison",
+      "source": "person-jack-pawlik",
+      "target": "location-madison",
+      "type": "operates_in",
+      "properties": { "label": "UW-Madison" }
+    },
+    {
+      "id": "e-skelly-from-aa",
+      "source": "person-patrick-skelly",
+      "target": "location-ann-arbor",
+      "type": "operates_in",
+      "properties": { "label": "U of Michigan" }
+    },
+    {
+      "id": "e-becker-from-aa",
+      "source": "person-nick-becker",
+      "target": "location-ann-arbor",
+      "type": "operates_in",
+      "properties": { "label": "U of Michigan" }
+    },
+    {
+      "id": "e-yc-event-acceptance",
+      "source": "company-yc",
+      "target": "event-yc-acceptance",
+      "type": "milestone",
+      "properties": { "date": "2019-06", "label": "S19 Batch" }
+    },
+    {
+      "id": "e-yc-event-demo",
+      "source": "company-yc",
+      "target": "event-yc-demo-day",
+      "type": "milestone",
+      "properties": { "date": "2019-08", "label": "Demo Day" }
+    },
+    {
+      "id": "e-yc-sf",
+      "source": "company-yc",
+      "target": "location-sf",
+      "type": "operates_in",
+      "properties": { "label": "Headquarters" }
+    },
+    {
+      "id": "e-buzzpass-event",
+      "source": "company-buzzpass",
+      "target": "event-buzzpass-acquisition",
+      "type": "milestone",
+      "properties": { "date": "2025-07-02", "label": "Acquired" }
+    },
+    {
+      "id": "e-firstnight-whiskeyjacks",
+      "source": "event-first-night",
+      "target": "venue-whiskey-jacks",
+      "type": "milestone",
+      "properties": { "date": "2017-02", "label": "At venue" }
+    },
+    {
+      "id": "e-seed-altair",
+      "source": "event-seed-raise",
+      "target": "company-altair",
+      "type": "milestone",
+      "properties": { "label": "Lead investor" }
+    },
+    {
+      "id": "e-covid-cover",
+      "source": "event-covid-pivot",
+      "target": "product-cover",
+      "type": "milestone",
+      "properties": { "label": "Built during COVID" }
+    },
+    {
+      "id": "e-covid-dashboard",
+      "source": "event-covid-pivot",
+      "target": "product-dashboard",
+      "type": "milestone",
+      "properties": { "label": "Built during COVID" }
+    }
+  ]
+}
