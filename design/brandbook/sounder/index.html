@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sounder — Brand Book</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --purple-500:#7200CB; --purple-600:#5B00A2; --purple-700:#44007A; --purple-800:#2E0051;
+  --magenta-500:#F000D2; --magenta-600:#C000A8;
+  --cyan-500:#21D6C6; --cyan-600:#1AAB9E;
+  --red-500:#CE4F51;
+  --dark:#232324; --gray:#5B575E; --light:#F2F2F3; --white:#FFFFFF;
+  --bg:#0e0b12; --surface:#1a1520; --border:#2a2530; --text:#ede8f2; --dim:#7a7580;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:1100px;margin:0 auto;padding:64px 32px 96px}
+
+.brand-header{text-align:center;padding:80px 0 64px;border-bottom:1px solid var(--border);margin-bottom:64px;position:relative;overflow:hidden}
+.brand-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(114,0,203,0.15),rgba(240,0,210,0.08),rgba(33,214,198,0.06));border-radius:24px}
+.brand-header *{position:relative;z-index:1}
+.brand-header .icon{font-size:64px;margin-bottom:16px}
+.brand-header h1{font-size:48px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
+.brand-header .sub{font-size:16px;color:var(--dim);font-weight:400}
+.brand-header .version{display:inline-block;margin-top:16px;font-size:11px;padding:4px 14px;border-radius:20px;background:rgba(114,0,203,0.15);color:#AA66E0;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+section{margin-bottom:72px}
+section h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#AA66E0;margin-bottom:32px;display:flex;align-items:center;gap:16px}
+section h2::after{content:'';flex:1;height:1px;background:var(--border)}
+section h3{font-size:18px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
+section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
+
+.essence-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.essence-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px}
+.essence-card .label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#AA66E0;font-weight:600;margin-bottom:10px}
+.essence-card .value{font-size:15px;color:var(--text);line-height:1.7}
+
+.palette-section{margin-bottom:32px}
+.palette-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;margin-bottom:12px}
+.palette-row{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:88px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.swatch-color{height:64px}
+.swatch-info{padding:6px 8px;background:var(--surface)}
+.swatch-info .name{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:1px}
+.swatch-info .hex{font-size:9px;color:var(--dim);font-family:'SF Mono',monospace}
+
+.gradient-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.gradient-strip{height:80px;border-radius:12px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.gradient-strip .g-label{position:absolute;bottom:10px;left:14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:rgba(255,255,255,0.7)}
+
+.product-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.product-card .p-icon{font-size:32px;margin-bottom:12px}
+.product-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.product-card p{font-size:12px;color:var(--dim);max-width:100%}
+
+.css-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'SF Mono','Cascadia Code',monospace;font-size:12px;line-height:2;color:#AA66E0;overflow-x:auto;margin-top:24px}
+.css-block pre{margin:0}
+
+@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="brand-header">
+    <div class="icon">&#x1F417;</div>
+    <h1>Sounder</h1>
+    <p class="sub">Show pig herd management &mdash; biological lifecycle intelligence</p>
+    <span class="version">v1.0 &middot; SounderApp.com</span>
+  </header>
+
+  <!-- ═══════════ BRAND ESSENCE ═══════════ -->
+  <section>
+    <h2>Brand Essence</h2>
+    <h3>Biological lifecycle intelligence for the show pig industry</h3>
+    <p>Sounder brings Charlotte's knowledge graph to biological operations &mdash; tracking genetics, gestation, health, lineage, and performance across generations. The platform observes what breeders already do and makes it legible.</p>
+    <div class="essence-grid">
+      <div class="essence-card">
+        <div class="label">Domain</div>
+        <div class="value">Show pig herd management. Health tracking, breeding cycles, lineage records, performance metrics, sales tracking. The biological instruction set compiled from Charlotte's kernel.</div>
+      </div>
+      <div class="essence-card">
+        <div class="label">Palette Logic</div>
+        <div class="value">Purple for intelligence and trust. Magenta for vitality and biological energy. Cyan for clarity and data. Red for alerts and health. Four 9-step palettes provide depth across any context.</div>
+      </div>
+      <div class="essence-card">
+        <div class="label">Entity</div>
+        <div class="value">Sounder Enterprises, LLC (Delaware). Product: SounderApp.com. MVP complete, beta in progress. Charlotte's first biological domain validation.</div>
+      </div>
+      <div class="essence-card">
+        <div class="label">Charlotte Layer</div>
+        <div class="value">Sounder is a compiled Charlotte OS &mdash; the kernel's five primitives (Node, Edge, Metric, Signal, Protocol) mapped to sows, litters, gestation timelines, health signals, and breeding protocols.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRODUCT FEATURES ═══════════ -->
+  <section>
+    <h2>Product</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="p-icon">&#x1F9EC;</div>
+        <h4>Lineage &amp; Genetics</h4>
+        <p>Full pedigree tracking. Sire-dam-litter relationships as EDGE primitives in the graph.</p>
+      </div>
+      <div class="product-card">
+        <div class="p-icon">&#x1F4C8;</div>
+        <h4>Breeding Cycles</h4>
+        <p>Gestation tracking, heat detection, breeding schedules. Temporal spine at the biological scale.</p>
+      </div>
+      <div class="product-card">
+        <div class="p-icon">&#x2764;</div>
+        <h4>Health Tracking</h4>
+        <p>Per-sow health history. Signals on metric lines. Threshold alerts when vitals cross boundaries.</p>
+      </div>
+      <div class="product-card">
+        <div class="p-icon">&#x1F3C6;</div>
+        <h4>Show Performance</h4>
+        <p>Exhibition results, judge feedback, competitive records. The heuristic layer of the domain.</p>
+      </div>
+      <div class="product-card">
+        <div class="p-icon">&#x1F4B0;</div>
+        <h4>Sales Tracking</h4>
+        <p>Pig sales, buyer records, revenue metrics. Business signals flowing into the graph.</p>
+      </div>
+      <div class="product-card">
+        <div class="p-icon">&#x1F514;</div>
+        <h4>Push Notifications</h4>
+        <p>Breeding windows, health events, due dates. Protocols firing on schedule.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ COLOR PALETTE ═══════════ -->
+  <section>
+    <h2>Color Palette</h2>
+
+    <div class="palette-section">
+      <div class="palette-label">Purple &mdash; Primary (Intelligence)</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#E3CCF5"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#E3CCF5</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C799EA"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#C799EA</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#AA66E0"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#AA66E0</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8E33D5"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#8E33D5</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#7200CB"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#7200CB</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#5B00A2"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#5B00A2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#44007A"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#44007A</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2E0051"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#2E0051</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#170029"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#170029</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Magenta &mdash; Secondary (Vitality)</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#FCCCF6"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#FCCCF6</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F999ED"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#F999ED</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F666E4"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#F666E4</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F333DB"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#F333DB</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F000D2"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#F000D2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C000A8"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#C000A8</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#90007E"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#90007E</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#600054"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#600054</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#30002A"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#30002A</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Cyan &mdash; Accent (Clarity)</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#D3F7F4"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#D3F7F4</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#A6EFE8"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#A6EFE8</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#7AE6DD"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#7AE6DD</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4DDED1"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#4DDED1</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#21D6C6"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#21D6C6</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1AAB9E"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#1AAB9E</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#148077"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#148077</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#0D564F"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#0D564F</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#072B28"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#072B28</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Red &mdash; Alerts (Health)</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#F5DCDC"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#F5DCDC</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#EBB9B9"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#EBB9B9</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E29597"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#E29597</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D87274"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#D87274</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#CE4F51"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#CE4F51</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#A53F41"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#A53F41</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#7C2F31"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#7C2F31</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#522020"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#522020</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#291010"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#291010</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Neutrals</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#232324"></div><div class="swatch-info"><div class="name">Dark</div><div class="hex">#232324</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#5B575E"></div><div class="swatch-info"><div class="name">Gray</div><div class="hex">#5B575E</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ECECEC"></div><div class="swatch-info"><div class="name">Light</div><div class="hex">#ECECEC</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F2F2F3"></div><div class="swatch-info"><div class="name">Off-White</div><div class="hex">#F2F2F3</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-info"><div class="name">White</div><div class="hex">#FFFFFF</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Brand Gradients</div>
+      <div class="gradient-row">
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#7200CB,#F000D2)"><span class="g-label">Purple &rarr; Magenta</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#5B00A2,#21D6C6)"><span class="g-label">Purple &rarr; Cyan</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#F000D2,#CE4F51)"><span class="g-label">Magenta &rarr; Red</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#44007A,#7200CB,#F000D2)"><span class="g-label">Deep Brand Sweep</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CSS VARIABLES ═══════════ -->
+  <section>
+    <h2>CSS Variables</h2>
+    <div class="css-block">
+<pre>:root {
+  --sounder-purple-500: #7200CB;  /* Primary */
+  --sounder-purple-600: #5B00A2;
+  --sounder-purple-700: #44007A;
+  --sounder-magenta-500: #F000D2; /* Secondary */
+  --sounder-cyan-500: #21D6C6;    /* Accent */
+  --sounder-red-500: #CE4F51;     /* Alert */
+  --sounder-dark: #232324;
+  --sounder-gray: #5B575E;
+  --sounder-light: #F2F2F3;
+}</pre>
+    </div>
+  </section>
+
+  <!-- ═══════════ EXISTING ASSETS ═══════════ -->
+  <section>
+    <h2>Existing Assets</h2>
+    <p>Logo files, brand imagery, and design resources are located in the repository:</p>
+    <div class="css-block" style="color:var(--dim)">
+<pre>charlotte/assets/
+  SOUNDER_BRAND_ILLUSTRATION.svg
+  SOUNDER_COLORS_AND_TYPOGRAPHY.svg
+  SOUNDER_BRAND_BACKGROUND.png
+  SOUNDER_BRAND_IMAGE.png
+  SOUNDER_BRAND_ICON.png
+
+business/sounder/Filament Resources/Artifacts/Design - Branding/Logo Files/
+  Sounder-01.ai through Sounder-32.ai  (32 logo variations)
+  Sounder-01.eps through Sounder-32.eps (print-ready)
+  Sounder - Webview.pdf</pre>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
