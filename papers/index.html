@@ -6,6 +6,9 @@
   <title>Charlotte Research Papers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -345,6 +348,18 @@
       font-style: italic;
     }
 
+    /* LaTeX / KaTeX */
+    .reader-content .math-display {
+      display: block;
+      text-align: center;
+      margin: 24px 0;
+      overflow-x: auto;
+      padding: 16px 0;
+    }
+    .reader-content .katex { color: #e2e8f0; }
+    .reader-content .katex-display { margin: 24px 0; }
+    .reader-content .katex-display > .katex { text-align: center; }
+
     /* Navigation between papers */
     .paper-nav {
       display: flex;
@@ -375,6 +390,79 @@
   </style>
 </head>
 <body>
+
+<!-- Passcode gate -->
+<div id="gate" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#0a0e17;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Inter',-apple-system,sans-serif;
+  transition:opacity 0.5s;
+">
+  <div style="
+    width:120px;height:120px;
+    border-radius:24px;
+    background:#111827;
+    border:1px solid #1e293b;
+    display:flex;align-items:center;justify-content:center;
+    font-size:48px;margin-bottom:32px;
+    color:#334155;
+  ">S</div>
+  <p style="color:#64748b;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Enter Access Code</p>
+  <input id="gate-input" type="password" autocomplete="off" autofocus
+    placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;"
+    style="
+      background:#111827;
+      border:1px solid #1e293b;
+      border-radius:12px;
+      padding:14px 24px;
+      font-size:18px;
+      color:#e2e8f0;
+      text-align:center;
+      letter-spacing:4px;
+      width:240px;
+      outline:none;
+      font-family:inherit;
+      transition:border-color 0.2s;
+    "
+  >
+  <p id="gate-error" style="color:#ef4444;font-size:12px;margin-top:12px;opacity:0;transition:opacity 0.3s;">&nbsp;</p>
+</div>
+
+<script>
+(function() {
+  const PASSCODE = 'charles';
+  const gate = document.getElementById('gate');
+  const input = document.getElementById('gate-input');
+  const error = document.getElementById('gate-error');
+
+  if (sessionStorage.getItem('charles_auth') === '1') {
+    gate.style.display = 'none';
+  }
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      if (input.value.toLowerCase().trim() === PASSCODE) {
+        sessionStorage.setItem('charles_auth', '1');
+        gate.style.opacity = '0';
+        setTimeout(() => gate.style.display = 'none', 500);
+      } else {
+        input.value = '';
+        input.style.borderColor = '#ef4444';
+        error.textContent = 'Invalid code';
+        error.style.opacity = '1';
+        setTimeout(() => {
+          input.style.borderColor = '#1e293b';
+          error.style.opacity = '0';
+        }, 1500);
+      }
+    }
+  });
+
+  input.addEventListener('focus', () => input.style.borderColor = '#334155');
+  input.addEventListener('blur', () => input.style.borderColor = '#1e293b');
+})();
+</script>
 
 <div id="index-view">
   <div class="header">
@@ -575,6 +663,17 @@ function renderMarkdown(md) {
     return `%%CODEBLOCK_${codeBlocks.length - 1}%%`;
   });
 
+  // Pre-process: protect LaTeX blocks (display then inline)
+  const mathBlocks = [];
+  html = html.replace(/\$\$([\s\S]*?)\$\$/g, (_, tex) => {
+    mathBlocks.push({ tex: tex.trim(), display: true });
+    return `%%MATHBLOCK_${mathBlocks.length - 1}%%`;
+  });
+  html = html.replace(/\$([^\n$]+?)\$/g, (_, tex) => {
+    mathBlocks.push({ tex: tex.trim(), display: false });
+    return `%%MATHBLOCK_${mathBlocks.length - 1}%%`;
+  });
+
   // Tables
   html = html.replace(/^(\|.+\|)\n(\|[-| :]+\|)\n((?:\|.+\|\n?)*)/gm, (match, header, sep, body) => {
     const ths = header.split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('');
@@ -621,6 +720,17 @@ function renderMarkdown(md) {
     return `<p>${line}</p>`;
   });
 
+  // Restore math blocks
+  html = html.replace(/%%MATHBLOCK_(\d+)%%/g, (_, i) => {
+    const m = mathBlocks[parseInt(i)];
+    const escaped = m.tex.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    if (m.display) {
+      return `<div class="math-display" data-math-display="true">${escaped}</div>`;
+    } else {
+      return `<span class="math-inline" data-math-inline="true">${escaped}</span>`;
+    }
+  });
+
   // Restore code blocks
   html = html.replace(/%%CODEBLOCK_(\d+)%%/g, (_, i) => {
     const code = codeBlocks[parseInt(i)];
@@ -633,6 +743,20 @@ function renderMarkdown(md) {
   html = html.replace(/<p>\s*<\/p>/g, '');
 
   return html;
+}
+
+function renderLatex(container) {
+  if (typeof katex === 'undefined') return;
+  container.querySelectorAll('[data-math-display]').forEach(el => {
+    try {
+      katex.render(el.textContent, el, { displayMode: true, throwOnError: false });
+    } catch(e) {}
+  });
+  container.querySelectorAll('[data-math-inline]').forEach(el => {
+    try {
+      katex.render(el.textContent, el, { displayMode: false, throwOnError: false });
+    } catch(e) {}
+  });
 }
 
 async function openPaper(index) {
@@ -661,7 +785,9 @@ async function openPaper(index) {
       <button ${index === PAPERS.length - 1 ? 'disabled' : ''} onclick="openPaper(${index + 1})">Paper #${index < PAPERS.length - 1 ? PAPERS[index+1].num : 11} &rarr;</button>
     </div>`;
 
-    document.getElementById('reader-content').innerHTML = rendered + nav;
+    const contentEl = document.getElementById('reader-content');
+    contentEl.innerHTML = rendered + nav;
+    renderLatex(contentEl);
     document.getElementById('reader').scrollTop = 0;
   } catch (err) {
     document.getElementById('reader-content').innerHTML = `<div class="loading"><p style="font-family:Inter,sans-serif;font-size:14px;color:#ef4444">Error loading paper: ${err.message}</p><p style="font-family:Inter,sans-serif;font-size:13px;color:#64748b;margin-top:8px">The markdown source is at <code>${BASE_URL}${p.file}</code></p></div>`;
