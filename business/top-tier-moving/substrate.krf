@@ -1,0 +1,184 @@
+;;; Top Tier Moving — Charlotte OS Knowledge Graph
+;;; Domain: Interstate moving & relocation logistics
+;;; Generated: February 2026
+;;; Context: SomeAI partnership assessment
+
+(in-microtheory TopTierMovingMt)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 1: Company Identity
+;;; ═══════════════════════════════════════════════
+
+(isa TopTierMovingLLC Company)
+(companyName TopTierMovingLLC "Top Tier Moving LLC")
+(industry TopTierMovingLLC "Interstate Moving & Relocation")
+(businessModel TopTierMovingLLC "Nationwide long-distance moving with distributed crew network")
+(operatingPeriod TopTierMovingLLC "November 2021 - Present")
+(totalJobsCompleted TopTierMovingLLC 10606)
+(totalBilled TopTierMovingLLC 14439247)
+(totalCollected TopTierMovingLLC 10928937)
+(collectionRate TopTierMovingLLC 75.7)
+(totalVolumeCuFt TopTierMovingLLC 5439153)
+(totalWeightLbs TopTierMovingLLC 24254695)
+(crewCount TopTierMovingLLC 98)
+(statesCovered TopTierMovingLLC 52)
+(citiesServed TopTierMovingLLC 3675)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 2: Revenue by Year
+;;; ═══════════════════════════════════════════════
+
+(yearRevenue TopTierMovingLLC 2021 1353268)
+(yearJobs TopTierMovingLLC 2021 2991)
+(yearRevenue TopTierMovingLLC 2022 3714670)
+(yearJobs TopTierMovingLLC 2022 1523)
+(yearRevenue TopTierMovingLLC 2023 4353446)
+(yearJobs TopTierMovingLLC 2023 1803)
+(yearRevenue TopTierMovingLLC 2024 3612489)
+(yearJobs TopTierMovingLLC 2024 2121)
+(yearRevenue TopTierMovingLLC 2025 1405374)
+(yearJobs TopTierMovingLLC 2025 2168)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 3: Crew Tier System
+;;; ═══════════════════════════════════════════════
+
+(isa MVPTier CrewTier)
+(tierName MVPTier "MVP")
+(tierCriteria MVPTier "$500K+ revenue AND 100+ jobs")
+(tierCount MVPTier 5)
+
+(isa AllStarTier CrewTier)
+(tierName AllStarTier "All-Star")
+(tierCriteria AllStarTier "$200K+ revenue OR 100+ jobs")
+(tierCount AllStarTier 12)
+
+(isa StarterTier CrewTier)
+(tierName StarterTier "Starter")
+(tierCriteria StarterTier "$50K+ revenue OR 30+ jobs")
+(tierCount StarterTier 18)
+
+(isa RookieTier CrewTier)
+(tierName RookieTier "Rookie")
+(tierCriteria RookieTier "Below Starter thresholds")
+(tierCount RookieTier 63)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 4: Top Crew Members
+;;; ═══════════════════════════════════════════════
+
+(isa SamuelHenrik CrewMember)
+(fullName SamuelHenrik "Samuel Henrik")
+(crewTier SamuelHenrik MVPTier)
+(totalJobs SamuelHenrik 824)
+(totalBilled SamuelHenrik 2379557)
+(totalCollected SamuelHenrik 1703184)
+(collectionRate SamuelHenrik 71.6)
+(statesCovered SamuelHenrik 50)
+(citiesServed SamuelHenrik 981)
+(avgJobSize SamuelHenrik 2888)
+
+(isa RickyPhil CrewMember)
+(fullName RickyPhil "Ricky Phil")
+(crewTier RickyPhil MVPTier)
+(totalJobs RickyPhil 515)
+(totalBilled RickyPhil 1194247)
+(collectionRate RickyPhil 86.3)
+(statesCovered RickyPhil 50)
+
+(isa EdwinTeddy CrewMember)
+(fullName EdwinTeddy "Edwin Teddy")
+(crewTier EdwinTeddy MVPTier)
+(totalJobs EdwinTeddy 337)
+(totalBilled EdwinTeddy 846689)
+(collectionRate EdwinTeddy 88.6)
+(statesCovered EdwinTeddy 49)
+
+(isa TonyAnthony CrewMember)
+(fullName TonyAnthony "Tony Anthony")
+(crewTier TonyAnthony MVPTier)
+(totalJobs TonyAnthony 305)
+(totalBilled TonyAnthony 715475)
+(collectionRate TonyAnthony 89.8)
+(statesCovered TonyAnthony 47)
+
+(isa CourtneyB CrewMember)
+(fullName CourtneyB "Courtney B")
+(crewTier CourtneyB MVPTier)
+(totalJobs CourtneyB 758)
+(totalBilled CourtneyB 705645)
+(collectionRate CourtneyB 49.1)
+(statesCovered CourtneyB 43)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 5: Competitors
+;;; ═══════════════════════════════════════════════
+
+(isa UnitedVanLinesCompetitor Competitor)
+(companyName UnitedVanLinesCompetitor "United Van Lines")
+(competitorType UnitedVanLinesCompetitor "Largest van line network — 400+ agents, est. 1928")
+(competitorScale UnitedVanLinesCompetitor "Tier 1 — National Van Line")
+
+(isa AtlasVanLinesCompetitor Competitor)
+(companyName AtlasVanLinesCompetitor "Atlas Van Lines")
+(competitorType AtlasVanLinesCompetitor "Agent-based van line — est. 1948")
+(competitorScale AtlasVanLinesCompetitor "Tier 1 — National Van Line")
+
+(isa PODSCompetitor Competitor)
+(companyName PODSCompetitor "PODS")
+(competitorType PODSCompetitor "Container-based moving & storage — 250K+ moves/year")
+(competitorScale PODSCompetitor "Tier 1 — Container/Portable")
+
+(isa BellhopsCompetitor Competitor)
+(companyName BellhopsCompetitor "Bellhops")
+(competitorType BellhopsCompetitor "Tech-enabled local moving — $140M raised, 27 markets")
+(competitorScale BellhopsCompetitor "Tier 2 — Tech-Enabled")
+
+(isa DollyCompetitor Competitor)
+(companyName DollyCompetitor "Dolly")
+(competitorType DollyCompetitor "On-demand moving & delivery — gig economy model")
+(competitorScale DollyCompetitor "Tier 2 — On-Demand")
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 6: Charlotte Protocol Mapping
+;;; ═══════════════════════════════════════════════
+
+;;; NODE types
+(charlotteNodeType TopTierMovingLLC "CrewMember")
+(charlotteNodeType TopTierMovingLLC "Job")
+(charlotteNodeType TopTierMovingLLC "City")
+(charlotteNodeType TopTierMovingLLC "State")
+(charlotteNodeType TopTierMovingLLC "Customer")
+
+;;; EDGE types
+(charlotteEdgeType TopTierMovingLLC "assignedTo")
+(charlotteEdgeType TopTierMovingLLC "originCity")
+(charlotteEdgeType TopTierMovingLLC "destinationCity")
+(charlotteEdgeType TopTierMovingLLC "routeThrough")
+(charlotteEdgeType TopTierMovingLLC "billedTo")
+
+;;; METRIC types
+(charlotteMetricType TopTierMovingLLC "Revenue Billed")
+(charlotteMetricType TopTierMovingLLC "Revenue Collected")
+(charlotteMetricType TopTierMovingLLC "Collection Rate")
+(charlotteMetricType TopTierMovingLLC "Job Count")
+(charlotteMetricType TopTierMovingLLC "Volume (cu ft)")
+(charlotteMetricType TopTierMovingLLC "Weight (lbs)")
+(charlotteMetricType TopTierMovingLLC "Average Job Size")
+
+;;; SIGNAL types
+(charlotteSignalType TopTierMovingLLC "Job Booked")
+(charlotteSignalType TopTierMovingLLC "Crew Assigned")
+(charlotteSignalType TopTierMovingLLC "Pickup Complete")
+(charlotteSignalType TopTierMovingLLC "In Transit")
+(charlotteSignalType TopTierMovingLLC "Delivery Complete")
+(charlotteSignalType TopTierMovingLLC "Payment Received")
+(charlotteSignalType TopTierMovingLLC "Claim Filed")
+
+;;; PROTOCOL types
+(charlotteProtocolType TopTierMovingLLC "Collection Target >= 90%")
+(charlotteProtocolType TopTierMovingLLC "Crew Dispatch Optimization")
+(charlotteProtocolType TopTierMovingLLC "Route Planning")
+(charlotteProtocolType TopTierMovingLLC "Weight Estimation Accuracy")
+(charlotteProtocolType TopTierMovingLLC "Customer Satisfaction Follow-up")
+(charlotteProtocolType TopTierMovingLLC "DOT/FMCSA Compliance")
