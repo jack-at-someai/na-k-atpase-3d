@@ -497,6 +497,83 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     </div>
   </section>
 
+  <!-- ═══════════ ROADMAP ═══════════ -->
+  <section>
+    <h2>Roadmap</h2>
+    <style>
+      .roadmap-timeline{position:relative;overflow-x:auto;padding:40px 0 32px;-webkit-overflow-scrolling:touch}
+      .roadmap-track{display:flex;align-items:flex-start;gap:0;min-width:max-content;position:relative;padding:0 16px}
+      .roadmap-track::before{content:'';position:absolute;top:54px;left:16px;right:16px;height:2px;background:linear-gradient(90deg,#3B82F6,#06B6D4,#F59E0B);opacity:0.4;border-radius:1px}
+      .roadmap-milestone{display:flex;flex-direction:column;align-items:center;min-width:200px;max-width:220px;position:relative;padding:0 12px}
+      .roadmap-dot{width:14px;height:14px;border-radius:50%;background:#3B82F6;border:3px solid #0F1D36;box-shadow:0 0 12px rgba(59,130,246,0.4);position:relative;z-index:2;margin-bottom:20px}
+      .roadmap-quarter{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#60A5FA;margin-bottom:8px}
+      .roadmap-card{background:rgba(15,29,54,0.8);border:1px solid var(--border);border-radius:12px;padding:20px 16px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);width:100%;text-align:center;transition:border-color 0.3s,box-shadow 0.3s}
+      .roadmap-card:hover{border-color:rgba(59,130,246,0.4);box-shadow:0 4px 24px rgba(59,130,246,0.1)}
+      .roadmap-card h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px}
+      .roadmap-card p{font-size:11px;color:var(--dim);line-height:1.6;max-width:100%;margin:0}
+      @media(max-width:768px){.roadmap-milestone{min-width:170px;max-width:190px}}
+    </style>
+    <div class="roadmap-timeline">
+      <div class="roadmap-track">
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">Q1 2026</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Brand Identity</h4>
+            <p>Sea Lion brand book, mascot development, dive shop concept design, Charlotte token schema normalized</p>
+          </div>
+        </div>
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">Q2 2026</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Dive Operations MVP</h4>
+            <p>Training certification tracker, dive log system, equipment management, rescue diver pathway</p>
+          </div>
+        </div>
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">Q3 2026</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Marine Research</h4>
+            <p>University partnerships, reef monitoring sensors, species database, underwater survey methods</p>
+          </div>
+        </div>
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">Q4 2026</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Charlotte Marine</h4>
+            <p>Kernel compiled to marine domain: reef systems as NODEs, currents as EDGEs, water quality as METRICs, sensor readings as SIGNALs, monitoring PROTOCOLs</p>
+          </div>
+        </div>
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">H1 2027</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Dive Shop Launch</h4>
+            <p>Retail operations, trip booking platform, equipment sales, community hub, umbrella brand operational</p>
+          </div>
+        </div>
+
+        <div class="roadmap-milestone">
+          <div class="roadmap-quarter">H2 2027</div>
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <h4>Ocean Science Platform</h4>
+            <p>Full marine ecosystem intelligence, multi-site monitoring, research data marketplace</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>

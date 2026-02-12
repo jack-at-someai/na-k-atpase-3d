@@ -768,6 +768,160 @@ section p {
     </div>
   </section>
 
+  <!-- ═══════════ ROADMAP ═══════════ -->
+  <section>
+    <style>
+      .roadmap-timeline {
+        position: relative;
+        display: flex;
+        gap: 0;
+        overflow-x: auto;
+        padding: 48px 0 32px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .roadmap-timeline::-webkit-scrollbar {
+        height: 6px;
+      }
+      .roadmap-timeline::-webkit-scrollbar-track {
+        background: var(--surface);
+        border-radius: 3px;
+      }
+      .roadmap-timeline::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+      }
+      /* The connecting line */
+      .roadmap-timeline::before {
+        content: '';
+        position: absolute;
+        top: 48px;
+        left: 24px;
+        right: 24px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--red-500), var(--red-400), var(--red-300));
+        z-index: 0;
+      }
+      .roadmap-milestone {
+        position: relative;
+        flex: 0 0 260px;
+        scroll-snap-align: start;
+        padding: 0 12px;
+      }
+      /* Dot on the line */
+      .roadmap-milestone::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--red-500);
+        border: 3px solid var(--bg);
+        box-shadow: 0 0 0 2px var(--red-400), 0 0 20px rgba(229, 62, 62, 0.3);
+        z-index: 1;
+      }
+      .roadmap-card {
+        margin-top: 24px;
+        background: rgba(26, 26, 26, 0.6);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 20px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .roadmap-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(229, 62, 62, 0.12), 0 0 0 1px var(--red-900);
+      }
+      .roadmap-quarter {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--red-400);
+        margin-bottom: 8px;
+      }
+      .roadmap-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+        letter-spacing: -0.2px;
+      }
+      .roadmap-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--dim);
+      }
+      @media (max-width: 768px) {
+        .roadmap-milestone {
+          flex: 0 0 220px;
+        }
+      }
+    </style>
+
+    <h2>Roadmap</h2>
+    <p style="color:var(--dim);margin-bottom:8px;font-size:14px;line-height:1.7;max-width:680px">
+      SomeAI is the engineering company that builds Charlotte&nbsp;OS and ships it to clients. Founded by Jack Richard (Northwestern MSAI, PhD in Swarm Intelligence), the company follows a deliberate arc from kernel to campus.
+    </p>
+
+    <div class="roadmap-timeline">
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">Q4 2025</div>
+          <div class="roadmap-title">Charlotte OS Kernel</div>
+          <div class="roadmap-desc">28 KRF files, 5 primitives (Node, Edge, Metric, Signal, Protocol), temporal spine, knowledge architecture complete.</div>
+        </div>
+      </div>
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">Q1 2026</div>
+          <div class="roadmap-title">First Contracts</div>
+          <div class="roadmap-desc">ISG signed ($1.4M/2yr), Sounder active (first client), brandbook infrastructure, design system deployed.</div>
+        </div>
+      </div>
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">Q2 2026</div>
+          <div class="roadmap-title">Liquid Glass SDK</div>
+          <div class="roadmap-desc">Multi-brand atomic design system, token compiler, Flutter package + CSS/JS library shipped.</div>
+        </div>
+      </div>
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">Q3 2026</div>
+          <div class="roadmap-title">Client Pipeline</div>
+          <div class="roadmap-desc">Contract templates at billing tiers, acquisition targets, industry graph compilation for new verticals.</div>
+        </div>
+      </div>
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">Q4 2026</div>
+          <div class="roadmap-title">Graph-as-a-Service</div>
+          <div class="roadmap-desc">Charlotte OS as SaaS, client self-service deployment, industry graphs at scale.</div>
+        </div>
+      </div>
+
+      <div class="roadmap-milestone">
+        <div class="roadmap-card">
+          <div class="roadmap-quarter">2027</div>
+          <div class="roadmap-title">Hex Campus</div>
+          <div class="roadmap-desc">Two paths converge &mdash; Charlotte IS the operating system for operations, recursive business model proven.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </div>
 </body>
 </html>

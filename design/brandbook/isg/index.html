@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="isg_theme.css">
 <link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
 <script src="../../liquid-glass/liquid-glass.js" defer></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2/dist/lottie-player.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
@@ -105,7 +106,11 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
 <div class="page">
 
   <header class="brand-header">
-    <img src="assets/logo_and_name.png" alt="ISG logo" style="height:80px;margin-bottom:16px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:16px">
+      <lottie-player src="../../workbench/assets/isg/isg-gear-landing.json" background="transparent" speed="1" style="width:80px;height:80px" loop autoplay></lottie-player>
+      <img src="assets/logo_and_name.png" alt="ISG logo" style="height:80px">
+      <lottie-player src="../../workbench/assets/isg/isg-spinner.json" background="transparent" speed="0.8" style="width:80px;height:80px" loop autoplay></lottie-player>
+    </div>
     <h1>Industrial Service <span>Group</span></h1>
     <p class="tagline">"Ensuring Your Rotating Equipment Never Stops Turning"</p>
     <p class="sub">A family of companies providing critical-to-process rotating equipment service, repair and distribution</p>
@@ -235,17 +240,17 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     <p>Five equipment categories spanning the full rotating equipment lifecycle.</p>
     <div class="solutions-grid">
       <div class="solution-card">
-        <div class="s-icon">&#x1F6E0;</div>
+        <lottie-player src="../../workbench/assets/isg/isg-valve-icon.json" background="transparent" speed="1" style="width:64px;height:64px;margin:0 auto 8px" loop autoplay></lottie-player>
         <h4>Industrial Valves</h4>
         <p>Service, repair, and distribution for critical process valves across every industry.</p>
       </div>
       <div class="solution-card">
-        <div class="s-icon">&#x2699;</div>
+        <lottie-player src="../../workbench/assets/isg/isg-compressor-icon.json" background="transparent" speed="1" style="width:64px;height:64px;margin:0 auto 8px" loop autoplay></lottie-player>
         <h4>Compressors</h4>
         <p>Rotary screw and reciprocating. Service, overhaul, and parts for compressed air systems.</p>
       </div>
       <div class="solution-card">
-        <div class="s-icon">&#x26A1;</div>
+        <lottie-player src="../../workbench/assets/isg/isg-motor-icon.json" background="transparent" speed="1" style="width:64px;height:64px;margin:0 auto 8px" loop autoplay></lottie-player>
         <h4>Industrial Motors</h4>
         <p>Rewind, repair, and replacement. Keeping electric motors running at peak efficiency.</p>
       </div>
@@ -282,6 +287,9 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
   <section>
     <h2>Brand Network &mdash; 16 Companies</h2>
     <p>Each brand is a specialist. Together they are a one-stop-shop covering every rotating equipment need.</p>
+    <div style="display:flex;justify-content:center;margin:16px 0">
+      <lottie-player src="../../workbench/assets/isg/isg-network-pulse.json" background="transparent" speed="1" style="width:400px;height:200px;max-width:100%" loop autoplay></lottie-player>
+    </div>
     <div class="brand-grid">
       <div class="brand-chip">Industrial Valve Service</div>
       <div class="brand-chip">Morin Process Equipment</div>
@@ -326,8 +334,13 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
   <!-- ═══════════ SERVICEIQ ═══════════ -->
   <section>
     <h2>ServiceIQ &mdash; Charlotte Integration</h2>
-    <h3>Predictive distribution powered by Charlotte OS</h3>
-    <p>ServiceIQ is ISG's internal intelligence platform. Built on Charlotte's kernel, it maps parts, routes, demand signals, and service protocols into a predictive distribution engine. First commercial Charlotte deployment &mdash; $1.4M contract signed February 2026.</p>
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:300px">
+        <h3>Predictive distribution powered by Charlotte OS</h3>
+        <p>ServiceIQ is ISG's Charlotte-powered intelligence platform. Built on Charlotte's kernel, it maps parts, routes, demand signals, and service protocols into a predictive distribution engine. First commercial Charlotte deployment &mdash; $1.4M contract signed February 2026.</p>
+      </div>
+      <lottie-player src="../../workbench/assets/isg/isg-serviceiq-data.json" background="transparent" speed="1" style="width:300px;height:100px;flex-shrink:0" loop autoplay></lottie-player>
+    </div>
     <div class="product-grid">
       <div class="product-card">
         <div class="p-icon">&#x1F52E;</div>
@@ -550,6 +563,332 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     <div style="margin:24px 0;max-width:560px">
       <div class="lg-progress" style="margin-bottom:12px"><div class="lg-progress__bar" style="width:70%"></div></div>
       <span style="font-size:11px;color:var(--lg-text-dim)">Reorder accuracy target: 70% achieved</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ BRAND COLLATERAL ═══════════ -->
+  <section>
+    <h2>Brand Collateral</h2>
+    <p>CSS-rendered mockups of ISG brand collateral pieces. Navy, steel-blue, and gold palette applied across print and digital formats.</p>
+    <style>
+      .collateral-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+      .collateral-grid .collateral-wide{grid-column:1/-1}
+      .collateral-piece{border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;background:var(--surface)}
+      .collateral-piece .piece-label{position:absolute;top:12px;right:14px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;background:rgba(0,15,46,0.7);padding:3px 10px;border-radius:6px;backdrop-filter:blur(6px);z-index:2}
+
+      /* ── Business Card ── */
+      .biz-card{width:100%;aspect-ratio:3.5/2;display:flex;flex-direction:column;justify-content:center;padding:32px 36px;position:relative;overflow:hidden}
+      .biz-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--navy-900) 0%,var(--navy-700) 50%,var(--navy-800) 100%)}
+      .biz-card::after{content:'';position:absolute;top:0;right:0;width:120px;height:100%;background:linear-gradient(180deg,var(--blue-primary),var(--gold-primary));opacity:0.08}
+      .biz-card *{position:relative;z-index:1}
+      .biz-card .bc-accent{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-primary),var(--gold-primary));z-index:2}
+      .biz-card .bc-logo-area{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+      .biz-card .bc-logo-box{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--blue-primary),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px}
+      .biz-card .bc-company{font-size:16px;font-weight:700;color:var(--text);letter-spacing:0.5px}
+      .biz-card .bc-tagline{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold-primary);font-weight:600}
+      .biz-card .bc-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+      .biz-card .bc-title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--blue-primary);font-weight:600;margin-bottom:12px}
+      .biz-card .bc-contact{font-size:10px;color:var(--dim);line-height:1.8}
+      .biz-card .bc-contact a{color:var(--dim);text-decoration:none}
+
+      .biz-card-back{background:linear-gradient(135deg,var(--navy-900),var(--navy-800));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+      .biz-card-back::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(143,170,220,0.06),transparent 60%)}
+      .biz-card-back .bc-accent{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold-primary),var(--blue-primary));z-index:2}
+      .biz-card-back .back-content{text-align:center;position:relative;z-index:1}
+      .biz-card-back .back-logo{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,var(--blue-primary),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#fff;margin:0 auto 14px;letter-spacing:-1px;box-shadow:0 8px 32px rgba(143,170,220,0.2)}
+      .biz-card-back .back-name{font-size:18px;font-weight:800;color:var(--text);letter-spacing:0.5px;margin-bottom:4px}
+      .biz-card-back .back-tag{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--gold-primary);font-weight:600}
+
+      /* ── Vehicle Wrap ── */
+      .vehicle-wrap{width:100%;aspect-ratio:3/1;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy-900),var(--navy-700))}
+      .vehicle-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(143,170,220,0.04),rgba(226,165,50,0.04),rgba(143,170,220,0.04));background-size:200% 100%;animation:shimmer 8s linear infinite}
+      @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+      .vehicle-wrap .vw-body{position:absolute;inset:0;display:flex;align-items:center;z-index:1}
+      .vehicle-wrap .vw-left{flex:0 0 35%;padding:32px 40px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(143,170,220,0.1)}
+      .vehicle-wrap .vw-right{flex:1;padding:32px 40px;display:flex;flex-direction:column;justify-content:center}
+      .vehicle-wrap .vw-logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--blue-primary),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.5px}
+      .vehicle-wrap .vw-brand{font-size:24px;font-weight:800;color:var(--text);letter-spacing:0.5px}
+      .vehicle-wrap .vw-tag{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--gold-primary);font-weight:600;margin-top:4px}
+      .vehicle-wrap .vw-services{list-style:none;padding:0;margin:0}
+      .vehicle-wrap .vw-services li{font-size:13px;color:var(--dim);padding:4px 0;display:flex;align-items:center;gap:8px}
+      .vehicle-wrap .vw-services li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-primary);flex-shrink:0}
+      .vehicle-wrap .vw-cta{margin-top:16px;padding:8px 20px;border-radius:8px;background:linear-gradient(135deg,var(--gold-primary),var(--gold-dark));color:var(--navy-900);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;display:inline-block}
+      .vehicle-wrap .vw-stripe{position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--blue-primary),var(--gold-primary),var(--blue-primary));z-index:2}
+      .vehicle-wrap .vw-phone{position:absolute;top:20px;right:28px;font-size:16px;font-weight:800;color:var(--gold-primary);letter-spacing:0.5px;z-index:2}
+
+      /* ── Social Card ── */
+      .social-card{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;padding:36px;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--navy-900),var(--navy-700))}
+      .social-card::before{content:'';position:absolute;top:-40%;right:-30%;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,rgba(143,170,220,0.08),transparent 70%)}
+      .social-card *{position:relative;z-index:1}
+      .social-card .sc-top{display:flex;justify-content:space-between;align-items:flex-start}
+      .social-card .sc-badge{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy-900);font-weight:700;background:var(--gold-primary);padding:4px 12px;border-radius:6px}
+      .social-card .sc-logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue-primary),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+      .social-card .sc-body{text-align:center;padding:20px 0}
+      .social-card .sc-headline{font-size:22px;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:8px}
+      .social-card .sc-headline span{color:var(--blue-primary)}
+      .social-card .sc-sub{font-size:12px;color:var(--dim);line-height:1.5}
+      .social-card .sc-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+      .social-card .sc-cta{font-size:11px;font-weight:700;color:var(--gold-primary);text-transform:uppercase;letter-spacing:1px}
+      .social-card .sc-url{font-size:10px;color:var(--dim)}
+      .social-card .sc-stripe{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-primary),var(--gold-primary));z-index:2}
+
+      /* ── Flyer/Sell Sheet ── */
+      .sell-sheet{width:100%;padding:40px 36px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--navy-900),var(--navy-800))}
+      .sell-sheet::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--blue-primary),var(--gold-primary),var(--blue-primary))}
+      .sell-sheet *{position:relative;z-index:1}
+      .sell-sheet .ss-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+      .sell-sheet .ss-logo{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--blue-primary),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+      .sell-sheet .ss-brand{font-size:18px;font-weight:800;color:var(--text);letter-spacing:0.3px}
+      .sell-sheet .ss-sub{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold-primary);font-weight:600}
+      .sell-sheet .ss-title{font-size:20px;font-weight:800;color:var(--blue-primary);margin-bottom:6px}
+      .sell-sheet .ss-desc{font-size:12px;color:var(--dim);line-height:1.7;margin-bottom:24px;max-width:100%}
+      .sell-sheet .ss-columns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:24px}
+      .sell-sheet .ss-col h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--blue-primary);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--gold-primary)}
+      .sell-sheet .ss-col ul{list-style:none;padding:0;margin:0}
+      .sell-sheet .ss-col ul li{font-size:11px;color:var(--dim);padding:4px 0;display:flex;align-items:center;gap:6px}
+      .sell-sheet .ss-col ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold-primary);flex-shrink:0}
+      .sell-sheet .ss-footer{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--border)}
+      .sell-sheet .ss-footer .ss-cta{padding:8px 20px;border-radius:8px;background:linear-gradient(135deg,var(--gold-primary),var(--gold-dark));color:var(--navy-900);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+      .sell-sheet .ss-footer .ss-contact{font-size:10px;color:var(--dim);text-align:right;line-height:1.6}
+
+      @media(max-width:768px){
+        .collateral-grid{grid-template-columns:1fr}
+        .sell-sheet .ss-columns{grid-template-columns:1fr}
+        .vehicle-wrap .vw-left{flex:0 0 40%;padding:20px}
+        .vehicle-wrap .vw-right{padding:20px}
+      }
+    </style>
+
+    <div class="collateral-grid">
+      <!-- Business Card Front -->
+      <div class="collateral-piece">
+        <span class="piece-label">Business Card &mdash; Front</span>
+        <div class="biz-card">
+          <div class="bc-accent"></div>
+          <div class="bc-logo-area">
+            <div class="bc-logo-box">ISG</div>
+            <div>
+              <div class="bc-company">Industrial Service Group</div>
+              <div class="bc-tagline">Ensuring Your Rotating Equipment Never Stops Turning</div>
+            </div>
+          </div>
+          <div class="bc-name">John Richardson</div>
+          <div class="bc-title">Regional Sales Director</div>
+          <div class="bc-contact">
+            <a href="#">j.richardson@isgservice.com</a><br>
+            (713) 555-0192 &nbsp;&middot;&nbsp; Houston, TX<br>
+            isgservice.com
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Card Back -->
+      <div class="collateral-piece">
+        <span class="piece-label">Business Card &mdash; Back</span>
+        <div class="biz-card biz-card-back">
+          <div class="bc-accent"></div>
+          <div class="back-content">
+            <div class="back-logo">ISG</div>
+            <div class="back-name">ISG</div>
+            <div class="back-tag">Industrial Service Group</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Wrap -->
+      <div class="collateral-piece collateral-wide">
+        <span class="piece-label">Vehicle Wrap Concept</span>
+        <div class="vehicle-wrap">
+          <div class="vw-stripe"></div>
+          <div class="vw-phone">1-800-ISG-SERV</div>
+          <div class="vw-body">
+            <div class="vw-left">
+              <div class="vw-logo">ISG</div>
+              <div class="vw-brand">Industrial Service Group</div>
+              <div class="vw-tag">Rotating Equipment Experts</div>
+            </div>
+            <div class="vw-right">
+              <ul class="vw-services">
+                <li>Valve Repair &amp; Distribution</li>
+                <li>Compressor Services</li>
+                <li>Motor Rewind &amp; Rebuild</li>
+                <li>Pump Systems &amp; Parts</li>
+                <li>Emergency Field Service 24/7</li>
+              </ul>
+              <div class="vw-cta">Request a Quote &rarr;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media Card -->
+      <div class="collateral-piece">
+        <span class="piece-label">Social Media Card</span>
+        <div class="social-card">
+          <div class="sc-stripe"></div>
+          <div class="sc-top">
+            <div class="sc-badge">New Product</div>
+            <div class="sc-logo">ISG</div>
+          </div>
+          <div class="sc-body">
+            <div class="sc-headline">Introducing <span>ServiceIQ</span></div>
+            <div class="sc-sub">AI-powered predictive reorder engine.<br>Know what your customers need before they do.</div>
+          </div>
+          <div class="sc-bottom">
+            <div class="sc-cta">Learn More &rarr;</div>
+            <div class="sc-url">isgservice.com/serviceiq</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flyer / Sell Sheet -->
+      <div class="collateral-piece">
+        <span class="piece-label">Sell Sheet / Flyer</span>
+        <div class="sell-sheet">
+          <div class="ss-header">
+            <div class="ss-logo">ISG</div>
+            <div>
+              <div class="ss-brand">Industrial Service Group</div>
+              <div class="ss-sub">Rotating Equipment Solutions</div>
+            </div>
+          </div>
+          <div class="ss-title">ServiceIQ Platform</div>
+          <div class="ss-desc">Charlotte-powered CRM and predictive reorder engine built for industrial distribution. Unify 16 brands, 259K+ SKUs, and 200+ technicians under one intelligent platform.</div>
+          <div class="ss-columns">
+            <div class="ss-col">
+              <h5>Features</h5>
+              <ul>
+                <li>Predictive Reorder Engine</li>
+                <li>Knowledge Graph Architecture</li>
+                <li>Cross-Brand Analytics</li>
+                <li>OEM Cross-Reference</li>
+              </ul>
+            </div>
+            <div class="ss-col">
+              <h5>Verticals</h5>
+              <ul>
+                <li>Valves &amp; Actuators</li>
+                <li>Compressors &amp; Blowers</li>
+                <li>Motors &amp; Drives</li>
+                <li>Pumps &amp; Seals</li>
+              </ul>
+            </div>
+            <div class="ss-col">
+              <h5>Results</h5>
+              <ul>
+                <li>70%+ Reorder Accuracy</li>
+                <li>259K+ SKUs Indexed</li>
+                <li>111+ Competitors Mapped</li>
+                <li>40+ Locations Covered</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ss-footer">
+            <div class="ss-cta">Schedule a Demo</div>
+            <div class="ss-contact">isgservice.com<br>info@isgservice.com<br>1-800-ISG-SERV</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ROADMAP ═══════════ -->
+  <section>
+    <h2>Roadmap</h2>
+    <p>ISG is an active SomeAI client with a $1.4M / 2-year engagement. Charlotte powers the ServiceIQ platform &mdash; from brand audit through industry-standard knowledge graph.</p>
+    <style>
+      .roadmap-wrapper{margin-top:32px;overflow-x:auto;padding-bottom:16px;-webkit-overflow-scrolling:touch}
+      .roadmap-wrapper::-webkit-scrollbar{height:6px}
+      .roadmap-wrapper::-webkit-scrollbar-track{background:var(--surface);border-radius:3px}
+      .roadmap-wrapper::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+      .roadmap-wrapper::-webkit-scrollbar-thumb:hover{background:var(--blue-primary)}
+
+      .roadmap-timeline{display:flex;align-items:flex-start;gap:0;position:relative;min-width:max-content;padding:20px 0 40px}
+
+      /* Connecting line */
+      .roadmap-timeline::before{content:'';position:absolute;top:54px;left:32px;right:32px;height:2px;background:linear-gradient(90deg,var(--blue-primary),var(--gold-primary),var(--blue-primary));opacity:0.4}
+
+      .roadmap-milestone{position:relative;flex:0 0 220px;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+      /* Dot on the line */
+      .roadmap-milestone .rm-dot{width:16px;height:16px;border-radius:50%;background:var(--navy-900);border:3px solid var(--blue-primary);position:relative;z-index:2;margin-bottom:20px;box-shadow:0 0 12px rgba(143,170,220,0.3)}
+      .roadmap-milestone:first-child .rm-dot{border-color:var(--gold-primary);background:var(--gold-primary);box-shadow:0 0 16px rgba(226,165,50,0.4)}
+      .roadmap-milestone:last-child .rm-dot{border-color:var(--gold-primary);box-shadow:0 0 16px rgba(226,165,50,0.3)}
+
+      /* Glassmorphic card */
+      .roadmap-milestone .rm-card{background:rgba(10,22,40,0.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(143,170,220,0.12);border-radius:14px;padding:22px 18px;width:200px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
+      .roadmap-milestone .rm-card:hover{transform:translateY(-4px);border-color:rgba(143,170,220,0.25);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+
+      .roadmap-milestone .rm-quarter{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold-primary);margin-bottom:8px}
+      .roadmap-milestone .rm-title{font-size:15px;font-weight:700;color:var(--blue-primary);margin-bottom:8px;line-height:1.3}
+      .roadmap-milestone .rm-desc{font-size:11px;color:var(--dim);line-height:1.6}
+
+      .roadmap-milestone:first-child .rm-card{border-color:rgba(226,165,50,0.2);background:rgba(226,165,50,0.05)}
+      .roadmap-milestone:last-child .rm-card{border-color:rgba(226,165,50,0.15)}
+
+      @media(max-width:768px){
+        .roadmap-milestone{flex:0 0 180px}
+        .roadmap-milestone .rm-card{width:160px;padding:18px 14px}
+      }
+    </style>
+
+    <div class="roadmap-wrapper">
+      <div class="roadmap-timeline">
+        <!-- Q4 2025 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">Q4 2025</div>
+            <div class="rm-title">Brand Audit</div>
+            <div class="rm-desc">16-brand inventory, product catalog (1,199 products), competitive landscape (111+ firms scraped)</div>
+          </div>
+        </div>
+        <!-- Q1 2026 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">Q1 2026</div>
+            <div class="rm-title">ServiceIQ MVP</div>
+            <div class="rm-desc">Charlotte-powered CRM, predictive reorder engine, knowledge graph architecture deployed</div>
+          </div>
+        </div>
+        <!-- Q2 2026 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">Q2 2026</div>
+            <div class="rm-title">Platform Launch</div>
+            <div class="rm-desc">Unified e-commerce across 16 brands, 259K+ SKUs online, 70%+ predictive reorder accuracy</div>
+          </div>
+        </div>
+        <!-- Q3 2026 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">Q3 2026</div>
+            <div class="rm-title">Scale &amp; Optimize</div>
+            <div class="rm-desc">Cross-brand analytics, acquisition pipeline automation, inventory optimization signals</div>
+          </div>
+        </div>
+        <!-- Q4 2026 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">Q4 2026</div>
+            <div class="rm-title">Full Integration</div>
+            <div class="rm-desc">Industry graph as product, ServiceIQ SaaS offering, OEM cross-reference network live</div>
+          </div>
+        </div>
+        <!-- 2027 -->
+        <div class="roadmap-milestone">
+          <div class="rm-dot"></div>
+          <div class="rm-card">
+            <div class="rm-quarter">2027</div>
+            <div class="rm-title">Industry Standard</div>
+            <div class="rm-desc">ISG becomes the graph for rotating equipment distribution. Charlotte IS the operating system.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

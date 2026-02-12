@@ -297,6 +297,88 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     </div>
   </section>
 
+  <!-- ── Roadmap ── -->
+  <section>
+    <h2>Roadmap</h2>
+    <style>
+      .roadmap-scroll{overflow-x:auto;padding:16px 0 24px;-webkit-overflow-scrolling:touch}
+      .roadmap-scroll::-webkit-scrollbar{height:6px}
+      .roadmap-scroll::-webkit-scrollbar-track{background:transparent}
+      .roadmap-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+      .roadmap-track{display:flex;align-items:flex-start;gap:0;position:relative;min-width:max-content;padding:0 8px}
+      .roadmap-line{position:absolute;top:42px;left:32px;right:32px;height:2px;background:linear-gradient(90deg,rgba(200,160,64,0.15),rgba(200,160,64,0.5),rgba(200,160,64,0.5),rgba(200,160,64,0.15));z-index:0}
+      .roadmap-item{display:flex;flex-direction:column;align-items:center;width:190px;flex-shrink:0;position:relative;z-index:1}
+      .roadmap-dot{width:14px;height:14px;border-radius:50%;background:#C8A040;box-shadow:0 0 12px rgba(200,160,64,0.4),0 0 24px rgba(200,160,64,0.15);margin-bottom:0;position:relative;z-index:2}
+      .roadmap-dot::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(200,160,64,0.25)}
+      .roadmap-card{margin-top:20px;background:rgba(20,20,24,0.7);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(200,160,64,0.12);border-radius:12px;padding:20px 16px;text-align:center;width:170px;transition:border-color 0.3s,box-shadow 0.3s}
+      .roadmap-card:hover{border-color:rgba(200,160,64,0.3);box-shadow:0 4px 24px rgba(200,160,64,0.08)}
+      .roadmap-quarter{font-size:11px;font-weight:700;color:#C8A040;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px}
+      .roadmap-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px}
+      .roadmap-desc{font-size:11px;color:var(--dim);line-height:1.55}
+    </style>
+
+    <div class="roadmap-scroll">
+      <div class="roadmap-track">
+        <div class="roadmap-line"></div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">2016</div>
+            <div class="roadmap-title">Founded</div>
+            <div class="roadmap-desc">Richard Enterprises established. Family office structure. Capital allocation spine for Richard family operations.</div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">Q4 2025</div>
+            <div class="roadmap-title">Portfolio Structure</div>
+            <div class="roadmap-desc">Three subsidiaries operational: ISG (industrial, $450M rev, 80K employees), Serengeti (PE), SomeAI (R&amp;D).</div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">Q1 2026</div>
+            <div class="roadmap-title">Charlotte Deployed</div>
+            <div class="roadmap-desc">ISG contract signed ($1.4M/2yr), Sounder active (first client), Charlotte OS proving the thesis.</div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">Q2 2026</div>
+            <div class="roadmap-title">Acquisition Pipeline</div>
+            <div class="roadmap-desc">$5&ndash;50M EBITDA targets, Charlotte-powered due diligence, multi-subsidiary graph integration.</div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">Q4 2026</div>
+            <div class="roadmap-title">Capital Optimization</div>
+            <div class="roadmap-desc">Charlotte graph informs capital allocation, industry intelligence feeds acquisition strategy, portfolio analytics live.</div>
+          </div>
+        </div>
+
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-quarter">2027</div>
+            <div class="roadmap-title">Institutional Scale</div>
+            <div class="roadmap-desc">Hex campus, recursive model proven (clients embed Charlotte &rarr; graph IS the industry), multi-generation wealth engine.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>
