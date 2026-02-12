@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeus Car Kit — Spatial Mapper</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111;
+    --surface-2: #1a1a1a;
+    --border: #222;
+    --text: #ccc;
+    --text-dim: #666;
+    --cyan: #00e5ff;
+    --cyan-dim: rgba(0, 229, 255, 0.15);
+    --green: #00ff88;
+    --green-dim: rgba(0, 255, 136, 0.15);
+    --red: #ff3355;
+    --red-dim: rgba(255, 51, 85, 0.15);
+    --amber: #ffaa00;
+    --radius: 6px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 13px;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    height: 100vh;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  /* ── 3D Map ── */
+  .map-panel {
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-panel canvas { display: block; }
+
+  .map-overlay {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    pointer-events: none;
+  }
+
+  .map-overlay .tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    background: rgba(0,0,0,0.6);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .map-stats {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    font-size: 11px;
+    color: var(--text-dim);
+    background: rgba(0,0,0,0.6);
+    padding: 4px 10px;
+    border-radius: 3px;
+    pointer-events: none;
+    display: flex;
+    gap: 16px;
+  }
+
+  .map-stats .val { color: var(--cyan); font-weight: 600; }
+
+  .map-actions {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    display: flex;
+    gap: 6px;
+  }
+
+  .map-btn {
+    font-family: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .map-btn:hover { border-color: var(--cyan); color: var(--text); }
+
+  /* ── Right Column ── */
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    overflow-y: auto;
+  }
+
+  .panel { background: var(--surface); padding: 10px 12px; }
+
+  .panel-header {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ── Camera ── */
+  .camera-wrap {
+    position: relative;
+    background: #000;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .camera-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .camera-offline {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--text-dim);
+    font-size: 11px;
+  }
+
+  .camera-offline .icon { font-size: 32px; opacity: 0.3; }
+
+  /* ── Readouts ── */
+  .readouts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .readout {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 8px;
+  }
+
+  .readout-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 2px;
+  }
+
+  .readout-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cyan);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .readout-value.warning { color: var(--amber); }
+  .readout-value.danger { color: var(--red); }
+  .readout-value.clear { color: var(--green); }
+
+  .readout-unit { font-size: 10px; color: var(--text-dim); margin-left: 2px; }
+  .readout.wide { grid-column: 1 / -1; }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .status-dot.connected { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .status-dot.connecting { background: var(--amber); animation: pulse 1s infinite; }
+  .status-dot.disconnected { background: var(--red); }
+
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+  .grayscale-bar { display: flex; gap: 4px; margin-top: 4px; }
+
+  .gs-dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    transition: background 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: var(--text-dim);
+  }
+
+  .gs-dot.active {
+    background: var(--green);
+    border-color: var(--green);
+    box-shadow: 0 0 6px var(--green-dim);
+    color: #000;
+  }
+
+  /* ── Controls ── */
+  .controls-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .dpad {
+    display: grid;
+    grid-template-columns: 36px 36px 36px;
+    grid-template-rows: 36px 36px 36px;
+    gap: 2px;
+  }
+
+  .dpad-btn {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s, border-color 0.1s;
+  }
+
+  .dpad-btn:hover { border-color: var(--cyan); }
+  .dpad-btn.active { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+  .dpad-btn.empty { background: transparent; border-color: transparent; cursor: default; }
+
+  .side-controls { display: flex; flex-direction: column; gap: 8px; }
+
+  .speed-control label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .speed-row { display: flex; align-items: center; gap: 6px; }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--cyan);
+    cursor: pointer;
+  }
+
+  .speed-val { font-size: 13px; font-weight: 600; color: var(--cyan); min-width: 30px; text-align: right; }
+
+  .rotate-btns { display: flex; gap: 3px; margin-top: 4px; }
+
+  .rotate-btn {
+    flex: 1;
+    height: 30px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 11px;
+    cursor: pointer;
+  }
+
+  .rotate-btn:hover { border-color: var(--cyan); }
+  .rotate-btn.active { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+
+  .key-hints {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 10px;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  .key-hints kbd {
+    display: inline-block;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-family: inherit;
+    font-size: 9px;
+    color: var(--text);
+    min-width: 16px;
+    text-align: center;
+  }
+
+  /* ── Calibration ── */
+  .calib-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .calib-row label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .pos-display {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  .pos-display .val { color: var(--cyan); }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <!-- ── 3D Spatial Map ── -->
+  <div class="map-panel" id="map-panel">
+    <div class="map-overlay">
+      <span class="tag">Spatial Map</span>
+    </div>
+    <div class="map-stats" id="map-stats">
+      <span>Points: <span class="val" id="stat-points">0</span></span>
+      <span>Trail: <span class="val" id="stat-trail">0</span>m</span>
+      <span>Pos: <span class="val" id="stat-pos">0, 0</span></span>
+      <span>Hdg: <span class="val" id="stat-hdg">0</span>&deg;</span>
+    </div>
+    <div class="map-actions">
+      <button class="map-btn" id="btn-clear-map">Clear Map</button>
+      <button class="map-btn" id="btn-reset-pos">Reset Position</button>
+      <button class="map-btn" id="btn-export">Export JSON</button>
+      <button class="map-btn" id="btn-follow">Follow: ON</button>
+    </div>
+  </div>
+
+  <!-- ── Right Column ── -->
+  <div class="right-col">
+
+    <!-- Camera Feed -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Camera</span>
+        <span style="font-size:9px;color:var(--text-dim);">192.168.4.1:9000</span>
+      </div>
+      <div class="camera-wrap">
+        <img id="camera-feed" src="http://192.168.4.1:9000/mjpg" alt="Camera"
+             onerror="this.style.display='none'; document.getElementById('camera-offline').style.display='flex';">
+        <div id="camera-offline" class="camera-offline" style="display:none;">
+          <div class="icon">&#x25CE;</div>
+          <div>No feed — connect to Zeus_Car WiFi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sensor Readouts -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Sensors</span>
+        <span id="ws-status"><span class="status-dot disconnected"></span>Disconnected</span>
+      </div>
+      <div class="readouts">
+        <div class="readout">
+          <div class="readout-label">Ultrasonic</div>
+          <div class="readout-value" id="val-ultrasonic">---<span class="readout-unit">cm</span></div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">Latency</div>
+          <div class="readout-value" id="val-latency">---<span class="readout-unit">ms</span></div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">IR Left</div>
+          <div class="readout-value clear" id="val-ir-left">Clear</div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">IR Right</div>
+          <div class="readout-value clear" id="val-ir-right">Clear</div>
+        </div>
+        <div class="readout wide">
+          <div class="readout-label">Line Sensors</div>
+          <div class="grayscale-bar" id="gs-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement Controls -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Controls</span>
+        <span id="cmd-echo" style="color:var(--cyan);"></span>
+      </div>
+      <div class="controls-grid">
+        <div>
+          <div class="dpad">
+            <div class="dpad-btn empty"></div>
+            <div class="dpad-btn" data-dir="forward" id="btn-w">W</div>
+            <div class="dpad-btn empty"></div>
+            <div class="dpad-btn" data-dir="strafe-left" id="btn-a">A</div>
+            <div class="dpad-btn" data-dir="stop" id="btn-stop" style="font-size:9px;">&#x25A0;</div>
+            <div class="dpad-btn" data-dir="strafe-right" id="btn-d">D</div>
+            <div class="dpad-btn empty"></div>
+            <div class="dpad-btn" data-dir="backward" id="btn-s">S</div>
+            <div class="dpad-btn empty"></div>
+          </div>
+          <div class="rotate-btns">
+            <div class="rotate-btn" data-dir="rotate-left" id="btn-rl">&#x21B6; Q</div>
+            <div class="rotate-btn" data-dir="rotate-right" id="btn-rr">E &#x21B7;</div>
+          </div>
+        </div>
+        <div class="side-controls">
+          <div class="speed-control">
+            <label>Motor Power</label>
+            <div class="speed-row">
+              <input type="range" id="speed-slider" min="0" max="100" value="60">
+              <span class="speed-val" id="speed-val">60</span>
+            </div>
+          </div>
+          <div class="speed-control">
+            <label>Speed Cal (cm/s @ 100%)</label>
+            <div class="speed-row">
+              <input type="range" id="calib-slider" min="5" max="80" value="30">
+              <span class="speed-val" id="calib-val">30</span>
+            </div>
+          </div>
+          <div class="speed-control">
+            <label>Rotation Cal (deg/s @ 100%)</label>
+            <div class="speed-row">
+              <input type="range" id="rot-calib-slider" min="15" max="180" value="90">
+              <span class="speed-val" id="rot-calib-val">90</span>
+            </div>
+          </div>
+          <div class="key-hints">
+            <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</div>
+            <div><kbd>Q</kbd><kbd>E</kbd> rotate</div>
+            <div><kbd>Space</kbd> stop</div>
+            <div><kbd>L</kbd> light</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ════════════════════════════════════════════════════════════════
+   Zeus Car Kit — Spatial Mapper
+   ════════════════════════════════════════════════════════════════
+   Protocol (SunFounder Controller format):
+   - WebSocket at ws://192.168.4.1:8765
+   - JSON messages with widget-letter keys (A-Q)
+   - K = left joystick "x y" for omnidirectional movement
+   - Q = right joystick "x y" for front wheel steering / rotation
+   - L = LED brightness (0-100)
+   - Incoming: JSON or WS+ prefixed semicolon-delimited sensor data
+
+   3D Mapping:
+   - Dead reckoning from movement commands
+   - Ultrasonic readings → obstacle points in world space
+   - IR detections → side obstacle points
+   - Coordinate system: Three.js Y-up, car drives on XZ plane
+   ════════════════════════════════════════════════════════════════ */
+
+const CONFIG = {
+  WS_URL: 'ws://192.168.4.1:8765',
+  CAR_NAME: 'Zeus_Car',
+  CHECK: 'SC',
+  RECONNECT_INTERVAL: 3000,
+  PING_INTERVAL: 2000,
+  MAX_POINTS: 50000,
+  POINT_MIN_SPACING: 2,       // cm — don't place points closer than this
+  TRAIL_SAMPLE_DIST: 3,       // cm — sample trail every N cm of movement
+  IR_OBSTACLE_DIST: 15,       // cm — assumed IR detection distance
+};
+
+// ── State ──
+const state = {
+  ws: null,
+  connected: false,
+  ultrasonic: null,
+  irLeft: false,
+  irRight: false,
+  grayscale: [0,0,0,0,0,0,0,0],
+  speed: 60,
+  activeKeys: new Set(),
+  lightOn: false,
+  lastPing: 0,
+  latency: null,
+  reconnectTimer: null,
+
+  // Dead reckoning
+  carX: 0,             // cm, world space
+  carZ: 0,             // cm, world space
+  carHeading: 0,       // radians, 0 = -Z direction (Three.js forward)
+  currentDir: null,    // active movement direction or null
+  lastFrameTime: 0,
+
+  // Calibration
+  maxSpeedCmS: 30,     // cm/s at power 100
+  maxRotDegS: 90,      // deg/s at power 100
+
+  // Map data
+  obstaclePoints: [],  // [{x, y, z, type}] — accumulated obstacle detections
+  trailPoints: [],     // [{x, z}] — car path
+  trailDist: 0,        // total distance traveled (cm)
+  lastTrailX: 0,
+  lastTrailZ: 0,
+  followCar: true,
+};
+
+// ── DOM refs ──
+const $ = id => document.getElementById(id);
+const mapPanel = $('map-panel');
+const wsStatusEl = $('ws-status');
+const valUltrasonic = $('val-ultrasonic');
+const valLatency = $('val-latency');
+const valIrLeft = $('val-ir-left');
+const valIrRight = $('val-ir-right');
+const gsBar = $('gs-bar');
+const cmdEcho = $('cmd-echo');
+const speedSlider = $('speed-slider');
+const speedVal = $('speed-val');
+const calibSlider = $('calib-slider');
+const calibVal = $('calib-val');
+const rotCalibSlider = $('rot-calib-slider');
+const rotCalibVal = $('rot-calib-val');
+
+// Build grayscale dots
+for (let i = 0; i < 8; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'gs-dot';
+  dot.textContent = i + 1;
+  dot.id = `gs-${i}`;
+  gsBar.appendChild(dot);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  THREE.JS SCENE
+// ══════════════════════════════════════════════════════════════
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050508);
+scene.fog = new THREE.Fog(0x050508, 800, 2000);
+
+const camera = new THREE.PerspectiveCamera(55, 1, 1, 5000);
+camera.position.set(0, 250, 300);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+mapPanel.insertBefore(renderer.domElement, mapPanel.firstChild);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.1;
+controls.maxPolarAngle = Math.PI / 2 - 0.05;
+controls.minDistance = 50;
+controls.maxDistance = 2000;
+controls.target.set(0, 0, 0);
+
+// ── Lighting ──
+scene.add(new THREE.AmbientLight(0x334455, 1.5));
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+dirLight.position.set(200, 400, 200);
+scene.add(dirLight);
+
+// ── Ground grid ──
+const gridHelper = new THREE.GridHelper(2000, 100, 0x112222, 0x0a1515);
+scene.add(gridHelper);
+
+// Subtle ground plane for shadow/reference
+const groundGeo = new THREE.PlaneGeometry(2000, 2000);
+const groundMat = new THREE.MeshBasicMaterial({ color: 0x060609, transparent: true, opacity: 0.5 });
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.5;
+scene.add(ground);
+
+// ── Car model (simple box + arrow) ──
+const carGroup = new THREE.Group();
+
+// Body
+const bodyGeo = new THREE.BoxGeometry(14, 6, 18);
+const bodyMat = new THREE.MeshPhongMaterial({ color: 0x2a2a3a, emissive: 0x111118 });
+const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
+bodyMesh.position.y = 5;
+carGroup.add(bodyMesh);
+
+// Wheels
+const wheelGeo = new THREE.BoxGeometry(4, 4, 7);
+const wheelMat = new THREE.MeshPhongMaterial({ color: 0x333340 });
+[[-9, 3, -5], [9, 3, -5], [-9, 3, 5], [9, 3, 5]].forEach(([x,y,z]) => {
+  const w = new THREE.Mesh(wheelGeo, wheelMat);
+  w.position.set(x, y, z);
+  carGroup.add(w);
+});
+
+// Forward arrow (cone pointing -Z)
+const arrowGeo = new THREE.ConeGeometry(3, 8, 4);
+const arrowMat = new THREE.MeshPhongMaterial({ color: 0x00e5ff, emissive: 0x003344 });
+const arrowMesh = new THREE.Mesh(arrowGeo, arrowMat);
+arrowMesh.rotation.x = -Math.PI / 2;
+arrowMesh.position.set(0, 8, -12);
+carGroup.add(arrowMesh);
+
+// Ultrasonic beam indicator (forward cone, transparent)
+const beamGeo = new THREE.ConeGeometry(8, 50, 16, 1, true);
+const beamMat = new THREE.MeshBasicMaterial({
+  color: 0x00e5ff, transparent: true, opacity: 0.06, side: THREE.DoubleSide
+});
+const beamMesh = new THREE.Mesh(beamGeo, beamMat);
+beamMesh.rotation.x = -Math.PI / 2;
+beamMesh.position.set(0, 6, -35);
+carGroup.add(beamMesh);
+
+scene.add(carGroup);
+
+// ── Obstacle point cloud ──
+const POINT_BUFFER_SIZE = CONFIG.MAX_POINTS;
+const pointPositions = new Float32Array(POINT_BUFFER_SIZE * 3);
+const pointColors = new Float32Array(POINT_BUFFER_SIZE * 3);
+const pointGeo = new THREE.BufferGeometry();
+pointGeo.setAttribute('position', new THREE.BufferAttribute(pointPositions, 3));
+pointGeo.setAttribute('color', new THREE.BufferAttribute(pointColors, 3));
+pointGeo.setDrawRange(0, 0);
+
+const pointMat = new THREE.PointsMaterial({
+  size: 4,
+  vertexColors: true,
+  sizeAttenuation: true,
+  transparent: true,
+  opacity: 0.85,
+});
+const pointCloud = new THREE.Points(pointGeo, pointMat);
+scene.add(pointCloud);
+
+// ── Trail line ──
+const TRAIL_BUFFER_SIZE = 20000;
+const trailPositions = new Float32Array(TRAIL_BUFFER_SIZE * 3);
+const trailGeo = new THREE.BufferGeometry();
+trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
+trailGeo.setDrawRange(0, 0);
+
+const trailMat = new THREE.LineBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.35 });
+const trailLine = new THREE.Line(trailGeo, trailMat);
+scene.add(trailLine);
+
+// ── Origin marker ──
+const originRing = new THREE.RingGeometry(8, 10, 32);
+const originMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff, side: THREE.DoubleSide, transparent: true, opacity: 0.3 });
+const originMarker = new THREE.Mesh(originRing, originMat);
+originMarker.rotation.x = -Math.PI / 2;
+originMarker.position.y = 0.5;
+scene.add(originMarker);
+
+// ── Live ultrasonic hit marker ──
+const hitGeo = new THREE.SphereGeometry(3, 8, 8);
+const hitMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.7 });
+const hitMarker = new THREE.Mesh(hitGeo, hitMat);
+hitMarker.visible = false;
+scene.add(hitMarker);
+
+// ── IR indicator spheres (attached to car) ──
+const irLeftSphere = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 8, 8),
+  new THREE.MeshBasicMaterial({ color: 0xff3355, transparent: true, opacity: 0 })
+);
+irLeftSphere.position.set(-16, 6, 0);
+carGroup.add(irLeftSphere);
+
+const irRightSphere = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 8, 8),
+  new THREE.MeshBasicMaterial({ color: 0xff3355, transparent: true, opacity: 0 })
+);
+irRightSphere.position.set(16, 6, 0);
+carGroup.add(irRightSphere);
+
+// ══════════════════════════════════════════════════════════════
+//  POINT CLOUD MANAGEMENT
+// ══════════════════════════════════════════════════════════════
+
+let pointCount = 0;
+
+function addObstaclePoint(worldX, worldZ, type) {
+  // Check minimum spacing
+  for (let i = Math.max(0, pointCount - 200); i < pointCount; i++) {
+    const dx = pointPositions[i*3] - worldX;
+    const dz = pointPositions[i*3+2] - worldZ;
+    if (dx*dx + dz*dz < CONFIG.POINT_MIN_SPACING * CONFIG.POINT_MIN_SPACING) return;
+  }
+
+  if (pointCount >= POINT_BUFFER_SIZE) return;
+
+  const idx = pointCount * 3;
+  pointPositions[idx] = worldX;
+  pointPositions[idx+1] = 3;  // slight Y offset so points float above grid
+  pointPositions[idx+2] = worldZ;
+
+  // Color by type and distance-based intensity
+  if (type === 'ultrasonic') {
+    pointColors[idx]   = 0;
+    pointColors[idx+1] = 0.9;
+    pointColors[idx+2] = 1;
+  } else if (type === 'ir-left' || type === 'ir-right') {
+    pointColors[idx]   = 1;
+    pointColors[idx+1] = 0.2;
+    pointColors[idx+2] = 0.33;
+  } else if (type === 'line') {
+    pointColors[idx]   = 0;
+    pointColors[idx+1] = 1;
+    pointColors[idx+2] = 0.53;
+  }
+
+  pointCount++;
+  pointGeo.setDrawRange(0, pointCount);
+  pointGeo.attributes.position.needsUpdate = true;
+  pointGeo.attributes.color.needsUpdate = true;
+
+  state.obstaclePoints.push({ x: worldX, z: worldZ, type });
+}
+
+let trailCount = 0;
+
+function addTrailPoint(x, z) {
+  if (trailCount >= TRAIL_BUFFER_SIZE) return;
+  const idx = trailCount * 3;
+  trailPositions[idx] = x;
+  trailPositions[idx+1] = 1;
+  trailPositions[idx+2] = z;
+  trailCount++;
+  trailGeo.setDrawRange(0, trailCount);
+  trailGeo.attributes.position.needsUpdate = true;
+}
+
+// ══════════════════════════════════════════════════════════════
+//  DEAD RECKONING
+// ══════════════════════════════════════════════════════════════
+
+// Direction vectors (x, z offsets for unit movement)
+// Heading 0 = facing -Z. Forward = (0, -1), Right = (1, 0)
+function getForwardVec() {
+  return { x: Math.sin(state.carHeading), z: -Math.cos(state.carHeading) };
+}
+function getRightVec() {
+  return { x: Math.cos(state.carHeading), z: Math.sin(state.carHeading) };
+}
+
+const DIR_MOVE = {
+  'forward':      () => { const f = getForwardVec(); return { dx: f.x, dz: f.z, rot: 0 }; },
+  'backward':     () => { const f = getForwardVec(); return { dx: -f.x, dz: -f.z, rot: 0 }; },
+  'strafe-left':  () => { const r = getRightVec(); return { dx: -r.x, dz: -r.z, rot: 0 }; },
+  'strafe-right': () => { const r = getRightVec(); return { dx: r.x, dz: r.z, rot: 0 }; },
+  'rotate-left':  () => ({ dx: 0, dz: 0, rot: -1 }),
+  'rotate-right': () => ({ dx: 0, dz: 0, rot: 1 }),
+};
+
+function updateDeadReckoning(dt) {
+  if (!state.currentDir || !DIR_MOVE[state.currentDir]) return;
+
+  const move = DIR_MOVE[state.currentDir]();
+  const powerFrac = state.speed / 100;
+
+  if (move.rot !== 0) {
+    // Rotation
+    const rotSpeed = (state.maxRotDegS * Math.PI / 180) * powerFrac;
+    state.carHeading += move.rot * rotSpeed * dt;
+  } else {
+    // Translation
+    const speed = state.maxSpeedCmS * powerFrac;
+    state.carX += move.dx * speed * dt;
+    state.carZ += move.dz * speed * dt;
+
+    // Track distance for trail
+    const tdx = state.carX - state.lastTrailX;
+    const tdz = state.carZ - state.lastTrailZ;
+    const segDist = Math.sqrt(tdx*tdx + tdz*tdz);
+    if (segDist >= CONFIG.TRAIL_SAMPLE_DIST) {
+      state.trailDist += segDist;
+      state.lastTrailX = state.carX;
+      state.lastTrailZ = state.carZ;
+      addTrailPoint(state.carX, state.carZ);
+    }
+  }
+}
+
+// ── Sensor → map point deposition ──
+let lastPointTime = 0;
+const POINT_INTERVAL = 150; // ms between point deposits
+
+function depositSensorPoints() {
+  const now = performance.now();
+  if (now - lastPointTime < POINT_INTERVAL) return;
+  lastPointTime = now;
+
+  const fwd = getForwardVec();
+  const right = getRightVec();
+
+  // Ultrasonic → forward obstacle point
+  if (state.ultrasonic !== null && state.ultrasonic > 2 && state.ultrasonic < 400) {
+    const dist = state.ultrasonic;
+    const wx = state.carX + fwd.x * dist;
+    const wz = state.carZ + fwd.z * dist;
+    addObstaclePoint(wx, wz, 'ultrasonic');
+
+    // Position hit marker
+    hitMarker.visible = true;
+    hitMarker.position.set(wx, 5, wz);
+  } else {
+    hitMarker.visible = false;
+  }
+
+  // IR left → side obstacle point
+  if (state.irLeft) {
+    const d = CONFIG.IR_OBSTACLE_DIST;
+    const wx = state.carX - right.x * d;
+    const wz = state.carZ - right.z * d;
+    addObstaclePoint(wx, wz, 'ir-left');
+  }
+
+  // IR right → side obstacle point
+  if (state.irRight) {
+    const d = CONFIG.IR_OBSTACLE_DIST;
+    const wx = state.carX + right.x * d;
+    const wz = state.carZ + right.z * d;
+    addObstaclePoint(wx, wz, 'ir-right');
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  WEBSOCKET
+// ══════════════════════════════════════════════════════════════
+
+function setStatus(status) {
+  const dot = wsStatusEl.querySelector('.status-dot');
+  dot.className = 'status-dot ' + status;
+  const labels = { connected: 'Connected', connecting: 'Connecting...', disconnected: 'Disconnected' };
+  wsStatusEl.innerHTML = '';
+  const newDot = document.createElement('span');
+  newDot.className = 'status-dot ' + status;
+  wsStatusEl.appendChild(newDot);
+  wsStatusEl.append(labels[status]);
+}
+
+function connect() {
+  if (state.ws && state.ws.readyState <= 1) return;
+  setStatus('connecting');
+
+  try {
+    state.ws = new WebSocket(CONFIG.WS_URL);
+  } catch (e) {
+    setStatus('disconnected');
+    scheduleReconnect();
+    return;
+  }
+
+  state.ws.onopen = () => {
+    state.connected = true;
+    setStatus('connected');
+    clearTimeout(state.reconnectTimer);
+    send({ Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1' });
+  };
+
+  state.ws.onmessage = (evt) => handleMessage(evt.data);
+
+  state.ws.onclose = () => {
+    state.connected = false;
+    setStatus('disconnected');
+    scheduleReconnect();
+  };
+
+  state.ws.onerror = () => {
+    state.connected = false;
+    setStatus('disconnected');
+  };
+}
+
+function scheduleReconnect() {
+  clearTimeout(state.reconnectTimer);
+  state.reconnectTimer = setTimeout(connect, CONFIG.RECONNECT_INTERVAL);
+}
+
+function send(obj) {
+  if (state.ws && state.ws.readyState === WebSocket.OPEN) {
+    state.ws.send(JSON.stringify(obj));
+  }
+}
+
+// ── Message parsing ──
+function handleMessage(raw) {
+  if (state.lastPing > 0) {
+    state.latency = Date.now() - state.lastPing;
+    state.lastPing = 0;
+  }
+
+  try {
+    const data = JSON.parse(raw);
+    parseSensorJSON(data);
+    return;
+  } catch (e) { /* not JSON */ }
+
+  if (typeof raw === 'string' && raw.startsWith('WS+')) {
+    parseSensorArray(raw.slice(3).split(';'));
+    return;
+  }
+
+  if (typeof raw === 'string' && raw.includes(';')) {
+    parseSensorArray(raw.split(';'));
+  }
+}
+
+function parseSensorJSON(data) {
+  if (data.ultrasonic !== undefined) state.ultrasonic = parseFloat(data.ultrasonic);
+  if (data.us !== undefined) state.ultrasonic = parseFloat(data.us);
+  if (data.U !== undefined) state.ultrasonic = parseFloat(data.U);
+
+  if (data.ir_left !== undefined) state.irLeft = !!data.ir_left;
+  if (data.ir_right !== undefined) state.irRight = !!data.ir_right;
+  if (data.IL !== undefined) state.irLeft = !!parseInt(data.IL);
+  if (data.IR !== undefined) state.irRight = !!parseInt(data.IR);
+
+  if (data.grayscale !== undefined && Array.isArray(data.grayscale)) {
+    state.grayscale = data.grayscale.map(v => v ? 1 : 0);
+  }
+  if (data.gs !== undefined) {
+    const bf = parseInt(data.gs);
+    for (let i = 0; i < 8; i++) state.grayscale[i] = (bf >> i) & 1;
+  }
+  if (data.G !== undefined) parseTelemetryString(String(data.G));
+}
+
+function parseSensorArray(parts) {
+  if (parts.length >= 1 && parts[0] !== '') {
+    const v = parseFloat(parts[0]);
+    if (!isNaN(v)) state.ultrasonic = v;
+  }
+  if (parts.length >= 2) state.irLeft = parts[1] === '1';
+  if (parts.length >= 3) state.irRight = parts[2] === '1';
+  if (parts.length >= 4 && parts[3] !== '') {
+    const bf = parseInt(parts[3]);
+    if (!isNaN(bf)) {
+      for (let i = 0; i < 8; i++) state.grayscale[i] = (bf >> i) & 1;
+    }
+  }
+}
+
+function parseTelemetryString(str) {
+  const pairs = str.split(/[,\s]+/);
+  for (const p of pairs) {
+    const [k, v] = p.split(':');
+    if (!v) continue;
+    switch (k.toLowerCase()) {
+      case 'us': case 'ultrasonic': state.ultrasonic = parseFloat(v); break;
+      case 'il': state.irLeft = v !== '0'; break;
+      case 'ir': state.irRight = v !== '0'; break;
+      case 'gs': {
+        const bf = parseInt(v);
+        for (let i = 0; i < 8; i++) state.grayscale[i] = (bf >> i) & 1;
+        break;
+      }
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  MOVEMENT COMMANDS
+// ══════════════════════════════════════════════════════════════
+
+const DIRECTION_MAP = {
+  'forward':       [0, 100],
+  'backward':      [0, -100],
+  'strafe-left':   [-100, 0],
+  'strafe-right':  [100, 0],
+  'stop':          [0, 0],
+};
+
+const ROTATION_MAP = {
+  'rotate-left':  [-100, 0],
+  'rotate-right': [100, 0],
+};
+
+function sendMovement(direction) {
+  const power = state.speed / 100;
+
+  if (DIRECTION_MAP[direction]) {
+    const [x, y] = DIRECTION_MAP[direction];
+    send({
+      Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1',
+      K: `${Math.round(x * power)} ${Math.round(y * power)}`,
+    });
+    state.currentDir = direction;
+    showCmd(direction);
+  } else if (ROTATION_MAP[direction]) {
+    const [x, y] = ROTATION_MAP[direction];
+    send({
+      Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1',
+      Q: `${Math.round(x * power)} ${Math.round(y * power)}`,
+    });
+    state.currentDir = direction;
+    showCmd(direction);
+  }
+}
+
+function sendStop() {
+  send({
+    Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1',
+    K: '0 0', Q: '0 0',
+  });
+  state.currentDir = null;
+  showCmd('stop');
+}
+
+function toggleLight() {
+  state.lightOn = !state.lightOn;
+  send({
+    Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1',
+    L: state.lightOn ? '100' : '0',
+  });
+  showCmd(state.lightOn ? 'light on' : 'light off');
+}
+
+let cmdEchoTimer;
+function showCmd(label) {
+  cmdEcho.textContent = label.toUpperCase();
+  clearTimeout(cmdEchoTimer);
+  cmdEchoTimer = setTimeout(() => { cmdEcho.textContent = ''; }, 800);
+}
+
+// ── Keyboard handling ──
+const KEY_MAP = {
+  'w': 'forward', 'arrowup': 'forward',
+  's': 'backward', 'arrowdown': 'backward',
+  'a': 'strafe-left',
+  'd': 'strafe-right',
+  'q': 'rotate-left', 'arrowleft': 'rotate-left',
+  'e': 'rotate-right', 'arrowright': 'rotate-right',
+};
+
+const KEY_TO_BTN = {
+  'w': 'btn-w', 'arrowup': 'btn-w',
+  's': 'btn-s', 'arrowdown': 'btn-s',
+  'a': 'btn-a', 'd': 'btn-d',
+  'q': 'btn-rl', 'arrowleft': 'btn-rl',
+  'e': 'btn-rr', 'arrowright': 'btn-rr',
+};
+
+document.addEventListener('keydown', (e) => {
+  // Don't capture keys when focused on sliders
+  if (e.target.tagName === 'INPUT') return;
+
+  const key = e.key.toLowerCase();
+  if (key === ' ') { e.preventDefault(); sendStop(); return; }
+  if (key === 'l') { toggleLight(); return; }
+
+  const dir = KEY_MAP[key];
+  if (!dir) return;
+  e.preventDefault();
+
+  if (!state.activeKeys.has(key)) {
+    state.activeKeys.add(key);
+    sendMovement(dir);
+    const btnId = KEY_TO_BTN[key];
+    if (btnId) $(btnId)?.classList.add('active');
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  const key = e.key.toLowerCase();
+  if (state.activeKeys.has(key)) {
+    state.activeKeys.delete(key);
+    const btnId = KEY_TO_BTN[key];
+    if (btnId) $(btnId)?.classList.remove('active');
+
+    if (state.activeKeys.size === 0) {
+      sendStop();
+    } else {
+      for (const held of state.activeKeys) {
+        const d = KEY_MAP[held];
+        if (d) { sendMovement(d); break; }
+      }
+    }
+  }
+});
+
+// ── On-screen buttons ──
+document.querySelectorAll('.dpad-btn[data-dir], .rotate-btn[data-dir]').forEach(btn => {
+  const dir = btn.dataset.dir;
+
+  function startPress() {
+    btn.classList.add('active');
+    if (dir === 'stop') sendStop();
+    else sendMovement(dir);
+  }
+
+  function endPress() {
+    btn.classList.remove('active');
+    if (dir !== 'stop') sendStop();
+  }
+
+  btn.addEventListener('mousedown', startPress);
+  btn.addEventListener('mouseup', endPress);
+  btn.addEventListener('mouseleave', endPress);
+  btn.addEventListener('touchstart', (e) => { e.preventDefault(); startPress(); });
+  btn.addEventListener('touchend', (e) => { e.preventDefault(); endPress(); });
+});
+
+// ── Sliders ──
+speedSlider.addEventListener('input', () => {
+  state.speed = parseInt(speedSlider.value);
+  speedVal.textContent = state.speed;
+});
+
+calibSlider.addEventListener('input', () => {
+  state.maxSpeedCmS = parseInt(calibSlider.value);
+  calibVal.textContent = state.maxSpeedCmS;
+});
+
+rotCalibSlider.addEventListener('input', () => {
+  state.maxRotDegS = parseInt(rotCalibSlider.value);
+  rotCalibVal.textContent = state.maxRotDegS;
+});
+
+// ── Map action buttons ──
+$('btn-clear-map').addEventListener('click', () => {
+  pointCount = 0;
+  pointGeo.setDrawRange(0, 0);
+  state.obstaclePoints = [];
+  trailCount = 0;
+  trailGeo.setDrawRange(0, 0);
+  state.trailPoints = [];
+  state.trailDist = 0;
+});
+
+$('btn-reset-pos').addEventListener('click', () => {
+  state.carX = 0;
+  state.carZ = 0;
+  state.carHeading = 0;
+  state.lastTrailX = 0;
+  state.lastTrailZ = 0;
+  addTrailPoint(0, 0);
+});
+
+$('btn-export').addEventListener('click', () => {
+  const data = {
+    timestamp: new Date().toISOString(),
+    car: { x: state.carX, z: state.carZ, heading: state.carHeading * 180 / Math.PI },
+    trailDistanceCm: state.trailDist,
+    points: state.obstaclePoints,
+    trail: state.trailPoints,
+    calibration: { speedCmS: state.maxSpeedCmS, rotDegS: state.maxRotDegS },
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `zeus-map-${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+const followBtn = $('btn-follow');
+followBtn.addEventListener('click', () => {
+  state.followCar = !state.followCar;
+  followBtn.textContent = `Follow: ${state.followCar ? 'ON' : 'OFF'}`;
+});
+
+// ══════════════════════════════════════════════════════════════
+//  READOUT UPDATES
+// ══════════════════════════════════════════════════════════════
+
+function updateReadouts() {
+  if (state.ultrasonic !== null) {
+    const d = Math.round(state.ultrasonic);
+    valUltrasonic.innerHTML = d + '<span class="readout-unit">cm</span>';
+    valUltrasonic.className = 'readout-value' + (d < 15 ? ' danger' : d < 40 ? ' warning' : '');
+  }
+
+  if (state.latency !== null) {
+    valLatency.innerHTML = state.latency + '<span class="readout-unit">ms</span>';
+  }
+
+  valIrLeft.textContent = state.irLeft ? 'BLOCKED' : 'Clear';
+  valIrLeft.className = 'readout-value ' + (state.irLeft ? 'danger' : 'clear');
+  valIrRight.textContent = state.irRight ? 'BLOCKED' : 'Clear';
+  valIrRight.className = 'readout-value ' + (state.irRight ? 'danger' : 'clear');
+
+  for (let i = 0; i < 8; i++) {
+    const dot = $(`gs-${i}`);
+    if (dot) dot.className = 'gs-dot' + (state.grayscale[i] ? ' active' : '');
+  }
+
+  // Map stats
+  $('stat-points').textContent = pointCount;
+  $('stat-trail').textContent = (state.trailDist / 100).toFixed(1);
+  $('stat-pos').textContent = `${Math.round(state.carX)}, ${Math.round(state.carZ)}`;
+  $('stat-hdg').textContent = Math.round(((state.carHeading * 180 / Math.PI) % 360 + 360) % 360);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  RENDER LOOP
+// ══════════════════════════════════════════════════════════════
+
+function resize() {
+  const rect = mapPanel.getBoundingClientRect();
+  camera.aspect = rect.width / rect.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(rect.width, rect.height);
+}
+
+function animate(time) {
+  requestAnimationFrame(animate);
+
+  // Delta time
+  const dt = state.lastFrameTime ? Math.min((time - state.lastFrameTime) / 1000, 0.1) : 0;
+  state.lastFrameTime = time;
+
+  // Dead reckoning
+  updateDeadReckoning(dt);
+
+  // Deposit sensor data as map points
+  depositSensorPoints();
+
+  // Update car model position/rotation
+  carGroup.position.set(state.carX, 0, state.carZ);
+  carGroup.rotation.y = state.carHeading;
+
+  // Update beam visualization based on ultrasonic reading
+  if (state.ultrasonic !== null && state.ultrasonic > 2) {
+    const len = Math.min(state.ultrasonic, 400);
+    beamMesh.scale.y = len / 50;
+    beamMesh.position.z = -(len / 2) - 10;
+    beamMat.opacity = state.ultrasonic < 20 ? 0.15 : 0.06;
+    beamMat.color.setHex(state.ultrasonic < 15 ? 0xff3355 : state.ultrasonic < 40 ? 0xffaa00 : 0x00e5ff);
+  }
+
+  // IR indicators
+  irLeftSphere.material.opacity = state.irLeft ? 0.8 : 0;
+  irRightSphere.material.opacity = state.irRight ? 0.8 : 0;
+
+  // Camera follow
+  if (state.followCar) {
+    controls.target.lerp(new THREE.Vector3(state.carX, 0, state.carZ), 0.05);
+  }
+
+  controls.update();
+  updateReadouts();
+  renderer.render(scene, camera);
+}
+
+// ── Init ──
+window.addEventListener('resize', resize);
+resize();
+addTrailPoint(0, 0); // start trail at origin
+connect();
+setInterval(() => {
+  if (state.connected) {
+    state.lastPing = Date.now();
+    send({ Name: CONFIG.CAR_NAME, Check: CONFIG.CHECK, Type: '1' });
+  }
+}, CONFIG.PING_INTERVAL);
+
+requestAnimationFrame(animate);
+</script>
+
+</body>
+</html>
