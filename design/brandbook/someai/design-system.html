@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Design System — Atomic Component Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#141414;--surface:#1A1A1A;--surface2:#222222;--border:#333333;
+  --text:#E8E0E0;--dim:#666666;--dim2:#999999;
+  --red-50:#FFF5F5;--red-100:#FED7D7;--red-200:#FEB2B2;--red-300:#FC8181;
+  --red-400:#F56565;--red-500:#E53E3E;--red-600:#C53030;--red-700:#9B2C2C;
+  --red-800:#7B2020;--red-900:#5C1111;--red-950:#3B0A0A;
+  --mauve-dark:#6B4F4F;--mauve-mid:#9B7878;--mauve-light:#C4A8A8;--mauve-pale:#E8D5D5;
+  --blue:#2196F3;--green:#4CAF50;--teal:#009688;--pink:#E91E63;
+  --orange:#FF9800;--amber:#F59E0B;--gray:#9E9E9E;
+  --glass-blur:24px;--glass-fill:0.15;--glass-border:0.18;
+  --radius-sm:10px;--radius-md:16px;--radius-lg:22px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:48px 32px 96px}
+
+/* Header */
+.sys-header{text-align:center;padding:64px 0 48px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.sys-header h1{font-size:42px;font-weight:800;letter-spacing:-2px;background:linear-gradient(135deg,#E53E3E,#C4A8A8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.sys-header .sub{font-size:15px;color:var(--dim);max-width:600px;margin:0 auto}
+.sys-header .version{display:inline-block;margin-top:16px;font-size:10px;padding:4px 14px;border-radius:20px;background:rgba(229,62,62,0.12);color:var(--red-400);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+
+/* Navigation */
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:48px;padding:8px;background:var(--surface);border-radius:var(--radius-md);border:1px solid var(--border)}
+.nav a{padding:8px 16px;border-radius:8px;font-size:11px;font-weight:600;color:var(--dim);text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;transition:all .2s}
+.nav a:hover{color:var(--text);background:var(--surface2)}
+.nav a.active{background:var(--red-500);color:#fff}
+
+/* Sections */
+section{margin-bottom:64px}
+section h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--red-400);margin-bottom:24px;display:flex;align-items:center;gap:16px}
+section h2::after{content:'';flex:1;height:1px;background:var(--border)}
+section h3{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px}
+section p{color:var(--dim);max-width:680px;margin-bottom:12px;line-height:1.7;font-size:13px}
+
+/* Component cards */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.comp-preview{padding:32px;display:flex;align-items:center;justify-content:center;min-height:140px;background:var(--bg);position:relative}
+.comp-info{padding:16px}
+.comp-info h4{font-size:13px;font-weight:700;margin-bottom:4px;letter-spacing:-0.2px}
+.comp-info .dart{font-size:10px;font-family:'SF Mono',monospace;color:var(--red-400);margin-bottom:6px}
+.comp-info p{font-size:11px;color:var(--dim);line-height:1.5;margin:0}
+.comp-info .props{margin-top:8px;font-size:10px;font-family:'SF Mono',monospace;color:var(--dim2);line-height:1.7}
+
+/* Node atom */
+.node{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#fff;transition:all .3s;cursor:pointer;position:relative}
+.node:hover{transform:scale(1.08)}
+.node.focused{box-shadow:0 0 20px rgba(229,62,62,0.4)}
+.node.selected{outline:2px solid var(--red-400);outline-offset:3px}
+.node-sow{background:#E91E63;width:64px;height:64px}
+.node-boar{background:#2196F3;width:64px;height:64px}
+.node-date{background:#FF9800;width:48px;height:48px;font-size:9px}
+.node-city{background:#4CAF50;width:48px;height:48px;font-size:9px}
+.node-breed{background:#9C27B0;width:56px;height:56px;font-size:10px}
+.node-sm{width:40px;height:40px;font-size:8px}
+.node-lg{width:80px;height:80px;font-size:14px}
+
+/* Edge atom */
+.edge-demo{width:100%;height:80px;position:relative}
+.edge-demo svg{width:100%;height:100%}
+
+/* Signal atom */
+.signal{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:10px;font-weight:700;color:#fff;transition:all .2s}
+.signal-number{background:var(--red-500)}
+.signal-bool-true{background:var(--green);width:24px;height:24px}
+.signal-bool-false{width:24px;height:24px;border:2px solid var(--dim);border-radius:50%}
+.signal-status{border-radius:20px;padding:3px 10px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.signal-status.active{background:rgba(76,175,80,0.15);color:var(--green);border:1px solid rgba(76,175,80,0.3)}
+.signal-status.bred{background:rgba(233,30,99,0.15);color:var(--pink);border:1px solid rgba(233,30,99,0.3)}
+.signal-status.open{background:rgba(255,152,0,0.15);color:var(--orange);border:1px solid rgba(255,152,0,0.3)}
+.signal-event{width:4px;height:32px;background:var(--red-500);border-radius:2px}
+.signal-currency{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.signal-currency.pos{background:rgba(76,175,80,0.2);color:var(--green)}
+.signal-currency.neg{background:rgba(229,62,62,0.2);color:var(--red-500)}
+.signal.highlighted{box-shadow:0 0 12px 2px var(--red-500)}
+.signal.dimmed{opacity:0.4}
+
+/* Score gauge */
+.score-gauge{width:40px;height:40px;position:relative}
+.score-gauge svg{width:100%;height:100%}
+.score-gauge .value{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text)}
+
+/* Metric atom */
+.metric{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:8px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--dim)}
+.metric.active{background:rgba(229,62,62,0.12);border-color:var(--red-500);color:#fff;font-weight:600}
+.metric .m-icon{font-size:14px}
+
+/* Protocol atom */
+.protocol{width:32px;height:32px;position:relative}
+.protocol svg{width:100%;height:100%}
+
+/* Glass containers */
+.glass{backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));background:rgba(26,26,26,var(--glass-fill));border:1px solid rgba(255,255,255,var(--glass-border));border-radius:var(--radius-md)}
+.glass-subtle{backdrop-filter:blur(12px);background:rgba(26,26,26,0.1);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm)}
+.glass-frosted{backdrop-filter:blur(40px);background:rgba(26,26,26,0.2);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-lg)}
+
+/* Molecule: MetricLane */
+.metric-lane{display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.metric-lane .track{flex:1;height:2px;background:var(--border);position:relative}
+.metric-lane .track .dot{position:absolute;top:50%;transform:translateY(-50%)}
+
+/* Molecule: ProtocolCheckpoint */
+.checkpoint{display:flex;flex-direction:column;align-items:center;gap:4px;width:80px}
+.checkpoint .date{font-size:9px;color:var(--dim);font-weight:600;text-transform:uppercase}
+.checkpoint .label{font-size:9px;color:var(--dim);text-align:center;line-height:1.3}
+.checkpoint.completed .label{color:var(--green)}
+.checkpoint.missed .label{color:var(--red-500)}
+
+/* Organism: Timeline */
+.timeline-org{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;position:relative}
+.timeline-org .header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.timeline-org .now-line{position:absolute;top:0;bottom:0;width:2px;background:var(--red-500);z-index:2}
+.timeline-org .now-dot{width:8px;height:8px;background:var(--red-500);border-radius:50%;position:absolute;top:-4px;left:-3px}
+
+/* Edge type table */
+.edge-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}
+.edge-table th{text-align:left;padding:6px 10px;color:var(--dim);font-size:9px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.edge-table td{padding:8px 10px;border-bottom:1px solid rgba(51,51,51,0.5)}
+.edge-table .swatch{width:24px;height:3px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:middle}
+.edge-table .dash{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px);height:3px;width:24px;display:inline-block;margin-right:6px;vertical-align:middle}
+
+/* Signal type table */
+.sig-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}
+.sig-table th{text-align:left;padding:6px 10px;color:var(--dim);font-size:9px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.sig-table td{padding:8px 10px;border-bottom:1px solid rgba(51,51,51,0.5);vertical-align:middle}
+
+/* Hierarchy diagram */
+.hierarchy{display:flex;flex-direction:column;gap:24px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md)}
+.hier-level{display:flex;align-items:center;gap:16px}
+.hier-label{min-width:120px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hier-items{display:flex;gap:6px;flex-wrap:wrap}
+.hier-item{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:600;border:1px solid}
+.hier-atoms .hier-label{color:var(--red-400)}
+.hier-atoms .hier-item{border-color:var(--red-500);color:var(--red-400);background:rgba(229,62,62,0.08)}
+.hier-molecules .hier-label{color:var(--amber)}
+.hier-molecules .hier-item{border-color:var(--amber);color:var(--amber);background:rgba(245,158,11,0.08)}
+.hier-organisms .hier-label{color:var(--mauve-light)}
+.hier-organisms .hier-item{border-color:var(--mauve-mid);color:var(--mauve-light);background:rgba(196,168,168,0.08)}
+
+/* Principle cards */
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.principle{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px}
+.principle .num{font-size:32px;font-weight:800;color:rgba(229,62,62,0.2);margin-bottom:8px;line-height:1}
+.principle h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.principle p{font-size:11px;color:var(--dim);margin:0}
+
+/* Layout rules */
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:12px}
+.rule{padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.rule .code{font-size:10px;font-family:'SF Mono',monospace;color:var(--red-400);margin-bottom:4px}
+.rule .desc{font-size:11px;color:var(--dim)}
+
+/* Token display */
+.token-row{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+.token-swatch{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);min-width:72px}
+.token-swatch .color{height:48px}
+.token-swatch .info{padding:4px 6px;background:var(--surface)}
+.token-swatch .info .name{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px}
+.token-swatch .info .hex{font-size:8px;color:var(--dim);font-family:'SF Mono',monospace}
+
+/* Glass demo */
+.glass-demos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.glass-demo{padding:20px;text-align:center;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.glass-demo .label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--dim);margin-bottom:4px}
+.glass-demo .value{font-size:11px;font-family:'SF Mono',monospace;color:var(--text)}
+
+/* Responsive */
+@media(max-width:700px){
+  .comp-grid{grid-template-columns:1fr}
+  .glass-demos{grid-template-columns:1fr}
+  .principle-grid{grid-template-columns:1fr}
+  .rule-grid{grid-template-columns:1fr}
+  .hier-level{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="sys-header">
+  <h1>Charlotte Design System</h1>
+  <p class="sub">Atomic components for observable reality &mdash; every visual element maps directly to the FACT substrate (NODE, EDGE, METRIC, SIGNAL, PROTOCOL)</p>
+  <span class="version">Dart &rarr; HTML Reference &middot; v1.0</span>
+</header>
+
+<nav class="nav">
+  <a href="#principles" class="active">Principles</a>
+  <a href="#hierarchy">Hierarchy</a>
+  <a href="#atoms">Atoms</a>
+  <a href="#molecules">Molecules</a>
+  <a href="#organisms">Organisms</a>
+  <a href="#tokens">Tokens</a>
+  <a href="#glass">Glass</a>
+  <a href="#layout">Layout Engine</a>
+  <a href="index.html">Brand Book</a>
+</nav>
+
+<!-- ═══════════ PRINCIPLES ═══════════ -->
+<section id="principles">
+  <h2>Design Principles</h2>
+  <div class="principle-grid">
+    <div class="principle">
+      <div class="num">01</div>
+      <h4>Direct Visual Encoding</h4>
+      <p>Every visual element maps 1:1 to Charlotte's substrate. NodeAtom &larr; NODE. EdgeAtom &larr; EDGE. SignalAtom &larr; SIGNAL. MetricAtom &larr; METRIC. ProtocolAtom &larr; PROTOCOL. No decorative elements without semantic meaning.</p>
+    </div>
+    <div class="principle">
+      <div class="num">02</div>
+      <h4>Glass Morphism</h4>
+      <p>Frosted glass containers at 12&ndash;60px blur. 15% fill opacity + 18% border opacity. Depth through layering, not shadow. The substrate is visible beneath every surface.</p>
+    </div>
+    <div class="principle">
+      <div class="num">03</div>
+      <h4>Category&ndash;Color Mapping</h4>
+      <p>Node categories automatically receive distinct colors via <code>CharlotteCategoryColors</code>. SOW = pink, BOAR = blue, DATE = orange, CITY = green. Instant visual recognition across all views.</p>
+    </div>
+    <div class="principle">
+      <div class="num">04</div>
+      <h4>State-Driven Styling</h4>
+      <p>Every component responds to state enums. SignalState: normal &rarr; highlighted &rarr; dimmed. ProtocolState: pending &rarr; completed &rarr; missed. No manual color overrides &mdash; state determines appearance.</p>
+    </div>
+    <div class="principle">
+      <div class="num">05</div>
+      <h4>Responsive Sizing</h4>
+      <p>NodeAtom scales with ring depth. SignalAtom NUMBER scales with value (16&ndash;40px). Containers adapt via LayoutBuilder. The system breathes at every viewport.</p>
+    </div>
+    <div class="principle">
+      <div class="num">06</div>
+      <h4>Semantic Edge Styling</h4>
+      <p>Edge type dictates visual: OWNS (blue/solid), TRACKS (teal/dashed), SIRED_BY (pink/dashed), MEMBER_OF (green/solid). The line tells you the relationship before you read the label.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HIERARCHY ═══════════ -->
+<section id="hierarchy">
+  <h2>Component Hierarchy</h2>
+  <p>Brad Frost's atomic design mapped to Charlotte's FACT primitives. Atoms are indivisible. Molecules combine atoms. Organisms are functional units that power the six Charlotte modes (MILO, SQUIRT, CAL, DORI, NEMO, FINN).</p>
+  <div class="hierarchy">
+    <div class="hier-level hier-atoms">
+      <div class="hier-label">Atoms</div>
+      <div class="hier-items">
+        <span class="hier-item">NodeAtom</span>
+        <span class="hier-item">EdgeAtom</span>
+        <span class="hier-item">SignalAtom</span>
+        <span class="hier-item">MetricAtom</span>
+        <span class="hier-item">ProtocolAtom</span>
+        <span class="hier-item">GlassIconButton</span>
+        <span class="hier-item">GlassBadge</span>
+        <span class="hier-item">GlassCheckbox</span>
+        <span class="hier-item">GlassRadio</span>
+        <span class="hier-item">GlassSwitch</span>
+        <span class="hier-item">GlassSlider</span>
+        <span class="hier-item">GlassDivider</span>
+        <span class="hier-item">GlassProgress</span>
+        <span class="hier-item">AxisAtom</span>
+        <span class="hier-item">GridAtom</span>
+        <span class="hier-item">TrendIndicator</span>
+        <span class="hier-item">LegendItem</span>
+        <span class="hier-item">DataPoint</span>
+      </div>
+    </div>
+    <div class="hier-level hier-molecules">
+      <div class="hier-label">Molecules</div>
+      <div class="hier-items">
+        <span class="hier-item">NodeWithLabel</span>
+        <span class="hier-item">SignalOnTrack</span>
+        <span class="hier-item">MetricLane</span>
+        <span class="hier-item">ProtocolCheckpoint</span>
+        <span class="hier-item">NodeCluster</span>
+        <span class="hier-item">GlassFilledButton</span>
+        <span class="hier-item">GlassTonalButton</span>
+        <span class="hier-item">GlassTextField</span>
+        <span class="hier-item">GlassSearchBar</span>
+        <span class="hier-item">GlassAppBar</span>
+        <span class="hier-item">GlassNavBar</span>
+        <span class="hier-item">GlassTabs</span>
+        <span class="hier-item">GlassDialog</span>
+        <span class="hier-item">GlassSparkline</span>
+        <span class="hier-item">GlassBarChart</span>
+        <span class="hier-item">GlassDonutChart</span>
+      </div>
+    </div>
+    <div class="hier-level hier-organisms">
+      <div class="hier-label">Organisms</div>
+      <div class="hier-items">
+        <span class="hier-item">SubgraphView</span>
+        <span class="hier-item">TimelineLane (SQUIRT)</span>
+        <span class="hier-item">CalendarDay (CAL)</span>
+        <span class="hier-item">ProtocolItinerary (NEMO)</span>
+        <span class="hier-item">LighthouseView (DORI)</span>
+        <span class="hier-item">HexRing (MILO)</span>
+        <span class="hier-item">StatCard</span>
+        <span class="hier-item">ChartCard</span>
+        <span class="hier-item">GraphStage</span>
+        <span class="hier-item">ContextDrawer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ATOMS ═══════════ -->
+<section id="atoms">
+  <h2>Atoms &mdash; Domain Primitives</h2>
+
+  <h3>NodeAtom</h3>
+  <p>Identity marker &mdash; represents any NODE in the graph. Circle shape, category-colored, scales with depth. Three variants: compact (dot), standard (label), hero (large).</p>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:12px">
+        <div class="node node-sow">SOW</div>
+        <div class="node node-boar">BOAR</div>
+        <div class="node node-date">DATE</div>
+        <div class="node node-city">CITY</div>
+        <div class="node node-breed">BREED</div>
+      </div>
+      <div class="comp-info">
+        <h4>Category Colors</h4>
+        <div class="dart">node_atom.dart</div>
+        <p>Each category auto-assigns a color via <code>CharlotteCategoryColors.forCategory()</code>. Label derived from category name (4-char uppercase).</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:16px">
+        <div class="node node-sow node-sm" style="opacity:0.6">SOW</div>
+        <div class="node node-sow">SOW</div>
+        <div class="node node-sow node-lg focused">SOW</div>
+        <div class="node node-sow selected">SOW</div>
+      </div>
+      <div class="comp-info">
+        <h4>States &amp; Sizes</h4>
+        <div class="dart">depth: int, isSelected: bool, isFocused: bool</div>
+        <p>Size scales inversely with depth (ring distance). Focused = glow shadow. Selected = outline ring. Compact 40px &rarr; Standard 64px &rarr; Hero 80px.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">EdgeAtom</h3>
+  <p>Relationship line connecting two nodes. Type determines color, style (solid/dashed), and stroke width. Quadratic Bezier curves with perpendicular offset.</p>
+  <div class="comp-card" style="max-width:720px">
+    <div class="comp-preview" style="padding:24px">
+      <svg width="100%" height="120" viewBox="0 0 640 120">
+        <line x1="40" y1="30" x2="200" y2="30" stroke="#2196F3" stroke-width="2"/>
+        <text x="120" y="52" fill="#2196F3" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">OWNS (solid)</text>
+        <line x1="230" y1="30" x2="390" y2="30" stroke="#4CAF50" stroke-width="2"/>
+        <text x="310" y="52" fill="#4CAF50" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">MEMBER_OF (solid)</text>
+        <line x1="420" y1="30" x2="580" y2="30" stroke="#FF9800" stroke-width="2"/>
+        <text x="500" y="52" fill="#FF9800" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">LOCATED_IN (solid)</text>
+        <line x1="40" y1="85" x2="200" y2="85" stroke="#009688" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="120" y="107" fill="#009688" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">TRACKS (dashed)</text>
+        <line x1="230" y1="85" x2="390" y2="85" stroke="#E91E63" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="310" y="107" fill="#E91E63" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">SIRED_BY (dashed)</text>
+        <line x1="420" y1="85" x2="580" y2="85" stroke="#9E9E9E" stroke-width="1" stroke-dasharray="none"/>
+        <text x="500" y="107" fill="#9E9E9E" font-size="9" font-weight="600" text-anchor="middle" font-family="Inter">NEXT (thin solid)</text>
+      </svg>
+    </div>
+    <div class="comp-info">
+      <h4>Edge Types</h4>
+      <div class="dart">edge_atom.dart &mdash; EdgeAtomPainter (CustomPainter)</div>
+      <table class="edge-table">
+        <thead><tr><th>Type</th><th>Color</th><th>Style</th><th>Width</th></tr></thead>
+        <tbody>
+          <tr><td>OWNS</td><td><span class="swatch" style="background:#2196F3"></span>#2196F3</td><td>Solid</td><td>2.0px</td></tr>
+          <tr><td>MEMBER_OF</td><td><span class="swatch" style="background:#4CAF50"></span>#4CAF50</td><td>Solid</td><td>2.0px</td></tr>
+          <tr><td>TRACKS</td><td><span class="swatch" style="background:#009688"></span>#009688</td><td>Dashed</td><td>2.0px</td></tr>
+          <tr><td>SIRED_BY / DAM_OF</td><td><span class="swatch" style="background:#E91E63"></span>#E91E63</td><td>Dashed</td><td>2.0px</td></tr>
+          <tr><td>LOCATED_IN</td><td><span class="swatch" style="background:#FF9800"></span>#FF9800</td><td>Solid</td><td>2.0px</td></tr>
+          <tr><td>NEXT</td><td><span class="swatch" style="background:#9E9E9E"></span>#9E9E9E</td><td>Solid</td><td>1.0px</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">SignalAtom</h3>
+  <p>Observed value point with type-specific visualization. 8 value types, each with distinct rendering. Three states: normal, highlighted (glow), dimmed (40% opacity).</p>
+  <div class="comp-card" style="max-width:720px">
+    <div class="comp-preview" style="gap:16px;flex-wrap:wrap;padding:24px">
+      <div style="text-align:center">
+        <div class="signal signal-number" style="width:28px;height:28px">42</div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">NUMBER</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-bool-true"></div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">BOOL (T)</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-bool-false"></div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">BOOL (F)</div>
+      </div>
+      <div style="text-align:center">
+        <div class="score-gauge">
+          <svg viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="16" fill="none" stroke="var(--border)" stroke-width="3"/>
+            <circle cx="20" cy="20" r="16" fill="none" stroke="var(--green)" stroke-width="3" stroke-dasharray="75 100" stroke-linecap="round" transform="rotate(-90 20 20)"/>
+          </svg>
+          <div class="value">75</div>
+        </div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">SCORE</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-status active">Active</div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">STATUS</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-status bred">Bred</div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">STATUS</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-event"></div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">EVENT</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-currency pos">$</div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">CURRENCY +</div>
+      </div>
+      <div style="text-align:center">
+        <div class="signal signal-currency neg">$</div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">CURRENCY &minus;</div>
+      </div>
+    </div>
+    <div class="comp-info">
+      <h4>Signal Value Types</h4>
+      <div class="dart">signal_atom.dart &mdash; valueType: String, state: SignalState</div>
+      <div class="props">NUMBER: circle 16-40px (value-relative) | BOOLEAN: filled/hollow 24px | SCORE: arc gauge 40px<br>STATUS: chip with text | EVENT: vertical impulse 4x32px | CURRENCY: circle with $ 32px</div>
+    </div>
+  </div>
+
+  <div class="comp-grid" style="margin-top:12px">
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:16px">
+        <div style="text-align:center">
+          <div class="signal signal-number" style="width:28px;height:28px">42</div>
+          <div style="font-size:8px;color:var(--dim);margin-top:4px">Normal</div>
+        </div>
+        <div style="text-align:center">
+          <div class="signal signal-number highlighted" style="width:28px;height:28px">42</div>
+          <div style="font-size:8px;color:var(--dim);margin-top:4px">Highlighted</div>
+        </div>
+        <div style="text-align:center">
+          <div class="signal signal-number dimmed" style="width:28px;height:28px">42</div>
+          <div style="font-size:8px;color:var(--dim);margin-top:4px">Dimmed</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>Signal States</h4>
+        <div class="dart">state: SignalState.normal | .highlighted | .dimmed</div>
+        <p>Highlighted adds glow shadow (primary, blur 12, spread 2). Dimmed drops to 40% opacity.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:12px">
+        <div class="metric active"><span class="m-icon">#</span> Weight</div>
+        <div class="metric active"><span class="m-icon">&#x2713;</span> Bred</div>
+        <div class="metric"><span class="m-icon">&#x26A1;</span> Event</div>
+        <div class="metric"><span class="m-icon">$</span> Price</div>
+      </div>
+      <div class="comp-info">
+        <h4>MetricAtom</h4>
+        <div class="dart">metric_atom.dart &mdash; isActive: bool, valueType: String</div>
+        <p>Measurement type indicator. Active = primary bg 15% + bold. Inactive = surface bg. Icon maps to valueType (NUMBER=#, BOOLEAN=&#x2713;, EVENT=&#x26A1;, CURRENCY=$).</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">ProtocolAtom</h3>
+  <p>Checkpoint/forecast marker. Diamond shape with three states. Custom painter renders the diamond + conditional icon inside.</p>
+  <div class="comp-card" style="max-width:500px">
+    <div class="comp-preview" style="gap:24px">
+      <div style="text-align:center">
+        <div class="protocol">
+          <svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="var(--dim)" stroke-width="2"/></svg>
+        </div>
+        <div style="font-size:8px;color:var(--dim);margin-top:4px">Pending</div>
+      </div>
+      <div style="text-align:center">
+        <div class="protocol">
+          <svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(76,175,80,0.3)" stroke="var(--green)" stroke-width="2"/><polyline points="10,16 14,20 22,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:8px;color:var(--green);margin-top:4px">Completed</div>
+      </div>
+      <div style="text-align:center">
+        <div class="protocol">
+          <svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(229,62,62,0.3)" stroke="var(--red-500)" stroke-width="2"/><line x1="11" y1="11" x2="21" y2="21" stroke="var(--red-500)" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="11" x2="11" y2="21" stroke="var(--red-500)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:8px;color:var(--red-500);margin-top:4px">Missed</div>
+      </div>
+    </div>
+    <div class="comp-info">
+      <h4>Protocol States</h4>
+      <div class="dart">protocol_atom.dart &mdash; ProtocolDiamondPainter (CustomPainter)</div>
+      <p>32&times;32px diamond. Pending = hollow grey. Completed = green fill + checkmark. Missed = red fill + X-mark.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MOLECULES ═══════════ -->
+<section id="molecules">
+  <h2>Molecules &mdash; Atom Combinations</h2>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:24px">
+        <div style="text-align:center">
+          <div class="node node-sow" style="margin:0 auto 6px">SOW</div>
+          <div style="font-size:10px;color:var(--dim);font-weight:500">Gilt #247</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="node node-boar" style="width:48px;height:48px;font-size:9px">BOAR</div>
+          <div style="font-size:10px;color:var(--dim);font-weight:500">Herdsman 41-2</div>
+        </div>
+        <div style="text-align:center">
+          <div class="node node-city node-sm" style="margin:0 auto 4px">CITY</div>
+          <div style="font-size:9px;color:var(--dim)">Cape Coral</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>NodeWithLabel</h4>
+        <div class="dart">node_with_label.dart &mdash; position: below | right | inside</div>
+        <p>NodeAtom + text label. Three positions: below (column), right (row), inside (overlay). Label size = nodeSize &times; 0.18.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview">
+        <div class="metric-lane" style="width:100%">
+          <div class="metric active" style="min-width:80px"><span class="m-icon">#</span> Weight</div>
+          <div class="track">
+            <div class="dot signal signal-number" style="width:20px;height:20px;font-size:8px;left:15%;position:absolute">180</div>
+            <div class="dot signal signal-number" style="width:24px;height:24px;font-size:8px;left:40%;position:absolute">220</div>
+            <div class="dot signal signal-number highlighted" style="width:28px;height:28px;font-size:9px;left:70%;position:absolute">285</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>MetricLane (Swimming Lane)</h4>
+        <div class="dart">metric_lane.dart &mdash; signals: List&lt;SignalData&gt;</div>
+        <p>MetricAtom label + horizontal track + positioned SignalAtoms. Expanded (80px) or collapsed (56px). Core building block of SQUIRT timeline.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:8px">
+        <div class="checkpoint">
+          <div class="date">Feb 1</div>
+          <div class="protocol"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(76,175,80,0.3)" stroke="var(--green)" stroke-width="2"/><polyline points="10,16 14,20 22,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="label" style="color:var(--green)">Breeding</div>
+        </div>
+        <div style="width:30px;height:2px;background:var(--border);margin-top:24px"></div>
+        <div class="checkpoint">
+          <div class="date">Mar 15</div>
+          <div class="protocol"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(76,175,80,0.3)" stroke="var(--green)" stroke-width="2"/><polyline points="10,16 14,20 22,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="label" style="color:var(--green)">Gestation</div>
+        </div>
+        <div style="width:30px;height:2px;background:var(--border);margin-top:24px"></div>
+        <div class="checkpoint">
+          <div class="date">Jun 1</div>
+          <div class="protocol"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="var(--dim)" stroke-width="2"/></svg></div>
+          <div class="label">Farrowing</div>
+        </div>
+        <div style="width:30px;height:2px;background:var(--border);margin-top:24px"></div>
+        <div class="checkpoint">
+          <div class="date">Jul 15</div>
+          <div class="protocol"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="var(--dim)" stroke-width="2"/></svg></div>
+          <div class="label">Weaning</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>ProtocolCheckpoint</h4>
+        <div class="dart">protocol_checkpoint.dart &mdash; state, targetDate, showConnector</div>
+        <p>ProtocolAtom + date label + optional connector line. Date format "Mon DD". Connector = 30px horizontal line. Label colored by state.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:20px">
+        <div style="position:relative;width:80px;height:80px">
+          <div class="node node-sow node-sm" style="position:absolute;top:0;left:0">SOW</div>
+          <div class="node node-sow node-sm" style="position:absolute;top:8px;left:8px;opacity:0.8">SOW</div>
+          <div class="node node-sow node-sm" style="position:absolute;top:16px;left:16px;opacity:0.6">SOW</div>
+          <div style="position:absolute;bottom:0;right:0;background:var(--red-500);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px">12</div>
+        </div>
+        <div style="position:relative;width:80px;height:80px">
+          <div class="node node-boar node-sm" style="position:absolute;top:0;left:0">BOAR</div>
+          <div class="node node-date node-sm" style="position:absolute;top:0;right:0;width:36px;height:36px;font-size:7px">DATE</div>
+          <div class="node node-city node-sm" style="position:absolute;bottom:0;left:0;width:36px;height:36px;font-size:7px">CITY</div>
+          <div class="node node-breed node-sm" style="position:absolute;bottom:0;right:0;width:36px;height:36px;font-size:7px">BREE</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>NodeCluster</h4>
+        <div class="dart">node_cluster.dart &mdash; layout: stack | grid | radial</div>
+        <p>Multiple nodes grouped. Stack = diagonal overlap (max 4). Grid = 2&times;2. Radial = center + 6 orbiting. Count badge bottom-right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ORGANISMS ═══════════ -->
+<section id="organisms">
+  <h2>Organisms &mdash; Charlotte Modes</h2>
+  <p>Organisms are the functional units that power Charlotte's six modes. Each maps to a distinct way of viewing the FACT substrate.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-preview" style="flex-direction:column;gap:8px;padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div class="node node-sow" style="width:40px;height:40px;font-size:9px">SOW</div>
+          <div><div style="font-size:12px;font-weight:700">Gilt #247</div><div style="font-size:9px;color:var(--dim)">SOW</div></div>
+        </div>
+        <div class="metric-lane" style="width:100%;font-size:10px">
+          <div class="metric active" style="min-width:60px;font-size:9px;padding:2px 8px"><span class="m-icon">#</span> Wt</div>
+          <div class="track">
+            <div class="dot signal signal-number" style="width:16px;height:16px;font-size:7px;left:20%;position:absolute">180</div>
+            <div class="dot signal signal-number" style="width:18px;height:18px;font-size:7px;left:50%;position:absolute">220</div>
+            <div class="dot signal signal-number" style="width:20px;height:20px;font-size:7px;left:80%;position:absolute">285</div>
+          </div>
+        </div>
+        <div class="metric-lane" style="width:100%;font-size:10px">
+          <div class="metric active" style="min-width:60px;font-size:9px;padding:2px 8px"><span class="m-icon">&#x2713;</span> Bred</div>
+          <div class="track">
+            <div class="dot signal signal-bool-true" style="width:16px;height:16px;left:30%;position:absolute"></div>
+            <div class="dot signal signal-bool-true" style="width:16px;height:16px;left:65%;position:absolute"></div>
+          </div>
+        </div>
+        <div style="position:relative;height:2px;background:var(--red-500);width:70%;opacity:0.5;margin:4px 0 0 70%"></div>
+        <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--dim)"><span>Jan 2026</span><span style="color:var(--red-400);font-weight:600">NOW</span><span>Dec 2026</span></div>
+      </div>
+      <div class="comp-info">
+        <h4>TimelineLane (SQUIRT)</h4>
+        <div class="dart">timeline_lane.dart &mdash; swimming lane visualization</div>
+        <p>Multiple MetricLanes stacked with time axis. NOW indicator (red vertical line). Header = NodeAtom + label. Core temporal view of any entity.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="gap:4px;padding:16px;flex-wrap:wrap">
+        <div style="width:48px;height:64px;border-radius:8px;background:var(--surface2);border:2px solid var(--red-500);padding:4px;text-align:right;position:relative">
+          <div style="font-size:11px;font-weight:700;color:var(--text)">11</div>
+          <div style="position:absolute;top:3px;left:3px;width:8px;height:8px"><svg viewBox="0 0 10 10"><path d="M5 0 L10 5 L5 10 L0 5 Z" fill="rgba(76,175,80,0.4)" stroke="var(--green)" stroke-width="1"/></svg></div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;gap:2px">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--red-500)"></div>
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--amber)"></div>
+          </div>
+        </div>
+        <div style="width:48px;height:64px;border-radius:8px;background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.3);padding:4px;text-align:right">
+          <div style="font-size:11px;font-weight:700;color:var(--text)">12</div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;gap:2px">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--green)"></div>
+          </div>
+        </div>
+        <div style="width:48px;height:64px;border-radius:8px;background:var(--surface);border:1px solid var(--border);padding:4px;text-align:right">
+          <div style="font-size:11px;font-weight:700;color:var(--dim)">13</div>
+        </div>
+        <div style="width:48px;height:64px;border-radius:8px;background:var(--surface);border:1px solid var(--border);padding:4px;text-align:right">
+          <div style="font-size:11px;font-weight:700;color:var(--dim)">14</div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;gap:2px">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--pink)"></div>
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--pink)"></div>
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--teal)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>CalendarDay (CAL)</h4>
+        <div class="dart">calendar_day.dart &mdash; signals, checkpoints, isToday, isSelected</div>
+        <p>48&times;64px cell. Day number top-right. Signal dots bottom (max 4 + overflow). Protocol diamond top-left. Today = primary border. Selected = primary bg 20%.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="flex-direction:column;gap:6px;padding:16px;align-items:flex-start">
+        <div style="font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1px">Gestation Protocol</div>
+        <div style="font-size:14px;font-weight:700">Gilt #247</div>
+        <div style="width:100%;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;margin:4px 0">
+          <div style="width:65%;height:100%;background:linear-gradient(90deg,var(--red-500),var(--mauve-mid));border-radius:4px"></div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;overflow-x:auto;width:100%;padding:4px 0">
+          <div class="checkpoint completed" style="min-width:60px">
+            <div class="date">Day 1</div>
+            <div class="protocol" style="width:24px;height:24px"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(76,175,80,0.3)" stroke="var(--green)" stroke-width="2"/><polyline points="10,16 14,20 22,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="label">Breed</div>
+          </div>
+          <div style="width:20px;height:2px;background:rgba(76,175,80,0.3);flex-shrink:0"></div>
+          <div class="checkpoint completed" style="min-width:60px">
+            <div class="date">Day 30</div>
+            <div class="protocol" style="width:24px;height:24px"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="rgba(76,175,80,0.3)" stroke="var(--green)" stroke-width="2"/><polyline points="10,16 14,20 22,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="label">Confirm</div>
+          </div>
+          <div style="width:20px;height:2px;background:var(--border);flex-shrink:0"></div>
+          <div class="checkpoint" style="min-width:60px">
+            <div class="date">Day 114</div>
+            <div class="protocol" style="width:24px;height:24px"><svg viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="var(--dim)" stroke-width="2"/></svg></div>
+            <div class="label">Farrow</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>ProtocolItinerary (NEMO)</h4>
+        <div class="dart">protocol_itinerary.dart &mdash; journey timeline with progress bar</div>
+        <p>Protocol as journey. Progress bar = linear gradient. Checkpoints with connector lines. Status badge shows forecast ("On track for Jun 1").</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="flex-direction:column;gap:8px;padding:16px;align-items:center">
+        <div class="node node-sow node-lg focused" style="margin-bottom:4px">SOW</div>
+        <div style="font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1px">SOW</div>
+        <div style="font-size:14px;font-weight:700">Gilt #247</div>
+        <div style="display:flex;gap:12px;margin-top:4px">
+          <div style="display:flex;align-items:center;gap:4px">
+            <div style="width:16px;height:2px;background:var(--blue)"></div>
+            <span style="font-size:8px;color:var(--dim)">&rarr;</span>
+            <div class="node node-boar" style="width:28px;height:28px;font-size:6px">BOAR</div>
+            <span style="font-size:8px;color:var(--dim)">Sire</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <div style="width:16px;height:2px;background:var(--green)"></div>
+            <span style="font-size:8px;color:var(--dim)">&rarr;</span>
+            <div class="node node-city" style="width:28px;height:28px;font-size:6px">CITY</div>
+            <span style="font-size:8px;color:var(--dim)">Farm</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>LighthouseView (DORI)</h4>
+        <div class="dart">lighthouse_view.dart &mdash; node detail with radiating edges</div>
+        <p>Hero node (80px, focused) at center. Edge rays grouped by type. Each ray = line + arrow + target NodeWithLabel. Optional MetricLane section below.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="padding:16px">
+        <div style="position:relative;width:200px;height:200px">
+          <div class="node node-sow" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2">SOW</div>
+          <div class="node node-boar node-sm" style="position:absolute;top:10%;left:50%;transform:translateX(-50%)">BOAR</div>
+          <div class="node node-date node-sm" style="position:absolute;top:28%;right:8%">DATE</div>
+          <div class="node node-city node-sm" style="position:absolute;bottom:28%;right:8%">CITY</div>
+          <div class="node node-breed node-sm" style="position:absolute;bottom:10%;left:50%;transform:translateX(-50%)">BREE</div>
+          <div class="node node-sm" style="position:absolute;bottom:28%;left:8%;background:var(--orange)">FARM</div>
+          <div class="node node-sm" style="position:absolute;top:28%;left:8%;background:var(--teal)">SHOW</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>HexRing (MILO)</h4>
+        <div class="dart">hex_ring.dart &mdash; radial node navigation</div>
+        <p>Ring 0 = center (64px). Ring 1 = 6 nodes. Ring 2 = 12 nodes. Angle = 2&pi; / (ring &times; 6). Radius = baseRadius &times; ring. Focused node gets glow shadow.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-preview" style="padding:16px;flex-direction:column;gap:8px;width:100%">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--surface2);border-radius:8px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="node node-sow" style="width:24px;height:24px;font-size:6px">S</div>
+            <div class="node node-boar" style="width:24px;height:24px;font-size:6px">B</div>
+            <svg width="60" height="24"><line x1="0" y1="12" x2="60" y2="12" stroke="var(--blue)" stroke-width="1.5"/><polygon points="55,8 60,12 55,16" fill="var(--blue)"/></svg>
+            <div class="node node-date" style="width:24px;height:24px;font-size:6px">D</div>
+          </div>
+          <div style="font-size:9px;color:var(--dim)">Pan &middot; Zoom &middot; Select</div>
+        </div>
+      </div>
+      <div class="comp-info">
+        <h4>SubgraphView</h4>
+        <div class="dart">subgraph_view.dart &mdash; core interactive graph with GraphLayoutEngine</div>
+        <p>Interactive pan/zoom (0.5&ndash;3&times;). Two layers: edges (CustomPaint) + positioned nodes. GraphLayoutEngine computes positions via force-directed algorithm with semantic rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TOKENS ═══════════ -->
+<section id="tokens">
+  <h2>Design Tokens</h2>
+
+  <h3>Red Scale (Primary)</h3>
+  <div class="token-row">
+    <div class="token-swatch"><div class="color" style="background:#FFF5F5"></div><div class="info"><div class="name">50</div><div class="hex">#FFF5F5</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#FED7D7"></div><div class="info"><div class="name">100</div><div class="hex">#FED7D7</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#FEB2B2"></div><div class="info"><div class="name">200</div><div class="hex">#FEB2B2</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#FC8181"></div><div class="info"><div class="name">300</div><div class="hex">#FC8181</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#F56565"></div><div class="info"><div class="name">400</div><div class="hex">#F56565</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#E53E3E"></div><div class="info"><div class="name">500</div><div class="hex">#E53E3E</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#C53030"></div><div class="info"><div class="name">600</div><div class="hex">#C53030</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#9B2C2C"></div><div class="info"><div class="name">700</div><div class="hex">#9B2C2C</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#7B2020"></div><div class="info"><div class="name">800</div><div class="hex">#7B2020</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#5C1111"></div><div class="info"><div class="name">900</div><div class="hex">#5C1111</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#3B0A0A"></div><div class="info"><div class="name">950</div><div class="hex">#3B0A0A</div></div></div>
+  </div>
+
+  <h3>Mauve Scale (Secondary)</h3>
+  <div class="token-row">
+    <div class="token-swatch"><div class="color" style="background:#E8D5D5"></div><div class="info"><div class="name">Pale</div><div class="hex">#E8D5D5</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#C4A8A8"></div><div class="info"><div class="name">Light</div><div class="hex">#C4A8A8</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#9B7878"></div><div class="info"><div class="name">Mid</div><div class="hex">#9B7878</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#6B4F4F"></div><div class="info"><div class="name">Dark</div><div class="hex">#6B4F4F</div></div></div>
+  </div>
+
+  <h3>Domain Colors (Category Mapping)</h3>
+  <div class="token-row">
+    <div class="token-swatch"><div class="color" style="background:#E91E63"></div><div class="info"><div class="name">SOW</div><div class="hex">#E91E63</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#2196F3"></div><div class="info"><div class="name">BOAR</div><div class="hex">#2196F3</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#FF9800"></div><div class="info"><div class="name">DATE</div><div class="hex">#FF9800</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#4CAF50"></div><div class="info"><div class="name">CITY</div><div class="hex">#4CAF50</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#9C27B0"></div><div class="info"><div class="name">BREED</div><div class="hex">#9C27B0</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#009688"></div><div class="info"><div class="name">TRACKS</div><div class="hex">#009688</div></div></div>
+    <div class="token-swatch"><div class="color" style="background:#9E9E9E"></div><div class="info"><div class="name">NEXT</div><div class="hex">#9E9E9E</div></div></div>
+  </div>
+
+  <h3>Typography</h3>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;display:flex;flex-direction:column;gap:12px">
+    <div><span style="font-size:48px;font-weight:800;letter-spacing:-2px">Display 48/800</span></div>
+    <div><span style="font-size:32px;font-weight:700;letter-spacing:-1px">Heading 1 &mdash; 32/700</span></div>
+    <div><span style="font-size:22px;font-weight:600;letter-spacing:-0.5px">Heading 2 &mdash; 22/600</span></div>
+    <div><span style="font-size:15px;font-weight:400;line-height:1.7">Body &mdash; 15/400 &mdash; Inter, -apple-system, sans-serif, line-height 1.7</span></div>
+    <div><span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase">Caption &mdash; 11/600 uppercase</span></div>
+    <div><span style="font-size:13px;font-family:'SF Mono',monospace">Mono &mdash; 13px &mdash; SF Mono, Cascadia Code</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ GLASS ═══════════ -->
+<section id="glass">
+  <h2>Glass Morphism</h2>
+  <p>Four blur levels. All containers use <code>backdrop-filter: blur()</code> with fill opacity 15% and border opacity 18%. Saturation boosted to 180%.</p>
+  <div class="glass-demos" style="background:linear-gradient(135deg,rgba(229,62,62,0.15),rgba(155,120,120,0.1),rgba(107,79,79,0.08));padding:24px;border-radius:var(--radius-lg)">
+    <div class="glass-demo glass-subtle">
+      <div class="label">Subtle</div>
+      <div class="value">blur: 12px</div>
+    </div>
+    <div class="glass-demo glass">
+      <div class="label">Standard</div>
+      <div class="value">blur: 24px</div>
+    </div>
+    <div class="glass-demo glass-frosted">
+      <div class="label">Frosted</div>
+      <div class="value">blur: 40px</div>
+    </div>
+  </div>
+  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+    <div class="rule"><div class="code">fillOpacity</div><div class="desc">0.15 &mdash; container background alpha</div></div>
+    <div class="rule"><div class="code">borderOpacity</div><div class="desc">0.18 &mdash; border alpha (white)</div></div>
+    <div class="rule"><div class="code">saturation</div><div class="desc">180% &mdash; backdrop-filter saturate</div></div>
+    <div class="rule"><div class="code">radius-sm</div><div class="desc">10px &mdash; small components</div></div>
+    <div class="rule"><div class="code">radius-md</div><div class="desc">16px &mdash; cards, containers</div></div>
+    <div class="rule"><div class="code">radius-lg</div><div class="desc">22px &mdash; hero sections</div></div>
+  </div>
+</section>
+
+<!-- ═══════════ LAYOUT ENGINE ═══════════ -->
+<section id="layout">
+  <h2>Graph Layout Engine</h2>
+  <p>Three-phase algorithm: semantic placement &rarr; force-directed optimization &rarr; edge routing. Rules-based configuration controls all behavior.</p>
+
+  <h3>Configuration</h3>
+  <div class="rule-grid">
+    <div class="rule"><div class="code">minNodeDistance: 80</div><div class="desc">B1: No vertex overlap</div></div>
+    <div class="rule"><div class="code">idealEdgeLength: 120</div><div class="desc">T11: Target edge length</div></div>
+    <div class="rule"><div class="code">edgeNodeMargin: 20</div><div class="desc">B3: Edge-node clearance</div></div>
+    <div class="rule"><div class="code">hierarchicalForOwnership: true</div><div class="desc">T1: OWNS tree layout</div></div>
+    <div class="rule"><div class="code">centerHighDegreeNodes: true</div><div class="desc">T13: Pull hubs to center</div></div>
+    <div class="rule"><div class="code">alignTemporalNodes: true</div><div class="desc">S1: Date nodes on axis</div></div>
+    <div class="rule"><div class="code">clusterByCategory: true</div><div class="desc">S5: Radial category grouping</div></div>
+    <div class="rule"><div class="code">iterations: 50</div><div class="desc">Force simulation iterations</div></div>
+  </div>
+
+  <h3 style="margin-top:24px">Three Phases</h3>
+  <div class="comp-grid">
+    <div class="comp-card" style="border-left:3px solid var(--red-500)">
+      <div class="comp-info">
+        <h4>Phase 1: Semantic Placement</h4>
+        <p>Focus node at viewport center (S6). DATE/TIME nodes on horizontal axis (S1). Other nodes clustered by category at radial angles (S5). OWNS edges arranged hierarchically (T1).</p>
+      </div>
+    </div>
+    <div class="comp-card" style="border-left:3px solid var(--amber)">
+      <div class="comp-info">
+        <h4>Phase 2: Force-Directed</h4>
+        <p>Repulsion between all node pairs (B1). Spring attraction along edges (T11). High-degree nodes pulled to center (T13). 50 iterations updating positions.</p>
+      </div>
+    </div>
+    <div class="comp-card" style="border-left:3px solid var(--mauve-light)">
+      <div class="comp-info">
+        <h4>Phase 3: Edge Routing</h4>
+        <p>Prefer straight lines (T5). Route around nodes with quadratic Bezier (B2/B3). Line-circle intersection test for obstruction detection. Perpendicular offset from obstruction center.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FILE MAP ═══════════ -->
+<section>
+  <h2>Dart Source Map</h2>
+  <p>All widgets live in <code>charlotte/lib/ui/</code>. This HTML reference mirrors the Dart implementation &mdash; iterate here, then port changes back to Flutter.</p>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;font-family:'SF Mono',monospace;font-size:11px;line-height:2;color:var(--dim2)">
+    <div style="color:var(--red-400)">charlotte/lib/ui/</div>
+    <div>&nbsp;&nbsp;<span style="color:var(--red-400)">atoms/</span> node_atom &middot; edge_atom &middot; signal_atom &middot; metric_atom &middot; protocol_atom &middot; types</div>
+    <div>&nbsp;&nbsp;<span style="color:var(--amber)">molecules/</span> node_with_label &middot; signal_on_track &middot; metric_lane &middot; protocol_checkpoint &middot; node_cluster</div>
+    <div>&nbsp;&nbsp;<span style="color:var(--mauve-light)">organisms/</span> subgraph_view &middot; timeline_lane &middot; calendar_day &middot; protocol_itinerary &middot; lighthouse_view &middot; hex_ring</div>
+    <div>&nbsp;&nbsp;<span style="color:var(--dim)">layout/</span> graph_layout_engine</div>
+    <div>&nbsp;&nbsp;<span style="color:var(--dim)">screens/</span> components_screen &middot; temporal_spine_screen &middot; design_system_screen</div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISG — Industrial Service Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="isg_theme.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass-viz.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="../../liquid-glass/liquid-glass.js" defer></script>
+<script src="../../liquid-glass/liquid-glass-viz.js" defer></script>
+<style>
+/* ── Reset ── */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--lg-bg);
+  color:var(--lg-text);
+  font-family:var(--lg-font-body);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── Sticky Nav ── */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;height:64px;padding:0 32px;
+  background:rgba(10,22,40,0.82);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:background 0.3s;
+}
+.site-nav__logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-0.5px;color:var(--lg-text);text-decoration:none}
+.site-nav__logo img{height:32px}
+.site-nav__links{display:flex;gap:4px;margin-left:auto}
+.site-nav__link{
+  padding:8px 16px;border-radius:var(--lg-radius-sm);
+  font-size:13px;font-weight:500;color:var(--lg-text-dim);
+  text-decoration:none;transition:all 0.15s;border:none;background:none;cursor:pointer;
+}
+.site-nav__link:hover{color:var(--lg-text);background:rgba(255,255,255,0.06)}
+.site-nav__link--cta{
+  background:var(--lg-primary-500);color:#fff;font-weight:600;
+}
+.site-nav__link--cta:hover{background:var(--lg-primary-400);color:#fff}
+
+/* ── Section shared ── */
+.section{padding:100px 0;position:relative}
+.section:first-of-type{padding-top:160px}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.section-label{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+  color:var(--lg-primary-400);margin-bottom:12px;
+}
+.section-title{
+  font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1.15;
+  margin-bottom:16px;color:var(--lg-text);
+}
+.section-sub{font-size:16px;color:var(--lg-text-dim);max-width:640px;line-height:1.7;margin-bottom:40px}
+
+/* ── Hero ── */
+.hero{
+  padding:180px 0 120px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#0A1628 0%,#0F1D36 40%,#1A2B5F 100%);
+}
+.hero::before{
+  content:'';position:absolute;top:-40%;right:-20%;width:80%;height:180%;
+  background:radial-gradient(ellipse at center,rgba(143,170,220,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-30%;left:-10%;width:60%;height:120%;
+  background:radial-gradient(ellipse at center,rgba(226,165,50,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero *{position:relative;z-index:1}
+.hero__tagline{
+  font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:2px;
+  color:var(--lg-secondary-400);margin-bottom:24px;
+}
+.hero__headline{
+  font-size:clamp(40px,5.5vw,72px);font-weight:900;letter-spacing:-3px;line-height:1.05;
+  margin-bottom:24px;
+}
+.hero__headline span{
+  background:linear-gradient(135deg,var(--lg-primary-300),var(--lg-primary-500));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero__desc{font-size:18px;color:var(--lg-text-dim);max-width:560px;line-height:1.7;margin-bottom:40px}
+.hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:64px}
+.hero__stats{display:flex;gap:2px;border-radius:var(--lg-radius-lg);overflow:hidden;max-width:700px}
+.hero__stat{
+  flex:1;padding:24px 28px;text-align:center;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.hero__stat:last-child{border-right:none}
+.hero__stat-value{font-size:32px;font-weight:800;letter-spacing:-1px;color:var(--lg-text)}
+.hero__stat-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--lg-text-dim);margin-top:4px;font-weight:600}
+
+/* ── Values strip ── */
+.values-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,0.06);border-radius:var(--lg-radius-lg);overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.value-cell{
+  padding:32px 24px;text-align:center;
+  background:rgba(15,29,54,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.value-cell__icon{font-size:28px;margin-bottom:12px}
+.value-cell__title{font-size:14px;font-weight:700;color:var(--lg-primary-300);margin-bottom:6px}
+.value-cell__desc{font-size:13px;color:var(--lg-text-dim);line-height:1.5}
+
+/* ── Solutions ── */
+.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.solution-card{
+  padding:32px 24px;border-radius:var(--lg-radius-md);
+  background:rgba(255,255,255,var(--lg-fill-opacity));
+  backdrop-filter:blur(var(--lg-blur-standard)) saturate(var(--lg-saturation));
+  -webkit-backdrop-filter:blur(var(--lg-blur-standard)) saturate(var(--lg-saturation));
+  border:1px solid rgba(255,255,255,var(--lg-border-opacity));
+  transition:transform 0.2s,border-color 0.2s;cursor:default;
+}
+.solution-card:hover{transform:translateY(-4px);border-color:var(--lg-primary-500)}
+.solution-card__icon{font-size:36px;margin-bottom:16px}
+.solution-card__title{font-size:18px;font-weight:700;margin-bottom:8px}
+.solution-card__desc{font-size:13px;color:var(--lg-text-dim);line-height:1.6}
+.solution-card__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+
+/* ── Services ── */
+.services-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.service-list{display:flex;flex-direction:column;gap:10px}
+.service-row{
+  display:flex;align-items:center;gap:14px;padding:14px 18px;
+  border-radius:var(--lg-radius-sm);
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.15s;
+}
+.service-row:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12)}
+.service-row__dot{width:8px;height:8px;border-radius:50%;background:var(--lg-primary-400);flex-shrink:0}
+.service-row__text{font-size:14px;font-weight:500}
+.service-row__badge{margin-left:auto}
+.service-highlight{
+  padding:32px;border-radius:var(--lg-radius-lg);
+  background:linear-gradient(135deg,rgba(143,170,220,0.08),rgba(226,165,50,0.04));
+  border:1px solid rgba(255,255,255,0.08);
+}
+.service-highlight__number{font-size:64px;font-weight:900;letter-spacing:-3px;color:var(--lg-primary-300);line-height:1}
+.service-highlight__label{font-size:14px;font-weight:600;color:var(--lg-text-dim);text-transform:uppercase;letter-spacing:1px;margin-top:8px}
+.service-highlight__desc{font-size:14px;color:var(--lg-text-dim);margin-top:16px;line-height:1.6}
+
+/* ── Brands ── */
+.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.brand-tile{
+  padding:20px 16px;border-radius:var(--lg-radius-sm);text-align:center;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.2s;cursor:default;
+}
+.brand-tile:hover{background:rgba(255,255,255,0.08);border-color:var(--lg-primary-500);transform:translateY(-2px)}
+.brand-tile__name{font-size:13px;font-weight:600;margin-bottom:4px}
+.brand-tile__type{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--lg-text-dim);font-weight:600}
+.brand-tile__type--valves{color:#90CDF4}
+.brand-tile__type--compressors{color:#68D391}
+.brand-tile__type--motors{color:#E2A532}
+.brand-tile__type--pumps{color:#22D3EE}
+.brand-tile__type--specialty{color:#F0C86A}
+
+/* ── Industrial Update ── */
+.update-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.update-card{
+  padding:24px;border-radius:var(--lg-radius-md);
+  background:rgba(255,255,255,var(--lg-fill-opacity));
+  backdrop-filter:blur(var(--lg-blur-standard)) saturate(var(--lg-saturation));
+  -webkit-backdrop-filter:blur(var(--lg-blur-standard)) saturate(var(--lg-saturation));
+  border:1px solid rgba(255,255,255,var(--lg-border-opacity));
+}
+.update-card__cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--lg-primary-400);margin-bottom:8px}
+.update-card__title{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.update-card__stat{font-size:28px;font-weight:800;color:var(--lg-text);letter-spacing:-1px;margin-bottom:4px}
+.update-card__delta{font-size:12px;font-weight:600}
+.update-card__delta--up{color:#34D399}
+.update-card__delta--down{color:#F87171}
+.update-card__desc{font-size:13px;color:var(--lg-text-dim);line-height:1.6}
+
+/* ── Acquisition ── */
+.acq-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.acq-benefits{display:flex;flex-direction:column;gap:16px}
+.acq-benefit{display:flex;gap:14px;align-items:start}
+.acq-benefit__icon{
+  width:40px;height:40px;border-radius:var(--lg-radius-sm);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  background:rgba(255,255,255,0.06);
+}
+.acq-benefit__text h4{font-size:14px;font-weight:700;margin-bottom:2px}
+.acq-benefit__text p{font-size:13px;color:var(--lg-text-dim);line-height:1.5}
+
+/* ── Geography ── */
+.geo-section{background:linear-gradient(180deg,var(--lg-bg),#0F1D36)}
+.geo-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.geo-tag{
+  padding:8px 16px;border-radius:var(--lg-radius-sm);font-size:12px;font-weight:600;
+  background:rgba(143,170,220,0.1);color:var(--lg-primary-300);
+  border:1px solid rgba(143,170,220,0.15);transition:all 0.15s;
+}
+.geo-tag:hover{background:rgba(143,170,220,0.2)}
+
+/* ── Contact / CTA ── */
+.cta-section{
+  text-align:center;
+  background:linear-gradient(160deg,#0F1D36 0%,#1A2B5F 100%);
+}
+.cta-section .section-title{margin-left:auto;margin-right:auto}
+.cta-section .section-sub{margin-left:auto;margin-right:auto}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.cta-contact{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);
+}
+.cta-contact__item{text-align:center}
+.cta-contact__label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--lg-text-dim);font-weight:600;margin-bottom:4px}
+.cta-contact__value{font-size:15px;font-weight:600;color:var(--lg-text)}
+.cta-contact__value a{color:var(--lg-primary-300);text-decoration:none}
+.cta-contact__value a:hover{text-decoration:underline}
+
+/* ── Footer ── */
+.site-footer{
+  padding:40px 32px;text-align:center;
+  border-top:1px solid rgba(255,255,255,0.06);
+  font-size:12px;color:var(--lg-text-dim);
+}
+.site-footer a{color:var(--lg-primary-400);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+
+/* ── Viz containers ── */
+.viz-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+#brand-network{margin-top:24px}
+#service-donut{margin-top:32px}
+#geo-heatmap{margin-top:0}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .solutions-grid{grid-template-columns:1fr 1fr}
+  .brands-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  .site-nav__links{display:none}
+  .hero__headline{font-size:36px;letter-spacing:-1.5px}
+  .hero__stats{flex-direction:column}
+  .values-strip{grid-template-columns:1fr 1fr}
+  .solutions-grid,.update-grid,.viz-row{grid-template-columns:1fr}
+  .services-split,.acq-split{grid-template-columns:1fr}
+  .brands-grid{grid-template-columns:1fr 1fr}
+  .section-title{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="site-nav">
+  <a href="#" class="site-nav__logo">
+    <img src="assets/logo_and_name.png" alt="ISG">
+  </a>
+  <div class="site-nav__links">
+    <a href="#solutions" class="site-nav__link">Solutions</a>
+    <a href="#brands" class="site-nav__link">Our Brands</a>
+    <a href="#services" class="site-nav__link">Services</a>
+    <a href="#update" class="site-nav__link">Industrial Update</a>
+    <a href="#acquisition" class="site-nav__link">Join ISG</a>
+    <a href="#contact" class="site-nav__link site-nav__link--cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero__tagline">A Network of Experts</div>
+    <h1 class="hero__headline">
+      Ensuring Your Rotating<br>Equipment <span>Never Stops Turning</span>
+    </h1>
+    <p class="hero__desc">A family of companies providing critical-to-process rotating equipment service, repair and distribution. One-stop-shop. 16 brands. 40+ locations. Your equipment is our legacy.</p>
+    <div class="hero__actions">
+      <button class="lg-btn lg-btn--filled lg-btn--lg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+      <button class="lg-btn lg-btn--outlined lg-btn--lg" onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">Explore Solutions</button>
+      <button class="lg-btn lg-btn--text lg-btn--lg" onclick="document.getElementById('acquisition').scrollIntoView({behavior:'smooth'})">Join ISG &rarr;</button>
+    </div>
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-value">16</div>
+        <div class="hero__stat-label">Brands</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">40+</div>
+        <div class="hero__stat-label">Locations</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">200+</div>
+        <div class="hero__stat-label">Technicians</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">259K+</div>
+        <div class="hero__stat-label">SKUs in Stock</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">24/7</div>
+        <div class="hero__stat-label">Emergency Service</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CORE VALUES ═══════════ -->
+<section class="section" style="padding-top:0;padding-bottom:0">
+  <div class="container">
+    <div class="values-strip">
+      <div class="value-cell">
+        <div class="value-cell__icon">&#x1F91D;</div>
+        <div class="value-cell__title">People First</div>
+        <div class="value-cell__desc">Safety, talent, and growth. Our people are the experts behind every brand.</div>
+      </div>
+      <div class="value-cell">
+        <div class="value-cell__icon">&#x1F680;</div>
+        <div class="value-cell__title">Entrepreneurial Spirit</div>
+        <div class="value-cell__desc">Every brand keeps its identity. Legacy is fuel, not baggage.</div>
+      </div>
+      <div class="value-cell">
+        <div class="value-cell__icon">&#x1F3AF;</div>
+        <div class="value-cell__title">Specialized Focus</div>
+        <div class="value-cell__desc">Deep expertise in narrow specialties. An inch wide, a mile deep.</div>
+      </div>
+      <div class="value-cell">
+        <div class="value-cell__icon">&#x2764;&#xFE0F;</div>
+        <div class="value-cell__title">Service Minded</div>
+        <div class="value-cell__desc">Customer-centric at every touchpoint. Equipment never stops turning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SOLUTIONS ═══════════ -->
+<section class="section" id="solutions">
+  <div class="container">
+    <div class="section-label">Solutions</div>
+    <h2 class="section-title">Five Categories. Full Lifecycle.</h2>
+    <p class="section-sub">From valves to turbomachinery, we cover every critical rotating equipment need across every major industry.</p>
+
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <div class="solution-card__icon">&#x1F6E0;&#xFE0F;</div>
+        <div class="solution-card__title">Industrial Valves</div>
+        <div class="solution-card__desc">Service, repair, and distribution for critical process valves. Gate, globe, check, ball, butterfly, and control valves across petrochemical, power, and water industries.</div>
+        <div class="solution-card__tags">
+          <span class="lg-badge" style="background:rgba(144,205,244,0.2);color:#90CDF4">Repair</span>
+          <span class="lg-badge" style="background:rgba(144,205,244,0.2);color:#90CDF4">Distribution</span>
+          <span class="lg-badge" style="background:rgba(144,205,244,0.2);color:#90CDF4">Field Service</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card__icon">&#x2699;&#xFE0F;</div>
+        <div class="solution-card__title">Compressors</div>
+        <div class="solution-card__desc">Rotary screw and reciprocating compressors. Complete service, overhaul, and parts for compressed air systems. OEM-trained technicians.</div>
+        <div class="solution-card__tags">
+          <span class="lg-badge" style="background:rgba(104,211,145,0.2);color:#68D391">Rotary Screw</span>
+          <span class="lg-badge" style="background:rgba(104,211,145,0.2);color:#68D391">Reciprocating</span>
+          <span class="lg-badge" style="background:rgba(104,211,145,0.2);color:#68D391">Parts</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card__icon">&#x26A1;</div>
+        <div class="solution-card__title">Industrial Motors</div>
+        <div class="solution-card__desc">Rewind, repair, and replacement for electric motors of all sizes. Keeping motors running at peak efficiency with predictive diagnostics.</div>
+        <div class="solution-card__tags">
+          <span class="lg-badge" style="background:rgba(226,165,50,0.2);color:#E2A532">Rewind</span>
+          <span class="lg-badge" style="background:rgba(226,165,50,0.2);color:#E2A532">Repair</span>
+          <span class="lg-badge" style="background:rgba(226,165,50,0.2);color:#E2A532">Replacement</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card__icon">&#x1F4A7;</div>
+        <div class="solution-card__title">Pumps</div>
+        <div class="solution-card__desc">Centrifugal, positive displacement, and specialty pumps. Full lifecycle management from installation to overhaul.</div>
+        <div class="solution-card__tags">
+          <span class="lg-badge" style="background:rgba(34,211,238,0.2);color:#22D3EE">Centrifugal</span>
+          <span class="lg-badge" style="background:rgba(34,211,238,0.2);color:#22D3EE">PD</span>
+          <span class="lg-badge" style="background:rgba(34,211,238,0.2);color:#22D3EE">Specialty</span>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card__icon">&#x1F527;</div>
+        <div class="solution-card__title">Specialty Services</div>
+        <div class="solution-card__desc">Turbomachinery, mill maintenance, and custom solutions. When the job doesn't fit a single category, our specialists make it work.</div>
+        <div class="solution-card__tags">
+          <span class="lg-badge" style="background:rgba(240,200,106,0.2);color:#F0C86A">Turbo</span>
+          <span class="lg-badge" style="background:rgba(240,200,106,0.2);color:#F0C86A">Mill</span>
+          <span class="lg-badge" style="background:rgba(240,200,106,0.2);color:#F0C86A">Custom</span>
+        </div>
+      </div>
+      <div class="solution-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,rgba(143,170,220,0.08),rgba(226,165,50,0.04));border-color:rgba(226,165,50,0.2)">
+        <div class="solution-card__icon">&#x1F52E;</div>
+        <div class="solution-card__title" style="color:var(--lg-secondary-400)">ServiceIQ</div>
+        <div class="solution-card__desc" style="text-align:center">Charlotte-powered predictive distribution. ML demand forecasting with 70%+ reorder accuracy across 259K+ SKUs.</div>
+        <div class="solution-card__tags" style="justify-content:center">
+          <span class="lg-badge" style="background:rgba(226,165,50,0.2);color:#E2A532">AI</span>
+          <span class="lg-badge" style="background:rgba(226,165,50,0.2);color:#E2A532">Predictive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solutions breakdown chart -->
+    <div class="viz-row">
+      <div id="solutions-donut"></div>
+      <div id="solutions-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="section" id="services" style="background:linear-gradient(180deg,var(--lg-bg),#0F1D36)">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">From Emergency to Planned Maintenance</h2>
+    <p class="section-sub">Whatever the need — a 2 AM emergency call or a scheduled turnaround — ISG has the people, parts, and expertise on standby.</p>
+
+    <div class="services-split">
+      <div>
+        <div class="service-list">
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Equipment Repair & Maintenance</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Product Distribution</span>
+            <span class="lg-badge service-row__badge" style="background:rgba(104,211,145,0.15);color:#68D391;font-size:10px">259K+ SKUs</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">24/7 Emergency Onsite Repair</span>
+            <span class="lg-badge service-row__badge" style="background:rgba(248,113,113,0.15);color:#F87171;font-size:10px">24/7</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Field Services</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Shop Services</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Planned Outage Services</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Preventive Maintenance Programs</span>
+          </div>
+          <div class="service-row">
+            <div class="service-row__dot"></div>
+            <span class="service-row__text">Inventory Management & Optimization</span>
+          </div>
+        </div>
+        <div id="service-donut"></div>
+      </div>
+      <div>
+        <div class="service-highlight" style="margin-bottom:16px">
+          <div class="service-highlight__number">259K+</div>
+          <div class="service-highlight__label">Parts in Inventory</div>
+          <div class="service-highlight__desc">Access the largest rotating equipment parts inventory in the southeastern US. Including hard-to-find, obsolete, and refurbished equipment ready to ship.</div>
+        </div>
+        <div class="service-highlight" style="margin-bottom:16px">
+          <div class="service-highlight__number">40+</div>
+          <div class="service-highlight__label">Service Locations</div>
+          <div class="service-highlight__desc">Nationwide coverage with regional expertise. A technician is never far from your critical equipment.</div>
+        </div>
+        <div class="service-highlight">
+          <div class="service-highlight__number">70%+</div>
+          <div class="service-highlight__label">Predictive Reorder Accuracy</div>
+          <div class="service-highlight__desc">ServiceIQ anticipates your needs before you call. ML-powered demand signals from equipment telemetry and service history.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BRAND NETWORK ═══════════ -->
+<section class="section" id="brands">
+  <div class="container">
+    <div class="section-label">Our Brands</div>
+    <h2 class="section-title">A Network of 16 Experts</h2>
+    <p class="section-sub">Each brand is a specialist. Together they are a one-stop-shop covering every rotating equipment need. Legacy expertise, unified under ISG.</p>
+
+    <div class="brands-grid">
+      <div class="brand-tile">
+        <div class="brand-tile__name">Industrial Valve Service</div>
+        <div class="brand-tile__type brand-tile__type--valves">Valves</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Morin Process Equipment</div>
+        <div class="brand-tile__type brand-tile__type--valves">Process Equipment</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Industrial Air Power</div>
+        <div class="brand-tile__type brand-tile__type--compressors">Compressors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Soles Electric</div>
+        <div class="brand-tile__type brand-tile__type--motors">Motors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Georgia Western</div>
+        <div class="brand-tile__type brand-tile__type--pumps">Pumps</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Dynamic Mechanical Solutions</div>
+        <div class="brand-tile__type brand-tile__type--specialty">Mechanical</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Renewal Service Inc.</div>
+        <div class="brand-tile__type brand-tile__type--pumps">Pumps</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Industrial Air Centers</div>
+        <div class="brand-tile__type brand-tile__type--compressors">Compressors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">CORE Industrial Maintenance</div>
+        <div class="brand-tile__type brand-tile__type--specialty">Specialty</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Pinnacle Industries Ltd.</div>
+        <div class="brand-tile__type brand-tile__type--specialty">Specialty</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Illinois Electric Works</div>
+        <div class="brand-tile__type brand-tile__type--motors">Motors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Tri-State Valve LLC</div>
+        <div class="brand-tile__type brand-tile__type--valves">Valves</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Compressor & Turbine Services</div>
+        <div class="brand-tile__type brand-tile__type--compressors">Compressors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Turbomachinery Industries</div>
+        <div class="brand-tile__type brand-tile__type--specialty">Specialty</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">Air Specialty & Equipment Co.</div>
+        <div class="brand-tile__type brand-tile__type--compressors">Compressors</div>
+      </div>
+      <div class="brand-tile">
+        <div class="brand-tile__name">National Mill Maintenance</div>
+        <div class="brand-tile__type brand-tile__type--specialty">Specialty</div>
+      </div>
+    </div>
+
+    <!-- Brand network visualization -->
+    <div id="brand-network"></div>
+
+    <!-- Brand portfolio breakdown -->
+    <div class="viz-row" style="margin-top:16px">
+      <div id="brand-treemap"></div>
+      <div id="brand-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INDUSTRIAL UPDATE ═══════════ -->
+<section class="section" id="update" style="background:linear-gradient(180deg,var(--lg-bg),#0F1D36)">
+  <div class="container">
+    <div class="section-label">Industrial Update</div>
+    <h2 class="section-title">Market Intelligence</h2>
+    <p class="section-sub">Monthly data-driven insights on production, labor, shipping, commodities, safety, and technology across the industrial sector.</p>
+
+    <div class="update-grid">
+      <div class="update-card">
+        <div class="update-card__cat">Industrial Production</div>
+        <div class="update-card__stat">103.2</div>
+        <div class="update-card__delta update-card__delta--up">&#x25B2; 0.68% YoY</div>
+        <div class="update-card__desc" style="margin-top:8px">Industrial Production Index up, driven by aircraft manufacturing and utility gains. Capacity utilization at 77.6%.</div>
+      </div>
+      <div class="update-card">
+        <div class="update-card__cat">Industrial Labor</div>
+        <div class="update-card__stat">3.5%</div>
+        <div class="update-card__delta update-card__delta--up">&#x25B2; 16.6% YoY</div>
+        <div class="update-card__desc" style="margin-top:8px">Manufacturing unemployment. 256K jobs added in December. Utilities at 1.2% — the industry's lowest.</div>
+      </div>
+      <div class="update-card">
+        <div class="update-card__cat">Shipping & Logistics</div>
+        <div class="update-card__stat">$2.11</div>
+        <div class="update-card__delta" style="color:var(--lg-text-dim)">&#x25CF; Flat YoY</div>
+        <div class="update-card__desc" style="margin-top:8px">Dry van spot rates stable. Load-to-truck ratios doubled YoY, signaling strong demand and tightening capacity.</div>
+      </div>
+      <div class="update-card">
+        <div class="update-card__cat">Commodities</div>
+        <div class="update-card__title">Key Prices</div>
+        <div class="update-card__desc">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px">
+            <div><span style="color:var(--lg-text);font-weight:600">Steel</span> <span class="update-card__delta update-card__delta--down">&#x25BC; 14.6%</span></div>
+            <div><span style="color:var(--lg-text);font-weight:600">Copper</span> <span class="update-card__delta update-card__delta--up">&#x25B2; 14.2%</span></div>
+            <div><span style="color:var(--lg-text);font-weight:600">Zinc</span> <span class="update-card__delta update-card__delta--up">&#x25B2; 18.8%</span></div>
+            <div><span style="color:var(--lg-text);font-weight:600">Coal</span> <span class="update-card__delta update-card__delta--down">&#x25BC; 7.3%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="update-card">
+        <div class="update-card__cat">Cybersecurity</div>
+        <div class="update-card__stat">45</div>
+        <div class="update-card__delta update-card__delta--down">&#x25BC; from 76 in 2023</div>
+        <div class="update-card__desc" style="margin-top:8px">Manufacturing ransomware incidents in 2024. Dramatic improvement across all industrial sectors.</div>
+      </div>
+      <div class="update-card">
+        <div class="update-card__cat">Workplace Safety</div>
+        <div class="update-card__stat">169</div>
+        <div class="update-card__delta update-card__delta--down">&#x25BC; from 631 in 2023</div>
+        <div class="update-card__desc" style="margin-top:8px">Industrial fatalities in 2024 (through Oct). Falls remain the leading cause, but prevention tech is improving outcomes.</div>
+      </div>
+    </div>
+
+    <!-- Industrial data viz -->
+    <div class="viz-row">
+      <div id="production-area"></div>
+      <div id="commodity-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ACQUISITION / JOIN ISG ═══════════ -->
+<section class="section" id="acquisition">
+  <div class="container">
+    <div class="section-label">Join ISG</div>
+    <h2 class="section-title">Making Our Legacies Our Future</h2>
+    <p class="section-sub">ISG acquires specialized rotating equipment service and distribution companies. Keep your brand, your people, your legacy — gain the network.</p>
+
+    <div class="acq-split">
+      <div class="acq-benefits">
+        <div class="acq-benefit">
+          <div class="acq-benefit__icon">&#x1F310;</div>
+          <div class="acq-benefit__text">
+            <h4>National Network Access</h4>
+            <p>Your customers gain access to 40+ locations, 16 brands, and 259K+ SKUs through the ISG network. Cross-sell without cross-training.</p>
+          </div>
+        </div>
+        <div class="acq-benefit">
+          <div class="acq-benefit__icon">&#x1F3E2;</div>
+          <div class="acq-benefit__text">
+            <h4>Keep Your Identity</h4>
+            <p>ISG preserves brand legacies. Your name, your team, your customer relationships — backed by enterprise infrastructure.</p>
+          </div>
+        </div>
+        <div class="acq-benefit">
+          <div class="acq-benefit__icon">&#x1F4CA;</div>
+          <div class="acq-benefit__text">
+            <h4>Shared Infrastructure</h4>
+            <p>Finance, HR, IT, and procurement handled centrally. Focus on what you do best — serving your customers.</p>
+          </div>
+        </div>
+        <div class="acq-benefit">
+          <div class="acq-benefit__icon">&#x1F52E;</div>
+          <div class="acq-benefit__text">
+            <h4>ServiceIQ Platform</h4>
+            <p>Access Charlotte-powered predictive distribution intelligence. ML-driven demand forecasting and inventory optimization.</p>
+          </div>
+        </div>
+        <div class="acq-benefit">
+          <div class="acq-benefit__icon">&#x1F4B0;</div>
+          <div class="acq-benefit__text">
+            <h4>Growth Capital</h4>
+            <p>Fuel your expansion with ISG's capital and M&A expertise. We invest in growth, not just acquisition.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="lg-card" style="padding:32px">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Acquisition Inquiry</h3>
+          <p style="font-size:13px;color:var(--lg-text-dim);margin-bottom:24px">Tell us about your company. All inquiries are confidential.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="lg-text-field">
+              <label class="lg-text-field__label">Company Name</label>
+              <input class="lg-text-field__input" type="text" placeholder="Your company name">
+            </div>
+            <div class="lg-text-field">
+              <label class="lg-text-field__label">Contact Name</label>
+              <input class="lg-text-field__input" type="text" placeholder="Full name">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div class="lg-text-field">
+                <label class="lg-text-field__label">Email</label>
+                <input class="lg-text-field__input" type="email" placeholder="you@company.com">
+              </div>
+              <div class="lg-text-field">
+                <label class="lg-text-field__label">Phone</label>
+                <input class="lg-text-field__input" type="tel" placeholder="(555) 555-5555">
+              </div>
+            </div>
+            <div class="lg-text-field">
+              <label class="lg-text-field__label">Specialty</label>
+              <input class="lg-text-field__input" type="text" placeholder="e.g. Valves, Compressors, Motors...">
+            </div>
+            <div class="lg-text-field">
+              <label class="lg-text-field__label">Annual Revenue Range</label>
+              <input class="lg-text-field__input" type="text" placeholder="e.g. $5M - $25M">
+            </div>
+            <div class="lg-text-field">
+              <label class="lg-text-field__label">Message</label>
+              <textarea class="lg-text-field__input" rows="3" placeholder="Tell us about your company..." style="resize:vertical;font-family:inherit"></textarea>
+            </div>
+            <button class="lg-btn lg-btn--filled lg-btn--full" style="margin-top:8px">Submit Inquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acquisition timeline -->
+    <div style="margin-top:48px">
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:24px;color:var(--lg-text)">Growth Timeline</h3>
+      <div class="lg-timeline">
+        <div class="lg-timeline__item">
+          <div class="lg-timeline__time">2024</div>
+          <div class="lg-timeline__content">
+            <h4>National Mill Maintenance</h4>
+            <p>Specialty mill services — expanded ISG's footprint into heavy manufacturing maintenance.</p>
+          </div>
+        </div>
+        <div class="lg-timeline__item">
+          <div class="lg-timeline__time">2023</div>
+          <div class="lg-timeline__content">
+            <h4>Air Specialty & Equipment Co.</h4>
+            <p>Compressed air specialists — strengthened compressor vertical across the Gulf Coast.</p>
+          </div>
+        </div>
+        <div class="lg-timeline__item">
+          <div class="lg-timeline__time">2022</div>
+          <div class="lg-timeline__content">
+            <h4>Turbomachinery Industries</h4>
+            <p>High-speed rotating equipment expertise — turbines, expanders, and specialty compressors.</p>
+          </div>
+        </div>
+        <div class="lg-timeline__item">
+          <div class="lg-timeline__time">2021</div>
+          <div class="lg-timeline__content">
+            <h4>Illinois Electric Works</h4>
+            <p>Electric motor rewind and repair — expanded Midwest coverage for ISG's motor vertical.</p>
+          </div>
+        </div>
+        <div class="lg-timeline__item lg-timeline__item--muted">
+          <div class="lg-timeline__time">2020 &mdash; Present</div>
+          <div class="lg-timeline__content">
+            <h4>12 More Brands</h4>
+            <p>Building the nation's premier rotating equipment service network, one legacy at a time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GEOGRAPHY ═══════════ -->
+<section class="section geo-section" id="locations">
+  <div class="container">
+    <div class="section-label">Coverage</div>
+    <h2 class="section-title">40+ Locations Across America</h2>
+    <p class="section-sub">Headquartered in Cape Coral, Florida. Service hubs spanning the southeastern and central United States.</p>
+
+    <div class="geo-tags">
+      <span class="geo-tag">Alabama</span>
+      <span class="geo-tag">Arkansas</span>
+      <span class="geo-tag">Florida</span>
+      <span class="geo-tag">Georgia</span>
+      <span class="geo-tag">Illinois</span>
+      <span class="geo-tag">Indiana</span>
+      <span class="geo-tag">Kentucky</span>
+      <span class="geo-tag">Louisiana</span>
+      <span class="geo-tag">Mississippi</span>
+      <span class="geo-tag">Ohio</span>
+      <span class="geo-tag">Tennessee</span>
+      <span class="geo-tag">Texas</span>
+      <span class="geo-tag">West Virginia</span>
+      <span class="geo-tag">Wisconsin</span>
+    </div>
+
+    <div class="viz-row">
+      <div id="geo-heatmap"></div>
+      <div id="geo-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT / CTA ═══════════ -->
+<section class="section cta-section" id="contact">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Contact Us</div>
+    <h2 class="section-title">Ready to Keep It Turning?</h2>
+    <p class="section-sub" style="text-align:center">Whether you need emergency repair, parts, or a long-term maintenance partner — we're one call away.</p>
+
+    <div class="cta-actions">
+      <button class="lg-btn lg-btn--filled lg-btn--lg">Get a Quote</button>
+      <button class="lg-btn lg-btn--outlined lg-btn--lg">Find a Location</button>
+      <button class="lg-btn lg-btn--tonal lg-btn--lg">View Careers</button>
+    </div>
+
+    <div class="cta-contact">
+      <div class="cta-contact__item">
+        <div class="cta-contact__label">Headquarters</div>
+        <div class="cta-contact__value">674 Stonecrest Lane<br>Cape Coral, FL 33909</div>
+      </div>
+      <div class="cta-contact__item">
+        <div class="cta-contact__label">Phone</div>
+        <div class="cta-contact__value"><a href="tel:+12392044951">(239) 204-4951</a></div>
+      </div>
+      <div class="cta-contact__item">
+        <div class="cta-contact__label">Website</div>
+        <div class="cta-contact__value"><a href="https://isgservice.com" target="_blank">isgservice.com</a></div>
+      </div>
+      <div class="cta-contact__item">
+        <div class="cta-contact__label">Emergency Service</div>
+        <div class="cta-contact__value" style="color:#34D399">24/7 Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Industrial Service Group. All rights reserved. &nbsp;|&nbsp; <a href="https://isgservice.com">isgservice.com</a> &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Careers</a></p>
+    <p style="margin-top:6px;font-size:11px;color:rgba(148,163,184,0.5)">Revamped with Liquid Glass Design System &mdash; Powered by Charlotte OS</p>
+  </div>
+</footer>
+
+<!-- ═══════════ D3 VISUALIZATIONS ═══════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for LiquidGlass to load
+  const init = () => {
+    if (typeof LiquidGlass === 'undefined') { setTimeout(init, 100); return; }
+
+    // -- Solutions Donut --
+    LiquidGlass.donut('#solutions-donut', {
+      data: [
+        { label: 'Valves', value: 3 },
+        { label: 'Compressors', value: 4 },
+        { label: 'Motors', value: 2 },
+        { label: 'Pumps', value: 2 },
+        { label: 'Specialty', value: 5 }
+      ],
+      title: 'Brand Portfolio by Category',
+      centerValue: '16',
+      centerLabel: 'Brands'
+    });
+
+    // -- Solutions Bar --
+    LiquidGlass.barChart('#solutions-bar', {
+      data: [
+        { label: 'Valves', value: 85 },
+        { label: 'Compressors', value: 92 },
+        { label: 'Motors', value: 78 },
+        { label: 'Pumps', value: 71 },
+        { label: 'Specialty', value: 95 }
+      ],
+      title: 'Service Capability Score',
+      height: 260
+    });
+
+    // -- Service Donut --
+    LiquidGlass.donut('#service-donut', {
+      data: [
+        { label: 'Repair & Maintenance', value: 35 },
+        { label: 'Distribution', value: 25 },
+        { label: 'Field Services', value: 20 },
+        { label: 'Planned Outage', value: 12 },
+        { label: 'Preventive', value: 8 }
+      ],
+      title: 'Service Revenue Mix',
+      centerValue: '$1.4M',
+      centerLabel: 'ServiceIQ',
+      size: 220,
+      thickness: 35
+    });
+
+    // -- Brand Network Force Graph --
+    const brandNodes = [
+      { id: 'ISG', group: 0 },
+      { id: 'Ind. Valve Svc', group: 1 },
+      { id: 'Morin Process', group: 1 },
+      { id: 'Tri-State Valve', group: 1 },
+      { id: 'Ind. Air Power', group: 2 },
+      { id: 'Ind. Air Centers', group: 2 },
+      { id: 'Comp. & Turbine', group: 2 },
+      { id: 'Air Specialty', group: 2 },
+      { id: 'Soles Electric', group: 3 },
+      { id: 'Illinois Elec.', group: 3 },
+      { id: 'Georgia Western', group: 4 },
+      { id: 'Renewal Svc', group: 4 },
+      { id: 'Dynamic Mech.', group: 5 },
+      { id: 'CORE Industrial', group: 5 },
+      { id: 'Pinnacle Ind.', group: 5 },
+      { id: 'Turbo Industries', group: 5 },
+      { id: 'Natl Mill Maint.', group: 5 }
+    ];
+    const brandLinks = brandNodes.slice(1).map(n => ({ source: 'ISG', target: n.id }));
+    // Add cross-links within groups
+    const groups = {};
+    brandNodes.forEach(n => { if (!groups[n.group]) groups[n.group] = []; groups[n.group].push(n.id); });
+    Object.values(groups).forEach(g => {
+      for (let i = 0; i < g.length - 1; i++) {
+        brandLinks.push({ source: g[i], target: g[i + 1] });
+      }
+    });
+
+    LiquidGlass.forceGraph('#brand-network', {
+      nodes: brandNodes,
+      links: brandLinks,
+      title: 'Brand Network — ISG Family of Companies',
+      height: 400
+    });
+
+    // -- Brand Treemap --
+    LiquidGlass.treemap('#brand-treemap', {
+      data: {
+        name: 'ISG',
+        children: [
+          { name: 'Valves', children: [
+            { name: 'Ind. Valve Svc', value: 30 },
+            { name: 'Morin Process', value: 22 },
+            { name: 'Tri-State Valve', value: 18 }
+          ]},
+          { name: 'Compressors', children: [
+            { name: 'Ind. Air Power', value: 28 },
+            { name: 'Ind. Air Centers', value: 20 },
+            { name: 'Comp. & Turbine', value: 25 },
+            { name: 'Air Specialty', value: 16 }
+          ]},
+          { name: 'Motors', children: [
+            { name: 'Soles Electric', value: 24 },
+            { name: 'Illinois Elec.', value: 18 }
+          ]},
+          { name: 'Pumps', children: [
+            { name: 'Georgia Western', value: 22 },
+            { name: 'Renewal Svc', value: 15 }
+          ]},
+          { name: 'Specialty', children: [
+            { name: 'Dynamic Mech.', value: 20 },
+            { name: 'CORE Industrial', value: 18 },
+            { name: 'Pinnacle Ind.', value: 14 },
+            { name: 'Turbo Industries', value: 22 },
+            { name: 'Natl Mill Maint.', value: 12 }
+          ]}
+        ]
+      },
+      title: 'Portfolio Composition',
+      height: 300
+    });
+
+    // -- Brand Category Bar --
+    LiquidGlass.barChart('#brand-bar', {
+      data: [
+        { label: 'Compressors', value: 4 },
+        { label: 'Specialty', value: 5 },
+        { label: 'Valves', value: 3 },
+        { label: 'Motors', value: 2 },
+        { label: 'Pumps', value: 2 }
+      ],
+      title: 'Brands per Category',
+      height: 300,
+      horizontal: true
+    });
+
+    // -- Production Area Chart --
+    const months = ['Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb'];
+    LiquidGlass.areaChart('#production-area', {
+      data: months.map((m, i) => ({
+        label: m,
+        value: 100.5 + Math.sin(i * 0.5) * 1.2 + i * 0.22
+      })),
+      title: 'Industrial Production Index (12-mo)',
+      height: 280
+    });
+
+    // -- Commodity Bar --
+    LiquidGlass.barChart('#commodity-bar', {
+      data: [
+        { label: 'Zinc', value: 18.8 },
+        { label: 'Copper', value: 14.2 },
+        { label: 'Propane', value: 15.0 },
+        { label: 'Polyethylene', value: -3.6 },
+        { label: 'Coal', value: -7.3 },
+        { label: 'Steel', value: -14.6 }
+      ],
+      title: 'Commodity Price Change (% YoY)',
+      height: 280
+    });
+
+    // -- Geography Heatmap --
+    const states = ['FL','TX','AL','LA','MS','GA','TN','KY','OH','IN','IL','AR','WV','WI'];
+    const heatData = [];
+    const start = new Date('2025-03-01');
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(start);
+      d.setDate(d.getDate() + i);
+      heatData.push({ date: d.toISOString().slice(0, 10), value: Math.floor(Math.random() * 5) });
+    }
+    LiquidGlass.heatmap('#geo-heatmap', {
+      data: heatData,
+      title: 'Service Call Activity (12-mo)',
+      cellSize: 13
+    });
+
+    // -- Geo Location Bar --
+    LiquidGlass.barChart('#geo-bar', {
+      data: [
+        { label: 'Texas', value: 8 },
+        { label: 'Alabama', value: 6 },
+        { label: 'Louisiana', value: 5 },
+        { label: 'Tennessee', value: 4 },
+        { label: 'Georgia', value: 4 },
+        { label: 'Florida', value: 3 },
+        { label: 'Ohio', value: 3 },
+        { label: 'Indiana', value: 2 },
+        { label: 'Illinois', value: 2 },
+        { label: 'Other', value: 5 }
+      ],
+      title: 'Locations by State',
+      height: 280,
+      horizontal: true
+    });
+  };
+
+  init();
+});
+</script>
+
+</body>
+</html>
