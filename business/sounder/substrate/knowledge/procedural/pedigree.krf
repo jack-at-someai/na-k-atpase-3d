@@ -1,0 +1,462 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / PROCEDURAL / PEDIGREE
+;;; Pedigree registration protocols — how an animal enters the
+;;; official record of its breed
+;;; ================================================================
+;;;
+;;; The pedigree is the foundational identity layer of the swine
+;;; industry. Without a registration number (RNO), an animal cannot
+;;; be shown at sanctioned events, cannot have its offspring
+;;; registered, and cannot command breeding stock prices. The
+;;; pedigree protocol is the gateway from biological existence
+;;; to economic identity.
+;;;
+;;; Registries: CPS (65,412 breeders), NSR (3,763 breeders),
+;;;             ABA (8,807 members)
+;;;
+;;; ================================================================
+
+(in-microtheory SounderProceduralMt)
+(genlMt SounderProceduralMt SounderKernelMt)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PEDIGREE DATA REQUIREMENTS
+;;; ────────────────────────────────────────────────────────────────
+;;; Every registration submission requires this minimum dataset.
+;;; These are the fields without which no registry will accept
+;;; a registration application.
+
+(isa PedigreeRegistrationField Collection)
+
+(isa ::sireRNO PedigreeRegistrationField)
+(isa ::sireHerdmark PedigreeRegistrationField)
+(isa ::sireEarNotch PedigreeRegistrationField)
+(isa ::damRNO PedigreeRegistrationField)
+(isa ::damHerdmark PedigreeRegistrationField)
+(isa ::damEarNotch PedigreeRegistrationField)
+(isa ::dateOfBirth PedigreeRegistrationField)
+(isa ::breed PedigreeRegistrationField)
+(isa ::breederHerdmark PedigreeRegistrationField)
+(isa ::earNotch PedigreeRegistrationField)
+(isa ::genderRole PedigreeRegistrationField)
+
+(comment ::sireRNO "Registration number of the sire. Must be active in a recognized registry.")
+(comment ::sireHerdmark "Herdmark of the sire's breeder. Links sire to its herd of origin.")
+(comment ::sireEarNotch "Ear notch of the sire. Unique within herd, physical identification.")
+(comment ::damRNO "Registration number of the dam. Must be active in a recognized registry.")
+(comment ::damHerdmark "Herdmark of the dam's breeder.")
+(comment ::damEarNotch "Ear notch of the dam. Unique within herd.")
+(comment ::dateOfBirth "Date the animal was born (farrowed). ISO 8601.")
+(comment ::breed "Breed designation. Must be consistent with parentage rules.")
+(comment ::breederHerdmark "Herdmark of the person submitting the registration. One of 5,279 tracked.")
+(comment ::earNotch "Ear notch assigned to this animal. Unique within breeder's herd.")
+(comment ::genderRole "Boar, Gilt, Sow, or Barrow. Determines breeding eligibility.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; GENDER/ROLE CLASSIFICATIONS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa GenderRole Collection)
+
+(isa Boar GenderRole)
+(isa Gilt GenderRole)
+(isa Sow GenderRole)
+(isa Barrow GenderRole)
+
+(comment Boar "Intact male. Eligible for sire duties.")
+(comment Gilt "Young female that has not yet farrowed.")
+(comment Sow "Female that has farrowed at least once.")
+(comment Barrow "Castrated male. Cannot be used for breeding. Market or show only.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; BREED CONSISTENCY RULES
+;;; ────────────────────────────────────────────────────────────────
+
+(isa BreedConsistencyType Collection)
+(isa Purebred BreedConsistencyType)
+(isa Crossbred BreedConsistencyType)
+
+(comment Purebred "Both sire and dam are registered in the same breed registry.")
+(comment Crossbred "Sire and dam are of different breeds. Documented cross with both parents registered.")
+
+;;; Purebred rule: both parents must be the same breed
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasBreedConsistency ?Animal Purebred)
+       (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       (hasBreed ?Sire ?B1)
+       (hasBreed ?Dam ?B2))
+  (equals ?B1 ?B2))
+
+;;; Crossbred rule: both parents must still be registered, breeds may differ
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasBreedConsistency ?Animal Crossbred)
+       (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam))
+  (and (hasRegistration ?Sire ?SireRNO)
+       (hasRegistration ?Dam ?DamRNO)))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PEDIGREE VALIDATION CONSTRAINTS
+;;; ────────────────────────────────────────────────────────────────
+
+;; Constraint: Both parents must be registered in a recognized registry
+(isa Constraint-ParentsRegistered IntegrityConstraint)
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam))
+  (and (hasRegistration ?Sire ?SireRNO)
+       (registeredIn ?Sire ?SireRegistry)
+       (isa ?SireRegistry RecognizedRegistry)
+       (hasRegistration ?Dam ?DamRNO)
+       (registeredIn ?Dam ?DamRegistry)
+       (isa ?DamRegistry RecognizedRegistry)))
+
+;; Constraint: Sire must be male
+(isa Constraint-SireMale IntegrityConstraint)
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasSire ?Animal ?Sire))
+  (hasGenderRole ?Sire Boar))
+
+;; Constraint: Dam must be female
+(isa Constraint-DamFemale IntegrityConstraint)
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasDam ?Animal ?Dam))
+  (or (hasGenderRole ?Dam Gilt)
+      (hasGenderRole ?Dam Sow)))
+
+;; Constraint: Date of birth must be after dam's birth date
+(isa Constraint-BornAfterDam IntegrityConstraint)
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasDam ?Animal ?Dam)
+       (hasDateOfBirth ?Animal ?DOB)
+       (hasDateOfBirth ?Dam ?DamDOB))
+  (temporallyAfter ?DOB ?DamDOB))
+
+;; Constraint: Ear notch must be unique within breeder's herd
+(isa Constraint-EarNotchUnique IntegrityConstraint)
+(implies
+  (and (isa ?A1 SwineAnimal)
+       (isa ?A2 SwineAnimal)
+       (bredBy ?A1 ?Breeder)
+       (bredBy ?A2 ?Breeder)
+       (hasEarNotch ?A1 ?Notch)
+       (hasEarNotch ?A2 ?Notch)
+       (isAlive ?A1)
+       (isAlive ?A2))
+  (equals ?A1 ?A2))
+
+;; Constraint: No animal can be its own ancestor (cycle detection)
+(isa Constraint-NoPedigreeCycle IntegrityConstraint)
+(implies
+  (isAncestorOf ?Ancestor ?Descendant)
+  (not (equals ?Ancestor ?Descendant)))
+
+;; Ancestor is transitive through sire and dam lines
+(implies (hasSire ?Animal ?Sire) (isAncestorOf ?Sire ?Animal))
+(implies (hasDam ?Animal ?Dam) (isAncestorOf ?Dam ?Animal))
+(implies
+  (and (isAncestorOf ?A ?B)
+       (isAncestorOf ?B ?C))
+  (isAncestorOf ?A ?C))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; MULTI-GENERATION PEDIGREE STRUCTURE
+;;; ────────────────────────────────────────────────────────────────
+;;; Standard three-generation pedigree. Every registered animal
+;;; carries its parentage depth. The deeper the pedigree, the more
+;;; the animal's genetics are characterized.
+;;;
+;;;   Animal
+;;;   +-- Sire
+;;;   |   +-- Paternal Grandsire (SS)
+;;;   |   |   +-- Great-Grandsire (SSS)
+;;;   |   |   +-- Great-Granddam  (SSD)
+;;;   |   +-- Paternal Granddam  (SD)
+;;;   |       +-- Great-Grandsire (SDS)
+;;;   |       +-- Great-Granddam  (SDD)
+;;;   +-- Dam
+;;;       +-- Maternal Grandsire (DS)
+;;;       |   +-- Great-Grandsire (DSS)
+;;;       |   +-- Great-Granddam  (DSD)
+;;;       +-- Maternal Granddam  (DD)
+;;;           +-- Great-Grandsire (DDS)
+;;;           +-- Great-Granddam  (DDD)
+
+(isa PedigreeDepth Collection)
+(isa OneGeneration PedigreeDepth)
+(isa TwoGeneration PedigreeDepth)
+(isa ThreeGeneration PedigreeDepth)
+(isa FullPedigree PedigreeDepth)
+
+(comment OneGeneration "Sire + Dam only. Minimum for registration.")
+(comment TwoGeneration "Parents + Grandparents. Standard for breed shows.")
+(comment ThreeGeneration "Three generations. Required for national competitions.")
+(comment FullPedigree "Complete ancestry as deep as records exist. Charlotte's target.")
+
+;; Grandparent access predicates
+(implies
+  (and (hasSire ?Animal ?Sire) (hasSire ?Sire ?GS))
+  (hasPaternalGrandsire ?Animal ?GS))
+
+(implies
+  (and (hasSire ?Animal ?Sire) (hasDam ?Sire ?GD))
+  (hasPaternalGranddam ?Animal ?GD))
+
+(implies
+  (and (hasDam ?Animal ?Dam) (hasSire ?Dam ?GS))
+  (hasMaternalGrandsire ?Animal ?GS))
+
+(implies
+  (and (hasDam ?Animal ?Dam) (hasDam ?Dam ?GD))
+  (hasMaternalGranddam ?Animal ?GD))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: PEDIGREE REGISTRATION
+;;; ────────────────────────────────────────────────────────────────
+;;; The seven-step protocol from birth to registered identity.
+;;; This is the canonical pathway every registered animal traverses.
+
+(isa RegistrationState Collection)
+
+(isa Unregistered RegistrationState)
+(isa Identified RegistrationState)
+(isa ParentageRecorded RegistrationState)
+(isa SubmittedToRegistry RegistrationState)
+(isa ParentageValidated RegistrationState)
+(isa RNOAssigned RegistrationState)
+(isa FullyRegistered RegistrationState)
+
+(canTransition Unregistered Identified)
+(canTransition Identified ParentageRecorded)
+(canTransition ParentageRecorded SubmittedToRegistry)
+(canTransition SubmittedToRegistry ParentageValidated)
+(canTransition ParentageValidated RNOAssigned)
+(canTransition RNOAssigned FullyRegistered)
+
+;; Rejection path — registry can reject at validation
+(canTransition SubmittedToRegistry Rejected)
+(isa Rejected RegistrationState)
+(canTransition Rejected ParentageRecorded)
+
+;;; ── Step 1: Farrow Event triggers registration pathway ──
+
+(isa Protocol-PedigreeStep1-FarrowEvent PROTOCOL)
+(comment Protocol-PedigreeStep1-FarrowEvent
+  "When a piglet is born, a new SwineAnimal NODE is created in
+   Unregistered state. The farrow event is the birth signal.")
+(hasTrigger Protocol-PedigreeStep1-FarrowEvent SignalArrival)
+(hasCondition Protocol-PedigreeStep1-FarrowEvent
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S FARROW_EVENT)
+       (hasField ?S :litter ?Litter)
+       (hasField ?S :dam ?Dam)
+       (hasField ?S :sire ?Sire)))
+(hasAction Protocol-PedigreeStep1-FarrowEvent
+  (and (CreateNode ?Animal SwineAnimal)
+       (TransitionState ?Animal Unregistered)
+       (CreateEdge ?Animal ?Dam DAM_OF)
+       (CreateEdge ?Animal ?Sire SIRE_OF)
+       (CreateEdge ?Animal ?Litter LITTER_OF)))
+(expectedDuration Protocol-PedigreeStep1-FarrowEvent (Hours 0))
+(protocolPriority Protocol-PedigreeStep1-FarrowEvent 10)
+
+;;; ── Step 2: Ear notch identification ──
+
+(isa Protocol-PedigreeStep2-Identification PROTOCOL)
+(comment Protocol-PedigreeStep2-Identification
+  "Breeder assigns an ear notch to the piglet. This is the physical
+   identifier — a pattern of notches cut into the ear that encodes
+   herd identity and individual number. Must happen within first
+   days of life.")
+(hasTrigger Protocol-PedigreeStep2-Identification ManualInvocation)
+(hasCondition Protocol-PedigreeStep2-Identification
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal Unregistered)
+       (bredBy ?Animal ?Breeder)
+       (hasHerdmark ?Breeder ?Herdmark)))
+(hasAction Protocol-PedigreeStep2-Identification
+  (and (UpdateAttribute ?Animal ::earNotch ?Notch)
+       (TransitionState ?Animal Identified)))
+(expectedDuration Protocol-PedigreeStep2-Identification (Days 3))
+(protocolPriority Protocol-PedigreeStep2-Identification 11)
+
+;;; ── Step 3: Parentage recording ──
+
+(isa Protocol-PedigreeStep3-ParentageRecord PROTOCOL)
+(comment Protocol-PedigreeStep3-ParentageRecord
+  "Breeder records the sire and dam with their registration numbers.
+   Both parents must already be registered. This is where the
+   pedigree chain is linked.")
+(hasTrigger Protocol-PedigreeStep3-ParentageRecord ManualInvocation)
+(hasCondition Protocol-PedigreeStep3-ParentageRecord
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal Identified)
+       (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       (hasRegistration ?Sire ?SireRNO)
+       (hasRegistration ?Dam ?DamRNO)))
+(hasAction Protocol-PedigreeStep3-ParentageRecord
+  (and (UpdateAttribute ?Animal ::sireRNO ?SireRNO)
+       (UpdateAttribute ?Animal ::damRNO ?DamRNO)
+       (UpdateAttribute ?Animal ::sireHerdmark (herdmarkOf ?Sire))
+       (UpdateAttribute ?Animal ::damHerdmark (herdmarkOf ?Dam))
+       (TransitionState ?Animal ParentageRecorded)))
+(expectedDuration Protocol-PedigreeStep3-ParentageRecord (Days 14))
+(protocolPriority Protocol-PedigreeStep3-ParentageRecord 12)
+
+;;; ── Step 4: Registry submission ──
+
+(isa Protocol-PedigreeStep4-Submission PROTOCOL)
+(comment Protocol-PedigreeStep4-Submission
+  "Breeder submits registration application to the appropriate breed
+   registry (CPS, NSR, ABA, or other). Submission includes all
+   required PedigreeRegistrationField values.")
+(hasTrigger Protocol-PedigreeStep4-Submission ManualInvocation)
+(hasCondition Protocol-PedigreeStep4-Submission
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal ParentageRecorded)
+       (hasBreed ?Animal ?Breed)
+       (breedGoverningRegistry ?Breed ?Registry)
+       (forAll ?Field
+         (implies (isa ?Field PedigreeRegistrationField)
+                  (hasField ?Animal ?Field ?Value)))))
+(hasAction Protocol-PedigreeStep4-Submission
+  (and (CreateSignal ?SubmissionSignal REGISTRATION_SUBMITTED ?Animal ?Registry)
+       (TransitionState ?Animal SubmittedToRegistry)))
+(expectedDuration Protocol-PedigreeStep4-Submission (Days 7))
+(protocolPriority Protocol-PedigreeStep4-Submission 13)
+
+;;; ── Step 5: Parentage chain validation ──
+
+(isa Protocol-PedigreeStep5-Validation PROTOCOL)
+(comment Protocol-PedigreeStep5-Validation
+  "Registry validates the parentage chain. Both parents must be found
+   in the registry's database. Their breeds must be consistent with
+   the animal's claimed breed. The dam's birth date must precede
+   the animal's birth date. No cycles in the ancestry graph.")
+(hasTrigger Protocol-PedigreeStep5-Validation SignalArrival)
+(hasCondition Protocol-PedigreeStep5-Validation
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal SubmittedToRegistry)
+       (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       ;; Both parents registered
+       (hasRegistration ?Sire ?SireRNO)
+       (hasRegistration ?Dam ?DamRNO)
+       ;; Gender correct
+       (hasGenderRole ?Sire Boar)
+       (or (hasGenderRole ?Dam Gilt) (hasGenderRole ?Dam Sow))
+       ;; Temporal ordering
+       (hasDateOfBirth ?Animal ?DOB)
+       (hasDateOfBirth ?Dam ?DamDOB)
+       (temporallyAfter ?DOB ?DamDOB)
+       ;; No cycles
+       (not (isAncestorOf ?Animal ?Animal))))
+(hasAction Protocol-PedigreeStep5-Validation
+  (TransitionState ?Animal ParentageValidated))
+(expectedDuration Protocol-PedigreeStep5-Validation (Days 21))
+(protocolPriority Protocol-PedigreeStep5-Validation 14)
+
+;;; ── Step 6: RNO assignment ──
+
+(isa Protocol-PedigreeStep6-RNOAssignment PROTOCOL)
+(comment Protocol-PedigreeStep6-RNOAssignment
+  "Registry assigns a unique Registration Number (RNO) to the animal.
+   This number is the animal's permanent identity in the breed
+   database. It cannot be changed or reassigned.")
+(hasTrigger Protocol-PedigreeStep6-RNOAssignment StateChanged)
+(hasCondition Protocol-PedigreeStep6-RNOAssignment
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal ParentageValidated)
+       (registeredIn ?Animal ?Registry)))
+(hasAction Protocol-PedigreeStep6-RNOAssignment
+  (and (UpdateAttribute ?Animal ::registrationNumber ?RNO)
+       (CreateSignal ?RNOSignal RNO_ASSIGNED ?Animal ?RNO)
+       (TransitionState ?Animal RNOAssigned)))
+(expectedDuration Protocol-PedigreeStep6-RNOAssignment (Days 1))
+(protocolPriority Protocol-PedigreeStep6-RNOAssignment 15)
+
+;;; ── Step 7: Full registration ──
+
+(isa Protocol-PedigreeStep7-FullRegistration PROTOCOL)
+(comment Protocol-PedigreeStep7-FullRegistration
+  "Animal enters the pedigree database as a fully registered entity.
+   It can now sire/dam registered offspring, be shown at sanctioned
+   events, and command breeding stock market value. The animal
+   transitions from biological entity to economic identity.")
+(hasTrigger Protocol-PedigreeStep7-FullRegistration StateChanged)
+(hasCondition Protocol-PedigreeStep7-FullRegistration
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal RNOAssigned)
+       (hasRegistration ?Animal ?RNO)))
+(hasAction Protocol-PedigreeStep7-FullRegistration
+  (and (TransitionState ?Animal FullyRegistered)
+       (CreateSignal ?RegSignal REGISTRATION_COMPLETE ?Animal ?RNO)
+       (CreateEdge ?Animal ?Registry REGISTERED_IN)))
+(expectedDuration Protocol-PedigreeStep7-FullRegistration (Hours 0))
+(protocolPriority Protocol-PedigreeStep7-FullRegistration 16)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: PEDIGREE TRANSFER
+;;; ────────────────────────────────────────────────────────────────
+;;; When an animal is sold, ownership transfers and the pedigree
+;;; must be updated to reflect the new owner.
+
+(isa Protocol-PedigreeTransfer PROTOCOL)
+(comment Protocol-PedigreeTransfer
+  "When an animal changes ownership (via auction, private treaty, or
+   messenger sale), the pedigree registration must be transferred
+   to the new owner. The registry updates its records to reflect
+   the new owner's herdmark. The animal's RNO does not change.")
+(hasTrigger Protocol-PedigreeTransfer SignalArrival)
+(hasCondition Protocol-PedigreeTransfer
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S OWNERSHIP_TRANSFER)
+       (hasField ?S :animal ?Animal)
+       (hasField ?S :newOwner ?NewOwner)
+       (hasState ?Animal FullyRegistered)
+       (hasHerdmark ?NewOwner ?NewHerdmark)))
+(hasAction Protocol-PedigreeTransfer
+  (and (UpdateAttribute ?Animal ::currentOwner ?NewOwner)
+       (UpdateAttribute ?Animal ::currentHerdmark ?NewHerdmark)
+       (CreateEdge ?Animal ?NewOwner OWNED_BY)
+       (CreateSignal ?TransferSignal PEDIGREE_TRANSFERRED ?Animal ?NewOwner)))
+(expectedDuration Protocol-PedigreeTransfer (Days 30))
+(protocolPriority Protocol-PedigreeTransfer 20)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: REGISTRATION REJECTION
+;;; ────────────────────────────────────────────────────────────────
+;;; When validation fails, the animal is rejected and the breeder
+;;; must correct the submission.
+
+(isa Protocol-PedigreeRejection PROTOCOL)
+(comment Protocol-PedigreeRejection
+  "If the registry cannot validate the parentage chain — missing
+   parent registration, breed inconsistency, temporal impossibility,
+   or cycle detection — the submission is rejected. The breeder
+   receives the rejection reason and the animal returns to
+   ParentageRecorded state for correction.")
+(hasTrigger Protocol-PedigreeRejection StateChanged)
+(hasCondition Protocol-PedigreeRejection
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal SubmittedToRegistry)
+       (not (and (hasSire ?Animal ?Sire)
+                 (hasDam ?Animal ?Dam)
+                 (hasRegistration ?Sire ?SireRNO)
+                 (hasRegistration ?Dam ?DamRNO)
+                 (hasGenderRole ?Sire Boar)
+                 (or (hasGenderRole ?Dam Gilt) (hasGenderRole ?Dam Sow))))))
+(hasAction Protocol-PedigreeRejection
+  (and (TransitionState ?Animal Rejected)
+       (CreateSignal ?RejSignal REGISTRATION_REJECTED ?Animal ?Reason)
+       (SendNotification RegistrationRejected ?Animal ?Reason)))
+(expectedDuration Protocol-PedigreeRejection (Days 21))
+(protocolPriority Protocol-PedigreeRejection 14)

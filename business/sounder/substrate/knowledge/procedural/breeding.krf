@@ -1,0 +1,605 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / PROCEDURAL / BREEDING
+;;; Breeding program protocols — the temporal backbone of the
+;;; swine industry
+;;; ================================================================
+;;;
+;;; The breeding cycle is the clock of the swine industry. Every
+;;; operation — farrowing, weaning, marketing, showing — synchronizes
+;;; to the sow's reproductive cycle. Gestation is 114 days. Estrus
+;;; recurs every 21 days. These are the constants that schedule the
+;;; entire industry.
+;;;
+;;; Charlotte models this as a cascade of PROTOCOLs, each triggered
+;;; by the completion of the previous step. The cycle is:
+;;;
+;;;   Sire Selection -> Heat Detection -> Insemination -> Gestation
+;;;   -> Farrowing -> Lactation -> Weaning -> Grow-out -> Selection
+;;;   -> Sow Return (cycle repeats)
+;;;
+;;; ================================================================
+
+(in-microtheory SounderProceduralMt)
+(genlMt SounderProceduralMt SounderKernelMt)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; BREEDING CYCLE STATE MACHINE
+;;; ────────────────────────────────────────────────────────────────
+
+(isa BreedingCycleState Collection)
+
+(isa SireSelection BreedingCycleState)
+(isa HeatDetection BreedingCycleState)
+(isa Insemination BreedingCycleState)
+(isa Gestation BreedingCycleState)
+(isa Farrowing BreedingCycleState)
+(isa Lactation BreedingCycleState)
+(isa Weaning BreedingCycleState)
+(isa GrowOut BreedingCycleState)
+(isa Selection BreedingCycleState)
+(isa SowReturn BreedingCycleState)
+
+(comment SireSelection "Choose boar based on genetics, stress status, EPDs, and breeding goals.")
+(comment HeatDetection "Identify sow or gilt in estrus. Estrus recurs every 21 days.")
+(comment Insemination "Natural service or artificial insemination (AI).")
+(comment Gestation "114-115 days. Three months, three weeks, three days.")
+(comment Farrowing "Litter born. Record litter size, born alive, stillborn, mummies.")
+(comment Lactation "Sow nurses piglets. Duration 14-28 days, typically 21.")
+(comment Weaning "Piglets separated from sow. Sow returns to estrus 3-7 days later.")
+(comment GrowOut "Piglets grow to market or show weight.")
+(comment Selection "Retain breeding stock or market. The fork in the lifecycle.")
+(comment SowReturn "Sow returns to heat 3-7 days post-weaning. Cycle repeats.")
+
+;; Canonical cycle transitions
+(canTransition SireSelection HeatDetection)
+(canTransition HeatDetection Insemination)
+(canTransition Insemination Gestation)
+(canTransition Gestation Farrowing)
+(canTransition Farrowing Lactation)
+(canTransition Lactation Weaning)
+(canTransition Weaning GrowOut)
+(canTransition GrowOut Selection)
+(canTransition Selection SowReturn)
+(canTransition SowReturn HeatDetection)
+
+;; Exceptional transitions
+(canTransition HeatDetection HeatDetection)       ;; Sow not bred this cycle, wait 21 days
+(canTransition Insemination HeatDetection)         ;; Breeding failed, sow returns to heat
+(canTransition Selection SireSelection)            ;; Selected animal becomes breeding stock
+
+;;; ────────────────────────────────────────────────────────────────
+;;; KEY TIMING CONSTANTS
+;;; ────────────────────────────────────────────────────────────────
+;;; These durations are the temporal backbone. They are biological
+;;; constants, not business decisions. The industry conforms to them.
+
+(isa BreedingTimingConstant Collection)
+
+(isa GestationDuration BreedingTimingConstant)
+(standardValue GestationDuration (Days 114))
+(minimumValue GestationDuration (Days 112))
+(maximumValue GestationDuration (Days 117))
+(comment GestationDuration "Three months, three weeks, three days. The most cited number in swine.")
+
+(isa EstrusCycleDuration BreedingTimingConstant)
+(standardValue EstrusCycleDuration (Days 21))
+(comment EstrusCycleDuration "Estrus recurs every 21 days in non-pregnant sows and gilts.")
+
+(isa LactationDuration BreedingTimingConstant)
+(standardValue LactationDuration (Days 21))
+(minimumValue LactationDuration (Days 14))
+(maximumValue LactationDuration (Days 28))
+(comment LactationDuration "Sow nurses piglets. Industry standard is 21 days for commercial operations.")
+
+(isa SowReturnToHeat BreedingTimingConstant)
+(standardValue SowReturnToHeat (Days 5))
+(minimumValue SowReturnToHeat (Days 3))
+(maximumValue SowReturnToHeat (Days 7))
+(comment SowReturnToHeat "Days after weaning before sow returns to estrus.")
+
+(isa GiltFirstBreedingAge BreedingTimingConstant)
+(standardValue GiltFirstBreedingAge (Months 7.5))
+(minimumValue GiltFirstBreedingAge (Months 7))
+(maximumValue GiltFirstBreedingAge (Months 8))
+(comment GiltFirstBreedingAge "Age at which gilts are first bred. Earlier is risky, later wastes feed.")
+
+(isa BoarFirstUseAge BreedingTimingConstant)
+(standardValue BoarFirstUseAge (Months 7.5))
+(minimumValue BoarFirstUseAge (Months 7))
+(maximumValue BoarFirstUseAge (Months 8))
+(comment BoarFirstUseAge "Age at which boars begin service. Must be physically mature.")
+
+(isa SowProductiveLife BreedingTimingConstant)
+(standardValue SowProductiveLife (Parities 7))
+(minimumValue SowProductiveLife (Parities 6))
+(maximumValue SowProductiveLife (Parities 8))
+(comment SowProductiveLife "Number of parities before sow is typically culled. Economics-driven, not biology-driven.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; INSEMINATION METHOD
+;;; ────────────────────────────────────────────────────────────────
+
+(isa InseminationMethod Collection)
+(isa NaturalService InseminationMethod)
+(isa ArtificialInsemination InseminationMethod)
+
+(comment NaturalService "Boar physically breeds the sow/gilt. Common in show pig operations.")
+(comment ArtificialInsemination "Semen collected from boar, stored, delivered to sow/gilt. Dominant in commercial operations.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: SIRE SELECTION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-SireSelection PROTOCOL)
+(comment Protocol-SireSelection
+  "Choose a boar for a specific mating based on genetics, stress
+   status, Expected Progeny Differences (EPDs), and breeding goals.
+   The sire decision is the single highest-leverage genetics choice
+   in the operation — one boar can sire hundreds of offspring.")
+(hasTrigger Protocol-SireSelection ManualInvocation)
+(hasCondition Protocol-SireSelection
+  (and (isa ?Boar SwineAnimal)
+       (hasGenderRole ?Boar Boar)
+       (hasState ?Boar FullyRegistered)
+       (hasStressStatus ?Boar StressNegative)
+       (hasAge ?Boar ?Age)
+       (greaterThanOrEqual ?Age (Months 7))))
+(hasAction Protocol-SireSelection
+  (and (CreateSignal ?S SIRE_SELECTED ?Boar ?TargetDam)
+       (TransitionState ?Mating SireSelection)))
+(expectedDuration Protocol-SireSelection (Days 7))
+(protocolPriority Protocol-SireSelection 30)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: HEAT DETECTION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-HeatDetection PROTOCOL)
+(comment Protocol-HeatDetection
+  "Detect estrus in a sow or gilt. Physical signs: vulva swelling
+   and reddening, standing reflex (immobile when pressure applied
+   to back), behavioral changes. Estrus lasts 2-3 days. Optimal
+   insemination timing is 12-24 hours after standing heat onset.
+   Cycle repeats every 21 days if not bred.")
+(hasTrigger Protocol-HeatDetection TimeElapsed)
+(hasCondition Protocol-HeatDetection
+  (and (isa ?Female SwineAnimal)
+       (or (hasGenderRole ?Female Gilt) (hasGenderRole ?Female Sow))
+       (not (hasState ?Female Gestating))
+       (hasAge ?Female ?Age)
+       (greaterThanOrEqual ?Age (Months 7))))
+(hasAction Protocol-HeatDetection
+  (and (CreateSignal ?S HEAT_DETECTED ?Female ?Timestamp)
+       (TransitionState ?Mating HeatDetection)))
+(expectedDuration Protocol-HeatDetection (Days 21))
+(protocolPriority Protocol-HeatDetection 31)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: INSEMINATION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Insemination PROTOCOL)
+(comment Protocol-Insemination
+  "Breed the sow/gilt within the estrus window. Natural service:
+   boar placed with female for 24-48 hours. Artificial insemination:
+   semen dose delivered via catheter. Timing relative to standing
+   heat onset is critical — too early or too late reduces conception.")
+(hasTrigger Protocol-Insemination SignalArrival)
+(hasCondition Protocol-Insemination
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S HEAT_DETECTED)
+       (hasField ?S :female ?Female)
+       (thereExists ?Boar
+         (and (isa ?Boar SwineAnimal)
+              (hasGenderRole ?Boar Boar)
+              (hasStressStatus ?Boar StressNegative)))))
+(hasAction Protocol-Insemination
+  (and (CreateSignal ?BreedSignal INSEMINATION_EVENT ?Female ?Boar ?Method)
+       (CreateEdge ?Female ?Boar BRED_BY)
+       (TransitionState ?Mating Insemination)))
+(expectedDuration Protocol-Insemination (Days 2))
+(protocolPriority Protocol-Insemination 32)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: GESTATION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Gestation PROTOCOL)
+(comment Protocol-Gestation
+  "114 days from insemination to farrowing. The sow is moved to
+   gestation housing. Pregnancy can be confirmed at 18-21 days
+   by observing whether the sow returns to heat. Ultrasound
+   confirmation available at 25-30 days. If not pregnant, sow
+   returns to HeatDetection state.")
+(hasTrigger Protocol-Gestation SignalArrival)
+(hasCondition Protocol-Gestation
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S INSEMINATION_EVENT)
+       (hasField ?S :female ?Female)))
+(hasAction Protocol-Gestation
+  (and (TransitionState ?Female Gestating)
+       (TransitionState ?Mating Gestation)
+       (CreateSignal ?GestSignal GESTATION_START ?Female ?ExpectedFarrowDate)))
+(expectedDuration Protocol-Gestation (Days 114))
+(protocolPriority Protocol-Gestation 33)
+
+;; Pregnancy check sub-protocol — if sow returns to heat, she is not pregnant
+(isa Protocol-PregnancyCheck PROTOCOL)
+(comment Protocol-PregnancyCheck
+  "At 18-21 days post-insemination, check whether the sow returns
+   to heat. If she shows estrus signs, the breeding failed and she
+   returns to HeatDetection. This is the cheapest pregnancy test.")
+(hasTrigger Protocol-PregnancyCheck TimeElapsed)
+(hasCondition Protocol-PregnancyCheck
+  (and (isa ?Female SwineAnimal)
+       (hasState ?Female Gestating)
+       (daysSinceInsemination ?Female ?Days)
+       (greaterThanOrEqual ?Days 18)
+       (lessThanOrEqual ?Days 21)))
+(hasAction Protocol-PregnancyCheck
+  (EvaluateRule
+    (if (showsEstrus ?Female)
+      (and (TransitionState ?Female NotPregnant)
+           (TransitionState ?Mating HeatDetection)
+           (CreateSignal ?S BREEDING_FAILED ?Female))
+      (CreateSignal ?S PREGNANCY_CONFIRMED ?Female))))
+(expectedDuration Protocol-PregnancyCheck (Days 3))
+(protocolPriority Protocol-PregnancyCheck 33)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: FARROWING
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Farrowing PROTOCOL)
+(comment Protocol-Farrowing
+  "Sow gives birth to a litter. Record total born, born alive,
+   stillborn, and mummified. Average litter size is 10-14 for
+   commercial breeds. Farrowing can take 2-5 hours. Each piglet
+   becomes a new SwineAnimal NODE in the graph. The litter itself
+   is a NODE connecting all siblings.")
+(hasTrigger Protocol-Farrowing TimeElapsed)
+(hasCondition Protocol-Farrowing
+  (and (isa ?Female SwineAnimal)
+       (hasState ?Female Gestating)
+       (daysSinceInsemination ?Female ?Days)
+       (greaterThanOrEqual ?Days 112)))
+(hasAction Protocol-Farrowing
+  (and (CreateNode ?Litter SwineAnimalLitter)
+       (CreateEdge ?Litter ?Female LITTER_OF)
+       (CreateSignal ?S FARROW_EVENT ?Female ?Litter ?TotalBorn ?BornAlive ?Stillborn ?Mummies)
+       (TransitionState ?Female Lactating)
+       (TransitionState ?Mating Farrowing)))
+(expectedDuration Protocol-Farrowing (Hours 5))
+(protocolPriority Protocol-Farrowing 34)
+
+;;; ── Farrowing metrics ──
+
+(isa FarrowingMetric Collection)
+
+(isa ::totalBorn FarrowingMetric)
+(isa ::bornAlive FarrowingMetric)
+(isa ::stillborn FarrowingMetric)
+(isa ::mummified FarrowingMetric)
+(isa ::avgBirthWeight FarrowingMetric)
+
+(comment ::totalBorn "Total piglets born in the litter, including stillborn and mummies.")
+(comment ::bornAlive "Piglets born alive. The primary productivity metric.")
+(comment ::stillborn "Piglets born dead but fully formed.")
+(comment ::mummified "Piglets that died in utero and were reabsorbed. Indicator of disease or stress.")
+(comment ::avgBirthWeight "Average birth weight of live piglets. Predictor of survival and growth.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: LACTATION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Lactation PROTOCOL)
+(comment Protocol-Lactation
+  "Sow nurses the litter for 14-28 days (standard: 21 days).
+   During lactation, monitor piglet growth, cross-fostering if
+   litter size exceeds sow's teat count (typically 12-14 teats).
+   Sow body condition declines during lactation as she converts
+   body reserves to milk.")
+(hasTrigger Protocol-Lactation SignalArrival)
+(hasCondition Protocol-Lactation
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S FARROW_EVENT)
+       (hasField ?S :dam ?Dam)
+       (hasState ?Dam Lactating)))
+(hasAction Protocol-Lactation
+  (and (CreateSignal ?LactSignal LACTATION_START ?Dam ?Litter)
+       (TransitionState ?Mating Lactation)))
+(expectedDuration Protocol-Lactation (Days 21))
+(protocolPriority Protocol-Lactation 35)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: WEANING
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Weaning PROTOCOL)
+(comment Protocol-Weaning
+  "Piglets are separated from the sow. This is a critical stress
+   event for both sow and piglets. The sow will return to estrus
+   3-7 days after weaning. Piglets transition to solid feed.
+   Weaning weight is a key performance metric.")
+(hasTrigger Protocol-Weaning TimeElapsed)
+(hasCondition Protocol-Weaning
+  (and (isa ?Dam SwineAnimal)
+       (hasState ?Dam Lactating)
+       (daysSinceFarrowing ?Dam ?Days)
+       (greaterThanOrEqual ?Days 14)))
+(hasAction Protocol-Weaning
+  (and (CreateSignal ?S WEANING_EVENT ?Dam ?Litter ?WeaningWeight ?PigletsWeaned)
+       (TransitionState ?Dam PostWeaning)
+       (TransitionState ?Mating Weaning)))
+(expectedDuration Protocol-Weaning (Days 1))
+(protocolPriority Protocol-Weaning 36)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: GROW-OUT
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-GrowOut PROTOCOL)
+(comment Protocol-GrowOut
+  "Weaned piglets grow to market or show weight. Monitor daily gain,
+   feed conversion, and body composition. Target market weight is
+   approximately 230 lbs (for commercial) or show-ready condition
+   (for show pigs, typically 240-280 lbs depending on class).")
+(hasTrigger Protocol-GrowOut SignalArrival)
+(hasCondition Protocol-GrowOut
+  (and (isa ?S SIGNAL)
+       (hasSignalType ?S WEANING_EVENT)
+       (hasField ?S :litter ?Litter)))
+(hasAction Protocol-GrowOut
+  (and (TransitionState ?Mating GrowOut)
+       (CreateSignal ?GS GROWOUT_START ?Litter)))
+(expectedDuration Protocol-GrowOut (Days 140))
+(protocolPriority Protocol-GrowOut 37)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: SELECTION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-Selection PROTOCOL)
+(comment Protocol-Selection
+  "The fork in the lifecycle. Animals are evaluated and classified:
+   retain as breeding stock (enters SireSelection or HeatDetection),
+   designate for show circuit, or market (commercial sale or auction).
+   This is where genetics meets economics.")
+(hasTrigger Protocol-Selection ManualInvocation)
+(hasCondition Protocol-Selection
+  (and (isa ?Animal SwineAnimal)
+       (hasAge ?Animal ?Age)
+       (greaterThanOrEqual ?Age (Months 5))))
+(hasAction Protocol-Selection
+  (EvaluateRule
+    (if (selectedForBreeding ?Animal)
+      (and (TransitionState ?Animal BreedingStock)
+           (CreateSignal ?S SELECTED_BREEDING ?Animal))
+      (if (selectedForShow ?Animal)
+        (and (TransitionState ?Animal ShowAnimal)
+             (CreateSignal ?S SELECTED_SHOW ?Animal))
+        (and (TransitionState ?Animal MarketAnimal)
+             (CreateSignal ?S SELECTED_MARKET ?Animal))))))
+(expectedDuration Protocol-Selection (Days 1))
+(protocolPriority Protocol-Selection 38)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: SOW RETURN
+;;; ────────────────────────────────────────────────────────────────
+
+(isa Protocol-SowReturn PROTOCOL)
+(comment Protocol-SowReturn
+  "After weaning, the sow returns to estrus within 3-7 days. This
+   closes the breeding cycle loop and enables the next parity.
+   The speed of return is influenced by body condition at weaning,
+   lactation length, and nutrition. A fast return means a tighter
+   production schedule.")
+(hasTrigger Protocol-SowReturn TimeElapsed)
+(hasCondition Protocol-SowReturn
+  (and (isa ?Dam SwineAnimal)
+       (hasState ?Dam PostWeaning)
+       (daysSinceWeaning ?Dam ?Days)
+       (greaterThanOrEqual ?Days 3)))
+(hasAction Protocol-SowReturn
+  (and (CreateSignal ?S SOW_RETURN_HEAT ?Dam)
+       (TransitionState ?Dam ReadyToBreed)
+       (TransitionState ?Mating SowReturn)))
+(expectedDuration Protocol-SowReturn (Days 5))
+(protocolPriority Protocol-SowReturn 39)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PORCINE STRESS SYNDROME (PSS) TESTING PROTOCOL
+;;; ────────────────────────────────────────────────────────────────
+;;; HAL-1843 gene test. This is the single most important genetic
+;;; test in the swine industry. A stress-positive animal can die
+;;; under transport or show conditions. A carrier can produce
+;;; positive offspring. The industry standard is: negative sires
+;;; only for commercial production.
+
+(isa StressStatus Collection)
+(isa StressNegative StressStatus)
+(isa StressCarrier StressStatus)
+(isa StressPositive StressStatus)
+
+(comment StressNegative "NN genotype. Free of the HAL-1843 mutation. Safe for all uses.")
+(comment StressCarrier "Nn genotype. Carries one copy. Phenotypically normal but can produce positive offspring.")
+(comment StressPositive "nn genotype. Homozygous for the mutation. Susceptible to malignant hyperthermia. Can die under stress.")
+
+(isa Protocol-StressTesting PROTOCOL)
+(comment Protocol-StressTesting
+  "DNA test for the HAL-1843 gene marker associated with Porcine
+   Stress Syndrome (malignant hyperthermia). Hair follicle or blood
+   sample submitted to diagnostic lab. Results classify animal as
+   Negative (NN), Carrier (Nn), or Positive (nn). This test
+   governs breeding eligibility.")
+(hasTrigger Protocol-StressTesting ManualInvocation)
+(hasCondition Protocol-StressTesting
+  (and (isa ?Animal SwineAnimal)
+       (or (selectedForBreeding ?Animal)
+           (selectedForShow ?Animal))))
+(hasAction Protocol-StressTesting
+  (and (CreateSignal ?S STRESS_TEST_RESULT ?Animal ?Status)
+       (UpdateAttribute ?Animal ::stressStatus ?Status)))
+(expectedDuration Protocol-StressTesting (Days 14))
+(protocolPriority Protocol-StressTesting 25)
+
+;;; ── Stress breeding rules ──
+
+;; Negative x Negative = all Negative offspring
+(implies
+  (and (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       (hasStressStatus ?Sire StressNegative)
+       (hasStressStatus ?Dam StressNegative))
+  (hasStressStatus ?Animal StressNegative))
+
+;; Carrier x Negative = 50% Negative, 50% Carrier (probabilistic — cannot determine without testing)
+;; Record that the animal requires testing
+(implies
+  (and (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       (or (and (hasStressStatus ?Sire StressCarrier) (hasStressStatus ?Dam StressNegative))
+           (and (hasStressStatus ?Sire StressNegative) (hasStressStatus ?Dam StressCarrier))))
+  (requiresStressTesting ?Animal))
+
+;; Carrier x Carrier = 25% Negative, 50% Carrier, 25% Positive — always test
+(implies
+  (and (hasSire ?Animal ?Sire)
+       (hasDam ?Animal ?Dam)
+       (hasStressStatus ?Sire StressCarrier)
+       (hasStressStatus ?Dam StressCarrier))
+  (requiresStressTesting ?Animal))
+
+;; Industry rule: Stress-positive animals must not be used as breeding stock
+(isa Constraint-NoStressPositiveBreeders IntegrityConstraint)
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasStressStatus ?Animal StressPositive))
+  (not (selectedForBreeding ?Animal)))
+
+;; Industry standard: Only stress-negative sires for commercial production
+(isa Constraint-NegativeSiresOnly IntegrityConstraint)
+(implies
+  (and (isa ?Boar SwineAnimal)
+       (hasGenderRole ?Boar Boar)
+       (usedInCommercialProduction ?Boar))
+  (hasStressStatus ?Boar StressNegative))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PERFORMANCE TESTING PROTOCOL
+;;; ────────────────────────────────────────────────────────────────
+;;; These metrics determine whether an animal is retained for
+;;; breeding or sent to market. They are the quantitative basis
+;;; for genetic progress.
+
+(isa PerformanceMetric Collection)
+
+(isa ::daysTo230 PerformanceMetric)
+(isa ::backfatThickness PerformanceMetric)
+(isa ::loinEyeArea PerformanceMetric)
+(isa ::feedGainRatio PerformanceMetric)
+(isa ::litterSizeBornAlive PerformanceMetric)
+
+(comment ::daysTo230 "Days to reach 230 lbs. Lower is better. Target: under 160 days.")
+(comment ::backfatThickness "Backfat measured at the 10th rib, in inches. Lower is leaner. Target: under 0.8 inches.")
+(comment ::loinEyeArea "Cross-sectional area of the loin muscle at the 10th rib, in square inches. Target: over 6.0 sq in.")
+(comment ::feedGainRatio "Pounds of feed per pound of gain. Lower is more efficient. Target: under 3.0.")
+(comment ::litterSizeBornAlive "Number of piglets born alive per litter. Higher is better. Target: over 10.")
+
+(isa Protocol-PerformanceTesting PROTOCOL)
+(comment Protocol-PerformanceTesting
+  "Standardized on-farm or test-station evaluation of growth,
+   carcass merit, and reproductive performance. Animals are weighed,
+   scanned (ultrasound for backfat and loin eye), and feed intake
+   is recorded. Results generate Expected Progeny Differences (EPDs)
+   that predict offspring performance.")
+(hasTrigger Protocol-PerformanceTesting ManualInvocation)
+(hasCondition Protocol-PerformanceTesting
+  (and (isa ?Animal SwineAnimal)
+       (hasAge ?Animal ?Age)
+       (greaterThanOrEqual ?Age (Months 5))
+       (or (selectedForBreeding ?Animal)
+           (selectedForShow ?Animal))))
+(hasAction Protocol-PerformanceTesting
+  (and (CreateSignal ?S PERFORMANCE_TEST ?Animal ?DaysTo230 ?Backfat ?LoinEye ?FeedGain)
+       (UpdateAttribute ?Animal ::daysTo230 ?DaysTo230)
+       (UpdateAttribute ?Animal ::backfatThickness ?Backfat)
+       (UpdateAttribute ?Animal ::loinEyeArea ?LoinEye)
+       (UpdateAttribute ?Animal ::feedGainRatio ?FeedGain)))
+(expectedDuration Protocol-PerformanceTesting (Days 1))
+(protocolPriority Protocol-PerformanceTesting 26)
+
+;;; ── Performance targets (thresholds for selection) ──
+
+(performanceTarget ::daysTo230 LessThan 160)
+(performanceTarget ::backfatThickness LessThan 0.8)
+(performanceTarget ::loinEyeArea GreaterThan 6.0)
+(performanceTarget ::feedGainRatio LessThan 3.0)
+(performanceTarget ::litterSizeBornAlive GreaterThan 10)
+
+;;; ── Selection rule: meet performance targets to be breeding stock ──
+
+(implies
+  (and (isa ?Animal SwineAnimal)
+       (hasPerformanceMetric ?Animal ::daysTo230 ?D)
+       (hasPerformanceMetric ?Animal ::backfatThickness ?BF)
+       (hasPerformanceMetric ?Animal ::loinEyeArea ?LE)
+       (hasPerformanceMetric ?Animal ::feedGainRatio ?FG)
+       (lessThan ?D 160)
+       (lessThan ?BF 0.8)
+       (greaterThan ?LE 6.0)
+       (lessThan ?FG 3.0)
+       (hasStressStatus ?Animal StressNegative))
+  (meetsBreedingStockCriteria ?Animal))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; EXPECTED PROGENY DIFFERENCES (EPDs)
+;;; ────────────────────────────────────────────────────────────────
+;;; EPDs predict the genetic merit an animal will pass to its
+;;; offspring. They are calculated from the animal's own performance
+;;; plus the performance of its relatives. EPDs are the language
+;;; of genetic improvement.
+
+(isa EPDTrait Collection)
+
+(isa EPD-DaysTo230 EPDTrait)
+(isa EPD-Backfat EPDTrait)
+(isa EPD-LoinEyeArea EPDTrait)
+(isa EPD-LitterSize EPDTrait)
+(isa EPD-FeedEfficiency EPDTrait)
+
+(comment EPD-DaysTo230 "Expected deviation in days to 230 lbs for offspring. Negative is favorable.")
+(comment EPD-Backfat "Expected deviation in backfat thickness for offspring. Negative is favorable.")
+(comment EPD-LoinEyeArea "Expected deviation in loin eye area for offspring. Positive is favorable.")
+(comment EPD-LitterSize "Expected deviation in litter size for offspring. Positive is favorable.")
+(comment EPD-FeedEfficiency "Expected deviation in feed:gain ratio for offspring. Negative is favorable.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; FULL BREEDING CYCLE DURATION
+;;; ────────────────────────────────────────────────────────────────
+;;; Sum of the canonical cycle for one parity:
+;;;   Gestation (114d) + Lactation (21d) + Return (5d) = 140 days
+;;;   Plus grow-out of offspring: ~140 days to market weight
+;;;
+;;; A sow can produce approximately 2.3-2.5 litters per year.
+
+(isa Protocol-FullBreedingCycle PROTOCOL)
+(comment Protocol-FullBreedingCycle
+  "The complete sow reproductive cycle from insemination through
+   weaning and return to heat. Approximately 140 days per parity.
+   A sow producing 2.3 litters per year with 10+ born alive per
+   litter yields 23+ pigs per sow per year — the core productivity
+   metric of the industry.")
+(hasTrigger Protocol-FullBreedingCycle SignalArrival)
+(hasCondition Protocol-FullBreedingCycle
+  (and (isa ?Dam SwineAnimal)
+       (or (hasGenderRole ?Dam Gilt) (hasGenderRole ?Dam Sow))
+       (hasState ?Dam ReadyToBreed)))
+(hasAction Protocol-FullBreedingCycle
+  (and (CreateSignal ?S BREEDING_CYCLE_START ?Dam ?ParityNumber)
+       (TransitionState ?Dam InBreedingCycle)))
+(expectedDuration Protocol-FullBreedingCycle (Days 140))
+(protocolPriority Protocol-FullBreedingCycle 29)
+
+(littersPerYear 2.4)
+(comment littersPerYear "Industry average. Top operations achieve 2.5. Driven by lactation length and return-to-heat speed.")

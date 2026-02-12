@@ -1,0 +1,688 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / STRUCTURAL / TAXONOMY
+;;; Breed hierarchy, species hierarchy, role hierarchy, and
+;;; classification system for the swine industry
+;;; ================================================================
+;;;
+;;; This file defines the is-a hierarchies that form the structural
+;;; backbone of the Sounder substrate. Every animal, breed, role,
+;;; and classification resolves through these hierarchies.
+;;;
+;;; Inherits from: CharlotteStructuralMt (via SounderKernelMt)
+;;; Data sources: CPS (65,412 breeders), NSR (3,763 breeders),
+;;;               ABA (8,807 members), Trogdon (1,176 sales)
+;;;
+;;; ================================================================
+
+(in-microtheory SounderStructuralMt)
+
+;; ── Microtheory inheritance ──
+
+(genlMt SounderStructuralMt SounderKernelMt)
+(genlMt SounderKernelMt CharlotteKernelMt)
+
+
+;;; ============================================================
+;;; SECTION 1: SPECIES HIERARCHY
+;;; ============================================================
+;;; Charlotte's base taxonomy defines Animal > Mammal.
+;;; Sounder extends Mammal into livestock species, with Swine
+;;; as the focus domain. Other species are defined to support
+;;; future containers and cross-species reasoning.
+
+(isa Livestock Collection)
+(genls Livestock Mammal)
+(comment Livestock "Domesticated animals raised in an agricultural setting for production of food, fiber, labor, or companionship.")
+
+;; ── Livestock species ──
+
+(isa Swine Collection)
+(isa Bovine Collection)
+(isa Ovine Collection)
+(isa Caprine Collection)
+(isa Equine Collection)
+(isa Poultry Collection)
+
+(genls Swine Livestock)
+(genls Bovine Livestock)
+(genls Ovine Livestock)
+(genls Caprine Livestock)
+(genls Equine Livestock)
+(genls Poultry Livestock)
+
+(comment Swine "Sus domesticus. Pigs. The focus domain of the Sounder substrate.")
+(comment Bovine "Bos taurus / Bos indicus. Cattle.")
+(comment Ovine "Ovis aries. Sheep.")
+(comment Caprine "Capra aegagrus hircus. Goats.")
+(comment Equine "Equus caballus. Horses.")
+(comment Poultry "Gallus gallus domesticus and related. Chickens, turkeys, ducks.")
+
+;; Poultry is technically a Bird, not a Mammal, but is placed under
+;; Livestock for agricultural classification purposes.
+;; In a strict zoological hierarchy this would be genls Poultry Bird.
+;; Sounder uses the agricultural taxonomy, not the zoological one.
+
+;; ── Species disjointness ──
+
+(disjointWith Swine Bovine)
+(disjointWith Swine Ovine)
+(disjointWith Swine Caprine)
+(disjointWith Swine Equine)
+(disjointWith Swine Poultry)
+(disjointWith Bovine Ovine)
+(disjointWith Bovine Caprine)
+(disjointWith Bovine Equine)
+(disjointWith Bovine Poultry)
+(disjointWith Ovine Caprine)
+(disjointWith Ovine Equine)
+(disjointWith Ovine Poultry)
+(disjointWith Caprine Equine)
+(disjointWith Caprine Poultry)
+(disjointWith Equine Poultry)
+
+;; ── Every swine individual is an IndividualEntity NODE ──
+
+(implies (isa ?animal Swine) (isa ?animal IndividualEntity))
+
+
+;;; ============================================================
+;;; SECTION 2: BREED HIERARCHY
+;;; ============================================================
+;;; 13 breeds total: 10 purebred, 3 crossbred designations.
+;;; The purebred/crossbred split is the fundamental division
+;;; in swine genetics commerce. Purebreds carry pedigree
+;;; registration; crossbreds carry heterosis (hybrid vigor).
+
+(isa SwineBreed Collection)
+(genls SwineBreed Swine)
+(comment SwineBreed "A recognized breed or cross classification within Sus domesticus.")
+
+;; ── Purebred vs Crossbred ──
+
+(isa Purebred Collection)
+(isa Crossbred Collection)
+(genls Purebred SwineBreed)
+(genls Crossbred SwineBreed)
+(disjointWith Purebred Crossbred)
+(comment Purebred "An animal whose ancestry traces entirely within a single recognized breed. Eligible for pedigree registration.")
+(comment Crossbred "An animal whose ancestry includes two or more recognized breeds. Carries heterosis but is not eligible for purebred registry.")
+
+;; ── Purebred breeds (10) ──
+
+(isa Hampshire Collection)
+(isa Berkshire Collection)
+(isa Duroc Collection)
+(isa Landrace Collection)
+(isa PolandChina Collection)
+(isa Spot Collection)
+(isa Yorkshire Collection)
+(isa ChesterWhite Collection)
+(isa Hereford Collection)
+(isa Tamworth Collection)
+
+(genls Hampshire Purebred)
+(genls Berkshire Purebred)
+(genls Duroc Purebred)
+(genls Landrace Purebred)
+(genls PolandChina Purebred)
+(genls Spot Purebred)
+(genls Yorkshire Purebred)
+(genls ChesterWhite Purebred)
+(genls Hereford Purebred)
+(genls Tamworth Purebred)
+
+;; ── Purebred breed disjointness ──
+;; A purebred animal belongs to exactly one breed.
+
+(disjointWith Hampshire Berkshire)
+(disjointWith Hampshire Duroc)
+(disjointWith Hampshire Landrace)
+(disjointWith Hampshire PolandChina)
+(disjointWith Hampshire Spot)
+(disjointWith Hampshire Yorkshire)
+(disjointWith Hampshire ChesterWhite)
+(disjointWith Hampshire Hereford)
+(disjointWith Hampshire Tamworth)
+(disjointWith Berkshire Duroc)
+(disjointWith Berkshire Landrace)
+(disjointWith Berkshire PolandChina)
+(disjointWith Berkshire Spot)
+(disjointWith Berkshire Yorkshire)
+(disjointWith Berkshire ChesterWhite)
+(disjointWith Berkshire Hereford)
+(disjointWith Berkshire Tamworth)
+(disjointWith Duroc Landrace)
+(disjointWith Duroc PolandChina)
+(disjointWith Duroc Spot)
+(disjointWith Duroc Yorkshire)
+(disjointWith Duroc ChesterWhite)
+(disjointWith Duroc Hereford)
+(disjointWith Duroc Tamworth)
+(disjointWith Landrace PolandChina)
+(disjointWith Landrace Spot)
+(disjointWith Landrace Yorkshire)
+(disjointWith Landrace ChesterWhite)
+(disjointWith Landrace Hereford)
+(disjointWith Landrace Tamworth)
+(disjointWith PolandChina Spot)
+(disjointWith PolandChina Yorkshire)
+(disjointWith PolandChina ChesterWhite)
+(disjointWith PolandChina Hereford)
+(disjointWith PolandChina Tamworth)
+(disjointWith Spot Yorkshire)
+(disjointWith Spot ChesterWhite)
+(disjointWith Spot Hereford)
+(disjointWith Spot Tamworth)
+(disjointWith Yorkshire ChesterWhite)
+(disjointWith Yorkshire Hereford)
+(disjointWith Yorkshire Tamworth)
+(disjointWith ChesterWhite Hereford)
+(disjointWith ChesterWhite Tamworth)
+(disjointWith Hereford Tamworth)
+
+;; ── Crossbred designations (3) ──
+
+(isa Cross Collection)
+(isa LightCross Collection)
+(isa DarkCross Collection)
+
+(genls Cross Crossbred)
+(genls LightCross Crossbred)
+(genls DarkCross Crossbred)
+
+(comment Cross "Generic crossbred. Two or more breeds in unknown or unspecified proportions.")
+(comment LightCross "Crossbred from light/white breeds: Yorkshire, Landrace, Chester White. Maternal emphasis.")
+(comment DarkCross "Crossbred from dark/colored breeds: Hampshire, Berkshire, Duroc, Poland China, Spot. Terminal emphasis.")
+
+;; ── Breed characteristics ──
+;; Recorded as declarative attributes. These are the phenotypic
+;; and performance characteristics that define each breed's identity
+;; in the swine industry.
+
+;; Predicates for breed characteristics
+(isa breedColor Relation)
+(arity breedColor 2)
+(comment breedColor "The characteristic coat color or pattern of a breed.")
+
+(isa breedConformation Relation)
+(arity breedConformation 2)
+(comment breedConformation "The characteristic body type or muscling of a breed.")
+
+(isa breedStrength Relation)
+(arity breedStrength 2)
+(comment breedStrength "The primary production advantage of a breed.")
+
+(isa breedType Relation)
+(arity breedType 2)
+(comment breedType "Classification of a breed's primary use: maternal, terminal, or dual-purpose.")
+
+(isa breedOrigin Relation)
+(arity breedOrigin 2)
+(comment breedOrigin "Country or region of origin for a breed.")
+
+;; Hampshire
+(breedColor Hampshire "Black with white belt encircling shoulders and forelegs")
+(breedConformation Hampshire "Muscular, lean, well-structured")
+(breedStrength Hampshire "Lean meat yield, muscling, carcass merit")
+(breedType Hampshire Terminal)
+(breedOrigin Hampshire "Hampshire, England")
+(comment Hampshire "The most popular terminal sire breed in the United States. Characterized by the distinctive white belt on an otherwise black body. Known for lean, heavily muscled carcasses with minimal backfat. Dominant in show ring and in crossbreeding programs as terminal sire.")
+
+;; Berkshire
+(breedColor Berkshire "Black with six white points: four feet, snout, tail tip")
+(breedConformation Berkshire "Medium frame, refined, smooth")
+(breedStrength Berkshire "Marbling, meat quality, pH, tenderness")
+(breedType Berkshire Terminal)
+(breedOrigin Berkshire "Berkshire, England")
+(comment Berkshire "The premier meat-quality breed. Berkshire pork commands premium prices in Japanese and specialty markets due to superior intramuscular fat (marbling), higher ultimate pH, darker color, and exceptional tenderness. The Berkshire Gold program certifies purebred Berkshire pork for premium positioning.")
+
+;; Duroc
+(breedColor Duroc "Red to copper, solid color ranging from light gold to deep mahogany")
+(breedConformation Duroc "Large frame, thick, deep-bodied")
+(breedStrength Duroc "Growth rate, feed efficiency, hardiness")
+(breedType Duroc Terminal)
+(breedOrigin Duroc "United States (New York and New Jersey)")
+(comment Duroc "The workhorse terminal breed. Durocs grow faster and more efficiently than any other purebred. They are hardy, docile, and adaptable to diverse environments. Widely used as terminal sires in commercial crossbreeding. Red color makes them easily identifiable in mixed herds.")
+
+;; Yorkshire
+(breedColor Yorkshire "White, clean, free of colored hair")
+(breedConformation Yorkshire "Large frame, long body, upright ears")
+(breedStrength Yorkshire "Litter size, mothering ability, milking capacity")
+(breedType Yorkshire Maternal)
+(breedOrigin Yorkshire "Yorkshire, England")
+(comment Yorkshire "The most recorded breed in the United States and Canada. Yorkshires are the foundation maternal breed in commercial swine production. Large litters, excellent milk production, and strong mothering instincts make them the dominant dam line in F1 cross programs. Also known as Large White internationally.")
+
+;; Landrace
+(breedColor Landrace "White, clean")
+(breedConformation Landrace "Long body, drooping ears, fine hair, extra rib")
+(breedStrength Landrace "Prolificacy, litter size, body length, docility")
+(breedType Landrace Maternal)
+(breedOrigin Landrace "Denmark")
+(comment Landrace "The second major maternal breed. Landrace are known for their extra body length (16-17 rib pairs vs standard 14-15), exceptional litter sizes, and docile temperament. Crossed with Yorkshire to produce the F1 gilt that dominates commercial production worldwide. The drooping ears distinguish them from Yorkshire.")
+
+;; Poland China
+(breedColor PolandChina "Black with six white points: four feet, snout, tail tip")
+(breedConformation PolandChina "Heavy muscling, thick, wide, compact")
+(breedStrength PolandChina "Muscling, carcass weight, ruggedness")
+(breedType PolandChina Terminal)
+(breedOrigin PolandChina "Butler County, Ohio, United States")
+(comment PolandChina "One of the oldest American breeds. Poland Chinas are the heaviest-muscled swine breed, producing the highest carcass yields. They are popular in show ring competition where muscling and structural correctness are prioritized. Despite the name, the breed has no connection to Poland or China; it was developed in the Miami Valley of Ohio.")
+
+;; Spot (Spotted)
+(breedColor Spot "Black and white spots, approximately 50/50 distribution")
+(breedConformation Spot "Medium frame, moderate muscling, good depth")
+(breedStrength Spot "Feed efficiency, rate of gain, docility")
+(breedType Spot DualPurpose)
+(breedOrigin Spot "Indiana, United States")
+(comment Spot "Formerly Spotted Poland China. Spots are known for outstanding feed conversion and rate of gain. The distinctive spotted pattern makes them popular in youth show programs. They combine moderate muscling with efficient growth, making them versatile in both purebred and crossbred programs.")
+
+;; Chester White
+(breedColor ChesterWhite "All white, clean, free of any colored hair")
+(breedConformation ChesterWhite "Medium to large frame, moderate muscling, drooping ears")
+(breedStrength ChesterWhite "Durability, soundness, mothering ability, docility")
+(breedType ChesterWhite Maternal)
+(breedOrigin ChesterWhite "Chester County, Pennsylvania, United States")
+(comment ChesterWhite "A versatile white breed that serves both maternal and terminal roles. Chester Whites are known for exceptional structural soundness, longevity, and docile temperament. Their mothering ability rivals Yorkshire and Landrace. They are used in light-cross programs where all-white phenotype is desired.")
+
+;; Hereford
+(breedColor Hereford "Red body with white face, similar to Hereford cattle markings")
+(breedConformation Hereford "Medium frame, smooth, moderate muscling")
+(breedStrength Hereford "Hardiness, foraging ability, docility, efficiency on pasture")
+(breedType Hereford DualPurpose)
+(breedOrigin Hereford "United States (from Duroc, Poland China, and Chester White crosses)")
+(comment Hereford "A distinctively colored breed developed to have the same markings as Hereford cattle. Herefords are exceptionally hardy and efficient on pasture, making them popular with small and outdoor operations. They are the most docile of all swine breeds. The National Hereford Hog Record Association maintains the registry.")
+
+;; Tamworth
+(breedColor Tamworth "Red to ginger, solid color, erect ears")
+(breedConformation Tamworth "Long body, narrow, lean, long snout")
+(breedStrength Tamworth "Bacon production, outdoor foraging, hardiness, lean carcass")
+(breedType Tamworth Terminal)
+(breedOrigin Tamworth "Tamworth, Staffordshire, England")
+(comment Tamworth "The classic bacon breed. Tamworths produce the longest, leanest sides of any breed, making them prized for bacon production. They are the most primitive of the modern breeds, retaining strong foraging instincts and outdoor hardiness. Their long snout and active rooting make them excellent for pasture-based and woodland systems. Rare in commercial production but valued in heritage and specialty markets.")
+
+
+;;; ============================================================
+;;; SECTION 3: BREED COLOR CLASSIFICATION
+;;; ============================================================
+;;; The light/dark split is fundamental to show classification,
+;;; crossbreeding programs, and market identity.
+
+(isa BreedColorClass Collection)
+(comment BreedColorClass "Classification of breeds by phenotypic color group. Determines show divisions and crossbred designations.")
+
+(isa LightBreed BreedColorClass)
+(isa DarkBreed BreedColorClass)
+(disjointWith LightBreed DarkBreed)
+
+(comment LightBreed "White or light-colored breeds. Primarily maternal lines. Yorkshire, Landrace, Chester White.")
+(comment DarkBreed "Colored breeds. Primarily terminal lines. Hampshire, Berkshire, Duroc, Poland China, Spot, Hereford, Tamworth.")
+
+;; Light breed assignments
+(hasColorClass Yorkshire LightBreed)
+(hasColorClass Landrace LightBreed)
+(hasColorClass ChesterWhite LightBreed)
+
+;; Dark breed assignments
+(hasColorClass Hampshire DarkBreed)
+(hasColorClass Berkshire DarkBreed)
+(hasColorClass Duroc DarkBreed)
+(hasColorClass PolandChina DarkBreed)
+(hasColorClass Spot DarkBreed)
+(hasColorClass Hereford DarkBreed)
+(hasColorClass Tamworth DarkBreed)
+
+;; ── Light/dark cross composition rules ──
+
+(implies
+  (and (isa ?animal LightCross)
+       (hasSire ?animal ?sire)
+       (hasDam ?animal ?dam))
+  (and (hasColorClass (breedOf ?sire) LightBreed)
+       (hasColorClass (breedOf ?dam) LightBreed)))
+
+(implies
+  (and (isa ?animal DarkCross)
+       (hasSire ?animal ?sire)
+       (hasDam ?animal ?dam))
+  (and (hasColorClass (breedOf ?sire) DarkBreed)
+       (hasColorClass (breedOf ?dam) DarkBreed)))
+
+;; ── Breed type classifications ──
+
+(isa BreedPurpose Collection)
+(isa Maternal BreedPurpose)
+(isa Terminal BreedPurpose)
+(isa DualPurpose BreedPurpose)
+
+(comment Maternal "Breeds selected for reproduction traits: litter size, milk, mothering. Used as dam lines.")
+(comment Terminal "Breeds selected for growth and carcass traits: muscling, leanness, feed efficiency. Used as sire lines.")
+(comment DualPurpose "Breeds with balanced maternal and terminal characteristics.")
+
+
+;;; ============================================================
+;;; SECTION 4: ROLE HIERARCHY
+;;; ============================================================
+;;; An animal's role defines its function in the operation.
+;;; Roles are not permanent -- they change over time via SIGNAL
+;;; events. A Gilt becomes a Sow after first farrowing. A young
+;;; boar may become a Barrow if castrated. These transitions are
+;;; the temporal heartbeat of a swine operation.
+
+(isa AnimalRole Collection)
+(genls AnimalRole AbstractEntity)
+(comment AnimalRole "The functional classification of a swine animal at a given point in time. Roles change via lifecycle SIGNAL events.")
+
+;; ── Breeding stock vs market animal ──
+
+(isa BreedingStock AnimalRole)
+(isa MarketAnimal AnimalRole)
+(disjointWith BreedingStock MarketAnimal)
+(comment BreedingStock "Animals retained for reproduction. Their genetic contribution is the primary value.")
+(comment MarketAnimal "Animals destined for slaughter. Their carcass merit is the primary value.")
+
+;; ── Breeding stock roles ──
+
+(isa Boar AnimalRole)
+(isa Sow AnimalRole)
+(isa Gilt AnimalRole)
+(genls Boar BreedingStock)
+(genls Sow BreedingStock)
+(genls Gilt BreedingStock)
+
+(comment Boar "An intact male swine retained for breeding purposes. Produces semen for natural service or artificial insemination.")
+(comment Sow "A female swine that has farrowed at least one litter. The production unit of a breeding operation.")
+(comment Gilt "A young female swine that has not yet farrowed. Potential replacement female for the sow herd.")
+
+;; ── Market animal roles ──
+
+(isa Barrow AnimalRole)
+(genls Barrow MarketAnimal)
+(comment Barrow "A castrated male swine. Castration eliminates boar taint and aggressive behavior, making the animal suitable for market.")
+
+;; ── Role sex constraints ──
+
+(isa AnimalSex Collection)
+(isa Male AnimalSex)
+(isa Female AnimalSex)
+(disjointWith Male Female)
+
+(implies (hasRole ?animal Boar) (hasSex ?animal Male))
+(implies (hasRole ?animal Sow) (hasSex ?animal Female))
+(implies (hasRole ?animal Gilt) (hasSex ?animal Female))
+(implies (hasRole ?animal Barrow) (hasSex ?animal Male))
+
+;; ── Role transition rules ──
+;; These are the SIGNAL events that change an animal's role.
+;; Each transition is a temporal event on the animal's lifecycle.
+
+(isa RoleTransition StateChange)
+(comment RoleTransition "A SIGNAL event that changes an animal's functional role.")
+
+(isa GiltToSowTransition RoleTransition)
+(isa BoarToCullTransition RoleTransition)
+(isa GiltToCullTransition RoleTransition)
+(isa SowToCullTransition RoleTransition)
+(isa IntactToBarrowTransition RoleTransition)
+
+(comment GiltToSowTransition "Triggered by first farrowing event. The gilt becomes a sow.")
+(comment BoarToCullTransition "Triggered by removal from breeding herd. Boar is marketed or culled.")
+(comment SowToCullTransition "Triggered by productivity decline or structural failure. Sow is marketed or culled.")
+(comment IntactToBarrowTransition "Triggered by castration. Intact male becomes a barrow.")
+
+;; A gilt becomes a sow upon first farrowing
+(implies
+  (and (hasRole ?animal Gilt)
+       (hasSignal ?animal FirstFarrowingEvent))
+  (hasRole ?animal Sow))
+
+;; An intact male becomes a barrow upon castration
+(implies
+  (and (hasSex ?animal Male)
+       (hasSignal ?animal CastrationEvent))
+  (hasRole ?animal Barrow))
+
+;; ── Age/weight classifications for show ──
+
+(isa ShowDivision Collection)
+(comment ShowDivision "Age and weight classifications used in show ring competition.")
+
+(isa JuniorShowDivision ShowDivision)
+(isa SeniorShowDivision ShowDivision)
+(disjointWith JuniorShowDivision SeniorShowDivision)
+
+(comment JuniorShowDivision "Younger and/or lighter animals. Typically under a specified age or weight threshold.")
+(comment SeniorShowDivision "Older and/or heavier animals. Typically over a specified age or weight threshold.")
+
+;; Show class structure: breed x sex x division
+(isa ShowClass Collection)
+(comment ShowClass "A specific competitive class: breed + sex + age division. Example: Hampshire Gilts, Junior Division.")
+
+(implies
+  (isa ?class ShowClass)
+  (and (thereExists ?breed (showClassBreed ?class ?breed))
+       (thereExists ?sex (showClassSex ?class ?sex))
+       (thereExists ?div (showClassDivision ?class ?div))))
+
+;; Light vs dark breed show divisions
+(implies
+  (and (showClassBreed ?class ?breed)
+       (hasColorClass ?breed LightBreed))
+  (showClassColorGroup ?class LightBreed))
+
+(implies
+  (and (showClassBreed ?class ?breed)
+       (hasColorClass ?breed DarkBreed))
+  (showClassColorGroup ?class DarkBreed))
+
+;; Crossbred show classes
+(implies
+  (and (showClassBreed ?class LightCross)
+       (showClassColorGroup ?class LightBreed))
+  (isa ?class CrossbredShowClass))
+
+(implies
+  (and (showClassBreed ?class DarkCross)
+       (showClassColorGroup ?class DarkBreed))
+  (isa ?class CrossbredShowClass))
+
+
+;;; ============================================================
+;;; SECTION 5: STRESS STATUS CLASSIFICATION
+;;; ============================================================
+;;; Porcine Stress Syndrome (PSS) is caused by a point mutation
+;;; in the ryanodine receptor gene (RYR1). The halothane gene
+;;; test or DNA test determines an animal's status. PSS-positive
+;;; animals produce pale, soft, exudative (PSE) pork and are
+;;; susceptible to sudden death under stress (transport, heat,
+;;; handling). Stress status is the single most important genetic
+;;; marker in the swine industry.
+
+(isa StressStatus Collection)
+(genls StressStatus AbstractEntity)
+(comment StressStatus "Porcine Stress Syndrome (PSS/RYR1) genotype classification. Determines meat quality risk and breeding suitability.")
+
+(isa StressNegative StressStatus)
+(isa StressCarrier StressStatus)
+(isa StressPositive StressStatus)
+(isa StressUntested StressStatus)
+
+(comment StressNegative "Homozygous normal (NN). PSS-free. Desired genotype. Cannot produce stress-positive offspring when mated to another negative animal.")
+(comment StressCarrier "Heterozygous (Nn). Phenotypically normal but carries one copy of the mutant allele. Can produce stress-positive offspring when mated to another carrier.")
+(comment StressPositive "Homozygous mutant (nn). Stress-susceptible. Produces pale, soft, exudative (PSE) pork. Susceptible to sudden death under stress. Not desirable for breeding.")
+(comment StressUntested "Stress genotype has not been determined. Common in older pedigree records and small operations.")
+
+;; ── Stress disjointness ──
+
+(disjointWith StressNegative StressCarrier)
+(disjointWith StressNegative StressPositive)
+(disjointWith StressNegative StressUntested)
+(disjointWith StressCarrier StressPositive)
+(disjointWith StressCarrier StressUntested)
+(disjointWith StressPositive StressUntested)
+
+;; ── Stress status predicate ──
+
+(isa hasStressStatus Relation)
+(arity hasStressStatus 2)
+(arg1Isa hasStressStatus Swine)
+(arg2Isa hasStressStatus StressStatus)
+(comment hasStressStatus "The PSS/RYR1 genotype of a swine animal.")
+
+;; ── Mendelian inheritance rules for stress ──
+
+;; Two negative parents guarantee negative offspring
+(implies
+  (and (hasStressStatus ?sire StressNegative)
+       (hasStressStatus ?dam StressNegative)
+       (SIRE_OF ?sire ?offspring)
+       (DAM_OF ?dam ?offspring))
+  (expectedStressStatus ?offspring StressNegative))
+
+;; Negative x Carrier: offspring are negative or carrier (never positive)
+(implies
+  (and (hasStressStatus ?sire StressNegative)
+       (hasStressStatus ?dam StressCarrier)
+       (SIRE_OF ?sire ?offspring)
+       (DAM_OF ?dam ?offspring))
+  (or (expectedStressStatus ?offspring StressNegative)
+      (expectedStressStatus ?offspring StressCarrier)))
+
+;; Carrier x Carrier: offspring can be negative, carrier, or positive (1:2:1)
+(implies
+  (and (hasStressStatus ?sire StressCarrier)
+       (hasStressStatus ?dam StressCarrier)
+       (SIRE_OF ?sire ?offspring)
+       (DAM_OF ?dam ?offspring))
+  (or (expectedStressStatus ?offspring StressNegative)
+      (expectedStressStatus ?offspring StressCarrier)
+      (expectedStressStatus ?offspring StressPositive)))
+
+;; Any parent positive guarantees no negative offspring
+(implies
+  (and (hasStressStatus ?sire StressPositive)
+       (SIRE_OF ?sire ?offspring)
+       (DAM_OF ?dam ?offspring))
+  (not (expectedStressStatus ?offspring StressNegative)))
+
+;; ── Breeding suitability rules ──
+
+(isa notDesirableForBreeding Relation)
+(arity notDesirableForBreeding 1)
+(arg1Isa notDesirableForBreeding Swine)
+(comment notDesirableForBreeding "An animal that should not be used in a breeding program due to genetic defect, structural unsoundness, or other disqualifying trait.")
+
+;; Stress-positive animals should not be bred
+(implies
+  (hasStressStatus ?animal StressPositive)
+  (notDesirableForBreeding ?animal))
+
+;; Carrier-to-carrier matings are discouraged (risk of positive offspring)
+(isa carrierToCarrierRisk Relation)
+(arity carrierToCarrierRisk 2)
+(comment carrierToCarrierRisk "A mating between two stress carriers. 25% expected positive offspring. Discouraged in responsible breeding programs.")
+
+(implies
+  (and (hasStressStatus ?sire StressCarrier)
+       (hasStressStatus ?dam StressCarrier))
+  (carrierToCarrierRisk ?sire ?dam))
+
+
+;;; ============================================================
+;;; SECTION 6: BREED-SPECIFIC PREDICATES
+;;; ============================================================
+;;; Predicates that connect animals to their breed identity
+;;; within the Charlotte primitive framework.
+
+(isa hasBreed Relation)
+(arity hasBreed 2)
+(arg1Isa hasBreed Swine)
+(arg2Isa hasBreed SwineBreed)
+(comment hasBreed "The breed classification of a swine animal. For purebreds, this is a single breed. For crossbreds, this is the cross designation.")
+
+(isa hasSire Relation)
+(arity hasSire 2)
+(arg1Isa hasSire Swine)
+(arg2Isa hasSire Swine)
+(comment hasSire "The sire (father) of an animal. Resolves to SIRE_OF edge in the knowledge graph.")
+
+(isa hasDam Relation)
+(arity hasDam 2)
+(arg1Isa hasDam Swine)
+(arg2Isa hasDam Swine)
+(comment hasDam "The dam (mother) of an animal. Resolves to DAM_OF edge in the knowledge graph.")
+
+(isa hasRole Relation)
+(arity hasRole 2)
+(arg1Isa hasRole Swine)
+(arg2Isa hasRole AnimalRole)
+(comment hasRole "The current functional role of an animal. Changes over time via RoleTransition SIGNAL events.")
+
+(isa hasSex Relation)
+(arity hasSex 2)
+(arg1Isa hasSex Swine)
+(arg2Isa hasSex AnimalSex)
+(comment hasSex "The biological sex of an animal. Immutable.")
+
+(isa breedOf Relation)
+(arity breedOf 2)
+(comment breedOf "Returns the breed collection an individual animal belongs to.")
+
+;; ── Breed implies species ──
+
+(implies (hasBreed ?animal ?breed) (isa ?animal Swine))
+
+;; ── Purebred registration eligibility ──
+
+(implies
+  (and (isa ?animal Purebred)
+       (hasBreed ?animal ?breed)
+       (hasSire ?animal ?sire)
+       (hasDam ?animal ?dam)
+       (hasBreed ?sire ?breed)
+       (hasBreed ?dam ?breed))
+  (eligibleForRegistration ?animal ?breed))
+
+
+;;; ============================================================
+;;; SECTION 7: LITTER AND REPRODUCTION TAXONOMY
+;;; ============================================================
+;;; A litter is a GROUP entity containing individual animals
+;;; born from a single farrowing event. The litter is the
+;;; fundamental production unit in swine operations.
+
+(isa Litter GroupEntity)
+(comment Litter "A group of piglets born from a single farrowing event. Each litter has one dam, one sire, and a farrowing date.")
+
+(isa FarrowingEvent EventEntity)
+(comment FarrowingEvent "The birth event of a litter. A SIGNAL on the dam's lifecycle.")
+
+(isa FirstFarrowingEvent FarrowingEvent)
+(comment FirstFarrowingEvent "A dam's first farrowing. Triggers the GiltToSowTransition.")
+
+(isa CastrationEvent EventEntity)
+(comment CastrationEvent "The castration of a male pig. Triggers the IntactToBarrowTransition.")
+
+(isa WeaningEvent EventEntity)
+(comment WeaningEvent "The separation of piglets from the dam. Typically at 21-28 days of age.")
+
+(isa hasLitterSize Relation)
+(arity hasLitterSize 2)
+(arg1Isa hasLitterSize Litter)
+(comment hasLitterSize "The number of piglets born in a litter. Includes born alive, stillborn, and mummified.")
+
+(isa hasBornAlive Relation)
+(arity hasBornAlive 2)
+(arg1Isa hasBornAlive Litter)
+(comment hasBornAlive "The number of piglets born alive in a litter.")
+
+(isa hasWeaned Relation)
+(arity hasWeaned 2)
+(arg1Isa hasWeaned Litter)
+(comment hasWeaned "The number of piglets weaned from a litter. Key productivity metric.")
+
+;; Every litter has exactly one sire and one dam
+(implies
+  (isa ?litter Litter)
+  (and (thereExists ?sire (litterSire ?litter ?sire))
+       (thereExists ?dam (litterDam ?litter ?dam))
+       (thereExists ?date (litterFarrowDate ?litter ?date))))

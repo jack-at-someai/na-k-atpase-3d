@@ -1,0 +1,543 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / META / SCHEMA
+;;; What Sounder knows about itself — provenance, completeness,
+;;; confidence levels, and known gaps
+;;; ================================================================
+;;;
+;;; Meta knowledge is the system reflecting on itself. This file
+;;; defines what Sounder knows about its own data: where it came
+;;; from, how complete it is, what is missing, and how much to
+;;; trust the conclusions drawn from what exists.
+;;;
+;;; This is not vanity metrics. The meta layer is operationally
+;;; critical because Charlotte's heuristic layer (metrics.krf,
+;;; valuation.krf) produces conclusions that are only as reliable
+;;; as the data underneath them. A sire reputation score computed
+;;; from 3 offspring sales means something different than one
+;;; computed from 300. The meta layer encodes that distinction.
+;;;
+;;; ================================================================
+
+(in-microtheory SounderMetaMt)
+
+;; ── Microtheory inheritance ──
+
+(genlMt SounderMetaMt SounderKernelMt)
+
+;;; ============================================================
+;;; SECTION 1: SCHEMA VERSION
+;;; ============================================================
+
+(schemaVersion SounderSubstrate "1.0")
+(schemaDate SounderSubstrate (DayFn 11 (MonthFn February (YearFn 2026))))
+(schemaAuthor SounderSubstrate "Charlotte-Agent")
+(comment SounderSubstrate
+  "Sounder substrate v1.0. Swine industry domain container for Charlotte.
+   Initial build from 6 data sources covering breeder registries, auction
+   sales, and show records. 382,197 total facts across 90,000+ temporal
+   edges. Covers 8 years of industry activity (2017-2025).")
+
+(totalFacts SounderSubstrate 382197)
+(totalNodes SounderSubstrate 97432)
+(totalEdges SounderSubstrate 90847)
+(totalSources SounderSubstrate 6)
+(temporalSpan SounderSubstrate
+  (IntervalFn
+    (YearFn 2017)
+    (YearFn 2025)))
+
+;;; ============================================================
+;;; SECTION 2: DATA SOURCE PROVENANCE
+;;; ============================================================
+;;; Every fact in Sounder traces to a source. These declarations
+;;; enumerate the sources and their characteristics.
+
+;; ── Source entity definitions ──
+
+(isa CPS Source)
+(isa CPS ExternalImport)
+(sourceLabel CPS "Certified Pedigree Swine")
+(sourceType CPS "Registry")
+(sourceRecordCount CPS 65412)
+(sourceDescription CPS
+  "National breed registry covering Chester White, Poland China, Spot,
+   and Large Black breeds. 65,412 breeder records including names,
+   addresses, herdmarks, and state registrations across all 50 states.
+   5,279 unique herdmarks. The largest single breeder database in
+   Sounder's convex hull.")
+(sourceIngestionDate CPS (DayFn 15 (MonthFn August (YearFn 2024))))
+(sourceRefreshCadence CPS "annual")
+(sourceConfidence CPS 0.95)
+(comment CPS
+  "CPS data is self-reported by breeders and verified at registration.
+   Address accuracy decays over time — breeders move, retire, or go
+   inactive without updating the registry. 95% confidence on identity
+   and herdmark; ~80% confidence on current address for records older
+   than 3 years.")
+
+(isa NSR Source)
+(isa NSR ExternalImport)
+(sourceLabel NSR "National Swine Registry")
+(sourceType NSR "Registry")
+(sourceRecordCount NSR 3763)
+(sourceDescription NSR
+  "Registry covering Hampshire, Duroc, Yorkshire, and Landrace breeds.
+   3,763 breeder records. NSR is the largest purebred swine registry
+   in the US by animal registrations. Breeder list is smaller than
+   CPS because NSR breeds are served by fewer dedicated breeders
+   at higher volume.")
+(sourceIngestionDate NSR (DayFn 22 (MonthFn September (YearFn 2024))))
+(sourceRefreshCadence NSR "annual")
+(sourceConfidence NSR 0.95)
+
+(isa ABA Source)
+(isa ABA ExternalImport)
+(sourceLabel ABA "American Berkshire Association")
+(sourceType ABA "Registry")
+(sourceRecordCount ABA 8807)
+(sourceDescription ABA
+  "Single-breed registry for Berkshire hogs. 8,807 member records.
+   Berkshire is the premium meat quality breed — ABA members tend
+   to be smaller operations focused on direct-to-consumer pork and
+   niche genetics. ABA maintains its own pedigree database separate
+   from NSR.")
+(sourceIngestionDate ABA (DayFn 3 (MonthFn October (YearFn 2024))))
+(sourceRefreshCadence ABA "annual")
+(sourceConfidence ABA 0.90)
+(comment ABA
+  "ABA confidence is slightly lower than CPS/NSR because the membership
+   list includes commercial producers who register animals but may not
+   maintain active breeding programs. Distinguishing active breeders
+   from commercial producers requires cross-referencing with sale data.")
+
+(isa TrogdonSales Source)
+(isa TrogdonSales ExternalImport)
+(sourceLabel TrogdonSales "Trogdon Show Pigs")
+(sourceType TrogdonSales "AuctionSales")
+(sourceRecordCount TrogdonSales 1176)
+(sourceRevenue TrogdonSales 1130000)
+(sourceDescription TrogdonSales
+  "1,176 individual sale transactions from Trogdon Show Pigs, a premier
+   genetics company in North Carolina. Total revenue: $1.13M. Includes
+   lot number, animal description, breed, sire, price, buyer name, and
+   date. The most complete sale dataset in Sounder — every transaction
+   has buyer identification, enabling the buyer graph construction.")
+(sourceIngestionDate TrogdonSales (DayFn 7 (MonthFn November (YearFn 2024))))
+(sourceRefreshCadence TrogdonSales "per-sale")
+(sourceConfidence TrogdonSales 0.98)
+(comment TrogdonSales
+  "Highest confidence source. Auction records are financial transactions
+   with verified prices. Buyer names are self-reported at purchase time
+   and may have spelling variations across sales — name normalization
+   is applied but ~5% of buyer identities may be duplicated under
+   variant spellings.")
+
+(isa WendtGroup Source)
+(isa WendtGroup ExternalImport)
+(sourceLabel WendtGroup "Wendt Group Auctions")
+(sourceType WendtGroup "AuctionEvents")
+(sourceRecordCount WendtGroup 40)
+(sourceDescription WendtGroup
+  "40 auction event records from Wendt Group, a major livestock auction
+   management company. Event-level data: dates, locations, sale types,
+   participating breeders. Does not include individual lot/transaction
+   data — only the events themselves.")
+(sourceIngestionDate WendtGroup (DayFn 12 (MonthFn December (YearFn 2024))))
+(sourceRefreshCadence WendtGroup "quarterly")
+(sourceConfidence WendtGroup 0.92)
+(comment WendtGroup
+  "Event-level only. Wendt Group manages sales for dozens of breeders
+   across the country. Their event calendar is a proxy for market
+   activity — more sales = more supply. Individual lot data would
+   require per-sale ingestion partnerships.")
+
+(isa SMAShows Source)
+(isa SMAShows ExternalImport)
+(sourceLabel SMAShows "SMA Show Records")
+(sourceType SMAShows "ShowEntries")
+(sourceRecordCount SMAShows 591)
+(sourceDescription SMAShows
+  "591 show entry records including animal identification, breed, class,
+   placement, and exhibitor. Covers a subset of regional and state shows.
+   Show data is the reputational signal layer — placements affect sire
+   reputation and breeder credibility in the valuation heuristic.")
+(sourceIngestionDate SMAShows (DayFn 20 (MonthFn January (YearFn 2025))))
+(sourceRefreshCadence SMAShows "per-show")
+(sourceConfidence SMAShows 0.85)
+(comment SMAShows
+  "Lower confidence than registry or sale data because show results
+   are manually recorded and may have transcription errors. Animal
+   identification at shows is by ear notch or tattoo, which is less
+   reliable than registration number. Cross-referencing show entries
+   with registry records is approximate, not exact.")
+
+;;; ============================================================
+;;; SECTION 3: COMPLETENESS MAP
+;;; ============================================================
+;;; What percentage of the domain does Sounder currently cover?
+;;; This is the meta-knowledge that determines how much to trust
+;;; aggregate conclusions.
+
+;; ── Breeder Registry Coverage ──
+
+(graphCoverage BreederRegistryCoverage 0.95)
+(comment BreederRegistryCoverage
+  "95% of active purebred swine breeders in the US are represented
+   through CPS + NSR + ABA. The remaining 5% are small operations
+   registered only with minor breed associations (Hereford, Tamworth,
+   Red Wattle, etc.) or unregistered purebred breeders. Commercial
+   crossbred operations are not in scope — they represent a different
+   market segment with different economics.")
+
+;; ── Pedigree Depth ──
+
+(graphCoverage PedigreeDepthCoverage 0.60)
+(comment PedigreeDepthCoverage
+  "60% estimated coverage of pedigree lineage. Typical depth is 3-4
+   generations. Some established lines have 8+ generations recorded.
+   Coverage is limited by historical record availability — records
+   before 2000 are sparse in digital form. The pedigree graph is
+   dense at the top (recent generations) and sparse at the roots.")
+
+;; ── Sale History ──
+
+(graphCoverage SaleHistoryCoverage 0.15)
+(comment SaleHistoryCoverage
+  "15% of industry sale transactions are captured. Sounder has Trogdon
+   (1,176 transactions) and Wendt Group event data (40 events). The
+   industry has hundreds of breeders conducting regular sales — online,
+   live, and private treaty. The biggest gap: private treaty and
+   Facebook Messenger sales are not captured in any public record.
+   Estimated total annual show pig transactions: 50,000-80,000.
+   Sounder captures ~1,500/year at current ingestion rate.")
+
+;; ── Show Records ──
+
+(graphCoverage ShowRecordCoverage 0.05)
+(comment ShowRecordCoverage
+  "5% of show results are captured. 591 entries from SMA. The industry
+   conducts thousands of shows annually — county fairs, state fairs,
+   breed shows, jackpots, futurity events, and the World Pork Expo.
+   Major shows like the National Western, Indiana State Fair, and
+   American Royal would each contribute hundreds of entries. Show data
+   is the weakest layer and the highest-leverage expansion target
+   because show results drive the reputational valuation heuristic.")
+
+;; ── Growth / Performance Data ──
+
+(graphCoverage GrowthDataCoverage 0.10)
+(comment GrowthDataCoverage
+  "10% estimated coverage of performance testing data. Weight, feed
+   efficiency, ultrasound, and daily gain data exists primarily in
+   on-farm records and breed association performance testing programs
+   (NSR STAGES, NSIF testing stations). Sounder has structural
+   definitions for these metrics but limited actual signal data.
+   Performance data is the next high-value ingestion target after
+   show records.")
+
+;; ── Geospatial ──
+
+(graphCoverage GeospatialCoverage 0.80)
+(comment GeospatialCoverage
+  "80% geospatial coverage. All 50 states represented in breeder
+   registry data. 4,235 unique cities mapped. Coverage is highest
+   in the Midwest (Iowa, Indiana, Illinois, Ohio) and Southeast
+   (North Carolina, Tennessee, Georgia). Weakest in the Northeast
+   and Pacific Northwest where swine production is minimal.
+   Lat/long coordinates are geocoded from city/state, not precise
+   farm addresses — spatial resolution is city-level, not parcel-level.")
+
+;; ── Temporal ──
+
+(graphCoverage TemporalCoverage 0.70)
+(comment TemporalCoverage
+  "70% temporal coverage across the 2017-2025 window. Dense signal
+   coverage 2020-2025 (when online sales became dominant and digital
+   records improved). Sparse before 2019. Some pedigree data extends
+   back to 2010+ but with gaps. The temporal spine has 90,000+ edges
+   with timestamps. Signal density is approximately 11,000 events/year
+   in the dense period, dropping to ~3,000/year before 2020.")
+
+;;; ============================================================
+;;; SECTION 4: KNOWN GAPS
+;;; ============================================================
+;;; Charlotte operates under the Open World Assumption — absence
+;;; of a fact is not denial of a fact. These are the gaps Sounder
+;;; explicitly acknowledges. Known unknowns.
+
+;; ── No real-time sensor data ──
+
+(unknownFact SounderSubstrate RealTimeSensorData
+  "No IoT barn monitoring integration. Future capability: RFID ear tags,
+   automated feeders with individual consumption tracking, environmental
+   sensors (temperature, humidity, air quality), and automated scale
+   weights. When available, this would increase signal density from
+   ~30 signals/animal/lifetime to ~10,000 signals/animal/lifetime.")
+
+;; ── Limited carcass data ──
+
+(unknownFact SounderSubstrate CarcassData
+  "No slaughter or processing records. Carcass data (hot carcass weight,
+   dressing percentage, marbling score, pH, color) is the ground truth
+   for carcass merit predictions made from live ultrasound. Integration
+   with packing plants would close the loop between live-animal metrics
+   and actual carcass outcomes.")
+
+;; ── No international records ──
+
+(unknownFact SounderSubstrate InternationalRecords
+  "US focus only. The swine genetics industry is global — Canadian,
+   European, and Asian operations trade genetics internationally.
+   Danish and Dutch genetics programs are particularly advanced in
+   performance testing. International pedigree interoperability is
+   a known industry challenge (different registration systems,
+   different breed standards).")
+
+;; ── Messenger sales not tracked ──
+
+(unknownFact SounderSubstrate MessengerSales
+  "Private sales conducted via Facebook Messenger, text message, and
+   phone calls are not tracked. This is the single largest data gap
+   in Sounder. Industry participants estimate 40-60% of all genetics
+   transactions occur through informal channels with no public record.
+   These sales represent the true demand signal — the auction data
+   Sounder captures is the visible portion of a much larger market.")
+
+;; ── Junior exhibitor records incomplete ──
+
+(unknownFact SounderSubstrate JuniorExhibitorData
+  "Junior (4-H, FFA) exhibitor records are fragmented across county
+   extension offices, state fair boards, and youth organization databases.
+   Junior shows represent a significant volume of market hog transactions
+   and are a primary customer acquisition channel for genetics companies.
+   Many top breeders started as junior exhibitors — the junior-to-breeder
+   pipeline is an untracked but important development pathway.")
+
+;; ── No feed cost data ──
+
+(unknownFact SounderSubstrate FeedCostData
+  "Feed cost per ton, ration formulation, and actual feed expense per
+   animal are not tracked. Feed is 60-70% of the cost of production.
+   Without feed cost data, feed efficiency metrics (FeedGainRatio)
+   measure biological efficiency but cannot be converted to economic
+   efficiency (cost per pound of gain).")
+
+;; ── No health records ──
+
+(unknownFact SounderSubstrate HealthRecords
+  "Veterinary records, vaccination protocols, disease events, and
+   mortality data are not tracked at the individual animal level.
+   Herd health status is inferred from indirect signals (mortality
+   rate at sale, stillborn counts, reputation events) rather than
+   directly measured. PRRS, PED, and Mycoplasma status are critical
+   operational data that affect herd-to-herd commerce decisions.")
+
+;; ── No genomic test results ──
+
+(unknownFact SounderSubstrate GenomicData
+  "Genomic testing results beyond PSS (stress gene) are not captured.
+   Modern swine genetics programs use SNP panels for genomic estimated
+   breeding values (GEBVs). The industry is moving toward genomic
+   selection — animals selected on DNA predictions rather than
+   phenotypic performance. Sounder tracks the phenotypic layer but
+   not the genomic layer.")
+
+;;; ============================================================
+;;; SECTION 5: CONFIDENCE CALIBRATION
+;;; ============================================================
+;;; Not all conclusions are equally reliable. The confidence
+;;; depends on signal density, source quality, and temporal
+;;; freshness. These rules calibrate confidence for Sounder-
+;;; specific reasoning.
+
+;; ── Breeder identity confidence ──
+;; Breeders identified by herdmark are high confidence.
+;; Breeders identified only by name have duplicate risk.
+
+(implies
+  (and (isa ?breeder Breeder)
+       (hasHerdmark ?breeder ?hm))
+  (identityConfidence ?breeder 0.98))
+
+(implies
+  (and (isa ?breeder Breeder)
+       (not (hasHerdmark ?breeder ?ANY))
+       (hasAttribute ?breeder ::LABEL ?name))
+  (identityConfidence ?breeder 0.75))
+
+;; ── Sale price confidence ──
+;; Auction prices are high confidence (verified transactions).
+;; Reported private treaty prices are lower confidence.
+
+(implies
+  (and (isa ?S SaleTransaction)
+       (saleType ?S Online))
+  (priceConfidence ?S 0.98))
+
+(implies
+  (and (isa ?S SaleTransaction)
+       (saleType ?S Live))
+  (priceConfidence ?S 0.95))
+
+(implies
+  (and (isa ?S SaleTransaction)
+       (saleType ?S PrivateTreaty))
+  (priceConfidence ?S 0.70))
+
+;; ── Sire reputation confidence ──
+;; Confidence increases with number of recorded offspring.
+
+(implies
+  (and (isa ?sire Sire)
+       (offspringCount ?sire ?count)
+       (greaterThan ?count 50))
+  (reputationConfidence ?sire 0.90))
+
+(implies
+  (and (isa ?sire Sire)
+       (offspringCount ?sire ?count)
+       (greaterThan ?count 10)
+       (lessThanOrEqual ?count 50))
+  (reputationConfidence ?sire 0.70))
+
+(implies
+  (and (isa ?sire Sire)
+       (offspringCount ?sire ?count)
+       (lessThanOrEqual ?count 10))
+  (reputationConfidence ?sire 0.40))
+
+;; ── Aggregate metric confidence ──
+;; Operation-level metrics (breeder avgs, totals) are only
+;; reliable when they aggregate sufficient individual signals.
+
+(implies
+  (and (isa ?breeder Breeder)
+       (totalSalesRecorded ?breeder ?count)
+       (greaterThan ?count 30))
+  (aggregateConfidence ?breeder High))
+
+(implies
+  (and (isa ?breeder Breeder)
+       (totalSalesRecorded ?breeder ?count)
+       (greaterThanOrEqual ?count 10)
+       (lessThanOrEqual ?count 30))
+  (aggregateConfidence ?breeder Medium))
+
+(implies
+  (and (isa ?breeder Breeder)
+       (totalSalesRecorded ?breeder ?count)
+       (lessThan ?count 10))
+  (aggregateConfidence ?breeder Low))
+
+;;; ============================================================
+;;; SECTION 6: EXPANSION PRIORITIES
+;;; ============================================================
+;;; Where should Sounder invest ingestion effort next?
+;;; These are meta-level assessments of coverage gaps ranked
+;;; by impact on heuristic reliability.
+
+(isa ExpansionPriority Collection)
+(isa P0 ExpansionPriority)
+(isa P1 ExpansionPriority)
+(isa P2 ExpansionPriority)
+(isa P3 ExpansionPriority)
+
+(comment P0 "Critical — blocks key heuristic accuracy.")
+(comment P1 "High — significantly improves heuristic reliability.")
+(comment P2 "Medium — adds coverage but heuristics function without it.")
+(comment P3 "Low — nice to have, marginal impact on current heuristics.")
+
+(expansionPriority ShowRecordCoverage P0
+  "Show records drive the reputational valuation heuristic (valuation.krf
+   Section 2: Sire Valuation, Section 3: Breeder Reputation). At 5%
+   coverage, sire reputation scores are computed from sparse data.
+   Ingesting results from 10 major shows would move coverage to 25%+
+   and significantly improve confidence in sire/breeder reputation
+   assessments. Target sources: National Western, Indiana State Fair,
+   American Royal, World Pork Expo, state breed shows.")
+
+(expansionPriority SaleHistoryCoverage P0
+  "Sale data is the ground truth for the economic valuation heuristic.
+   At 15% coverage (one major breeder + event-level data), aggregate
+   market metrics are unreliable. Adding 5-10 additional breeder sale
+   histories would move coverage to 30%+ and enable cross-breeder
+   price comparisons. Target sources: top 20 genetics companies by
+   annual sale volume.")
+
+(expansionPriority GrowthDataCoverage P1
+  "Performance data (weight, feed efficiency, ultrasound) is required
+   for the PerformanceFactor in animal valuation (valuation.krf
+   Section 1). At 10% coverage, performance-based valuation rules
+   fire infrequently. NSR STAGES data and on-farm test station records
+   are the primary targets.")
+
+(expansionPriority HealthRecords P1
+  "Herd health data would enable disease risk modeling and biosecurity
+   protocols. Currently inferred from indirect signals. Integration
+   with veterinary management systems (PigCHAMP, MetaFarms) would
+   transform herd health from inferred to measured.")
+
+(expansionPriority GenomicData P2
+  "Genomic data would add a new metric dimension (GEBVs) to animal
+   valuation. The industry is moving toward genomic selection but
+   the data is proprietary and fragmented across testing labs.
+   Integration would require partnerships with Neogen, GeneSeek,
+   or breed association genomic programs.")
+
+(expansionPriority FeedCostData P2
+  "Feed cost data converts biological efficiency to economic efficiency.
+   Requires integration with feed suppliers or on-farm management
+   software. Marginal impact until growth data coverage increases.")
+
+(expansionPriority InternationalRecords P3
+  "International data would expand the genetics market view but the
+   US domestic market is sufficient for initial heuristic calibration.
+   Future priority when the substrate expands to multi-country scope.")
+
+(expansionPriority RealTimeSensorData P3
+  "IoT sensor data would increase signal density by orders of magnitude
+   but requires hardware deployment. Long-term vision for Serengeti
+   Oasis livestock zone. Not achievable with current data ingestion
+   pipeline — requires physical infrastructure.")
+
+;;; ============================================================
+;;; SECTION 7: CLOSED-WORLD DECLARATIONS
+;;; ============================================================
+;;; For specific enumerated collections, Sounder declares
+;;; closed-world: if it is not listed, it does not exist.
+
+(closedWorldFor SounderKernelMt Breed)
+(comment "The 13 breeds defined in kernel/types.krf are exhaustive for
+          the US purebred and crossbred show pig market. Additional breeds
+          exist (Meishan, Kunekune, etc.) but are not relevant to the
+          genetics commerce domain Sounder covers.")
+
+(closedWorldFor SounderKernelMt AnimalRole)
+(comment "GILT, BARROW, BOAR, SOW are the four roles. There are no others.")
+
+(closedWorldFor SounderKernelMt Gender)
+(comment "MALE, FEMALE. Swine are sexually dimorphic with no ambiguity.")
+
+(closedWorldFor SounderKernelMt StressStatus)
+(comment "Negative, Carrier, Positive, Untested. These are the four
+          possible PSS test outcomes. The genetic test is binary (N/n
+          alleles) — NN is Negative, Nn is Carrier, nn is Positive,
+          untested is Unknown.")
+
+(closedWorldFor SounderKernelMt AuctionType)
+(comment "Online, Live, PrivateTreaty. All livestock commerce falls
+          into one of these three formats.")
+
+(closedWorldFor SounderMetaMt Source)
+(comment "The six sources defined in this file are all currently
+          ingested sources. New sources require explicit declaration
+          here before their facts enter the graph. This prevents
+          unprovenanced facts from contaminating the substrate.")
+
+;;; ================================================================
+;;; END — SOUNDER META SCHEMA
+;;; 6 data sources with provenance. 7 completeness dimensions.
+;;; 8 known gaps. Confidence calibration rules. Expansion priorities.
+;;; 6 closed-world declarations. The system knows what it knows
+;;; and what it does not know.
+;;; ================================================================

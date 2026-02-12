@@ -1,0 +1,620 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / HEURISTIC / VALUATION
+;;; Charlotte's value heuristic for the swine industry
+;;; ================================================================
+;;;
+;;; This file defines how Charlotte values nodes in the swine graph.
+;;; The ontological layer (NODE + EDGE) gives us static structure:
+;;; pedigree, ownership, registration. This file defines the dynamic
+;;; valuation layer — how worth is assigned, updated, and predicted
+;;; based on actor signals over time.
+;;;
+;;; This is the Charlotte differentiator. Every knowledge graph can
+;;; store "Animal X was sired by Sire Y." Only Charlotte can say:
+;;; "Animal X is worth $3,200 because Sire Y has a 78% win rate
+;;; in championship drives, Dam Z averaged 12.4 born alive across
+;;; 5 parities, the breed is Berkshire stress-negative, and the
+;;; last 6 offspring of this cross sold for $2,800-$4,100 at auction."
+;;;
+;;; The dive line is unbroken. Every valuation traces back through
+;;; specific signals on specific metrics attached to specific nodes.
+;;;
+;;; ================================================================
+
+(in-microtheory SounderHeuristicMt)
+
+;;; ============================================================
+;;; VALUATION FACTOR TYPES
+;;; ============================================================
+;;; An animal's value is a composite function of multiple factors.
+;;; Each factor has a weight and contributes to the overall
+;;; valuation. The factors are not hidden — they are named,
+;;; measurable, and traceable.
+
+(isa ValuationFactor Collection)
+(comment ValuationFactor
+  "A named contributor to an entity's overall value assessment.
+   Each factor maps to one or more METRICs and produces a SIGNAL
+   that feeds the valuation PROTOCOL. The factors are the features
+   in Charlotte's valuation function — explicit, auditable, named.")
+
+(isa GeneticsFactor ValuationFactor)
+(isa PerformanceFactor ValuationFactor)
+(isa ConformationFactor ValuationFactor)
+(isa MarketDemandFactor ValuationFactor)
+(isa ShowRecordFactor ValuationFactor)
+(isa StressStatusFactor ValuationFactor)
+
+(comment GeneticsFactor "Value from pedigree: sire reputation, dam production history, bloodline demand.")
+(comment PerformanceFactor "Value from measurable output: growth rate, feed efficiency, carcass merit.")
+(comment ConformationFactor "Value from visual appraisal: structural correctness, breed character, soundness.")
+(comment MarketDemandFactor "Value from what buyers are willing to pay RIGHT NOW for this type of animal.")
+(comment ShowRecordFactor "Value from competitive placements: show wins carry reputational premium.")
+(comment StressStatusFactor "Value from PSS test result: Negative is premium, Carrier is discounted, Positive is unmarketable.")
+
+;;; ============================================================
+;;; SECTION 1: ANIMAL VALUATION HEURISTIC
+;;; ============================================================
+;;; An individual animal's value is the weighted sum of six factors.
+;;; Charlotte does not assign a single "value score" — she maintains
+;;; the factor vector so the reasoning is always decomposable.
+
+;; ── Factor weight predicates ──
+
+(isa factorWeight Relation)
+(arity factorWeight 3)
+(arg1Isa factorWeight ValuationFactor)
+(arg2Isa factorWeight Collection)
+(arg3Isa factorWeight Number)
+(comment factorWeight
+  "(factorWeight ?factor ?animalType ?weight) — the relative importance
+   of this factor for valuing this type of animal. Weights sum to 1.0
+   within an animal type. These are heuristic defaults — the actual
+   weights are calibrated from sale data.")
+
+;; Default factor weights for show gilts
+(factorWeight GeneticsFactor GILT 0.30)
+(factorWeight PerformanceFactor GILT 0.10)
+(factorWeight ConformationFactor GILT 0.25)
+(factorWeight MarketDemandFactor GILT 0.15)
+(factorWeight ShowRecordFactor GILT 0.10)
+(factorWeight StressStatusFactor GILT 0.10)
+
+;; Default factor weights for show barrows
+(factorWeight GeneticsFactor BARROW 0.25)
+(factorWeight PerformanceFactor BARROW 0.15)
+(factorWeight ConformationFactor BARROW 0.30)
+(factorWeight MarketDemandFactor BARROW 0.15)
+(factorWeight ShowRecordFactor BARROW 0.10)
+(factorWeight StressStatusFactor BARROW 0.05)
+
+;; Default factor weights for breeding boars
+(factorWeight GeneticsFactor BOAR 0.35)
+(factorWeight PerformanceFactor BOAR 0.15)
+(factorWeight ConformationFactor BOAR 0.15)
+(factorWeight MarketDemandFactor BOAR 0.10)
+(factorWeight ShowRecordFactor BOAR 0.05)
+(factorWeight StressStatusFactor BOAR 0.20)
+
+;; ── Genetics Factor Rules ──
+
+(isa GeneticFactorLevel Collection)
+(isa High GeneticFactorLevel)
+(isa Medium GeneticFactorLevel)
+(isa Low GeneticFactorLevel)
+
+;; Sire reputation drives genetic premium
+(implies
+  (and (isSireOf ?sire ?animal)
+       (highReputationSire ?sire))
+  (geneticPremiumLevel ?animal High))
+
+(implies
+  (and (isSireOf ?sire ?animal)
+       (moderateReputationSire ?sire))
+  (geneticPremiumLevel ?animal Medium))
+
+(implies
+  (and (isSireOf ?sire ?animal)
+       (not (highReputationSire ?sire))
+       (not (moderateReputationSire ?sire)))
+  (geneticPremiumLevel ?animal Low))
+
+;; Dam production history amplifies genetics factor
+(implies
+  (and (isDamOf ?dam ?animal)
+       (hasSignalValue BornAliveMetric ?dam ?BA ?T)
+       (greaterThan ?BA 12))
+  (damProductionBonus ?animal High))
+
+(implies
+  (and (isDamOf ?dam ?animal)
+       (hasSignalValue BornAliveMetric ?dam ?BA ?T)
+       (greaterThanOrEqual ?BA 9)
+       (lessThanOrEqual ?BA 12))
+  (damProductionBonus ?animal Medium))
+
+;; Bloodline demand — when a genetics line is trending, all animals
+;; in that line get a demand premium
+(implies
+  (and (isSireOf ?sire ?animal)
+       (memberOf ?sire ?line)
+       (isa ?line GeneticsLine)
+       (trendingLine ?line))
+  (bloodlineDemandBonus ?animal High))
+
+;; ── Performance Factor Rules ──
+
+(implies
+  (and (isa ?animal SwineAnimal)
+       (hasSignalValue DailyGainMetric ?animal ?DG ?T)
+       (greaterThan ?DG 2.0)
+       (hasSignalValue BackfatMetric ?animal ?BF ?T2)
+       (lessThan ?BF 0.8)
+       (hasSignalValue LoinEyeAreaMetric ?animal ?LE ?T3)
+       (greaterThan ?LE 6.5))
+  (performanceLevel ?animal Elite))
+
+(implies
+  (and (isa ?animal SwineAnimal)
+       (hasSignalValue DailyGainMetric ?animal ?DG ?T)
+       (greaterThan ?DG 1.5)
+       (not (performanceLevel ?animal Elite)))
+  (performanceLevel ?animal Acceptable))
+
+;; ── Stress Status Factor Rules ──
+;; Stress status has binary impact — it gates access to premium markets.
+
+(implies
+  (and (hasStressStatus ?animal Negative)
+       (hasBreed ?animal Berkshire))
+  (premiumBerkshire ?animal))
+
+(implies
+  (hasStressStatus ?animal Negative)
+  (stressStatusPremium ?animal Full))
+
+(implies
+  (hasStressStatus ?animal Carrier)
+  (stressStatusPremium ?animal Discounted))
+
+(implies
+  (hasStressStatus ?animal Positive)
+  (stressStatusPremium ?animal Disqualified))
+
+(implies
+  (hasStressStatus ?animal Untested)
+  (stressStatusPremium ?animal Unknown))
+
+;; PSS-positive animals are unmarketable as breeding stock
+(implies
+  (and (hasStressStatus ?animal Positive)
+       (or (hasRole ?animal GILT)
+           (hasRole ?animal BOAR)))
+  (unmarketableAsBreedingStock ?animal))
+
+;; ── Show Record Factor Rules ──
+
+(implies
+  (and (isa ?S ShowPlacementSignal)
+       (measuresNode ?S ?animal)
+       (hasField ?S :RANK GrandChampion)
+       (hasField ?S :SHOW_LEVEL National))
+  (showRecordPremium ?animal Elite))
+
+(implies
+  (and (isa ?S ShowPlacementSignal)
+       (measuresNode ?S ?animal)
+       (hasField ?S :RANK GrandChampion)
+       (hasField ?S :SHOW_LEVEL State))
+  (showRecordPremium ?animal High))
+
+(implies
+  (and (isa ?S ShowPlacementSignal)
+       (measuresNode ?S ?animal)
+       (or (hasField ?S :RANK ClassWinner)
+           (hasField ?S :RANK ReserveChampion)))
+  (showRecordPremium ?animal Medium))
+
+;; ── Composite Valuation Signals ──
+
+;; High value animal detection: genetics + stress + performance align
+(implies
+  (and (isa ?animal SwineAnimal)
+       (geneticPremiumLevel ?animal High)
+       (stressStatusPremium ?animal Full)
+       (performanceLevel ?animal Elite))
+  (highValueAnimal ?animal))
+
+;; Sale price confirmation of high value
+(implies
+  (and (isa ?S SaleSignal)
+       (measuresNode ?S ?animal)
+       (hasField ?S :PRICE ?price)
+       (greaterThan ?price 5000))
+  (highValueAnimal ?animal))
+
+;; Undervalued animal: high genetics but low sale price
+(implies
+  (and (geneticPremiumLevel ?animal High)
+       (isa ?S SaleSignal)
+       (measuresNode ?S ?animal)
+       (hasField ?S :PRICE ?price)
+       (lessThan ?price 1000))
+  (potentiallyUndervalued ?animal))
+
+;;; ============================================================
+;;; SECTION 2: SIRE VALUATION HEURISTIC
+;;; ============================================================
+;;; A sire's value is entirely derivative — it comes from what
+;;; his offspring do. A sire with no offspring data has no
+;;; heuristic value, only speculative pedigree value.
+
+(isa SireReputationLevel Collection)
+(isa Elite SireReputationLevel)
+(isa Proven SireReputationLevel)
+(isa Promising SireReputationLevel)
+(isa Unproven SireReputationLevel)
+(isa Declining SireReputationLevel)
+
+;; ── Sire reputation predicates ──
+
+(isa sireWinCount Relation)
+(arity sireWinCount 2)
+(arg1Isa sireWinCount Sire)
+(arg2Isa sireWinCount Number)
+(comment sireWinCount "Number of show winners this sire has produced.")
+
+(isa sireAvgOffspringPrice Relation)
+(arity sireAvgOffspringPrice 2)
+(arg1Isa sireAvgOffspringPrice Sire)
+(arg2Isa sireAvgOffspringPrice Number)
+(comment sireAvgOffspringPrice "Average sale price of this sire's offspring.")
+
+(isa sireDamDiversity Relation)
+(arity sireDamDiversity 2)
+(arg1Isa sireDamDiversity Sire)
+(arg2Isa sireDamDiversity Number)
+(comment sireDamDiversity "Number of different dams this sire has been crossed with. Higher diversity = more reliable reputation assessment.")
+
+;; ── Sire reputation rules ──
+
+;; Elite: 10+ show winners, avg offspring price above $3,000
+(implies
+  (and (isa ?sire Sire)
+       (sireWinCount ?sire ?wins)
+       (greaterThan ?wins 10)
+       (sireAvgOffspringPrice ?sire ?avg)
+       (greaterThan ?avg 3000)
+       (hasStressStatus ?sire Negative))
+  (highReputationSire ?sire))
+
+;; Proven: 5+ winners OR avg offspring price above $2,000
+(implies
+  (and (isa ?sire Sire)
+       (sireWinCount ?sire ?wins)
+       (greaterThan ?wins 5)
+       (sireAvgOffspringPrice ?sire ?avg)
+       (greaterThan ?avg 2000))
+  (moderateReputationSire ?sire))
+
+;; Promising: fewer than 2 crops but first results are positive
+(implies
+  (and (isa ?sire Sire)
+       (sireDamDiversity ?sire ?dams)
+       (lessThan ?dams 10)
+       (sireAvgOffspringPrice ?sire ?avg)
+       (greaterThan ?avg 1500))
+  (promisingSire ?sire))
+
+;; Consistency across dams — the true test of a sire
+;; A sire that only produces winners on one dam has a dam,
+;; not a sire. A sire that produces winners across many dams
+;; has genetics.
+(implies
+  (and (isa ?sire Sire)
+       (sireDamDiversity ?sire ?dams)
+       (greaterThan ?dams 15)
+       (sireWinCount ?sire ?wins)
+       (greaterThan (dividedBy ?wins ?dams) 0.20))
+  (consistentSire ?sire))
+
+;; Semen demand as a value indicator
+(implies
+  (and (isa ?sire Sire)
+       (semenDosesSold ?sire ?year ?doses)
+       (greaterThan ?doses 200))
+  (highSemenDemand ?sire ?year))
+
+;; Declining sire: offspring prices decreasing over time
+(implies
+  (and (isa ?sire Sire)
+       (sireAvgOffspringPriceInYear ?sire ?year1 ?p1)
+       (sireAvgOffspringPriceInYear ?sire ?year2 ?p2)
+       (greaterThan ?year2 ?year1)
+       (lessThan ?p2 (times ?p1 0.70)))
+  (decliningSire ?sire))
+
+;;; ============================================================
+;;; SECTION 3: BREEDER REPUTATION HEURISTIC
+;;; ============================================================
+;;; A breeder's reputation is the meta-signal that encompasses
+;;; everything they produce. It takes years to build and can be
+;;; damaged in a single sale season.
+
+(isa BreederReputationLevel Collection)
+(isa Premier BreederReputationLevel)
+(isa Established BreederReputationLevel)
+(isa Developing BreederReputationLevel)
+(isa Inactive BreederReputationLevel)
+
+;; ── Breeder reputation rules ──
+
+;; Premier: 10+ years, 40%+ repeat buyers, avg sale above $2,000
+(implies
+  (and (isa ?breeder Breeder)
+       (yearsInBusiness ?breeder ?years)
+       (greaterThan ?years 10)
+       (hasSignalValue RepeatBuyerRateMetric ?breeder ?rr ?T)
+       (greaterThan ?rr 40)
+       (hasSignalValue AvgSalePriceMetric ?breeder ?avg ?T2)
+       (greaterThan ?avg 2000))
+  (breederReputation ?breeder Premier))
+
+;; Established: 5+ years, 25%+ repeat buyers
+(implies
+  (and (isa ?breeder Breeder)
+       (yearsInBusiness ?breeder ?years)
+       (greaterThan ?years 5)
+       (hasSignalValue RepeatBuyerRateMetric ?breeder ?rr ?T)
+       (greaterThan ?rr 25))
+  (breederReputation ?breeder Established))
+
+;; Developing: active but less than 5 years or low repeat rate
+(implies
+  (and (isa ?breeder Breeder)
+       (isActivelyObserved ?breeder)
+       (not (breederReputation ?breeder Premier))
+       (not (breederReputation ?breeder Established)))
+  (breederReputation ?breeder Developing))
+
+;; Inactive: no fresh signals
+(implies
+  (and (isa ?breeder Breeder)
+       (not (isActivelyObserved ?breeder)))
+  (breederReputation ?breeder Inactive))
+
+;; Herd health as reputation modifier — a single PSS-positive sale
+;; damages reputation significantly
+(implies
+  (and (isa ?breeder Breeder)
+       (isa ?S SaleSignal)
+       (measuresNode ?S ?animal)
+       (bredBy ?animal ?breeder)
+       (hasStressStatus ?animal Positive))
+  (reputationDamageEvent ?breeder PSS_Positive_Sold ?S))
+
+;; Sustainable operation indicator
+(implies
+  (and (isa ?breeder Breeder)
+       (hasSignalValue RepeatBuyerRateMetric ?breeder ?rr ?T)
+       (greaterThan ?rr 30)
+       (hasSignalValue PigsPerSowPerYearMetric ?breeder ?psy ?T2)
+       (greaterThan ?psy 18))
+  (sustainableOperation ?breeder))
+
+;;; ============================================================
+;;; SECTION 4: PROTOCOL LAYER — EXPECTED TRAJECTORIES
+;;; ============================================================
+;;; Charlotte does not just track current values — she has
+;;; expectations for how values should change over time. These
+;;; protocols encode domain knowledge about expected trajectories.
+;;; When reality deviates from expectation, a signal fires.
+
+;; ── New sire trajectory protocol ──
+;; A new sire's offspring sale prices should increase over his
+;; first 2 years as results prove out. If prices decline in
+;; year 2, the sire is underperforming expectations.
+
+(isa Protocol-SireTrajectory PROTOCOL)
+(hasTrigger Protocol-SireTrajectory TimeElapsed)
+(hasCondition Protocol-SireTrajectory
+  (and (isa ?sire Sire)
+       (promisingSire ?sire)
+       (sireAvgOffspringPriceInYear ?sire ?year1 ?p1)
+       (sireAvgOffspringPriceInYear ?sire ?year2 ?p2)
+       (equals ?year2 (plus ?year1 1))
+       (lessThan ?p2 ?p1)))
+(hasAction Protocol-SireTrajectory
+  (SendNotification SireUnderperforming ?sire ?p1 ?p2))
+(protocolPriority Protocol-SireTrajectory 5)
+(comment Protocol-SireTrajectory
+  "Expected trajectory: new sire offspring prices should increase in
+   years 1-2 as show results validate his genetics. Flat or declining
+   prices in this window mean the market is not confirming the hype.
+   This is the earliest signal that a sire may not hold value.")
+
+;; ── Sow parity curve protocol ──
+;; Litter size should increase from parity 1 to parity 4, then
+;; plateau through parity 6, then decline. If a sow's parity 3
+;; litter is smaller than her parity 1, something is wrong.
+
+(isa Protocol-ParityCurve PROTOCOL)
+(hasTrigger Protocol-ParityCurve ThresholdCrossed)
+(hasCondition Protocol-ParityCurve
+  (and (isa ?dam Dam)
+       (hasSignalValue LitterSizeMetric ?dam ?size3 ?T3)
+       (hasSignalValue ParityMetric ?dam 3 ?T3)
+       (hasSignalValue LitterSizeMetric ?dam ?size1 ?T1)
+       (hasSignalValue ParityMetric ?dam 1 ?T1)
+       (lessThan ?size3 ?size1)))
+(hasAction Protocol-ParityCurve
+  (SendNotification ParityCurveAnomaly ?dam ?size1 ?size3))
+(protocolPriority Protocol-ParityCurve 4)
+(comment Protocol-ParityCurve
+  "Expected trajectory: litter size increases from parity 1 through
+   parity 3-4 as the sow matures. A parity 3 litter smaller than
+   parity 1 violates the biological expectation curve and warrants
+   investigation — possible disease, nutritional deficit, or genetic
+   incompatibility with the sire used.")
+
+;; ── Sow decline protocol ──
+;; After parity 5, monitor for declining litter size. Two
+;; consecutive declining litters after parity 5 = consider culling.
+
+(isa Protocol-SowDecline PROTOCOL)
+(hasTrigger Protocol-SowDecline ThresholdCrossed)
+(hasCondition Protocol-SowDecline
+  (and (isa ?dam Dam)
+       (hasSignalValue ParityMetric ?dam ?P ?T)
+       (greaterThan ?P 5)
+       (consecutiveDeclineLitters ?dam 2)))
+(hasAction Protocol-SowDecline
+  (SendNotification CullRecommendation ?dam))
+(protocolPriority Protocol-SowDecline 3)
+(comment Protocol-SowDecline
+  "After parity 5, a sow has passed her biological peak. Two consecutive
+   litters with declining born-alive counts trigger a cull consideration.
+   This is not automatic — Charlotte recommends, the breeder decides.
+   But the signal is placed, the dive line is clear, and the reasoning
+   is traceable back to specific litter counts at specific parities.")
+
+;; ── Breeder sustainability protocol ──
+;; A breeder's repeat buyer rate should be above 30% to indicate
+;; a sustainable operation. Below 20% for two consecutive years
+;; signals customer retention problems.
+
+(isa Protocol-BreederSustainability PROTOCOL)
+(hasTrigger Protocol-BreederSustainability TimeElapsed)
+(hasCondition Protocol-BreederSustainability
+  (and (isa ?breeder Breeder)
+       (hasSignalValue RepeatBuyerRateMetric ?breeder ?rr1 ?T1)
+       (hasSignalValue RepeatBuyerRateMetric ?breeder ?rr2 ?T2)
+       (greaterThan ?T2 ?T1)
+       (lessThan ?rr1 20)
+       (lessThan ?rr2 20)))
+(hasAction Protocol-BreederSustainability
+  (SendNotification RetentionAlert ?breeder ?rr1 ?rr2))
+(protocolPriority Protocol-BreederSustainability 6)
+(comment Protocol-BreederSustainability
+  "Repeat buyer rate below 20% for two consecutive years means the
+   genetics or the service is not retaining customers. This is the
+   canary in the coal mine for a breeding program — by the time
+   sale prices drop, the damage is already done. The repeat rate
+   leads the price signal by 1-2 years.")
+
+;; ── Market premium decay protocol ──
+;; If a sire's genetic premium (offspring price minus commodity value)
+;; is declining while the commodity market is stable, the genetics
+;; are losing value relative to the market.
+
+(isa Protocol-PremiumDecay PROTOCOL)
+(hasTrigger Protocol-PremiumDecay ThresholdCrossed)
+(hasCondition Protocol-PremiumDecay
+  (and (isa ?sire Sire)
+       (sireAvgGeneticPremiumInYear ?sire ?year1 ?gp1)
+       (sireAvgGeneticPremiumInYear ?sire ?year2 ?gp2)
+       (greaterThan ?year2 ?year1)
+       (lessThan ?gp2 (times ?gp1 0.80))
+       (stableCommodityMarket ?year1 ?year2)))
+(hasAction Protocol-PremiumDecay
+  (SendNotification GeneticPremiumEroding ?sire ?gp1 ?gp2))
+(protocolPriority Protocol-PremiumDecay 4)
+(comment Protocol-PremiumDecay
+  "When a sire's genetic premium declines by 20%+ while the commodity
+   market is stable, the market is discounting his genetics specifically.
+   This separates commodity price fluctuations from genetics value
+   erosion — the dive line traces through the premium calculation
+   back to specific offspring sales and specific market benchmarks.")
+
+;; ── Show-to-sale conversion protocol ──
+;; Show winners should command higher sale prices. If a champion
+;; animal sells below the non-champion average, the show record
+;; is not converting to market value — possibly wrong market,
+;; wrong audience, or reputational issues.
+
+(isa Protocol-ShowSaleConversion PROTOCOL)
+(hasTrigger Protocol-ShowSaleConversion SignalArrival)
+(hasCondition Protocol-ShowSaleConversion
+  (and (isa ?animal SwineAnimal)
+       (showRecordPremium ?animal High)
+       (isa ?S SaleSignal)
+       (measuresNode ?S ?animal)
+       (hasField ?S :PRICE ?price)
+       (bredBy ?animal ?breeder)
+       (hasSignalValue AvgSalePriceMetric ?breeder ?avg ?T)
+       (lessThan ?price ?avg)))
+(hasAction Protocol-ShowSaleConversion
+  (SendNotification ShowNotConvertingToSales ?animal ?price ?avg))
+(protocolPriority Protocol-ShowSaleConversion 7)
+(comment Protocol-ShowSaleConversion
+  "A show winner selling below the breeder's average is a conversion
+   failure. The show record added reputational value but the market
+   did not respond. Possible causes: wrong sale venue, weak buyer
+   network, conformational flaws visible to buyers but not judges,
+   or the show placement was at a low-competition event.")
+
+;;; ============================================================
+;;; SECTION 5: CROSS-ENTITY VALUATION PROPAGATION
+;;; ============================================================
+;;; Value propagates through the graph. A sire's value affects
+;;; his offspring. A breeder's reputation affects sale prices.
+;;; These rules define how valuation signals propagate along edges.
+
+;; ── Sire reputation propagates to offspring ──
+
+(implies
+  (and (isSireOf ?sire ?animal)
+       (highReputationSire ?sire))
+  (inheritsReputationFrom ?animal ?sire High))
+
+(implies
+  (and (isSireOf ?sire ?animal)
+       (decliningSire ?sire))
+  (inheritsReputationFrom ?animal ?sire Declining))
+
+;; ── Breeder reputation propagates to sale prices ──
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (breederReputation ?breeder Premier))
+  (breederPremium ?animal High))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (breederReputation ?breeder Developing))
+  (breederPremium ?animal Low))
+
+;; ── Dam production propagates to offspring value ──
+
+(implies
+  (and (isDamOf ?dam ?animal)
+       (damProductionBonus ?animal High))
+  (maternalValueContribution ?animal High))
+
+;; ── Buyer behavior propagates to breeder valuation ──
+;; When a high-value buyer purchases from a breeder, it signals
+;; market validation of that breeding program.
+
+(implies
+  (and (isa ?S SaleSignal)
+       (hasField ?S :BUYER ?buyer)
+       (isa ?buyer Buyer)
+       (highValueBuyer ?buyer)
+       (hasField ?S :SELLER ?breeder)
+       (isa ?breeder Breeder))
+  (marketValidation ?breeder ?buyer ?S))
+
+;; A buyer is high-value if their total purchases exceed $25,000
+(implies
+  (and (isa ?buyer Buyer)
+       (totalPurchases ?buyer ?total)
+       (greaterThan ?total 25000))
+  (highValueBuyer ?buyer))
+
+;;; ================================================================
+;;; END — SOUNDER VALUATION HEURISTIC
+;;; 6 valuation factors. 4 entity valuation heuristics.
+;;; 6 trajectory protocols. Propagation rules for cross-entity
+;;; value flow. Every conclusion traces back through the dive line.
+;;; ================================================================

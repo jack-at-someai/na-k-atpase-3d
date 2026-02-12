@@ -1,0 +1,684 @@
+;;; ================================================================
+;;; SOUNDER / KERNEL / PREDICATES
+;;; Domain-specific predicates for the swine industry substrate
+;;; The complete relationship and attribute vocabulary
+;;; ================================================================
+
+(in-microtheory SounderKernelMt)
+
+;;; ============================================================
+;;; SECTION 1: PEDIGREE RELATIONSHIPS (EDGE types)
+;;; ============================================================
+;;; These are the biological edges of the swine graph. The pedigree
+;;; is a directed acyclic graph — every animal has exactly one sire
+;;; and one dam (or unknown). The pedigree graph is the backbone
+;;; of all genetics analysis.
+
+;; ── Primary parentage ──
+
+(isa isSireOf BinaryPredicate)
+(isa isSireOf BiologicalRelation)
+(arity isSireOf 2)
+(arg1Isa isSireOf Sire)
+(arg2Isa isSireOf SwineAnimal)
+(comment isSireOf "Genetic paternity. (isSireOf ?sire ?offspring) means ?sire is the father of ?offspring. This is the most fundamental edge in the swine graph — it defines bloodlines, determines breed eligibility, and drives all genetics commerce.")
+
+(isa isDamOf BinaryPredicate)
+(isa isDamOf BiologicalRelation)
+(arity isDamOf 2)
+(arg1Isa isDamOf Dam)
+(arg2Isa isDamOf SwineAnimal)
+(comment isDamOf "Genetic maternity. (isDamOf ?dam ?offspring) means ?dam is the mother of ?offspring. Dam-side pedigree determines maternal traits — litter size, milking ability, mothering instinct.")
+
+;; ── Inverse parentage (animal → parent) ──
+
+(isa hasSire BinaryPredicate)
+(isa hasSire BiologicalRelation)
+(arity hasSire 2)
+(arg1Isa hasSire SwineAnimal)
+(arg2Isa hasSire Sire)
+(comment hasSire "Inverse of isSireOf. (hasSire ?animal ?sire) — the animal's father. Every registered animal has exactly one sire (or unknown).")
+
+(inverseOf isSireOf hasSire)
+
+(isa hasDam BinaryPredicate)
+(isa hasDam BiologicalRelation)
+(arity hasDam 2)
+(arg1Isa hasDam SwineAnimal)
+(arg2Isa hasDam Dam)
+(comment hasDam "Inverse of isDamOf. (hasDam ?animal ?dam) — the animal's mother. Every registered animal has exactly one dam (or unknown).")
+
+(inverseOf isDamOf hasDam)
+
+;; ── Extended parentage (grandparents) ──
+
+(isa isGrandsireOf BinaryPredicate)
+(isa isGrandsireOf BiologicalRelation)
+(arity isGrandsireOf 2)
+(arg1Isa isGrandsireOf Sire)
+(arg2Isa isGrandsireOf SwineAnimal)
+(comment isGrandsireOf "Paternal or maternal grandfather. Derivable from isSireOf chains. (isGrandsireOf ?gs ?animal) if ?gs is the sire of either the sire or dam of ?animal.")
+
+;; Derivation rule: grandsire through sire side
+(implies
+  (and (isSireOf ?grandsire ?parent)
+       (isSireOf ?parent ?animal))
+  (isGrandsireOf ?grandsire ?animal))
+
+;; Derivation rule: grandsire through dam side
+(implies
+  (and (isSireOf ?grandsire ?parent)
+       (isDamOf ?parent ?animal))
+  (isGrandsireOf ?grandsire ?animal))
+
+(isa isGranddamOf BinaryPredicate)
+(isa isGranddamOf BiologicalRelation)
+(arity isGranddamOf 2)
+(arg1Isa isGranddamOf Dam)
+(arg2Isa isGranddamOf SwineAnimal)
+(comment isGranddamOf "Maternal or paternal grandmother. Derivable from isDamOf chains. (isGranddamOf ?gd ?animal) if ?gd is the dam of either the sire or dam of ?animal.")
+
+;; Derivation rule: granddam through dam side
+(implies
+  (and (isDamOf ?granddam ?parent)
+       (isDamOf ?parent ?animal))
+  (isGranddamOf ?granddam ?animal))
+
+;; Derivation rule: granddam through sire side
+(implies
+  (and (isDamOf ?granddam ?parent)
+       (isSireOf ?parent ?animal))
+  (isGranddamOf ?granddam ?animal))
+
+;; ── Sibling relationship ──
+
+(isa isLittermateOf BinaryPredicate)
+(isa isLittermateOf BiologicalRelation)
+(isa isLittermateOf SymmetricRelation)
+(arity isLittermateOf 2)
+(arg1Isa isLittermateOf SwineAnimal)
+(arg2Isa isLittermateOf SwineAnimal)
+(comment isLittermateOf "Same litter — shares both sire and dam. Symmetric. Littermates are full siblings. (isLittermateOf ?a ?b) means ?a and ?b were born in the same farrowing event.")
+
+;; Derivation rule: same sire and same dam implies littermates
+(implies
+  (and (hasSire ?a ?sire)
+       (hasSire ?b ?sire)
+       (hasDam ?a ?dam)
+       (hasDam ?b ?dam)
+       (different ?a ?b))
+  (isLittermateOf ?a ?b))
+
+;; ── Litter membership ──
+
+(isa inLitter BinaryPredicate)
+(isa inLitter BiologicalRelation)
+(arity inLitter 2)
+(arg1Isa inLitter SwineAnimal)
+(arg2Isa inLitter Litter)
+(comment inLitter "Animal belongs to a specific litter. (inLitter ?piglet ?litter) — the piglet was born in this farrowing event.")
+
+(isa hasOffspring BinaryPredicate)
+(isa hasOffspring BiologicalRelation)
+(arity hasOffspring 2)
+(arg1Isa hasOffspring SwineAnimal)
+(arg2Isa hasOffspring SwineAnimal)
+(comment hasOffspring "General parent-to-offspring link. (hasOffspring ?parent ?offspring) — either sire or dam relationship.")
+
+;; Derivation: isSireOf and isDamOf both imply hasOffspring
+(implies (isSireOf ?parent ?offspring) (hasOffspring ?parent ?offspring))
+(implies (isDamOf ?parent ?offspring) (hasOffspring ?parent ?offspring))
+
+;; ── Genetics line membership ──
+
+(isa belongsToLine BinaryPredicate)
+(arity belongsToLine 2)
+(arg1Isa belongsToLine Sire)
+(arg2Isa belongsToLine GeneticsLine)
+(comment belongsToLine "Sire belongs to a named genetics line. (belongsToLine ?sire ?line) — e.g., Money Line, Slow Motion, Battle Cry. Line membership is inherited patrilineally.")
+
+;;; ============================================================
+;;; SECTION 2: OWNERSHIP & COMMERCE (EDGE types)
+;;; ============================================================
+;;; These edges track the economic graph — who breeds, owns,
+;;; buys, and sells animals. Commerce edges are the primary
+;;; revenue-generating relationships in the Sounder graph.
+
+(isa bredBy BinaryPredicate)
+(isa bredBy OwnershipRelation)
+(arity bredBy 2)
+(arg1Isa bredBy SwineAnimal)
+(arg2Isa bredBy Breeder)
+(comment bredBy "Who bred this animal. (bredBy ?animal ?breeder) — the breeder whose herdmark appears on the animal's registration. The breeder is the original producer, not necessarily the current owner.")
+
+(isa ownedBy BinaryPredicate)
+(isa ownedBy OwnershipRelation)
+(arity ownedBy 2)
+(arg1Isa ownedBy SwineAnimal)
+(arg2Isa ownedBy Breeder)
+(comment ownedBy "Current owner of the animal. (ownedBy ?animal ?owner) — ownership transfers on sale. An animal's owner at any timestamp is determined by the most recent SaleTransaction or original bredBy relationship.")
+
+(isa soldTo BinaryPredicate)
+(isa soldTo OwnershipRelation)
+(arity soldTo 2)
+(arg1Isa soldTo SaleTransaction)
+(arg2Isa soldTo Buyer)
+(comment soldTo "Buyer in a sale transaction. (soldTo ?sale ?buyer) — who purchased the animal. The soldTo edge creates the demand graph — which buyers are acquiring which genetics.")
+
+(isa soldBy BinaryPredicate)
+(isa soldBy OwnershipRelation)
+(arity soldBy 2)
+(arg1Isa soldBy SaleTransaction)
+(arg2Isa soldBy Breeder)
+(comment soldBy "Seller in a sale transaction. (soldBy ?sale ?seller) — who consigned or sold the animal.")
+
+(isa soldAt BinaryPredicate)
+(isa soldAt OwnershipRelation)
+(arity soldAt 2)
+(arg1Isa soldAt SaleTransaction)
+(arg2Isa soldAt AuctionHouse)
+(comment soldAt "Auction house where the sale occurred. (soldAt ?sale ?auctionHouse) — the marketplace venue. Tracks which auction houses move the most volume and highest prices.")
+
+(isa consignedBy BinaryPredicate)
+(isa consignedBy OwnershipRelation)
+(arity consignedBy 2)
+(arg1Isa consignedBy SaleTransaction)
+(arg2Isa consignedBy Breeder)
+(comment consignedBy "Who consigned the lot to auction. (consignedBy ?sale ?consignor) — the breeder who submitted the animal for sale. May differ from the current owner in multi-party consignment sales.")
+
+(isa sells BinaryPredicate)
+(isa sells OwnershipRelation)
+(arity sells 2)
+(arg1Isa sells GeneticsCompany)
+(arg2Isa sells SemenProduct)
+(comment sells "A genetics company offers a semen product for sale. (sells ?company ?product) — the commercial catalog relationship.")
+
+(isa semenFromSire BinaryPredicate)
+(arity semenFromSire 2)
+(arg1Isa semenFromSire SemenProduct)
+(arg2Isa semenFromSire Sire)
+(comment semenFromSire "Which sire a semen product is collected from. (semenFromSire ?product ?sire) — links the commerce graph to the pedigree graph.")
+
+;;; ============================================================
+;;; SECTION 3: REGISTRY PREDICATES
+;;; ============================================================
+;;; Registry edges connect animals and breeders to the official
+;;; record-keeping bodies that certify pedigrees.
+
+(isa registeredWith BinaryPredicate)
+(arity registeredWith 2)
+(arg1Isa registeredWith SwineAnimal)
+(arg2Isa registeredWith Registry)
+(comment registeredWith "Animal is registered with a pedigree registry. (registeredWith ?animal ?registry) — determines which breed book the animal appears in. An animal may be registered with multiple registries if cross-registered.")
+
+(isa hasRegistrationNumber BinaryPredicate)
+(arity hasRegistrationNumber 2)
+(arg1Isa hasRegistrationNumber SwineAnimal)
+(arg2Isa hasRegistrationNumber Thing)
+(comment hasRegistrationNumber "The official registration number (RNO) assigned by the registry. (hasRegistrationNumber ?animal ?rno) — a string like '342876' or 'ABA-12345'. Unique within a registry.")
+
+(isa hasHerdmark BinaryPredicate)
+(arity hasHerdmark 2)
+(arg1Isa hasHerdmark Breeder)
+(arg2Isa hasHerdmark Thing)
+(comment hasHerdmark "The 2-4 character herdmark code assigned by the registry. (hasHerdmark ?breeder ?herdmark) — e.g., 'TRO', 'HEI', 'PBG'. Herdmarks appear on ear notches and are the primary breeder identifier in pedigree data.")
+
+(isa hasCPSNumber BinaryPredicate)
+(arity hasCPSNumber 2)
+(arg1Isa hasCPSNumber Breeder)
+(arg2Isa hasCPSNumber Thing)
+(comment hasCPSNumber "Certified Pedigree Swine registry number for a breeder. (hasCPSNumber ?breeder ?number) — the numeric ID in the CPS database. CPS is the umbrella registry for Chester White, Poland China, and Spot.")
+
+(isa hasNSRNumber BinaryPredicate)
+(arity hasNSRNumber 2)
+(arg1Isa hasNSRNumber Breeder)
+(arg2Isa hasNSRNumber Thing)
+(comment hasNSRNumber "National Swine Registry number for a breeder. (hasNSRNumber ?breeder ?number) — NSR covers Yorkshire, Hampshire, Duroc, and Landrace.")
+
+(isa hasABANumber BinaryPredicate)
+(arity hasABANumber 2)
+(arg1Isa hasABANumber Breeder)
+(arg2Isa hasABANumber Thing)
+(comment hasABANumber "American Berkshire Association member number. (hasABANumber ?breeder ?number) — ABA is the sole registry for Berkshire breed.")
+
+(isa memberOf BinaryPredicate)
+(isa memberOf SocialRelation)
+(arity memberOf 2)
+(arg1Isa memberOf Breeder)
+(arg2Isa memberOf Registry)
+(comment memberOf "Breeder is a member of a registry organization. (memberOf ?breeder ?registry) — membership enables registration of animals and participation in breed programs.")
+
+;;; ============================================================
+;;; SECTION 4: TEMPORAL PREDICATES
+;;; ============================================================
+;;; Time predicates anchor events and entities to the temporal
+;;; spine. Every date is a TemporalCoordinate in Charlotte.
+
+(isa bornOn BinaryPredicate)
+(isa bornOn TemporalRelation)
+(arity bornOn 2)
+(arg1Isa bornOn SwineAnimal)
+(arg2Isa bornOn Thing)
+(comment bornOn "Date of birth for an animal. (bornOn ?animal ?date) — typically the farrowing date of the litter. For show and sale purposes, age is calculated from this date.")
+
+(isa farrowedOn BinaryPredicate)
+(isa farrowedOn TemporalRelation)
+(arity farrowedOn 2)
+(arg1Isa farrowedOn FarrowEvent)
+(arg2Isa farrowedOn Thing)
+(comment farrowedOn "Date a litter was born. (farrowedOn ?farrowEvent ?date) — fires a SIGNAL on the dam's parity timeline. Gestation is 114-115 days (3 months, 3 weeks, 3 days).")
+
+(isa bredOn BinaryPredicate)
+(isa bredOn TemporalRelation)
+(arity bredOn 2)
+(arg1Isa bredOn BreedingEvent)
+(arg2Isa bredOn Thing)
+(comment bredOn "Date of insemination or mating. (bredOn ?breedingEvent ?date) — the starting timestamp for gestation calculation. Add 114-115 days to get the expected farrow date.")
+
+(isa soldOn BinaryPredicate)
+(isa soldOn TemporalRelation)
+(arity soldOn 2)
+(arg1Isa soldOn SaleTransaction)
+(arg2Isa soldOn Thing)
+(comment soldOn "Date of sale. (soldOn ?sale ?date) — when the transaction closed. For online auctions, this is the close time of bidding. For live auctions, the hammer time.")
+
+(isa shownAt BinaryPredicate)
+(isa shownAt TemporalRelation)
+(arity shownAt 2)
+(arg1Isa shownAt SwineAnimal)
+(arg2Isa shownAt Show)
+(comment shownAt "Animal was exhibited at a show event. (shownAt ?animal ?show) — connects the animal to the competitive circuit. Show results affect market value and breeding reputation.")
+
+(isa dueOn BinaryPredicate)
+(isa dueOn TemporalRelation)
+(arity dueOn 2)
+(arg1Isa dueOn BreedingEvent)
+(arg2Isa dueOn Thing)
+(comment dueOn "Expected farrow date. (dueOn ?breedingEvent ?date) — computed as breeding date + 114-115 days. A derived temporal predicate used for farrowing management scheduling.")
+
+;; ── Derivation rule: due date from breeding date ──
+;; dueOn can be computed: if bredOn is known, dueOn = bredOn + 114 days
+;; (This is a PROTOCOL-level computation, represented here as a rule)
+(implies
+  (and (bredOn ?event ?breedDate)
+       (dateAfterDays ?breedDate 114 ?dueDate))
+  (dueOn ?event ?dueDate))
+
+(isa weighedOn BinaryPredicate)
+(isa weighedOn TemporalRelation)
+(arity weighedOn 2)
+(arg1Isa weighedOn WeighEvent)
+(arg2Isa weighedOn Thing)
+(comment weighedOn "Date a weight measurement was taken. (weighedOn ?weighEvent ?date) — anchors the weigh event on the temporal spine for daily gain computation.")
+
+;;; ============================================================
+;;; SECTION 5: ATTRIBUTE PREDICATES
+;;; ============================================================
+;;; Attributes are properties of individual NODEs. They map to
+;;; Charlotte's register system (::attr — mutable, domain-specific).
+
+;; ── Breed and classification ──
+
+(isa hasBreed BinaryPredicate)
+(arity hasBreed 2)
+(arg1Isa hasBreed SwineAnimal)
+(arg2Isa hasBreed Breed)
+(comment hasBreed "The breed of an animal. (hasBreed ?animal ?breed) — determines registry eligibility, show classification, and market category. For crossbreds, hasBreed returns Cross, LightCross, or DarkCross.")
+
+(isa hasRole BinaryPredicate)
+(arity hasRole 2)
+(arg1Isa hasRole SwineAnimal)
+(arg2Isa hasRole AnimalRole)
+(comment hasRole "Current role classification. (hasRole ?animal ?role) — GILT, BARROW, BOAR, or SOW. Role may change over time: a GILT becomes a SOW after first farrowing, a BOAR may be castrated to BARROW.")
+
+(isa hasGender BinaryPredicate)
+(arity hasGender 2)
+(arg1Isa hasGender SwineAnimal)
+(arg2Isa hasGender Gender)
+(comment hasGender "Biological sex. (hasGender ?animal ?gender) — MALE or FEMALE. Immutable. Derivable from role in most cases.")
+
+(isa hasStressStatus BinaryPredicate)
+(arity hasStressStatus 2)
+(arg1Isa hasStressStatus SwineAnimal)
+(arg2Isa hasStressStatus StressStatus)
+(comment hasStressStatus "PSS test result. (hasStressStatus ?animal ?status) — Negative, Untested, Positive, or Carrier. Critical for breeding decisions. Carrier x Carrier matings produce 25% Positive offspring.")
+
+(isa hasEarNotch BinaryPredicate)
+(arity hasEarNotch 2)
+(arg1Isa hasEarNotch SwineAnimal)
+(arg2Isa hasEarNotch Thing)
+(comment hasEarNotch "Ear notch identification. (hasEarNotch ?animal ?notch) — a string like '34-1' encoding litter number (right ear) and individual number (left ear). The universal physical ID system for registered swine.")
+
+(isa hasShortName BinaryPredicate)
+(arity hasShortName 2)
+(arg1Isa hasShortName SwineAnimal)
+(arg2Isa hasShortName Thing)
+(comment hasShortName "Common name or barn name. (hasShortName ?animal ?name) — e.g., 'ABBY', 'TANK', 'SLOWMO'. Not unique. Used for daily management and appears on sale catalogs alongside the ear notch and registration number.")
+
+(isa hasFullName BinaryPredicate)
+(arity hasFullName 2)
+(arg1Isa hasFullName SwineAnimal)
+(arg2Isa hasFullName Thing)
+(comment hasFullName "Official registered name. (hasFullName ?animal ?name) — typically includes herdmark and descriptive name, e.g., 'TRO MONEY LINE 34-1'. Used on pedigree certificates and registry records.")
+
+(isa hasParity BinaryPredicate)
+(arity hasParity 2)
+(arg1Isa hasParity Dam)
+(arg2Isa hasParity Thing)
+(comment hasParity "Current breeding cycle count. (hasParity ?dam ?count) — Parity 1 means the dam has farrowed once. Parity increments with each FarrowEvent. Sows peak at parity 3-5 and are typically culled at parity 6-8.")
+
+(isa hasRetirementReason BinaryPredicate)
+(arity hasRetirementReason 2)
+(arg1Isa hasRetirementReason Dam)
+(arg2Isa hasRetirementReason RetirementReason)
+(comment hasRetirementReason "Why a sow was removed from the breeding herd. (hasRetirementReason ?dam ?reason) — Culled, Deceased, Cannibal, Retired, NotGoodEnough, Injury, GrewTooLarge, or Sold. Critical for herd management analytics.")
+
+(isa hasPedigreeCategory BinaryPredicate)
+(arity hasPedigreeCategory 2)
+(arg1Isa hasPedigreeCategory SwineAnimal)
+(arg2Isa hasPedigreeCategory PedigreeCategory)
+(comment hasPedigreeCategory "How the animal is classified on its registration papers. (hasPedigreeCategory ?animal ?category) — PedigreeGilt, PedigreeBarrow, PedigreeBoar, or PedigreeSow.")
+
+;; ── Location ──
+
+(isa locatedIn BinaryPredicate)
+(isa locatedIn SpatialRelation)
+(arity locatedIn 2)
+(arg1Isa locatedIn Breeder)
+(arg2Isa locatedIn Location)
+(comment locatedIn "Geographic location of a breeder's operation. (locatedIn ?breeder ?location) — city and state. Used for spatial analysis of breeding networks and buyer travel patterns.")
+
+(isa hasState BinaryPredicate)
+(isa hasState SpatialRelation)
+(arity hasState 2)
+(arg1Isa hasState Breeder)
+(arg2Isa hasState Thing)
+(comment hasState "US state where the breeder operates. (hasState ?breeder ?state) — two-letter abbreviation. The primary spatial grouping dimension for breeder analysis.")
+
+(isa hasCity BinaryPredicate)
+(isa hasCity SpatialRelation)
+(arity hasCity 2)
+(arg1Isa hasCity Breeder)
+(arg2Isa hasCity Thing)
+(comment hasCity "City where the breeder operates. (hasCity ?breeder ?city) — used with hasState for full geographic resolution.")
+
+;;; ============================================================
+;;; SECTION 6: METRIC PREDICATES
+;;; ============================================================
+;;; These predicates attach quantitative measurements to entities.
+;;; Each fires a SIGNAL on the entity's METRIC line.
+
+(isa hasWeight BinaryPredicate)
+(arity hasWeight 2)
+(arg1Isa hasWeight SwineAnimal)
+(arg2Isa hasWeight Thing)
+(comment hasWeight "Body weight in pounds at a given timestamp. (hasWeight ?animal ?pounds) — the raw measurement. To track weight over time, use WeighEvent SIGNALs on the animal's WeightMetric line.")
+
+(isa hasDailyGain BinaryPredicate)
+(arity hasDailyGain 2)
+(arg1Isa hasDailyGain SwineAnimal)
+(arg2Isa hasDailyGain Thing)
+(comment hasDailyGain "Average daily gain in lbs/day. (hasDailyGain ?animal ?rate) — computed from sequential WeighEvents. ADG = (weight2 - weight1) / (date2 - date1).")
+
+(isa hasFeedGainRatio BinaryPredicate)
+(arity hasFeedGainRatio 2)
+(arg1Isa hasFeedGainRatio SwineAnimal)
+(arg2Isa hasFeedGainRatio Thing)
+(comment hasFeedGainRatio "Feed conversion ratio. (hasFeedGainRatio ?animal ?ratio) — lbs of feed per lb of gain. Lower is more efficient. Requires controlled feed intake measurement.")
+
+(isa hasLitterSize BinaryPredicate)
+(arity hasLitterSize 2)
+(arg1Isa hasLitterSize Litter)
+(arg2Isa hasLitterSize Thing)
+(comment hasLitterSize "Total number of piglets in a litter. (hasLitterSize ?litter ?count) — includes born alive, stillborn, and mummified. The primary measure of a dam's maternal productivity at a given parity.")
+
+(isa hasBornAlive BinaryPredicate)
+(arity hasBornAlive 2)
+(arg1Isa hasBornAlive Litter)
+(arg2Isa hasBornAlive Thing)
+(comment hasBornAlive "Number of live piglets at birth. (hasBornAlive ?litter ?count) — the most important litter metric. National average: 10-12. Elite: 14-16.")
+
+(isa hasStillborn BinaryPredicate)
+(arity hasStillborn 2)
+(arg1Isa hasStillborn Litter)
+(arg2Isa hasStillborn Thing)
+(comment hasStillborn "Number of stillborn piglets. (hasStillborn ?litter ?count) — piglets that were fully formed but dead at birth. High stillborn rates may indicate PSS, dystocia, or management issues.")
+
+(isa hasSalePrice BinaryPredicate)
+(arity hasSalePrice 2)
+(arg1Isa hasSalePrice SaleTransaction)
+(arg2Isa hasSalePrice Thing)
+(comment hasSalePrice "Dollar amount of the sale. (hasSalePrice ?sale ?dollars) — the hammer price for auctions, the agreed price for private treaty. The primary economic metric.")
+
+(isa hasBidCount BinaryPredicate)
+(arity hasBidCount 2)
+(arg1Isa hasBidCount SaleTransaction)
+(arg2Isa hasBidCount Thing)
+(comment hasBidCount "Number of bids placed on the lot. (hasBidCount ?sale ?count) — measures demand intensity. High bid counts correlate with popular genetics and competitive market segments.")
+
+(isa hasLotNumber BinaryPredicate)
+(arity hasLotNumber 2)
+(arg1Isa hasLotNumber SaleTransaction)
+(arg2Isa hasLotNumber Thing)
+(comment hasLotNumber "Lot number in the auction catalog. (hasLotNumber ?sale ?number) — sequential within a sale event. Lot 1 is typically the headliner semen lot or top-end gilt.")
+
+(isa hasAuctionType BinaryPredicate)
+(arity hasAuctionType 2)
+(arg1Isa hasAuctionType SaleTransaction)
+(arg2Isa hasAuctionType AuctionType)
+(comment hasAuctionType "Format of the sale. (hasAuctionType ?sale ?type) — Online, Live, or PrivateTreaty.")
+
+;;; ============================================================
+;;; SECTION 7: SHOW PREDICATES
+;;; ============================================================
+;;; Show circuit predicates track competitive evaluation of
+;;; animals — the social proof layer of the genetics market.
+
+(isa enteredIn BinaryPredicate)
+(arity enteredIn 2)
+(arg1Isa enteredIn ShowEntry)
+(arg2Isa enteredIn ShowClass)
+(comment enteredIn "An entry is placed in a show class. (enteredIn ?entry ?class) — determines which animals the entry competes against.")
+
+(isa entryAnimal BinaryPredicate)
+(arity entryAnimal 2)
+(arg1Isa entryAnimal ShowEntry)
+(arg2Isa entryAnimal SwineAnimal)
+(comment entryAnimal "The animal in a show entry. (entryAnimal ?entry ?animal) — links the entry record to the animal NODE.")
+
+(isa entryShow BinaryPredicate)
+(arity entryShow 2)
+(arg1Isa entryShow ShowEntry)
+(arg2Isa entryShow Show)
+(comment entryShow "Which show the entry belongs to. (entryShow ?entry ?show) — links the entry to the show event.")
+
+(isa placedAt BinaryPredicate)
+(arity placedAt 2)
+(arg1Isa placedAt ShowEntry)
+(arg2Isa placedAt Thing)
+(comment placedAt "Placement rank in the class. (placedAt ?entry ?rank) — integer, 1 = first place. Champion and Reserve Champion are special designations that transcend numeric placement.")
+
+(isa judgedBy BinaryPredicate)
+(arity judgedBy 2)
+(arg1Isa judgedBy Show)
+(arg2Isa judgedBy Thing)
+(comment judgedBy "Who judged the show. (judgedBy ?show ?judge) — judges are influential figures in the industry whose preferences shape breeding trends. A judge's selections become market signals.")
+
+(isa classifiedAs BinaryPredicate)
+(arity classifiedAs 2)
+(arg1Isa classifiedAs ShowEntry)
+(arg2Isa classifiedAs PedigreeCategory)
+(comment classifiedAs "Pedigree classification for the entry. (classifiedAs ?entry ?category) — determines which ring the animal shows in: Gilt, Barrow, Boar, or Sow division.")
+
+(isa hasShowName BinaryPredicate)
+(arity hasShowName 2)
+(arg1Isa hasShowName Show)
+(arg2Isa hasShowName Thing)
+(comment hasShowName "Name of the show event. (hasShowName ?show ?name) — e.g., 'World Pork Expo', 'Indiana State Fair', 'SMA Breeders Classic'.")
+
+(isa hasShowDate BinaryPredicate)
+(isa hasShowDate TemporalRelation)
+(arity hasShowDate 2)
+(arg1Isa hasShowDate Show)
+(arg2Isa hasShowDate Thing)
+(comment hasShowDate "Date of the show event. (hasShowDate ?show ?date) — anchors the show on the temporal spine. Show season runs roughly March through October.")
+
+(isa hasShowLocation BinaryPredicate)
+(isa hasShowLocation SpatialRelation)
+(arity hasShowLocation 2)
+(arg1Isa hasShowLocation Show)
+(arg2Isa hasShowLocation Location)
+(comment hasShowLocation "Where the show was held. (hasShowLocation ?show ?location) — fairgrounds, expo centers, or breed association facilities.")
+
+;;; ============================================================
+;;; SECTION 8: BREEDING EVENT PREDICATES
+;;; ============================================================
+;;; These predicates describe the structure of breeding events —
+;;; the inputs and outputs of the reproductive cycle.
+
+(isa breedingEventSire BinaryPredicate)
+(arity breedingEventSire 2)
+(arg1Isa breedingEventSire BreedingEvent)
+(arg2Isa breedingEventSire Sire)
+(comment breedingEventSire "The sire used in a breeding event. (breedingEventSire ?event ?sire) — for AI (artificial insemination), this is the sire the semen came from. For natural service, the boar that mated.")
+
+(isa breedingEventDam BinaryPredicate)
+(arity breedingEventDam 2)
+(arg1Isa breedingEventDam BreedingEvent)
+(arg2Isa breedingEventDam Dam)
+(comment breedingEventDam "The dam in a breeding event. (breedingEventDam ?event ?dam) — the sow or gilt that was inseminated or mated.")
+
+(isa breedingEventResult BinaryPredicate)
+(arity breedingEventResult 2)
+(arg1Isa breedingEventResult BreedingEvent)
+(arg2Isa breedingEventResult FarrowEvent)
+(comment breedingEventResult "The farrowing that resulted from this breeding. (breedingEventResult ?breeding ?farrow) — links the cause (breeding) to the effect (farrowing). Not all breedings result in farrowings — some return open.")
+
+(isa farrowEventDam BinaryPredicate)
+(arity farrowEventDam 2)
+(arg1Isa farrowEventDam FarrowEvent)
+(arg2Isa farrowEventDam Dam)
+(comment farrowEventDam "The dam that farrowed. (farrowEventDam ?event ?dam) — links the farrowing SIGNAL to the dam NODE.")
+
+(isa farrowEventLitter BinaryPredicate)
+(arity farrowEventLitter 2)
+(arg1Isa farrowEventLitter FarrowEvent)
+(arg2Isa farrowEventLitter Litter)
+(comment farrowEventLitter "The litter produced by a farrowing. (farrowEventLitter ?event ?litter) — links the SIGNAL to the Litter GROUP NODE it created.")
+
+(isa farrowEventParity BinaryPredicate)
+(arity farrowEventParity 2)
+(arg1Isa farrowEventParity FarrowEvent)
+(arg2Isa farrowEventParity Thing)
+(comment farrowEventParity "Which parity number this farrowing represents. (farrowEventParity ?event ?parityNumber) — integer. Parity 1 = dam's first litter.")
+
+;;; ============================================================
+;;; SECTION 9: SALE TRANSACTION PREDICATES
+;;; ============================================================
+;;; Detailed structure of a sale — who sold what to whom,
+;;; where, when, and for how much.
+
+(isa saleAnimal BinaryPredicate)
+(arity saleAnimal 2)
+(arg1Isa saleAnimal SaleTransaction)
+(arg2Isa saleAnimal SwineAnimal)
+(comment saleAnimal "The animal sold in a transaction. (saleAnimal ?sale ?animal) — links the commerce SIGNAL to the animal NODE. For semen lots, see semenFromSire instead.")
+
+(isa saleSemenProduct BinaryPredicate)
+(arity saleSemenProduct 2)
+(arg1Isa saleSemenProduct SaleTransaction)
+(arg2Isa saleSemenProduct SemenProduct)
+(comment saleSemenProduct "Semen product sold in a transaction. (saleSemenProduct ?sale ?product) — for semen lots rather than live animals.")
+
+(isa saleEvent BinaryPredicate)
+(arity saleEvent 2)
+(arg1Isa saleEvent SaleTransaction)
+(arg2Isa saleEvent Thing)
+(comment saleEvent "The named sale event this transaction belongs to. (saleEvent ?sale ?eventName) — e.g., 'Trogdon Spring Sale 2024', 'Wendt Group Online #47'. Groups individual transactions into sale catalogs.")
+
+;;; ============================================================
+;;; SECTION 10: INVERSE AND DERIVATION RULES
+;;; ============================================================
+;;; Rules that derive new edges from existing ones. These ensure
+;;; the graph is navigable in both directions and that higher-order
+;;; relationships are computable from atomic facts.
+
+;; ── Ownership transfer on sale ──
+;; When an animal is sold, ownership transfers to the buyer
+(implies
+  (and (saleAnimal ?sale ?animal)
+       (soldTo ?sale ?buyer)
+       (isa ?buyer Breeder))
+  (ownedBy ?animal ?buyer))
+
+;; ── Breeder membership inference ──
+;; If a breeder has a CPS number, they are a member of CPS
+(implies
+  (hasCPSNumber ?breeder ?number)
+  (memberOf ?breeder CPS))
+
+(implies
+  (hasNSRNumber ?breeder ?number)
+  (memberOf ?breeder NSR))
+
+(implies
+  (hasABANumber ?breeder ?number)
+  (memberOf ?breeder ABA))
+
+;; ── Registry inference from breed ──
+;; Hampshire, Duroc, Yorkshire, Landrace → NSR
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Hampshire))
+  (registeredWith ?animal NSR))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Duroc))
+  (registeredWith ?animal NSR))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Yorkshire))
+  (registeredWith ?animal NSR))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Landrace))
+  (registeredWith ?animal NSR))
+
+;; Chester, Poland, Spot → CPS
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Chester))
+  (registeredWith ?animal CPS))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Poland))
+  (registeredWith ?animal CPS))
+
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Spot))
+  (registeredWith ?animal CPS))
+
+;; Berkshire → ABA
+(implies
+  (and (bredBy ?animal ?breeder)
+       (hasBreed ?animal Berkshire))
+  (registeredWith ?animal ABA))
+
+;; ── Show performance affects sire reputation ──
+;; If an offspring places first, it signals the sire's genetic quality
+(implies
+  (and (entryAnimal ?entry ?animal)
+       (placedAt ?entry 1)
+       (hasSire ?animal ?sire))
+  (hasClassWinner ?sire ?animal))
+
+(isa hasClassWinner BinaryPredicate)
+(arity hasClassWinner 2)
+(arg1Isa hasClassWinner Sire)
+(arg2Isa hasClassWinner SwineAnimal)
+(comment hasClassWinner "A sire has produced a class-winning offspring. (hasClassWinner ?sire ?animal) — derived from show results. The count of class winners is a proxy for genetic merit in the show pig market.")

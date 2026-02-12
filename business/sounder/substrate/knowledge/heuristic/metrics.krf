@@ -1,0 +1,762 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / HEURISTIC / METRICS
+;;; Quantitative dimensions and event signals for the swine industry
+;;; ================================================================
+;;;
+;;; This file defines the METRIC lines Charlotte tracks and the
+;;; SIGNALs that place values on them. Together they form the
+;;; heuristic knowledge layer — what we measure and what we notice.
+;;;
+;;; The kernel/types.krf file declares the collection-level types
+;;; (WeightMetric, DailyGainMetric, etc.). This file instantiates
+;;; the concrete metric definitions — units, domains, directions,
+;;; thresholds — and the signal types that fire on them.
+;;;
+;;; Every METRIC defined here participates in the valuation chain:
+;;;   METRIC --> SIGNAL --> PROTOCOL
+;;; The dive line is unbroken from any protocol back through these
+;;; metrics to the NODEs they measure.
+;;;
+;;; ================================================================
+
+(in-microtheory SounderHeuristicMt)
+
+;; ── Microtheory inheritance ──
+
+(genlMt SounderHeuristicMt SounderKernelMt)
+
+;;; ============================================================
+;;; METRIC PREDICATES
+;;; ============================================================
+;;; These predicates describe metric properties. They extend the
+;;; Charlotte kernel's METRIC schema with swine-specific semantics.
+
+(isa metricUnit Relation)
+(arity metricUnit 2)
+(arg1Isa metricUnit METRIC)
+(arg2Isa metricUnit String)
+(comment metricUnit "(metricUnit ?metric ?unit) — the unit of measurement for this metric.")
+
+(isa metricDomain Relation)
+(arity metricDomain 2)
+(arg1Isa metricDomain METRIC)
+(arg2Isa metricDomain Collection)
+(comment metricDomain "(metricDomain ?metric ?collection) — the type of NODE this metric attaches to.")
+
+(isa metricDirection Relation)
+(arity metricDirection 2)
+(arg1Isa metricDirection METRIC)
+(arg2Isa metricDirection DirectionPreference)
+(comment metricDirection "(metricDirection ?metric ?direction) — whether higher or lower values are preferable.")
+
+(isa DirectionPreference Collection)
+(isa HigherIsBetter DirectionPreference)
+(isa LowerIsBetter DirectionPreference)
+(isa ContextDependent DirectionPreference)
+(disjointWith HigherIsBetter LowerIsBetter)
+
+;;; ============================================================
+;;; SECTION 1: GROWTH METRICS (per animal, measured over time)
+;;; ============================================================
+;;; Growth metrics track the physical development of individual
+;;; animals. These are the features that determine market readiness,
+;;; show eligibility, and breeding selection decisions.
+
+;; ── Weight ──
+
+(isa WeightMetric METRIC)
+(metricUnit WeightMetric "lbs")
+(metricDomain WeightMetric SwineAnimal)
+(metricDirection WeightMetric ContextDependent)
+(hasThreshold WeightMetric LowerBound 0)
+(hasThreshold WeightMetric UpperBound 400)
+(comment WeightMetric
+  "Pounds of body weight. Measured at birth (2-4 lbs), weaning (12-15 lbs),
+   selection (220-260 lbs), and market (260-290 lbs). Context-dependent
+   direction: too light is underperformance, too heavy is over-condition.
+   Signal placed at each weigh-in event. The fundamental growth line —
+   every other performance metric derives from or normalizes against weight.")
+
+;; ── Daily Gain ──
+
+(isa DailyGainMetric METRIC)
+(metricUnit DailyGainMetric "lbs/day")
+(metricDomain DailyGainMetric SwineAnimal)
+(metricDirection DailyGainMetric HigherIsBetter)
+(hasThreshold DailyGainMetric LowerBound 0.5)
+(hasThreshold DailyGainMetric UpperBound 3.5)
+(hasThreshold DailyGainMetric TargetValue 2.0)
+(comment DailyGainMetric
+  "Pounds gained per day. Computed from weight deltas between consecutive
+   weigh-in signals. Target: 1.5-2.2 lbs/day for show pigs, 1.8-2.5 for
+   market hogs. Below 1.0 indicates health or nutrition problems. Above
+   2.5 may indicate over-condition risk. The first derivative of the
+   weight line — the rate of change that matters for selection timing.")
+
+;; ── Feed Intake ──
+
+(isa FeedIntakeMetric METRIC)
+(metricUnit FeedIntakeMetric "lbs/day")
+(metricDomain FeedIntakeMetric SwineAnimal)
+(metricDirection FeedIntakeMetric ContextDependent)
+(hasThreshold FeedIntakeMetric LowerBound 2.0)
+(hasThreshold FeedIntakeMetric UpperBound 12.0)
+(hasThreshold FeedIntakeMetric TargetValue 6.0)
+(comment FeedIntakeMetric
+  "Pounds of feed consumed per day. Varies by age and stage: nursery pigs
+   consume 2-4 lbs/day, finishers 6-10 lbs/day. Context-dependent because
+   intake must be evaluated relative to gain — high intake with low gain
+   is inefficiency, high intake with high gain is desirable appetite.")
+
+;; ── Feed:Gain Ratio ──
+
+(isa FeedGainRatio METRIC)
+(metricUnit FeedGainRatio "lbs feed / lbs gained")
+(metricDomain FeedGainRatio SwineAnimal)
+(metricDirection FeedGainRatio LowerIsBetter)
+(hasThreshold FeedGainRatio LowerBound 1.5)
+(hasThreshold FeedGainRatio UpperBound 5.0)
+(hasThreshold FeedGainRatio TargetValue 2.8)
+(comment FeedGainRatio
+  "Feed efficiency — pounds of feed consumed per pound of body weight
+   gained. Lower is better. Target: under 3.0 for modern show genetics,
+   2.5-3.5 for commercial lines. Above 4.0 indicates poor efficiency.
+   This is the cost-to-produce metric — it directly determines feed
+   cost per pound of pork produced. The single most economically
+   important performance metric in commercial swine production.")
+
+;; ── Backfat Depth ──
+
+(isa BackfatMetric METRIC)
+(metricUnit BackfatMetric "inches")
+(metricDomain BackfatMetric SwineAnimal)
+(metricDirection BackfatMetric LowerIsBetter)
+(hasThreshold BackfatMetric LowerBound 0.3)
+(hasThreshold BackfatMetric UpperBound 1.5)
+(hasThreshold BackfatMetric TargetValue 0.7)
+(comment BackfatMetric
+  "Inches of subcutaneous backfat measured at the last rib by real-time
+   ultrasound. Target: under 0.8 inches for show pigs. Below 0.4 may
+   indicate insufficient finish. Above 1.0 is over-condition for
+   modern show standards. Ultrasound measured at 230-260 lbs. Combined
+   with loin eye area, backfat defines the carcass merit index.")
+
+;; ── Loin Eye Area ──
+
+(isa LoinEyeAreaMetric METRIC)
+(metricUnit LoinEyeAreaMetric "sq in")
+(metricDomain LoinEyeAreaMetric SwineAnimal)
+(metricDirection LoinEyeAreaMetric HigherIsBetter)
+(hasThreshold LoinEyeAreaMetric LowerBound 3.0)
+(hasThreshold LoinEyeAreaMetric UpperBound 10.0)
+(hasThreshold LoinEyeAreaMetric TargetValue 7.0)
+(comment LoinEyeAreaMetric
+  "Cross-sectional area of the longissimus dorsi muscle at the last rib,
+   measured in square inches by real-time ultrasound. Target: over 6.0
+   sq in for show pigs. Elite genetics exceed 8.0. Loin eye area is the
+   primary muscle expression metric — it correlates with total carcass
+   lean yield and is the numerator in lean-to-fat ratio calculations.")
+
+;;; ============================================================
+;;; SECTION 2: REPRODUCTIVE METRICS (per dam/sow)
+;;; ============================================================
+;;; Reproductive metrics track a dam's productive life. These are
+;;; measured per farrowing event and accumulated across parities.
+;;; A dam's reproductive history IS her economic value — the entire
+;;; cost structure of a swine operation flows through litter size.
+
+;; ── Litter Size (total born) ──
+
+(isa LitterSizeMetric METRIC)
+(metricUnit LitterSizeMetric "piglets")
+(metricDomain LitterSizeMetric Dam)
+(metricDirection LitterSizeMetric HigherIsBetter)
+(hasThreshold LitterSizeMetric LowerBound 4)
+(hasThreshold LitterSizeMetric UpperBound 20)
+(hasThreshold LitterSizeMetric TargetValue 12)
+(comment LitterSizeMetric
+  "Total count of piglets born per farrowing — includes born alive,
+   stillborn, and mummified. Industry average: 10-12 total born.
+   Elite dams: 14-16. Below 6 on parity 2+ is a culling indicator.
+   The primary maternal productivity metric — a dam's economic lifetime
+   value is LitterSize x PigsPerSowPerYear x MarketValuePerPig.")
+
+;; ── Born Alive ──
+
+(isa BornAliveMetric METRIC)
+(metricUnit BornAliveMetric "piglets")
+(metricDomain BornAliveMetric Dam)
+(metricDirection BornAliveMetric HigherIsBetter)
+(hasThreshold BornAliveMetric LowerBound 4)
+(hasThreshold BornAliveMetric UpperBound 18)
+(hasThreshold BornAliveMetric TargetValue 11)
+(comment BornAliveMetric
+  "Piglets born alive per farrowing. The commercially relevant litter
+   count — stillborns and mummifieds are losses. Industry average: 10-11
+   born alive. The key distinction from total born: a sow with 14 total
+   and 8 alive is worse than a sow with 11 total and 11 alive.")
+
+;; ── Stillborn ──
+
+(isa StillbornMetric METRIC)
+(metricUnit StillbornMetric "piglets")
+(metricDomain StillbornMetric Dam)
+(metricDirection StillbornMetric LowerIsBetter)
+(hasThreshold StillbornMetric LowerBound 0)
+(hasThreshold StillbornMetric UpperBound 5)
+(hasThreshold StillbornMetric TargetValue 0)
+(comment StillbornMetric
+  "Piglets born dead per farrowing. Target: 0. Above 2 per litter may
+   indicate farrowing assistance needed, sow condition problems, or
+   genetics-related birth difficulty. Stillborn rate increasing across
+   parities is an early signal of sow decline.")
+
+;; ── Mummified ──
+
+(isa MummifiedMetric METRIC)
+(metricUnit MummifiedMetric "piglets")
+(metricDomain MummifiedMetric Dam)
+(metricDirection MummifiedMetric LowerIsBetter)
+(hasThreshold MummifiedMetric LowerBound 0)
+(hasThreshold MummifiedMetric UpperBound 4)
+(hasThreshold MummifiedMetric TargetValue 0)
+(comment MummifiedMetric
+  "Piglets that died in utero and were absorbed or partially reabsorbed.
+   Mummies indicate mid-gestation losses — infection (PRRS, parvo),
+   overcrowding in utero, or nutritional deficiency. Above 2 per litter
+   warrants veterinary investigation.")
+
+;; ── Weaned Count ──
+
+(isa WeanedMetric METRIC)
+(metricUnit WeanedMetric "piglets")
+(metricDomain WeanedMetric Dam)
+(metricDirection WeanedMetric HigherIsBetter)
+(hasThreshold WeanedMetric LowerBound 3)
+(hasThreshold WeanedMetric UpperBound 16)
+(hasThreshold WeanedMetric TargetValue 10)
+(comment WeanedMetric
+  "Piglets surviving to weaning age (typically 21-28 days). The
+   commercially definitive litter metric — born alive minus pre-weaning
+   mortality equals weaned. Target: 10+ per litter. Below 7 on parity 2+
+   is a culling signal. Pre-weaning mortality above 15% indicates
+   mothering ability problems, environmental stress, or disease pressure.")
+
+;; ── Parity ──
+
+(isa ParityMetric METRIC)
+(metricUnit ParityMetric "cycle number")
+(metricDomain ParityMetric Dam)
+(metricDirection ParityMetric ContextDependent)
+(hasThreshold ParityMetric LowerBound 1)
+(hasThreshold ParityMetric UpperBound 10)
+(hasThreshold ParityMetric TargetValue 5)
+(comment ParityMetric
+  "Which breeding cycle the sow is on. Parity 1 = first litter (gilts
+   typically farrow smaller litters). Performance peaks at parity 3-5.
+   Parity 7+ sees diminishing returns. Parity 8+ is rare — most sows
+   are culled before this. The X-axis of a dam's productive life.
+   Context-dependent because value depends on position on the curve:
+   parity 3 is prime, parity 8 is declining.")
+
+;; ── Wean-to-Service Interval ──
+
+(isa WeanToServiceInterval METRIC)
+(metricUnit WeanToServiceInterval "days")
+(metricDomain WeanToServiceInterval Dam)
+(metricDirection WeanToServiceInterval LowerIsBetter)
+(hasThreshold WeanToServiceInterval LowerBound 3)
+(hasThreshold WeanToServiceInterval UpperBound 30)
+(hasThreshold WeanToServiceInterval TargetValue 5)
+(comment WeanToServiceInterval
+  "Days from weaning a litter to successful breeding for the next
+   pregnancy. Target: 4-7 days. Below 3 may indicate premature
+   re-breeding. Above 14 days is a reproductive efficiency problem.
+   Wean-to-service interval directly determines pigs per sow per year
+   because it is the idle time between productive cycles.")
+
+;; ── Farrow Rate ──
+
+(isa FarrowRateMetric METRIC)
+(metricUnit FarrowRateMetric "percent")
+(metricDomain FarrowRateMetric Dam)
+(metricDirection FarrowRateMetric HigherIsBetter)
+(hasThreshold FarrowRateMetric LowerBound 50)
+(hasThreshold FarrowRateMetric UpperBound 100)
+(hasThreshold FarrowRateMetric TargetValue 88)
+(comment FarrowRateMetric
+  "Percentage of bred sows that actually farrow. Industry target: 85-90%.
+   Below 80% indicates breeding management problems — heat detection
+   failure, semen quality issues, or disease interference. Farrow rate
+   is the conversion efficiency of the breeding program: how many
+   breeding events actually produce litters.")
+
+;;; ============================================================
+;;; SECTION 3: VALUATION METRICS (per animal or lot)
+;;; ============================================================
+;;; These metrics track the economic signals in the genetics
+;;; marketplace. Every sale, every bid, every price premium is
+;;; a data point on the valuation line.
+
+;; ── Sale Price ──
+
+(isa SalePriceMetric METRIC)
+(metricUnit SalePriceMetric "USD")
+(metricDomain SalePriceMetric SwineAnimal)
+(metricDirection SalePriceMetric HigherIsBetter)
+(hasThreshold SalePriceMetric LowerBound 50)
+(hasThreshold SalePriceMetric UpperBound 50000)
+(hasThreshold SalePriceMetric TargetValue 1500)
+(comment SalePriceMetric
+  "Dollar amount at point of sale. Auction hammer price or private treaty
+   price. Range: $200 market barrows to $50,000+ elite breeding stock.
+   Trogdon average: $960/head. The primary economic signal — every node
+   in the graph ultimately connects to a sale price through genetics,
+   reputation, or demand topology.")
+
+;; ── Bid Count ──
+
+(isa BidCountMetric METRIC)
+(metricUnit BidCountMetric "bids")
+(metricDomain BidCountMetric SaleTransaction)
+(metricDirection BidCountMetric HigherIsBetter)
+(hasThreshold BidCountMetric LowerBound 0)
+(hasThreshold BidCountMetric UpperBound 100)
+(hasThreshold BidCountMetric TargetValue 8)
+(comment BidCountMetric
+  "Number of bids received on an auction lot. Measures demand intensity.
+   Zero bids = no sale (pass-out). 1-3 bids = weak demand. 8+ bids =
+   strong competition. Bid count is the market's vote — it reveals
+   which genetics lines have real buyer demand versus marketed hype.")
+
+;; ── Price Per Pound ──
+
+(isa PricePerPoundMetric METRIC)
+(metricUnit PricePerPoundMetric "USD/lb")
+(metricDomain PricePerPoundMetric SwineAnimal)
+(metricDirection PricePerPoundMetric HigherIsBetter)
+(hasThreshold PricePerPoundMetric LowerBound 0.40)
+(hasThreshold PricePerPoundMetric UpperBound 20.00)
+(hasThreshold PricePerPoundMetric TargetValue 5.00)
+(comment PricePerPoundMetric
+  "Dollars per pound of live weight at sale. Market hogs: $0.50-$1.50/lb.
+   Show pigs: $3-$15/lb. Elite breeding stock: $10-$20+/lb. This metric
+   normalizes sale price against animal size, making cross-animal
+   comparisons meaningful. A 250-lb pig at $2,500 is $10/lb — that is
+   the genetics premium above commodity value.")
+
+;; ── Genetic Premium ──
+
+(isa GeneticPremiumMetric METRIC)
+(metricUnit GeneticPremiumMetric "USD")
+(metricDomain GeneticPremiumMetric SwineAnimal)
+(metricDirection GeneticPremiumMetric HigherIsBetter)
+(hasThreshold GeneticPremiumMetric LowerBound 0)
+(hasThreshold GeneticPremiumMetric UpperBound 45000)
+(hasThreshold GeneticPremiumMetric TargetValue 500)
+(comment GeneticPremiumMetric
+  "Price premium over market base attributable to genetics. Computed as
+   sale price minus commodity value (weight x market price/lb). A $2,500
+   pig when market is $0.60/lb at 260 lbs has a genetic premium of
+   $2,344. This metric isolates the value of bloodline, sire reputation,
+   breeder reputation, and show record from the base commodity price.
+   It is the entire value proposition of the genetics industry.")
+
+;;; ============================================================
+;;; SECTION 4: OPERATION-LEVEL METRICS (per breeder/farm)
+;;; ============================================================
+;;; These metrics aggregate animal-level data to the operation
+;;; level. A breeder's reputation is a function of these metrics
+;;; accumulated over years.
+
+;; ── Total Sales Revenue ──
+
+(isa TotalSalesMetric METRIC)
+(metricUnit TotalSalesMetric "USD")
+(metricDomain TotalSalesMetric Breeder)
+(metricDirection TotalSalesMetric HigherIsBetter)
+(hasThreshold TotalSalesMetric LowerBound 0)
+(hasThreshold TotalSalesMetric UpperBound 10000000)
+(comment TotalSalesMetric
+  "Cumulative revenue from animal sales. Trogdon Show Pigs: $1.13M over
+   1,176 recorded sales. This metric accumulates over time — each
+   SaleTransaction SIGNAL adds to the running total. Total sales is
+   the top-line indicator of a breeding program's market presence.")
+
+;; ── Average Sale Price ──
+
+(isa AvgSalePriceMetric METRIC)
+(metricUnit AvgSalePriceMetric "USD/head")
+(metricDomain AvgSalePriceMetric Breeder)
+(metricDirection AvgSalePriceMetric HigherIsBetter)
+(hasThreshold AvgSalePriceMetric LowerBound 100)
+(hasThreshold AvgSalePriceMetric UpperBound 10000)
+(hasThreshold AvgSalePriceMetric TargetValue 1200)
+(comment AvgSalePriceMetric
+  "Average dollar amount per head sold. Computed as TotalSales / HeadSold.
+   This is the unit economics metric — it tells you what the market is
+   willing to pay, on average, for a breeder's genetics. Rising avg
+   sale price over time = market validating the program. Declining =
+   genetics falling behind or buyer fatigue.")
+
+;; ── Repeat Buyer Rate ──
+
+(isa RepeatBuyerRateMetric METRIC)
+(metricUnit RepeatBuyerRateMetric "percent")
+(metricDomain RepeatBuyerRateMetric Breeder)
+(metricDirection RepeatBuyerRateMetric HigherIsBetter)
+(hasThreshold RepeatBuyerRateMetric LowerBound 0)
+(hasThreshold RepeatBuyerRateMetric UpperBound 100)
+(hasThreshold RepeatBuyerRateMetric TargetValue 35)
+(comment RepeatBuyerRateMetric
+  "Percentage of buyers who purchase again from the same breeder.
+   Target: above 30% to indicate sustainable demand. Below 15% means
+   buyers are not returning — the genetics or service is not retaining
+   customers. Above 50% indicates strong loyalty but may suggest
+   limited market reach. This is the customer retention metric —
+   the best proxy for actual satisfaction with the genetics product.")
+
+;; ── Herd Size ──
+
+(isa HerdSizeMetric METRIC)
+(metricUnit HerdSizeMetric "breeding females")
+(metricDomain HerdSizeMetric Breeder)
+(metricDirection HerdSizeMetric ContextDependent)
+(hasThreshold HerdSizeMetric LowerBound 1)
+(hasThreshold HerdSizeMetric UpperBound 500)
+(hasThreshold HerdSizeMetric TargetValue 30)
+(comment HerdSizeMetric
+  "Count of active breeding females in the herd. Show pig operations
+   typically run 15-50 sows. Commercial operations: 200-5,000+.
+   Context-dependent because bigger is not always better — a 20-sow
+   operation can outperform a 200-sow operation on per-head economics.
+   Herd size determines production capacity and fixed cost absorption.")
+
+;; ── Pigs Per Sow Per Year ──
+
+(isa PigsPerSowPerYearMetric METRIC)
+(metricUnit PigsPerSowPerYearMetric "pigs/sow/year")
+(metricDomain PigsPerSowPerYearMetric Breeder)
+(metricDirection PigsPerSowPerYearMetric HigherIsBetter)
+(hasThreshold PigsPerSowPerYearMetric LowerBound 10)
+(hasThreshold PigsPerSowPerYearMetric UpperBound 35)
+(hasThreshold PigsPerSowPerYearMetric TargetValue 23)
+(comment PigsPerSowPerYearMetric
+  "Pigs weaned per sow per year. The composite productivity metric
+   that integrates farrowing rate, litter size, pre-weaning mortality,
+   and wean-to-service interval. National commercial average: 25-28.
+   Show pig operations (longer farrow intervals): 18-22. Target: 20-25
+   for show pig breeders. This single number tells you more about an
+   operation's efficiency than any other metric — it is LitterSize x
+   FarrowsPerYear x SurvivalRate compressed into one dimension.")
+
+;;; ============================================================
+;;; SECTION 5: SIGNAL DEFINITIONS
+;;; ============================================================
+;;; SIGNALs are events that place values on METRIC lines.
+;;; Each signal fires on specific metrics and carries a payload
+;;; of measured values at a specific timestamp on the temporal spine.
+
+;; ── WeighIn Signal ──
+
+(isa WeighInSignal SIGNAL)
+(comment WeighInSignal
+  "Weight measurement taken at a specific point in time. Fires on
+   WeightMetric directly and enables DailyGainMetric computation when
+   paired with a prior WeighInSignal. Typical measurement points:
+   birth, weaning (21-28 days), selection (120-150 days), market
+   (160-200 days). Each weigh-in is a point on the growth curve.")
+(derivedFrom WeighInSignal WeightMetric)
+(derivedFrom WeighInSignal DailyGainMetric)
+
+(implies
+  (and (isa ?S WeighInSignal)
+       (hasField ?S :VALUE ?W)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?A))
+  (and (attachedTo WeightMetric ?A)
+       (hasSignalValue WeightMetric ?A ?W ?T)))
+
+;; ── Ultrasound Signal ──
+
+(isa UltrasoundSignal SIGNAL)
+(comment UltrasoundSignal
+  "Real-time ultrasound measurement of backfat depth and loin eye area.
+   Typically performed at 230-260 lbs by a certified ultrasound technician.
+   Fires on both BackfatMetric and LoinEyeAreaMetric simultaneously.
+   Ultrasound data is the primary carcass merit evaluation for live animals
+   — it replaces the need to slaughter to assess muscle and fat composition.")
+(derivedFrom UltrasoundSignal BackfatMetric)
+(derivedFrom UltrasoundSignal LoinEyeAreaMetric)
+
+(implies
+  (and (isa ?S UltrasoundSignal)
+       (hasField ?S :BACKFAT ?BF)
+       (hasField ?S :LOIN_EYE ?LE)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?A))
+  (and (attachedTo BackfatMetric ?A)
+       (attachedTo LoinEyeAreaMetric ?A)
+       (hasSignalValue BackfatMetric ?A ?BF ?T)
+       (hasSignalValue LoinEyeAreaMetric ?A ?LE ?T)))
+
+;; ── Farrow Signal ──
+
+(isa FarrowSignal SIGNAL)
+(comment FarrowSignal
+  "A sow farrowing a litter. The fundamental biological production event.
+   Fires on LitterSizeMetric, BornAliveMetric, StillbornMetric, and
+   MummifiedMetric simultaneously. Also increments ParityMetric.
+   A single FarrowSignal creates a new Litter NODE and places values
+   on five metric lines at once — it is the highest-information-density
+   signal in the Sounder graph.")
+(derivedFrom FarrowSignal LitterSizeMetric)
+(derivedFrom FarrowSignal BornAliveMetric)
+(derivedFrom FarrowSignal StillbornMetric)
+(derivedFrom FarrowSignal MummifiedMetric)
+(derivedFrom FarrowSignal ParityMetric)
+
+(implies
+  (and (isa ?S FarrowSignal)
+       (hasField ?S :TOTAL_BORN ?TB)
+       (hasField ?S :BORN_ALIVE ?BA)
+       (hasField ?S :STILLBORN ?SB)
+       (hasField ?S :MUMMIFIED ?MU)
+       (hasField ?S :PARITY ?P)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?D))
+  (and (attachedTo LitterSizeMetric ?D)
+       (attachedTo BornAliveMetric ?D)
+       (attachedTo StillbornMetric ?D)
+       (attachedTo MummifiedMetric ?D)
+       (attachedTo ParityMetric ?D)
+       (hasSignalValue LitterSizeMetric ?D ?TB ?T)
+       (hasSignalValue BornAliveMetric ?D ?BA ?T)
+       (hasSignalValue StillbornMetric ?D ?SB ?T)
+       (hasSignalValue MummifiedMetric ?D ?MU ?T)
+       (hasSignalValue ParityMetric ?D ?P ?T)))
+
+;; ── Wean Signal ──
+
+(isa WeanSignal SIGNAL)
+(comment WeanSignal
+  "Piglets weaned from a litter. Fires on WeanedMetric for the dam
+   and triggers WeanToServiceInterval countdown. Weaning is the
+   commercialization boundary — from this point, piglets become
+   independent economic units. Pre-weaning mortality is computed
+   as BornAlive minus Weaned.")
+(derivedFrom WeanSignal WeanedMetric)
+(derivedFrom WeanSignal WeanToServiceInterval)
+
+(implies
+  (and (isa ?S WeanSignal)
+       (hasField ?S :WEANED_COUNT ?WC)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?D))
+  (and (attachedTo WeanedMetric ?D)
+       (hasSignalValue WeanedMetric ?D ?WC ?T)))
+
+;; ── Sale Signal ──
+
+(isa SaleSignal SIGNAL)
+(comment SaleSignal
+  "An animal sold at auction or private treaty. Fires on SalePriceMetric,
+   BidCountMetric, PricePerPoundMetric, and GeneticPremiumMetric for
+   the animal. Also fires on TotalSalesMetric and AvgSalePriceMetric
+   for the selling breeder. A single sale signal propagates value
+   signals across the entire buyer-seller-genetics topology.")
+(derivedFrom SaleSignal SalePriceMetric)
+(derivedFrom SaleSignal BidCountMetric)
+(derivedFrom SaleSignal PricePerPoundMetric)
+(derivedFrom SaleSignal GeneticPremiumMetric)
+(derivedFrom SaleSignal TotalSalesMetric)
+(derivedFrom SaleSignal AvgSalePriceMetric)
+
+(implies
+  (and (isa ?S SaleSignal)
+       (hasField ?S :PRICE ?P)
+       (hasField ?S :BID_COUNT ?BC)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?A))
+  (and (attachedTo SalePriceMetric ?A)
+       (attachedTo BidCountMetric ?A)
+       (hasSignalValue SalePriceMetric ?A ?P ?T)
+       (hasSignalValue BidCountMetric ?A ?BC ?T)))
+
+;; ── Sale signal propagation to breeder-level metrics ──
+
+(implies
+  (and (isa ?S SaleSignal)
+       (hasField ?S :PRICE ?P)
+       (hasField ?S :TIMESTAMP ?T)
+       (measuresNode ?S ?A)
+       (bredBy ?A ?B)
+       (isa ?B Breeder))
+  (and (attachedTo TotalSalesMetric ?B)
+       (incrementsMetric TotalSalesMetric ?B ?P ?T)))
+
+;; ── Show Placement Signal ──
+
+(isa ShowPlacementSignal SIGNAL)
+(comment ShowPlacementSignal
+  "An animal placed in a show class. Carries the show name, class,
+   placement rank, and judge. Show placements are reputational signals
+   — they affect the animal's market value, the sire's genetic
+   reputation, and the breeder's credibility. A Grand Champion at a
+   major show can multiply a sire's semen value overnight.")
+
+(isa ShowPlacementRank Collection)
+(isa GrandChampion ShowPlacementRank)
+(isa ReserveChampion ShowPlacementRank)
+(isa ClassWinner ShowPlacementRank)
+(isa TopFive ShowPlacementRank)
+(isa Placed ShowPlacementRank)
+
+(implies
+  (and (isa ?S ShowPlacementSignal)
+       (hasField ?S :RANK GrandChampion)
+       (measuresNode ?S ?A)
+       (isSireOf ?sire ?A))
+  (incrementsReputation ?sire High))
+
+(implies
+  (and (isa ?S ShowPlacementSignal)
+       (hasField ?S :RANK ReserveChampion)
+       (measuresNode ?S ?A)
+       (isSireOf ?sire ?A))
+  (incrementsReputation ?sire Medium))
+
+;;; ============================================================
+;;; SECTION 6: DERIVED METRIC RULES
+;;; ============================================================
+;;; Some metrics are computed from other metrics rather than
+;;; directly measured. These rules define the derivation chain.
+
+;; ── Daily gain is computed from consecutive weigh-in signals ──
+
+(implies
+  (and (isa ?S1 WeighInSignal)
+       (isa ?S2 WeighInSignal)
+       (measuresNode ?S1 ?A)
+       (measuresNode ?S2 ?A)
+       (hasField ?S1 :VALUE ?W1)
+       (hasField ?S2 :VALUE ?W2)
+       (hasField ?S1 :TIMESTAMP ?T1)
+       (hasField ?S2 :TIMESTAMP ?T2)
+       (greaterThan ?T2 ?T1)
+       (timeDifference ?T2 ?T1 ?DAYS)
+       (greaterThan ?DAYS 0))
+  (hasSignalValue DailyGainMetric ?A (dividedBy (minus ?W2 ?W1) ?DAYS) ?T2))
+
+;; ── Genetic premium derived from sale price and commodity value ──
+
+(implies
+  (and (isa ?S SaleSignal)
+       (measuresNode ?S ?A)
+       (hasField ?S :PRICE ?SALE_PRICE)
+       (hasField ?S :TIMESTAMP ?T)
+       (hasSignalValue WeightMetric ?A ?WEIGHT ?T)
+       (currentMarketPrice ?MKT_PER_LB))
+  (hasSignalValue GeneticPremiumMetric ?A
+    (minus ?SALE_PRICE (times ?WEIGHT ?MKT_PER_LB)) ?T))
+
+;; ── Price per pound derived from sale price and weight ──
+
+(implies
+  (and (isa ?S SaleSignal)
+       (measuresNode ?S ?A)
+       (hasField ?S :PRICE ?SALE_PRICE)
+       (hasField ?S :TIMESTAMP ?T)
+       (hasSignalValue WeightMetric ?A ?WEIGHT ?T)
+       (greaterThan ?WEIGHT 0))
+  (hasSignalValue PricePerPoundMetric ?A
+    (dividedBy ?SALE_PRICE ?WEIGHT) ?T))
+
+;; ── Pigs per sow per year computed at the operation level ──
+
+(implies
+  (and (isa ?B Breeder)
+       (totalWeanedInYear ?B ?YEAR ?TOTAL_WEANED)
+       (avgHerdSizeInYear ?B ?YEAR ?AVG_SOWS)
+       (greaterThan ?AVG_SOWS 0))
+  (hasSignalValue PigsPerSowPerYearMetric ?B
+    (dividedBy ?TOTAL_WEANED ?AVG_SOWS)
+    (endOfYear ?YEAR)))
+
+;;; ============================================================
+;;; SECTION 7: PROTOCOL THRESHOLDS
+;;; ============================================================
+;;; Expected ranges that trigger protocol actions when crossed.
+;;; These connect the metrics layer to the protocol layer through
+;;; threshold crossing signals.
+
+;; ── Growth alert: daily gain falling below target ──
+
+(isa Protocol-LowDailyGain PROTOCOL)
+(hasTrigger Protocol-LowDailyGain ThresholdCrossed)
+(hasCondition Protocol-LowDailyGain
+  (and (isa ?A SwineAnimal)
+       (hasSignalValue DailyGainMetric ?A ?V ?T)
+       (lessThan ?V 1.2)))
+(hasAction Protocol-LowDailyGain
+  (SendNotification LowGrowthAlert ?A ?V))
+(protocolPriority Protocol-LowDailyGain 5)
+
+;; ── Reproductive alert: low born alive ──
+
+(isa Protocol-LowBornAlive PROTOCOL)
+(hasTrigger Protocol-LowBornAlive ThresholdCrossed)
+(hasCondition Protocol-LowBornAlive
+  (and (isa ?D Dam)
+       (hasSignalValue BornAliveMetric ?D ?BA ?T)
+       (hasSignalValue ParityMetric ?D ?P ?T)
+       (greaterThan ?P 1)
+       (lessThan ?BA 6)))
+(hasAction Protocol-LowBornAlive
+  (SendNotification CullConsideration ?D ?BA))
+(protocolPriority Protocol-LowBornAlive 4)
+
+;; ── Feed efficiency alert: ratio exceeding threshold ──
+
+(isa Protocol-PoorFeedEfficiency PROTOCOL)
+(hasTrigger Protocol-PoorFeedEfficiency ThresholdCrossed)
+(hasCondition Protocol-PoorFeedEfficiency
+  (and (isa ?A SwineAnimal)
+       (hasSignalValue FeedGainRatio ?A ?R ?T)
+       (greaterThan ?R 4.0)))
+(hasAction Protocol-PoorFeedEfficiency
+  (SendNotification FeedEfficiencyAlert ?A ?R))
+(protocolPriority Protocol-PoorFeedEfficiency 6)
+
+;; ── Market timing: weight approaching market window ──
+
+(isa Protocol-MarketWindowApproaching PROTOCOL)
+(hasTrigger Protocol-MarketWindowApproaching ThresholdCrossed)
+(hasCondition Protocol-MarketWindowApproaching
+  (and (isa ?A SwineAnimal)
+       (hasSignalValue WeightMetric ?A ?W ?T)
+       (greaterThan ?W 240)
+       (lessThan ?W 260)))
+(hasAction Protocol-MarketWindowApproaching
+  (SendNotification MarketWindowOpen ?A ?W))
+(protocolPriority Protocol-MarketWindowApproaching 7)
+
+;; ── High value sale detected ──
+
+(isa Protocol-HighValueSale PROTOCOL)
+(hasTrigger Protocol-HighValueSale ThresholdCrossed)
+(hasCondition Protocol-HighValueSale
+  (and (isa ?S SaleSignal)
+       (hasField ?S :PRICE ?P)
+       (greaterThan ?P 5000)))
+(hasAction Protocol-HighValueSale
+  (and (SendNotification HighValueSaleDetected ?S ?P)
+       (EvaluateRule SireReputationUpdate)))
+(protocolPriority Protocol-HighValueSale 3)
+
+;;; ================================================================
+;;; END — SOUNDER HEURISTIC METRICS
+;;; 24 metrics defined. 6 signals defined. 5 protocols defined.
+;;; All metrics participate in the valuation chain through signals.
+;;; All thresholds are domain-calibrated from industry data.
+;;; ================================================================

@@ -1,0 +1,343 @@
+;;; ================================================================
+;;; SOUNDER / KERNEL / TYPES
+;;; Domain-specific collections for the swine industry substrate
+;;; Extends Charlotte's five primitives with swine ontology
+;;; ================================================================
+
+(in-microtheory SounderKernelMt)
+
+;; ── Microtheory inheritance ──
+
+(genlMt SounderKernelMt CharlotteKernelMt)
+
+;;; ============================================================
+;;; SECTION 1: ENTITY TYPES (NODE extensions)
+;;; ============================================================
+;;; Every entity type here is a NODE in the Charlotte graph.
+;;; An Animal is a NODE. A Breeder is a NODE. An AuctionHouse
+;;; is a NODE. They inherit all NODE properties — :ID, :CREATED,
+;;; lifecycle state, attributes, and the ability to emit SIGNALs.
+
+;; ── Swine ──
+
+(isa SwineAnimal Collection)
+(genls SwineAnimal IndividualEntity)
+(genls SwineAnimal NODE)
+(comment SwineAnimal "Any individual swine (pig). The atomic biological entity in the Sounder graph. Carries ear notch, registration number, name, breed, gender, and stress status.")
+
+(isa Sire Collection)
+(genls Sire SwineAnimal)
+(comment Sire "A breeding male. Sires are the primary unit of genetics commerce — their progeny define bloodlines, and their semen is the core product of genetics companies.")
+
+(isa Dam Collection)
+(genls Dam SwineAnimal)
+(comment Dam "A breeding female. Dams are tracked by parity (number of farrowings), litter performance, and retirement reason. A dam's productive life is the fundamental economic cycle of a swine operation.")
+
+(isa Litter Collection)
+(genls Litter GroupEntity)
+(genls Litter NODE)
+(comment Litter "A group of piglets from one farrowing event. Identified by dam, sire, and farrowing date. Litter is both a GROUP (it contains individuals) and a temporal artifact (it marks a point on the dam's parity timeline).")
+
+;; ── People and organizations ──
+
+(isa Breeder Collection)
+(genls Breeder IndividualEntity)
+(genls Breeder NODE)
+(comment Breeder "A person or operation that breeds swine. Identified by herdmark (2-4 character code), CPS number, NSR number, or ABA number. Breeders are the primary economic actors in the swine graph — they own dams, select sires, and market offspring.")
+
+(isa Buyer Collection)
+(genls Buyer IndividualEntity)
+(genls Buyer NODE)
+(comment Buyer "A person or operation that purchases animals at auction or private treaty. Buyers may or may not be breeders. The buyer graph reveals demand topology — who buys what genetics from whom.")
+
+(isa GeneticsCompany Collection)
+(genls GeneticsCompany Breeder)
+(genls GeneticsCompany NODE)
+(comment GeneticsCompany "A commercial operation selling genetics — semen, breeding stock, or both. Examples: Trogdon Show Pigs, Heimer Hampshires, Premium Blend Genetics. GeneticsCompany is a specialization of Breeder because they breed and sell.")
+
+;; ── Registries and organizations ──
+
+(isa Registry Collection)
+(genls Registry Organization)
+(genls Registry NODE)
+(comment Registry "A pedigree registration body that maintains breed standards, assigns registration numbers, and certifies lineage. The three major registries are NSR (National Swine Registry), CPS (Certified Pedigree Swine), and ABA (American Berkshire Association).")
+
+(isa AuctionHouse Collection)
+(genls AuctionHouse Organization)
+(genls AuctionHouse NODE)
+(comment AuctionHouse "An organization that conducts livestock sales — online, live, or both. Examples: Wendt Group, SC Online, Sullivan Supply. AuctionHouses are the marketplace NODEs where SaleTransactions occur.")
+
+;; ── Genetics ──
+
+(isa GeneticsLine Collection)
+(genls GeneticsLine AbstractEntity)
+(genls GeneticsLine NODE)
+(comment GeneticsLine "A named sire family or bloodline. Examples: Money Line, Slow Motion, Battle Cry, Dirty Harry, Full Throttle. GeneticsLines are abstract NODEs that group sires by lineage — they are the brand names of swine genetics commerce.")
+
+;; ── Show circuit ──
+
+(isa Show Collection)
+(genls Show EventEntity)
+(genls Show NODE)
+(comment Show "A judged competition event where animals are evaluated against breed standards. Shows range from county fairs to the World Pork Expo. Each Show contains ShowClasses.")
+
+(isa ShowClass Collection)
+(genls ShowClass AbstractEntity)
+(genls ShowClass NODE)
+(comment ShowClass "A division within a show — Junior Gilt, Senior Barrow, Champion Drive, etc. ShowClasses define the competitive structure. Animals are entered in classes by age, breed, and role.")
+
+;; ── Commerce ──
+
+(isa SemenProduct Collection)
+(genls SemenProduct AssetEntity)
+(genls SemenProduct NODE)
+(comment SemenProduct "A commercial semen offering from a genetics company. Identified by sire, collection date, dose count, and price. SemenProducts are the primary revenue product for genetics companies — they convert a sire's genetic value into a tradeable asset.")
+
+;;; ============================================================
+;;; SECTION 2: CATEGORICAL TYPES (enumerated values)
+;;; ============================================================
+;;; These are not NODEs — they are fixed vocabularies that
+;;; constrain attribute values. An Animal hasBreed Hampshire.
+;;; Hampshire is not a NODE; it is a member of the Breed collection.
+
+;; ── Breed ──
+
+(isa Breed Collection)
+(comment Breed "Swine breed recognized by pedigree registries. Breed determines registration body, show eligibility, and market category.")
+
+(isa Hampshire Breed)
+(isa Berkshire Breed)
+(isa Duroc Breed)
+(isa Landrace Breed)
+(isa Poland Breed)
+(isa Spot Breed)
+(isa Yorkshire Breed)
+(isa Chester Breed)
+(isa Hereford Breed)
+(isa Tamworth Breed)
+(isa Cross Breed)
+(isa LightCross Breed)
+(isa DarkCross Breed)
+
+(comment Hampshire "White-belted black breed. Registered with NSR. Known for lean muscle and carcass merit.")
+(comment Berkshire "Black with white points. Registered with ABA. Known for meat quality and marbling.")
+(comment Duroc "Red breed. Registered with NSR. Known for growth rate and feed efficiency.")
+(comment Landrace "White, droopy-eared breed. Registered with NSR. Known for maternal traits and litter size.")
+(comment Poland "Black with white points. Registered with NSR. Also called Poland China.")
+(comment Spot "Spotted black-and-white. Registered with NSR. Known for durability and feed conversion.")
+(comment Yorkshire "White, erect-eared breed. Registered with NSR. Known for maternal traits.")
+(comment Chester "White breed. Registered with CPS. Also called Chester White.")
+(comment Hereford "Red with white face. Registered with National Hereford Hog Record Association.")
+(comment Tamworth "Red-gold breed. One of the oldest pedigree breeds.")
+(comment Cross "Crossbred animal involving two or more breeds. Not eligible for purebred registration.")
+(comment LightCross "Crossbred using light-skinned breeds (Yorkshire, Landrace, Chester). Common in commercial programs.")
+(comment DarkCross "Crossbred using dark-skinned breeds (Hampshire, Berkshire, Duroc, Poland, Spot). Common in show pig programs.")
+
+;; ── AnimalRole ──
+
+(isa AnimalRole Collection)
+(comment AnimalRole "Stage of life and purpose classification for a swine animal. Determines show eligibility, market value, and management protocol.")
+
+(isa GILT AnimalRole)
+(isa BARROW AnimalRole)
+(isa BOAR AnimalRole)
+(isa SOW AnimalRole)
+
+(comment GILT "Young female that has not yet farrowed. Primary unit of show competition and breeding stock sales.")
+(comment BARROW "Castrated male. Primary unit of terminal show competition and market hog programs.")
+(comment BOAR "Intact male used for breeding. Boars graduate to Sire status when they produce registered offspring.")
+(comment SOW "Mature female that has farrowed at least once. Tracks to Dam in the pedigree graph.")
+
+;; ── Gender ──
+
+(isa Gender Collection)
+(comment Gender "Biological sex of the animal.")
+
+(isa MALE Gender)
+(isa FEMALE Gender)
+
+;; ── StressStatus ──
+
+(isa StressStatus Collection)
+(comment StressStatus "Porcine Stress Syndrome (PSS) test result. PSS-positive animals carry the halothane gene (Hal-1843) and are susceptible to sudden death under stress. Critical for breeding decisions and show eligibility.")
+
+(isa Negative StressStatus)
+(isa Untested StressStatus)
+(isa Positive StressStatus)
+(isa Carrier StressStatus)
+
+(comment Negative "Tested negative for PSS. Homozygous normal (NN). Preferred status for breeding stock.")
+(comment Untested "PSS status unknown. Animal has not been DNA tested.")
+(comment Positive "Tested positive for PSS. Homozygous affected (nn). Cannot be shown at most major shows.")
+(comment Carrier "Heterozygous carrier (Nn). Not affected but can produce positive offspring when mated to another carrier.")
+
+;; ── RetirementReason ──
+
+(isa RetirementReason Collection)
+(comment RetirementReason "The reason a sow was removed from the breeding herd. Critical for herd management analytics — high culling rates indicate genetic or management problems.")
+
+(isa Culled RetirementReason)
+(isa Deceased RetirementReason)
+(isa Cannibal RetirementReason)
+(isa Retired RetirementReason)
+(isa NotGoodEnough RetirementReason)
+(isa Injury RetirementReason)
+(isa GrewTooLarge RetirementReason)
+(isa Sold RetirementReason)
+
+(comment Culled "Removed from herd for poor performance — low litter size, poor mothering, structural issues.")
+(comment Deceased "Died in the herd. May indicate disease, environmental stress, or PSS event.")
+(comment Cannibal "Removed for eating piglets. A behavioral fault that is not tolerated in production sows.")
+(comment Retired "Voluntarily removed after productive career. Typically after 6-8 parities.")
+(comment NotGoodEnough "Removed because offspring quality did not meet breeding program standards.")
+(comment Injury "Removed due to physical injury — leg problems, prolapse, or other structural failure.")
+(comment GrewTooLarge "Removed because body size exceeded facility capacity. Common in show genetics programs where animals grow faster than commercial lines.")
+(comment Sold "Removed from breeding herd through sale — to another breeder or to market.")
+
+;; ── AuctionType ──
+
+(isa AuctionType Collection)
+(comment AuctionType "The format of a livestock sale event.")
+
+(isa Online AuctionType)
+(isa Live AuctionType)
+(isa PrivateTreaty AuctionType)
+
+(comment Online "Internet-based auction with timed bidding. Dominant format for genetics sales since 2020.")
+(comment Live "Traditional in-person auction with an auctioneer. Still common at breed shows and expos.")
+(comment PrivateTreaty "Negotiated sale between buyer and seller without auction. Price is fixed or negotiated directly.")
+
+;; ── PedigreeCategory ──
+
+(isa PedigreeCategory Collection)
+(comment PedigreeCategory "Classification of an animal on its pedigree registration document. Determines how the animal is recorded in the registry database.")
+
+(isa PedigreeGilt PedigreeCategory)
+(isa PedigreeBarrow PedigreeCategory)
+(isa PedigreeBoar PedigreeCategory)
+(isa PedigreeSow PedigreeCategory)
+
+(comment PedigreeGilt "Registered as a gilt — young female, no farrowings.")
+(comment PedigreeBarrow "Registered as a barrow — castrated male.")
+(comment PedigreeBoar "Registered as a boar — intact breeding male.")
+(comment PedigreeSow "Registered as a sow — female with at least one farrowing on record.")
+
+;;; ============================================================
+;;; SECTION 3: TEMPORAL TYPES (SIGNAL extensions)
+;;; ============================================================
+;;; Events in the swine industry are SIGNALs on the Charlotte
+;;; temporal spine. A FarrowEvent is a SIGNAL that fires on a
+;;; Dam's reproductive METRIC line. A SaleTransaction is a SIGNAL
+;;; on the commerce METRIC line.
+
+(isa FarrowEvent Collection)
+(genls FarrowEvent SIGNAL)
+(genls FarrowEvent EventEntity)
+(comment FarrowEvent "A litter being born. The fundamental biological SIGNAL in the swine graph. Fires on the dam's parity timeline and creates a new Litter NODE. Gestation is 114-115 days from breeding.")
+
+(isa BreedingEvent Collection)
+(genls BreedingEvent SIGNAL)
+(genls BreedingEvent EventEntity)
+(comment BreedingEvent "An insemination or natural mating event. Links a sire to a dam at a specific timestamp. Triggers a 114-115 day countdown to expected FarrowEvent.")
+
+(isa SaleTransaction Collection)
+(genls SaleTransaction SIGNAL)
+(genls SaleTransaction EventEntity)
+(comment SaleTransaction "An animal changing hands at auction or private sale. Records buyer, seller, price, auction house, and lot number. The primary economic SIGNAL in the Sounder graph.")
+
+(isa ShowEntry Collection)
+(genls ShowEntry SIGNAL)
+(genls ShowEntry EventEntity)
+(comment ShowEntry "An animal entered in a show class. Records the show, class, placement, and judge. Show results are SIGNALs that affect an animal's market value and its sire's genetic reputation.")
+
+(isa WeighEvent Collection)
+(genls WeighEvent SIGNAL)
+(genls WeighEvent EventEntity)
+(comment WeighEvent "A weight measurement taken at a specific timestamp. Used to compute daily gain, feed efficiency, and days-to-weight metrics. Weigh events are the raw data for performance testing.")
+
+;;; ============================================================
+;;; SECTION 4: METRIC TYPES (METRIC extensions)
+;;; ============================================================
+;;; Metrics are the quantitative dimensions that NODEs emit
+;;; SIGNALs on. An Animal has a WeightMetric. That metric line
+;;; accumulates WeighEvent SIGNALs over time. The derivative
+;;; of the weight line is DailyGainMetric.
+
+(isa WeightMetric Collection)
+(genls WeightMetric METRIC)
+(comment WeightMetric "Pounds of body weight, measured at discrete timestamps. The primary growth metric. Weight is the X-axis of swine performance — every other metric derives from or normalizes against it.")
+
+(isa DailyGainMetric Collection)
+(genls DailyGainMetric METRIC)
+(comment DailyGainMetric "Pounds per day growth rate. Computed as delta-weight / delta-days between two WeighEvents. The first derivative of the weight line. Target: 1.8-2.5 lbs/day for market hogs.")
+
+(isa FeedGainRatio Collection)
+(genls FeedGainRatio METRIC)
+(comment FeedGainRatio "Feed efficiency — pounds of feed consumed per pound of body weight gained. Lower is better. Target: 2.5-3.5 for modern genetics. Critical for commercial profitability.")
+
+(isa LitterSizeMetric Collection)
+(genls LitterSizeMetric METRIC)
+(comment LitterSizeMetric "Count of piglets per farrowing — born alive, stillborn, and mummified reported separately. The primary maternal productivity metric. National average: 10-12 born alive. Elite dams: 14-16.")
+
+(isa ParityMetric Collection)
+(genls ParityMetric METRIC)
+(comment ParityMetric "Breeding cycle number for a sow. Parity 1 = first litter. Sows typically peak at parity 3-5 and are culled after parity 6-8. Parity is the X-axis of a dam's productive life.")
+
+(isa SalePriceMetric Collection)
+(genls SalePriceMetric METRIC)
+(comment SalePriceMetric "Dollar value at point of sale. For auction sales, this is the hammer price. For private treaty, this is the agreed price. The primary economic metric in genetics commerce.")
+
+(isa BidCountMetric Collection)
+(genls BidCountMetric METRIC)
+(comment BidCountMetric "Number of bids on an auction lot. Measures demand intensity for specific genetics. High bid counts on a sire's progeny indicate market validation of that genetics line.")
+
+;;; ============================================================
+;;; SECTION 5: DISJOINTNESS CONSTRAINTS
+;;; ============================================================
+;;; Sires and Dams are disjoint — an animal cannot be both.
+;;; This enforces biological reality in the graph.
+
+(disjointWith Sire Dam)
+(disjointWith MALE FEMALE)
+(disjointWith GILT BARROW)
+(disjointWith GILT BOAR)
+(disjointWith GILT SOW)
+(disjointWith BARROW BOAR)
+(disjointWith BARROW SOW)
+(disjointWith BOAR SOW)
+(disjointWith Online Live)
+(disjointWith Online PrivateTreaty)
+(disjointWith Live PrivateTreaty)
+
+;;; ============================================================
+;;; SECTION 6: INFERENCE RULES
+;;; ============================================================
+;;; Rules that derive type membership from attributes.
+
+;; An animal with role BOAR or that has sired offspring is a Sire
+(implies
+  (and (isa ?animal SwineAnimal)
+       (hasRole ?animal BOAR)
+       (isSireOf ?animal ?offspring))
+  (isa ?animal Sire))
+
+;; An animal with role SOW or that has farrowed is a Dam
+(implies
+  (and (isa ?animal SwineAnimal)
+       (hasRole ?animal SOW))
+  (isa ?animal Dam))
+
+;; A company that sells semen is a GeneticsCompany
+(implies
+  (and (isa ?org Breeder)
+       (sells ?org ?product)
+       (isa ?product SemenProduct))
+  (isa ?org GeneticsCompany))
+
+;; Gender inference from role
+(implies (isa ?animal Sire) (hasGender ?animal MALE))
+(implies (isa ?animal Dam) (hasGender ?animal FEMALE))
+(implies (hasRole ?animal BOAR) (hasGender ?animal MALE))
+(implies (hasRole ?animal BARROW) (hasGender ?animal MALE))
+(implies (hasRole ?animal GILT) (hasGender ?animal FEMALE))
+(implies (hasRole ?animal SOW) (hasGender ?animal FEMALE))

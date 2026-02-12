@@ -1,0 +1,48 @@
+;;; ================================================================
+;;; SOUNDER — SWINE INDUSTRY SUBSTRATE
+;;; ================================================================
+;;;
+;;; This is the Charlotte container for the swine industry.
+;;; It boots on top of charlotte-os and extends the five primitives
+;;; with domain-specific types, predicates, and knowledge.
+;;;
+;;; DOMAIN
+;;; ------
+;;; The swine industry is a biological lifecycle domain covering:
+;;;   - Pedigree registration (NSR, CPS, ABA)
+;;;   - Breeding programs (sire selection, AI, natural service)
+;;;   - Farrowing operations (gestation, litter management)
+;;;   - Show circuits (county, state, national)
+;;;   - Auction markets (online, live, private treaty)
+;;;   - Genetics commerce (semen sales, breeding stock)
+;;;   - Performance testing (growth, feed efficiency, carcass)
+;;;
+;;; CONVEX HULL
+;;; -----------
+;;; Sounder's convex hull covers every operation in the swine
+;;; industry where identities emit signals over time:
+;;;
+;;;   Breeder → breeds Animal → registered with Registry
+;;;   Animal  → shown at Show → sold at Auction → bought by Buyer
+;;;   Sire    → produces Semen → inseminates Dam → farrows Litter
+;;;   Litter  → weaned → grown → tested → marketed
+;;;
+;;; Every actor in this chain is a NODE. Every connection is an EDGE.
+;;; Every measurement is a METRIC. Every event is a SIGNAL.
+;;; Every expectation is a PROTOCOL.
+;;;
+;;; DATA SOURCES
+;;; ------------
+;;;   - Certified Pedigree Swine (CPS): 65,412 breeders, 5,279 herdmarks
+;;;   - National Swine Registry (NSR): 3,763 breeders
+;;;   - American Berkshire Association (ABA): 8,807 members
+;;;   - Trogdon Show Pigs: 1,176 sales, $1.13M revenue
+;;;   - Wendt Group Auctions: 40+ auction events
+;;;   - SMA Show Records: 591 entries
+;;;
+;;; INHERITANCE
+;;; -----------
+;;;   (genlMt SounderKernelMt CharlotteKernelMt)
+;;;   (genlMt SounderKnowledgeMt CharlotteKnowledgeMt)
+;;;
+;;; ================================================================

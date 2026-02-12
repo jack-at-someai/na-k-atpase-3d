@@ -1,0 +1,570 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / STRUCTURAL / REGISTRIES
+;;; Pedigree registry structure, membership, and registration rules
+;;; for the three major swine registries in the United States
+;;; ================================================================
+;;;
+;;; The pedigree registry system is the backbone of the purebred
+;;; swine industry. Registries maintain breed purity, record
+;;; genealogy, certify performance data, and enable genetic
+;;; evaluation. Every registered animal is a NODE. Every
+;;; registration is an EDGE connecting animal to registry.
+;;; Every certification is a SIGNAL on that edge.
+;;;
+;;; Data sources:
+;;;   - CPS scraped data: 65,412 breeders, 5,279 herdmarks
+;;;   - NSR scraped data: 3,763 breeders
+;;;   - ABA scraped data: 8,807 members
+;;;
+;;; ================================================================
+
+(in-microtheory SounderStructuralMt)
+
+
+;;; ============================================================
+;;; SECTION 1: REGISTRY TYPE HIERARCHY
+;;; ============================================================
+;;; A registry is an Organization NODE that maintains pedigree
+;;; records for one or more swine breeds. Registries are the
+;;; authoritative source of identity in the swine industry —
+;;; an animal does not exist in the formal graph until it is
+;;; registered.
+
+(isa SwineRegistry Collection)
+(genls SwineRegistry Organization)
+(comment SwineRegistry "A national organization that maintains pedigree records, certifies breed purity, and administers genetic evaluation programs for one or more swine breeds.")
+
+;; Every registry is a NODE in the Charlotte graph
+(implies (isa ?reg SwineRegistry) (isa ?reg NODE))
+
+;; ── Registry classification ──
+
+(isa SingleBreedRegistry Collection)
+(isa MultiBreedRegistry Collection)
+(genls SingleBreedRegistry SwineRegistry)
+(genls MultiBreedRegistry SwineRegistry)
+(disjointWith SingleBreedRegistry MultiBreedRegistry)
+
+(comment SingleBreedRegistry "A registry dedicated to a single breed. Deeper breed-specific programs. Example: ABA for Berkshire.")
+(comment MultiBreedRegistry "A registry managing multiple breeds under one organizational umbrella. Example: NSR for Yorkshire, Landrace, Hampshire, Duroc.")
+
+
+;;; ============================================================
+;;; SECTION 2: REGISTRY INSTANCES
+;;; ============================================================
+
+;; ── Predicates for registry attributes ──
+
+(isa registryName Relation)
+(arity registryName 2)
+(arg1Isa registryName SwineRegistry)
+(comment registryName "The official name of a pedigree registry.")
+
+(isa registryAbbreviation Relation)
+(arity registryAbbreviation 2)
+(arg1Isa registryAbbreviation SwineRegistry)
+(comment registryAbbreviation "The standard abbreviation used to identify a registry.")
+
+(isa registryHeadquarters Relation)
+(arity registryHeadquarters 2)
+(arg1Isa registryHeadquarters SwineRegistry)
+(comment registryHeadquarters "The physical headquarters location of a registry.")
+
+(isa registryManagesBreed Relation)
+(arity registryManagesBreed 2)
+(arg1Isa registryManagesBreed SwineRegistry)
+(arg2Isa registryManagesBreed SwineBreed)
+(comment registryManagesBreed "A breed whose pedigree records are maintained by this registry.")
+
+(isa registryService Relation)
+(arity registryService 2)
+(arg1Isa registryService SwineRegistry)
+(comment registryService "A service offered by a registry to its members.")
+
+(isa registryBreederCount Relation)
+(arity registryBreederCount 2)
+(arg1Isa registryBreederCount SwineRegistry)
+(comment registryBreederCount "The number of active breeders in Sounder's scraped dataset for this registry.")
+
+(isa registryWebsite Relation)
+(arity registryWebsite 2)
+(arg1Isa registryWebsite SwineRegistry)
+(comment registryWebsite "The official website URL of a registry.")
+
+(isa registrationNumberFormat Relation)
+(arity registrationNumberFormat 2)
+(arg1Isa registrationNumberFormat SwineRegistry)
+(comment registrationNumberFormat "The format specification for registration numbers issued by this registry.")
+
+
+;;; ------------------------------------------------------------
+;;; 2A: National Swine Registry (NSR)
+;;; ------------------------------------------------------------
+;;; The NSR is the largest multi-breed registry in the United
+;;; States, managing four major breeds from its headquarters
+;;; adjacent to Purdue University. The NSR's STAGES program
+;;; is the industry standard for on-farm performance testing.
+
+(isa NSR MultiBreedRegistry)
+(registryName NSR "National Swine Registry")
+(registryAbbreviation NSR "NSR")
+(registryHeadquarters NSR "West Lafayette, Indiana")
+(registryWebsite NSR "https://nationalswine.com")
+(registryBreederCount NSR 3763)
+(registrationNumberFormat NSR "9-digit numeric")
+
+(comment NSR "The National Swine Registry, headquartered in West Lafayette, Indiana adjacent to Purdue University. Formed from the merger of the American Yorkshire Club, the American Landrace Association, the Hampshire Swine Registry, and the United Duroc Swine Registry. Manages pedigree registration, performance testing (STAGES), genetic evaluation, and breed promotion for four major breeds. The Purdue connection provides direct access to swine genetics research.")
+
+;; NSR breed management
+(registryManagesBreed NSR Yorkshire)
+(registryManagesBreed NSR Landrace)
+(registryManagesBreed NSR Hampshire)
+(registryManagesBreed NSR Duroc)
+
+;; NSR services
+(registryService NSR "Pedigree registration and transfer")
+(registryService NSR "STAGES performance testing program")
+(registryService NSR "Genetic evaluation and EPDs")
+(registryService NSR "National shows and sales")
+(registryService NSR "Youth programs")
+(registryService NSR "Breed promotion and marketing")
+(registryService NSR "Litter registration")
+(registryService NSR "AI sire directory")
+
+;; ── NSR-specific predicates ──
+
+(isa NSR-RegistrationNumber Relation)
+(arity NSR-RegistrationNumber 2)
+(comment NSR-RegistrationNumber "A 9-digit numeric registration number issued by the National Swine Registry. Unique within the NSR system.")
+
+(isa STAGES-Record Relation)
+(arity STAGES-Record 2)
+(comment STAGES-Record "A STAGES (Swine Testing and Genetic Evaluation System) performance record for a registered NSR animal. Contains growth rate, backfat, loin eye area, and feed efficiency data.")
+
+;; ── NSR constituent associations ──
+;; The NSR was formed from four breed-specific associations.
+;; These are historical entities that merged into the NSR.
+
+(isa AmericanYorkshireClub Organization)
+(isa AmericanLandraceAssociation Organization)
+(isa HampshireSwineRegistry Organization)
+(isa UnitedDurocSwineRegistry Organization)
+
+(comment AmericanYorkshireClub "The original breed association for Yorkshire swine. Merged into NSR.")
+(comment AmericanLandraceAssociation "The original breed association for Landrace swine. Merged into NSR.")
+(comment HampshireSwineRegistry "The original breed association for Hampshire swine. Merged into NSR.")
+(comment UnitedDurocSwineRegistry "The original breed association for Duroc swine. Merged into NSR.")
+
+(mergedInto AmericanYorkshireClub NSR)
+(mergedInto AmericanLandraceAssociation NSR)
+(mergedInto HampshireSwineRegistry NSR)
+(mergedInto UnitedDurocSwineRegistry NSR)
+
+
+;;; ------------------------------------------------------------
+;;; 2B: Certified Pedigree Swine (CPS)
+;;; ------------------------------------------------------------
+;;; CPS is the largest multi-breed registry by membership,
+;;; managing all recognized breeds under a single umbrella.
+;;; CPS is the primary data source for Sounder's breeder
+;;; network graph — 65,412 breeders and 5,279 herdmarks.
+
+(isa CPS MultiBreedRegistry)
+(registryName CPS "Certified Pedigree Swine")
+(registryAbbreviation CPS "CPS")
+(registryBreederCount CPS 65412)
+(registryWebsite CPS "https://cpsswine.com")
+
+(comment CPS "Certified Pedigree Swine. The largest multi-breed swine registry by membership count. CPS manages pedigree records for all recognized breeds and issues herdmarks that uniquely identify breeding operations. The CPS breeder database is the most comprehensive directory of swine breeders in the United States, covering 65,412 breeders across all 50 states. CPS data forms the backbone of Sounder's breeder network graph.")
+
+;; CPS manages all recognized breeds
+(registryManagesBreed CPS Hampshire)
+(registryManagesBreed CPS Berkshire)
+(registryManagesBreed CPS Duroc)
+(registryManagesBreed CPS Landrace)
+(registryManagesBreed CPS PolandChina)
+(registryManagesBreed CPS Spot)
+(registryManagesBreed CPS Yorkshire)
+(registryManagesBreed CPS ChesterWhite)
+(registryManagesBreed CPS Hereford)
+(registryManagesBreed CPS Tamworth)
+
+;; CPS services
+(registryService CPS "Pedigree registration for all breeds")
+(registryService CPS "Herdmark assignment and management")
+(registryService CPS "Breeder directory")
+(registryService CPS "Litter registration")
+(registryService CPS "Transfer of ownership records")
+(registryService CPS "Show sanction and results")
+(registryService CPS "Youth programs")
+
+;; ── CPS-specific predicates ──
+
+(isa Herdmark Collection)
+(genls Herdmark AbstractEntity)
+(comment Herdmark "A 2-4 character alphanumeric code assigned by CPS to uniquely identify a breeding operation. Every animal bred by that operation carries the herdmark as a prefix in its registration identifier. The herdmark is the fundamental unit of breeder identity in the CPS system.")
+
+(isa hasHerdmark Relation)
+(arity hasHerdmark 2)
+(comment hasHerdmark "The CPS herdmark assigned to a breeder. A 2-4 character alphanumeric code that uniquely identifies the breeding operation.")
+
+(isa herdmarkFormat Relation)
+(arity herdmarkFormat 2)
+(comment herdmarkFormat "The format specification for CPS herdmarks: 2-4 alphanumeric characters.")
+
+(herdmarkFormat CPS "2-4 alphanumeric characters")
+
+;; ── CPS breeder distribution by state ──
+;; Top 20 states by breeder count from Sounder's CPS scrape.
+;; This distribution reveals the geographic concentration of
+;; the swine breeding industry.
+
+(isa breederCountByState Relation)
+(arity breederCountByState 3)
+(comment breederCountByState "The number of breeders registered with a given registry in a given state.")
+
+(breederCountByState CPS "IN" 14552)
+(breederCountByState CPS "OK" 9177)
+(breederCountByState CPS "TX" 9174)
+(breederCountByState CPS "IL" 5542)
+(breederCountByState CPS "OH" 4047)
+(breederCountByState CPS "IA" 3214)
+(breederCountByState CPS "MO" 2876)
+(breederCountByState CPS "KS" 2143)
+(breederCountByState CPS "MN" 1987)
+(breederCountByState CPS "NE" 1654)
+(breederCountByState CPS "PA" 1432)
+(breederCountByState CPS "GA" 1298)
+(breederCountByState CPS "NC" 1187)
+(breederCountByState CPS "WI" 1076)
+(breederCountByState CPS "MI" 965)
+(breederCountByState CPS "AR" 876)
+(breederCountByState CPS "TN" 823)
+(breederCountByState CPS "KY" 756)
+(breederCountByState CPS "VA" 698)
+(breederCountByState CPS "SD" 634)
+
+;; ── CPS herdmark statistics ──
+
+(isa herdmarkCount Relation)
+(arity herdmarkCount 2)
+(arg1Isa herdmarkCount SwineRegistry)
+(comment herdmarkCount "The total number of unique herdmarks in Sounder's dataset for this registry.")
+
+(herdmarkCount CPS 5279)
+
+
+;;; ------------------------------------------------------------
+;;; 2C: American Berkshire Association (ABA)
+;;; ------------------------------------------------------------
+;;; The ABA is the single-breed registry for Berkshire swine.
+;;; It is the oldest swine registry in the world, founded in
+;;; 1875. The Berkshire Gold program certifies purebred
+;;; Berkshire pork for premium market positioning.
+
+(isa ABA SingleBreedRegistry)
+(registryName ABA "American Berkshire Association")
+(registryAbbreviation ABA "ABA")
+(registryBreederCount ABA 8807)
+(registryWebsite ABA "https://americanberkshire.com")
+
+(comment ABA "The American Berkshire Association. Founded in 1875, the ABA is the oldest swine breed registry in the world and the first swine registry in the United States. Dedicated exclusively to the Berkshire breed. The ABA's Berkshire Gold program certifies purebred Berkshire pork for premium market channels, connecting genetics to end-product value. ABA membership of 8,807 reflects the growing demand for premium pork genetics.")
+
+;; ABA manages Berkshire only
+(registryManagesBreed ABA Berkshire)
+
+;; ABA services
+(registryService ABA "Pedigree registration for Berkshire")
+(registryService ABA "Berkshire Gold meat quality certification")
+(registryService ABA "Performance testing")
+(registryService ABA "National Berkshire Show")
+(registryService ABA "Breeder directory")
+(registryService ABA "Youth programs")
+(registryService ABA "Sire summary and genetic evaluation")
+(registryService ABA "Export certification")
+
+;; ── ABA-specific predicates ──
+
+(isa BerkshireGoldCertified Relation)
+(arity BerkshireGoldCertified 1)
+(comment BerkshireGoldCertified "An animal certified under the ABA's Berkshire Gold program. Guarantees purebred Berkshire genetics and associated meat quality attributes: marbling, color, pH, tenderness.")
+
+(isa ABA-RegistrationNumber Relation)
+(arity ABA-RegistrationNumber 2)
+(comment ABA-RegistrationNumber "A registration number issued by the American Berkshire Association for a purebred Berkshire animal.")
+
+
+;;; ============================================================
+;;; SECTION 3: BREEDER ENTITY STRUCTURE
+;;; ============================================================
+;;; A breeder is a NODE in the Sounder graph — an individual or
+;;; operation that breeds registered swine. Breeders are the
+;;; primary actors in the swine industry knowledge graph.
+
+(isa Breeder Collection)
+(genls Breeder IndividualEntity)
+(comment Breeder "A person or operation that breeds registered swine. Every breeder is a NODE with registry memberships, herdmarks, location, and breed specializations.")
+
+(isa BreederOperation Collection)
+(genls BreederOperation GroupEntity)
+(comment BreederOperation "A breeding operation, which may include multiple breeders, locations, and breed programs under a single herdmark.")
+
+;; ── Breeder predicates ──
+
+(isa breederName Relation)
+(arity breederName 2)
+(arg1Isa breederName Breeder)
+(comment breederName "The name of a breeder as recorded in registry databases.")
+
+(isa breederState Relation)
+(arity breederState 2)
+(arg1Isa breederState Breeder)
+(comment breederState "The US state where a breeder's operation is located.")
+
+(isa breederCity Relation)
+(arity breederCity 2)
+(arg1Isa breederCity Breeder)
+(comment breederCity "The city where a breeder's operation is located.")
+
+(isa breedsFocusBreed Relation)
+(arity breedsFocusBreed 2)
+(arg1Isa breedsFocusBreed Breeder)
+(arg2Isa breedsFocusBreed SwineBreed)
+(comment breedsFocusBreed "A breed that a breeder actively raises and registers.")
+
+;; ── Breeder-registry membership ──
+
+(isa memberOf Relation)
+(arity memberOf 2)
+(comment memberOf "A breeder is a member of a registry. Membership grants the right to register animals and participate in registry programs.")
+
+(isa registeredWith Relation)
+(arity registeredWith 2)
+(comment registeredWith "An animal is registered with a specific registry. The animal has a valid registration number in that registry's system.")
+
+
+;;; ============================================================
+;;; SECTION 4: REGISTRATION STRUCTURE
+;;; ============================================================
+;;; A registration record is an EDGE connecting an animal NODE
+;;; to a registry NODE. The registration carries a number,
+;;; a date, and a breed designation.
+
+(isa RegistrationRecord Collection)
+(genls RegistrationRecord EDGE)
+(comment RegistrationRecord "An EDGE connecting an animal to a registry. Contains registration number, date, breed designation, and breeder identity.")
+
+(isa registrationNumber Relation)
+(arity registrationNumber 2)
+(comment registrationNumber "The unique registration number assigned to an animal by a registry.")
+
+(isa registrationDate Relation)
+(arity registrationDate 2)
+(comment registrationDate "The date on which an animal was registered with a registry.")
+
+(isa registrationBreeder Relation)
+(arity registrationBreeder 2)
+(comment registrationBreeder "The breeder who registered an animal. Identified by herdmark in CPS, by member number in NSR/ABA.")
+
+(isa registrationBreedDesignation Relation)
+(arity registrationBreedDesignation 2)
+(comment registrationBreedDesignation "The breed designation recorded on a registration certificate.")
+
+
+;;; ============================================================
+;;; SECTION 5: CROSS-REGISTRY RULES
+;;; ============================================================
+;;; Rules governing the relationships between registries,
+;;; breeds, and breeders. These encode the structural logic
+;;; of how the registry system operates.
+
+;; ── Breed-registry compatibility ──
+;; Each breed has one or more registries where it can be registered.
+
+(isa NSR-Compatible Collection)
+(isa CPS-Compatible Collection)
+(isa ABA-Compatible Collection)
+
+(comment NSR-Compatible "A registry or registration that is compatible with NSR standards for Yorkshire, Landrace, Hampshire, or Duroc.")
+(comment CPS-Compatible "A registry or registration that is compatible with CPS standards for any recognized breed.")
+(comment ABA-Compatible "A registry or registration that is compatible with ABA standards for Berkshire.")
+
+;; Hampshire animals can register with NSR
+(implies
+  (and (hasBreed ?animal Hampshire)
+       (registeredWith ?animal ?reg))
+  (isa ?reg NSR-Compatible))
+
+;; Berkshire animals can register with ABA
+(implies
+  (and (hasBreed ?animal Berkshire)
+       (registeredWith ?animal ?reg))
+  (isa ?reg ABA-Compatible))
+
+;; Yorkshire animals can register with NSR
+(implies
+  (and (hasBreed ?animal Yorkshire)
+       (registeredWith ?animal ?reg))
+  (isa ?reg NSR-Compatible))
+
+;; Duroc animals can register with NSR
+(implies
+  (and (hasBreed ?animal Duroc)
+       (registeredWith ?animal ?reg))
+  (isa ?reg NSR-Compatible))
+
+;; Landrace animals can register with NSR
+(implies
+  (and (hasBreed ?animal Landrace)
+       (registeredWith ?animal ?reg))
+  (isa ?reg NSR-Compatible))
+
+;; All purebred animals can register with CPS
+(implies
+  (and (isa ?animal Purebred)
+       (registeredWith ?animal ?reg))
+  (isa ?reg CPS-Compatible))
+
+;; ── Herdmark membership rule ──
+;; Every CPS member has a herdmark
+
+(implies
+  (memberOf ?breeder CPS)
+  (thereExists ?mark (hasHerdmark ?breeder ?mark)))
+
+;; ── Dual registration ──
+;; Animals can be registered with multiple registries.
+;; An NSR Yorkshire can also be registered with CPS.
+
+(implies
+  (and (registeredWith ?animal NSR)
+       (hasBreed ?animal ?breed)
+       (registryManagesBreed CPS ?breed))
+  (canAlsoRegisterWith ?animal CPS))
+
+(implies
+  (and (registeredWith ?animal ABA)
+       (hasBreed ?animal Berkshire))
+  (canAlsoRegisterWith ?animal CPS))
+
+;; ── Breeder must be member to register animals ──
+
+(implies
+  (and (registrationBreeder ?registration ?breeder)
+       (registeredWith ?animal ?registry)
+       (isa ?registration RegistrationRecord))
+  (memberOf ?breeder ?registry))
+
+;; ── Registry data provenance ──
+;; Track which dataset each breeder record came from.
+
+(isa dataSource Relation)
+(arity dataSource 2)
+(comment dataSource "The scrape source from which a record was ingested into Sounder. One of: CPS-scrape, NSR-scrape, ABA-scrape, Trogdon-scrape, Wendt-scrape, SMA-scrape.")
+
+(isa CPS-Scrape Collection)
+(isa NSR-Scrape Collection)
+(isa ABA-Scrape Collection)
+
+(comment CPS-Scrape "Data ingested from the Certified Pedigree Swine breeder directory scrape. 65,412 records.")
+(comment NSR-Scrape "Data ingested from the National Swine Registry breeder directory scrape. 3,763 records.")
+(comment ABA-Scrape "Data ingested from the American Berkshire Association member directory scrape. 8,807 records.")
+
+
+;;; ============================================================
+;;; SECTION 6: PERFORMANCE TESTING STRUCTURE
+;;; ============================================================
+;;; Registries administer performance testing programs that
+;;; generate METRIC and SIGNAL data on registered animals.
+;;; This section defines the structure of those programs.
+
+(isa PerformanceTestProgram Collection)
+(genls PerformanceTestProgram Organization)
+(comment PerformanceTestProgram "A structured program for measuring and recording production traits in swine. Generates METRICs that feed genetic evaluation.")
+
+;; ── NSR STAGES program ──
+
+(isa STAGES PerformanceTestProgram)
+(comment STAGES "Swine Testing and Genetic Evaluation System. The NSR's on-farm performance testing program. Measures growth rate, backfat thickness, loin eye area, and feed efficiency. Data feeds EPD (Expected Progeny Difference) calculations.")
+
+(isa administeredBy Relation)
+(arity administeredBy 2)
+(comment administeredBy "The registry that administers a performance testing program.")
+
+(administeredBy STAGES NSR)
+
+;; ── Performance metrics (map to Charlotte METRICs) ──
+
+(isa PerformanceMetric Collection)
+(genls PerformanceMetric METRIC)
+(comment PerformanceMetric "A quantitative measurement from a performance testing program. Each metric is a METRIC line on which SIGNAL values are placed.")
+
+(isa DaysTo250 PerformanceMetric)
+(isa BackfatThickness PerformanceMetric)
+(isa LoinEyeArea PerformanceMetric)
+(isa FeedEfficiency PerformanceMetric)
+(isa NumberBornAlive PerformanceMetric)
+(isa TwentyOneDayLitterWeight PerformanceMetric)
+
+(comment DaysTo250 "Days to reach 250 pounds. Growth rate metric. Lower is better.")
+(comment BackfatThickness "Backfat thickness at the 10th rib, measured in inches. Leanness metric. Lower is better.")
+(comment LoinEyeArea "Cross-sectional area of the longissimus dorsi muscle at the 10th rib, measured in square inches. Muscling metric. Higher is better.")
+(comment FeedEfficiency "Pounds of feed per pound of gain. Feed conversion metric. Lower is better.")
+(comment NumberBornAlive "Number of piglets born alive per litter. Reproductive metric. Higher is better.")
+(comment TwentyOneDayLitterWeight "Total litter weight at 21 days of age, measured in pounds. Maternal milk production proxy. Higher is better.")
+
+;; ── EPD (Expected Progeny Difference) ──
+
+(isa EPD Collection)
+(genls EPD METRIC)
+(comment EPD "Expected Progeny Difference. A genetic evaluation metric that predicts the average performance of an animal's future offspring relative to the breed average. Calculated from performance test data, pedigree, and genomic information. The primary tool for sire selection in modern swine breeding.")
+
+(isa EPD-Growth EPD)
+(isa EPD-Backfat EPD)
+(isa EPD-LoinEyeArea EPD)
+(isa EPD-NumberBornAlive EPD)
+(isa EPD-TwentyOneDayLitterWeight EPD)
+
+(comment EPD-Growth "EPD for days to 250 pounds. Negative values are favorable (faster growth).")
+(comment EPD-Backfat "EPD for backfat thickness. Negative values are favorable (leaner).")
+(comment EPD-LoinEyeArea "EPD for loin eye area. Positive values are favorable (more muscling).")
+(comment EPD-NumberBornAlive "EPD for number born alive. Positive values are favorable (larger litters).")
+(comment EPD-TwentyOneDayLitterWeight "EPD for 21-day litter weight. Positive values are favorable (more milk, heavier piglets).")
+
+
+;;; ============================================================
+;;; SECTION 7: REGISTRY EDGE TYPES
+;;; ============================================================
+;;; Domain-specific EDGE types that extend Charlotte's base
+;;; relation vocabulary for registry operations.
+
+(isa REGISTERED_WITH EdgeType)
+(isa BRED_BY EdgeType)
+(isa OWNED_BY EdgeType)
+(isa SOLD_TO EdgeType)
+(isa TRANSFERRED_TO EdgeType)
+(isa MEMBER_OF_REGISTRY EdgeType)
+(isa HAS_HERDMARK EdgeType)
+
+(comment REGISTERED_WITH "Animal → Registry. The animal has a valid registration in this registry.")
+(comment BRED_BY "Animal → Breeder. The breeder who bred and originally registered the animal.")
+(comment OWNED_BY "Animal → Owner. The current owner of the animal. Changes via SOLD_TO events.")
+(comment SOLD_TO "Animal → Buyer. A sale event transferring ownership. Creates a temporal SIGNAL.")
+(comment TRANSFERRED_TO "Registration → New Owner. An ownership transfer recorded in the registry.")
+(comment MEMBER_OF_REGISTRY "Breeder → Registry. The breeder holds active membership in this registry.")
+(comment HAS_HERDMARK "Breeder → Herdmark. The CPS herdmark assigned to this breeder's operation.")
+
+;; ── Inverse relationships ──
+
+(inverseOf BRED_BY BREEDER_OF)
+(inverseOf OWNED_BY OWNER_OF)
+(inverseOf SOLD_TO BOUGHT_FROM)
+
+;; ── Ownership chain rule ──
+;; When an animal is sold, the OWNED_BY edge transitions.
+
+(implies
+  (and (OWNED_BY ?animal ?oldOwner)
+       (SOLD_TO ?animal ?newOwner)
+       (PRECEDES ?saleTime ?now))
+  (OWNED_BY ?animal ?newOwner))

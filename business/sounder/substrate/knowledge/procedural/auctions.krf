@@ -1,0 +1,684 @@
+;;; ================================================================
+;;; SOUNDER / KNOWLEDGE / PROCEDURAL / AUCTIONS
+;;; Auction and sale protocols — how animals change hands
+;;; ================================================================
+;;;
+;;; The swine industry has four distinct sale channels, each with
+;;; its own protocol, tempo, and economics. The formal auction
+;;; (online or live) generates structured data: lot numbers, bid
+;;; histories, consigner/buyer identities. The informal channels
+;;; (private treaty, messenger sale) generate sparse signals that
+;;; Charlotte must infer from social media posts and payment records.
+;;;
+;;; Trogdon Show Pigs data: 1,176 sales, $1.13M revenue
+;;; Wendt Group Auctions: 40+ events tracked
+;;; SC Online, ShowPig.com: major online platforms
+;;;
+;;; ================================================================
+
+(in-microtheory SounderProceduralMt)
+(genlMt SounderProceduralMt SounderKernelMt)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; AUCTION / SALE TYPES
+;;; ────────────────────────────────────────────────────────────────
+
+(isa SaleType Collection)
+
+(isa OnlineAuction SaleType)
+(isa LiveAuction SaleType)
+(isa PrivateTreaty SaleType)
+(isa MessengerSale SaleType)
+
+(comment OnlineAuction
+  "Timed online bidding via platforms like SC Online or ShowPig.com.
+   Lots listed for 3-7 days with photos, pedigree, and description.
+   Late bids extend the clock. Settlement through the auction house.
+   Structured data: every bid is a SIGNAL.")
+
+(comment LiveAuction
+  "Traditional auctioneer-driven sale at county fairs, state fairs,
+   and national shows. Real-time bidding in a ring. The auctioneer
+   is a protocol engine — calling bids, detecting signals, closing
+   lots. Common at junior livestock shows and breed-specific sales.")
+
+(comment PrivateTreaty
+  "Negotiated sale between breeder and buyer with no public bidding.
+   Price is agreed upon directly. Common for high-value breeding
+   stock where the breeder controls placement — they choose the
+   buyer as much as the buyer chooses the animal.")
+
+(comment MessengerSale
+  "The dominant informal channel in the show pig world. Breeder posts
+   photos/video to Facebook. Buyer sends a DM via Messenger. Price
+   negotiated in chat. Payment via Venmo, PayPal, Zelle, or check.
+   Pickup or delivery arranged informally. Pedigree papers mailed.
+   Generates the least structured data but accounts for the majority
+   of show pig transactions by volume.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; AUCTION LOT DATA MODEL
+;;; ────────────────────────────────────────────────────────────────
+;;; Every lot in a structured auction has this schema. This maps
+;;; directly to the data scraped from Wendt Group, SC Online, etc.
+
+(isa AuctionLotField Collection)
+
+(isa ::lotNumber AuctionLotField)
+(isa ::consigner AuctionLotField)
+(isa ::consignerHerdmark AuctionLotField)
+(isa ::lotAnimal AuctionLotField)
+(isa ::lotEarNotch AuctionLotField)
+(isa ::lotBreed AuctionLotField)
+(isa ::lotGenderRole AuctionLotField)
+(isa ::sireName AuctionLotField)
+(isa ::sireRegistration AuctionLotField)
+(isa ::sireHerdmark AuctionLotField)
+(isa ::damName AuctionLotField)
+(isa ::damRegistration AuctionLotField)
+(isa ::damHerdmark AuctionLotField)
+(isa ::startingBid AuctionLotField)
+(isa ::currentBid AuctionLotField)
+(isa ::winningBid AuctionLotField)
+(isa ::bidCount AuctionLotField)
+(isa ::buyer AuctionLotField)
+
+(comment ::lotNumber "Sequential lot number within the auction event.")
+(comment ::consigner "Breeder who consigned the animal. Identified by herdmark.")
+(comment ::consignerHerdmark "Herdmark of the consigner. Links to CPS/NSR breeder database.")
+(comment ::lotAnimal "The animal being sold. Links to SwineAnimal NODE.")
+(comment ::lotEarNotch "Ear notch of the animal. Physical identifier.")
+(comment ::lotBreed "Breed of the animal. Must match registration.")
+(comment ::lotGenderRole "Boar, Gilt, or Barrow. Determines market and use.")
+(comment ::sireName "Registered name of the sire.")
+(comment ::sireRegistration "Registration number (RNO) of the sire.")
+(comment ::sireHerdmark "Herdmark of the sire's breeder.")
+(comment ::damName "Registered name of the dam.")
+(comment ::damRegistration "Registration number (RNO) of the dam.")
+(comment ::damHerdmark "Herdmark of the dam's breeder.")
+(comment ::startingBid "Opening bid amount in USD.")
+(comment ::currentBid "Current highest bid during active bidding.")
+(comment ::winningBid "Final sale price in USD.")
+(comment ::bidCount "Number of bids placed on this lot.")
+(comment ::buyer "Identity of the winning bidder / buyer.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; AUCTION STATE MACHINE
+;;; ────────────────────────────────────────────────────────────────
+;;; Every lot traverses this state machine. The states are the same
+;;; across all auction types; the transition timing differs.
+;;;
+;;;   LISTED -> BIDDING -> CLOSING -> SOLD -> SETTLED -> DELIVERED -> TRANSFERRED
+;;;
+;;; Alternative terminal states: NO_SALE (did not meet reserve),
+;;; WITHDRAWN (consigner pulled the lot).
+
+(isa AuctionLotState Collection)
+
+(isa Listed AuctionLotState)
+(isa Bidding AuctionLotState)
+(isa Closing AuctionLotState)
+(isa Sold AuctionLotState)
+(isa Settled AuctionLotState)
+(isa Delivered AuctionLotState)
+(isa Transferred AuctionLotState)
+(isa NoSale AuctionLotState)
+(isa Withdrawn AuctionLotState)
+
+(comment Listed "Lot published with animal details, pedigree, and starting bid.")
+(comment Bidding "Active bidding period. Bids are SIGNALs on the lot's bid METRIC.")
+(comment Closing "Final moments of bidding. Late bids may extend the close time.")
+(comment Sold "Hammer has fallen. Winning bid and buyer are locked.")
+(comment Settled "Buyer has paid. Auction house or seller has received funds.")
+(comment Delivered "Animal has been physically delivered to or picked up by buyer.")
+(comment Transferred "Pedigree transfer complete. New owner on the registry records.")
+(comment NoSale "Lot did not receive a bid meeting the reserve price. Animal returns to consigner.")
+(comment Withdrawn "Consigner withdrew the lot before or during bidding.")
+
+;; Canonical auction flow
+(canTransition Listed Bidding)
+(canTransition Bidding Closing)
+(canTransition Closing Sold)
+(canTransition Sold Settled)
+(canTransition Settled Delivered)
+(canTransition Delivered Transferred)
+
+;; Alternative paths
+(canTransition Listed Withdrawn)
+(canTransition Bidding Withdrawn)
+(canTransition Closing NoSale)
+(canTransition Closing Withdrawn)
+
+;; Re-list path — a no-sale animal can be re-listed
+(canTransition NoSale Listed)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; AUCTION HOUSES (known entities in the data)
+;;; ────────────────────────────────────────────────────────────────
+
+(isa AuctionHouse Collection)
+
+(isa WendtGroup AuctionHouse)
+(isa SCOnline AuctionHouse)
+(isa ShowPigDotCom AuctionHouse)
+(isa CountyFairAuction AuctionHouse)
+(isa StateFairAuction AuctionHouse)
+(isa NationalShowAuction AuctionHouse)
+
+(comment WendtGroup "Wendt Group. 40+ events tracked in Sounder data. Major online auction platform for show pigs.")
+(comment SCOnline "SC Online. Online auction platform for livestock.")
+(comment ShowPigDotCom "ShowPig.com. Online marketplace and auction platform for show pigs.")
+(comment CountyFairAuction "County-level fair auctions. Typically live, auctioneer-driven. Junior livestock focus.")
+(comment StateFairAuction "State fair auctions. Higher prestige. Often combined with show results.")
+(comment NationalShowAuction "National breed show auctions. Highest prestige. Top genetics command premium prices.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PAYMENT METHODS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa PaymentMethod Collection)
+
+(isa AuctionHouseSettlement PaymentMethod)
+(isa Venmo PaymentMethod)
+(isa PayPal PaymentMethod)
+(isa Zelle PaymentMethod)
+(isa Check PaymentMethod)
+(isa Cash PaymentMethod)
+
+(comment AuctionHouseSettlement "Buyer pays auction house, auction house pays consigner minus commission. Structured channel.")
+(comment Venmo "Peer-to-peer mobile payment. Dominant in messenger sales. Instant but informal.")
+(comment PayPal PaymentMethod "Peer-to-peer or invoice payment. Provides buyer protection.")
+(comment Zelle "Bank-to-bank transfer. No fees. Common in private treaty sales.")
+(comment Check "Physical check. Used in formal private treaty and some auction settlements.")
+(comment Cash "Cash payment. Rare in documented sales. Common at small local auctions.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: ONLINE AUCTION
+;;; ────────────────────────────────────────────────────────────────
+
+;;; ── Step 1: Lot listing ──
+
+(isa Protocol-OnlineAuction-Listing PROTOCOL)
+(comment Protocol-OnlineAuction-Listing
+  "Consigner submits lot to auction house platform. Must include
+   animal photos (typically 3-5 side/front views), pedigree
+   information (3 generations), physical description, and any
+   performance data. Auction house reviews and publishes the lot
+   with a starting bid amount.")
+(hasTrigger Protocol-OnlineAuction-Listing ManualInvocation)
+(hasCondition Protocol-OnlineAuction-Listing
+  (and (isa ?Lot AuctionLot)
+       (hasField ?Lot ::consigner ?Consigner)
+       (hasField ?Lot ::lotAnimal ?Animal)
+       (isa ?Animal SwineAnimal)
+       (hasState ?Animal FullyRegistered)
+       (hasField ?Lot ::startingBid ?StartBid)))
+(hasAction Protocol-OnlineAuction-Listing
+  (and (CreateNode ?Lot AuctionLot)
+       (TransitionState ?Lot Listed)
+       (CreateSignal ?S LOT_LISTED ?Lot ?AuctionEvent ?StartBid)
+       (CreateEdge ?Lot ?Animal LOT_FOR)
+       (CreateEdge ?Lot ?Consigner CONSIGNED_BY)
+       (CreateEdge ?Lot ?AuctionEvent PART_OF)))
+(expectedDuration Protocol-OnlineAuction-Listing (Days 3))
+(protocolPriority Protocol-OnlineAuction-Listing 40)
+
+;;; ── Step 2: Bidding period ──
+
+(isa Protocol-OnlineAuction-Bidding PROTOCOL)
+(comment Protocol-OnlineAuction-Bidding
+  "Bidding period opens. Typically 3-7 days for online auctions.
+   Each bid is a SIGNAL on the lot's bid METRIC line. Bids must
+   exceed the current highest bid by a minimum increment. Late
+   bids (within final minutes) trigger time extensions to prevent
+   sniping.")
+(hasTrigger Protocol-OnlineAuction-Bidding StateChanged)
+(hasCondition Protocol-OnlineAuction-Bidding
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Listed)
+       (biddingPeriodOpen ?Lot)))
+(hasAction Protocol-OnlineAuction-Bidding
+  (TransitionState ?Lot Bidding))
+(expectedDuration Protocol-OnlineAuction-Bidding (Days 5))
+(protocolPriority Protocol-OnlineAuction-Bidding 41)
+
+;;; ── Each bid is a SIGNAL ──
+
+(isa Protocol-OnlineAuction-PlaceBid PROTOCOL)
+(comment Protocol-OnlineAuction-PlaceBid
+  "A bidder places a bid on a lot. The bid amount must exceed the
+   current highest bid. Each bid creates a SIGNAL on the lot's
+   bid metric line. If the bid is placed within the closing window,
+   the auction clock extends.")
+(hasTrigger Protocol-OnlineAuction-PlaceBid SignalArrival)
+(hasCondition Protocol-OnlineAuction-PlaceBid
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Bidding)
+       (isa ?Bid SIGNAL)
+       (hasSignalType ?Bid BID_PLACED)
+       (hasField ?Bid :amount ?Amount)
+       (hasField ?Bid :bidder ?Bidder)
+       (hasField ?Lot ::currentBid ?CurrentBid)
+       (greaterThan ?Amount ?CurrentBid)))
+(hasAction Protocol-OnlineAuction-PlaceBid
+  (and (UpdateAttribute ?Lot ::currentBid ?Amount)
+       (UpdateAttribute ?Lot ::bidCount (plus (bidCountOf ?Lot) 1))
+       (CreateSignal ?S BID_ACCEPTED ?Lot ?Bidder ?Amount)))
+(expectedDuration Protocol-OnlineAuction-PlaceBid (Hours 0))
+(protocolPriority Protocol-OnlineAuction-PlaceBid 42)
+
+;;; ── Step 3: Closing ──
+
+(isa Protocol-OnlineAuction-Closing PROTOCOL)
+(comment Protocol-OnlineAuction-Closing
+  "Bidding period ends. If the highest bid meets or exceeds any
+   reserve price, the lot is sold. If no bids or reserve not met,
+   the lot is marked NoSale.")
+(hasTrigger Protocol-OnlineAuction-Closing TimeElapsed)
+(hasCondition Protocol-OnlineAuction-Closing
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Bidding)
+       (biddingPeriodExpired ?Lot)))
+(hasAction Protocol-OnlineAuction-Closing
+  (EvaluateRule
+    (if (and (hasField ?Lot ::currentBid ?TopBid)
+             (greaterThan ?TopBid 0))
+      (and (TransitionState ?Lot Sold)
+           (UpdateAttribute ?Lot ::winningBid ?TopBid)
+           (CreateSignal ?S LOT_SOLD ?Lot ?TopBid ?Buyer))
+      (and (TransitionState ?Lot NoSale)
+           (CreateSignal ?S LOT_NO_SALE ?Lot)))))
+(expectedDuration Protocol-OnlineAuction-Closing (Hours 1))
+(protocolPriority Protocol-OnlineAuction-Closing 43)
+
+;;; ── Step 4: Settlement ──
+
+(isa Protocol-OnlineAuction-Settlement PROTOCOL)
+(comment Protocol-OnlineAuction-Settlement
+  "Buyer pays auction house. Auction house deducts commission
+   (typically 5-10%) and remits to consigner. Payment must be
+   completed within the auction house's terms (typically 3-7 days).
+   Non-payment triggers a dispute protocol.")
+(hasTrigger Protocol-OnlineAuction-Settlement StateChanged)
+(hasCondition Protocol-OnlineAuction-Settlement
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Sold)
+       (hasField ?Lot ::buyer ?Buyer)
+       (hasField ?Lot ::winningBid ?Amount)))
+(hasAction Protocol-OnlineAuction-Settlement
+  (and (CreateSignal ?S PAYMENT_RECEIVED ?Lot ?Buyer ?Amount AuctionHouseSettlement)
+       (CreateEdge ?Lot ?Buyer PURCHASED_BY)
+       (TransitionState ?Lot Settled)))
+(expectedDuration Protocol-OnlineAuction-Settlement (Days 7))
+(protocolPriority Protocol-OnlineAuction-Settlement 44)
+
+;;; ── Step 5: Delivery ──
+
+(isa Protocol-OnlineAuction-Delivery PROTOCOL)
+(comment Protocol-OnlineAuction-Delivery
+  "Consigner ships the animal or buyer picks up. Shipping is
+   common for show pigs — livestock haulers transport animals
+   across state lines. Health certificates and interstate
+   transport permits may be required.")
+(hasTrigger Protocol-OnlineAuction-Delivery StateChanged)
+(hasCondition Protocol-OnlineAuction-Delivery
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Settled)))
+(hasAction Protocol-OnlineAuction-Delivery
+  (and (CreateSignal ?S ANIMAL_DELIVERED ?Lot ?Animal ?Buyer)
+       (TransitionState ?Lot Delivered)))
+(expectedDuration Protocol-OnlineAuction-Delivery (Days 14))
+(protocolPriority Protocol-OnlineAuction-Delivery 45)
+
+;;; ── Step 6: Pedigree transfer ──
+
+(isa Protocol-OnlineAuction-Transfer PROTOCOL)
+(comment Protocol-OnlineAuction-Transfer
+  "Pedigree transfer initiated. Consigner submits transfer paperwork
+   to the breed registry. The animal's registration is updated to
+   reflect the new owner. This is the final step — the animal is
+   now legally and genetically documented under the buyer's herdmark.
+   Triggers Protocol-PedigreeTransfer from pedigree.krf.")
+(hasTrigger Protocol-OnlineAuction-Transfer StateChanged)
+(hasCondition Protocol-OnlineAuction-Transfer
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Delivered)
+       (hasField ?Lot ::lotAnimal ?Animal)
+       (hasField ?Lot ::buyer ?Buyer)))
+(hasAction Protocol-OnlineAuction-Transfer
+  (and (CreateSignal ?S OWNERSHIP_TRANSFER ?Animal ?Buyer)
+       (TransitionState ?Lot Transferred)))
+(expectedDuration Protocol-OnlineAuction-Transfer (Days 30))
+(protocolPriority Protocol-OnlineAuction-Transfer 46)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: LIVE AUCTION
+;;; ────────────────────────────────────────────────────────────────
+;;; Live auctions compress the bidding phase to minutes. The
+;;; auctioneer is the protocol engine. State transitions happen
+;;; in real-time.
+
+(isa Protocol-LiveAuction PROTOCOL)
+(comment Protocol-LiveAuction
+  "Live auctioneer-driven sale. Animals are presented in a ring.
+   The auctioneer calls bids starting from an opening price and
+   increments until no further bids are received. Hammer falls.
+   Entire bidding phase for one lot: 1-5 minutes. The auctioneer
+   reads the crowd — a protocol engine running on human signal
+   detection. Common at county fairs, state fairs, and national
+   breed shows.")
+(hasTrigger Protocol-LiveAuction ManualInvocation)
+(hasCondition Protocol-LiveAuction
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Listed)
+       (isa ?Event LiveAuctionEvent)
+       (partOf ?Lot ?Event)))
+(hasAction Protocol-LiveAuction
+  (and (TransitionState ?Lot Bidding)
+       (CreateSignal ?S LIVE_BIDDING_START ?Lot ?Event)))
+(expectedDuration Protocol-LiveAuction (Minutes 5))
+(protocolPriority Protocol-LiveAuction 41)
+
+;; Live auction close — hammer falls
+(isa Protocol-LiveAuction-Hammer PROTOCOL)
+(comment Protocol-LiveAuction-Hammer
+  "The auctioneer's hammer falls. The final bid is the winning bid.
+   In a live auction, closing and selling are nearly simultaneous.
+   The buyer is identified by their bidder number.")
+(hasTrigger Protocol-LiveAuction-Hammer ManualInvocation)
+(hasCondition Protocol-LiveAuction-Hammer
+  (and (isa ?Lot AuctionLot)
+       (hasState ?Lot Bidding)
+       (hasField ?Lot ::currentBid ?FinalBid)
+       (greaterThan ?FinalBid 0)))
+(hasAction Protocol-LiveAuction-Hammer
+  (and (UpdateAttribute ?Lot ::winningBid ?FinalBid)
+       (TransitionState ?Lot Sold)
+       (CreateSignal ?S HAMMER_FALLEN ?Lot ?FinalBid ?Buyer)))
+(expectedDuration Protocol-LiveAuction-Hammer (Seconds 5))
+(protocolPriority Protocol-LiveAuction-Hammer 43)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: PRIVATE TREATY
+;;; ────────────────────────────────────────────────────────────────
+;;; No public bidding. The breeder controls the sale completely.
+
+(isa Protocol-PrivateTreaty PROTOCOL)
+(comment Protocol-PrivateTreaty
+  "Negotiated sale between breeder and buyer. No auction house
+   intermediary. No public bidding. The breeder sets the price
+   or negotiates directly. Common for high-value breeding stock
+   where the breeder wants to control which operations receive
+   their genetics. The breeder is selecting the buyer as much as
+   the buyer is selecting the animal.")
+(hasTrigger Protocol-PrivateTreaty ManualInvocation)
+(hasCondition Protocol-PrivateTreaty
+  (and (isa ?Animal SwineAnimal)
+       (hasState ?Animal FullyRegistered)
+       (ownedBy ?Animal ?Seller)
+       (isa ?Buyer SwineBuyer)))
+(hasAction Protocol-PrivateTreaty
+  (and (CreateNode ?Sale PrivateTreatySale)
+       (CreateEdge ?Sale ?Animal LOT_FOR)
+       (CreateEdge ?Sale ?Seller SOLD_BY)
+       (CreateEdge ?Sale ?Buyer PURCHASED_BY)
+       (CreateSignal ?S PRIVATE_TREATY_SALE ?Animal ?Seller ?Buyer ?Price)
+       (UpdateAttribute ?Sale ::winningBid ?Price)
+       (TransitionState ?Sale Sold)))
+(expectedDuration Protocol-PrivateTreaty (Days 7))
+(protocolPriority Protocol-PrivateTreaty 40)
+
+;;; ── Private treaty settlement follows the same path ──
+
+(isa Protocol-PrivateTreaty-Settlement PROTOCOL)
+(comment Protocol-PrivateTreaty-Settlement
+  "Payment in private treaty is direct between buyer and seller.
+   Common payment methods: check, Zelle, or wire transfer.
+   No auction house commission. Settlement timing is negotiated.")
+(hasTrigger Protocol-PrivateTreaty-Settlement StateChanged)
+(hasCondition Protocol-PrivateTreaty-Settlement
+  (and (isa ?Sale PrivateTreatySale)
+       (hasState ?Sale Sold)))
+(hasAction Protocol-PrivateTreaty-Settlement
+  (and (CreateSignal ?S PAYMENT_RECEIVED ?Sale ?Buyer ?Amount ?Method)
+       (TransitionState ?Sale Settled)))
+(expectedDuration Protocol-PrivateTreaty-Settlement (Days 14))
+(protocolPriority Protocol-PrivateTreaty-Settlement 44)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PROTOCOL: MESSENGER SALE
+;;; ────────────────────────────────────────────────────────────────
+;;; The informal but dominant channel. Facebook Messenger is the
+;;; protocol transport layer. Venmo is the settlement layer.
+;;; Charlotte's challenge: extract structured signals from
+;;; unstructured social media interactions.
+
+;;; ── Step 1: Social media post ──
+
+(isa Protocol-MessengerSale-Post PROTOCOL)
+(comment Protocol-MessengerSale-Post
+  "Breeder posts animal photos and/or video to a Facebook group
+   or their Facebook page. The post is the listing. It may include
+   breed, parentage, ear notch, age, weight, stress status, and
+   asking price — or it may include nothing but a photo and the
+   words 'DM for info.' This is the least structured listing format
+   in the industry.")
+(hasTrigger Protocol-MessengerSale-Post ManualInvocation)
+(hasCondition Protocol-MessengerSale-Post
+  (and (isa ?Animal SwineAnimal)
+       (ownedBy ?Animal ?Breeder)))
+(hasAction Protocol-MessengerSale-Post
+  (and (CreateNode ?Sale MessengerSale)
+       (CreateEdge ?Sale ?Animal LOT_FOR)
+       (CreateEdge ?Sale ?Breeder SOLD_BY)
+       (CreateSignal ?S SOCIAL_MEDIA_POST ?Sale ?Animal ?Platform)
+       (TransitionState ?Sale Listed)))
+(expectedDuration Protocol-MessengerSale-Post (Hours 1))
+(protocolPriority Protocol-MessengerSale-Post 40)
+
+;;; ── Step 2: DM / Messenger inquiry ──
+
+(isa Protocol-MessengerSale-Inquiry PROTOCOL)
+(comment Protocol-MessengerSale-Inquiry
+  "Interested buyer sends a direct message via Facebook Messenger.
+   The inquiry may ask for price, pedigree details, stress status,
+   availability, or shipping options. This is the opening of a
+   negotiation thread.")
+(hasTrigger Protocol-MessengerSale-Inquiry SignalArrival)
+(hasCondition Protocol-MessengerSale-Inquiry
+  (and (isa ?Sale MessengerSale)
+       (hasState ?Sale Listed)
+       (isa ?Inquiry SIGNAL)
+       (hasSignalType ?Inquiry BUYER_INQUIRY)
+       (hasField ?Inquiry :buyer ?Buyer)))
+(hasAction Protocol-MessengerSale-Inquiry
+  (and (CreateSignal ?S INQUIRY_RECEIVED ?Sale ?Buyer)
+       (TransitionState ?Sale Bidding)))
+(expectedDuration Protocol-MessengerSale-Inquiry (Days 3))
+(protocolPriority Protocol-MessengerSale-Inquiry 41)
+
+;;; ── Step 3: Price negotiation ──
+
+(isa Protocol-MessengerSale-Negotiation PROTOCOL)
+(comment Protocol-MessengerSale-Negotiation
+  "Price negotiation happens in the Messenger thread. Unlike a
+   formal auction, there is no minimum increment, no time extension,
+   no public visibility. The breeder may be negotiating with multiple
+   buyers simultaneously. First to agree and pay typically wins.")
+(hasTrigger Protocol-MessengerSale-Negotiation SignalArrival)
+(hasCondition Protocol-MessengerSale-Negotiation
+  (and (isa ?Sale MessengerSale)
+       (hasState ?Sale Bidding)))
+(hasAction Protocol-MessengerSale-Negotiation
+  (EvaluateRule
+    (if (priceAgreed ?Sale ?Buyer ?Price)
+      (and (UpdateAttribute ?Sale ::winningBid ?Price)
+           (UpdateAttribute ?Sale ::buyer ?Buyer)
+           (TransitionState ?Sale Sold)
+           (CreateSignal ?S PRICE_AGREED ?Sale ?Buyer ?Price))
+      (CreateSignal ?S NEGOTIATION_ONGOING ?Sale))))
+(expectedDuration Protocol-MessengerSale-Negotiation (Days 3))
+(protocolPriority Protocol-MessengerSale-Negotiation 42)
+
+;;; ── Step 4: Peer-to-peer payment ──
+
+(isa Protocol-MessengerSale-Payment PROTOCOL)
+(comment Protocol-MessengerSale-Payment
+  "Payment via Venmo, PayPal, Zelle, or check. Venmo is the most
+   common for show pig messenger sales. No intermediary. No buyer
+   protection unless PayPal Goods & Services is used (rare).
+   Payment confirmation is typically a screenshot shared in the
+   Messenger thread.")
+(hasTrigger Protocol-MessengerSale-Payment StateChanged)
+(hasCondition Protocol-MessengerSale-Payment
+  (and (isa ?Sale MessengerSale)
+       (hasState ?Sale Sold)
+       (hasField ?Sale ::buyer ?Buyer)
+       (hasField ?Sale ::winningBid ?Amount)))
+(hasAction Protocol-MessengerSale-Payment
+  (and (CreateSignal ?S PAYMENT_RECEIVED ?Sale ?Buyer ?Amount ?Method)
+       (TransitionState ?Sale Settled)))
+(expectedDuration Protocol-MessengerSale-Payment (Days 3))
+(protocolPriority Protocol-MessengerSale-Payment 44)
+
+;;; ── Step 5: Pickup / delivery ──
+
+(isa Protocol-MessengerSale-Delivery PROTOCOL)
+(comment Protocol-MessengerSale-Delivery
+  "Buyer picks up the animal or breeder arranges delivery via
+   livestock hauler. Messenger sales often involve the buyer
+   driving to the breeder's farm. Delivery arrangements are
+   negotiated in the same Messenger thread.")
+(hasTrigger Protocol-MessengerSale-Delivery StateChanged)
+(hasCondition Protocol-MessengerSale-Delivery
+  (and (isa ?Sale MessengerSale)
+       (hasState ?Sale Settled)))
+(hasAction Protocol-MessengerSale-Delivery
+  (and (CreateSignal ?S ANIMAL_DELIVERED ?Sale ?Animal ?Buyer)
+       (TransitionState ?Sale Delivered)))
+(expectedDuration Protocol-MessengerSale-Delivery (Days 14))
+(protocolPriority Protocol-MessengerSale-Delivery 45)
+
+;;; ── Step 6: Pedigree transfer ──
+
+(isa Protocol-MessengerSale-Transfer PROTOCOL)
+(comment Protocol-MessengerSale-Transfer
+  "Pedigree transfer papers mailed by breeder or submitted digitally
+   to the registry. In messenger sales, this is often the last step
+   completed and sometimes delayed weeks or months. The transfer
+   may be the only structured record of the transaction in the
+   registry system.")
+(hasTrigger Protocol-MessengerSale-Transfer StateChanged)
+(hasCondition Protocol-MessengerSale-Transfer
+  (and (isa ?Sale MessengerSale)
+       (hasState ?Sale Delivered)
+       (hasField ?Sale ::lotAnimal ?Animal)
+       (hasField ?Sale ::buyer ?Buyer)))
+(hasAction Protocol-MessengerSale-Transfer
+  (and (CreateSignal ?S OWNERSHIP_TRANSFER ?Animal ?Buyer)
+       (TransitionState ?Sale Transferred)))
+(expectedDuration Protocol-MessengerSale-Transfer (Days 60))
+(protocolPriority Protocol-MessengerSale-Transfer 46)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; AUCTION EVENT STRUCTURE
+;;; ────────────────────────────────────────────────────────────────
+;;; An auction event is a NODE that contains multiple lots.
+;;; Wendt Group runs 40+ events per year. Each event is a
+;;; temporal container with a start date, close date, and
+;;; collection of lots.
+
+(isa Protocol-AuctionEventCreation PROTOCOL)
+(comment Protocol-AuctionEventCreation
+  "An auction house creates an event with a defined date range
+   and lot list. The event is a NODE that aggregates all lots.
+   Metrics on the event: total lots, total revenue, average sale
+   price, sell-through rate.")
+(hasTrigger Protocol-AuctionEventCreation ManualInvocation)
+(hasCondition Protocol-AuctionEventCreation
+  (and (isa ?AuctionHouse AuctionHouse)
+       (thereExists ?StartDate (hasField ?Event :startDate ?StartDate))
+       (thereExists ?EndDate (hasField ?Event :endDate ?EndDate))))
+(hasAction Protocol-AuctionEventCreation
+  (and (CreateNode ?Event AuctionEvent)
+       (CreateEdge ?Event ?AuctionHouse HOSTED_BY)
+       (CreateSignal ?S AUCTION_EVENT_CREATED ?Event ?AuctionHouse ?StartDate)))
+(expectedDuration Protocol-AuctionEventCreation (Days 1))
+(protocolPriority Protocol-AuctionEventCreation 39)
+
+;;; ── Auction event metrics ──
+
+(isa AuctionEventMetric Collection)
+
+(isa ::totalLots AuctionEventMetric)
+(isa ::totalRevenue AuctionEventMetric)
+(isa ::avgSalePrice AuctionEventMetric)
+(isa ::sellThroughRate AuctionEventMetric)
+(isa ::topLotPrice AuctionEventMetric)
+(isa ::uniqueBuyers AuctionEventMetric)
+(isa ::uniqueConsigners AuctionEventMetric)
+
+(comment ::totalLots "Number of lots in the auction event.")
+(comment ::totalRevenue "Sum of all winning bids in USD.")
+(comment ::avgSalePrice "Mean sale price across all sold lots.")
+(comment ::sellThroughRate "Percentage of lots that sold (vs NoSale or Withdrawn).")
+(comment ::topLotPrice "Highest individual sale price in the event.")
+(comment ::uniqueBuyers "Number of distinct buyers who purchased lots.")
+(comment ::uniqueConsigners "Number of distinct breeders who consigned lots.")
+
+;;; ────────────────────────────────────────────────────────────────
+;;; CROSS-PROTOCOL TRIGGERS
+;;; ────────────────────────────────────────────────────────────────
+;;; Sale completion triggers pedigree transfer (from pedigree.krf)
+;;; and updates the breeding stock pool (from breeding.krf).
+
+;; When any sale type reaches Transferred state, trigger pedigree transfer
+(implies
+  (and (or (isa ?Sale AuctionLot)
+           (isa ?Sale PrivateTreatySale)
+           (isa ?Sale MessengerSale))
+       (hasState ?Sale Transferred)
+       (hasField ?Sale ::lotAnimal ?Animal)
+       (hasField ?Sale ::buyer ?Buyer))
+  (and (fires Protocol-PedigreeTransfer (transferEventFor ?Sale))
+       (CreateEdge ?Animal ?Buyer OWNED_BY)))
+
+;; When a breeding-quality animal is sold, it enters the buyer's breeding program
+(implies
+  (and (hasState ?Sale Transferred)
+       (hasField ?Sale ::lotAnimal ?Animal)
+       (hasField ?Sale ::buyer ?Buyer)
+       (meetsBreedingStockCriteria ?Animal)
+       (or (hasGenderRole ?Animal Boar) (hasGenderRole ?Animal Gilt)))
+  (eligibleForBreedingProgram ?Animal ?Buyer))
+
+;;; ────────────────────────────────────────────────────────────────
+;;; SALE CHANNEL CHARACTERISTICS
+;;; ────────────────────────────────────────────────────────────────
+;;; Each channel has different data density, latency, and structure.
+;;; Charlotte's signal extraction capability varies by channel.
+
+(dataStructureDensity OnlineAuction High)
+(dataStructureDensity LiveAuction Medium)
+(dataStructureDensity PrivateTreaty Low)
+(dataStructureDensity MessengerSale VeryLow)
+
+(typicalSettlementLatency OnlineAuction (Days 7))
+(typicalSettlementLatency LiveAuction (Days 1))
+(typicalSettlementLatency PrivateTreaty (Days 14))
+(typicalSettlementLatency MessengerSale (Days 3))
+
+(typicalTransferLatency OnlineAuction (Days 30))
+(typicalTransferLatency LiveAuction (Days 30))
+(typicalTransferLatency PrivateTreaty (Days 30))
+(typicalTransferLatency MessengerSale (Days 60))
+
+(comment dataStructureDensity
+  "How much structured data Charlotte can extract from each sale channel.
+   Online auctions produce rich, timestamped bid histories. Messenger
+   sales produce almost nothing without natural language extraction.")
+
+(comment typicalTransferLatency
+  "Time from sale to pedigree transfer completion. Messenger sales
+   are slowest — pedigree transfer is often an afterthought when
+   there is no auction house enforcing the process.")
