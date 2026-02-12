@@ -1,0 +1,629 @@
+;;; ================================================================
+;;; CERTIFIED PEDIGREE SWINE (CPS) — PARTNERSHIP SUBSTRATE
+;;; Validation domain knowledge graph for the Sounder partnership
+;;; assessment with CPS, the largest swine registry organization
+;;; in the United States by membership (65,412 breeders).
+;;; ================================================================
+
+(in-microtheory CertifiedPedigreeSwineMt)
+
+;;; ================================================================
+;;; 1. INSTITUTION NODE
+;;; ================================================================
+
+(isa CPS NODE)
+(isa CPS GroupEntity)
+(isa CPS BreedRegistry)
+(hasField CPS :ID "cps-001")
+(hasField CPS :LABEL "Certified Pedigree Swine")
+(hasField CPS :CREATED "1997")
+(hasState CPS Active)
+
+(comment CPS
+  "Certified Pedigree Swine (CPS) is the largest swine registry
+   organization in the United States by total membership, serving
+   65,412 registered breeders across all major purebred and crossbred
+   designations. Manages 5,279 registered herdmarks. Operates a unified
+   multi-breed registry spanning 10+ recognized breeds and crossbred
+   categories. Sanctions hundreds of shows annually across all 50 states.")
+
+(hasAttribute CPS headquarters "United States")
+(hasAttribute CPS website "cpsswine.com")
+(hasAttribute CPS primaryFunction "multi-breed pedigree registration, herdmark management, show sanctioning")
+(hasAttribute CPS registryModel "unified multi-breed (all breeds under one roof)")
+(hasAttribute CPS totalBreeders 65412)
+(hasAttribute CPS registeredHerdmarks 5279)
+(hasAttribute CPS statesRepresented 50)
+
+;;; ================================================================
+;;; 2. BREED NODES
+;;; ================================================================
+
+;; ── Hampshire ──
+(isa HampshireBreed NODE)
+(isa HampshireBreed SwineBreed)
+(hasField HampshireBreed :ID "breed-hampshire")
+(hasField HampshireBreed :LABEL "Hampshire")
+(hasAttribute HampshireBreed color "black with white belt")
+(hasAttribute HampshireBreed purpose "terminal/dual-purpose")
+(hasAttribute HampshireBreed keyTraits "lean carcass, heavy muscling, erect ears")
+(hasAttribute HampshireBreed breedCategory "dark")
+
+;; ── Duroc ──
+(isa DurocBreed NODE)
+(isa DurocBreed SwineBreed)
+(hasField DurocBreed :ID "breed-duroc")
+(hasField DurocBreed :LABEL "Duroc")
+(hasAttribute DurocBreed color "red (golden to dark cherry)")
+(hasAttribute DurocBreed purpose "terminal")
+(hasAttribute DurocBreed keyTraits "fast growth, feed efficiency, marbling, docility")
+(hasAttribute DurocBreed breedCategory "dark")
+
+;; ── Yorkshire ──
+(isa YorkshireBreed NODE)
+(isa YorkshireBreed SwineBreed)
+(hasField YorkshireBreed :ID "breed-yorkshire")
+(hasField YorkshireBreed :LABEL "Yorkshire")
+(hasAttribute YorkshireBreed color "white")
+(hasAttribute YorkshireBreed purpose "maternal")
+(hasAttribute YorkshireBreed keyTraits "large litters, heavy milking, soundness, erect ears")
+(hasAttribute YorkshireBreed breedCategory "light")
+
+;; ── Landrace ──
+(isa LandraceBreed NODE)
+(isa LandraceBreed SwineBreed)
+(hasField LandraceBreed :ID "breed-landrace")
+(hasField LandraceBreed :LABEL "Landrace")
+(hasAttribute LandraceBreed color "white")
+(hasAttribute LandraceBreed purpose "maternal")
+(hasAttribute LandraceBreed keyTraits "long body, large litters, drooping ears, cross-breeding vigor")
+(hasAttribute LandraceBreed breedCategory "light")
+
+;; ── Berkshire ──
+(isa BerkshireBreed NODE)
+(isa BerkshireBreed SwineBreed)
+(hasField BerkshireBreed :ID "breed-berkshire")
+(hasField BerkshireBreed :LABEL "Berkshire")
+(hasAttribute BerkshireBreed color "black with white points")
+(hasAttribute BerkshireBreed purpose "premium pork / niche market")
+(hasAttribute BerkshireBreed keyTraits "meat quality, pH, marbling, Kurobuta designation")
+(hasAttribute BerkshireBreed breedCategory "dark")
+
+;; ── Poland China ──
+(isa PolandChinaBreed NODE)
+(isa PolandChinaBreed SwineBreed)
+(hasField PolandChinaBreed :ID "breed-poland-china")
+(hasField PolandChinaBreed :LABEL "Poland China")
+(hasAttribute PolandChinaBreed color "black with white markings")
+(hasAttribute PolandChinaBreed purpose "terminal/historical")
+(hasAttribute PolandChinaBreed keyTraits "large frame, feed efficiency, calm temperament")
+(hasAttribute PolandChinaBreed breedCategory "dark")
+
+;; ── Spotted (Spot) ──
+(isa SpotBreed NODE)
+(isa SpotBreed SwineBreed)
+(hasField SpotBreed :ID "breed-spot")
+(hasField SpotBreed :LABEL "Spot")
+(hasAttribute SpotBreed color "black and white spots")
+(hasAttribute SpotBreed purpose "terminal/dual-purpose")
+(hasAttribute SpotBreed keyTraits "feed efficiency, rate of gain, distinctive markings")
+(hasAttribute SpotBreed breedCategory "dark")
+
+;; ── Chester White ──
+(isa ChesterWhiteBreed NODE)
+(isa ChesterWhiteBreed SwineBreed)
+(hasField ChesterWhiteBreed :ID "breed-chester-white")
+(hasField ChesterWhiteBreed :LABEL "Chester White")
+(hasAttribute ChesterWhiteBreed color "white")
+(hasAttribute ChesterWhiteBreed purpose "maternal")
+(hasAttribute ChesterWhiteBreed keyTraits "mothering ability, durability, soundness")
+(hasAttribute ChesterWhiteBreed breedCategory "light")
+
+;; ── Hereford ──
+(isa HerefordBreed NODE)
+(isa HerefordBreed SwineBreed)
+(hasField HerefordBreed :ID "breed-hereford")
+(hasField HerefordBreed :LABEL "Hereford")
+(hasAttribute HerefordBreed color "red with white face")
+(hasAttribute HerefordBreed purpose "dual-purpose / heritage")
+(hasAttribute HerefordBreed keyTraits "distinctive color pattern, foraging ability, docility")
+(hasAttribute HerefordBreed breedCategory "dark")
+
+;; ── Tamworth ──
+(isa TamworthBreed NODE)
+(isa TamworthBreed SwineBreed)
+(hasField TamworthBreed :ID "breed-tamworth")
+(hasField TamworthBreed :LABEL "Tamworth")
+(hasAttribute TamworthBreed color "red-gold")
+(hasAttribute TamworthBreed purpose "heritage / bacon")
+(hasAttribute TamworthBreed keyTraits "bacon type, outdoor hardiness, foraging, breed conservation")
+(hasAttribute TamworthBreed breedCategory "dark")
+
+;; ── Crossbred Designations ──
+(isa CrossbredDesignation NODE)
+(isa CrossbredDesignation SwineBreedCategory)
+(hasField CrossbredDesignation :ID "breed-cross")
+(hasField CrossbredDesignation :LABEL "Cross")
+(comment CrossbredDesignation "General crossbred: registered purebred parents of different breeds.")
+
+(isa LightCrossDesignation NODE)
+(isa LightCrossDesignation SwineBreedCategory)
+(hasField LightCrossDesignation :ID "breed-light-cross")
+(hasField LightCrossDesignation :LABEL "LightCross")
+(comment LightCrossDesignation "Cross of light breeds (Yorkshire, Landrace, Chester White). Maternal combinations.")
+
+(isa DarkCrossDesignation NODE)
+(isa DarkCrossDesignation SwineBreedCategory)
+(hasField DarkCrossDesignation :ID "breed-dark-cross")
+(hasField DarkCrossDesignation :LABEL "DarkCross")
+(comment DarkCrossDesignation "Cross of dark breeds (Hampshire, Duroc, Berkshire, Poland China, Spot). Terminal combinations.")
+
+;;; ================================================================
+;;; 3. GEOGRAPHIC NODES — Top 5 states by breeder count
+;;; ================================================================
+
+(isa IndianaRegion NODE)
+(isa IndianaRegion GeographicEntity)
+(hasField IndianaRegion :ID "geo-indiana")
+(hasField IndianaRegion :LABEL "Indiana")
+(hasAttribute IndianaRegion cpsBreeders 14552)
+(hasAttribute IndianaRegion rank 1)
+(comment IndianaRegion "Top CPS state (22.2%). Swine belt anchor, strong 4-H/FFA infrastructure.")
+
+(isa OklahomaRegion NODE)
+(isa OklahomaRegion GeographicEntity)
+(hasField OklahomaRegion :ID "geo-oklahoma")
+(hasField OklahomaRegion :LABEL "Oklahoma")
+(hasAttribute OklahomaRegion cpsBreeders 9177)
+(hasAttribute OklahomaRegion rank 2)
+(comment OklahomaRegion "Second largest CPS state. Stock show culture drives registration.")
+
+(isa TexasRegion NODE)
+(isa TexasRegion GeographicEntity)
+(hasField TexasRegion :ID "geo-texas")
+(hasField TexasRegion :LABEL "Texas")
+(hasAttribute TexasRegion cpsBreeders 9174)
+(hasAttribute TexasRegion rank 3)
+(comment TexasRegion "Third largest. Major show circuit: Houston, San Antonio, Fort Worth.")
+
+(isa IllinoisRegion NODE)
+(isa IllinoisRegion GeographicEntity)
+(hasField IllinoisRegion :ID "geo-illinois")
+(hasField IllinoisRegion :LABEL "Illinois")
+(hasAttribute IllinoisRegion cpsBreeders 5542)
+(hasAttribute IllinoisRegion rank 4)
+(comment IllinoisRegion "Fourth largest. Traditional corn belt swine production.")
+
+(isa OhioRegion NODE)
+(isa OhioRegion GeographicEntity)
+(hasField OhioRegion :ID "geo-ohio")
+(hasField OhioRegion :LABEL "Ohio")
+(hasAttribute OhioRegion cpsBreeders 4047)
+(hasAttribute OhioRegion rank 5)
+(comment OhioRegion "Fifth largest. Birthplace of Poland China. Strong show tradition.")
+
+;;; ================================================================
+;;; 4. COMPETITOR / PEER NODES
+;;; ================================================================
+
+(isa NSR NODE)
+(isa NSR GroupEntity)
+(isa NSR BreedRegistry)
+(hasField NSR :ID "comp-nsr")
+(hasField NSR :LABEL "National Swine Registry")
+(hasState NSR Active)
+(hasAttribute NSR memberCount 3763)
+(hasAttribute NSR breedsServed "Hampshire, Duroc, Yorkshire, Landrace")
+(comment NSR "Four-breed consolidated registry. Operates STAGES genetic evaluation. West Lafayette, IN.")
+
+(isa ABA NODE)
+(isa ABA GroupEntity)
+(isa ABA BreedRegistry)
+(hasField ABA :ID "comp-aba")
+(hasField ABA :LABEL "American Berkshire Association")
+(hasState ABA Active)
+(hasAttribute ABA memberCount 8807)
+(hasAttribute ABA breedsServed "Berkshire only")
+(comment ABA "Single-breed registry, founded 1875. Overlapping CPS membership for Berkshire breeders.")
+
+(isa NSIF NODE)
+(isa NSIF GroupEntity)
+(hasField NSIF :ID "peer-nsif")
+(hasField NSIF :LABEL "National Swine Improvement Federation")
+(hasState NSIF Active)
+(hasAttribute NSIF primaryFunction "genetic evaluation standards and guidelines")
+(comment NSIF "Standards body for swine genetic evaluation across registries.")
+
+;; ── Commercial Genetics Companies ──
+
+(isa CommercialGeneticsCompany Collection)
+(comment CommercialGeneticsCompany
+  "Vertically integrated genetics companies selling proprietary lines,
+   bypassing purebred registries. Primary existential threat to CPS model.")
+
+(isa PIC-Genus NODE)
+(isa PIC-Genus CommercialGeneticsCompany)
+(hasField PIC-Genus :ID "threat-pic")
+(hasField PIC-Genus :LABEL "PIC (Genus plc)")
+(hasAttribute PIC-Genus scope "global")
+(comment PIC-Genus "Largest global swine genetics company. Closed-herd, proprietary lines.")
+
+(isa TopigsNorsvin NODE)
+(isa TopigsNorsvin CommercialGeneticsCompany)
+(hasField TopigsNorsvin :ID "threat-topigs")
+(hasField TopigsNorsvin :LABEL "Topigs Norsvin")
+(hasAttribute TopigsNorsvin scope "global (European origin)")
+(comment TopigsNorsvin "Dutch-Norwegian genetics cooperative. Expanding in US market.")
+
+(isa DNAGenetics NODE)
+(isa DNAGenetics CommercialGeneticsCompany)
+(hasField DNAGenetics :ID "threat-dna")
+(hasField DNAGenetics :LABEL "DNA Genetics")
+(hasAttribute DNAGenetics scope "US domestic")
+(comment DNAGenetics "US-based commercial genetics supplier. Columbus, Nebraska.")
+
+(isa Genesus NODE)
+(isa Genesus CommercialGeneticsCompany)
+(hasField Genesus :ID "threat-genesus")
+(hasField Genesus :LABEL "Genesus")
+(hasAttribute Genesus scope "global (Canadian origin)")
+(comment Genesus "Canadian genetics company. Closed commercial system despite purebred base.")
+
+;;; ================================================================
+;;; 5. HERDMARK SYSTEM
+;;; ================================================================
+
+(isa HerdmarkSystem NODE)
+(isa HerdmarkSystem ConceptualEntity)
+(hasField HerdmarkSystem :ID "system-herdmark")
+(hasField HerdmarkSystem :LABEL "CPS Herdmark System")
+(hasState HerdmarkSystem Active)
+
+(comment HerdmarkSystem
+  "A herdmark is a unique 2-4 character alphanumeric code assigned by CPS
+   to each registered breeding operation. Root identifier for all animals
+   produced by that herd. 5,279 herdmarks currently registered.")
+
+(hasAttribute HerdmarkSystem totalRegistered 5279)
+(hasAttribute HerdmarkSystem codeFormat "2-4 alphanumeric characters")
+(hasAttribute HerdmarkSystem purpose "breeder identification, animal traceability, pedigree chain root")
+(hasAttribute HerdmarkSystem uniquenessScope "national — no duplicate herdmarks across all breeds")
+
+;;; ================================================================
+;;; 6. EDGES — Structural relationships
+;;; ================================================================
+
+;; ── CPS registers all breeds ──
+
+(isa registersBreed EdgeType)
+(comment registersBreed "Registry A maintains the herd book and pedigree records for breed B.")
+
+(registersBreed CPS HampshireBreed)
+(registersBreed CPS DurocBreed)
+(registersBreed CPS YorkshireBreed)
+(registersBreed CPS LandraceBreed)
+(registersBreed CPS BerkshireBreed)
+(registersBreed CPS PolandChinaBreed)
+(registersBreed CPS SpotBreed)
+(registersBreed CPS ChesterWhiteBreed)
+(registersBreed CPS HerefordBreed)
+(registersBreed CPS TamworthBreed)
+
+;; ── Crossbred designation edges ──
+
+(isa managesCrossDesignation EdgeType)
+(comment managesCrossDesignation "Registry A tracks crossbred pedigree category B.")
+
+(managesCrossDesignation CPS CrossbredDesignation)
+(managesCrossDesignation CPS LightCrossDesignation)
+(managesCrossDesignation CPS DarkCrossDesignation)
+
+;; ── Competitive edges ──
+
+(isa competesWith EdgeType)
+(isa competesWith SymmetricRelation)
+(comment competesWith "Organizations A and B compete for overlapping membership or market share.")
+
+(competesWith CPS NSR)
+(competesWith CPS ABA)
+
+;; ── Commercial threat edges ──
+
+(isa threatensMarketOf EdgeType)
+(comment threatensMarketOf "Commercial entity A erodes registry B's position via closed-system alternatives.")
+
+(threatensMarketOf PIC-Genus CPS)
+(threatensMarketOf TopigsNorsvin CPS)
+(threatensMarketOf DNAGenetics CPS)
+(threatensMarketOf Genesus CPS)
+
+;; ── Geographic concentration edges ──
+
+(isa hasConcentrationIn EdgeType)
+(comment hasConcentrationIn "Registry A has significant breeder concentration in geographic region B.")
+
+(hasConcentrationIn CPS IndianaRegion)
+(hasConcentrationIn CPS OklahomaRegion)
+(hasConcentrationIn CPS TexasRegion)
+(hasConcentrationIn CPS IllinoisRegion)
+(hasConcentrationIn CPS OhioRegion)
+
+;; ── Sounder partnership edge ──
+
+(isa partnersWith EdgeType)
+(isa partnersWith SymmetricRelation)
+(comment partnersWith "A and B have entered or are evaluating a technology partnership.")
+
+(isa Sounder NODE)
+(isa Sounder GroupEntity)
+(hasField Sounder :ID "sounder-001")
+(hasField Sounder :LABEL "Sounder")
+(hasState Sounder Active)
+(comment Sounder "Sounder — swine industry technology platform. Charlotte validation domain.")
+
+(partnersWith CPS Sounder)
+(hasAttribute CPS-SounderPartnership status "proposed")
+(hasAttribute CPS-SounderPartnership scope "multi-breed portal, herdmark management, show sanctioning, pedigree verification")
+
+;;; ================================================================
+;;; 7. METRICS
+;;; ================================================================
+
+(isa CPS-TotalBreeders METRIC)
+(hasField CPS-TotalBreeders :ID "metric-cps-breeders")
+(hasField CPS-TotalBreeders :LABEL "Total Registered Breeders")
+(MEASURES CPS-TotalBreeders CPS)
+(hasAttribute CPS-TotalBreeders currentValue 65412)
+(hasAttribute CPS-TotalBreeders unit "breeders")
+(hasThreshold CPS-TotalBreeders LowerBound 50000)
+(comment CPS-TotalBreeders "Active breeders across all breeds. 17.4x NSR membership. Scale is CPS's primary strategic asset.")
+
+(isa CPS-ManagedBreeds METRIC)
+(hasField CPS-ManagedBreeds :ID "metric-cps-breeds")
+(hasField CPS-ManagedBreeds :LABEL "Managed Breeds")
+(MEASURES CPS-ManagedBreeds CPS)
+(hasAttribute CPS-ManagedBreeds currentValue 10)
+(hasAttribute CPS-ManagedBreeds crossbredCategories 3)
+(hasAttribute CPS-ManagedBreeds unit "purebred breeds")
+(comment CPS-ManagedBreeds "Ten purebreds plus three crossbred designations. 2.5x breed coverage vs NSR's four.")
+
+(isa CPS-RegisteredHerdmarks METRIC)
+(hasField CPS-RegisteredHerdmarks :ID "metric-cps-herdmarks")
+(hasField CPS-RegisteredHerdmarks :LABEL "Registered Herdmarks")
+(MEASURES CPS-RegisteredHerdmarks CPS)
+(hasAttribute CPS-RegisteredHerdmarks currentValue 5279)
+(hasAttribute CPS-RegisteredHerdmarks unit "herdmarks")
+(comment CPS-RegisteredHerdmarks "Unique breeder operation identifiers. Each represents a distinct breeding program.")
+
+(isa CPS-StatesRepresented METRIC)
+(hasField CPS-StatesRepresented :ID "metric-cps-states")
+(hasField CPS-StatesRepresented :LABEL "States Represented")
+(MEASURES CPS-StatesRepresented CPS)
+(hasAttribute CPS-StatesRepresented currentValue 50)
+(hasAttribute CPS-StatesRepresented unit "states")
+(comment CPS-StatesRepresented "National coverage. Geographic breadth supports show sanctioning network.")
+
+(isa CPS-ShowsSanctioned METRIC)
+(hasField CPS-ShowsSanctioned :ID "metric-cps-shows")
+(hasField CPS-ShowsSanctioned :LABEL "Shows Sanctioned Annually")
+(MEASURES CPS-ShowsSanctioned CPS)
+(hasAttribute CPS-ShowsSanctioned currentValue "hundreds annually")
+(hasAttribute CPS-ShowsSanctioned unit "sanctioned shows/year")
+(comment CPS-ShowsSanctioned "County, state, and national level shows. Core revenue and engagement driver.")
+
+(isa CPS-GeographicConcentration METRIC)
+(hasField CPS-GeographicConcentration :ID "metric-cps-geo-concentration")
+(hasField CPS-GeographicConcentration :LABEL "Geographic Concentration")
+(MEASURES CPS-GeographicConcentration CPS)
+(hasAttribute CPS-GeographicConcentration top5States "IN:14552, OK:9177, TX:9174, IL:5542, OH:4047")
+(hasAttribute CPS-GeographicConcentration top5Total 42492)
+(hasAttribute CPS-GeographicConcentration top5Pct "64.9%")
+(comment CPS-GeographicConcentration "Top 5 states hold 64.9% of breeders. Indiana alone is 22.2%. Corn belt and stock show culture geography.")
+
+;;; ================================================================
+;;; 8. SIGNALS — Strategic observations
+;;; ================================================================
+
+(isa StrategicSignal Collection)
+(genls StrategicSignal SIGNAL)
+(comment StrategicSignal "Market forces, regulatory changes, and partnership opportunities relevant to the CPS assessment.")
+
+(isa Signal-CommercialGeneticsGrowth StrategicSignal)
+(hasField Signal-CommercialGeneticsGrowth :ID "signal-commercial-growth")
+(hasField Signal-CommercialGeneticsGrowth :LABEL "Commercial Genetics Market Growth")
+(hasAttribute Signal-CommercialGeneticsGrowth direction "negative")
+(hasAttribute Signal-CommercialGeneticsGrowth signalType "threat")
+(comment Signal-CommercialGeneticsGrowth "PIC, Topigs, DNA Genetics, Genesus capturing commercial sow herd share. Long-term existential pressure on purebred registry model.")
+
+(isa Signal-USDATraceabilityMandate StrategicSignal)
+(hasField Signal-USDATraceabilityMandate :ID "signal-usda-traceability")
+(hasField Signal-USDATraceabilityMandate :LABEL "USDA Traceability Mandate")
+(hasAttribute Signal-USDATraceabilityMandate direction "positive")
+(hasAttribute Signal-USDATraceabilityMandate signalType "opportunity")
+(comment Signal-USDATraceabilityMandate "Federal traceability requirements create demand for digital animal ID. CPS's herdmark system and 65K breeders position it as natural traceability infrastructure.")
+
+(isa Signal-PortalModernization StrategicSignal)
+(hasField Signal-PortalModernization :ID "signal-portal-modernization")
+(hasField Signal-PortalModernization :LABEL "Portal Modernization Need")
+(hasAttribute Signal-PortalModernization direction "positive")
+(hasAttribute Signal-PortalModernization signalType "need")
+(comment Signal-PortalModernization "CPS breeder-facing systems require modernization. Unified multi-breed portal would differentiate from NSR's breed-siloed approach.")
+
+(isa Signal-SounderPartnership StrategicSignal)
+(hasField Signal-SounderPartnership :ID "signal-sounder-partnership")
+(hasField Signal-SounderPartnership :LABEL "Sounder Partnership Opportunity")
+(hasAttribute Signal-SounderPartnership direction "positive")
+(hasAttribute Signal-SounderPartnership signalType "opportunity")
+(comment Signal-SounderPartnership "Sounder proposes technology partnership for registry, herdmarks, show sanctioning, cross-breed analytics. CPS's scale makes it highest-leverage target.")
+
+;;; ================================================================
+;;; 9. PROTOCOLS — Operational rules
+;;; ================================================================
+
+;; ── Multi-Breed Registration Protocol ──
+
+(isa Protocol-MultiBreedRegistration PROTOCOL)
+(hasTrigger Protocol-MultiBreedRegistration ManualInvocation)
+(hasCondition Protocol-MultiBreedRegistration
+  (and (isa ?Animal IndividualEntity)
+       (isa ?Breed SwineBreed)
+       (SIRE_OF ?Sire ?Animal)
+       (DAM_OF ?Dam ?Animal)
+       (registeredWith ?Sire CPS)
+       (registeredWith ?Dam CPS)
+       (breedOf ?Animal ?Breed)))
+(hasAction Protocol-MultiBreedRegistration
+  (and (CreateNode ?Animal)
+       (registeredWith ?Animal CPS)
+       (assignBreed ?Animal ?Breed)
+       (CreateEdge CHILD_OF ?Animal ?Sire)
+       (CreateEdge CHILD_OF ?Animal ?Dam)))
+(comment Protocol-MultiBreedRegistration "Register purebred or crossbred animal. Any of 10+ breeds or cross designations. Both parents must be CPS-registered.")
+
+;; ── Herdmark Assignment Protocol ──
+
+(isa Protocol-HerdmarkAssignment PROTOCOL)
+(hasTrigger Protocol-HerdmarkAssignment ManualInvocation)
+(hasCondition Protocol-HerdmarkAssignment
+  (and (isa ?Breeder IndividualEntity)
+       (not (hasHerdmark ?Breeder ?AnyMark))))
+(hasAction Protocol-HerdmarkAssignment
+  (and (GenerateCode ?Herdmark 2 4 alphanumeric)
+       (VerifyUnique ?Herdmark HerdmarkSystem)
+       (AssignHerdmark ?Breeder ?Herdmark)
+       (UpdateAttribute HerdmarkSystem totalRegistered (PlusFn totalRegistered 1))))
+(comment Protocol-HerdmarkAssignment "Assign unique 2-4 character herdmark. Nationally unique across all breeds.")
+
+;; ── Show Sanctioning Protocol ──
+
+(isa Protocol-ShowSanctioning PROTOCOL)
+(hasTrigger Protocol-ShowSanctioning ManualInvocation)
+(hasCondition Protocol-ShowSanctioning
+  (and (isa ?Show EventEntity)
+       (hasAttribute ?Show judgesApproved TRUE)
+       (hasAttribute ?Show rulesCompliant TRUE)))
+(hasAction Protocol-ShowSanctioning
+  (and (CreateNode ?Show)
+       (sanctionedBy ?Show CPS)
+       (CreateSignal showSanctioned ?Show)
+       (UpdateAttribute ?Show sanctionStatus "approved")))
+(comment Protocol-ShowSanctioning "Sanction a livestock show. Requires approved judges and CPS rule compliance.")
+
+;; ── Breed Committee Governance Protocol ──
+
+(isa Protocol-BreedCommitteeGovernance PROTOCOL)
+(hasTrigger Protocol-BreedCommitteeGovernance TimeElapsed)
+(hasCondition Protocol-BreedCommitteeGovernance
+  (and (isa ?Breed SwineBreed)
+       (registersBreed CPS ?Breed)
+       (governsBreed ?Committee ?Breed)))
+(hasAction Protocol-BreedCommitteeGovernance
+  (and (EvaluateRule breedStandardReview ?Committee ?Breed)
+       (EvaluateRule registrationPolicyReview ?Committee ?Breed)
+       (CreateSignal committeeDecision ?Committee ?Breed)))
+(comment Protocol-BreedCommitteeGovernance "Per-breed committee reviews standards, registration policy, show rules. Autonomy within unified CPS structure.")
+
+;; ── Pedigree Verification Protocol ──
+
+(isa Protocol-PedigreeVerification PROTOCOL)
+(hasTrigger Protocol-PedigreeVerification ManualInvocation)
+(hasCondition Protocol-PedigreeVerification
+  (and (isa ?Animal IndividualEntity)
+       (registeredWith ?Animal CPS)
+       (thereExists ?Pedigree (pedigreeOf ?Animal ?Pedigree))))
+(hasAction Protocol-PedigreeVerification
+  (and (EvaluateRule verifyAncestry ?Animal 3)
+       (EvaluateRule verifyHerdmark ?Animal HerdmarkSystem)
+       (UpdateAttribute ?Animal pedigreeVerified TRUE)))
+(comment Protocol-PedigreeVerification "Verify ancestry to three generations with herdmark validation. Required for show eligibility.")
+
+;; ── Protocol priorities ──
+
+(protocolPriority Protocol-HerdmarkAssignment 1)
+(protocolPriority Protocol-MultiBreedRegistration 2)
+(protocolPriority Protocol-PedigreeVerification 3)
+(protocolPriority Protocol-BreedCommitteeGovernance 4)
+(protocolPriority Protocol-ShowSanctioning 5)
+
+;;; ================================================================
+;;; 10. INFERENCE RULES
+;;; ================================================================
+
+;; Market dominance: CPS membership exceeds competitor by 5x+
+(implies
+  (and (hasAttribute CPS-TotalBreeders currentValue ?CPSCount)
+       (competesWith CPS ?Competitor)
+       (hasAttribute ?Competitor memberCount ?CompCount)
+       (greaterThan ?CPSCount (TimesFn ?CompCount 5)))
+  (hasMarketDominanceOver CPS ?Competitor))
+
+;; Scale advantage: 50K+ breeders across 8+ breeds enables cross-breed analytics
+(implies
+  (and (hasAttribute CPS-TotalBreeders currentValue ?Count)
+       (greaterThan ?Count 50000)
+       (hasAttribute CPS-ManagedBreeds currentValue ?Breeds)
+       (greaterThan ?Breeds 8))
+  (hasCrossBreedAnalyticsPotential CPS TRUE))
+
+;; Breed under competitive pressure from commercial genetics
+(implies
+  (and (registersBreed CPS ?Breed)
+       (threatensMarketOf ?Company CPS)
+       (isa ?Company CommercialGeneticsCompany))
+  (underCompetitivePressure ?Breed ?Company))
+
+;; Geographic concentration risk: single state > 20% of breeders
+(implies
+  (and (hasConcentrationIn CPS ?Region)
+       (hasAttribute ?Region cpsBreeders ?RegionCount)
+       (hasAttribute CPS-TotalBreeders currentValue ?TotalCount)
+       (greaterThan (QuotientFn ?RegionCount ?TotalCount) 0.20))
+  (hasConcentrationRisk CPS ?Region))
+
+;; Partnership eligibility: both organizations must be Active
+(implies
+  (and (partnersWith ?A ?B)
+       (hasState ?A Active)
+       (hasState ?B Active))
+  (partnershipEligible ?A ?B))
+
+;; Multi-breed registry advantage for unified Sounder platform
+(implies
+  (and (registersBreed CPS ?BreedA)
+       (registersBreed CPS ?BreedB)
+       (different ?BreedA ?BreedB)
+       (partnersWith CPS Sounder))
+  (crossBreedPlatformOpportunity CPS ?BreedA ?BreedB Sounder))
+
+;;; ================================================================
+;;; 11. CHARLOTTE PRIMITIVE MAPPING
+;;; ================================================================
+;;;
+;;; NODE     — CPS (institution), 10 purebred breed nodes, 3 crossbred
+;;;            designations, 5 geographic regions, competitors (NSR, ABA,
+;;;            NSIF), 4 commercial genetics companies, herdmark system,
+;;;            Sounder. 27 total nodes.
+;;;
+;;; EDGE     — registersBreed (10), managesCrossDesignation (3),
+;;;            competesWith (NSR, ABA), threatensMarketOf (4),
+;;;            hasConcentrationIn (5), partnersWith (Sounder).
+;;;            25 typed directed connections.
+;;;
+;;; METRIC   — totalBreeders (65,412), managedBreeds (10+3),
+;;;            registeredHerdmarks (5,279), statesRepresented (50),
+;;;            showsSanctioned (hundreds), geographicConcentration
+;;;            (top 5 state breakdown, 64.9%).
+;;;
+;;; SIGNAL   — commercialGeneticsGrowth (threat),
+;;;            usdaTraceabilityMandate (opportunity),
+;;;            portalModernization (need),
+;;;            sounderPartnership (opportunity).
+;;;
+;;; PROTOCOL — herdmarkAssignment (P1), multiBreedRegistration (P2),
+;;;            pedigreeVerification (P3), breedCommitteeGovernance (P4),
+;;;            showSanctioning (P5). Herdmark assignment is foundational
+;;;            — everything depends on breeder identity.
+;;;
+;;; ================================================================
+;;; END — CertifiedPedigreeSwineMt
+;;; ================================================================

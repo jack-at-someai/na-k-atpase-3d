@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sounder — Tamworth Swine Association Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0D0D14;
+  color: #E0DCEA;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* === Knowledge Graph Background === */
+#graph-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* === Page Layout === */
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* === Glass Panel === */
+.glass {
+  background: rgba(114, 0, 203, 0.06);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(114, 0, 203, 0.18);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+/* === Section Spacing === */
+.section { margin-bottom: 56px; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #7200CB;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+/* === Hero === */
+.hero {
+  padding: 48px 0 0;
+  margin-bottom: 48px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(114, 0, 203, 0.15);
+  border: 1px solid rgba(114, 0, 203, 0.35);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #B366E8;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.hero h1 span { color: #7200CB; }
+
+.hero-tagline {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+/* Stat Bar */
+.stat-bar {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.stat-bar__item {
+  flex: 1;
+  padding: 18px 16px;
+  text-align: center;
+  background: rgba(114, 0, 203, 0.06);
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.stat-bar__item:last-child { border-right: none; }
+
+.stat-bar__value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stat-bar__label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* === Grid Layouts === */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* === Timeline === */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  border-left: 2px solid rgba(114, 0, 203, 0.3);
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7200CB;
+  border: 2px solid #0D0D14;
+}
+
+.timeline__year {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7200CB;
+  margin-bottom: 4px;
+}
+
+.timeline__text {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* === Breed Cards === */
+.breed-card {
+  padding: 24px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.breed-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.breed-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.breed-card__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.breed-card__role {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7200CB;
+  margin-bottom: 10px;
+}
+
+.breed-card__desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* === Threat Matrix === */
+.threat-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.threat-matrix__cell {
+  padding: 28px;
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.threat-matrix__cell:nth-child(2n) { border-right: none; }
+.threat-matrix__cell:nth-child(n+3) { border-bottom: none; }
+
+.threat-matrix__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.threat-matrix__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.threat-matrix__label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.threat-matrix__items {
+  list-style: none;
+  padding: 0;
+}
+
+.threat-matrix__items li {
+  font-size: 13px;
+  color: #aaa;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.threat-matrix__items li:last-child { border-bottom: none; }
+
+.threat-matrix__items li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* Quadrant colors */
+.threat-matrix__cell.critical { background: rgba(206, 79, 81, 0.08); }
+.threat-matrix__cell.critical .threat-matrix__icon { background: rgba(206, 79, 81, 0.2); color: #CE4F51; }
+.threat-matrix__cell.critical .threat-matrix__items li::before { background: #CE4F51; }
+
+.threat-matrix__cell.warning { background: rgba(251, 191, 36, 0.06); }
+.threat-matrix__cell.warning .threat-matrix__icon { background: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+.threat-matrix__cell.warning .threat-matrix__items li::before { background: #FBBF24; }
+
+.threat-matrix__cell.opportunity { background: rgba(33, 214, 198, 0.06); }
+.threat-matrix__cell.opportunity .threat-matrix__icon { background: rgba(33, 214, 198, 0.2); color: #21D6C6; }
+.threat-matrix__cell.opportunity .threat-matrix__items li::before { background: #21D6C6; }
+
+.threat-matrix__cell.strategic { background: rgba(114, 0, 203, 0.06); }
+.threat-matrix__cell.strategic .threat-matrix__icon { background: rgba(114, 0, 203, 0.2); color: #7200CB; }
+.threat-matrix__cell.strategic .threat-matrix__items li::before { background: #7200CB; }
+
+/* === Before/After === */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.before-after__panel {
+  padding: 32px;
+}
+
+.before-after__panel.before {
+  background: rgba(206, 79, 81, 0.04);
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.before-after__panel.after {
+  background: rgba(33, 214, 198, 0.04);
+}
+
+.before-after__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.before-after__panel.before .before-after__title { color: #CE4F51; }
+.before-after__panel.after .before-after__title { color: #21D6C6; }
+
+.before-after__list {
+  list-style: none;
+  padding: 0;
+}
+
+.before-after__list li {
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.before-after__list li:last-child { border-bottom: none; }
+
+.before-after__panel.before .before-after__list li { color: #999; }
+.before-after__panel.after .before-after__list li { color: #ccc; }
+
+.before-after__list li .icon {
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.before-after__panel.before .before-after__list li .icon { color: #CE4F51; }
+.before-after__panel.after .before-after__list li .icon { color: #21D6C6; }
+
+/* === CRM / Website Demo Panels === */
+.demo-panel {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.2);
+  background: rgba(22, 22, 34, 0.8);
+}
+
+.demo-panel__chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(114, 0, 203, 0.1);
+  border-bottom: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.demo-panel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.demo-panel__url {
+  flex: 1;
+  padding: 4px 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #888;
+  font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+.demo-panel__body {
+  padding: 24px;
+}
+
+/* CRM specific */
+.crm-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px;
+  min-height: 340px;
+}
+
+.crm-sidebar {
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+  padding-right: 16px;
+}
+
+.crm-sidebar__title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7200CB;
+  margin-bottom: 12px;
+}
+
+.crm-sidebar__item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 4px;
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.crm-sidebar__item:hover { background: rgba(114, 0, 203, 0.1); }
+.crm-sidebar__item.active {
+  background: rgba(114, 0, 203, 0.15);
+  color: #fff;
+  font-weight: 600;
+}
+
+.crm-sidebar__item .herd { font-size: 10px; color: #666; display: block; margin-top: 2px; }
+
+.crm-main__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-main__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.crm-main__meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.crm-main__badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(33, 214, 198, 0.15);
+  color: #21D6C6;
+  border: 1px solid rgba(33, 214, 198, 0.3);
+}
+
+.crm-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+  margin-bottom: 16px;
+}
+
+.crm-tab {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  cursor: default;
+}
+
+.crm-tab.active {
+  color: #7200CB;
+  border-bottom-color: #7200CB;
+}
+
+.crm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.crm-stat {
+  padding: 12px;
+  background: rgba(114, 0, 203, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-stat__value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.crm-stat__label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.crm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.crm-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-table td {
+  padding: 8px 10px;
+  color: #aaa;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.04);
+}
+
+.crm-table td.highlight { color: #21D6C6; font-weight: 600; }
+
+/* Website demo */
+.web-hero {
+  padding: 32px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(114, 0, 203, 0.15), rgba(240, 0, 210, 0.08));
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.web-hero__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.web-hero__sub {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.web-hero__cta {
+  display: inline-block;
+  padding: 8px 24px;
+  background: #7200CB;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.web-breed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.web-breed {
+  padding: 16px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.web-breed__icon { font-size: 28px; margin-bottom: 8px; }
+
+.web-breed__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.web-breed__count {
+  font-size: 10px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.web-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.web-search__input {
+  flex: 1;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.web-search__btn {
+  padding: 10px 20px;
+  background: #7200CB;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.web-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.web-feature {
+  padding: 16px;
+  background: rgba(114, 0, 203, 0.04);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.web-feature__icon { font-size: 20px; margin-bottom: 6px; }
+
+.web-feature__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.web-feature__desc {
+  font-size: 10px;
+  color: #888;
+}
+
+/* === Primitive Cards === */
+.primitive-card {
+  padding: 24px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.primitive-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.primitive-card__label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7200CB;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.primitive-card__items {
+  list-style: none;
+  padding: 0;
+}
+
+.primitive-card__items li {
+  font-size: 12px;
+  color: #aaa;
+  padding: 4px 0;
+  font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+/* === Tier Cards === */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tier-card {
+  padding: 28px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 16px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tier-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.tier-card.recommended {
+  border-color: rgba(114, 0, 203, 0.4);
+  background: rgba(114, 0, 203, 0.1);
+}
+
+.tier-card__tier {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #7200CB;
+  margin-bottom: 12px;
+}
+
+.tier-card__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.tier-card__price {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.tier-card__features {
+  list-style: none;
+  padding: 0;
+}
+
+.tier-card__features li {
+  font-size: 13px;
+  color: #aaa;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tier-card__features li:last-child { border-bottom: none; }
+
+.tier-card__features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7200CB;
+  flex-shrink: 0;
+}
+
+/* === Competitor Table === */
+.table-container {
+  background: rgba(114, 0, 203, 0.04);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table-container th {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.table-container td {
+  padding: 14px 18px;
+  color: #E0DCEA;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.04);
+  white-space: nowrap;
+}
+
+.table-container tbody tr:hover { background: rgba(114, 0, 203, 0.04); }
+
+/* === Vision === */
+.vision-box {
+  text-align: center;
+  padding: 48px 32px;
+  background: linear-gradient(135deg, rgba(114, 0, 203, 0.1), rgba(240, 0, 210, 0.06), rgba(33, 214, 198, 0.04));
+  border: 1px solid rgba(114, 0, 203, 0.2);
+  border-radius: 20px;
+}
+
+.vision-box h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.vision-box p {
+  font-size: 15px;
+  color: #aaa;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.vision-box p strong { color: #fff; }
+.vision-box p .purple { color: #7200CB; font-weight: 600; }
+
+/* === Back Link === */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7200CB;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: opacity 0.15s;
+}
+
+.back-link:hover { opacity: 0.7; }
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 32px 0;
+  border-top: 1px solid rgba(114, 0, 203, 0.1);
+  color: #555;
+  font-size: 12px;
+}
+
+.footer a { color: #7200CB; text-decoration: none; }
+
+/* === Scroll Reveal === */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+  .tier-grid { grid-template-columns: 1fr; }
+  .crm-layout { grid-template-columns: 1fr; }
+  .web-breed-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .page-wrap { padding: 0 16px 60px; }
+  .hero h1 { font-size: 28px; }
+  .stat-bar { flex-direction: column; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .before-after { grid-template-columns: 1fr; }
+  .threat-matrix { grid-template-columns: 1fr; }
+  .web-features { grid-template-columns: 1fr; }
+}
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0D0D14; }
+::-webkit-scrollbar-thumb { background: rgba(114, 0, 203, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(114, 0, 203, 0.5); }
+</style>
+</head>
+<body>
+
+<!-- Knowledge Graph Background -->
+<canvas id="graph-bg"></canvas>
+
+<div class="page-wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to Sounder</a>
+
+  <!-- ================================================================
+       1. HERO
+       ================================================================ -->
+  <header class="hero">
+    <div class="hero-badge">Sounder &times; TSA &mdash; Partnership Assessment</div>
+    <h1><span>TAMWORTH SWINE</span> ASSOCIATION</h1>
+    <p class="hero-tagline">The oldest pedigree breed of pig in the world &mdash; red-gold, lean, and built for pasture. 113 dedicated breeders across 37 states, preserving heritage genetics and producing the finest bacon breed in America.</p>
+
+    <div class="stat-bar">
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">113</div>
+        <div class="stat-bar__label">Registered Breeders</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">1</div>
+        <div class="stat-bar__label">Breed</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">37</div>
+        <div class="stat-bar__label">States</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">HERITAGE</div>
+        <div class="stat-bar__label">Classification</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">PASTURE</div>
+        <div class="stat-bar__label">Production System</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">BACON</div>
+        <div class="stat-bar__label">Specialty</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       2. COMPANY PROFILE
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Association Profile</div>
+    <div class="section-title">History &amp; Heritage</div>
+    <div class="section-subtitle">One of the oldest and purest pig breeds in the world &mdash; from the English Midlands to American pastures</div>
+
+    <div class="grid-2">
+      <div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__year">Pre-1800s</div>
+            <div class="timeline__text">The Tamworth breed develops in and around the town of Tamworth in Staffordshire, England. One of the oldest recognized pig breeds, largely unimproved by Asian genetics &mdash; retaining the long snout, lean frame, and foraging instincts of ancient English swine.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">1812</div>
+            <div class="timeline__text">Sir Robert Peel imports Barbados "Irish Grazier" hogs to Tamworth, England. Cross-breeding refines the breed's distinctive red-gold coloring and lean conformation, solidifying the Tamworth type.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">1882</div>
+            <div class="timeline__text">Thomas Bennett imports the first Tamworths to the United States. The breed is prized for its bacon-type carcass &mdash; long sides, lean meat, and excellent flavor. Earns the nickname <strong style="color:#fff">"The Bacon Pig."</strong></div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">1900s</div>
+            <div class="timeline__text">Tamworth Swine Association established in the United States. Breeders organize to maintain pedigree records and promote the breed. Early registrations focused on Midwestern and Southern farms.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">2000s&ndash;2020s</div>
+            <div class="timeline__text">Heritage pork movement revives interest in the Tamworth. Farm-to-table restaurants, pasture-raised certifications, and consumer demand for flavor over volume create a <strong style="color:#21D6C6">growing premium market</strong> for Tamworth pork.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">2026</div>
+            <div class="timeline__text">Sounder partnership proposed &mdash; digital registry, breeder portal, heritage pork marketplace, and analytics platform. <strong style="color:#7200CB">From paper records to heritage platform.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass">
+        <div class="section-label" style="margin-bottom:16px;">Current Operations</div>
+        <div style="font-size:13px;color:#aaa;line-height:1.7;">
+          <p style="margin-bottom:14px;">The Tamworth Swine Association maintains pedigree records and registrations for the <strong style="color:#fff">Tamworth</strong> breed &mdash; the oldest pedigree breed of pig and one of the purest genetic lines in the swine world. With approximately <strong style="color:#fff">113 registered breeders across 37 states</strong>, TSA is a small but passionate community.</p>
+          <p style="margin-bottom:14px;">The Tamworth is known as <strong style="color:#fff">"the bacon pig"</strong> &mdash; producing the longest, leanest sides of any breed. Red-gold coloring, long body, erect ears, and a narrow frame distinguish it from modern commercial breeds. The breed excels in <strong style="color:#fff">pasture-based systems</strong> with strong foraging instincts and outdoor hardiness.</p>
+          <p style="margin-bottom:14px;">Operations remain <strong style="color:#CE4F51">entirely manual</strong>. The association runs a basic website (tamworthswine.org), processes registrations by mail, and has no CRM, no digital pedigree tools, and no analytics capability. Breeder communication is handled through a mailing list and occasional newsletters.</p>
+          <p>Despite its tiny membership, TSA sits at the <strong style="color:#21D6C6">intersection of several growing markets</strong>: heritage pork, pasture-raised production, farm-to-table dining, and sustainable agriculture. The breed's story and flavor profile command premium pricing &mdash; $8&ndash;15/lb retail vs. $3&ndash;5/lb commodity pork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       3. BREED OVERVIEW
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">The Breed</div>
+    <div class="section-title">Tamworth &mdash; One Breed, Four Markets</div>
+    <div class="section-subtitle">A single heritage breed serving multiple premium market segments &mdash; each with distinct value propositions</div>
+
+    <div class="grid-4">
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(206,79,81,0.15);color:#CE4F51;">&#x1F416;</div>
+        <div class="breed-card__name">Heritage Pork</div>
+        <div class="breed-card__role">Primary Market</div>
+        <div class="breed-card__desc">Premium retail and restaurant pork. Tamworth's rich, complex flavor and fine-grained meat command $8&ndash;15/lb retail. Heritage breed certification adds provenance story that drives consumer loyalty and willingness to pay.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(33,214,198,0.15);color:#21D6C6;">&#x1F333;</div>
+        <div class="breed-card__name">Pasture-Raised</div>
+        <div class="breed-card__role">Production System</div>
+        <div class="breed-card__desc">Tamworth's strong foraging instincts, long snout for rooting, and sunburn-resistant red-gold coat make it the ideal pasture pig. Thrives outdoors year-round where commercial breeds fail. Converts forage to meat efficiently.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(114,0,203,0.15);color:#B366E8;">&#x1F3C6;</div>
+        <div class="breed-card__name">Show Pig</div>
+        <div class="breed-card__role">Exhibition</div>
+        <div class="breed-card__desc">Growing presence at heritage breed shows, state fairs, and specialty exhibitions. Breed classes at American Guinea Hog Association shows, Livestock Conservancy events, and regional heritage pig circuits. Smaller but growing show market.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(240,0,210,0.15);color:#F000D2;">&#x1F331;</div>
+        <div class="breed-card__name">Seedstock</div>
+        <div class="breed-card__role">Breeding Stock</div>
+        <div class="breed-card__desc">Registered breeding stock sales between TSA members. Gilts, boars, and semen sales. Growing demand from new farms entering pasture-raised production. Registered Tamworth stock at $500&ndash;1,200 per head for breeding quality.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       4. COMPETITIVE LANDSCAPE
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Competitive Landscape</div>
+    <div class="section-title">Heritage &amp; Specialty Registries</div>
+    <div class="section-subtitle">TSA competes in a fragmented landscape of heritage breed associations &mdash; small individually, but collectively representing a fast-growing market</div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Association</th>
+            <th>Type</th>
+            <th>Breeders</th>
+            <th>Breed(s)</th>
+            <th>Digital Tools</th>
+            <th>Market Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:#fff;">TSA (Current)</td>
+            <td>Single-Breed Heritage</td>
+            <td>113</td>
+            <td>Tamworth</td>
+            <td style="color:#CE4F51;">None &mdash; paper only</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">CPS</td>
+            <td>All-Breed Registry</td>
+            <td>65,412</td>
+            <td>All recognized breeds</td>
+            <td style="color:#FBBF24;">Basic online portal</td>
+            <td style="color:#FBBF24;">Dominant</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">NSR</td>
+            <td>Multi-Breed Registry</td>
+            <td>3,763</td>
+            <td>Hampshire, Duroc, York, Land</td>
+            <td style="color:#CE4F51;">Legacy DB</td>
+            <td style="color:#888;">Major</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">ABA</td>
+            <td>Single-Breed Registry</td>
+            <td>8,807</td>
+            <td>Berkshire</td>
+            <td style="color:#CE4F51;">Minimal</td>
+            <td style="color:#888;">Major</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">Large Black Pig Registry</td>
+            <td>Single-Breed Heritage</td>
+            <td>~200</td>
+            <td>Large Black</td>
+            <td style="color:#CE4F51;">None</td>
+            <td style="color:#FBBF24;">Heritage niche</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">GOS Pig Association</td>
+            <td>Single-Breed Heritage</td>
+            <td>~150</td>
+            <td>Gloucestershire Old Spots</td>
+            <td style="color:#CE4F51;">None</td>
+            <td style="color:#FBBF24;">Heritage niche</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">Red Wattle Hog Assn.</td>
+            <td>Single-Breed Heritage</td>
+            <td>~175</td>
+            <td>Red Wattle</td>
+            <td style="color:#CE4F51;">None</td>
+            <td style="color:#FBBF24;">Heritage niche</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">Mulefoot Hog Assn.</td>
+            <td>Single-Breed Heritage</td>
+            <td>~50</td>
+            <td>Mulefoot</td>
+            <td style="color:#CE4F51;">None</td>
+            <td style="color:#888;">Micro niche</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:16px;padding:16px 20px;background:rgba(33,214,198,0.06);border:1px solid rgba(33,214,198,0.15);border-radius:12px;font-size:13px;color:#aaa;line-height:1.6;">
+      <strong style="color:#21D6C6;">Heritage breeds are gaining market share.</strong> The Livestock Conservancy reports heritage breed registrations growing 8&ndash;12% annually while commercial breed registrations remain flat. Pasture-raised pork is the fastest-growing segment of the specialty meat market. No heritage breed association has any digital infrastructure &mdash; the first to modernize owns the category.
+    </div>
+  </section>
+
+  <!-- ================================================================
+       5. THREAT MATRIX
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Strategic Analysis</div>
+    <div class="section-title">Threat &amp; Opportunity Matrix</div>
+    <div class="section-subtitle">Four-quadrant assessment of forces shaping TSA's future &mdash; and where Sounder intervenes</div>
+
+    <div class="threat-matrix">
+      <div class="threat-matrix__cell critical">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x26A0;</div>
+          <div class="threat-matrix__label">Critical Threats</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>Tiny membership &mdash; 113 breeders means one bad year could collapse the association</li>
+          <li>Zero digital tools &mdash; no online registration, no pedigree database, no breeder portal</li>
+          <li>No modern marketing &mdash; basic website, no social media strategy, no content pipeline</li>
+          <li>CPS registers Tamworths too &mdash; breeders can bypass TSA entirely</li>
+          <li>Volunteer-run operations with no paid staff or technology budget</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell warning">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x26A1;</div>
+          <div class="threat-matrix__label">Emerging Dynamics</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>Heritage pork demand growing faster than supply &mdash; restaurants can't source enough</li>
+          <li>Farm-to-table movement creating direct-to-consumer channels for small producers</li>
+          <li>New entrants to pasture-raised farming seeking heritage breeds but can't find breeders</li>
+          <li>Pasture-raised certification programs (AWA, Certified Humane) expanding market access</li>
+          <li>Social media storytelling turning small farms into premium brands overnight</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell opportunity">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x2728;</div>
+          <div class="threat-matrix__label">Opportunities</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>Digital registry platform &mdash; online registration, instant pedigree certificates</li>
+          <li>Breeder marketplace &mdash; connect buyers seeking heritage breeding stock to TSA members</li>
+          <li>Heritage pork certification &mdash; TSA-branded quality mark for verified Tamworth pork</li>
+          <li>Pasture-based premium branding &mdash; position Tamworth as the outdoor heritage breed</li>
+          <li>Heritage breed data hub &mdash; aggregate registrations across all heritage breeds on one platform</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell strategic">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x2B22;</div>
+          <div class="threat-matrix__label">Sounder Advantage</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>All 114 TSA breeders already mapped in Charlotte's knowledge graph</li>
+          <li>BarnOS platform running &mdash; registry module ready for heritage breed deployment</li>
+          <li>Cross-registry intelligence &mdash; see where TSA breeders overlap with CPS, NSR, ABA</li>
+          <li>Micro-association model proven &mdash; TSA becomes the template for all heritage breed associations</li>
+          <li>Low build cost, high demonstration value &mdash; fast win that proves the Sounder platform at scale</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       6. BEFORE / AFTER
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Digital Transformation</div>
+    <div class="section-title">Current State vs. Sounder-Powered TSA</div>
+    <div class="section-subtitle">Side-by-side comparison of TSA operations today versus what Sounder delivers</div>
+
+    <div class="before-after">
+      <div class="before-after__panel before">
+        <div class="before-after__title">Current State</div>
+        <ul class="before-after__list">
+          <li><span class="icon">&times;</span> Basic static website at tamworthswine.org &mdash; no interactive features</li>
+          <li><span class="icon">&times;</span> Paper registration forms processed by mail &mdash; weeks of delay</li>
+          <li><span class="icon">&times;</span> No CRM &mdash; breeder contact list maintained in a spreadsheet</li>
+          <li><span class="icon">&times;</span> No pedigree database accessible to breeders</li>
+          <li><span class="icon">&times;</span> No analytics on registrations, breed health, or membership trends</li>
+          <li><span class="icon">&times;</span> No breeder directory or marketplace for finding breeding stock</li>
+          <li><span class="icon">&times;</span> No heritage certification program for Tamworth pork</li>
+          <li><span class="icon">&times;</span> Zero digital revenue streams</li>
+        </ul>
+      </div>
+      <div class="before-after__panel after">
+        <div class="before-after__title">With Sounder</div>
+        <ul class="before-after__list">
+          <li><span class="icon">&#x2713;</span> <strong>Modern web platform</strong> &mdash; breed showcase, breeder portal, and digital tools</li>
+          <li><span class="icon">&#x2713;</span> <strong>Digital registry</strong> &mdash; online registration, instant pedigree certificates, same-day processing</li>
+          <li><span class="icon">&#x2713;</span> <strong>Breeder CRM</strong> &mdash; every breeder is a NODE with full history and engagement tracking</li>
+          <li><span class="icon">&#x2713;</span> <strong>Pedigree explorer</strong> &mdash; interactive multi-generation pedigree trees with lineage analysis</li>
+          <li><span class="icon">&#x2713;</span> <strong>Analytics dashboard</strong> &mdash; registration trends, geographic heatmaps, breed population health</li>
+          <li><span class="icon">&#x2713;</span> <strong>Breeder marketplace</strong> &mdash; searchable directory connecting buyers to TSA breeding stock</li>
+          <li><span class="icon">&#x2713;</span> <strong>Heritage certification</strong> &mdash; TSA-branded quality mark for verified pasture-raised Tamworth pork</li>
+          <li><span class="icon">&#x2713;</span> <strong>Revenue engine</strong> &mdash; digital registrations, BarnOS Premium, certification fees, marketplace commissions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       7. CRM DEMO
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Platform Demo</div>
+    <div class="section-title">Breeder CRM &mdash; BarnOS Heritage Edition</div>
+    <div class="section-subtitle">Every breeder becomes a NODE. Every registration a SIGNAL. Every litter a METRIC. Purpose-built for heritage breed associations.</div>
+
+    <div class="demo-panel">
+      <div class="demo-panel__chrome">
+        <div class="demo-panel__dot" style="background:#CE4F51;"></div>
+        <div class="demo-panel__dot" style="background:#FBBF24;"></div>
+        <div class="demo-panel__dot" style="background:#21D6C6;"></div>
+        <div class="demo-panel__url">barnos.sounder.ag/tsa/breeders</div>
+      </div>
+      <div class="demo-panel__body">
+        <div class="crm-layout">
+          <div class="crm-sidebar">
+            <div class="crm-sidebar__title">TSA Breeders</div>
+            <div class="crm-sidebar__item active">
+              Montgomery Tamworths
+              <span class="herd">Woodstock, VT</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Bombei and Sons
+              <span class="herd">Lancaster, PA</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Golden Valley Farm
+              <span class="herd">Asheville, NC</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Ironwood Heritage
+              <span class="herd">Duluth, MN</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Red Oak Pastures
+              <span class="herd">Lexington, KY</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Staffordshire Acres
+              <span class="herd">Salem, OR</span>
+            </div>
+            <div class="crm-sidebar__item" style="color:#666;font-style:italic;font-size:11px;padding-top:12px;">
+              + 107 more breeders...
+            </div>
+          </div>
+          <div class="crm-main">
+            <div class="crm-main__header">
+              <div>
+                <div class="crm-main__name">Montgomery Tamworths</div>
+                <div class="crm-main__meta">Woodstock, VT &bull; TSA Member since 2018 &bull; Pasture-Raised &bull; Direct-to-Consumer</div>
+              </div>
+              <div class="crm-main__badge">Active Breeder</div>
+            </div>
+
+            <div class="crm-tabs">
+              <div class="crm-tab active">Overview</div>
+              <div class="crm-tab">Herd (24)</div>
+              <div class="crm-tab">Registrations</div>
+              <div class="crm-tab">Pedigrees</div>
+              <div class="crm-tab">Sales</div>
+            </div>
+
+            <div class="crm-stats">
+              <div class="crm-stat">
+                <div class="crm-stat__value">24</div>
+                <div class="crm-stat__label">Registered Animals</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">6</div>
+                <div class="crm-stat__label">Litters (2025)</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">$850</div>
+                <div class="crm-stat__label">Avg Stock Price</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">9.2</div>
+                <div class="crm-stat__label">Avg Litter Size</div>
+              </div>
+            </div>
+
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Recent Activity</th>
+                  <th>Type</th>
+                  <th>Details</th>
+                  <th>Date</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Litter #MTW-2026-003 registered</td>
+                  <td>Registration</td>
+                  <td>10 piglets, Boar: Copper King</td>
+                  <td>Feb 6, 2026</td>
+                  <td>&mdash;</td>
+                </tr>
+                <tr>
+                  <td>Gilt sale to Golden Valley Farm</td>
+                  <td>Sale</td>
+                  <td>Breeding stock, 8 months</td>
+                  <td>Jan 28, 2026</td>
+                  <td class="highlight">$1,100</td>
+                </tr>
+                <tr>
+                  <td>Farrowing &mdash; 11 born alive</td>
+                  <td>Farrowing</td>
+                  <td>Dam: Copper Queen III</td>
+                  <td>Jan 15, 2026</td>
+                  <td class="highlight">11 BA</td>
+                </tr>
+                <tr>
+                  <td>Boar sale to Ironwood Heritage</td>
+                  <td>Sale</td>
+                  <td>Young boar, 10 months</td>
+                  <td>Jan 5, 2026</td>
+                  <td class="highlight">$950</td>
+                </tr>
+                <tr>
+                  <td>Heritage certification renewed</td>
+                  <td>Certification</td>
+                  <td>TSA Heritage Verified</td>
+                  <td>Dec 20, 2025</td>
+                  <td>&mdash;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       8. WEBSITE CONCEPT
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Platform Demo</div>
+    <div class="section-title">Modern Heritage Breed Portal</div>
+    <div class="section-subtitle">What tamworthswine.org becomes &mdash; a breeder-facing platform that tells the Tamworth story and drives the heritage pork economy</div>
+
+    <div class="demo-panel">
+      <div class="demo-panel__chrome">
+        <div class="demo-panel__dot" style="background:#CE4F51;"></div>
+        <div class="demo-panel__dot" style="background:#FBBF24;"></div>
+        <div class="demo-panel__dot" style="background:#21D6C6;"></div>
+        <div class="demo-panel__url">tamworthswine.org &mdash; Powered by Sounder</div>
+      </div>
+      <div class="demo-panel__body">
+        <div class="web-hero">
+          <div class="web-hero__title">TAMWORTH SWINE ASSOCIATION</div>
+          <div class="web-hero__sub">The oldest pedigree breed &bull; Heritage bacon specialist &bull; Pasture-raised excellence &bull; Est. 1882 in the USA</div>
+          <div class="web-hero__cta">Find a Breeder Near You</div>
+        </div>
+
+        <div class="web-breed-grid">
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Breed Info</div>
+            <div class="web-breed__count">History, standards, characteristics</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F5FA;</div>
+            <div class="web-breed__name">Breeder Map</div>
+            <div class="web-breed__count">113 breeders across 37 states</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F969;</div>
+            <div class="web-breed__name">Heritage Pork</div>
+            <div class="web-breed__count">Certified Tamworth producers</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F4CB;</div>
+            <div class="web-breed__name">Register Online</div>
+            <div class="web-breed__count">Digital pedigree registration</div>
+          </div>
+        </div>
+
+        <div class="web-search">
+          <div class="web-search__input">Search breeders by state, farm name, or bloodline...</div>
+          <div class="web-search__btn">Search</div>
+        </div>
+
+        <div class="web-features">
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F4CB;</div>
+            <div class="web-feature__title">Online Registration</div>
+            <div class="web-feature__desc">Submit litters digitally. Instant pedigree certificates.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F333;</div>
+            <div class="web-feature__title">Pedigree Explorer</div>
+            <div class="web-feature__desc">Interactive multi-gen pedigree trees with lineage data.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x2705;</div>
+            <div class="web-feature__title">Heritage Certification</div>
+            <div class="web-feature__desc">TSA-verified Tamworth pork quality mark for producers.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F91D;</div>
+            <div class="web-feature__title">Breeder Marketplace</div>
+            <div class="web-feature__desc">Connect buyers to registered breeding stock and pork.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F4CA;</div>
+            <div class="web-feature__title">Breed Analytics</div>
+            <div class="web-feature__desc">Population health, registration trends, genetic diversity.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F33F;</div>
+            <div class="web-feature__title">Pasture Resources</div>
+            <div class="web-feature__desc">Guides for pasture-raised Tamworth management.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       9. CHARLOTTE PRIMITIVES
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Charlotte OS Mapping</div>
+    <div class="section-title">Five Primitives &mdash; Tamworth Domain</div>
+    <div class="section-subtitle">Every entity in TSA's world maps to Charlotte's five universal primitives</div>
+
+    <div class="grid-5">
+      <div class="primitive-card">
+        <div class="primitive-card__label">NODE</div>
+        <ul class="primitive-card__items">
+          <li>Breeder</li>
+          <li>TamworthAnimal</li>
+          <li>Sire / Dam</li>
+          <li>Registry (TSA)</li>
+          <li>Farm</li>
+          <li>PorkBuyer</li>
+          <li>Bloodline</li>
+          <li>Certification</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">EDGE</div>
+        <ul class="primitive-card__items">
+          <li>registeredWith</li>
+          <li>siredBy</li>
+          <li>damOf</li>
+          <li>ownedBy</li>
+          <li>soldTo</li>
+          <li>certifiedBy</li>
+          <li>descendsFrom</li>
+          <li>pasturedAt</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">METRIC</div>
+        <ul class="primitive-card__items">
+          <li>Litter Size</li>
+          <li>Weaning Weight</li>
+          <li>Sale Price</li>
+          <li>Pork Yield (lbs)</li>
+          <li>Bacon Length</li>
+          <li>Registrations/Yr</li>
+          <li>Breed Population</li>
+          <li>Heritage Premium %</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">SIGNAL</div>
+        <ul class="primitive-card__items">
+          <li>Litter Registered</li>
+          <li>Breeding Recorded</li>
+          <li>Farrowing Event</li>
+          <li>Stock Sale</li>
+          <li>Pork Certified</li>
+          <li>Membership Renewed</li>
+          <li>Transfer Recorded</li>
+          <li>New Breeder Joined</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">PROTOCOL</div>
+        <ul class="primitive-card__items">
+          <li>Registration Workflow</li>
+          <li>Pedigree Verification</li>
+          <li>Breed Standard</li>
+          <li>Heritage Certification</li>
+          <li>Transfer Protocol</li>
+          <li>Pasture Compliance</li>
+          <li>Lineage Audit</li>
+          <li>Quality Mark Issue</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       10. CONTRACT SIZING
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Engagement Model</div>
+    <div class="section-title">Sounder &times; TSA Partnership</div>
+    <div class="section-subtitle">Micro-association pricing &mdash; low upfront investment, revenue sharing aligned with growth. TSA is a small association with big market potential.</div>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-card__tier">Phase 1 &mdash; Months 1&ndash;3</div>
+        <div class="tier-card__name">Registry Build</div>
+        <div class="tier-card__price">$8K &ndash; 12K one-time build</div>
+        <ul class="tier-card__features">
+          <li>Digital registration platform</li>
+          <li>Pedigree database migration (113 breeders)</li>
+          <li>Breeder portal &amp; directory</li>
+          <li>Modern website redesign</li>
+          <li>Heritage certification framework</li>
+          <li>Historical data import</li>
+          <li>Breeder CRM foundation</li>
+        </ul>
+      </div>
+      <div class="tier-card recommended">
+        <div class="tier-card__tier">Phase 2 &mdash; Ongoing</div>
+        <div class="tier-card__name">Platform Operations</div>
+        <div class="tier-card__price">$1.5K &ndash; 2.5K / mo + revenue share</div>
+        <ul class="tier-card__features">
+          <li>Registry platform hosting &amp; maintenance</li>
+          <li>Breeder CRM operations</li>
+          <li>Marketplace management</li>
+          <li>Heritage certification processing</li>
+          <li>Analytics dashboards</li>
+          <li>Monthly reporting</li>
+          <li>Quarterly strategic review</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-card__tier">Revenue Sharing</div>
+        <div class="tier-card__name">Growth Model</div>
+        <div class="tier-card__price">Per-transaction + subscriptions</div>
+        <ul class="tier-card__features">
+          <li>$2 per animal registered through platform</li>
+          <li>BarnOS Premium: $50&ndash;100/mo per breeder (70/30)</li>
+          <li>Heritage certification fees ($25/animal, 60/40)</li>
+          <li>Marketplace commissions (5% on stock sales)</li>
+          <li>TSA retains all existing membership dues</li>
+          <li>Sounder exclusive tech partner during term</li>
+          <li>24-month initial partnership term</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       11. VISION
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">The Vision</div>
+
+    <div class="vision-box">
+      <h2>FROM HERITAGE BREED TO HERITAGE PLATFORM</h2>
+      <p>
+        The Tamworth is the oldest pedigree breed of pig in the world. For centuries, it has survived
+        because passionate breeders chose flavor over volume, pasture over confinement, heritage over
+        commodity. But <strong>113 breeders on paper records</strong> is a fragile foundation for a breed
+        that deserves to thrive.
+      </p>
+      <p style="margin-top:16px;">
+        The pasture-raised, heritage pork market is <strong>growing 15&ndash;20% annually</strong>.
+        Farm-to-table restaurants are desperate for Tamworth pork they can't source. New farmers
+        want to raise heritage breeds but can't find registered stock. The demand exists &mdash;
+        <span class="purple">TSA just needs the infrastructure to meet it.</span>
+      </p>
+      <p style="margin-top:16px;">
+        <span class="purple">Sounder turns TSA into the first digitally native heritage breed association.</span>
+        Every breeder is a <strong>NODE</strong>. Every pedigree connection is an <strong>EDGE</strong>.
+        Every litter is a <strong>METRIC</strong>. Every registration is a <strong>SIGNAL</strong>.
+        Every certification is a <strong>PROTOCOL</strong>.
+        And the model scales to every heritage breed in America.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    Sounder &mdash; TSA Partnership Assessment &mdash; Confidential &mdash; <a href="../index.html">Sounder Hub</a> &mdash; <a href="../../../index.html">Core</a>
+  </div>
+
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT — Knowledge Graph Background + Scroll Reveal
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // -- Knowledge Graph Background --
+  const canvas = document.getElementById('graph-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Graph nodes
+  const PURPLE = '#7200CB';
+  const MAGENTA = '#F000D2';
+  const CYAN = '#21D6C6';
+
+  const graphNodes = [];
+  const nodeLabels = [
+    'TSA', 'Tamworth', 'Heritage Pork', 'Pasture-Raised', 'Bacon Breed',
+    'Montgomery', 'Bombei', 'Golden Valley', 'Ironwood', 'Red Oak',
+    'CPS', 'NSR', 'ABA', 'Large Black', 'GOS',
+    'Breeder', 'Sire', 'Dam', 'Litter', 'Certification',
+    'Pedigree', 'Sale', 'Registration', 'BarnOS', 'Sounder',
+    'Vermont', 'Pennsylvania', 'North Carolina', 'Oregon', 'Kentucky',
+    'Marketplace', 'Farm-to-Table', 'Seedstock', 'Staffordshire'
+  ];
+
+  for (let i = 0; i < nodeLabels.length; i++) {
+    graphNodes.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: i < 5 ? 5 : 3,
+      color: i === 0 ? PURPLE : (i < 5 ? MAGENTA : (i === 24 ? CYAN : 'rgba(114,0,203,0.5)')),
+      label: nodeLabels[i]
+    });
+  }
+
+  // Edges (breed connections, registry relationships)
+  const graphEdges = [
+    [0,1],[0,2],[0,3],[0,4],    // TSA -> Tamworth, Heritage Pork, Pasture, Bacon
+    [24,0],[24,5],               // Sounder -> TSA, Montgomery
+    [5,1],[6,1],[7,1],[8,1],[9,1], // Breeders -> Tamworth
+    [1,2],[1,3],[1,4],           // Tamworth -> markets
+    [10,0],[11,0],[12,0],        // CPS, NSR, ABA -> TSA (peers)
+    [13,10],[14,10],             // Large Black, GOS -> CPS
+    [15,0],[16,15],[17,15],      // Breeder -> TSA, Sire/Dam -> Breeder
+    [18,16],[18,17],             // Litter -> Sire/Dam
+    [19,0],[20,15],              // Certification -> TSA, Pedigree -> Breeder
+    [21,5],[22,0],[23,24],       // Sale -> Montgomery, Registration -> TSA, BarnOS -> Sounder
+    [25,5],[26,6],[27,7],[28,9],[29,8], // States -> breeders
+    [30,0],[31,2],[32,1],[33,1]  // Marketplace, Farm-to-Table, Seedstock, Staffordshire -> entities
+  ];
+
+  function drawGraph() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw edges
+    ctx.strokeStyle = 'rgba(114, 0, 203, 0.12)';
+    ctx.lineWidth = 0.5;
+    for (const [a, b] of graphEdges) {
+      const na = graphNodes[a], nb = graphNodes[b];
+      ctx.beginPath();
+      ctx.moveTo(na.x, na.y);
+      ctx.lineTo(nb.x, nb.y);
+      ctx.stroke();
+    }
+
+    // Draw nodes
+    for (const n of graphNodes) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+
+      // Update position
+      n.x += n.vx;
+      n.y += n.vy;
+
+      // Bounce
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      // Gentle drift
+      n.vx += (Math.random() - 0.5) * 0.02;
+      n.vy += (Math.random() - 0.5) * 0.02;
+      n.vx *= 0.99;
+      n.vy *= 0.99;
+    }
+
+    requestAnimationFrame(drawGraph);
+  }
+  drawGraph();
+
+  // -- Scroll Reveal --
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

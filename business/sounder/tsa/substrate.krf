@@ -1,0 +1,351 @@
+;;; ================================================================
+;;; TAMWORTH SWINE ASSOCIATION (TSA) — PARTNERSHIP SUBSTRATE
+;;; Validation domain knowledge graph for the Sounder partnership
+;;; assessment with TSA, a single-breed heritage registry dedicated
+;;; to the preservation and promotion of the Tamworth pig.
+;;; ================================================================
+
+(in-microtheory TamworthSwineAssociationMt)
+
+;;; ================================================================
+;;; 1. INSTITUTION NODE
+;;; ================================================================
+
+(isa TSA NODE)
+(isa TSA GroupEntity)
+(isa TSA BreedRegistry)
+(hasField TSA :ID "tsa-001")
+(hasField TSA :LABEL "Tamworth Swine Association")
+(hasField TSA :CREATED "1985")
+(hasState TSA Active)
+(comment TSA
+  "The Tamworth Swine Association (TSA) is the single-breed registry
+   for the Tamworth pig in the United States. Dedicated to preserving
+   the breed's purity, promoting heritage pork production, and
+   maintaining pedigree records for one of the oldest and rarest
+   purebred swine breeds. Volunteer-driven, membership-funded.")
+(hasAttribute TSA website "tamworthswine.org")
+(hasAttribute TSA primaryFunction "single-breed registry, pedigree verification, breed promotion")
+(hasAttribute TSA registryType "single-breed heritage registry")
+(hasAttribute TSA missionFocus "breed preservation, heritage pork advocacy, breeder networking")
+
+;;; ================================================================
+;;; 2. BREED NODE — Tamworth
+;;; ================================================================
+
+(isa TamworthBreed NODE)
+(isa TamworthBreed IndividualEntity)
+(isa TamworthBreed SwineBreed)
+(hasField TamworthBreed :ID "breed-tamworth")
+(hasField TamworthBreed :LABEL "Tamworth")
+(hasState TamworthBreed Active)
+(comment TamworthBreed
+  "One of the oldest pedigree breeds of pig, originating from Tamworth,
+   Staffordshire, England. Known as 'the bacon pig' for its long, lean
+   carcass ideally suited to bacon production. Distinctive red-gold coat,
+   elongated body, and erect ears. Renowned for strong foraging instincts,
+   outdoor hardiness, and suitability to pasture-based and woodland
+   systems. Listed as Threatened by The Livestock Conservancy.")
+(hasAttribute TamworthBreed color "red-gold (sandy to deep ginger)")
+(hasAttribute TamworthBreed bodyType "long-bodied, lean, narrow")
+(hasAttribute TamworthBreed purpose "terminal/heritage specialty")
+(hasAttribute TamworthBreed origin "Tamworth, Staffordshire, England")
+(hasAttribute TamworthBreed nickname "the bacon pig")
+(hasAttribute TamworthBreed earType "erect, medium-length, slightly inclined forward")
+(hasAttribute TamworthBreed snout "long, straight — adapted for foraging and rooting")
+(hasAttribute TamworthBreed conservationStatus "Threatened (Livestock Conservancy)")
+(hasAttribute TamworthBreed keyTraits "strong foraging instinct, outdoor hardiness, lean bacon-type carcass, docile temperament")
+(hasAttribute TamworthBreed managementSystems "pasture-based, woodland/silvopasture, free-range outdoor")
+(hasAttribute TamworthBreed carcassQuality "lean, high bacon yield, fine-grained meat, excellent flavor")
+(hasAttribute TamworthBreed heritageSignificance "one of the oldest pedigree pig breeds, minimal modern alteration")
+(hasAttribute TamworthBreed registrationRequires "purebred parentage, red-gold coloration, breed-standard conformation, erect ears")
+(hasAttribute TamworthBreed matureWeightBoar "550-700 lbs")
+(hasAttribute TamworthBreed matureWeightSow "400-550 lbs")
+(hasAttribute TamworthBreed litterSize "6-10 piglets")
+
+;;; ================================================================
+;;; 3. COMPETITOR / PEER NODES
+;;; ================================================================
+
+(isa CPS NODE) (isa CPS GroupEntity) (isa CPS BreedRegistry)
+(hasField CPS :ID "comp-cps") (hasField CPS :LABEL "Certified Pedigree Swine")
+(hasState CPS Active)
+(comment CPS "Multi-breed pedigree organization. Heritage breeds underrepresented.")
+
+(isa NSR NODE) (isa NSR GroupEntity) (isa NSR BreedRegistry)
+(hasField NSR :ID "comp-nsr") (hasField NSR :LABEL "National Swine Registry")
+(hasState NSR Active)
+(comment NSR "Consolidated registry for Hampshire, Duroc, Yorkshire, Landrace. Commercial-breed focus.")
+
+(isa ABA NODE) (isa ABA GroupEntity) (isa ABA BreedRegistry)
+(hasField ABA :ID "comp-aba") (hasField ABA :LABEL "American Berkshire Association")
+(hasState ABA Active)
+(comment ABA "Single-breed registry, founded 1875. Heritage-adjacent but more commercially established.")
+
+(isa LargeBlackRegistry NODE) (isa LargeBlackRegistry BreedRegistry)
+(hasField LargeBlackRegistry :ID "peer-largeblack") (hasField LargeBlackRegistry :LABEL "Large Black Pig Registry")
+(comment LargeBlackRegistry "Heritage breed registry for the Large Black. Pasture-adapted rare breed; peer to TSA.")
+
+(isa GOSRegistry NODE) (isa GOSRegistry BreedRegistry)
+(hasField GOSRegistry :ID "peer-gos") (hasField GOSRegistry :LABEL "Gloucestershire Old Spots of America")
+(comment GOSRegistry "Heritage registry for Gloucestershire Old Spots. Orchard pig heritage; peer rare breed registry.")
+
+(isa RedWattleAssoc NODE) (isa RedWattleAssoc BreedRegistry)
+(hasField RedWattleAssoc :ID "peer-redwattle") (hasField RedWattleAssoc :LABEL "Red Wattle Hog Association")
+(comment RedWattleAssoc "Heritage registry for the Red Wattle. Critically rare American breed; shares conservation mission.")
+
+(isa MulefootRegistry NODE) (isa MulefootRegistry BreedRegistry)
+(hasField MulefootRegistry :ID "peer-mulefoot") (hasField MulefootRegistry :LABEL "Mulefoot Hog Breeders Association")
+(comment MulefootRegistry "Heritage registry for the Mulefoot. Critical conservation status; smallest heritage registry.")
+
+(isa OssabawRegistry NODE) (isa OssabawRegistry BreedRegistry)
+(hasField OssabawRegistry :ID "peer-ossabaw") (hasField OssabawRegistry :LABEL "Ossabaw Island Hog Association")
+(comment OssabawRegistry "Heritage registry for the Ossabaw Island hog. Feral-origin, critically rare.")
+
+(isa LivestockConservancy NODE) (isa LivestockConservancy GroupEntity)
+(hasField LivestockConservancy :ID "peer-tlc") (hasField LivestockConservancy :LABEL "The Livestock Conservancy")
+(hasState LivestockConservancy Active)
+(hasAttribute LivestockConservancy primaryFunction "heritage breed conservation, census, public education")
+(comment LivestockConservancy "Umbrella conservation org. Maintains the Conservation Priority List; lists Tamworth as Threatened.")
+
+;;; ================================================================
+;;; 4. MARKET NODES
+;;; ================================================================
+
+(isa HeritagePorkMarket NODE) (isa HeritagePorkMarket MarketSegment)
+(hasField HeritagePorkMarket :ID "market-heritage-pork") (hasField HeritagePorkMarket :LABEL "Heritage Pork Market")
+(hasState HeritagePorkMarket Growing)
+(comment HeritagePorkMarket "Premium segment for heritage breed pork. Tamworth is a flagship breed driven by provenance and flavor demand.")
+
+(isa PastureRaisedSegment NODE) (isa PastureRaisedSegment MarketSegment)
+(hasField PastureRaisedSegment :ID "market-pasture-raised") (hasField PastureRaisedSegment :LABEL "Pasture-Raised Pork Segment")
+(hasState PastureRaisedSegment Growing)
+(comment PastureRaisedSegment "Pork raised on pasture/outdoor systems. Tamworth's foraging ability and hardiness make it a natural fit.")
+
+(isa FarmToTableMovement NODE) (isa FarmToTableMovement MarketSegment)
+(hasField FarmToTableMovement :ID "market-farm-to-table") (hasField FarmToTableMovement :LABEL "Farm-to-Table Movement")
+(hasState FarmToTableMovement Growing)
+(comment FarmToTableMovement "Restaurant/DTC movement emphasizing local sourcing and breed identity. Heritage breeds command narrative premium.")
+
+(isa PremiumRetailChannel NODE) (isa PremiumRetailChannel MarketSegment)
+(hasField PremiumRetailChannel :ID "market-premium-retail") (hasField PremiumRetailChannel :LABEL "Premium Retail Channel")
+(hasState PremiumRetailChannel Active)
+(hasAttribute PremiumRetailChannel retailers "Whole Foods, specialty butchers, co-ops, farmers markets")
+(comment PremiumRetailChannel "Retail outlets stocking heritage/pasture-raised pork at premium pricing.")
+
+;;; ================================================================
+;;; 5. EDGES — Structural relationships
+;;; ================================================================
+
+(isa registersBreed EdgeType)
+(comment registersBreed "Registry A maintains the herd book and pedigree records for breed B.")
+(registersBreed TSA TamworthBreed)
+
+(isa competesWith EdgeType) (isa competesWith SymmetricRelation)
+(comment competesWith "Organizations A and B compete for overlapping membership or market share.")
+(competesWith TSA LargeBlackRegistry)
+(competesWith TSA GOSRegistry)
+(competesWith TSA RedWattleAssoc)
+(competesWith TSA MulefootRegistry)
+(competesWith TSA OssabawRegistry)
+
+(isa conservationPartnerOf EdgeType)
+(comment conservationPartnerOf "Organization A is aligned with conservation body B for breed preservation.")
+(conservationPartnerOf TSA LivestockConservancy)
+
+(isa servesMarket EdgeType)
+(comment servesMarket "Organization or breed A supplies product to market segment B.")
+(servesMarket TamworthBreed HeritagePorkMarket)
+(servesMarket TamworthBreed PastureRaisedSegment)
+(servesMarket TamworthBreed FarmToTableMovement)
+(servesMarket TamworthBreed PremiumRetailChannel)
+
+(isa partnersWith EdgeType) (isa partnersWith SymmetricRelation)
+(comment partnersWith "A and B have entered or are evaluating a technology partnership.")
+(isa Sounder NODE) (isa Sounder GroupEntity)
+(hasField Sounder :ID "sounder-001") (hasField Sounder :LABEL "Sounder")
+(hasState Sounder Active)
+(comment Sounder "Sounder — swine industry technology platform. Charlotte validation domain.")
+(partnersWith TSA Sounder)
+(hasAttribute TSA-SounderPartnership status "proposed")
+(hasAttribute TSA-SounderPartnership scope "digital registry, heritage traceability, breed promotion")
+
+;;; ================================================================
+;;; 6. METRICS
+;;; ================================================================
+
+(isa TSA-TotalBreeders METRIC)
+(hasField TSA-TotalBreeders :ID "metric-tsa-breeders")
+(hasField TSA-TotalBreeders :LABEL "Total Registered Breeders")
+(MEASURES TSA-TotalBreeders TSA)
+(hasAttribute TSA-TotalBreeders currentValue 113)
+(hasAttribute TSA-TotalBreeders unit "breeders")
+(hasThreshold TSA-TotalBreeders LowerBound 75)
+(comment TSA-TotalBreeders "Active registered Tamworth breeders. Below-threshold signals critical viability risk.")
+
+(isa TSA-StatesRepresented METRIC)
+(hasField TSA-StatesRepresented :ID "metric-tsa-states")
+(hasField TSA-StatesRepresented :LABEL "States Represented")
+(MEASURES TSA-StatesRepresented TSA)
+(hasAttribute TSA-StatesRepresented currentValue 37)
+(hasAttribute TSA-StatesRepresented unit "states")
+(comment TSA-StatesRepresented "US states with at least one registered Tamworth breeder. Geographic diversity indicates breed resilience.")
+
+(isa TSA-HeritagePorkPremium METRIC)
+(hasField TSA-HeritagePorkPremium :ID "metric-tsa-pork-premium")
+(hasField TSA-HeritagePorkPremium :LABEL "Heritage Pork Retail Premium")
+(MEASURES TSA-HeritagePorkPremium HeritagePorkMarket)
+(hasAttribute TSA-HeritagePorkPremium currentValue "$8-15/lb")
+(hasAttribute TSA-HeritagePorkPremium unit "USD per pound (retail)")
+(hasAttribute TSA-HeritagePorkPremium commodityBaseline "$3-5/lb")
+(comment TSA-HeritagePorkPremium "Heritage pork retail range vs. commodity. 2-3x premium for provenance and flavor.")
+
+(isa TSA-BreedPopulationTrend METRIC)
+(hasField TSA-BreedPopulationTrend :ID "metric-tsa-population")
+(hasField TSA-BreedPopulationTrend :LABEL "Breed Population Trend")
+(MEASURES TSA-BreedPopulationTrend TamworthBreed)
+(hasAttribute TSA-BreedPopulationTrend currentValue "slowly recovering")
+(hasAttribute TSA-BreedPopulationTrend conservationStatus "Threatened")
+(hasAttribute TSA-BreedPopulationTrend estimatedUSPopulation "fewer than 1000 breeding animals")
+(comment TSA-BreedPopulationTrend "Critically low but modest recovery driven by heritage pork demand and small-farm interest.")
+
+;;; ================================================================
+;;; 7. SIGNALS — Strategic observations
+;;; ================================================================
+
+(isa StrategicSignal Collection) (genls StrategicSignal SIGNAL)
+(comment StrategicSignal "Market forces, consumer trends, and partnership opportunities relevant to the TSA assessment.")
+
+(isa Signal-HeritageBreedRevival StrategicSignal)
+(hasField Signal-HeritageBreedRevival :ID "signal-heritage-revival")
+(hasField Signal-HeritageBreedRevival :LABEL "Heritage Breed Revival")
+(hasAttribute Signal-HeritageBreedRevival direction "positive")
+(hasAttribute Signal-HeritageBreedRevival signalType "opportunity")
+(comment Signal-HeritageBreedRevival "Growing consumer/farmer interest in heritage breeds. Tamworth is a primary beneficiary as a recognizable heritage bacon breed.")
+
+(isa Signal-PastureRaisedDemand StrategicSignal)
+(hasField Signal-PastureRaisedDemand :ID "signal-pasture-demand")
+(hasField Signal-PastureRaisedDemand :LABEL "Pasture-Raised Demand Growth")
+(hasAttribute Signal-PastureRaisedDemand direction "positive")
+(hasAttribute Signal-PastureRaisedDemand signalType "opportunity")
+(comment Signal-PastureRaisedDemand "Fastest-growing premium protein segment. Tamworth's outdoor hardiness positions it as the ideal pasture breed.")
+
+(isa Signal-FarmToTableMovement StrategicSignal)
+(hasField Signal-FarmToTableMovement :ID "signal-farm-to-table")
+(hasField Signal-FarmToTableMovement :LABEL "Farm-to-Table Movement")
+(hasAttribute Signal-FarmToTableMovement direction "positive")
+(hasAttribute Signal-FarmToTableMovement signalType "opportunity")
+(comment Signal-FarmToTableMovement "'Tamworth bacon' carries name recognition and story value that commands premium pricing in DTC and restaurant channels.")
+
+(isa Signal-SounderPartnershipProposal StrategicSignal)
+(hasField Signal-SounderPartnershipProposal :ID "signal-sounder-proposal")
+(hasField Signal-SounderPartnershipProposal :LABEL "Sounder Partnership Proposal")
+(hasAttribute Signal-SounderPartnershipProposal direction "positive")
+(hasAttribute Signal-SounderPartnershipProposal signalType "opportunity")
+(comment Signal-SounderPartnershipProposal "Sounder proposes technology partnership to modernize TSA registry, provide heritage traceability, and connect breeders to premium channels.")
+
+;;; ================================================================
+;;; 8. PROTOCOLS — Operational rules
+;;; ================================================================
+
+(isa Protocol-AnimalRegistration PROTOCOL)
+(hasTrigger Protocol-AnimalRegistration ManualInvocation)
+(hasCondition Protocol-AnimalRegistration
+  (and (isa ?Animal IndividualEntity)
+       (SIRE_OF ?Sire ?Animal) (DAM_OF ?Dam ?Animal)
+       (registeredWith ?Sire TSA) (registeredWith ?Dam TSA)
+       (breedOf ?Animal TamworthBreed)))
+(hasAction Protocol-AnimalRegistration
+  (and (CreateNode ?Animal) (registeredWith ?Animal TSA)
+       (CreateEdge CHILD_OF ?Animal ?Sire) (CreateEdge CHILD_OF ?Animal ?Dam)))
+(comment Protocol-AnimalRegistration "Register a purebred Tamworth. Both sire and dam must be TSA-registered.")
+
+(isa Protocol-PedigreeVerification PROTOCOL)
+(hasTrigger Protocol-PedigreeVerification ManualInvocation)
+(hasCondition Protocol-PedigreeVerification
+  (and (registeredWith ?Animal TSA)
+       (thereExists ?Pedigree (pedigreeOf ?Animal ?Pedigree))))
+(hasAction Protocol-PedigreeVerification
+  (and (EvaluateRule verifyAncestry ?Animal 3)
+       (UpdateAttribute ?Animal pedigreeVerified TRUE)))
+(comment Protocol-PedigreeVerification "Verify ancestry to three generations. Critical for breed purity in a small population.")
+
+(isa Protocol-BreedStandard PROTOCOL)
+(hasTrigger Protocol-BreedStandard ManualInvocation)
+(hasCondition Protocol-BreedStandard (breedOf ?Animal TamworthBreed))
+(hasAction Protocol-BreedStandard
+  (and (EvaluateRule coloration ?Animal TamworthBreed)
+       (EvaluateRule bodyLength ?Animal TamworthBreed)
+       (EvaluateRule earSet ?Animal TamworthBreed)
+       (EvaluateRule snoutLength ?Animal TamworthBreed)
+       (EvaluateRule structuralSoundness ?Animal)))
+(comment Protocol-BreedStandard "Evaluate against Tamworth standard: red-gold coloration, long lean body, erect ears, long straight snout.")
+
+(isa Protocol-HeritageCertification PROTOCOL)
+(hasTrigger Protocol-HeritageCertification ManualInvocation)
+(hasCondition Protocol-HeritageCertification
+  (and (registeredWith ?Animal TSA) (hasAttribute ?Animal pedigreeVerified TRUE)))
+(hasAction Protocol-HeritageCertification
+  (and (EvaluateRule heritageBreedEligibility ?Animal)
+       (UpdateAttribute ?Animal heritageCertified TRUE)
+       (CreateSignal heritageCertification ?Animal)))
+(comment Protocol-HeritageCertification "Certify as heritage breed for premium market access. Requires registration and verified pedigree.")
+
+(protocolPriority Protocol-AnimalRegistration 1)
+(protocolPriority Protocol-PedigreeVerification 2)
+(protocolPriority Protocol-BreedStandard 3)
+(protocolPriority Protocol-HeritageCertification 4)
+
+;;; ================================================================
+;;; 9. INFERENCE RULES
+;;; ================================================================
+
+;; Heritage breed value: threatened breed in growing market commands premium
+(implies
+  (and (registersBreed TSA ?Breed)
+       (hasAttribute ?Breed conservationStatus "Threatened")
+       (servesMarket ?Breed ?Market) (hasState ?Market Growing))
+  (hasHeritageValuePremium ?Breed ?Market))
+
+;; Market premium: heritage certification enables premium pricing
+(implies
+  (and (hasAttribute ?Animal heritageCertified TRUE)
+       (breedOf ?Animal TamworthBreed) (servesMarket TamworthBreed ?Market))
+  (qualifiesForPremium ?Animal ?Market))
+
+;; Small population risk: low breeder count signals genetic bottleneck
+(implies
+  (and (hasAttribute TSA-TotalBreeders currentValue ?Count)
+       (hasThreshold TSA-TotalBreeders LowerBound ?Min) (lessThan ?Count ?Min))
+  (hasSeverity TSA-TotalBreeders Critical))
+
+;; Partnership eligibility: both organizations must be Active
+(implies
+  (and (partnersWith ?A ?B) (hasState ?A Active) (hasState ?B Active))
+  (partnershipEligible ?A ?B))
+
+;; Foraging advantage derives natural pasture market fit
+(implies
+  (and (hasAttribute ?Breed keyTraits ?Traits)
+       (substringOf "foraging" ?Traits) (servesMarket ?Breed PastureRaisedSegment))
+  (hasNaturalMarketFit ?Breed PastureRaisedSegment))
+
+;;; ================================================================
+;;; 10. CHARLOTTE PRIMITIVE MAPPING
+;;; ================================================================
+;;;
+;;; NODE     — TSA, TamworthBreed, competitor/peer registries (CPS, NSR,
+;;;            ABA, Large Black, GOS, Red Wattle, Mulefoot, Ossabaw),
+;;;            LivestockConservancy, market segments, Sounder.
+;;; EDGE     — registersBreed, competesWith, conservationPartnerOf,
+;;;            servesMarket, partnersWith.
+;;; METRIC   — totalBreeders (113), statesRepresented (37),
+;;;            heritagePorkPremium ($8-15/lb), breedPopulationTrend.
+;;; SIGNAL   — heritageBreedRevival, pastureRaisedDemand,
+;;;            farmToTableMovement, sounderPartnershipProposal.
+;;; PROTOCOL — animalRegistration, pedigreeVerification,
+;;;            breedStandard, heritageCertification.
+;;;
+;;; ================================================================
+;;; END — TamworthSwineAssociationMt
+;;; ================================================================

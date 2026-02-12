@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sounder — Certified Pedigree Swine Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0D0D14;
+  color: #E0DCEA;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* === Knowledge Graph Background === */
+#graph-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* === Page Layout === */
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* === Glass Panel === */
+.glass {
+  background: rgba(114, 0, 203, 0.06);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(114, 0, 203, 0.18);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+/* === Section Spacing === */
+.section { margin-bottom: 56px; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #7200CB;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+/* === Hero === */
+.hero {
+  padding: 48px 0 0;
+  margin-bottom: 48px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(114, 0, 203, 0.15);
+  border: 1px solid rgba(114, 0, 203, 0.35);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #B366E8;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.hero h1 span { color: #7200CB; }
+
+.hero-tagline {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+/* Stat Bar */
+.stat-bar {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.stat-bar__item {
+  flex: 1;
+  padding: 18px 16px;
+  text-align: center;
+  background: rgba(114, 0, 203, 0.06);
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.stat-bar__item:last-child { border-right: none; }
+
+.stat-bar__value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stat-bar__label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* === Grid Layouts === */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* === Timeline === */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  border-left: 2px solid rgba(114, 0, 203, 0.3);
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7200CB;
+  border: 2px solid #0D0D14;
+}
+
+.timeline__year {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7200CB;
+  margin-bottom: 4px;
+}
+
+.timeline__text {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* === Breed Cards === */
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.breed-card {
+  padding: 24px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.breed-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.breed-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.breed-card__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.breed-card__role {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7200CB;
+  margin-bottom: 10px;
+}
+
+.breed-card__desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* === Threat Matrix === */
+.threat-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.threat-matrix__cell {
+  padding: 28px;
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.threat-matrix__cell:nth-child(2n) { border-right: none; }
+.threat-matrix__cell:nth-child(n+3) { border-bottom: none; }
+
+.threat-matrix__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.threat-matrix__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.threat-matrix__label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.threat-matrix__items {
+  list-style: none;
+  padding: 0;
+}
+
+.threat-matrix__items li {
+  font-size: 13px;
+  color: #aaa;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.threat-matrix__items li:last-child { border-bottom: none; }
+
+.threat-matrix__items li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* Quadrant colors */
+.threat-matrix__cell.critical { background: rgba(206, 79, 81, 0.08); }
+.threat-matrix__cell.critical .threat-matrix__icon { background: rgba(206, 79, 81, 0.2); color: #CE4F51; }
+.threat-matrix__cell.critical .threat-matrix__items li::before { background: #CE4F51; }
+
+.threat-matrix__cell.warning { background: rgba(251, 191, 36, 0.06); }
+.threat-matrix__cell.warning .threat-matrix__icon { background: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+.threat-matrix__cell.warning .threat-matrix__items li::before { background: #FBBF24; }
+
+.threat-matrix__cell.opportunity { background: rgba(33, 214, 198, 0.06); }
+.threat-matrix__cell.opportunity .threat-matrix__icon { background: rgba(33, 214, 198, 0.2); color: #21D6C6; }
+.threat-matrix__cell.opportunity .threat-matrix__items li::before { background: #21D6C6; }
+
+.threat-matrix__cell.strategic { background: rgba(114, 0, 203, 0.06); }
+.threat-matrix__cell.strategic .threat-matrix__icon { background: rgba(114, 0, 203, 0.2); color: #7200CB; }
+.threat-matrix__cell.strategic .threat-matrix__items li::before { background: #7200CB; }
+
+/* === Before/After === */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.before-after__panel {
+  padding: 32px;
+}
+
+.before-after__panel.before {
+  background: rgba(206, 79, 81, 0.04);
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.before-after__panel.after {
+  background: rgba(33, 214, 198, 0.04);
+}
+
+.before-after__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.before-after__panel.before .before-after__title { color: #CE4F51; }
+.before-after__panel.after .before-after__title { color: #21D6C6; }
+
+.before-after__list {
+  list-style: none;
+  padding: 0;
+}
+
+.before-after__list li {
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.before-after__list li:last-child { border-bottom: none; }
+
+.before-after__panel.before .before-after__list li { color: #999; }
+.before-after__panel.after .before-after__list li { color: #ccc; }
+
+.before-after__list li .icon {
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.before-after__panel.before .before-after__list li .icon { color: #CE4F51; }
+.before-after__panel.after .before-after__list li .icon { color: #21D6C6; }
+
+/* === CRM / Website Demo Panels === */
+.demo-panel {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(114, 0, 203, 0.2);
+  background: rgba(22, 22, 34, 0.8);
+}
+
+.demo-panel__chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(114, 0, 203, 0.1);
+  border-bottom: 1px solid rgba(114, 0, 203, 0.15);
+}
+
+.demo-panel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.demo-panel__url {
+  flex: 1;
+  padding: 4px 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #888;
+  font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+.demo-panel__body {
+  padding: 24px;
+}
+
+/* CRM specific */
+.crm-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  min-height: 380px;
+}
+
+.crm-sidebar {
+  border-right: 1px solid rgba(114, 0, 203, 0.1);
+  padding-right: 16px;
+}
+
+.crm-sidebar__title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7200CB;
+  margin-bottom: 12px;
+}
+
+.crm-sidebar__item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 4px;
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.crm-sidebar__item:hover { background: rgba(114, 0, 203, 0.1); }
+.crm-sidebar__item.active {
+  background: rgba(114, 0, 203, 0.15);
+  color: #fff;
+  font-weight: 600;
+}
+
+.crm-sidebar__item .herd { font-size: 10px; color: #666; display: block; margin-top: 2px; }
+
+.crm-main__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-main__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.crm-main__meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.crm-main__badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(33, 214, 198, 0.15);
+  color: #21D6C6;
+  border: 1px solid rgba(33, 214, 198, 0.3);
+}
+
+.crm-breed-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.crm-breed-tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+
+.crm-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+  margin-bottom: 16px;
+}
+
+.crm-tab {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  cursor: default;
+}
+
+.crm-tab.active {
+  color: #7200CB;
+  border-bottom-color: #7200CB;
+}
+
+.crm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.crm-stat {
+  padding: 12px;
+  background: rgba(114, 0, 203, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-stat__value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.crm-stat__label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.crm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.crm-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.crm-table td {
+  padding: 8px 10px;
+  color: #aaa;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.04);
+}
+
+.crm-table td.highlight { color: #21D6C6; font-weight: 600; }
+
+/* Website demo */
+.web-hero {
+  padding: 32px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(114, 0, 203, 0.15), rgba(240, 0, 210, 0.08));
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.web-hero__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.web-hero__sub {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.web-hero__cta {
+  display: inline-block;
+  padding: 8px 24px;
+  background: #7200CB;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.web-breed-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.web-breed {
+  padding: 14px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.web-breed__icon { font-size: 24px; margin-bottom: 6px; }
+
+.web-breed__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.web-breed__count {
+  font-size: 9px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.web-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.web-search__input {
+  flex: 1;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.web-search__select {
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 8px;
+  font-size: 11px;
+  color: #888;
+}
+
+.web-search__btn {
+  padding: 10px 20px;
+  background: #7200CB;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.web-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.web-feature {
+  padding: 16px;
+  background: rgba(114, 0, 203, 0.04);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.web-feature__icon { font-size: 20px; margin-bottom: 6px; }
+
+.web-feature__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.web-feature__desc {
+  font-size: 10px;
+  color: #888;
+}
+
+/* === Primitive Cards === */
+.primitive-card {
+  padding: 24px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.primitive-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.primitive-card__label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7200CB;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.primitive-card__items {
+  list-style: none;
+  padding: 0;
+}
+
+.primitive-card__items li {
+  font-size: 12px;
+  color: #aaa;
+  padding: 4px 0;
+  font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+/* === Tier Cards === */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tier-card {
+  padding: 28px;
+  background: rgba(114, 0, 203, 0.06);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 16px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tier-card:hover {
+  border-color: rgba(114, 0, 203, 0.4);
+  transform: translateY(-2px);
+}
+
+.tier-card.recommended {
+  border-color: rgba(114, 0, 203, 0.4);
+  background: rgba(114, 0, 203, 0.1);
+}
+
+.tier-card__tier {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #7200CB;
+  margin-bottom: 12px;
+}
+
+.tier-card__name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.tier-card__price {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.tier-card__features {
+  list-style: none;
+  padding: 0;
+}
+
+.tier-card__features li {
+  font-size: 13px;
+  color: #aaa;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tier-card__features li:last-child { border-bottom: none; }
+
+.tier-card__features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7200CB;
+  flex-shrink: 0;
+}
+
+/* === Competitor Table === */
+.table-container {
+  background: rgba(114, 0, 203, 0.04);
+  border: 1px solid rgba(114, 0, 203, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table-container th {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.1);
+}
+
+.table-container td {
+  padding: 14px 18px;
+  color: #E0DCEA;
+  border-bottom: 1px solid rgba(114, 0, 203, 0.04);
+  white-space: nowrap;
+}
+
+.table-container tbody tr:hover { background: rgba(114, 0, 203, 0.04); }
+
+/* === Vision === */
+.vision-box {
+  text-align: center;
+  padding: 48px 32px;
+  background: linear-gradient(135deg, rgba(114, 0, 203, 0.1), rgba(240, 0, 210, 0.06), rgba(33, 214, 198, 0.04));
+  border: 1px solid rgba(114, 0, 203, 0.2);
+  border-radius: 20px;
+}
+
+.vision-box h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.vision-box p {
+  font-size: 15px;
+  color: #aaa;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.vision-box p strong { color: #fff; }
+.vision-box p .purple { color: #7200CB; font-weight: 600; }
+
+/* === Back Link === */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7200CB;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: opacity 0.15s;
+}
+
+.back-link:hover { opacity: 0.7; }
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 32px 0;
+  border-top: 1px solid rgba(114, 0, 203, 0.1);
+  color: #555;
+  font-size: 12px;
+}
+
+.footer a { color: #7200CB; text-decoration: none; }
+
+/* === Scroll Reveal === */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .grid-4, .grid-5, .breed-grid { grid-template-columns: repeat(2, 1fr); }
+  .tier-grid { grid-template-columns: 1fr; }
+  .crm-layout { grid-template-columns: 1fr; }
+  .web-breed-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .page-wrap { padding: 0 16px 60px; }
+  .hero h1 { font-size: 28px; }
+  .stat-bar { flex-direction: column; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .before-after { grid-template-columns: 1fr; }
+  .threat-matrix { grid-template-columns: 1fr; }
+  .web-features { grid-template-columns: 1fr; }
+  .web-breed-grid { grid-template-columns: repeat(2, 1fr); }
+  .breed-grid { grid-template-columns: 1fr; }
+}
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0D0D14; }
+::-webkit-scrollbar-thumb { background: rgba(114, 0, 203, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(114, 0, 203, 0.5); }
+</style>
+</head>
+<body>
+
+<!-- Knowledge Graph Background -->
+<canvas id="graph-bg"></canvas>
+
+<div class="page-wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to Sounder</a>
+
+  <!-- ================================================================
+       1. HERO
+       ================================================================ -->
+  <header class="hero">
+    <div class="hero-badge">Sounder &times; CPS &mdash; Partnership Assessment</div>
+    <h1><span>CERTIFIED PEDIGREE</span> SWINE</h1>
+    <p class="hero-tagline">The largest swine registry in America &mdash; 65,412 breeders, every recognized breed, 5,279 herdmarks, and total dominance in the show pig world. The scale play.</p>
+
+    <div class="stat-bar">
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">65,412</div>
+        <div class="stat-bar__label">Breeders</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">10+</div>
+        <div class="stat-bar__label">Breeds Registered</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">5,279</div>
+        <div class="stat-bar__label">Herdmarks</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">50</div>
+        <div class="stat-bar__label">States</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">ALL</div>
+        <div class="stat-bar__label">Breeds</div>
+      </div>
+      <div class="stat-bar__item">
+        <div class="stat-bar__value">#1</div>
+        <div class="stat-bar__label">Largest Registry</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       2. COMPANY PROFILE
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Institution Profile</div>
+    <div class="section-title">History &amp; Evolution</div>
+    <div class="section-subtitle">The all-breed registry that grew to dominate American swine registration &mdash; 17&times; larger than NSR</div>
+
+    <div class="grid-2">
+      <div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__year">Early 1900s</div>
+            <div class="timeline__text">Individual breed associations &mdash; Hampshire, Duroc, Yorkshire, Berkshire, Poland China, and others &mdash; each maintained separate registries. Breeders with multiple breeds needed accounts at every association.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">Mid-Century</div>
+            <div class="timeline__text">The show pig market explodes. County and state fairs become the primary marketplace for purebred swine. Breeders need a single registration system that handles all breeds in one place.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">CPS Founded</div>
+            <div class="timeline__text"><strong style="color:#fff">Certified Pedigree Swine</strong> established as the all-breed alternative. One membership, one herdmark, registrations for Hampshire, Duroc, Berkshire, Poland China, Spot, Yorkshire, Landrace, Chester White, Hereford, Tamworth &mdash; and crossbred designations.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">Growth Era</div>
+            <div class="timeline__text">CPS leverages the show pig circuit to acquire members at scale. Every county fair, state fair, and national show drives breeder registration. The <strong style="color:#fff">herdmark system</strong> &mdash; 2&ndash;4 character codes &mdash; becomes the universal identifier for breeders.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">2010s</div>
+            <div class="timeline__text">CPS launches a basic online portal for registrations and breeder directory. Still limited in functionality, but more advanced than NSR's paper-only system. Breeder count passes <strong style="color:#fff">60,000</strong>.</div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">2026</div>
+            <div class="timeline__text">With 65,412 breeders and 5,279 registered herdmarks, CPS is the definitive swine registry. Sounder partnership proposed &mdash; transform the basic portal into a full industry platform. <strong style="color:#7200CB">65K breeders, one graph.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass">
+        <div class="section-label" style="margin-bottom:16px;">Current Operations</div>
+        <div style="font-size:13px;color:#aaa;line-height:1.7;">
+          <p style="margin-bottom:14px;">Certified Pedigree Swine processes registrations for <strong style="color:#fff">every recognized swine breed</strong> under a single system. A breeder with Hampshire, Duroc, Spot, and Poland China animals registers all of them through CPS with one herdmark &mdash; no separate breed association accounts needed.</p>
+          <p style="margin-bottom:14px;">The <strong style="color:#fff">herdmark system</strong> assigns each breeder a unique 2&ndash;4 character code (e.g., TRG, FFM, HPG). This identifier appears on every registration certificate and tattoo, creating a universal namespace for the purebred swine industry. CPS maintains <strong style="color:#fff">5,279 active herdmarks</strong>.</p>
+          <p style="margin-bottom:14px;">Geographic concentration is heavily Midwest and South: <strong style="color:#fff">Indiana leads with 14,552 breeders (22%)</strong>, followed by Oklahoma (9,177), Texas (9,174), Illinois (5,542), and Ohio (4,047). These five states account for nearly two-thirds of all CPS members.</p>
+          <p style="margin-bottom:14px;">CPS dominates the <strong style="color:#21D6C6">show pig world</strong>. The majority of show pig registrations flow through CPS, making it the gatekeeper for county fairs, state fairs, and national shows across the country.</p>
+          <p>The CPS breeder directory is the <strong style="color:#fff">most comprehensive in the US</strong>, but the online portal remains <strong style="color:#FBBF24">basic</strong> &mdash; functional for simple registrations but lacking CRM, analytics, real-time processing, mobile optimization, and marketplace capabilities. Many breeders dual-register with both CPS and NSR.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       3. BREED OVERVIEW
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Registry Breeds</div>
+    <div class="section-title">Ten Breeds, One Registry</div>
+    <div class="section-subtitle">CPS registers every recognized purebred swine breed plus crossbred designations &mdash; the only registry where a breeder can register everything in one place</div>
+
+    <div class="breed-grid">
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(33,214,198,0.15);color:#21D6C6;">&#x1F416;</div>
+        <div class="breed-card__name">Hampshire</div>
+        <div class="breed-card__role">Terminal / Show</div>
+        <div class="breed-card__desc">Black with white belt. Lean carcass, extreme muscling. The dominant show pig breed in America. Strong terminal sire genetics.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(206,79,81,0.15);color:#CE4F51;">&#x1F416;</div>
+        <div class="breed-card__name">Duroc</div>
+        <div class="breed-card__role">Terminal</div>
+        <div class="breed-card__desc">Red to golden-red. Superior growth rate and marbling. Dominant terminal sire in commercial crosses. Largest breed by volume.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(114,0,203,0.15);color:#B366E8;">&#x1F416;</div>
+        <div class="breed-card__name">Yorkshire</div>
+        <div class="breed-card__role">Maternal</div>
+        <div class="breed-card__desc">White with erect ears. Premier maternal breed. Large litters, excellent mothering, milk production. Foundation of commercial dam lines.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(240,0,210,0.15);color:#F000D2;">&#x1F416;</div>
+        <div class="breed-card__name">Landrace</div>
+        <div class="breed-card__role">Maternal</div>
+        <div class="breed-card__desc">White with drooped ears. Danish origin. Exceptional litter size and longevity. Crossed with Yorkshire for the F1 commercial dam.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(139,69,19,0.25);color:#CD853F;">&#x1F416;</div>
+        <div class="breed-card__name">Berkshire</div>
+        <div class="breed-card__role">Premium Pork</div>
+        <div class="breed-card__desc">Black with white points. Heritage breed prized for exceptional meat quality and flavor. Japanese Kurobuta designation. Premium niche market.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(100,100,100,0.2);color:#999;">&#x1F416;</div>
+        <div class="breed-card__name">Poland China</div>
+        <div class="breed-card__role">Historical / Show</div>
+        <div class="breed-card__desc">Black with white points on face, feet, and tail. One of the oldest American breeds. Strong show circuit presence. Known for docility.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(128,128,128,0.2);color:#B0B0B0;">&#x1F416;</div>
+        <div class="breed-card__name">Spot</div>
+        <div class="breed-card__role">Dual Purpose</div>
+        <div class="breed-card__desc">Black and white spotted. Originally Spotted Poland China. Feed efficiency champion. Strong show circuit following, especially in the Midwest.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(245,245,245,0.1);color:#DDD;">&#x1F416;</div>
+        <div class="breed-card__name">Chester White</div>
+        <div class="breed-card__role">Maternal / Dual</div>
+        <div class="breed-card__desc">Solid white. Strong maternal instincts and durability. Known for soundness and longevity. Popular in crossbreeding programs.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(178,34,34,0.15);color:#B22222;">&#x1F416;</div>
+        <div class="breed-card__name">Hereford</div>
+        <div class="breed-card__role">Heritage / Show</div>
+        <div class="breed-card__desc">Red with white face. Named after Hereford cattle for similar coloring. Hardy, efficient forager. Growing show pig popularity.</div>
+      </div>
+      <div class="breed-card">
+        <div class="breed-card__icon" style="background:rgba(255,140,0,0.15);color:#FF8C00;">&#x1F416;</div>
+        <div class="breed-card__name">Tamworth</div>
+        <div class="breed-card__role">Heritage / Pasture</div>
+        <div class="breed-card__desc">Red-gold. Oldest pure English breed. Exceptional forager and outdoor hardiness. Heritage pork movement darling. Lean bacon-type carcass.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       4. COMPETITIVE LANDSCAPE
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Competitive Landscape</div>
+    <div class="section-title">Registry &amp; Genetics Market</div>
+    <div class="section-subtitle">CPS is the dominant player in purebred registration but faces existential pressure from vertically integrated commercial genetics</div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Entity</th>
+            <th>Type</th>
+            <th>Breeders / Scale</th>
+            <th>Breeds</th>
+            <th>Digital Tools</th>
+            <th>Threat Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:#21D6C6;">CPS (Current)</td>
+            <td>All-Breed Registry</td>
+            <td style="font-weight:600;color:#fff;">65,412</td>
+            <td>All recognized breeds</td>
+            <td style="color:#FBBF24;">Basic online portal</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">NSR</td>
+            <td>Multi-Breed Registry</td>
+            <td>3,763</td>
+            <td>4 (Hamp, Duroc, York, Land)</td>
+            <td style="color:#CE4F51;">Paper + Legacy DB</td>
+            <td style="color:#888;">Low</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">ABA</td>
+            <td>Single-Breed Registry</td>
+            <td>8,807</td>
+            <td>Berkshire only</td>
+            <td style="color:#CE4F51;">Minimal</td>
+            <td style="color:#888;">Low</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">Individual Breed Assns</td>
+            <td>Single-Breed Registries</td>
+            <td>Varies (100&ndash;2,000)</td>
+            <td>One breed each</td>
+            <td style="color:#CE4F51;">None to minimal</td>
+            <td style="color:#888;">Low</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">PIC / Genus</td>
+            <td>Commercial Genetics</td>
+            <td>$2B+ parent co.</td>
+            <td>Proprietary lines</td>
+            <td style="color:#21D6C6;">Full platform</td>
+            <td style="color:#CE4F51;">Critical</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">Topigs Norsvin</td>
+            <td>Commercial Genetics</td>
+            <td>Global top-3</td>
+            <td>Proprietary lines</td>
+            <td style="color:#21D6C6;">Full platform</td>
+            <td style="color:#CE4F51;">Critical</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#fff;">DNA Genetics</td>
+            <td>Commercial Genetics</td>
+            <td>Major US supplier</td>
+            <td>Proprietary lines</td>
+            <td style="color:#21D6C6;">Cloud genomics</td>
+            <td style="color:#CE4F51;">Critical</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       5. THREAT MATRIX
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Strategic Analysis</div>
+    <div class="section-title">Threat &amp; Opportunity Matrix</div>
+    <div class="section-subtitle">Four-quadrant assessment of forces shaping CPS's future &mdash; and where Sounder transforms the equation</div>
+
+    <div class="threat-matrix">
+      <div class="threat-matrix__cell critical">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x26A0;</div>
+          <div class="threat-matrix__label">Critical Threats</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>Commercial genetics (PIC, Topigs, DNA Genetics) systematically eating purebred market share with proprietary hybrids</li>
+          <li>Basic online portal is outdated &mdash; no real-time processing, no modern UX, no responsive design</li>
+          <li>Zero analytics capability &mdash; 65K breeders generating data that CPS cannot analyze or monetize</li>
+          <li>No mobile experience &mdash; breeders managing registrations from barn on phone, portal doesn't work</li>
+          <li>Herdmark data sitting in flat database, no graph relationships, no intelligence layer</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell warning">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x26A1;</div>
+          <div class="threat-matrix__label">Emerging Risks</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>USDA electronic identification mandate &mdash; registries that can't provide digital traceability become obsolete</li>
+          <li>Genomic testing costs dropping below $30/animal &mdash; traditional pedigree-only registration loses value</li>
+          <li>Facebook Messenger as dominant sales channel &mdash; breeder transactions happening entirely outside CPS ecosystem</li>
+          <li>Dual-registration breeders (CPS + NSR) split loyalty and may consolidate to whichever platform modernizes first</li>
+          <li>Next generation of breeders expects mobile-first, real-time digital tools as baseline</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell opportunity">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x2728;</div>
+          <div class="threat-matrix__label">Opportunities</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>Modernize basic portal into full industry platform &mdash; CPS already has the user base at 65K breeders</li>
+          <li>Cross-registry pedigree intelligence &mdash; bridge the 60% crossbred ancestry gap that no registry tracks</li>
+          <li>Show management platform &mdash; CPS dominates shows, own the digital infrastructure for the entire circuit</li>
+          <li>Marketplace integration &mdash; 65K breeders buying and selling with no centralized transaction platform</li>
+          <li>All-breed analytics &mdash; only registry with data across every breed, uniquely positioned for cross-breed insights</li>
+        </ul>
+      </div>
+
+      <div class="threat-matrix__cell strategic">
+        <div class="threat-matrix__header">
+          <div class="threat-matrix__icon">&#x2B22;</div>
+          <div class="threat-matrix__label">Sounder Advantage</div>
+        </div>
+        <ul class="threat-matrix__items">
+          <li>65,412 CPS breeders ALREADY mapped in Sounder's knowledge graph &mdash; every herdmark, every state, every breed</li>
+          <li>5,279 herdmarks scraped, validated, and structured &mdash; the namespace is indexed</li>
+          <li>Breed specializations cataloged for every breeder &mdash; who raises what, where</li>
+          <li>Cross-registry intelligence: CPS + NSR + ABA breeders already stitched in the graph &mdash; dual-registration visible</li>
+          <li>BarnOS platform proven at Trogdon Farms &mdash; ready to deploy at CPS scale, not theoretical</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       6. BEFORE / AFTER
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Digital Transformation</div>
+    <div class="section-title">Current State vs. Sounder-Powered CPS</div>
+    <div class="section-subtitle">Side-by-side comparison of CPS operations today versus the full platform Sounder delivers</div>
+
+    <div class="before-after">
+      <div class="before-after__panel before">
+        <div class="before-after__title">Current State</div>
+        <ul class="before-after__list">
+          <li><span class="icon">&times;</span> Basic online portal with limited registration workflow &mdash; still partially manual</li>
+          <li><span class="icon">&times;</span> No breeder CRM &mdash; 65,412 member relationships unmanaged</li>
+          <li><span class="icon">&times;</span> Slow registration processing &mdash; no real-time validation or instant certificates</li>
+          <li><span class="icon">&times;</span> No analytics &mdash; massive dataset with zero intelligence extraction</li>
+          <li><span class="icon">&times;</span> No mobile optimization &mdash; breeders cannot manage herds from the barn</li>
+          <li><span class="icon">&times;</span> Flat breeder directory &mdash; no search by breed, state, or herdmark combination</li>
+          <li><span class="icon">&times;</span> Show results disconnected from registration records</li>
+          <li><span class="icon">&times;</span> No marketplace &mdash; sales happen on Facebook, not CPS platform</li>
+          <li><span class="icon">&times;</span> Herdmark database is a flat file, not a connected graph</li>
+          <li><span class="icon">&times;</span> No cross-registry visibility (NSR, ABA data invisible)</li>
+        </ul>
+      </div>
+      <div class="before-after__panel after">
+        <div class="before-after__title">With Sounder</div>
+        <ul class="before-after__list">
+          <li><span class="icon">&#x2713;</span> <strong>Full BarnOS platform</strong> &mdash; real-time registration, instant validation, digital certificates</li>
+          <li><span class="icon">&#x2713;</span> <strong>Breeder CRM</strong> &mdash; every breeder is a NODE with lifecycle tracking, engagement scoring, renewal prediction</li>
+          <li><span class="icon">&#x2713;</span> <strong>Real-time registration</strong> &mdash; submit from mobile, validated instantly, certificate generated in minutes</li>
+          <li><span class="icon">&#x2713;</span> <strong>Analytics dashboard</strong> &mdash; registration trends, breed health, geographic heatmaps, revenue forecasting</li>
+          <li><span class="icon">&#x2713;</span> <strong>Show integration</strong> &mdash; results auto-linked to registered animals, breeder profiles, breed rankings</li>
+          <li><span class="icon">&#x2713;</span> <strong>Marketplace</strong> &mdash; breeder-to-breeder sales with pedigree verification, embedded in the platform</li>
+          <li><span class="icon">&#x2713;</span> <strong>Smart directory</strong> &mdash; search by breed + state + herdmark + show results + specialization</li>
+          <li><span class="icon">&#x2713;</span> <strong>Mobile-first</strong> &mdash; full herd management from phone, barn-optimized interface</li>
+          <li><span class="icon">&#x2713;</span> <strong>Cross-registry intelligence</strong> &mdash; visibility into 77K breeders across CPS + NSR + ABA</li>
+          <li><span class="icon">&#x2713;</span> <strong>New revenue streams</strong> &mdash; breeder subscriptions, data licensing, show management fees, marketplace commissions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       7. CRM DEMO
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Platform Demo</div>
+    <div class="section-title">Breeder CRM &mdash; BarnOS Registry Edition</div>
+    <div class="section-subtitle">Multi-breed registration, herdmark identity, cross-breed activity feeds &mdash; every CPS breeder as a NODE</div>
+
+    <div class="demo-panel">
+      <div class="demo-panel__chrome">
+        <div class="demo-panel__dot" style="background:#CE4F51;"></div>
+        <div class="demo-panel__dot" style="background:#FBBF24;"></div>
+        <div class="demo-panel__dot" style="background:#21D6C6;"></div>
+        <div class="demo-panel__url">barnos.sounder.ag/cps/breeders</div>
+      </div>
+      <div class="demo-panel__body">
+        <div class="crm-layout">
+          <div class="crm-sidebar">
+            <div class="crm-sidebar__title">CPS Breeders</div>
+            <div class="crm-sidebar__item active">
+              Midwest Show Genetics
+              <span class="herd">Herdmark: MSG &bull; IN</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Red River Durocs
+              <span class="herd">Herdmark: RRD &bull; OK</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Lone Star Swine
+              <span class="herd">Herdmark: LSS &bull; TX</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Buckeye Belt Farms
+              <span class="herd">Herdmark: BBF &bull; OH</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Prairie State Genetics
+              <span class="herd">Herdmark: PSG &bull; IL</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Southern Heritage Hogs
+              <span class="herd">Herdmark: SHH &bull; TX</span>
+            </div>
+            <div class="crm-sidebar__item">
+              Crossroads Show Pigs
+              <span class="herd">Herdmark: CRSP &bull; IN</span>
+            </div>
+            <div class="crm-sidebar__item" style="color:#666;font-style:italic;font-size:11px;padding-top:12px;">
+              + 65,405 more breeders...
+            </div>
+          </div>
+          <div class="crm-main">
+            <div class="crm-main__header">
+              <div>
+                <div class="crm-main__name">Midwest Show Genetics</div>
+                <div class="crm-main__meta">Herdmark: MSG &bull; Rushville, IN &bull; CPS Member since 2009 &bull; Multi-Breed</div>
+                <div class="crm-breed-tags">
+                  <span class="crm-breed-tag" style="background:rgba(33,214,198,0.1);color:#21D6C6;border-color:rgba(33,214,198,0.3);">Hampshire</span>
+                  <span class="crm-breed-tag" style="background:rgba(206,79,81,0.1);color:#CE4F51;border-color:rgba(206,79,81,0.3);">Duroc</span>
+                  <span class="crm-breed-tag" style="background:rgba(128,128,128,0.1);color:#B0B0B0;border-color:rgba(128,128,128,0.3);">Spot</span>
+                </div>
+              </div>
+              <div class="crm-main__badge">Multi-Breed</div>
+            </div>
+
+            <div class="crm-tabs">
+              <div class="crm-tab active">Overview</div>
+              <div class="crm-tab">Herd (347)</div>
+              <div class="crm-tab">Registrations</div>
+              <div class="crm-tab">Shows (28)</div>
+              <div class="crm-tab">Sales ($842K)</div>
+              <div class="crm-tab">Pedigrees</div>
+            </div>
+
+            <div class="crm-stats">
+              <div class="crm-stat">
+                <div class="crm-stat__value">347</div>
+                <div class="crm-stat__label">Active Animals</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">3</div>
+                <div class="crm-stat__label">Breeds Registered</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">$2,420</div>
+                <div class="crm-stat__label">Avg Sale Price</div>
+              </div>
+              <div class="crm-stat">
+                <div class="crm-stat__value">28</div>
+                <div class="crm-stat__label">Show Results</div>
+              </div>
+            </div>
+
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Recent Activity</th>
+                  <th>Type</th>
+                  <th>Breed</th>
+                  <th>Date</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Litter #MSG-2026-008 registered (11 head)</td>
+                  <td>Registration</td>
+                  <td style="color:#21D6C6;">Hampshire</td>
+                  <td>Feb 10, 2026</td>
+                  <td>&mdash;</td>
+                </tr>
+                <tr>
+                  <td>Herdmark assignment confirmed &mdash; MSG</td>
+                  <td>Herdmark</td>
+                  <td>All</td>
+                  <td>Feb 8, 2026</td>
+                  <td class="highlight">MSG</td>
+                </tr>
+                <tr>
+                  <td>Litter #MSG-2026-007 registered (9 head)</td>
+                  <td>Registration</td>
+                  <td style="color:#CE4F51;">Duroc</td>
+                  <td>Feb 6, 2026</td>
+                  <td>&mdash;</td>
+                </tr>
+                <tr>
+                  <td>Indiana State Fair &mdash; Champion Spot Gilt</td>
+                  <td>Show Result</td>
+                  <td style="color:#B0B0B0;">Spot</td>
+                  <td>Feb 2, 2026</td>
+                  <td class="highlight">1st / Champion</td>
+                </tr>
+                <tr>
+                  <td>Sale: Duroc boar to Red River Durocs</td>
+                  <td>Sale</td>
+                  <td style="color:#CE4F51;">Duroc</td>
+                  <td>Jan 28, 2026</td>
+                  <td class="highlight">$3,200</td>
+                </tr>
+                <tr>
+                  <td>Cross-breed litter #MSG-2026-X03 (Hamp x Duroc)</td>
+                  <td>Registration</td>
+                  <td style="color:#FBBF24;">Crossbred</td>
+                  <td>Jan 22, 2026</td>
+                  <td>&mdash;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       8. WEBSITE CONCEPT
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Platform Demo</div>
+    <div class="section-title">Modern CPS Portal</div>
+    <div class="section-subtitle">What cpswine.com becomes &mdash; 10 breeds, 65K breeders, search by state/breed/herdmark, powered by Sounder</div>
+
+    <div class="demo-panel">
+      <div class="demo-panel__chrome">
+        <div class="demo-panel__dot" style="background:#CE4F51;"></div>
+        <div class="demo-panel__dot" style="background:#FBBF24;"></div>
+        <div class="demo-panel__dot" style="background:#21D6C6;"></div>
+        <div class="demo-panel__url">cpswine.com &mdash; Powered by Sounder</div>
+      </div>
+      <div class="demo-panel__body">
+        <div class="web-hero">
+          <div class="web-hero__title">CERTIFIED PEDIGREE SWINE</div>
+          <div class="web-hero__sub">America's all-breed swine registry &mdash; 65,412 breeders &bull; 10+ breeds &bull; 5,279 herdmarks &bull; 50 states</div>
+          <div class="web-hero__cta">Register Animals Online</div>
+        </div>
+
+        <div class="web-breed-grid">
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Hampshire</div>
+            <div class="web-breed__count">12,847 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Duroc</div>
+            <div class="web-breed__count">14,203 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Yorkshire</div>
+            <div class="web-breed__count">6,924 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Berkshire</div>
+            <div class="web-breed__count">5,892 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Poland China</div>
+            <div class="web-breed__count">4,531 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Spot</div>
+            <div class="web-breed__count">4,186 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Landrace</div>
+            <div class="web-breed__count">3,742 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Chester White</div>
+            <div class="web-breed__count">3,218 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Hereford</div>
+            <div class="web-breed__count">2,104 breeders</div>
+          </div>
+          <div class="web-breed">
+            <div class="web-breed__icon">&#x1F416;</div>
+            <div class="web-breed__name">Tamworth</div>
+            <div class="web-breed__count">1,247 breeders</div>
+          </div>
+        </div>
+
+        <div class="web-search">
+          <div class="web-search__input">Search breeders, animals, herdmarks, or pedigrees...</div>
+          <div class="web-search__select">State: All</div>
+          <div class="web-search__select">Breed: All</div>
+          <div class="web-search__btn">Search</div>
+        </div>
+
+        <div class="web-features">
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F4CB;</div>
+            <div class="web-feature__title">Online Registration</div>
+            <div class="web-feature__desc">Register any breed. Real-time validation. Instant certificates.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F333;</div>
+            <div class="web-feature__title">Pedigree Explorer</div>
+            <div class="web-feature__desc">Interactive pedigree trees across all breeds and crossbreds.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F3C6;</div>
+            <div class="web-feature__title">Show Results</div>
+            <div class="web-feature__desc">Every county, state, and national show. Results linked to pedigrees.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F4B0;</div>
+            <div class="web-feature__title">Marketplace</div>
+            <div class="web-feature__desc">Buy and sell with pedigree verification. Replace Facebook DMs.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F5FA;</div>
+            <div class="web-feature__title">Breeder Directory</div>
+            <div class="web-feature__desc">65K breeders searchable by state, breed, herdmark, and specialty.</div>
+          </div>
+          <div class="web-feature">
+            <div class="web-feature__icon">&#x1F4CA;</div>
+            <div class="web-feature__title">Breed Analytics</div>
+            <div class="web-feature__desc">Cross-breed insights. Registration trends. Geographic heatmaps.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       9. CHARLOTTE PRIMITIVES
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Charlotte OS Mapping</div>
+    <div class="section-title">Five Primitives &mdash; CPS Domain</div>
+    <div class="section-subtitle">Every entity in CPS's world maps to Charlotte's five universal primitives &mdash; at 17&times; NSR scale</div>
+
+    <div class="grid-5">
+      <div class="primitive-card">
+        <div class="primitive-card__label">NODE</div>
+        <ul class="primitive-card__items">
+          <li>Breeder (65,412)</li>
+          <li>SwineAnimal</li>
+          <li>Herdmark (5,279)</li>
+          <li>Breed (10+)</li>
+          <li>Registry (CPS)</li>
+          <li>Show / Fair</li>
+          <li>State</li>
+          <li>AuctionLot</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">EDGE</div>
+        <ul class="primitive-card__items">
+          <li>registeredWith</li>
+          <li>hasHerdmark</li>
+          <li>siredBy</li>
+          <li>damOf</li>
+          <li>ownedBy</li>
+          <li>soldTo</li>
+          <li>breedSpecialty</li>
+          <li>dualRegistered</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">METRIC</div>
+        <ul class="primitive-card__items">
+          <li>Registrations/Yr</li>
+          <li>Breeds Per Breeder</li>
+          <li>Herdmark Activity</li>
+          <li>Show Placements</li>
+          <li>Sale Price</li>
+          <li>Litter Size</li>
+          <li>State Concentration</li>
+          <li>Cross-Breed Ratio</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">SIGNAL</div>
+        <ul class="primitive-card__items">
+          <li>Litter Registered</li>
+          <li>Herdmark Assigned</li>
+          <li>Show Entry Filed</li>
+          <li>Sale Completed</li>
+          <li>Membership Renewed</li>
+          <li>Transfer of Ownership</li>
+          <li>Cross-Breed Reg</li>
+          <li>Directory Updated</li>
+        </ul>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-card__label">PROTOCOL</div>
+        <ul class="primitive-card__items">
+          <li>Registration Workflow</li>
+          <li>Pedigree Verification</li>
+          <li>Herdmark Assignment</li>
+          <li>Breed Standard</li>
+          <li>Show Eligibility</li>
+          <li>Transfer Protocol</li>
+          <li>Crossbred Designation</li>
+          <li>Directory Listing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       10. CONTRACT SIZING
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">Engagement Model</div>
+    <div class="section-title">Sounder &times; CPS Partnership</div>
+    <div class="section-subtitle">Pricing reflects CPS scale &mdash; 65K breeders means larger build, higher recurring, but massive per-unit revenue potential</div>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-card__tier">Phase 1 &mdash; Months 1&ndash;8</div>
+        <div class="tier-card__name">Registry Modernization</div>
+        <div class="tier-card__price">$35K &ndash; 50K one-time build</div>
+        <ul class="tier-card__features">
+          <li>Full platform development (10+ breeds)</li>
+          <li>Data migration &mdash; 65,412 breeders, 5,279 herdmarks</li>
+          <li>All-breed registration workflow</li>
+          <li>Herdmark system digitization</li>
+          <li>Breeder portal + mobile-responsive</li>
+          <li>CRM foundation with breed specialization</li>
+          <li>Modern website launch (10 breed cards)</li>
+          <li>Breeder directory with search filters</li>
+        </ul>
+      </div>
+      <div class="tier-card recommended">
+        <div class="tier-card__tier">Phase 2 &mdash; Ongoing</div>
+        <div class="tier-card__name">Platform Operations</div>
+        <div class="tier-card__price">$8K &ndash; 15K / mo + revenue share</div>
+        <ul class="tier-card__features">
+          <li>Registry platform hosting &amp; maintenance</li>
+          <li>Breeder CRM operations (65K+ profiles)</li>
+          <li>Show management platform integration</li>
+          <li>Marketplace operations</li>
+          <li>Cross-registry pedigree intelligence</li>
+          <li>Analytics dashboards &amp; reporting</li>
+          <li>Monthly strategic review</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-card__tier">Revenue Sharing</div>
+        <div class="tier-card__name">Scale Economics</div>
+        <div class="tier-card__price">Per-transaction + subscriptions</div>
+        <ul class="tier-card__features">
+          <li>$1.50&ndash;2.50 per registration (high volume)</li>
+          <li>BarnOS Premium: $50&ndash;100/mo per breeder (70/30)</li>
+          <li>Data licensing: breed analytics (60/40)</li>
+          <li>Show management: $500&ndash;1K per event (50/50)</li>
+          <li>Marketplace commission: 3&ndash;5% per sale</li>
+          <li>CPS retains all existing membership dues</li>
+          <li>36-month initial partnership term</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="glass" style="margin-top:24px;text-align:center;">
+      <div style="font-size:13px;color:#888;line-height:1.7;">
+        <strong style="color:#fff;">Scale math:</strong> At 65,412 breeders, even modest per-unit fees compound. If <strong style="color:#21D6C6;">5% adopt BarnOS Premium</strong> at $75/mo average = <strong style="color:#fff;">$245K/mo recurring</strong>.
+        At <strong style="color:#21D6C6;">$2/registration</strong> across estimated 200K annual registrations = <strong style="color:#fff;">$400K/year</strong> in transaction fees alone.
+        Show management at <strong style="color:#21D6C6;">200 events/year</strong> at $750 avg = <strong style="color:#fff;">$150K/year</strong>.
+        <span style="color:#7200CB;font-weight:600;">This is the scale play.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       11. VISION
+       ================================================================ -->
+  <section class="section reveal">
+    <div class="section-label">The Vision</div>
+
+    <div class="vision-box">
+      <h2>THE REGISTRY IS THE PLATFORM</h2>
+      <p>
+        CPS already has the scale. <strong>65,412 breeders</strong>. Every recognized breed.
+        <strong>5,279 herdmarks</strong>. The most comprehensive breeder directory in the country.
+        The show pig world runs through CPS.
+      </p>
+      <p style="margin-top:16px;">
+        What CPS doesn't have is the <span class="purple">intelligence layer</span>.
+        The basic portal processes registrations. It doesn't know that Indiana Hampshire
+        registrations are up 8% while Oklahoma Duroc is flat. It can't tell you that breeder MSG
+        has cross-registered 23 animals with both CPS and NSR. It doesn't see the graph.
+      </p>
+      <p style="margin-top:16px;">
+        <span class="purple">Sounder makes the registry a living intelligence layer.</span>
+        Every breeder is a <strong>NODE</strong>. Every herdmark is an <strong>EDGE</strong>.
+        Every registration is a <strong>SIGNAL</strong>. Every breed standard is a <strong>PROTOCOL</strong>.
+        Every show placement is a <strong>METRIC</strong>.
+      </p>
+      <p style="margin-top:16px;">
+        <strong>65,412 breeders. All breeds. One graph.</strong>
+        The infrastructure is already mapped. The herdmarks are already scraped.
+        <span class="purple">Deploy.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    Sounder &mdash; CPS Partnership Assessment &mdash; Confidential &mdash; <a href="../index.html">Sounder Hub</a> &mdash; <a href="../../../index.html">Core</a>
+  </div>
+
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT — Knowledge Graph Background + Scroll Reveal
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // -- Knowledge Graph Background --
+  const canvas = document.getElementById('graph-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Graph nodes
+  const PURPLE = '#7200CB';
+  const MAGENTA = '#F000D2';
+  const CYAN = '#21D6C6';
+
+  const graphNodes = [];
+  const nodeLabels = [
+    'CPS', 'Hampshire', 'Duroc', 'Yorkshire', 'Landrace',
+    'Berkshire', 'Poland China', 'Spot', 'Chester White', 'Hereford',
+    'Tamworth', 'Crossbred', 'Indiana', 'Oklahoma', 'Texas',
+    'Illinois', 'Ohio', 'Herdmark', 'Breeder', 'Show',
+    'Registration', 'Pedigree', 'NSR', 'ABA', 'Sounder',
+    'BarnOS', 'Marketplace', 'Analytics', 'Directory', 'MSG',
+    'RRD', 'LSS', 'BBF', 'PSG', 'SHH',
+    'Litter', 'Sire', 'Dam', 'Sale', 'Certificate'
+  ];
+
+  for (let i = 0; i < nodeLabels.length; i++) {
+    graphNodes.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: i === 0 ? 6 : (i < 12 ? 4.5 : (i < 17 ? 4 : 3)),
+      color: i === 0 ? CYAN : (i < 12 ? MAGENTA : (i === 24 ? PURPLE : 'rgba(114,0,203,0.5)')),
+      label: nodeLabels[i]
+    });
+  }
+
+  // Edges (breed connections, state relationships, registry connections)
+  const graphEdges = [
+    // CPS -> all breeds
+    [0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10],[0,11],
+    // CPS -> top states
+    [0,12],[0,13],[0,14],[0,15],[0,16],
+    // Sounder -> CPS, BarnOS
+    [24,0],[24,25],
+    // Herdmarks -> breeders
+    [17,18],[17,29],[17,30],[17,31],[17,32],[17,33],[17,34],
+    // Breeds -> states
+    [1,12],[2,13],[3,15],[5,16],[7,12],
+    // NSR, ABA -> CPS (peers)
+    [22,0],[23,0],
+    // Show, Registration, Pedigree -> CPS
+    [19,0],[20,0],[21,0],
+    // Marketplace, Analytics -> BarnOS
+    [26,25],[27,25],[28,25],
+    // Sire, Dam -> Litter
+    [36,35],[37,35],
+    // Sale -> Show
+    [38,19],
+    // Certificate -> Registration
+    [39,20]
+  ];
+
+  function drawGraph() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw edges
+    ctx.strokeStyle = 'rgba(114, 0, 203, 0.12)';
+    ctx.lineWidth = 0.5;
+    for (const [a, b] of graphEdges) {
+      if (a >= graphNodes.length || b >= graphNodes.length) continue;
+      const na = graphNodes[a], nb = graphNodes[b];
+      ctx.beginPath();
+      ctx.moveTo(na.x, na.y);
+      ctx.lineTo(nb.x, nb.y);
+      ctx.stroke();
+    }
+
+    // Draw nodes
+    for (const n of graphNodes) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+
+      // Update position
+      n.x += n.vx;
+      n.y += n.vy;
+
+      // Bounce
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      // Gentle drift
+      n.vx += (Math.random() - 0.5) * 0.02;
+      n.vy += (Math.random() - 0.5) * 0.02;
+      n.vx *= 0.99;
+      n.vy *= 0.99;
+    }
+
+    requestAnimationFrame(drawGraph);
+  }
+  drawGraph();
+
+  // -- Scroll Reveal --
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>
