@@ -6,6 +6,9 @@
 <title>SomeAI — Brand Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="someai_theme.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
+<script src="../../liquid-glass/liquid-glass.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
@@ -71,6 +74,11 @@ body {
   height: 120px;
   margin: 0 auto 32px;
   color: var(--primary);
+}
+.brand-header .logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .brand-header h1 {
   font-size: 48px;
@@ -178,6 +186,9 @@ section p {
 .logo-cell.red { background: linear-gradient(135deg, var(--red-700), var(--red-500)); }
 .logo-cell.gradient { background: linear-gradient(135deg, var(--red-900), var(--red-500)); }
 .logo-cell svg { width: 100%; max-width: 280px; height: auto; }
+.logo-cell .lockup { display: flex; align-items: center; gap: 20px; }
+.logo-cell .lockup img { width: 56px; height: 56px; object-fit: contain; }
+.logo-cell .lockup .wordmark { font-family: 'Inter', sans-serif; font-size: 42px; font-weight: 600; letter-spacing: -1px; }
 .logo-cell .cell-label {
   position: absolute;
   bottom: 12px;
@@ -301,6 +312,7 @@ section p {
   position: relative;
 }
 .clearspace-demo svg { width: 160px; height: 160px; color: var(--primary); }
+.clearspace-demo img { width: 160px; height: 160px; object-fit: contain; }
 .clearspace-demo .zone {
   position: absolute;
   border: 1px dashed var(--red-400);
@@ -380,6 +392,7 @@ section p {
   border: 1px solid rgba(255,255,255,0.06);
 }
 .app-icon svg { width: 60%; height: 60%; }
+.app-icon img { width: 60%; height: 60%; object-fit: contain; }
 .app-icon.ai-dark { background: var(--dark-3); color: var(--red-400); }
 .app-icon.ai-red { background: linear-gradient(135deg, var(--red-700), var(--red-400)); color: white; }
 .app-icon.ai-light { background: linear-gradient(135deg, var(--red-50), var(--red-200)); color: var(--red-700); }
@@ -397,22 +410,7 @@ section p {
   <!-- ═══════════ HEADER ═══════════ -->
   <header class="brand-header">
     <div class="logo-mark">
-      <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-        <g transform="translate(120,120)">
-          <line x1="0" y1="0" x2="0" y2="-108"/>
-          <line x1="0" y1="0" x2="65" y2="-87"/>
-          <line x1="0" y1="0" x2="103" y2="-33"/>
-          <line x1="0" y1="0" x2="95" y2="50"/>
-          <line x1="0" y1="0" x2="40" y2="100"/>
-          <line x1="0" y1="0" x2="-40" y2="100"/>
-          <line x1="0" y1="0" x2="-95" y2="50"/>
-          <line x1="0" y1="0" x2="-103" y2="-33"/>
-          <line x1="0" y1="0" x2="-65" y2="-87"/>
-          <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-          <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-          <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-        </g>
-      </svg>
+      <img src="assets/LOGO.png" alt="SomeAI Logo">
     </div>
     <h1>SomeAI</h1>
     <p class="sub">Brand Book</p>
@@ -476,51 +474,31 @@ section p {
     <h2>Logo Lockups</h2>
     <div class="logo-grid">
       <div class="logo-cell dark">
-        <svg viewBox="0 0 520 120" fill="none">
-          <g transform="translate(60,60) scale(0.48)" stroke="#E53E3E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-          <text x="130" y="78" font-family="Inter,sans-serif" font-size="64" font-weight="600" letter-spacing="-1" fill="#E8E0E0">SomeAI</text>
-        </svg>
+        <div class="lockup">
+          <img src="assets/LOGO.png" alt="SomeAI">
+          <span class="wordmark" style="color:#E8E0E0">SomeAI</span>
+        </div>
         <span class="cell-label" style="color:#666">Dark Background</span>
       </div>
       <div class="logo-cell light">
-        <svg viewBox="0 0 520 120" fill="none">
-          <g transform="translate(60,60) scale(0.48)" stroke="#C53030" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-          <text x="130" y="78" font-family="Inter,sans-serif" font-size="64" font-weight="600" letter-spacing="-1" fill="#1A1A1A">SomeAI</text>
-        </svg>
+        <div class="lockup">
+          <img src="assets/LOGO.png" alt="SomeAI" style="filter:brightness(0)">
+          <span class="wordmark" style="color:#1A1A1A">SomeAI</span>
+        </div>
         <span class="cell-label">Light Background</span>
       </div>
       <div class="logo-cell red">
-        <svg viewBox="0 0 520 120" fill="none">
-          <g transform="translate(60,60) scale(0.48)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-          <text x="130" y="78" font-family="Inter,sans-serif" font-size="64" font-weight="600" letter-spacing="-1" fill="white">SomeAI</text>
-        </svg>
+        <div class="lockup">
+          <img src="assets/LOGO.png" alt="SomeAI">
+          <span class="wordmark" style="color:white">SomeAI</span>
+        </div>
         <span class="cell-label" style="color:rgba(255,255,255,0.5)">Brand Gradient</span>
       </div>
       <div class="logo-cell gradient">
-        <svg viewBox="0 0 520 120" fill="none">
-          <g transform="translate(60,60) scale(0.48)" stroke="rgba(255,255,255,0.6)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-          <text x="130" y="78" font-family="Inter,sans-serif" font-size="64" font-weight="600" letter-spacing="-1" fill="rgba(255,255,255,0.85)">SomeAI</text>
-        </svg>
+        <div class="lockup">
+          <img src="assets/LOGO.png" alt="SomeAI" style="opacity:0.85">
+          <span class="wordmark" style="color:rgba(255,255,255,0.85)">SomeAI</span>
+        </div>
         <span class="cell-label" style="color:rgba(255,255,255,0.4)">Deep Gradient</span>
       </div>
     </div>
@@ -531,44 +509,16 @@ section p {
     <h2>App Icons</h2>
     <div class="icon-row">
       <div class="app-icon ai-dark">
-        <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-          <g transform="translate(120,120)">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-        </svg>
+        <img src="assets/LOGO.png" alt="SomeAI">
       </div>
       <div class="app-icon ai-red">
-        <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-          <g transform="translate(120,120)">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-        </svg>
+        <img src="assets/LOGO.png" alt="SomeAI">
       </div>
       <div class="app-icon ai-light">
-        <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-          <g transform="translate(120,120)">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-        </svg>
+        <img src="assets/LOGO.png" alt="SomeAI" style="filter:brightness(0) saturate(100%) invert(17%) sepia(65%) saturate(2500%) hue-rotate(345deg)">
       </div>
       <div class="app-icon ai-black">
-        <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-          <g transform="translate(120,120)">
-            <line x1="0" y1="0" x2="0" y2="-108"/><line x1="0" y1="0" x2="65" y2="-87"/><line x1="0" y1="0" x2="103" y2="-33"/><line x1="0" y1="0" x2="95" y2="50"/><line x1="0" y1="0" x2="40" y2="100"/><line x1="0" y1="0" x2="-40" y2="100"/><line x1="0" y1="0" x2="-95" y2="50"/><line x1="0" y1="0" x2="-103" y2="-33"/><line x1="0" y1="0" x2="-65" y2="-87"/>
-            <path d="M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z"/>
-            <path d="M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z"/>
-            <path d="M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z"/>
-          </g>
-        </svg>
+        <img src="assets/LOGO.png" alt="SomeAI">
       </div>
     </div>
   </section>
@@ -721,6 +671,100 @@ section p {
   --someai-dark-3: #222222;
   --someai-white:  #FFFFFF;
 }</pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LIQUID GLASS COMPONENT DEMO                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section>
+    <h2>Liquid Glass Components</h2>
+    <p>Live preview of the <code>lg-*</code> component library themed with SomeAI brand tokens via <code>someai_theme.css</code> + <code>liquid-glass.css</code>.</p>
+
+    <!-- Stat Cards -->
+    <h3>Stat Cards</h3>
+    <div class="lg-grid lg-grid--3" style="margin:24px 0">
+      <div class="lg-stat-card">
+        <p class="lg-stat-card__label">Active Nodes</p>
+        <p class="lg-stat-card__value">1,247</p>
+        <span class="lg-stat-card__trend lg-stat-card__trend--up">&#9650; 12.3%</span>
+      </div>
+      <div class="lg-stat-card">
+        <p class="lg-stat-card__label">Edge Count</p>
+        <p class="lg-stat-card__value">8,432</p>
+        <span class="lg-stat-card__trend lg-stat-card__trend--up">&#9650; 4.7%</span>
+      </div>
+      <div class="lg-stat-card">
+        <p class="lg-stat-card__label">Signals / hr</p>
+        <p class="lg-stat-card__value">342</p>
+        <span class="lg-stat-card__trend lg-stat-card__trend--down">&#9660; 2.1%</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <h3>Buttons</h3>
+    <div class="lg-flex lg-gap-md" style="flex-wrap:wrap;margin:24px 0">
+      <button class="lg-btn lg-btn--filled">Filled</button>
+      <button class="lg-btn lg-btn--tonal">Tonal</button>
+      <button class="lg-btn lg-btn--outlined">Outlined</button>
+      <button class="lg-btn lg-btn--text">Text</button>
+      <button class="lg-btn" disabled>Disabled</button>
+      <button class="lg-fab lg-fab--sm">+</button>
+    </div>
+
+    <!-- Glass Card -->
+    <h3>Glass Card</h3>
+    <div class="lg-card" style="margin:24px 0;max-width:480px">
+      <h4 class="lg-text-primary" style="font-size:16px;font-weight:600;margin-bottom:8px">Knowledge Graph Summary</h4>
+      <p class="lg-text-dim" style="font-size:14px;line-height:1.5">This card uses the <code>.lg-card</code> class with glassmorphic backdrop blur, themed by <code>--lg-*</code> custom properties from SomeAI's token file.</p>
+      <hr class="lg-divider">
+      <div class="lg-flex lg-gap-md" style="margin-top:12px">
+        <button class="lg-btn lg-btn--filled lg-btn--sm">Explore</button>
+        <button class="lg-btn lg-btn--outlined lg-btn--sm">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <h3>Form Elements</h3>
+    <div class="lg-flex lg-gap-lg" style="flex-wrap:wrap;margin:24px 0;align-items:center">
+      <div class="lg-text-field" style="width:240px">
+        <label class="lg-text-field__label">Search nodes</label>
+        <input class="lg-text-field__input" placeholder="Enter query...">
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+        <input type="checkbox" class="lg-checkbox" checked> Auto-refresh
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+        <input type="checkbox" class="lg-switch"> Dark mode
+      </label>
+      <input type="range" class="lg-slider" style="width:160px">
+    </div>
+
+    <!-- Tabs -->
+    <h3>Tabs</h3>
+    <div class="lg-tabs" style="max-width:400px;margin:24px 0">
+      <button class="lg-tabs__tab lg-tabs__tab--active">Overview</button>
+      <button class="lg-tabs__tab">Nodes</button>
+      <button class="lg-tabs__tab">Edges</button>
+      <button class="lg-tabs__tab">Signals</button>
+    </div>
+
+    <!-- Search -->
+    <h3>Search Bar</h3>
+    <div class="lg-search" style="max-width:400px;margin:24px 0">
+      <span style="font-size:18px">&#128269;</span>
+      <input class="lg-search__input" placeholder="Search the knowledge graph...">
+    </div>
+
+    <!-- Badges -->
+    <h3>Badges &amp; Progress</h3>
+    <div class="lg-flex lg-gap-lg" style="align-items:center;margin:24px 0">
+      <span class="lg-badge">3</span>
+      <span class="lg-badge">99+</span>
+      <span class="lg-badge lg-badge--dot"></span>
+      <div class="lg-progress" style="width:200px">
+        <div class="lg-progress__bar" style="width:65%"></div>
+      </div>
     </div>
   </section>
 

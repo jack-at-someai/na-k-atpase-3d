@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sea Lion — Brand Book</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sea_lion_theme.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
+<script src="../../liquid-glass/liquid-glass.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
@@ -62,7 +65,19 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
 .css-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'SF Mono','Cascadia Code',monospace;font-size:12px;line-height:2;color:#60A5FA;overflow-x:auto;margin-top:24px}
 .css-block pre{margin:0}
 
-@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}}
+/* ── Mascot Gallery ── */
+.mascot-section{margin-top:24px}
+.mascot-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;margin-bottom:16px}
+.mascot-hero{width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px;position:relative}
+.mascot-hero img{width:100%;height:auto;display:block}
+.mascot-hero .hero-badge{position:absolute;top:16px;left:16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:6px 14px;border-radius:8px;background:rgba(10,22,40,0.85);color:#60A5FA;backdrop-filter:blur(8px)}
+.mascot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mascot-grid.trio{grid-template-columns:1fr 1fr 1fr}
+.mascot-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);position:relative}
+.mascot-card img{width:100%;height:auto;display:block}
+.mascot-card .card-label{position:absolute;bottom:10px;left:12px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;padding:4px 10px;border-radius:6px;background:rgba(10,22,40,0.8);color:var(--dim);backdrop-filter:blur(6px)}
+
+@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid,.mascot-grid,.mascot-grid.trio{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -146,6 +161,130 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
       <span class="tag" style="background:rgba(251,191,36,0.15);color:#FBBF24">brand</span>
       <span class="tag" style="background:rgba(34,211,238,0.15);color:#22D3EE">research</span>
       <span class="tag" style="background:rgba(52,211,153,0.15);color:#34D399">business</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ LOGO CONCEPTS ═══════════ -->
+  <section>
+    <h2>Logo Concepts &mdash; Diego Abad</h2>
+    <h3>11 professional logo directions</h3>
+    <p>Vector logo concepts by Diego Abad. Each concept shown in light and dark variants. All feature the core brand metaphor: a lion wearing dive goggles. Directions range from profile busts to full-body poses, frontal portraits to action compositions with spears and waves.</p>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Cover &amp; Concepts 1&ndash;4</div>
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <img src="assets/logo-concept-1.png" alt="Logo concepts cover — Diego Abad">
+          <span class="card-label">Cover</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-2.png" alt="Concept 1 — profile bust with goggles">
+          <span class="card-label">Concept 1</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-3.png" alt="Concept 2 — action pose with spear">
+          <span class="card-label">Concept 2</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-4.png" alt="Concept 3 — side profile, flowing mane">
+          <span class="card-label">Concept 3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Concepts 4&ndash;7</div>
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <img src="assets/logo-concept-5.png" alt="Concept 4 — side profile, rounded mane">
+          <span class="card-label">Concept 4</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-6.png" alt="Concept 5 — full body on wave">
+          <span class="card-label">Concept 5</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-7.png" alt="Concept 6 — frontal portrait with goggles">
+          <span class="card-label">Concept 6</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-8.png" alt="Concept 7 — minimal frontal with beard">
+          <span class="card-label">Concept 7</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Concepts 8&ndash;11</div>
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <img src="assets/logo-concept-9.png" alt="Concept 8 — with spear, frontal">
+          <span class="card-label">Concept 8</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-10.png" alt="Concept 9 — circular mane, profile">
+          <span class="card-label">Concept 9</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-11.png" alt="Concept 10 — frontal symmetric">
+          <span class="card-label">Concept 10</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/logo-concept-12.png" alt="Concept 11 — flowing line art profile">
+          <span class="card-label">Concept 11</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MASCOT CONCEPTS ═══════════ -->
+  <section>
+    <h2>Mascot &mdash; Pixel Art</h2>
+    <h3>The Sea Lion</h3>
+    <p>Midjourney-generated pixel art concept explorations across two directions: full-body tactical dive suit characters and ocean portrait busts with goggles and snorkels.</p>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Hero &mdash; Tactical Dive Suit</div>
+      <div class="mascot-hero">
+        <img src="assets/jackrichard_a_lion_in_scuba_gear_pixel_art_ecc3900b-fc05-4a28-b675-fa15a8a61400_Original.png" alt="Sea Lion hero mascot — lion in tactical scuba gear">
+        <span class="hero-badge">Primary Mascot</span>
+      </div>
+    </div>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Full-Body Explorations &mdash; Scuba Gear</div>
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_in_scuba_gear_pixel_art_ecc3900b-fc05-4a28-b675-fa15a8a61400.png" alt="Scuba lion — compact variant">
+          <span class="card-label">Compact</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_in_scuba_gear_pixel_art_1637ace2-60c9-473d-9323-012219503115.png" alt="Scuba lion — 4-up grid explorations">
+          <span class="card-label">Grid Explorations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mascot-section">
+      <div class="mascot-label">Portrait Explorations &mdash; Snorkel &amp; Goggles</div>
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_wearing_a_snorkel_pixel_art_302d6efd-da8b-4f27-80a9-d7b477fbd1dd.png" alt="Snorkel lion portraits — set A">
+          <span class="card-label">Set A</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_wearing_a_snorkel_pixel_art_5fb31692-9f10-449f-9d9c-b04cf595367d.png" alt="Snorkel lion portraits — set B">
+          <span class="card-label">Set B</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_wearing_a_snorkel_pixel_art_9cb13254-d085-499d-818c-aabaddb31208.png" alt="Snorkel lion portraits — set C">
+          <span class="card-label">Set C</span>
+        </div>
+        <div class="mascot-card">
+          <img src="assets/jackrichard_a_lion_wearing_a_snorkel_pixel_art_dd518f94-d470-4d68-9a63-cf58ecb8fbff.png" alt="Snorkel lion portraits — set D">
+          <span class="card-label">Set D</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -259,6 +398,102 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
   SEA_LION_C.jpg            (mockup grid)
   SEA_LION_CANVA.jpg        (solid navy bg)
   ocean-science/            (reference hub)</pre>
+    </div>
+  </section>
+
+  <!-- ═══════════ LIQUID GLASS COMPONENTS ═══════════ -->
+  <section>
+    <h2>Liquid Glass Components</h2>
+    <p>Sea Lion-branded components from the shared <code>liquid-glass</code> design system. Same component library, themed by <code>sea_lion_theme.css</code>.</p>
+
+    <!-- Stat Cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin:24px 0">
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Dive Sites</div>
+        <div class="lg-stat-card__value">127</div>
+        <div class="lg-stat-card__trend lg-stat-card__trend--up">+12 this season</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Species Logged</div>
+        <div class="lg-stat-card__value">843</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Reef Coverage</div>
+        <div class="lg-stat-card__value">94.2%</div>
+        <div class="lg-stat-card__trend lg-stat-card__trend--up">+2.1%</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Water Temp</div>
+        <div class="lg-stat-card__value">26.4°C</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:24px 0">
+      <button class="lg-btn lg-btn--filled">Log Dive</button>
+      <button class="lg-btn lg-btn--tonal">Survey Data</button>
+      <button class="lg-btn lg-btn--outlined">Equipment Check</button>
+      <button class="lg-btn lg-btn--text">Field Notes</button>
+    </div>
+
+    <!-- Glass Card -->
+    <div class="lg-card" style="margin:24px 0;max-width:560px">
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:700;color:var(--lg-text)">Reef Monitoring Station</h3>
+      <p style="margin:0 0 16px;font-size:13px;color:var(--lg-text-dim)">Live sensor feed from Station Alpha — coral bleaching index, pH, dissolved oxygen.</p>
+      <div style="display:flex;gap:8px">
+        <span class="lg-badge">Online</span>
+        <span class="lg-badge lg-badge--outline">pH 8.1</span>
+        <span class="lg-badge lg-badge--outline">DO 6.2 mg/L</span>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;margin:24px 0">
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Dive Site</label>
+        <input class="lg-text-field__input" type="text" placeholder="e.g. Coral Garden Reef">
+      </div>
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Max Depth (m)</label>
+        <input class="lg-text-field__input" type="number" placeholder="18">
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="lg-search" style="max-width:560px;margin:24px 0">
+      <input class="lg-search__input" type="search" placeholder="Search dive logs, species, sites...">
+    </div>
+
+    <!-- Tabs -->
+    <div class="lg-tabs" style="margin:24px 0;max-width:560px">
+      <button class="lg-tabs__tab lg-tabs__tab--active">Dives</button>
+      <button class="lg-tabs__tab">Species</button>
+      <button class="lg-tabs__tab">Sensors</button>
+      <button class="lg-tabs__tab">Reports</button>
+    </div>
+
+    <!-- Nav Bar -->
+    <div class="lg-nav-bar" style="position:relative;margin:24px 0;max-width:560px">
+      <button class="lg-nav-bar__item lg-nav-bar__item--active">Dashboard</button>
+      <button class="lg-nav-bar__item">Dive Log</button>
+      <button class="lg-nav-bar__item">Research</button>
+      <button class="lg-nav-bar__item">Shop</button>
+    </div>
+
+    <!-- Progress -->
+    <div style="margin:24px 0;max-width:560px">
+      <div class="lg-progress" style="margin-bottom:12px"><div class="lg-progress__bar" style="width:94%"></div></div>
+      <span style="font-size:11px;color:var(--lg-text-dim)">Reef transect coverage: 94.2% complete</span>
+    </div>
+
+    <!-- Controls row -->
+    <div style="display:flex;align-items:center;gap:24px;margin:24px 0">
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--lg-text-dim)">
+        <input type="checkbox" class="lg-checkbox" checked> Auto-sync sensor data
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--lg-text-dim)">
+        <input type="checkbox" class="lg-switch" checked> Night dive mode
+      </label>
     </div>
   </section>
 

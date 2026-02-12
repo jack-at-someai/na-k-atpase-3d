@@ -16,21 +16,10 @@
 .DS_Store
 Thumbs.db
 
-# Media assets (too large for git — metadata files are tracked)
-assets/JOURNEY/**/*.jpg
-assets/JOURNEY/**/*.jpeg
-assets/JOURNEY/**/*.png
-assets/JOURNEY/**/*.gif
-assets/JOURNEY/**/*.webp
-assets/JOURNEY/**/*.heic
-assets/JOURNEY/**/*.heif
-assets/JOURNEY/**/*.mp4
-assets/JOURNEY/**/*.mov
-assets/JOURNEY/**/*.avi
-assets/JOURNEY/**/*.mkv
-assets/JOURNEY/**/*.m4v
-assets/GRANDAD_BOOK/
-assets/_thumbs/
+# Staging area — large media assets, not for git
+_staging/assets/JOURNEY/
+_staging/assets/GRANDAD_BOOK/
+_staging/assets/_thumbs/
 
 # GitHub Pages site (separate repo, pushed independently)
 jack-at-someai.github.io/
@@ -42,15 +31,15 @@ charlotte/docs/people/donald_almquist_assets/
 charlotte/docs/artifacts/JOURNEY_OBSERVATIONS.json
 
 # Confidential business data — raw source files (visualizations ARE tracked)
-industrial-service-group/*.pdf
-industrial-service-group/*.csv
-industrial-service-group/*.xlsx
-top-tier-moving/*.jsonl
-top-tier-moving/*.json
-violins/*.xlsx
-violins/*.docx
-violins/*.json
-sounder/Filament Resources/
-sounder/Sounder/
-sounder/*.pdf
-sounder/sounder_scripts/
+business/industrial-service-group/*.pdf
+business/industrial-service-group/*.csv
+business/industrial-service-group/*.xlsx
+business/top-tier-moving/*.jsonl
+business/top-tier-moving/*.json
+business/violins/*.xlsx
+business/violins/*.docx
+business/violins/*.json
+business/sounder/Filament Resources/
+business/sounder/Sounder/
+business/sounder/*.pdf
+business/sounder/sounder_scripts/

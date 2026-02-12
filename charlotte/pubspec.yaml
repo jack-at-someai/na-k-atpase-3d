@@ -26,6 +26,10 @@ dependencies:
   # Google Fonts (Oswald + Inter)
   google_fonts: ^6.2.1
 
+  # Charlotte UI — shared glassmorphic design system
+  charlotte_ui:
+    path: ../design/charlotte_ui
+
   # Graph visualization
   graphview: ^1.5.1
 

@@ -1,4 +1,15 @@
 [
   {"entity":"charlotte","name":"charlotte-logo-pulse.json","path":"assets/charlotte/charlotte-logo-pulse.json"},
-  {"entity":"charlotte","name":"charlotte-icon.svg","path":"assets/charlotte/charlotte-icon.svg"}
+  {"entity":"charlotte","name":"charlotte-icon.svg","path":"assets/charlotte/charlotte-icon.svg"},
+  {"entity":"someai","name":"someai-logo-pulse.json","path":"assets/someai/someai-logo-pulse.json"},
+  {"entity":"someai","name":"someai-spinner.json","path":"assets/someai/someai-spinner.json"},
+  {"entity":"someai","name":"someai-web-build.json","path":"assets/someai/someai-web-build.json"},
+  {"entity":"isg","name":"isg-gear-landing.json","path":"assets/isg/isg-gear-landing.json"},
+  {"entity":"isg","name":"isg-spinner.json","path":"assets/isg/isg-spinner.json"},
+  {"entity":"sea-lion","name":"sealion-ocean-landing.json","path":"assets/sea-lion/sealion-ocean-landing.json"},
+  {"entity":"sea-lion","name":"sealion-sonar-spinner.json","path":"assets/sea-lion/sealion-sonar-spinner.json"},
+  {"entity":"sounder","name":"sounder-lifecycle-landing.json","path":"assets/sounder/sounder-lifecycle-landing.json"},
+  {"entity":"sounder","name":"sounder-heartbeat-spinner.json","path":"assets/sounder/sounder-heartbeat-spinner.json"},
+  {"entity":"richard-enterprises","name":"re-portfolio-landing.json","path":"assets/richard-enterprises/re-portfolio-landing.json"},
+  {"entity":"richard-enterprises","name":"re-diamond-spinner.json","path":"assets/richard-enterprises/re-diamond-spinner.json"}
 ]

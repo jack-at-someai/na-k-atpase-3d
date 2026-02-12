@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sounder — Brand Book</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sounder_theme.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
+<script src="../../liquid-glass/liquid-glass.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
@@ -59,7 +62,18 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
 .css-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'SF Mono','Cascadia Code',monospace;font-size:12px;line-height:2;color:#AA66E0;overflow-x:auto;margin-top:24px}
 .css-block pre{margin:0}
 
-@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}}
+/* ── App Screenshots ── */
+.screenshot-section{margin-top:24px}
+.screenshot-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;margin-bottom:16px}
+.screenshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.screenshot-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;background:var(--surface)}
+.screenshot-card img{width:100%;height:auto;display:block}
+.screenshot-card .sc-label{position:absolute;bottom:10px;left:12px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;padding:4px 10px;border-radius:6px;background:rgba(14,11,18,0.85);color:#AA66E0;backdrop-filter:blur(6px)}
+.screenshot-wide{grid-column:span 2}
+.screenshot-hero{border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px;position:relative}
+.screenshot-hero img{width:100%;height:auto;display:block}
+
+@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.screenshot-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -130,6 +144,93 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
         <div class="p-icon">&#x1F514;</div>
         <h4>Push Notifications</h4>
         <p>Breeding windows, health events, due dates. Protocols firing on schedule.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ APP SCREENSHOTS ═══════════ -->
+  <section>
+    <h2>App &mdash; Screenshots</h2>
+    <h3>SounderApp.com in production</h3>
+    <p>Dark-themed mobile app with purple primary accents, magenta action buttons, and cyan data highlights. The screenshots below document the product evolution from early prototypes through current production UI.</p>
+
+    <div class="screenshot-section">
+      <div class="screenshot-label">Production UI &mdash; Core Screens</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5897.PNG" alt="Sow list view — Open/Bred/Farrow/Wean filters">
+          <span class="sc-label">Sow List</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_8567.PNG" alt="Your Operation — breeding card grid">
+          <span class="sc-label">Operation Grid</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_8723.PNG" alt="Feature modules — swine, cycles, groups, inventory">
+          <span class="sc-label">Feature Modules</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_4446.PNG" alt="Sow list — Pigs, Activity, Farm tabs">
+          <span class="sc-label">Sow Records</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-section">
+      <div class="screenshot-label">Sow Profile &amp; Calendar</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5921.PNG" alt="Sow profile — calendar view with breeding events">
+          <span class="sc-label">Sow Calendar</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_0807.PNG" alt="Breeding dashboard — bar charts">
+          <span class="sc-label">Breeding Charts</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_0808.PNG" alt="App analytics view">
+          <span class="sc-label">Analytics</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_0809.PNG" alt="Additional data view">
+          <span class="sc-label">Data View</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-section">
+      <div class="screenshot-label">Marketing &amp; Social</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-card screenshot-wide">
+          <img src="assets/drafts/IMG_4434.PNG" alt="Social media — Eliminate Whiteboard Mentality campaign">
+          <span class="sc-label">Social Campaign</span>
+        </div>
+        <div class="screenshot-card screenshot-wide">
+          <img src="assets/drafts/1000000820.jpg" alt="Early prototype — breeding cycle flow">
+          <span class="sc-label">Early Prototype</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-section">
+      <div class="screenshot-label">Logo Iterations &amp; Design Drafts</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5916.PNG" alt="Logo draft exploration">
+          <span class="sc-label">Logo Draft A</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5917.PNG" alt="Logo draft exploration">
+          <span class="sc-label">Logo Draft B</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5918.PNG" alt="Logo draft exploration">
+          <span class="sc-label">Logo Draft C</span>
+        </div>
+        <div class="screenshot-card">
+          <img src="assets/drafts/IMG_5919.PNG" alt="Logo draft exploration">
+          <span class="sc-label">Logo Draft D</span>
+        </div>
       </div>
     </div>
   </section>
@@ -254,6 +355,102 @@ business/sounder/Filament Resources/Artifacts/Design - Branding/Logo Files/
   Sounder-01.ai through Sounder-32.ai  (32 logo variations)
   Sounder-01.eps through Sounder-32.eps (print-ready)
   Sounder - Webview.pdf</pre>
+    </div>
+  </section>
+
+  <!-- ═══════════ LIQUID GLASS COMPONENTS ═══════════ -->
+  <section>
+    <h2>Liquid Glass Components</h2>
+    <p>Sounder-branded components from the shared <code>liquid-glass</code> design system. Same component library, themed by <code>sounder_theme.css</code>.</p>
+
+    <!-- Stat Cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin:24px 0">
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Active Sows</div>
+        <div class="lg-stat-card__value">247</div>
+        <div class="lg-stat-card__trend lg-stat-card__trend--up">+18 this quarter</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Litters YTD</div>
+        <div class="lg-stat-card__value">89</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Avg Litter Size</div>
+        <div class="lg-stat-card__value">11.4</div>
+        <div class="lg-stat-card__trend lg-stat-card__trend--up">+0.8</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Bred Rate</div>
+        <div class="lg-stat-card__value">92%</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:24px 0">
+      <button class="lg-btn lg-btn--filled">Add Sow</button>
+      <button class="lg-btn lg-btn--tonal">Record Breeding</button>
+      <button class="lg-btn lg-btn--outlined">Health Check</button>
+      <button class="lg-btn lg-btn--text">View Lineage</button>
+    </div>
+
+    <!-- Glass Card -->
+    <div class="lg-card" style="margin:24px 0;max-width:560px">
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:700;color:var(--lg-text)">Breeding Dashboard</h3>
+      <p style="margin:0 0 16px;font-size:13px;color:var(--lg-text-dim)">Active breeding cycles, gestation tracking, and upcoming farrow dates across the herd.</p>
+      <div style="display:flex;gap:8px">
+        <span class="lg-badge">14 Bred</span>
+        <span class="lg-badge lg-badge--outline">6 Due This Week</span>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;margin:24px 0">
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Sow Tag</label>
+        <input class="lg-text-field__input" type="text" placeholder="e.g. SOW-0247">
+      </div>
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Sire Tag</label>
+        <input class="lg-text-field__input" type="text" placeholder="e.g. BOAR-012">
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="lg-search" style="max-width:560px;margin:24px 0">
+      <input class="lg-search__input" type="search" placeholder="Search sows, litters, health records...">
+    </div>
+
+    <!-- Tabs -->
+    <div class="lg-tabs" style="margin:24px 0;max-width:560px">
+      <button class="lg-tabs__tab lg-tabs__tab--active">Herd</button>
+      <button class="lg-tabs__tab">Breeding</button>
+      <button class="lg-tabs__tab">Health</button>
+      <button class="lg-tabs__tab">Sales</button>
+      <button class="lg-tabs__tab">Shows</button>
+    </div>
+
+    <!-- Nav Bar -->
+    <div class="lg-nav-bar" style="position:relative;margin:24px 0;max-width:560px">
+      <button class="lg-nav-bar__item lg-nav-bar__item--active">Dashboard</button>
+      <button class="lg-nav-bar__item">Sows</button>
+      <button class="lg-nav-bar__item">Calendar</button>
+      <button class="lg-nav-bar__item">Reports</button>
+    </div>
+
+    <!-- Progress -->
+    <div style="margin:24px 0;max-width:560px">
+      <div class="lg-progress" style="margin-bottom:12px"><div class="lg-progress__bar" style="width:92%"></div></div>
+      <span style="font-size:11px;color:var(--lg-text-dim)">Breeding success rate: 92% this cycle</span>
+    </div>
+
+    <!-- Controls row -->
+    <div style="display:flex;align-items:center;gap:24px;margin:24px 0">
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--lg-text-dim)">
+        <input type="checkbox" class="lg-checkbox" checked> Push notifications
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--lg-text-dim)">
+        <input type="checkbox" class="lg-switch" checked> Auto-calculate due dates
+      </label>
     </div>
   </section>
 

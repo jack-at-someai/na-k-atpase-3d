@@ -5,42 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ISG — Brand Book</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="isg_theme.css">
+<link rel="stylesheet" href="../../liquid-glass/liquid-glass.css">
+<script src="../../liquid-glass/liquid-glass.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
+  --blue-primary:#8FAADC; --blue-light:#ACC2E9; --blue-dark:#5B7DB8;
   --gold-primary:#E2A532; --gold-light:#F0C86A; --gold-dark:#B8841E;
-  --navy-900:#0A1628; --navy-800:#0F1D36; --navy-600:#1A2B5F; --navy-500:#1E3A5F;
+  --navy-900:#000F2E; --navy-800:#0A1628; --navy-700:#0F1D36; --navy-600:#1A2B5F; --navy-500:#1E3A5F;
   --steel-200:#E2E8F0; --steel-400:#94A3B8; --steel-500:#64748B;
   --accent-blue:#90CDF4; --accent-green:#68D391; --accent-cyan:#22D3EE;
-  --bg:#0A1628; --surface:#0F1D36; --border:#1A2B5F; --text:#E2E8F0; --dim:#94A3B8;
+  --bg:#000F2E; --surface:#0A1628; --border:#1A2B5F; --text:#E2E8F0; --dim:#94A3B8;
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .page{max-width:1100px;margin:0 auto;padding:64px 32px 96px}
 
 .brand-header{text-align:center;padding:80px 0 64px;border-bottom:1px solid var(--border);margin-bottom:64px;position:relative;overflow:hidden}
-.brand-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(226,165,50,0.15),rgba(184,132,30,0.10),rgba(240,200,106,0.06));border-radius:24px}
+.brand-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(143,170,220,0.12),rgba(226,165,50,0.06),rgba(0,15,46,0.8));border-radius:24px}
 .brand-header *{position:relative;z-index:1}
-.brand-header .icon{font-size:64px;margin-bottom:16px}
 .brand-header h1{font-size:48px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
-.brand-header .sub{font-size:16px;color:var(--dim);font-weight:400}
-.brand-header .version{display:inline-block;margin-top:16px;font-size:11px;padding:4px 14px;border-radius:20px;background:rgba(226,165,50,0.15);color:#E2A532;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.brand-header h1 span{color:var(--blue-primary)}
+.brand-header .tagline{font-size:18px;color:var(--blue-primary);font-weight:500;margin-bottom:8px;font-style:italic}
+.brand-header .sub{font-size:14px;color:var(--dim);font-weight:400;max-width:600px;margin:0 auto}
+.brand-header .version{display:inline-block;margin-top:20px;font-size:11px;padding:4px 14px;border-radius:20px;background:rgba(143,170,220,0.15);color:#8FAADC;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
 
-.stats-bar{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:28px}
+.stats-bar{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:28px}
 .stat{text-align:center}
-.stat .stat-value{font-size:18px;font-weight:800;color:#E2A532;letter-spacing:-0.5px}
+.stat .stat-value{font-size:20px;font-weight:800;color:var(--blue-primary);letter-spacing:-0.5px}
 .stat .stat-label{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;margin-top:2px}
 
 section{margin-bottom:72px}
-section h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#E2A532;margin-bottom:32px;display:flex;align-items:center;gap:16px}
+section h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue-primary);margin-bottom:32px;display:flex;align-items:center;gap:16px}
 section h2::after{content:'';flex:1;height:1px;background:var(--border)}
 section h3{font-size:18px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
 section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
 
 .essence-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
 .essence-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px}
-.essence-card .label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#E2A532;font-weight:600;margin-bottom:10px}
+.essence-card .label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue-primary);font-weight:600;margin-bottom:10px}
 .essence-card .value{font-size:15px;color:var(--text);line-height:1.7}
 
+/* ── Values ── */
+.values-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-top:24px}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.value-card .v-icon{font-size:28px;margin-bottom:12px}
+.value-card h4{font-size:13px;font-weight:700;margin-bottom:6px;color:var(--blue-primary)}
+.value-card p{font-size:12px;color:var(--dim);max-width:100%}
+
+/* ── Solutions ── */
+.solutions-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}
+.solution-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.solution-card .s-icon{font-size:32px;margin-bottom:12px}
+.solution-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.solution-card p{font-size:12px;color:var(--dim);max-width:100%}
+
+/* ── Brand Network ── */
+.brand-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-top:24px}
+.brand-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:12px;font-weight:600;color:var(--text);text-align:center;line-height:1.3}
+
+/* ── Services ── */
+.service-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.service-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.service-item .dot{width:8px;height:8px;border-radius:50%;background:var(--blue-primary);flex-shrink:0}
+.service-item span{font-size:13px;font-weight:500}
+
+/* ── Product ── */
+.product-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.product-card .p-icon{font-size:32px;margin-bottom:12px}
+.product-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.product-card p{font-size:12px;color:var(--dim);max-width:100%}
+
+/* ── Palette ── */
 .palette-section{margin-bottom:32px}
 .palette-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:600;margin-bottom:12px}
 .palette-row{display:flex;gap:6px;flex-wrap:wrap}
@@ -54,63 +91,183 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
 .gradient-strip{height:80px;border-radius:12px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
 .gradient-strip .g-label{position:absolute;bottom:10px;left:14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:rgba(255,255,255,0.7)}
 
-.product-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}
-.product-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
-.product-card .p-icon{font-size:32px;margin-bottom:12px}
-.product-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
-.product-card p{font-size:12px;color:var(--dim);max-width:100%}
-
-.css-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'SF Mono','Cascadia Code',monospace;font-size:12px;line-height:2;color:#E2A532;overflow-x:auto;margin-top:24px}
+.css-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;font-family:'SF Mono','Cascadia Code',monospace;font-size:12px;line-height:2;color:var(--blue-primary);overflow-x:auto;margin-top:24px}
 .css-block pre{margin:0}
 
-@media(max-width:768px){.essence-grid,.gradient-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.stats-bar{gap:16px}}
+/* ── Geography ── */
+.geo-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.geo-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:4px 12px;border-radius:6px;background:rgba(143,170,220,0.1);color:var(--blue-primary)}
+
+@media(max-width:768px){.essence-grid,.gradient-row,.service-list{grid-template-columns:1fr}.solutions-grid,.product-grid{grid-template-columns:1fr}.values-grid,.brand-grid{grid-template-columns:1fr 1fr}.stats-bar{gap:20px}}
 </style>
 </head>
 <body>
 <div class="page">
 
   <header class="brand-header">
-    <div class="icon">&#x1F3ED;</div>
-    <h1>Industrial Service Group</h1>
-    <p class="sub">Industrial service, distribution &amp; field operations &mdash; mechanical lifecycle intelligence</p>
-    <span class="version">v1.0 &middot; ISG &middot; ServiceIQ</span>
+    <h1>Industrial Service <span>Group</span></h1>
+    <p class="tagline">"Ensuring Your Rotating Equipment Never Stops Turning"</p>
+    <p class="sub">A family of companies providing critical-to-process rotating equipment service, repair and distribution</p>
+    <span class="version">v1.1 &middot; isgservice.com</span>
     <div class="stats-bar">
-      <div class="stat"><div class="stat-value">80,000+</div><div class="stat-label">Employees</div></div>
-      <div class="stat"><div class="stat-value">42</div><div class="stat-label">Locations</div></div>
-      <div class="stat"><div class="stat-value">$450M</div><div class="stat-label">Revenue</div></div>
-      <div class="stat"><div class="stat-value">$62M</div><div class="stat-label">EBITDA</div></div>
-      <div class="stat"><div class="stat-value">12%</div><div class="stat-label">CAGR</div></div>
+      <div class="stat"><div class="stat-value">16</div><div class="stat-label">Brands</div></div>
+      <div class="stat"><div class="stat-value">40+</div><div class="stat-label">Locations</div></div>
+      <div class="stat"><div class="stat-value">200+</div><div class="stat-label">Technicians</div></div>
+      <div class="stat"><div class="stat-value">259K+</div><div class="stat-label">SKUs</div></div>
     </div>
   </header>
 
   <!-- ═══════════ BRAND ESSENCE ═══════════ -->
   <section>
     <h2>Brand Essence</h2>
-    <h3>Mechanical lifecycle intelligence for industrial service and distribution</h3>
-    <p>ISG brings Charlotte's knowledge graph to mechanical operations &mdash; tracking compressors, technicians, customer sites, warehouses, and parts across the industrial distribution lifecycle. ServiceIQ transforms what field teams already do and makes it predictive.</p>
+    <h3>Making our legacies our future</h3>
+    <p>ISG is a powerhouse of expert industrial service and distribution brands. Each brand brings decades of specialized legacy. United under ISG, they create a one-stop-shop experience for critical-to-process rotating equipment &mdash; without sacrificing the deep expertise that made each brand a leader.</p>
     <div class="essence-grid">
       <div class="essence-card">
-        <div class="label">Domain</div>
-        <div class="value">16+ industrial brands. Service, distribution, field ops. Compressors, technicians, customer sites, warehouses, parts. The mechanical instruction set compiled from Charlotte's kernel.</div>
+        <div class="label">Positioning</div>
+        <div class="value">One-stop-shop for rotating equipment. Maximize uptime. Simplify procurement. Work with a network of dedicated experts. Each brand keeps its legacy identity while gaining network scale.</div>
       </div>
       <div class="essence-card">
-        <div class="label">Palette Logic</div>
-        <div class="value">Gold for excellence and industrial precision. Navy for depth and trust. Steel for clarity. The mechanical instruction set. Four palettes provide operational depth across any context.</div>
+        <div class="label">Model</div>
+        <div class="value">Acquisition-driven family of companies. Each brand is a specialized legacy in its market &mdash; valves, compressors, motors, pumps. ISG provides the umbrella, shared infrastructure, and cross-sell network.</div>
       </div>
       <div class="essence-card">
-        <div class="label">Entity</div>
-        <div class="value">Jim Richard's portfolio. First Charlotte commercial deployment &mdash; $1.4M contract, Feb 23 2026. ServiceIQ as the Charlotte-powered predictive distribution platform.</div>
+        <div class="label">Voice</div>
+        <div class="value">Technical authority without jargon. The tone of people who work with their hands and know their equipment cold. Direct, reliable, no-nonsense. We fix it, we keep it running, we have the part.</div>
       </div>
       <div class="essence-card">
         <div class="label">Charlotte Layer</div>
-        <div class="value">ServiceIQ transforms distribution from reactive to predictive. 70%+ predictive reorder accuracy, 15%+ YOY sales growth. Charlotte's kernel mapped to parts, routes, demand signals, and service protocols.</div>
+        <div class="value">ServiceIQ &mdash; Charlotte-powered predictive distribution. Parts, routes, demand signals, and service protocols mapped to the kernel. 70%+ predictive reorder accuracy. $1.4M contract, Feb 2026.</div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ PRODUCT FEATURES ═══════════ -->
+  <!-- ═══════════ CORE VALUES ═══════════ -->
   <section>
-    <h2>Product &mdash; ServiceIQ</h2>
+    <h2>Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="v-icon">&#x1F91D;</div>
+        <h4>People First</h4>
+        <p>Safety, talent, and growth. Our people are the experts behind every brand.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">&#x1F680;</div>
+        <h4>Entrepreneurial Spirit</h4>
+        <p>Every brand keeps its identity. Legacy is fuel, not baggage.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">&#x1F3AF;</div>
+        <h4>Specialized Focus</h4>
+        <p>Deep expertise in narrow specialties. An inch wide, a mile deep.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">&#x2764;</div>
+        <h4>Service Minded</h4>
+        <p>Customer-centric at every touchpoint. Equipment never stops turning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SOLUTIONS ═══════════ -->
+  <section>
+    <h2>Solutions</h2>
+    <p>Five equipment categories spanning the full rotating equipment lifecycle.</p>
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <div class="s-icon">&#x1F6E0;</div>
+        <h4>Industrial Valves</h4>
+        <p>Service, repair, and distribution for critical process valves across every industry.</p>
+      </div>
+      <div class="solution-card">
+        <div class="s-icon">&#x2699;</div>
+        <h4>Compressors</h4>
+        <p>Rotary screw and reciprocating. Service, overhaul, and parts for compressed air systems.</p>
+      </div>
+      <div class="solution-card">
+        <div class="s-icon">&#x26A1;</div>
+        <h4>Industrial Motors</h4>
+        <p>Rewind, repair, and replacement. Keeping electric motors running at peak efficiency.</p>
+      </div>
+      <div class="solution-card">
+        <div class="s-icon">&#x1F4A7;</div>
+        <h4>Pumps</h4>
+        <p>Centrifugal, positive displacement, and specialty. Full lifecycle pump management.</p>
+      </div>
+      <div class="solution-card">
+        <div class="s-icon">&#x1F527;</div>
+        <h4>Specialty Services</h4>
+        <p>Turbomachinery, mill maintenance, and custom solutions that don't fit a single category.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SERVICES ═══════════ -->
+  <section>
+    <h2>Services</h2>
+    <p>From emergency 24/7 onsite repair to planned outage programs, ISG keeps critical equipment running.</p>
+    <div class="service-list">
+      <div class="service-item"><div class="dot"></div><span>Equipment Repair &amp; Maintenance</span></div>
+      <div class="service-item"><div class="dot"></div><span>Product Distribution (259K+ SKUs)</span></div>
+      <div class="service-item"><div class="dot"></div><span>Field Services</span></div>
+      <div class="service-item"><div class="dot"></div><span>Shop Services</span></div>
+      <div class="service-item"><div class="dot"></div><span>24/7 Onsite Repair</span></div>
+      <div class="service-item"><div class="dot"></div><span>Planned Outage Services</span></div>
+      <div class="service-item"><div class="dot"></div><span>Preventive Maintenance Programs</span></div>
+      <div class="service-item"><div class="dot"></div><span>Inventory Management</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BRAND NETWORK ═══════════ -->
+  <section>
+    <h2>Brand Network &mdash; 16 Companies</h2>
+    <p>Each brand is a specialist. Together they are a one-stop-shop covering every rotating equipment need.</p>
+    <div class="brand-grid">
+      <div class="brand-chip">Industrial Valve Service</div>
+      <div class="brand-chip">Morin Process Equipment</div>
+      <div class="brand-chip">Industrial Air Power</div>
+      <div class="brand-chip">Soles Electric</div>
+      <div class="brand-chip">Georgia Western</div>
+      <div class="brand-chip">Dynamic Mechanical Solutions</div>
+      <div class="brand-chip">Renewal Service Inc.</div>
+      <div class="brand-chip">Industrial Air Centers</div>
+      <div class="brand-chip">CORE Industrial Maintenance</div>
+      <div class="brand-chip">Pinnacle Industries Ltd.</div>
+      <div class="brand-chip">Illinois Electric Works</div>
+      <div class="brand-chip">Tri-State Valve LLC</div>
+      <div class="brand-chip">Compressor &amp; Turbine Services</div>
+      <div class="brand-chip">Turbomachinery Industries</div>
+      <div class="brand-chip">Air Specialty &amp; Equipment Co.</div>
+      <div class="brand-chip">National Mill Maintenance</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ GEOGRAPHY ═══════════ -->
+  <section>
+    <h2>Geographic Presence</h2>
+    <p>40+ locations spanning the southeastern and central United States. Headquartered in Cape Coral, Florida.</p>
+    <div class="geo-bar">
+      <span class="geo-tag">Florida</span>
+      <span class="geo-tag">Texas</span>
+      <span class="geo-tag">Alabama</span>
+      <span class="geo-tag">Louisiana</span>
+      <span class="geo-tag">Mississippi</span>
+      <span class="geo-tag">Georgia</span>
+      <span class="geo-tag">Tennessee</span>
+      <span class="geo-tag">Kentucky</span>
+      <span class="geo-tag">Ohio</span>
+      <span class="geo-tag">Indiana</span>
+      <span class="geo-tag">Illinois</span>
+      <span class="geo-tag">Arkansas</span>
+      <span class="geo-tag">West Virginia</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ SERVICEIQ ═══════════ -->
+  <section>
+    <h2>ServiceIQ &mdash; Charlotte Integration</h2>
+    <h3>Predictive distribution powered by Charlotte OS</h3>
+    <p>ServiceIQ is ISG's internal intelligence platform. Built on Charlotte's kernel, it maps parts, routes, demand signals, and service protocols into a predictive distribution engine. First commercial Charlotte deployment &mdash; $1.4M contract signed February 2026.</p>
     <div class="product-grid">
       <div class="product-card">
         <div class="p-icon">&#x1F52E;</div>
@@ -120,27 +277,27 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
       <div class="product-card">
         <div class="p-icon">&#x1F527;</div>
         <h4>Field Operations</h4>
-        <p>Technician dispatch and routing. Optimized field coverage across 42 locations and customer sites.</p>
+        <p>Technician dispatch and routing. Optimized field coverage across 40+ locations.</p>
       </div>
       <div class="product-card">
         <div class="p-icon">&#x2699;</div>
         <h4>Parts Intelligence</h4>
-        <p>Cross-location inventory optimization. Right part, right place, right time across the network.</p>
+        <p>Cross-location inventory optimization across 259K+ SKUs. Right part, right place, right time.</p>
       </div>
       <div class="product-card">
         <div class="p-icon">&#x1F4CA;</div>
         <h4>Customer Signals</h4>
-        <p>Usage patterns and maintenance triggers. Detect service needs from equipment telemetry and history.</p>
+        <p>Usage patterns and maintenance triggers from equipment telemetry and service history.</p>
       </div>
       <div class="product-card">
         <div class="p-icon">&#x1F5FA;</div>
         <h4>Territory Analysis</h4>
-        <p>Geographic coverage and density mapping. Optimize territory assignments and expansion planning.</p>
+        <p>Geographic coverage and density mapping. Optimize territory assignments and expansion.</p>
       </div>
       <div class="product-card">
         <div class="p-icon">&#x1F310;</div>
         <h4>Portfolio Integration</h4>
-        <p>Cross-brand intelligence sharing. Unified insights across 16+ industrial brands in the portfolio.</p>
+        <p>Cross-brand intelligence sharing across all 16 industrial brands in the network.</p>
       </div>
     </div>
   </section>
@@ -150,47 +307,51 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     <h2>Color Palette</h2>
 
     <div class="palette-section">
-      <div class="palette-label">Gold &mdash; Primary (Excellence)</div>
+      <div class="palette-label">Web Blue &mdash; Primary (from isgservice.com)</div>
+      <div class="palette-row">
+        <div class="swatch"><div class="swatch-color" style="background:#DDE5F4"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#DDE5F4</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ACC2E9"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#ACC2E9</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8FAADC"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#8FAADC</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#5B7DB8"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#5B7DB8</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#3A5A8E"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#3A5A8E</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#000F2E"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#000F2E</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-label">Gold &mdash; Secondary (Excellence)</div>
       <div class="palette-row">
         <div class="swatch"><div class="swatch-color" style="background:#FBF0D9"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#FBF0D9</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#F5DCA8"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#F5DCA8</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#F0C86A"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#F0C86A</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#E8B64E"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#E8B64E</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#E2A532"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#E2A532</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#B8841E"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#B8841E</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#8E6415"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#8E6415</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#64460E"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#64460E</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#3A2807"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#3A2807</div></div></div>
       </div>
     </div>
 
     <div class="palette-section">
-      <div class="palette-label">Navy &mdash; Foundation (Trust)</div>
+      <div class="palette-label">Navy &mdash; Foundation</div>
       <div class="palette-row">
         <div class="swatch"><div class="swatch-color" style="background:#D0D8E8"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#D0D8E8</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#8BA0C4"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#8BA0C4</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#4E6A9A"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#4E6A9A</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#2D4E7F"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#2D4E7F</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#1E3A5F"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#1E3A5F</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#1A2B5F"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#1A2B5F</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#0F1D36"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#0F1D36</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#0A1628"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#0A1628</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#050B14"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#050B14</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#000F2E"></div><div class="swatch-info"><div class="name">900</div><div class="hex">#000F2E</div></div></div>
       </div>
     </div>
 
     <div class="palette-section">
-      <div class="palette-label">Steel &mdash; Neutral (Clarity)</div>
+      <div class="palette-label">Steel &mdash; Neutral</div>
       <div class="palette-row">
         <div class="swatch"><div class="swatch-color" style="background:#F8FAFC"></div><div class="swatch-info"><div class="name">50</div><div class="hex">#F8FAFC</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#F1F5F9"></div><div class="swatch-info"><div class="name">100</div><div class="hex">#F1F5F9</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#E2E8F0"></div><div class="swatch-info"><div class="name">200</div><div class="hex">#E2E8F0</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#CBD5E1"></div><div class="swatch-info"><div class="name">300</div><div class="hex">#CBD5E1</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#94A3B8"></div><div class="swatch-info"><div class="name">400</div><div class="hex">#94A3B8</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#64748B"></div><div class="swatch-info"><div class="name">500</div><div class="hex">#64748B</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#475569"></div><div class="swatch-info"><div class="name">600</div><div class="hex">#475569</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#334155"></div><div class="swatch-info"><div class="name">700</div><div class="hex">#334155</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#1E293B"></div><div class="swatch-info"><div class="name">800</div><div class="hex">#1E293B</div></div></div>
       </div>
     </div>
 
@@ -200,17 +361,16 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
         <div class="swatch"><div class="swatch-color" style="background:#90CDF4"></div><div class="swatch-info"><div class="name">Blue</div><div class="hex">#90CDF4</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#68D391"></div><div class="swatch-info"><div class="name">Green</div><div class="hex">#68D391</div></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#22D3EE"></div><div class="swatch-info"><div class="name">Cyan</div><div class="hex">#22D3EE</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#E2A532"></div><div class="swatch-info"><div class="name">Gold</div><div class="hex">#E2A532</div></div></div>
       </div>
     </div>
 
     <div class="palette-section">
       <div class="palette-label">Brand Gradients</div>
       <div class="gradient-row">
-        <div class="gradient-strip" style="background:linear-gradient(135deg,#0F1D36,#1A2B5F)"><span class="g-label">Header</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#000F2E,#8FAADC)"><span class="g-label">Web Brand</span></div>
         <div class="gradient-strip" style="background:linear-gradient(135deg,#B8841E,#F0C86A)"><span class="g-label">Gold</span></div>
-        <div class="gradient-strip" style="background:linear-gradient(180deg,#0A1628,#1A2B5F)"><span class="g-label">Navy Depth</span></div>
-        <div class="gradient-strip" style="background:linear-gradient(135deg,#0A1628,#1E3A5F,#E2A532)"><span class="g-label">Full Brand Sweep</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#0F1D36,#1A2B5F)"><span class="g-label">Header</span></div>
+        <div class="gradient-strip" style="background:linear-gradient(135deg,#000F2E,#1E3A5F,#8FAADC)"><span class="g-label">Full Brand Sweep</span></div>
       </div>
     </div>
   </section>
@@ -220,38 +380,116 @@ section p{color:var(--dim);max-width:680px;margin-bottom:16px;line-height:1.7}
     <h2>CSS Variables</h2>
     <div class="css-block">
 <pre>:root {
-  --isg-gold-primary: #E2A532;   /* Primary */
+  /* Web primary (from isgservice.com) */
+  --isg-blue: #8FAADC;
+  --isg-blue-light: #ACC2E9;
+  --isg-blue-dark: #5B7DB8;
+
+  /* Gold — secondary */
+  --isg-gold: #E2A532;
   --isg-gold-light: #F0C86A;
   --isg-gold-dark: #B8841E;
-  --isg-navy-900: #0A1628;       /* Foundation */
-  --isg-navy-800: #0F1D36;
+
+  /* Navy — foundation */
+  --isg-navy-900: #000F2E;
+  --isg-navy-800: #0A1628;
+  --isg-navy-700: #0F1D36;
   --isg-navy-600: #1A2B5F;
-  --isg-navy-500: #1E3A5F;
-  --isg-steel-200: #E2E8F0;      /* Neutral */
+
+  /* Steel — neutral */
+  --isg-steel-200: #E2E8F0;
   --isg-steel-400: #94A3B8;
   --isg-steel-500: #64748B;
-  --isg-accent-blue: #90CDF4;    /* Signals */
+
+  /* Signal colors */
+  --isg-accent-blue: #90CDF4;
   --isg-accent-green: #68D391;
   --isg-accent-cyan: #22D3EE;
 }</pre>
     </div>
   </section>
 
-  <!-- ═══════════ EXISTING ASSETS ═══════════ -->
+  <!-- ═══════════ LIQUID GLASS COMPONENTS ═══════════ -->
   <section>
-    <h2>Existing Assets</h2>
-    <p>Brand tokens, design resources, and Charlotte integration artifacts for the ISG portfolio:</p>
-    <div class="css-block" style="color:var(--dim)">
-<pre>charlotte/assets/
-  ISG_BRAND_TOKENS.json
-  ISG_COLOR_PALETTE.svg
-  ISG_BRAND_BACKGROUND.png
+    <h2>Liquid Glass Components</h2>
+    <p>ISG-branded components from the shared <code>liquid-glass</code> design system. Same components as SomeAI — different brand tokens produce a completely different look.</p>
 
-business/isg/
-  ServiceIQ Platform Specification
-  Charlotte Integration &mdash; $1.4M Contract (Feb 23, 2026)
-  Portfolio Brand Matrix (16+ brands)
-  Territory &amp; Location Map (42 sites)</pre>
+    <!-- Stat Cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin:24px 0">
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Brands</div>
+        <div class="lg-stat-card__value">16</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Locations</div>
+        <div class="lg-stat-card__value">40+</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">SKUs</div>
+        <div class="lg-stat-card__value">259K+</div>
+      </div>
+      <div class="lg-stat-card">
+        <div class="lg-stat-card__label">Reorder Accuracy</div>
+        <div class="lg-stat-card__value">70%+</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:24px 0">
+      <button class="lg-btn lg-btn--filled">Request Service</button>
+      <button class="lg-btn lg-btn--tonal">View Inventory</button>
+      <button class="lg-btn lg-btn--outlined">Find a Location</button>
+      <button class="lg-btn lg-btn--text">Contact Us</button>
+    </div>
+
+    <!-- Glass Card -->
+    <div class="lg-card" style="margin:24px 0;max-width:560px">
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:700;color:var(--lg-text)">ServiceIQ Dashboard</h3>
+      <p style="margin:0 0 16px;font-size:13px;color:var(--lg-text-dim)">Predictive distribution intelligence — powered by Charlotte OS kernel.</p>
+      <div style="display:flex;gap:8px">
+        <span class="lg-badge">Active</span>
+        <span class="lg-badge lg-badge--outline">v2.1</span>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;margin:24px 0">
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Part Number</label>
+        <input class="lg-text-field__input" type="text" placeholder="e.g. ISG-COMP-4820">
+      </div>
+      <div class="lg-text-field">
+        <label class="lg-text-field__label">Quantity</label>
+        <input class="lg-text-field__input" type="number" placeholder="1">
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="lg-search" style="max-width:560px;margin:24px 0">
+      <input class="lg-search__input" type="search" placeholder="Search 259K+ SKUs...">
+    </div>
+
+    <!-- Tabs -->
+    <div class="lg-tabs" style="margin:24px 0;max-width:560px">
+      <button class="lg-tabs__tab lg-tabs__tab--active">Valves</button>
+      <button class="lg-tabs__tab">Compressors</button>
+      <button class="lg-tabs__tab">Motors</button>
+      <button class="lg-tabs__tab">Pumps</button>
+      <button class="lg-tabs__tab">Specialty</button>
+    </div>
+
+    <!-- Nav Bar -->
+    <div class="lg-nav-bar" style="position:relative;margin:24px 0;max-width:560px">
+      <button class="lg-nav-bar__item lg-nav-bar__item--active">Dashboard</button>
+      <button class="lg-nav-bar__item">Inventory</button>
+      <button class="lg-nav-bar__item">Orders</button>
+      <button class="lg-nav-bar__item">Analytics</button>
+    </div>
+
+    <!-- Progress -->
+    <div style="margin:24px 0;max-width:560px">
+      <div class="lg-progress" style="margin-bottom:12px"><div class="lg-progress__bar" style="width:70%"></div></div>
+      <span style="font-size:11px;color:var(--lg-text-dim)">Reorder accuracy target: 70% achieved</span>
     </div>
   </section>
 

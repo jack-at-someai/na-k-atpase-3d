@@ -1,0 +1,779 @@
+/* ============================================================================
+   LIQUID GLASS VIZ — Advanced Dashboard Visualization Components
+   Extends liquid-glass.css with data tables, Gantt charts, Sankey diagrams,
+   force graphs, treemaps, heatmaps, sparklines, and more.
+   Requires: liquid-glass.css loaded first for --lg-* variables.
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   DATA TABLE — .lg-table
+   --------------------------------------------------------------------------- */
+
+.lg-table-wrap {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-table-wrap__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+
+.lg-table-wrap__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-table-wrap__filter {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-sm, 10px);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--lg-text, #fff);
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 13px;
+  outline: none;
+}
+
+.lg-table-wrap__filter::placeholder { color: var(--lg-text-dim, #666); }
+.lg-table-wrap__filter:focus { border-color: var(--lg-primary-500); }
+
+.lg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.lg-table thead {
+  border-bottom: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+}
+
+.lg-table th {
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--lg-text-dim, #666);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+.lg-table th:hover { color: var(--lg-text, #fff); }
+
+.lg-table th[data-sort-dir="asc"]::after { content: ' \2191'; font-size: 10px; }
+.lg-table th[data-sort-dir="desc"]::after { content: ' \2193'; font-size: 10px; }
+
+.lg-table td {
+  padding: 10px 20px;
+  color: var(--lg-text, #fff);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+}
+
+.lg-table tbody tr { transition: background 0.1s ease; }
+.lg-table tbody tr:hover { background: rgba(255, 255, 255, 0.04); }
+.lg-table tbody tr:last-child td { border-bottom: none; }
+
+.lg-table td.lg-table__mono {
+  font-family: var(--lg-font-mono, 'SF Mono', monospace);
+  font-size: 12px;
+}
+
+.lg-table td.lg-table__num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.lg-table__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  color: var(--lg-text-dim, #666);
+}
+
+.lg-table__pagination button {
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--lg-text, #fff);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.lg-table__pagination button:hover { background: rgba(255, 255, 255, 0.14); }
+.lg-table__pagination button:disabled { opacity: 0.3; cursor: default; }
+
+/* ---------------------------------------------------------------------------
+   GANTT CHART — .lg-gantt
+   --------------------------------------------------------------------------- */
+
+.lg-gantt {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-gantt__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+
+.lg-gantt__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-gantt__body {
+  padding: 0 20px 20px;
+  overflow-x: auto;
+}
+
+.lg-gantt__body svg {
+  display: block;
+}
+
+.lg-gantt__body svg text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 11px;
+}
+
+.lg-gantt__body svg .gantt-bar {
+  rx: 4;
+  ry: 4;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lg-gantt__body svg .gantt-bar:hover { opacity: 0.85; }
+
+.lg-gantt__body svg .gantt-grid line {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+}
+
+.lg-gantt__body svg .gantt-today {
+  stroke: var(--lg-primary-500);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+
+/* ---------------------------------------------------------------------------
+   SANKEY DIAGRAM — .lg-sankey
+   --------------------------------------------------------------------------- */
+
+.lg-sankey {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-sankey__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+
+.lg-sankey__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-sankey__body {
+  padding: 0 20px 20px;
+}
+
+.lg-sankey__body svg text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 11px;
+  fill: var(--lg-text, #fff);
+}
+
+.lg-sankey__body svg .sankey-link {
+  fill: none;
+  stroke-opacity: 0.25;
+  transition: stroke-opacity 0.15s ease;
+}
+
+.lg-sankey__body svg .sankey-link:hover { stroke-opacity: 0.5; }
+
+.lg-sankey__body svg .sankey-node rect {
+  cursor: pointer;
+  rx: 3;
+  ry: 3;
+}
+
+/* ---------------------------------------------------------------------------
+   FORCE-DIRECTED GRAPH — .lg-force-graph
+   --------------------------------------------------------------------------- */
+
+.lg-force-graph {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+  position: relative;
+}
+
+.lg-force-graph__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.lg-force-graph__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-force-graph__body svg {
+  display: block;
+}
+
+.lg-force-graph__body svg .force-node {
+  cursor: grab;
+  transition: r 0.15s ease;
+}
+
+.lg-force-graph__body svg .force-node:hover { r: 10; }
+
+.lg-force-graph__body svg .force-link {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1.5;
+}
+
+.lg-force-graph__body svg .force-label {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 10px;
+  fill: var(--lg-text-dim, #666);
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+/* ---------------------------------------------------------------------------
+   TREEMAP — .lg-treemap
+   --------------------------------------------------------------------------- */
+
+.lg-treemap {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-treemap__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+
+.lg-treemap__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-treemap__body {
+  padding: 0 20px 20px;
+}
+
+.lg-treemap__body svg text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 11px;
+  fill: #fff;
+  pointer-events: none;
+}
+
+.lg-treemap__body svg rect {
+  stroke: var(--lg-bg, #141414);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lg-treemap__body svg rect:hover { opacity: 0.85; }
+
+/* ---------------------------------------------------------------------------
+   HEATMAP / CONTRIBUTION GRID — .lg-heatmap
+   --------------------------------------------------------------------------- */
+
+.lg-heatmap {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-heatmap__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+
+.lg-heatmap__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-heatmap__body {
+  padding: 0 20px 20px;
+  overflow-x: auto;
+}
+
+.lg-heatmap__body svg rect.heatmap-cell {
+  rx: 2;
+  ry: 2;
+  cursor: pointer;
+  transition: opacity 0.1s ease;
+}
+
+.lg-heatmap__body svg rect.heatmap-cell:hover { stroke: var(--lg-text, #fff); stroke-width: 1; }
+
+.lg-heatmap__body svg text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 10px;
+  fill: var(--lg-text-dim, #666);
+}
+
+.lg-heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 20px 16px;
+  font-size: 10px;
+  color: var(--lg-text-dim, #666);
+}
+
+.lg-heatmap__legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   SPARKLINE — .lg-sparkline
+   --------------------------------------------------------------------------- */
+
+.lg-sparkline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lg-sparkline svg {
+  display: block;
+}
+
+.lg-sparkline svg .sparkline-area {
+  fill-opacity: 0.15;
+}
+
+.lg-sparkline svg .sparkline-line {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lg-sparkline svg .sparkline-dot {
+  r: 2.5;
+}
+
+/* ---------------------------------------------------------------------------
+   DONUT / PIE — .lg-donut
+   --------------------------------------------------------------------------- */
+
+.lg-donut {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-donut__header {
+  padding: 16px 20px 12px;
+}
+
+.lg-donut__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-donut__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px 20px;
+}
+
+.lg-donut__body svg path {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lg-donut__body svg path:hover { opacity: 0.8; }
+
+.lg-donut__center {
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.lg-donut__center-value {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  fill: var(--lg-text, #fff);
+}
+
+.lg-donut__center-label {
+  font-size: 11px;
+  fill: var(--lg-text-dim, #666);
+}
+
+.lg-donut__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 20px 16px;
+  font-size: 12px;
+  color: var(--lg-text-dim, #666);
+}
+
+.lg-donut__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lg-donut__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ---------------------------------------------------------------------------
+   BAR CHART — .lg-bar-chart
+   --------------------------------------------------------------------------- */
+
+.lg-bar-chart {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-bar-chart__header {
+  padding: 16px 20px 12px;
+}
+
+.lg-bar-chart__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-bar-chart__body {
+  padding: 0 20px 20px;
+}
+
+.lg-bar-chart__body svg text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 11px;
+  fill: var(--lg-text-dim, #666);
+}
+
+.lg-bar-chart__body svg rect.bar {
+  rx: 3;
+  ry: 3;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lg-bar-chart__body svg rect.bar:hover { opacity: 0.8; }
+
+.lg-bar-chart__body svg .axis line,
+.lg-bar-chart__body svg .axis path {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+   AREA CHART — .lg-area-chart
+   --------------------------------------------------------------------------- */
+
+.lg-area-chart {
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  -webkit-backdrop-filter: blur(var(--lg-blur-standard, 24px)) saturate(var(--lg-saturation, 180%));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+}
+
+.lg-area-chart__header {
+  padding: 16px 20px 12px;
+}
+
+.lg-area-chart__title {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0;
+}
+
+.lg-area-chart__body {
+  padding: 0 20px 20px;
+}
+
+.lg-area-chart__body svg .area-fill { opacity: 0.2; }
+
+.lg-area-chart__body svg .area-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.lg-area-chart__body svg .area-dot {
+  r: 3;
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.lg-area-chart__body svg .area-dot:hover { r: 5; }
+
+.lg-area-chart__body svg .axis line,
+.lg-area-chart__body svg .axis path {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.lg-area-chart__body svg .axis text {
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 10px;
+  fill: var(--lg-text-dim, #666);
+}
+
+.lg-area-chart__body svg .grid line {
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-dasharray: 2 3;
+}
+
+/* ---------------------------------------------------------------------------
+   VERTICAL TIMELINE — .lg-timeline
+   --------------------------------------------------------------------------- */
+
+.lg-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.lg-timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+}
+
+.lg-timeline__item {
+  position: relative;
+  padding: 0 0 28px 20px;
+}
+
+.lg-timeline__item:last-child { padding-bottom: 0; }
+
+.lg-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lg-primary-500);
+  border: 2px solid var(--lg-bg, #141414);
+  z-index: 1;
+}
+
+.lg-timeline__item--muted::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lg-timeline__time {
+  font-size: 11px;
+  color: var(--lg-text-dim, #666);
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lg-timeline__content {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-subtle, 12px));
+  -webkit-backdrop-filter: blur(var(--lg-blur-subtle, 12px));
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-sm, 10px);
+}
+
+.lg-timeline__content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lg-text, #fff);
+  margin: 0 0 4px;
+}
+
+.lg-timeline__content p {
+  font-size: 13px;
+  color: var(--lg-text-dim, #666);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------------
+   KPI ROW — .lg-kpi-row
+   --------------------------------------------------------------------------- */
+
+.lg-kpi-row {
+  display: flex;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--lg-radius-md, 16px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+}
+
+.lg-kpi-row__item {
+  flex: 1;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, var(--lg-fill-opacity, 0.15));
+  backdrop-filter: blur(var(--lg-blur-subtle, 12px));
+  -webkit-backdrop-filter: blur(var(--lg-blur-subtle, 12px));
+  text-align: center;
+}
+
+.lg-kpi-row__label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--lg-text-dim, #666);
+  margin-bottom: 6px;
+}
+
+.lg-kpi-row__value {
+  font-family: var(--lg-font-heading, Inter, sans-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--lg-text, #fff);
+  line-height: 1.1;
+}
+
+.lg-kpi-row__delta {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.lg-kpi-row__delta--up { color: #34D399; }
+.lg-kpi-row__delta--down { color: #F87171; }
+
+/* ---------------------------------------------------------------------------
+   TOOLTIP — shared across all viz components
+   --------------------------------------------------------------------------- */
+
+.lg-viz-tooltip {
+  position: absolute;
+  pointer-events: none;
+  padding: 8px 12px;
+  background: var(--lg-surface, #1A1A1A);
+  border: 1px solid rgba(255, 255, 255, var(--lg-border-opacity, 0.18));
+  border-radius: var(--lg-radius-sm, 10px);
+  font-family: var(--lg-font-body, Inter, sans-serif);
+  font-size: 12px;
+  color: var(--lg-text, #fff);
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.lg-viz-tooltip--visible { opacity: 1; }
+
+.lg-viz-tooltip__label {
+  font-size: 10px;
+  color: var(--lg-text-dim, #666);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lg-viz-tooltip__value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .lg-kpi-row { flex-direction: column; }
+  .lg-kpi-row__item { text-align: left; }
+}
