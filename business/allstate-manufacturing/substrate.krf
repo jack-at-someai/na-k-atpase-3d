@@ -1,0 +1,324 @@
+;;; ============================================================
+;;; ALL STATE MANUFACTURING — Charlotte Knowledge Graph Substrate
+;;; Domain: Manufacturing / Micro Market Fixtures / OCS Equipment
+;;; Generated: 2026-02-12
+;;; Scope: Company profile, employees, products, competitors,
+;;;        supply chain, industry, and Charlotte primitive mapping
+;;; ============================================================
+
+(in-microtheory AllStateManufacturingMt)
+
+;;; ============================================================
+;;; NODES — Company Identity
+;;; ============================================================
+
+(isa AllStateManufacturing Company)
+(companyName AllStateManufacturing "All State Manufacturing Co., Inc.")
+(shortName AllStateManufacturing "ASM")
+(founded AllStateManufacturing "1975-07-22")
+(headquarters AllStateManufacturing "4024 2nd Parkway, Terre Haute, IN 47804")
+(phone AllStateManufacturing "812-466-2276")
+(tollFree AllStateManufacturing "800-274-2428")
+(website AllStateManufacturing "https://www.allstatemfg.com")
+(facebook AllStateManufacturing "facebook.com/allstatemfg")
+(incorporatedIn AllStateManufacturing "Indiana")
+(corpId AllStateManufacturing "197507-447")
+(bbbRating AllStateManufacturing "A+")
+(employeeCount AllStateManufacturing "6-10")
+(naicsCode AllStateManufacturing "332999")
+(sicCode AllStateManufacturing "3499")
+(industryClassification AllStateManufacturing "Metal Fabrication")
+(domainTag AllStateManufacturing "Manufacturing")
+
+;;; ============================================================
+;;; NODES — People
+;;; ============================================================
+
+(isa RudolphStakeman Person)
+(fullName RudolphStakeman "Rudolph Stakeman Jr.")
+(preferredName RudolphStakeman "Rudy")
+(role RudolphStakeman AllStateManufacturing "Chief Executive Officer")
+(startDate RudolphStakeman AllStateManufacturing "2017")
+(previousRole RudolphStakeman "President & Owner" "Specialty Blanks")
+(purchasedCompanyFrom RudolphStakeman "Marian Ramsey Ford" "2017")
+
+(isa MadisonMuncie Person)
+(fullName MadisonMuncie "Madison Muncie")
+(role MadisonMuncie AllStateManufacturing "Chief Operating Officer")
+
+(isa SandraFaulkenberry Person)
+(fullName SandraFaulkenberry "Sandra Faulkenberry")
+(role SandraFaulkenberry AllStateManufacturing "Sales Manager")
+
+(isa ChrisHigginbotham Person)
+(fullName ChrisHigginbotham "Chris Higginbotham")
+(role ChrisHigginbotham AllStateManufacturing "Plant Manager")
+(tenureYears ChrisHigginbotham AllStateManufacturing 45)
+
+(isa JarredQuebedeau Person)
+(fullName JarredQuebedeau "Jarred Quebedeau")
+(role JarredQuebedeau AllStateManufacturing "CNC Machine Operator")
+
+(isa DuanePerry Person)
+(fullName DuanePerry "Duane Perry")
+(role DuanePerry AllStateManufacturing "Administrative Assistant")
+
+;;; Historical people
+(isa EarlRamsey Person)
+(fullName EarlRamsey "Earl Ramsey")
+(role EarlRamsey AllStateManufacturing "Founder")
+(foundedCompany EarlRamsey AllStateManufacturing "1975")
+
+(isa MarianRamseyFord Person)
+(fullName MarianRamseyFord "Marian Ramsey Ford")
+(role MarianRamseyFord AllStateManufacturing "Owner")
+(isDaughterOf MarianRamseyFord EarlRamsey)
+(transitionedBusinessTo MarianRamseyFord "specialty shelving and cabinetry")
+(soldCompanyTo MarianRamseyFord RudolphStakeman "2017")
+
+;;; ============================================================
+;;; NODES — Products
+;;; ============================================================
+
+(isa MicroMarket27 Product)
+(productName MicroMarket27 "27-Inch Micro Market Stand")
+(manufacturer MicroMarket27 AllStateManufacturing)
+(displayArea MicroMarket27 "12 sq ft")
+(features MicroMarket27 "LED lighting, stainless steel slat walls, leveling legs")
+(category MicroMarket27 "Micro Market Fixtures")
+(assemblyStatus MicroMarket27 "Fully Assembled")
+
+(isa MicroMarket36 Product)
+(productName MicroMarket36 "36-Inch Micro Market Series")
+(manufacturer MicroMarket36 AllStateManufacturing)
+(features MicroMarket36 "Mid-size space saver, LED lighting, stainless steel slat walls")
+(category MicroMarket36 "Micro Market Fixtures")
+(assemblyStatus MicroMarket36 "Fully Assembled")
+
+(isa MicroMarket49 Product)
+(productName MicroMarket49 "49-Inch Micro Market")
+(manufacturer MicroMarket49 AllStateManufacturing)
+(dimensions MicroMarket49 "49\"W x 23.25\"D x 78\"H")
+(features MicroMarket49 "Doubles pay stations, maximizes display")
+(category MicroMarket49 "Micro Market Fixtures")
+(assemblyStatus MicroMarket49 "Fully Assembled")
+
+(isa ASMMS272Cool Product)
+(productName ASMMS272Cool "ASMMS272-Cool Micro Market")
+(manufacturer ASMMS272Cool AllStateManufacturing)
+(features ASMMS272Cool "Integrated beverage cooler, small footprint")
+(category ASMMS272Cool "Micro Market Fixtures")
+(assemblyStatus ASMMS272Cool "Fully Assembled")
+
+(isa OCSCabinet Product)
+(productName OCSCabinet "Office Coffee Service Cabinet")
+(manufacturer OCSCabinet AllStateManufacturing)
+(features OCSCabinet "Designed for microwaves and single-serve brewers")
+(category OCSCabinet "Office Coffee Service")
+
+(isa CondimentStand Product)
+(productName CondimentStand "Condiment Stand")
+(manufacturer CondimentStand AllStateManufacturing)
+(features CondimentStand "Various configurations for breakroom use")
+(category CondimentStand "Office Coffee Service")
+
+(isa CoffeeCart Product)
+(productName CoffeeCart "Coffee Cart")
+(manufacturer CoffeeCart AllStateManufacturing)
+(features CoffeeCart "Mobile service stand")
+(category CoffeeCart "Office Coffee Service")
+
+(isa AS494StorageCabinet Product)
+(productName AS494StorageCabinet "AS494-N/L Storage Cabinet")
+(manufacturer AS494StorageCabinet AllStateManufacturing)
+(features AS494StorageCabinet "All-metal backstock and supply storage")
+(category AS494StorageCabinet "Storage & Utility")
+
+;;; Product features (shared across all products)
+(hasFeature AllStateManufacturing "American-made")
+(hasFeature AllStateManufacturing "Double-wall metal construction")
+(hasFeature AllStateManufacturing "Stain-resistant powder coat finish")
+(hasFeature AllStateManufacturing "20-amp receptacles")
+(hasFeature AllStateManufacturing "Stainless steel shelves")
+(hasFeature AllStateManufacturing "Locking storage")
+(hasFeature AllStateManufacturing "LED lighting")
+(hasFeature AllStateManufacturing "Fully assembled")
+(hasFeature AllStateManufacturing "Customizable colors")
+
+;;; ============================================================
+;;; NODES — Manufacturing Assets
+;;; ============================================================
+
+(isa PowderCoatLine ManufacturingAsset)
+(assetName PowderCoatLine "Powder Coating Line")
+(installedDate PowderCoatLine "2018-Q4")
+(conveyorLength PowderCoatLine "180 ft")
+(hasComponent PowderCoatLine "Inline curing furnace")
+(builtBy PowderCoatLine "Midwest Finishing Systems" "Mishawaka, IN")
+(gunTechnology PowderCoatLine "American Industrial Corporation" "Greenwood, IN")
+
+(isa CNCMachine ManufacturingAsset)
+(assetName CNCMachine "CNC Machine")
+(operatedBy CNCMachine JarredQuebedeau)
+
+;;; ============================================================
+;;; NODES — Competitors
+;;; ============================================================
+
+(isa AxisDesigns Competitor)
+(companyName AxisDesigns "Axis Designs / Micro Market Fixtures")
+(website AxisDesigns "https://www.micro-marketfixtures.com")
+(competesIn AxisDesigns "Micro Market Fixtures")
+(differentiation AxisDesigns "Wide product range, merchandiser series, upscale packages")
+
+(isa AdvantageMetalProducts Competitor)
+(companyName AdvantageMetalProducts "Advantage Metal Products")
+(competesIn AdvantageMetalProducts "Metal Cabinets / OCS Fixtures")
+
+(isa FlorenceManufacturing Competitor)
+(companyName FlorenceManufacturing "Florence Manufacturing")
+(competesIn FlorenceManufacturing "Metal Cabinetry")
+
+(isa FixturesCloseUp Competitor)
+(companyName FixturesCloseUp "Fixtures Close Up")
+(competesIn FixturesCloseUp "Retail / Micro Market Display Fixtures")
+
+(isa MarketDesignGroup Competitor)
+(companyName MarketDesignGroup "Market Design Group")
+(competesIn MarketDesignGroup "Micro Market Design & Fixtures")
+
+;;; ============================================================
+;;; NODES — Industry / Supply Chain
+;;; ============================================================
+
+(isa NAMA IndustryAssociation)
+(orgName NAMA "National Automatic Merchandising Association")
+(memberOf AllStateManufacturing NAMA)
+(memberStatus AllStateManufacturing NAMA "Legacy Exhibitor")
+
+(isa ThreeSixFiveRetailMarkets TechPlatform)
+(orgName ThreeSixFiveRetailMarkets "365 Retail Markets")
+(role ThreeSixFiveRetailMarkets "Micro market software/kiosk platform")
+
+(isa ThreeSquareMarket TechPlatform)
+(orgName ThreeSquareMarket "Three Square Market")
+(role ThreeSquareMarket "Micro market technology provider")
+
+(isa Aramark ServiceOperator)
+(orgName Aramark "Aramark")
+(role Aramark "Vending / food service operator")
+
+(isa CanteenCompass ServiceOperator)
+(orgName CanteenCompass "Canteen (Compass Group)")
+(role CanteenCompass "Vending / micro market operator")
+
+(isa VendingMarketWatch IndustryMedia)
+(orgName VendingMarketWatch "Vending Market Watch")
+(featuredIn AllStateManufacturing VendingMarketWatch "Powder coat line article, 2018")
+
+(isa MidwestFinishingSystems Supplier)
+(orgName MidwestFinishingSystems "Midwest Finishing Systems")
+(location MidwestFinishingSystems "Mishawaka, IN")
+(suppliedTo MidwestFinishingSystems AllStateManufacturing "Powder coating line conveyor and furnace")
+
+(isa AmericanIndustrialCorp Supplier)
+(orgName AmericanIndustrialCorp "American Industrial Corporation")
+(location AmericanIndustrialCorp "Greenwood, IN")
+(suppliedTo AmericanIndustrialCorp AllStateManufacturing "Powder gun technology")
+
+;;; ============================================================
+;;; NODES — Geography
+;;; ============================================================
+
+(isa TerreHauteIN Location)
+(locationName TerreHauteIN "Terre Haute, Indiana")
+(state TerreHauteIN "Indiana")
+(locatedIn AllStateManufacturing TerreHauteIN)
+
+;;; ============================================================
+;;; EDGES — Employment
+;;; ============================================================
+
+(employs AllStateManufacturing RudolphStakeman)
+(employs AllStateManufacturing MadisonMuncie)
+(employs AllStateManufacturing SandraFaulkenberry)
+(employs AllStateManufacturing ChrisHigginbotham)
+(employs AllStateManufacturing JarredQuebedeau)
+(employs AllStateManufacturing DuanePerry)
+(reportsTo MadisonMuncie RudolphStakeman)
+(reportsTo SandraFaulkenberry RudolphStakeman)
+(reportsTo ChrisHigginbotham RudolphStakeman)
+
+;;; ============================================================
+;;; EDGES — Product → Category → Market
+;;; ============================================================
+
+(servesMarket AllStateManufacturing "Vending Industry")
+(servesMarket AllStateManufacturing "Micro Market Industry")
+(servesMarket AllStateManufacturing "Office Coffee Service")
+(servesMarket AllStateManufacturing "Breakroom Furniture")
+
+(manufactures AllStateManufacturing MicroMarket27)
+(manufactures AllStateManufacturing MicroMarket36)
+(manufactures AllStateManufacturing MicroMarket49)
+(manufactures AllStateManufacturing ASMMS272Cool)
+(manufactures AllStateManufacturing OCSCabinet)
+(manufactures AllStateManufacturing CondimentStand)
+(manufactures AllStateManufacturing CoffeeCart)
+(manufactures AllStateManufacturing AS494StorageCabinet)
+
+;;; ============================================================
+;;; EDGES — Competitive
+;;; ============================================================
+
+(competesDirectlyWith AllStateManufacturing AxisDesigns)
+(competesDirectlyWith AllStateManufacturing AdvantageMetalProducts)
+(competesDirectlyWith AllStateManufacturing FlorenceManufacturing)
+(competesDirectlyWith AllStateManufacturing FixturesCloseUp)
+(competesDirectlyWith AllStateManufacturing MarketDesignGroup)
+
+;;; ============================================================
+;;; EDGES — Supply Chain
+;;; ============================================================
+
+(hasSupplier AllStateManufacturing MidwestFinishingSystems)
+(hasSupplier AllStateManufacturing AmericanIndustrialCorp)
+(sellsTo AllStateManufacturing Aramark)
+(sellsTo AllStateManufacturing CanteenCompass)
+
+;;; ============================================================
+;;; SIGNALS — Historical Events
+;;; ============================================================
+
+(hasEvent AllStateManufacturing "founding" "1975-07-22" "Earl Ramsey opens as vending machine remanufacturer")
+(hasEvent AllStateManufacturing "transition" "~2005" "Marian Ramsey Ford shifts to specialty shelving and cabinetry")
+(hasEvent AllStateManufacturing "acquisition" "2017-01" "Rudolph Stakeman Jr. purchases company from Marian Ramsey Ford")
+(hasEvent AllStateManufacturing "capital-investment" "2018-Q4" "180ft powder coating line installed")
+
+;;; ============================================================
+;;; METRICS — Business
+;;; ============================================================
+
+(metric AllStateManufacturing "years_in_business" 50)
+(metric AllStateManufacturing "bbb_complaints_3yr" 0)
+(metric AllStateManufacturing "product_lines" 4)
+(metric AllStateManufacturing "micro_market_sizes" 4)
+(metric AllStateManufacturing "conveyor_length_ft" 180)
+(metric AllStateManufacturing "longest_employee_tenure_yr" 45)
+
+;;; ============================================================
+;;; PROTOCOLS — Charlotte Mapping
+;;; ============================================================
+
+;; What Charlotte would observe in this domain:
+;; NODE:     Product, Employee, Customer, Supplier, Competitor
+;; EDGE:     manufactures, employs, sellsTo, competesDirectlyWith, hasSupplier
+;; METRIC:   orderVolume, leadTime, inventoryLevel, customerSatisfaction, revenuePerProduct
+;; SIGNAL:   orderPlaced, orderShipped, complaintFiled, newProductLaunched, equipmentMaintenance
+;; PROTOCOL: qualityInspection, powderCoatProcess, assemblySequence, shippingChecklist, warrantyTerms
+
+(charlottePrimitive AllStateManufacturing NODE "Product SKU, Employee, Customer Account, Supplier, Competitor")
+(charlottePrimitive AllStateManufacturing EDGE "manufactures, sellsTo, orderedBy, suppliedBy, competesDirectlyWith")
+(charlottePrimitive AllStateManufacturing METRIC "orderVolume, leadTime, defectRate, revenuePerSKU, customerLifetimeValue")
+(charlottePrimitive AllStateManufacturing SIGNAL "orderPlaced, orderShipped, qualityHold, customerInquiry, tradeShowContact")
+(charlottePrimitive AllStateManufacturing PROTOCOL "qualityInspection, assemblySequence, powderCoatCure, shippingChecklist, warrantyTerms")

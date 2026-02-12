@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All State Manufacturing — SomeAI Client Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --steel-500:#3D7AB6;--steel-600:#2E6192;--steel-700:#23496D;--steel-800:#183149;--steel-900:#0D1924;
+  --forge-500:#FF7C00;--forge-400:#FF9633;--forge-300:#FFB066;
+  --green-500:#3C783C;--green-400:#639363;
+  --iron-500:#566068;--iron-700:#353C42;--iron-800:#252B30;--iron-900:#181C1F;
+  --text:#E8EAEB;--text-dim:#7F878D;--border:#444C53;
+  --glass-bg:rgba(13,25,36,0.92);--glass-border:rgba(61,122,182,0.18);
+}
+html{scroll-behavior:smooth}
+body{background:var(--iron-900);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+
+/* === KG BACKGROUND === */
+#kg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.35}
+
+/* === SCROLL CONTENT === */
+#scroll-content{position:relative;z-index:10;pointer-events:none}
+.section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px;pointer-events:none}
+.section.auto-h{min-height:auto}
+.section-inner{max-width:960px;width:100%;pointer-events:auto}
+
+/* Glass */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--glass-border);
+  border-radius:16px;
+  padding:48px;
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.glass.visible{opacity:1;transform:translateY(0)}
+
+/* === TYPOGRAPHY === */
+h1.hero-title{
+  font-family:'Oswald',sans-serif;font-size:clamp(36px,8vw,72px);font-weight:700;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--steel-500),var(--forge-500));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1.1;margin-bottom:8px;
+}
+.hero-sub{font-family:'Oswald',sans-serif;font-size:clamp(14px,2.5vw,20px);font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--forge-500);margin-bottom:24px}
+.hero-desc{font-size:15px;color:var(--text-dim);max-width:650px;margin-bottom:32px}
+.hero-badge{display:inline-block;padding:6px 16px;border:1px solid var(--steel-500);border-radius:20px;font-size:11px;letter-spacing:2px;color:var(--steel-500);text-transform:uppercase;margin-bottom:20px}
+
+h2.section-title{
+  font-family:'Oswald',sans-serif;font-size:clamp(26px,4.5vw,40px);font-weight:600;letter-spacing:2px;
+  color:var(--text);margin-bottom:8px;line-height:1.2;
+}
+h2.section-title span.accent{color:var(--forge-500)}
+h2.section-title span.steel{color:var(--steel-500)}
+.section-subtitle{font-size:13px;color:var(--steel-500);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+.section-body{font-size:15px;color:var(--text-dim);line-height:1.8;margin-bottom:24px}
+.section-body strong{color:var(--text)}
+
+/* === BEFORE/AFTER SPLIT === */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.split-panel{border-radius:12px;padding:24px}
+.split-before{background:rgba(86,96,104,0.12);border:1px solid rgba(86,96,104,0.25)}
+.split-after{background:rgba(61,122,182,0.08);border:1px solid var(--glass-border)}
+.split-label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.split-label.before{color:var(--iron-500)}
+.split-label.after{color:var(--forge-500)}
+.split-list{list-style:none;padding:0}
+.split-list li{padding:6px 0;font-size:13px;color:var(--text-dim);border-bottom:1px solid rgba(255,255,255,0.03)}
+.split-list li strong{color:var(--text)}
+
+/* === STAT BAR === */
+.stat-bar{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--glass-border);border-radius:10px;overflow:hidden;margin-top:8px}
+.stat-item{flex:1;min-width:100px;padding:14px 10px;text-align:center;border-right:1px solid var(--glass-border);background:rgba(61,122,182,0.04)}
+.stat-item:last-child{border-right:none}
+.stat-val{display:block;font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--text)}
+.stat-lbl{display:block;font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-top:4px;text-transform:uppercase}
+
+/* === TEAM GRID === */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.team-card{background:rgba(61,122,182,0.06);border:1px solid var(--glass-border);border-radius:10px;padding:16px;text-align:center}
+.team-initials{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--steel-700),var(--steel-500));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin:0 auto 10px}
+.team-card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.team-card p{font-size:11px;color:var(--text-dim)}
+.team-card .tenure{font-size:10px;color:var(--forge-500);margin-top:4px}
+
+/* === TIMELINE === */
+.timeline{position:relative;padding-left:28px;margin-top:20px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--glass-border)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-dot{position:absolute;left:-24px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--steel-500);background:var(--iron-900)}
+.timeline-item.active .timeline-dot{background:var(--forge-500);border-color:var(--forge-500)}
+.timeline-year{font-family:'Oswald',sans-serif;font-size:14px;color:var(--steel-500);font-weight:600;letter-spacing:1px}
+.timeline-desc{font-size:13px;color:var(--text-dim);margin-top:2px}
+
+/* === PRODUCT GRID === */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.product-card{background:rgba(255,124,0,0.04);border:1px solid rgba(255,124,0,0.12);border-radius:10px;padding:20px;text-align:center}
+.product-card h4{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:var(--forge-500);letter-spacing:1px;margin-bottom:6px}
+.product-card p{font-size:12px;color:var(--text-dim);line-height:1.5}
+.product-card .spec{font-size:10px;color:var(--text-dim);font-family:'Courier New',monospace;margin-top:8px;padding:6px;background:rgba(0,0,0,0.3);border-radius:4px}
+
+/* === PRIMITIVE CARDS === */
+.prim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:24px}
+.prim-card{background:rgba(61,122,182,0.06);border:1px solid var(--glass-border);border-radius:12px;padding:20px 16px;text-align:center;transition:border-color 0.3s,transform 0.3s}
+.prim-card:hover{border-color:var(--steel-500);transform:translateY(-2px)}
+.prim-icon{font-size:24px;margin-bottom:8px;display:block}
+.prim-name{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:2px;margin-bottom:8px}
+.prim-name.c-steel{color:var(--steel-500)}.prim-name.c-forge{color:var(--forge-500)}.prim-name.c-green{color:var(--green-500)}
+.prim-examples{font-size:11px;color:var(--text-dim);line-height:1.6}
+.prim-examples strong{color:var(--text);font-weight:500}
+
+/* === COMPETITOR TABLE === */
+.comp-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px}
+.comp-table th{text-align:left;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;color:var(--steel-500);padding:10px 12px;border-bottom:1px solid var(--glass-border);text-transform:uppercase}
+.comp-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--text-dim)}
+.comp-table td:first-child{color:var(--text);font-weight:500}
+.comp-table tr:hover td{background:rgba(61,122,182,0.04)}
+
+/* === CONTRACT CARDS === */
+.contract-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.contract-card{background:rgba(61,122,182,0.06);border:1px solid var(--glass-border);border-radius:12px;padding:24px;position:relative;overflow:hidden}
+.contract-card.recommended{border-color:var(--forge-500)}
+.contract-card.recommended::before{content:'RECOMMENDED';position:absolute;top:12px;right:-30px;background:var(--forge-500);color:var(--iron-900);font-size:9px;letter-spacing:2px;font-weight:700;padding:3px 36px;transform:rotate(45deg)}
+.contract-card h4{font-family:'Oswald',sans-serif;font-size:18px;color:var(--text);letter-spacing:1px;margin-bottom:4px}
+.contract-card .price{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--forge-500);margin-bottom:12px}
+.contract-card .price span{font-size:14px;color:var(--text-dim);font-weight:400}
+.contract-card ul{list-style:none;padding:0}
+.contract-card ul li{padding:6px 0;font-size:12px;color:var(--text-dim);border-bottom:1px solid rgba(255,255,255,0.03)}
+.contract-card ul li::before{content:'\2713';color:var(--green-500);margin-right:8px;font-weight:700}
+
+/* === CLOSING === */
+.closing-line{font-family:'Oswald',sans-serif;font-size:clamp(16px,2.5vw,22px);color:var(--text-dim);letter-spacing:1px;line-height:1.6;margin-top:24px}
+.closing-line strong{color:var(--text)}
+
+/* === SPACER === */
+.spacer{height:40vh;pointer-events:none}
+
+/* === MOBILE === */
+@media(max-width:640px){
+  .glass{padding:28px 20px}
+  .split{grid-template-columns:1fr}
+  .prim-grid{grid-template-columns:repeat(2,1fr)}
+  .contract-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:1fr}
+  .stat-item{min-width:80px;padding:10px 6px}
+  .stat-val{font-size:18px}
+  .comp-table{font-size:11px}
+  .comp-table th,.comp-table td{padding:6px 8px}
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--steel-700);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--steel-600)}
+</style>
+</head>
+<body>
+
+<!-- ═══ KG BACKGROUND ═══ -->
+<canvas id="kg-canvas"></canvas>
+
+<!-- ═══ SCROLL CONTENT ═══ -->
+<div id="scroll-content">
+
+  <div class="spacer"></div>
+
+  <!-- SECTION 1: HERO -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="hero-badge">SomeAI Client Assessment</div>
+        <h1 class="hero-title">ALL STATE MANUFACTURING</h1>
+        <div class="hero-sub">Made in America Since 1975</div>
+        <p class="hero-desc">A 50-year-old metal fabrication company in Terre Haute, Indiana building micro market fixtures, office coffee stands, and custom cabinets for the vending industry. This assessment maps the current state of the business and shows what Charlotte infrastructure would look like deployed here.</p>
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-val">50</span><span class="stat-lbl">Years</span></div>
+          <div class="stat-item"><span class="stat-val">A+</span><span class="stat-lbl">BBB Rating</span></div>
+          <div class="stat-item"><span class="stat-val">0</span><span class="stat-lbl">Complaints</span></div>
+          <div class="stat-item"><span class="stat-val">6</span><span class="stat-lbl">Employees</span></div>
+          <div class="stat-item"><span class="stat-val">4</span><span class="stat-lbl">Product Lines</span></div>
+          <div class="stat-item"><span class="stat-val">NAMA</span><span class="stat-lbl">Member</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: COMPANY PROFILE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Company Profile</div>
+        <h2 class="section-title">Three generations of <span class="accent">American metal</span></h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1975</div>
+            <div class="timeline-desc"><strong>Earl Ramsey</strong> opens All State Manufacturing as a vending machine remanufacturer in Terre Haute, Indiana.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">~2000s</div>
+            <div class="timeline-desc"><strong>Marian Ramsey Ford</strong> (Earl's daughter) transitions the business from remanufacturing to specialty shelving and cabinetry for the vending industry.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2017</div>
+            <div class="timeline-desc"><strong>Rudolph "Rudy" Stakeman Jr.</strong> purchases the company and all assets. Brings experience from Specialty Blanks manufacturing.</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2018</div>
+            <div class="timeline-desc">New <strong>180-foot powder coating line</strong> installed &mdash; Midwest Finishing Systems conveyor with inline curing furnace. Cuts manufacturing cycle from 3 days to same-day assembly.</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2025</div>
+            <div class="timeline-desc"><strong>Today</strong> &mdash; 50 years in business, A+ BBB rating, NAMA Legacy Exhibitor, zero complaints. Ready for digital infrastructure.</div>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:36px">The <span class="steel">Team</span></h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-initials">RS</div>
+            <h4>Rudy Stakeman</h4>
+            <p>Chief Executive Officer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">MM</div>
+            <h4>Madison Muncie</h4>
+            <p>Chief Operating Officer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">SF</div>
+            <h4>Sandra Faulkenberry</h4>
+            <p>Sales Manager</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">CH</div>
+            <h4>Chris Higginbotham</h4>
+            <p>Plant Manager</p>
+            <div class="tenure">45 years with the company</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">JQ</div>
+            <h4>Jarred Quebedeau</h4>
+            <p>CNC Machine Operator</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">DP</div>
+            <h4>Duane Perry</h4>
+            <p>Administrative Assistant</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PRODUCTS -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Products</div>
+        <h2 class="section-title">What they <span class="accent">build</span></h2>
+        <p class="section-body">All-metal, fully assembled fixtures for the vending, micro market, and office coffee service industries. Double-wall construction. Powder-coated. Stainless steel shelves. LED lighting. Made in Terre Haute.</p>
+        <div class="product-grid">
+          <div class="product-card">
+            <h4>27" Micro Market</h4>
+            <p>Compact stand, 12 sq ft display, LED lighting, stainless slat walls</p>
+            <div class="spec">SKU: ASMMS27-series</div>
+          </div>
+          <div class="product-card">
+            <h4>36" Micro Market</h4>
+            <p>Mid-size space saver, LED, leveling legs, stainless slat walls</p>
+            <div class="spec">SKU: ASMMS36-series</div>
+          </div>
+          <div class="product-card">
+            <h4>49" Micro Market</h4>
+            <p>Doubles pay stations, maximizes display</p>
+            <div class="spec">49"W x 23.25"D x 78"H</div>
+          </div>
+          <div class="product-card">
+            <h4>Cool Market</h4>
+            <p>Integrated beverage cooler, small footprint</p>
+            <div class="spec">SKU: ASMMS272-Cool</div>
+          </div>
+          <div class="product-card">
+            <h4>OCS Cabinets</h4>
+            <p>Designed for microwaves and single-serve coffee brewers</p>
+            <div class="spec">Multiple configs</div>
+          </div>
+          <div class="product-card">
+            <h4>Condiment Stands</h4>
+            <p>Various configurations for breakroom deployment</p>
+            <div class="spec">Custom sizing</div>
+          </div>
+          <div class="product-card">
+            <h4>Storage Cabinets</h4>
+            <p>All-metal backstock and supply storage, locking</p>
+            <div class="spec">SKU: AS494-N/L</div>
+          </div>
+          <div class="product-card">
+            <h4>Coffee Carts</h4>
+            <p>Mobile service stands with 20-amp receptacles</p>
+            <div class="spec">Mobile / wheeled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: BEFORE / AFTER -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Digital Assessment</div>
+        <h2 class="section-title">Before <span class="accent">&amp;</span> After</h2>
+        <p class="section-body">A 50-year manufacturing company with zero digital infrastructure beyond a Wix website and a Facebook page. This is the opportunity.</p>
+        <div class="split">
+          <div class="split-panel split-before">
+            <div class="split-label before">Current State</div>
+            <ul class="split-list">
+              <li><strong>Website:</strong> Wix template, JS-rendered, no SEO</li>
+              <li><strong>CRM:</strong> None &mdash; sales via phone and email</li>
+              <li><strong>Order tracking:</strong> Manual / spreadsheet</li>
+              <li><strong>Inventory:</strong> Physical count, no digital system</li>
+              <li><strong>Customer data:</strong> Scattered across email threads</li>
+              <li><strong>Product catalog:</strong> Basic Wix pages, no specs database</li>
+              <li><strong>Social media:</strong> Facebook page only</li>
+              <li><strong>Analytics:</strong> None visible</li>
+              <li><strong>Brand identity:</strong> Minimal &mdash; no design system</li>
+              <li><strong>Competitive intel:</strong> None formalized</li>
+            </ul>
+          </div>
+          <div class="split-panel split-after">
+            <div class="split-label after">With Charlotte</div>
+            <ul class="split-list">
+              <li><strong>Website:</strong> Custom build, SSR, sub-second load</li>
+              <li><strong>CRM:</strong> Every customer is a NODE with full lifecycle</li>
+              <li><strong>Order tracking:</strong> SIGNAL stream &mdash; placed, built, coated, shipped</li>
+              <li><strong>Inventory:</strong> Real-time METRIC on every SKU and raw material</li>
+              <li><strong>Customer data:</strong> Knowledge graph &mdash; who buys what, when, why</li>
+              <li><strong>Product catalog:</strong> Structured data, instant quotes, 3D previews</li>
+              <li><strong>Social media:</strong> Multi-platform with content pipeline</li>
+              <li><strong>Analytics:</strong> Dashboard &mdash; revenue, lead time, defect rate, CLV</li>
+              <li><strong>Brand identity:</strong> Full design system (this page IS the proof)</li>
+              <li><strong>Competitive intel:</strong> Charlotte watches the market for you</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: COMPETITIVE LANDSCAPE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Competitive Landscape</div>
+        <h2 class="section-title">Who else is in the <span class="steel">market</span></h2>
+        <p class="section-body">The micro market fixtures space is growing fast &mdash; the US micro market industry has exploded as companies replace traditional vending with self-checkout breakroom markets. All State competes on durability and American manufacturing, but digital presence is a weakness.</p>
+        <table class="comp-table">
+          <thead>
+            <tr><th>Competitor</th><th>Focus</th><th>Advantage</th><th>Weakness</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Axis Designs</td>
+              <td>Micro market fixtures</td>
+              <td>Wide product range, upscale packages</td>
+              <td>Higher price point</td>
+            </tr>
+            <tr>
+              <td>Advantage Metal Products</td>
+              <td>Metal cabinets / OCS</td>
+              <td>Established distribution</td>
+              <td>Generic branding</td>
+            </tr>
+            <tr>
+              <td>Market Design Group</td>
+              <td>Micro market design</td>
+              <td>Full design service</td>
+              <td>Not a manufacturer</td>
+            </tr>
+            <tr>
+              <td>Florence Manufacturing</td>
+              <td>Metal cabinetry</td>
+              <td>Scale, mailbox market</td>
+              <td>Not vending-focused</td>
+            </tr>
+            <tr>
+              <td>Fixtures Close Up</td>
+              <td>Retail/display fixtures</td>
+              <td>Broad retail coverage</td>
+              <td>Not micro market specialist</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="section-body" style="margin-top:20px"><strong>All State's moat:</strong> 50 years, fully assembled, American-made, powder-coated in-house, A+ BBB with zero complaints, NAMA Legacy Exhibitor. The product is excellent. The digital presence is not.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: CHARLOTTE PRIMITIVES -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Charlotte Mapping</div>
+        <h2 class="section-title">Five primitives applied to <span class="accent">manufacturing</span></h2>
+        <p class="section-body">The same infrastructure that powers swine genetics and industrial equipment service &mdash; mapped to a small metal fabrication shop.</p>
+        <div class="prim-grid">
+          <div class="prim-card">
+            <span class="prim-icon">&#x25C9;</span>
+            <div class="prim-name c-steel">NODE</div>
+            <div class="prim-examples"><strong>Product SKU</strong><br><strong>Employee</strong><br><strong>Customer Account</strong><br><strong>Supplier</strong> &middot; <strong>Competitor</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x2194;</span>
+            <div class="prim-name c-forge">EDGE</div>
+            <div class="prim-examples"><strong>manufactures</strong><br><strong>sellsTo</strong> &middot; <strong>orderedBy</strong><br><strong>suppliedBy</strong><br><strong>competesDirectlyWith</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x25B2;</span>
+            <div class="prim-name c-green">METRIC</div>
+            <div class="prim-examples"><strong>Order Volume</strong><br><strong>Lead Time</strong><br><strong>Defect Rate</strong><br><strong>Revenue per SKU</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x26A1;</span>
+            <div class="prim-name" style="color:#EF4444">SIGNAL</div>
+            <div class="prim-examples"><strong>Order Placed</strong><br><strong>Order Shipped</strong><br><strong>Quality Hold</strong><br><strong>Trade Show Contact</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x2696;</span>
+            <div class="prim-name" style="color:#E9C46A">PROTOCOL</div>
+            <div class="prim-examples"><strong>Quality Inspection</strong><br><strong>Powder Coat Cure</strong><br><strong>Assembly Sequence</strong><br><strong>Warranty Terms</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: INDUSTRY CONTEXT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Industry</div>
+        <h2 class="section-title">The micro market <span class="accent">explosion</span></h2>
+        <p class="section-body">The US micro market industry has grown from a niche vending alternative to a <strong>$5B+ market</strong>. Companies are replacing banks of vending machines with open-shelf, self-checkout breakroom markets. Every one of those markets needs <strong>fixtures</strong> &mdash; and that's what All State builds.</p>
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-val">$5B+</span><span class="stat-lbl">US Market Size</span></div>
+          <div class="stat-item"><span class="stat-val">30K+</span><span class="stat-lbl">Micro Markets</span></div>
+          <div class="stat-item"><span class="stat-val">15%</span><span class="stat-lbl">Annual Growth</span></div>
+          <div class="stat-item"><span class="stat-val">365</span><span class="stat-lbl">Retail Markets (Leader)</span></div>
+        </div>
+        <p class="section-body" style="margin-top:20px"><strong>Key technology trends:</strong> Cashless payment, AI-driven inventory, smart coolers, computer vision checkout, grab-and-go. The fixture manufacturers who integrate with these platforms win. Charlotte makes All State the infrastructure partner, not just the cabinet vendor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: CONTRACT SIZING -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Engagement</div>
+        <h2 class="section-title">What this <span class="accent">looks like</span></h2>
+        <p class="section-body">SomeAI deploys Charlotte infrastructure as an embedded service. Not SaaS &mdash; we become part of your operation.</p>
+        <div class="contract-grid">
+          <div class="contract-card">
+            <h4>Foundation</h4>
+            <div class="price">$2,500<span>/mo</span></div>
+            <ul>
+              <li>Custom website (replace Wix)</li>
+              <li>Brand identity + design system</li>
+              <li>Product catalog with structured data</li>
+              <li>Basic CRM &mdash; customer NODEs</li>
+              <li>Social media presence</li>
+              <li>Monthly analytics report</li>
+            </ul>
+          </div>
+          <div class="contract-card recommended">
+            <h4>Operations</h4>
+            <div class="price">$5,000<span>/mo</span></div>
+            <ul>
+              <li>Everything in Foundation</li>
+              <li>Order tracking SIGNAL stream</li>
+              <li>Inventory METRIC system</li>
+              <li>Customer lifecycle graph</li>
+              <li>Competitive intelligence feed</li>
+              <li>Manufacturing dashboard</li>
+              <li>Quarterly on-site visit</li>
+            </ul>
+          </div>
+          <div class="contract-card">
+            <h4>Charlotte OS</h4>
+            <div class="price">$10,000<span>/mo</span></div>
+            <ul>
+              <li>Everything in Operations</li>
+              <li>Full Charlotte substrate deployment</li>
+              <li>Predictive demand modeling</li>
+              <li>Supply chain graph</li>
+              <li>Automated quoting engine</li>
+              <li>Integration with 365/Three Square</li>
+              <li>Dedicated Charlotte engineer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: VISION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Vision</div>
+        <h2 class="section-title">From cabinet shop to <span class="accent">platform</span></h2>
+        <p class="section-body">All State Manufacturing has survived 50 years on product quality alone. Zero digital infrastructure. Zero complaints. A+ rating. The product speaks for itself. But the micro market industry is growing at 15% annually and the companies that integrate digitally &mdash; with fixture configurators, operator dashboards, and predictive ordering &mdash; will own the next 50 years.</p>
+        <p class="section-body">Charlotte doesn't replace what All State does. Charlotte makes what All State does <strong>observable, measurable, and predictable</strong>. Every order becomes a SIGNAL. Every customer becomes a NODE. Every product becomes a METRIC. Every quality check becomes a PROTOCOL.</p>
+        <p class="closing-line">The same infrastructure powering a <strong>$1.4M industrial service contract</strong> and a <strong>unified swine genetics platform</strong> &mdash; deployed to a 6-person metal shop in Terre Haute.<br><br>That's the thesis. <strong>Charlotte works at every scale.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+</div>
+
+<!-- ═══ SCROLL ANIMATION ═══ -->
+<script>
+(function(){
+  var panels = document.querySelectorAll('.glass');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  panels.forEach(function(p){ observer.observe(p); });
+})();
+</script>
+
+<!-- ═══ KNOWLEDGE GRAPH BACKGROUND (Canvas 2D) ═══ -->
+<script>
+(function(){
+  var c = document.getElementById('kg-canvas');
+  var ctx = c.getContext('2d');
+  var W, H;
+  function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Build graph from company data
+  var nodeData = [
+    // Company
+    {id:'ASM', x:0.5, y:0.5, r:8, color:'#3D7AB6', label:'All State Mfg'},
+    // People
+    {id:'RS', x:0.3, y:0.3, r:5, color:'#FF7C00', label:'Rudy S.'},
+    {id:'MM', x:0.7, y:0.3, r:4, color:'#FF7C00', label:'Madison M.'},
+    {id:'SF', x:0.25, y:0.6, r:4, color:'#FF7C00', label:'Sandra F.'},
+    {id:'CH', x:0.75, y:0.6, r:4, color:'#FF7C00', label:'Chris H.'},
+    // Products
+    {id:'MM27', x:0.4, y:0.2, r:3, color:'#3C783C', label:'27" Market'},
+    {id:'MM36', x:0.5, y:0.15, r:3, color:'#3C783C', label:'36" Market'},
+    {id:'MM49', x:0.6, y:0.2, r:3, color:'#3C783C', label:'49" Market'},
+    {id:'OCS', x:0.35, y:0.75, r:3, color:'#3C783C', label:'OCS Cabinet'},
+    {id:'STOR', x:0.65, y:0.75, r:3, color:'#3C783C', label:'Storage'},
+    // Competitors
+    {id:'AXIS', x:0.15, y:0.15, r:3, color:'#566068', label:'Axis'},
+    {id:'ADV', x:0.85, y:0.15, r:3, color:'#566068', label:'Advantage'},
+    {id:'MDG', x:0.15, y:0.85, r:3, color:'#566068', label:'Market Design'},
+    {id:'FLOR', x:0.85, y:0.85, r:3, color:'#566068', label:'Florence'},
+    // Industry
+    {id:'NAMA', x:0.1, y:0.45, r:4, color:'#23496D', label:'NAMA'},
+    {id:'365', x:0.9, y:0.45, r:4, color:'#23496D', label:'365 Retail'},
+    // Suppliers
+    {id:'MFS', x:0.2, y:0.4, r:3, color:'#7F878D', label:'Midwest Finishing'},
+    {id:'AIC', x:0.8, y:0.4, r:3, color:'#7F878D', label:'Am. Industrial'},
+  ];
+
+  var edgeData = [
+    ['ASM','RS'],['ASM','MM'],['ASM','SF'],['ASM','CH'],
+    ['ASM','MM27'],['ASM','MM36'],['ASM','MM49'],['ASM','OCS'],['ASM','STOR'],
+    ['ASM','AXIS'],['ASM','ADV'],['ASM','MDG'],['ASM','FLOR'],
+    ['ASM','NAMA'],['ASM','365'],
+    ['ASM','MFS'],['ASM','AIC'],
+    ['RS','MM'],['SF','CH'],
+    ['MM27','MM36'],['MM36','MM49'],['OCS','STOR'],
+    ['AXIS','365'],['ADV','365'],
+  ];
+
+  // Add drift to nodes
+  var nodes = nodeData.map(function(n){
+    return {
+      id: n.id,
+      x: n.x * W + (Math.random()-0.5)*60,
+      y: n.y * H + (Math.random()-0.5)*60,
+      r: n.r, color: n.color, label: n.label,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      baseX: n.x, baseY: n.y
+    };
+  });
+
+  var nodeMap = {};
+  nodes.forEach(function(n){ nodeMap[n.id] = n; });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, W, H);
+
+    // Update positions with gentle drift
+    nodes.forEach(function(n){
+      n.x += n.vx;
+      n.y += n.vy;
+      // Pull back to base position
+      n.vx += (n.baseX * W - n.x) * 0.0003;
+      n.vy += (n.baseY * H - n.y) * 0.0003;
+      n.vx *= 0.995;
+      n.vy *= 0.995;
+    });
+
+    // Draw edges
+    ctx.lineWidth = 0.5;
+    edgeData.forEach(function(e){
+      var a = nodeMap[e[0]], b = nodeMap[e[1]];
+      if(!a || !b) return;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = 'rgba(61,122,182,0.15)';
+      ctx.stroke();
+    });
+
+    // Draw nodes
+    nodes.forEach(function(n){
+      // Glow
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 3);
+      g.addColorStop(0, n.color + '20');
+      g.addColorStop(1, n.color + '00');
+      ctx.fillStyle = g;
+      ctx.fill();
+
+      // Core
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+
+      // Label
+      ctx.fillStyle = 'rgba(232,234,235,0.4)';
+      ctx.font = '9px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, n.x, n.y - n.r - 6);
+    });
+  }
+
+  animate();
+})();
+</script>
+</body>
+</html>
