@@ -1,0 +1,257 @@
+;;; Show Circuit Online Sales — Charlotte OS Knowledge Graph
+;;; Domain: Multi-species online livestock auction platform
+;;; Generated: February 2026
+;;; Context: Sounder partnership assessment
+
+(in-microtheory SCOnlineSalesMt)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 1: Company Identity
+;;; ═══════════════════════════════════════════════
+
+(isa SCOnlineSalesLLC Company)
+(companyName SCOnlineSalesLLC "Show Circuit Online Sales, LLC")
+(dba SCOnlineSalesLLC "SC Online Sales")
+(foundedYear SCOnlineSalesLLC 2015)
+(headquartersAddress SCOnlineSalesLLC "1730 W. Main Street, Robinson, IL 62454")
+(industry SCOnlineSalesLLC "Online Livestock Auction & Sale Management")
+(businessModel SCOnlineSalesLLC "Multi-species online auction platform with integrated media")
+(phone SCOnlineSalesLLC "(618) 544-3524")
+(websiteURL SCOnlineSalesLLC "sconlinesales.com")
+(totalAuctionsConducted SCOnlineSalesLLC 40000)
+(registeredUsers SCOnlineSalesLLC 10000)
+(tagline SCOnlineSalesLLC "The Fresh Face of Online Livestock Auctions")
+(employeeCount SCOnlineSalesLLC 25)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 2: Platforms & Properties
+;;; ═══════════════════════════════════════════════
+
+(isa SCOnlineSalesPlatform Platform)
+(platformName SCOnlineSalesPlatform "SC Online Sales")
+(platformURL SCOnlineSalesPlatform "sconlinesales.com")
+(platformPurpose SCOnlineSalesPlatform "Multi-species online livestock auctions")
+(techStack SCOnlineSalesPlatform "Custom web app by AxiaTP, Indianapolis")
+(operatedBy SCOnlineSalesPlatform SCOnlineSalesLLC)
+
+(isa TheShowCircuitMagazine Platform)
+(platformName TheShowCircuitMagazine "The Show Circuit Magazine")
+(platformURL TheShowCircuitMagazine "theshowcircuit.com")
+(platformPurpose TheShowCircuitMagazine "Livestock industry publication — print + digital")
+(foundedYear TheShowCircuitMagazine 1990)
+(audienceReach TheShowCircuitMagazine 50000)
+(operatedBy TheShowCircuitMagazine SCOnlineSalesLLC)
+
+(isa SC2DayBlog Platform)
+(platformName SC2DayBlog "SC2Day")
+(platformURL SC2DayBlog "sc2day.com")
+(platformPurpose SC2DayBlog "Digital blog and media content")
+(operatedBy SC2DayBlog SCOnlineSalesLLC)
+
+(isa ShowStockPlanetPlatform Platform)
+(platformName ShowStockPlanetPlatform "ShowStockPlanet")
+(platformURL ShowStockPlanetPlatform "showstockplanet.com")
+(platformPurpose ShowStockPlanetPlatform "Secondary online sale platform")
+(operatedBy ShowStockPlanetPlatform SCOnlineSalesLLC)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 3: Leadership & Team
+;;; ═══════════════════════════════════════════════
+
+(isa DaveGuyer Person)
+(fullName DaveGuyer "Dave Guyer")
+(roleAt DaveGuyer SCOnlineSalesLLC "Co-Owner & General Manager")
+(credential DaveGuyer "25+ years in show cattle industry")
+(credential DaveGuyer "Owner, Guyer Cattle Company, Robinson IL")
+(credential DaveGuyer "Sullivan Supply Stock Show University Professor")
+(credential DaveGuyer "7-year Purina Mills ambassadorship (2004-2011)")
+
+(isa RolandSchumaker Person)
+(fullName RolandSchumaker "Roland Schumaker")
+(roleAt RolandSchumaker SCOnlineSalesLLC "Co-Founder & Editor-in-Chief")
+(credential RolandSchumaker "Founded The Show Circuit Magazine (1990)")
+(credential RolandSchumaker "35+ years in livestock media")
+
+(isa JenHummel Person)
+(fullName JenHummel "Jen Hummel")
+(roleAt JenHummel SCOnlineSalesLLC "Admin Team Manager")
+(note JenHummel "Also runs Hummel Livestock (sheep/goats, IL)")
+
+(isa TorieSchwartz Person)
+(fullName TorieSchwartz "Torie Schwartz")
+(roleAt TorieSchwartz SCOnlineSalesLLC "Sheep Admin / Sales Manager")
+(previousRole TorieSchwartz "National Swine Registry / NJSA staff")
+(education TorieSchwartz "Blackhawk East & Western Illinois University")
+
+(isa ShannaGuyer Person)
+(fullName ShannaGuyer "Shanna Guyer")
+(roleAt ShannaGuyer SCOnlineSalesLLC "Accounts Payable / Receivable")
+
+(isa DesireeBriggs Person)
+(fullName DesireeBriggs "Desiree Briggs")
+(roleAt DesireeBriggs SCOnlineSalesLLC "Accounting Representative")
+
+;;; Division Directors
+(isa ClintPetzold Person)
+(fullName ClintPetzold "Clint Petzold")
+(roleAt ClintPetzold SCOnlineSalesLLC "Southern Division Director & Cattle Rep")
+
+(isa TylerHumphrey Person)
+(fullName TylerHumphrey "Tyler Humphrey")
+(roleAt TylerHumphrey SCOnlineSalesLLC "Northern Cattle Sales Rep & Admin")
+
+(isa JustinNathan Person)
+(fullName JustinNathan "Justin Nathan")
+(roleAt JustinNathan SCOnlineSalesLLC "Sheep/Goat Division Director")
+
+(isa TysonRule Person)
+(fullName TysonRule "Tyson Rule")
+(roleAt TysonRule SCOnlineSalesLLC "Sheep/Goat Division Director")
+
+(isa KeltonMason Person)
+(fullName KeltonMason "Kelton Mason")
+(roleAt KeltonMason SCOnlineSalesLLC "Swine Division Director")
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 4: Auction Formats
+;;; ═══════════════════════════════════════════════
+
+(isa TimedAuction AuctionType)
+(auctionTypeName TimedAuction "Timed Online Auction")
+(description TimedAuction "Standard auction with extended bidding — 5-minute extension on late bids")
+(offeredBy TimedAuction SCOnlineSalesPlatform)
+
+(isa RacehorseClose AuctionType)
+(auctionTypeName RacehorseClose "Racehorse-Style Close")
+(description RacehorseClose "All lots open until no bidding activity across entire sale board")
+(offeredBy RacehorseClose SCOnlineSalesPlatform)
+
+(isa ClickToClaim AuctionType)
+(auctionTypeName ClickToClaim "Click-to-Claim (C2C)")
+(description ClickToClaim "Fixed-price buy now — no extended bidding, immediate purchase")
+(offeredBy ClickToClaim SCOnlineSalesPlatform)
+
+(isa ProxyBid AuctionType)
+(auctionTypeName ProxyBid "Maximum/Proxy Bid")
+(description ProxyBid "Automated bidding up to hidden ceiling — can be raised but never lowered")
+(offeredBy ProxyBid SCOnlineSalesPlatform)
+
+(isa LiveViewSale AuctionType)
+(auctionTypeName LiveViewSale "Live Sale / View Only")
+(description LiveViewSale "Live auction streaming with online viewing capability")
+(offeredBy LiveViewSale SCOnlineSalesPlatform)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 5: Species Divisions
+;;; ═══════════════════════════════════════════════
+
+(isa CattleDivision Division)
+(divisionName CattleDivision "Cattle Division")
+(speciesCovered CattleDivision "Cattle — show steers, heifers, breeding stock, semen, embryos")
+(divisionDirector CattleDivision ClintPetzold)
+(divisionDirector CattleDivision TylerHumphrey)
+
+(isa SheepGoatDivision Division)
+(divisionName SheepGoatDivision "Sheep & Goat Division")
+(speciesCovered SheepGoatDivision "Sheep — club lambs, show lambs, breeding stock. Goats — wethers, does, semen")
+(divisionDirector SheepGoatDivision JustinNathan)
+(divisionDirector SheepGoatDivision TysonRule)
+
+(isa SwineDivision Division)
+(divisionName SwineDivision "Swine Division")
+(speciesCovered SwineDivision "Show pigs, breeding stock")
+(divisionDirector SwineDivision KeltonMason)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 6: Competitors
+;;; ═══════════════════════════════════════════════
+
+(isa ShowPigComCompetitor Competitor)
+(companyName ShowPigComCompetitor "ShowPig.com / The Wendt Group")
+(competitorType ShowPigComCompetitor "Dominant show pig auction platform — expanding multi-species")
+(competesDirectlyWith ShowPigComCompetitor SCOnlineSalesLLC)
+
+(isa SaleRingLiveCompetitor Competitor)
+(companyName SaleRingLiveCompetitor "SaleRing.Live")
+(competitorType SaleRingLiveCompetitor "Online livestock auctions — live auctioneer from studio")
+(competesDirectlyWith SaleRingLiveCompetitor SCOnlineSalesLLC)
+
+(isa CCILiveCompetitor Competitor)
+(companyName CCILiveCompetitor "CCI.Live")
+(competitorType CCILiveCompetitor "Live simulcast cattle auctions — $108M in 2024 sales")
+(competesDirectlyWith CCILiveCompetitor SCOnlineSalesLLC)
+
+(isa DVAuctionCompetitor Competitor)
+(companyName DVAuctionCompetitor "DVAuction")
+(competitorType DVAuctionCompetitor "Internet livestock marketing since 1999 — 300K+ bidders")
+(competesDirectlyWith DVAuctionCompetitor SCOnlineSalesLLC)
+
+(isa StockShowAuctionsCompetitor Competitor)
+(companyName StockShowAuctionsCompetitor "StockShowAuctions.com")
+(competitorType StockShowAuctionsCompetitor "Junior livestock auctions — 4-H/FFA county fair sales")
+(competesIndirectlyWith StockShowAuctionsCompetitor SCOnlineSalesLLC)
+
+(isa BWFinalDriveCompetitor Competitor)
+(companyName BWFinalDriveCompetitor "BW Final Drive / Breeders World")
+(competitorType BWFinalDriveCompetitor "County fair junior auctions since 2005")
+(competesIndirectlyWith BWFinalDriveCompetitor SCOnlineSalesLLC)
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 7: Industry Context
+;;; ═══════════════════════════════════════════════
+
+(isa OnlineLivestockAuctionIndustry Industry)
+(industryName OnlineLivestockAuctionIndustry "Online Livestock Auction & Sale Management")
+(parentIndustry OnlineLivestockAuctionIndustry "US Hog & Pig Farming ($25.4B) + Cattle + Sheep/Goat")
+(showStockSegment OnlineLivestockAuctionIndustry "$500M-$1B annual show stock transactions")
+(avgShowPigPrice OnlineLivestockAuctionIndustry "$300-$2,000 (show quality)")
+(eliteGeneticsPrice OnlineLivestockAuctionIndustry "$5,000-$275,000+")
+(juniorAuctionRecord OnlineLivestockAuctionIndustry "$29.65M Houston 2025")
+
+;;; ═══════════════════════════════════════════════
+;;; SECTION 8: Charlotte Protocol Mapping
+;;; ═══════════════════════════════════════════════
+
+;;; NODE types
+(charlotteNodeType SCOnlineSalesLLC "Seller/Consignor")
+(charlotteNodeType SCOnlineSalesLLC "Buyer/Bidder")
+(charlotteNodeType SCOnlineSalesLLC "Animal")
+(charlotteNodeType SCOnlineSalesLLC "AuctionLot")
+(charlotteNodeType SCOnlineSalesLLC "Sale")
+(charlotteNodeType SCOnlineSalesLLC "FieldRepresentative")
+(charlotteNodeType SCOnlineSalesLLC "Species")
+
+;;; EDGE types
+(charlotteEdgeType SCOnlineSalesLLC "consignedTo")
+(charlotteEdgeType SCOnlineSalesLLC "bidOn")
+(charlotteEdgeType SCOnlineSalesLLC "wonBy")
+(charlotteEdgeType SCOnlineSalesLLC "managedBy")
+(charlotteEdgeType SCOnlineSalesLLC "bookedThrough")
+(charlotteEdgeType SCOnlineSalesLLC "settledWith")
+(charlotteEdgeType SCOnlineSalesLLC "speciesOf")
+
+;;; METRIC types
+(charlotteMetricType SCOnlineSalesLLC "Sale Average")
+(charlotteMetricType SCOnlineSalesLLC "Lot Count")
+(charlotteMetricType SCOnlineSalesLLC "Bidder Count")
+(charlotteMetricType SCOnlineSalesLLC "Clearance Rate")
+(charlotteMetricType SCOnlineSalesLLC "Settlement Days")
+(charlotteMetricType SCOnlineSalesLLC "Rep Close Rate")
+
+;;; SIGNAL types
+(charlotteSignalType SCOnlineSalesLLC "Sale Booked")
+(charlotteSignalType SCOnlineSalesLLC "Lot Listed")
+(charlotteSignalType SCOnlineSalesLLC "Bid Placed")
+(charlotteSignalType SCOnlineSalesLLC "Auction Extended")
+(charlotteSignalType SCOnlineSalesLLC "Sale Closed")
+(charlotteSignalType SCOnlineSalesLLC "Payment Received")
+(charlotteSignalType SCOnlineSalesLLC "Settlement Completed")
+
+;;; PROTOCOL types
+(charlotteProtocolType SCOnlineSalesLLC "Sale Booking Workflow")
+(charlotteProtocolType SCOnlineSalesLLC "Lot Submission Protocol")
+(charlotteProtocolType SCOnlineSalesLLC "Bidder Verification")
+(charlotteProtocolType SCOnlineSalesLLC "Extended Bidding Rules")
+(charlotteProtocolType SCOnlineSalesLLC "Payment Collection")
+(charlotteProtocolType SCOnlineSalesLLC "Consignor Settlement")
+(charlotteProtocolType SCOnlineSalesLLC "Pork Checkoff Compliance")

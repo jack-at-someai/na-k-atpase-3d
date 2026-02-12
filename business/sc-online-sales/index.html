@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SC Online Sales — Sounder Partnership Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --copper-500:#B87333;--copper-600:#9A6029;--copper-700:#7A4A1F;--copper-800:#5C3615;--copper-900:#3D220B;
+  --navy-500:#2C3E6B;--navy-400:#3E5590;--navy-300:#5A73B0;
+  --clover-500:#3D7A3D;--clover-400:#5A9A5A;
+  --sawdust-500:#625A52;--sawdust-700:#3A3530;--sawdust-800:#282420;--sawdust-900:#1A1714;
+  --text:#E8EAEB;--text-dim:#9C9CA1;--border:#444;
+  --glass-bg:rgba(26,23,20,0.92);--glass-border:rgba(184,115,51,0.18);
+}
+html{scroll-behavior:smooth}
+body{background:var(--sawdust-900);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+
+/* === KG BACKGROUND === */
+#kg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.35}
+
+/* === SCROLL CONTENT === */
+#scroll-content{position:relative;z-index:10;pointer-events:none}
+.section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px;pointer-events:none}
+.section.auto-h{min-height:auto}
+.section-inner{max-width:960px;width:100%;pointer-events:auto}
+
+/* Glass */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--glass-border);
+  border-radius:16px;
+  padding:48px;
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.glass.visible{opacity:1;transform:translateY(0)}
+
+/* === TYPOGRAPHY === */
+h1.hero-title{
+  font-family:'Oswald',sans-serif;font-size:clamp(36px,8vw,72px);font-weight:700;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--copper-500),var(--navy-500));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1.1;margin-bottom:8px;
+}
+.hero-sub{font-family:'Oswald',sans-serif;font-size:clamp(14px,2.5vw,20px);font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--copper-500);margin-bottom:24px}
+.hero-desc{font-size:15px;color:var(--text-dim);max-width:650px;margin-bottom:32px}
+.hero-badge{display:inline-block;padding:6px 16px;border:1px solid var(--copper-500);border-radius:20px;font-size:11px;letter-spacing:2px;color:var(--copper-500);text-transform:uppercase;margin-bottom:20px}
+
+h2.section-title{
+  font-family:'Oswald',sans-serif;font-size:clamp(26px,4.5vw,40px);font-weight:600;letter-spacing:2px;
+  color:var(--text);margin-bottom:8px;line-height:1.2;
+}
+h2.section-title span.accent{color:var(--copper-500)}
+h2.section-title span.navy{color:var(--navy-500)}
+h2.section-title span.clover{color:var(--clover-500)}
+.section-subtitle{font-size:13px;color:var(--copper-500);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+.section-body{font-size:15px;color:var(--text-dim);line-height:1.8;margin-bottom:24px}
+.section-body strong{color:var(--text)}
+
+/* === BEFORE/AFTER SPLIT === */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.split-panel{border-radius:12px;padding:24px}
+.split-before{background:rgba(98,90,82,0.12);border:1px solid rgba(98,90,82,0.25)}
+.split-after{background:rgba(184,115,51,0.08);border:1px solid var(--glass-border)}
+.split-label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.split-label.before{color:var(--sawdust-500)}
+.split-label.after{color:var(--copper-500)}
+.split-list{list-style:none;padding:0}
+.split-list li{padding:6px 0;font-size:13px;color:var(--text-dim);border-bottom:1px solid rgba(255,255,255,0.03)}
+.split-list li strong{color:var(--text)}
+
+/* === STAT BAR === */
+.stat-bar{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--glass-border);border-radius:10px;overflow:hidden;margin-top:8px}
+.stat-item{flex:1;min-width:100px;padding:14px 10px;text-align:center;border-right:1px solid var(--glass-border);background:rgba(184,115,51,0.04)}
+.stat-item:last-child{border-right:none}
+.stat-val{display:block;font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--text)}
+.stat-lbl{display:block;font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-top:4px;text-transform:uppercase}
+
+/* === TEAM GRID === */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.team-card{background:rgba(184,115,51,0.06);border:1px solid var(--glass-border);border-radius:10px;padding:16px;text-align:center}
+.team-initials{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--copper-700),var(--copper-500));display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin:0 auto 10px}
+.team-card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.team-card p{font-size:11px;color:var(--text-dim)}
+.team-card .tenure{font-size:10px;color:var(--copper-500);margin-top:4px}
+
+/* === TIMELINE === */
+.timeline{position:relative;padding-left:28px;margin-top:20px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--glass-border)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-dot{position:absolute;left:-24px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--copper-500);background:var(--sawdust-900)}
+.timeline-item.active .timeline-dot{background:var(--navy-400);border-color:var(--navy-400)}
+
+.timeline-year{font-family:'Oswald',sans-serif;font-size:14px;color:var(--copper-500);font-weight:600;letter-spacing:1px}
+.timeline-desc{font-size:13px;color:var(--text-dim);margin-top:2px}
+
+/* === PLATFORM GRID === */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.platform-card{background:rgba(44,62,107,0.06);border:1px solid rgba(44,62,107,0.18);border-radius:10px;padding:20px;text-align:center}
+.platform-card h4{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:var(--navy-300);letter-spacing:1px;margin-bottom:6px}
+.platform-card p{font-size:12px;color:var(--text-dim);line-height:1.5}
+.platform-card .url{font-size:10px;color:var(--text-dim);font-family:'Courier New',monospace;margin-top:8px;padding:6px;background:rgba(0,0,0,0.3);border-radius:4px}
+
+/* === PRIMITIVE CARDS === */
+.prim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:24px}
+.prim-card{background:rgba(184,115,51,0.06);border:1px solid var(--glass-border);border-radius:12px;padding:20px 16px;text-align:center;transition:border-color 0.3s,transform 0.3s}
+.prim-card:hover{border-color:var(--copper-500);transform:translateY(-2px)}
+.prim-icon{font-size:24px;margin-bottom:8px;display:block}
+.prim-name{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:2px;margin-bottom:8px}
+.prim-name.c-copper{color:var(--copper-500)}.prim-name.c-navy{color:var(--navy-300)}.prim-name.c-clover{color:var(--clover-500)}
+
+.prim-examples{font-size:11px;color:var(--text-dim);line-height:1.6}
+.prim-examples strong{color:var(--text);font-weight:500}
+
+/* === COMPETITOR TABLE === */
+.comp-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px}
+.comp-table th{text-align:left;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;color:var(--copper-500);padding:10px 12px;border-bottom:1px solid var(--glass-border);text-transform:uppercase}
+.comp-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--text-dim)}
+.comp-table td:first-child{color:var(--text);font-weight:500}
+.comp-table tr:hover td{background:rgba(184,115,51,0.04)}
+
+/* === CONTRACT CARDS === */
+.contract-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.contract-card{background:rgba(184,115,51,0.06);border:1px solid var(--glass-border);border-radius:12px;padding:24px;position:relative;overflow:hidden}
+.contract-card.recommended{border-color:var(--copper-500)}
+.contract-card.recommended::before{content:'RECOMMENDED';position:absolute;top:12px;right:-30px;background:var(--copper-500);color:var(--sawdust-900);font-size:9px;letter-spacing:2px;font-weight:700;padding:3px 36px;transform:rotate(45deg)}
+.contract-card h4{font-family:'Oswald',sans-serif;font-size:18px;color:var(--text);letter-spacing:1px;margin-bottom:4px}
+.contract-card .price{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--copper-500);margin-bottom:12px}
+.contract-card .price span{font-size:14px;color:var(--text-dim);font-weight:400}
+.contract-card ul{list-style:none;padding:0}
+.contract-card ul li{padding:6px 0;font-size:12px;color:var(--text-dim);border-bottom:1px solid rgba(255,255,255,0.03)}
+.contract-card ul li::before{content:'\2713';color:var(--clover-500);margin-right:8px;font-weight:700}
+
+/* === CLOSING === */
+.closing-line{font-family:'Oswald',sans-serif;font-size:clamp(16px,2.5vw,22px);color:var(--text-dim);letter-spacing:1px;line-height:1.6;margin-top:24px}
+.closing-line strong{color:var(--text)}
+
+/* === SPACER === */
+.spacer{height:40vh;pointer-events:none}
+
+/* === MOBILE === */
+@media(max-width:640px){
+  .glass{padding:28px 20px}
+  .split{grid-template-columns:1fr}
+  .prim-grid{grid-template-columns:repeat(2,1fr)}
+  .contract-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .platform-grid{grid-template-columns:1fr}
+  .stat-item{min-width:80px;padding:10px 6px}
+  .stat-val{font-size:18px}
+  .comp-table{font-size:11px}
+  .comp-table th,.comp-table td{padding:6px 8px}
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--copper-700);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--copper-600)}
+</style>
+</head>
+<body>
+
+<!-- KG BACKGROUND -->
+<canvas id="kg-canvas"></canvas>
+
+<!-- SCROLL CONTENT -->
+<div id="scroll-content">
+
+  <div class="spacer"></div>
+
+  <!-- SECTION 1: HERO -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="hero-badge">Sounder Partnership Assessment</div>
+        <h1 class="hero-title">SC ONLINE SALES</h1>
+        <div class="hero-sub">The Fresh Face of Online Livestock Auctions</div>
+        <p class="hero-desc">Multi-species online livestock auction platform &mdash; cattle, sheep, goats, pigs, equine. Founded 2015 by Dave Guyer and Roland Schumaker in Robinson, Illinois. Custom-built platform with integrated media through The Show Circuit Magazine. This assessment maps the current state of the operation and shows what a Sounder technology partnership looks like deployed here.</p>
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-val">2015</span><span class="stat-lbl">Founded</span></div>
+          <div class="stat-item"><span class="stat-val">40,000+</span><span class="stat-lbl">Auctions</span></div>
+          <div class="stat-item"><span class="stat-val">10K+</span><span class="stat-lbl">Users</span></div>
+          <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Species</span></div>
+          <div class="stat-item"><span class="stat-val">23K</span><span class="stat-lbl">Instagram</span></div>
+          <div class="stat-item"><span class="stat-val">50K+</span><span class="stat-lbl">Magazine Reach</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: COMPANY PROFILE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Company Profile</div>
+        <h2 class="section-title">From magazine to <span class="accent">auction empire</span></h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1990</div>
+            <div class="timeline-desc"><strong>Roland Schumaker</strong> founds The Show Circuit Magazine &mdash; a livestock publication covering the show ring across species.</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2015</div>
+            <div class="timeline-desc"><strong>SC Online Sales launched</strong> by Dave Guyer and Roland Schumaker. Multi-species online livestock auction platform built in Robinson, Illinois.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2017</div>
+            <div class="timeline-desc"><strong>10,000+ registered users</strong> and 220,000 bids placed. Platform gains traction across cattle and sheep communities.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2018</div>
+            <div class="timeline-desc">Q1 page views reach <strong>9.3 million</strong> &mdash; 166% year-over-year growth. The media flywheel is working.</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2020</div>
+            <div class="timeline-desc"><strong>COVID pivot</strong> &mdash; virtual show platform for cancelled 4-H/FFA county fairs. Industry shifts online permanently.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2024</div>
+            <div class="timeline-desc"><strong>Swine division formalized.</strong> Sheep and goat division in rapid growth. Three independent species divisions operating under one roof.</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2026</div>
+            <div class="timeline-desc"><strong>Today</strong> &mdash; 40,000+ total auctions. 5 species. 25+ team members. The only true multi-species online auction platform in the market.</div>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:36px">The <span class="navy">Team</span></h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-initials">DG</div>
+            <h4>Dave Guyer</h4>
+            <p>Co-Owner &amp; General Manager</p>
+            <div class="tenure">25+ yr cattle. Guyer Cattle Co.</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">RS</div>
+            <h4>Roland Schumaker</h4>
+            <p>Co-Founder &amp; Editor-in-Chief</p>
+            <div class="tenure">Show Circuit Magazine since 1990</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">JH</div>
+            <h4>Jen Hummel</h4>
+            <p>Admin Team Manager</p>
+            <div class="tenure">Hummel Livestock</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">TS</div>
+            <h4>Torie Schwartz</h4>
+            <p>Sheep Admin / Sales Mgr</p>
+            <div class="tenure">Former NSR/NJSA staff</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">CP</div>
+            <h4>Clint Petzold</h4>
+            <p>Southern Division Director</p>
+            <div class="tenure">Cattle division</div>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">TH</div>
+            <h4>Tyler Humphrey</h4>
+            <p>Northern Cattle Sales Rep</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">JN</div>
+            <h4>Justin Nathan</h4>
+            <p>Sheep/Goat Division Director</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">KM</div>
+            <h4>Kelton Mason</h4>
+            <p>Swine Division Director</p>
+          </div>
+          <div class="team-card">
+            <div class="team-initials">SG</div>
+            <h4>Shanna Guyer</h4>
+            <p>Accounts Payable / Receivable</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PLATFORMS & AUCTION TYPES -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Platforms &amp; Auction Types</div>
+        <h2 class="section-title">Four platforms, <span class="accent">five formats</span></h2>
+        <p class="section-body">SC Online Sales operates a family of platforms covering auctions, media, and digital content. The flagship auction platform runs on AxiaTP infrastructure with self-service seller tools and integrated media from The Show Circuit Magazine.</p>
+        <div class="platform-grid">
+          <div class="platform-card">
+            <h4>SC Online Sales</h4>
+            <p>Multi-species online auctions. 40K+ conducted. Cattle, sheep, goats, pigs, equine.</p>
+            <div class="url">sconlinesales.com &middot; AxiaTP</div>
+          </div>
+          <div class="platform-card">
+            <h4>The Show Circuit</h4>
+            <p>Livestock publication since 1990. 50K+ reach. The media flywheel feeding the auction platform.</p>
+            <div class="url">theshowcircuit.com</div>
+          </div>
+          <div class="platform-card">
+            <h4>SC2Day</h4>
+            <p>Digital blog and media content. Industry news, sale recaps, breeder features.</p>
+            <div class="url">sc2day.com</div>
+          </div>
+          <div class="platform-card">
+            <h4>ShowStockPlanet</h4>
+            <p>Secondary online sale platform. Extended marketplace reach for consignors.</p>
+            <div class="url">showstockplanet.com</div>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:36px">Auction <span class="navy">Formats</span></h2>
+        <table class="comp-table">
+          <thead><tr><th>Format</th><th>Description</th><th>Model</th></tr></thead>
+          <tbody>
+            <tr><td>Timed Online Auction</td><td>Standard with extended bidding &mdash; 5-minute extension on late bids</td><td>Core format</td></tr>
+            <tr><td>Racehorse-Style Close</td><td>All lots open until no activity across entire sale board</td><td>High-engagement</td></tr>
+            <tr><td>Click-to-Claim (C2C)</td><td>Fixed-price buy now, no extended bidding</td><td>Instant purchase</td></tr>
+            <tr><td>Maximum / Proxy Bid</td><td>Hidden ceiling auto-bid &mdash; can raise but never lower</td><td>Set-and-forget</td></tr>
+            <tr><td>Live Sale / View Only</td><td>Live streaming with online viewing &mdash; ring-side experience</td><td>Broadcast hybrid</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: BEFORE / AFTER -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Digital Assessment</div>
+        <h2 class="section-title">Before <span class="accent">&amp;</span> After</h2>
+        <p class="section-body">SC Online Sales is a functional platform &mdash; it processes transactions across five species and manages thousands of auctions annually. But the data it generates is trapped in a custom web app with no graph layer, no cross-species intelligence, and no buyer behavior analytics. Five species of auction data, completely disconnected.</p>
+        <div class="split">
+          <div class="split-panel split-before">
+            <div class="split-label before">Current State</div>
+            <ul class="split-list">
+              <li><strong>Platform:</strong> Custom AxiaTP web app &mdash; functional but no graph layer</li>
+              <li><strong>Analytics:</strong> Basic sale results &mdash; no cross-species intelligence</li>
+              <li><strong>Seller CRM:</strong> No behavior tracking across species divisions</li>
+              <li><strong>Buyer intelligence:</strong> No bidder pattern analysis</li>
+              <li><strong>Cross-species:</strong> 5 species, 3 divisions operating independently</li>
+              <li><strong>Magazine integration:</strong> Show Circuit audience not connected to auction data</li>
+              <li><strong>Competitor intel:</strong> Informal &mdash; no systematic tracking</li>
+              <li><strong>Field reps:</strong> No per-rep analytics or territory optimization</li>
+              <li><strong>Settlement:</strong> 7&ndash;14 days, no predictive optimization</li>
+              <li><strong>Pricing:</strong> $10/head flat &mdash; no data-driven pricing models</li>
+            </ul>
+          </div>
+          <div class="split-panel split-after">
+            <div class="split-label after">With Sounder + Charlotte</div>
+            <ul class="split-list">
+              <li><strong>Platform:</strong> Charlotte substrate layered on existing AxiaTP infrastructure</li>
+              <li><strong>Analytics:</strong> Per-sale, per-seller, per-species, per-rep intelligence</li>
+              <li><strong>Seller CRM:</strong> Every seller is a NODE with full multi-species lifecycle</li>
+              <li><strong>Buyer intelligence:</strong> Cross-species behavior, bid escalation, churn prediction</li>
+              <li><strong>Cross-species:</strong> Unified graph connecting all 5 species divisions</li>
+              <li><strong>Magazine integration:</strong> Readership &rarr; auction behavior attribution</li>
+              <li><strong>Competitor intel:</strong> Charlotte monitors ShowPig.com, CCI.Live, DVAuction</li>
+              <li><strong>Field reps:</strong> Territory analytics, close rates, acquisition metrics</li>
+              <li><strong>Settlement:</strong> Predictive settlement optimization, faster consignor payment</li>
+              <li><strong>Pricing:</strong> Data-driven sale timing and buyer matching recommendations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: COMPETITIVE LANDSCAPE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Competitive Landscape</div>
+        <h2 class="section-title">The only <span class="accent">multi-species</span> platform</h2>
+        <p class="section-body">Online livestock auction GMV estimated in the <strong>low billions annually</strong>. Show stock segment <strong>$500M&ndash;$1B</strong>. SCO competes at <strong>Layer 3</strong>: sale management. Every competitor is either species-specific or niche-specific. SCO is the only platform covering all species on one platform.</p>
+        <table class="comp-table">
+          <thead>
+            <tr><th>Competitor</th><th>Focus</th><th>Scale</th><th>vs SCO</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ShowPig.com (Wendt Group)</td>
+              <td>Show pig auctions (expanding)</td>
+              <td>12K+ online auctions, 20K subscribers</td>
+              <td>Pig incumbent; SCO broader species</td>
+            </tr>
+            <tr>
+              <td>CCI.Live</td>
+              <td>Cattle seedstock auctions</td>
+              <td>$108M in 2024 sales</td>
+              <td>Cattle powerhouse; SCO more accessible</td>
+            </tr>
+            <tr>
+              <td>DVAuction</td>
+              <td>Internet livestock marketing</td>
+              <td>300K+ bidders since 1999</td>
+              <td>Infrastructure incumbent; SCO newer</td>
+            </tr>
+            <tr>
+              <td>SaleRing.Live</td>
+              <td>Live auctioneer from studio</td>
+              <td>Innovative format, smaller scale</td>
+              <td>Unique live model</td>
+            </tr>
+            <tr>
+              <td>StockShowAuctions.com</td>
+              <td>Junior livestock (4-H/FFA)</td>
+              <td>Fair niche specialist</td>
+              <td>Different buyer segment</td>
+            </tr>
+            <tr>
+              <td>BW Final Drive</td>
+              <td>County fair junior auctions</td>
+              <td>Pioneer since 2005</td>
+              <td>Junior fair specialist</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="section-body" style="margin-top:20px"><strong>The critical insight:</strong> Every competitor is either species-specific or niche-specific. SCO is the only platform covering all species on one platform. But they built with an external IT firm &mdash; their tech advantage is purchasing power, not engineering talent. <strong>Charlotte is the engineering talent.</strong></p>
+        <p class="section-body"><strong>SCO's moat:</strong> Multi-species breadth + The Show Circuit Magazine media flywheel + national field rep network + self-service seller tools. No other platform has a built-in publication with 50K+ reach driving buyers directly into the auction funnel.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: CHARLOTTE PRIMITIVES -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Charlotte Mapping</div>
+        <h2 class="section-title">Five primitives applied to <span class="accent">livestock auctions</span></h2>
+        <p class="section-body">The same infrastructure powering swine genetics and industrial equipment service &mdash; mapped to the only multi-species online auction platform in the market.</p>
+        <div class="prim-grid">
+          <div class="prim-card">
+            <span class="prim-icon">&#x25C9;</span>
+            <div class="prim-name c-copper">NODE</div>
+            <div class="prim-examples"><strong>Seller</strong> (operation)<br><strong>Buyer</strong> (bidder)<br><strong>Animal</strong> (lot)<br><strong>Sale</strong><br><strong>Field Rep</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x2194;</span>
+            <div class="prim-name c-navy">EDGE</div>
+            <div class="prim-examples"><strong>consignedTo</strong><br><strong>bidOn</strong> &middot; <strong>wonBy</strong><br><strong>managedBy</strong><br><strong>bookedThrough</strong><br><strong>settledWith</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x25B2;</span>
+            <div class="prim-name c-clover">METRIC</div>
+            <div class="prim-examples"><strong>Sale Average</strong><br><strong>Bidder Count</strong><br><strong>Clearance Rate</strong><br><strong>Settlement Days</strong><br><strong>Rep Close Rate</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x26A1;</span>
+            <div class="prim-name" style="color:#EF4444">SIGNAL</div>
+            <div class="prim-examples"><strong>Sale Booked</strong><br><strong>Lot Listed</strong><br><strong>Bid Placed</strong><br><strong>Auction Extended</strong><br><strong>Sale Closed</strong> &middot; <strong>Payment Received</strong></div>
+          </div>
+          <div class="prim-card">
+            <span class="prim-icon">&#x2696;</span>
+            <div class="prim-name" style="color:#E9C46A">PROTOCOL</div>
+            <div class="prim-examples"><strong>Sale Booking</strong><br><strong>Lot Submission</strong><br><strong>Extended Bidding Rules</strong><br><strong>Payment Collection</strong><br><strong>Consignor Settlement</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: INDUSTRY CONTEXT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Industry</div>
+        <h2 class="section-title">The show stock <span class="accent">ecosystem</span></h2>
+        <p class="section-body">The show stock market spans cattle, sheep, goats, and pigs with distinct buyer communities but overlapping breeders. COVID permanently shifted the industry to online &mdash; many operations never returned to in-person-only. No platform has unified cross-species intelligence. Sellers operating in multiple species get no combined analytics.</p>
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-val">$25.4B</span><span class="stat-lbl">US Hog Industry</span></div>
+          <div class="stat-item"><span class="stat-val">$500M&ndash;$1B</span><span class="stat-lbl">Show Stock Segment</span></div>
+          <div class="stat-item"><span class="stat-val">$108M</span><span class="stat-lbl">CCI.Live 2024</span></div>
+          <div class="stat-item"><span class="stat-val">$29.65M</span><span class="stat-lbl">Houston Junior 2025</span></div>
+        </div>
+        <p class="section-body" style="margin-top:20px"><strong>Digital agriculture marketplace</strong> projected to grow from $16.45B (2025) to $43.73B (2033) at 13% CAGR. The infrastructure layer connecting breeders, buyers, registries, and show results across all species does not exist yet. Every platform operates in its own silo.</p>
+        <p class="section-body"><strong>The Show Circuit Magazine's 50K+ audience is an untapped data asset.</strong> Readership patterns predict auction behavior. Magazine subscribers who engage with cattle content buy at cattle sales. The attribution link between media consumption and bidding behavior has never been measured &mdash; because nobody has built the graph to connect them. Charlotte builds that graph.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: CONTRACT SIZING -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Partnership</div>
+        <h2 class="section-title">What this <span class="accent">looks like</span></h2>
+        <p class="section-body">Sounder deploys Charlotte infrastructure as a technology partnership. Not a vendor contract &mdash; a strategic alliance where Sounder provides the data layer and SC Online Sales provides multi-species industry access and distribution.</p>
+        <div class="contract-grid">
+          <div class="contract-card">
+            <h4>Foundation</h4>
+            <div class="price">$3,000<span>/mo</span></div>
+            <ul>
+              <li>Brand identity &amp; platform audit</li>
+              <li>Knowledge graph seeding</li>
+              <li>Auction data pipeline into KRF format</li>
+              <li>Seller CRM &mdash; every seller is a NODE</li>
+              <li>Buyer behavior baseline</li>
+              <li>Competitive intelligence</li>
+              <li>On-site Robinson visits</li>
+            </ul>
+          </div>
+          <div class="contract-card recommended">
+            <h4>Operations</h4>
+            <div class="price">$6,500<span>/mo</span></div>
+            <ul>
+              <li>Everything in Foundation</li>
+              <li>Cross-species intelligence engine</li>
+              <li>Buyer matching &amp; sale performance dashboard</li>
+              <li>Division analytics (cattle, sheep/goat, swine)</li>
+              <li>Show Circuit Magazine integration</li>
+              <li>Field rep intelligence &amp; territory analytics</li>
+              <li>Protocol management &amp; drift alerts</li>
+              <li>Quarterly strategic review</li>
+            </ul>
+          </div>
+          <div class="contract-card">
+            <h4>Revenue Share</h4>
+            <div class="price">50/50<span> split</span></div>
+            <ul>
+              <li>Premium analytics products (50/50)</li>
+              <li>Show Circuit data products (40/60 Tech/Industry)</li>
+              <li>Cross-platform intelligence (10% to Industry Partner)</li>
+              <li>New capabilities enabled by Charlotte</li>
+              <li>Joint products marketed through SCO platforms</li>
+            </ul>
+          </div>
+        </div>
+        <p class="section-body" style="margin-top:20px"><strong>Total 24-month partnership value: $135,000</strong> &mdash; $3,000/mo foundation (6 months) + $6,500/mo operations (18 months). Plus revenue sharing on premium analytics and Show Circuit data products.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: VISION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="glass">
+        <div class="section-subtitle">Vision</div>
+        <h2 class="section-title">The multi-species platform becomes the <span class="accent">industry graph</span></h2>
+        <p class="section-body">The only multi-species platform in the market, sitting between the pig incumbent (ShowPig.com) and the cattle powerhouse (CCI.Live). The Show Circuit Magazine gives them organic reach nobody else has. The field rep network spans 16+ states. 40,000+ auctions of cross-species data waiting to be connected.</p>
+        <p class="section-body">Charlotte doesn't replace what SCO built. Charlotte makes every auction a <strong>SIGNAL stream</strong>, every seller a <strong>NODE with cross-species intelligence</strong>, every bidder a <strong>behavior pattern</strong>, every field rep a <strong>measurable performer</strong>. The same infrastructure powering swine genetics and industrial equipment service &mdash; deployed to the platform that touches every species in the show ring.</p>
+        <p class="closing-line"><strong>SCO + ShowPig.com + NSR = Sounder covers the entire show livestock market.</strong><br><br>The platform that already reaches every species. The engine that connects every signal.<br>SC Online Sales + Charlotte = <strong>the only cross-species intelligence layer in livestock.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+</div>
+
+<!-- SCROLL ANIMATION -->
+<script>
+(function(){
+  var panels = document.querySelectorAll('.glass');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  panels.forEach(function(p){ observer.observe(p); });
+})();
+</script>
+
+<!-- KNOWLEDGE GRAPH BACKGROUND (Canvas 2D) -->
+<script>
+(function(){
+  var c = document.getElementById('kg-canvas');
+  var ctx = c.getContext('2d');
+  var W, H;
+  function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var nodeData = [
+    // Company (center, copper)
+    {id:'SCO', x:0.5, y:0.5, r:8, color:'#B87333', label:'SC Online Sales'},
+    // Platforms (navy)
+    {id:'ShowCircuit', x:0.38, y:0.25, r:6, color:'#2C3E6B', label:'Show Circuit'},
+    {id:'SC2Day', x:0.62, y:0.25, r:4, color:'#2C3E6B', label:'SC2Day'},
+    {id:'SSPlanet', x:0.62, y:0.75, r:4, color:'#2C3E6B', label:'ShowStockPlanet'},
+    // People (copper)
+    {id:'DaveG', x:0.3, y:0.38, r:5, color:'#B87333', label:'Dave Guyer'},
+    {id:'RolandS', x:0.7, y:0.38, r:5, color:'#B87333', label:'Roland S.'},
+    {id:'JenH', x:0.22, y:0.52, r:3, color:'#B87333', label:'Jen Hummel'},
+    {id:'TorieS', x:0.78, y:0.52, r:3, color:'#B87333', label:'Torie Schwartz'},
+    {id:'KeltonM', x:0.25, y:0.68, r:3, color:'#B87333', label:'Kelton Mason'},
+    {id:'ClintP', x:0.75, y:0.68, r:3, color:'#B87333', label:'Clint Petzold'},
+    // Species divisions (green)
+    {id:'Cattle', x:0.35, y:0.15, r:4, color:'#3D7A3D', label:'Cattle'},
+    {id:'Sheep', x:0.5, y:0.12, r:4, color:'#3D7A3D', label:'Sheep'},
+    {id:'Goats', x:0.65, y:0.15, r:3, color:'#3D7A3D', label:'Goats'},
+    {id:'Pigs', x:0.38, y:0.78, r:4, color:'#3D7A3D', label:'Pigs'},
+    {id:'Equine', x:0.5, y:0.85, r:3, color:'#3D7A3D', label:'Equine'},
+    // Competitors (gray)
+    {id:'ShowPigCom', x:0.1, y:0.2, r:3, color:'#625A52', label:'ShowPig.com'},
+    {id:'CCILive', x:0.9, y:0.2, r:3, color:'#625A52', label:'CCI.Live'},
+    {id:'DVAuction', x:0.08, y:0.5, r:3, color:'#625A52', label:'DVAuction'},
+    {id:'SaleRingLive', x:0.92, y:0.5, r:3, color:'#625A52', label:'SaleRing.Live'},
+    {id:'SSAuctions', x:0.1, y:0.82, r:3, color:'#625A52', label:'SSAuctions'},
+    // Industry (dark copper)
+    {id:'LMA', x:0.88, y:0.82, r:3, color:'#7A4A1F', label:'LMA'},
+    {id:'NSR', x:0.9, y:0.88, r:4, color:'#7A4A1F', label:'NSR'}
+  ];
+
+  var edgeData = [
+    // Company to platforms
+    ['SCO','ShowCircuit'],['SCO','SC2Day'],['SCO','SSPlanet'],
+    // Platforms to each other
+    ['ShowCircuit','SC2Day'],['SC2Day','SSPlanet'],['ShowCircuit','SSPlanet'],
+    // Company to people
+    ['SCO','DaveG'],['SCO','RolandS'],['SCO','JenH'],['SCO','TorieS'],['SCO','KeltonM'],['SCO','ClintP'],
+    // People connections
+    ['DaveG','RolandS'],['RolandS','ShowCircuit'],['DaveG','ClintP'],['TorieS','Sheep'],['KeltonM','Pigs'],
+    // Company to species
+    ['SCO','Cattle'],['SCO','Sheep'],['SCO','Goats'],['SCO','Pigs'],['SCO','Equine'],
+    // Species clusters
+    ['Cattle','Sheep'],['Sheep','Goats'],['Goats','Pigs'],['Pigs','Equine'],
+    // Competitors to company
+    ['SCO','ShowPigCom'],['SCO','CCILive'],['SCO','DVAuction'],['SCO','SaleRingLive'],['SCO','SSAuctions'],
+    // Competitor clusters
+    ['ShowPigCom','CCILive'],['DVAuction','SaleRingLive'],
+    // Industry connections
+    ['SCO','LMA'],['SCO','NSR'],['NSR','LMA'],['NSR','Pigs'],['NSR','ShowPigCom']
+  ];
+
+  var nodes = nodeData.map(function(n){
+    return {
+      id: n.id,
+      x: n.x * W + (Math.random()-0.5)*60,
+      y: n.y * H + (Math.random()-0.5)*60,
+      r: n.r, color: n.color, label: n.label,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      baseX: n.x, baseY: n.y
+    };
+  });
+
+  var nodeMap = {};
+  nodes.forEach(function(n){ nodeMap[n.id] = n; });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, W, H);
+
+    nodes.forEach(function(n){
+      n.x += n.vx;
+      n.y += n.vy;
+      n.vx += (n.baseX * W - n.x) * 0.0003;
+      n.vy += (n.baseY * H - n.y) * 0.0003;
+      n.vx *= 0.995;
+      n.vy *= 0.995;
+    });
+
+    ctx.lineWidth = 0.5;
+    edgeData.forEach(function(e){
+      var a = nodeMap[e[0]], b = nodeMap[e[1]];
+      if(!a || !b) return;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = 'rgba(184,115,51,0.15)';
+      ctx.stroke();
+    });
+
+    nodes.forEach(function(n){
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      var g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 3);
+      g.addColorStop(0, n.color + '20');
+      g.addColorStop(1, n.color + '00');
+      ctx.fillStyle = g;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(232,234,235,0.4)';
+      ctx.font = '9px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, n.x, n.y - n.r - 6);
+    });
+  }
+
+  animate();
+})();
+</script>
+</body>
+</html>
