@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charlotte Pitch Engine</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23E53E3E' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(120,120)'%3E%3Cline x1='0' y1='0' x2='0' y2='-108'/%3E%3Cline x1='0' y1='0' x2='65' y2='-87'/%3E%3Cline x1='0' y1='0' x2='103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='95' y2='50'/%3E%3Cline x1='0' y1='0' x2='40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-95' y2='50'/%3E%3Cline x1='0' y1='0' x2='-103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='-65' y2='-87'/%3E%3C/g%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0F0F0F;
+      --surface: #141414;
+      --surface2: #1A1A1A;
+      --border: #2A2A2A;
+      --border2: #333;
+      --text: #E8E0E0;
+      --text2: #999;
+      --text3: #666;
+      --text4: #444;
+      --red: #E53E3E;
+      --red-light: #F56565;
+      --green: #68D391;
+      --amber: #F59E0B;
+      --blue: #4A9EE5;
+      --purple: #A855F7;
+      --mauve: #C4A8A8;
+      --teal: #2DD4BF;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* === App Shell === */
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .app-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .app-title span { color: var(--red); }
+    .app-subtitle {
+      font-size: 11px;
+      color: var(--text3);
+    }
+    .app-tabs {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .app-tab {
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text3);
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .app-tab:hover { color: var(--text2); background: var(--surface2); }
+    .app-tab.active { color: var(--text); background: var(--surface2); border-color: var(--border2); }
+    .back-link {
+      font-size: 12px;
+      color: var(--text4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--red); }
+
+    /* === Tab Panels === */
+    .tab-panel { display: none; padding: 32px 24px; max-width: 1400px; margin: 0 auto; }
+    .tab-panel.active { display: block; }
+
+    /* === Widget Gallery === */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 20px;
+    }
+    .widget-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .widget-preview {
+      padding: 24px;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    .widget-info {
+      padding: 16px 20px;
+    }
+    .widget-name {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .widget-desc {
+      font-size: 11px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+    .widget-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .widget-tag {
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .tag-text { background: rgba(229,62,62,0.12); color: var(--red-light); }
+    .tag-data { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .tag-entity { background: rgba(104,211,145,0.12); color: var(--green); }
+    .tag-structure { background: rgba(168,85,247,0.12); color: var(--purple); }
+
+    /* === Slide Preview Components === */
+    .slide-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #FFFFFF;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      color: #1a1a1a;
+    }
+    .slide-frame.dark {
+      background: #0a0a0a;
+      color: #ffffff;
+    }
+
+    /* Widget rendering styles */
+    .w-hero { font-size: 28px; font-weight: 800; letter-spacing: -1px; line-height: 1.15; }
+    .w-subhead { font-size: 14px; color: #666; line-height: 1.5; margin-top: 8px; }
+    .w-body { font-size: 12px; color: #555; line-height: 1.7; }
+    .w-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #999; }
+
+    .w-stat { text-align: center; }
+    .w-stat-num { font-size: 36px; font-weight: 800; line-height: 1; }
+    .w-stat-label { font-size: 11px; color: #888; margin-top: 4px; }
+
+    .w-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .w-stat-grid .w-stat-num { font-size: 24px; }
+
+    .w-logo-wall { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+    .w-logo-item {
+      width: 80px; height: 36px;
+      background: #f5f5f5;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 600; color: #999;
+    }
+    .dark .w-logo-item { background: #1a1a1a; color: #555; }
+
+    .w-team-grid { display: flex; gap: 20px; justify-content: center; }
+    .w-team-member { text-align: center; }
+    .w-team-photo {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      margin: 0 auto 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: #999;
+    }
+    .dark .w-team-photo { background: #222; }
+    .w-team-name { font-size: 11px; font-weight: 600; }
+    .w-team-role { font-size: 9px; color: #888; }
+
+    .w-icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .w-icon-item { text-align: center; }
+    .w-icon-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .w-icon-label { font-size: 10px; font-weight: 500; color: #666; }
+
+    .w-quote { font-size: 16px; font-style: italic; line-height: 1.6; color: #333; text-align: center; }
+    .w-quote-attr { font-size: 11px; color: #888; margin-top: 8px; text-align: center; }
+    .dark .w-quote { color: #ccc; }
+
+    .w-flow { display: flex; align-items: center; gap: 8px; justify-content: center; }
+    .w-flow-step {
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .w-flow-arrow { color: #ccc; font-size: 16px; }
+
+    .w-comparison { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .w-comparison th { text-align: left; padding: 6px 10px; color: #999; font-weight: 500; border-bottom: 1px solid #eee; font-size: 10px; }
+    .w-comparison td { padding: 8px 10px; border-bottom: 1px solid #f5f5f5; color: #666; }
+    .dark .w-comparison th { border-color: #222; }
+    .dark .w-comparison td { border-color: #1a1a1a; color: #888; }
+
+    .w-chart-bar-container { display: flex; flex-direction: column; gap: 6px; }
+    .w-chart-bar-row { display: flex; align-items: center; gap: 8px; }
+    .w-chart-bar-label { font-size: 10px; color: #888; width: 60px; text-align: right; }
+    .w-chart-bar { height: 20px; border-radius: 4px; transition: width 0.6s ease; }
+
+    .w-growth-chart { position: relative; height: 120px; }
+    .w-growth-line { fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    .w-tam-circles { text-align: center; position: relative; }
+    .w-tam-circle {
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+    }
+    .w-tam-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .w-tam-value { font-size: 18px; font-weight: 800; }
+
+    .w-timeline { display: flex; align-items: center; position: relative; padding: 20px 0; }
+    .w-timeline-track { position: absolute; left: 0; right: 0; height: 2px; top: 50%; }
+    .w-timeline-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .w-timeline-label { font-size: 8px; position: absolute; top: 14px; white-space: nowrap; transform: translateX(-50%); left: 50%; color: #888; }
+
+    .w-pricing { display: flex; gap: 12px; justify-content: center; }
+    .w-pricing-tier {
+      flex: 1;
+      max-width: 140px;
+      border-radius: 10px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .w-pricing-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .w-pricing-price { font-size: 22px; font-weight: 800; margin: 6px 0; }
+    .w-pricing-feat { font-size: 9px; color: #888; line-height: 1.8; }
+
+    .w-screenshot {
+      width: 90%;
+      aspect-ratio: 16/10;
+      background: #f0f0f0;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #aaa;
+    }
+    .dark .w-screenshot { background: #111; border-color: #222; color: #444; }
+
+    /* === Deck Generator === */
+    .gen-layout {
+      display: flex;
+      gap: 24px;
+    }
+    .gen-sidebar {
+      width: 320px;
+      flex-shrink: 0;
+    }
+    .gen-main {
+      flex: 1;
+      min-width: 0;
+    }
+    .gen-field {
+      margin-bottom: 16px;
+    }
+    .gen-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .gen-input, .gen-textarea, .gen-select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gen-input:focus, .gen-textarea:focus, .gen-select:focus { border-color: var(--red); }
+    .gen-textarea { min-height: 80px; resize: vertical; }
+    .gen-select { cursor: pointer; }
+    .gen-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .gen-btn:hover { background: #c53030; }
+    .gen-btn-secondary {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text2);
+    }
+    .gen-btn-secondary:hover { background: var(--border); color: var(--text); }
+
+    /* Slide deck preview */
+    .deck-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .deck-slide-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .deck-slide-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      border-bottom: 1px solid var(--border);
+    }
+    .deck-slide-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .deck-slide-content {
+      padding: 16px;
+    }
+
+    /* === Arcs Tab === */
+    .arc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .arc-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .arc-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .arc-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .arc-step {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .arc-arrow { color: var(--text4); font-size: 12px; }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--red);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    @media (max-width: 800px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gen-layout { flex-direction: column; }
+      .gen-sidebar { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <a class="back-link" href="../../">&larr;</a>
+  <div>
+    <div class="app-title"><span>Charlotte</span> Pitch Engine</div>
+    <div class="app-subtitle">Presentation substrate &mdash; 21 widgets, 5 arcs, 17 slide types</div>
+  </div>
+  <div class="app-tabs">
+    <button class="app-tab active" onclick="switchTab('widgets')">Widget Library</button>
+    <button class="app-tab" onclick="switchTab('arcs')">Narrative Arcs</button>
+    <button class="app-tab" onclick="switchTab('generate')">Generate Deck</button>
+    <a href="decks/" style="padding:6px 14px;font-size:11px;font-weight:600;color:#E53E3E;text-decoration:none;border:1px solid #E53E3E33;border-radius:6px;transition:all 0.2s">View Decks &rarr;</a>
+  </div>
+</header>
+
+<!-- ═══════════ TAB 1: WIDGET LIBRARY ═══════════ -->
+<div id="tab-widgets" class="tab-panel active">
+  <div class="section-title">Text Widgets</div>
+  <div class="gallery-grid" id="gallery-text"></div>
+  <div style="margin-top:32px" class="section-title">Data Widgets</div>
+  <div class="gallery-grid" id="gallery-data"></div>
+  <div style="margin-top:32px" class="section-title">Entity Widgets</div>
+  <div class="gallery-grid" id="gallery-entity"></div>
+  <div style="margin-top:32px" class="section-title">Structural Widgets</div>
+  <div class="gallery-grid" id="gallery-structure"></div>
+</div>
+
+<!-- ═══════════ TAB 2: NARRATIVE ARCS ═══════════ -->
+<div id="tab-arcs" class="tab-panel">
+  <div class="section-title">Narrative Arcs</div>
+  <div id="arcs-container"></div>
+</div>
+
+<!-- ═══════════ TAB 3: GENERATE DECK ═══════════ -->
+<div id="tab-generate" class="tab-panel">
+  <div class="gen-layout">
+    <div class="gen-sidebar">
+      <div class="section-title">Business Data</div>
+      <div class="gen-field">
+        <label class="gen-label">Company Name</label>
+        <input class="gen-input" id="gen-name" value="Charlotte" placeholder="Company name">
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Tagline</label>
+        <input class="gen-input" id="gen-tagline" value="Infrastructure for observable reality" placeholder="One-line description">
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Problem Statement</label>
+        <textarea class="gen-textarea" id="gen-problem" placeholder="What pain does this solve?">97% of American businesses were built before AI existed. They don't need more technology. They need the complexity of modernity to stop eroding them.</textarea>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Solution</label>
+        <textarea class="gen-textarea" id="gen-solution" placeholder="How does the product solve it?">Charlotte is titanium injected directly into the bone. Five primitives. One temporal spine. Infinite bespoke operating systems compiled from existing signals.</textarea>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Key Metrics (one per line: label=value)</label>
+        <textarea class="gen-textarea" id="gen-metrics" placeholder="ARR=$1.4M&#10;Domains=7&#10;Growth=40%">First Contract=$1.4M/2yr
+Domains Validated=7
+Research Papers=13
+Production Nodes=27,200
+Production Edges=46,100
+PE Portfolio Cos=26,000</textarea>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">TAM / SAM / SOM</label>
+        <input class="gen-input" id="gen-tam" value="$7.1B / $1.1B / $312M" placeholder="$XB / $XM / $XM">
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Team Members (one per line: Name, Role)</label>
+        <textarea class="gen-textarea" id="gen-team" placeholder="Jane Doe, CEO&#10;John Smith, CTO">Jack Richard, CEO / Architect
+Charles McDaniel, COO / Sounder
+Eric Trogdon, VP Livestock
+Clay Zwilling, Partner / NSR</textarea>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Customers / Partners</label>
+        <input class="gen-input" id="gen-customers" value="ISG, Sounder, NSR, CPS, TSA, Top Tier Moving, Prier Violins" placeholder="Comma-separated names">
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Funding Ask</label>
+        <input class="gen-input" id="gen-ask" value="$25M-$50M Seed" placeholder="$XM Series A">
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Narrative Arc</label>
+        <select class="gen-select" id="gen-arc">
+          <option value="charlotte">Charlotte Arc (14 slides)</option>
+          <option value="infrastructure">Infrastructure Arc (14 slides)</option>
+          <option value="seriesA">Series A Arc (13 slides)</option>
+          <option value="seed">Seed Arc (9 slides)</option>
+          <option value="growth">Growth Arc (11 slides)</option>
+        </select>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Theme</label>
+        <select class="gen-select" id="gen-theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      <div class="gen-field">
+        <label class="gen-label">Brand Color</label>
+        <input class="gen-input" type="color" id="gen-color" value="#E53E3E">
+      </div>
+      <button class="gen-btn" onclick="generateDeck()">Generate Deck</button>
+    </div>
+    <div class="gen-main">
+      <div class="section-title">Deck Preview</div>
+      <div class="deck-preview" id="deck-output">
+        <div style="text-align:center;padding:80px 20px;color:var(--text4)">
+          <p style="font-size:14px;margin-bottom:8px">Fill in the business data and click Generate</p>
+          <p style="font-size:11px">The engine will select widgets and compose slides using the storytelling KRF substrate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// CHARLOTTE PITCH ENGINE
+// Presentation substrate rendering engine
+// ═══════════════════════════════════════════════════════════════
+
+// === Widget Definitions ===
+var WIDGETS = {
+  // Text
+  HeroText:     { name: 'HeroText', cat: 'text', desc: 'Large bold statement. 2-8 words. The single idea the slide communicates.', source: 'NODE' },
+  Subhead:      { name: 'Subhead', cat: 'text', desc: 'Supporting text beneath hero. 1-2 sentences of context.', source: 'NODE' },
+  BodyText:     { name: 'BodyText', cat: 'text', desc: 'Paragraph explanation. Used sparingly \u2014 decks favor visuals.', source: 'NODE' },
+  QuoteBlock:   { name: 'QuoteBlock', cat: 'text', desc: 'Customer or press quote with attribution. Credibility through voice.', source: 'SIGNAL' },
+  SectionLabel: { name: 'SectionLabel', cat: 'text', desc: 'Numbered section header. e.g. "1. The Problem"', source: 'PROTOCOL' },
+  // Data
+  StatBlock:      { name: 'StatBlock', cat: 'data', desc: 'Single large number with label. Most common widget in pitch decks.', source: 'METRIC' },
+  StatGrid:       { name: 'StatGrid', cat: 'data', desc: '2x2 or 3x2 grid of stat blocks. Compresses proof points.', source: 'METRIC' },
+  GrowthChart:    { name: 'GrowthChart', cat: 'data', desc: 'Line chart showing trajectory. The hockey stick when present.', source: 'SIGNAL' },
+  BarChart:       { name: 'BarChart', cat: 'data', desc: 'Comparative bars. Revenue by segment, feature usage.', source: 'METRIC' },
+  PieChart:       { name: 'PieChart', cat: 'data', desc: 'Circular allocation. Market share, revenue mix.', source: 'METRIC' },
+  MarketSize:     { name: 'MarketSize', cat: 'data', desc: 'Concentric TAM > SAM > SOM circles with dollar amounts.', source: 'METRIC' },
+  Timeline:       { name: 'Timeline', cat: 'data', desc: 'Horizontal milestone bar. Founding to present.', source: 'SIGNAL' },
+  UnitEconomics:  { name: 'UnitEconomics', cat: 'data', desc: 'LTV/CAC, payback period, gross margin.', source: 'METRIC' },
+  // Entity
+  TeamGrid:         { name: 'TeamGrid', cat: 'entity', desc: 'Circular headshots with name, title, prior company.', source: 'NODE' },
+  LogoWall:         { name: 'LogoWall', cat: 'entity', desc: 'Grid of customer/partner logos. Pure social proof.', source: 'NODE' },
+  IconGrid:         { name: 'IconGrid', cat: 'entity', desc: 'Features shown as icon + label pairs.', source: 'NODE' },
+  ProductScreenshot:{ name: 'ProductScreenshot', cat: 'entity', desc: 'Application screenshot with callouts.', source: 'NODE' },
+  // Structure
+  ComparisonMatrix: { name: 'ComparisonMatrix', cat: 'structure', desc: 'Feature comparison or 2x2 positioning quadrant.', source: 'EDGE' },
+  FlowDiagram:      { name: 'FlowDiagram', cat: 'structure', desc: 'Step-by-step process. Boxes + arrows.', source: 'PROTOCOL' },
+  PricingTable:     { name: 'PricingTable', cat: 'structure', desc: 'Tier columns with features and prices.', source: 'PROTOCOL' },
+  TwoColumn:        { name: 'TwoColumn', cat: 'structure', desc: 'Left-right split for contrasting information.', source: 'EDGE' }
+};
+
+var catTags = { text: 'tag-text', data: 'tag-data', entity: 'tag-entity', structure: 'tag-structure' };
+var catLabels = { text: 'Text', data: 'Data', entity: 'Entity', structure: 'Structure' };
+
+// === Narrative Arcs ===
+var ARCS = {
+  seed: {
+    name: 'Seed Arc', color: '#68D391',
+    desc: 'Pre-revenue or early traction. Emphasizes problem severity, solution elegance, and team credibility. 9 slides. Pattern used by: Cradle, Spektr, Copy.ai, Kyra.',
+    slides: ['Cover','Problem','Solution','HowItWorks','Market','Traction','Team','Ask','Closing']
+  },
+  seriesA: {
+    name: 'Series A Arc', color: '#4A9EE5',
+    desc: 'Post-traction. Leads with vision, proves product-market fit, shows path to scale. 13 slides. Pattern used by: Rippling, Wayflyer, Read AI, Flo, Pennylane.',
+    slides: ['Cover','Vision','Problem','Solution','Traction','Market','BusinessModel','Competitive','CustomerProof','Team','Financials','Ask','Closing']
+  },
+  growth: {
+    name: 'Growth Arc', color: '#F59E0B',
+    desc: 'Revenue-first narrative. Opens with metrics, builds to expansion thesis. 11 slides. Used when traction speaks for itself.',
+    slides: ['Cover','Traction','Market','Product','BusinessModel','GoToMarket','Competitive','Financials','Team','Ask','Closing']
+  },
+  infrastructure: {
+    name: 'Infrastructure Arc', color: '#A855F7',
+    desc: 'Platform play. Leads with thesis, emphasizes architecture and moat depth. 14 slides. Pattern used by: MoonHub, ValidMind, Filigran.',
+    slides: ['Cover','Problem','Vision','Solution','HowItWorks','Market','Traction','CustomerProof','Competitive','BusinessModel','Team','Financials','Ask','Closing']
+  },
+  charlotte: {
+    name: 'Charlotte Arc', color: '#E53E3E',
+    desc: 'Category creation narrative. Starts with the thesis that 97% of businesses were built before AI, builds to the infinite OS stack, proves with cross-domain validation, closes with compound moat.',
+    slides: ['Cover','Vision','Problem','Solution','HowItWorks','CustomerProof','Traction','Market','BusinessModel','Competitive','Team','Financials','Ask','Closing']
+  }
+};
+
+var SLIDE_COLORS = {
+  Cover: '#E53E3E', Vision: '#A855F7', Problem: '#F59E0B', Solution: '#68D391',
+  HowItWorks: '#4A9EE5', CustomerProof: '#2DD4BF', Traction: '#68D391',
+  Market: '#F59E0B', BusinessModel: '#E53E3E', Competitive: '#C4A8A8',
+  Team: '#4A9EE5', Financials: '#68D391', Ask: '#E53E3E', Closing: '#C4A8A8',
+  Product: '#A855F7', GoToMarket: '#F59E0B'
+};
+
+// === Tab Switching ===
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.app-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelector('[onclick="switchTab(\'' + name + '\')"]').classList.add('active');
+}
+
+// === Render Widget Gallery ===
+function renderWidgetGallery() {
+  var containers = {
+    text: document.getElementById('gallery-text'),
+    data: document.getElementById('gallery-data'),
+    entity: document.getElementById('gallery-entity'),
+    structure: document.getElementById('gallery-structure')
+  };
+
+  Object.keys(WIDGETS).forEach(function(key) {
+    var w = WIDGETS[key];
+    var card = document.createElement('div');
+    card.className = 'widget-card';
+    card.innerHTML =
+      '<div class="widget-preview">' + renderWidgetPreview(key) + '</div>' +
+      '<div class="widget-info">' +
+        '<div class="widget-name">' + w.name + '</div>' +
+        '<div class="widget-desc">' + w.desc + '</div>' +
+        '<div class="widget-tags">' +
+          '<span class="widget-tag ' + catTags[w.cat] + '">' + catLabels[w.cat] + '</span>' +
+          '<span class="widget-tag" style="background:rgba(196,168,168,0.12);color:#C4A8A8">' + w.source + '</span>' +
+        '</div>' +
+      '</div>';
+    containers[w.cat].appendChild(card);
+  });
+}
+
+function renderWidgetPreview(key) {
+  var c = '#E53E3E';
+  switch(key) {
+    case 'HeroText':
+      return '<div style="padding:20px;text-align:center"><div class="w-hero">Infrastructure for<br>observable reality</div></div>';
+    case 'Subhead':
+      return '<div style="padding:20px;text-align:center"><div class="w-subhead">Five primitives. One temporal spine. Infinite bespoke operating systems compiled from the signals every business already emits.</div></div>';
+    case 'BodyText':
+      return '<div style="padding:20px"><div class="w-body">Charlotte is the first layer of an infinite stack of operating systems. Every business that wants to be a business gets its own OS \u2014 custom-compiled to its own operations, its own vocabulary, its own rhythm.</div></div>';
+    case 'QuoteBlock':
+      return '<div style="padding:20px"><div class="w-quote">\u201CThe correct measure of technological progress is not how much technology people use. It is how little they notice.\u201D</div><div class="w-quote-attr">\u2014 Charlotte Thesis</div></div>';
+    case 'SectionLabel':
+      return '<div style="padding:20px"><div class="w-section-label">1. The Problem</div></div>';
+    case 'StatBlock':
+      return '<div style="padding:20px"><div class="w-stat"><div class="w-stat-num" style="color:' + c + '">$1.4M</div><div class="w-stat-label">First Contract Value (2yr)</div></div></div>';
+    case 'StatGrid':
+      return '<div style="padding:16px"><div class="w-stat-grid">' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:' + c + '">7</div><div class="w-stat-label">Domains</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#68D391">13</div><div class="w-stat-label">Papers</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#F59E0B">27.2K</div><div class="w-stat-label">Nodes</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#4A9EE5">46.1K</div><div class="w-stat-label">Edges</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#A855F7">5</div><div class="w-stat-label">Primitives</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#C4A8A8">33.2M</div><div class="w-stat-label">Target Businesses</div></div>' +
+      '</div></div>';
+    case 'GrowthChart':
+      return '<div style="padding:16px"><svg viewBox="0 0 300 120" width="100%"><polyline class="w-growth-line" stroke="' + c + '" points="10,110 50,105 90,100 130,92 170,75 210,50 250,20 290,5"/><line x1="10" y1="110" x2="290" y2="110" stroke="#eee" stroke-width="1"/></svg></div>';
+    case 'BarChart':
+      return '<div style="padding:16px"><div class="w-chart-bar-container">' +
+        '<div class="w-chart-bar-row"><span class="w-chart-bar-label">PE</span><div class="w-chart-bar" style="width:60%;background:#C4A8A8"></div><span style="font-size:10px;color:#888">$312M</span></div>' +
+        '<div class="w-chart-bar-row"><span class="w-chart-bar-label">Mid-Mkt</span><div class="w-chart-bar" style="width:75%;background:#F56565"></div><span style="font-size:10px;color:#888">$780M</span></div>' +
+        '<div class="w-chart-bar-row"><span class="w-chart-bar-label">97%</span><div class="w-chart-bar" style="width:95%;background:#F59E0B"></div><span style="font-size:10px;color:#888">$6.0B</span></div>' +
+      '</div></div>';
+    case 'PieChart':
+      return '<div style="padding:16px;text-align:center"><svg viewBox="0 0 120 120" width="120"><circle cx="60" cy="60" r="50" fill="none" stroke="#eee" stroke-width="20"/><circle cx="60" cy="60" r="50" fill="none" stroke="' + c + '" stroke-width="20" stroke-dasharray="220 94" stroke-dashoffset="0" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="50" fill="none" stroke="#68D391" stroke-width="20" stroke-dasharray="63 251" stroke-dashoffset="-220" transform="rotate(-90 60 60)"/><text x="60" y="64" text-anchor="middle" font-size="14" font-weight="700" fill="#333">$7.1B</text></svg></div>';
+    case 'MarketSize':
+      return '<div style="padding:12px;text-align:center"><div class="w-tam-circle" style="width:160px;height:160px;background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.2)"><div class="w-tam-label" style="color:#E53E3E">TAM</div><div class="w-tam-value" style="color:#E53E3E">$7.1B</div><div class="w-tam-circle" style="width:110px;height:110px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);margin-top:-4px"><div class="w-tam-label" style="color:#F59E0B">SAM</div><div class="w-tam-value" style="color:#F59E0B;font-size:14px">$1.1B</div><div class="w-tam-circle" style="width:65px;height:65px;background:rgba(104,211,145,0.08);border:1px solid rgba(104,211,145,0.2);margin-top:-4px"><div class="w-tam-label" style="color:#68D391">SOM</div><div class="w-tam-value" style="color:#68D391;font-size:11px">$312M</div></div></div></div></div>';
+    case 'Timeline':
+      return '<div style="padding:20px 12px;position:relative"><div style="display:flex;justify-content:space-between;align-items:center;position:relative"><div style="position:absolute;left:5%;right:5%;height:2px;background:#eee;top:50%"></div>' +
+        ['2018','2022','2024','2026','2028'].map(function(y,i) {
+          return '<div style="position:relative;text-align:center;z-index:1"><div style="width:10px;height:10px;border-radius:50%;background:' + c + ';margin:0 auto"></div><div style="font-size:8px;color:#888;margin-top:4px">' + y + '</div></div>';
+        }).join('') +
+      '</div></div>';
+    case 'UnitEconomics':
+      return '<div style="padding:16px"><div class="w-stat-grid" style="grid-template-columns:1fr 1fr 1fr">' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#68D391;font-size:20px">50:1</div><div class="w-stat-label">LTV:CAC</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#F59E0B;font-size:20px">85%</div><div class="w-stat-label">Gross Margin</div></div>' +
+        '<div class="w-stat"><div class="w-stat-num" style="color:#4A9EE5;font-size:20px">&lt;5%</div><div class="w-stat-label">Churn</div></div>' +
+      '</div></div>';
+    case 'TeamGrid':
+      return '<div style="padding:16px"><div class="w-team-grid">' +
+        [['JR','Jack Richard','CEO'],['CM','Charles McDaniel','COO'],['ET','Eric Trogdon','VP Livestock'],['CZ','Clay Zwilling','NSR Partner']].map(function(t) {
+          return '<div class="w-team-member"><div class="w-team-photo">' + t[0] + '</div><div class="w-team-name">' + t[1] + '</div><div class="w-team-role">' + t[2] + '</div></div>';
+        }).join('') +
+      '</div></div>';
+    case 'LogoWall':
+      return '<div style="padding:16px"><div class="w-logo-wall">' +
+        ['ISG','Sounder','NSR','CPS','TSA','Top Tier','Prier','All State'].map(function(n) {
+          return '<div class="w-logo-item">' + n + '</div>';
+        }).join('') +
+      '</div></div>';
+    case 'IconGrid':
+      return '<div style="padding:16px"><div class="w-icon-grid">' +
+        [['#C4A8A8','&#x25CF;','Node'],['#9B7878','&#x2194;','Edge'],['#F59E0B','&#x2261;','Metric'],['#E53E3E','&#x26A1;','Signal'],['#68D391','&#x25C6;','Protocol'],['#A855F7','&#x23F1;','Temporal']].map(function(i) {
+          return '<div class="w-icon-item"><div class="w-icon-circle" style="background:' + i[0] + '22;color:' + i[0] + '">' + i[1] + '</div><div class="w-icon-label">' + i[2] + '</div></div>';
+        }).join('') +
+      '</div></div>';
+    case 'ProductScreenshot':
+      return '<div style="padding:16px"><div class="w-screenshot">Product Screenshot Placeholder</div></div>';
+    case 'ComparisonMatrix':
+      return '<div style="padding:16px"><table class="w-comparison"><tr><th></th><th>Charlotte</th><th>Palantir</th><th>Snowflake</th></tr>' +
+        '<tr><td>Invisible to user</td><td style="color:#68D391">\u2713</td><td>\u2717</td><td>\u2717</td></tr>' +
+        '<tr><td>Cross-domain</td><td style="color:#68D391">\u2713</td><td style="color:#68D391">\u2713</td><td>\u2717</td></tr>' +
+        '<tr><td>Small business</td><td style="color:#68D391">\u2713</td><td>\u2717</td><td>\u2717</td></tr>' +
+        '<tr><td>No training</td><td style="color:#68D391">\u2713</td><td>\u2717</td><td>\u2717</td></tr>' +
+      '</table></div>';
+    case 'FlowDiagram':
+      return '<div style="padding:16px"><div class="w-flow">' +
+        '<div class="w-flow-step" style="background:rgba(229,62,62,0.1);color:#E53E3E">Observe Signals</div>' +
+        '<div class="w-flow-arrow">\u2192</div>' +
+        '<div class="w-flow-step" style="background:rgba(245,158,11,0.1);color:#F59E0B">Compile OS</div>' +
+        '<div class="w-flow-arrow">\u2192</div>' +
+        '<div class="w-flow-step" style="background:rgba(104,211,145,0.1);color:#68D391">Deploy Invisible</div>' +
+      '</div></div>';
+    case 'PricingTable':
+      return '<div style="padding:16px"><div class="w-pricing">' +
+        '<div class="w-pricing-tier" style="background:#f8f8f8;border:1px solid #eee"><div class="w-pricing-name" style="color:#C4A8A8">PE Beachhead</div><div class="w-pricing-price">$100K+</div><div class="w-pricing-feat">/mo per portfolio co<br>Full OS deployment<br>Cross-portfolio intel</div></div>' +
+        '<div class="w-pricing-tier" style="background:#f8f8f8;border:2px solid ' + c + '"><div class="w-pricing-name" style="color:' + c + '">Mid-Market</div><div class="w-pricing-price">$5-50K</div><div class="w-pricing-feat">/mo per company<br>Domain-specific OS<br>Equipment intelligence</div></div>' +
+        '<div class="w-pricing-tier" style="background:#f8f8f8;border:1px solid #eee"><div class="w-pricing-name" style="color:#F59E0B">The 97%</div><div class="w-pricing-price">$500-3K</div><div class="w-pricing-feat">/mo invisible<br>No screens, no logins<br>Pure observation</div></div>' +
+      '</div></div>';
+    case 'TwoColumn':
+      return '<div style="padding:16px;display:flex;gap:16px"><div style="flex:1;padding:12px;background:#f8f8f8;border-radius:8px"><div style="font-size:11px;font-weight:700;color:#E53E3E;margin-bottom:4px">Before Charlotte</div><div style="font-size:10px;color:#888;line-height:1.6">Disconnected tools. Manual data entry. 12-24 month integrations. Visible, fragile, expensive.</div></div><div style="flex:1;padding:12px;background:#f0fff0;border-radius:8px"><div style="font-size:11px;font-weight:700;color:#68D391;margin-bottom:4px">After Charlotte</div><div style="font-size:10px;color:#888;line-height:1.6">Invisible substrate. Automatic observation. Hours to deploy. The business never changes.</div></div></div>';
+    default:
+      return '<div style="padding:20px;color:#888;font-size:12px">Widget preview</div>';
+  }
+}
+
+// === Render Arcs ===
+function renderArcs() {
+  var container = document.getElementById('arcs-container');
+  Object.keys(ARCS).forEach(function(key) {
+    var arc = ARCS[key];
+    var card = document.createElement('div');
+    card.className = 'arc-card';
+    card.innerHTML =
+      '<div class="arc-name" style="color:' + arc.color + '">' + arc.name + '</div>' +
+      '<div class="arc-desc">' + arc.desc + '</div>' +
+      '<div class="arc-flow">' +
+        arc.slides.map(function(s, i) {
+          var col = SLIDE_COLORS[s] || '#888';
+          return '<span class="arc-step" style="background:' + col + '18;color:' + col + ';border:1px solid ' + col + '33">' + s + '</span>' +
+            (i < arc.slides.length - 1 ? '<span class="arc-arrow">\u2192</span>' : '');
+        }).join('') +
+      '</div>';
+    container.appendChild(card);
+  });
+}
+
+// === Deck Generation ===
+function generateDeck() {
+  var name = document.getElementById('gen-name').value;
+  var tagline = document.getElementById('gen-tagline').value;
+  var problem = document.getElementById('gen-problem').value;
+  var solution = document.getElementById('gen-solution').value;
+  var metricsRaw = document.getElementById('gen-metrics').value;
+  var tamRaw = document.getElementById('gen-tam').value;
+  var teamRaw = document.getElementById('gen-team').value;
+  var customersRaw = document.getElementById('gen-customers').value;
+  var ask = document.getElementById('gen-ask').value;
+  var arcKey = document.getElementById('gen-arc').value;
+  var theme = document.getElementById('gen-theme').value;
+  var brandColor = document.getElementById('gen-color').value;
+
+  // Parse metrics
+  var metrics = metricsRaw.split('\n').filter(Boolean).map(function(l) {
+    var parts = l.split('=');
+    return { label: parts[0].trim(), value: parts[1] ? parts[1].trim() : '' };
+  });
+
+  // Parse TAM
+  var tamParts = tamRaw.split('/').map(function(s) { return s.trim(); });
+  var tam = tamParts[0] || '', sam = tamParts[1] || '', som = tamParts[2] || '';
+
+  // Parse team
+  var team = teamRaw.split('\n').filter(Boolean).map(function(l) {
+    var parts = l.split(',');
+    return { name: parts[0].trim(), role: parts[1] ? parts[1].trim() : '' };
+  });
+
+  // Parse customers
+  var customers = customersRaw.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+
+  var arc = ARCS[arcKey];
+  var isDark = theme === 'dark';
+  var output = document.getElementById('deck-output');
+  output.innerHTML = '';
+
+  arc.slides.forEach(function(slideType, idx) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'deck-slide-wrapper';
+    var col = SLIDE_COLORS[slideType] || '#888';
+
+    wrapper.innerHTML =
+      '<div class="deck-slide-label">' +
+        '<div class="deck-slide-num" style="background:' + col + '22;color:' + col + '">' + (idx + 1) + '</div>' +
+        '<span>' + slideType + '</span>' +
+      '</div>' +
+      '<div class="deck-slide-content">' + renderSlide(slideType, {
+        name: name, tagline: tagline, problem: problem, solution: solution,
+        metrics: metrics, tam: tam, sam: sam, som: som,
+        team: team, customers: customers, ask: ask,
+        brandColor: brandColor, isDark: isDark
+      }) + '</div>';
+
+    output.appendChild(wrapper);
+  });
+}
+
+function renderSlide(type, d) {
+  var bc = d.brandColor;
+  var dark = d.isDark ? ' dark' : '';
+  var bg = d.isDark ? '#0a0a0a' : '#ffffff';
+  var fg = d.isDark ? '#ffffff' : '#1a1a1a';
+  var fg2 = d.isDark ? '#aaa' : '#666';
+
+  var frame = '<div class="slide-frame' + dark + '" style="padding:40px 48px;display:flex;flex-direction:column;justify-content:center;">';
+  var end = '</div>';
+
+  switch(type) {
+    case 'Cover':
+      return frame +
+        '<div style="text-align:center">' +
+          '<div style="font-size:42px;font-weight:800;letter-spacing:-2px;color:' + bc + '">' + d.name + '</div>' +
+          '<div style="font-size:16px;color:' + fg2 + ';margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto">' + d.tagline + '</div>' +
+        '</div>' + end;
+
+    case 'Vision':
+      return frame +
+        '<div style="text-align:center;max-width:600px;margin:0 auto">' +
+          '<div class="w-section-label" style="color:' + bc + ';margin-bottom:16px">The Vision</div>' +
+          '<div class="w-hero" style="color:' + fg + ';font-size:24px">Every business gets its own operating system \u2014 invisible, bespoke, compiled from signals it already emits</div>' +
+        '</div>' + end;
+
+    case 'Problem':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:16px">The Problem</div>' +
+        '<div class="w-hero" style="font-size:22px;color:' + fg + ';margin-bottom:20px">' + (d.problem.split('.')[0] || 'The problem') + '.</div>' +
+        '<div class="w-body" style="color:' + fg2 + '">' + d.problem + '</div>' + end;
+
+    case 'Solution':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:16px">The Solution</div>' +
+        '<div class="w-hero" style="font-size:22px;color:' + fg + ';margin-bottom:20px">' + d.name + '</div>' +
+        '<div class="w-body" style="color:' + fg2 + '">' + d.solution + '</div>' + end;
+
+    case 'HowItWorks':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">How It Works</div>' +
+        '<div class="w-flow" style="margin-bottom:24px">' +
+          '<div class="w-flow-step" style="background:' + bc + '18;color:' + bc + '">Observe Signals</div>' +
+          '<div class="w-flow-arrow" style="color:' + fg2 + '">\u2192</div>' +
+          '<div class="w-flow-step" style="background:rgba(245,158,11,0.1);color:#F59E0B">Compile OS</div>' +
+          '<div class="w-flow-arrow" style="color:' + fg2 + '">\u2192</div>' +
+          '<div class="w-flow-step" style="background:rgba(104,211,145,0.1);color:#68D391">Deploy Invisible</div>' +
+        '</div>' +
+        '<div class="w-icon-grid">' +
+          [['#C4A8A8','&#x25CF;','Node'],['#9B7878','&#x2194;','Edge'],['#F59E0B','&#x2261;','Metric'],['#E53E3E','&#x26A1;','Signal'],['#68D391','&#x25C6;','Protocol']].map(function(i) {
+            return '<div class="w-icon-item"><div class="w-icon-circle" style="background:' + i[0] + '22;color:' + i[0] + '">' + i[1] + '</div><div class="w-icon-label" style="color:' + fg2 + '">' + i[2] + '</div></div>';
+          }).join('') +
+        '</div>' + end;
+
+    case 'Traction':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Traction</div>' +
+        '<div class="w-stat-grid">' +
+          d.metrics.slice(0, 6).map(function(m, i) {
+            var colors = [bc, '#68D391', '#F59E0B', '#4A9EE5', '#A855F7', '#C4A8A8'];
+            return '<div class="w-stat"><div class="w-stat-num" style="color:' + colors[i % 6] + '">' + m.value + '</div><div class="w-stat-label" style="color:' + fg2 + '">' + m.label + '</div></div>';
+          }).join('') +
+        '</div>' + end;
+
+    case 'Market':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Market Opportunity</div>' +
+        '<div style="text-align:center">' +
+          '<div class="w-tam-circle" style="width:200px;height:200px;background:' + bc + '12;border:1px solid ' + bc + '33">' +
+            '<div class="w-tam-label" style="color:' + bc + '">TAM</div>' +
+            '<div class="w-tam-value" style="color:' + bc + '">' + d.tam + '</div>' +
+            '<div class="w-tam-circle" style="width:140px;height:140px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);margin-top:-8px">' +
+              '<div class="w-tam-label" style="color:#F59E0B">SAM</div>' +
+              '<div class="w-tam-value" style="color:#F59E0B;font-size:14px">' + d.sam + '</div>' +
+              '<div class="w-tam-circle" style="width:80px;height:80px;background:rgba(104,211,145,0.08);border:1px solid rgba(104,211,145,0.2);margin-top:-6px">' +
+                '<div class="w-tam-label" style="color:#68D391">SOM</div>' +
+                '<div class="w-tam-value" style="color:#68D391;font-size:11px">' + d.som + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' + end;
+
+    case 'BusinessModel':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Business Model</div>' +
+        '<div class="w-pricing">' +
+          '<div class="w-pricing-tier" style="background:' + (d.isDark ? '#111' : '#f8f8f8') + ';border:1px solid ' + (d.isDark ? '#222' : '#eee') + '"><div class="w-pricing-name" style="color:#C4A8A8">Tier 1</div><div class="w-pricing-price" style="color:' + fg + '">$100K+</div><div class="w-pricing-feat" style="color:' + fg2 + '">/mo &middot; Enterprise<br>Full deployment</div></div>' +
+          '<div class="w-pricing-tier" style="background:' + (d.isDark ? '#111' : '#f8f8f8') + ';border:2px solid ' + bc + '"><div class="w-pricing-name" style="color:' + bc + '">Tier 2</div><div class="w-pricing-price" style="color:' + fg + '">$5-50K</div><div class="w-pricing-feat" style="color:' + fg2 + '">/mo &middot; Mid-market<br>Domain OS</div></div>' +
+          '<div class="w-pricing-tier" style="background:' + (d.isDark ? '#111' : '#f8f8f8') + ';border:1px solid ' + (d.isDark ? '#222' : '#eee') + '"><div class="w-pricing-name" style="color:#F59E0B">Tier 3</div><div class="w-pricing-price" style="color:' + fg + '">$500-3K</div><div class="w-pricing-feat" style="color:' + fg2 + '">/mo &middot; SMB<br>Invisible infrastructure</div></div>' +
+        '</div>' + end;
+
+    case 'Competitive':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:16px">Competitive Landscape</div>' +
+        '<table class="w-comparison" style="color:' + fg + '">' +
+          '<tr><th style="color:' + fg2 + '"></th><th style="color:' + bc + '">' + d.name + '</th><th style="color:' + fg2 + '">Legacy</th><th style="color:' + fg2 + '">Horizontal SaaS</th></tr>' +
+          '<tr><td style="color:' + fg2 + '">Invisible to user</td><td style="color:#68D391">\u2713</td><td style="color:' + fg2 + '">\u2717</td><td style="color:' + fg2 + '">\u2717</td></tr>' +
+          '<tr><td style="color:' + fg2 + '">Cross-domain</td><td style="color:#68D391">\u2713</td><td style="color:' + fg2 + '">\u2717</td><td style="color:' + fg2 + '">\u2713</td></tr>' +
+          '<tr><td style="color:' + fg2 + '">No training needed</td><td style="color:#68D391">\u2713</td><td style="color:' + fg2 + '">\u2717</td><td style="color:' + fg2 + '">\u2717</td></tr>' +
+          '<tr><td style="color:' + fg2 + '">Bespoke per business</td><td style="color:#68D391">\u2713</td><td style="color:' + fg2 + '">\u2717</td><td style="color:' + fg2 + '">\u2717</td></tr>' +
+        '</table>' + end;
+
+    case 'CustomerProof':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Validated Across ' + d.customers.length + ' Partners</div>' +
+        '<div class="w-logo-wall">' +
+          d.customers.map(function(c) {
+            return '<div class="w-logo-item" style="background:' + (d.isDark ? '#111' : '#f5f5f5') + ';color:' + fg2 + '">' + c + '</div>';
+          }).join('') +
+        '</div>' + end;
+
+    case 'Team':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Team</div>' +
+        '<div class="w-team-grid">' +
+          d.team.map(function(t) {
+            var initials = t.name.split(' ').map(function(w) { return w[0]; }).join('');
+            return '<div class="w-team-member"><div class="w-team-photo" style="background:' + (d.isDark ? '#222' : '#e0e0e0') + ';color:' + fg2 + '">' + initials + '</div><div class="w-team-name" style="color:' + fg + '">' + t.name + '</div><div class="w-team-role" style="color:' + fg2 + '">' + t.role + '</div></div>';
+          }).join('') +
+        '</div>' + end;
+
+    case 'Financials':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Financial Projections</div>' +
+        '<div class="w-chart-bar-container">' +
+          [['Year 1', 15], ['Year 2', 35], ['Year 3', 55], ['Year 5', 82], ['Year 10', 100]].map(function(r) {
+            return '<div class="w-chart-bar-row"><span class="w-chart-bar-label" style="color:' + fg2 + '">' + r[0] + '</span><div class="w-chart-bar" style="width:' + r[1] + '%;background:' + bc + '"></div></div>';
+          }).join('') +
+        '</div>' +
+        '<div style="margin-top:20px" class="w-stat-grid" style="grid-template-columns:1fr 1fr 1fr">' +
+          '<div class="w-stat"><div class="w-stat-num" style="color:#68D391;font-size:18px">50:1</div><div class="w-stat-label" style="color:' + fg2 + '">LTV:CAC</div></div>' +
+          '<div class="w-stat"><div class="w-stat-num" style="color:#F59E0B;font-size:18px">85%</div><div class="w-stat-label" style="color:' + fg2 + '">Gross Margin</div></div>' +
+          '<div class="w-stat"><div class="w-stat-num" style="color:#4A9EE5;font-size:18px">&lt;5%</div><div class="w-stat-label" style="color:' + fg2 + '">Churn</div></div>' +
+        '</div>' + end;
+
+    case 'Ask':
+      return frame +
+        '<div style="text-align:center">' +
+          '<div class="w-section-label" style="color:' + bc + ';margin-bottom:16px">The Ask</div>' +
+          '<div class="w-hero" style="font-size:36px;color:' + fg + '">' + d.ask + '</div>' +
+          '<div class="w-subhead" style="color:' + fg2 + ';margin-top:16px">Use of proceeds: Engineering (40%), Go-to-market (30%), Operations (20%), Reserve (10%)</div>' +
+        '</div>' + end;
+
+    case 'Closing':
+      return frame +
+        '<div style="text-align:center">' +
+          '<div style="font-size:36px;font-weight:800;letter-spacing:-2px;color:' + bc + '">' + d.name + '</div>' +
+          '<div style="font-size:14px;color:' + fg2 + ';margin-top:12px">' + d.tagline + '</div>' +
+        '</div>' + end;
+
+    case 'Product':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Product</div>' +
+        '<div class="w-screenshot" style="background:' + (d.isDark ? '#111' : '#f0f0f0') + ';border-color:' + (d.isDark ? '#222' : '#e0e0e0') + ';color:' + fg2 + '">Product Screenshot</div>' + end;
+
+    case 'GoToMarket':
+      return frame +
+        '<div class="w-section-label" style="color:' + bc + ';margin-bottom:20px">Go-to-Market</div>' +
+        '<div class="w-flow" style="margin-bottom:20px">' +
+          '<div class="w-flow-step" style="background:' + bc + '18;color:' + bc + '">PE Portfolio</div>' +
+          '<div class="w-flow-arrow" style="color:' + fg2 + '">\u2192</div>' +
+          '<div class="w-flow-step" style="background:rgba(245,158,11,0.1);color:#F59E0B">Mid-Market</div>' +
+          '<div class="w-flow-arrow" style="color:' + fg2 + '">\u2192</div>' +
+          '<div class="w-flow-step" style="background:rgba(104,211,145,0.1);color:#68D391">33M SMBs</div>' +
+        '</div>' + end;
+
+    default:
+      return frame + '<div style="text-align:center;color:' + fg2 + '">' + type + ' slide</div>' + end;
+  }
+}
+
+// === Init ===
+renderWidgetGallery();
+renderArcs();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+;;; Knowledge Graph Substrate — Predicate Definitions
+;;; Defines all edge types (predicates) used in the knowledge graph
+
+(in-microtheory KnowledgeGraphPredicatesMt)
+
+;;; === Domain Membership ===
+(isa belongsToDomain Predicate)
+(arity belongsToDomain 2)
+(arg1Isa belongsToDomain ReferenceResource)
+(arg2Isa belongsToDomain ReferenceDomain)
+(comment belongsToDomain "A reference resource belongs to a subject domain")
+
+;;; === Authorship ===
+(isa hasAuthor Predicate)
+(arity hasAuthor 2)
+(arg1Isa hasAuthor ReferenceResource)
+(arg2Isa hasAuthor PersonEntity)
+(comment hasAuthor "A resource was authored by a person")
+
+;;; === Citation / Cross-Reference ===
+(isa citesResource Predicate)
+(arity citesResource 2)
+(arg1Isa citesResource DocumentArtifact)
+(arg2Isa citesResource NODE)
+(comment citesResource "A document explicitly references another node")
+
+;;; === Topic Overlap ===
+(isa topicOverlap Predicate)
+(arity topicOverlap 2)
+(arg1Isa topicOverlap NODE)
+(arg2Isa topicOverlap NODE)
+(comment topicOverlap "Two nodes share significant keyword overlap")
+
+;;; === Resource Properties ===
+(isa hasResourceType Predicate)
+(arity hasResourceType 2)
+(arg1Isa hasResourceType ReferenceResource)
+(arg2Isa hasResourceType Thing)
+(comment hasResourceType "Resource type: book, video, course, notes, code, data")
+
+(isa hasLevel Predicate)
+(arity hasLevel 2)
+(arg1Isa hasLevel ReferenceResource)
+(arg2Isa hasLevel Thing)
+(comment hasLevel "Difficulty level: beginner, intermediate, advanced")
+
+(isa hasURL Predicate)
+(arity hasURL 2)
+(arg1Isa hasURL NODE)
+(arg2Isa hasURL Thing)
+(comment hasURL "URL linking to the resource or project")
+
+(isa hasDescription Predicate)
+(arity hasDescription 2)
+(arg1Isa hasDescription NODE)
+(arg2Isa hasDescription Thing)
+(comment hasDescription "Human-readable description of the node")
+
+;;; === Structural Hierarchy ===
+(isa partOfBusiness Predicate)
+(arity partOfBusiness 2)
+(arg1Isa partOfBusiness DocumentArtifact)
+(arg2Isa partOfBusiness BusinessEntity)
+(comment partOfBusiness "A document artifact belongs to a business entity")
+
+(isa parentChild Predicate)
+(arity parentChild 2)
+(arg1Isa parentChild NODE)
+(arg2Isa parentChild NODE)
+(comment parentChild "General parent-child containment relationship")
+
+;;; === Primitive Connection ===
+(isa exemplifiesPrimitive Predicate)
+(arity exemplifiesPrimitive 2)
+(arg1Isa exemplifiesPrimitive NODE)
+(arg2Isa exemplifiesPrimitive NODE)
+(comment exemplifiesPrimitive "A node exemplifies one of Charlotte's five primitives")

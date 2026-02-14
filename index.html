@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SomeAI</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23E53E3E' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(120,120)'%3E%3Cline x1='0' y1='0' x2='0' y2='-108'/%3E%3Cline x1='0' y1='0' x2='65' y2='-87'/%3E%3Cline x1='0' y1='0' x2='103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='95' y2='50'/%3E%3Cline x1='0' y1='0' x2='40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-95' y2='50'/%3E%3Cline x1='0' y1='0' x2='-103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='-65' y2='-87'/%3E%3Cpath d='M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z'/%3E%3Cpath d='M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z'/%3E%3Cpath d='M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="icon"href="design/brandbook/someai/assets/LOGO.png">
+  <link rel="apple-touch-icon" href="design/brandbook/someai/assets/LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -43,7 +44,7 @@
     }
     .junction { opacity: 0; transition: opacity 0.1s; }
 
-    /* === Hero + Particle Canvas (Layer 2) === */
+    /* === Hero (Layer 2) === */
     #hero {
       position: relative;
       width: calc(100% + 48px);
@@ -51,11 +52,14 @@
       height: 400px;
       overflow: hidden;
     }
+    /* === Micro-Graph Background (full page, behind everything) === */
     #particle-canvas {
-      position: absolute;
+      position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
+      z-index: -2;
+      pointer-events: none;
     }
     .hero-overlay {
       position: absolute;
@@ -435,11 +439,41 @@
     .card-kernel:hover { border-color: #E53E3E; box-shadow: 0 8px 24px rgba(229,62,62,0.15); }
     .card-domain { border-color: rgba(104,211,145,0.25); }
     .card-domain:hover { border-color: #68D391; box-shadow: 0 8px 24px rgba(104,211,145,0.15); }
+
+    /* Dual-link cards (operation + brand book) */
+    .card-duo { cursor: pointer; }
+    .card-main { color: inherit; text-decoration: none; }
+    .card-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .card-brand {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 2;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(104,211,145,0.1);
+      color: #68D391;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .card-brand:hover {
+      background: rgba(104,211,145,0.25);
+      color: #9AE6B4;
+    }
     .card-research { border-color: rgba(245,158,11,0.25); }
     .card-research:hover { border-color: #F59E0B; box-shadow: 0 8px 24px rgba(245,158,11,0.15); }
 
-    /* === Hex Map === */
-    #hex-map {
+    /* === Force Graph === */
+    #force-graph {
       max-width: 1200px;
       margin: 0 auto 48px;
       text-align: center;
@@ -447,9 +481,9 @@
       transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    #hex-map.visible { opacity: 1; transform: none; }
-    .hex-map-header { margin-bottom: 24px; }
-    .hex-map-header h2 {
+    #force-graph.visible { opacity: 1; transform: none; }
+    .fg-header { margin-bottom: 24px; }
+    .fg-header h2 {
       font-size: 18px;
       font-weight: 700;
       color: #E53E3E;
@@ -457,18 +491,19 @@
       letter-spacing: 0.8px;
       margin-bottom: 4px;
     }
-    .hex-map-header p {
-      font-size: 13px;
-      color: #666666;
-    }
-    #hex-canvas {
+    .fg-header p { font-size: 13px; color: #666666; }
+    #fg-canvas {
       display: block;
       margin: 0 auto;
-      cursor: pointer;
+      cursor: grab;
+      border-radius: 12px;
+      background: #111;
+      border: 1px solid #222;
     }
-    #hex-tooltip {
+    #fg-canvas:active { cursor: grabbing; }
+    #fg-tooltip {
       position: fixed;
-      padding: 8px 16px;
+      padding: 10px 16px;
       background: #1A1A1A;
       border: 1px solid #444;
       border-radius: 8px;
@@ -482,13 +517,13 @@
       z-index: 100;
       white-space: nowrap;
     }
-    #hex-tooltip.show { opacity: 1; }
+    #fg-tooltip.show { opacity: 1; }
 
     /* === Reduced Motion (Layer 6) === */
     @media (prefers-reduced-motion: reduce) {
       #web-bg { display: none !important; }
       #particle-canvas { display: none !important; }
-      .card, .thesis-card, .thesis-wide, .abstract, .primitives-section, .primitive-card, #hex-map {
+      .card, .thesis-card, .thesis-wide, .abstract, .primitives-section, .primitive-card, #force-graph {
         opacity: 1 !important;
         transform: none !important;
         transition-duration: 0s !important;
@@ -504,120 +539,6 @@
         background: none;
       }
     }
-
-    /* === Inline Knowledge Graph Panel === */
-    #kg-panel {
-      max-width: 1200px;
-      margin: 0 auto;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-      opacity: 0;
-    }
-    #kg-panel.open {
-      max-height: 620px;
-      opacity: 1;
-    }
-    .kg-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 4px 12px;
-      flex-wrap: wrap;
-    }
-    .kg-stats {
-      font-size: 12px;
-      color: #666666;
-      font-weight: 500;
-    }
-    .kg-stats strong { color: #E8E0E0; }
-    .kg-search {
-      background: #1A1A1A;
-      border: 1px solid #333333;
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 12px;
-      color: #E8E0E0;
-      font-family: inherit;
-      outline: none;
-      width: 180px;
-      transition: border-color 0.2s;
-    }
-    .kg-search:focus { border-color: #E53E3E; }
-    .kg-search::placeholder { color: #555; }
-    .kg-toggle-btn {
-      background: rgba(229,62,62,0.12);
-      border: 1px solid rgba(229,62,62,0.25);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 11px;
-      color: #F56565;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      letter-spacing: 0.3px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .kg-toggle-btn:hover { background: rgba(229,62,62,0.2); border-color: #E53E3E; }
-    .kg-toggle-btn.active { background: rgba(229,62,62,0.25); border-color: #E53E3E; color: #E8E0E0; }
-    .kg-fullview {
-      margin-left: auto;
-      font-size: 11px;
-      color: #666666;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .kg-fullview:hover { color: #E53E3E; }
-    #kg-svg-container {
-      width: 100%;
-      height: 500px;
-      background: #111;
-      border: 1px solid #333333;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-    }
-    #kg-svg-container svg { width: 100%; height: 100%; display: block; }
-    #kg-tooltip {
-      position: fixed;
-      padding: 12px 16px;
-      background: #1A1A1A;
-      border: 1px solid #444;
-      border-radius: 10px;
-      color: #E8E0E0;
-      font-size: 13px;
-      font-family: 'Inter', sans-serif;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.15s;
-      z-index: 200;
-      max-width: 280px;
-      line-height: 1.5;
-    }
-    #kg-tooltip.show { opacity: 1; }
-    #kg-tooltip .kg-tip-name { font-weight: 600; margin-bottom: 4px; }
-    #kg-tooltip .kg-tip-badge {
-      display: inline-block;
-      font-size: 9px;
-      padding: 1px 6px;
-      border-radius: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    #kg-tooltip .kg-tip-desc { font-size: 11px; color: #999; }
-    #kg-tooltip .kg-tip-conn { font-size: 10px; color: #666; margin-top: 4px; }
-    .card-kg { cursor: pointer; }
-    .card-kg.active { border-color: #E53E3E; box-shadow: 0 0 16px rgba(229,62,62,0.2); }
-    .kg-arrow {
-      display: inline-block;
-      font-size: 10px;
-      margin-left: 4px;
-      transition: transform 0.3s ease;
-    }
-    .card-kg.active .kg-arrow { transform: rotate(180deg); }
 
     /* === Substrate Panels (Temporal + Spatial) === */
     .substrate-panel {
@@ -774,7 +695,7 @@
     display:flex;align-items:center;justify-content:center;
     margin-bottom:32px;
     padding:20px;
-  "><img src="design/brandbook/someai/assets/LOGO.png" alt="SomeAI" style="width:72px;height:72px;object-fit:contain;"></div>
+  "><img src="design/brandbook/someai/assets/LOGO.png" alt="SomeAI" style="width:72px;height:72px;object-fit:contain;filter:brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(1800%) hue-rotate(343deg) brightness(93%);"></div>
   <p style="color:#666666;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Enter Access Code</p>
   <input id="gate-input" type="password" autocomplete="off" autofocus
     placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;"
@@ -831,9 +752,11 @@
 })();
 </script>
 
-<!-- ═══════════ LAYER 2: Hero Section with Particle Canvas ═══════════ -->
+<!-- ═══════════ LAYER 2: Micro-Graph Background (full page) ═══════════ -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ═══════════ Hero Section ═══════════ -->
 <section id="hero">
-  <canvas id="particle-canvas"></canvas>
   <div class="hero-overlay">
     <h1>Charlotte</h1>
     <p class="subtitle">An operating system for operations &mdash; from research instruments to compiled instruction sets</p>
@@ -1053,15 +976,15 @@
 
 <hr class="divider">
 
-<!-- ═══════════ HEX MAP: Project Constellation ═══════════ -->
-<section id="hex-map">
-  <div class="hex-map-header">
+<!-- ═══════════ FORCE GRAPH: Project Constellation ═══════════ -->
+<section id="force-graph">
+  <div class="fg-header">
     <h2>Project Constellation</h2>
-    <p>Charlotte at center &mdash; spiraling outward by significance &mdash; click any hex to explore</p>
+    <p>SomeAI at center &mdash; drag to explore, click any node to navigate</p>
   </div>
-  <canvas id="hex-canvas"></canvas>
+  <canvas id="fg-canvas"></canvas>
 </section>
-<div id="hex-tooltip"></div>
+<div id="fg-tooltip"></div>
 
 <hr class="divider">
 
@@ -1069,67 +992,56 @@
 <div class="section-group">
   <div class="section-label kernel"><h2>Kernel &amp; Infrastructure</h2><span class="count">11 modules</span></div>
   <div class="grid">
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/research-lab/">
+    <a class="card card-kernel" href="research-lab/">
       <span class="icon">&#x1F9E0;</span>
       <div class="card-text"><h2>Research Lab</h2><p>The entire project as a knowledge graph</p><span class="tag tag-kernel">Meta</span></div>
     </a>
-    <div class="card card-kernel card-kg" onclick="toggleKG()">
+    <a class="card card-kernel" href="knowledge-graph/">
       <span class="icon">&#x1F4DA;</span>
-      <div class="card-text"><h2>Knowledge Graph <span class="kg-arrow">&#x25BC;</span></h2><p>Consolidated research library &mdash; every resource, document &amp; project</p><span class="tag tag-kernel">Library</span></div>
-    </div>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/charlotte-os/">
+      <div class="card-text"><h2>Knowledge Graph</h2><p>Consolidated research library &mdash; every resource, document &amp; project</p><span class="tag tag-kernel">Library</span></div>
+    </a>
+    <a class="card card-kernel" href="charlotte-os/">
       <span class="icon">&#x2699;</span>
       <div class="card-text"><h2>Charlotte OS</h2><p>Boot image &mdash; 31 KRF fact stacks in first-order logic</p><span class="tag tag-kernel">Kernel</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/charlotte/temporal/">
+    <a class="card card-kernel" href="charlotte/temporal/">
       <span class="icon">&#x1F553;</span>
       <div class="card-text"><h2>Temporal Spine</h2><p>15 granularity lanes from Millennium to Hour &mdash; 22.6M nodes, 4 compass directions, 1,123 lines KRF</p><span class="tag tag-kernel">Substrate</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/charlotte/spatial/">
+    <a class="card card-kernel" href="charlotte/spatial/">
       <span class="icon">&#x1F5FA;</span>
       <div class="card-text"><h2>Spatial Substrate</h2><p>51 state nodes, 1,275 directional edges &mdash; convex hulls, centroids, 4,604 lines KRF</p><span class="tag tag-kernel">Substrate</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/workbench/">
+    <a class="card card-kernel" href="workbench/">
       <span class="icon">&#x1F3A8;</span>
       <div class="card-text"><h2>Workbench</h2><p>Asset studio &mdash; Lottie, SVG &amp; design assets across all entities</p><span class="tag tag-kernel">Studio</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/tools/pitch-engine/">
+    <a class="card card-kernel" href="tools/pitch-engine/">
       <span class="icon">&#x1F4CA;</span>
       <div class="card-text"><h2>Pitch Engine</h2><p>Presentation substrate &mdash; 21 widgets, 5 narrative arcs, deck generation</p><span class="tag tag-kernel">Studio</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/tools/pitch-engine/decks/">
+    <a class="card card-kernel" href="tools/pitch-engine/decks/">
       <span class="icon">&#x1F4BD;</span>
       <div class="card-text"><h2>Pitch Decks</h2><p>8 businesses &times; 3 narratives &mdash; before/after Charlotte, gradient AI-centric slides</p><span class="tag tag-kernel">Studio</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/charlotte/charts/showcase/">
+    <a class="card card-kernel" href="charlotte/charts/showcase/">
       <span class="icon">&#x1F4C9;</span>
       <div class="card-text"><h2>Charlotte Charts</h2><p>Chart library v3.3 &mdash; 34 types, 6 brand themes, mobile-first, zero dependencies</p><span class="tag tag-kernel">Library</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/papers/">
+    <a class="card card-kernel" href="papers/">
       <span class="icon">&#x1F4C4;</span>
       <div class="card-text"><h2>Research Papers</h2><p>13 draft papers across 13 venues &mdash; Nature to NeurIPS</p><span class="tag tag-research">Research</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/business/forecast.html">
+    <a class="card card-kernel" href="business/forecast.html">
       <span class="icon">&#x1F4C8;</span>
       <div class="card-text"><h2>Pipeline &amp; Forecast</h2><p>Series A materials &mdash; 9-entity pipeline, $2.4M MSAs, 5yr trajectory to $8.2M ARR</p><span class="tag tag-kernel">Business</span></div>
     </a>
-    <a class="card card-kernel" href="https://jack-at-someai.github.io/core/charlotte/docs/artifacts/business_model.krf">
+    <a class="card card-kernel" href="charlotte/docs/artifacts/business_model.krf">
       <span class="icon">&#x1F4BE;</span>
       <div class="card-text"><h2>Business Model KRF</h2><p>Revenue model in Charlotte primitives &mdash; NODEs, EDGEs, METRICs, PROTOCOLs for the entire pipeline</p><span class="tag tag-kernel">Substrate</span></div>
     </a>
   </div>
 
-  <!-- Inline Knowledge Graph Panel -->
-  <div id="kg-panel">
-    <div class="kg-header">
-      <span class="kg-stats" id="kg-stats"></span>
-      <input class="kg-search" type="text" placeholder="Search nodes..." oninput="kgSearch(this.value)">
-      <button class="kg-toggle-btn" id="kg-toggle-all" onclick="kgToggleAll()">Show All</button>
-      <a class="kg-fullview" href="knowledge-graph/">Full View &rarr;</a>
-    </div>
-    <div id="kg-svg-container"></div>
-  </div>
-  <div id="kg-tooltip"></div>
 
   <!-- Inline Temporal Spine Panel -->
   <div id="temporal-panel" class="substrate-panel">
@@ -1364,77 +1276,124 @@
   </div>
 </div>
 
-<!-- ═══════════ VALIDATION DOMAINS ═══════════ -->
+<!-- ═══════════ OPERATIONS & BRANDS ═══════════ -->
 <div class="section-group">
-  <div class="section-label domain"><h2>Validation Domains</h2><span class="count">16 operations</span></div>
+  <div class="section-label domain"><h2>Operations &amp; Brands</h2><span class="count">21 entities &middot; 14 brand books</span></div>
   <div class="grid">
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/sounder/">
-      <span class="icon">&#x1F417;</span>
-      <div class="card-text"><h2>Sounder</h2><p>Unified swine genetics infrastructure &mdash; 401K KRF facts, 3 registries, 77K breeders, crossbred pedigree</p><span class="tag tag-domain">Biological</span></div>
+    <!-- SomeAI (brand book only) -->
+    <a class="card card-domain" href="design/brandbook/someai/">
+      <span class="icon"><img src="design/brandbook/someai/assets/LOGO.png" alt="SomeAI" style="width:32px;height:32px;object-fit:contain"></span>
+      <div class="card-text"><h2>SomeAI</h2><p>Research lab &mdash; spider web mark, red/mauve palette</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/sounder/nsr/">
+    <!-- Richard Enterprises (brand book only) -->
+    <a class="card card-domain" href="design/brandbook/richard-enterprises/">
+      <span class="icon"><img src="design/brandbook/richard-enterprises/assets/logo_and_name.png" alt="Richard Enterprises" style="width:32px;height:32px;object-fit:contain"></span>
+      <div class="card-text"><h2>Richard Enterprises</h2><p>Family holding company &mdash; umbrella entity, charcoal/gold/navy palette</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
+    </a>
+    <!-- ISG (domain + brand) -->
+    <div class="card card-domain card-duo">
+      <span class="icon"><img src="design/brandbook/isg/assets/logo_and_name.png" alt="ISG" style="width:32px;height:32px;object-fit:contain"></span>
+      <div class="card-text"><h2><a class="card-main" href="business/industrial-service-group/">ISG</a></h2><p>16 brands, $450M rev, 259K+ SKUs &mdash; equipment graph, dispatch intelligence, PE reporting</p><span class="tag tag-domain">Mechanical</span></div>
+      <a class="card-brand" href="design/brandbook/isg/" title="Brand Book">Brand</a>
+    </div>
+    <!-- Sounder (domain + brand) -->
+    <div class="card card-domain card-duo">
+      <span class="icon"><img src="design/brandbook/sounder/assets/SOUNDER_BRAND_ICON.png" alt="Sounder" style="width:32px;height:32px;object-fit:contain;border-radius:4px"></span>
+      <div class="card-text"><h2><a class="card-main" href="business/sounder/">Sounder</a></h2><p>Unified swine genetics infrastructure &mdash; 401K KRF facts, 3 registries, 77K breeders</p><span class="tag tag-domain">Biological</span></div>
+      <a class="card-brand" href="design/brandbook/sounder/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- NSR Partnership (domain only) -->
+    <a class="card card-domain" href="business/sounder/nsr/">
       <span class="icon">&#x1F4DC;</span>
       <div class="card-text"><h2>NSR Partnership</h2><p>National Swine Registry &mdash; 4 breeds, 3,763 breeders, CRM + website + threat matrix</p><span class="tag tag-domain">Partnership</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/sounder/cps/">
+    <!-- CPS Partnership (domain only) -->
+    <a class="card card-domain" href="business/sounder/cps/">
       <span class="icon">&#x1F4DC;</span>
       <div class="card-text"><h2>CPS Partnership</h2><p>Certified Pedigree Swine &mdash; 65,412 breeders, 10+ breeds, 5,279 herdmarks</p><span class="tag tag-domain">Partnership</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/sounder/tsa/">
+    <!-- TSA Partnership (domain only) -->
+    <a class="card card-domain" href="business/sounder/tsa/">
       <span class="icon">&#x1F4DC;</span>
       <div class="card-text"><h2>TSA Partnership</h2><p>Tamworth Swine Association &mdash; 113 breeders, heritage bacon breed, pasture-raised</p><span class="tag tag-domain">Partnership</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/industrial-service-group/">
-      <span class="icon">&#x1F3ED;</span>
-      <div class="card-text"><h2>ISG</h2><p>16 brands, $450M rev, 259K+ SKUs &mdash; equipment graph, dispatch intelligence, PE reporting</p><span class="tag tag-domain">Mechanical</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/violins/">
+    <!-- PPP Instruments (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F3BB;</span>
-      <div class="card-text"><h2>PPP Instruments</h2><p>$5.3M rare string portfolio &mdash; 21 instruments, 88.3% avg appreciation, provenance graph</p><span class="tag tag-domain">Cultural</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/top-tier-moving/">
+      <div class="card-text"><h2><a class="card-main" href="business/violins/">PPP Instruments</a></h2><p>$5.3M rare string portfolio &mdash; 21 instruments, 88.3% avg appreciation, provenance graph</p><span class="tag tag-domain">Cultural</span></div>
+      <a class="card-brand" href="design/brandbook/ppp-instruments/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- Top Tier Moving (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F69A;</span>
-      <div class="card-text"><h2>Top Tier Moving</h2><p>$14.4M billed, 98 crew, 10,606 jobs &mdash; baseball cards, collection analytics, route intelligence</p><span class="tag tag-domain">Logistics</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/allstate-manufacturing/">
+      <div class="card-text"><h2><a class="card-main" href="business/top-tier-moving/">Top Tier Moving</a></h2><p>$14.4M billed, 98 crew, 10,606 jobs &mdash; baseball cards, collection analytics, route intelligence</p><span class="tag tag-domain">Logistics</span></div>
+      <a class="card-brand" href="design/brandbook/top-tier-moving/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- All State Manufacturing (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x2692;</span>
-      <div class="card-text"><h2>All State Manufacturing</h2><p>$2.2M micro market fixtures &mdash; 50yr manufacturer, $105K MSA, zero-to-observable transformation</p><span class="tag tag-domain">Manufacturing</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/cardvault/">
+      <div class="card-text"><h2><a class="card-main" href="business/allstate-manufacturing/">All State Manufacturing</a></h2><p>$2.2M micro market fixtures &mdash; 50yr manufacturer, $105K MSA, zero-to-observable transformation</p><span class="tag tag-domain">Manufacturing</span></div>
+      <a class="card-brand" href="design/brandbook/allstate-manufacturing/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- CardVault (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F3C6;</span>
-      <div class="card-text"><h2>CardVault by Tom Brady</h2><p>12 locations, 338% growth, $510K MSA &mdash; collector intelligence, grading pipeline, cross-store CRM</p><span class="tag tag-domain">Collectibles</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/wendt-group/">
+      <div class="card-text"><h2><a class="card-main" href="business/cardvault/">CardVault by Tom Brady</a></h2><p>12 locations, 338% growth, $510K MSA &mdash; collector intelligence, grading pipeline, cross-store CRM</p><span class="tag tag-domain">Collectibles</span></div>
+      <a class="card-brand" href="design/brandbook/cardvault/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- Wendt Group (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F3AA;</span>
-      <div class="card-text"><h2>The Wendt Group</h2><p>ShowPig.com &mdash; 12K+ auctions, $156K MSA, first crossbred pedigree engine in the industry</p><span class="tag tag-domain">Livestock</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/monroe-livestock/">
+      <div class="card-text"><h2><a class="card-main" href="business/wendt-group/">The Wendt Group</a></h2><p>ShowPig.com &mdash; 12K+ auctions, $156K MSA, first crossbred pedigree engine in the industry</p><span class="tag tag-domain">Livestock</span></div>
+      <a class="card-brand" href="design/brandbook/wendt-group/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- Monroe Livestock (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F404;</span>
-      <div class="card-text"><h2>Monroe Livestock Auction</h2><p>Weekly livestock auction, Adams County &mdash; Swiss Amish corridor, $67.5K MSA, DVAuction-integrated</p><span class="tag tag-domain">Livestock</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/sc-online-sales/">
+      <div class="card-text"><h2><a class="card-main" href="business/monroe-livestock/">Monroe Livestock Auction</a></h2><p>Weekly livestock auction, Adams County &mdash; Swiss Amish corridor, $67.5K MSA, DVAuction-integrated</p><span class="tag tag-domain">Livestock</span></div>
+      <a class="card-brand" href="design/brandbook/monroe-livestock/" title="Brand Book">Brand</a>
+    </div>
+    <!-- SC Online Sales (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F3A4;</span>
-      <div class="card-text"><h2>SC Online Sales</h2><p>5-species livestock platform &mdash; 40K+ auctions, $135K MSA, cross-species buyer intelligence</p><span class="tag tag-domain">Livestock</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/lineleap/">
+      <div class="card-text"><h2><a class="card-main" href="business/sc-online-sales/">SC Online Sales</a></h2><p>5-species livestock platform &mdash; 40K+ auctions, $135K MSA, cross-species buyer intelligence</p><span class="tag tag-domain">Livestock</span></div>
+      <a class="card-brand" href="design/brandbook/sc-online-sales/" title="Brand Book &amp; Design System">Brand</a>
+    </div>
+    <!-- LineLeap (domain only) -->
+    <a class="card card-domain" href="business/lineleap/">
       <span class="icon">&#x1F378;</span>
       <div class="card-text"><h2>LineLeap Agent</h2><p>Charlotte-powered bar management agent</p><span class="tag tag-domain">Human</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/business/gesdate/">
+    <!-- GesDate (domain only) -->
+    <a class="card card-domain" href="business/gesdate/">
       <span class="icon">&#x1F437;</span>
       <div class="card-text"><h2>GesDate Agent</h2><p>Charlotte-powered herd management agent</p><span class="tag tag-domain">Biological</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/references/sealion/">
+    <!-- Sea Lion (domain + brand) -->
+    <div class="card card-domain card-duo">
       <span class="icon">&#x1F9AD;</span>
-      <div class="card-text"><h2>Sea Lion</h2><p>Ocean science &amp; marine biology research</p><span class="tag tag-domain">Marine</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/tools/maestro/">
+      <div class="card-text"><h2><a class="card-main" href="references/sealion/">Sea Lion</a></h2><p>Ocean science &amp; marine biology research</p><span class="tag tag-domain">Marine</span></div>
+      <a class="card-brand" href="design/brandbook/sea-lion/" title="Brand Book">Brand</a>
+    </div>
+    <!-- Maestro (domain only) -->
+    <a class="card card-domain" href="tools/maestro/">
       <span class="icon">&#x1F4CA;</span>
       <div class="card-text"><h2>Maestro</h2><p>3-year strategy deployment quad matrix</p><span class="tag tag-domain">Strategy</span></div>
     </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/tools/gantt/">
+    <!-- Gantt (domain only) -->
+    <a class="card card-domain" href="tools/gantt/">
       <span class="icon">&#x1F4C5;</span>
-      <div class="card-text"><h2>Gantt</h2><p>Charlotte OS demo sprint — 12-day plan to Feb 23</p><span class="tag tag-domain">Sprint</span></div>
+      <div class="card-text"><h2>Gantt</h2><p>Charlotte OS demo sprint &mdash; 12-day plan to Feb 23</p><span class="tag tag-domain">Sprint</span></div>
+    </a>
+    <!-- Serengeti (brand book only) -->
+    <a class="card card-domain" href="design/brandbook/serengeti/">
+      <span class="icon">&#x1F981;</span>
+      <div class="card-text"><h2>Serengeti</h2><p>Generational retirement pool &mdash; savanna gold, earth tones</p><span class="tag tag-domain">Brand</span></div>
+    </a>
+    <!-- Apple iOS 26 (reference brand book) -->
+    <a class="card" href="design/brandbook/apple/">
+      <span class="icon">&#xF8FF;</span>
+      <div class="card-text"><h2>Apple iOS 26</h2><p>Liquid Glass design system baseline reference</p><span class="tag tag-reference">Reference</span></div>
     </a>
   </div>
 </div>
@@ -1443,103 +1402,103 @@
 <div class="section-group">
   <div class="section-label reference"><h2>Convex Hull &mdash; Reference Library</h2><span class="count">25 references</span></div>
   <div class="grid">
-    <a class="card" href="https://jack-at-someai.github.io/core/references/knowledge/">
+    <a class="card" href="references/knowledge/">
       <span class="icon">&#x1F4D6;</span>
       <div class="card-text"><h2>Knowledge Primitives</h2><p>Structural, declarative, procedural, heuristic &amp; meta knowledge</p><span class="tag tag-reference">Convex Hull</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/formal-logic/">
+    <a class="card" href="references/formal-logic/">
       <span class="icon">&forall;</span>
       <div class="card-text"><h2>Formal Logic</h2><p>Propositional logic, FOL, lambda calculus &amp; Lisp</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/graph-theory/">
+    <a class="card" href="references/graph-theory/">
       <span class="icon">&#x229B;</span>
       <div class="card-text"><h2>Graph Theory</h2><p>Knowledge graphs, ontologies &amp; graph databases</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/topology/">
+    <a class="card" href="references/topology/">
       <span class="icon">&#x25CE;</span>
       <div class="card-text"><h2>Topology</h2><p>Algebraic topology, TDA &amp; higher dimensions</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/cognitive-science/">
+    <a class="card" href="references/cognitive-science/">
       <span class="icon">&#x1F9E0;</span>
       <div class="card-text"><h2>Cognitive Science</h2><p>Predictive coding, Bayesian brain &amp; resonance</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/signal-processing/">
+    <a class="card" href="references/signal-processing/">
       <span class="icon">&#x3030;</span>
       <div class="card-text"><h2>Signal Processing</h2><p>Time series, frequency domain &amp; drift detection</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/temporal-databases/">
+    <a class="card" href="references/temporal-databases/">
       <span class="icon">&#x23F1;</span>
       <div class="card-text"><h2>Temporal Databases</h2><p>Event sourcing, bitemporal modeling &amp; CQRS</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/spatial-computing/">
+    <a class="card" href="references/spatial-computing/">
       <span class="icon">&#x1F30D;</span>
       <div class="card-text"><h2>Spatial Computing</h2><p>GIS, spatial databases &amp; geospatial algorithms</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/systems-architecture/">
+    <a class="card" href="references/systems-architecture/">
       <span class="icon">&#x1F3D7;</span>
       <div class="card-text"><h2>Systems Architecture</h2><p>Distributed systems, DDD &amp; event-driven design</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/game-theory/">
+    <a class="card" href="references/game-theory/">
       <span class="icon">&#x265F;</span>
       <div class="card-text"><h2>Game Theory</h2><p>Nash equilibrium, mechanism design &amp; evolutionary strategy</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/neuroscience/">
+    <a class="card" href="references/neuroscience/">
       <span class="icon">&#x1F9EC;</span>
       <div class="card-text"><h2>Neuroscience</h2><p>Neural geometry reference hub</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/nature-inspired-algorithms/">
+    <a class="card" href="references/nature-inspired-algorithms/">
       <span class="icon">&#x1F9EC;</span>
       <div class="card-text"><h2>Nature-Inspired Algorithms</h2><p>Evolutionary computation &amp; swarm intelligence</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/livestock-science/">
+    <a class="card" href="references/livestock-science/">
       <span class="icon">&#x1F404;</span>
       <div class="card-text"><h2>Livestock Science</h2><p>Genetics, breeding, reproduction &amp; show industry</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/biomimicry/">
+    <a class="card" href="references/biomimicry/">
       <span class="icon">&#x1F33F;</span>
       <div class="card-text"><h2>Biomimicry</h2><p>Principles, methodology &amp; case studies</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/bio-architecture/">
+    <a class="card" href="references/bio-architecture/">
       <span class="icon">&#x1F3DB;</span>
       <div class="card-text"><h2>Bio-Architecture</h2><p>Termite ventilation, shells &amp; tensegrity</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/bio-inspired-robotics/">
+    <a class="card" href="references/bio-inspired-robotics/">
       <span class="icon">&#x1F916;</span>
       <div class="card-text"><h2>Bio-Inspired Robotics</h2><p>Soft robotics, legged robots &amp; swarm systems</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/bio-locomotion/">
+    <a class="card" href="references/bio-locomotion/">
       <span class="icon">&#x1F98E;</span>
       <div class="card-text"><h2>Bio-Locomotion</h2><p>Flight, swimming &amp; collective motion</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/bio-optics-photonics/">
+    <a class="card" href="references/bio-optics-photonics/">
       <span class="icon">&#x1F52C;</span>
       <div class="card-text"><h2>Bio-Optics &amp; Photonics</h2><p>Structural color, bioluminescence &amp; camouflage</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/bio-surfaces/">
+    <a class="card" href="references/bio-surfaces/">
       <span class="icon">&#x1F9EB;</span>
       <div class="card-text"><h2>Bio-Surfaces</h2><p>Superhydrophobicity, gecko adhesion &amp; shark skin</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/biomimetic-materials/">
+    <a class="card" href="references/biomimetic-materials/">
       <span class="icon">&#x1F9EA;</span>
       <div class="card-text"><h2>Biomimetic Materials</h2><p>Self-healing, shape memory &amp; hierarchical composites</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/structural-biomimetics/">
+    <a class="card" href="references/structural-biomimetics/">
       <span class="icon">&#x1F9B4;</span>
       <div class="card-text"><h2>Structural Biomimetics</h2><p>Natural composites, silk, nacre &amp; bone</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/spider-silk/">
+    <a class="card" href="references/spider-silk/">
       <span class="icon">&#x1F577;</span>
       <div class="card-text"><h2>Spider Silk</h2><p>Silk biology, biomaterials &amp; husbandry</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/ecological-systems-design/">
+    <a class="card" href="references/ecological-systems-design/">
       <span class="icon">&#x267B;</span>
       <div class="card-text"><h2>Ecological Systems Design</h2><p>Circular economy &amp; regenerative design</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/entomology/">
+    <a class="card" href="references/entomology/">
       <span class="icon">&#x1F41B;</span>
       <div class="card-text"><h2>Entomology</h2><p>Insect biology, pollination &amp; biomimicry</p><span class="tag tag-reference">Reference</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/references/atomic-design/">
+    <a class="card" href="references/atomic-design/">
       <span class="icon">&#x269B;</span>
       <div class="card-text"><h2>Atomic Design</h2><p>Component hierarchy &amp; design systems</p><span class="tag tag-reference">Reference</span></div>
     </a>
@@ -1550,177 +1509,113 @@
 <div class="section-group">
   <div class="section-label research"><h2>Research Instruments</h2><span class="count">25 modules</span></div>
   <div class="grid">
-    <a class="card card-research" href="https://jack-at-someai.github.io/core/math/swarm-intelligence/">
+    <a class="card card-research" href="math/swarm-intelligence/">
       <span class="icon">&#x1F41D;</span>
       <div class="card-text"><h2>Swarm Intelligence</h2><p>Northwestern 2019 curriculum, boids lab &amp; multi-agent systems</p><span class="tag tag-research">Research</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/chaostheory/">
+    <a class="card" href="math/chaostheory/">
       <span class="icon">&#x1F300;</span>
       <div class="card-text"><h2>Chaos Theory</h2><p>Strange attractors &amp; dynamical systems</p><span class="tag tag-instrument">Simulation</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/fourier/">
+    <a class="card" href="math/fourier/">
       <span class="icon">&#x3030;</span>
       <div class="card-text"><h2>Fourier</h2><p>Fourier transform visualization</p><span class="tag tag-instrument">Math</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/cnn/">
+    <a class="card" href="math/cnn/">
       <span class="icon">&#x1F9E0;</span>
       <div class="card-text"><h2>CNN</h2><p>Convolutional neural network visualizer</p><span class="tag tag-instrument">ML</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/neuralplayground/">
+    <a class="card" href="math/neuralplayground/">
       <span class="icon">&#x1F52E;</span>
       <div class="card-text"><h2>Neural Playground</h2><p>Interactive neural network playground</p><span class="tag tag-instrument">ML</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/sacred-geometry/">
+    <a class="card" href="math/sacred-geometry/">
       <span class="icon">&#x2721;</span>
       <div class="card-text"><h2>Sacred Geometry</h2><p>Geometric pattern generator</p><span class="tag tag-instrument">Math</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/math/tsp-algorithm-visualizer/">
+    <a class="card" href="math/tsp-algorithm-visualizer/">
       <span class="icon">&#x1F5FA;</span>
       <div class="card-text"><h2>TSP Visualizer</h2><p>Traveling salesman algorithm visualizer</p><span class="tag tag-instrument">Algorithm</span></div>
     </a>
-    <a class="card card-research" href="https://jack-at-someai.github.io/core/zeus-car-kit/">
+    <a class="card card-research" href="zeus-car-kit/">
       <span class="icon">&#x1F697;</span>
       <div class="card-text"><h2>Zeus Car Kit</h2><p>3D spatial mapper &mdash; ultrasonic, IR &amp; dead reckoning</p><span class="tag tag-research">Robotics</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/hexgrid/">
+    <a class="card" href="games/hexgrid/">
       <span class="icon">&#x2B21;</span>
       <div class="card-text"><h2>Hex Grid</h2><p>Hexagonal grid system</p><span class="tag tag-instrument">Tool</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/isometric/">
+    <a class="card" href="games/isometric/">
       <span class="icon">&#x1F4D0;</span>
       <div class="card-text"><h2>Isometric</h2><p>Isometric grid builder</p><span class="tag tag-instrument">Tool</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/aseprite/">
+    <a class="card" href="games/aseprite/">
       <span class="icon">&#x1F3A8;</span>
       <div class="card-text"><h2>Aseprite</h2><p>Pixel art sprite editor</p><span class="tag tag-instrument">Tool</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/chess/">
+    <a class="card" href="games/chess/">
       <span class="icon">&#x265F;</span>
       <div class="card-text"><h2>Chess</h2><p>Chess game with AI opponent</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/go/">
+    <a class="card" href="games/go/">
       <span class="icon">&#x26AB;</span>
       <div class="card-text"><h2>Go</h2><p>The ancient board game of Go</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/against-the-storm/">
+    <a class="card" href="games/against-the-storm/">
       <span class="icon">&#x1F3F0;</span>
       <div class="card-text"><h2>Against the Storm</h2><p>Settlement management companion</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/maplestory/">
+    <a class="card" href="games/maplestory/">
       <span class="icon">&#x1F41F;</span>
       <div class="card-text"><h2>MapleStory Bazaar</h2><p>Fish market vendor simulation</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/somelocks/">
+    <a class="card" href="games/somelocks/">
       <span class="icon">&#x1F510;</span>
       <div class="card-text"><h2>SomeLocks</h2><p>2048-level lockpicking puzzle &mdash; hex grid, $3.99 IAP, first consumer revenue product</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/starfield/">
+    <a class="card" href="games/starfield/">
       <span class="icon">&#x2728;</span>
       <div class="card-text"><h2>Starfield / BITWISE</h2><p>Binary lockpicking puzzle game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/2048/">
+    <a class="card" href="games/2048/">
       <span class="icon">&#x1F522;</span>
       <div class="card-text"><h2>2048</h2><p>Sliding tile puzzle game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/tetris/">
+    <a class="card" href="games/tetris/">
       <span class="icon">&#x1F7E6;</span>
       <div class="card-text"><h2>Tetris</h2><p>Falling block puzzle game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/minesweeper/">
+    <a class="card" href="games/minesweeper/">
       <span class="icon">&#x1F4A3;</span>
       <div class="card-text"><h2>Minesweeper</h2><p>Classic mine-sweeping puzzle</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/sudoku/">
+    <a class="card" href="games/sudoku/">
       <span class="icon">&#x1F532;</span>
       <div class="card-text"><h2>Sudoku</h2><p>Number placement puzzle</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/solitaire-glass/">
+    <a class="card" href="games/solitaire-glass/">
       <span class="icon">&#x1F0CF;</span>
       <div class="card-text"><h2>Solitaire Glass</h2><p>Glassmorphism solitaire card game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/snake/">
+    <a class="card" href="games/snake/">
       <span class="icon">&#x1F40D;</span>
       <div class="card-text"><h2>Snake</h2><p>Classic snake game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/pong/">
+    <a class="card" href="games/pong/">
       <span class="icon">&#x1F3D3;</span>
       <div class="card-text"><h2>Pong</h2><p>Classic paddle ball game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/tic-tac-toe/">
+    <a class="card" href="games/tic-tac-toe/">
       <span class="icon">&#x274C;</span>
       <div class="card-text"><h2>Tic-Tac-Toe</h2><p>Classic X and O game</p><span class="tag tag-instrument">Game</span></div>
     </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/games/block-dude/">
+    <a class="card" href="games/block-dude/">
       <span class="icon">&#x1F9F1;</span>
       <div class="card-text"><h2>Block Dude</h2><p>Block-pushing puzzle platformer</p><span class="tag tag-instrument">Game</span></div>
     </a>
   </div>
 </div>
 
-<hr class="divider">
-
-<!-- ═══════════ BRAND BOOKS ═══════════ -->
-<div class="section-group">
-  <div class="section-label domain"><h2>Brand Books &amp; Design Systems</h2><span class="count">13 brands &middot; 10 design systems</span></div>
-  <div class="grid">
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/someai/">
-      <span class="icon"><img src="design/brandbook/someai/assets/LOGO.png" alt="SomeAI" style="width:32px;height:32px;object-fit:contain"></span>
-      <div class="card-text"><h2>SomeAI</h2><p>Research lab &mdash; spider web mark, red/mauve palette</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/isg/">
-      <span class="icon"><img src="design/brandbook/isg/assets/logo_and_name.png" alt="ISG" style="width:32px;height:32px;object-fit:contain"></span>
-      <div class="card-text"><h2>Industrial Service Group</h2><p>Rotating equipment &mdash; gear-globe mark, navy/gold palette</p><span class="tag tag-domain">Brand</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/richard-enterprises/">
-      <span class="icon"><img src="design/brandbook/richard-enterprises/assets/logo_and_name.png" alt="Richard Enterprises" style="width:32px;height:32px;object-fit:contain"></span>
-      <div class="card-text"><h2>Richard Enterprises</h2><p>Family holding company &mdash; umbrella entity, charcoal/gold/navy palette</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/sounder/">
-      <span class="icon"><img src="design/brandbook/sounder/assets/SOUNDER_BRAND_ICON.png" alt="Sounder" style="width:32px;height:32px;object-fit:contain;border-radius:4px"></span>
-      <div class="card-text"><h2>Sounder</h2><p>Swine genetics platform &mdash; stacked chevrons, purple/magenta/cyan</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/allstate-manufacturing/">
-      <span class="icon">&#x2692;</span>
-      <div class="card-text"><h2>All State Mfg</h2><p>Metal fabrication &mdash; steel blue/forge orange, industrial identity</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/cardvault/">
-      <span class="icon">&#x1F3C6;</span>
-      <div class="card-text"><h2>CardVault</h2><p>Sports collectibles &mdash; vault black/championship gold, premium identity</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/wendt-group/">
-      <span class="icon">&#x1F3AA;</span>
-      <div class="card-text"><h2>The Wendt Group</h2><p>Livestock auction &mdash; auction red/wheat gold, agricultural identity</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/monroe-livestock/">
-      <span class="icon">&#x1F404;</span>
-      <div class="card-text"><h2>Monroe Livestock</h2><p>Livestock auction &mdash; forest green/warm gold, agricultural identity</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/sc-online-sales/">
-      <span class="icon">&#x1F3A4;</span>
-      <div class="card-text"><h2>SC Online Sales</h2><p>Livestock auction &mdash; circuit copper/arena navy, multi-species identity</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/ppp-instruments/">
-      <span class="icon">&#x1F3BB;</span>
-      <div class="card-text"><h2>PPP Instruments</h2><p>Rare instrument fractional investment platform &mdash; Masterworks model, 21 instruments, $5.3M portfolio</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/top-tier-moving/">
-      <span class="icon">&#x1F69B;</span>
-      <div class="card-text"><h2>Top Tier Moving</h2><p>Interstate moving logistics &mdash; route blue/cargo green, crew intelligence</p><span class="tag tag-domain">Brand</span><span class="tag tag-kernel" style="margin-left:4px">Design System</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/sea-lion/">
-      <span class="icon">&#x1F9AD;</span>
-      <div class="card-text"><h2>Sea Lion</h2><p>Ocean science venture &mdash; pixel art lion, deep blue palette</p><span class="tag tag-domain">Brand</span></div>
-    </a>
-    <a class="card card-domain" href="https://jack-at-someai.github.io/core/design/brandbook/serengeti/">
-      <span class="icon">&#x1F981;</span>
-      <div class="card-text"><h2>Serengeti</h2><p>Generational retirement pool &mdash; savanna gold, earth tones</p><span class="tag tag-domain">Brand</span></div>
-    </a>
-    <a class="card" href="https://jack-at-someai.github.io/core/design/brandbook/apple/">
-      <span class="icon">&#xF8FF;</span>
-      <div class="card-text"><h2>Apple iOS 26</h2><p>Liquid Glass design system baseline reference</p><span class="tag tag-reference">Reference</span></div>
-    </a>
-  </div>
-</div>
 
 <!-- ═══════════ Master Animation Script ═══════════ -->
 <script>
@@ -1736,13 +1631,13 @@
 
   // If reduced motion, make everything visible immediately and bail
   if (REDUCED_MOTION) {
-    var allEls = document.querySelectorAll('.card, .thesis-card, .thesis-wide, .abstract, .primitives-section, #hex-map');
+    var allEls = document.querySelectorAll('.card, .thesis-card, .thesis-wide, .abstract, .primitives-section, #force-graph');
     for (var i = 0; i < allEls.length; i++) allEls[i].classList.add('visible');
     return;
   }
 
   // === LAYER 5: Scroll-Triggered Card Entrances ===
-  var scrollElements = document.querySelectorAll('.card, .thesis-card, .thesis-wide, .abstract, .primitives-section, #hex-map');
+  var scrollElements = document.querySelectorAll('.card, .thesis-card, .thesis-wide, .abstract, .primitives-section, #force-graph');
 
   // Calculate stagger delays per parent container
   var parents = new Map();
@@ -1924,103 +1819,207 @@
     }
   }
 
-  // === LAYER 2: Particle Network Hero Canvas ===
+  // === LAYER 2: Micro-Graph Particle Network ===
+  // Floating clusters of small node-edge graphs that interact when near each other
   var canvas = document.getElementById('particle-canvas');
-  var particles = [];
+  var microGraphs = [];
+  var allNodes = [];
   var ctx, W, H;
-  var mouse = { x: -9999, y: -9999 };
-  var PARTICLE_COLORS = ['#E53E3E', '#F59E0B', '#C4A8A8'];
+  var pTime = 0;
+
+  // Red swatch — primary 100 through 800
+  var NODE_COLORS = [
+    '#FED7D7', // 100
+    '#FEB2B2', // 200
+    '#FC8181', // 300
+    '#F56565', // 400
+    '#E53E3E', // 500
+    '#C53030', // 600
+    '#9B2C2C', // 700
+    '#822727', // 800
+  ];
 
   if (canvas && !IS_MOBILE) {
     ctx = canvas.getContext('2d');
 
     function resizeCanvas() {
-      var parent = canvas.parentElement;
-      W = parent.offsetWidth;
-      H = parent.offsetHeight;
+      W = window.innerWidth;
+      H = window.innerHeight;
       var dpr = window.devicePixelRatio || 1;
       canvas.width = W * dpr;
       canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize 35 particles
-    for (var i = 0; i < 35; i++) {
-      particles.push({
-        x: Math.random() * (W || 800),
-        y: Math.random() * (H || 400),
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: 1.5 + Math.random() * 2,
-        color: PARTICLE_COLORS[Math.floor(Math.random() * 3)]
-      });
+    // Build 256 micro-graphs, each a small cluster of 3-6 nodes
+    var GRAPH_COUNT = 256;
+    for (var g = 0; g < GRAPH_COUNT; g++) {
+      var cx = Math.random() * (W || 800);
+      var cy = Math.random() * (H || 400);
+      var nodeCount = 3 + Math.floor(Math.random() * 4); // 3-6 nodes
+      var spread = 18 + Math.random() * 14; // cluster radius
+      var baseColor = NODE_COLORS[Math.floor(Math.random() * NODE_COLORS.length)];
+      var graph = {
+        cx: cx, cy: cy,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        rot: Math.random() * 6.2832,
+        rotSpeed: (Math.random() - 0.5) * 0.003,
+        nodes: [],
+        edges: [],
+        baseColor: baseColor,
+        pulse: Math.random() * 6.2832 // phase offset for breathing
+      };
+
+      // Create nodes at offsets from center
+      for (var n = 0; n < nodeCount; n++) {
+        var angle = (n / nodeCount) * 6.2832 + (Math.random() - 0.5) * 0.8;
+        var dist = spread * (0.4 + Math.random() * 0.6);
+        var useColor = Math.random() < 0.3
+          ? NODE_COLORS[Math.floor(Math.random() * NODE_COLORS.length)]
+          : baseColor;
+        var node = {
+          ox: Math.cos(angle) * dist, // offset from graph center
+          oy: Math.sin(angle) * dist,
+          r: 1.5 + Math.random() * 2.5,
+          color: useColor,
+          graphIdx: g,
+          wx: 0, wy: 0 // world position (computed each frame)
+        };
+        graph.nodes.push(node);
+        allNodes.push(node);
+      }
+
+      // Create internal edges (connect nodes within the cluster)
+      // Each node connects to 1-2 neighbors + hub node connects to most
+      var hubIdx = Math.floor(Math.random() * nodeCount);
+      for (var n = 0; n < nodeCount; n++) {
+        if (n !== hubIdx) {
+          graph.edges.push([hubIdx, n]);
+        }
+      }
+      // Add 1-2 extra edges for triangulation
+      var extras = 1 + Math.floor(Math.random() * 2);
+      for (var e = 0; e < extras; e++) {
+        var a = Math.floor(Math.random() * nodeCount);
+        var b = Math.floor(Math.random() * nodeCount);
+        if (a !== b) graph.edges.push([a, b]);
+      }
+
+      microGraphs.push(graph);
     }
 
-    canvas.addEventListener('mousemove', function(e) {
-      var rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    canvas.addEventListener('mouseleave', function() {
-      mouse.x = -9999;
-      mouse.y = -9999;
-    });
   }
 
   function drawParticles() {
     if (!ctx || !W || !H) return;
-    ctx.clearRect(0, 0, W, H);
+    // Dark fill — prevents white flash between frames
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#141414';
+    ctx.fillRect(0, 0, W, H);
+    pTime += 0.016;
 
-    // Update and draw particles
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
+    // === Update all graph positions + compute world coords ===
+    for (var g = 0; g < microGraphs.length; g++) {
+      var mg = microGraphs[g];
+      mg.cx += mg.vx;
+      mg.cy += mg.vy;
+      mg.vx *= 0.9995;
+      mg.vy *= 0.9995;
+      mg.rot += mg.rotSpeed;
 
-      // Gentle mouse attraction
-      var dx = mouse.x - p.x;
-      var dy = mouse.y - p.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 200 && dist > 1) {
-        p.vx += (dx / dist) * 0.012;
-        p.vy += (dy / dist) * 0.012;
+      // Wrap at viewport edges
+      if (mg.cx < -60) mg.cx = W + 60;
+      if (mg.cx > W + 60) mg.cx = -60;
+      if (mg.cy < -60) mg.cy = H + 60;
+      if (mg.cy > H + 60) mg.cy = -60;
+
+      var pulse = 1 + Math.sin(pTime * 1.2 + mg.pulse) * 0.08;
+      var cosR = Math.cos(mg.rot);
+      var sinR = Math.sin(mg.rot);
+      for (var n = 0; n < mg.nodes.length; n++) {
+        var nd = mg.nodes[n];
+        nd.wx = mg.cx + (nd.ox * cosR - nd.oy * sinR) * pulse;
+        nd.wy = mg.cy + (nd.ox * sinR + nd.oy * cosR) * pulse;
       }
-
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vx *= 0.997;
-      p.vy *= 0.997;
-
-      // Wrap edges
-      if (p.x < -10) p.x = W + 10;
-      if (p.x > W + 10) p.x = -10;
-      if (p.y < -10) p.y = H + 10;
-      if (p.y > H + 10) p.y = -10;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, 6.2832);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = 0.6;
-      ctx.fill();
     }
 
-    // Draw connecting lines between nearby particles
-    ctx.globalAlpha = 1;
-    for (var i = 0; i < particles.length; i++) {
-      for (var j = i + 1; j < particles.length; j++) {
-        var dx = particles[i].x - particles[j].x;
-        var dy = particles[i].y - particles[j].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          var alpha = 0.12 * (1 - dist / 120);
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(229,62,62,' + alpha.toFixed(3) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
+    // === Draw inter-graph edges + signal dots ===
+    // Check graph center distances (256*255/2 = 32K — cheap)
+    var LINK_DIST = 140;
+    var LINK_DIST2 = LINK_DIST * LINK_DIST;
+    ctx.lineWidth = 0.4;
+    for (var g = 0; g < microGraphs.length; g++) {
+      for (var g2 = g + 1; g2 < microGraphs.length; g2++) {
+        var dx = microGraphs[g].cx - microGraphs[g2].cx;
+        var dy = microGraphs[g].cy - microGraphs[g2].cy;
+        var d2 = dx * dx + dy * dy;
+        if (d2 > LINK_DIST2 || d2 < 1) continue;
+
+        var d = Math.sqrt(d2);
+        var fade = 1 - d / LINK_DIST;
+
+        // Connect hub nodes (index 0) of each graph
+        var na = microGraphs[g].nodes[0];
+        var nb = microGraphs[g2].nodes[0];
+
+        // Edge line
+        ctx.beginPath();
+        ctx.moveTo(na.wx, na.wy);
+        ctx.lineTo(nb.wx, nb.wy);
+        ctx.strokeStyle = '#E53E3E';
+        ctx.globalAlpha = fade * 0.12;
+        ctx.stroke();
+
+        // Signal dot traveling along the edge
+        var speed = 0.3 + (g % 5) * 0.08;
+        var phase = (g * 7 + g2 * 13) % 100 / 100;
+        var t = ((pTime * speed + phase) % 1);
+        var sx = na.wx + (nb.wx - na.wx) * t;
+        var sy = na.wy + (nb.wy - na.wy) * t;
+
+        ctx.beginPath();
+        ctx.arc(sx, sy, 1.5, 0, 6.2832);
+        ctx.fillStyle = '#F56565';
+        ctx.globalAlpha = fade * 0.6;
+        ctx.fill();
+      }
+    }
+
+    // === Draw internal edges + nodes per graph ===
+    for (var g = 0; g < microGraphs.length; g++) {
+      var mg = microGraphs[g];
+
+      // Internal edges
+      ctx.strokeStyle = mg.baseColor;
+      ctx.lineWidth = 0.6;
+      for (var e = 0; e < mg.edges.length; e++) {
+        var edge = mg.edges[e];
+        var na = mg.nodes[edge[0]];
+        var nb = mg.nodes[edge[1]];
+        ctx.beginPath();
+        ctx.moveTo(na.wx, na.wy);
+        ctx.lineTo(nb.wx, nb.wy);
+        ctx.globalAlpha = 0.18 + Math.sin(pTime * 2 + mg.pulse + e) * 0.06;
+        ctx.stroke();
+      }
+
+      // Nodes
+      for (var n = 0; n < mg.nodes.length; n++) {
+        var nd = mg.nodes[n];
+        ctx.fillStyle = nd.color;
+        // Glow
+        ctx.beginPath();
+        ctx.arc(nd.wx, nd.wy, nd.r * 2.2, 0, 6.2832);
+        ctx.globalAlpha = 0.04;
+        ctx.fill();
+        // Core
+        ctx.beginPath();
+        ctx.arc(nd.wx, nd.wy, nd.r, 0, 6.2832);
+        ctx.globalAlpha = 0.55;
+        ctx.fill();
       }
     }
     ctx.globalAlpha = 1;
@@ -2047,284 +2046,389 @@
 
   requestAnimationFrame(loop);
 
-  // === HEX MAP: Project Constellation ===
-  var hexCanvas = document.getElementById('hex-canvas');
-  if (hexCanvas) {
-    var hctx = hexCanvas.getContext('2d');
-    var hexSize = IS_MOBILE ? 28 : 44;
-    var B = 'https://jack-at-someai.github.io/core/';
+  // === FORCE GRAPH: Project Constellation ===
+  var fgCanvas = document.getElementById('fg-canvas');
+  if (fgCanvas) { (function() {
+    var fctx = fgCanvas.getContext('2d');
+    var B = '';
 
-    // Category color schemes
+    // Category colors: fill, stroke, text
     var CC = {
-      center:     { f: 'rgba(229,62,62,0.25)', s: '#E53E3E', t: '#E53E3E' },
-      kernel:     { f: 'rgba(229,62,62,0.12)', s: '#E53E3E', t: '#F56565' },
-      domain:     { f: 'rgba(104,211,145,0.12)', s: '#68D391', t: '#68D391' },
-      reference:  { f: 'rgba(196,168,168,0.08)', s: '#6B4F4F', t: '#C4A8A8' },
-      research:   { f: 'rgba(245,158,11,0.10)', s: '#F59E0B', t: '#F59E0B' },
-      instrument: { f: 'rgba(102,102,102,0.08)', s: '#444',   t: '#999' }
+      anchor:     { s: '#E53E3E', t: '#E53E3E' },
+      parent:     { s: '#F59E0B', t: '#F59E0B' },
+      engine:     { s: '#E53E3E', t: '#F56565' },
+      kernel:     { s: '#E53E3E', t: '#F56565' },
+      domain:     { s: '#68D391', t: '#68D391' },
+      reference:  { s: '#6B4F4F', t: '#C4A8A8' },
+      research:   { s: '#F59E0B', t: '#F59E0B' },
+      instrument: { s: '#444',   t: '#999' }
     };
 
-    // All 75 projects in spiral order: center → ring1 → ring2 → ring3 → ring4 → ring5(partial)
-    var P = [
-      // Ring 0 — Center
-      {n:'Charlotte',i:'\u{1F578}',u:null,c:'center'},
-      // Ring 1 — Kernel (8)
-      {n:'Research Lab',i:'\u{1F9E0}',u:B+'research-lab/',c:'kernel'},
-      {n:'Knowledge Graph',i:'\u{1F4DA}',u:B+'knowledge-graph/',c:'kernel'},
-      {n:'Charlotte OS',i:'\u2699',u:B+'charlotte-os/',c:'kernel'},
-      {n:'Temporal Spine',i:'\u{1F553}',u:B+'charlotte/temporal/',c:'kernel'},
-      {n:'Spatial',i:'\u{1F5FA}',u:B+'charlotte/spatial/',c:'kernel'},
-      {n:'Papers',i:'\u{1F4C4}',u:B+'papers/',c:'kernel'},
-      {n:'Workbench',i:'\u{1F3A8}',u:B+'workbench/',c:'kernel'},
-      {n:'Pitch Engine',i:'\u{1F4CA}',u:B+'tools/pitch-engine/',c:'kernel'},
-      // Ring 2 — Domains + anchors (12)
-      {n:'Sounder',i:'\u{1F417}',u:B+'business/sounder/',c:'domain'},
-      {n:'ISG',i:'\u{1F3ED}',u:B+'business/industrial-service-group/',c:'domain'},
-      {n:'PPP Instruments',i:'\u{1F3BB}',u:B+'business/violins/',c:'domain'},
-      {n:'Top Tier',i:'\u{1F69A}',u:B+'business/top-tier-moving/',c:'domain'},
-      {n:'All State Mfg',i:'\u2692',u:B+'business/allstate-manufacturing/',c:'domain'},
-      {n:'CardVault',i:'\u{1F3C6}',u:B+'business/cardvault/',c:'domain'},
-      {n:'Wendt Group',i:'\u{1F3AA}',u:B+'business/wendt-group/',c:'domain'},
-      {n:'Monroe Livestock',i:'\u{1F404}',u:B+'business/monroe-livestock/',c:'domain'},
-      {n:'SC Online Sales',i:'\u{1F3A4}',u:B+'business/sc-online-sales/',c:'domain'},
-      {n:'LineLeap',i:'\u{1F378}',u:B+'business/lineleap/',c:'domain'},
-      {n:'GesDate',i:'\u{1F437}',u:B+'business/gesdate/',c:'domain'},
-      {n:'Sea Lion',i:'\u{1F9AD}',u:B+'references/sealion/',c:'domain'},
-      {n:'Maestro',i:'\u{1F3BC}',u:B+'tools/maestro/',c:'domain'},
-      {n:'Gantt',i:'\u{1F4C5}',u:B+'tools/gantt/',c:'domain'},
-      {n:'Swarm Intel',i:'\u{1F41D}',u:B+'math/swarm-intelligence/',c:'research'},
-      {n:'Knowledge',i:'\u{1F4D6}',u:B+'references/knowledge/',c:'reference'},
-      {n:'Formal Logic',i:'\u2200',u:B+'references/formal-logic/',c:'reference'},
-      {n:'Graph Theory',i:'\u229B',u:B+'references/graph-theory/',c:'reference'},
-      // Ring 3 — References + instruments (18)
-      {n:'Topology',i:'\u25CE',u:B+'references/topology/',c:'reference'},
-      {n:'Cog Science',i:'\u{1F9E0}',u:B+'references/cognitive-science/',c:'reference'},
-      {n:'Signal Proc',i:'\u3030',u:B+'references/signal-processing/',c:'reference'},
-      {n:'Temporal DB',i:'\u23F1',u:B+'references/temporal-databases/',c:'reference'},
-      {n:'Spatial',i:'\u{1F30D}',u:B+'references/spatial-computing/',c:'reference'},
-      {n:'Systems Arch',i:'\u{1F3D7}',u:B+'references/systems-architecture/',c:'reference'},
-      {n:'Game Theory',i:'\u265F',u:B+'references/game-theory/',c:'reference'},
-      {n:'Neuroscience',i:'\u{1F9EC}',u:B+'references/neuroscience/',c:'reference'},
-      {n:'Nature Algo',i:'\u{1F9EC}',u:B+'references/nature-inspired-algorithms/',c:'reference'},
-      {n:'Livestock',i:'\u{1F404}',u:B+'references/livestock-science/',c:'reference'},
-      {n:'Biomimicry',i:'\u{1F33F}',u:B+'references/biomimicry/',c:'reference'},
-      {n:'CNN',i:'\u{1F9E0}',u:B+'math/cnn/',c:'instrument'},
-      {n:'Neural Play',i:'\u{1F52E}',u:B+'math/neuralplayground/',c:'instrument'},
-      {n:'Chaos Theory',i:'\u{1F300}',u:B+'math/chaostheory/',c:'instrument'},
-      {n:'Fourier',i:'\u3030',u:B+'math/fourier/',c:'instrument'},
-      {n:'Sacred Geo',i:'\u2721',u:B+'math/sacred-geometry/',c:'instrument'},
-      {n:'TSP',i:'\u{1F5FA}',u:B+'math/tsp-algorithm-visualizer/',c:'instrument'},
-      // Ring 4 — Bio-references + games (24)
-      {n:'Bio-Arch',i:'\u{1F3DB}',u:B+'references/bio-architecture/',c:'reference'},
-      {n:'Bio-Robotics',i:'\u{1F916}',u:B+'references/bio-inspired-robotics/',c:'reference'},
-      {n:'Locomotion',i:'\u{1F98E}',u:B+'references/bio-locomotion/',c:'reference'},
-      {n:'Bio-Optics',i:'\u{1F52C}',u:B+'references/bio-optics-photonics/',c:'reference'},
-      {n:'Bio-Surfaces',i:'\u{1F9EB}',u:B+'references/bio-surfaces/',c:'reference'},
-      {n:'Bio-Materials',i:'\u{1F9EA}',u:B+'references/biomimetic-materials/',c:'reference'},
-      {n:'Struct Bio',i:'\u{1F9B4}',u:B+'references/structural-biomimetics/',c:'reference'},
-      {n:'Spider Silk',i:'\u{1F577}',u:B+'references/spider-silk/',c:'reference'},
-      {n:'Eco Design',i:'\u267B',u:B+'references/ecological-systems-design/',c:'reference'},
-      {n:'Entomology',i:'\u{1F41B}',u:B+'references/entomology/',c:'reference'},
-      {n:'Atomic Design',i:'\u269B',u:B+'references/atomic-design/',c:'reference'},
-      {n:'Hex Grid',i:'\u2B21',u:B+'games/hexgrid/',c:'instrument'},
-      {n:'Isometric',i:'\u{1F4D0}',u:B+'games/isometric/',c:'instrument'},
-      {n:'Aseprite',i:'\u{1F3A8}',u:B+'games/aseprite/',c:'instrument'},
-      {n:'Chess',i:'\u265F',u:B+'games/chess/',c:'instrument'},
-      {n:'Go',i:'\u26AB',u:B+'games/go/',c:'instrument'},
-      {n:'Pitch Decks',i:'\u{1F4BD}',u:B+'tools/pitch-engine/decks/',c:'kernel'},
-      {n:'Storm',i:'\u{1F3F0}',u:B+'games/against-the-storm/',c:'instrument'},
-      {n:'MapleStory',i:'\u{1F41F}',u:B+'games/maplestory/',c:'instrument'},
-      {n:'Starfield',i:'\u2728',u:B+'games/starfield/',c:'instrument'},
-      {n:'SomeLocks',i:'\u{1F510}',u:B+'games/somelocks/',c:'instrument'},
-      {n:'2048',i:'\u{1F522}',u:B+'games/2048/',c:'instrument'},
-      {n:'Tetris',i:'\u{1F7E6}',u:B+'games/tetris/',c:'instrument'},
-      {n:'Minesweeper',i:'\u{1F4A3}',u:B+'games/minesweeper/',c:'instrument'},
-      {n:'Zeus Car',i:'\u{1F697}',u:B+'zeus-car-kit/',c:'research'},
-      // Ring 5 — Outer games (6 of 30, evenly spaced)
-      {n:'Sudoku',i:'\u{1F532}',u:B+'games/sudoku/',c:'instrument'},
-      {n:'Solitaire',i:'\u{1F0CF}',u:B+'games/solitaire-glass/',c:'instrument'},
-      {n:'Snake',i:'\u{1F40D}',u:B+'games/snake/',c:'instrument'},
-      {n:'Pong',i:'\u{1F3D3}',u:B+'games/pong/',c:'instrument'},
-      {n:'Tic-Tac-Toe',i:'\u274C',u:B+'games/tic-tac-toe/',c:'instrument'},
-      {n:'Block Dude',i:'\u{1F9F1}',u:B+'games/block-dude/',c:'instrument'},
-      {n:'Charts',i:'\u{1F4C9}',u:B+'charlotte/charts/showcase/',c:'kernel'},
-      {n:'Pipeline',i:'\u{1F4C8}',u:B+'business/forecast.html',c:'kernel'},
-      {n:'Biz Model KRF',i:'\u{1F4BE}',u:B+'charlotte/docs/artifacts/business_model.krf',c:'kernel'}
+    // Node definitions: id, name, icon, url, category, radius, parent
+    // p = parent id (edges auto-generated), r = node radius
+    var N = [
+      // === Anchors ===
+      {id:'someai',n:'SomeAI',i:'\u2B21',u:B+'design/brandbook/someai/',c:'anchor',r:22,p:null},
+      {id:'re',n:'Richard Enterprises',i:'\u{1F981}',u:B+'design/brandbook/richard-enterprises/',c:'parent',r:14,p:'someai'},
+      {id:'charlotte',n:'Charlotte',i:'\u{1F578}',u:null,c:'engine',r:18,p:'someai'},
+      // === Clients (→ SomeAI) ===
+      {id:'sounder',n:'Sounder',i:'\u{1F417}',u:B+'business/sounder/',c:'domain',r:9,p:'someai'},
+      {id:'isg',n:'ISG',i:'\u{1F3ED}',u:B+'business/industrial-service-group/',c:'domain',r:9,p:'someai'},
+      {id:'ppp',n:'PPP Instruments',i:'\u{1F3BB}',u:B+'business/violins/',c:'domain',r:8,p:'someai'},
+      {id:'toptier',n:'Top Tier',i:'\u{1F69A}',u:B+'business/top-tier-moving/',c:'domain',r:8,p:'someai'},
+      {id:'allstate',n:'All State Mfg',i:'\u2692',u:B+'business/allstate-manufacturing/',c:'domain',r:8,p:'someai'},
+      {id:'cardvault',n:'CardVault',i:'\u{1F3C6}',u:B+'business/cardvault/',c:'domain',r:7,p:'someai'},
+      {id:'wendt',n:'Wendt Group',i:'\u{1F3AA}',u:B+'business/wendt-group/',c:'domain',r:7,p:'someai'},
+      {id:'monroe',n:'Monroe Livestock',i:'\u{1F404}',u:B+'business/monroe-livestock/',c:'domain',r:7,p:'someai'},
+      {id:'sconline',n:'SC Online Sales',i:'\u{1F3A4}',u:B+'business/sc-online-sales/',c:'domain',r:7,p:'someai'},
+      {id:'lineleap',n:'LineLeap',i:'\u{1F378}',u:B+'business/lineleap/',c:'domain',r:7,p:'someai'},
+      {id:'gesdate',n:'GesDate',i:'\u{1F437}',u:B+'business/gesdate/',c:'domain',r:7,p:'someai'},
+      {id:'sealion',n:'Sea Lion',i:'\u{1F9AD}',u:B+'references/sealion/',c:'domain',r:7,p:'someai'},
+      // === Tools (→ SomeAI) ===
+      {id:'maestro',n:'Maestro',i:'\u{1F3BC}',u:B+'tools/maestro/',c:'domain',r:8,p:'someai'},
+      {id:'gantt',n:'Gantt',i:'\u{1F4C5}',u:B+'tools/gantt/',c:'domain',r:7,p:'someai'},
+      {id:'geoparticles',n:'GeoParticles',i:'\u2728',u:B+'tools/geoparticles/',c:'instrument',r:8,p:'someai'},
+      {id:'ants',n:'Foraging Ants',i:'\u{1F41C}',u:B+'tools/geoparticles/ants.html',c:'instrument',r:7,p:'someai'},
+      // === Kernel (→ Charlotte) ===
+      {id:'researchlab',n:'Research Lab',i:'\u{1F9E0}',u:B+'research-lab/',c:'kernel',r:9,p:'charlotte'},
+      {id:'kg',n:'Knowledge Graph',i:'\u{1F4DA}',u:B+'knowledge-graph/',c:'kernel',r:8,p:'charlotte'},
+      {id:'cos',n:'Charlotte OS',i:'\u2699',u:B+'charlotte-os/',c:'kernel',r:9,p:'charlotte'},
+      {id:'temporal',n:'Temporal Spine',i:'\u{1F553}',u:B+'charlotte/temporal/',c:'kernel',r:8,p:'charlotte'},
+      {id:'spatial',n:'Spatial',i:'\u{1F5FA}',u:B+'charlotte/spatial/',c:'kernel',r:8,p:'charlotte'},
+      {id:'papers',n:'Papers',i:'\u{1F4C4}',u:B+'papers/',c:'kernel',r:7,p:'charlotte'},
+      {id:'workbench',n:'Workbench',i:'\u{1F3A8}',u:B+'workbench/',c:'kernel',r:7,p:'charlotte'},
+      {id:'pitcheng',n:'Pitch Engine',i:'\u{1F4CA}',u:B+'tools/pitch-engine/',c:'kernel',r:8,p:'charlotte'},
+      {id:'pitchdecks',n:'Pitch Decks',i:'\u{1F4BD}',u:B+'tools/pitch-engine/decks/',c:'kernel',r:6,p:'pitcheng'},
+      {id:'charts',n:'Charts',i:'\u{1F4C9}',u:B+'charlotte/charts/showcase/',c:'kernel',r:7,p:'charlotte'},
+      {id:'pipeline',n:'Pipeline',i:'\u{1F4C8}',u:B+'business/forecast.html',c:'kernel',r:7,p:'charlotte'},
+      {id:'bizkrf',n:'Biz Model KRF',i:'\u{1F4BE}',u:B+'charlotte/docs/artifacts/business_model.krf',c:'kernel',r:6,p:'charlotte'},
+      // === Math / Research (→ Charlotte) ===
+      {id:'cnn',n:'CNN',i:'\u{1F9E0}',u:B+'math/cnn/',c:'instrument',r:6,p:'charlotte'},
+      {id:'neuralplay',n:'Neural Play',i:'\u{1F52E}',u:B+'math/neuralplayground/',c:'instrument',r:6,p:'charlotte'},
+      {id:'chaos',n:'Chaos Theory',i:'\u{1F300}',u:B+'math/chaostheory/',c:'instrument',r:6,p:'charlotte'},
+      {id:'fourier',n:'Fourier',i:'\u3030',u:B+'math/fourier/',c:'instrument',r:6,p:'charlotte'},
+      {id:'sacredgeo',n:'Sacred Geo',i:'\u2721',u:B+'math/sacred-geometry/',c:'instrument',r:6,p:'charlotte'},
+      {id:'tsp',n:'TSP',i:'\u{1F5FA}',u:B+'math/tsp-algorithm-visualizer/',c:'instrument',r:6,p:'charlotte'},
+      {id:'swarm',n:'Swarm Intel',i:'\u{1F41D}',u:B+'math/swarm-intelligence/',c:'research',r:7,p:'charlotte'},
+      {id:'zeuscar',n:'Zeus Car',i:'\u{1F697}',u:B+'zeus-car-kit/',c:'research',r:6,p:'charlotte'},
+      // === References (→ Charlotte) ===
+      {id:'rknowledge',n:'Knowledge',i:'\u{1F4D6}',u:B+'references/knowledge/',c:'reference',r:5,p:'charlotte'},
+      {id:'rformallogic',n:'Formal Logic',i:'\u2200',u:B+'references/formal-logic/',c:'reference',r:5,p:'charlotte'},
+      {id:'rgraphtheory',n:'Graph Theory',i:'\u229B',u:B+'references/graph-theory/',c:'reference',r:5,p:'charlotte'},
+      {id:'rtopology',n:'Topology',i:'\u25CE',u:B+'references/topology/',c:'reference',r:5,p:'charlotte'},
+      {id:'rcogscience',n:'Cog Science',i:'\u{1F9E0}',u:B+'references/cognitive-science/',c:'reference',r:5,p:'charlotte'},
+      {id:'rsignalproc',n:'Signal Proc',i:'\u3030',u:B+'references/signal-processing/',c:'reference',r:5,p:'charlotte'},
+      {id:'rtemporaldb',n:'Temporal DB',i:'\u23F1',u:B+'references/temporal-databases/',c:'reference',r:5,p:'charlotte'},
+      {id:'rspatial',n:'Spatial Comp',i:'\u{1F30D}',u:B+'references/spatial-computing/',c:'reference',r:5,p:'charlotte'},
+      {id:'rsysarch',n:'Systems Arch',i:'\u{1F3D7}',u:B+'references/systems-architecture/',c:'reference',r:5,p:'charlotte'},
+      {id:'rgametheory',n:'Game Theory',i:'\u265F',u:B+'references/game-theory/',c:'reference',r:5,p:'charlotte'},
+      {id:'rneuro',n:'Neuroscience',i:'\u{1F9EC}',u:B+'references/neuroscience/',c:'reference',r:5,p:'charlotte'},
+      {id:'rnaturealgo',n:'Nature Algo',i:'\u{1F9EC}',u:B+'references/nature-inspired-algorithms/',c:'reference',r:5,p:'charlotte'},
+      {id:'rlivestock',n:'Livestock',i:'\u{1F404}',u:B+'references/livestock-science/',c:'reference',r:5,p:'charlotte'},
+      {id:'rbiomimicry',n:'Biomimicry',i:'\u{1F33F}',u:B+'references/biomimicry/',c:'reference',r:5,p:'charlotte'},
+      {id:'rbioarch',n:'Bio-Arch',i:'\u{1F3DB}',u:B+'references/bio-architecture/',c:'reference',r:4,p:'charlotte'},
+      {id:'rbiorobot',n:'Bio-Robotics',i:'\u{1F916}',u:B+'references/bio-inspired-robotics/',c:'reference',r:4,p:'charlotte'},
+      {id:'rlocomotion',n:'Locomotion',i:'\u{1F98E}',u:B+'references/bio-locomotion/',c:'reference',r:4,p:'charlotte'},
+      {id:'rbiooptics',n:'Bio-Optics',i:'\u{1F52C}',u:B+'references/bio-optics-photonics/',c:'reference',r:4,p:'charlotte'},
+      {id:'rbiosurf',n:'Bio-Surfaces',i:'\u{1F9EB}',u:B+'references/bio-surfaces/',c:'reference',r:4,p:'charlotte'},
+      {id:'rbiomat',n:'Bio-Materials',i:'\u{1F9EA}',u:B+'references/biomimetic-materials/',c:'reference',r:4,p:'charlotte'},
+      {id:'rstructbio',n:'Struct Bio',i:'\u{1F9B4}',u:B+'references/structural-biomimetics/',c:'reference',r:4,p:'charlotte'},
+      {id:'rspidersilk',n:'Spider Silk',i:'\u{1F577}',u:B+'references/spider-silk/',c:'reference',r:4,p:'charlotte'},
+      {id:'recodesign',n:'Eco Design',i:'\u267B',u:B+'references/ecological-systems-design/',c:'reference',r:4,p:'charlotte'},
+      {id:'rentomology',n:'Entomology',i:'\u{1F41B}',u:B+'references/entomology/',c:'reference',r:4,p:'charlotte'},
+      {id:'ratomicdesign',n:'Atomic Design',i:'\u269B',u:B+'references/atomic-design/',c:'reference',r:4,p:'charlotte'},
+      // === Games (→ SomeAI) ===
+      {id:'hexgrid',n:'Hex Grid',i:'\u2B21',u:B+'games/hexgrid/',c:'instrument',r:5,p:'someai'},
+      {id:'isometric',n:'Isometric',i:'\u{1F4D0}',u:B+'games/isometric/',c:'instrument',r:5,p:'someai'},
+      {id:'aseprite',n:'Aseprite',i:'\u{1F3A8}',u:B+'games/aseprite/',c:'instrument',r:5,p:'someai'},
+      {id:'chess',n:'Chess',i:'\u265F',u:B+'games/chess/',c:'instrument',r:5,p:'someai'},
+      {id:'go',n:'Go',i:'\u26AB',u:B+'games/go/',c:'instrument',r:5,p:'someai'},
+      {id:'storm',n:'Storm',i:'\u{1F3F0}',u:B+'games/against-the-storm/',c:'instrument',r:5,p:'someai'},
+      {id:'maple',n:'MapleStory',i:'\u{1F41F}',u:B+'games/maplestory/',c:'instrument',r:5,p:'someai'},
+      {id:'starfield',n:'Starfield',i:'\u2728',u:B+'games/starfield/',c:'instrument',r:5,p:'someai'},
+      {id:'somelocks',n:'SomeLocks',i:'\u{1F510}',u:B+'games/somelocks/',c:'instrument',r:5,p:'someai'},
+      {id:'g2048',n:'2048',i:'\u{1F522}',u:B+'games/2048/',c:'instrument',r:5,p:'someai'},
+      {id:'tetris',n:'Tetris',i:'\u{1F7E6}',u:B+'games/tetris/',c:'instrument',r:5,p:'someai'},
+      {id:'minesweeper',n:'Minesweeper',i:'\u{1F4A3}',u:B+'games/minesweeper/',c:'instrument',r:5,p:'someai'},
+      {id:'sudoku',n:'Sudoku',i:'\u{1F532}',u:B+'games/sudoku/',c:'instrument',r:5,p:'someai'},
+      {id:'solitaire',n:'Solitaire',i:'\u{1F0CF}',u:B+'games/solitaire-glass/',c:'instrument',r:5,p:'someai'},
+      {id:'snake',n:'Snake',i:'\u{1F40D}',u:B+'games/snake/',c:'instrument',r:5,p:'someai'},
+      {id:'pong',n:'Pong',i:'\u{1F3D3}',u:B+'games/pong/',c:'instrument',r:5,p:'someai'},
+      {id:'tictactoe',n:'Tic-Tac-Toe',i:'\u274C',u:B+'games/tic-tac-toe/',c:'instrument',r:5,p:'someai'},
+      {id:'blockdude',n:'Block Dude',i:'\u{1F9F1}',u:B+'games/block-dude/',c:'instrument',r:5,p:'someai'}
     ];
 
-    // Hex math — cube coordinates, pointy-top orientation
-    var DIRS = [{q:1,r:0},{q:1,r:-1},{q:0,r:-1},{q:-1,r:0},{q:-1,r:1},{q:0,r:1}];
-
-    function hexRing(radius) {
-      if (radius === 0) return [{q:0,r:0}];
-      var res = [], h = {q:-radius, r:radius};
-      for (var i = 0; i < 6; i++)
-        for (var j = 0; j < radius; j++) {
-          res.push({q:h.q, r:h.r});
-          h = {q:h.q+DIRS[i].q, r:h.r+DIRS[i].r};
-        }
-      return res;
-    }
-
-    // Build spiral positions for all 75 projects
-    var hexPos = hexRing(0);
-    for (var r = 1; r <= 4; r++) hexPos = hexPos.concat(hexRing(r));
-    // Ring 5: 8 hexes, roughly evenly spaced around the 30-position ring
-    var r5 = hexRing(5);
-    var r5idx = [0, 4, 8, 13, 17, 21, 25, 29];
-    for (var i = 0; i < r5idx.length; i++) hexPos.push(r5[r5idx[i]]);
-
-    // Pointy-top hex → pixel
-    function h2p(q, r, sz, ox, oy) {
-      return {
-        x: sz * (1.7320508 * q + 0.8660254 * r) + ox,
-        y: sz * (1.5 * r) + oy
-      };
-    }
-
-    // Pixel → hex (cube round)
-    function p2h(px, py, sz, ox, oy) {
-      var x = (px - ox) / sz, y = (py - oy) / sz;
-      var q = 0.57735027 * x - 0.33333333 * y;
-      var r = 0.66666667 * y;
-      var s = -q - r;
-      var rq = Math.round(q), rr = Math.round(r), rs = Math.round(s);
-      var dq = Math.abs(rq-q), dr = Math.abs(rr-r), ds = Math.abs(rs-s);
-      if (dq > dr && dq > ds) rq = -rr-rs;
-      else if (dr > ds) rr = -rq-rs;
-      else rs = -rq-rr;
-      return {q:rq, r:rr};
-    }
-
-    // Draw single hex shape
-    function drawHex(cx, cy, sz, fill, stroke, lw) {
-      hctx.beginPath();
-      for (var i = 0; i < 6; i++) {
-        var a = Math.PI / 3 * i - Math.PI / 6;
-        var x = cx + sz * Math.cos(a), y = cy + sz * Math.sin(a);
-        i === 0 ? hctx.moveTo(x, y) : hctx.lineTo(x, y);
+    // Build edges from parent relationships
+    var edges = [];
+    var idMap = {};
+    for (var i = 0; i < N.length; i++) idMap[N[i].id] = i;
+    for (var i = 0; i < N.length; i++) {
+      if (N[i].p && idMap[N[i].p] !== undefined) {
+        edges.push([idMap[N[i].p], i]);
       }
-      hctx.closePath();
-      if (fill) { hctx.fillStyle = fill; hctx.fill(); }
-      if (stroke) { hctx.strokeStyle = stroke; hctx.lineWidth = lw || 1; hctx.stroke(); }
     }
 
-    // Truncate text to fit hex
-    function trunc(s, max) { return s.length > max ? s.slice(0, max-1) + '\u2026' : s; }
+    // Build adjacency for hover highlighting
+    var adj = [];
+    for (var i = 0; i < N.length; i++) adj[i] = [];
+    for (var i = 0; i < edges.length; i++) {
+      adj[edges[i][0]].push(edges[i][1]);
+      adj[edges[i][1]].push(edges[i][0]);
+    }
 
-    var hexHovered = -1;
-
-    function drawHexMap() {
+    // Initialize positions — spread nodes with Y bias
+    var W, H;
+    function sizeCanvas() {
+      var containerW = fgCanvas.parentElement.offsetWidth;
+      W = Math.min(containerW, 1200);
+      H = IS_MOBILE ? 500 : 650;
       var dpr = window.devicePixelRatio || 1;
-      hexSize = IS_MOBILE ? 28 : (window.innerWidth < 1000 ? 36 : 44);
+      fgCanvas.style.width = W + 'px';
+      fgCanvas.style.height = H + 'px';
+      fgCanvas.width = W * dpr;
+      fgCanvas.height = H * dpr;
+      fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    sizeCanvas();
 
-      // Calculate canvas bounds from positions
-      var maxX = 0, maxY = 0;
-      for (var i = 0; i < hexPos.length; i++) {
-        var pt = h2p(hexPos[i].q, hexPos[i].r, hexSize, 0, 0);
-        maxX = Math.max(maxX, Math.abs(pt.x));
-        maxY = Math.max(maxY, Math.abs(pt.y));
+    // Physics state
+    var nodes = [];
+    for (var i = 0; i < N.length; i++) {
+      var nd = N[i];
+      var angle = Math.random() * Math.PI * 2;
+      var dist = 50 + Math.random() * 200;
+      var yBias = 0;
+      if (nd.id === 're') yBias = -180;
+      else if (nd.id === 'charlotte') yBias = 140;
+      else if (nd.c === 'kernel' || nd.c === 'engine' || nd.c === 'reference' || nd.c === 'research') yBias = 60 + Math.random() * 100;
+      else if (nd.c === 'domain') yBias = -40 + Math.random() * 60 - 30;
+      else if (nd.c === 'parent') yBias = -160;
+      else yBias = Math.random() * 80 - 40;
+
+      nodes.push({
+        x: W/2 + Math.cos(angle) * dist,
+        y: H/2 + yBias + Math.sin(angle) * dist * 0.3,
+        vx: 0, vy: 0,
+        pinned: nd.id === 'someai'
+      });
+    }
+    // Pin SomeAI at center
+    nodes[0].x = W/2;
+    nodes[0].y = H/2;
+
+    // Force simulation step
+    function simStep() {
+      var REPULSION = 3000;
+      var SPRING = 0.008;
+      var REST_LEN = IS_MOBILE ? 50 : 75;
+      var GRAVITY = 0.002;
+      var DAMPING = 0.88;
+      var Y_BIAS = 0.003;
+
+      // Repulsion (all pairs)
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[j].x - nodes[i].x;
+          var dy = nodes[j].y - nodes[i].y;
+          var d2 = dx*dx + dy*dy;
+          if (d2 < 1) d2 = 1;
+          var d = Math.sqrt(d2);
+          var f = REPULSION / d2;
+          var fx = (dx/d) * f;
+          var fy = (dy/d) * f;
+          if (!nodes[i].pinned) { nodes[i].vx -= fx; nodes[i].vy -= fy; }
+          if (!nodes[j].pinned) { nodes[j].vx += fx; nodes[j].vy += fy; }
+        }
       }
-      var cw = Math.ceil((maxX + hexSize * 1.3) * 2);
-      var ch = Math.ceil((maxY + hexSize * 1.3) * 2);
 
-      // Clamp to container
-      var containerW = hexCanvas.parentElement.offsetWidth;
-      if (cw > containerW) {
-        var scale = containerW / cw;
-        hexSize = Math.floor(hexSize * scale);
-        // Recalculate
-        maxX = 0; maxY = 0;
-        for (var i = 0; i < hexPos.length; i++) {
-          var pt = h2p(hexPos[i].q, hexPos[i].r, hexSize, 0, 0);
-          maxX = Math.max(maxX, Math.abs(pt.x));
-          maxY = Math.max(maxY, Math.abs(pt.y));
-        }
-        cw = Math.ceil((maxX + hexSize * 1.3) * 2);
-        ch = Math.ceil((maxY + hexSize * 1.3) * 2);
+      // Spring attraction (edges)
+      for (var i = 0; i < edges.length; i++) {
+        var a = nodes[edges[i][0]], b = nodes[edges[i][1]];
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 0.1) d = 0.1;
+        var f = (d - REST_LEN) * SPRING;
+        var fx = (dx/d) * f, fy = (dy/d) * f;
+        if (!a.pinned) { a.vx += fx; a.vy += fy; }
+        if (!b.pinned) { b.vx -= fx; b.vy -= fy; }
       }
 
-      hexCanvas.style.width = cw + 'px';
-      hexCanvas.style.height = ch + 'px';
-      hexCanvas.width = cw * dpr;
-      hexCanvas.height = ch * dpr;
-      hctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Center gravity + Y bias
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].pinned) continue;
+        nodes[i].vx += (W/2 - nodes[i].x) * GRAVITY;
+        nodes[i].vy += (H/2 - nodes[i].y) * GRAVITY;
 
-      var ox = cw / 2, oy = ch / 2;
+        // Y bias for hierarchy
+        var nd = N[i];
+        if (nd.id === 're') nodes[i].vy += (H*0.15 - nodes[i].y) * Y_BIAS;
+        else if (nd.id === 'charlotte') nodes[i].vy += (H*0.72 - nodes[i].y) * Y_BIAS;
+        else if (nd.c === 'parent') nodes[i].vy += (H*0.12 - nodes[i].y) * Y_BIAS * 0.5;
+        else if (nd.c === 'kernel' || nd.c === 'engine') nodes[i].vy += (H*0.7 - nodes[i].y) * Y_BIAS * 0.3;
+        else if (nd.c === 'reference') nodes[i].vy += (H*0.82 - nodes[i].y) * Y_BIAS * 0.3;
+        else if (nd.c === 'domain') nodes[i].vy += (H*0.35 - nodes[i].y) * Y_BIAS * 0.2;
+      }
 
-      // Draw hexes
-      for (var i = 0; i < hexPos.length && i < P.length; i++) {
-        var hp = hexPos[i];
-        var proj = P[i];
-        var pt = h2p(hp.q, hp.r, hexSize, ox, oy);
-        var col = CC[proj.c];
-        var hov = (i === hexHovered);
-
-        // Hex fill + border
-        var fillColor = col.f;
-        var strokeColor = col.s;
-        var lw = 1;
-        if (hov) {
-          fillColor = proj.c === 'center' ? 'rgba(229,62,62,0.4)' :
-                      proj.c === 'kernel' ? 'rgba(229,62,62,0.25)' :
-                      proj.c === 'domain' ? 'rgba(104,211,145,0.25)' :
-                      proj.c === 'reference' ? 'rgba(196,168,168,0.18)' :
-                      proj.c === 'research' ? 'rgba(245,158,11,0.25)' :
-                      'rgba(102,102,102,0.18)';
-          strokeColor = '#E8E0E0';
-          lw = 2;
-        }
-        drawHex(pt.x, pt.y, hexSize * 0.94, fillColor, strokeColor, lw);
-
-        // Center: special glow ring
-        if (i === 0) {
-          drawHex(pt.x, pt.y, hexSize * 0.7, null, 'rgba(229,62,62,0.3)', 1.5);
-        }
-
-        // Emoji icon
-        var emojiSize = Math.max(12, Math.round(hexSize * 0.38));
-        hctx.font = emojiSize + 'px serif';
-        hctx.textAlign = 'center';
-        hctx.textBaseline = 'middle';
-        hctx.fillText(proj.i, pt.x, pt.y - hexSize * 0.14);
-
-        // Name label
-        var nameSize = Math.max(6, Math.round(hexSize * 0.18));
-        hctx.font = '600 ' + nameSize + 'px Inter, sans-serif';
-        hctx.fillStyle = hov ? '#FFFFFF' : col.t;
-        hctx.textAlign = 'center';
-        hctx.textBaseline = 'top';
-        var maxChars = Math.max(6, Math.floor(hexSize * 0.04 * 10));
-        hctx.fillText(trunc(proj.n, maxChars), pt.x, pt.y + hexSize * 0.18);
+      // Integrate + damp + boundary
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].pinned) { nodes[i].vx = 0; nodes[i].vy = 0; continue; }
+        nodes[i].vx *= DAMPING;
+        nodes[i].vy *= DAMPING;
+        nodes[i].x += nodes[i].vx;
+        nodes[i].y += nodes[i].vy;
+        // Soft boundary
+        var pad = N[i].r + 4;
+        if (nodes[i].x < pad) { nodes[i].x = pad; nodes[i].vx *= -0.5; }
+        if (nodes[i].x > W - pad) { nodes[i].x = W - pad; nodes[i].vx *= -0.5; }
+        if (nodes[i].y < pad) { nodes[i].y = pad; nodes[i].vy *= -0.5; }
+        if (nodes[i].y > H - pad) { nodes[i].y = H - pad; nodes[i].vy *= -0.5; }
       }
     }
 
-    // Build lookup for fast hit detection
-    var hexLookup = {};
-    for (var i = 0; i < hexPos.length; i++) {
-      hexLookup[hexPos[i].q + ',' + hexPos[i].r] = i;
+    // Warm up simulation
+    for (var s = 0; s < 300; s++) simStep();
+
+    // Rendering
+    var fgHovered = -1;
+    var fgDragging = -1;
+
+    function drawGraph() {
+      fctx.clearRect(0, 0, W, H);
+
+      // Edges
+      for (var i = 0; i < edges.length; i++) {
+        var a = nodes[edges[i][0]], b = nodes[edges[i][1]];
+        var aCat = N[edges[i][0]].c, bCat = N[edges[i][1]].c;
+        var highlighted = (fgHovered === edges[i][0] || fgHovered === edges[i][1]);
+        fctx.beginPath();
+        fctx.moveTo(a.x, a.y);
+        fctx.lineTo(b.x, b.y);
+        if (highlighted) {
+          fctx.strokeStyle = CC[bCat] ? CC[bCat].s : '#444';
+          fctx.globalAlpha = 0.6;
+          fctx.lineWidth = 1.5;
+        } else {
+          fctx.strokeStyle = '#333';
+          fctx.globalAlpha = 0.25;
+          fctx.lineWidth = 0.8;
+        }
+        fctx.stroke();
+        fctx.globalAlpha = 1;
+      }
+
+      // Nodes
+      for (var i = 0; i < N.length; i++) {
+        var nd = N[i];
+        var nx = nodes[i].x, ny = nodes[i].y;
+        var col = CC[nd.c] || CC.instrument;
+        var hov = (i === fgHovered);
+        var connected = false;
+        if (fgHovered >= 0 && fgHovered !== i) {
+          for (var j = 0; j < adj[fgHovered].length; j++) {
+            if (adj[fgHovered][j] === i) { connected = true; break; }
+          }
+        }
+        var dimmed = (fgHovered >= 0 && !hov && !connected);
+
+        var r = nd.r * (IS_MOBILE ? 0.8 : 1);
+        if (hov) r *= 1.3;
+
+        // Glow for anchors / hovered
+        if ((nd.c === 'anchor' || nd.c === 'engine' || hov) && !dimmed) {
+          fctx.save();
+          fctx.shadowColor = col.s;
+          fctx.shadowBlur = hov ? 18 : 10;
+          fctx.beginPath();
+          fctx.arc(nx, ny, r, 0, Math.PI * 2);
+          fctx.fillStyle = 'rgba(0,0,0,0.01)';
+          fctx.fill();
+          fctx.restore();
+        }
+
+        // Circle fill
+        fctx.beginPath();
+        fctx.arc(nx, ny, r, 0, Math.PI * 2);
+        fctx.globalAlpha = dimmed ? 0.15 : 1;
+        fctx.fillStyle = hov ? col.s : (nd.c === 'anchor' ? 'rgba(229,62,62,0.3)' :
+                         nd.c === 'engine' ? 'rgba(229,62,62,0.2)' :
+                         nd.c === 'parent' ? 'rgba(245,158,11,0.2)' :
+                         nd.c === 'kernel' ? 'rgba(229,62,62,0.12)' :
+                         nd.c === 'domain' ? 'rgba(104,211,145,0.15)' :
+                         nd.c === 'reference' ? 'rgba(196,168,168,0.1)' :
+                         nd.c === 'research' ? 'rgba(245,158,11,0.12)' :
+                         'rgba(102,102,102,0.12)');
+        fctx.fill();
+
+        // Circle stroke
+        fctx.beginPath();
+        fctx.arc(nx, ny, r, 0, Math.PI * 2);
+        fctx.strokeStyle = col.s;
+        fctx.lineWidth = hov ? 2 : 1;
+        fctx.globalAlpha = dimmed ? 0.1 : (hov ? 1 : 0.6);
+        fctx.stroke();
+        fctx.globalAlpha = 1;
+
+        // Emoji icon (only if node big enough)
+        if (r >= 5) {
+          var emojiSize = Math.max(8, Math.round(r * 1.1));
+          fctx.font = emojiSize + 'px serif';
+          fctx.textAlign = 'center';
+          fctx.textBaseline = 'middle';
+          fctx.globalAlpha = dimmed ? 0.15 : 1;
+          fctx.fillText(nd.i, nx, ny - 1);
+          fctx.globalAlpha = 1;
+        }
+
+        // Name label (only for bigger nodes or hovered)
+        if (r >= 7 || hov) {
+          var nameSize = Math.max(7, Math.round(r * 0.7));
+          if (nd.c === 'anchor') nameSize = 11;
+          else if (nd.c === 'engine' || nd.c === 'parent') nameSize = 9;
+          fctx.font = '600 ' + nameSize + 'px Inter, sans-serif';
+          fctx.textAlign = 'center';
+          fctx.textBaseline = 'top';
+          fctx.fillStyle = hov ? '#FFFFFF' : col.t;
+          fctx.globalAlpha = dimmed ? 0.1 : (hov ? 1 : 0.7);
+          fctx.fillText(nd.n, nx, ny + r + 3);
+          fctx.globalAlpha = 1;
+        }
+      }
+    }
+
+    // Hit test
+    function hitTest(mx, my) {
+      for (var i = N.length - 1; i >= 0; i--) {
+        var dx = mx - nodes[i].x, dy = my - nodes[i].y;
+        var hitR = Math.max(N[i].r * 1.5, 10);
+        if (dx*dx + dy*dy < hitR*hitR) return i;
+      }
+      return -1;
     }
 
     // Mouse interaction
-    hexCanvas.addEventListener('mousemove', function(e) {
-      var rect = hexCanvas.getBoundingClientRect();
-      var mx = e.clientX - rect.left;
-      var my = e.clientY - rect.top;
-      var ox = hexCanvas.offsetWidth / 2;
-      var oy = hexCanvas.offsetHeight / 2;
-      var hh = p2h(mx, my, hexSize, ox, oy);
-      var key = hh.q + ',' + hh.r;
-      var idx = hexLookup[key] !== undefined ? hexLookup[key] : -1;
-      if (idx >= P.length) idx = -1;
+    var fgMouseX = 0, fgMouseY = 0;
+    function getPos(e) {
+      var rect = fgCanvas.getBoundingClientRect();
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
 
-      if (idx !== hexHovered) {
-        hexHovered = idx;
-        drawHexMap();
+    fgCanvas.addEventListener('mousemove', function(e) {
+      var p = getPos(e);
+      fgMouseX = e.clientX; fgMouseY = e.clientY;
+      if (fgDragging >= 0 && !nodes[fgDragging].pinned) {
+        nodes[fgDragging].x = p.x;
+        nodes[fgDragging].y = p.y;
+        nodes[fgDragging].vx = 0;
+        nodes[fgDragging].vy = 0;
       }
-
-      var tip = document.getElementById('hex-tooltip');
-      if (hexHovered >= 0) {
-        tip.textContent = P[hexHovered].n;
+      var idx = hitTest(p.x, p.y);
+      if (idx !== fgHovered) {
+        fgHovered = idx;
+        fgCanvas.style.cursor = idx >= 0 ? 'pointer' : 'grab';
+      }
+      var tip = document.getElementById('fg-tooltip');
+      if (fgHovered >= 0) {
+        tip.textContent = N[fgHovered].n;
         tip.classList.add('show');
       } else {
         tip.classList.remove('show');
@@ -2333,25 +2437,96 @@
       tip.style.top = (e.clientY - 36) + 'px';
     });
 
-    hexCanvas.addEventListener('click', function() {
-      if (hexHovered >= 0 && P[hexHovered].u) {
-        window.open(P[hexHovered].u, '_self');
+    fgCanvas.addEventListener('mousedown', function(e) {
+      var p = getPos(e);
+      var idx = hitTest(p.x, p.y);
+      if (idx >= 0) {
+        fgDragging = idx;
+        fgCanvas.style.cursor = 'grabbing';
       }
     });
 
-    hexCanvas.addEventListener('mouseleave', function() {
-      hexHovered = -1;
-      drawHexMap();
-      document.getElementById('hex-tooltip').classList.remove('show');
+    fgCanvas.addEventListener('mouseup', function(e) {
+      if (fgDragging >= 0) {
+        // If barely moved, treat as click
+        var p = getPos(e);
+        var dx = p.x - nodes[fgDragging].x, dy = p.y - nodes[fgDragging].y;
+        if (dx*dx + dy*dy < 4 && N[fgDragging].u) {
+          window.open(N[fgDragging].u, '_self');
+        }
+        fgDragging = -1;
+        fgCanvas.style.cursor = fgHovered >= 0 ? 'pointer' : 'grab';
+      }
     });
 
-    // Draw on load + resize
-    drawHexMap();
-    window.addEventListener('resize', function() {
-      hexSize = IS_MOBILE ? 28 : (window.innerWidth < 1000 ? 36 : 44);
-      drawHexMap();
+    fgCanvas.addEventListener('mouseleave', function() {
+      fgHovered = -1;
+      fgDragging = -1;
+      document.getElementById('fg-tooltip').classList.remove('show');
     });
-  }
+
+    // Touch support
+    fgCanvas.addEventListener('touchstart', function(e) {
+      var t = e.touches[0];
+      var rect = fgCanvas.getBoundingClientRect();
+      var p = { x: t.clientX - rect.left, y: t.clientY - rect.top };
+      var idx = hitTest(p.x, p.y);
+      if (idx >= 0) { fgDragging = idx; fgHovered = idx; e.preventDefault(); }
+    }, { passive: false });
+
+    fgCanvas.addEventListener('touchmove', function(e) {
+      if (fgDragging >= 0) {
+        var t = e.touches[0];
+        var rect = fgCanvas.getBoundingClientRect();
+        nodes[fgDragging].x = t.clientX - rect.left;
+        nodes[fgDragging].y = t.clientY - rect.top;
+        nodes[fgDragging].vx = 0;
+        nodes[fgDragging].vy = 0;
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    fgCanvas.addEventListener('touchend', function(e) {
+      if (fgDragging >= 0 && N[fgDragging].u) {
+        window.open(N[fgDragging].u, '_self');
+      }
+      fgDragging = -1;
+      fgHovered = -1;
+    });
+
+    // Animation loop (gentle continuous settling)
+    var fgFrame;
+    function fgLoop() {
+      simStep();
+      drawGraph();
+      fgFrame = requestAnimationFrame(fgLoop);
+    }
+
+    // Start when visible via IntersectionObserver
+    var fgRunning = false;
+    var fgObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !fgRunning) {
+        fgRunning = true;
+        fgLoop();
+      } else if (!entries[0].isIntersecting && fgRunning) {
+        fgRunning = false;
+        cancelAnimationFrame(fgFrame);
+      }
+    }, { threshold: 0.05 });
+    fgObs.observe(fgCanvas);
+
+    // Resize
+    window.addEventListener('resize', function() {
+      var oldW = W, oldH = H;
+      sizeCanvas();
+      // Rescale node positions
+      var sx = W / oldW, sy = H / oldH;
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].x *= sx;
+        nodes[i].y *= sy;
+      }
+    });
+  })(); }
 
 })();
 </script>
@@ -2390,276 +2565,6 @@
 })();
 </script>
 
-<!-- ═══════════ Inline Knowledge Graph Engine ═══════════ -->
-<script>
-(function() {
-  var KG_COLORS = {
-    reference: '#E53E3E', domain: '#F56565', person: '#4A9EE5',
-    document: '#A855F7', project: '#34D399', business: '#FB923C',
-    primitive: '#EC4899', cluster: '#2DD4BF', category: '#8B8BA0'
-  };
-  var KG_SIZES = {
-    primitive: 18, cluster: 14, domain: 12, business: 10,
-    person: 9, category: 8, document: 6, project: 6, reference: 3
-  };
-  var KG_BADGE_CSS = {
-    reference: 'background:rgba(229,62,62,0.15);color:#F56565',
-    domain:    'background:rgba(245,101,101,0.15);color:#F56565',
-    person:    'background:rgba(74,158,229,0.15);color:#4A9EE5',
-    document:  'background:rgba(168,85,247,0.15);color:#A855F7',
-    project:   'background:rgba(52,211,153,0.15);color:#34D399',
-    business:  'background:rgba(251,146,60,0.15);color:#FB923C',
-    primitive: 'background:rgba(236,72,153,0.15);color:#EC4899',
-    cluster:   'background:rgba(45,212,191,0.15);color:#2DD4BF',
-    category:  'background:rgba(139,139,160,0.15);color:#8B8BA0'
-  };
-  var DEFAULT_HIDDEN = new Set(['reference']);
-
-  var kgOpen = false;
-  var kgLoaded = false;
-  var kgSim = null;
-  var kgAllNodes = [];
-  var kgAllEdges = [];
-  var kgShowAll = false;
-  var kgSearchTerm = '';
-  var kgConnMap = {};
-  var d3Loaded = false;
-
-  // Expose toggle to global scope
-  window.toggleKG = function() {
-    var panel = document.getElementById('kg-panel');
-    var card = document.querySelector('.card-kg');
-    kgOpen = !kgOpen;
-
-    if (kgOpen) {
-      card.classList.add('active');
-      panel.classList.add('open');
-      if (!kgLoaded) {
-        loadD3Then(function() { fetchAndRender(); });
-      } else if (kgSim) {
-        kgSim.alpha(0.05).restart();
-      }
-    } else {
-      card.classList.remove('active');
-      panel.classList.remove('open');
-      if (kgSim) kgSim.stop();
-    }
-  };
-
-  window.kgSearch = function(val) {
-    kgSearchTerm = val.toLowerCase().trim();
-    updateVisibility();
-  };
-
-  window.kgToggleAll = function() {
-    kgShowAll = !kgShowAll;
-    var btn = document.getElementById('kg-toggle-all');
-    if (kgShowAll) {
-      btn.textContent = 'Overview';
-      btn.classList.add('active');
-    } else {
-      btn.textContent = 'Show All';
-      btn.classList.remove('active');
-    }
-    rebuildGraph();
-  };
-
-  function loadD3Then(cb) {
-    if (d3Loaded) { cb(); return; }
-    var s = document.createElement('script');
-    s.src = 'https://d3js.org/d3.v7.min.js';
-    s.onload = function() { d3Loaded = true; cb(); };
-    document.head.appendChild(s);
-  }
-
-  function fetchAndRender() {
-    fetch('knowledge-graph/data/graph.json')
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        kgAllNodes = data.nodes;
-        kgAllEdges = data.edges;
-        // Build connection count map
-        kgConnMap = {};
-        kgAllEdges.forEach(function(e) {
-          kgConnMap[e.source] = (kgConnMap[e.source] || 0) + 1;
-          kgConnMap[e.target] = (kgConnMap[e.target] || 0) + 1;
-        });
-        kgLoaded = true;
-        rebuildGraph();
-      });
-  }
-
-  function getFilteredData() {
-    var nodeSet = new Set();
-    var nodes = kgAllNodes.filter(function(n) {
-      // Type filter
-      if (!kgShowAll && DEFAULT_HIDDEN.has(n.type)) return false;
-      // Search filter
-      if (kgSearchTerm) {
-        var hay = (n.label + ' ' + (n.desc || '') + ' ' + (n.type || '')).toLowerCase();
-        if (hay.indexOf(kgSearchTerm) === -1) return false;
-      }
-      nodeSet.add(n.id);
-      return true;
-    });
-    var edges = kgAllEdges.filter(function(e) {
-      return nodeSet.has(e.source.id || e.source) && nodeSet.has(e.target.id || e.target);
-    });
-    return { nodes: nodes, edges: edges };
-  }
-
-  function rebuildGraph() {
-    var container = document.getElementById('kg-svg-container');
-    container.innerHTML = '';
-    if (kgSim) { kgSim.stop(); kgSim = null; }
-
-    var data = getFilteredData();
-    var nodes = data.nodes.map(function(n) { return Object.assign({}, n); });
-    var edges = data.edges.map(function(e) {
-      return { source: e.source.id || e.source, target: e.target.id || e.target, type: e.type, strength: e.strength };
-    });
-
-    // Update stats
-    document.getElementById('kg-stats').innerHTML =
-      '<strong>' + nodes.length + '</strong> nodes &middot; <strong>' + edges.length + '</strong> edges';
-
-    var W = container.offsetWidth;
-    var H = container.offsetHeight || 500;
-
-    var svg = d3.select(container).append('svg')
-      .attr('width', W).attr('height', H);
-
-    // Defs for glow filters
-    var defs = svg.append('defs');
-    Object.keys(KG_COLORS).forEach(function(type) {
-      var filter = defs.append('filter')
-        .attr('id', 'kg-glow-' + type)
-        .attr('x', '-50%').attr('y', '-50%')
-        .attr('width', '200%').attr('height', '200%');
-      filter.append('feDropShadow')
-        .attr('dx', 0).attr('dy', 0)
-        .attr('stdDeviation', 3)
-        .attr('flood-color', KG_COLORS[type])
-        .attr('flood-opacity', 0.5);
-    });
-
-    var g = svg.append('g');
-
-    // Zoom
-    var zoom = d3.zoom()
-      .scaleExtent([0.2, 4])
-      .on('zoom', function(event) { g.attr('transform', event.transform); });
-    svg.call(zoom);
-
-    // Center the initial view
-    var initScale = Math.min(W, H) / (nodes.length > 500 ? 1800 : 1000);
-    initScale = Math.max(0.25, Math.min(initScale, 1));
-    svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(initScale));
-
-    // Links
-    var linkGroup = g.append('g').attr('class', 'kg-links');
-    var link = linkGroup.selectAll('path').data(edges).enter().append('path')
-      .attr('fill', 'none')
-      .attr('stroke', 'rgba(229,62,62,0.08)')
-      .attr('stroke-width', 0.5);
-
-    // Node glow
-    var glowGroup = g.append('g').attr('class', 'kg-glows');
-    var glow = glowGroup.selectAll('circle').data(nodes).enter().append('circle')
-      .attr('r', function(d) { return (KG_SIZES[d.type] || 5) + 3; })
-      .attr('fill', 'none')
-      .attr('stroke', function(d) { return KG_COLORS[d.type] || '#666'; })
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', 0.15)
-      .attr('filter', function(d) { return 'url(#kg-glow-' + d.type + ')'; });
-
-    // Nodes
-    var nodeGroup = g.append('g').attr('class', 'kg-nodes');
-    var node = nodeGroup.selectAll('circle').data(nodes).enter().append('circle')
-      .attr('r', function(d) { return KG_SIZES[d.type] || 5; })
-      .attr('fill', function(d) { return KG_COLORS[d.type] || '#666'; })
-      .attr('stroke', '#141414')
-      .attr('stroke-width', 0.5)
-      .attr('cursor', 'pointer')
-      .call(d3.drag()
-        .on('start', function(event, d) {
-          if (!event.active) kgSim.alphaTarget(0.3).restart();
-          d.fx = d.x; d.fy = d.y;
-        })
-        .on('drag', function(event, d) {
-          d.fx = event.x; d.fy = event.y;
-        })
-        .on('end', function(event, d) {
-          if (!event.active) kgSim.alphaTarget(0);
-          d.fx = null; d.fy = null;
-        })
-      );
-
-    // Hover effects
-    var tip = document.getElementById('kg-tooltip');
-    node.on('mouseover', function(event, d) {
-      d3.select(this).transition().duration(150)
-        .attr('r', (KG_SIZES[d.type] || 5) * 1.5);
-      var badge = KG_BADGE_CSS[d.type] || 'background:#333;color:#999';
-      tip.innerHTML =
-        '<div class="kg-tip-name">' + d.label + '</div>' +
-        '<span class="kg-tip-badge" style="' + badge + '">' + (d.type || 'unknown') + '</span>' +
-        (d.desc ? '<div class="kg-tip-desc">' + d.desc.substring(0, 120) + (d.desc.length > 120 ? '...' : '') + '</div>' : '') +
-        '<div class="kg-tip-conn">' + (kgConnMap[d.id] || 0) + ' connections</div>';
-      tip.classList.add('show');
-    })
-    .on('mousemove', function(event) {
-      tip.style.left = (event.clientX + 14) + 'px';
-      tip.style.top = (event.clientY - 14) + 'px';
-    })
-    .on('mouseout', function(event, d) {
-      d3.select(this).transition().duration(150)
-        .attr('r', KG_SIZES[d.type] || 5);
-      tip.classList.remove('show');
-    });
-
-    // Labels for large nodes
-    var labelGroup = g.append('g').attr('class', 'kg-labels');
-    var labelNodes = nodes.filter(function(d) { return (KG_SIZES[d.type] || 5) >= 10; });
-    var label = labelGroup.selectAll('text').data(labelNodes).enter().append('text')
-      .text(function(d) { return d.label.length > 16 ? d.label.substring(0, 15) + '\u2026' : d.label; })
-      .attr('fill', '#E8E0E0')
-      .attr('font-size', '8px')
-      .attr('font-family', 'Inter, sans-serif')
-      .attr('font-weight', '500')
-      .attr('text-anchor', 'middle')
-      .attr('dy', function(d) { return (KG_SIZES[d.type] || 5) + 12; })
-      .attr('pointer-events', 'none')
-      .attr('opacity', 0.7);
-
-    // Simulation
-    kgSim = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(edges).id(function(d) { return d.id; }).distance(40).strength(0.15))
-      .force('charge', d3.forceManyBody().strength(function(d) {
-        return -(KG_SIZES[d.type] || 5) * 6;
-      }))
-      .force('center', d3.forceCenter(0, 0))
-      .force('collision', d3.forceCollide().radius(function(d) { return (KG_SIZES[d.type] || 5) + 2; }))
-      .alphaDecay(0.02)
-      .on('tick', function() {
-        link.attr('d', function(d) {
-          var dx = d.target.x - d.source.x;
-          var dy = d.target.y - d.source.y;
-          var dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
-          return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y;
-        });
-        node.attr('cx', function(d) { return d.x; }).attr('cy', function(d) { return d.y; });
-        glow.attr('cx', function(d) { return d.x; }).attr('cy', function(d) { return d.y; });
-        label.attr('x', function(d) { return d.x; }).attr('y', function(d) { return d.y; });
-      });
-  }
-
-  function updateVisibility() {
-    if (!kgLoaded || !d3Loaded) return;
-    rebuildGraph();
-  }
-})();
-</script>
 
 </body>
 </html>

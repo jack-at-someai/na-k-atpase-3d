@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SomeLocks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Splash -->
+<div id="splash-screen" class="screen">
+    <canvas id="splash-canvas"></canvas>
+    <div class="title">SOMELOCKS</div>
+    <div class="subtitle">2048 Locks to Pick</div>
+    <button id="btn-play" class="btn primary">Play</button>
+</div>
+
+<!-- Level Select (Hex Grid) -->
+<div id="level-screen" class="screen hidden">
+    <div class="level-header">
+        <button id="btn-back-splash" class="btn-icon">&larr;</button>
+        <span class="level-title">Select Level</span>
+        <span class="level-progress" id="level-progress">0 / 2048</span>
+    </div>
+    <div class="level-scroll" id="level-scroll">
+        <canvas id="hex-canvas"></canvas>
+    </div>
+    <div id="purchase-banner" class="purchase-banner hidden">
+        <span class="lock-icon">&#128274;</span>
+        <span>Levels 65-2048 locked</span>
+        <button id="btn-purchase" class="btn primary small">Unlock All &mdash; $3.99</button>
+    </div>
+</div>
+
+<!-- Game -->
+<div id="game-screen" class="screen hidden">
+    <div class="game-hud">
+        <div class="hud-group">
+            <button id="btn-back-levels" class="btn-icon">&larr;</button>
+            <span class="hud-chip"><span class="hud-label">Lvl</span><span id="hud-level">1</span></span>
+        </div>
+        <span class="hud-center" id="hud-info"></span>
+        <div class="hud-group">
+            <span class="hud-chip"><span class="hud-icon">&#9733;</span><span id="hud-score">0</span></span>
+            <span class="hud-chip"><span class="hud-icon">&#9201;</span><span id="hud-time">0:00</span></span>
+        </div>
+    </div>
+    <div class="game-status" id="hud-status"></div>
+    <canvas id="game-canvas"></canvas>
+    <div class="game-status" id="game-flash"></div>
+    <div class="key-tray" id="key-tray"></div>
+    <div class="game-controls">
+        <div class="ctrl-col">
+            <button id="btn-left" class="ctrl-btn">&#9664;</button>
+        </div>
+        <div class="ctrl-col">
+            <button id="btn-undo" class="ctrl-btn disabled">&#8634;</button>
+            <span class="ctrl-label">undo</span>
+        </div>
+        <div class="ctrl-col">
+            <button id="btn-slot" class="ctrl-btn slot-btn disabled">&#10003;</button>
+            <span class="ctrl-label">slot</span>
+        </div>
+        <div class="ctrl-col">
+            <button id="btn-right" class="ctrl-btn">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<!-- Win -->
+<div id="win-screen" class="screen hidden">
+    <div class="win-title">Lock Picked!</div>
+    <div class="win-stars" id="win-stars"></div>
+    <div class="win-level" id="win-level">Level 1</div>
+    <div class="win-stats">
+        <div class="win-row"><span class="label">Score</span><span class="val" id="win-score"></span></div>
+        <div class="win-row"><span class="label">Time</span><span class="val" id="win-time"></span></div>
+        <div class="win-row"><span class="label">Moves</span><span class="val" id="win-moves"></span></div>
+        <div class="win-row"><span class="label">Pins</span><span class="val" id="win-bits"></span></div>
+        <div class="win-row"><span class="label">Rings</span><span class="val" id="win-rings"></span></div>
+    </div>
+    <div class="win-buttons">
+        <button id="btn-next" class="btn primary win-btn">Next Level</button>
+        <button id="btn-replay" class="btn win-btn">Replay</button>
+        <button id="btn-levels" class="btn win-btn">Levels</button>
+    </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

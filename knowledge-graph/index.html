@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Graph — SomeAI Research Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loading" id="loading">
+  <div class="loading-ring"></div>
+  <div class="loading-text">Building graph</div>
+</div>
+
+<canvas id="particle-canvas"></canvas>
+
+<a class="back-link" href="../">&larr; Portfolio</a>
+
+<div class="header">
+  <h1>Knowledge <span>Graph</span></h1>
+  <div class="sub">Consolidated research library &mdash; <span id="node-count">0</span> nodes, <span id="edge-count">0</span> edges</div>
+</div>
+
+<div class="view-toggle">
+  <button class="view-btn active" data-view="graph" onclick="setView('graph')">Graph</button>
+  <button class="view-btn" data-view="list" onclick="setView('list')">List</button>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="search" placeholder="Search nodes...">
+</div>
+
+<div class="filters" id="filters"></div>
+
+<div id="graph-view">
+  <svg id="graph-svg"></svg>
+</div>
+
+<div id="list-view"></div>
+
+<div class="legend" id="legend"></div>
+
+<div class="detail" id="detail">
+  <button class="detail-close" onclick="closeDetail()">&times;</button>
+  <h2 id="detail-name"></h2>
+  <span class="type-badge" id="detail-badge"></span>
+  <div class="meta" id="detail-meta"></div>
+  <div class="desc" id="detail-desc"></div>
+  <div class="connections">
+    Connections (<span id="detail-conn-count">0</span>)
+    <div class="conn-list" id="detail-connections"></div>
+  </div>
+</div>
+
+<div class="stats">
+  <span>Nodes: <strong id="stat-nodes">0</strong></span>
+  <span>Edges: <strong id="stat-edges">0</strong></span>
+  <span>Domains: <strong id="stat-domains">0</strong></span>
+  <span>Resources: <strong id="stat-refs">0</strong></span>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="graph.js"></script>
+</body>
+</html>

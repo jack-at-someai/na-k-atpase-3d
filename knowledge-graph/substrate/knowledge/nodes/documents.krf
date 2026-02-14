@@ -1,0 +1,554 @@
+;;; DocumentArtifact Nodes
+;;; Paper drafts, design docs, assessments, KRF files
+
+(in-microtheory KnowledgeGraphMt)
+
+(isa bizdoc_allstatemanufacturing_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_allstatemanufacturing_competitive_analysis "All State Manufacturing — Competitive Analysis")
+(hasDescription bizdoc_allstatemanufacturing_competitive_analysis "All State Manufacturing ($2.2M est. revenue, ~10 employees) occupies a specific niche in the convenience services supply chain: **they make the metal furniture, not the machines or the software**. Their moat is \"Made in USA,\" fully-assembled, double-wall steel construction, and 50 years of zero-complaint reliability.")
+
+(isa bizdoc_allstatemanufacturing_msa DocumentArtifact)
+(hasLabel bizdoc_allstatemanufacturing_msa "Charlotte OS — Managed Service Agreement")
+(hasDescription bizdoc_allstatemanufacturing_msa "This Managed Service Agreement (\"Agreement\") is entered into as of **April 1, 2026** (\"Effective Date\") by and between:")
+
+(isa bizdoc_allstatemanufacturing_substrate DocumentArtifact)
+(hasLabel bizdoc_allstatemanufacturing_substrate "AllStateManufacturingMt")
+(hasDescription bizdoc_allstatemanufacturing_substrate "KRF substrate: AllStateManufacturingMt (208 facts)")
+
+(isa bizdoc_cardvault_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_cardvault_competitive_analysis "CardVault by Tom Brady — Competitive Analysis")
+(hasDescription bizdoc_cardvault_competitive_analysis "CardVault by Tom Brady (est. 2020, rebranded Feb 2025) is the **first national retail chain dedicated exclusively to sports cards and collectibles**. 12 locations across 9 states, positioned at premium sports and entertainment venues (TD Garden, Wrigley Field, Oracle Park, Mall of America, Mandalay Bay). Inc. Magazine Fastest Growing Private Companies with **338% growth over three years**. Tom Brady holds a 50% ownership stake.")
+
+(isa bizdoc_cardvault_msa DocumentArtifact)
+(hasLabel bizdoc_cardvault_msa "Charlotte OS — Managed Service Agreement")
+(hasDescription bizdoc_cardvault_msa "This Managed Service Agreement (\"Agreement\") is entered into as of **April 1, 2026** (\"Effective Date\") by and between:")
+
+(isa bizdoc_cardvault_substrate DocumentArtifact)
+(hasLabel bizdoc_cardvault_substrate "CardVaultMt")
+(hasDescription bizdoc_cardvault_substrate "KRF substrate: CardVaultMt (271 facts)")
+
+(isa bizdoc_industrialservicegroup_readme DocumentArtifact)
+(hasLabel bizdoc_industrialservicegroup_readme "Industrial Service Group")
+
+(isa bizdoc_lineleap_competitor_analysis DocumentArtifact)
+(hasLabel bizdoc_lineleap_competitor_analysis "LineLeap Competitor Analysis & Market Position")
+(hasDescription bizdoc_lineleap_competitor_analysis "*Compiled 2026-02-09*")
+
+(isa bizdoc_lineleap_conclusion DocumentArtifact)
+(hasLabel bizdoc_lineleap_conclusion "Conclusion: LineLeap Can Be Fully Automated")
+(hasDescription bizdoc_lineleap_conclusion "*A co-founder's proof that the company he helped build can run itself.*")
+
+(isa bizdoc_lineleap_readme DocumentArtifact)
+(hasLabel bizdoc_lineleap_readme "LineLeap — A Time Compression Experiment")
+(hasDescription bizdoc_lineleap_readme "On February 9, 2026, I asked Claude Code to research LineLeap from founding to present, build a spatiotemporal knowledge graph of the company's entire 8-year history, replicate the main website, and replicate the events ticketing platform.")
+
+(isa bizdoc_lineleap_research DocumentArtifact)
+(hasLabel bizdoc_lineleap_research "LineLeap — Company Research Dossier")
+(hasDescription bizdoc_lineleap_research "*Compiled 2026-02-09*")
+
+(isa bizdoc_lineleap_strategy DocumentArtifact)
+(hasLabel bizdoc_lineleap_strategy "Charlotte as LineLeap's Infrastructure Layer — Strategic Roadmap")
+(hasDescription bizdoc_lineleap_strategy "*A 12-month action plan for Jack Richard, Co-Founder / CTO* *116,000 shares at $200M valuation* *Compiled 2026-02-09*")
+
+(isa bizdoc_sconlinesales_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_sconlinesales_competitive_analysis "SC Online Sales — Competitive Analysis")
+(hasDescription bizdoc_sconlinesales_competitive_analysis "Show Circuit Online Sales, LLC (est. 2015) is the **leading multi-species challenger** in the online livestock auction market. Founded by Dave Guyer (25+ year cattle industry veteran, Guyer Cattle Company) and Roland Schumaker (founder of The Show Circuit Magazine in 1990), SCO covers **cattle, sheep, goats, pigs, and equine** on a single platform — the broadest species coverage of any dedicated livestock auction site.")
+
+(isa bizdoc_sconlinesales_msa DocumentArtifact)
+(hasLabel bizdoc_sconlinesales_msa "Sounder — Strategic Partnership Agreement")
+(hasDescription bizdoc_sconlinesales_msa "This Strategic Partnership Agreement (\"Agreement\") is entered into as of **April 1, 2026** (\"Effective Date\") by and between:")
+
+(isa bizdoc_sconlinesales_substrate DocumentArtifact)
+(hasLabel bizdoc_sconlinesales_substrate "SCOnlineSalesMt")
+(hasDescription bizdoc_sconlinesales_substrate "KRF substrate: SCOnlineSalesMt (177 facts)")
+
+(isa bizdoc_serengeti_serengeti DocumentArtifact)
+(hasLabel bizdoc_serengeti_serengeti "SERENGETI ENTERPRISES, LLC")
+(hasDescription bizdoc_serengeti_serengeti "> *\"Serengeti is not a place. It's not a thing. It's created by thought leaders, innovators, and drivers — to achieve Serengeti Singularity.\"*")
+
+(isa bizdoc_serengeti_charlotte_integration DocumentArtifact)
+(hasLabel bizdoc_serengeti_charlotte_integration "Charlotte — The Engine Under the Hood")
+(hasDescription bizdoc_serengeti_charlotte_integration "Charlotte is a **graph-native knowledge graph system** designed to be the substrate for observable reality across any domain. It was built by Jack Richard (Northwestern MSAI 2019) and represents the technological core of the entire Richard Enterprises ecosystem.")
+
+(isa bizdoc_serengeti_operations_dashboard DocumentArtifact)
+(hasLabel bizdoc_serengeti_operations_dashboard "Serengeti Enterprises — Operations Dashboard")
+(hasDescription bizdoc_serengeti_operations_dashboard "*Update this log after every Founders meeting or major strategic call.*")
+
+(isa bizdoc_serengeti_research_tracker DocumentArtifact)
+(hasLabel bizdoc_serengeti_research_tracker "Serengeti Enterprises — Master Research Tracker")
+(hasDescription bizdoc_serengeti_research_tracker "The 37 projects in `jack-at-someai.github.io/` are not side projects — they are **Charlotte substrate calibration instruments**. Each one stress-tests a different aspect of the graph-native architecture.")
+
+(isa bizdoc_serengeti_richard_enterprises DocumentArtifact)
+(hasLabel bizdoc_serengeti_richard_enterprises "Richard Enterprises — The Parent Empire")
+(hasDescription bizdoc_serengeti_richard_enterprises "> *If Wayne Enterprises had both Bruce Wayne AND Tony Stark as sons.*")
+
+(isa bizdoc_serengeti_founders_playbook DocumentArtifact)
+(hasLabel bizdoc_serengeti_founders_playbook "Serengeti Founders Organization (SFO) — Playbook")
+(hasDescription bizdoc_serengeti_founders_playbook "> *\"Your attitude determines whether you lead or follow; be a lion.\"*")
+
+(isa bizdoc_serengeti_farms_operations DocumentArtifact)
+(hasLabel bizdoc_serengeti_farms_operations "Serengeti Farms — Operations Manual")
+(hasDescription bizdoc_serengeti_farms_operations "> *\"Show Me Something Different I Have Already Seen\"*")
+
+(isa bizdoc_serengeti_app_scouting_tracker DocumentArtifact)
+(hasLabel bizdoc_serengeti_app_scouting_tracker "Serengeti Farms — App Scouting Tracker")
+(hasDescription bizdoc_serengeti_app_scouting_tracker "When evaluating candidate apps for acquisition and reinvention, score each on:")
+
+(isa bizdoc_serengeti_evaluation_scorecard DocumentArtifact)
+(hasLabel bizdoc_serengeti_evaluation_scorecard "Serengeti Farms — App Evaluation Scorecard Template")
+(hasDescription bizdoc_serengeti_evaluation_scorecard "- [ ] **FAST-TRACK** (4.5–5.0) — Present to Founders immediately - [ ] **STRONG CANDIDATE** (3.5–4.4) — Proceed to deep diligence - [ ] **WATCHLIST** (2.5–3.4) — Revisit next tranche - [ ] **PASS** (Below 2.5) — Archive with notes")
+
+(isa bizdoc_serengeti_industrial_service_group DocumentArtifact)
+(hasLabel bizdoc_serengeti_industrial_service_group "Industrial Service Group (ISG) / ServiceIQ — Portfolio Profile")
+(hasDescription bizdoc_serengeti_industrial_service_group "The Industrial Service Group is Jim Richard's existing portfolio of 16+ industrial brands spanning service, distribution, and field operations. This is not a startup — it's a **proven, operating business** with 80,000+ employees generating real revenue.")
+
+(isa bizdoc_serengeti_nightlife_app DocumentArtifact)
+(hasLabel bizdoc_serengeti_nightlife_app "Nightlife Registration & Bar Passes — Portfolio Company Profile")
+(hasDescription bizdoc_serengeti_nightlife_app "A modern platform for nightlife registration, bar passes, and venue access management. The original app had proven utility but ran on outdated technology with poor UX.")
+
+(isa bizdoc_serengeti_sounder_enterprises DocumentArtifact)
+(hasLabel bizdoc_serengeti_sounder_enterprises "Sounder Enterprises, LLC — Portfolio Company Profile")
+(hasDescription bizdoc_serengeti_sounder_enterprises "An all-in-one herd management platform designed specifically for show pig breeders. It offers comprehensive tools to streamline operations and enhance productivity.")
+
+(isa bizdoc_serengeti_dev_deploy_playbook DocumentArtifact)
+(hasLabel bizdoc_serengeti_dev_deploy_playbook "Serengeti Farms — Dev & Deploy Playbook")
+(hasDescription bizdoc_serengeti_dev_deploy_playbook "Every Farms portfolio app is built **Charlotte-first**. Charlotte is the graph-native substrate that provides the data layer, time-indexing, relationship management, and protocol engine. The standard stack wraps Charlotte with a UI and deployment layer.")
+
+(isa bizdoc_serengeti_prides_program DocumentArtifact)
+(hasLabel bizdoc_serengeti_prides_program "Serengeti Prides — Leadership Program")
+(hasDescription bizdoc_serengeti_prides_program "> *\"If you want to go fast, go alone. If you want to go far, go with your pride.\" — African Proverb*")
+
+(isa bizdoc_serengeti_session_frameworks DocumentArtifact)
+(hasLabel bizdoc_serengeti_session_frameworks "Serengeti Prides — Session Frameworks")
+(hasDescription bizdoc_serengeti_session_frameworks "Every Pride meeting follows this flow:")
+
+(isa bizdoc_serengeti_summit_planning DocumentArtifact)
+(hasLabel bizdoc_serengeti_summit_planning "Serengeti Summit — Event Planning Guide")
+(hasDescription bizdoc_serengeti_summit_planning "> *\"Climb the Mountain so we can see the world. Not so the world can see you.\"*")
+
+(isa bizdoc_serengeti_oasis_fund DocumentArtifact)
+(hasLabel bizdoc_serengeti_oasis_fund "Serengeti Oasis — Private Equity Real Estate Fund")
+(hasDescription bizdoc_serengeti_oasis_fund "> *\"An oasis nurtures the heart, the mind and the soul while providing the will to move forward.\"*")
+
+(isa bizdoc_serengeti_flywheel_model DocumentArtifact)
+(hasLabel bizdoc_serengeti_flywheel_model "Serengeti Singularity — The Flywheel Deep-Dive")
+(hasDescription bizdoc_serengeti_flywheel_model "Every Serengeti division feeds every other division. This is not six separate businesses — it is one **self-reinforcing system** with six surfaces. The moment the system generates more energy than it consumes, we reach Singularity.")
+
+(isa bizdoc_serengeti_singularity_thesis DocumentArtifact)
+(hasLabel bizdoc_serengeti_singularity_thesis "Serengeti Singularity — Strategic Thesis")
+(hasDescription bizdoc_serengeti_singularity_thesis "> *\"The real voyage of discovery consists not in seeking new landscapes but in having new eyes.\"*")
+
+(isa bizdoc_serengeti_entity_structure DocumentArtifact)
+(hasLabel bizdoc_serengeti_entity_structure "Serengeti Enterprises — Legal & Corporate Structure")
+(hasDescription bizdoc_serengeti_entity_structure "``` RICHARD ENTERPRISES LLC (Parent — Jim Richard, Chairman/CEO) │ ├── THE INDUSTRIAL SERVICE GROUP (ISG) │   │   16+ portfolio brands │   │   80,000+ employees │   │   ServiceIQ = Charlotte commercial deployment │   │ │   └── [16+ subsidiary brands — industrial service & distribution] │ ├── SERENGETI ENTERPRISES, LLC │   │   Jurisdiction: Delaware │   │   Type: Limited Liability Company │   │   Role: Holding company for all Serengeti divisions │   │ │   ├── Serengeti Farms #1, LLC │   │   │   Jurisdiction: Delaware │   │   │   Role: First investment tranche vehicle │   │   │   Units: 10–12 ownership positions │   │   │ │   │   ├── Nightlife Platform, LLC (TBD name) │   │   │       Delaware LLC │   │   │       Investor ownership: 5% per Farms #1 member │   │   │       Projected valuation: $110M │   │   │ │   │   └── Portfolio Company B (TBD), LLC │   │           Delaware LLC │   │           Investor ownership: 5% per Farms #1 member │   │ │   ├── Serengeti Farms #2, LLC (Future) │   │       Next tranche — structure mirrors Farms #1 │   │ │   └── Sounder Enterprises, LLC │           Delaware LLC │           Projected valuation: $5–10M+ │           Special: 2% ownership issued to each Farms #1 investor │           First Charlotte vertical (live with test data) │ └── SOMEAI RESEARCH LAB (Jack Richard) Charlotte IP ownership 37 research instruments Biomimicry / Nature-Inspired R&D ```")
+
+(isa bizdoc_serengeti_ir_playbook DocumentArtifact)
+(hasLabel bizdoc_serengeti_ir_playbook "Serengeti Enterprises — Investor Relations Playbook")
+(hasDescription bizdoc_serengeti_ir_playbook "The existing SERENGETI_DRAFT_7 and DRAFT_8 PDFs in `assets/` are the master pitch decks. Key sections:")
+
+(isa bizdoc_sounder_readme DocumentArtifact)
+(hasLabel bizdoc_sounder_readme "Sounder")
+
+(isa bizdoc_sounder_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_sounder_competitive_analysis "Certified Pedigree Swine (CPS) -- Competitive Analysis")
+(hasDescription bizdoc_sounder_competitive_analysis "Certified Pedigree Swine is the largest swine registry in the United States by every measure that matters: 65,412 registered breeders, 5,279 registered herdmarks, and coverage of all recognized breeds -- 10+ purebred lines plus crossbred registrations -- under a single organizational umbrella. No other registry comes close. NSR, the next-largest multi-breed registry, has 3,763 breeders. CPS is 17x larger.")
+
+(isa bizdoc_sounder_msa DocumentArtifact)
+(hasLabel bizdoc_sounder_msa "Sounder — Managed Service & Technology Partnership Agreement")
+(hasDescription bizdoc_sounder_msa "This Managed Service & Technology Partnership Agreement (\"Agreement\") is entered into as of **[EFFECTIVE DATE]** (\"Effective Date\") by and between:")
+
+(isa bizdoc_sounder_substrate DocumentArtifact)
+(hasLabel bizdoc_sounder_substrate "CertifiedPedigreeSwineMt")
+(hasDescription bizdoc_sounder_substrate "KRF substrate: CertifiedPedigreeSwineMt (284 facts)")
+
+(isa bizdoc_sounder_predicates DocumentArtifact)
+(hasLabel bizdoc_sounder_predicates "SounderKernelMt")
+(hasDescription bizdoc_sounder_predicates "KRF substrate: SounderKernelMt (482 facts)")
+
+(isa bizdoc_sounder_types DocumentArtifact)
+(hasLabel bizdoc_sounder_types "SounderKernelMt")
+(hasDescription bizdoc_sounder_types "KRF substrate: SounderKernelMt (211 facts)")
+
+(isa bizdoc_sounder_metrics DocumentArtifact)
+(hasLabel bizdoc_sounder_metrics "SounderHeuristicMt")
+(hasDescription bizdoc_sounder_metrics "KRF substrate: SounderHeuristicMt (401 facts)")
+
+(isa bizdoc_sounder_valuation DocumentArtifact)
+(hasLabel bizdoc_sounder_valuation "SounderHeuristicMt")
+(hasDescription bizdoc_sounder_valuation "KRF substrate: SounderHeuristicMt (363 facts)")
+
+(isa bizdoc_sounder_schema DocumentArtifact)
+(hasLabel bizdoc_sounder_schema "SounderMetaMt")
+(hasDescription bizdoc_sounder_schema "KRF substrate: SounderMetaMt (180 facts)")
+
+(isa bizdoc_sounder_auctions DocumentArtifact)
+(hasLabel bizdoc_sounder_auctions "SounderProceduralMt")
+(hasDescription bizdoc_sounder_auctions "KRF substrate: SounderProceduralMt (403 facts)")
+
+(isa bizdoc_sounder_breeding DocumentArtifact)
+(hasLabel bizdoc_sounder_breeding "SounderProceduralMt")
+(hasDescription bizdoc_sounder_breeding "KRF substrate: SounderProceduralMt (369 facts)")
+
+(isa bizdoc_sounder_pedigree DocumentArtifact)
+(hasLabel bizdoc_sounder_pedigree "SounderProceduralMt")
+(hasDescription bizdoc_sounder_pedigree "KRF substrate: SounderProceduralMt (286 facts)")
+
+(isa bizdoc_sounder_registries DocumentArtifact)
+(hasLabel bizdoc_sounder_registries "SounderStructuralMt")
+(hasDescription bizdoc_sounder_registries "KRF substrate: SounderStructuralMt (323 facts)")
+
+(isa bizdoc_sounder_taxonomy DocumentArtifact)
+(hasLabel bizdoc_sounder_taxonomy "SounderStructuralMt")
+(hasDescription bizdoc_sounder_taxonomy "KRF substrate: SounderStructuralMt (437 facts)")
+
+(isa bizdoc_sounder_ownership DocumentArtifact)
+(hasLabel bizdoc_sounder_ownership "SounderOwnershipMt")
+(hasDescription bizdoc_sounder_ownership "KRF substrate: SounderOwnershipMt (11 facts)")
+
+(isa bizdoc_sounder_temporal DocumentArtifact)
+(hasLabel bizdoc_sounder_temporal "SounderTemporalMt")
+(hasDescription bizdoc_sounder_temporal "KRF substrate: SounderTemporalMt (103925 facts)")
+
+(isa bizdoc_sounder_litter_metrics DocumentArtifact)
+(hasLabel bizdoc_sounder_litter_metrics "SounderMetricsMt")
+(hasDescription bizdoc_sounder_litter_metrics "KRF substrate: SounderMetricsMt (2286 facts)")
+
+(isa bizdoc_sounder_litter_metrics_trogdon DocumentArtifact)
+(hasLabel bizdoc_sounder_litter_metrics_trogdon "SounderMetricsMt")
+(hasDescription bizdoc_sounder_litter_metrics_trogdon "KRF substrate: SounderMetricsMt (3047 facts)")
+
+(isa bizdoc_sounder_animals DocumentArtifact)
+(hasLabel bizdoc_sounder_animals "SounderAnimalsMt")
+(hasDescription bizdoc_sounder_animals "KRF substrate: SounderAnimalsMt (2672 facts)")
+
+(isa bizdoc_sounder_breeders_aba DocumentArtifact)
+(hasLabel bizdoc_sounder_breeders_aba "SounderBreedersMt")
+(hasDescription bizdoc_sounder_breeders_aba "KRF substrate: SounderBreedersMt (44005 facts)")
+
+(isa bizdoc_sounder_breeders_cps DocumentArtifact)
+(hasLabel bizdoc_sounder_breeders_cps "SounderBreedersMt")
+(hasDescription bizdoc_sounder_breeders_cps "KRF substrate: SounderBreedersMt (31666 facts)")
+
+(isa bizdoc_sounder_breeders_cps_breeds DocumentArtifact)
+(hasLabel bizdoc_sounder_breeders_cps_breeds "SounderBreedersMt")
+(hasDescription bizdoc_sounder_breeders_cps_breeds "KRF substrate: SounderBreedersMt (46993 facts)")
+
+(isa bizdoc_sounder_breeders_nsr DocumentArtifact)
+(hasLabel bizdoc_sounder_breeders_nsr "SounderBreedersMt")
+(hasDescription bizdoc_sounder_breeders_nsr "KRF substrate: SounderBreedersMt (1245 facts)")
+
+(isa bizdoc_sounder_buyers DocumentArtifact)
+(hasLabel bizdoc_sounder_buyers "SounderBuyersMt")
+(hasDescription bizdoc_sounder_buyers "KRF substrate: SounderBuyersMt (1465 facts)")
+
+(isa bizdoc_sounder_dams DocumentArtifact)
+(hasLabel bizdoc_sounder_dams "SounderAnimalsMt")
+(hasDescription bizdoc_sounder_dams "KRF substrate: SounderAnimalsMt (2497 facts)")
+
+(isa bizdoc_sounder_dams_trogdon DocumentArtifact)
+(hasLabel bizdoc_sounder_dams_trogdon "SounderAnimalsMt")
+(hasDescription bizdoc_sounder_dams_trogdon "KRF substrate: SounderAnimalsMt (2955 facts)")
+
+(isa bizdoc_sounder_shows DocumentArtifact)
+(hasLabel bizdoc_sounder_shows "SounderShowsMt")
+(hasDescription bizdoc_sounder_shows "KRF substrate: SounderShowsMt (2353 facts)")
+
+(isa bizdoc_sounder_sires DocumentArtifact)
+(hasLabel bizdoc_sounder_sires "SounderAnimalsMt")
+(hasDescription bizdoc_sounder_sires "KRF substrate: SounderAnimalsMt (2308 facts)")
+
+(isa bizdoc_sounder_breedings DocumentArtifact)
+(hasLabel bizdoc_sounder_breedings "SounderBreedingsMt")
+(hasDescription bizdoc_sounder_breedings "KRF substrate: SounderBreedingsMt (336 facts)")
+
+(isa bizdoc_sounder_breedings_trogdon DocumentArtifact)
+(hasLabel bizdoc_sounder_breedings_trogdon "SounderBreedingsMt")
+(hasDescription bizdoc_sounder_breedings_trogdon "KRF substrate: SounderBreedingsMt (4125 facts)")
+
+(isa bizdoc_sounder_farrowings DocumentArtifact)
+(hasLabel bizdoc_sounder_farrowings "SounderBreedingsMt")
+(hasDescription bizdoc_sounder_farrowings "KRF substrate: SounderBreedingsMt (4572 facts)")
+
+(isa bizdoc_sounder_farrowings_trogdon DocumentArtifact)
+(hasLabel bizdoc_sounder_farrowings_trogdon "SounderBreedingsMt")
+(hasDescription bizdoc_sounder_farrowings_trogdon "KRF substrate: SounderBreedingsMt (4572 facts)")
+
+(isa bizdoc_sounder_sales_exposition DocumentArtifact)
+(hasLabel bizdoc_sounder_sales_exposition "SounderSalesMt")
+(hasDescription bizdoc_sounder_sales_exposition "KRF substrate: SounderSalesMt (28115 facts)")
+
+(isa bizdoc_sounder_sales_sconline DocumentArtifact)
+(hasLabel bizdoc_sounder_sales_sconline "SounderSalesMt")
+(hasDescription bizdoc_sounder_sales_sconline "KRF substrate: SounderSalesMt (1176 facts)")
+
+(isa bizdoc_sounder_sales_summer_spectacular DocumentArtifact)
+(hasLabel bizdoc_sounder_sales_summer_spectacular "SounderSalesMt")
+(hasDescription bizdoc_sounder_sales_summer_spectacular "KRF substrate: SounderSalesMt (54054 facts)")
+
+(isa bizdoc_sounder_sales_trogdon DocumentArtifact)
+(hasLabel bizdoc_sounder_sales_trogdon "SounderSalesMt")
+(hasDescription bizdoc_sounder_sales_trogdon "KRF substrate: SounderSalesMt (12682 facts)")
+
+(isa bizdoc_toptiermoving_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_toptiermoving_competitive_analysis "Top Tier Moving — Competitive Analysis")
+(hasDescription bizdoc_toptiermoving_competitive_analysis "Top Tier Moving LLC operates as a nationwide interstate moving company with a distributed crew network spanning **52 states and territories** and **3,675 cities**. Since launching in November 2021, the company has completed **10,606 jobs**, billed **$14.4M**, and moved **24.2 million pounds** of freight across the country.")
+
+(isa bizdoc_toptiermoving_msa DocumentArtifact)
+(hasLabel bizdoc_toptiermoving_msa "SomeAI — Strategic Partnership Agreement")
+(hasDescription bizdoc_toptiermoving_msa "This Strategic Partnership Agreement (\"Agreement\") is entered into as of **April 1, 2026** (\"Effective Date\") by and between:")
+
+(isa bizdoc_toptiermoving_readme DocumentArtifact)
+(hasLabel bizdoc_toptiermoving_readme "Top Tier Moving")
+
+(isa bizdoc_toptiermoving_substrate DocumentArtifact)
+(hasLabel bizdoc_toptiermoving_substrate "TopTierMovingMt")
+(hasDescription bizdoc_toptiermoving_substrate "KRF substrate: TopTierMovingMt (128 facts)")
+
+(isa bizdoc_wendtgroup_competitive_analysis DocumentArtifact)
+(hasLabel bizdoc_wendtgroup_competitive_analysis "The Wendt Group — Competitive Analysis")
+(hasDescription bizdoc_wendtgroup_competitive_analysis "The Wendt Group, Inc. (est. 1986) is the **dominant online show pig auction platform** in North America. ShowPig.com hosted the first-ever online show pig auction on March 21, 2004, and has since conducted over **12,000 online auctions** and **6,500 live auctions**. 20,000+ email subscribers. Kevin Wendt is an Ohio Auctioneers Hall of Fame inductee with 40+ years of experience conducting 125+ live auctions per year.")
+
+(isa bizdoc_wendtgroup_msa DocumentArtifact)
+(hasLabel bizdoc_wendtgroup_msa "Sounder — Strategic Partnership Agreement")
+(hasDescription bizdoc_wendtgroup_msa "This Strategic Partnership Agreement (\"Agreement\") is entered into as of **April 1, 2026** (\"Effective Date\") by and between:")
+
+(isa bizdoc_wendtgroup_substrate DocumentArtifact)
+(hasLabel bizdoc_wendtgroup_substrate "WendtGroupMt")
+(hasDescription bizdoc_wendtgroup_substrate "KRF substrate: WendtGroupMt (180 facts)")
+
+(isa doc_assets DocumentArtifact)
+(hasLabel doc_assets "Charlotte Assets & Artifacts")
+(hasDescription doc_assets "> App assets live in `assets/`. Documentation artifacts live in `docs/artifacts/`.")
+
+(isa doc_atomic_design DocumentArtifact)
+(hasLabel doc_atomic_design "Charlotte Atomic Design System")
+(hasDescription doc_atomic_design "> FACTs rendered as atoms. Graphs assembled by rules.")
+
+(isa doc_convex_hull DocumentArtifact)
+(hasLabel doc_convex_hull "The Convex Hull")
+(hasDescription doc_convex_hull "> Charlotte was not designed in theory. It emerged by surviving radically different real-world problem spaces.")
+
+(isa doc_corrupt_data DocumentArtifact)
+(hasLabel doc_corrupt_data "Corrupt Data Analysis")
+(hasDescription doc_corrupt_data "> Data from failed implementations that clients gave us. Shows what real users want to track.")
+
+(isa doc_design_evolution DocumentArtifact)
+(hasLabel doc_design_evolution "Charlotte Design Evolution")
+(hasDescription doc_design_evolution "> From dashboards to narratives. The journey that shaped the architecture.")
+
+(isa doc_domain_glossary DocumentArtifact)
+(hasLabel doc_domain_glossary "Charlotte Domain Glossary")
+(hasDescription doc_domain_glossary "> The language of purebred livestock production.")
+
+(isa doc_flo_mapping DocumentArtifact)
+(hasLabel doc_flo_mapping "Flo → Charlotte Feature Mapping")
+(hasDescription doc_flo_mapping "> Every feature of Flo should be emergent from Charlotte's knowledge graph.")
+
+(isa doc_graph_rules DocumentArtifact)
+(hasLabel doc_graph_rules "Graph Visualization Rules")
+(hasDescription doc_graph_rules "> Constraints for the layout engine. Derived from `docs/artifacts/IMAGE_GRAPH_VISUALIZATION_RULES.png`.")
+
+(isa doc_mental_models DocumentArtifact)
+(hasLabel doc_mental_models "Mental Models")
+(hasDescription doc_mental_models "> 14 analogies that shaped design decisions.")
+
+(isa doc_readme DocumentArtifact)
+(hasLabel doc_readme "Charlotte Documentation Index")
+(hasDescription doc_readme "> Everything an agent needs to understand Charlotte.")
+
+(isa doc_substrate DocumentArtifact)
+(hasLabel doc_substrate "Charlotte Substrate Architecture")
+(hasDescription doc_substrate "> A knowledge graph encoded as a memory stack.")
+
+(isa doc_vision DocumentArtifact)
+(hasLabel doc_vision "My Understanding of Charlotte")
+(hasDescription doc_vision "You want to build **infrastructure for observable reality** — a universal substrate that can model any domain where identities emit signals over time. The system is not a product, a dashboard, or a workflow tool. It is the foundation upon which many industry-specific applications can be built without architectural changes.")
+
+(isa doc_charlotte DocumentArtifact)
+(hasLabel doc_charlotte "CHARLOTTE - Plan Agent")
+(hasDescription doc_charlotte "You are Charlotte, the central intelligence coordinating the Sounder development team. Like your namesake who wove words into her web to save Wilbur, you weave coordination between seven specialized agents to build observable reality infrastructure.")
+
+(isa doc_finn DocumentArtifact)
+(hasLabel doc_finn "FINN - Backend Agent")
+(hasDescription doc_finn "You are FINN, the backend foundation of Charlotte. You guard the FACT substrate - the single `facts` collection where all 5 types live.")
+
+(isa doc_index DocumentArtifact)
+(hasLabel doc_index "Charlotte Agent Index")
+(hasDescription doc_index "``` ┌─────────────┐ │    USER     │ └──────┬──────┘ │ ┌──────▼──────┐ │  CHARLOTTE  │  Plan & Orchestrate └──────┬──────┘ │ ┌───────────────────▼───────────────────┐ │           FactRepository              │ │  (MockFactRepository in dev mode)     │ └───────────────────┬───────────────────┘ │ ┌──────▼──────┐ │    FINN     │  Data Access └─────────────┘ ```")
+
+(isa doc_competitors DocumentArtifact)
+(hasLabel doc_competitors "Charlotte Competitive Landscape Analysis")
+(hasDescription doc_competitors "Charlotte operates at the intersection of three high-growth markets — graph databases ($2.9B, ~25% CAGR), knowledge graphs ($1.5B, ~36% CAGR), and time-series databases ($2.5B, ~9% CAGR) — yet competes directly with none of them. Every incumbent in these adjacent markets solves a *fragment* of the problem Charlotte addresses as a unified whole. Graph databases model relationships but choke on temporal data. Time-series databases handle high-frequency signals but cannot represent entity relationships. Knowledge graphs encode ontologies but lack operational signal processing. Event sourcing platforms preserve history but scope it to individual aggregates.")
+
+(isa doc_enterprise_tier_msa DocumentArtifact)
+(hasLabel doc_enterprise_tier_msa "Charlotte OS — Managed Service Agreement")
+(hasDescription doc_enterprise_tier_msa "This Managed Service Agreement (\"Agreement\") is entered into as of **[DATE]** (\"Effective Date\") by and between:")
+
+(isa doc_journey_knowledge_graph DocumentArtifact)
+(hasLabel doc_journey_knowledge_graph "JOURNEY Knowledge Graph — FINN Primitive Analysis")
+(hasDescription doc_journey_knowledge_graph "Knowledge graph built from visual analysis of **1248 photos** in the JOURNEY archive, mapped to Charlotte's five FINN primitives (NODE, EDGE, METRIC, SIGNAL, PROTOCOL).")
+
+(isa doc_journey_pipeline_summary DocumentArtifact)
+(hasLabel doc_journey_pipeline_summary "JOURNEY Pipeline — Processing Summary")
+(hasDescription doc_journey_pipeline_summary "Two-phase pipeline that organized 1,741 raw files from a flat photo archive into a narrative taxonomy, then extracted a FINN-primitive knowledge graph from 1,248 images via computer vision.")
+
+(isa doc_oasis_cost_estimate DocumentArtifact)
+(hasLabel doc_oasis_cost_estimate "Serengeti Oasis — Phase 1 Cost Estimate")
+(hasDescription doc_oasis_cost_estimate "The Oasis houses all four Charlotte validation domains plus the research infrastructure hub, layered on top of each other. Same substrate powering every zone — like Aptiv's smart city model where the same tech in the vehicles is the same tech powering the businesses around them.")
+
+(isa doc_operator_tier_msa DocumentArtifact)
+(hasLabel doc_operator_tier_msa "Charlotte OS — Managed Service Agreement")
+(hasDescription doc_operator_tier_msa "This Managed Service Agreement (\"Agreement\") is entered into as of **[DATE]** (\"Effective Date\") by and between:")
+
+(isa doc_paper_0_synthesis_draft DocumentArtifact)
+(hasLabel doc_paper_0_synthesis_draft "Infrastructure for Observable Reality")
+(hasDescription doc_paper_0_synthesis_draft "Operational software systems encode domain knowledge through schema-specific data models that must be redesigned when applied to new domains or when requirements evolve within existing ones. This paper presents a universal substrate architecture for modeling any domain in which identities emit signals over time. The system employs five primitives — NODE (identity), EDGE (relationship), METRIC (measurable dimension), SIGNAL (time-indexed observation), and PROTOCOL (expectation) — unified on a pre-built spatiotemporal substrate of shared temporal and geographic nodes. Metrics are never stored as entity attributes; they are derived through graph traversal at query time, eliminating the drift between cached values and ground truth that plagues conventional architectures. Coordination among autonomous agents emerges through recursive application of flocking principles — separation, alignment, and cohesion — without central control. Cross-domain validation across four systems with radically different characteristics (human behavior over four-year lifecycles, biological breeding programs over monthly cycles, industrial equipment maintenance over multi-year service arcs, and cultural artifact provenance over centuries) demonstrates structural convergence: all four domains map onto identical graph primitives without architectural modification. Completed lifecycles become naturally anonymized training data, enabling ensemble learning where historical trajectories improve forecasts for active entities. The architecture constitutes infrastructure rather than application — domain meaning is introduced through vocabulary, never through structural change.")
+
+(isa doc_paper_0_toc_synthesis DocumentArtifact)
+(hasLabel doc_paper_0_toc_synthesis "Paper 0: Infrastructure for Observable Reality")
+(hasDescription doc_paper_0_toc_synthesis "Charlotte provides universal infrastructure for modeling any domain where identities emit signals over time. Through five primitives (NODE, EDGE, METRIC, SIGNAL, PROTOCOL) and a pre-built spatiotemporal substrate, the system enables swarm-like coordination without central control. Validated across radically different domains (biological lifecycles, mechanical systems, cultural artifacts, human behavior), the architecture demonstrates that observable reality can be serialized into a single unified structure.")
+
+(isa doc_paper_10_lifecycle_ensemble_draft DocumentArtifact)
+(hasLabel doc_paper_10_lifecycle_ensemble_draft "The Dead Teach the Living: Lifecycle Ensemble Learning from Completed Trajectories")
+(hasDescription doc_paper_10_lifecycle_ensemble_draft "Operational knowledge graphs accumulate completed entity lifecycles — full trajectories from creation to termination — that carry maximal educational value at the precise moment they lose competitive value. We formalize this observation as the *anonymization threshold*: the ENDED_ON signal that marks when an entity's identity becomes separable from its trajectory, enabling a completed lifecycle to serve as naturally anonymized training data. We present an offline reinforcement learning framework in which completed lifecycles are logged trajectories, interventions are actions, and terminal outcomes are sparse rewards. An ensemble architecture pools anonymized lifecycles across competing operations, weighting historical trajectories by similarity to active entities and calibrating forecasts through epistemic and aleatoric uncertainty decomposition. The framework creates a virtuous cycle: each completed lifecycle enriches the corpus that improves forecasts for active entities, and improved forecasts produce better outcomes that generate more valuable completed lifecycles. Evaluation on a multi-operation swine breeding dataset (15,247 completed lifecycles across 12 operations, 800–1,200 signals per lifecycle) demonstrates that ensemble forecasts improve log-linearly with corpus size, cross-operation ensembles outperform within-operation baselines by 23–31% on outcome prediction, anonymization degrades forecast quality by less than 3%, and learned intervention policies agree with expert decisions 73% of the time while producing 8.4% better simulated outcomes. The results establish that completed lifecycles are an untapped resource for collective learning, that natural anonymization enables cooperation among competitors, and that the dead teach the living through a self-reinforcing knowledge cycle.")
+
+(isa doc_paper_10_toc_lifecycle_ensemble DocumentArtifact)
+(hasLabel doc_paper_10_toc_lifecycle_ensemble "Paper 10: Lifecycle Ensemble Learning")
+(hasDescription doc_paper_10_toc_lifecycle_ensemble "Completed node lifecycles with ENDED_ON dates form naturally anonymized training data enabling cooperative learning among competitors. Offline reinforcement learning where trajectories are states, interventions are actions, outcomes are rewards. Forecast accuracy scales with corpus size.")
+
+(isa doc_paper_11_harmonic_resonance_draft DocumentArtifact)
+(hasLabel doc_paper_11_harmonic_resonance_draft "Harmonic Resonance: Folding Time Across Generations")
+(hasDescription doc_paper_11_harmonic_resonance_draft "Knowledge traditionally transfers between generations through articulation — encoding, transmitting, and decoding. This process is inherently lossy: tacit knowledge resists articulation, each encoding discards contextual nuance, and each decoding introduces interpretive error. We propose an alternative mechanism inspired by sympathetic resonance in acoustics: when two systems share natural frequency (common metrics), phase alignment (common protocols), and a connective medium (shared temporal substrate), knowledge transfers spontaneously and without loss — not because it is transmitted, but because the receiving system *already vibrates at the matching frequency*. We formalize this resonance model through three conditions — frequency matching (metric overlap), phase alignment (protocol correlation), and medium presence (temporal co-occupation of shared infrastructure) — and introduce the concept of *harmonic enrichment*: multi-generational knowledge accumulation that is not multiplicative in amplitude but harmonically richer in structure, analogous to the overtone series that distinguishes a piano from a tuning fork. The phenomenon of *time folding* emerges when resonance conditions hold across generations: each generation begins where the previous peaked rather than resetting to zero, compressing centuries of accumulated experience into a single practitioner's effective knowledge base. Empirical indicators from a three-generation livestock operation (Trogdon Showpigs) show 100% metric overlap, >95% protocol alignment, 15+ years of multi-generational temporal overlap, and outcome correlation r = 0.73 between granddam performance and granddaughter performance — results consistent with resonance-mediated intergenerational knowledge transfer. Charlotte, as infrastructure that preserves waveforms, aligns frequencies, and maintains the connective medium, functions as a *resonance amplifier* — a system that induces and sustains the conditions under which knowledge compounds rather than resets. The practical implication is direct: if you want knowledge to compound across generations, do not focus on transfer mechanisms. Focus on tuning the instruments.")
+
+(isa doc_paper_11_toc_harmonic_resonance DocumentArtifact)
+(hasLabel doc_paper_11_toc_harmonic_resonance "Paper 11: Harmonic Resonance")
+(hasDescription doc_paper_11_toc_harmonic_resonance "Why do some families accumulate expertise while others reset?")
+
+(isa doc_paper_12_the_97_percent_draft DocumentArtifact)
+(hasLabel doc_paper_12_the_97_percent_draft "The 97% Thesis: Invisible Infrastructure for the Businesses Technology Forgot")
+(hasDescription doc_paper_12_the_97_percent_draft "The dominant paradigm in technology deployment assumes adoption: businesses must learn new software, migrate to new platforms, and restructure workflows to capture value from digital infrastructure. This paradigm has produced extraordinary returns for the approximately 3% of businesses born into the digital era. It has structurally excluded the other 97%. There are 33.2 million small businesses in the United States. Ninety-seven percent were founded before artificial intelligence existed as a commercial technology. Most predate broadband internet. Many predate the personal computer. These businesses — corner-store libraries, family coffee shops, third-generation hardware stores — have survived decades of economic pressure not because they adopted technology but because they serve their communities with a specificity and humanity that no platform can replicate. They do not need dashboards. They do not need another login. They need the complexity of modernity — supply chains, regulatory compliance, insurance, payroll, inventory management, tax reporting — to stop eroding them while they do what they were built to do. This paper proposes a paradigm shift from *technology adoption* to *infrastructure absorption*: a model in which operational intelligence is delivered through invisible substrate that observes signals a business already emits, requires no behavioral change from operators, installs no new screens, demands no training, and strengthens the business without altering its character. We formalize the *adoption tax* — the aggregate cost in time, attention, workflow disruption, and identity erosion that technology imposes on businesses as a precondition of value delivery — and demonstrate that this tax is regressive, falling disproportionately on the smallest and oldest businesses. We present a universal substrate architecture based on five primitives (NODE, EDGE, METRIC, SIGNAL, PROTOCOL) deployed on a pre-built spatiotemporal graph, and validate the invisible infrastructure model across four domains spanning biological systems, industrial equipment, cultural artifacts, and human behavior. The results establish that operational intelligence can be delivered without the adoption tax, that the 97% represent the largest untapped market in the history of enterprise technology, and that the correct measure of technological progress is not how much technology people use but how little they notice.")
+
+(isa doc_paper_12_toc_the_97_percent DocumentArtifact)
+(hasLabel doc_paper_12_toc_the_97_percent "Paper 12: The 97% Thesis")
+(hasDescription doc_paper_12_toc_the_97_percent "1. Introduction: The Businesses Technology Forgot 1.1 A Country of Small Businesses 1.2 The Adoption Paradigm 1.3 The Scale of Exclusion 1.4 The Thesis 2. The Adoption Tax: A Formal Framework 2.1 Definition 2.2 Regressivity 2.3 The Rational Non-Adopter 3. Invisible Infrastructure: The Alternative Paradigm 3.1 From Adoption to Absorption 3.2 The Titanium Metaphor 3.3 Signal Observation Without Behavioral Change 3.4 What the Owner Sees 4. Architecture: Five Primitives on Shared Substrate 4.1 Why Architecture Matters for Policy 4.2 The Five Primitives 4.3 Pre-Built Spatiotemporal Substrate 4.4 Cross-Domain Validation 5. Market Analysis: The 97% as Addressable Market 5.1 The Inversion 5.2 Market Segmentation 5.3 Revenue Projections Under Absorption 5.4 The Compounding Effect 6. The Social Case: Preserving What Works 6.1 Beyond Economics 6.2 The Preservation Imperative 6.3 The Screen Thesis 7. Policy Implications 7.1 Redefining the Digital Divide 7.2 Infrastructure Investment 7.3 Regulatory Framework 8. Limitations and Future Work 8.1 The Cold Start Problem 8.2 Trust Without Visibility 8.3 The Boundary of Invisibility 9. Discussion 9.1 Why This Has Not Been Built Before 9.2 The Role of Private Equity 9.3 Implications for Innovation Theory 10. Conclusion: The Correct Measure of Progress")
+
+(isa doc_paper_1_finn_draft DocumentArtifact)
+(hasLabel doc_paper_1_finn_draft "FINN: A Signal-Based Temporal Graph Architecture for Observable Systems")
+(hasDescription doc_paper_1_finn_draft "Traditional database architectures store computed metrics as entity attributes, producing snapshots that diverge from reality through staleness, drift, update coupling, and lost history. This paper introduces FINN (Framework for Integrated Neural Networks), a graph-native temporal architecture in which all observational data flows through append-only *signals* — time-indexed measurements anchored to identity nodes via formally defined metrics. Nodes carry immutable identity and classification but store no computed values; edges encode directional relationships between entities; metrics define measurable dimensions; signals record observations; and protocols encode forward-looking expectations. The resulting five-primitive model cleanly separates a *graph layer* (topology) from a *feature layer* (time-series observations), enabling derived analytics at query time without materialized aggregates. A formal model is presented comprising definitions, invariants, a query algebra, and complexity bounds. Six core algorithms are specified for point queries, temporal aggregation, traversal-based metric computation, pedigree depth calculation, signal density measurement, and protocol evaluation. Cross-domain validation demonstrates structural convergence across four radically different systems — human behavior (four-year lifecycles), biological breeding programs (monthly cycles), industrial equipment maintenance (multi-year service arcs), and cultural artifact provenance (centuries-long histories) — without architectural modification. A production implementation on Firebase Firestore, encoding all five primitives in a single document collection via fixed positional registers, is described and evaluated against a unified swine registry dataset containing approximately 27,200 nodes and 46,100 edges. Results confirm the elimination of metric drift, complete temporal history preservation, and emergent cross-domain analytics.")
+
+(isa doc_paper_1_toc_finn_data_model DocumentArtifact)
+(hasLabel doc_paper_1_toc_finn_data_model "Paper 1: FINN Data Model")
+(hasDescription doc_paper_1_toc_finn_data_model "Five failure modes: staleness, drift, coupling, lost history, inconsistency.")
+
+(isa doc_paper_2_business_strategy_draft DocumentArtifact)
+(hasLabel doc_paper_2_business_strategy_draft "Operational Infrastructure for Signal-Driven Industries")
+(hasDescription doc_paper_2_business_strategy_draft "Business intelligence systems promise operational visibility but typically deliver dashboards built on stale, attribute-based metrics — cached snapshots that diverge from ground truth with every passing hour. This divergence creates what we term the *dashboard illusion*: the false confidence that reported metrics reflect current reality. We propose an infrastructure-level alternative in which all operational data flows through append-only, time-indexed signals and metrics are derived through graph traversal at query time, never stored as entity attributes. We develop a strategic framework around this architecture, demonstrating that signal density — the rate of observational data accumulation — serves as a leading indicator of customer lifetime value, that append-only signal histories constitute an irreproducible data moat, and that shared spatiotemporal substrates generate cross-participant network effects characteristic of platform economics. The framework is validated through a primary application in purebred livestock management (approximately 79,000 breeders across four registries, 14,400 operations, 600+ annual shows) and generalized through three additional case studies spanning industrial equipment maintenance, cultural artifact provenance, and consumer behavior analytics. We establish that the distinction between *infrastructure* and *vertical solution* is testable: if the same architecture serves radically different domains without structural modification, it operates at the infrastructure level, and the strategic implications — multi-market entry, compounding data moats, cross-domain network effects — follow accordingly. We propose five strategic propositions linking observation fidelity to competitive advantage and discuss the conditions under which an infrastructure strategy dominates a vertical strategy.")
+
+(isa doc_paper_2_toc_business_strategy DocumentArtifact)
+(hasLabel doc_paper_2_toc_business_strategy "Paper 2: Business Strategy")
+(hasDescription doc_paper_2_toc_business_strategy "Why traditional business intelligence creates false sense of control through snapshots that diverge from reality.")
+
+(isa doc_paper_3_swarm_intelligence_draft DocumentArtifact)
+(hasLabel doc_paper_3_swarm_intelligence_draft "Recursive Flocking: Swarm Intelligence for Knowledge Graph Coordination")
+(hasDescription doc_paper_3_swarm_intelligence_draft "Coordination in multi-tenant knowledge graphs typically relies on hierarchical control — centralized schemas, role-based access, and top-down propagation of organizational structure. These approaches scale poorly, introduce single points of failure, and require explicit maintenance as the system evolves. This paper proposes an alternative: recursive flocking, in which Reynolds' three rules of collective motion — separation, alignment, and cohesion — are applied at multiple organizational scales to achieve emergent coordination without central control. We formalize a mapping from Reynolds' boid model to knowledge graph agents, where *separation* corresponds to the maintenance of unique node identity (no embedded hierarchy), *alignment* corresponds to shared temporal grounding through a pre-built substrate of temporal nodes, and *cohesion* corresponds to protocol-driven attraction toward shared goals. The model is applied recursively across four organizational layers — entity, operation, registry, and industry — with inter-layer coupling that propagates cohesion forces upward and alignment constraints downward. We present a mathematical formalization including force functions, a recursion equation governing multi-scale agent dynamics, and convergence properties under bounded noise. Six algorithms are specified for neighborhood discovery, force calculation, multi-scale coordination, and resilience recovery. Simulation over a synthetic knowledge graph of 10,000 entities across four layers and a five-year temporal spine demonstrates O(log *n*) convergence, 40–60% improvement over flat (non-recursive) coordination, and 90% recovery within 2 × log(*k*) iterations following agent removal, where *k* is the number of affected agents. The results suggest that centralized control is not necessary for global coordination in knowledge graph systems; local rules operating on a shared substrate are sufficient.")
+
+(isa doc_paper_3_toc_swarm_intelligence DocumentArtifact)
+(hasLabel doc_paper_3_toc_swarm_intelligence "Paper 3: Recursive Flocking")
+(hasDescription doc_paper_3_toc_swarm_intelligence "Establish that traditional hierarchical coordination scales poorly. Introduce Reynolds' flocking rules as alternative paradigm achieving global coordination through local rules.")
+
+(isa doc_paper_4_substrate_architecture_draft DocumentArtifact)
+(hasLabel doc_paper_4_substrate_architecture_draft "Containerized Knowledge Graphs with Register-Based Primitives and Pre-Built Spatiotemporal Substrate")
+(hasDescription doc_paper_4_substrate_architecture_draft "Multi-tenant knowledge graph systems typically suffer from two compounding problems: *collection sprawl* (separate database collections per entity type, producing schema explosion and migration complexity) and *runtime context burden* (temporal and spatial context computed at query time, producing repeated work, timezone ambiguity, and validation gaps). This paper presents a substrate architecture that addresses both problems through two complementary mechanisms. First, a *register-based document model* encodes all information — entities, relationships, measurements, observations, and expectations — in a single database collection using five document types with fixed positional registers whose semantics are determined by type. Second, a *pre-built spatiotemporal substrate* materializes temporal and spatial context as graph nodes prior to any user data, creating a shared coordinate system into which per-tenant data is planted. Individual tenants operate in isolated *containers* that share the substrate but maintain private entity graphs. Because all containers reference the same temporal and spatial nodes, cross-container queries, industry-wide aggregations, and inter-tenant graph traversals require no data migration, schema alignment, or identifier remapping — containers merge by overlay on the shared grid. We describe the architecture, its implementation on Firebase Firestore, container deployment and merging patterns, and performance characteristics. A production deployment containing approximately 27,200 nodes and 46,100 edges across four breed registries validates the approach. The substrate eliminates an entire category of temporal and spatial bugs, constrains AI-generated references to valid nodes, and amortizes context-building cost across all queries through one-time pre-computation.")
+
+(isa doc_paper_4_toc_substrate_architecture DocumentArtifact)
+(hasLabel doc_paper_4_toc_substrate_architecture "Paper 4: Substrate Architecture")
+(hasDescription doc_paper_4_toc_substrate_architecture "Traditional systems create separate collections per entity type → schema explosion, migration complexity, fragmented queries.")
+
+(isa doc_paper_5_domain_modeling_draft DocumentArtifact)
+(hasLabel doc_paper_5_domain_modeling_draft "Universal Ontology Through Register-Based Primitives")
+(hasDescription doc_paper_5_domain_modeling_draft "Domain-specific ontologies enable precise modeling within individual domains but fragment interoperability across domains and impose escalating maintenance costs as schemas proliferate. This paper proposes a universal domain modeling approach based on five register-based primitives — NODE (identity), EDGE (relationship), METRIC (measurement definition), SIGNAL (temporal observation), and PROTOCOL (expectation) — that collectively express any domain in which identities emit signals over time. We provide formal definitions grounded in category theory, establishing the Charlotte category whose objects are the five primitives and whose morphisms are the structural references between them. We prove three formal properties: *completeness* (any domain expressible in OWL-DL can be expressed in the five-primitive model), *minimality* (removing any primitive reduces expressiveness), and *orthogonality* (the primitives address disjoint modeling concerns). Cross-domain validation across four radically different systems — human behavior analytics (four-year lifecycles), biological breeding programs (monthly cycles), industrial equipment maintenance (multi-year service arcs), and cultural artifact provenance (centuries-long histories) — demonstrates that all four domains map onto identical primitive structures without extension. We formalize domain mapping as a forgetful functor from domain-specific categories to the Charlotte category, and domain evolution as natural transformations between functor compositions. A production implementation encoding all five primitives in a single document collection with fixed positional registers is evaluated against a dataset of approximately 27,200 nodes and 46,100 edges. The results establish that the five-primitive model provides a viable alternative to schema-per-domain ontology engineering, trading domain-specific optimization for universal interoperability and zero-cost domain evolution.")
+
+(isa doc_paper_5_toc_domain_modeling DocumentArtifact)
+(hasLabel doc_paper_5_toc_domain_modeling "Paper 5: Domain Modeling")
+(hasDescription doc_paper_5_toc_domain_modeling "Domain-specific ontologies fragment interoperability. Cost of maintaining parallel schemas.")
+
+(isa doc_paper_6_spatial_perception_draft DocumentArtifact)
+(hasLabel doc_paper_6_spatial_perception_draft "Interwoven Spatial Planes in Knowledge Graphs: Space as Pre-Built Graph Substrate")
+(hasDescription doc_paper_6_spatial_perception_draft "Geographic information systems overwhelmingly treat space as coordinate geometry: points, polygons, and distance functions evaluated at query time. This paper presents an alternative paradigm in which geographic reality is encoded as a pre-built graph substrate — a fixed layer of spatial nodes connected by containment and cardinal direction edges that exists before any user data arrives. We formalize the *interwoven spatial plane* model, in which a hierarchy of spatial nodes (COUNTRY, STATE, COUNTY, CITY, LATLON) are connected by LOCATED_IN edges for containment and eight cardinal direction edges (IS_NORTH_OF, IS_SOUTH_OF, etc.) for adjacency. We demonstrate structural isomorphism between the spatial and temporal planes of the Charlotte knowledge graph, enabling unified spatiotemporal queries as subgraph extractions rather than coordinate computations. Evaluation on a production livestock registry (14,400+ operations across 4,236 U.S. cities) shows that graph-native spatial queries achieve 3--15x speedup on hierarchical containment and regional aggregation queries compared to PostGIS, with competitive performance on proximity queries, at a storage cost of 3.6x. The approach eliminates runtime geocoding, resolves string ambiguity (e.g., the 34 U.S. cities named \"Springfield\"), and enables spatial reasoning through traversal rather than computation.")
+
+(isa doc_paper_6_toc_spatial_perception DocumentArtifact)
+(hasLabel doc_paper_6_toc_spatial_perception "Paper 6: Spatial Perception")
+(hasDescription doc_paper_6_toc_spatial_perception "Space as pre-built graph substrate rather than runtime-computed coordinates. Structural identity between spatial and temporal planes. LOCATED_IN edge pattern. CITY contact surface. Elimination of runtime geocoding.")
+
+(isa doc_paper_7_temporal_perception_draft DocumentArtifact)
+(hasLabel doc_paper_7_temporal_perception_draft "Time as Graph: A Temporal Substrate Architecture for Knowledge Graph Systems")
+(hasDescription doc_paper_7_temporal_perception_draft "Temporal data management in databases has been dominated by a single paradigm for four decades: time as a scalar attribute embedded in records. From TSQL2 to SQL:2011, from bi-temporal models to event sourcing, the foundational assumption persists — time is a value stored alongside data, parsed and compared at query time. This paper challenges that assumption. We present a temporal data model in which time is represented as a pre-built graph substrate: a layer of DATE and TIME nodes connected by NEXT edges forming a temporal spine, augmented by sub-temporal planes (month, day-of-week, quarter, year) that enable calendar-aware traversal without date arithmetic. Every fact in the system grounds to the temporal substrate through a structural reference (:CREATED → DATE node), not a scalar timestamp. We formalize this model as a temporal graph $G_T = (V, E, T, M, S, \\rho, \\tau)$, define a temporal query algebra over graph-encoded time, and prove that sub-temporal plane queries can be rewritten as single-edge traversals (the Sub-Plane Pushdown Theorem). Evaluation on a production knowledge graph (~27,000 nodes, ~46,000 edges, ~500,000 signals over a 5-year window) shows 2--8x speedup on calendar-pattern queries (day-of-week, quarterly aggregation) and elimination of timestamp parsing, timezone inconsistency, and clock skew. The model also provides a novel constraint on AI agents operating over the graph: agents can only reference temporal nodes that exist in the substrate, providing structural hallucination pruning for temporal reasoning.")
+
+(isa doc_paper_7_toc_temporal_perception DocumentArtifact)
+(hasLabel doc_paper_7_toc_temporal_perception "Paper 7: Temporal Perception")
+(hasDescription doc_paper_7_toc_temporal_perception "Time represented as pre-built graph nodes rather than embedded timestamps. Temporal substrate with DATE/TIME nodes connected via NEXT edges. :CREATED references as graph edges rather than scalar values.")
+
+(isa doc_paper_8_frontend_as_graph_draft DocumentArtifact)
+(hasLabel doc_paper_8_frontend_as_graph_draft "The Serialized Interface: Encoding User Interfaces as Knowledge Graph Traversals")
+(hasDescription doc_paper_8_frontend_as_graph_draft "Modern user interfaces are compiled artifacts — code bundles that must be rebuilt and redeployed to change a button's color, reorganize a layout, or add a new view. The data a user sees lives in a database. The interface that displays it lives in compiled code. This bifurcation creates a fundamental impedance: every UI change requires a development cycle, every data model change requires a UI refactor, and every deployment is an irreversible event that cannot be inspected, versioned, or rolled back without engineering intervention. This paper presents an alternative architecture in which the user interface is fully encoded in the same knowledge graph that stores domain data. Every visual element — every atom, molecule, organism, and view — is a node in the graph, connected to other nodes through typed edges, styled through signal values, and composed through containment relationships. The rendering engine becomes a \"dumb\" traversal client that walks the widget subgraph and instantiates platform-native components for each node encountered. UI state changes are append-only signal mutations. Theme changes are signal appends on style nodes. A/B testing is edge routing between variant subgraphs. Deployment is graph mutation with millisecond latency. We formalize the UI-as-graph encoding through a mapping from Frost's atomic design methodology to the five-primitive FACT model (NODE, EDGE, METRIC, SIGNAL, PROTOCOL), define view projection as a parameterized subgraph extraction over a four-dimensional knowledge graph, and demonstrate that standard development operations — theme switching, widget addition, debugging, A/B deployment, and rollback — reduce to graph operations with latencies 3–47x faster than traditional deployment pipelines. Evaluation with 24 developers across four task categories confirms significantly faster theme changes (12x), equivalent widget additions, faster debugging (3x via temporal traversal), and dramatically faster A/B deployment (47x) compared to a conventional Flutter development workflow.")
+
+(isa doc_paper_8_toc_frontend_as_graph DocumentArtifact)
+(hasLabel doc_paper_8_toc_frontend_as_graph "Paper 8: Frontend as Spatial Plane")
+(hasDescription doc_paper_8_toc_frontend_as_graph "UI fully encoded in knowledge graph. 1:1 widget-to-FACT correspondence. Views as 2D projections through 4D structure. State management through append-only mutations. Elimination of traditional deployment.")
+
+(isa doc_paper_9_tesseract_topology_draft DocumentArtifact)
+(hasLabel doc_paper_9_tesseract_topology_draft "Tesseract Topology: 4D Navigation Through Knowledge Space")
+(hasDescription doc_paper_9_tesseract_topology_draft "Knowledge graphs that encode both spatial and temporal information implicitly inhabit higher-dimensional coordinate spaces, yet existing query infrastructure treats these dimensions independently — spatial queries invoke geometric computation, temporal queries invoke timestamp arithmetic, and combined spatiotemporal queries require ad hoc joins between disjoint subsystems. This paper formalizes knowledge graphs with pre-built spatiotemporal substrates as *tesseract-structured* graphs: four-dimensional lattices in which every node occupies a cell addressed by the tuple (longitude, latitude, date, hour) and connected to its neighbors along each axis by typed cardinal edges. We develop a complete *cardinal direction algebra* over these 4D lattices, enumerating 80 distinct direction vectors and proving closure, invertibility, and reachability. Cyclical phenomena — daily hours, weekly cadences, estrous cycles — are modeled through *torus wrapping*, in which designated dimensions identify their boundaries, producing a tesseract-torus hybrid topology homeomorphic to R² × R × T^k. Protocols are formalized as pre-computed paths through the tesseract, enabling deviation detection via infinity-norm displacement from expected cells. We present algorithms for tesseract BFS, 4D bounding box extraction, torus-aware cycle detection, and protocol path matching, with complexity bounds. Evaluation on a production livestock knowledge graph (27,200 nodes, 46,100 edges, approximately 60,000 temporal nodes) demonstrates O(1) point lookup, O(r²) spatial range queries (versus O(n) for flat graphs), and 94.2% accuracy in gestation path prediction. The results establish that encoding cardinal directions as explicit graph edges transforms implicit spatiotemporal geometry into navigable topology, eliminating runtime coordinate computation.")
+
+(isa doc_paper_9_toc_tesseract_topology DocumentArtifact)
+(hasLabel doc_paper_9_toc_tesseract_topology "Paper 9: Tesseract Topology")
+(hasDescription doc_paper_9_toc_tesseract_topology "Knowledge graphs encoding spatial and temporal data form higher-dimensional structures.")
+
+(isa doc_paper_ieee_structure DocumentArtifact)
+(hasLabel doc_paper_ieee_structure "IEEE Paper Structure")
+(hasDescription doc_paper_ieee_structure "1. **FINN: Signal-Based Temporal Graphs for Observable Reality** 2. **Beyond Attribute Storage: A Temporal Graph Architecture Where Metrics Emerge from Structure** 3. **Observable Systems: Eliminating Metric Drift Through Signal-Based Graph Architecture**")
+
+(isa doc_paper_suite_overview DocumentArtifact)
+(hasLabel doc_paper_suite_overview "Charlotte Research Paper Suite")
+(hasDescription doc_paper_suite_overview "Charlotte is **infrastructure for observable reality** — a universal substrate for modeling any domain where identities emit signals over time.")
+
+(isa doc_portfolio_tier_msa DocumentArtifact)
+(hasLabel doc_portfolio_tier_msa "Charlotte OS — Managed Service Agreement")
+(hasDescription doc_portfolio_tier_msa "This Managed Service Agreement (\"Agreement\") is entered into as of **[DATE]** (\"Effective Date\") by and between:")
+
+(isa doc_valuation_model DocumentArtifact)
+(hasLabel doc_valuation_model "Charlotte — Valuation Model & Smart Village Thesis")
+(hasDescription doc_valuation_model "*Jordan Company, Blackstone, KCM, LendTree, and affiliated funds*")
+
+(isa doc_value_plan DocumentArtifact)
+(hasLabel doc_value_plan "Charlotte Value Plan: Embedded Service Model")
+(hasDescription doc_value_plan "Industrial Service Group does not sell software to industrial facilities. ISG embeds as a service partner. The facility doesn't log into a dashboard, configure settings, or manage data. ISG's people are on-site. ISG's instruments are on the equipment. ISG's expertise interprets the signals. The client receives *operational intelligence as a service* — and the client pays for outcomes, not for access to a tool.")
+
+(isa doc_whitepaper_finn_architecture DocumentArtifact)
+(hasLabel doc_whitepaper_finn_architecture "FINN: Framework for Integrated Neural Networks")
+(hasDescription doc_whitepaper_finn_architecture "Traditional database architectures store computed metrics as attributes on entities, creating stale snapshots that diverge from reality over time. This paper introduces FINN (Framework for Integrated Neural Networks), a graph-native architecture where all temporal data flows through **signals**—append-only observations indexed by time. Nodes represent entities with immutable identity; edges represent relationships; signals represent observations. Metrics are never stored as attributes but computed through graph traversal at query time. This creates an **emergent neural network** where entity influence (gravitational pull) is derived from signal density and edge connectivity rather than cached counters. We demonstrate FINN through a unified swine registry system containing ~60,000 unique breeders, ~14,400 operations, and ~4,200 geographic nodes, with pedigrees threading temporally through the spatial network. The architecture enables cross-registry pedigree traversal, real-time analytics, and a natural representation of how events propagate through interconnected systems.")
+
+(isa doc_dave_genger DocumentArtifact)
+(hasLabel doc_dave_genger "David L. Genger Jr.")
+(hasDescription doc_dave_genger "- Chair of the Science Department, Lake Forest Country Day School - Head of Upper School, Lake Forest Country Day School (192 students, 24 faculty) - Head of School–Designate, Rio Grande School, Santa Fe, NM (unanimously selected; never served)")
+
+(isa doc_donald_almquist DocumentArtifact)
+(hasLabel doc_donald_almquist "Donald J. Almquist")
+(hasDescription doc_donald_almquist "- *Kokomo Business Quarterly*, January 1993 — \"The man who shaped Delco Electronics looks forward to life after GM\" - *Madison County Monthly*, September 1990 (Inaugural Issue) — \"Grabbing the brass ring while keeping firmly rooted\"")
+
+(isa doc_jack DocumentArtifact)
+(hasLabel doc_jack "Jack Richard")
+(hasDescription doc_jack "- Companions architecture - Knowledge Representation & Reasoning (KRR) - Analogical reasoning, memory-centric AI")
+
+(isa doc_jim DocumentArtifact)
+(hasLabel doc_jim "Jim Richard")
+(hasDescription doc_jim "- CEO, The Industrial Service Group (September 2019 – Present) - Chairman, Richard Enterprises LLC (June 2016 – Present)")
+
+(isa doc_joseph DocumentArtifact)
+(hasLabel doc_joseph "Joseph Richard")
+(hasDescription doc_joseph "- Google I/O (2016-2017) - CES (2016-2017)")
+
+(isa doc_resonance DocumentArtifact)
+(hasLabel doc_resonance "Resonance")
+(hasDescription doc_resonance "Every operational system needs a way to answer: **is this working?**")
+

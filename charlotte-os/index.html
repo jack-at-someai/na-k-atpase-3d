@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charlotte OS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23E53E3E' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(120,120)'%3E%3Cline x1='0' y1='0' x2='0' y2='-108'/%3E%3Cline x1='0' y1='0' x2='65' y2='-87'/%3E%3Cline x1='0' y1='0' x2='103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='95' y2='50'/%3E%3Cline x1='0' y1='0' x2='40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-95' y2='50'/%3E%3Cline x1='0' y1='0' x2='-103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='-65' y2='-87'/%3E%3Cpath d='M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z'/%3E%3Cpath d='M 0,-70 Q 24,-68 42,-56 Q 60,-42 67,-21 Q 70,7 62,32 Q 51,53 26,65 Q 3,72 -26,65 Q -51,53 -62,32 Q -70,7 -67,-21 Q -60,-42 -42,-56 Q -24,-68 0,-70 Z'/%3E%3Cpath d='M 0,-38 Q 13,-37 23,-30 Q 33,-23 36,-11 Q 38,4 34,18 Q 28,29 14,35 Q 2,39 -14,35 Q -28,29 -34,18 Q -38,4 -36,-11 Q -33,-23 -23,-30 Q -13,-37 0,-38 Z'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0F0F0F;
+      color: #E8E0E0;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* === Sidebar === */
+    .sidebar {
+      width: 320px;
+      min-height: 100vh;
+      background: #141414;
+      border-right: 1px solid #222;
+      padding: 32px 24px;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+    .sidebar-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+    .sidebar-sub {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    /* Stat Grid */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .stat-cell {
+      background: #1A1A1A;
+      border: 1px solid #2A2A2A;
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: #E53E3E;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Boot Sequence Dots */
+    .boot-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .boot-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #222;
+      border: 1px solid #333;
+      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .boot-dot.lit {
+      border-color: transparent;
+    }
+    .boot-status {
+      font-size: 11px;
+      color: #444;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 24px;
+      transition: color 0.5s;
+    }
+    .boot-status.ready {
+      color: #68D391;
+    }
+
+    /* Insight Box */
+    .insight-box {
+      background: linear-gradient(135deg, rgba(229,62,62,0.06) 0%, rgba(155,120,120,0.04) 100%);
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .insight-box p {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.65;
+    }
+    .insight-box strong { color: #E8E0E0; }
+    .insight-box .hl { color: #E53E3E; font-weight: 500; }
+
+    .back-link {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #E53E3E; }
+
+    /* === Main === */
+    .main {
+      flex: 1;
+      padding: 40px 48px 64px;
+      max-width: 960px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #E53E3E;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #222;
+    }
+
+    /* === Five Primitives === */
+    .prims-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .prim-card {
+      flex: 1;
+      background: #141414;
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      padding: 20px 14px;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .prim-card:hover {
+      border-color: #444;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .prim-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .prim-card h3 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .prim-card .prim-def {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .prim-card .prim-knowledge {
+      font-size: 9px;
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* === Boot Phases === */
+    .phase-block {
+      background: #141414;
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .phase-block:hover { border-color: #333; }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .phase-num {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .phase-name {
+      font-size: 14px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .phase-count {
+      font-size: 11px;
+      color: #555;
+    }
+    .phase-arrow {
+      font-size: 10px;
+      color: #555;
+      transition: transform 0.3s;
+    }
+    .phase-block.open .phase-arrow { transform: rotate(180deg); }
+    .phase-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .phase-block.open .phase-body { max-height: 800px; }
+    .phase-content {
+      padding: 0 18px 18px;
+      border-top: 1px solid #222;
+    }
+    .phase-file {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 12px;
+      color: #888;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .phase-file::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .phase-file-desc {
+      font-family: 'Inter', sans-serif;
+      color: #555;
+      font-size: 11px;
+      margin-left: auto;
+    }
+    pre.krf-snippet {
+      background: #0A0A0A;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 10px 0 6px;
+      font-size: 11px;
+      line-height: 1.6;
+      font-family: 'JetBrains Mono', monospace;
+      color: #777;
+      overflow-x: auto;
+    }
+    .krf-kw { color: #E53E3E; font-weight: 500; }
+    .krf-type { color: #F59E0B; }
+    .krf-str { color: #68D391; }
+    .krf-comment { color: #444; font-style: italic; }
+
+    /* === File Tree === */
+    .file-tree {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.8;
+      background: #141414;
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 40px;
+    }
+    .file-tree .dir { color: #E53E3E; font-weight: 500; }
+    .file-tree .file { color: #888; }
+
+    /* === Link Cards === */
+    .link-row {
+      display: flex;
+      gap: 12px;
+    }
+    .link-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      background: #141414;
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #E8E0E0;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .link-card:hover {
+      border-color: #E53E3E;
+      box-shadow: 0 4px 16px rgba(229,62,62,0.1);
+      transform: translateY(-2px);
+    }
+    .link-icon { font-size: 24px; }
+    .link-text h3 { font-size: 13px; font-weight: 600; }
+    .link-text p { font-size: 11px; color: #666; margin-top: 2px; }
+
+    /* === Mobile === */
+    @media (max-width: 800px) {
+      body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        min-height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #222;
+        padding: 24px 20px;
+      }
+      .main { padding: 24px 20px 48px; }
+      .prims-row { flex-wrap: wrap; }
+      .prim-card { flex: 1 1 calc(50% - 6px); min-width: 140px; }
+      .link-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- === Sidebar === -->
+<aside class="sidebar">
+  <div class="sidebar-title">Charlotte OS</div>
+  <div class="sidebar-sub">Boot image in first-order logic</div>
+
+  <div class="stat-grid">
+    <div class="stat-cell">
+      <div class="stat-num">31</div>
+      <div class="stat-label">KRF Files</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Boot Phases</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Primitives</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Knowledge Types</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Spatial Planes</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">15</div>
+      <div class="stat-label">Temporal Levels</div>
+    </div>
+  </div>
+
+  <!-- Boot Sequence Animation -->
+  <div class="boot-dots">
+    <div class="boot-dot" id="bd-0" style="--color:#E53E3E"></div>
+    <div class="boot-dot" id="bd-1" style="--color:#F59E0B"></div>
+    <div class="boot-dot" id="bd-2" style="--color:#4A9EE5"></div>
+    <div class="boot-dot" id="bd-3" style="--color:#A855F7"></div>
+    <div class="boot-dot" id="bd-4" style="--color:#C4A8A8"></div>
+    <div class="boot-dot" id="bd-5" style="--color:#68D391"></div>
+  </div>
+  <div class="boot-status" id="boot-status">Initializing...</div>
+
+  <div class="insight-box">
+    <p>Charlotte OS is a <strong>boot image written entirely in first-order logic</strong>. It defines <span class="hl">five irreducible primitives</span>, a temporal spine from Millennium to Hour, a spatial substrate across all 50 US states, and five types of knowledge. Every domain OS &mdash; from swine genetics to equipment intelligence &mdash; compiles on top of this kernel. The boot sequence loads 31 KRF files across 6 phases to bring a container to operational state.</p>
+  </div>
+
+  <a class="back-link" href="../">&larr; Back to Research Lab</a>
+</aside>
+
+<!-- === Main Content === -->
+<main class="main">
+
+  <!-- Five Primitives -->
+  <div class="section-title">Five Primitives</div>
+  <div class="prims-row">
+    <div class="prim-card" style="border-top: 2px solid #C4A8A8">
+      <div class="prim-icon" style="color:#C4A8A8">&#x25CF;</div>
+      <h3 style="color:#C4A8A8">Node</h3>
+      <p class="prim-def">Identity. Any uniquely identifiable entity in the graph.</p>
+      <span class="prim-knowledge" style="background:rgba(168,85,247,0.12);color:#A855F7">Declarative</span>
+    </div>
+    <div class="prim-card" style="border-top: 2px solid #9B7878">
+      <div class="prim-icon" style="color:#9B7878">&#x2194;</div>
+      <h3 style="color:#9B7878">Edge</h3>
+      <p class="prim-def">Relationship. A typed, directed connection between two NODEs.</p>
+      <span class="prim-knowledge" style="background:rgba(229,62,62,0.12);color:#F56565">Structural</span>
+    </div>
+    <div class="prim-card" style="border-top: 2px solid #F59E0B">
+      <div class="prim-icon" style="color:#F59E0B">&#x2261;</div>
+      <h3 style="color:#F59E0B">Metric</h3>
+      <p class="prim-def">Quantitative signal. A measurable dimension attached to a NODE.</p>
+      <span class="prim-knowledge" style="background:rgba(245,158,11,0.12);color:#F59E0B">Heuristic</span>
+    </div>
+    <div class="prim-card" style="border-top: 2px solid #E53E3E">
+      <div class="prim-icon" style="color:#E53E3E">&#x26A1;</div>
+      <h3 style="color:#E53E3E">Signal</h3>
+      <p class="prim-def">Event. A timestamped observation placed on a METRIC line.</p>
+      <span class="prim-knowledge" style="background:rgba(245,158,11,0.12);color:#F59E0B">Heuristic</span>
+    </div>
+    <div class="prim-card" style="border-top: 2px solid #68D391">
+      <div class="prim-icon" style="color:#68D391">&#x25C6;</div>
+      <h3 style="color:#68D391">Protocol</h3>
+      <p class="prim-def">Rule. Business logic that governs graph evolution.</p>
+      <span class="prim-knowledge" style="background:rgba(104,211,145,0.12);color:#68D391">Procedural</span>
+    </div>
+  </div>
+
+  <!-- Boot Sequence -->
+  <div class="section-title">Boot Sequence</div>
+
+  <!-- Phase 1: Kernel -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(229,62,62,0.15);color:#E53E3E">1</div>
+      <div class="phase-name">Kernel</div>
+      <div class="phase-count">4 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file" style="--dot-color:#E53E3E"><span style="background:#E53E3E;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>kernel/primitives.krf <span class="phase-file-desc">Five irreducible primitives</span></div>
+        <div class="phase-file"><span style="background:#E53E3E;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>kernel/types.krf <span class="phase-file-desc">Type system and collections</span></div>
+        <div class="phase-file"><span style="background:#E53E3E;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>kernel/boot.krf <span class="phase-file-desc">Boot sequence protocol</span></div>
+        <div class="phase-file"><span style="background:#E53E3E;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>kernel/valuation-layer.krf <span class="phase-file-desc">Valuation primitives</span></div>
+        <pre class="krf-snippet"><span class="krf-comment">;;; Five irreducible primitives</span>
+(<span class="krf-kw">isa</span> <span class="krf-type">NODE</span> Primitive)
+(<span class="krf-kw">isa</span> <span class="krf-type">EDGE</span> Primitive)
+(<span class="krf-kw">isa</span> <span class="krf-type">METRIC</span> Primitive)
+(<span class="krf-kw">isa</span> <span class="krf-type">SIGNAL</span> Primitive)
+(<span class="krf-kw">isa</span> <span class="krf-type">PROTOCOL</span> Primitive)
+
+<span class="krf-comment">;;; Mutual disjointness</span>
+(<span class="krf-kw">disjointWith</span> <span class="krf-type">NODE</span> <span class="krf-type">EDGE</span>)
+(<span class="krf-kw">disjointWith</span> <span class="krf-type">NODE</span> <span class="krf-type">METRIC</span>)
+(<span class="krf-kw">disjointWith</span> <span class="krf-type">NODE</span> <span class="krf-type">SIGNAL</span>)
+(<span class="krf-kw">disjointWith</span> <span class="krf-type">NODE</span> <span class="krf-type">PROTOCOL</span>)</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 2: Temporal Spine -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(245,158,11,0.15);color:#F59E0B">2</div>
+      <div class="phase-name">Temporal Spine</div>
+      <div class="phase-count">4 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file"><span style="background:#F59E0B;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/temporal/epochs.krf <span class="phase-file-desc">Epoch definitions and boundaries</span></div>
+        <div class="phase-file"><span style="background:#F59E0B;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/temporal/units.krf <span class="phase-file-desc">15 granularity levels</span></div>
+        <div class="phase-file"><span style="background:#F59E0B;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/temporal/lifecycle.krf <span class="phase-file-desc">Lifecycle event types</span></div>
+        <div class="phase-file"><span style="background:#F59E0B;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/temporal/encoding.krf <span class="phase-file-desc">Temporal encoding rules</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3: Spatial Planes -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(74,158,229,0.15);color:#4A9EE5">3</div>
+      <div class="phase-name">Spatial Planes</div>
+      <div class="phase-count">3 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file"><span style="background:#4A9EE5;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/spatial/geospatial.krf <span class="phase-file-desc">Geographic coordinates and regions</span></div>
+        <div class="phase-file"><span style="background:#4A9EE5;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/spatial/topological.krf <span class="phase-file-desc">Adjacency and connectivity</span></div>
+        <div class="phase-file"><span style="background:#4A9EE5;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>spine/spatial/theoretical.krf <span class="phase-file-desc">Abstract spatial axioms</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4: Knowledge Base -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(168,85,247,0.15);color:#A855F7">4</div>
+      <div class="phase-name">Knowledge Base</div>
+      <div class="phase-count">11 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/structural/taxonomy.krf <span class="phase-file-desc">Collection hierarchies</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/structural/mereology.krf <span class="phase-file-desc">Part-whole relations</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/structural/relations.krf <span class="phase-file-desc">Binary predicates</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/declarative/entities.krf <span class="phase-file-desc">Named individuals</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/declarative/attributes.krf <span class="phase-file-desc">Property definitions</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/procedural/protocols.krf <span class="phase-file-desc">Business logic rules</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/procedural/constraints.krf <span class="phase-file-desc">Integrity constraints</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/heuristic/defaults.krf <span class="phase-file-desc">Default values and assumptions</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/heuristic/thresholds.krf <span class="phase-file-desc">Alert thresholds</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/meta/schema.krf <span class="phase-file-desc">Schema definitions</span></div>
+        <div class="phase-file"><span style="background:#A855F7;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>knowledge/meta/provenance.krf <span class="phase-file-desc">Source tracking</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 5: Reference -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(196,168,168,0.15);color:#C4A8A8">5</div>
+      <div class="phase-name">Reference &amp; Convex Hull</div>
+      <div class="phase-count">2 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file"><span style="background:#C4A8A8;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>reference/knowledge-primitives.krf <span class="phase-file-desc">Five knowledge types</span></div>
+        <div class="phase-file"><span style="background:#C4A8A8;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>reference/convex-hull.krf <span class="phase-file-desc">Knowledge boundary</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 6: Agent -->
+  <div class="phase-block" onclick="togglePhase(this)">
+    <div class="phase-header">
+      <div class="phase-num" style="background:rgba(104,211,145,0.15);color:#68D391">6</div>
+      <div class="phase-name">Agent Identity</div>
+      <div class="phase-count">3 files</div>
+      <span class="phase-arrow">&#x25BC;</span>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="phase-file"><span style="background:#68D391;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>agent/identity.krf <span class="phase-file-desc">Agent self-model</span></div>
+        <div class="phase-file"><span style="background:#68D391;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>agent/observer.krf <span class="phase-file-desc">Observer perspective</span></div>
+        <div class="phase-file"><span style="background:#68D391;width:6px;height:6px;border-radius:50%;flex-shrink:0"></span>agent/directives.krf <span class="phase-file-desc">Behavioral directives</span></div>
+        <pre class="krf-snippet"><span class="krf-comment">;;; Container operational rule</span>
+(<span class="krf-kw">implies</span>
+  (<span class="krf-kw">and</span> (bootReady <span class="krf-type">BootPhase-Kernel</span>)
+       (bootReady <span class="krf-type">BootPhase-Spine</span>)
+       (bootReady <span class="krf-type">BootPhase-Spatial</span>)
+       (bootReady <span class="krf-type">BootPhase-Knowledge</span>)
+       (bootReady <span class="krf-type">BootPhase-Reference</span>)
+       (bootReady <span class="krf-type">BootPhase-Agent</span>))
+  (<span class="krf-str">containerOperational</span> ThisContainer))</pre>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:40px"></div>
+
+  <!-- File Tree -->
+  <div class="section-title">File Structure</div>
+  <div class="file-tree">
+<span class="dir">charlotte-os/</span>
+  <span class="dir">kernel/</span>
+    <span class="file">primitives.krf</span>
+    <span class="file">types.krf</span>
+    <span class="file">boot.krf</span>
+    <span class="file">valuation-layer.krf</span>
+  <span class="dir">spine/</span>
+    <span class="dir">temporal/</span>
+      <span class="file">epochs.krf</span>
+      <span class="file">units.krf</span>
+      <span class="file">lifecycle.krf</span>
+      <span class="file">encoding.krf</span>
+    <span class="dir">spatial/</span>
+      <span class="file">geospatial.krf</span>
+      <span class="file">topological.krf</span>
+      <span class="file">theoretical.krf</span>
+  <span class="dir">knowledge/</span>
+    <span class="dir">structural/</span>
+      <span class="file">taxonomy.krf  mereology.krf  relations.krf</span>
+    <span class="dir">declarative/</span>
+      <span class="file">entities.krf  attributes.krf</span>
+    <span class="dir">procedural/</span>
+      <span class="file">protocols.krf  constraints.krf</span>
+    <span class="dir">heuristic/</span>
+      <span class="file">defaults.krf  thresholds.krf</span>
+    <span class="dir">meta/</span>
+      <span class="file">schema.krf  provenance.krf  completeness.krf</span>
+  <span class="dir">reference/</span>
+    <span class="file">knowledge-primitives.krf</span>
+    <span class="file">convex-hull.krf</span>
+  <span class="dir">agent/</span>
+    <span class="file">identity.krf  observer.krf  directives.krf</span>
+  <span class="dir">demo/</span>
+    <span class="file">charlotte.py  face_engine.py  camera_ingest.py</span>
+    <span class="file">krf.py  protocol_engine.py  minutes.py</span>
+    <span class="dir">visualization/</span>
+      <span class="file">index.html</span>
+  </div>
+
+  <!-- Links -->
+  <div class="section-title">Explore</div>
+  <div class="link-row">
+    <a class="link-card" href="../charlotte/temporal/">
+      <span class="link-icon">&#x1F553;</span>
+      <div class="link-text">
+        <h3>Temporal Spine</h3>
+        <p>15 levels, 22.6M nodes</p>
+      </div>
+    </a>
+    <a class="link-card" href="../charlotte/spatial/">
+      <span class="link-icon">&#x1F5FA;</span>
+      <div class="link-text">
+        <h3>Spatial Substrate</h3>
+        <p>51 states, 1,275 edges</p>
+      </div>
+    </a>
+    <a class="link-card" href="demo/visualization/">
+      <span class="link-icon">&#x1F4FA;</span>
+      <div class="link-text">
+        <h3>Demo Visualization</h3>
+        <p>Live meeting observer</p>
+      </div>
+    </a>
+  </div>
+
+</main>
+
+<script>
+// Boot sequence animation
+(function() {
+  var phases = ['Kernel', 'Temporal Spine', 'Spatial Planes', 'Knowledge Base', 'Reference', 'Agent'];
+  var colors = ['#E53E3E', '#F59E0B', '#4A9EE5', '#A855F7', '#C4A8A8', '#68D391'];
+  var status = document.getElementById('boot-status');
+  var delay = 400;
+
+  phases.forEach(function(name, i) {
+    setTimeout(function() {
+      var dot = document.getElementById('bd-' + i);
+      dot.classList.add('lit');
+      dot.style.background = colors[i];
+      dot.style.boxShadow = '0 0 8px ' + colors[i] + '60';
+      status.textContent = 'Loading ' + name + '...';
+
+      if (i === phases.length - 1) {
+        setTimeout(function() {
+          status.textContent = 'Container Operational';
+          status.classList.add('ready');
+        }, delay);
+      }
+    }, delay * (i + 1));
+  });
+})();
+
+// Phase expand/collapse
+function togglePhase(el) {
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

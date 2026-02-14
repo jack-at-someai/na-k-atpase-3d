@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Pitch Decks — Before & After</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #06060a; --surface: #0c0c12; --surface2: #12121a; --surface3: #1a1a24;
+  --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.1); --border3: rgba(255,255,255,0.15);
+  --text: #E8E4F0; --text2: #b0aac0; --text3: #706a80; --text4: #3a3648;
+  --red: #E53E3E; --green: #48E5A0; --amber: #F5A623; --blue: #4A9EE5;
+  --purple: #A855F7; --mauve: #C4A8A8; --teal: #2DD4BF; --pink: #ED64A6;
+  --biz-h: 0; --biz-s: 0%; --biz-l: 50%;
+  --biz: hsl(var(--biz-h), var(--biz-s), var(--biz-l));
+  --biz-glow: hsla(var(--biz-h), var(--biz-s), var(--biz-l), 0.15);
+  --biz-dim: hsla(var(--biz-h), var(--biz-s), var(--biz-l), 0.08);
+  --biz-border: hsla(var(--biz-h), var(--biz-s), var(--biz-l), 0.2);
+}
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; overflow-x: hidden; }
+
+/* === Neural Canvas === */
+#neural-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4; }
+
+/* === Sidebar === */
+.sidebar {
+  width: 280px; min-width: 280px;
+  background: linear-gradient(180deg, #0c0c14 0%, #08080e 100%);
+  border-right: 1px solid var(--border); display: flex; flex-direction: column;
+  height: 100vh; position: sticky; top: 0; overflow-y: auto; z-index: 10;
+}
+.sidebar-header { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); }
+.sidebar-title { font-size: 15px; font-weight: 700; letter-spacing: -0.5px; }
+.sidebar-title span { color: var(--red); }
+.sidebar-sub { font-size: 9px; color: var(--text4); margin-top: 3px; letter-spacing: 1px; text-transform: uppercase; }
+.sidebar-section { padding: 12px 12px 8px; }
+.sidebar-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text4); margin-bottom: 8px; padding: 0 4px; }
+.biz-btn {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 10px 12px; background: none; border: 1px solid transparent;
+  border-radius: 10px; cursor: pointer; font-family: inherit;
+  font-size: 12px; color: var(--text3); transition: all 0.2s; text-align: left;
+  margin-bottom: 2px;
+}
+.biz-btn:hover { color: var(--text2); background: rgba(255,255,255,0.03); }
+.biz-btn.active {
+  color: var(--text); background: var(--biz-dim);
+  border-color: var(--biz-border);
+  box-shadow: 0 0 20px var(--biz-glow), inset 0 0 20px rgba(0,0,0,0.3);
+}
+.biz-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 8px currentColor; }
+.biz-name { font-weight: 600; font-size: 12px; }
+.biz-meta { display: flex; gap: 6px; align-items: center; margin-top: 1px; }
+.biz-detail { font-size: 9px; color: var(--text4); }
+.biz-industry { font-size: 8px; padding: 1px 6px; border-radius: 3px; background: rgba(255,255,255,0.04); color: var(--text4); letter-spacing: 0.5px; }
+.sidebar-footer {
+  margin-top: auto; padding: 12px 16px; border-top: 1px solid var(--border);
+  font-size: 10px; color: var(--text4);
+}
+.sidebar-footer a { color: var(--text4); text-decoration: none; transition: color 0.2s; }
+.sidebar-footer a:hover { color: var(--red); }
+
+/* === Main === */
+.main { flex: 1; min-width: 0; position: relative; z-index: 5; }
+.main-header {
+  position: sticky; top: 0; z-index: 100;
+  background: linear-gradient(180deg, rgba(6,6,10,0.95) 0%, rgba(6,6,10,0.85) 100%);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); padding: 14px 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.biz-headline { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
+.biz-tagline { font-size: 11px; color: var(--text3); }
+.header-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.arc-tabs { display: flex; gap: 4px; }
+.arc-tab {
+  padding: 7px 16px; font-size: 11px; font-weight: 600;
+  color: var(--text4); background: none; border: 1px solid transparent;
+  border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.2s;
+}
+.arc-tab:hover { color: var(--text3); background: rgba(255,255,255,0.03); }
+.arc-tab.active {
+  color: var(--text); background: rgba(255,255,255,0.05);
+  border-color: var(--border2);
+}
+
+/* === Deck === */
+.deck { padding: 28px; max-width: 980px; margin: 0 auto; }
+.arc-badge {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+  padding: 10px 16px; border-radius: 10px; border: 1px solid;
+}
+.arc-badge-dot { width: 8px; height: 8px; border-radius: 50%; }
+.arc-badge-name { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.arc-badge-desc { font-size: 11px; color: var(--text4); margin-left: 4px; }
+.arc-badge-count { font-size: 10px; color: var(--text4); margin-left: auto; }
+
+.slide-wrapper { margin-bottom: 24px; }
+.slide-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.slide-num {
+  width: 26px; height: 26px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; font-size: 10px; font-weight: 800;
+}
+.slide-type { font-size: 11px; color: var(--text3); font-weight: 600; letter-spacing: 0.5px; }
+
+/* === Slide Glass === */
+.slide {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(12,12,20,0.9) 0%, rgba(18,18,28,0.9) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border2);
+  border-radius: 16px; min-height: 200px;
+  padding: 44px 52px; display: flex; flex-direction: column; justify-content: center;
+}
+.slide::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
+  background: radial-gradient(ellipse at 20% 20%, var(--biz) 0%, transparent 60%);
+}
+.slide.cover-slide::before { opacity: 0.12; }
+.slide.cover-slide { min-height: 280px; border-color: var(--biz-border); }
+
+/* Scan line for cover */
+.slide.cover-slide::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--biz) 50%, transparent 100%);
+  opacity: 0.5; animation: scanline 4s ease-in-out infinite;
+}
+@keyframes scanline {
+  0%, 100% { top: 0; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  50% { top: 100%; }
+}
+
+/* Signal indicator */
+.signal-indicator {
+  position: absolute; top: 12px; right: 16px; display: flex; gap: 3px; align-items: center;
+}
+.signal-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--green); opacity: 0.5; }
+.signal-dot:nth-child(1) { animation: pulse 2s 0s infinite; }
+.signal-dot:nth-child(2) { animation: pulse 2s 0.3s infinite; }
+.signal-dot:nth-child(3) { animation: pulse 2s 0.6s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.8; } }
+.signal-label { font-size: 8px; color: var(--text4); letter-spacing: 1px; margin-left: 4px; font-family: 'JetBrains Mono', monospace; }
+
+/* === Slide Components === */
+.s-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.s-label::before { content: ''; width: 16px; height: 1px; }
+.s-hero { font-size: 30px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 14px; }
+.s-subhead { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.s-body { font-size: 13px; color: var(--text3); line-height: 1.7; }
+
+/* Before/After Split */
+.ba-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.ba-panel {
+  border-radius: 12px; padding: 24px; position: relative; overflow: hidden;
+}
+.ba-before {
+  background: linear-gradient(135deg, rgba(229,62,62,0.06) 0%, rgba(229,62,62,0.02) 100%);
+  border: 1px solid rgba(229,62,62,0.15);
+}
+.ba-before::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, #E53E3E, transparent);
+}
+.ba-after {
+  background: linear-gradient(135deg, rgba(72,229,160,0.06) 0%, rgba(72,229,160,0.02) 100%);
+  border: 1px solid rgba(72,229,160,0.15);
+}
+.ba-after::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, #48E5A0, transparent);
+}
+.ba-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.ba-label.before { color: var(--red); }
+.ba-label.after { color: var(--green); }
+.ba-list { list-style: none; padding: 0; }
+.ba-list li { font-size: 12px; color: var(--text3); padding: 5px 0; line-height: 1.6; border-bottom: 1px solid rgba(255,255,255,0.02); }
+.ba-list li:last-child { border-bottom: none; }
+.ba-list li strong { color: var(--text2); }
+
+/* Stat Grid */
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.stat-box {
+  text-align: center; padding: 20px 10px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border-radius: 12px; border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.stat-box::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 40px; height: 2px; border-radius: 0 0 4px 4px;
+}
+.stat-val { font-size: 26px; font-weight: 900; letter-spacing: -1px; }
+.stat-label { font-size: 9px; color: var(--text3); margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Flow */
+.flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 20px 0; }
+.flow-step {
+  padding: 10px 20px; border-radius: 10px; font-size: 12px; font-weight: 700;
+  position: relative;
+}
+.flow-arrow {
+  color: var(--text4); font-size: 16px; display: flex; align-items: center;
+}
+.flow-arrow::after { content: ''; width: 12px; height: 1px; background: var(--text4); margin-right: -2px; }
+
+/* Primitives */
+.hw-primitives { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.hw-prim {
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; font-size: 11px; font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Team Grid */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-top: 16px; }
+.team-member {
+  text-align: center; padding: 20px 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 12px; border: 1px solid var(--border);
+}
+.team-initials {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--biz-dim), transparent);
+  border: 1px solid var(--biz-border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px; font-size: 14px; font-weight: 800; color: var(--text3);
+}
+.team-name { font-size: 12px; font-weight: 700; }
+.team-role { font-size: 10px; color: var(--text3); margin-top: 2px; }
+
+/* Logo Wall */
+.logo-wall { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.logo-item {
+  padding: 8px 16px; border-radius: 8px; font-size: 11px; font-weight: 600; color: var(--text3);
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+}
+
+/* Comparison Table */
+.comp-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 12px; }
+.comp-table th { text-align: left; padding: 10px 14px; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text4); border-bottom: 1px solid var(--border2); }
+.comp-table td { padding: 10px 14px; color: var(--text3); border-bottom: 1px solid var(--border); }
+.comp-table tr:first-child td { font-weight: 700; }
+.comp-table .check { color: var(--green); font-size: 14px; }
+.comp-table .cross { color: var(--text4); }
+
+/* TAM circles */
+.tam-wrap { text-align: center; margin-top: 16px; }
+.tam-circle {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 50%; backdrop-filter: blur(4px);
+}
+.tam-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; }
+.tam-value { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; }
+
+/* Pricing */
+.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+.pricing-tier {
+  padding: 24px 16px; border-radius: 14px; text-align: center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid var(--border); transition: all 0.3s;
+}
+.pricing-tier.highlight {
+  border-width: 2px;
+  box-shadow: 0 0 30px var(--biz-glow);
+}
+.pricing-name { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.pricing-price { font-size: 24px; font-weight: 900; margin-bottom: 6px; letter-spacing: -1px; }
+.pricing-detail { font-size: 11px; color: var(--text3); line-height: 1.6; }
+
+/* Revenue bars */
+.rev-bars { margin-top: 14px; }
+.rev-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.rev-label { width: 60px; font-size: 11px; color: var(--text3); text-align: right; font-weight: 600; }
+.rev-bar-track { flex: 1; height: 24px; background: rgba(255,255,255,0.03); border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+.rev-bar-fill { height: 100%; border-radius: 5px; transition: width 0.8s ease-out; }
+.rev-value { width: 80px; font-size: 12px; font-weight: 800; }
+
+/* Cover industry badge */
+.industry-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 20px; font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border: 1px solid var(--biz-border); margin-bottom: 16px;
+}
+.industry-badge .badge-glow {
+  width: 6px; height: 6px; border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* AI KRF badge */
+.krf-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text4);
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px;
+  display: inline-block; margin-top: 8px; letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .ba-split { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing { grid-template-columns: 1fr; }
+  .slide { padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="neural-bg"></canvas>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title"><span>Charlotte</span> Pitch Decks</div>
+    <div class="sidebar-sub">Before & After Charlotte OS</div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Client Portfolio</div>
+    <div id="biz-list"></div>
+  </div>
+  <div class="sidebar-footer">
+    <a href="../">Pitch Engine</a> &middot; <a href="../../../">Home</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="main-header">
+    <div>
+      <div class="biz-headline" id="biz-headline">ISG</div>
+      <div class="biz-tagline" id="biz-tagline"></div>
+    </div>
+    <div class="header-right">
+      <div class="arc-tabs" id="arc-tabs"></div>
+    </div>
+  </div>
+  <div class="deck" id="deck"></div>
+</div>
+
+<script>
+// ============================================================
+// NEURAL NETWORK BACKGROUND
+// ============================================================
+(function() {
+  var canvas = document.getElementById('neural-bg');
+  var ctx = canvas.getContext('2d');
+  var nodes = [], edges = [];
+  var W, H, hue = 38;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Generate nodes
+  for (var i = 0; i < 60; i++) {
+    nodes.push({
+      x: Math.random() * 2000, y: Math.random() * 1200,
+      vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+      r: 1.5 + Math.random() * 2, pulse: Math.random() * Math.PI * 2
+    });
+  }
+  // Generate edges
+  for (var i = 0; i < nodes.length; i++) {
+    for (var j = i + 1; j < nodes.length; j++) {
+      var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+      if (Math.sqrt(dx * dx + dy * dy) < 250) edges.push([i, j]);
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    // Update nodes
+    nodes.forEach(function(n) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+      n.pulse += 0.02;
+    });
+
+    // Draw edges
+    ctx.strokeStyle = 'hsla(' + hue + ', 60%, 50%, 0.06)';
+    ctx.lineWidth = 0.5;
+    edges.forEach(function(e) {
+      var a = nodes[e[0]], b = nodes[e[1]];
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    });
+
+    // Draw nodes
+    nodes.forEach(function(n) {
+      var alpha = 0.15 + 0.1 * Math.sin(n.pulse);
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'hsla(' + hue + ', 60%, 60%, ' + alpha + ')';
+      ctx.fill();
+    });
+
+    // Occasional signal pulse along an edge
+    var ei = Math.floor((t / 80) % edges.length);
+    var e = edges[ei]; var a = nodes[e[0]], b = nodes[e[1]];
+    var prog = (t % 80) / 80;
+    var px = a.x + (b.x - a.x) * prog, py = a.y + (b.y - a.y) * prog;
+    ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'hsla(' + hue + ', 70%, 60%, 0.4)';
+    ctx.fill();
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  window.setNeuralHue = function(h) { hue = h; };
+})();
+
+// ============================================================
+// BUSINESS DATA
+// ============================================================
+var BIZ = {
+  isg: {
+    name: 'Industrial Service Group',
+    short: 'ISG',
+    tagline: 'Unified industrial service intelligence across 16 brands',
+    color: '#E2A532', hue: 38, industry: 'Industrial MRO',
+    contract: '$1.4M / 2yr',
+    gradient: ['#0a1628', '#1a2b5f'],
+    before: {
+      headline: 'Sixteen brands. Forty-two locations. Zero shared intelligence.',
+      points: [
+        '<strong>16 acquired brands</strong> each running separate systems \u2014 different CRMs, different dispatch, different pricing',
+        '<strong>259,000+ SKUs</strong> tracked in disconnected spreadsheets and legacy ERPs across 42 locations',
+        '<strong>200+ field technicians</strong> dispatched manually \u2014 no cross-brand scheduling or skill-matching',
+        'PE ownership demands unified reporting but <strong>data lives in 16 different formats</strong>',
+        'Customer calls one brand, doesn\u2019t know the company owns 3 others in their market \u2014 <strong>zero cross-sell</strong>',
+        'Equipment service histories <strong>lost in acquisitions</strong> \u2014 no continuity across brand mergers'
+      ]
+    },
+    after: {
+      headline: 'One substrate. Every brand, location, technician, and piece of equipment \u2014 observed.',
+      points: [
+        '<strong>Unified equipment graph</strong> \u2014 259K+ SKUs across all 16 brands in a single knowledge graph',
+        '<strong>Cross-brand dispatch intelligence</strong> \u2014 nearest qualified technician regardless of brand',
+        '<strong>PE reporting in real-time</strong> \u2014 portfolio-level dashboards compiled from signals',
+        '<strong>Cross-sell detection</strong> \u2014 Charlotte identifies customers across brand boundaries',
+        '<strong>Predictive maintenance</strong> \u2014 equipment failure patterns detected from signal history',
+        '<strong>Acquisition integration in days</strong> \u2014 new brand data flows into substrate immediately'
+      ]
+    },
+    metrics: [
+      { label: 'Revenue', value: '$450M', color: '#E2A532' },
+      { label: 'Brands', value: '16', color: '#68D391' },
+      { label: 'Locations', value: '42', color: '#F5A623' },
+      { label: 'SKUs', value: '259K+', color: '#4A9EE5' },
+      { label: 'Technicians', value: '200+', color: '#A855F7' },
+      { label: 'Contract', value: '$1.4M', color: '#C4A8A8' }
+    ],
+    tam: '$47B', sam: '$12B', som: '$780M',
+    tamDesc: 'US industrial services MRO market',
+    team: [
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'SomeAI \u2014 COO' }
+    ],
+    customers: ['ISG', 'Sounder', 'CardVault', 'Top Tier', 'Prier Violins', 'All State', 'SC Online', 'Wendt Group'],
+    competitors: [
+      { name: 'Charlotte OS', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'ServiceTitan', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] },
+      { name: 'Salesforce FSL', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'SAP S/4HANA', cols: ['\u2717', '\u2717', '\u2713', '\u2717'] }
+    ],
+    compHeaders: ['Invisible', 'Cross-brand', 'PE-ready', 'Bespoke'],
+    model: {
+      tiers: [
+        { name: 'Enterprise', price: '$100K+/mo', detail: 'Full portfolio OS\nCross-brand intelligence\nReal-time PE reporting', highlight: false },
+        { name: 'ISG Contract', price: '$58K/mo', detail: '16 brands unified\n42 locations\n259K+ equipment nodes', highlight: true },
+        { name: 'Single Brand', price: '$5-15K/mo', detail: 'One brand OS\nEquipment + dispatch\nService intelligence', highlight: false }
+      ]
+    },
+    projections: [
+      { year: 'Year 1', pct: 20, value: '$1.4M' },
+      { year: 'Year 2', pct: 40, value: '$4.2M' },
+      { year: 'Year 3', pct: 60, value: '$12M' },
+      { year: 'Year 5', pct: 85, value: '$45M' },
+      { year: 'Year 10', pct: 100, value: '$200M+' }
+    ],
+    ask: '$1.4M over 24 months',
+    vision: 'Every piece of industrial equipment in America gets an invisible operating system \u2014 one that observes, remembers, and predicts without anyone changing how they work.',
+    howItWorks: ['Observe 259K+ equipment signals', 'Compile cross-brand OS', 'Deploy invisible to 200+ techs'],
+    gtm: ['PE Portfolio Companies', 'Multi-Brand Industrial', 'Single-Brand Operations']
+  },
+  cardvault: {
+    name: 'CardVault by Tom Brady', short: 'CardVault',
+    tagline: 'The Apple Store for sports cards \u2014 12 locations, $33B market',
+    color: '#D4A017', hue: 45, industry: 'Sports Collectibles',
+    contract: '$510K / 24mo', gradient: ['#0a0a06', '#1a1508'],
+    before: { headline: 'Twelve premium stores. Twelve islands of data.', points: [
+      '<strong>12 retail locations</strong> across 9 states with no shared inventory visibility',
+      '<strong>Shopify-based e-commerce</strong> disconnected from physical retail',
+      '<strong>Live breaks on 4 platforms</strong> with no unified analytics',
+      '<strong>Grading submissions to PSA/BGS/SGC</strong> tracked in spreadsheets',
+      '<strong>Collector relationships</strong> exist in store managers\u2019 heads, not any system',
+      '338% growth means <strong>operational chaos scales faster</strong> than revenue'
+    ]},
+    after: { headline: 'One collector graph. Every card, every store, every break \u2014 connected.', points: [
+      '<strong>Real-time cross-store inventory</strong> \u2014 every card in every location visible instantly',
+      '<strong>Unified collector CRM</strong> \u2014 every collector is a NODE across all 12 locations',
+      '<strong>Grading pipeline intelligence</strong> \u2014 SIGNAL stream from intake to return',
+      '<strong>Live break analytics</strong> \u2014 unified across all 4 streaming platforms',
+      '<strong>Cross-location transfer engine</strong> \u2014 move inventory based on demand signals',
+      '<strong>Expansion intelligence</strong> \u2014 data-driven site selection for new locations'
+    ]},
+    metrics: [
+      { label: 'Locations', value: '12', color: '#D4A017' },
+      { label: 'Growth', value: '338%', color: '#48E5A0' },
+      { label: 'Revenue', value: '$35M', color: '#F5A623' },
+      { label: 'Market', value: '$33B', color: '#4A9EE5' },
+      { label: 'Brady', value: '50%', color: '#A855F7' },
+      { label: 'Contract', value: '$510K', color: '#C4A8A8' }
+    ],
+    tam: '$33B', sam: '$4.2B', som: '$312M', tamDesc: 'US sports collectibles market',
+    team: [
+      { name: 'Tom Brady', role: 'CardVault \u2014 Co-Owner' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'SomeAI \u2014 COO' }
+    ],
+    customers: ['ISG', 'Sounder', 'CardVault', 'Top Tier', 'Prier Violins', 'All State', 'SC Online', 'Wendt Group'],
+    competitors: [
+      { name: 'Charlotte OS', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'Fanatics Collect', cols: ['\u2717', '\u2717', '\u2713', '\u2717'] },
+      { name: 'Whatnot', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'Heritage Auctions', cols: ['\u2717', '\u2717', '\u2713', '\u2717'] }
+    ],
+    compHeaders: ['Invisible OS', 'Multi-site', 'Market pricing', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Foundation', price: '$10K/mo', detail: 'Months 1\u20136\nBrand + e-commerce + CRM\nKnowledge graph seeding', highlight: false },
+      { name: 'Operations', price: '$25K/mo', detail: 'Months 7\u201324\nFull intelligence suite\nCross-store analytics', highlight: true },
+      { name: 'Total', price: '$510K', detail: '24-month engagement\nManaged service model\nDeliverables, not access', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 15, value: '$510K' }, { year: 'Year 2', pct: 35, value: '$2.1M' },
+      { year: 'Year 3', pct: 55, value: '$5.4M' }, { year: 'Year 5', pct: 80, value: '$18M' },
+      { year: 'Year 10', pct: 100, value: '$80M+' }
+    ],
+    ask: '$510,000 over 24 months',
+    vision: 'Every sports card gets a permanent identity in an invisible graph \u2014 from pack to grade to vault to collector, every transition observed.',
+    howItWorks: ['Observe 12 stores + 4 platforms', 'Compile collector graph', 'Deploy invisible intelligence'],
+    gtm: ['Premium Retail', 'Marketplace Platforms', 'Individual Collectors']
+  },
+  allstate: {
+    name: 'All State Manufacturing', short: 'All State Mfg',
+    tagline: 'Metal fixtures for the $3.95B micro market industry',
+    color: '#4A9EE5', hue: 210, industry: 'Manufacturing',
+    contract: '$105K / 24mo', gradient: ['#060a14', '#0f1a2e'],
+    before: { headline: 'Fifty years of reliability. Zero bytes of data.', points: [
+      '<strong>$2.2M revenue, ~10 employees</strong> \u2014 profitable but entirely invisible digitally',
+      '<strong>Wix website</strong> with no product catalog, no specs, no digital ordering',
+      '<strong>Single Facebook page</strong> as the entire marketing strategy',
+      '<strong>Customer relationships</strong> live in 2-3 people\u2019s heads \u2014 no CRM',
+      '<strong>Manufacturing processes</strong> are tribal knowledge \u2014 45 years of it',
+      'Competitors offer <strong>3D modeling and site surveys</strong> \u2014 All State has a phone'
+    ]},
+    after: { headline: 'The invisible backbone of micro market infrastructure \u2014 now observable.', points: [
+      '<strong>Complete product graph</strong> \u2014 every SKU with dimensions, specs, materials',
+      '<strong>Order tracking signals</strong> \u2014 fabrication through powder coat to shipment',
+      '<strong>Customer lifecycle CRM</strong> \u2014 every operator as a NODE with lifetime value',
+      '<strong>Manufacturing dashboard</strong> \u2014 throughput, lead times, capacity utilization',
+      '<strong>Competitive intelligence</strong> \u2014 monitoring Axis, Fixturelite, FCI, FrameWorks',
+      '<strong>Modern digital presence</strong> \u2014 purpose-built site replacing Wix'
+    ]},
+    metrics: [
+      { label: 'Revenue', value: '$2.2M', color: '#4A9EE5' },
+      { label: 'Team', value: '~10', color: '#48E5A0' },
+      { label: 'Founded', value: '1975', color: '#F5A623' },
+      { label: 'TAM', value: '$26.6B', color: '#A855F7' },
+      { label: 'Segment', value: '$3.95B', color: '#E53E3E' },
+      { label: 'Contract', value: '$105K', color: '#C4A8A8' }
+    ],
+    tam: '$26.6B', sam: '$3.95B', som: '$120M', tamDesc: 'US convenience services / micro market fixtures',
+    team: [
+      { name: 'Rudy Stakeman', role: 'All State \u2014 CEO' },
+      { name: 'Madison Muncie', role: 'All State \u2014 COO' },
+      { name: 'Sandra Faulkenberry', role: 'All State \u2014 Sales' },
+      { name: 'Chris Higginbotham', role: 'Plant Mgr (45yr)' }
+    ],
+    customers: ['Canteen', 'Aramark', 'Sodexo', 'Five Star', 'USConnect', '365 Retail Markets'],
+    competitors: [
+      { name: 'Charlotte OS', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'Axis Designs', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] },
+      { name: 'Fixturelite', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'Food Concepts', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Invisible OS', 'Digital catalog', 'Order tracking', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Foundation', price: '$2,500/mo', detail: 'Months 1\u20136\nBrand + website + catalog\nGraph seeding', highlight: false },
+      { name: 'Operations', price: '$5,000/mo', detail: 'Months 7\u201324\nOrder signals + dashboard\nCustomer lifecycle', highlight: true },
+      { name: 'Total', price: '$105K', detail: '24-month managed service\nDeliverables, not access', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 8, value: '$105K' }, { year: 'Year 2', pct: 25, value: '$420K' },
+      { year: 'Year 3', pct: 45, value: '$1.2M' }, { year: 'Year 5', pct: 70, value: '$5M' },
+      { year: 'Year 10', pct: 100, value: '$25M+' }
+    ],
+    ask: '$105,000 over 24 months',
+    vision: 'Nobody at the fixture layer has a data strategy. Charlotte makes the invisible backbone of micro markets observable.',
+    howItWorks: ['Observe orders + manufacturing signals', 'Compile product + customer graph', 'Deploy invisible operations OS'],
+    gtm: ['Micro Market Operators', 'Fixture Manufacturers', 'Equipment Supply Chain']
+  },
+  sconline: {
+    name: 'SC Online Sales', short: 'SC Online Sales',
+    tagline: 'Multi-species livestock auctions for the digital age',
+    color: '#48E5A0', hue: 152, industry: 'Livestock Auctions',
+    contract: '$135K / 24mo', gradient: ['#060e0a', '#0a1a12'],
+    before: { headline: 'Five species. Three platforms. No shared intelligence.', points: [
+      '<strong>40,000+ online auctions</strong> across cattle, sheep, goats, pigs \u2014 each species siloed',
+      '<strong>10,000+ users</strong> with no cross-species behavior analysis',
+      'Buyers who bid on <strong>Hampshire pigs also buy Shorthorn cattle</strong> \u2014 platform doesn\u2019t know',
+      '<strong>Settlement tracking</strong> done manually \u2014 who paid, who hasn\u2019t',
+      '<strong>Field reps</strong> book sales independently with no shared pipeline',
+      'Show Circuit Magazine reaches <strong>50,000+</strong> but zero connection to auction behavior'
+    ]},
+    after: { headline: 'Every seller, buyer, and lot \u2014 one graph across all species.', points: [
+      '<strong>Cross-species intelligence</strong> \u2014 buyer overlap between cattle, sheep, goats, pigs',
+      '<strong>Buyer matching engine</strong> \u2014 predictive targeting from bid history',
+      '<strong>Seller CRM</strong> \u2014 every seller as a NODE with lifetime metrics',
+      '<strong>Sale performance dashboard</strong> \u2014 clearance rate, settlement speed',
+      '<strong>Show Circuit integration</strong> \u2014 readership connected to auction behavior',
+      '<strong>Field rep intelligence</strong> \u2014 per-rep analytics and close rates'
+    ]},
+    metrics: [
+      { label: 'Auctions', value: '40K+', color: '#48E5A0' },
+      { label: 'Species', value: '5', color: '#F5A623' },
+      { label: 'Users', value: '10K+', color: '#4A9EE5' },
+      { label: 'Platforms', value: '3', color: '#A855F7' },
+      { label: 'Magazine', value: '50K+', color: '#E53E3E' },
+      { label: 'Contract', value: '$135K', color: '#C4A8A8' }
+    ],
+    tam: '$3.2B', sam: '$480M', som: '$45M', tamDesc: 'US livestock auction market (online)',
+    team: [
+      { name: 'SC Online Team', role: 'Industry Partner' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'Sounder \u2014 CEO' }
+    ],
+    customers: ['NSR Breeders', 'CPS Registry', 'Cattle Producers', 'Sheep/Goat Breeders', 'Show Circuit Magazine'],
+    competitors: [
+      { name: 'Charlotte (Sounder)', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'ShowPig.com', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'CCI.Live', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'DVAuction', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Cross-species', 'Buyer match', 'Seller CRM', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Foundation', price: '$3,000/mo', detail: 'Months 1\u20136\nAuction pipeline\nSeller CRM + graph', highlight: false },
+      { name: 'Operations', price: '$6,500/mo', detail: 'Months 7\u201324\nBuyer matching + analytics\nCross-species intel', highlight: true },
+      { name: 'Total', price: '$135K', detail: '24-month partnership\nStrategic, not vendor', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 10, value: '$135K' }, { year: 'Year 2', pct: 30, value: '$540K' },
+      { year: 'Year 3', pct: 50, value: '$1.8M' }, { year: 'Year 5', pct: 75, value: '$8M' },
+      { year: 'Year 10', pct: 100, value: '$40M+' }
+    ],
+    ask: '$135,000 over 24 months',
+    vision: 'Every animal that crosses an auction block gets a permanent identity \u2014 connecting breeders, buyers, genetics, and value across species and decades.',
+    howItWorks: ['Observe 40K+ auctions + bidders', 'Compile cross-species graph', 'Deploy invisible to sellers + buyers'],
+    gtm: ['Multi-Species Auctions', 'Breed Registries', 'Individual Breeders']
+  },
+  wendt: {
+    name: 'The Wendt Group', short: 'Wendt Group',
+    tagline: 'ShowPig.com \u2014 the dominant force in swine auctions',
+    color: '#F5A623', hue: 32, industry: 'Swine Genetics',
+    contract: '$156K / 24mo', gradient: ['#0e0a04', '#1a1508'],
+    before: { headline: 'Four platforms. Twelve thousand auctions. No pedigree graph.', points: [
+      '<strong>12,000+ online auctions</strong> and <strong>6,500+ live auctions</strong> \u2014 largest swine network',
+      '<strong>ShowPig.com, CattleConnect, TWG Auctions, Showpig LIVE</strong> \u2014 four platforms, minimal sharing',
+      '<strong>Breeder intelligence trapped in sale catalogs</strong> \u2014 text, not graphs',
+      '<strong>No crossbred pedigree system exists</strong> \u2014 unregistered animals untracked',
+      '<strong>Bidder behavior analysis nonexistent</strong> \u2014 who bids what, when, how much',
+      'NSR show results and auction outcomes are <strong>completely disconnected</strong>'
+    ]},
+    after: { headline: 'The first crossbred pedigree engine \u2014 built on Charlotte substrate.', points: [
+      '<strong>Crossbred pedigree engine</strong> \u2014 ancestry reconstruction for unregistered animals',
+      '<strong>Unified breeder graph</strong> \u2014 lifetime revenue, genetic impact, buyer network',
+      '<strong>Sale intelligence</strong> \u2014 predictive pricing and optimal timing',
+      '<strong>Show-to-sale connection</strong> \u2014 NSR placements linked to sale outcomes',
+      '<strong>Auction analytics</strong> \u2014 per-sale: clearance rate, bidder-to-lot ratio',
+      '<strong>Registry integration</strong> \u2014 automated exchange with NSR, CPS, ABA'
+    ]},
+    metrics: [
+      { label: 'Online', value: '12K+', color: '#F5A623' },
+      { label: 'Live', value: '6.5K+', color: '#48E5A0' },
+      { label: 'Platforms', value: '4', color: '#4A9EE5' },
+      { label: 'Registries', value: '3', color: '#A855F7' },
+      { label: 'Breeders', value: '65K+', color: '#E53E3E' },
+      { label: 'Contract', value: '$156K', color: '#C4A8A8' }
+    ],
+    tam: '$3.2B', sam: '$680M', som: '$85M', tamDesc: 'US livestock genetics & auction market',
+    team: [
+      { name: 'Kevin Wendt', role: 'Wendt Group \u2014 CEO' },
+      { name: 'Megan Wendt', role: 'Wendt Group \u2014 COO' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'Sounder \u2014 CEO' }
+    ],
+    customers: ['NSR', 'CPS', 'ABA', 'Tamworth Swine Assoc', 'State Fair Exhibitors'],
+    competitors: [
+      { name: 'Charlotte (Sounder)', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'SC Online Sales', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'CCI.Live', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'SaleRing.Live', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Pedigree graph', 'Crossbred engine', 'Show-sale link', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Foundation', price: '$3,500/mo', detail: 'Months 1\u20136\nPedigree integration\nBreeder CRM + graph', highlight: false },
+      { name: 'Operations', price: '$7,500/mo', detail: 'Months 7\u201324\nCrossbred engine\nRegistry integration', highlight: true },
+      { name: 'Total', price: '$156K', detail: '24-month partnership\nCrossbred pedigree is centerpiece', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 12, value: '$156K' }, { year: 'Year 2', pct: 32, value: '$620K' },
+      { year: 'Year 3', pct: 52, value: '$2.2M' }, { year: 'Year 5', pct: 78, value: '$10M' },
+      { year: 'Year 10', pct: 100, value: '$50M+' }
+    ],
+    ask: '$156,000 over 24 months',
+    vision: 'Every pig born in America gets a genetic identity \u2014 registered or not. Charlotte builds the pedigree graph the industry has never had.',
+    howItWorks: ['Observe auctions + catalogs + registries', 'Compile crossbred pedigree graph', 'Deploy invisible to breeders + buyers'],
+    gtm: ['Auction Platforms', 'Breed Registries', 'Individual Breeders']
+  },
+  violins: {
+    name: 'PPP Instruments', short: 'Prier Violins',
+    tagline: 'Rare string instrument provenance \u2014 $100M target fund',
+    color: '#C9A84C', hue: 42, industry: 'Alternative Assets',
+    contract: '$100M fund', gradient: ['#0e0a06', '#1a1510'],
+    before: { headline: 'Twenty-one instruments worth $5.3 million. Tracked on paper.', points: [
+      '<strong>21 rare instruments</strong> spanning violins, violas, cellos, bows \u2014 centuries of provenance',
+      '<strong>Valuations by hand</strong> \u2014 dealer estimates, appraisals, auction records in separate files',
+      '<strong>Appreciation trajectories unknown</strong> \u2014 1780 Gagliano vs 1920 Sartory?',
+      '<strong>Portfolio composition guesswork</strong> \u2014 no systematic diversification analysis',
+      '<strong>Provenance chains are stories</strong> told by dealers, not verified graphs',
+      '$100M fund thesis has <strong>no data infrastructure</strong> for institutional due diligence'
+    ]},
+    after: { headline: 'Every instrument is a node. Every provenance event is an edge.', points: [
+      '<strong>Full provenance graph</strong> \u2014 maker to dealer to owner to exhibition to holder',
+      '<strong>Appreciation analytics</strong> \u2014 88.3% avg tracked with maker-level trajectories',
+      '<strong>Portfolio intelligence</strong> \u2014 diversification by maker, period, type, tier',
+      '<strong>Market signal feed</strong> \u2014 Sotheby\u2019s, Christie\u2019s, Tarisio auction results',
+      '<strong>Institutional-grade reporting</strong> \u2014 PE-ready dashboards, IRR projections',
+      '<strong>Instrument identity cards</strong> \u2014 rich data cards with provenance + appreciation'
+    ]},
+    metrics: [
+      { label: 'Instruments', value: '21', color: '#C9A84C' },
+      { label: 'Portfolio', value: '$5.3M', color: '#48E5A0' },
+      { label: 'Appreciation', value: '88.3%', color: '#F5A623' },
+      { label: 'Turns', value: '32', color: '#4A9EE5' },
+      { label: 'Fund Target', value: '$100M', color: '#A855F7' },
+      { label: 'Span', value: '1689-1960', color: '#C4A8A8' }
+    ],
+    tam: '$1.2B', sam: '$340M', som: '$100M', tamDesc: 'Rare string instrument market (investment grade)',
+    team: [
+      { name: 'Nathan Prier', role: 'PPP \u2014 Principal' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'SomeAI \u2014 COO' }
+    ],
+    customers: ['Prier Violins', 'Institutional Investors', 'Auction Houses', 'String Players', 'Music Schools'],
+    competitors: [
+      { name: 'Charlotte OS', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'Tarisio', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] },
+      { name: 'Sotheby\u2019s', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] },
+      { name: 'Dealer Networks', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Provenance graph', 'Appreciation', 'Fund-grade', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Fund Seeding', price: 'Pre-launch', detail: 'Portfolio digitization\nProvenance verification\nAppreciation modeling', highlight: false },
+      { name: 'Fund Ops', price: '$100M AUM', detail: 'Continuous signals\nAcquisition intelligence\nInvestor reporting', highlight: true },
+      { name: 'Mgmt Fee', price: '1-2% AUM', detail: '$1-2M/yr at scale\nIntelligence-as-service\nInfrastructure moat', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 5, value: '$5.3M' }, { year: 'Year 2', pct: 15, value: '$15M' },
+      { year: 'Year 3', pct: 35, value: '$35M' }, { year: 'Year 5', pct: 70, value: '$70M' },
+      { year: 'Year 10', pct: 100, value: '$100M+' }
+    ],
+    ask: '$100M fund powered by Charlotte intelligence',
+    vision: 'Every rare instrument on earth gets a permanent digital twin \u2014 provenance verified, appreciation tracked, risk quantified.',
+    howItWorks: ['Observe auctions + dealer activity', 'Compile provenance + appreciation graph', 'Deploy institutional intelligence'],
+    gtm: ['Fund Investors', 'Auction Houses', 'Dealer Networks']
+  },
+  toptier: {
+    name: 'Top Tier Moving', short: 'Top Tier Moving',
+    tagline: 'Crew-based interstate moving \u2014 10,606 jobs across 52 states',
+    color: '#3B82F6', hue: 220, industry: 'Moving & Logistics',
+    contract: '$93K / 24mo', gradient: ['#060810', '#0b1120'],
+    before: { headline: '98 crew members. $14.4M billed. $3.5M leaked.', points: [
+      '<strong>$14.4M billed, $10.9M collected</strong> \u2014 75.7% collection = $3.5M leakage',
+      '<strong>98 crew members</strong> dispatched across 52 states via spreadsheet',
+      '<strong>Top 5 generate $6M</strong> while 63 Rookies barely register',
+      '<strong>Collection rates: 23.5% to 95.1%</strong> \u2014 catastrophic variance',
+      '<strong>Route optimization nonexistent</strong> \u2014 assigned by availability, not geography',
+      '<strong>Customer satisfaction unmeasured</strong> \u2014 10,606 jobs, zero feedback loop'
+    ]},
+    after: { headline: 'Every crew member is a baseball card. Every dollar is tracked.', points: [
+      '<strong>Crew baseball cards</strong> \u2014 jobs, revenue, collection rate, tier, state coverage',
+      '<strong>Collection intelligence</strong> \u2014 SIGNAL tracking every invoice with predictions',
+      '<strong>Route optimization</strong> \u2014 match crew to jobs by geography and skill',
+      '<strong>Crew development pipeline</strong> \u2014 Rookie to Starter promotion trajectories',
+      '<strong>Revenue recovery</strong> \u2014 at 90% collection = additional $1.5M/year',
+      '<strong>Customer lifecycle</strong> \u2014 repeat customers, satisfaction, referral patterns'
+    ]},
+    metrics: [
+      { label: 'Jobs', value: '10,606', color: '#3B82F6' },
+      { label: 'Billed', value: '$14.4M', color: '#48E5A0' },
+      { label: 'Crew', value: '98', color: '#F5A623' },
+      { label: 'States', value: '52', color: '#4A9EE5' },
+      { label: 'Collection', value: '75.7%', color: '#E53E3E' },
+      { label: 'Contract', value: '$93K', color: '#C4A8A8' }
+    ],
+    tam: '$22B', sam: '$3.8B', som: '$240M', tamDesc: 'US interstate moving & relocation',
+    team: [
+      { name: 'Top Tier Leadership', role: 'Operations' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CEO' },
+      { name: 'Charles McDaniel', role: 'SomeAI \u2014 COO' }
+    ],
+    customers: ['Direct Consumers', 'Corporate Relocation', 'Military Moves', 'Student Relocations'],
+    competitors: [
+      { name: 'Charlotte OS', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'United Van Lines', cols: ['\u2717', '\u2713', '\u2717', '\u2717'] },
+      { name: 'Bellhops', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'PODS', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Invisible OS', 'Collection intel', 'Crew analytics', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Foundation', price: '$2,000/mo', detail: 'Months 1\u20136\nCrew graph + job signals\nCollection baseline', highlight: false },
+      { name: 'Operations', price: '$4,500/mo', detail: 'Months 7\u201324\nRoute optimization\nCrew development', highlight: true },
+      { name: 'Total', price: '$93K', detail: '24-month partnership\n+ performance bonuses\nROI from collection alone', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 10, value: '$93K' }, { year: 'Year 2', pct: 28, value: '$380K' },
+      { year: 'Year 3', pct: 48, value: '$1.5M' }, { year: 'Year 5', pct: 72, value: '$6M' },
+      { year: 'Year 10', pct: 100, value: '$30M+' }
+    ],
+    ask: '$93,000 over 24 months (ROI: $1.5M+ recovered)',
+    vision: 'Every moving truck becomes a node in a national logistics graph \u2014 crew observed, routes optimized, revenue leakage eliminated.',
+    howItWorks: ['Observe 98 crew + 10K+ job signals', 'Compile crew + collection graph', 'Deploy invisible route intelligence'],
+    gtm: ['Direct-to-Consumer', 'Corporate Relocation', 'Franchise Networks']
+  },
+  sounder: {
+    name: 'Sounder', short: 'Sounder',
+    tagline: 'Unified swine genetics infrastructure \u2014 farm by farm',
+    color: '#A855F7', hue: 270, industry: 'Swine Genetics',
+    contract: 'Internal', gradient: ['#0a0612', '#14081e'],
+    before: { headline: 'Three registries. 77,000 breeders. Completely disconnected.', points: [
+      '<strong>NSR, CPS, Tamworth</strong> each maintain separate databases',
+      '<strong>77,982 breeders</strong> tracked across registries under different identifiers',
+      '<strong>Pedigree lookup is manual</strong> \u2014 one registry at a time',
+      '<strong>Crossbred animals have no pedigree system</strong> \u2014 fastest-growing segment untracked',
+      '<strong>Farm-level operations use fringe software</strong> \u2014 GesDate, spreadsheets, nothing',
+      '<strong>$1.13M tracked sales</strong> but no analytics connecting genetics to value'
+    ]},
+    after: { headline: 'The operating system for American swine genetics. Farm by farm.', points: [
+      '<strong>Unified pedigree platform</strong> \u2014 NSR + CPS + Tamworth in one graph',
+      '<strong>401,788 KRF facts</strong> \u2014 the largest swine knowledge graph ever built',
+      '<strong>Crossbred ancestral tree</strong> \u2014 AI-built family trees for unregistered animals',
+      '<strong>Farm-by-farm digital twins</strong> \u2014 each operation as a subgraph',
+      '<strong>Genetic prediction engine</strong> \u2014 mating recommendations from pedigree analysis',
+      '<strong>BarnOS</strong> \u2014 embedded OS replacing GesDate with invisible intelligence'
+    ]},
+    metrics: [
+      { label: 'Registries', value: '3', color: '#A855F7' },
+      { label: 'Breeders', value: '77,982', color: '#48E5A0' },
+      { label: 'KRF Facts', value: '401K', color: '#F5A623' },
+      { label: 'Sales', value: '$1.13M', color: '#4A9EE5' },
+      { label: 'KRF Files', value: '11', color: '#E53E3E' },
+      { label: 'Lines', value: '6,009', color: '#C4A8A8' }
+    ],
+    tam: '$8.2B', sam: '$1.4B', som: '$180M', tamDesc: 'US livestock genetics & farm management',
+    team: [
+      { name: 'Charles McDaniel', role: 'Sounder \u2014 CEO' },
+      { name: 'Jack Richard', role: 'SomeAI \u2014 CTO' },
+      { name: 'Clay Zwilling', role: 'NSR \u2014 CEO' },
+      { name: 'Eric Trogdon', role: 'First Farm Partner' }
+    ],
+    customers: ['NSR', 'CPS', 'Tamworth Assoc', 'Wendt Group', 'SC Online Sales', 'Individual Breeders'],
+    competitors: [
+      { name: 'Charlotte (Sounder)', cols: ['\u2713', '\u2713', '\u2713', '\u2713'] },
+      { name: 'ShowPig.com', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'GesDate', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] },
+      { name: 'Breed Registries', cols: ['\u2717', '\u2717', '\u2717', '\u2717'] }
+    ],
+    compHeaders: ['Cross-registry', 'Crossbred', 'Farm-level OS', 'Bespoke'],
+    model: { tiers: [
+      { name: 'Partners', price: '$3-7.5K/mo', detail: 'Wendt, SC Online\nAuction intelligence\nPedigree integration', highlight: false },
+      { name: 'BarnOS', price: '$500-2K/mo', detail: 'Per-farm deployment\nDigital twin + genetics\nInvisible to farmer', highlight: true },
+      { name: 'Industry Hub', price: '$10M+ ARR', detail: 'Full saturation\nEvery farm connected\nGenetics + markets unified', highlight: false }
+    ]},
+    projections: [
+      { year: 'Year 1', pct: 8, value: '$291K' }, { year: 'Year 2', pct: 22, value: '$1.2M' },
+      { year: 'Year 3', pct: 42, value: '$3.5M' }, { year: 'Year 5', pct: 68, value: '$12M' },
+      { year: 'Year 10', pct: 100, value: '$50M+' }
+    ],
+    ask: 'Walking farm-by-farm. The swine industry pays for itself.',
+    vision: 'Every pig born in America is a node that connects genetics, performance, and value across every breed, registry, and farm \u2014 invisibly.',
+    howItWorks: ['Walk farm by farm \u2014 observe', 'Compile unified genetics graph', 'Deploy BarnOS \u2014 invisible'],
+    gtm: ['Farm-by-Farm', 'Registry Partnerships', 'Auction Platforms']
+  }
+};
+
+// ============================================================
+// NARRATIVE ARCS
+// ============================================================
+var ARCS = {
+  charlotte: {
+    name: 'Charlotte Arc', desc: 'Category creation \u2014 thesis first, before/after as core',
+    color: '#E53E3E',
+    slides: ['Cover','Vision','BeforeAfter','Problem','Solution','HowItWorks','Traction','CustomerProof','Market','BusinessModel','Competitive','Team','Financials','Ask','Closing']
+  },
+  infrastructure: {
+    name: 'Infrastructure Arc', desc: 'Platform play \u2014 architecture forward, moat depth',
+    color: '#A855F7',
+    slides: ['Cover','Problem','BeforeAfter','Vision','Solution','HowItWorks','Traction','Market','CustomerProof','Competitive','BusinessModel','Team','Financials','Ask','Closing']
+  },
+  seed: {
+    name: 'Seed Arc', desc: 'Problem-solution \u2014 urgency first, team credibility',
+    color: '#48E5A0',
+    slides: ['Cover','Problem','Solution','BeforeAfter','HowItWorks','Traction','Market','Team','Ask','Closing']
+  }
+};
+
+var SLIDE_COLORS = {
+  Cover:'#E53E3E', Vision:'#A855F7', Problem:'#F5A623', Solution:'#48E5A0',
+  HowItWorks:'#4A9EE5', BeforeAfter:'#ED64A6', Traction:'#48E5A0',
+  CustomerProof:'#2DD4BF', Market:'#F5A623', BusinessModel:'#E53E3E',
+  Competitive:'#C4A8A8', Team:'#4A9EE5', Financials:'#48E5A0',
+  Ask:'#E53E3E', Closing:'#C4A8A8'
+};
+
+// ============================================================
+// STATE & INIT
+// ============================================================
+var currentBiz = 'isg', currentArc = 'charlotte';
+
+function init() {
+  renderSidebar(); renderArcTabs(); selectBiz('isg'); selectArc('charlotte');
+}
+
+function renderSidebar() {
+  var list = document.getElementById('biz-list');
+  list.innerHTML = Object.keys(BIZ).map(function(key) {
+    var b = BIZ[key];
+    return '<button class="biz-btn" data-key="' + key + '" onclick="selectBiz(\'' + key + '\')">' +
+      '<div class="biz-dot" style="background:' + b.color + ';color:' + b.color + '"></div>' +
+      '<div><div class="biz-name">' + b.short + '</div>' +
+      '<div class="biz-meta"><span class="biz-detail">' + b.contract + '</span>' +
+      '<span class="biz-industry">' + b.industry + '</span></div></div>' +
+    '</button>';
+  }).join('');
+}
+
+function renderArcTabs() {
+  document.getElementById('arc-tabs').innerHTML = Object.keys(ARCS).map(function(key) {
+    var a = ARCS[key];
+    return '<button class="arc-tab" data-arc="' + key + '" onclick="selectArc(\'' + key + '\')">' + a.name + '</button>';
+  }).join('');
+}
+
+function selectBiz(key) {
+  currentBiz = key; var b = BIZ[key];
+  document.getElementById('biz-headline').textContent = b.short;
+  document.getElementById('biz-headline').style.color = b.color;
+  document.getElementById('biz-tagline').textContent = b.tagline;
+  // Set CSS custom properties for business theme
+  var r = document.documentElement;
+  r.style.setProperty('--biz-h', b.hue);
+  r.style.setProperty('--biz-s', '60%');
+  r.style.setProperty('--biz-l', '55%');
+  // Update neural network hue
+  if (window.setNeuralHue) window.setNeuralHue(b.hue);
+  document.querySelectorAll('.biz-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.key === key);
+  });
+  renderDeck();
+}
+
+function selectArc(key) {
+  currentArc = key;
+  document.querySelectorAll('.arc-tab').forEach(function(t) { t.classList.toggle('active', t.dataset.arc === key); });
+  renderDeck();
+}
+
+function renderDeck() {
+  var b = BIZ[currentBiz], arc = ARCS[currentArc], deck = document.getElementById('deck');
+  deck.innerHTML = '<div class="arc-badge" style="background:' + arc.color + '08;border-color:' + arc.color + '22">' +
+    '<div class="arc-badge-dot" style="background:' + arc.color + ';box-shadow:0 0 8px ' + arc.color + '"></div>' +
+    '<span class="arc-badge-name" style="color:' + arc.color + '">' + arc.name + '</span>' +
+    '<span class="arc-badge-desc">' + arc.desc + '</span>' +
+    '<span class="arc-badge-count">' + arc.slides.length + ' slides</span>' +
+  '</div>';
+
+  arc.slides.forEach(function(type, idx) {
+    var col = SLIDE_COLORS[type] || '#888';
+    var iscover = type === 'Cover';
+    var w = document.createElement('div'); w.className = 'slide-wrapper';
+    w.innerHTML = '<div class="slide-header">' +
+      '<div class="slide-num" style="background:' + col + '15;color:' + col + ';border:1px solid ' + col + '22">' + (idx + 1) + '</div>' +
+      '<div class="slide-type">' + type + '</div></div>' +
+      '<div class="slide' + (iscover ? ' cover-slide' : '') + '">' +
+      '<div class="signal-indicator"><div class="signal-dot"></div><div class="signal-dot"></div><div class="signal-dot"></div><span class="signal-label">SIGNAL</span></div>' +
+      renderSlide(type, b) + '</div>';
+    deck.appendChild(w);
+  });
+}
+
+function renderSlide(type, b) {
+  var c = b.color;
+  switch(type) {
+    case 'Cover':
+      return '<div style="text-align:center;position:relative;z-index:1">' +
+        '<div class="industry-badge" style="color:' + c + ';border-color:' + c + '33">' +
+          '<span class="badge-glow" style="background:' + c + '"></span>' + b.industry +
+        '</div>' +
+        '<div style="font-size:48px;font-weight:900;letter-spacing:-3px;color:' + c + ';line-height:1;' +
+          'text-shadow:0 0 80px ' + c + '33">' + b.name + '</div>' +
+        '<div style="font-size:14px;color:var(--text3);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6">' + b.tagline + '</div>' +
+        '<div style="margin-top:24px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap">' +
+          '<span style="font-size:10px;padding:5px 14px;border:1px solid #ED64A633;border-radius:20px;color:#ED64A6;font-weight:600">Before & After Charlotte</span>' +
+          '<span style="font-size:10px;padding:5px 14px;border:1px solid var(--border2);border-radius:20px;color:var(--text4)">' + b.contract + '</span>' +
+        '</div>' +
+        '<div class="krf-badge">(isa ' + b.short.replace(/\s/g, '') + ' CharlotteSubstrate)</div>' +
+      '</div>';
+    case 'Vision':
+      return '<div style="text-align:center;max-width:650px;margin:0 auto;position:relative;z-index:1">' +
+        '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>The Vision</div>' +
+        '<div class="s-hero" style="background:linear-gradient(135deg, ' + c + ', var(--text));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">' + b.vision + '</div>' +
+      '</div>';
+    case 'Problem':
+      return '<div class="s-label" style="color:#E53E3E"><span style="background:#E53E3E"></span>Before Charlotte</div>' +
+        '<div class="s-hero" style="font-size:22px">' + b.before.headline + '</div>' +
+        '<ul class="ba-list" style="margin-top:16px">' + b.before.points.map(function(p) { return '<li>' + p + '</li>'; }).join('') + '</ul>';
+    case 'Solution':
+      return '<div class="s-label" style="color:#48E5A0"><span style="background:#48E5A0"></span>After Charlotte</div>' +
+        '<div class="s-hero" style="font-size:22px">' + b.after.headline + '</div>' +
+        '<ul class="ba-list" style="margin-top:16px">' + b.after.points.map(function(p) { return '<li>' + p + '</li>'; }).join('') + '</ul>';
+    case 'BeforeAfter':
+      return '<div class="s-label" style="color:#ED64A6"><span style="background:#ED64A6"></span>The Transformation</div>' +
+        '<div class="ba-split">' +
+          '<div class="ba-panel ba-before"><div class="ba-label before">Before Charlotte</div><ul class="ba-list">' +
+            b.before.points.slice(0,4).map(function(p) { return '<li>' + p + '</li>'; }).join('') + '</ul></div>' +
+          '<div class="ba-panel ba-after"><div class="ba-label after">After Charlotte</div><ul class="ba-list">' +
+            b.after.points.slice(0,4).map(function(p) { return '<li>' + p + '</li>'; }).join('') + '</ul></div></div>';
+    case 'HowItWorks':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>How Charlotte Works</div>' +
+        '<div class="flow">' + b.howItWorks.map(function(s, i) {
+          var colors = [c, '#F5A623', '#48E5A0'];
+          return '<div class="flow-step" style="background:' + colors[i] + '10;color:' + colors[i] + ';border:1px solid ' + colors[i] + '20">' + s + '</div>' +
+            (i < 2 ? '<div class="flow-arrow">\u2192</div>' : '');
+        }).join('') + '</div>' +
+        '<div class="hw-primitives">' +
+          [['#C4A8A8','\u25CF','NODE'],['#9B7878','\u2194','EDGE'],['#F5A623','\u2261','METRIC'],['#E53E3E','\u26A1','SIGNAL'],['#48E5A0','\u25C6','PROTOCOL']].map(function(p) {
+            return '<div class="hw-prim" style="background:' + p[0] + '0c;color:' + p[0] + ';border:1px solid ' + p[0] + '18">' +
+              '<span style="font-size:14px">' + p[1] + '</span> ' + p[2] + '</div>';
+          }).join('') + '</div>';
+    case 'Traction':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Traction</div>' +
+        '<div class="stat-grid">' + b.metrics.map(function(m) {
+          return '<div class="stat-box"><div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:2px;border-radius:0 0 4px 4px;background:' + m.color + '"></div>' +
+            '<div class="stat-val" style="color:' + m.color + '">' + m.value + '</div><div class="stat-label">' + m.label + '</div></div>';
+        }).join('') + '</div>';
+    case 'Market':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Market Opportunity</div>' +
+        '<div class="s-body" style="margin-bottom:16px">' + b.tamDesc + '</div>' +
+        '<div class="tam-wrap"><div class="tam-circle" style="width:220px;height:220px;background:' + c + '0a;border:1px solid ' + c + '22">' +
+          '<div class="tam-label" style="color:' + c + '">TAM</div><div class="tam-value" style="color:' + c + '">' + b.tam + '</div>' +
+          '<div class="tam-circle" style="width:150px;height:150px;background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.15);margin-top:-4px">' +
+            '<div class="tam-label" style="color:#F5A623">SAM</div><div class="tam-value" style="color:#F5A623;font-size:15px">' + b.sam + '</div>' +
+            '<div class="tam-circle" style="width:85px;height:85px;background:rgba(72,229,160,0.05);border:1px solid rgba(72,229,160,0.15);margin-top:-4px">' +
+              '<div class="tam-label" style="color:#48E5A0">SOM</div><div class="tam-value" style="color:#48E5A0;font-size:12px">' + b.som + '</div>' +
+        '</div></div></div></div>';
+    case 'BusinessModel':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Business Model</div>' +
+        '<div class="pricing">' + b.model.tiers.map(function(t) {
+          return '<div class="pricing-tier' + (t.highlight ? ' highlight' : '') + '" style="' + (t.highlight ? 'border-color:' + c + ';box-shadow:0 0 30px ' + c + '15' : '') + '">' +
+            '<div class="pricing-name" style="color:' + (t.highlight ? c : 'var(--text3)') + '">' + t.name + '</div>' +
+            '<div class="pricing-price">' + t.price + '</div>' +
+            '<div class="pricing-detail">' + t.detail.replace(/\n/g, '<br>') + '</div></div>';
+        }).join('') + '</div>';
+    case 'Competitive':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Competitive Landscape</div>' +
+        '<table class="comp-table"><tr><th></th>' + b.compHeaders.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr>' +
+        b.competitors.map(function(comp, i) {
+          return '<tr><td style="font-weight:700;color:' + (i === 0 ? c : 'var(--text3)') + '">' + comp.name + '</td>' +
+            comp.cols.map(function(v) { return '<td class="' + (v === '\u2713' ? 'check' : 'cross') + '">' + v + '</td>'; }).join('') + '</tr>';
+        }).join('') + '</table>';
+    case 'CustomerProof':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Cross-Domain Validation</div>' +
+        '<div class="s-body">Charlotte isn\u2019t a hypothesis. Deployed across ' + b.customers.length + ' domains \u2014 one substrate models any business.</div>' +
+        '<div class="logo-wall">' + b.customers.map(function(n) { return '<div class="logo-item">' + n + '</div>'; }).join('') + '</div>';
+    case 'Team':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Team</div>' +
+        '<div class="team-grid">' + b.team.map(function(t) {
+          var ini = t.name.split(' ').map(function(w) { return w[0]; }).join('');
+          return '<div class="team-member"><div class="team-initials">' + ini + '</div>' +
+            '<div class="team-name">' + t.name + '</div><div class="team-role">' + t.role + '</div></div>';
+        }).join('') + '</div>';
+    case 'Financials':
+      return '<div class="s-label" style="color:' + c + '"><span style="background:' + c + '"></span>Revenue Trajectory</div>' +
+        '<div class="rev-bars">' + b.projections.map(function(p) {
+          return '<div class="rev-row"><div class="rev-label">' + p.year + '</div>' +
+            '<div class="rev-bar-track"><div class="rev-bar-fill" style="width:' + p.pct + '%;background:linear-gradient(90deg,' + c + ',' + c + '88)"></div></div>' +
+            '<div class="rev-value" style="color:' + c + '">' + p.value + '</div></div>';
+        }).join('') + '</div>';
+    case 'Ask':
+      return '<div style="text-align:center"><div class="s-label" style="color:' + c + ';justify-content:center"><span style="background:' + c + '"></span>The Ask</div>' +
+        '<div class="s-hero" style="font-size:34px;color:' + c + ';text-shadow:0 0 60px ' + c + '22">' + b.ask + '</div>' +
+        '<div class="s-subhead" style="margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto">Charlotte deploys invisible. The business never changes how it works. It just becomes observable.</div></div>';
+    case 'Closing':
+      return '<div style="text-align:center"><div style="font-size:40px;font-weight:900;letter-spacing:-2px;color:' + c + ';text-shadow:0 0 80px ' + c + '22">' + b.name + '</div>' +
+        '<div style="font-size:13px;color:var(--text3);margin-top:10px">' + b.tagline + '</div>' +
+        '<div class="krf-badge" style="margin-top:16px">(containerOperational ' + b.short.replace(/\s/g, '') + 'Substrate)</div>' +
+        '<div style="margin-top:16px;font-size:10px;color:var(--text4)">Powered by Charlotte OS \u2014 SomeAI Research Lab</div></div>';
+    default:
+      return '<div style="text-align:center;color:var(--text4)">' + type + '</div>';
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+;;; BusinessEntity and ConceptCluster Nodes
+;;; Clients, partners, prospective clients, thematic clusters
+
+(in-microtheory KnowledgeGraphMt)
+
+(isa biz_allstatemanufacturing BusinessEntity)
+(hasLabel biz_allstatemanufacturing "Allstate Manufacturing")
+
+(isa biz_cardvault BusinessEntity)
+(hasLabel biz_cardvault "Cardvault")
+
+(isa biz_gesdate BusinessEntity)
+(hasLabel biz_gesdate "Gesdate")
+
+(isa biz_industrialservicegroup BusinessEntity)
+(hasLabel biz_industrialservicegroup "Industrial Service Group")
+
+(isa biz_lineleap BusinessEntity)
+(hasLabel biz_lineleap "Lineleap")
+
+(isa biz_sconlinesales BusinessEntity)
+(hasLabel biz_sconlinesales "Sc Online Sales")
+
+(isa biz_serengeti BusinessEntity)
+(hasLabel biz_serengeti "Serengeti")
+
+(isa biz_sounder BusinessEntity)
+(hasLabel biz_sounder "Sounder")
+
+(isa biz_toptiermoving BusinessEntity)
+(hasLabel biz_toptiermoving "Top Tier Moving")
+
+(isa biz_violins BusinessEntity)
+(hasLabel biz_violins "Violins")
+
+(isa biz_wendtgroup BusinessEntity)
+(hasLabel biz_wendtgroup "Wendt Group")
+
+(isa NODE ConceptCluster)
+(hasLabel NODE "NODE")
+(hasDescription NODE "Identity — any uniquely identifiable entity that exists in the graph.")
+
+(isa EDGE ConceptCluster)
+(hasLabel EDGE "EDGE")
+(hasDescription EDGE "Relationship — typed connection between two nodes.")
+
+(isa METRIC ConceptCluster)
+(hasLabel METRIC "METRIC")
+(hasDescription METRIC "Quantitative signal — any measurable property of a node.")
+
+(isa SIGNAL ConceptCluster)
+(hasLabel SIGNAL "SIGNAL")
+(hasDescription SIGNAL "Event — a timestamped observation emitted by a node.")
+
+(isa PROTOCOL ConceptCluster)
+(hasLabel PROTOCOL "PROTOCOL")
+(hasDescription PROTOCOL "Rule — business logic, constraints, and behavioral contracts.")
+
+(isa cat_root ConceptCluster)
+(hasLabel cat_root "Root")
+(hasDescription cat_root "Charlotte docs category: root")
+
+(isa cat_agent ConceptCluster)
+(hasLabel cat_agent "Agent")
+(hasDescription cat_agent "Charlotte docs category: agent")
+
+(isa cat_artifact ConceptCluster)
+(hasLabel cat_artifact "Artifact")
+(hasDescription cat_artifact "Charlotte docs category: artifact")
+
+(isa cat_people ConceptCluster)
+(hasLabel cat_people "People")
+(hasDescription cat_people "Charlotte docs category: people")
+
+(isa cat_resonance ConceptCluster)
+(hasLabel cat_resonance "Resonance")
+(hasDescription cat_resonance "Charlotte docs category: resonance")
+
