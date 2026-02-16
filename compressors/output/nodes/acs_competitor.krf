@@ -1,0 +1,1067 @@
+;;; ================================================================
+;;; COMPRESSOR / OUTPUT / NODES / ACS COMPETITOR INTELLIGENCE
+;;; Air Compressor Services (aircompressorservices.com) — full
+;;; product catalog with pricing for Charlotte price matching.
+;;; PRIORITY TARGET — Jim Richard: "we need them out of business."
+;;; ================================================================
+;;;
+;;; ACS THREAT ANALYSIS:
+;;;   - Founded 2012, Greenville SC by Neal Shade
+;;;   - Inc. 5000 two consecutive years (#2645 in 2025)
+;;;   - 168% three-year growth (2020-2022), 56% growth 2023
+;;;   - 43-69 employees, 4 warehouses + 5th planned
+;;;   - New world HQ under construction near I-85 / FedEx hub
+;;;   - Claims 75% of Fortune 500 manufacturing as customers
+;;;   - 200+ compressor brands serviced
+;;;   - Sells OWN private-label parts (filters, separators, oil)
+;;;   - Directly competes with ISG on aftermarket parts & service
+;;;   - Shopify e-commerce platform (aircompressorservices.myshopify.com)
+;;;
+;;; WHY THIS MATTERS TO ISG:
+;;;   Aftermarket parts and service contracts are ISG's highest-margin
+;;;   revenue stream. ACS is systematically attacking this segment with:
+;;;   1. Lower-priced private-label replacement parts
+;;;   2. National e-commerce reach vs ISG's regional footprint
+;;;   3. 24/7 emergency service competing for service contracts
+;;;   4. Airend rebuilds with 2-year warranty (matching OEM)
+;;;   5. Shopify-based checkout vs ISG's phone/email ordering
+;;;
+;;; CHARLOTTE PROTOCOL:
+;;;   Monitor every ACS SKU that overlaps with ISG's parts catalog.
+;;;   Fire CompetitorAlert SIGNAL when ACS undercuts ISG pricing.
+;;;   Track ACS's private-label substitutes for OEM parts ISG sells.
+
+(in-microtheory CompressorOutputMt)
+
+;;; ============================================================
+;;; ACS PRIVATE-LABEL PRODUCTS
+;;; ============================================================
+;;; These are ACS's own-brand replacements for OEM parts.
+;;; They represent the biggest threat — customers switch from
+;;; buying OEM parts through ISG to buying ACS generics.
+
+;; ACS Oil Filters (private-label)
+(isa ACS-OF100 CompressorPart)
+(hasProductName ACS-OF100 "ACS Oil Filter OF-100")
+(hasModelNumber ACS-OF100 "OF-100")
+(hasBrand ACS-OF100 "ACS")
+(hasListPrice ACS-OF100 41.00)
+(listedBy ACS-OF100 AirCompressorServices)
+(hasPriceAsOf ACS-OF100 "2026-02-16")
+(comment ACS-OF100 "Private-label oil filter. Cross-references to IR/Atlas Copco OEM filters. ISG sells the OEM equivalent.")
+
+(isa ACS-OF200 CompressorPart)
+(hasProductName ACS-OF200 "ACS Oil Filter OF-200")
+(hasModelNumber ACS-OF200 "OF-200")
+(hasBrand ACS-OF200 "ACS")
+(hasListPrice ACS-OF200 38.00)
+(listedBy ACS-OF200 AirCompressorServices)
+
+(isa ACS-OF300 CompressorPart)
+(hasProductName ACS-OF300 "ACS Oil Filter OF-300")
+(hasModelNumber ACS-OF300 "OF-300")
+(hasBrand ACS-OF300 "ACS")
+(hasListPrice ACS-OF300 62.00)
+(listedBy ACS-OF300 AirCompressorServices)
+
+(isa ACS-OF400 CompressorPart)
+(hasProductName ACS-OF400 "ACS Oil Filter OF-400")
+(hasModelNumber ACS-OF400 "OF-400")
+(hasBrand ACS-OF400 "ACS")
+(hasListPrice ACS-OF400 51.50)
+(listedBy ACS-OF400 AirCompressorServices)
+
+(isa ACS-OF700 CompressorPart)
+(hasProductName ACS-OF700 "ACS Oil Filter OF-700")
+(hasModelNumber ACS-OF700 "OF-700")
+(hasBrand ACS-OF700 "ACS")
+(hasListPrice ACS-OF700 46.50)
+(listedBy ACS-OF700 AirCompressorServices)
+
+(isa ACS-OF1004 CompressorPart)
+(hasProductName ACS-OF1004 "ACS Oil Filter OF-1004")
+(hasModelNumber ACS-OF1004 "OF-1004")
+(hasBrand ACS-OF1004 "ACS")
+(hasListPrice ACS-OF1004 41.00)
+(listedBy ACS-OF1004 AirCompressorServices)
+
+;; ACS Separators (private-label)
+(isa ACS-SEP1019 CompressorPart)
+(hasProductName ACS-SEP1019 "ACS Air/Oil Separator SEP-1019")
+(hasModelNumber ACS-SEP1019 "SEP-1019")
+(hasBrand ACS-SEP1019 "ACS")
+(hasListPrice ACS-SEP1019 179.50)
+(listedBy ACS-SEP1019 AirCompressorServices)
+
+(isa ACS-SEP1023 CompressorPart)
+(hasProductName ACS-SEP1023 "ACS Air/Oil Separator SEP-1023")
+(hasModelNumber ACS-SEP1023 "SEP-1023")
+(hasBrand ACS-SEP1023 "ACS")
+(hasListPrice ACS-SEP1023 140.50)
+(listedBy ACS-SEP1023 AirCompressorServices)
+
+(isa ACS-SEP1049 CompressorPart)
+(hasProductName ACS-SEP1049 "ACS Air/Oil Separator SEP-1049")
+(hasModelNumber ACS-SEP1049 "SEP-1049")
+(hasBrand ACS-SEP1049 "ACS")
+(hasListPrice ACS-SEP1049 136.00)
+(listedBy ACS-SEP1049 AirCompressorServices)
+
+;; ACS Synthetic Oil (private-label)
+(isa ACS-Ultimate12K CompressorLubricant)
+(hasProductName ACS-Ultimate12K "ACS Ultimate 12K Synthetic Compressor Oil 5 Gallon")
+(hasModelNumber ACS-Ultimate12K "ACS Ultimate 12K-005")
+(hasBrand ACS-Ultimate12K "ACS")
+(hasListPrice ACS-Ultimate12K 544.00)
+(listedBy ACS-Ultimate12K AirCompressorServices)
+(comment ACS-Ultimate12K "ACS private-label 12,000 hour synthetic oil. Priced ABOVE most OEM oils — positioning as premium aftermarket. Compare to IR Ultra Coolant $500.50, Sullair 250022-669 $500.50.")
+
+;;; ============================================================
+;;; ACS — INGERSOLL RAND PARTS (OEM)
+;;; ============================================================
+;;; These are OEM IR parts ACS sells — direct comparison to ISG pricing.
+
+;; IR Oil Filters
+(isa ACS-IR-54672654 CompressorPart)
+(hasProductName ACS-IR-54672654 "Ingersoll Rand Oil Filter 54672654")
+(hasModelNumber ACS-IR-54672654 "54672654")
+(hasBrand ACS-IR-54672654 IngersollRand)
+(hasListPrice ACS-IR-54672654 56.00)
+(listedBy ACS-IR-54672654 AirCompressorServices)
+(hasPriceAsOf ACS-IR-54672654 "2026-02-16")
+
+(isa ACS-IR-39329602 CompressorPart)
+(hasProductName ACS-IR-39329602 "Ingersoll Rand Oil Filter 39329602")
+(hasModelNumber ACS-IR-39329602 "39329602")
+(hasBrand ACS-IR-39329602 IngersollRand)
+(hasListPrice ACS-IR-39329602 42.50)
+(listedBy ACS-IR-39329602 AirCompressorServices)
+
+(isa ACS-IR-24900433 CompressorPart)
+(hasProductName ACS-IR-24900433 "Ingersoll Rand Oil Filter 24900433")
+(hasModelNumber ACS-IR-24900433 "24900433")
+(hasBrand ACS-IR-24900433 IngersollRand)
+(hasListPrice ACS-IR-24900433 231.00)
+(listedBy ACS-IR-24900433 AirCompressorServices)
+
+(isa ACS-IR-39911631 CompressorPart)
+(hasProductName ACS-IR-39911631 "Ingersoll Rand Oil Filter 39911631")
+(hasModelNumber ACS-IR-39911631 "39911631")
+(hasBrand ACS-IR-39911631 IngersollRand)
+(hasListPrice ACS-IR-39911631 94.00)
+(listedBy ACS-IR-39911631 AirCompressorServices)
+
+(isa ACS-IR-36845303 CompressorPart)
+(hasProductName ACS-IR-36845303 "Ingersoll Rand Oil Filter 36845303")
+(hasModelNumber ACS-IR-36845303 "36845303")
+(hasBrand ACS-IR-36845303 IngersollRand)
+(hasListPrice ACS-IR-36845303 25.00)
+(listedBy ACS-IR-36845303 AirCompressorServices)
+
+(isa ACS-IR-23424922 CompressorPart)
+(hasProductName ACS-IR-23424922 "Ingersoll Rand Coolant Filter 23424922")
+(hasModelNumber ACS-IR-23424922 "23424922")
+(hasBrand ACS-IR-23424922 IngersollRand)
+(hasListPrice ACS-IR-23424922 364.50)
+(listedBy ACS-IR-23424922 AirCompressorServices)
+
+;; IR Air Filters
+(isa ACS-IR-88171913 CompressorPart)
+(hasProductName ACS-IR-88171913 "Ingersoll Rand Air Filter 88171913")
+(hasModelNumber ACS-IR-88171913 "88171913")
+(hasBrand ACS-IR-88171913 IngersollRand)
+(hasListPrice ACS-IR-88171913 41.00)
+(listedBy ACS-IR-88171913 AirCompressorServices)
+
+(isa ACS-IR-89295976 CompressorPart)
+(hasProductName ACS-IR-89295976 "Ingersoll Rand Air Filter 89295976")
+(hasModelNumber ACS-IR-89295976 "89295976")
+(hasBrand ACS-IR-89295976 IngersollRand)
+(hasListPrice ACS-IR-89295976 42.50)
+(listedBy ACS-IR-89295976 AirCompressorServices)
+
+(isa ACS-IR-39708466 CompressorPart)
+(hasProductName ACS-IR-39708466 "Ingersoll Rand Air Filter 39708466")
+(hasModelNumber ACS-IR-39708466 "39708466")
+(hasBrand ACS-IR-39708466 IngersollRand)
+(hasListPrice ACS-IR-39708466 44.50)
+(listedBy ACS-IR-39708466 AirCompressorServices)
+
+(isa ACS-IR-47593353001 CompressorPart)
+(hasProductName ACS-IR-47593353001 "Ingersoll Rand Air Filter 47593353001")
+(hasModelNumber ACS-IR-47593353001 "47593353001")
+(hasBrand ACS-IR-47593353001 IngersollRand)
+(hasListPrice ACS-IR-47593353001 85.00)
+(listedBy ACS-IR-47593353001 AirCompressorServices)
+
+(isa ACS-IR-32170979 CompressorPart)
+(hasProductName ACS-IR-32170979 "Ingersoll Rand Air Filter 32170979")
+(hasModelNumber ACS-IR-32170979 "32170979")
+(hasBrand ACS-IR-32170979 IngersollRand)
+(hasListPrice ACS-IR-32170979 28.00)
+(listedBy ACS-IR-32170979 AirCompressorServices)
+
+(isa ACS-IR-32012957 CompressorPart)
+(hasProductName ACS-IR-32012957 "Ingersoll Rand Air Filter 32012957")
+(hasModelNumber ACS-IR-32012957 "32012957")
+(hasBrand ACS-IR-32012957 IngersollRand)
+(hasListPrice ACS-IR-32012957 47.50)
+(listedBy ACS-IR-32012957 AirCompressorServices)
+
+(isa ACS-IR-22203095 CompressorPart)
+(hasProductName ACS-IR-22203095 "Ingersoll Rand Air Filter 22203095")
+(hasModelNumber ACS-IR-22203095 "22203095")
+(hasBrand ACS-IR-22203095 IngersollRand)
+(hasListPrice ACS-IR-22203095 161.00)
+(listedBy ACS-IR-22203095 AirCompressorServices)
+
+(isa ACS-IR-54672530 CompressorPart)
+(hasProductName ACS-IR-54672530 "Ingersoll Rand Air Filter 54672530")
+(hasModelNumber ACS-IR-54672530 "54672530")
+(hasBrand ACS-IR-54672530 IngersollRand)
+(hasListPrice ACS-IR-54672530 198.00)
+(listedBy ACS-IR-54672530 AirCompressorServices)
+
+(isa ACS-IR-48958201 CompressorPart)
+(hasProductName ACS-IR-48958201 "Ingersoll Rand Air Filter 48958201")
+(hasModelNumber ACS-IR-48958201 "48958201")
+(hasBrand ACS-IR-48958201 IngersollRand)
+(hasListPrice ACS-IR-48958201 70.50)
+(listedBy ACS-IR-48958201 AirCompressorServices)
+
+(isa ACS-IR-23708423 CompressorPart)
+(hasProductName ACS-IR-23708423 "Ingersoll Rand Air Filter 23708423")
+(hasModelNumber ACS-IR-23708423 "23708423")
+(hasBrand ACS-IR-23708423 IngersollRand)
+(hasListPrice ACS-IR-23708423 352.50)
+(listedBy ACS-IR-23708423 AirCompressorServices)
+
+;; IR Separators
+(isa ACS-IR-Sep-54749247 CompressorPart)
+(hasProductName ACS-IR-Sep-54749247 "Ingersoll Rand Separator 54749247")
+(hasModelNumber ACS-IR-Sep-54749247 "54749247")
+(hasBrand ACS-IR-Sep-54749247 IngersollRand)
+(hasListPrice ACS-IR-Sep-54749247 189.00)
+(listedBy ACS-IR-Sep-54749247 AirCompressorServices)
+
+(isa ACS-IR-Sep-24121212 CompressorPart)
+(hasProductName ACS-IR-Sep-24121212 "Ingersoll Rand Separator 24121212")
+(hasModelNumber ACS-IR-Sep-24121212 "24121212")
+(hasBrand ACS-IR-Sep-24121212 IngersollRand)
+(hasListPrice ACS-IR-Sep-24121212 149.50)
+(listedBy ACS-IR-Sep-24121212 AirCompressorServices)
+
+(isa ACS-IR-Sep-24900342 CompressorPart)
+(hasProductName ACS-IR-Sep-24900342 "Ingersoll Rand Separator 24900342")
+(hasModelNumber ACS-IR-Sep-24900342 "24900342")
+(hasBrand ACS-IR-Sep-24900342 IngersollRand)
+(hasListPrice ACS-IR-Sep-24900342 189.00)
+(listedBy ACS-IR-Sep-24900342 AirCompressorServices)
+
+(isa ACS-IR-Sep-22388045 CompressorPart)
+(hasProductName ACS-IR-Sep-22388045 "Ingersoll Rand Separator 22388045")
+(hasModelNumber ACS-IR-Sep-22388045 "22388045")
+(hasBrand ACS-IR-Sep-22388045 IngersollRand)
+(hasListPrice ACS-IR-Sep-22388045 145.50)
+(listedBy ACS-IR-Sep-22388045 AirCompressorServices)
+
+(isa ACS-IR-Sep-36845303 CompressorPart)
+(hasProductName ACS-IR-Sep-36845303 "Ingersoll Rand Separator 36845303")
+(hasModelNumber ACS-IR-Sep-36845303 "36845303")
+(hasBrand ACS-IR-Sep-36845303 IngersollRand)
+(hasListPrice ACS-IR-Sep-36845303 239.50)
+(listedBy ACS-IR-Sep-36845303 AirCompressorServices)
+
+(isa ACS-IR-Sep-23708423 CompressorPart)
+(hasProductName ACS-IR-Sep-23708423 "Ingersoll Rand Separator 23708423")
+(hasModelNumber ACS-IR-Sep-23708423 "23708423")
+(hasBrand ACS-IR-Sep-23708423 IngersollRand)
+(hasListPrice ACS-IR-Sep-23708423 346.00)
+(listedBy ACS-IR-Sep-23708423 AirCompressorServices)
+
+;; IR Oils
+(isa ACS-IR-SSRUltra CompressorLubricant)
+(hasProductName ACS-IR-SSRUltra "Ingersoll Rand SSR Ultra Coolant 5 Gallon")
+(hasModelNumber ACS-IR-SSRUltra "SSR Ultra Coolant")
+(hasBrand ACS-IR-SSRUltra IngersollRand)
+(hasListPrice ACS-IR-SSRUltra 500.50)
+(listedBy ACS-IR-SSRUltra AirCompressorServices)
+
+(isa ACS-IR-38459582 CompressorLubricant)
+(hasProductName ACS-IR-38459582 "Ingersoll Rand Synthetic Oil 38459582 5 Gallon")
+(hasModelNumber ACS-IR-38459582 "38459582")
+(hasBrand ACS-IR-38459582 IngersollRand)
+(hasListPrice ACS-IR-38459582 500.50)
+(listedBy ACS-IR-38459582 AirCompressorServices)
+
+(isa ACS-IR-UltraPlus CompressorLubricant)
+(hasProductName ACS-IR-UltraPlus "Ingersoll Rand Ultra Plus Coolant 5 Gallon")
+(hasModelNumber ACS-IR-UltraPlus "Ultra Plus Coolant 005")
+(hasBrand ACS-IR-UltraPlus IngersollRand)
+(hasListPrice ACS-IR-UltraPlus 545.00)
+(listedBy ACS-IR-UltraPlus AirCompressorServices)
+
+(isa ACS-IR-ProTec CompressorLubricant)
+(hasProductName ACS-IR-ProTec "Ingersoll Rand Pro-Tec Oil 5 Gallon")
+(hasModelNumber ACS-IR-ProTec "Pro-Tec")
+(hasBrand ACS-IR-ProTec IngersollRand)
+(hasListPrice ACS-IR-ProTec 261.00)
+(listedBy ACS-IR-ProTec AirCompressorServices)
+
+(isa ACS-IR-39433735 CompressorLubricant)
+(hasProductName ACS-IR-39433735 "Ingersoll Rand Synthetic Oil 39433735 5 Gallon")
+(hasModelNumber ACS-IR-39433735 "39433735")
+(hasBrand ACS-IR-39433735 IngersollRand)
+(hasListPrice ACS-IR-39433735 500.50)
+(listedBy ACS-IR-39433735 AirCompressorServices)
+
+(isa ACS-IR-92692284 CompressorLubricant)
+(hasProductName ACS-IR-92692284 "Ingersoll Rand Synthetic Oil 92692284 1 Gallon")
+(hasModelNumber ACS-IR-92692284 "92692284")
+(hasBrand ACS-IR-92692284 IngersollRand)
+(hasListPrice ACS-IR-92692284 138.00)
+(listedBy ACS-IR-92692284 AirCompressorServices)
+
+(isa ACS-IR-T30Select CompressorLubricant)
+(hasProductName ACS-IR-T30Select "Ingersoll Rand T30 All Season Select 1 Gallon")
+(hasModelNumber ACS-IR-T30Select "T30-All-Season-Select-001")
+(hasBrand ACS-IR-T30Select IngersollRand)
+(hasListPrice ACS-IR-T30Select 128.00)
+(listedBy ACS-IR-T30Select AirCompressorServices)
+
+;; IR Maintenance Kits
+(isa ACS-IR-38462750 CompressorPart)
+(hasProductName ACS-IR-38462750 "Ingersoll Rand 2000/8000 Hour Maintenance Kit")
+(hasModelNumber ACS-IR-38462750 "38462750")
+(hasBrand ACS-IR-38462750 IngersollRand)
+(hasListPrice ACS-IR-38462750 623.00)
+(listedBy ACS-IR-38462750 AirCompressorServices)
+
+(isa ACS-IR-UP6PM25 CompressorPart)
+(hasProductName ACS-IR-UP6PM25 "Ingersoll Rand UP6-25 PM Bundle")
+(hasModelNumber ACS-IR-UP6PM25 "ACSUP6PM-25HP")
+(hasBrand ACS-IR-UP6PM25 IngersollRand)
+(hasListPrice ACS-IR-UP6PM25 708.00)
+(listedBy ACS-IR-UP6PM25 AirCompressorServices)
+(comment ACS-IR-UP6PM25 "ACS-branded PM bundle for IR UP6-25HP. Competes directly with ISG service contracts.")
+
+(isa ACS-IR-UP6PM20 CompressorPart)
+(hasProductName ACS-IR-UP6PM20 "Ingersoll Rand UP6-20 PM Bundle")
+(hasModelNumber ACS-IR-UP6PM20 "ACSUP6PM-20HP")
+(hasBrand ACS-IR-UP6PM20 IngersollRand)
+(hasListPrice ACS-IR-UP6PM20 708.00)
+(listedBy ACS-IR-UP6PM20 AirCompressorServices)
+
+(isa ACS-IR-UP6PM30 CompressorPart)
+(hasProductName ACS-IR-UP6PM30 "Ingersoll Rand UP6-30 PM Bundle")
+(hasModelNumber ACS-IR-UP6PM30 "ACSUP6PM-30HP")
+(hasBrand ACS-IR-UP6PM30 IngersollRand)
+(hasListPrice ACS-IR-UP6PM30 708.00)
+(listedBy ACS-IR-UP6PM30 AirCompressorServices)
+
+(isa ACS-IR-UP6PM15C CompressorPart)
+(hasProductName ACS-IR-UP6PM15C "Ingersoll Rand UP6-15C PM Bundle")
+(hasModelNumber ACS-IR-UP6PM15C "ACSUP6PM-15C")
+(hasBrand ACS-IR-UP6PM15C IngersollRand)
+(hasListPrice ACS-IR-UP6PM15C 935.00)
+(listedBy ACS-IR-UP6PM15C AirCompressorServices)
+
+(isa ACS-IR-UP6PM15 CompressorPart)
+(hasProductName ACS-IR-UP6PM15 "Ingersoll Rand UP6-15 PM Bundle")
+(hasModelNumber ACS-IR-UP6PM15 "ACSUP6PM-15HP")
+(hasBrand ACS-IR-UP6PM15 IngersollRand)
+(hasListPrice ACS-IR-UP6PM15 708.00)
+(listedBy ACS-IR-UP6PM15 AirCompressorServices)
+
+;; IR Valves & Parts
+(isa ACS-IR-49816283 CompressorPart)
+(hasProductName ACS-IR-49816283 "Ingersoll Rand Auxiliary Valve 49816283")
+(hasModelNumber ACS-IR-49816283 "49816283")
+(hasBrand ACS-IR-49816283 IngersollRand)
+(hasListPrice ACS-IR-49816283 338.00)
+(listedBy ACS-IR-49816283 AirCompressorServices)
+
+(isa ACS-IR-22872857 CompressorPart)
+(hasProductName ACS-IR-22872857 "Ingersoll Rand Thermo Valve Kit 22872857")
+(hasModelNumber ACS-IR-22872857 "22872857")
+(hasBrand ACS-IR-22872857 IngersollRand)
+(hasListPrice ACS-IR-22872857 609.00)
+(listedBy ACS-IR-22872857 AirCompressorServices)
+
+(isa ACS-IR-32301426 CompressorPart)
+(hasProductName ACS-IR-32301426 "Ingersoll Rand Valve Repair Kit 32301426")
+(hasModelNumber ACS-IR-32301426 "32301426")
+(hasBrand ACS-IR-32301426 IngersollRand)
+(hasListPrice ACS-IR-32301426 231.50)
+(listedBy ACS-IR-32301426 AirCompressorServices)
+
+;; IR Belt
+(isa ACS-IR-95100178 CompressorPart)
+(hasProductName ACS-IR-95100178 "Ingersoll Rand Belt Replacement 95100178")
+(hasModelNumber ACS-IR-95100178 "95100178")
+(hasBrand ACS-IR-95100178 IngersollRand)
+(hasListPrice ACS-IR-95100178 77.00)
+(listedBy ACS-IR-95100178 AirCompressorServices)
+
+(isa ACS-IR-95099461 CompressorPart)
+(hasProductName ACS-IR-95099461 "Ingersoll Rand Belt Replacement 95099461")
+(hasModelNumber ACS-IR-95099461 "95099461")
+(hasBrand ACS-IR-95099461 IngersollRand)
+(hasListPrice ACS-IR-95099461 106.50)
+(listedBy ACS-IR-95099461 AirCompressorServices)
+
+;;; ============================================================
+;;; ACS — ATLAS COPCO PARTS (OEM)
+;;; ============================================================
+
+(isa ACS-AC-1513033701 CompressorPart)
+(hasProductName ACS-AC-1513033701 "Atlas Copco Oil Filter 1513033701")
+(hasModelNumber ACS-AC-1513033701 "1513033701")
+(hasBrand ACS-AC-1513033701 AtlasCopco)
+(hasListPrice ACS-AC-1513033701 43.00)
+(listedBy ACS-AC-1513033701 AirCompressorServices)
+
+(isa ACS-AC-1613610500 CompressorPart)
+(hasProductName ACS-AC-1613610500 "Atlas Copco Oil Filter 1613610500")
+(hasModelNumber ACS-AC-1613610500 "1613610500")
+(hasBrand ACS-AC-1613610500 AtlasCopco)
+(hasListPrice ACS-AC-1613610500 41.00)
+(listedBy ACS-AC-1613610500 AirCompressorServices)
+
+(isa ACS-AC-1625752600 CompressorPart)
+(hasProductName ACS-AC-1625752600 "Atlas Copco Oil Filter 1625752600")
+(hasModelNumber ACS-AC-1625752600 "1625752600")
+(hasBrand ACS-AC-1625752600 AtlasCopco)
+(hasListPrice ACS-AC-1625752600 189.50)
+(listedBy ACS-AC-1625752600 AirCompressorServices)
+
+(isa ACS-AC-1613872000 CompressorPart)
+(hasProductName ACS-AC-1613872000 "Atlas Copco Air Filter 1613872000")
+(hasModelNumber ACS-AC-1613872000 "1613872000")
+(hasBrand ACS-AC-1613872000 AtlasCopco)
+(hasListPrice ACS-AC-1613872000 47.50)
+(listedBy ACS-AC-1613872000 AirCompressorServices)
+
+(isa ACS-AC-1613900100 CompressorPart)
+(hasProductName ACS-AC-1613900100 "Atlas Copco Air Filter 1613900100")
+(hasModelNumber ACS-AC-1613900100 "1613900100")
+(hasBrand ACS-AC-1613900100 AtlasCopco)
+(hasListPrice ACS-AC-1613900100 49.00)
+(listedBy ACS-AC-1613900100 AirCompressorServices)
+
+(isa ACS-AC-1622065800 CompressorPart)
+(hasProductName ACS-AC-1622065800 "Atlas Copco Air Filter 1622065800")
+(hasModelNumber ACS-AC-1622065800 "1622065800")
+(hasBrand ACS-AC-1622065800 AtlasCopco)
+(hasListPrice ACS-AC-1622065800 54.00)
+(listedBy ACS-AC-1622065800 AirCompressorServices)
+
+(isa ACS-AC-Sep-1622087100 CompressorPart)
+(hasProductName ACS-AC-Sep-1622087100 "Atlas Copco Separator 1622087100")
+(hasModelNumber ACS-AC-Sep-1622087100 "1622087100")
+(hasBrand ACS-AC-Sep-1622087100 AtlasCopco)
+(hasListPrice ACS-AC-Sep-1622087100 109.50)
+(listedBy ACS-AC-Sep-1622087100 AirCompressorServices)
+
+(isa ACS-AC-Sep-1626832200 CompressorPart)
+(hasProductName ACS-AC-Sep-1626832200 "Atlas Copco Separator 1626832200")
+(hasModelNumber ACS-AC-Sep-1626832200 "1626832200")
+(hasBrand ACS-AC-Sep-1626832200 AtlasCopco)
+(hasListPrice ACS-AC-Sep-1626832200 218.00)
+(listedBy ACS-AC-Sep-1626832200 AirCompressorServices)
+
+(isa ACS-AC-Sep-1625481101 CompressorPart)
+(hasProductName ACS-AC-Sep-1625481101 "Atlas Copco Separator 1625481101")
+(hasModelNumber ACS-AC-Sep-1625481101 "1625481101")
+(hasBrand ACS-AC-Sep-1625481101 AtlasCopco)
+(hasListPrice ACS-AC-Sep-1625481101 377.50)
+(listedBy ACS-AC-Sep-1625481101 AirCompressorServices)
+
+(isa ACS-AC-Sep-2911006800 CompressorPart)
+(hasProductName ACS-AC-Sep-2911006800 "Atlas Copco Separator 2911006800")
+(hasModelNumber ACS-AC-Sep-2911006800 "2911006800")
+(hasBrand ACS-AC-Sep-2911006800 AtlasCopco)
+(hasListPrice ACS-AC-Sep-2911006800 241.50)
+(listedBy ACS-AC-Sep-2911006800 AirCompressorServices)
+
+;; Atlas Copco Oils
+(isa ACS-AC-RotoExtend CompressorLubricant)
+(hasProductName ACS-AC-RotoExtend "Atlas Copco Roto-Extend Synthetic Oil 5 Gallon")
+(hasModelNumber ACS-AC-RotoExtend "Atlas-Copco-Roto-Extend")
+(hasBrand ACS-AC-RotoExtend AtlasCopco)
+(hasListPrice ACS-AC-RotoExtend 348.00)
+(listedBy ACS-AC-RotoExtend AirCompressorServices)
+
+(isa ACS-AC-1310036838 CompressorLubricant)
+(hasProductName ACS-AC-1310036838 "Atlas Copco Synthetic Oil 1310036838 5 Gallon")
+(hasModelNumber ACS-AC-1310036838 "1310036838")
+(hasBrand ACS-AC-1310036838 AtlasCopco)
+(hasListPrice ACS-AC-1310036838 412.00)
+(listedBy ACS-AC-1310036838 AirCompressorServices)
+
+;; Atlas Copco Kits
+(isa ACS-AC-1310300373 CompressorPart)
+(hasProductName ACS-AC-1310300373 "Atlas Copco 1000 Hour Maintenance Kit")
+(hasModelNumber ACS-AC-1310300373 "1310300373")
+(hasBrand ACS-AC-1310300373 AtlasCopco)
+(hasListPrice ACS-AC-1310300373 608.00)
+(listedBy ACS-AC-1310300373 AirCompressorServices)
+
+(isa ACS-AC-2902016100 CompressorPart)
+(hasProductName ACS-AC-2902016100 "Atlas Copco Unloader Kit 2902016100")
+(hasModelNumber ACS-AC-2902016100 "2902016100")
+(hasBrand ACS-AC-2902016100 AtlasCopco)
+(hasListPrice ACS-AC-2902016100 295.00)
+(listedBy ACS-AC-2902016100 AirCompressorServices)
+
+;;; ============================================================
+;;; ACS — SULLAIR PARTS (OEM)
+;;; ============================================================
+
+(isa ACS-SL-02250155709 CompressorPart)
+(hasProductName ACS-SL-02250155709 "Sullair Oil Filter 02250155-709")
+(hasModelNumber ACS-SL-02250155709 "02250155-709")
+(hasBrand ACS-SL-02250155709 Sullair)
+(hasListPrice ACS-SL-02250155709 136.00)
+(listedBy ACS-SL-02250155709 AirCompressorServices)
+
+(isa ACS-SL-250025526 CompressorPart)
+(hasProductName ACS-SL-250025526 "Sullair Oil Filter 250025-526")
+(hasModelNumber ACS-SL-250025526 "250025-526")
+(hasBrand ACS-SL-250025526 Sullair)
+(hasListPrice ACS-SL-250025526 81.00)
+(listedBy ACS-SL-250025526 AirCompressorServices)
+
+(isa ACS-SL-250025525 CompressorPart)
+(hasProductName ACS-SL-250025525 "Sullair Oil Filter 250025-525")
+(hasModelNumber ACS-SL-250025525 "250025-525")
+(hasBrand ACS-SL-250025525 Sullair)
+(hasListPrice ACS-SL-250025525 79.00)
+(listedBy ACS-SL-250025525 AirCompressorServices)
+
+(isa ACS-SL-88290014484 CompressorPart)
+(hasProductName ACS-SL-88290014484 "Sullair Oil Filter 88290014-484")
+(hasModelNumber ACS-SL-88290014484 "88290014-484")
+(hasBrand ACS-SL-88290014484 Sullair)
+(hasListPrice ACS-SL-88290014484 34.50)
+(listedBy ACS-SL-88290014484 AirCompressorServices)
+
+(isa ACS-SL-250026982 CompressorPart)
+(hasProductName ACS-SL-250026982 "Sullair Oil Filter 250026-982")
+(hasModelNumber ACS-SL-250026982 "250026-982")
+(hasBrand ACS-SL-250026982 Sullair)
+(hasListPrice ACS-SL-250026982 46.50)
+(listedBy ACS-SL-250026982 AirCompressorServices)
+
+(isa ACS-SL-250028032 CompressorPart)
+(hasProductName ACS-SL-250028032 "Sullair Oil Filter 250028-032")
+(hasModelNumber ACS-SL-250028032 "250028-032")
+(hasBrand ACS-SL-250028032 Sullair)
+(hasListPrice ACS-SL-250028032 48.00)
+(listedBy ACS-SL-250028032 AirCompressorServices)
+
+(isa ACS-SL-02250127684 CompressorPart)
+(hasProductName ACS-SL-02250127684 "Sullair Air Filter 02250127-684")
+(hasModelNumber ACS-SL-02250127684 "02250127-684")
+(hasBrand ACS-SL-02250127684 Sullair)
+(hasListPrice ACS-SL-02250127684 92.00)
+(listedBy ACS-SL-02250127684 AirCompressorServices)
+
+(isa ACS-SL-02250125372 CompressorPart)
+(hasProductName ACS-SL-02250125372 "Sullair Air Filter 02250125-372")
+(hasModelNumber ACS-SL-02250125372 "02250125-372")
+(hasBrand ACS-SL-02250125372 Sullair)
+(hasListPrice ACS-SL-02250125372 66.00)
+(listedBy ACS-SL-02250125372 AirCompressorServices)
+
+(isa ACS-SL-88290014485 CompressorPart)
+(hasProductName ACS-SL-88290014485 "Sullair Air Filter 88290014-485")
+(hasModelNumber ACS-SL-88290014485 "88290014-485")
+(hasBrand ACS-SL-88290014485 Sullair)
+(hasListPrice ACS-SL-88290014485 49.00)
+(listedBy ACS-SL-88290014485 AirCompressorServices)
+
+(isa ACS-SL-Sep-250034112 CompressorPart)
+(hasProductName ACS-SL-Sep-250034112 "Sullair Separator 250034-112")
+(hasModelNumber ACS-SL-Sep-250034112 "250034-112")
+(hasBrand ACS-SL-Sep-250034112 Sullair)
+(hasListPrice ACS-SL-Sep-250034112 184.00)
+(listedBy ACS-SL-Sep-250034112 AirCompressorServices)
+
+(isa ACS-SL-Sep-02250106791 CompressorPart)
+(hasProductName ACS-SL-Sep-02250106791 "Sullair Separator 02250106-791")
+(hasModelNumber ACS-SL-Sep-02250106791 "02250106-791")
+(hasBrand ACS-SL-Sep-02250106791 Sullair)
+(hasListPrice ACS-SL-Sep-02250106791 274.00)
+(listedBy ACS-SL-Sep-02250106791 AirCompressorServices)
+
+(isa ACS-SL-Sep-250034087 CompressorPart)
+(hasProductName ACS-SL-Sep-250034087 "Sullair Separator 250034-087")
+(hasModelNumber ACS-SL-Sep-250034087 "250034-087")
+(hasBrand ACS-SL-Sep-250034087 Sullair)
+(hasListPrice ACS-SL-Sep-250034087 337.00)
+(listedBy ACS-SL-Sep-250034087 AirCompressorServices)
+
+(isa ACS-SL-250022669 CompressorLubricant)
+(hasProductName ACS-SL-250022669 "Sullair Synthetic Oil 250022-669 5 Gallon")
+(hasModelNumber ACS-SL-250022669 "250022-669")
+(hasBrand ACS-SL-250022669 Sullair)
+(hasListPrice ACS-SL-250022669 500.50)
+(listedBy ACS-SL-250022669 AirCompressorServices)
+
+(isa ACS-SL-Sullube32 CompressorLubricant)
+(hasProductName ACS-SL-Sullube32 "Sullair Sullube 32 5 Gallon")
+(hasModelNumber ACS-SL-Sullube32 "Sullube 32-005")
+(hasBrand ACS-SL-Sullube32 Sullair)
+(hasListPrice ACS-SL-Sullube32 500.50)
+(listedBy ACS-SL-Sullube32 AirCompressorServices)
+
+;; Sullair Kits & Valves
+(isa ACS-SL-241772 CompressorPart)
+(hasProductName ACS-SL-241772 "Sullair Strainer Repair Kit 241772")
+(hasModelNumber ACS-SL-241772 "241772")
+(hasBrand ACS-SL-241772 Sullair)
+(hasListPrice ACS-SL-241772 72.50)
+(listedBy ACS-SL-241772 AirCompressorServices)
+
+(isa ACS-SL-250020353 CompressorPart)
+(hasProductName ACS-SL-250020353 "Sullair Sullicon Control Parts Kit 250020-353")
+(hasModelNumber ACS-SL-250020353 "250020-353")
+(hasBrand ACS-SL-250020353 Sullair)
+(hasListPrice ACS-SL-250020353 102.00)
+(listedBy ACS-SL-250020353 AirCompressorServices)
+
+(isa ACS-SL-02250110988 CompressorPart)
+(hasProductName ACS-SL-02250110988 "Sullair Min Pressure Check Valve Kit 02250110-988")
+(hasModelNumber ACS-SL-02250110988 "02250110-988")
+(hasBrand ACS-SL-02250110988 Sullair)
+(hasListPrice ACS-SL-02250110988 41.00)
+(listedBy ACS-SL-02250110988 AirCompressorServices)
+
+(isa ACS-SL-041742 CompressorPart)
+(hasProductName ACS-SL-041742 "Sullair Pressure Regulator Repair Kit 041742")
+(hasModelNumber ACS-SL-041742 "041742")
+(hasBrand ACS-SL-041742 Sullair)
+(hasListPrice ACS-SL-041742 150.00)
+(listedBy ACS-SL-041742 AirCompressorServices)
+
+(isa ACS-SL-02250144326 CompressorPart)
+(hasProductName ACS-SL-02250144326 "Sullair Thermostatic Valve Kit 02250144-326")
+(hasModelNumber ACS-SL-02250144326 "02250144-326")
+(hasBrand ACS-SL-02250144326 Sullair)
+(hasListPrice ACS-SL-02250144326 305.50)
+(listedBy ACS-SL-02250144326 AirCompressorServices)
+
+(isa ACS-SL-02250137895 CompressorPart)
+(hasProductName ACS-SL-02250137895 "Sullair Separator 02250137-895")
+(hasModelNumber ACS-SL-02250137895 "02250137-895")
+(hasBrand ACS-SL-02250137895 Sullair)
+(hasListPrice ACS-SL-02250137895 211.00)
+(listedBy ACS-SL-02250137895 AirCompressorServices)
+
+(isa ACS-SL-250034116 CompressorPart)
+(hasProductName ACS-SL-250034116 "Sullair Separator 250034-116")
+(hasModelNumber ACS-SL-250034116 "250034-116")
+(hasBrand ACS-SL-250034116 Sullair)
+(hasListPrice ACS-SL-250034116 302.00)
+(listedBy ACS-SL-250034116 AirCompressorServices)
+
+(isa ACS-SL-02250147737 CompressorPart)
+(hasProductName ACS-SL-02250147737 "Sullair Manifold Kit 02250147-737")
+(hasModelNumber ACS-SL-02250147737 "02250147-737")
+(hasBrand ACS-SL-02250147737 Sullair)
+(hasListPrice ACS-SL-02250147737 234.00)
+(listedBy ACS-SL-02250147737 AirCompressorServices)
+
+(isa ACS-SL-001168 CompressorPart)
+(hasProductName ACS-SL-001168 "Sullair Repair Kit 001168")
+(hasModelNumber ACS-SL-001168 "001168")
+(hasBrand ACS-SL-001168 Sullair)
+(hasListPrice ACS-SL-001168 207.50)
+(listedBy ACS-SL-001168 AirCompressorServices)
+
+(isa ACS-SL-250018262 CompressorPart)
+(hasProductName ACS-SL-250018262 "Sullair Kit 250018-262")
+(hasModelNumber ACS-SL-250018262 "250018-262")
+(hasBrand ACS-SL-250018262 Sullair)
+(hasListPrice ACS-SL-250018262 95.00)
+(listedBy ACS-SL-250018262 AirCompressorServices)
+
+;;; ============================================================
+;;; ACS — GARDNER DENVER PARTS (OEM)
+;;; ============================================================
+
+(isa ACS-GD-2116110 CompressorPart)
+(hasProductName ACS-GD-2116110 "Gardner Denver Oil Filter 2116110")
+(hasModelNumber ACS-GD-2116110 "2116110")
+(hasBrand ACS-GD-2116110 GardnerDenver)
+(hasListPrice ACS-GD-2116110 43.50)
+(listedBy ACS-GD-2116110 AirCompressorServices)
+
+(isa ACS-GD-2116128 CompressorPart)
+(hasProductName ACS-GD-2116128 "Gardner Denver Oil Filter 2116128")
+(hasModelNumber ACS-GD-2116128 "2116128")
+(hasBrand ACS-GD-2116128 GardnerDenver)
+(hasListPrice ACS-GD-2116128 41.50)
+(listedBy ACS-GD-2116128 AirCompressorServices)
+
+(isa ACS-GD-ZS1059789 CompressorPart)
+(hasProductName ACS-GD-ZS1059789 "Gardner Denver Oil Filter ZS1059789")
+(hasModelNumber ACS-GD-ZS1059789 "ZS1059789")
+(hasBrand ACS-GD-ZS1059789 GardnerDenver)
+(hasListPrice ACS-GD-ZS1059789 69.50)
+(listedBy ACS-GD-ZS1059789 AirCompressorServices)
+
+(isa ACS-GD-ZS1060579 CompressorPart)
+(hasProductName ACS-GD-ZS1060579 "Gardner Denver Air Filter ZS1060579")
+(hasModelNumber ACS-GD-ZS1060579 "ZS1060579")
+(hasBrand ACS-GD-ZS1060579 GardnerDenver)
+(hasListPrice ACS-GD-ZS1060579 63.50)
+(listedBy ACS-GD-ZS1060579 AirCompressorServices)
+
+(isa ACS-GD-Sep-ZS1059792 CompressorPart)
+(hasProductName ACS-GD-Sep-ZS1059792 "Gardner Denver Separator ZS1059792")
+(hasModelNumber ACS-GD-Sep-ZS1059792 "ZS1059792")
+(hasBrand ACS-GD-Sep-ZS1059792 GardnerDenver)
+(hasListPrice ACS-GD-Sep-ZS1059792 189.00)
+(listedBy ACS-GD-Sep-ZS1059792 AirCompressorServices)
+
+(isa ACS-GD-Sep-202ECH6013 CompressorPart)
+(hasProductName ACS-GD-Sep-202ECH6013 "Gardner Denver Separator 202ECH6013")
+(hasModelNumber ACS-GD-Sep-202ECH6013 "202ECH6013")
+(hasBrand ACS-GD-Sep-202ECH6013 GardnerDenver)
+(hasListPrice ACS-GD-Sep-202ECH6013 269.50)
+(listedBy ACS-GD-Sep-202ECH6013 AirCompressorServices)
+
+(isa ACS-GD-Sep-208EAP6013 CompressorPart)
+(hasProductName ACS-GD-Sep-208EAP6013 "Gardner Denver Separator 208EAP6013")
+(hasModelNumber ACS-GD-Sep-208EAP6013 "208EAP6013")
+(hasBrand ACS-GD-Sep-208EAP6013 GardnerDenver)
+(hasListPrice ACS-GD-Sep-208EAP6013 375.00)
+(listedBy ACS-GD-Sep-208EAP6013 AirCompressorServices)
+
+(isa ACS-GD-Sep-ZS1059791 CompressorPart)
+(hasProductName ACS-GD-Sep-ZS1059791 "Gardner Denver Separator ZS1059791")
+(hasModelNumber ACS-GD-Sep-ZS1059791 "ZS1059791")
+(hasBrand ACS-GD-Sep-ZS1059791 GardnerDenver)
+(hasListPrice ACS-GD-Sep-ZS1059791 156.50)
+(listedBy ACS-GD-Sep-ZS1059791 AirCompressorServices)
+
+(isa ACS-GD-Sep-2118961 CompressorPart)
+(hasProductName ACS-GD-Sep-2118961 "Gardner Denver Separator 2118961")
+(hasModelNumber ACS-GD-Sep-2118961 "2118961")
+(hasBrand ACS-GD-Sep-2118961 GardnerDenver)
+(hasListPrice ACS-GD-Sep-2118961 386.00)
+(listedBy ACS-GD-Sep-2118961 AirCompressorServices)
+
+(isa ACS-GD-Aeon9000SP CompressorLubricant)
+(hasProductName ACS-GD-Aeon9000SP "Gardner Denver Aeon 9000 SP 5 Gallon")
+(hasModelNumber ACS-GD-Aeon9000SP "Aeon 9000 SP")
+(hasBrand ACS-GD-Aeon9000SP GardnerDenver)
+(hasListPrice ACS-GD-Aeon9000SP 400.00)
+(listedBy ACS-GD-Aeon9000SP AirCompressorServices)
+
+(isa ACS-GD-28H109 CompressorLubricant)
+(hasProductName ACS-GD-28H109 "Gardner Denver Synthetic Oil 28H109 5 Gallon")
+(hasModelNumber ACS-GD-28H109 "28H109")
+(hasBrand ACS-GD-28H109 GardnerDenver)
+(hasListPrice ACS-GD-28H109 348.00)
+(listedBy ACS-GD-28H109 AirCompressorServices)
+
+;;; ============================================================
+;;; ACS — KAESER PARTS (OEM)
+;;; ============================================================
+
+(isa ACS-KS-6.3463.0 CompressorPart)
+(hasProductName ACS-KS-6.3463.0 "Kaeser Oil Filter 6.3463.0")
+(hasModelNumber ACS-KS-6.3463.0 "6.3463.0")
+(hasBrand ACS-KS-6.3463.0 Kaeser)
+(hasListPrice ACS-KS-6.3463.0 51.50)
+(listedBy ACS-KS-6.3463.0 AirCompressorServices)
+
+(isa ACS-KS-6.3462.1 CompressorPart)
+(hasProductName ACS-KS-6.3462.1 "Kaeser Oil Filter 6.3462.1")
+(hasModelNumber ACS-KS-6.3462.1 "6.3462.1")
+(hasBrand ACS-KS-6.3462.1 Kaeser)
+(hasListPrice ACS-KS-6.3462.1 121.00)
+(listedBy ACS-KS-6.3462.1 AirCompressorServices)
+
+(isa ACS-KS-6.4163.0 CompressorPart)
+(hasProductName ACS-KS-6.4163.0 "Kaeser Air Filter 6.4163.0")
+(hasModelNumber ACS-KS-6.4163.0 "6.4163.0")
+(hasBrand ACS-KS-6.4163.0 Kaeser)
+(hasListPrice ACS-KS-6.4163.0 94.50)
+(listedBy ACS-KS-6.4163.0 AirCompressorServices)
+
+(isa ACS-KS-6.4212.0 CompressorPart)
+(hasProductName ACS-KS-6.4212.0 "Kaeser Air Filter 6.4212.0")
+(hasModelNumber ACS-KS-6.4212.0 "6.4212.0")
+(hasBrand ACS-KS-6.4212.0 Kaeser)
+(hasListPrice ACS-KS-6.4212.0 50.00)
+(listedBy ACS-KS-6.4212.0 AirCompressorServices)
+
+(isa ACS-KS-6.4143.0 CompressorPart)
+(hasProductName ACS-KS-6.4143.0 "Kaeser Air Filter 6.4143.0")
+(hasModelNumber ACS-KS-6.4143.0 "6.4143.0")
+(hasBrand ACS-KS-6.4143.0 Kaeser)
+(hasListPrice ACS-KS-6.4143.0 55.00)
+(listedBy ACS-KS-6.4143.0 AirCompressorServices)
+
+(isa ACS-KS-Sep-6.3669.0 CompressorPart)
+(hasProductName ACS-KS-Sep-6.3669.0 "Kaeser Separator 6.3669.0")
+(hasModelNumber ACS-KS-Sep-6.3669.0 "6.3669.0")
+(hasBrand ACS-KS-Sep-6.3669.0 Kaeser)
+(hasListPrice ACS-KS-Sep-6.3669.0 315.00)
+(listedBy ACS-KS-Sep-6.3669.0 AirCompressorServices)
+
+(isa ACS-KS-S460 CompressorLubricant)
+(hasProductName ACS-KS-S460 "Kaeser Synthetic Oil S460 5 Gallon")
+(hasModelNumber ACS-KS-S460 "S460")
+(hasBrand ACS-KS-S460 Kaeser)
+(hasListPrice ACS-KS-S460 348.00)
+(listedBy ACS-KS-S460 AirCompressorServices)
+
+(isa ACS-KS-S460-005 CompressorLubricant)
+(hasProductName ACS-KS-S460-005 "Kaeser Synthetic Oil S-460-005 5 Gallon")
+(hasModelNumber ACS-KS-S460-005 "S-460-005")
+(hasBrand ACS-KS-S460-005 Kaeser)
+(hasListPrice ACS-KS-S460-005 400.00)
+(listedBy ACS-KS-S460-005 AirCompressorServices)
+
+;; Kaeser Kits
+(isa ACS-KS-AN8247400370 CompressorPart)
+(hasProductName ACS-KS-AN8247400370 "Kaeser Eco-31 Maintenance Kit AN8247400370")
+(hasModelNumber ACS-KS-AN8247400370 "AN8247400370")
+(hasBrand ACS-KS-AN8247400370 Kaeser)
+(hasListPrice ACS-KS-AN8247400370 223.00)
+(listedBy ACS-KS-AN8247400370 AirCompressorServices)
+
+(isa ACS-KS-400707 CompressorPart)
+(hasProductName ACS-KS-400707 "Kaeser Vent Valve w/Solenoid Repair Kit 400707.0")
+(hasModelNumber ACS-KS-400707 "400707.0")
+(hasBrand ACS-KS-400707 Kaeser)
+(hasListPrice ACS-KS-400707 280.00)
+(listedBy ACS-KS-400707 AirCompressorServices)
+
+(isa ACS-KS-OWS-ANKCF50 CompressorPart)
+(hasProductName ACS-KS-OWS-ANKCF50 "Kaeser Oil Water Separator Cartridge ANKCF50CART")
+(hasModelNumber ACS-KS-OWS-ANKCF50 "ANKCF50CART")
+(hasBrand ACS-KS-OWS-ANKCF50 Kaeser)
+(hasListPrice ACS-KS-OWS-ANKCF50 409.00)
+(listedBy ACS-KS-OWS-ANKCF50 AirCompressorServices)
+
+;;; ============================================================
+;;; ACS — OTHER BRAND PARTS
+;;; ============================================================
+
+;; Sullivan-Palatek
+(isa ACS-SP-00520017 CompressorPart)
+(hasProductName ACS-SP-00520017 "Sullivan-Palatek Oil Filter 00520-017")
+(hasModelNumber ACS-SP-00520017 "00520-017")
+(hasBrand ACS-SP-00520017 SullivanPalatek)
+(hasListPrice ACS-SP-00520017 46.50)
+(listedBy ACS-SP-00520017 AirCompressorServices)
+
+(isa ACS-SP-00521060 CompressorPart)
+(hasProductName ACS-SP-00521060 "Sullivan-Palatek Air Filter 00521-060")
+(hasModelNumber ACS-SP-00521060 "00521-060")
+(hasBrand ACS-SP-00521060 SullivanPalatek)
+(hasListPrice ACS-SP-00521060 56.00)
+(listedBy ACS-SP-00521060 AirCompressorServices)
+
+(isa ACS-SP-00521082 CompressorPart)
+(hasProductName ACS-SP-00521082 "Sullivan-Palatek Air Filter 00521-082")
+(hasModelNumber ACS-SP-00521082 "00521-082")
+(hasBrand ACS-SP-00521082 SullivanPalatek)
+(hasListPrice ACS-SP-00521082 66.00)
+(listedBy ACS-SP-00521082 AirCompressorServices)
+
+(isa ACS-SP-00521060S CompressorPart)
+(hasProductName ACS-SP-00521060S "Sullivan-Palatek Air Filter 00521-060S")
+(hasModelNumber ACS-SP-00521060S "00521-060S")
+(hasBrand ACS-SP-00521060S SullivanPalatek)
+(hasListPrice ACS-SP-00521060S 51.50)
+(listedBy ACS-SP-00521060S AirCompressorServices)
+
+(isa ACS-SP-Sep-005431170026 CompressorPart)
+(hasProductName ACS-SP-Sep-005431170026 "Sullivan-Palatek Separator 00543117-0026")
+(hasModelNumber ACS-SP-Sep-005431170026 "00543117-0026")
+(hasBrand ACS-SP-Sep-005431170026 SullivanPalatek)
+(hasListPrice ACS-SP-Sep-005431170026 271.50)
+(listedBy ACS-SP-Sep-005431170026 AirCompressorServices)
+
+(isa ACS-SP-Sep-08000019 CompressorPart)
+(hasProductName ACS-SP-Sep-08000019 "Sullivan-Palatek Separator 08000-019")
+(hasModelNumber ACS-SP-Sep-08000019 "08000-019")
+(hasBrand ACS-SP-Sep-08000019 SullivanPalatek)
+(hasListPrice ACS-SP-Sep-08000019 227.50)
+(listedBy ACS-SP-Sep-08000019 AirCompressorServices)
+
+(isa ACS-SP-PALASYN45 CompressorLubricant)
+(hasProductName ACS-SP-PALASYN45 "Sullivan-Palatek PALASYN45 Synthetic Oil 5 Gallon")
+(hasModelNumber ACS-SP-PALASYN45 "PALASYN45")
+(hasBrand ACS-SP-PALASYN45 SullivanPalatek)
+(hasListPrice ACS-SP-PALASYN45 400.00)
+(listedBy ACS-SP-PALASYN45 AirCompressorServices)
+
+(isa ACS-SP-008230620009 CompressorLubricant)
+(hasProductName ACS-SP-008230620009 "Sullivan-Palatek Oil 00823062-0009 5 Gallon")
+(hasModelNumber ACS-SP-008230620009 "00823062-0009")
+(hasBrand ACS-SP-008230620009 SullivanPalatek)
+(hasListPrice ACS-SP-008230620009 279.50)
+(listedBy ACS-SP-008230620009 AirCompressorServices)
+
+(isa ACS-SP-K09610001 CompressorPart)
+(hasProductName ACS-SP-K09610001 "Sullivan-Palatek Kit K09610-001")
+(hasModelNumber ACS-SP-K09610001 "K09610-001")
+(hasBrand ACS-SP-K09610001 SullivanPalatek)
+(hasListPrice ACS-SP-K09610001 40.00)
+(listedBy ACS-SP-K09610001 AirCompressorServices)
+
+;; Kaishan
+(isa ACS-KH-077099417200 CompressorPart)
+(hasProductName ACS-KH-077099417200 "Kaishan Oil Filter 077099417200")
+(hasModelNumber ACS-KH-077099417200 "077099417200")
+(hasBrand ACS-KH-077099417200 KaishanUSA)
+(hasListPrice ACS-KH-077099417200 85.00)
+(listedBy ACS-KH-077099417200 AirCompressorServices)
+
+(isa ACS-KH-Sep-077043014177 CompressorPart)
+(hasProductName ACS-KH-Sep-077043014177 "Kaishan Separator 077043014177")
+(hasModelNumber ACS-KH-Sep-077043014177 "077043014177")
+(hasBrand ACS-KH-Sep-077043014177 KaishanUSA)
+(hasListPrice ACS-KH-Sep-077043014177 211.00)
+(listedBy ACS-KH-Sep-077043014177 AirCompressorServices)
+
+(isa ACS-KH-KTL8000 CompressorLubricant)
+(hasProductName ACS-KH-KTL8000 "Kaishan Synthetic Oil KTL-8000 5 Gallon")
+(hasModelNumber ACS-KH-KTL8000 "KTL-8000-005")
+(hasBrand ACS-KH-KTL8000 KaishanUSA)
+(hasListPrice ACS-KH-KTL8000 400.00)
+(listedBy ACS-KH-KTL8000 AirCompressorServices)
+
+;; Quincy
+(isa ACS-QY-142136 CompressorPart)
+(hasProductName ACS-QY-142136 "Quincy Oil Filter 142136")
+(hasModelNumber ACS-QY-142136 "142136")
+(hasBrand ACS-QY-142136 QuincyCompressor)
+(hasListPrice ACS-QY-142136 77.00)
+(listedBy ACS-QY-142136 AirCompressorServices)
+
+(isa ACS-QY-1625430291 CompressorPart)
+(hasProductName ACS-QY-1625430291 "Quincy Oil Filter 1625430291")
+(hasModelNumber ACS-QY-1625430291 "1625430291")
+(hasBrand ACS-QY-1625430291 QuincyCompressor)
+(hasListPrice ACS-QY-1625430291 175.00)
+(listedBy ACS-QY-1625430291 AirCompressorServices)
+
+(isa ACS-QY-6211472550 CompressorPart)
+(hasProductName ACS-QY-6211472550 "Quincy Oil Filter 6211472550")
+(hasModelNumber ACS-QY-6211472550 "6211472550")
+(hasBrand ACS-QY-6211472550 QuincyCompressor)
+(hasListPrice ACS-QY-6211472550 42.50)
+(listedBy ACS-QY-6211472550 AirCompressorServices)
+
+(isa ACS-QY-6211473950 CompressorPart)
+(hasProductName ACS-QY-6211473950 "Quincy Air Filter 6211473950")
+(hasModelNumber ACS-QY-6211473950 "6211473950")
+(hasBrand ACS-QY-6211473950 QuincyCompressor)
+(hasListPrice ACS-QY-6211473950 47.00)
+(listedBy ACS-QY-6211473950 AirCompressorServices)
+
+(isa ACS-QY-Sep-6221372850 CompressorPart)
+(hasProductName ACS-QY-Sep-6221372850 "Quincy Separator 6221372850")
+(hasModelNumber ACS-QY-Sep-6221372850 "6221372850")
+(hasBrand ACS-QY-Sep-6221372850 QuincyCompressor)
+(hasListPrice ACS-QY-Sep-6221372850 184.00)
+(listedBy ACS-QY-Sep-6221372850 AirCompressorServices)
+
+(isa ACS-QY-QuinSynPlus CompressorLubricant)
+(hasProductName ACS-QY-QuinSynPlus "Quincy QuinSyn Plus 5 Gallon")
+(hasModelNumber ACS-QY-QuinSynPlus "QuinSyn-Plus")
+(hasBrand ACS-QY-QuinSynPlus QuincyCompressor)
+(hasListPrice ACS-QY-QuinSynPlus 400.00)
+(listedBy ACS-QY-QuinSynPlus AirCompressorServices)
+
+(isa ACS-QY-144046 CompressorLubricant)
+(hasProductName ACS-QY-144046 "Quincy Synthetic Oil 144046 5 Gallon")
+(hasModelNumber ACS-QY-144046 "144046-005")
+(hasBrand ACS-QY-144046 QuincyCompressor)
+(hasListPrice ACS-QY-144046 400.00)
+(listedBy ACS-QY-144046 AirCompressorServices)
+
+(isa ACS-QY-3001160102 CompressorPart)
+(hasProductName ACS-QY-3001160102 "Quincy Air Filter Kit 3001160102")
+(hasModelNumber ACS-QY-3001160102 "3001160102")
+(hasBrand ACS-QY-3001160102 QuincyCompressor)
+(hasListPrice ACS-QY-3001160102 263.50)
+(listedBy ACS-QY-3001160102 AirCompressorServices)
+
+;; Chicago Pneumatic
+(isa ACS-CP-Sep-6221372800 CompressorPart)
+(hasProductName ACS-CP-Sep-6221372800 "Chicago Pneumatic Separator 6221372800")
+(hasModelNumber ACS-CP-Sep-6221372800 "6221372800")
+(hasBrand ACS-CP-Sep-6221372800 ChicagoPneumatic)
+(hasListPrice ACS-CP-Sep-6221372800 184.00)
+(listedBy ACS-CP-Sep-6221372800 AirCompressorServices)
+
+;; ELGi
+(isa ACS-EL-B005705760002 CompressorPart)
+(hasProductName ACS-EL-B005705760002 "ELGi Air Filter B005705760002")
+(hasModelNumber ACS-EL-B005705760002 "B005705760002")
+(hasBrand ACS-EL-B005705760002 ELGi)
+(hasListPrice ACS-EL-B005705760002 35.50)
+(listedBy ACS-EL-B005705760002 AirCompressorServices)
+
+;; Kobelco
+(isa ACS-KB-V6075KIT CompressorPart)
+(hasProductName ACS-KB-V6075KIT "Kobelco Temperature Sensor Kit V6075-KIT")
+(hasModelNumber ACS-KB-V6075KIT "V6075-KIT")
+(hasBrand ACS-KB-V6075KIT "Kobelco")
+(hasListPrice ACS-KB-V6075KIT 185.00)
+(listedBy ACS-KB-V6075KIT AirCompressorServices)
+
+;; Anderol (generic/aftermarket oil)
+(isa ACS-Anderol-S68 CompressorLubricant)
+(hasProductName ACS-Anderol-S68 "Anderol Synthetic Oil S68 5 Gallon")
+(hasModelNumber ACS-Anderol-S68 "S68")
+(hasBrand ACS-Anderol-S68 "Anderol")
+(hasListPrice ACS-Anderol-S68 261.00)
+(listedBy ACS-Anderol-S68 AirCompressorServices)
+(comment ACS-Anderol-S68 "Generic aftermarket synthetic oil. Priced well below OEM equivalents. ISG should track customers switching to this from OEM oils.")
+
+;;; ============================================================
+;;; PRICE COMPARISON SUMMARY
+;;; ============================================================
+;;;
+;;; OIL PRICING (5 gallon):
+;;;   ACS Private Label (Ultimate 12K):  $544.00 (premium positioning)
+;;;   IR SSR Ultra Coolant (via ACS):    $500.50
+;;;   IR Ultra Plus Coolant (via ACS):   $545.00
+;;;   IR Pro-Tec (via ACS):              $261.00
+;;;   Atlas Copco Roto-Extend (via ACS): $348.00
+;;;   Sullair 250022-669 (via ACS):      $500.50
+;;;   Sullair Sullube 32 (via ACS):      $500.50
+;;;   Gardner Denver Aeon 9000 SP:       $400.00
+;;;   Quincy QuinSyn Plus:               $400.00
+;;;   Kaeser S460:                        $348.00-$400.00
+;;;   Sullivan-Palatek PALASYN45:        $400.00
+;;;   Kaishan KTL-8000:                  $400.00
+;;;   Anderol S68 (generic):             $261.00
+;;;
+;;; KEY INSIGHT: ACS positions their private-label oil ABOVE OEM
+;;; pricing ($544 vs $500 for IR), suggesting they're selling on
+;;; the 12,000-hour interval claim rather than price competition.
+;;; The real margin threat is the $261 Anderol generic that
+;;; undercuts everything.
+;;;
+;;; PM BUNDLE PRICING:
+;;;   ACS UP6 PM Bundle (15-30 HP): $708.00 per unit
+;;;   ACS UP6-15C PM Bundle:        $935.00
+;;;   IR 2000/8000 Hour Kit:        $623.00
+;;;   Atlas Copco 1000 Hour Kit:    $608.00
+;;;
+;;; KEY INSIGHT: ACS sells branded PM bundles for specific IR models
+;;; (UP6-15, UP6-20, UP6-25, UP6-30, UP6-15C). These are direct
+;;; replacements for ISG's service visit revenue. If a customer buys
+;;; an ACS PM bundle, they skip ISG's service call entirely.

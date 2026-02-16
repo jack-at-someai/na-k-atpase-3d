@@ -1,0 +1,298 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / STRUCTURAL / TAXONOMY
+;;; Complete product category hierarchy for US compressed air market
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; PRODUCT TAXONOMY — FULL CATEGORY TREE
+;;; ============================================================
+;;; This is the complete navigational taxonomy for compressed air
+;;; equipment sold in the United States. Maps to how distributors
+;;; organize their catalogs and how customers search for products.
+
+;;; ----------------------------------------------------------
+;;; 1. AIR COMPRESSORS
+;;; ----------------------------------------------------------
+
+;;; 1.1 Rotary Screw Air Compressors
+;;;   1.1.1 Fixed Speed Rotary Screw
+;;;     1.1.1.1 Base Mount Fixed Speed
+;;;     1.1.1.2 Tank Mount Fixed Speed
+;;;     1.1.1.3 Enclosed Fixed Speed
+;;;   1.1.2 Variable Speed Drive (VFD/VSD)
+;;;     1.1.2.1 Base Mount VSD
+;;;     1.1.2.2 Tank Mount VSD
+;;;     1.1.2.3 Enclosed VSD
+;;;   1.1.3 Belt Drive Rotary Screw
+;;;   1.1.4 Direct Drive Rotary Screw
+;;;   1.1.5 Gear Drive Rotary Screw
+;;;   1.1.6 Oil-Free Rotary Screw
+;;;
+;;; 1.2 Piston / Reciprocating Compressors
+;;;   1.2.1 Single Stage
+;;;     1.2.1.1 Splash Lubricated
+;;;     1.2.1.2 Pressure Lubricated
+;;;   1.2.2 Two Stage
+;;;     1.2.2.1 Simplex (single pump)
+;;;       1.2.2.1.1 Vertical Tank
+;;;       1.2.2.1.2 Horizontal Tank
+;;;     1.2.2.2 Duplex (dual pump)
+;;;       1.2.2.2.1 Horizontal Tank
+;;;   1.2.3 Oil-Free Piston
+;;;
+;;; 1.3 Rotary Vane Compressors
+;;;   1.3.1 Base Mount Rotary Vane
+;;;   1.3.2 Tank Mount Rotary Vane
+;;;   1.3.3 Total Air System Rotary Vane
+;;;
+;;; 1.4 Scroll Compressors
+;;;   1.4.1 Enclosed Scroll
+;;;   1.4.2 Tank Mount Scroll
+;;;   1.4.3 Bare Scroll Pump
+;;;   1.4.4 Duplex Scroll
+;;;
+;;; 1.5 Oil-Free / Oilless Compressors
+;;;   1.5.1 Oil-Free Rotary Screw
+;;;   1.5.2 Oil-Free Scroll
+;;;   1.5.3 Oil-Free Piston
+;;;   1.5.4 Medical/Dental Systems
+;;;   1.5.5 Laboratory Systems
+;;;
+;;; 1.6 Portable Compressors
+;;;   1.6.1 Electric Portable (wheeled)
+;;;   1.6.2 Gas Portable
+;;;   1.6.3 Diesel Portable
+;;;   1.6.4 Towable (highway-rated trailer)
+;;;
+;;; 1.7 Engine Driven Compressors
+;;;   1.7.1 Gas Driven
+;;;     1.7.1.1 Honda Engine
+;;;     1.7.1.2 Kohler Engine
+;;;     1.7.1.3 Briggs & Stratton Engine
+;;;   1.7.2 Diesel Driven
+;;;     1.7.2.1 Kubota Engine
+;;;     1.7.2.2 Deutz Engine
+;;;     1.7.2.3 Caterpillar Engine
+;;;     1.7.2.4 John Deere Engine
+;;;   1.7.3 Hydraulic Driven
+;;;   1.7.4 PTO Driven
+;;;
+;;; 1.8 Compressor/Generator Combos
+;;;   1.8.1 Air + Generator
+;;;   1.8.2 Air + Generator + Welder
+;;;   1.8.3 Multi-function Utility Units
+
+;;; ----------------------------------------------------------
+;;; 2. TOTAL AIR SYSTEMS (Integrated packages)
+;;; ----------------------------------------------------------
+;;;   2.1 Rotary Screw + Dryer + Tank
+;;;   2.2 Rotary Screw + Dryer (base mount)
+;;;   2.3 Rotary Vane + Dryer + Tank
+;;;   2.4 Oil-Free + Dryer + Tank
+;;;   2.5 Duplex Systems (redundant)
+
+;;; ----------------------------------------------------------
+;;; 3. AIR DRYERS
+;;; ----------------------------------------------------------
+;;;   3.1 Refrigerated Dryers
+;;;     3.1.1 Cycling
+;;;     3.1.2 Non-Cycling
+;;;     3.1.3 High-Temperature Inlet
+;;;     3.1.4 High-Pressure
+;;;   3.2 Desiccant Dryers
+;;;     3.2.1 Heatless Regeneration
+;;;     3.2.2 Heated Regeneration
+;;;     3.2.3 Blower Purge
+;;;     3.2.4 Heat of Compression (HOC)
+;;;   3.3 Membrane Dryers
+;;;   3.4 Deliquescent Dryers
+
+;;; ----------------------------------------------------------
+;;; 4. FILTRATION
+;;; ----------------------------------------------------------
+;;;   4.1 Coalescing Filters
+;;;     4.1.1 General Purpose (1 ppm)
+;;;     4.1.2 High Efficiency (0.01 ppm)
+;;;   4.2 Particulate Filters
+;;;   4.3 Activated Carbon Filters
+;;;   4.4 Medical / NFPA 99 Filters
+;;;   4.5 Sterile Filters (0.01 micron)
+;;;   4.6 Dust Collectors
+;;;   4.7 Replacement Filter Elements
+
+;;; ----------------------------------------------------------
+;;; 5. VACUUM EQUIPMENT
+;;; ----------------------------------------------------------
+;;;   5.1 Oil-Sealed Rotary Vane Vacuum Pumps
+;;;     5.1.1 Single Stage
+;;;     5.1.2 Two Stage (High Vacuum)
+;;;   5.2 Oil-Free Rotary Vane Vacuum Pumps
+;;;   5.3 Dry Claw Vacuum Pumps
+;;;   5.4 Liquid Ring Vacuum Pumps
+;;;     5.4.1 Single Stage
+;;;     5.4.2 Two Stage
+;;;     5.4.3 Stainless Steel (corrosion resistant)
+;;;   5.5 Rotary Piston Vacuum Pumps
+;;;     5.5.1 Single Stage
+;;;     5.5.2 Two Stage
+;;;   5.6 Dry Screw Vacuum Pumps
+;;;   5.7 Scroll Vacuum Pumps
+;;;   5.8 Diaphragm Vacuum Pumps
+;;;   5.9 Rotary Screw Vacuum Pumps
+;;;   5.10 Vacuum Systems (pump + controls + accessories)
+;;;   5.11 Centralized Vacuum Systems
+
+;;; ----------------------------------------------------------
+;;; 6. BLOWERS
+;;; ----------------------------------------------------------
+;;;   6.1 Regenerative Blowers
+;;;     6.1.1 Single Stage
+;;;     6.1.2 Two Stage
+;;;     6.1.3 Multi-Stage
+;;;   6.2 Rotary Screw Blowers
+;;;   6.3 Rotary Lobe (Roots) Blowers
+;;;   6.4 Turbo Blowers
+;;;   6.5 Linear Compressors / Piston Blowers
+
+;;; ----------------------------------------------------------
+;;; 7. NITROGEN GENERATORS
+;;; ----------------------------------------------------------
+;;;   7.1 PSA (Pressure Swing Adsorption)
+;;;     7.1.1 Standard Cabinet
+;;;     7.1.2 Modular / Scalable
+;;;     7.1.3 High Purity (99.999%)
+;;;   7.2 Membrane
+;;;     7.2.1 Standard Flow
+;;;     7.2.2 High Flow
+;;;   7.3 Nitrogen Boosters
+;;;   7.4 Oxygen Generators (PSA)
+
+;;; ----------------------------------------------------------
+;;; 8. AIR STORAGE
+;;; ----------------------------------------------------------
+;;;   8.1 Vertical Air Receivers
+;;;     8.1.1 30-80 Gallon
+;;;     8.1.2 120 Gallon
+;;;     8.1.3 240 Gallon
+;;;     8.1.4 400+ Gallon
+;;;   8.2 Horizontal Air Receivers
+;;;   8.3 High Pressure Receivers (250+ PSI)
+;;;   8.4 Stainless Steel Receivers
+;;;   8.5 ASME Coded Vessels
+
+;;; ----------------------------------------------------------
+;;; 9. PIPING AND DISTRIBUTION
+;;; ----------------------------------------------------------
+;;;   9.1 Aluminum Air Piping
+;;;     9.1.1 Push-to-Connect Systems
+;;;     9.1.2 Press-Fit Systems
+;;;   9.2 Piping Accessories (fittings, valves, drops)
+;;;   9.3 Hose and Hose Reels
+;;;     9.3.1 Spring Retractable Reels
+;;;     9.3.2 Manual Reels
+;;;     9.3.3 Air Hose (rubber, hybrid, PVC)
+
+;;; ----------------------------------------------------------
+;;; 10. CONDENSATE MANAGEMENT
+;;; ----------------------------------------------------------
+;;;   10.1 Condensate Drains
+;;;     10.1.1 Timer Drains
+;;;     10.1.2 Electronic Demand Drains
+;;;     10.1.3 Zero-Loss Drains
+;;;   10.2 Oil/Water Separators
+;;;   10.3 Condensate Pumps
+
+;;; ----------------------------------------------------------
+;;; 11. ACCESSORIES AND CONSUMABLES
+;;; ----------------------------------------------------------
+;;;   11.1 Aftercoolers (air-cooled, water-cooled)
+;;;   11.2 Lubricants (PAO, POE, PAG, mineral)
+;;;   11.3 Vibration Pads / Isolation Mounts
+;;;   11.4 Instrumentation
+;;;     11.4.1 Dew Point Meters
+;;;     11.4.2 Flow Meters
+;;;     11.4.3 Pressure Regulators
+;;;     11.4.4 Pressure Gauges
+;;;   11.5 Desiccant Media (bulk)
+;;;   11.6 Replacement Parts
+;;;     11.6.1 Air Filter Elements
+;;;     11.6.2 Oil Filter Elements
+;;;     11.6.3 Separator Elements
+;;;     11.6.4 Belts
+;;;     11.6.5 Valves (intake, minimum pressure, check)
+;;;     11.6.6 Control Boards and Sensors
+;;;     11.6.7 Motor Starters and Contactors
+
+;;; ----------------------------------------------------------
+;;; HP SIZE TIERS (common market segmentation)
+;;; ----------------------------------------------------------
+;;; These tiers define how the market segments compressors by size.
+;;; Each tier has distinct buyer profiles, sales channels, and margins.
+
+(isa HPTier Collection)
+(comment HPTier "Market segmentation by horsepower. Determines buyer profile, sales channel, and margin structure.")
+
+(isa Fractional HPTier)
+(isa LightDuty HPTier)
+(isa ShopDuty HPTier)
+(isa LightIndustrial HPTier)
+(isa Industrial HPTier)
+(isa HeavyIndustrial HPTier)
+(isa Centrifugal HPTier)
+
+(comment Fractional "Under 2 HP. Homeowner, hobbyist, dental. Retail channel. $200-$2,000.")
+(comment LightDuty "2-5 HP. Small shop, auto body, contractor. Retail or dealer. $1,000-$5,000.")
+(comment ShopDuty "5-15 HP. Machine shop, auto repair, fabrication. Dealer channel. $3,000-$20,000.")
+(comment LightIndustrial "15-30 HP. Manufacturing, food processing, packaging. Dealer with service. $10,000-$35,000.")
+(comment Industrial "30-100 HP. Large manufacturing, chemical, pharmaceutical. Distributor with engineering. $20,000-$100,000.")
+(comment HeavyIndustrial "100-500 HP. Refineries, mining, power generation. Distributor with project engineering. $50,000-$500,000.")
+(comment Centrifugal "500+ HP. Process industries, large manufacturing. Direct from manufacturer or specialized distributor. $200,000-$5,000,000+.")
+
+;;; ----------------------------------------------------------
+;;; APPLICATION SEGMENTS
+;;; ----------------------------------------------------------
+;;; How end-users are segmented by industry and application.
+;;; Each segment has distinct air quality, pressure, and flow needs.
+
+(isa ApplicationSegment Collection)
+(comment ApplicationSegment "Industry vertical or application that consumes compressed air. Determines equipment specification, air quality requirements, and service expectations.")
+
+(isa GeneralManufacturing ApplicationSegment)
+(isa AutomotiveService ApplicationSegment)
+(isa FoodAndBeverage ApplicationSegment)
+(isa Pharmaceutical ApplicationSegment)
+(isa MedicalDental ApplicationSegment)
+(isa Electronics ApplicationSegment)
+(isa Woodworking ApplicationSegment)
+(isa MetalFabrication ApplicationSegment)
+(isa Construction ApplicationSegment)
+(isa MiningQuarry ApplicationSegment)
+(isa OilAndGas ApplicationSegment)
+(isa ChemicalProcess ApplicationSegment)
+(isa Packaging ApplicationSegment)
+(isa Textile ApplicationSegment)
+(isa WastewaterTreatment ApplicationSegment)
+(isa PowerGeneration ApplicationSegment)
+(isa Laboratory ApplicationSegment)
+(isa Agriculture ApplicationSegment)
+
+(comment GeneralManufacturing "Broad manufacturing with pneumatic tools, actuators, and blow-off. Class 3-4 air. 100-175 PSI. The largest segment by volume.")
+(comment AutomotiveService "Auto body, tire shops, dealerships. Paint spray, tire inflation, impact tools. Class 2-3 air for paint booths.")
+(comment FoodAndBeverage "Direct and indirect air contact with food products. Class 1-2 air required. Oil-free preferred. FDA compliance.")
+(comment Pharmaceutical "Drug manufacturing and packaging. Class 0-1 air required. Oil-free mandatory. FDA/cGMP compliance. Validation documentation required.")
+(comment MedicalDental "Hospitals, dental offices, veterinary clinics. NFPA 99 compliance. Oil-free. Redundant systems for life safety.")
+(comment Electronics "Semiconductor, PCB, and electronic assembly. Class 0-1 air. Ultra-low particulate. Clean room compatible.")
+(comment Woodworking "Sawmills, furniture, millwork. CNC routers, nail guns, spray finish. High particulate environment demands robust pre-filtration.")
+(comment MetalFabrication "Welding, cutting, forming, machining. Plasma/laser cut, pneumatic tools, blow-off. High demand, intermittent loads.")
+(comment Construction "Job site compressed air. Jackhammers, sandblasting, pneumatic tools. Portable and towable compressors. Rugged duty.")
+(comment MiningQuarry "Rock drilling, ventilation, pneumatic conveying. Diesel-driven portable. Extreme duty cycles. Remote locations.")
+(comment OilAndGas "Instrumentation air, process air, nitrogen blanketing. Hazardous area classification. Explosion-proof motors.")
+(comment ChemicalProcess "Process gas compression, instrument air, nitrogen. Corrosion-resistant materials. Hazardous area motors.")
+(comment Packaging "Pneumatic actuators, blow molding, vacuum packaging. Consistent pressure critical. Often 24/7 operation.")
+(comment Textile "Spinning, weaving, dyeing. Clean, dry air for jet looms. High flow, moderate pressure. Oil-free preferred.")
+(comment WastewaterTreatment "Aeration blowers for biological treatment. Low pressure, high volume. Regenerative or rotary screw blowers.")
+(comment PowerGeneration "Instrument air, soot blowing, pneumatic controls. Redundant systems for reliability. Often diesel backup.")
+(comment Laboratory "Research, analytical instruments, clean rooms. Oil-free, quiet, precise pressure control. Small flow applications.")
+(comment Agriculture "Grain aeration, livestock ventilation, milking systems. Outdoor-rated, dust-resistant. Seasonal demand.")

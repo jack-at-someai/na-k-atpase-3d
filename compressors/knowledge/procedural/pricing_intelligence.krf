@@ -1,0 +1,135 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / PROCEDURAL / PRICING INTELLIGENCE
+;;; Charlotte protocols for competitive pricing and customer
+;;; reactivation in the compressed air market
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; PROTOCOL 1: COMPETITIVE PRICE SCRAPING
+;;; ============================================================
+;;; Charlotte monitors competitor pricing on the top 100 SKUs.
+;;; This protocol defines the scraping cadence, targets, and
+;;; response logic.
+;;;
+;;; CADENCE: Daily scraping of all three online retailers
+;;; TARGETS: CompressorWorld.com, CompressorPros.com, CompressorsNow.com
+;;; ADDITIONAL: Amazon product pages for overlapping SKUs
+;;;
+;;; PROCESS:
+;;;   1. For each tracked SKU, fetch current price from each retailer
+;;;   2. Compare to ISG's current list price
+;;;   3. Compute price differential (ISG price - competitor price)
+;;;   4. If competitor is lower by > 5%, trigger CompetitorAlert SIGNAL
+;;;   5. Generate pricing recommendation:
+;;;      - Match: lower ISG price to competitor level
+;;;      - Hold: if ISG has service/relationship advantage
+;;;      - Beat: lower ISG price below competitor (share gain strategy)
+;;;      - Raise: if ISG is cheapest and market can bear higher price
+;;;   6. Log price observation as PriceChangeEvent SIGNAL on product's PriceMetric line
+;;;
+;;; MATCHING LOGIC:
+;;;   Products are matched across retailers by:
+;;;   - Manufacturer model number (primary key)
+;;;   - Product name fuzzy matching (secondary)
+;;;   - HP + CFM + PSI + Brand combination (tertiary)
+;;;
+;;; EXPECTED OUTCOMES:
+;;;   - 200-300 basis points margin improvement
+;;;   - Real-time competitive visibility on top 100 SKUs
+;;;   - Automated pricing recommendations to ISG team
+
+(isa CompetitivePricingScrape PROTOCOL)
+(comment CompetitivePricingScrape "Daily scraping of competitor prices on top 100 SKUs. Fires CompetitorAlert SIGNALs when price differentials exceed threshold. Generates pricing recommendations.")
+
+;;; ============================================================
+;;; PROTOCOL 2: CUSTOMER REACTIVATION ENGINE
+;;; ============================================================
+;;; Charlotte monitors customer purchase patterns and triggers
+;;; reactivation campaigns when customers go dormant.
+;;;
+;;; DORMANCY TIERS:
+;;;   Active:   Last purchase within expected cycle (varies by customer)
+;;;   AtRisk:   60 days past expected purchase cycle
+;;;   Dormant:  90 days past expected purchase cycle
+;;;   Lapsed:   180 days past expected purchase cycle
+;;;   Lost:     365+ days past expected purchase cycle
+;;;
+;;; CAMPAIGN TRIGGERS:
+;;;
+;;;   AtRisk (60 days):
+;;;     - Automated email: "We noticed it's been a while..."
+;;;     - Product recommendations based on purchase history
+;;;     - No discounting at this stage
+;;;
+;;;   Dormant (90 days):
+;;;     - Personal outreach from assigned sales rep
+;;;     - Service reminder: "Your compressor may be due for..."
+;;;     - Cross-sell recommendations (parts, lubricants, filters)
+;;;
+;;;   Lapsed (180 days):
+;;;     - Executive outreach or manager call
+;;;     - Competitive win-back offer (5-10% discount on next order)
+;;;     - Service audit offer (free compressed air assessment)
+;;;
+;;;   Lost (365+ days):
+;;;     - Quarterly re-engagement email with industry content
+;;;     - No aggressive pursuit (low ROI on recovery)
+;;;     - Flag for removal from active customer list after 24 months
+;;;
+;;; PRODUCT AFFINITY LOGIC:
+;;;   Charlotte analyzes purchase history to recommend:
+;;;   - If customer bought compressor → recommend dryer, filters, lubricant
+;;;   - If customer buys lubricant regularly → recommend filter elements
+;;;   - If customer hasn't ordered filters → they may be buying aftermarket
+;;;   - If customer's compressor is 5+ years old → recommend replacement
+;;;
+;;; EXPECTED OUTCOMES:
+;;;   - 15-20% dormant customer recovery rate
+;;;   - Increased parts and consumables attach rate
+;;;   - Shorter sales cycles through proactive outreach
+
+(isa CustomerReactivation PROTOCOL)
+(comment CustomerReactivation "Multi-tier dormancy detection and reactivation campaign system. Monitors purchase recency against expected cycle, triggers escalating outreach at 60/90/180/365-day thresholds. Includes product affinity recommendations.")
+
+;;; ============================================================
+;;; PROTOCOL 3: PRODUCT CROSS-REFERENCE
+;;; ============================================================
+;;; Charlotte maintains cross-reference tables for:
+;;;   - Manufacturer model number ↔ distributor SKU
+;;;   - OEM filter element ↔ aftermarket equivalent
+;;;   - Compressor model ↔ required maintenance parts
+;;;   - Competitor product ↔ ISG equivalent
+;;;
+;;; This enables:
+;;;   - Price comparison across distributors (same product, different SKUs)
+;;;   - Aftermarket part identification (customer calls with OEM part #)
+;;;   - Complete maintenance kit assembly from model number
+;;;   - Competitive displacement (customer has Brand X, show ISG equivalent)
+
+(isa ProductCrossReference PROTOCOL)
+(comment ProductCrossReference "Cross-reference tables linking manufacturer model numbers to distributor SKUs, OEM parts to aftermarket equivalents, and competitive products to ISG equivalents. The lookup backbone of sales and service operations.")
+
+;;; ============================================================
+;;; PROTOCOL 4: EQUIPMENT LIFECYCLE MANAGEMENT
+;;; ============================================================
+;;; Charlotte tracks installed equipment and predicts service needs.
+;;;
+;;; For each installed unit, Charlotte knows:
+;;;   - Model, serial number, install date
+;;;   - Running hours (if connected or reported)
+;;;   - Service history (all past service events)
+;;;   - Maintenance schedule (next service due)
+;;;   - Warranty status (in-warranty or expired)
+;;;   - Replacement candidacy (age, hours, repair history)
+;;;
+;;; REPLACEMENT SIGNALS:
+;;;   - Compressor > 15 years old → replacement candidate
+;;;   - Compressor > 60,000 hours → airend overhaul or replace
+;;;   - Repair costs > 50% of new equivalent → replace recommendation
+;;;   - Energy audit showing > 25 kW/100 CFM → upgrade recommendation
+;;;   - Customer adding capacity → system design opportunity
+
+(isa EquipmentLifecycle PROTOCOL)
+(comment EquipmentLifecycle "Tracks installed equipment through its lifecycle from installation to replacement. Predicts service needs, identifies replacement candidates, and triggers upgrade recommendations based on age, hours, and energy efficiency.")

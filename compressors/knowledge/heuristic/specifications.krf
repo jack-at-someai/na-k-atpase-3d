@@ -1,0 +1,380 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / HEURISTIC / SPECIFICATIONS
+;;; Performance ranges, pricing tiers, and industry benchmarks
+;;; The domain knowledge that makes Charlotte smart about compressors
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; SECTION 1: PERFORMANCE SPECIFICATIONS BY COMPRESSOR TYPE
+;;; ============================================================
+;;; These are the expected ranges for each compressor type.
+;;; Charlotte uses these to validate data, flag anomalies,
+;;; and recommend equipment to end users.
+
+;;; -- Rotary Screw Compressors --
+;;;
+;;; HP Range:    3 - 500 HP (light industrial to heavy industrial)
+;;; CFM Range:   10 - 2500 CFM
+;;; PSI Range:   100 - 217 PSI (standard: 125 PSI, high: 150-217 PSI)
+;;; CFM/HP:      3.5 - 5.0 CFM per HP at 100 PSI
+;;; Noise:       62 - 78 dBA (enclosed)
+;;; Duty Cycle:  Continuous (24/7 capable)
+;;; Oil Change:  4,000 - 8,000 hours
+;;; Airend Life: 40,000 - 100,000 hours before overhaul
+;;;
+;;; Price Ranges (new, US retail):
+;;;   3-5 HP:    $5,000 - $12,000
+;;;   7.5-10 HP: $8,000 - $18,000
+;;;   15 HP:     $12,000 - $25,000
+;;;   20-25 HP:  $15,000 - $35,000
+;;;   30 HP:     $18,000 - $40,000
+;;;   40-50 HP:  $25,000 - $55,000
+;;;   60-75 HP:  $35,000 - $80,000
+;;;   100 HP:    $45,000 - $120,000
+;;;   150-200 HP: $70,000 - $200,000
+;;;   250-500 HP: $100,000 - $500,000
+;;;
+;;; VSD Premium: +30-50% over fixed speed equivalent
+
+;;; -- Piston / Reciprocating Compressors --
+;;;
+;;; HP Range:    0.5 - 30 HP
+;;; CFM Range:   2 - 100 CFM
+;;; PSI Range:   100 - 175 PSI (single stage: 100-125, two stage: 150-175)
+;;; CFM/HP:      3.0 - 4.5 CFM per HP at rated PSI
+;;; Noise:       78 - 95 dBA (open frame, louder than rotary screw)
+;;; Duty Cycle:  Intermittent (50-70% typical, some rated continuous)
+;;; Oil Change:  500 - 1,000 hours
+;;; Valve Life:  2,000 - 5,000 hours before service
+;;;
+;;; Price Ranges (new, US retail):
+;;;   0.5-2 HP:  $500 - $2,000 (portable)
+;;;   3-5 HP:    $1,500 - $5,000
+;;;   5-7.5 HP:  $2,500 - $7,000
+;;;   10 HP:     $4,000 - $10,000
+;;;   15 HP:     $5,000 - $14,000
+;;;   20-30 HP:  $8,000 - $20,000
+;;;   Duplex:    +60-80% over equivalent simplex
+
+;;; -- Rotary Vane Compressors --
+;;;
+;;; HP Range:    5 - 200 HP
+;;; CFM Range:   15 - 800 CFM
+;;; PSI Range:   100 - 145 PSI
+;;; CFM/HP:      3.0 - 4.5 CFM per HP
+;;; Noise:       65 - 75 dBA
+;;; Duty Cycle:  Continuous (designed for 24/7)
+;;; Vane Life:   50,000 - 100,000+ hours (Mattei claims 100K+)
+;;; Oil Change:  2,000 - 4,000 hours
+;;;
+;;; Price Ranges:
+;;;   5-10 HP:   $8,000 - $15,000
+;;;   15-25 HP:  $12,000 - $25,000
+;;;   30-50 HP:  $20,000 - $40,000
+;;;   75-200 HP: $35,000 - $120,000
+
+;;; -- Oil-Free Scroll Compressors --
+;;;
+;;; HP Range:    1 - 60 HP
+;;; CFM Range:   3 - 200 CFM
+;;; PSI Range:   100 - 145 PSI
+;;; Noise:       52 - 68 dBA (very quiet)
+;;; Duty Cycle:  Continuous
+;;; Tip Seal Life: 15,000 - 30,000 hours
+;;;
+;;; Price Ranges:
+;;;   2-3 HP:    $5,000 - $12,000
+;;;   5 HP:      $8,000 - $15,000
+;;;   10 HP:     $10,000 - $22,000
+;;;   15-20 HP:  $15,000 - $35,000
+;;;   30-60 HP:  $25,000 - $80,000
+;;;
+;;; Premium: 2-3x oil-injected equivalent due to oil-free technology
+
+;;; -- Engine-Driven / Portable Compressors --
+;;;
+;;; HP Range:    5 - 500 HP
+;;; CFM Range:   20 - 1600 CFM
+;;; PSI Range:   100 - 200 PSI (some high-pressure to 500 PSI)
+;;; Engine Brands: Honda (gas), Kohler (gas), Kubota (diesel),
+;;;               Deutz (diesel), Caterpillar (diesel), John Deere (diesel)
+;;;
+;;; Price Ranges:
+;;;   Gas Portable (5-15 HP):    $2,000 - $8,000
+;;;   Gas Portable (15-25 HP):   $5,000 - $15,000
+;;;   Diesel Portable (25-50 HP): $15,000 - $40,000
+;;;   Diesel Towable (185 CFM):   $20,000 - $45,000
+;;;   Diesel Towable (375 CFM):   $35,000 - $70,000
+;;;   Diesel Towable (750 CFM):   $60,000 - $120,000
+;;;   Diesel Towable (1600 CFM):  $100,000 - $250,000
+
+;;; ============================================================
+;;; SECTION 2: AIR TREATMENT SPECIFICATIONS
+;;; ============================================================
+
+;;; -- Refrigerated Dryers --
+;;;
+;;; Capacity Range: 10 - 10,000 SCFM
+;;; Dew Point:      35 - 39 F (1.7 - 3.9 C) pressure dew point
+;;; Inlet Temp:     100 F standard, 120-180 F high-temp models
+;;; Power Draw:     0.5 - 15 kW (much less than desiccant)
+;;;
+;;; Price Ranges:
+;;;   10-25 CFM:    $1,000 - $2,500
+;;;   50-100 CFM:   $1,500 - $4,000
+;;;   200-500 CFM:  $3,000 - $10,000
+;;;   500-1000 CFM: $6,000 - $20,000
+;;;   1000+ CFM:    $15,000 - $50,000
+;;;
+;;; Cycling vs Non-Cycling: Cycling adds 30-50% cost but saves 50-80% energy at partial load
+
+;;; -- Desiccant Dryers --
+;;;
+;;; Capacity Range:  5 - 5,000 SCFM
+;;; Dew Point:       -40 F to -100 F pressure dew point
+;;; Purge Loss:      10-18% of rated flow (heatless), 2-5% (heated), 0% (HOC)
+;;; Media:           Activated alumina, silica gel, molecular sieve
+;;;
+;;; Price Ranges:
+;;;   5-25 CFM:     $1,500 - $5,000
+;;;   50-100 CFM:   $5,000 - $15,000
+;;;   200-500 CFM:  $15,000 - $40,000
+;;;   500-1000 CFM: $30,000 - $80,000
+;;;   1000+ CFM:    $60,000 - $200,000+
+
+;;; -- Nitrogen Generators --
+;;;
+;;; Capacity Range: 5 - 10,000 SCFH (PSA), varies by purity
+;;; Purity:         95% - 99.999%
+;;; Feed Air:       Requires clean, dry compressed air at 100+ PSI
+;;; ROI:            Typically 12-24 months vs. bulk liquid N2 delivery
+;;;
+;;; Price Ranges:
+;;;   Small (tire, food packaging):  $10,000 - $30,000
+;;;   Medium (laser, heat treat):    $30,000 - $100,000
+;;;   Large (chemical, pharma):      $100,000 - $500,000+
+
+;;; ============================================================
+;;; SECTION 3: MARKET SIZE AND INDUSTRY BENCHMARKS
+;;; ============================================================
+
+;;; US Compressed Air Market (2025 estimates):
+;;;   Total market:          ~$12-15 billion
+;;;   Equipment (new):       ~$5-6 billion
+;;;   Parts & consumables:   ~$3-4 billion
+;;;   Service & maintenance: ~$2-3 billion
+;;;   Energy (electricity):  ~$3-4 billion (compressed air is 20-30% of mfg electricity)
+;;;
+;;; Market Growth: 3-5% annually (driven by automation, reshoring, energy efficiency)
+;;;
+;;; Distribution Channel Share:
+;;;   Authorized distributors: ~45%
+;;;   Direct from manufacturer: ~25%
+;;;   Online retail:            ~15% (fastest growing)
+;;;   Rental & lease:           ~10%
+;;;   Used/refurbished:         ~5%
+;;;
+;;; Top 5 Manufacturers by US Revenue:
+;;;   1. Atlas Copco Group (~$3B+ including Quincy, CP, ABAC)
+;;;   2. Ingersoll Rand (~$2.5B+ including Gardner Denver, Champion)
+;;;   3. Kaeser (private, German, ~$1B+ US)
+;;;   4. ELGi (~$400M+ US, growing 15-20% annually)
+;;;   5. Kaishan (~$200M+ US, growing 25%+ annually)
+
+;;; ============================================================
+;;; SECTION 4: KEY PRODUCT SERIES (Top 100 SKU candidates)
+;;; ============================================================
+;;; These are the product families most likely in ISG's Top 100
+;;; competitive SKU tracking list. Organized by expected volume.
+
+;;; -- Ingersoll Rand (likely ISG's primary brand) --
+;;;
+;;; UP6 Series: 5-15 HP fixed speed rotary screw. The workhorse.
+;;;   UP6-5:    5 HP, 18 CFM, 125 PSI   — ~$7,400
+;;;   UP6-7.5:  7.5 HP, 25 CFM, 125 PSI — ~$8,200
+;;;   UP6-10:   10 HP, 35 CFM, 125 PSI  — ~$9,500
+;;;   UP6-15c:  15 HP, 50 CFM, 125 PSI  — ~$11,000
+;;;
+;;; R-Series: 5-30 HP next-gen rotary screw.
+;;;   RS5i:     5 HP fixed   — ~$9,150
+;;;   RS7.5i:   7.5 HP fixed — ~$10,500
+;;;   RS7.5n:   7.5 HP VSD   — ~$16,400
+;;;   RS15i:    15 HP fixed  — ~$15,000
+;;;   RS15n:    15 HP VSD    — ~$22,000
+;;;
+;;; 2475/2545/7100: Piston compressors.
+;;;   2475:     5-7.5 HP, 24 CFM, 175 PSI — ~$3,400
+;;;   2545:     10 HP, 35.6 CFM, 175 PSI  — ~$4,900
+;;;   7100:     15 HP, 50 CFM              — ~$6,800
+;;;
+;;; D-Series Dryers: Refrigerated.
+;;;   D-Series: 10-1000 CFM — starting ~$1,160
+
+;;; -- Quincy Compressor --
+;;;
+;;; QGS Series: 5-30 HP fixed speed rotary screw.
+;;;   QGS 5:    5 HP, 18.1 CFM   — ~$8,000
+;;;   QGS 7.5:  7.5 HP, 26.1 CFM — ~$9,200
+;;;   QGS 10:   10 HP, 38.8 CFM  — ~$11,500
+;;;   QGS 15:   15 HP, 54.9 CFM  — ~$13,000
+;;;   QGS 20:   20 HP, 82.2 CFM  — ~$18,000
+;;;
+;;; QGSV/QGDV: Variable speed.
+;;;   QGSV 5-60 HP: starting ~$7,800
+;;;   QGDV 15-30 HP: starting ~$24,000
+;;;
+;;; QGD Series: 15-60 HP gear drive rotary screw.
+;;;   QGD 15-60: starting ~$20,700
+;;;
+;;; QT Series: 5-15 HP piston.
+;;;   QT-54: 5 HP, 15.2 CFM, 175 PSI — ~$2,700
+;;;   QT Series: starting ~$3,400
+;;;
+;;; QPNC: Refrigerated dryers. Starting ~$1,600.
+;;; QOF: Oil-free. Starting ~$9,700.
+;;; QCV: Dry claw vacuum. Starting ~$7,100.
+
+;;; -- Atlas Copco --
+;;;
+;;; G Series: 2-30 HP rotary screw (value tier).
+;;;   G2-G7:    2-10 HP, tank mount — ~$8,700 - $13,800
+;;;   G11-G15:  15-20 HP            — ~$14,500 - $16,100
+;;;
+;;; GA Series: 5-500 HP rotary screw (premium tier).
+;;;   GA5-GA30:   5-30 HP           — ~$15,500 - $33,000
+;;;   GA37-GA90:  50-125 HP         — call for pricing
+;;;   GA110-GA500: 150-500 HP       — engineered/quoted
+;;;
+;;; SF Series: Oil-free scroll.
+;;;   SF1-6:    2-8 HP  — ~$8,800 - $25,300
+;;;   SF8-22:   10-30 HP — ~$25,300+
+;;;
+;;; CD Series: Desiccant dryers. Starting ~$6,300.
+
+;;; -- ELGi --
+;;;
+;;; EN Series: 4-20 HP rotary screw (value tier, aggressive pricing).
+;;;   EN04:    5 HP    — ~$5,800
+;;;   EN05:    7.5 HP  — ~$6,200
+;;;   EN07:    10 HP   — ~$7,800
+;;;   EN11:    15 HP   — ~$10,500
+;;;   EN15:    20 HP   — ~$13,000
+;;;
+;;; EG Series: 15-300 HP rotary screw.
+;;;   EG Series: starting ~$15,000
+;;;
+;;; AB Series: Oil-free. Call for pricing.
+;;; EGRD Airmate: Refrigerated dryers. Starting ~$1,500.
+
+;;; -- Kaishan USA --
+;;;
+;;; KRST Series: Total air systems (compressor + dryer + tank).
+;;;   KRST-005A: 5 HP   — ~$8,400
+;;;   KRST-7.5A: 7.5 HP — ~$9,400
+;;;   KRST-010A: 10 HP  — ~$10,300
+;;;   KRST-015A: 15 HP  — ~$12,600
+;;;   KRST-020A: 20 HP  — ~$15,900
+;;;   KRST-030A: 30 HP  — ~$22,500
+;;;
+;;; Kaishan is disrupting the 5-30 HP market on price.
+;;; Their total air systems are 15-25% below IR/Quincy equivalents.
+
+;;; -- Chicago Pneumatic --
+;;;
+;;; QRS Series: 3-30 HP rotary screw.
+;;;   QRS 3:   3 HP    — ~$9,400
+;;;   QRS 5.5: 5.5 HP  — ~$11,000
+;;;   QRS 7.5: 7.5 HP  — ~$12,400
+;;;   QRS 10:  10 HP   — ~$14,900
+;;;   QRS 15:  15 HP   — ~$16,100
+;;;
+;;; CPS Series: Towable portable compressors.
+;;;   CPS 185: 185 CFM diesel — ~$25,000-$35,000
+
+;;; -- FS-Curtis --
+;;;
+;;; NxB Series: Rotary screw total air systems.
+;;;   NxB06: 7.5 HP  — ~$12,000
+;;;   NxB08: 10 HP   — ~$14,000
+;;;   NxB11: 15 HP   — ~$15,700
+;;;   NxB15: 20 HP   — ~$17,600
+;;;
+;;; CT Series: Piston compressors.
+;;; OL Series: Oil-free.
+;;; ECO-Scroll: Scroll compressor.
+
+;;; ============================================================
+;;; SECTION 5: SERVICE INTERVAL BENCHMARKS
+;;; ============================================================
+;;; Standard maintenance intervals for compressed air equipment.
+;;; Charlotte monitors these to schedule service and identify
+;;; parts sales opportunities.
+
+;;; Rotary Screw Compressor Maintenance:
+;;;   Air filter:        2,000 hours (replace element)
+;;;   Oil filter:        2,000 hours (replace element)
+;;;   Oil change:        4,000 - 8,000 hours (synthetic: 8K, mineral: 4K)
+;;;   Separator element: 8,000 hours (replace)
+;;;   Belt:              8,000 hours (inspect, replace if worn)
+;;;   Intake valve:      16,000 hours (rebuild kit)
+;;;   Min pressure valve: 16,000 hours (rebuild kit)
+;;;   Motor bearings:    40,000 hours (repack or replace)
+;;;   Airend bearings:   40,000 - 60,000 hours (overhaul)
+;;;   Airend rebuild:    60,000 - 100,000 hours (full rebuild)
+;;;
+;;; Annual service cost estimate:
+;;;   5-15 HP:    $800 - $2,000/year
+;;;   20-50 HP:   $1,500 - $4,000/year
+;;;   75-200 HP:  $3,000 - $10,000/year
+
+;;; Piston Compressor Maintenance:
+;;;   Air filter:     500 hours
+;;;   Oil change:     500 - 1,000 hours
+;;;   Valve plate:    2,000 - 5,000 hours
+;;;   Piston rings:   5,000 - 10,000 hours
+;;;   Belt:           2,000 hours (inspect)
+
+;;; Refrigerated Dryer Maintenance:
+;;;   Condenser cleaning: Quarterly (more in dusty environments)
+;;;   Drain check:        Monthly
+;;;   Refrigerant check:  Annual
+;;;   Expected life:      10 - 15 years
+
+;;; Desiccant Dryer Maintenance:
+;;;   Pre-filter change:  2,000 hours
+;;;   After-filter change: 2,000 hours
+;;;   Desiccant replacement: 3-5 years (heatless), 5-7 years (heated)
+;;;   Valve rebuild:      2-3 years
+;;;   Expected life:      15 - 20 years
+
+;;; ============================================================
+;;; SECTION 6: ENERGY COST BENCHMARKS
+;;; ============================================================
+;;; Compressed air is the most expensive utility in manufacturing.
+;;; Energy cost is 76% of lifetime cost of a compressor.
+
+;;; Lifetime Cost Breakdown (typical 10-year ownership):
+;;;   Purchase price:     12%
+;;;   Installation:       5%
+;;;   Maintenance/parts:  7%
+;;;   Energy (electricity): 76%
+;;;
+;;; At $0.10/kWh, a 100 HP compressor running 6,000 hrs/year:
+;;;   Annual energy cost: ~$47,000
+;;;   10-year energy:     ~$470,000
+;;;   Purchase price:     ~$60,000-80,000
+;;;
+;;; Energy savings from VSD at 50% average load:
+;;;   Fixed speed: wastes 30-40% of energy in unloaded running
+;;;   VSD: reduces energy use by 25-35%
+;;;   Annual savings on 100 HP: ~$12,000-16,000
+;;;   VSD payback period: 2-4 years
+
+;;; Specific Power Benchmarks (kW per 100 CFM at 100 PSI):
+;;;   Excellent:  < 18 kW/100 CFM
+;;;   Good:       18 - 20 kW/100 CFM
+;;;   Average:    20 - 22 kW/100 CFM
+;;;   Poor:       > 22 kW/100 CFM
+;;;   Very Poor:  > 25 kW/100 CFM (indicates oversized or old equipment)

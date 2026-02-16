@@ -1,0 +1,375 @@
+;;; ================================================================
+;;; COMPRESSOR / OUTPUT / NODES / NITROGEN
+;;; Instantiated nitrogen generator products from US retailers
+;;; Sources: CompressorWorld
+;;; ================================================================
+
+(in-microtheory CompressorOutputMt)
+
+;;; ============================================================
+;;; ATLAS COPCO — NITROGEN GENERATORS
+;;; ============================================================
+
+;; NGP+ Series — PSA Nitrogen Generators
+(isa AC-NGP-5 NitrogenGenerator)
+(hasProductName AC-NGP-5 "Atlas Copco NGP+ 5 PSA Nitrogen Generator 5 CFM")
+(hasBrand AC-NGP-5 AtlasCopco)
+(hasModelNumber AC-NGP-5 "NGP+ 5")
+(belongsToSeries AC-NGP-5 AC-NGP-Series)
+(hasCFM AC-NGP-5 5)
+(hasNitrogenPurity AC-NGP-5 Purity999)
+(hasListPrice AC-NGP-5 14999.00)
+(listedBy AC-NGP-5 CompressorWorld)
+
+(isa AC-NGP-10 NitrogenGenerator)
+(hasProductName AC-NGP-10 "Atlas Copco NGP+ 10 PSA Nitrogen Generator 10 CFM")
+(hasBrand AC-NGP-10 AtlasCopco)
+(hasModelNumber AC-NGP-10 "NGP+ 10")
+(belongsToSeries AC-NGP-10 AC-NGP-Series)
+(hasCFM AC-NGP-10 10)
+(hasNitrogenPurity AC-NGP-10 Purity999)
+(hasListPrice AC-NGP-10 22999.00)
+(listedBy AC-NGP-10 CompressorWorld)
+
+(isa AC-NGP-25 NitrogenGenerator)
+(hasProductName AC-NGP-25 "Atlas Copco NGP+ 25 PSA Nitrogen Generator 25 CFM")
+(hasBrand AC-NGP-25 AtlasCopco)
+(hasModelNumber AC-NGP-25 "NGP+ 25")
+(belongsToSeries AC-NGP-25 AC-NGP-Series)
+(hasCFM AC-NGP-25 25)
+(hasNitrogenPurity AC-NGP-25 Purity999)
+(hasListPrice AC-NGP-25 39999.00)
+(listedBy AC-NGP-25 CompressorWorld)
+
+(isa AC-NGP-50 NitrogenGenerator)
+(hasProductName AC-NGP-50 "Atlas Copco NGP+ 50 PSA Nitrogen Generator 50 CFM")
+(hasBrand AC-NGP-50 AtlasCopco)
+(hasModelNumber AC-NGP-50 "NGP+ 50")
+(belongsToSeries AC-NGP-50 AC-NGP-Series)
+(hasCFM AC-NGP-50 50)
+(hasNitrogenPurity AC-NGP-50 Purity999)
+(hasListPrice AC-NGP-50 64999.00)
+(listedBy AC-NGP-50 CompressorWorld)
+
+(isa AC-NGP-100 NitrogenGenerator)
+(hasProductName AC-NGP-100 "Atlas Copco NGP+ 100 PSA Nitrogen Generator 100 CFM")
+(hasBrand AC-NGP-100 AtlasCopco)
+(hasModelNumber AC-NGP-100 "NGP+ 100")
+(belongsToSeries AC-NGP-100 AC-NGP-Series)
+(hasCFM AC-NGP-100 100)
+(hasNitrogenPurity AC-NGP-100 Purity999)
+(hasListPrice AC-NGP-100 99999.00)
+(listedBy AC-NGP-100 CompressorWorld)
+
+;;; ============================================================
+;;; PNEUMATECH — NITROGEN GENERATORS
+;;; ============================================================
+
+;; PMNG Series — Membrane Nitrogen Generators
+(isa PN-PMNG-3 NitrogenGenerator)
+(hasProductName PN-PMNG-3 "Pneumatech PMNG 3 Membrane Nitrogen Generator 3 CFM")
+(hasBrand PN-PMNG-3 Pneumatech)
+(hasModelNumber PN-PMNG-3 "PMNG 3")
+(belongsToSeries PN-PMNG-3 PN-PMNG-Series)
+(hasCFM PN-PMNG-3 3)
+(hasNitrogenPurity PN-PMNG-3 Purity99)
+(hasListPrice PN-PMNG-3 9999.00)
+(listedBy PN-PMNG-3 CompressorWorld)
+
+(isa PN-PMNG-5 NitrogenGenerator)
+(hasProductName PN-PMNG-5 "Pneumatech PMNG 5 Membrane Nitrogen Generator 5 CFM")
+(hasBrand PN-PMNG-5 Pneumatech)
+(hasModelNumber PN-PMNG-5 "PMNG 5")
+(belongsToSeries PN-PMNG-5 PN-PMNG-Series)
+(hasCFM PN-PMNG-5 5)
+(hasNitrogenPurity PN-PMNG-5 Purity99)
+(hasListPrice PN-PMNG-5 14499.00)
+(listedBy PN-PMNG-5 CompressorWorld)
+
+(isa PN-PMNG-10 NitrogenGenerator)
+(hasProductName PN-PMNG-10 "Pneumatech PMNG 10 Membrane Nitrogen Generator 10 CFM")
+(hasBrand PN-PMNG-10 Pneumatech)
+(hasModelNumber PN-PMNG-10 "PMNG 10")
+(belongsToSeries PN-PMNG-10 PN-PMNG-Series)
+(hasCFM PN-PMNG-10 10)
+(hasNitrogenPurity PN-PMNG-10 Purity99)
+(hasListPrice PN-PMNG-10 21999.00)
+(listedBy PN-PMNG-10 CompressorWorld)
+
+(isa PN-PMNG-25 NitrogenGenerator)
+(hasProductName PN-PMNG-25 "Pneumatech PMNG 25 Membrane Nitrogen Generator 25 CFM")
+(hasBrand PN-PMNG-25 Pneumatech)
+(hasModelNumber PN-PMNG-25 "PMNG 25")
+(belongsToSeries PN-PMNG-25 PN-PMNG-Series)
+(hasCFM PN-PMNG-25 25)
+(hasNitrogenPurity PN-PMNG-25 Purity99)
+(hasListPrice PN-PMNG-25 37999.00)
+(listedBy PN-PMNG-25 CompressorWorld)
+
+;; PPNG Series — PSA Nitrogen Generators
+(isa PN-PPNG-5 NitrogenGenerator)
+(hasProductName PN-PPNG-5 "Pneumatech PPNG 5 PSA Nitrogen Generator 5 CFM")
+(hasBrand PN-PPNG-5 Pneumatech)
+(hasModelNumber PN-PPNG-5 "PPNG 5")
+(belongsToSeries PN-PPNG-5 PN-PPNG-Series)
+(hasCFM PN-PPNG-5 5)
+(hasNitrogenPurity PN-PPNG-5 Purity99999)
+(hasListPrice PN-PPNG-5 19999.00)
+(listedBy PN-PPNG-5 CompressorWorld)
+
+(isa PN-PPNG-10 NitrogenGenerator)
+(hasProductName PN-PPNG-10 "Pneumatech PPNG 10 PSA Nitrogen Generator 10 CFM")
+(hasBrand PN-PPNG-10 Pneumatech)
+(hasModelNumber PN-PPNG-10 "PPNG 10")
+(belongsToSeries PN-PPNG-10 PN-PPNG-Series)
+(hasCFM PN-PPNG-10 10)
+(hasNitrogenPurity PN-PPNG-10 Purity99999)
+(hasListPrice PN-PPNG-10 29999.00)
+(listedBy PN-PPNG-10 CompressorWorld)
+
+(isa PN-PPNG-25 NitrogenGenerator)
+(hasProductName PN-PPNG-25 "Pneumatech PPNG 25 PSA Nitrogen Generator 25 CFM")
+(hasBrand PN-PPNG-25 Pneumatech)
+(hasModelNumber PN-PPNG-25 "PPNG 25")
+(belongsToSeries PN-PPNG-25 PN-PPNG-Series)
+(hasCFM PN-PPNG-25 25)
+(hasNitrogenPurity PN-PPNG-25 Purity99999)
+(hasListPrice PN-PPNG-25 49999.00)
+(listedBy PN-PPNG-25 CompressorWorld)
+
+;;; ============================================================
+;;; QUINCY — NITROGEN / BOOSTER / DRYER-SEPARATOR
+;;; ============================================================
+
+;; QB Series — Nitrogen Boosters
+(isa QY-QB-500 NitrogenGenerator)
+(hasProductName QY-QB-500 "Quincy QB-500 Nitrogen Booster")
+(hasBrand QY-QB-500 QuincyCompressor)
+(hasModelNumber QY-QB-500 "QB-500")
+(belongsToSeries QY-QB-500 QY-QB-Series)
+(hasListPrice QY-QB-500 12999.00)
+(listedBy QY-QB-500 CompressorWorld)
+
+(isa QY-QB-1000 NitrogenGenerator)
+(hasProductName QY-QB-1000 "Quincy QB-1000 Nitrogen Booster")
+(hasBrand QY-QB-1000 QuincyCompressor)
+(hasModelNumber QY-QB-1000 "QB-1000")
+(belongsToSeries QY-QB-1000 QY-QB-Series)
+(hasListPrice QY-QB-1000 19999.00)
+(listedBy QY-QB-1000 CompressorWorld)
+
+;; QDS Series — Dryer/Separator for N2 Systems
+(isa QY-QDS-50 NitrogenGenerator)
+(hasProductName QY-QDS-50 "Quincy QDS-50 Nitrogen Dryer/Separator")
+(hasBrand QY-QDS-50 QuincyCompressor)
+(hasModelNumber QY-QDS-50 "QDS-50")
+(belongsToSeries QY-QDS-50 QY-QDS-Series)
+(hasListPrice QY-QDS-50 8999.00)
+(listedBy QY-QDS-50 CompressorWorld)
+
+(isa QY-QDS-100 NitrogenGenerator)
+(hasProductName QY-QDS-100 "Quincy QDS-100 Nitrogen Dryer/Separator")
+(hasBrand QY-QDS-100 QuincyCompressor)
+(hasModelNumber QY-QDS-100 "QDS-100")
+(belongsToSeries QY-QDS-100 QY-QDS-Series)
+(hasListPrice QY-QDS-100 13999.00)
+(listedBy QY-QDS-100 CompressorWorld)
+
+;;; ============================================================
+;;; HERTZ — NITROGEN GENERATORS
+;;; ============================================================
+
+;; HNG Series — Nitrogen Generators
+(isa HZ-HNG-5 NitrogenGenerator)
+(hasProductName HZ-HNG-5 "Hertz HNG 5 Nitrogen Generator 5 CFM")
+(hasBrand HZ-HNG-5 HertzKompressoren)
+(hasModelNumber HZ-HNG-5 "HNG 5")
+(belongsToSeries HZ-HNG-5 HZ-HNG-Series)
+(hasCFM HZ-HNG-5 5)
+(hasListPrice HZ-HNG-5 13499.00)
+(listedBy HZ-HNG-5 CompressorWorld)
+
+(isa HZ-HNG-10 NitrogenGenerator)
+(hasProductName HZ-HNG-10 "Hertz HNG 10 Nitrogen Generator 10 CFM")
+(hasBrand HZ-HNG-10 HertzKompressoren)
+(hasModelNumber HZ-HNG-10 "HNG 10")
+(belongsToSeries HZ-HNG-10 HZ-HNG-Series)
+(hasCFM HZ-HNG-10 10)
+(hasListPrice HZ-HNG-10 20999.00)
+(listedBy HZ-HNG-10 CompressorWorld)
+
+(isa HZ-HNG-25 NitrogenGenerator)
+(hasProductName HZ-HNG-25 "Hertz HNG 25 Nitrogen Generator 25 CFM")
+(hasBrand HZ-HNG-25 HertzKompressoren)
+(hasModelNumber HZ-HNG-25 "HNG 25")
+(belongsToSeries HZ-HNG-25 HZ-HNG-Series)
+(hasCFM HZ-HNG-25 25)
+(hasListPrice HZ-HNG-25 36999.00)
+(listedBy HZ-HNG-25 CompressorWorld)
+
+;;; ============================================================
+;;; PARKER — NITROGEN GENERATORS
+;;; ============================================================
+
+;; NITROSource Series — Nitrogen Generators
+(isa PK-NS-5 NitrogenGenerator)
+(hasProductName PK-NS-5 "Parker NITROSource NS-5 Nitrogen Generator 5 CFM")
+(hasBrand PK-NS-5 Parker)
+(hasModelNumber PK-NS-5 "NS-5")
+(belongsToSeries PK-NS-5 PK-NITROSource-Series)
+(hasCFM PK-NS-5 5)
+(hasListPrice PK-NS-5 15999.00)
+(listedBy PK-NS-5 CompressorWorld)
+
+(isa PK-NS-10 NitrogenGenerator)
+(hasProductName PK-NS-10 "Parker NITROSource NS-10 Nitrogen Generator 10 CFM")
+(hasBrand PK-NS-10 Parker)
+(hasModelNumber PK-NS-10 "NS-10")
+(belongsToSeries PK-NS-10 PK-NITROSource-Series)
+(hasCFM PK-NS-10 10)
+(hasListPrice PK-NS-10 24999.00)
+(listedBy PK-NS-10 CompressorWorld)
+
+(isa PK-NS-25 NitrogenGenerator)
+(hasProductName PK-NS-25 "Parker NITROSource NS-25 Nitrogen Generator 25 CFM")
+(hasBrand PK-NS-25 Parker)
+(hasModelNumber PK-NS-25 "NS-25")
+(belongsToSeries PK-NS-25 PK-NITROSource-Series)
+(hasCFM PK-NS-25 25)
+(hasListPrice PK-NS-25 42999.00)
+(listedBy PK-NS-25 CompressorWorld)
+
+;;; ============================================================
+;;; NANO-PURIFICATION — NITROGEN GENERATORS
+;;; ============================================================
+
+;; GEN2 Series — PSA Nitrogen Generators
+(isa NP-GEN2-5 NitrogenGenerator)
+(hasProductName NP-GEN2-5 "nano-purification GEN2-5 PSA Nitrogen Generator 5 CFM")
+(hasBrand NP-GEN2-5 NanoPurification)
+(hasModelNumber NP-GEN2-5 "GEN2-5")
+(belongsToSeries NP-GEN2-5 NP-GEN2-Series)
+(hasCFM NP-GEN2-5 5)
+(hasListPrice NP-GEN2-5 12999.00)
+(listedBy NP-GEN2-5 CompressorWorld)
+
+(isa NP-GEN2-10 NitrogenGenerator)
+(hasProductName NP-GEN2-10 "nano-purification GEN2-10 PSA Nitrogen Generator 10 CFM")
+(hasBrand NP-GEN2-10 NanoPurification)
+(hasModelNumber NP-GEN2-10 "GEN2-10")
+(belongsToSeries NP-GEN2-10 NP-GEN2-Series)
+(hasCFM NP-GEN2-10 10)
+(hasListPrice NP-GEN2-10 19999.00)
+(listedBy NP-GEN2-10 CompressorWorld)
+
+(isa NP-GEN2-25 NitrogenGenerator)
+(hasProductName NP-GEN2-25 "nano-purification GEN2-25 PSA Nitrogen Generator 25 CFM")
+(hasBrand NP-GEN2-25 NanoPurification)
+(hasModelNumber NP-GEN2-25 "GEN2-25")
+(belongsToSeries NP-GEN2-25 NP-GEN2-Series)
+(hasCFM NP-GEN2-25 25)
+(hasListPrice NP-GEN2-25 34999.00)
+(listedBy NP-GEN2-25 CompressorWorld)
+
+;; NMG Series — Membrane Nitrogen Generators
+(isa NP-NMG-3 NitrogenGenerator)
+(hasProductName NP-NMG-3 "nano-purification NMG-3 Membrane Nitrogen Generator 3 CFM")
+(hasBrand NP-NMG-3 NanoPurification)
+(hasModelNumber NP-NMG-3 "NMG-3")
+(belongsToSeries NP-NMG-3 NP-NMG-Series)
+(hasCFM NP-NMG-3 3)
+(hasListPrice NP-NMG-3 8999.00)
+(listedBy NP-NMG-3 CompressorWorld)
+
+(isa NP-NMG-5 NitrogenGenerator)
+(hasProductName NP-NMG-5 "nano-purification NMG-5 Membrane Nitrogen Generator 5 CFM")
+(hasBrand NP-NMG-5 NanoPurification)
+(hasModelNumber NP-NMG-5 "NMG-5")
+(belongsToSeries NP-NMG-5 NP-NMG-Series)
+(hasCFM NP-NMG-5 5)
+(hasListPrice NP-NMG-5 13499.00)
+(listedBy NP-NMG-5 CompressorWorld)
+
+;;; ============================================================
+;;; OZEN — NITROGEN GENERATORS
+;;; ============================================================
+
+;; OAMG-N2 Series — PSA Nitrogen Generators
+(isa OZ-OAMG-N2-5 NitrogenGenerator)
+(hasProductName OZ-OAMG-N2-5 "OZEN OAMG-N2-5 PSA Nitrogen Generator 5 CFM")
+(hasBrand OZ-OAMG-N2-5 OZEN)
+(hasModelNumber OZ-OAMG-N2-5 "OAMG-N2-5")
+(belongsToSeries OZ-OAMG-N2-5 OZ-OAMG-N2-Series)
+(hasCFM OZ-OAMG-N2-5 5)
+(hasListPrice OZ-OAMG-N2-5 11999.00)
+(listedBy OZ-OAMG-N2-5 CompressorWorld)
+
+(isa OZ-OAMG-N2-10 NitrogenGenerator)
+(hasProductName OZ-OAMG-N2-10 "OZEN OAMG-N2-10 PSA Nitrogen Generator 10 CFM")
+(hasBrand OZ-OAMG-N2-10 OZEN)
+(hasModelNumber OZ-OAMG-N2-10 "OAMG-N2-10")
+(belongsToSeries OZ-OAMG-N2-10 OZ-OAMG-N2-Series)
+(hasCFM OZ-OAMG-N2-10 10)
+(hasListPrice OZ-OAMG-N2-10 18999.00)
+(listedBy OZ-OAMG-N2-10 CompressorWorld)
+
+;;; ============================================================
+;;; PRODUCT SERIES DEFINITIONS
+;;; ============================================================
+
+;; Atlas Copco
+(isa AC-NGP-Series ProductSeries)
+(hasProductName AC-NGP-Series "Atlas Copco NGP+ Series")
+(seriesBy AC-NGP-Series AtlasCopco)
+(comment AC-NGP-Series "PSA nitrogen generators 5-100 CFM. Up to 99.999% purity. The global standard for on-site nitrogen generation. Modular design scales with demand.")
+
+;; Pneumatech
+(isa PN-PMNG-Series ProductSeries)
+(hasProductName PN-PMNG-Series "Pneumatech PMNG Series")
+(seriesBy PN-PMNG-Series Pneumatech)
+(comment PN-PMNG-Series "Membrane nitrogen generators 3-25 CFM. 95-99% purity. No moving parts, compact, low maintenance. For food packaging and laser assist gas.")
+
+(isa PN-PPNG-Series ProductSeries)
+(hasProductName PN-PPNG-Series "Pneumatech PPNG Series")
+(seriesBy PN-PPNG-Series Pneumatech)
+(comment PN-PPNG-Series "PSA nitrogen generators 5-25 CFM. Up to 99.999% purity. For semiconductor, pharmaceutical, and analytical applications requiring ultra-high purity.")
+
+;; Quincy
+(isa QY-QB-Series ProductSeries)
+(hasProductName QY-QB-Series "Quincy QB Series")
+(seriesBy QY-QB-Series QuincyCompressor)
+(comment QY-QB-Series "Nitrogen boosters for increasing N2 system output pressure. Used downstream of nitrogen generators for high-pressure applications.")
+
+(isa QY-QDS-Series ProductSeries)
+(hasProductName QY-QDS-Series "Quincy QDS Series")
+(seriesBy QY-QDS-Series QuincyCompressor)
+(comment QY-QDS-Series "Dryer/separator units for nitrogen generation systems. Pre-treatment of compressed air before nitrogen separation.")
+
+;; Hertz
+(isa HZ-HNG-Series ProductSeries)
+(hasProductName HZ-HNG-Series "Hertz HNG Series")
+(seriesBy HZ-HNG-Series HertzKompressoren)
+(comment HZ-HNG-Series "PSA nitrogen generators 5-25 CFM. Competitive pricing from Turkish manufacturer. Spartanburg SC warehouse for US delivery.")
+
+;; Parker
+(isa PK-NITROSource-Series ProductSeries)
+(hasProductName PK-NITROSource-Series "Parker NITROSource Series")
+(seriesBy PK-NITROSource-Series Parker)
+(comment PK-NITROSource-Series "Nitrogen generators 5-25 CFM. Parker Hannifin quality. Membrane and PSA technologies available. Premium tier pricing.")
+
+;; Nano-Purification
+(isa NP-GEN2-Series ProductSeries)
+(hasProductName NP-GEN2-Series "nano-purification GEN2 Series")
+(seriesBy NP-GEN2-Series NanoPurification)
+(comment NP-GEN2-Series "PSA nitrogen generators 5-25 CFM. Modular design. Charlotte NC manufacturer. Known for value pricing and field serviceability.")
+
+(isa NP-NMG-Series ProductSeries)
+(hasProductName NP-NMG-Series "nano-purification NMG Series")
+(seriesBy NP-NMG-Series NanoPurification)
+(comment NP-NMG-Series "Membrane nitrogen generators 3-5 CFM. Compact point-of-use nitrogen for small-flow applications. No moving parts.")
+
+;; OZEN
+(isa OZ-OAMG-N2-Series ProductSeries)
+(hasProductName OZ-OAMG-N2-Series "OZEN OAMG-N2 Series")
+(seriesBy OZ-OAMG-N2-Series OZEN)
+(comment OZ-OAMG-N2-Series "PSA nitrogen generators 5-10 CFM. Turkish manufacturer. Aggressive pricing. Up to 99.999% purity. Available through CompressorWorld.")

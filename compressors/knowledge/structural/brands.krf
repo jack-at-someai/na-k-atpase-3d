@@ -1,0 +1,738 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / STRUCTURAL / BRANDS
+;;; Complete catalog of compressed air equipment brands sold in the US
+;;; 120+ brands across compressors, dryers, vacuum, blowers, and accessories
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; TIER 1 — MAJOR GLOBAL MANUFACTURERS
+;;; ============================================================
+;;; These companies define the market. Combined they hold ~60%
+;;; of global compressed air revenue. Full product lines.
+
+(isa AtlasCopco Manufacturer)
+(hasProductName AtlasCopco "Atlas Copco")
+(hasState AtlasCopco "SE")
+(hasCity AtlasCopco "Stockholm")
+(hasWebsite AtlasCopco "https://www.atlascopco.com")
+(comment AtlasCopco "Swedish multinational. World's largest compressed air company. Full line: rotary screw, centrifugal, oil-free, dryers, vacuum, nitrogen. Market cap ~$60B. Parent of Chicago Pneumatic, ABAC, Mark Compressors, Pneumatech, Edwards, Leybold. Also owns Bobcat compressor line. Rock Hill, SC is US HQ.")
+
+(isa IngersollRand Manufacturer)
+(hasProductName IngersollRand "Ingersoll Rand")
+(hasState IngersollRand "NC")
+(hasCity IngersollRand "Davidson")
+(hasWebsite IngersollRand "https://www.ingersollrand.com")
+(comment IngersollRand "American industrial icon since 1871. Dominant in US distribution. Full line: rotary screw (UP6, R-Series, Next Gen R), piston (2475, 2545, 7100), oil-free, dryers, blowers. Acquired Gardner Denver and Nash. NYSE: IR. ~$7B revenue.")
+
+(isa QuincyCompressor Manufacturer)
+(hasProductName QuincyCompressor "Quincy Compressor")
+(hasState QuincyCompressor "AL")
+(hasCity QuincyCompressor "Bay Minette")
+(hasWebsite QuincyCompressor "https://www.quincycompressor.com")
+(comment QuincyCompressor "American manufacturer since 1920. Known for quality and longevity. Key lines: QGS/QGD rotary screw, QT piston, QGSV/QGDV variable speed, QOF oil-free, QPNC dryers, QCV vacuum. Owned by Atlas Copco since 2021 but operates independently.")
+
+(isa ELGi Manufacturer)
+(hasProductName ELGi "ELGi")
+(hasState ELGi "NC")
+(hasCity ELGi "Charlotte")
+(hasWebsite ELGi "https://www.elgi.com")
+(comment ELGi "Indian multinational, world's 5th largest. Growing aggressively in US market. Key lines: EN Series (5-20 HP), EG Series (15-300 HP), AB Series (oil-free). Known for competitive pricing and the EGRD Airmate dryers. Charlotte, NC is US HQ.")
+
+(isa ChicagoPneumatic Manufacturer)
+(hasProductName ChicagoPneumatic "Chicago Pneumatic")
+(hasState ChicagoPneumatic "NJ")
+(hasCity ChicagoPneumatic "Rock Hill")
+(hasWebsite ChicagoPneumatic "https://www.cp.com")
+(comment ChicagoPneumatic "Atlas Copco subsidiary. Strong in portable/towable compressors and light industrial. Key lines: QRS rotary screw, RCP piston, CPS portable, CPBg/CPVSd variable speed. Popular with CompressorPros.com and online retailers.")
+
+(isa Champion Manufacturer)
+(hasProductName Champion "Champion")
+(hasState Champion "PA")
+(hasCity Champion "Reading")
+(hasWebsite Champion "https://www.championpneumatic.com")
+(comment Champion "American manufacturer since 1919. Strong piston compressor heritage. Key lines: R-Series (piston simplex/duplex), Advantage (piston), DRS/DRC (rotary screw), CA-Series (oil-free), D-Series. Owned by Gardner Denver / Ingersoll Rand.")
+
+(isa KaishanUSA Manufacturer)
+(hasProductName KaishanUSA "Kaishan USA")
+(hasState KaishanUSA "AL")
+(hasCity KaishanUSA "Loxley")
+(hasWebsite KaishanUSA "https://www.kaishanusa.com")
+(comment KaishanUSA "Chinese manufacturer with US assembly. Aggressive pricing on rotary screw compressors. Key lines: KRST (total air system), KRSV (vacuum), PK (piston). Fast-growing competitor disrupting the 5-30 HP price tier. Loxley, Alabama assembly facility.")
+
+(isa SullivanPalatek Manufacturer)
+(hasProductName SullivanPalatek "Sullivan-Palatek")
+(hasState SullivanPalatek "IN")
+(hasCity SullivanPalatek "Michigan City")
+(hasWebsite SullivanPalatek "https://www.sullivan-palatek.com")
+(comment SullivanPalatek "American manufacturer. Rotary screw compressors 5-500 HP. Known for robust airends and competitive pricing. Strong in industrial and oil/gas markets. Michigan City, Indiana factory.")
+
+;;; ============================================================
+;;; TIER 2 — SIGNIFICANT MANUFACTURERS
+;;; ============================================================
+;;; Established brands with strong market presence in specific
+;;; segments or technologies.
+
+(isa FSCurtis Manufacturer)
+(hasProductName FSCurtis "FS-Curtis")
+(hasState FSCurtis "MO")
+(hasCity FSCurtis "St. Louis")
+(hasWebsite FSCurtis "https://www.fs-curtis.com")
+(comment FSCurtis "American manufacturer since 1854. Key lines: NxB rotary screw (popular in total air systems), CT piston, OL oil-free, ECO-Scroll. Strong presence on CompressorsNow.com. Owned by FUSHENG.")
+
+(isa ABAC Manufacturer)
+(hasProductName ABAC "ABAC")
+(hasState ABAC "VA")
+(hasCity ABAC "Richmond")
+(hasWebsite ABAC "https://www.abacaircompressors.com")
+(comment ABAC "Italian brand owned by Atlas Copco. Light industrial rotary screw compressors 5-20 HP. Known for competitive pricing on tank-mounted rotary screw units. Popular with CompressorPros.com.")
+
+(isa Schulz Manufacturer)
+(hasProductName Schulz "Schulz Compressors")
+(hasState Schulz "GA")
+(hasCity Schulz "Acworth")
+(hasWebsite Schulz "https://www.schulzamerica.com")
+(comment Schulz "Brazilian manufacturer. Key lines: SRP rotary screw, oilless piston, SCR scroll. Known for value pricing. Acworth, Georgia US operations.")
+
+(isa HertzKompressoren Manufacturer)
+(hasProductName HertzKompressoren "Hertz Kompressoren")
+(hasState HertzKompressoren "SC")
+(hasCity HertzKompressoren "Spartanburg")
+(hasWebsite HertzKompressoren "https://www.hertz-kompressoren.com")
+(comment HertzKompressoren "Turkish manufacturer. Rotary screw compressors, nitrogen generators, oil-free systems. Key lines: HGS rotary screw, HS oil-free, HNG nitrogen. Spartanburg, SC US warehouse and distribution.")
+
+(isa Mattei Manufacturer)
+(hasProductName Mattei "Mattei")
+(hasState Mattei "MD")
+(hasCity Mattei "Annapolis Junction")
+(hasWebsite Mattei "https://www.matteicomp.com")
+(comment Mattei "Italian manufacturer. The dominant rotary vane compressor brand. Key lines: BLADE, Optima, Maxima, RVD series. Known for extreme longevity (100,000+ hour airends) and consistent CFM output. Niche but loyal following.")
+
+(isa Powerex Manufacturer)
+(hasProductName Powerex "Powerex")
+(hasState Powerex "OH")
+(hasCity Powerex "Harrison")
+(hasWebsite Powerex "https://www.powerexinc.com")
+(comment Powerex "American manufacturer specializing in oil-free scroll and piston systems. Key lines: STS/SLAE scroll, OTS/OPS piston, medical/lab systems. Dominant in medical and dental compressed air. Harrison, Ohio factory.")
+
+(isa SaylorBeall Manufacturer)
+(hasProductName SaylorBeall "Saylor-Beall")
+(hasState SaylorBeall "MO")
+(hasCity SaylorBeall "St. Louis")
+(hasWebsite SaylorBeall "https://www.saylorbeall.com")
+(comment SaylorBeall "American piston compressor manufacturer since 1929. Cast iron pumps and complete tank-mounted units. Known for durability. 1.5-30 HP range. St. Louis, Missouri.")
+
+(isa IndustrialGold Manufacturer)
+(hasProductName IndustrialGold "Industrial Gold")
+(hasState IndustrialGold "FL")
+(hasCity IndustrialGold "Brooksville")
+(hasWebsite IndustrialGold "https://www.industrialgold.com")
+(comment IndustrialGold "American manufacturer. Rotary screw and oil-free piston compressors. Key lines: RS Series enclosed rotary screw, CI Series oil-free piston. 5-100 HP. Competitive pricing tier. Popular with online retailers.")
+
+(isa Jenny Manufacturer)
+(hasProductName Jenny "Jenny")
+(hasState Jenny "PA")
+(hasCity Jenny "Somerset")
+(hasWebsite Jenny "https://www.jennyproductsinc.com")
+(comment Jenny "American manufacturer since 1927. Piston compressors 0.5-15 HP. Hand-carry portables, tank-mounted, and wheeled units. Known for quality at the light-duty end. Also makes pressure washers and generators.")
+
+(isa MiTM Manufacturer)
+(hasProductName MiTM "Mi-T-M")
+(hasState MiTM "IA")
+(hasCity MiTM "Peosta")
+(hasWebsite MiTM "https://www.mitm.com")
+(comment MiTM "American manufacturer. Gas-driven and portable compressors, compressor/generator combos. Honda and Kohler engine options. Strong in construction and rental markets. Peosta, Iowa factory.")
+
+(isa BelAire Manufacturer)
+(hasProductName BelAire "BelAire")
+(hasState BelAire "WI")
+(hasCity BelAire "Rock Falls")
+(hasWebsite BelAire "https://www.belairecompressors.com")
+(comment BelAire "American brand. Piston compressors 3-10 HP. Vertical and horizontal tank configurations. Value-tier pricing. Popular with online retailers and small shops. Owned by IMC/BelAire.")
+
+(isa EMAX Manufacturer)
+(hasProductName EMAX "EMAX")
+(hasState EMAX "GA")
+(hasCity EMAX "Statesboro")
+(hasWebsite EMAX "https://www.emaxcompressor.com")
+(comment EMAX "American brand. Piston compressors, rotary screw, and variable speed options. Key lines: ERIK rotary screw, EDS rotary screw, Industrial Plus piston. Statesboro, Georgia. Growing presence in online retail.")
+
+(isa BOGE Manufacturer)
+(hasProductName BOGE "BOGE")
+(hasState BOGE "GA")
+(hasCity BOGE "Lawrenceville")
+(hasWebsite BOGE "https://us.boge.com")
+(comment BOGE "German manufacturer. Rotary screw compressors, oil-free (EO series, K series piston). Known for German engineering quality. Premium pricing tier. Lawrenceville, Georgia US operations.")
+
+(isa AnestIwata Manufacturer)
+(hasProductName AnestIwata "Anest Iwata")
+(hasState AnestIwata "OH")
+(hasCity AnestIwata "Cincinnati")
+(hasWebsite AnestIwata "https://www.anestiwata.com")
+(comment AnestIwata "Japanese manufacturer. Oil-free scroll compressors (SLT, SLE, SLB series) and oil-free piston (OFT, OFB). Strong in medical, dental, and laboratory markets. Cincinnati, Ohio US operations.")
+
+(isa Coaire Manufacturer)
+(hasProductName Coaire "Coaire")
+(hasState Coaire "CA")
+(hasCity Coaire "Cerritos")
+(hasWebsite Coaire "https://www.coaire.com")
+(comment Coaire "Korean manufacturer. Oil-free scroll compressors (CSOF-S, CSOF-B, CSOF-D, CSOF-M series). Growing in the US oil-free market. Cerritos, California US operations.")
+
+(isa KelloggAmerican Manufacturer)
+(hasProductName KelloggAmerican "Kellogg-American")
+(hasState KelloggAmerican "PA")
+(hasCity KelloggAmerican "Oakmont")
+(comment KelloggAmerican "American piston compressor manufacturer. Replacement pumps and complete units. Long heritage brand. Known for cast-iron construction and field serviceability.")
+
+(isa MarkCompressors Manufacturer)
+(hasProductName MarkCompressors "Mark Compressors")
+(hasState MarkCompressors "SC")
+(hasCity MarkCompressors "Rock Hill")
+(comment MarkCompressors "Atlas Copco subsidiary brand. MSU series rotary screw compressors 3-40 HP. Value positioning under Atlas Copco umbrella. Available through select online retailers.")
+
+(isa Bobcat Manufacturer)
+(hasProductName Bobcat "Bobcat")
+(hasState Bobcat "ND")
+(hasCity Bobcat "West Fargo")
+(hasWebsite Bobcat "https://www.bobcat.com")
+(comment Bobcat "Doosan subsidiary. Towable and portable diesel compressors for construction. 185-1600 CFM. The orange compressor on every construction site. Atlas Copco manufactures Bobcat-branded portable compressors under license.")
+
+(isa CAire Manufacturer)
+(hasProductName CAire "C-Aire")
+(hasState CAire "GA")
+(hasCity CAire "Statesboro")
+(comment CAire "American brand. Piston compressors at value pricing. Two-stage simplex and duplex configurations. Popular with CompressorPros.com. Related to EMAX.")
+
+(isa FirstAir Manufacturer)
+(hasProductName FirstAir "firstAir / FirstAir")
+(hasState FirstAir "MO")
+(hasCity FirstAir "St. Louis")
+(comment FirstAir "Brand associated with FS-Curtis family. Rotary screw compressors for online retail channel. FAS series tank-mounted rotary screw. Available through CompressorsNow.com.")
+
+(isa NUAIR Manufacturer)
+(hasProductName NUAIR "NUAIR")
+(comment NUAIR "Italian brand. Light-duty portable and piston compressors. Value tier. Limited US presence through online retailers.")
+
+(isa Fiac Manufacturer)
+(hasProductName Fiac "fiac")
+(hasState Fiac "NC")
+(hasWebsite Fiac "https://www.fiacusa.com")
+(comment Fiac "Italian manufacturer. NS and New Silver rotary screw series. Growing US presence through CompressorPros.com and dealer network. Value-tier alternative to major brands.")
+
+(isa KTC Manufacturer)
+(hasProductName KTC "KTC")
+(comment KTC "Brand carrying piston and light-duty compressors. Available through select US online retailers.")
+
+(isa Amico Manufacturer)
+(hasProductName Amico "Amico")
+(hasState Amico "ON")
+(hasCity Amico "Richmond Hill")
+(hasWebsite Amico "https://www.amicomed.com")
+(comment Amico "Canadian manufacturer. Medical gas systems including oil-free scroll compressors, vacuum, and WAGD. NFPA 99 compliant systems for hospitals and medical facilities.")
+
+(isa TechWest Manufacturer)
+(hasProductName TechWest "Tech West")
+(hasState TechWest "AZ")
+(hasCity TechWest "Phoenix")
+(hasWebsite TechWest "https://www.techwestinc.com")
+(comment TechWest "American manufacturer. Dental and medical compressed air and vacuum systems. GoldenVac vacuum, Elite piston systems, Elite Rocky series. NFPA 99 and ADA compliant.")
+
+(isa Silentaire Manufacturer)
+(hasProductName Silentaire "Silentaire / SilentAire")
+(hasWebsite Silentaire "https://www.silentaire.com")
+(comment Silentaire "Manufacturer of ultra-quiet compressors for dental, medical, laboratory, and audio/studio applications. Oil-free. Under 50 dBA. Available through CompressorPros.com.")
+
+(isa NardiAmericas Manufacturer)
+(hasProductName NardiAmericas "Nardi Americas")
+(comment NardiAmericas "Italian manufacturer. Small portable oil-free compressors for diving, dental, and specialty applications. Compact units under 3 HP.")
+
+(isa Nuvair Manufacturer)
+(hasProductName Nuvair "Nuvair")
+(hasState Nuvair "CA")
+(hasCity Nuvair "Oxnard")
+(hasWebsite Nuvair "https://www.nuvair.com")
+(comment Nuvair "American manufacturer. High-pressure breathing air compressors for diving, firefighting, and military applications. 2000-6000 PSI systems. Oxnard, California.")
+
+(isa ALKIN Manufacturer)
+(hasProductName ALKIN "ALKIN Compressors")
+(comment ALKIN "Turkish manufacturer. High-pressure compressors for breathing air, CNG, and industrial gas applications. 200-6000 PSI.")
+
+(isa Kobelco Manufacturer)
+(hasProductName Kobelco "Kobelco")
+(hasWebsite Kobelco "https://www.kobelcocompressors.com")
+(comment Kobelco "Japanese manufacturer (Kobe Steel subsidiary). Oil-free screw and centrifugal compressors for large industrial applications. Premium tier. 100-10,000 HP.")
+
+(isa KORE Manufacturer)
+(hasProductName KORE "KORE Compressor")
+(comment KORE "Manufacturer of rotary screw compressors. Available through CompressorWorld.com.")
+
+;;; ============================================================
+;;; TIER 3 — AIR TREATMENT SPECIALISTS
+;;; ============================================================
+;;; Brands focused on dryers, filtration, and air quality.
+
+(isa Hankison Manufacturer)
+(hasProductName Hankison "Hankison")
+(hasState Hankison "PA")
+(hasCity Hankison "Canonsburg")
+(comment Hankison "SPX FLOW subsidiary. Refrigerated dryers (HPRN, HPR, HES series), desiccant dryers, and filters. One of the most recognized dryer brands in the US. Premium quality.")
+
+(isa Deltech Manufacturer)
+(hasProductName Deltech "Deltech")
+(hasState Deltech "PA")
+(hasCity Deltech "New Castle")
+(hasWebsite Deltech "https://www.spxflow.com/deltech")
+(comment Deltech "SPX FLOW subsidiary. Refrigerated dryers (HGEN series), compressed air purification. Sister brand to Hankison. New Castle, Pennsylvania.")
+
+(isa Pneumatech Manufacturer)
+(hasProductName Pneumatech "Pneumatech")
+(hasWebsite Pneumatech "https://www.pneumatech.com")
+(comment Pneumatech "Atlas Copco subsidiary. Dryers, filters, condensate management, nitrogen generators (PMNG membrane, PPNG PSA). Full air treatment product line. Global presence.")
+
+(isa NanoPurification Manufacturer)
+(hasProductName NanoPurification "nano-purification solutions")
+(hasState NanoPurification "NC")
+(hasCity NanoPurification "Charlotte")
+(hasWebsite NanoPurification "https://www.n-psi.com")
+(comment NanoPurification "American manufacturer. Desiccant dryers (NDL modular), nitrogen generators (GEN2, GEN2-MAX, NMG), membrane dryers. Charlotte, NC. Known for modular nitrogen generation systems.")
+
+(isa SuperDry Manufacturer)
+(hasProductName SuperDry "Super-Dry")
+(hasState SuperDry "WI")
+(hasCity SuperDry "Sun Prairie")
+(hasWebsite SuperDry "https://www.super-dry.com")
+(comment SuperDry "American manufacturer. Desiccant dryers (D-Series) for compressed air. Simple, reliable designs for point-of-use drying. Sun Prairie, Wisconsin.")
+
+(isa Tsunami Manufacturer)
+(hasProductName Tsunami "Tsunami Compressed Air Solutions")
+(hasState Tsunami "FL")
+(hasCity Tsunami "Fort Pierce")
+(hasWebsite Tsunami "https://www.tsunamicompressedair.com")
+(comment Tsunami "American brand. Desiccant dryers (Pure Series) and filtration for compressed air. 5-120 CFM. Popular with online retailers. Known for value pricing on small desiccant dryers.")
+
+(isa BEKO Manufacturer)
+(hasProductName BEKO "BEKO Technologies")
+(hasState BEKO "GA")
+(hasCity BEKO "Atlanta")
+(hasWebsite BEKO "https://www.bfrtech.com")
+(comment BEKO "German manufacturer. DRYPOINT refrigerated and desiccant dryers, CLEARPOINT filters, condensate drains, oil/water separators. Premium quality. Known for BEKOMAT zero-loss drains. Atlanta, Georgia US HQ.")
+
+(isa AppliedSystemTechnologies Manufacturer)
+(hasProductName AppliedSystemTechnologies "Applied System Technologies")
+(comment AppliedSystemTechnologies "Manufacturer of compressed air purification equipment including dryers and filtration. Featured brand on CompressorWorld.com.")
+
+(isa GreatLakesAir Manufacturer)
+(hasProductName GreatLakesAir "Great Lakes Air")
+(comment GreatLakesAir "Manufacturer of refrigerated and desiccant air dryers. US brand carried by select distributors.")
+
+(isa VanAirSystems Manufacturer)
+(hasProductName VanAirSystems "Van Air Systems")
+(hasState VanAirSystems "PA")
+(hasCity VanAirSystems "Lake City")
+(hasWebsite VanAirSystems "https://www.vanairsystems.com")
+(comment VanAirSystems "American manufacturer. Deliquescent and desiccant dryers, filters, condensate management. Known for deliquescent dryers used in natural gas, construction, and outdoor applications. Lake City, Pennsylvania.")
+
+(isa ReadingTechnologies Manufacturer)
+(hasProductName ReadingTechnologies "Reading Technologies")
+(hasState ReadingTechnologies "PA")
+(hasCity ReadingTechnologies "Reading")
+(comment ReadingTechnologies "Air purification equipment manufacturer. Dryers and filters for compressed air systems.")
+
+(isa Aircel Manufacturer)
+(hasProductName Aircel "Aircel")
+(hasState Aircel "PA")
+(hasCity Aircel "Morgantown")
+(hasWebsite Aircel "https://www.airceldryer.com")
+(comment Aircel "American manufacturer. Refrigerated air dryers, desiccant dryers, and filters. Known for AHLD series desiccant and VF series refrigerated dryers. Morgantown, Pennsylvania.")
+
+(isa DryAIR Manufacturer)
+(hasProductName DryAIR "DryAIR")
+(comment DryAIR "Manufacturer of compressed air dryers. Available through CompressorWorld.com.")
+
+(isa DRYTEC Manufacturer)
+(hasProductName DRYTEC "DRYTEC")
+(comment DRYTEC "Manufacturer of refrigerated and desiccant air dryers for compressed air systems.")
+
+(isa AltecAIR Manufacturer)
+(hasProductName AltecAIR "Altec AIR")
+(comment AltecAIR "Manufacturer of compressed air treatment packages. CDA (Clean Dry Air) packages combining compressor and dryer. Available through CompressorWorld.com.")
+
+(isa AlphaPure Manufacturer)
+(hasProductName AlphaPure "AlphaPure")
+(comment AlphaPure "Manufacturer of cycling refrigerated air dryers. Available through CompressorPros.com. Value-tier dryer option.")
+
+(isa COOL Manufacturer)
+(hasProductName COOL "COOL")
+(comment COOL "Manufacturer of refrigerated air dryers. Available through CompressorPros.com.")
+
+(isa Parker Manufacturer)
+(hasProductName Parker "Parker")
+(hasState Parker "OH")
+(hasCity Parker "Cleveland")
+(hasWebsite Parker "https://www.parker.com")
+(comment Parker "Parker Hannifin. Fortune 250 industrial conglomerate. Compressed air division: SPS refrigerated dryers, HDK desiccant dryers, NITROSource nitrogen generators, Finite filters. Cleveland, Ohio HQ. NYSE: PH. ~$20B revenue.")
+
+(isa KSITechnologies Manufacturer)
+(hasProductName KSITechnologies "KSI Technologies")
+(hasState KSITechnologies "VA")
+(hasCity KSITechnologies "Williamsburg")
+(hasWebsite KSITechnologies "https://www.ksi-inc.com")
+(comment KSITechnologies "American manufacturer. ECOCLEAN filtration including sterile and activated carbon filters. Williamsburg, Virginia.")
+
+(isa WalkerFiltration Manufacturer)
+(hasProductName WalkerFiltration "Walker Filtration")
+(hasWebsite WalkerFiltration "https://www.walkerfiltration.com")
+(comment WalkerFiltration "UK manufacturer. Compressed air filters and filter elements. Premium quality filtration for all air quality classes. Global distribution.")
+
+(isa Solberg Manufacturer)
+(hasProductName Solberg "Solberg")
+(hasState Solberg "IN")
+(hasCity Solberg "Itasca")
+(hasWebsite Solberg "https://www.solbergmfg.com")
+(comment Solberg "American manufacturer. Inlet filters, silencers, and oil mist eliminators for compressors and vacuum pumps. Itasca, Illinois.")
+
+(isa CleanResources Manufacturer)
+(hasProductName CleanResources "Clean Resources")
+(hasState CleanResources "TX")
+(hasCity CleanResources "Houston")
+(comment CleanResources "Manufacturer of oil/water separators and condensate treatment for compressed air systems. Houston, Texas.")
+
+(isa JORC Manufacturer)
+(hasProductName JORC "JORC Industrial")
+(hasWebsite JORC "https://www.jorc.com")
+(comment JORC "Dutch manufacturer. Automatic condensate drains (KAPTIV, Puro, Smart Guard), oil/water separators, and flow controls. Known for high-quality zero-loss drains. Global distribution.")
+
+(isa KeltecTechnolab Manufacturer)
+(hasProductName KeltecTechnolab "Keltec Technolab")
+(hasState KeltecTechnolab "FL")
+(hasCity KeltecTechnolab "Titusville")
+(hasWebsite KeltecTechnolab "https://www.kfrfilters.com")
+(comment KeltecTechnolab "American manufacturer. Replacement filter elements compatible with major OEM housings. Aftermarket alternative to OEM filter elements. Titusville, Florida.")
+
+(isa SterlingSeparation Manufacturer)
+(hasProductName SterlingSeparation "Sterling Separation")
+(comment SterlingSeparation "Manufacturer of compressed air purification equipment including filters and separators.")
+
+;;; ============================================================
+;;; TIER 4 — VACUUM SPECIALISTS
+;;; ============================================================
+
+(isa Becker Manufacturer)
+(hasProductName Becker "Becker")
+(hasState Becker "OH")
+(hasCity Becker "Cuyahoga Falls")
+(hasWebsite Becker "https://www.beckerpumps.com")
+(comment Becker "German manufacturer. Rotary vane vacuum pumps (U4, U5 series) and pressure pumps. Known for reliability in packaging, woodworking CNC, and printing. Also makes regenerative blowers. Cuyahoga Falls, Ohio US operations.")
+
+(isa DVP Manufacturer)
+(hasProductName DVP "DVP Vacuum Technology")
+(hasState DVP "CA")
+(hasCity DVP "Valencia")
+(hasWebsite DVP "https://www.dvpvacuumpumps.com")
+(comment DVP "Italian manufacturer. Comprehensive vacuum pump line: LC oil-sealed rotary vane, SC oil-free rotary vane, ZB piston, VA dry claw, FLA liquid ring, DC/RC high vacuum. Also makes TSL/TDL regenerative blowers. Valencia, California US operations.")
+
+(isa Dekker Manufacturer)
+(hasProductName Dekker "DEKKER Vacuum Technologies")
+(hasState Dekker "MI")
+(hasCity Dekker "Michigan City")
+(hasWebsite Dekker "https://www.dekker.com")
+(comment Dekker "American manufacturer. Comprehensive vacuum line: Titan liquid ring, DuraVane rotary vane, Gryphon dry claw, HullVac rotary piston, Maxima centrifugal, AquaSeal stainless liquid ring. Michigan City, Indiana.")
+
+(isa WelchVacuum Manufacturer)
+(hasProductName WelchVacuum "Welch Vacuum")
+(hasState WelchVacuum "IL")
+(hasCity WelchVacuum "Mt. Prospect")
+(hasWebsite WelchVacuum "https://www.welchvacuum.com")
+(comment WelchVacuum "Gardner Denver / Ingersoll Rand brand. 100+ vacuum pump models. Duoseal, CRVpro, WOB-L, Chemstar, SCSpro series. Dominant in laboratory and scientific vacuum. Mt. Prospect, Illinois.")
+
+(isa Leybold Manufacturer)
+(hasProductName Leybold "Leybold")
+(hasState Leybold "PA")
+(hasCity Leybold "Export")
+(hasWebsite Leybold "https://www.leybold.com")
+(comment Leybold "Atlas Copco subsidiary. Premium scientific and industrial vacuum. SOGEVAC, TRIVAC, NEO D, VARODRY, CLAWVAC series. From rough to ultra-high vacuum. Export, Pennsylvania US operations.")
+
+(isa ElmoRietschle Manufacturer)
+(hasProductName ElmoRietschle "Elmo Rietschle")
+(hasWebsite ElmoRietschle "https://www.gd-elmorietschle.com")
+(comment ElmoRietschle "Gardner Denver / Ingersoll Rand brand. VC-Series rotary vane vacuum pumps. Industrial packaging, plastics, and woodworking applications.")
+
+(isa Republic Manufacturer)
+(hasProductName Republic "Republic Manufacturing")
+(hasState Republic "TX")
+(hasCity Republic "Dallas")
+(hasWebsite Republic "https://www.republicmanufacturing.com")
+(comment Republic "American manufacturer. Dry rotary vane (VRT), rotary claw (RCV), and high-pressure regenerative blowers (HRC, 4RC). Dallas, Texas.")
+
+(isa NAVAC Manufacturer)
+(hasProductName NAVAC "NAVAC")
+(hasState NAVAC "NJ")
+(hasCity NAVAC "Lyndhurst")
+(hasWebsite NAVAC "https://www.navacglobal.com")
+(comment NAVAC "Chinese manufacturer. Oil-sealed and oil-free vacuum pumps. HelixDrive dry screw, NRD dual-stage, NRS single-stage, UniDrive, DuoDrive, EcoDrive series. Growing US presence. Lyndhurst, New Jersey.")
+
+(isa GlobalVac Manufacturer)
+(hasProductName GlobalVac "GlobalVac & Air")
+(comment GlobalVac "Manufacturer of industrial rotary vane vacuum systems. Available through CompressorWorld.com.")
+
+;;; ============================================================
+;;; TIER 5 — BLOWER SPECIALISTS
+;;; ============================================================
+
+(isa AirtechUSA Manufacturer)
+(hasProductName AirtechUSA "Airtech USA")
+(hasState AirtechUSA "NJ")
+(hasCity AirtechUSA "Rutherford")
+(hasWebsite AirtechUSA "https://www.airtechusa.com")
+(comment AirtechUSA "American manufacturer. Regenerative blowers (3BA series), liquid ring vacuum (3AV/3AL series), rotary claw (VCX/PCX), kinetic blowers (AKB). Also makes Orion oilless vacuum. Rutherford, New Jersey.")
+
+(isa FPZ Manufacturer)
+(hasProductName FPZ "FPZ")
+(hasState FPZ "WI")
+(hasCity FPZ "Pewaukee")
+(hasWebsite FPZ "https://www.fpz.com")
+(comment FPZ "Italian manufacturer. Regenerative blowers (06, 15DH, MD, Evolution, TS series) and linear compressors (JDK, TKO). Known for quality and performance. Pewaukee, Wisconsin US operations.")
+
+(isa AllStar Manufacturer)
+(hasProductName AllStar "All-Star")
+(comment AllStar "Manufacturer of regenerative blowers (RB, RBH series) and turbo blowers (TB series). Value-tier alternative. Available through CompressorWorld.com.")
+
+;;; ============================================================
+;;; TIER 6 — PORTABLE / ENGINE-DRIVEN SPECIALISTS
+;;; ============================================================
+
+(isa VanairManufacturing Manufacturer)
+(hasProductName VanairManufacturing "Vanair Manufacturing")
+(hasState VanairManufacturing "IN")
+(hasCity VanairManufacturing "Michigan City")
+(hasWebsite VanairManufacturing "https://www.vanair.com")
+(comment VanairManufacturing "American manufacturer. Mobile compressor and multi-function units for service trucks. Air N Arc (compressor/generator/welder combo), Viper series. Michigan City, Indiana. Dominant in utility and fleet markets.")
+
+(isa VMAC Manufacturer)
+(hasProductName VMAC "VMAC")
+(hasState VMAC "BC")
+(hasCity VMAC "Nanaimo")
+(hasWebsite VMAC "https://www.vmacair.com")
+(comment VMAC "Canadian manufacturer. Vehicle-mounted rotary screw compressors powered by PTO or auxiliary engine. Underdeck and above-deck configurations. Popular in utility, construction, and mining fleet applications. Nanaimo, British Columbia.")
+
+(isa AirmanUSA Manufacturer)
+(hasProductName AirmanUSA "Airman USA")
+(hasState AirmanUSA "IL")
+(hasCity AirmanUSA "Schaumburg")
+(hasWebsite AirmanUSA "https://www.airmanusa.com")
+(comment AirmanUSA "Japanese manufacturer (MMC subsidiary). Portable diesel compressors for construction. Known for reliability and fuel efficiency. Schaumburg, Illinois US operations.")
+
+(isa BOSSIndustries Manufacturer)
+(hasProductName BOSSIndustries "BOSS Industries")
+(hasState BOSSIndustries "IN")
+(hasCity BOSSIndustries "Hobart")
+(hasWebsite BOSSIndustries "https://www.bossindustries.com")
+(comment BOSSIndustries "American manufacturer. Vehicle-mounted and portable industrial compressors. PTO-driven and hydraulic-driven options. Hobart, Indiana.")
+
+(isa ConX Manufacturer)
+(hasProductName ConX "ConX")
+(comment ConX "Brand of portable and gas-driven compressors. Available through CompressorPros.com.")
+
+;;; ============================================================
+;;; TIER 7 — TANKS, PIPING, AND ACCESSORIES
+;;; ============================================================
+
+(isa ManchesterTank Manufacturer)
+(hasProductName ManchesterTank "Manchester Tank")
+(hasState ManchesterTank "TN")
+(hasCity ManchesterTank "Franklin")
+(hasWebsite ManchesterTank "https://www.mantank.com")
+(comment ManchesterTank "American manufacturer. ASME compressed air receivers from 30 to 10,000 gallons. Vertical and horizontal configurations. The dominant receiver tank brand in the US. Franklin, Tennessee.")
+
+(isa SteelFab Manufacturer)
+(hasProductName SteelFab "Steel Fab")
+(hasState SteelFab "PA")
+(hasCity SteelFab "Bensalem")
+(comment SteelFab "American manufacturer. ASME coded pressure vessels and air receiver tanks. Bensalem, Pennsylvania.")
+
+(isa Morganton Manufacturer)
+(hasProductName Morganton "Morganton Pressure Vessels")
+(hasState Morganton "NC")
+(hasCity Morganton "Morganton")
+(comment Morganton "American manufacturer. ASME coded pressure vessels. Morganton, North Carolina.")
+
+(isa Penway Manufacturer)
+(hasProductName Penway "Penway")
+(comment Penway "Manufacturer of air receiver tanks and pressure vessels.")
+
+(isa Norwesco Manufacturer)
+(hasProductName Norwesco "Norwesco")
+(comment Norwesco "Manufacturer of tanks including air/water and pressure vessels. Available through CompressorWorld.com.")
+
+(isa RapidAir Manufacturer)
+(hasProductName RapidAir "RapidAir")
+(hasState RapidAir "WI")
+(hasCity RapidAir "Waukesha")
+(hasWebsite RapidAir "https://www.rapidairproducts.com")
+(comment RapidAir "American manufacturer. Aluminum compressed air piping systems with push-to-connect fittings. MaxLine and FastPipe product lines. Quick installation, leak-free, reconfigurable. Waukesha, Wisconsin.")
+
+(isa Infinity Manufacturer)
+(hasProductName Infinity "Infinity")
+(comment Infinity "Aluminum air piping brand. Modular push-to-connect compressed air distribution system. Available through CompressorWorld.com.")
+
+(isa EngineeredAirProducts Manufacturer)
+(hasProductName EngineeredAirProducts "Engineered Air Products")
+(comment EngineeredAirProducts "Manufacturer of aluminum compressed air piping systems. Available through CompressorWorld.com.")
+
+(isa CoxReels Manufacturer)
+(hasProductName CoxReels "Cox Reels / Coxreels")
+(hasState CoxReels "AZ")
+(hasCity CoxReels "Tempe")
+(hasWebsite CoxReels "https://www.coxreels.com")
+(comment CoxReels "American manufacturer. Spring-retractable hose reels for compressed air, water, oil, and electrical. Premium quality. Made in Tempe, Arizona.")
+
+(isa Reelcraft Manufacturer)
+(hasProductName Reelcraft "Reelcraft")
+(hasState Reelcraft "IN")
+(hasCity Reelcraft "Columbia City")
+(hasWebsite Reelcraft "https://www.reelcraft.com")
+(comment Reelcraft "American manufacturer. Spring-retractable and hand-crank hose reels. Broad product line for compressed air and fluid handling. Columbia City, Indiana.")
+
+(isa CoilhosePneumatics Manufacturer)
+(hasProductName CoilhosePneumatics "Coilhose Pneumatics")
+(hasState CoilhosePneumatics "NJ")
+(hasCity CoilhosePneumatics "East Brunswick")
+(hasWebsite CoilhosePneumatics "https://www.coilhose.com")
+(comment CoilhosePneumatics "American manufacturer. Pneumatic fittings, coiled hose, blow guns, regulators, and compressed air accessories. East Brunswick, New Jersey.")
+
+(isa ThermalTransfer Manufacturer)
+(hasProductName ThermalTransfer "Thermal Transfer Products")
+(comment ThermalTransfer "Manufacturer of aftercoolers and heat exchangers for compressed air systems. Air-cooled and water-cooled designs.")
+
+(isa AirSystemProducts Manufacturer)
+(hasProductName AirSystemProducts "Air System Products")
+(comment AirSystemProducts "Manufacturer of compressed air system accessories. Available through CompressorWorld.com.")
+
+(isa SouthwestThermal Manufacturer)
+(hasProductName SouthwestThermal "Southwest Thermal Technology")
+(comment SouthwestThermal "Manufacturer of thermal management products for compressed air systems.")
+
+;;; ============================================================
+;;; TIER 8 — INSTRUMENTATION AND CONTROLS
+;;; ============================================================
+
+(isa CDIMeters Manufacturer)
+(hasProductName CDIMeters "CDI Meters")
+(comment CDIMeters "Manufacturer of compressed air flow meters and thermal mass flow meters.")
+
+(isa Hedland Manufacturer)
+(hasProductName Hedland "Hedland")
+(hasWebsite Hedland "https://www.hedland.com")
+(comment Hedland "Badger Meter brand. Variable area flow meters for compressed air, water, and oil. Visual flow indication. Standard in compressed air audit work.")
+
+(isa VPInstruments Manufacturer)
+(hasProductName VPInstruments "VPInstruments")
+(hasWebsite VPInstruments "https://www.vpinstruments.com")
+(comment VPInstruments "Dutch manufacturer. Compressed air flow meters and energy monitoring. VPFlowScope series. Used for energy audits and permanent monitoring. Available through CompressorWorld.com.")
+
+(isa MichellInstruments Manufacturer)
+(hasProductName MichellInstruments "Michell Instruments")
+(hasWebsite MichellInstruments "https://www.michell.com")
+(comment MichellInstruments "UK manufacturer. Moisture and dew point measurement instruments. Easidew series for compressed air dew point monitoring. Critical for air quality verification.")
+
+(isa RoscidTechnologies Manufacturer)
+(hasProductName RoscidTechnologies "Roscid Technologies")
+(comment RoscidTechnologies "Manufacturer of dew point meters and compressed air instrumentation. Available through CompressorWorld.com.")
+
+(isa MidwestControl Manufacturer)
+(hasProductName MidwestControl "Midwest-Control")
+(comment MidwestControl "Manufacturer of pressure regulators, gauges, and compressed air control components.")
+
+(isa JanaticsPneumatic Manufacturer)
+(hasProductName JanaticsPneumatic "Janatics Pneumatic")
+(comment JanaticsPneumatic "Indian manufacturer. Pneumatic actuators, valves, FRL units (filter-regulator-lubricator), and compressed air preparation equipment. Growing US presence.")
+
+;;; ============================================================
+;;; TIER 9 — NITROGEN GENERATION SPECIALISTS
+;;; ============================================================
+
+(isa OZEN Manufacturer)
+(hasProductName OZEN "OZEN Air Technology")
+(hasWebsite OZEN "https://www.ozenairtech.com")
+(comment OZEN "Turkish manufacturer. PSA nitrogen generators (OAMG-N2 series) and oxygen generators. Up to 812 CFM and 99.999% purity. Available through CompressorWorld.com.")
+
+;;; ============================================================
+;;; TIER 10 — SPECIALTY AND NICHE BRANDS
+;;; ============================================================
+
+(isa GardnerDenver Manufacturer)
+(hasProductName GardnerDenver "Gardner Denver")
+(hasState GardnerDenver "WI")
+(hasCity GardnerDenver "Milwaukee")
+(comment GardnerDenver "Historic American brand (1859). Acquired by Ingersoll Rand in 2020. Rotary screw, piston, blower product lines. Brand continues for certain product families.")
+
+(isa StylAir Manufacturer)
+(hasProductName StylAir "StylAir")
+(comment StylAir "Manufacturer of compressed air equipment. Available through CompressorWorld.com.")
+
+(isa AirworksCompressors Manufacturer)
+(hasProductName AirworksCompressors "Airworks Compressors Corp")
+(comment AirworksCompressors "Manufacturer of air compressors. Available through CompressorWorld.com.")
+
+(isa ANAEnergy Manufacturer)
+(hasProductName ANAEnergy "ANA Energy")
+(comment ANAEnergy "Manufacturer of compressed air equipment. Available through CompressorWorld.com.")
+
+(isa CentralAirEquipment Manufacturer)
+(hasProductName CentralAirEquipment "Central Air Equipment")
+(comment CentralAirEquipment "Manufacturer or assembler of compressed air equipment. Available through CompressorWorld.com.")
+
+(isa CompressedAirSystems Manufacturer)
+(hasProductName CompressedAirSystems "Compressed Air Systems")
+(comment CompressedAirSystems "Brand of oil-free piston compressors (simplex and duplex). Available through CompressorWorld.com. Related to Industrial Gold.")
+
+(isa Isel Manufacturer)
+(hasProductName Isel "Isel")
+(comment Isel "Manufacturer of compressed air equipment. Available through CompressorWorld.com.")
+
+(isa Sepura Manufacturer)
+(hasProductName Sepura "Sepura")
+(hasWebsite Sepura "https://www.sepura-ows.com")
+(comment Sepura "Manufacturer of oil/water separators for compressed air condensate. SEP series. Available through CompressorsNow.com and authorized distributors.")
+
+(isa Airbase Manufacturer)
+(hasProductName Airbase "Airbase")
+(comment Airbase "Brand of compressors and accessories. Available through CompressorPros.com.")
+
+;; Spencer Turbine
+(isa SpencerTurbine Manufacturer)
+(hasProductName SpencerTurbine "Spencer Turbine")
+(comment SpencerTurbine "Industrial blower manufacturer. Vortex regenerative blowers. Based in Windsor, CT.")
+
+;;; ============================================================
+;;; CORPORATE OWNERSHIP RELATIONSHIPS
+;;; ============================================================
+;;; Understanding who owns whom is critical for competitive
+;;; intelligence. The compressed air market has consolidated
+;;; significantly through M&A.
+
+;; Atlas Copco Group
+(parentCompanyOf AtlasCopco ChicagoPneumatic)
+(parentCompanyOf AtlasCopco ABAC)
+(parentCompanyOf AtlasCopco MarkCompressors)
+(parentCompanyOf AtlasCopco Pneumatech)
+(parentCompanyOf AtlasCopco Leybold)
+(parentCompanyOf AtlasCopco QuincyCompressor)
+
+;; Ingersoll Rand Group
+(parentCompanyOf IngersollRand Champion)
+(parentCompanyOf IngersollRand GardnerDenver)
+(parentCompanyOf IngersollRand WelchVacuum)
+(parentCompanyOf IngersollRand ElmoRietschle)
+
+;; SPX FLOW
+(isa SPXFLOW Manufacturer)
+(hasProductName SPXFLOW "SPX FLOW")
+(parentCompanyOf SPXFLOW Hankison)
+(parentCompanyOf SPXFLOW Deltech)
+
+;; Parker Hannifin
+(isa ParkerHannifin Manufacturer)
+(hasProductName ParkerHannifin "Parker Hannifin")
+(parentCompanyOf ParkerHannifin Parker)

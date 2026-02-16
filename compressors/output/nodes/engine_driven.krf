@@ -1,0 +1,737 @@
+;;; ================================================================
+;;; COMPRESSOR / OUTPUT / NODES / ENGINE DRIVEN
+;;; Instantiated engine-driven and portable compressor products
+;;; Sources: CompressorWorld, CompressorPros, CompressorsNow
+;;; ================================================================
+
+(in-microtheory CompressorOutputMt)
+
+;;; ============================================================
+;;; GAS POWERED — VANAIR
+;;; ============================================================
+
+;; Viper Gas Series — Portable Gas Compressors
+(isa VA-Viper-Gas-40 EngineDrivenCompressor)
+(isa VA-Viper-Gas-40 PortableCompressor)
+(hasProductName VA-Viper-Gas-40 "Vanair Viper Gas 40 Portable Gas Air Compressor")
+(hasBrand VA-Viper-Gas-40 VanairManufacturing)
+(hasModelNumber VA-Viper-Gas-40 "Viper Gas 40")
+(belongsToSeries VA-Viper-Gas-40 Vanair-Viper-Gas-Series)
+(hasCFM VA-Viper-Gas-40 40)
+(hasPowerSource VA-Viper-Gas-40 Gasoline)
+(hasListPrice VA-Viper-Gas-40 8999.00)
+(listedBy VA-Viper-Gas-40 CompressorWorld)
+
+(isa VA-Viper-Gas-80 EngineDrivenCompressor)
+(isa VA-Viper-Gas-80 PortableCompressor)
+(hasProductName VA-Viper-Gas-80 "Vanair Viper Gas 80 Portable Gas Air Compressor")
+(hasBrand VA-Viper-Gas-80 VanairManufacturing)
+(hasModelNumber VA-Viper-Gas-80 "Viper Gas 80")
+(belongsToSeries VA-Viper-Gas-80 Vanair-Viper-Gas-Series)
+(hasCFM VA-Viper-Gas-80 80)
+(hasPowerSource VA-Viper-Gas-80 Gasoline)
+(hasListPrice VA-Viper-Gas-80 12499.00)
+(listedBy VA-Viper-Gas-80 CompressorWorld)
+
+;; Air N Arc — Compressor/Generator Combo
+(isa VA-AirNArc-150 EngineDrivenCompressor)
+(isa VA-AirNArc-150 CompressorGeneratorCombo)
+(hasProductName VA-AirNArc-150 "Vanair Air N Arc 150 Compressor/Generator Combo")
+(hasBrand VA-AirNArc-150 VanairManufacturing)
+(hasModelNumber VA-AirNArc-150 "Air N Arc 150")
+(hasCFM VA-AirNArc-150 150)
+(hasPowerSource VA-AirNArc-150 Gasoline)
+(hasListPrice VA-AirNArc-150 24999.00)
+(listedBy VA-AirNArc-150 CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — ELGi
+;;; ============================================================
+
+;; GP Series — Gas Portable Piston
+(isa EL-GP5V EngineDrivenCompressor)
+(isa EL-GP5V PortableCompressor)
+(hasProductName EL-GP5V "ELGi GP 5V Gas Portable Air Compressor 5 HP")
+(hasBrand EL-GP5V ELGi)
+(hasModelNumber EL-GP5V "GP 5V")
+(hasHP EL-GP5V 5)
+(hasCFM EL-GP5V 17)
+(hasPowerSource EL-GP5V Gasoline)
+(hasListPrice EL-GP5V 2299.00)
+(listedBy EL-GP5V CompressorWorld)
+
+(isa EL-GP7V EngineDrivenCompressor)
+(isa EL-GP7V PortableCompressor)
+(hasProductName EL-GP7V "ELGi GP 7V Gas Portable Air Compressor 7 HP")
+(hasBrand EL-GP7V ELGi)
+(hasModelNumber EL-GP7V "GP 7V")
+(hasHP EL-GP7V 7)
+(hasCFM EL-GP7V 24)
+(hasPowerSource EL-GP7V Gasoline)
+(hasListPrice EL-GP7V 2799.00)
+(listedBy EL-GP7V CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — VMAC
+;;; ============================================================
+
+;; G-Series — Gas Vehicle-Mounted Rotary Screw
+(isa VM-G30 EngineDrivenCompressor)
+(hasProductName VM-G30 "VMAC G30 Gas Driven Rotary Screw Compressor")
+(hasBrand VM-G30 VMAC)
+(hasModelNumber VM-G30 "G30")
+(belongsToSeries VM-G30 VMAC-G-Series)
+(hasCFM VM-G30 30)
+(hasPowerSource VM-G30 Gasoline)
+(hasListPrice VM-G30 7499.00)
+(listedBy VM-G30 CompressorWorld)
+
+(isa VM-G90 EngineDrivenCompressor)
+(hasProductName VM-G90 "VMAC G90 Gas Driven Rotary Screw Compressor")
+(hasBrand VM-G90 VMAC)
+(hasModelNumber VM-G90 "G90")
+(belongsToSeries VM-G90 VMAC-G-Series)
+(hasCFM VM-G90 90)
+(hasPowerSource VM-G90 Gasoline)
+(hasListPrice VM-G90 17999.00)
+(listedBy VM-G90 CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — CHAMPION
+;;; ============================================================
+
+;; HGR Series — Gas Piston Compressors
+(isa CH-HGR5-1K EngineDrivenCompressor)
+(isa CH-HGR5-1K PortableCompressor)
+(hasProductName CH-HGR5-1K "Champion HGR5-1K Gas Air Compressor 5 HP Honda")
+(hasBrand CH-HGR5-1K Champion)
+(hasModelNumber CH-HGR5-1K "HGR5-1K")
+(hasHP CH-HGR5-1K 5)
+(hasPowerSource CH-HGR5-1K Gasoline)
+(hasListPrice CH-HGR5-1K 2199.00)
+(listedBy CH-HGR5-1K CompressorWorld)
+
+(isa CH-HGR7-3K EngineDrivenCompressor)
+(isa CH-HGR7-3K PortableCompressor)
+(hasProductName CH-HGR7-3K "Champion HGR7-3K Gas Air Compressor 7 HP")
+(hasBrand CH-HGR7-3K Champion)
+(hasModelNumber CH-HGR7-3K "HGR7-3K")
+(hasHP CH-HGR7-3K 7)
+(hasPowerSource CH-HGR7-3K Gasoline)
+(hasListPrice CH-HGR7-3K 2699.00)
+(listedBy CH-HGR7-3K CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — INGERSOLL RAND
+;;; ============================================================
+
+;; Gas Piston Two-Stage
+(isa IR-2475F13GH EngineDrivenCompressor)
+(isa IR-2475F13GH TwoStagePiston)
+(hasProductName IR-2475F13GH "Ingersoll Rand 2475F13GH Gas Two-Stage Compressor 13 HP")
+(hasBrand IR-2475F13GH IngersollRand)
+(hasModelNumber IR-2475F13GH "2475F13GH")
+(hasHP IR-2475F13GH 13)
+(hasPowerSource IR-2475F13GH Gasoline)
+(hasListPrice IR-2475F13GH 3899.00)
+(listedBy IR-2475F13GH CompressorWorld)
+
+;; Wheelbarrow Portable
+(isa IR-SS3J5.5GHWB EngineDrivenCompressor)
+(isa IR-SS3J5.5GHWB PortableCompressor)
+(hasProductName IR-SS3J5.5GHWB "Ingersoll Rand SS3J5.5GHWB Gas Wheelbarrow Compressor")
+(hasBrand IR-SS3J5.5GHWB IngersollRand)
+(hasModelNumber IR-SS3J5.5GHWB "SS3J5.5GHWB")
+(hasPowerSource IR-SS3J5.5GHWB Gasoline)
+(hasListPrice IR-SS3J5.5GHWB 1199.00)
+(listedBy IR-SS3J5.5GHWB CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — QUINCY
+;;; ============================================================
+
+;; QT Gas Piston Series
+(isa QY-QT54-Gas EngineDrivenCompressor)
+(hasProductName QY-QT54-Gas "Quincy QT-54 Gas Piston Compressor 5 HP Honda")
+(hasBrand QY-QT54-Gas QuincyCompressor)
+(hasModelNumber QY-QT54-Gas "QT-54 Gas")
+(hasHP QY-QT54-Gas 5)
+(hasPowerSource QY-QT54-Gas Gasoline)
+(hasListPrice QY-QT54-Gas 2699.00)
+(listedBy QY-QT54-Gas CompressorWorld)
+
+(isa QY-QT7.5-Gas EngineDrivenCompressor)
+(hasProductName QY-QT7.5-Gas "Quincy QT-7.5 Gas Piston Compressor 7.5 HP")
+(hasBrand QY-QT7.5-Gas QuincyCompressor)
+(hasModelNumber QY-QT7.5-Gas "QT-7.5 Gas")
+(hasHP QY-QT7.5-Gas 7.5)
+(hasPowerSource QY-QT7.5-Gas Gasoline)
+(hasListPrice QY-QT7.5-Gas 3199.00)
+(listedBy QY-QT7.5-Gas CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — CHICAGO PNEUMATIC
+;;; ============================================================
+
+;; RCP Gas Piston Series
+(isa CP-RCP930G EngineDrivenCompressor)
+(isa CP-RCP930G PortableCompressor)
+(hasProductName CP-RCP930G "Chicago Pneumatic RCP 930G Gas Compressor 9 HP 30 Gal")
+(hasBrand CP-RCP930G ChicagoPneumatic)
+(hasModelNumber CP-RCP930G "RCP 930G")
+(hasHP CP-RCP930G 9)
+(hasTankSize CP-RCP930G 30)
+(hasPowerSource CP-RCP930G Gasoline)
+(hasListPrice CP-RCP930G 1899.00)
+(listedBy CP-RCP930G CompressorWorld)
+
+(isa CP-RCP1330G EngineDrivenCompressor)
+(isa CP-RCP1330G PortableCompressor)
+(hasProductName CP-RCP1330G "Chicago Pneumatic RCP 1330G Gas Compressor 13 HP 30 Gal")
+(hasBrand CP-RCP1330G ChicagoPneumatic)
+(hasModelNumber CP-RCP1330G "RCP 1330G")
+(hasHP CP-RCP1330G 13)
+(hasTankSize CP-RCP1330G 30)
+(hasPowerSource CP-RCP1330G Gasoline)
+(hasListPrice CP-RCP1330G 2399.00)
+(listedBy CP-RCP1330G CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — MI-T-M
+;;; ============================================================
+
+;; AM1 Series — Honda Gas Portable
+(isa MT-AM1-HH04-08M EngineDrivenCompressor)
+(isa MT-AM1-HH04-08M PortableCompressor)
+(hasProductName MT-AM1-HH04-08M "Mi-T-M AM1-HH04-08M Honda 4 HP 8 Gal Gas Compressor")
+(hasBrand MT-AM1-HH04-08M MiTM)
+(hasModelNumber MT-AM1-HH04-08M "AM1-HH04-08M")
+(hasHP MT-AM1-HH04-08M 4)
+(hasTankSize MT-AM1-HH04-08M 8)
+(hasPowerSource MT-AM1-HH04-08M Gasoline)
+(hasListPrice MT-AM1-HH04-08M 1199.00)
+(listedBy MT-AM1-HH04-08M CompressorWorld)
+
+(isa MT-AM1-HH04-20M EngineDrivenCompressor)
+(isa MT-AM1-HH04-20M PortableCompressor)
+(hasProductName MT-AM1-HH04-20M "Mi-T-M AM1-HH04-20M Honda 4 HP 20 Gal Gas Compressor")
+(hasBrand MT-AM1-HH04-20M MiTM)
+(hasModelNumber MT-AM1-HH04-20M "AM1-HH04-20M")
+(hasHP MT-AM1-HH04-20M 4)
+(hasTankSize MT-AM1-HH04-20M 20)
+(hasPowerSource MT-AM1-HH04-20M Gasoline)
+(hasListPrice MT-AM1-HH04-20M 1399.00)
+(listedBy MT-AM1-HH04-20M CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — JENNY
+;;; ============================================================
+
+;; Gas Portable Piston
+(isa JN-K11HGA-30T EngineDrivenCompressor)
+(isa JN-K11HGA-30T PortableCompressor)
+(hasProductName JN-K11HGA-30T "Jenny K11HGA-30T Gas Compressor 11 HP 30 Gal")
+(hasBrand JN-K11HGA-30T Jenny)
+(hasModelNumber JN-K11HGA-30T "K11HGA-30T")
+(hasHP JN-K11HGA-30T 11)
+(hasTankSize JN-K11HGA-30T 30)
+(hasPowerSource JN-K11HGA-30T Gasoline)
+(hasListPrice JN-K11HGA-30T 2799.00)
+(listedBy JN-K11HGA-30T CompressorWorld)
+
+(isa JN-K5HGA-17T EngineDrivenCompressor)
+(isa JN-K5HGA-17T PortableCompressor)
+(hasProductName JN-K5HGA-17T "Jenny K5HGA-17T Gas Compressor 5 HP 17 Gal")
+(hasBrand JN-K5HGA-17T Jenny)
+(hasModelNumber JN-K5HGA-17T "K5HGA-17T")
+(hasHP JN-K5HGA-17T 5)
+(hasTankSize JN-K5HGA-17T 17)
+(hasPowerSource JN-K5HGA-17T Gasoline)
+(hasListPrice JN-K5HGA-17T 1899.00)
+(listedBy JN-K5HGA-17T CompressorWorld)
+
+;;; ============================================================
+;;; GAS POWERED — INDUSTRIAL GOLD
+;;; ============================================================
+
+;; Gas Engine Duplex
+(isa IG-DC2524E30GK EngineDrivenCompressor)
+(isa IG-DC2524E30GK DuplexPiston)
+(hasProductName IG-DC2524E30GK "Industrial Gold DC2524E30GK Gas Engine Duplex Compressor")
+(hasBrand IG-DC2524E30GK IndustrialGold)
+(hasModelNumber IG-DC2524E30GK "DC2524E30GK")
+(hasPowerSource IG-DC2524E30GK Gasoline)
+(hasListPrice IG-DC2524E30GK 8999.00)
+(listedBy IG-DC2524E30GK CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — ATLAS COPCO
+;;; ============================================================
+
+;; XAS Series — Towable Diesel Portable
+(isa AC-XAS68 DieselDrivenCompressor)
+(isa AC-XAS68 TowableCompressor)
+(hasProductName AC-XAS68 "Atlas Copco XAS 68 Diesel Portable Compressor 68 CFM")
+(hasBrand AC-XAS68 AtlasCopco)
+(hasModelNumber AC-XAS68 "XAS 68")
+(belongsToSeries AC-XAS68 AC-XAS-Series)
+(hasCFM AC-XAS68 68)
+(hasPowerSource AC-XAS68 Diesel)
+(hasMountingType AC-XAS68 TrailerMount)
+(hasListPrice AC-XAS68 18999.00)
+(listedBy AC-XAS68 CompressorWorld)
+
+(isa AC-XAS88 DieselDrivenCompressor)
+(isa AC-XAS88 TowableCompressor)
+(hasProductName AC-XAS88 "Atlas Copco XAS 88 Diesel Portable Compressor 88 CFM")
+(hasBrand AC-XAS88 AtlasCopco)
+(hasModelNumber AC-XAS88 "XAS 88")
+(belongsToSeries AC-XAS88 AC-XAS-Series)
+(hasCFM AC-XAS88 88)
+(hasPowerSource AC-XAS88 Diesel)
+(hasMountingType AC-XAS88 TrailerMount)
+(hasListPrice AC-XAS88 22499.00)
+(listedBy AC-XAS88 CompressorWorld)
+
+(isa AC-XAS110 DieselDrivenCompressor)
+(isa AC-XAS110 TowableCompressor)
+(hasProductName AC-XAS110 "Atlas Copco XAS 110 Diesel Portable Compressor 110 CFM")
+(hasBrand AC-XAS110 AtlasCopco)
+(hasModelNumber AC-XAS110 "XAS 110")
+(belongsToSeries AC-XAS110 AC-XAS-Series)
+(hasCFM AC-XAS110 110)
+(hasPowerSource AC-XAS110 Diesel)
+(hasMountingType AC-XAS110 TrailerMount)
+(hasListPrice AC-XAS110 27999.00)
+(listedBy AC-XAS110 CompressorWorld)
+
+(isa AC-XAS185 DieselDrivenCompressor)
+(isa AC-XAS185 TowableCompressor)
+(hasProductName AC-XAS185 "Atlas Copco XAS 185 Diesel Portable Compressor 185 CFM")
+(hasBrand AC-XAS185 AtlasCopco)
+(hasModelNumber AC-XAS185 "XAS 185")
+(belongsToSeries AC-XAS185 AC-XAS-Series)
+(hasCFM AC-XAS185 185)
+(hasPowerSource AC-XAS185 Diesel)
+(hasMountingType AC-XAS185 TrailerMount)
+(hasListPrice AC-XAS185 34999.00)
+(listedBy AC-XAS185 CompressorWorld)
+
+(isa AC-XAS375 DieselDrivenCompressor)
+(isa AC-XAS375 TowableCompressor)
+(hasProductName AC-XAS375 "Atlas Copco XAS 375 Diesel Portable Compressor 375 CFM")
+(hasBrand AC-XAS375 AtlasCopco)
+(hasModelNumber AC-XAS375 "XAS 375")
+(belongsToSeries AC-XAS375 AC-XAS-Series)
+(hasCFM AC-XAS375 375)
+(hasPowerSource AC-XAS375 Diesel)
+(hasMountingType AC-XAS375 TrailerMount)
+(hasListPrice AC-XAS375 59999.00)
+(listedBy AC-XAS375 CompressorWorld)
+
+;; X-AIR Series — Large Diesel Portable
+(isa AC-XAIR295 DieselDrivenCompressor)
+(isa AC-XAIR295 TowableCompressor)
+(hasProductName AC-XAIR295 "Atlas Copco X-AIR 295 Diesel Portable Compressor 295 CFM")
+(hasBrand AC-XAIR295 AtlasCopco)
+(hasModelNumber AC-XAIR295 "X-AIR 295")
+(hasCFM AC-XAIR295 295)
+(hasPowerSource AC-XAIR295 Diesel)
+(hasMountingType AC-XAIR295 TrailerMount)
+(hasListPrice AC-XAIR295 49999.00)
+(listedBy AC-XAIR295 CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — SULLIVAN-PALATEK
+;;; ============================================================
+
+;; D-Series — Diesel Towable
+(isa SP-D185 DieselDrivenCompressor)
+(isa SP-D185 TowableCompressor)
+(hasProductName SP-D185 "Sullivan-Palatek D185 Diesel Portable Compressor 185 CFM")
+(hasBrand SP-D185 SullivanPalatek)
+(hasModelNumber SP-D185 "D185")
+(belongsToSeries SP-D185 SP-D-Series)
+(hasCFM SP-D185 185)
+(hasPowerSource SP-D185 Diesel)
+(hasMountingType SP-D185 TrailerMount)
+(hasListPrice SP-D185 32999.00)
+(listedBy SP-D185 CompressorWorld)
+
+(isa SP-D260 DieselDrivenCompressor)
+(isa SP-D260 TowableCompressor)
+(hasProductName SP-D260 "Sullivan-Palatek D260 Diesel Portable Compressor 260 CFM")
+(hasBrand SP-D260 SullivanPalatek)
+(hasModelNumber SP-D260 "D260")
+(belongsToSeries SP-D260 SP-D-Series)
+(hasCFM SP-D260 260)
+(hasPowerSource SP-D260 Diesel)
+(hasMountingType SP-D260 TrailerMount)
+(hasListPrice SP-D260 44999.00)
+(listedBy SP-D260 CompressorWorld)
+
+(isa SP-D375 DieselDrivenCompressor)
+(isa SP-D375 TowableCompressor)
+(hasProductName SP-D375 "Sullivan-Palatek D375 Diesel Portable Compressor 375 CFM")
+(hasBrand SP-D375 SullivanPalatek)
+(hasModelNumber SP-D375 "D375")
+(belongsToSeries SP-D375 SP-D-Series)
+(hasCFM SP-D375 375)
+(hasPowerSource SP-D375 Diesel)
+(hasMountingType SP-D375 TrailerMount)
+(hasListPrice SP-D375 64999.00)
+(listedBy SP-D375 CompressorWorld)
+
+(isa SP-D750 DieselDrivenCompressor)
+(isa SP-D750 TowableCompressor)
+(hasProductName SP-D750 "Sullivan-Palatek D750 Diesel Portable Compressor 750 CFM")
+(hasBrand SP-D750 SullivanPalatek)
+(hasModelNumber SP-D750 "D750")
+(belongsToSeries SP-D750 SP-D-Series)
+(hasCFM SP-D750 750)
+(hasPowerSource SP-D750 Diesel)
+(hasMountingType SP-D750 TrailerMount)
+(hasListPrice SP-D750 99999.00)
+(listedBy SP-D750 CompressorWorld)
+
+(isa SP-D900 DieselDrivenCompressor)
+(isa SP-D900 TowableCompressor)
+(hasProductName SP-D900 "Sullivan-Palatek D900 Diesel Portable Compressor 900 CFM")
+(hasBrand SP-D900 SullivanPalatek)
+(hasModelNumber SP-D900 "D900")
+(belongsToSeries SP-D900 SP-D-Series)
+(hasCFM SP-D900 900)
+(hasPowerSource SP-D900 Diesel)
+(hasMountingType SP-D900 TrailerMount)
+(hasListPrice SP-D900 129999.00)
+(listedBy SP-D900 CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — CHICAGO PNEUMATIC (CPS Series)
+;;; ============================================================
+
+;; CPS Series — Diesel Towable
+(isa CP-CPS185 DieselDrivenCompressor)
+(isa CP-CPS185 TowableCompressor)
+(hasProductName CP-CPS185 "Chicago Pneumatic CPS 185 Diesel Portable Compressor 185 CFM")
+(hasBrand CP-CPS185 ChicagoPneumatic)
+(hasModelNumber CP-CPS185 "CPS 185")
+(belongsToSeries CP-CPS185 CP-CPS-Series)
+(hasCFM CP-CPS185 185)
+(hasPowerSource CP-CPS185 Diesel)
+(hasMountingType CP-CPS185 TrailerMount)
+(hasListPrice CP-CPS185 28999.00)
+(listedBy CP-CPS185 CompressorWorld)
+
+(isa CP-CPS375 DieselDrivenCompressor)
+(isa CP-CPS375 TowableCompressor)
+(hasProductName CP-CPS375 "Chicago Pneumatic CPS 375 Diesel Portable Compressor 375 CFM")
+(hasBrand CP-CPS375 ChicagoPneumatic)
+(hasModelNumber CP-CPS375 "CPS 375")
+(belongsToSeries CP-CPS375 CP-CPS-Series)
+(hasCFM CP-CPS375 375)
+(hasPowerSource CP-CPS375 Diesel)
+(hasMountingType CP-CPS375 TrailerMount)
+(hasListPrice CP-CPS375 54999.00)
+(listedBy CP-CPS375 CompressorWorld)
+
+(isa CP-CPS600 DieselDrivenCompressor)
+(isa CP-CPS600 TowableCompressor)
+(hasProductName CP-CPS600 "Chicago Pneumatic CPS 600 Diesel Portable Compressor 600 CFM")
+(hasBrand CP-CPS600 ChicagoPneumatic)
+(hasModelNumber CP-CPS600 "CPS 600")
+(belongsToSeries CP-CPS600 CP-CPS-Series)
+(hasCFM CP-CPS600 600)
+(hasPowerSource CP-CPS600 Diesel)
+(hasMountingType CP-CPS600 TrailerMount)
+(hasListPrice CP-CPS600 84999.00)
+(listedBy CP-CPS600 CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — ELGi
+;;; ============================================================
+
+;; D-Series — Diesel Towable
+(isa EL-D200T4F DieselDrivenCompressor)
+(isa EL-D200T4F TowableCompressor)
+(hasProductName EL-D200T4F "ELGi D200T4F Diesel Portable Compressor 200 CFM")
+(hasBrand EL-D200T4F ELGi)
+(hasModelNumber EL-D200T4F "D200T4F")
+(hasCFM EL-D200T4F 200)
+(hasPowerSource EL-D200T4F Diesel)
+(hasMountingType EL-D200T4F TrailerMount)
+(hasListPrice EL-D200T4F 29999.00)
+(listedBy EL-D200T4F CompressorWorld)
+
+(isa EL-D375T4F DieselDrivenCompressor)
+(isa EL-D375T4F TowableCompressor)
+(hasProductName EL-D375T4F "ELGi D375T4F Diesel Portable Compressor 375 CFM")
+(hasBrand EL-D375T4F ELGi)
+(hasModelNumber EL-D375T4F "D375T4F")
+(hasCFM EL-D375T4F 375)
+(hasPowerSource EL-D375T4F Diesel)
+(hasMountingType EL-D375T4F TrailerMount)
+(hasListPrice EL-D375T4F 52999.00)
+(listedBy EL-D375T4F CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — VANAIR
+;;; ============================================================
+
+;; Viper Diesel Series — Portable Diesel Compressors
+(isa VA-Viper-D40 DieselDrivenCompressor)
+(isa VA-Viper-D40 PortableCompressor)
+(hasProductName VA-Viper-D40 "Vanair Viper D40 Diesel Portable Compressor 40 CFM")
+(hasBrand VA-Viper-D40 VanairManufacturing)
+(hasModelNumber VA-Viper-D40 "Viper D40")
+(belongsToSeries VA-Viper-D40 Vanair-Viper-Diesel-Series)
+(hasCFM VA-Viper-D40 40)
+(hasPowerSource VA-Viper-D40 Diesel)
+(hasListPrice VA-Viper-D40 11999.00)
+(listedBy VA-Viper-D40 CompressorWorld)
+
+(isa VA-Viper-D80 DieselDrivenCompressor)
+(isa VA-Viper-D80 PortableCompressor)
+(hasProductName VA-Viper-D80 "Vanair Viper D80 Diesel Portable Compressor 80 CFM")
+(hasBrand VA-Viper-D80 VanairManufacturing)
+(hasModelNumber VA-Viper-D80 "Viper D80")
+(belongsToSeries VA-Viper-D80 Vanair-Viper-Diesel-Series)
+(hasCFM VA-Viper-D80 80)
+(hasPowerSource VA-Viper-D80 Diesel)
+(hasListPrice VA-Viper-D80 16999.00)
+(listedBy VA-Viper-D80 CompressorWorld)
+
+;; Powerflex Diesel
+(isa VA-Powerflex-260D DieselDrivenCompressor)
+(isa VA-Powerflex-260D TowableCompressor)
+(hasProductName VA-Powerflex-260D "Vanair Powerflex 260D Diesel Compressor 260 CFM")
+(hasBrand VA-Powerflex-260D VanairManufacturing)
+(hasModelNumber VA-Powerflex-260D "Powerflex 260D")
+(hasCFM VA-Powerflex-260D 260)
+(hasPowerSource VA-Powerflex-260D Diesel)
+(hasMountingType VA-Powerflex-260D TrailerMount)
+(hasListPrice VA-Powerflex-260D 39999.00)
+(listedBy VA-Powerflex-260D CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — AIRMAN
+;;; ============================================================
+
+;; PDS Series — Diesel Towable
+(isa AM-PDS185 DieselDrivenCompressor)
+(isa AM-PDS185 TowableCompressor)
+(hasProductName AM-PDS185 "Airman PDS 185 Diesel Portable Compressor 185 CFM")
+(hasBrand AM-PDS185 AirmanUSA)
+(hasModelNumber AM-PDS185 "PDS 185")
+(belongsToSeries AM-PDS185 Airman-PDS-Series)
+(hasCFM AM-PDS185 185)
+(hasPowerSource AM-PDS185 Diesel)
+(hasMountingType AM-PDS185 TrailerMount)
+(hasListPrice AM-PDS185 31999.00)
+(listedBy AM-PDS185 CompressorWorld)
+
+(isa AM-PDS390 DieselDrivenCompressor)
+(isa AM-PDS390 TowableCompressor)
+(hasProductName AM-PDS390 "Airman PDS 390 Diesel Portable Compressor 390 CFM")
+(hasBrand AM-PDS390 AirmanUSA)
+(hasModelNumber AM-PDS390 "PDS 390")
+(belongsToSeries AM-PDS390 Airman-PDS-Series)
+(hasCFM AM-PDS390 390)
+(hasPowerSource AM-PDS390 Diesel)
+(hasMountingType AM-PDS390 TrailerMount)
+(hasListPrice AM-PDS390 59999.00)
+(listedBy AM-PDS390 CompressorWorld)
+
+(isa AM-PDS750 DieselDrivenCompressor)
+(isa AM-PDS750 TowableCompressor)
+(hasProductName AM-PDS750 "Airman PDS 750 Diesel Portable Compressor 750 CFM")
+(hasBrand AM-PDS750 AirmanUSA)
+(hasModelNumber AM-PDS750 "PDS 750")
+(belongsToSeries AM-PDS750 Airman-PDS-Series)
+(hasCFM AM-PDS750 750)
+(hasPowerSource AM-PDS750 Diesel)
+(hasMountingType AM-PDS750 TrailerMount)
+(hasListPrice AM-PDS750 109999.00)
+(listedBy AM-PDS750 CompressorWorld)
+
+;;; ============================================================
+;;; DIESEL POWERED — BOBCAT
+;;; ============================================================
+
+;; PA Series — Diesel Towable
+(isa BC-PA250 DieselDrivenCompressor)
+(isa BC-PA250 TowableCompressor)
+(hasProductName BC-PA250 "Bobcat PA250 Diesel Portable Compressor 250 CFM")
+(hasBrand BC-PA250 Bobcat)
+(hasModelNumber BC-PA250 "PA250")
+(hasCFM BC-PA250 250)
+(hasPowerSource BC-PA250 Diesel)
+(hasMountingType BC-PA250 TrailerMount)
+(hasListPrice BC-PA250 36999.00)
+(listedBy BC-PA250 CompressorWorld)
+
+(isa BC-PA375 DieselDrivenCompressor)
+(isa BC-PA375 TowableCompressor)
+(hasProductName BC-PA375 "Bobcat PA375 Diesel Portable Compressor 375 CFM")
+(hasBrand BC-PA375 Bobcat)
+(hasModelNumber BC-PA375 "PA375")
+(hasCFM BC-PA375 375)
+(hasPowerSource BC-PA375 Diesel)
+(hasMountingType BC-PA375 TrailerMount)
+(hasListPrice BC-PA375 56999.00)
+(listedBy BC-PA375 CompressorWorld)
+
+;;; ============================================================
+;;; HYDRAULIC POWERED — BOSS INDUSTRIES
+;;; ============================================================
+
+;; BA Series — Hydraulic Vehicle-Mounted
+(isa BO-BA20 EngineDrivenCompressor)
+(hasProductName BO-BA20 "BOSS BA20 Hydraulic Compressor 20 CFM")
+(hasBrand BO-BA20 BOSSIndustries)
+(hasModelNumber BO-BA20 "BA20")
+(belongsToSeries BO-BA20 Boss-BA-Series)
+(hasCFM BO-BA20 20)
+(hasPowerSource BO-BA20 Hydraulic)
+(hasListPrice BO-BA20 4999.00)
+(listedBy BO-BA20 CompressorWorld)
+
+(isa BO-BA40 EngineDrivenCompressor)
+(hasProductName BO-BA40 "BOSS BA40 Hydraulic Compressor 40 CFM")
+(hasBrand BO-BA40 BOSSIndustries)
+(hasModelNumber BO-BA40 "BA40")
+(belongsToSeries BO-BA40 Boss-BA-Series)
+(hasCFM BO-BA40 40)
+(hasPowerSource BO-BA40 Hydraulic)
+(hasListPrice BO-BA40 7499.00)
+(listedBy BO-BA40 CompressorWorld)
+
+(isa BO-BA60 EngineDrivenCompressor)
+(hasProductName BO-BA60 "BOSS BA60 Hydraulic Compressor 60 CFM")
+(hasBrand BO-BA60 BOSSIndustries)
+(hasModelNumber BO-BA60 "BA60")
+(belongsToSeries BO-BA60 Boss-BA-Series)
+(hasCFM BO-BA60 60)
+(hasPowerSource BO-BA60 Hydraulic)
+(hasListPrice BO-BA60 9999.00)
+(listedBy BO-BA60 CompressorWorld)
+
+;; Infinity Series — Hydraulic Vehicle-Mounted
+(isa BO-INF25 EngineDrivenCompressor)
+(hasProductName BO-INF25 "BOSS Infinity INF25 Hydraulic Compressor 25 CFM")
+(hasBrand BO-INF25 BOSSIndustries)
+(hasModelNumber BO-INF25 "INF25")
+(belongsToSeries BO-INF25 Boss-Infinity-Series)
+(hasCFM BO-INF25 25)
+(hasPowerSource BO-INF25 Hydraulic)
+(hasListPrice BO-INF25 5999.00)
+(listedBy BO-INF25 CompressorWorld)
+
+(isa BO-INF50 EngineDrivenCompressor)
+(hasProductName BO-INF50 "BOSS Infinity INF50 Hydraulic Compressor 50 CFM")
+(hasBrand BO-INF50 BOSSIndustries)
+(hasModelNumber BO-INF50 "INF50")
+(belongsToSeries BO-INF50 Boss-Infinity-Series)
+(hasCFM BO-INF50 50)
+(hasPowerSource BO-INF50 Hydraulic)
+(hasListPrice BO-INF50 8999.00)
+(listedBy BO-INF50 CompressorWorld)
+
+(isa BO-INF100 EngineDrivenCompressor)
+(hasProductName BO-INF100 "BOSS Infinity INF100 Hydraulic Compressor 100 CFM")
+(hasBrand BO-INF100 BOSSIndustries)
+(hasModelNumber BO-INF100 "INF100")
+(belongsToSeries BO-INF100 Boss-Infinity-Series)
+(hasCFM BO-INF100 100)
+(hasPowerSource BO-INF100 Hydraulic)
+(hasListPrice BO-INF100 14999.00)
+(listedBy BO-INF100 CompressorWorld)
+
+;;; ============================================================
+;;; HYDRAULIC POWERED — VMAC
+;;; ============================================================
+
+;; H-Series — Hydraulic Vehicle-Mounted Rotary Screw
+(isa VM-H40 EngineDrivenCompressor)
+(hasProductName VM-H40 "VMAC H40 Hydraulic Rotary Screw Compressor 40 CFM")
+(hasBrand VM-H40 VMAC)
+(hasModelNumber VM-H40 "H40")
+(belongsToSeries VM-H40 VMAC-H-Series)
+(hasCFM VM-H40 40)
+(hasPowerSource VM-H40 Hydraulic)
+(hasListPrice VM-H40 6999.00)
+(listedBy VM-H40 CompressorWorld)
+
+(isa VM-H60 EngineDrivenCompressor)
+(hasProductName VM-H60 "VMAC H60 Hydraulic Rotary Screw Compressor 60 CFM")
+(hasBrand VM-H60 VMAC)
+(hasModelNumber VM-H60 "H60")
+(belongsToSeries VM-H60 VMAC-H-Series)
+(hasCFM VM-H60 60)
+(hasPowerSource VM-H60 Hydraulic)
+(hasListPrice VM-H60 9499.00)
+(listedBy VM-H60 CompressorWorld)
+
+(isa VM-H100 EngineDrivenCompressor)
+(hasProductName VM-H100 "VMAC H100 Hydraulic Rotary Screw Compressor 100 CFM")
+(hasBrand VM-H100 VMAC)
+(hasModelNumber VM-H100 "H100")
+(belongsToSeries VM-H100 VMAC-H-Series)
+(hasCFM VM-H100 100)
+(hasPowerSource VM-H100 Hydraulic)
+(hasListPrice VM-H100 14499.00)
+(listedBy VM-H100 CompressorWorld)
+
+;;; ============================================================
+;;; PRODUCT SERIES DEFINITIONS
+;;; ============================================================
+
+(isa Vanair-Viper-Gas-Series ProductSeries)
+(hasProductName Vanair-Viper-Gas-Series "Vanair Viper Gas Series")
+(seriesBy Vanair-Viper-Gas-Series VanairManufacturing)
+(comment Vanair-Viper-Gas-Series "Gasoline-powered portable compressors 40-80 CFM. Honda engine. For utility trucks and mobile service where electric power is unavailable.")
+
+(isa Vanair-Viper-Diesel-Series ProductSeries)
+(hasProductName Vanair-Viper-Diesel-Series "Vanair Viper Diesel Series")
+(seriesBy Vanair-Viper-Diesel-Series VanairManufacturing)
+(comment Vanair-Viper-Diesel-Series "Diesel-powered portable compressors 40-80 CFM. Kubota engine. More fuel-efficient than gas at sustained duty cycles.")
+
+(isa VMAC-G-Series ProductSeries)
+(hasProductName VMAC-G-Series "VMAC G Series")
+(seriesBy VMAC-G-Series VMAC)
+(comment VMAC-G-Series "Gas-driven vehicle-mounted rotary screw compressors 30-90 CFM. Underdeck or above-deck installation. Powered by auxiliary gas engine.")
+
+(isa VMAC-H-Series ProductSeries)
+(hasProductName VMAC-H-Series "VMAC H Series")
+(seriesBy VMAC-H-Series VMAC)
+(comment VMAC-H-Series "Hydraulic-driven vehicle-mounted rotary screw compressors 40-100 CFM. Powered by the host vehicle's hydraulic system. No separate engine required.")
+
+(isa AC-XAS-Series ProductSeries)
+(hasProductName AC-XAS-Series "Atlas Copco XAS Series")
+(seriesBy AC-XAS-Series AtlasCopco)
+(comment AC-XAS-Series "Diesel towable portable compressors 68-375 CFM. The gold standard in portable compressed air. Trailer-mounted, highway-rated. Kubota and Deutz engines. Used in construction, utility, and pipeline work worldwide.")
+
+(isa SP-D-Series ProductSeries)
+(hasProductName SP-D-Series "Sullivan-Palatek D Series")
+(seriesBy SP-D-Series SullivanPalatek)
+(comment SP-D-Series "Diesel towable portable compressors 185-900 CFM. American-made. Known for robust airends and competitive pricing vs Atlas Copco. Strong in construction and oil/gas markets.")
+
+(isa CP-CPS-Series ProductSeries)
+(hasProductName CP-CPS-Series "Chicago Pneumatic CPS Series")
+(seriesBy CP-CPS-Series ChicagoPneumatic)
+(comment CP-CPS-Series "Diesel towable portable compressors 185-600 CFM. Atlas Copco subsidiary brand. Competitive pricing tier below Atlas Copco XAS. Popular in rental fleets and construction.")
+
+(isa Airman-PDS-Series ProductSeries)
+(hasProductName Airman-PDS-Series "Airman PDS Series")
+(seriesBy Airman-PDS-Series AirmanUSA)
+(comment Airman-PDS-Series "Diesel towable portable compressors 185-750 CFM. Japanese quality and fuel efficiency. Kubota engines. Known for reliability in harsh construction environments.")
+
+(isa Boss-BA-Series ProductSeries)
+(hasProductName Boss-BA-Series "BOSS BA Series")
+(seriesBy Boss-BA-Series BOSSIndustries)
+(comment Boss-BA-Series "Hydraulic-driven vehicle-mounted compressors 20-60 CFM. Powered by truck hydraulic system. For utility, construction, and service fleet applications.")
+
+(isa Boss-Infinity-Series ProductSeries)
+(hasProductName Boss-Infinity-Series "BOSS Infinity Series")
+(seriesBy Boss-Infinity-Series BOSSIndustries)
+(comment Boss-Infinity-Series "Premium hydraulic-driven vehicle-mounted compressors 25-100 CFM. Higher output and efficiency than BA series. For heavy-duty fleet applications.")

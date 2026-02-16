@@ -1,0 +1,921 @@
+;;; ================================================================
+;;; COMPRESSOR / OUTPUT / NODES / VACUUM
+;;; Instantiated vacuum pump products from US retailers
+;;; Sources: CompressorWorld, CompressorPros, CompressorsNow
+;;; ================================================================
+
+(in-microtheory CompressorOutputMt)
+
+;;; ============================================================
+;;; BECKER — ROTARY VANE VACUUM
+;;; ============================================================
+
+;; U4 Series — Oil-Sealed Rotary Vane, Compact
+(isa BK-U4.20 OilSealedRotaryVane)
+(hasProductName BK-U4.20 "Becker U4.20 Rotary Vane Vacuum Pump")
+(hasBrand BK-U4.20 Becker)
+(hasModelNumber BK-U4.20 "U4.20")
+(belongsToSeries BK-U4.20 BK-U4-Series)
+(hasHP BK-U4.20 0.75)
+(hasCFM BK-U4.20 11.9)
+(hasListPrice BK-U4.20 2199.00)
+(listedBy BK-U4.20 CompressorWorld)
+
+(isa BK-U4.40 OilSealedRotaryVane)
+(hasProductName BK-U4.40 "Becker U4.40 Rotary Vane Vacuum Pump")
+(hasBrand BK-U4.40 Becker)
+(hasModelNumber BK-U4.40 "U4.40")
+(belongsToSeries BK-U4.40 BK-U4-Series)
+(hasHP BK-U4.40 1.5)
+(hasCFM BK-U4.40 23.5)
+(hasListPrice BK-U4.40 2899.00)
+(listedBy BK-U4.40 CompressorWorld)
+
+;; U5 Series — Oil-Sealed Rotary Vane, Higher Vacuum
+(isa BK-U5.40 OilSealedRotaryVane)
+(hasProductName BK-U5.40 "Becker U5.40 Rotary Vane Vacuum Pump")
+(hasBrand BK-U5.40 Becker)
+(hasModelNumber BK-U5.40 "U5.40")
+(belongsToSeries BK-U5.40 BK-U5-Series)
+(hasHP BK-U5.40 1.5)
+(hasCFM BK-U5.40 17.7)
+(hasListPrice BK-U5.40 3199.00)
+(listedBy BK-U5.40 CompressorWorld)
+
+(isa BK-U5.70 OilSealedRotaryVane)
+(hasProductName BK-U5.70 "Becker U5.70 Rotary Vane Vacuum Pump")
+(hasBrand BK-U5.70 Becker)
+(hasModelNumber BK-U5.70 "U5.70")
+(belongsToSeries BK-U5.70 BK-U5-Series)
+(hasHP BK-U5.70 2)
+(hasCFM BK-U5.70 41.2)
+(hasListPrice BK-U5.70 4499.00)
+(listedBy BK-U5.70 CompressorWorld)
+
+;;; ============================================================
+;;; DVP VACUUM TECHNOLOGY — ROTARY VANE / CLAW / BLOWER
+;;; ============================================================
+
+;; LC Series — Oil-Lubricated Rotary Vane
+(isa DVP-LC.25 OilSealedRotaryVane)
+(hasProductName DVP-LC.25 "DVP LC.25 Lubricated Rotary Vane Vacuum Pump")
+(hasBrand DVP-LC.25 DVP)
+(hasModelNumber DVP-LC.25 "LC.25")
+(belongsToSeries DVP-LC.25 DVP-LC-Series)
+(hasHP DVP-LC.25 0.75)
+(hasListPrice DVP-LC.25 1899.00)
+(listedBy DVP-LC.25 CompressorWorld)
+
+(isa DVP-LC.40 OilSealedRotaryVane)
+(hasProductName DVP-LC.40 "DVP LC.40 Lubricated Rotary Vane Vacuum Pump")
+(hasBrand DVP-LC.40 DVP)
+(hasModelNumber DVP-LC.40 "LC.40")
+(belongsToSeries DVP-LC.40 DVP-LC-Series)
+(hasHP DVP-LC.40 1)
+(hasListPrice DVP-LC.40 2299.00)
+(listedBy DVP-LC.40 CompressorWorld)
+
+(isa DVP-LC.60 OilSealedRotaryVane)
+(hasProductName DVP-LC.60 "DVP LC.60 Lubricated Rotary Vane Vacuum Pump")
+(hasBrand DVP-LC.60 DVP)
+(hasModelNumber DVP-LC.60 "LC.60")
+(belongsToSeries DVP-LC.60 DVP-LC-Series)
+(hasHP DVP-LC.60 1.5)
+(hasListPrice DVP-LC.60 2799.00)
+(listedBy DVP-LC.60 CompressorWorld)
+
+(isa DVP-LC.100 OilSealedRotaryVane)
+(hasProductName DVP-LC.100 "DVP LC.100 Lubricated Rotary Vane Vacuum Pump")
+(hasBrand DVP-LC.100 DVP)
+(hasModelNumber DVP-LC.100 "LC.100")
+(belongsToSeries DVP-LC.100 DVP-LC-Series)
+(hasHP DVP-LC.100 3)
+(hasListPrice DVP-LC.100 3699.00)
+(listedBy DVP-LC.100 CompressorWorld)
+
+;; SC Series — Dry (Oil-Free) Rotary Vane
+(isa DVP-SC.25 OilFreeRotaryVane)
+(hasProductName DVP-SC.25 "DVP SC.25 Dry Rotary Vane Vacuum Pump")
+(hasBrand DVP-SC.25 DVP)
+(hasModelNumber DVP-SC.25 "SC.25")
+(belongsToSeries DVP-SC.25 DVP-SC-Series)
+(hasHP DVP-SC.25 0.75)
+(hasListPrice DVP-SC.25 2199.00)
+(listedBy DVP-SC.25 CompressorWorld)
+
+(isa DVP-SC.40 OilFreeRotaryVane)
+(hasProductName DVP-SC.40 "DVP SC.40 Dry Rotary Vane Vacuum Pump")
+(hasBrand DVP-SC.40 DVP)
+(hasModelNumber DVP-SC.40 "SC.40")
+(belongsToSeries DVP-SC.40 DVP-SC-Series)
+(hasHP DVP-SC.40 1)
+(hasListPrice DVP-SC.40 2699.00)
+(listedBy DVP-SC.40 CompressorWorld)
+
+(isa DVP-SC.60 OilFreeRotaryVane)
+(hasProductName DVP-SC.60 "DVP SC.60 Dry Rotary Vane Vacuum Pump")
+(hasBrand DVP-SC.60 DVP)
+(hasModelNumber DVP-SC.60 "SC.60")
+(belongsToSeries DVP-SC.60 DVP-SC-Series)
+(hasHP DVP-SC.60 1.5)
+(hasListPrice DVP-SC.60 3299.00)
+(listedBy DVP-SC.60 CompressorWorld)
+
+;; SB Series — Side Channel Blower/Vacuum
+(isa DVP-SB.25 RegenerativeBlower)
+(hasProductName DVP-SB.25 "DVP SB.25 Side Channel Blower Vacuum Pump")
+(hasBrand DVP-SB.25 DVP)
+(hasModelNumber DVP-SB.25 "SB.25")
+(hasHP DVP-SB.25 1)
+(hasListPrice DVP-SB.25 1799.00)
+(listedBy DVP-SB.25 CompressorWorld)
+
+(isa DVP-SB.40 RegenerativeBlower)
+(hasProductName DVP-SB.40 "DVP SB.40 Side Channel Blower Vacuum Pump")
+(hasBrand DVP-SB.40 DVP)
+(hasModelNumber DVP-SB.40 "SB.40")
+(hasHP DVP-SB.40 1.5)
+(hasListPrice DVP-SB.40 2199.00)
+(listedBy DVP-SB.40 CompressorWorld)
+
+;; RC Series — Dry Claw Vacuum
+(isa DVP-RC.100 DryClaw)
+(hasProductName DVP-RC.100 "DVP RC.100 Dry Claw Vacuum Pump")
+(hasBrand DVP-RC.100 DVP)
+(hasModelNumber DVP-RC.100 "RC.100")
+(belongsToSeries DVP-RC.100 DVP-RC-Series)
+(hasHP DVP-RC.100 3)
+(hasListPrice DVP-RC.100 5999.00)
+(listedBy DVP-RC.100 CompressorWorld)
+
+(isa DVP-RC.200 DryClaw)
+(hasProductName DVP-RC.200 "DVP RC.200 Dry Claw Vacuum Pump")
+(hasBrand DVP-RC.200 DVP)
+(hasModelNumber DVP-RC.200 "RC.200")
+(belongsToSeries DVP-RC.200 DVP-RC-Series)
+(hasHP DVP-RC.200 5)
+(hasListPrice DVP-RC.200 8999.00)
+(listedBy DVP-RC.200 CompressorWorld)
+
+;;; ============================================================
+;;; DEKKER VACUUM TECHNOLOGIES — COMPREHENSIVE LINE
+;;; ============================================================
+
+;; Titan Series — Rotary Vane
+(isa DK-DT-25 OilSealedRotaryVane)
+(hasProductName DK-DT-25 "DEKKER Titan DT-25 Rotary Vane Vacuum Pump")
+(hasBrand DK-DT-25 Dekker)
+(hasModelNumber DK-DT-25 "DT-25")
+(belongsToSeries DK-DT-25 DK-Titan-Series)
+(hasHP DK-DT-25 1)
+(hasCFM DK-DT-25 25)
+(hasListPrice DK-DT-25 2499.00)
+(listedBy DK-DT-25 CompressorWorld)
+
+(isa DK-DT-40 OilSealedRotaryVane)
+(hasProductName DK-DT-40 "DEKKER Titan DT-40 Rotary Vane Vacuum Pump")
+(hasBrand DK-DT-40 Dekker)
+(hasModelNumber DK-DT-40 "DT-40")
+(belongsToSeries DK-DT-40 DK-Titan-Series)
+(hasHP DK-DT-40 1.5)
+(hasCFM DK-DT-40 40)
+(hasListPrice DK-DT-40 3199.00)
+(listedBy DK-DT-40 CompressorWorld)
+
+(isa DK-DT-63 OilSealedRotaryVane)
+(hasProductName DK-DT-63 "DEKKER Titan DT-63 Rotary Vane Vacuum Pump")
+(hasBrand DK-DT-63 Dekker)
+(hasModelNumber DK-DT-63 "DT-63")
+(belongsToSeries DK-DT-63 DK-Titan-Series)
+(hasHP DK-DT-63 2)
+(hasCFM DK-DT-63 63)
+(hasListPrice DK-DT-63 4299.00)
+(listedBy DK-DT-63 CompressorWorld)
+
+(isa DK-DT-100 OilSealedRotaryVane)
+(hasProductName DK-DT-100 "DEKKER Titan DT-100 Rotary Vane Vacuum Pump")
+(hasBrand DK-DT-100 Dekker)
+(hasModelNumber DK-DT-100 "DT-100")
+(belongsToSeries DK-DT-100 DK-Titan-Series)
+(hasHP DK-DT-100 3)
+(hasCFM DK-DT-100 100)
+(hasListPrice DK-DT-100 5699.00)
+(listedBy DK-DT-100 CompressorWorld)
+
+;; DuraVane Series — Rotary Vane
+(isa DK-DV-0025 OilSealedRotaryVane)
+(hasProductName DK-DV-0025 "DEKKER DuraVane DV-0025 Rotary Vane Vacuum Pump")
+(hasBrand DK-DV-0025 Dekker)
+(hasModelNumber DK-DV-0025 "DV-0025")
+(belongsToSeries DK-DV-0025 DK-DuraVane-Series)
+(hasHP DK-DV-0025 1)
+(hasListPrice DK-DV-0025 2699.00)
+(listedBy DK-DV-0025 CompressorWorld)
+
+(isa DK-DV-0040 OilSealedRotaryVane)
+(hasProductName DK-DV-0040 "DEKKER DuraVane DV-0040 Rotary Vane Vacuum Pump")
+(hasBrand DK-DV-0040 Dekker)
+(hasModelNumber DK-DV-0040 "DV-0040")
+(belongsToSeries DK-DV-0040 DK-DuraVane-Series)
+(hasHP DK-DV-0040 1.5)
+(hasListPrice DK-DV-0040 3399.00)
+(listedBy DK-DV-0040 CompressorWorld)
+
+(isa DK-DV-0063 OilSealedRotaryVane)
+(hasProductName DK-DV-0063 "DEKKER DuraVane DV-0063 Rotary Vane Vacuum Pump")
+(hasBrand DK-DV-0063 Dekker)
+(hasModelNumber DK-DV-0063 "DV-0063")
+(belongsToSeries DK-DV-0063 DK-DuraVane-Series)
+(hasHP DK-DV-0063 2)
+(hasListPrice DK-DV-0063 4499.00)
+(listedBy DK-DV-0063 CompressorWorld)
+
+;; Gryphon Series — Liquid Ring
+(isa DK-GP-0035 LiquidRing)
+(hasProductName DK-GP-0035 "DEKKER Gryphon GP-0035 Liquid Ring Vacuum Pump")
+(hasBrand DK-GP-0035 Dekker)
+(hasModelNumber DK-GP-0035 "GP-0035")
+(belongsToSeries DK-GP-0035 DK-Gryphon-Series)
+(hasHP DK-GP-0035 1)
+(hasListPrice DK-GP-0035 3499.00)
+(listedBy DK-GP-0035 CompressorWorld)
+
+(isa DK-GP-0065 LiquidRing)
+(hasProductName DK-GP-0065 "DEKKER Gryphon GP-0065 Liquid Ring Vacuum Pump")
+(hasBrand DK-GP-0065 Dekker)
+(hasModelNumber DK-GP-0065 "GP-0065")
+(belongsToSeries DK-GP-0065 DK-Gryphon-Series)
+(hasHP DK-GP-0065 2)
+(hasListPrice DK-GP-0065 4999.00)
+(listedBy DK-GP-0065 CompressorWorld)
+
+(isa DK-GP-0100 LiquidRing)
+(hasProductName DK-GP-0100 "DEKKER Gryphon GP-0100 Liquid Ring Vacuum Pump")
+(hasBrand DK-GP-0100 Dekker)
+(hasModelNumber DK-GP-0100 "GP-0100")
+(belongsToSeries DK-GP-0100 DK-Gryphon-Series)
+(hasHP DK-GP-0100 3)
+(hasListPrice DK-GP-0100 6999.00)
+(listedBy DK-GP-0100 CompressorWorld)
+
+;; HullVac Series — Rotary Piston
+(isa DK-HV-40 RotaryPiston)
+(hasProductName DK-HV-40 "DEKKER HullVac HV-40 Rotary Piston Vacuum Pump")
+(hasBrand DK-HV-40 Dekker)
+(hasModelNumber DK-HV-40 "HV-40")
+(hasHP DK-HV-40 1.5)
+(hasListPrice DK-HV-40 3899.00)
+(listedBy DK-HV-40 CompressorWorld)
+
+(isa DK-HV-100 RotaryPiston)
+(hasProductName DK-HV-100 "DEKKER HullVac HV-100 Rotary Piston Vacuum Pump")
+(hasBrand DK-HV-100 Dekker)
+(hasModelNumber DK-HV-100 "HV-100")
+(hasHP DK-HV-100 3)
+(hasListPrice DK-HV-100 6499.00)
+(listedBy DK-HV-100 CompressorWorld)
+
+;; AquaSeal Series — Liquid Ring (Stainless)
+(isa DK-AS-025 LiquidRing)
+(hasProductName DK-AS-025 "DEKKER AquaSeal AS-025 Liquid Ring Vacuum Pump")
+(hasBrand DK-AS-025 Dekker)
+(hasModelNumber DK-AS-025 "AS-025")
+(belongsToSeries DK-AS-025 DK-AquaSeal-Series)
+(hasHP DK-AS-025 1)
+(hasListPrice DK-AS-025 3299.00)
+(listedBy DK-AS-025 CompressorWorld)
+
+(isa DK-AS-050 LiquidRing)
+(hasProductName DK-AS-050 "DEKKER AquaSeal AS-050 Liquid Ring Vacuum Pump")
+(hasBrand DK-AS-050 Dekker)
+(hasModelNumber DK-AS-050 "AS-050")
+(belongsToSeries DK-AS-050 DK-AquaSeal-Series)
+(hasHP DK-AS-050 2)
+(hasListPrice DK-AS-050 4799.00)
+(listedBy DK-AS-050 CompressorWorld)
+
+;;; ============================================================
+;;; LEYBOLD — PREMIUM SCIENTIFIC & INDUSTRIAL VACUUM
+;;; ============================================================
+
+;; CLAWVAC Series — Dry Claw
+(isa LB-CP65 DryClaw)
+(hasProductName LB-CP65 "Leybold CLAWVAC CP65 Dry Claw Vacuum Pump")
+(hasBrand LB-CP65 Leybold)
+(hasModelNumber LB-CP65 "CP65")
+(belongsToSeries LB-CP65 LB-CLAWVAC-Series)
+(hasHP LB-CP65 2.5)
+(hasListPrice LB-CP65 7999.00)
+(listedBy LB-CP65 CompressorWorld)
+
+(isa LB-CP150 DryClaw)
+(hasProductName LB-CP150 "Leybold CLAWVAC CP150 Dry Claw Vacuum Pump")
+(hasBrand LB-CP150 Leybold)
+(hasModelNumber LB-CP150 "CP150")
+(belongsToSeries LB-CP150 LB-CLAWVAC-Series)
+(hasHP LB-CP150 5)
+(hasListPrice LB-CP150 12999.00)
+(listedBy LB-CP150 CompressorWorld)
+
+;; SOGEVAC Series — Oil-Sealed Rotary Vane
+(isa LB-SV65 OilSealedRotaryVane)
+(hasProductName LB-SV65 "Leybold SOGEVAC SV65 Rotary Vane Vacuum Pump")
+(hasBrand LB-SV65 Leybold)
+(hasModelNumber LB-SV65 "SV65")
+(belongsToSeries LB-SV65 LB-SOGEVAC-Series)
+(hasHP LB-SV65 2.5)
+(hasListPrice LB-SV65 5499.00)
+(listedBy LB-SV65 CompressorWorld)
+
+(isa LB-SV100 OilSealedRotaryVane)
+(hasProductName LB-SV100 "Leybold SOGEVAC SV100 Rotary Vane Vacuum Pump")
+(hasBrand LB-SV100 Leybold)
+(hasModelNumber LB-SV100 "SV100")
+(belongsToSeries LB-SV100 LB-SOGEVAC-Series)
+(hasHP LB-SV100 4)
+(hasListPrice LB-SV100 7499.00)
+(listedBy LB-SV100 CompressorWorld)
+
+(isa LB-SV200 OilSealedRotaryVane)
+(hasProductName LB-SV200 "Leybold SOGEVAC SV200 Rotary Vane Vacuum Pump")
+(hasBrand LB-SV200 Leybold)
+(hasModelNumber LB-SV200 "SV200")
+(belongsToSeries LB-SV200 LB-SOGEVAC-Series)
+(hasHP LB-SV200 7.5)
+(hasListPrice LB-SV200 11999.00)
+(listedBy LB-SV200 CompressorWorld)
+
+;; TRIVAC Series — Two-Stage Rotary Vane
+(isa LB-D16 OilSealedRotaryVane)
+(hasProductName LB-D16 "Leybold TRIVAC D16 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand LB-D16 Leybold)
+(hasModelNumber LB-D16 "D16")
+(belongsToSeries LB-D16 LB-TRIVAC-Series)
+(hasHP LB-D16 0.75)
+(hasListPrice LB-D16 3999.00)
+(listedBy LB-D16 CompressorWorld)
+
+(isa LB-D25 OilSealedRotaryVane)
+(hasProductName LB-D25 "Leybold TRIVAC D25 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand LB-D25 Leybold)
+(hasModelNumber LB-D25 "D25")
+(belongsToSeries LB-D25 LB-TRIVAC-Series)
+(hasHP LB-D25 1)
+(hasListPrice LB-D25 4999.00)
+(listedBy LB-D25 CompressorWorld)
+
+;; NEO D Series — Next-Gen Two-Stage Rotary Vane
+(isa LB-ND16 OilSealedRotaryVane)
+(hasProductName LB-ND16 "Leybold NEO D ND16 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand LB-ND16 Leybold)
+(hasModelNumber LB-ND16 "ND16")
+(hasHP LB-ND16 0.75)
+(hasListPrice LB-ND16 4499.00)
+(listedBy LB-ND16 CompressorWorld)
+
+(isa LB-ND25 OilSealedRotaryVane)
+(hasProductName LB-ND25 "Leybold NEO D ND25 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand LB-ND25 Leybold)
+(hasModelNumber LB-ND25 "ND25")
+(hasHP LB-ND25 1)
+(hasListPrice LB-ND25 5499.00)
+(listedBy LB-ND25 CompressorWorld)
+
+;; VARODRY Series — Dry Screw
+(isa LB-VD65 DryScrew)
+(hasProductName LB-VD65 "Leybold VARODRY VD65 Dry Screw Vacuum Pump")
+(hasBrand LB-VD65 Leybold)
+(hasModelNumber LB-VD65 "VD65")
+(hasHP LB-VD65 2.5)
+(hasListPrice LB-VD65 8999.00)
+(listedBy LB-VD65 CompressorWorld)
+
+;;; ============================================================
+;;; WELCH VACUUM — LABORATORY & SCIENTIFIC
+;;; ============================================================
+
+;; DuoSeal Series — Oil-Sealed Rotary Vane
+(isa WL-1376 OilSealedRotaryVane)
+(hasProductName WL-1376 "Welch DuoSeal 1376 Rotary Vane Vacuum Pump")
+(hasBrand WL-1376 WelchVacuum)
+(hasModelNumber WL-1376 "1376")
+(belongsToSeries WL-1376 WL-DuoSeal-Series)
+(hasListPrice WL-1376 1799.00)
+(listedBy WL-1376 CompressorWorld)
+
+(isa WL-1402 OilSealedRotaryVane)
+(hasProductName WL-1402 "Welch DuoSeal 1402 Rotary Vane Vacuum Pump")
+(hasBrand WL-1402 WelchVacuum)
+(hasModelNumber WL-1402 "1402")
+(belongsToSeries WL-1402 WL-DuoSeal-Series)
+(hasListPrice WL-1402 2299.00)
+(listedBy WL-1402 CompressorWorld)
+
+(isa WL-1405 OilSealedRotaryVane)
+(hasProductName WL-1405 "Welch DuoSeal 1405 Rotary Vane Vacuum Pump")
+(hasBrand WL-1405 WelchVacuum)
+(hasModelNumber WL-1405 "1405")
+(belongsToSeries WL-1405 WL-DuoSeal-Series)
+(hasListPrice WL-1405 2999.00)
+(listedBy WL-1405 CompressorWorld)
+
+;; WOB-L Series — Diaphragm (Oil-Free)
+(isa WL-2522 DiaphragmVacuum)
+(hasProductName WL-2522 "Welch WOB-L 2522 Diaphragm Vacuum Pump")
+(hasBrand WL-2522 WelchVacuum)
+(hasModelNumber WL-2522 "2522")
+(belongsToSeries WL-2522 WL-WOB-L-Series)
+(hasListPrice WL-2522 699.00)
+(listedBy WL-2522 CompressorWorld)
+
+(isa WL-2546 DiaphragmVacuum)
+(hasProductName WL-2546 "Welch WOB-L 2546 Diaphragm Vacuum Pump")
+(hasBrand WL-2546 WelchVacuum)
+(hasModelNumber WL-2546 "2546")
+(belongsToSeries WL-2546 WL-WOB-L-Series)
+(hasListPrice WL-2546 899.00)
+(listedBy WL-2546 CompressorWorld)
+
+(isa WL-2585 DiaphragmVacuum)
+(hasProductName WL-2585 "Welch WOB-L 2585 Diaphragm Vacuum Pump")
+(hasBrand WL-2585 WelchVacuum)
+(hasModelNumber WL-2585 "2585")
+(belongsToSeries WL-2585 WL-WOB-L-Series)
+(hasListPrice WL-2585 1299.00)
+(listedBy WL-2585 CompressorWorld)
+
+;; CRVpro Series — Rotary Vane
+(isa WL-CRV4 OilSealedRotaryVane)
+(hasProductName WL-CRV4 "Welch CRVpro 4 Rotary Vane Vacuum Pump")
+(hasBrand WL-CRV4 WelchVacuum)
+(hasModelNumber WL-CRV4 "CRV4")
+(belongsToSeries WL-CRV4 WL-CRVpro-Series)
+(hasListPrice WL-CRV4 1499.00)
+(listedBy WL-CRV4 CompressorWorld)
+
+(isa WL-CRV8 OilSealedRotaryVane)
+(hasProductName WL-CRV8 "Welch CRVpro 8 Rotary Vane Vacuum Pump")
+(hasBrand WL-CRV8 WelchVacuum)
+(hasModelNumber WL-CRV8 "CRV8")
+(belongsToSeries WL-CRV8 WL-CRVpro-Series)
+(hasListPrice WL-CRV8 1899.00)
+(listedBy WL-CRV8 CompressorWorld)
+
+(isa WL-CRV16 OilSealedRotaryVane)
+(hasProductName WL-CRV16 "Welch CRVpro 16 Rotary Vane Vacuum Pump")
+(hasBrand WL-CRV16 WelchVacuum)
+(hasModelNumber WL-CRV16 "CRV16")
+(belongsToSeries WL-CRV16 WL-CRVpro-Series)
+(hasListPrice WL-CRV16 2599.00)
+(listedBy WL-CRV16 CompressorWorld)
+
+;; ChemStar Series — Chemical-Resistant Rotary Vane
+(isa WL-1402N OilSealedRotaryVane)
+(hasProductName WL-1402N "Welch ChemStar 1402N Chemical-Resistant Vacuum Pump")
+(hasBrand WL-1402N WelchVacuum)
+(hasModelNumber WL-1402N "1402N")
+(hasListPrice WL-1402N 3299.00)
+(listedBy WL-1402N CompressorWorld)
+
+(isa WL-1405N OilSealedRotaryVane)
+(hasProductName WL-1405N "Welch ChemStar 1405N Chemical-Resistant Vacuum Pump")
+(hasBrand WL-1405N WelchVacuum)
+(hasModelNumber WL-1405N "1405N")
+(hasListPrice WL-1405N 4199.00)
+(listedBy WL-1405N CompressorWorld)
+
+;;; ============================================================
+;;; NAVAC — ROTARY VANE & SCROLL VACUUM
+;;; ============================================================
+
+;; NRD Series — Rotary Vane
+(isa NV-NRD8 OilSealedRotaryVane)
+(hasProductName NV-NRD8 "NAVAC NRD8 Dual-Stage Rotary Vane Vacuum Pump")
+(hasBrand NV-NRD8 NAVAC)
+(hasModelNumber NV-NRD8 "NRD8")
+(belongsToSeries NV-NRD8 NV-NRD-Series)
+(hasListPrice NV-NRD8 1499.00)
+(listedBy NV-NRD8 CompressorWorld)
+
+(isa NV-NRD16 OilSealedRotaryVane)
+(hasProductName NV-NRD16 "NAVAC NRD16 Dual-Stage Rotary Vane Vacuum Pump")
+(hasBrand NV-NRD16 NAVAC)
+(hasModelNumber NV-NRD16 "NRD16")
+(belongsToSeries NV-NRD16 NV-NRD-Series)
+(hasListPrice NV-NRD16 2199.00)
+(listedBy NV-NRD16 CompressorWorld)
+
+;; NRS Series — Scroll Vacuum
+(isa NV-NRS-6 ScrollVacuum)
+(hasProductName NV-NRS-6 "NAVAC NRS-6 Scroll Vacuum Pump")
+(hasBrand NV-NRS-6 NAVAC)
+(hasModelNumber NV-NRS-6 "NRS-6")
+(belongsToSeries NV-NRS-6 NV-NRS-Series)
+(hasListPrice NV-NRS-6 2999.00)
+(listedBy NV-NRS-6 CompressorWorld)
+
+(isa NV-NRS-12 ScrollVacuum)
+(hasProductName NV-NRS-12 "NAVAC NRS-12 Scroll Vacuum Pump")
+(hasBrand NV-NRS-12 NAVAC)
+(hasModelNumber NV-NRS-12 "NRS-12")
+(belongsToSeries NV-NRS-12 NV-NRS-Series)
+(hasListPrice NV-NRS-12 4499.00)
+(listedBy NV-NRS-12 CompressorWorld)
+
+;;; ============================================================
+;;; REPUBLIC MANUFACTURING — ROTARY VANE & CLAW
+;;; ============================================================
+
+;; VRT Series — Dry Rotary Vane
+(isa RP-VRT-25 OilFreeRotaryVane)
+(hasProductName RP-VRT-25 "Republic VRT-25 Dry Rotary Vane Vacuum Pump")
+(hasBrand RP-VRT-25 Republic)
+(hasModelNumber RP-VRT-25 "VRT-25")
+(belongsToSeries RP-VRT-25 RP-VRT-Series)
+(hasCFM RP-VRT-25 25)
+(hasListPrice RP-VRT-25 2399.00)
+(listedBy RP-VRT-25 CompressorWorld)
+
+(isa RP-VRT-40 OilFreeRotaryVane)
+(hasProductName RP-VRT-40 "Republic VRT-40 Dry Rotary Vane Vacuum Pump")
+(hasBrand RP-VRT-40 Republic)
+(hasModelNumber RP-VRT-40 "VRT-40")
+(belongsToSeries RP-VRT-40 RP-VRT-Series)
+(hasCFM RP-VRT-40 40)
+(hasListPrice RP-VRT-40 3199.00)
+(listedBy RP-VRT-40 CompressorWorld)
+
+(isa RP-VRT-63 OilFreeRotaryVane)
+(hasProductName RP-VRT-63 "Republic VRT-63 Dry Rotary Vane Vacuum Pump")
+(hasBrand RP-VRT-63 Republic)
+(hasModelNumber RP-VRT-63 "VRT-63")
+(belongsToSeries RP-VRT-63 RP-VRT-Series)
+(hasCFM RP-VRT-63 63)
+(hasListPrice RP-VRT-63 4299.00)
+(listedBy RP-VRT-63 CompressorWorld)
+
+;; RCV Series — Claw Vacuum
+(isa RP-RCV-50 DryClaw)
+(hasProductName RP-RCV-50 "Republic RCV-50 Claw Vacuum Pump")
+(hasBrand RP-RCV-50 Republic)
+(hasModelNumber RP-RCV-50 "RCV-50")
+(hasCFM RP-RCV-50 50)
+(hasListPrice RP-RCV-50 5999.00)
+(listedBy RP-RCV-50 CompressorWorld)
+
+(isa RP-RCV-100 DryClaw)
+(hasProductName RP-RCV-100 "Republic RCV-100 Claw Vacuum Pump")
+(hasBrand RP-RCV-100 Republic)
+(hasModelNumber RP-RCV-100 "RCV-100")
+(hasCFM RP-RCV-100 100)
+(hasListPrice RP-RCV-100 8999.00)
+(listedBy RP-RCV-100 CompressorWorld)
+
+;;; ============================================================
+;;; QUINCY — VACUUM PUMPS
+;;; ============================================================
+
+;; QCV Series — Rotary Vane Vacuum
+(isa QY-QCV-25 OilSealedRotaryVane)
+(hasProductName QY-QCV-25 "Quincy QCV-25 Rotary Vane Vacuum Pump")
+(hasBrand QY-QCV-25 QuincyCompressor)
+(hasModelNumber QY-QCV-25 "QCV-25")
+(belongsToSeries QY-QCV-25 QY-QCV-Series)
+(hasCFM QY-QCV-25 25)
+(hasListPrice QY-QCV-25 2699.00)
+(listedBy QY-QCV-25 CompressorWorld)
+
+(isa QY-QCV-40 OilSealedRotaryVane)
+(hasProductName QY-QCV-40 "Quincy QCV-40 Rotary Vane Vacuum Pump")
+(hasBrand QY-QCV-40 QuincyCompressor)
+(hasModelNumber QY-QCV-40 "QCV-40")
+(belongsToSeries QY-QCV-40 QY-QCV-Series)
+(hasCFM QY-QCV-40 40)
+(hasListPrice QY-QCV-40 3499.00)
+(listedBy QY-QCV-40 CompressorWorld)
+
+(isa QY-QCV-63 OilSealedRotaryVane)
+(hasProductName QY-QCV-63 "Quincy QCV-63 Rotary Vane Vacuum Pump")
+(hasBrand QY-QCV-63 QuincyCompressor)
+(hasModelNumber QY-QCV-63 "QCV-63")
+(belongsToSeries QY-QCV-63 QY-QCV-Series)
+(hasCFM QY-QCV-63 63)
+(hasListPrice QY-QCV-63 4699.00)
+(listedBy QY-QCV-63 CompressorWorld)
+
+;; QV Series — Dry Screw Vacuum
+(isa QY-QV-100 DryScrew)
+(hasProductName QY-QV-100 "Quincy QV-100 Dry Screw Vacuum Pump")
+(hasBrand QY-QV-100 QuincyCompressor)
+(hasModelNumber QY-QV-100 "QV-100")
+(hasCFM QY-QV-100 100)
+(hasListPrice QY-QV-100 9999.00)
+(listedBy QY-QV-100 CompressorWorld)
+
+(isa QY-QV-200 DryScrew)
+(hasProductName QY-QV-200 "Quincy QV-200 Dry Screw Vacuum Pump")
+(hasBrand QY-QV-200 QuincyCompressor)
+(hasModelNumber QY-QV-200 "QV-200")
+(hasCFM QY-QV-200 200)
+(hasListPrice QY-QV-200 16999.00)
+(listedBy QY-QV-200 CompressorWorld)
+
+;;; ============================================================
+;;; ATLAS COPCO — VACUUM PUMPS
+;;; ============================================================
+
+;; GVS Series — Oil-Sealed Rotary Vane
+(isa AC-GVS-16 OilSealedRotaryVane)
+(hasProductName AC-GVS-16 "Atlas Copco GVS 16 Rotary Vane Vacuum Pump")
+(hasBrand AC-GVS-16 AtlasCopco)
+(hasModelNumber AC-GVS-16 "GVS 16")
+(belongsToSeries AC-GVS-16 AC-GVS-Series)
+(hasListPrice AC-GVS-16 2499.00)
+(listedBy AC-GVS-16 CompressorWorld)
+
+(isa AC-GVS-28 OilSealedRotaryVane)
+(hasProductName AC-GVS-28 "Atlas Copco GVS 28 Rotary Vane Vacuum Pump")
+(hasBrand AC-GVS-28 AtlasCopco)
+(hasModelNumber AC-GVS-28 "GVS 28")
+(belongsToSeries AC-GVS-28 AC-GVS-Series)
+(hasListPrice AC-GVS-28 3199.00)
+(listedBy AC-GVS-28 CompressorWorld)
+
+(isa AC-GVS-40 OilSealedRotaryVane)
+(hasProductName AC-GVS-40 "Atlas Copco GVS 40 Rotary Vane Vacuum Pump")
+(hasBrand AC-GVS-40 AtlasCopco)
+(hasModelNumber AC-GVS-40 "GVS 40")
+(belongsToSeries AC-GVS-40 AC-GVS-Series)
+(hasListPrice AC-GVS-40 4299.00)
+(listedBy AC-GVS-40 CompressorWorld)
+
+;; DZS Series — Dry Claw
+(isa AC-DZS-100 DryClaw)
+(hasProductName AC-DZS-100 "Atlas Copco DZS 100 Dry Claw Vacuum Pump")
+(hasBrand AC-DZS-100 AtlasCopco)
+(hasModelNumber AC-DZS-100 "DZS 100")
+(belongsToSeries AC-DZS-100 AC-DZS-Series)
+(hasListPrice AC-DZS-100 8999.00)
+(listedBy AC-DZS-100 CompressorWorld)
+
+(isa AC-DZS-200 DryClaw)
+(hasProductName AC-DZS-200 "Atlas Copco DZS 200 Dry Claw Vacuum Pump")
+(hasBrand AC-DZS-200 AtlasCopco)
+(hasModelNumber AC-DZS-200 "DZS 200")
+(belongsToSeries AC-DZS-200 AC-DZS-Series)
+(hasListPrice AC-DZS-200 14999.00)
+(listedBy AC-DZS-200 CompressorWorld)
+
+(isa AC-DZS-400 DryClaw)
+(hasProductName AC-DZS-400 "Atlas Copco DZS 400 Dry Claw Vacuum Pump")
+(hasBrand AC-DZS-400 AtlasCopco)
+(hasModelNumber AC-DZS-400 "DZS 400")
+(belongsToSeries AC-DZS-400 AC-DZS-Series)
+(hasListPrice AC-DZS-400 24999.00)
+(listedBy AC-DZS-400 CompressorWorld)
+
+;; GVD Series — Two-Stage Oil-Sealed Rotary Vane
+(isa AC-GVD-3 OilSealedRotaryVane)
+(hasProductName AC-GVD-3 "Atlas Copco GVD 3 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand AC-GVD-3 AtlasCopco)
+(hasModelNumber AC-GVD-3 "GVD 3")
+(hasListPrice AC-GVD-3 1999.00)
+(listedBy AC-GVD-3 CompressorWorld)
+
+(isa AC-GVD-8 OilSealedRotaryVane)
+(hasProductName AC-GVD-8 "Atlas Copco GVD 8 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand AC-GVD-8 AtlasCopco)
+(hasModelNumber AC-GVD-8 "GVD 8")
+(hasListPrice AC-GVD-8 2799.00)
+(listedBy AC-GVD-8 CompressorWorld)
+
+(isa AC-GVD-18 OilSealedRotaryVane)
+(hasProductName AC-GVD-18 "Atlas Copco GVD 18 Two-Stage Rotary Vane Vacuum Pump")
+(hasBrand AC-GVD-18 AtlasCopco)
+(hasModelNumber AC-GVD-18 "GVD 18")
+(hasListPrice AC-GVD-18 3999.00)
+(listedBy AC-GVD-18 CompressorWorld)
+
+;;; ============================================================
+;;; AIRTECH USA — SIDE CHANNEL BLOWERS & CLAW VACUUM
+;;; ============================================================
+
+;; Orion Series — Oil-Free Vacuum/Pressure
+(isa AT-Orion-04 VacuumPump)
+(hasProductName AT-Orion-04 "Airtech Orion 04 Oil-Free Vacuum Pump")
+(hasBrand AT-Orion-04 AirtechUSA)
+(hasModelNumber AT-Orion-04 "Orion 04")
+(belongsToSeries AT-Orion-04 AT-Orion-Series)
+(hasHP AT-Orion-04 0.33)
+(hasListPrice AT-Orion-04 899.00)
+(listedBy AT-Orion-04 CompressorWorld)
+
+(isa AT-Orion-06 VacuumPump)
+(hasProductName AT-Orion-06 "Airtech Orion 06 Oil-Free Vacuum Pump")
+(hasBrand AT-Orion-06 AirtechUSA)
+(hasModelNumber AT-Orion-06 "Orion 06")
+(belongsToSeries AT-Orion-06 AT-Orion-Series)
+(hasHP AT-Orion-06 0.5)
+(hasListPrice AT-Orion-06 1099.00)
+(listedBy AT-Orion-06 CompressorWorld)
+
+(isa AT-Orion-08 VacuumPump)
+(hasProductName AT-Orion-08 "Airtech Orion 08 Oil-Free Vacuum Pump")
+(hasBrand AT-Orion-08 AirtechUSA)
+(hasModelNumber AT-Orion-08 "Orion 08")
+(belongsToSeries AT-Orion-08 AT-Orion-Series)
+(hasHP AT-Orion-08 0.75)
+(hasListPrice AT-Orion-08 1399.00)
+(listedBy AT-Orion-08 CompressorWorld)
+
+;; 3AV Series — Liquid Ring
+(isa AT-3AV-04 LiquidRing)
+(hasProductName AT-3AV-04 "Airtech 3AV-04 Liquid Ring Vacuum Pump")
+(hasBrand AT-3AV-04 AirtechUSA)
+(hasModelNumber AT-3AV-04 "3AV-04")
+(hasListPrice AT-3AV-04 1199.00)
+(listedBy AT-3AV-04 CompressorWorld)
+
+(isa AT-3AV-06 LiquidRing)
+(hasProductName AT-3AV-06 "Airtech 3AV-06 Liquid Ring Vacuum Pump")
+(hasBrand AT-3AV-06 AirtechUSA)
+(hasModelNumber AT-3AV-06 "3AV-06")
+(hasListPrice AT-3AV-06 1499.00)
+(listedBy AT-3AV-06 CompressorWorld)
+
+;; VCX Series — Claw Vacuum
+(isa AT-VCX-100 DryClaw)
+(hasProductName AT-VCX-100 "Airtech VCX-100 Claw Vacuum Pump")
+(hasBrand AT-VCX-100 AirtechUSA)
+(hasModelNumber AT-VCX-100 "VCX-100")
+(hasListPrice AT-VCX-100 5999.00)
+(listedBy AT-VCX-100 CompressorWorld)
+
+(isa AT-VCX-200 DryClaw)
+(hasProductName AT-VCX-200 "Airtech VCX-200 Claw Vacuum Pump")
+(hasBrand AT-VCX-200 AirtechUSA)
+(hasModelNumber AT-VCX-200 "VCX-200")
+(hasListPrice AT-VCX-200 9499.00)
+(listedBy AT-VCX-200 CompressorWorld)
+
+;;; ============================================================
+;;; KAISHAN — ROTARY SCREW VACUUM
+;;; ============================================================
+
+;; KRSV Series — Rotary Screw Vacuum
+(isa KS-KRSV-15 RotaryScrewVacuum)
+(hasProductName KS-KRSV-15 "Kaishan KRSV-15 Rotary Screw Vacuum Pump")
+(hasBrand KS-KRSV-15 KaishanUSA)
+(hasModelNumber KS-KRSV-15 "KRSV-15")
+(belongsToSeries KS-KRSV-15 KS-KRSV-Series)
+(hasHP KS-KRSV-15 15)
+(hasListPrice KS-KRSV-15 9999.00)
+(listedBy KS-KRSV-15 CompressorWorld)
+
+(isa KS-KRSV-25 RotaryScrewVacuum)
+(hasProductName KS-KRSV-25 "Kaishan KRSV-25 Rotary Screw Vacuum Pump")
+(hasBrand KS-KRSV-25 KaishanUSA)
+(hasModelNumber KS-KRSV-25 "KRSV-25")
+(belongsToSeries KS-KRSV-25 KS-KRSV-Series)
+(hasHP KS-KRSV-25 25)
+(hasListPrice KS-KRSV-25 14999.00)
+(listedBy KS-KRSV-25 CompressorWorld)
+
+(isa KS-KRSV-40 RotaryScrewVacuum)
+(hasProductName KS-KRSV-40 "Kaishan KRSV-40 Rotary Screw Vacuum Pump")
+(hasBrand KS-KRSV-40 KaishanUSA)
+(hasModelNumber KS-KRSV-40 "KRSV-40")
+(belongsToSeries KS-KRSV-40 KS-KRSV-Series)
+(hasHP KS-KRSV-40 40)
+(hasListPrice KS-KRSV-40 22999.00)
+(listedBy KS-KRSV-40 CompressorWorld)
+
+;;; ============================================================
+;;; PRODUCT SERIES DEFINITIONS
+;;; ============================================================
+
+;; Becker Series
+(isa BK-U4-Series ProductSeries)
+(hasProductName BK-U4-Series "Becker U4 Series")
+(seriesBy BK-U4-Series Becker)
+(comment BK-U4-Series "Oil-sealed rotary vane vacuum pumps 0.75-1.5 HP. Compact, reliable. Used in packaging, printing, woodworking CNC. The workhorse of Becker's industrial vacuum line.")
+
+(isa BK-U5-Series ProductSeries)
+(hasProductName BK-U5-Series "Becker U5 Series")
+(seriesBy BK-U5-Series Becker)
+(comment BK-U5-Series "Oil-sealed rotary vane vacuum pumps 1.5-2 HP. Higher vacuum depth than U4 series. Two-stage design for deeper vacuum applications.")
+
+;; DVP Series
+(isa DVP-LC-Series ProductSeries)
+(hasProductName DVP-LC-Series "DVP LC Series")
+(seriesBy DVP-LC-Series DVP)
+(comment DVP-LC-Series "Oil-lubricated rotary vane vacuum pumps 0.75-3 HP. DVP's primary industrial vacuum line. Reliable, cost-effective, wide range of sizes.")
+
+(isa DVP-SC-Series ProductSeries)
+(hasProductName DVP-SC-Series "DVP SC Series")
+(seriesBy DVP-SC-Series DVP)
+(comment DVP-SC-Series "Dry (oil-free) rotary vane vacuum pumps 0.75-1.5 HP. Self-lubricating carbon vanes. Used in food packaging, medical, and clean applications.")
+
+(isa DVP-RC-Series ProductSeries)
+(hasProductName DVP-RC-Series "DVP RC Series")
+(seriesBy DVP-RC-Series DVP)
+(comment DVP-RC-Series "Dry claw vacuum pumps 3-5 HP. Oil-free, robust, low maintenance. Used in pneumatic conveying, packaging, and industrial process vacuum.")
+
+;; Dekker Series
+(isa DK-Titan-Series ProductSeries)
+(hasProductName DK-Titan-Series "DEKKER Titan Series")
+(seriesBy DK-Titan-Series Dekker)
+(comment DK-Titan-Series "Oil-sealed rotary vane vacuum pumps 1-3 HP. DEKKER's core industrial vacuum line. 25-100 CFM range. Known for reliability in packaging and CNC applications.")
+
+(isa DK-DuraVane-Series ProductSeries)
+(hasProductName DK-DuraVane-Series "DEKKER DuraVane Series")
+(seriesBy DK-DuraVane-Series Dekker)
+(comment DK-DuraVane-Series "Premium rotary vane vacuum pumps 1-2 HP. Enhanced durability and extended vane life over Titan series.")
+
+(isa DK-Gryphon-Series ProductSeries)
+(hasProductName DK-Gryphon-Series "DEKKER Gryphon Series")
+(seriesBy DK-Gryphon-Series Dekker)
+(comment DK-Gryphon-Series "Liquid ring vacuum pumps 1-3 HP. Isothermal compression. Handles wet, dirty, and corrosive gases. Used in chemical, paper, and process applications.")
+
+(isa DK-AquaSeal-Series ProductSeries)
+(hasProductName DK-AquaSeal-Series "DEKKER AquaSeal Series")
+(seriesBy DK-AquaSeal-Series Dekker)
+(comment DK-AquaSeal-Series "Stainless steel liquid ring vacuum pumps 1-2 HP. Corrosion-resistant construction for aggressive chemical and pharmaceutical applications.")
+
+;; Leybold Series
+(isa LB-CLAWVAC-Series ProductSeries)
+(hasProductName LB-CLAWVAC-Series "Leybold CLAWVAC Series")
+(seriesBy LB-CLAWVAC-Series Leybold)
+(comment LB-CLAWVAC-Series "Dry claw vacuum pumps 2.5-5 HP. Oil-free, robust industrial vacuum. Used in packaging, pneumatic conveying, and process applications. Premium tier.")
+
+(isa LB-SOGEVAC-Series ProductSeries)
+(hasProductName LB-SOGEVAC-Series "Leybold SOGEVAC Series")
+(seriesBy LB-SOGEVAC-Series Leybold)
+(comment LB-SOGEVAC-Series "Single-stage oil-sealed rotary vane vacuum pumps 2.5-7.5 HP. Rough vacuum workhorse. Wide range from laboratory to industrial applications.")
+
+(isa LB-TRIVAC-Series ProductSeries)
+(hasProductName LB-TRIVAC-Series "Leybold TRIVAC Series")
+(seriesBy LB-TRIVAC-Series Leybold)
+(comment LB-TRIVAC-Series "Two-stage oil-sealed rotary vane vacuum pumps 0.75-1 HP. Achieves deep vacuum. Used in analytical instruments, coating, and scientific research.")
+
+;; Welch Series
+(isa WL-DuoSeal-Series ProductSeries)
+(hasProductName WL-DuoSeal-Series "Welch DuoSeal Series")
+(seriesBy WL-DuoSeal-Series WelchVacuum)
+(comment WL-DuoSeal-Series "Oil-sealed rotary vane vacuum pumps. Laboratory standard. Belt-driven, two-stage. The classic Welch vacuum pump line for scientific applications.")
+
+(isa WL-WOB-L-Series ProductSeries)
+(hasProductName WL-WOB-L-Series "Welch WOB-L Series")
+(seriesBy WL-WOB-L-Series WelchVacuum)
+(comment WL-WOB-L-Series "Oil-free diaphragm vacuum pumps. Piston design with flexible diaphragm. Chemical-resistant. Used in rotary evaporation, filtration, and analytical laboratory applications.")
+
+(isa WL-CRVpro-Series ProductSeries)
+(hasProductName WL-CRVpro-Series "Welch CRVpro Series")
+(seriesBy WL-CRVpro-Series WelchVacuum)
+(comment WL-CRVpro-Series "Compact oil-sealed rotary vane vacuum pumps. Direct-drive, low noise. Modern replacement for legacy DuoSeal in many laboratory applications.")
+
+;; NAVAC Series
+(isa NV-NRD-Series ProductSeries)
+(hasProductName NV-NRD-Series "NAVAC NRD Series")
+(seriesBy NV-NRD-Series NAVAC)
+(comment NV-NRD-Series "Dual-stage oil-sealed rotary vane vacuum pumps. Aggressive pricing. Growing US market share in HVAC/R and industrial vacuum.")
+
+(isa NV-NRS-Series ProductSeries)
+(hasProductName NV-NRS-Series "NAVAC NRS Series")
+(seriesBy NV-NRS-Series NAVAC)
+(comment NV-NRS-Series "Oil-free scroll vacuum pumps. Low vibration, low noise. Used in analytical instruments and laboratory applications.")
+
+;; Republic Series
+(isa RP-VRT-Series ProductSeries)
+(hasProductName RP-VRT-Series "Republic VRT Series")
+(seriesBy RP-VRT-Series Republic)
+(comment RP-VRT-Series "Dry rotary vane vacuum pumps 25-63 CFM. Oil-free operation with self-lubricating vanes. Made in Dallas, Texas. Used in packaging, printing, and industrial process vacuum.")
+
+;; Quincy Series
+(isa QY-QCV-Series ProductSeries)
+(hasProductName QY-QCV-Series "Quincy QCV Series")
+(seriesBy QY-QCV-Series QuincyCompressor)
+(comment QY-QCV-Series "Oil-sealed rotary vane vacuum pumps 25-63 CFM. Quincy's core vacuum product line. Known for reliability and longevity consistent with Quincy's compressor reputation.")
+
+;; Atlas Copco Vacuum Series
+(isa AC-GVS-Series ProductSeries)
+(hasProductName AC-GVS-Series "Atlas Copco GVS Series")
+(seriesBy AC-GVS-Series AtlasCopco)
+(comment AC-GVS-Series "Oil-sealed rotary vane vacuum pumps. Single-stage rough vacuum. Compact, reliable industrial vacuum for packaging, pick-and-place, and general process applications.")
+
+(isa AC-DZS-Series ProductSeries)
+(hasProductName AC-DZS-Series "Atlas Copco DZS Series")
+(seriesBy AC-DZS-Series AtlasCopco)
+(comment AC-DZS-Series "Dry claw vacuum pumps. Oil-free, variable speed available. Premium industrial vacuum for centralized vacuum systems, packaging, and process applications. High CFM range.")
+
+;; Airtech Series
+(isa AT-Orion-Series ProductSeries)
+(hasProductName AT-Orion-Series "Airtech Orion Series")
+(seriesBy AT-Orion-Series AirtechUSA)
+(comment AT-Orion-Series "Oil-free vacuum pumps 0.33-0.75 HP. Compact, maintenance-free. Used in dental suction, laboratory, and light industrial vacuum applications.")
+
+;; Kaishan Vacuum Series
+(isa KS-KRSV-Series ProductSeries)
+(hasProductName KS-KRSV-Series "Kaishan KRSV Series")
+(seriesBy KS-KRSV-Series KaishanUSA)
+(comment KS-KRSV-Series "Rotary screw vacuum pumps 15-40 HP. High flow rates at moderate vacuum levels. Aggressive pricing. Used in centralized industrial vacuum systems. Assembled at Kaishan's Loxley, Alabama facility.")

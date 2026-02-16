@@ -1,0 +1,353 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / STRUCTURAL / RETAILERS
+;;; Online and major distributors in the US compressed air market
+;;; These are the competitive pricing targets for Charlotte
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; ONLINE RETAILERS (Primary Competitive Targets)
+;;; ============================================================
+;;; These are the websites Charlotte will scrape for competitive
+;;; pricing intelligence. ISG competes with these retailers on
+;;; price, availability, and service.
+
+(isa CompressorWorld OnlineRetailer)
+(hasProductName CompressorWorld "Compressor World")
+(hasWebsite CompressorWorld "https://www.compressorworld.com")
+(hasState CompressorWorld "IA")
+(hasCity CompressorWorld "Fairfield")
+(comment CompressorWorld "Largest US online compressed air retailer. 101 brands, 14 major categories. Part of the Instrumart / DRS family (also operates PumpWorld, FiltrationWorld, BiopharmWorld, MotionWorld, WholesaleAirPipe, PartsWorld). Founded in Fairfield, Iowa. Trustpilot rated. Offers financing. Phone: 866-778-6572.")
+
+;; CompressorWorld carries these featured brands
+(carriesBrand CompressorWorld AtlasCopco)
+(carriesBrand CompressorWorld IngersollRand)
+(carriesBrand CompressorWorld QuincyCompressor)
+(carriesBrand CompressorWorld ELGi)
+(carriesBrand CompressorWorld ChicagoPneumatic)
+(carriesBrand CompressorWorld Champion)
+(carriesBrand CompressorWorld KaishanUSA)
+(carriesBrand CompressorWorld HertzKompressoren)
+(carriesBrand CompressorWorld Powerex)
+(carriesBrand CompressorWorld Deltech)
+(carriesBrand CompressorWorld Bobcat)
+(carriesBrand CompressorWorld AppliedSystemTechnologies)
+(carriesBrand CompressorWorld FSCurtis)
+(carriesBrand CompressorWorld SaylorBeall)
+(carriesBrand CompressorWorld Mattei)
+(carriesBrand CompressorWorld IndustrialGold)
+(carriesBrand CompressorWorld Schulz)
+(carriesBrand CompressorWorld Hankison)
+(carriesBrand CompressorWorld BEKO)
+(carriesBrand CompressorWorld NanoPurification)
+(carriesBrand CompressorWorld SuperDry)
+(carriesBrand CompressorWorld Tsunami)
+(carriesBrand CompressorWorld Becker)
+(carriesBrand CompressorWorld DVP)
+(carriesBrand CompressorWorld Dekker)
+(carriesBrand CompressorWorld WelchVacuum)
+(carriesBrand CompressorWorld Leybold)
+(carriesBrand CompressorWorld NAVAC)
+(carriesBrand CompressorWorld AirtechUSA)
+(carriesBrand CompressorWorld FPZ)
+(carriesBrand CompressorWorld AllStar)
+(carriesBrand CompressorWorld Republic)
+(carriesBrand CompressorWorld VanairManufacturing)
+(carriesBrand CompressorWorld VMAC)
+(carriesBrand CompressorWorld AnestIwata)
+(carriesBrand CompressorWorld Coaire)
+(carriesBrand CompressorWorld BOGE)
+(carriesBrand CompressorWorld ManchesterTank)
+(carriesBrand CompressorWorld RapidAir)
+(carriesBrand CompressorWorld CoxReels)
+(carriesBrand CompressorWorld Parker)
+(carriesBrand CompressorWorld OZEN)
+(carriesBrand CompressorWorld Pneumatech)
+(carriesBrand CompressorWorld VanAirSystems)
+(carriesBrand CompressorWorld Jenny)
+(carriesBrand CompressorWorld MiTM)
+(carriesBrand CompressorWorld ABAC)
+(carriesBrand CompressorWorld BelAire)
+(carriesBrand CompressorWorld MarkCompressors)
+(carriesBrand CompressorWorld Amico)
+(carriesBrand CompressorWorld TechWest)
+
+(isa CompressorPros OnlineRetailer)
+(hasProductName CompressorPros "CompressorPros.com")
+(hasWebsite CompressorPros "https://www.compressorpros.com")
+(hasState CompressorPros "SC")
+(comment CompressorPros "Major US online retailer. 40+ brands. Strong in piston and light industrial rotary screw. Offers financing, ships to Canada. Phone: 803-339-0445. Carries brand-specific warranty information.")
+
+;; CompressorPros carries these brands
+(carriesBrand CompressorPros AtlasCopco)
+(carriesBrand CompressorPros ABAC)
+(carriesBrand CompressorPros BelAire)
+(carriesBrand CompressorPros CAire)
+(carriesBrand CompressorPros ChicagoPneumatic)
+(carriesBrand CompressorPros ELGi)
+(carriesBrand CompressorPros EMAX)
+(carriesBrand CompressorPros FirstAir)
+(carriesBrand CompressorPros FSCurtis)
+(carriesBrand CompressorPros IndustrialGold)
+(carriesBrand CompressorPros Jenny)
+(carriesBrand CompressorPros MiTM)
+(carriesBrand CompressorPros QuincyCompressor)
+(carriesBrand CompressorPros Schulz)
+(carriesBrand CompressorPros Silentaire)
+(carriesBrand CompressorPros Amico)
+(carriesBrand CompressorPros Fiac)
+(carriesBrand CompressorPros ConX)
+(carriesBrand CompressorPros AlphaPure)
+(carriesBrand CompressorPros Tsunami)
+(carriesBrand CompressorPros RapidAir)
+(carriesBrand CompressorPros CoxReels)
+(carriesBrand CompressorPros Reelcraft)
+(carriesBrand CompressorPros Airbase)
+
+(isa CompressorsNow OnlineRetailer)
+(hasProductName CompressorsNow "CompressorsNow / Compressor Now")
+(hasWebsite CompressorsNow "https://compressorsnow.com")
+(comment CompressorsNow "US online retailer. Strong in FS-Curtis, Champion, Mattei, Chicago Pneumatic. Also carries DVP vacuum, Nano dryers, Parker dryers, Beko filters, Walker filters. Offers price matching, rentals. Sister site: CompressorNow.com (parts), PneumaticsNow.com.")
+
+;; CompressorsNow carries these brands
+(carriesBrand CompressorsNow FSCurtis)
+(carriesBrand CompressorsNow FirstAir)
+(carriesBrand CompressorsNow ChicagoPneumatic)
+(carriesBrand CompressorsNow Champion)
+(carriesBrand CompressorsNow Mattei)
+(carriesBrand CompressorsNow DVP)
+(carriesBrand CompressorsNow NanoPurification)
+(carriesBrand CompressorsNow Parker)
+(carriesBrand CompressorsNow QuincyCompressor)
+(carriesBrand CompressorsNow ABAC)
+(carriesBrand CompressorsNow BelAire)
+(carriesBrand CompressorsNow MiTM)
+(carriesBrand CompressorsNow Jenny)
+(carriesBrand CompressorsNow MarkCompressors)
+(carriesBrand CompressorsNow BEKO)
+(carriesBrand CompressorsNow WalkerFiltration)
+(carriesBrand CompressorsNow KSITechnologies)
+(carriesBrand CompressorsNow Sepura)
+(carriesBrand CompressorsNow Hankison)
+
+;;; ============================================================
+;;; ISG COMPRESSOR DIVISION (Our Client)
+;;; ============================================================
+
+(isa IndustrialAirPower Distributor)
+(hasProductName IndustrialAirPower "Industrial Air Power (IAP)")
+(comment IndustrialAirPower "ISG's compressor distribution brand. Service-first model with pull-through distribution. Carries major compressor brands. Multiple locations. Serves industrial end-users with equipment, parts, service, and engineered systems.")
+
+(isa IndustrialAirCenters Distributor)
+(hasProductName IndustrialAirCenters "Industrial Air Centers (IAC)")
+(comment IndustrialAirCenters "ISG's second compressor distribution brand. Complementary to IAP. Together, IAP and IAC form the compressor vertical that Charlotte is being deployed to optimize.")
+
+(isa ISG Organization)
+(hasProductName ISG "Industrial Service Group")
+(hasWebsite ISG "https://www.isgservice.com")
+(comment ISG "Parent company of IAP and IAC. ~$450M revenue, 16 brands, 42 locations, ~1,200 employees. PE-backed. First Charlotte deployment. Compressor vertical is the initial scope.")
+
+(parentCompanyOf ISG IndustrialAirPower)
+(parentCompanyOf ISG IndustrialAirCenters)
+
+;;; ============================================================
+;;; AIR COMPRESSOR SERVICES (ACS) — PRIMARY COMPETITOR
+;;; ============================================================
+;;; THREAT LEVEL: HIGH — attacks ISG's aftermarket parts and
+;;; service revenue, the highest-margin segment of the business.
+;;; Inc. 5000 two consecutive years. 168% 3-year growth.
+;;; Jim Richard: "we need them out of business."
+
+(isa AirCompressorServices OnlineRetailer)
+(isa AirCompressorServices ServiceProvider)
+(hasProductName AirCompressorServices "Air Compressor Services (ACS)")
+(hasWebsite AirCompressorServices "https://aircompressorservices.com")
+(hasState AirCompressorServices "SC")
+(hasCity AirCompressorServices "Greenville")
+(comment AirCompressorServices "PRIORITY COMPETITOR. Founded 2012 by Neal Shade. 3 Custom Mill Ct., Greenville SC 29609. Also Augusta GA. ~43-69 employees. $3-15M revenue (sources vary). Inc. 5000 two consecutive years (ranked #2645 in 2025). SC Best Places to Work 2025. SC 50 Fastest Growing (top 20, 56% growth 2023). 168% 3-year growth 2020-2022. 200+ brands. Shopify e-commerce platform. Phone: 877-592-9892. 4 warehouses, building 5th + new world HQ near I-85 adjacent to FedEx. Claims 75% of Fortune 500 manufacturing as customers. Sells OWN branded aftermarket parts (ACS oil filters, separators) alongside OEM. Directly attacks ISG service revenue with airend rebuilds, PM contracts, overhauls, 24/7 emergency repair, and rentals. 2-year warranty on airend rebuilds. Charlotte must monitor their pricing on every SKU they carry.")
+
+;; ACS product categories — aftermarket parts and consumables
+;; (They do NOT sell new compressor equipment — they sell the parts and service)
+(hasProductCategory AirCompressorServices "Filters")
+(hasProductCategory AirCompressorServices "Compressor Oils")
+(hasProductCategory AirCompressorServices "PM & Wear Parts")
+(hasProductCategory AirCompressorServices "Controls, Valves & Electronics")
+(hasProductCategory AirCompressorServices "Reciprocating Compressor Parts")
+(hasProductCategory AirCompressorServices "Airends & Installation Kits")
+(hasProductCategory AirCompressorServices "Air & Oil Coolers")
+
+;; ACS services — directly competing with ISG's service contracts
+(hasServiceOffering AirCompressorServices "Airend Rebuilding — 2-year warranty")
+(hasServiceOffering AirCompressorServices "Preventative Maintenance — quarterly/annual")
+(hasServiceOffering AirCompressorServices "Compressor Overhauls")
+(hasServiceOffering AirCompressorServices "24/7 Emergency Repairs")
+(hasServiceOffering AirCompressorServices "Inspections")
+(hasServiceOffering AirCompressorServices "Rentals")
+
+;; ACS carries aftermarket parts for these major brands
+;; (200+ brands — these are the ones most relevant to ISG)
+(carriesBrand AirCompressorServices AtlasCopco)
+(carriesBrand AirCompressorServices IngersollRand)
+(carriesBrand AirCompressorServices QuincyCompressor)
+(carriesBrand AirCompressorServices KaishanUSA)
+(carriesBrand AirCompressorServices Kaeser)
+(carriesBrand AirCompressorServices GardnerDenver)
+(carriesBrand AirCompressorServices Sullair)
+(carriesBrand AirCompressorServices SullivanPalatek)
+(carriesBrand AirCompressorServices ChicagoPneumatic)
+(carriesBrand AirCompressorServices Champion)
+(carriesBrand AirCompressorServices FSCurtis)
+(carriesBrand AirCompressorServices BOGE)
+(carriesBrand AirCompressorServices Mattei)
+(carriesBrand AirCompressorServices Joy)
+(carriesBrand AirCompressorServices CompAir)
+(carriesBrand AirCompressorServices Becker)
+(carriesBrand AirCompressorServices DVP)
+(carriesBrand AirCompressorServices Dekker)
+(carriesBrand AirCompressorServices Leybold)
+(carriesBrand AirCompressorServices Hankison)
+(carriesBrand AirCompressorServices BEKO)
+(carriesBrand AirCompressorServices NanoPurification)
+(carriesBrand AirCompressorServices Parker)
+(carriesBrand AirCompressorServices Donaldson)
+(carriesBrand AirCompressorServices ABAC)
+(carriesBrand AirCompressorServices BelAire)
+(carriesBrand AirCompressorServices Schulz)
+(carriesBrand AirCompressorServices SaylorBeall)
+(carriesBrand AirCompressorServices ELGi)
+(carriesBrand AirCompressorServices Coaire)
+(carriesBrand AirCompressorServices Doosan)
+(carriesBrand AirCompressorServices Fiac)
+(carriesBrand AirCompressorServices Powerex)
+
+;; ACS private-label products (their own brand)
+(hasProductName ACS-OilFilter-OF100 "ACS Oil Filter OF-100")
+(hasListPrice ACS-OilFilter-OF100 41.00)
+(listedBy ACS-OilFilter-OF100 AirCompressorServices)
+
+(hasProductName ACS-OilFilter-OF200 "ACS Oil Filter OF-200")
+(hasListPrice ACS-OilFilter-OF200 38.00)
+(listedBy ACS-OilFilter-OF200 AirCompressorServices)
+
+(hasProductName ACS-OilFilter-OF300 "ACS Oil Filter OF-300")
+(hasListPrice ACS-OilFilter-OF300 62.00)
+(listedBy ACS-OilFilter-OF300 AirCompressorServices)
+
+(hasProductName ACS-OilFilter-OF400 "ACS Oil Filter OF-400")
+(hasListPrice ACS-OilFilter-OF400 51.50)
+(listedBy ACS-OilFilter-OF400 AirCompressorServices)
+
+(hasProductName ACS-OilFilter-OF700 "ACS Oil Filter OF-700")
+(hasListPrice ACS-OilFilter-OF700 46.50)
+(listedBy ACS-OilFilter-OF700 AirCompressorServices)
+
+(hasProductName ACS-OilFilter-OF1004 "ACS Oil Filter OF-1004")
+(hasListPrice ACS-OilFilter-OF1004 41.00)
+(listedBy ACS-OilFilter-OF1004 AirCompressorServices)
+
+(hasProductName ACS-Separator-SEP1019 "ACS Separator SEP-1019")
+(hasListPrice ACS-Separator-SEP1019 179.50)
+(listedBy ACS-Separator-SEP1019 AirCompressorServices)
+
+(hasProductName ACS-Separator-SEP1023 "ACS Separator SEP-1023")
+(hasListPrice ACS-Separator-SEP1023 140.50)
+(listedBy ACS-Separator-SEP1023 AirCompressorServices)
+
+(hasProductName ACS-Separator-SEP1049 "ACS Separator SEP-1049")
+(hasListPrice ACS-Separator-SEP1049 136.00)
+(listedBy ACS-Separator-SEP1049 AirCompressorServices)
+
+(hasProductName ACS-SyntheticOil-12K "ACS Ultimate 12K Synthetic Oil 5 Gal")
+(hasListPrice ACS-SyntheticOil-12K 544.00)
+(listedBy ACS-SyntheticOil-12K AirCompressorServices)
+
+;; ACS carries these OEM parts (competitive price intelligence)
+(hasProductName ACS-IR-54672654 "IR Oil Filter Replacement 54672654")
+(hasListPrice ACS-IR-54672654 56.00)
+(listedBy ACS-IR-54672654 AirCompressorServices)
+
+(hasProductName ACS-IR-39329602 "IR Oil Filter Replacement 39329602")
+(hasListPrice ACS-IR-39329602 42.50)
+(listedBy ACS-IR-39329602 AirCompressorServices)
+
+(hasProductName ACS-IR-54749247 "IR Separator Replacement 54749247")
+(hasListPrice ACS-IR-54749247 189.00)
+(listedBy ACS-IR-54749247 AirCompressorServices)
+
+(hasProductName ACS-IR-SSRUltra "IR SSR Ultra Coolant 5 Gal")
+(hasListPrice ACS-IR-SSRUltra 500.50)
+(listedBy ACS-IR-SSRUltra AirCompressorServices)
+
+(hasProductName ACS-AC-RotoExtend "Atlas Copco Roto-Extend Synthetic Oil 5 Gal")
+(hasListPrice ACS-AC-RotoExtend 348.00)
+(listedBy ACS-AC-RotoExtend AirCompressorServices)
+
+(hasProductName ACS-Sullair-250022669 "Sullair Synthetic Oil 250022-669 5 Gal")
+(hasListPrice ACS-Sullair-250022669 500.50)
+(listedBy ACS-Sullair-250022669 AirCompressorServices)
+
+(hasProductName ACS-GD-Aeon9000SP "Gardner Denver Aeon 9000 SP Synthetic Oil 5 Gal")
+(hasListPrice ACS-GD-Aeon9000SP 400.00)
+(listedBy ACS-GD-Aeon9000SP AirCompressorServices)
+
+(hasProductName ACS-Quincy-QuinSynPlus "Quincy QuinSyn Plus 5 Gal")
+(hasListPrice ACS-Quincy-QuinSynPlus 400.00)
+(listedBy ACS-Quincy-QuinSynPlus AirCompressorServices)
+
+(hasProductName ACS-Kaeser-6.3463.0 "Kaeser Oil Filter 6.3463.0")
+(hasListPrice ACS-Kaeser-6.3463.0 51.50)
+(listedBy ACS-Kaeser-6.3463.0 AirCompressorServices)
+
+(hasProductName ACS-AC-1626832200 "Atlas Copco Separator 1626832200")
+(hasListPrice ACS-AC-1626832200 218.00)
+(listedBy ACS-AC-1626832200 AirCompressorServices)
+
+(hasProductName ACS-Sullair-250034116 "Sullair Separator 250034-116")
+(hasListPrice ACS-Sullair-250034116 302.00)
+(listedBy ACS-Sullair-250034116 AirCompressorServices)
+
+;;; ============================================================
+;;; OTHER MAJOR DISTRIBUTORS (Competitive Landscape)
+;;; ============================================================
+
+(isa AirCenters Distributor)
+(hasProductName AirCenters "Air Centers of Florida / AirCenters")
+(comment AirCenters "Regional compressed air distributor. Multi-brand. Service-focused. Typical of the ~500 independent distributors in the US market.")
+
+(isa Amazon OnlineRetailer)
+(hasProductName Amazon "Amazon")
+(hasWebsite Amazon "https://www.amazon.com")
+(comment Amazon "World's largest online marketplace. Carries consumer and light-commercial compressors. Growing presence in industrial. ISG sells through Amazon Seller Central. Price transparency forces margin pressure across the market.")
+
+;;; ============================================================
+;;; COMPRESSORWORLD.COM SISTER SITES
+;;; ============================================================
+;;; CompressorWorld is part of a family of industrial e-commerce
+;;; sites operated by the same parent. Understanding this network
+;;; is valuable for competitive intelligence.
+
+(isa PumpWorld OnlineRetailer)
+(hasProductName PumpWorld "Pump World")
+(hasWebsite PumpWorld "https://www.pumpworld.com")
+(comment PumpWorld "Sister site to CompressorWorld. Industrial pumps and pump accessories.")
+
+(isa FiltrationWorld OnlineRetailer)
+(hasProductName FiltrationWorld "Filtration World")
+(hasWebsite FiltrationWorld "https://www.filtrationworld.com")
+(comment FiltrationWorld "Sister site to CompressorWorld. Industrial filtration equipment.")
+
+(isa BiopharmWorld OnlineRetailer)
+(hasProductName BiopharmWorld "BioPharm World")
+(hasWebsite BiopharmWorld "https://www.biopharmworld.com")
+(comment BiopharmWorld "Sister site to CompressorWorld. Biopharmaceutical processing equipment.")
+
+(isa PartsWorld OnlineRetailer)
+(hasProductName PartsWorld "Parts World")
+(hasWebsite PartsWorld "https://shop.partsworld.com")
+(comment PartsWorld "Sister site to CompressorWorld. Replacement parts for compressed air equipment.")
+
+(isa WholesaleAirPipe OnlineRetailer)
+(hasProductName WholesaleAirPipe "Wholesale Air Pipe")
+(hasWebsite WholesaleAirPipe "https://www.wholesaleairpipe.com")
+(comment WholesaleAirPipe "Sister site to CompressorWorld. Aluminum compressed air piping systems at wholesale pricing.")

@@ -1,0 +1,57 @@
+;;; ================================================================
+;;; COMPRESSOR — US COMPRESSED AIR INDUSTRY SUBSTRATE
+;;; ================================================================
+;;;
+;;; This is the Charlotte container for the compressed air industry.
+;;; It boots on top of charlotte-os and extends the five primitives
+;;; with domain-specific types, predicates, and knowledge.
+;;;
+;;; PURPOSE
+;;; -------
+;;; Built for ISG's Charlotte deployment (Industrial Air Power +
+;;; Industrial Air Centers). Provides the complete ontological
+;;; backbone for competitive pricing intelligence, product catalog
+;;; management, and customer reactivation across the US compressed
+;;; air equipment market.
+;;;
+;;; DOMAIN
+;;; ------
+;;; The compressed air industry covers:
+;;;   - Air compressor manufacturing and distribution
+;;;   - Air treatment (dryers, filtration, condensate management)
+;;;   - Vacuum pump systems (industrial, scientific, medical)
+;;;   - Blower systems (regenerative, rotary)
+;;;   - Nitrogen generation (PSA, membrane)
+;;;   - Air storage and piping infrastructure
+;;;   - Parts, lubricants, and accessories
+;;;   - Service and maintenance operations
+;;;
+;;; CONVEX HULL
+;;; -----------
+;;; This substrate's convex hull covers every operation in the
+;;; compressed air market where identities emit signals over time:
+;;;
+;;;   Manufacturer → produces Product → sold by Distributor
+;;;   Distributor  → lists Product at Price → bought by Customer
+;;;   Customer     → operates Equipment → requires Service
+;;;   Equipment    → emits Metrics (CFM, PSI, hours) → triggers Alerts
+;;;   Price        → changes over Time → reveals Market Dynamics
+;;;
+;;; Every actor in this chain is a NODE. Every connection is an EDGE.
+;;; Every measurement is a METRIC. Every event is a SIGNAL.
+;;; Every expectation is a PROTOCOL.
+;;;
+;;; DATA SOURCES
+;;; ------------
+;;;   - CompressorWorld.com: 101 brands, 14 categories, 1000+ SKUs
+;;;   - CompressorPros.com: 40+ brands, rotary screw/piston/portable focus
+;;;   - CompressorsNow.com: FS-Curtis, Champion, Mattei, Chicago Pneumatic
+;;;   - Manufacturer catalogs: Ingersoll Rand, Atlas Copco, Quincy, ELGi
+;;;   - ISG internal: NetSuite ERP, BigCommerce, HubSpot CRM, Amazon
+;;;
+;;; INHERITANCE
+;;; -----------
+;;;   (genlMt CompressorKernelMt CharlotteKernelMt)
+;;;   (genlMt CompressorKnowledgeMt CharlotteKnowledgeMt)
+;;;
+;;; ================================================================

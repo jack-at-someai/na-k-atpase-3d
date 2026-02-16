@@ -1,0 +1,539 @@
+;;; ================================================================
+;;; COMPRESSOR / KERNEL / PREDICATES
+;;; Domain-specific predicates for the compressed air industry
+;;; The complete relationship and attribute vocabulary
+;;; ================================================================
+
+(in-microtheory CompressorKernelMt)
+
+;;; ============================================================
+;;; SECTION 1: MANUFACTURING RELATIONSHIPS (EDGE types)
+;;; ============================================================
+;;; These edges connect manufacturers to their products.
+;;; The manufacturing graph defines who makes what.
+
+(isa manufacturedBy BinaryPredicate)
+(isa manufacturedBy CommercialRelation)
+(arity manufacturedBy 2)
+(arg1Isa manufacturedBy CompressedAirEquipment)
+(arg2Isa manufacturedBy Manufacturer)
+(comment manufacturedBy "Who manufactured this equipment. (manufacturedBy ?equipment ?manufacturer) -- the brand owner. An Ingersoll Rand UP6 is manufacturedBy IngersolIRand. The most fundamental edge in the product graph.")
+
+(isa hasBrand BinaryPredicate)
+(arity hasBrand 2)
+(arg1Isa hasBrand CompressedAirEquipment)
+(arg2Isa hasBrand Manufacturer)
+(comment hasBrand "The brand label on the equipment. (hasBrand ?equipment ?brand) -- usually identical to manufacturedBy, but some manufacturers sell under multiple brand names. Atlas Copco sells under Atlas Copco, ABAC, and Mark Compressors.")
+
+(isa parentCompanyOf BinaryPredicate)
+(arity parentCompanyOf 2)
+(arg1Isa parentCompanyOf Manufacturer)
+(arg2Isa parentCompanyOf Manufacturer)
+(comment parentCompanyOf "Corporate ownership relationship. (parentCompanyOf ?parent ?subsidiary) -- Atlas Copco owns Chicago Pneumatic, ABAC, Mark. Ingersoll Rand owns Gardner Denver. Important for understanding market concentration.")
+
+(isa belongsToSeries BinaryPredicate)
+(arity belongsToSeries 2)
+(arg1Isa belongsToSeries CompressedAirEquipment)
+(arg2Isa belongsToSeries ProductSeries)
+(comment belongsToSeries "Product belongs to a named series. (belongsToSeries ?product ?series) -- e.g., Ingersoll Rand UP6 Series, Quincy QGS Series. Series groups models by platform and feature set.")
+
+(isa seriesBy BinaryPredicate)
+(arity seriesBy 2)
+(arg1Isa seriesBy ProductSeries)
+(arg2Isa seriesBy Manufacturer)
+(comment seriesBy "Which manufacturer owns a product series. (seriesBy ?series ?manufacturer) -- links the product line to its brand owner.")
+
+;;; ============================================================
+;;; SECTION 2: DISTRIBUTION RELATIONSHIPS (EDGE types)
+;;; ============================================================
+;;; These edges connect distributors to products and customers.
+;;; The distribution graph is the commercial marketplace.
+
+(isa distributedBy BinaryPredicate)
+(isa distributedBy CommercialRelation)
+(arity distributedBy 2)
+(arg1Isa distributedBy CompressedAirEquipment)
+(arg2Isa distributedBy Distributor)
+(comment distributedBy "Who sells and services this equipment. (distributedBy ?equipment ?distributor) -- a distributor carries specific manufacturer lines. ISG's IAP carries Ingersoll Rand, Quincy, and others.")
+
+(isa carriesBrand BinaryPredicate)
+(isa carriesBrand CommercialRelation)
+(arity carriesBrand 2)
+(arg1Isa carriesBrand Distributor)
+(arg2Isa carriesBrand Manufacturer)
+(comment carriesBrand "Distributor is an authorized dealer for a brand. (carriesBrand ?distributor ?brand) -- determines which products a distributor can sell and service. Exclusive or non-exclusive territory agreements.")
+
+(isa listedBy BinaryPredicate)
+(isa listedBy CommercialRelation)
+(arity listedBy 2)
+(arg1Isa listedBy ProductListing)
+(arg2Isa listedBy Distributor)
+(comment listedBy "Which distributor offers this product listing. (listedBy ?listing ?distributor) -- the seller in a competitive pricing comparison. The same compressor model may have listings from CompressorWorld, CompressorPros, ISG, and others.")
+
+(isa listingForProduct BinaryPredicate)
+(arity listingForProduct 2)
+(arg1Isa listingForProduct ProductListing)
+(arg2Isa listingForProduct CompressedAirEquipment)
+(comment listingForProduct "Which product a listing represents. (listingForProduct ?listing ?product) -- links the commercial listing to the physical product. Multiple listings can point to the same product from different distributors.")
+
+(isa servicedBy BinaryPredicate)
+(isa servicedBy CommercialRelation)
+(arity servicedBy 2)
+(arg1Isa servicedBy EndUser)
+(arg2Isa servicedBy ServiceProvider)
+(comment servicedBy "Who maintains this customer's equipment. (servicedBy ?customer ?provider) -- the service relationship is the stickiest edge in the compressed air graph. Customers rarely switch service providers.")
+
+(isa operatesEquipment BinaryPredicate)
+(arity operatesEquipment 2)
+(arg1Isa operatesEquipment EndUser)
+(arg2Isa operatesEquipment CompressedAirEquipment)
+(comment operatesEquipment "Customer has this equipment installed. (operatesEquipment ?customer ?equipment) -- the install base. Determines parts demand, service scheduling, and replacement cycle timing.")
+
+;;; ============================================================
+;;; SECTION 3: PRODUCT SPECIFICATION PREDICATES
+;;; ============================================================
+;;; Attributes of equipment -- the spec sheet values that
+;;; define a compressor's capability and market position.
+
+;; -- Performance specifications --
+
+(isa hasHP BinaryPredicate)
+(arity hasHP 2)
+(arg1Isa hasHP CompressedAirEquipment)
+(arg2Isa hasHP Thing)
+(comment hasHP "Horsepower rating of the motor or engine. (hasHP ?equipment ?hp) -- the primary sizing dimension for compressors. HP determines CFM output, electrical requirements, and price tier. Range: 0.5 HP (small portable) to 500+ HP (centrifugal).")
+
+(isa hasCFM BinaryPredicate)
+(arity hasCFM 2)
+(arg1Isa hasCFM CompressedAirEquipment)
+(arg2Isa hasCFM Thing)
+(comment hasCFM "Cubic Feet per Minute of air output. (hasCFM ?equipment ?cfm) -- the actual volumetric flow rate at rated pressure. The most important performance spec for sizing. ACFM (actual) vs SCFM (standard) vs FAD (free air delivery) -- different measurement standards. Typical: 3-5 CFM per HP for rotary screw.")
+
+(isa hasPSI BinaryPredicate)
+(arity hasPSI 2)
+(arg1Isa hasPSI CompressedAirEquipment)
+(arg2Isa hasPSI Thing)
+(comment hasPSI "Maximum rated pressure in Pounds per Square Inch. (hasPSI ?equipment ?psi) -- standard industrial: 100-175 PSI. High pressure: 200-6000 PSI. Most pneumatic tools operate at 90 PSI. Higher pressure reduces CFM at the compressor.")
+
+(isa hasTankSize BinaryPredicate)
+(arity hasTankSize 2)
+(arg1Isa hasTankSize CompressedAirEquipment)
+(arg2Isa hasTankSize Thing)
+(comment hasTankSize "Air receiver tank capacity in gallons. (hasTankSize ?equipment ?gallons) -- for tank-mounted units. Typical sizes: 30, 60, 80, 120, 240 gallon. Larger tanks reduce compressor cycling and provide more reserve capacity.")
+
+;; -- Electrical specifications --
+
+(isa hasVoltage BinaryPredicate)
+(arity hasVoltage 2)
+(arg1Isa hasVoltage CompressedAirEquipment)
+(arg2Isa hasVoltage Voltage)
+(comment hasVoltage "Nominal voltage rating. (hasVoltage ?equipment ?voltage) -- must match facility electrical service. Most common: 230V/3/60 for industrial, 230V/1/60 for shop, 460V/3/60 for large industrial.")
+
+(isa hasPhase BinaryPredicate)
+(arity hasPhase 2)
+(arg1Isa hasPhase CompressedAirEquipment)
+(arg2Isa hasPhase ElectricalPhase)
+(comment hasPhase "Single-phase or three-phase power requirement. (hasPhase ?equipment ?phase) -- single-phase available in residential/commercial, three-phase required for industrial.")
+
+(isa hasAmps BinaryPredicate)
+(arity hasAmps 2)
+(arg1Isa hasAmps CompressedAirEquipment)
+(arg2Isa hasAmps Thing)
+(comment hasAmps "Full load amperage draw. (hasAmps ?equipment ?amps) -- determines circuit breaker and wire sizing. Critical for installation planning. Higher voltage = lower amps for same HP.")
+
+;; -- Physical specifications --
+
+(isa hasWeight BinaryPredicate)
+(arity hasWeight 2)
+(arg1Isa hasWeight CompressedAirEquipment)
+(arg2Isa hasWeight Thing)
+(comment hasWeight "Shipping or installed weight in pounds. (hasWeight ?equipment ?lbs) -- determines rigging requirements, floor loading, and freight cost.")
+
+(isa hasLength BinaryPredicate)
+(arity hasLength 2)
+(arg1Isa hasLength CompressedAirEquipment)
+(arg2Isa hasLength Thing)
+(comment hasLength "Overall length in inches. (hasLength ?equipment ?inches) -- footprint dimension for installation planning.")
+
+(isa hasWidth BinaryPredicate)
+(arity hasWidth 2)
+(arg1Isa hasWidth CompressedAirEquipment)
+(arg2Isa hasWidth Thing)
+(comment hasWidth "Overall width in inches. (hasWidth ?equipment ?inches) -- footprint dimension.")
+
+(isa hasHeight BinaryPredicate)
+(arity hasHeight 2)
+(arg1Isa hasHeight CompressedAirEquipment)
+(arg2Isa hasHeight Thing)
+(comment hasHeight "Overall height in inches. (hasHeight ?equipment ?inches) -- clearance dimension. Important for ceiling height and overhead piping.")
+
+(isa hasNoiseLevel BinaryPredicate)
+(arity hasNoiseLevel 2)
+(arg1Isa hasNoiseLevel CompressedAirEquipment)
+(arg2Isa hasNoiseLevel Thing)
+(comment hasNoiseLevel "Sound level in dBA at standard distance. (hasNoiseLevel ?equipment ?dba) -- enclosed rotary screw: 62-75 dBA. Open piston: 80-95 dBA. Important for OSHA compliance and worker comfort.")
+
+;; -- Classification attributes --
+
+(isa hasCompressorType BinaryPredicate)
+(arity hasCompressorType 2)
+(arg1Isa hasCompressorType AirCompressor)
+(arg2Isa hasCompressorType CompressorType)
+(comment hasCompressorType "Primary compression technology. (hasCompressorType ?comp ?type) -- RotaryScrew, Piston, RotaryVane, Scroll, Centrifugal, or Diaphragm.")
+
+(isa hasDriveType BinaryPredicate)
+(arity hasDriveType 2)
+(arg1Isa hasDriveType AirCompressor)
+(arg2Isa hasDriveType DriveType)
+(comment hasDriveType "Motor control method. (hasDriveType ?comp ?type) -- FixedSpeed or VariableSpeed. Determines energy efficiency profile.")
+
+(isa hasLubricationType BinaryPredicate)
+(arity hasLubricationType 2)
+(arg1Isa hasLubricationType AirCompressor)
+(arg2Isa hasLubricationType LubricationType)
+(comment hasLubricationType "Oil-injected or oil-free operation. (hasLubricationType ?comp ?type) -- determines air quality class and application suitability.")
+
+(isa hasMountingType BinaryPredicate)
+(arity hasMountingType 2)
+(arg1Isa hasMountingType CompressedAirEquipment)
+(arg2Isa hasMountingType MountingType)
+(comment hasMountingType "How the equipment is physically installed. (hasMountingType ?equipment ?type) -- BaseMount, TankMount, TrailerMount, TruckMount, or Enclosed.")
+
+(isa hasPowerSource BinaryPredicate)
+(arity hasPowerSource 2)
+(arg1Isa hasPowerSource CompressedAirEquipment)
+(arg2Isa hasPowerSource PowerSource)
+(comment hasPowerSource "Motive power source. (hasPowerSource ?equipment ?source) -- Electric, Gasoline, Diesel, Hydraulic, or PTO.")
+
+(isa hasDryerType BinaryPredicate)
+(arity hasDryerType 2)
+(arg1Isa hasDryerType AirDryer)
+(arg2Isa hasDryerType DryerType)
+(comment hasDryerType "Drying technology classification. (hasDryerType ?dryer ?type) -- Refrigerated, Desiccant, Membrane, or Deliquescent.")
+
+(isa hasAirQualityClass BinaryPredicate)
+(arity hasAirQualityClass 2)
+(arg1Isa hasAirQualityClass CompressedAirEquipment)
+(arg2Isa hasAirQualityClass AirQualityClass)
+(comment hasAirQualityClass "ISO 8573-1 air quality class achieved. (hasAirQualityClass ?equipment ?class) -- Class0 through Class4. Determines required downstream filtration and drying.")
+
+;; -- Identification --
+
+(isa hasModelNumber BinaryPredicate)
+(arity hasModelNumber 2)
+(arg1Isa hasModelNumber CompressedAirEquipment)
+(arg2Isa hasModelNumber Thing)
+(comment hasModelNumber "Manufacturer's model number. (hasModelNumber ?equipment ?model) -- the unique identifier within a manufacturer's catalog. Examples: UP6-15c-125, QGS-15, GA11+. The primary key for cross-referencing across distributors.")
+
+(isa hasSKU BinaryPredicate)
+(arity hasSKU 2)
+(arg1Isa hasSKU ProductListing)
+(arg2Isa hasSKU Thing)
+(comment hasSKU "Distributor's stock-keeping unit number. (hasSKU ?listing ?sku) -- internal to the distributor. Different from manufacturer model number. Used for inventory tracking and order processing.")
+
+(isa hasPartNumber BinaryPredicate)
+(arity hasPartNumber 2)
+(arg1Isa hasPartNumber CompressorPart)
+(arg2Isa hasPartNumber Thing)
+(comment hasPartNumber "Manufacturer's part number. (hasPartNumber ?part ?number) -- for replacement parts and consumables. Cross-reference tables exist for aftermarket equivalents.")
+
+(isa hasSerialNumber BinaryPredicate)
+(arity hasSerialNumber 2)
+(arg1Isa hasSerialNumber CompressedAirEquipment)
+(arg2Isa hasSerialNumber Thing)
+(comment hasSerialNumber "Unique serial number of a specific installed unit. (hasSerialNumber ?equipment ?serial) -- identifies individual machines in the field. Needed for warranty claims, service history, and parts ordering.")
+
+(isa hasProductName BinaryPredicate)
+(arity hasProductName 2)
+(arg1Isa hasProductName CompressedAirEquipment)
+(arg2Isa hasProductName Thing)
+(comment hasProductName "Marketing name of the product. (hasProductName ?equipment ?name) -- e.g., 'Ingersoll Rand UP6-15c-125 Rotary Screw Air Compressor'. The display name used in product listings and catalogs.")
+
+;;; ============================================================
+;;; SECTION 4: PRICING PREDICATES
+;;; ============================================================
+;;; The economic graph -- prices, margins, and competitive
+;;; positioning. This is the core of ISG's pricing intelligence.
+
+(isa hasListPrice BinaryPredicate)
+(arity hasListPrice 2)
+(arg1Isa hasListPrice ProductListing)
+(arg2Isa hasListPrice Thing)
+(comment hasListPrice "Advertised selling price in USD. (hasListPrice ?listing ?dollars) -- the price shown on the distributor's website or catalog. May differ from transaction price after negotiation or volume discounts.")
+
+(isa hasMSRP BinaryPredicate)
+(arity hasMSRP 2)
+(arg1Isa hasMSRP CompressedAirEquipment)
+(arg2Isa hasMSRP Thing)
+(comment hasMSRP "Manufacturer's Suggested Retail Price. (hasMSRP ?equipment ?dollars) -- the baseline price set by the manufacturer. Distributors may sell above or below MSRP depending on market conditions and competitive pressure.")
+
+(isa hasCost BinaryPredicate)
+(arity hasCost 2)
+(arg1Isa hasCost ProductListing)
+(arg2Isa hasCost Thing)
+(comment hasCost "Distributor's cost (wholesale price from manufacturer). (hasCost ?listing ?dollars) -- determines margin. Internal to the distributor. Not publicly visible. The most sensitive number in the pricing graph.")
+
+(isa hasMargin BinaryPredicate)
+(arity hasMargin 2)
+(arg1Isa hasMargin ProductListing)
+(arg2Isa hasMargin Thing)
+(comment hasMargin "Gross margin as decimal. (hasMargin ?listing ?margin) -- (listPrice - cost) / listPrice. Industry average: 25-40% on equipment, 50-70% on parts. Charlotte targets 200-300 basis points margin improvement.")
+
+(isa hasCompetitorPrice BinaryPredicate)
+(arity hasCompetitorPrice 2)
+(arg1Isa hasCompetitorPrice ProductListing)
+(arg2Isa hasCompetitorPrice Thing)
+(comment hasCompetitorPrice "Known competitor price for the same or equivalent product. (hasCompetitorPrice ?listing ?dollars) -- from competitive scraping. The raw data for pricing intelligence.")
+
+(isa hasPriceAsOf BinaryPredicate)
+(isa hasPriceAsOf TemporalRelation)
+(arity hasPriceAsOf 2)
+(arg1Isa hasPriceAsOf ProductListing)
+(arg2Isa hasPriceAsOf Thing)
+(comment hasPriceAsOf "Date the price was observed. (hasPriceAsOf ?listing ?date) -- prices change. Every price observation is a SIGNAL on the listing's price METRIC line. Historical price data reveals trends, seasonality, and competitive dynamics.")
+
+(isa hasShippingCost BinaryPredicate)
+(arity hasShippingCost 2)
+(arg1Isa hasShippingCost ProductListing)
+(arg2Isa hasShippingCost Thing)
+(comment hasShippingCost "Cost to ship the product. (hasShippingCost ?listing ?dollars) -- many online retailers offer free shipping on compressors, which shifts the competitive comparison to pure product price. Others charge LTL freight, which can be $500-2000 for large compressors.")
+
+(isa hasFinancingAvailable BinaryPredicate)
+(arity hasFinancingAvailable 2)
+(arg1Isa hasFinancingAvailable ProductListing)
+(arg2Isa hasFinancingAvailable Thing)
+(comment hasFinancingAvailable "Whether financing is available for this listing. (hasFinancingAvailable ?listing ?boolean) -- many distributors offer equipment financing through partners. Can influence purchase decisions for $10K+ equipment.")
+
+;;; ============================================================
+;;; SECTION 5: TEMPORAL PREDICATES
+;;; ============================================================
+;;; Time predicates anchor events to the Charlotte temporal spine.
+
+(isa installedOn BinaryPredicate)
+(isa installedOn TemporalRelation)
+(arity installedOn 2)
+(arg1Isa installedOn CompressedAirEquipment)
+(arg2Isa installedOn Thing)
+(comment installedOn "Date the equipment was installed at the customer site. (installedOn ?equipment ?date) -- starts the warranty clock, establishes service schedule, and anchors the asset's lifecycle timeline.")
+
+(isa warrantyExpires BinaryPredicate)
+(isa warrantyExpires TemporalRelation)
+(arity warrantyExpires 2)
+(arg1Isa warrantyExpires CompressedAirEquipment)
+(arg2Isa warrantyExpires Thing)
+(comment warrantyExpires "Warranty expiration date. (warrantyExpires ?equipment ?date) -- standard manufacturer warranty: 1-5 years depending on brand and component. Extended warranties available. Post-warranty is when service contracts become most valuable.")
+
+(isa lastServiceDate BinaryPredicate)
+(isa lastServiceDate TemporalRelation)
+(arity lastServiceDate 2)
+(arg1Isa lastServiceDate CompressedAirEquipment)
+(arg2Isa lastServiceDate Thing)
+(comment lastServiceDate "Date of most recent service event. (lastServiceDate ?equipment ?date) -- tracks maintenance compliance. Overdue maintenance is a reactivation opportunity for the service team.")
+
+(isa purchasedOn BinaryPredicate)
+(isa purchasedOn TemporalRelation)
+(arity purchasedOn 2)
+(arg1Isa purchasedOn ProductListing)
+(arg2Isa purchasedOn Thing)
+(comment purchasedOn "Date of purchase transaction. (purchasedOn ?listing ?date) -- the commerce SIGNAL timestamp. Purchase events drive customer lifecycle analysis: frequency, recency, and dormancy.")
+
+;;; ============================================================
+;;; SECTION 6: LOCATION PREDICATES
+;;; ============================================================
+
+(isa locatedIn BinaryPredicate)
+(isa locatedIn SpatialRelation)
+(arity locatedIn 2)
+(arg1Isa locatedIn NODE)
+(arg2Isa locatedIn Thing)
+(comment locatedIn "Geographic location of an entity. (locatedIn ?entity ?location) -- city, state, or region. For manufacturers: headquarters or factory location. For distributors: branch locations. For end users: facility address.")
+
+(isa hasState BinaryPredicate)
+(isa hasState SpatialRelation)
+(arity hasState 2)
+(arg1Isa hasState NODE)
+(arg2Isa hasState Thing)
+(comment hasState "US state. (hasState ?entity ?state) -- two-letter abbreviation. The primary spatial grouping for territory analysis.")
+
+(isa hasCity BinaryPredicate)
+(isa hasCity SpatialRelation)
+(arity hasCity 2)
+(arg1Isa hasCity NODE)
+(arg2Isa hasCity Thing)
+(comment hasCity "City. (hasCity ?entity ?city) -- used with hasState for geographic resolution.")
+
+(isa servesTerritory BinaryPredicate)
+(isa servesTerritory SpatialRelation)
+(arity servesTerritory 2)
+(arg1Isa servesTerritory Distributor)
+(arg2Isa servesTerritory Thing)
+(comment servesTerritory "Geographic territory a distributor covers. (servesTerritory ?distributor ?territory) -- may be exclusive for certain brands. ISG operates across multiple states.")
+
+(isa hasWebsite BinaryPredicate)
+(arity hasWebsite 2)
+(arg1Isa hasWebsite NODE)
+(arg2Isa hasWebsite Thing)
+(comment hasWebsite "Website URL. (hasWebsite ?entity ?url) -- for manufacturers and distributors. Used for competitive scraping and product catalog ingestion.")
+
+;;; ============================================================
+;;; SECTION 7: OPERATIONAL METRIC PREDICATES
+;;; ============================================================
+;;; Runtime metrics from installed equipment -- what Charlotte
+;;; monitors in the field.
+
+(isa hasRunHours BinaryPredicate)
+(arity hasRunHours 2)
+(arg1Isa hasRunHours CompressedAirEquipment)
+(arg2Isa hasRunHours Thing)
+(comment hasRunHours "Cumulative running hours. (hasRunHours ?equipment ?hours) -- the primary wear metric. Determines service intervals. Air/oil filter: 2000 hrs. Oil change: 4000-8000 hrs. Separator element: 8000 hrs. Airend overhaul: 40,000-60,000 hrs.")
+
+(isa hasLoadPercentage BinaryPredicate)
+(arity hasLoadPercentage 2)
+(arg1Isa hasLoadPercentage AirCompressor)
+(arg2Isa hasLoadPercentage Thing)
+(comment hasLoadPercentage "Percentage of time the compressor is loaded (producing air) vs unloaded. (hasLoadPercentage ?comp ?pct) -- a fixed-speed compressor at 50% load is wasting significant energy. VFD compressors eliminate this waste.")
+
+(isa hasSpecificPower BinaryPredicate)
+(arity hasSpecificPower 2)
+(arg1Isa hasSpecificPower AirCompressor)
+(arg2Isa hasSpecificPower Thing)
+(comment hasSpecificPower "Energy efficiency measured as kW per 100 CFM. (hasSpecificPower ?comp ?kw) -- lower is more efficient. Industry benchmark: 18-22 kW/100 CFM for rotary screw at 100 PSI. The key metric for energy audits.")
+
+;;; ============================================================
+;;; SECTION 8: CUSTOMER LIFECYCLE PREDICATES
+;;; ============================================================
+;;; For Charlotte's customer reactivation engine -- tracking
+;;; purchase patterns and dormancy.
+
+(isa hasLastPurchaseDate BinaryPredicate)
+(isa hasLastPurchaseDate TemporalRelation)
+(arity hasLastPurchaseDate 2)
+(arg1Isa hasLastPurchaseDate EndUser)
+(arg2Isa hasLastPurchaseDate Thing)
+(comment hasLastPurchaseDate "Date of customer's most recent purchase. (hasLastPurchaseDate ?customer ?date) -- the foundation of dormancy analysis. 60/90/180-day thresholds trigger reactivation protocols.")
+
+(isa hasPurchaseFrequency BinaryPredicate)
+(arity hasPurchaseFrequency 2)
+(arg1Isa hasPurchaseFrequency EndUser)
+(arg2Isa hasPurchaseFrequency Thing)
+(comment hasPurchaseFrequency "Average days between purchases. (hasPurchaseFrequency ?customer ?days) -- establishes the customer's expected purchase cycle. Deviation from expected cycle triggers a dormancy SIGNAL.")
+
+(isa hasLifetimeValue BinaryPredicate)
+(arity hasLifetimeValue 2)
+(arg1Isa hasLifetimeValue EndUser)
+(arg2Isa hasLifetimeValue Thing)
+(comment hasLifetimeValue "Cumulative revenue from this customer. (hasLifetimeValue ?customer ?dollars) -- total purchases over the relationship lifetime. Used for customer segmentation and prioritization.")
+
+(isa hasDormancyStatus BinaryPredicate)
+(arity hasDormancyStatus 2)
+(arg1Isa hasDormancyStatus EndUser)
+(arg2Isa hasDormancyStatus Thing)
+(comment hasDormancyStatus "Customer dormancy classification. (hasDormancyStatus ?customer ?status) -- Active, AtRisk (60 days), Dormant (90 days), Lapsed (180 days), Lost (365+ days). Drives reactivation campaign targeting.")
+
+(isa hasProductAffinity BinaryPredicate)
+(arity hasProductAffinity 2)
+(arg1Isa hasProductAffinity EndUser)
+(arg2Isa hasProductAffinity CompressedAirEquipment)
+(comment hasProductAffinity "Products this customer has purchased or shown interest in. (hasProductAffinity ?customer ?product) -- used for cross-sell and upsell recommendations. A customer who buys compressors also needs dryers, filters, and lubricants.")
+
+;;; ============================================================
+;;; SECTION 9: SIGNAL TYPES
+;;; ============================================================
+;;; Events in the compressed air market are SIGNALs on the
+;;; Charlotte temporal spine.
+
+(isa PurchaseEvent Collection)
+(genls PurchaseEvent SIGNAL)
+(genls PurchaseEvent EventEntity)
+(comment PurchaseEvent "A customer buying equipment or parts. The fundamental commerce SIGNAL. Fires on the customer's purchase timeline and the product's sales timeline simultaneously.")
+
+(isa PriceChangeEvent Collection)
+(genls PriceChangeEvent SIGNAL)
+(genls PriceChangeEvent EventEntity)
+(comment PriceChangeEvent "A distributor changing the price of a product listing. A competitive intelligence SIGNAL. Price decreases may indicate inventory clearing or competitive pressure. Price increases may signal supply constraints or cost pass-through.")
+
+(isa ServiceEvent Collection)
+(genls ServiceEvent SIGNAL)
+(genls ServiceEvent EventEntity)
+(comment ServiceEvent "A maintenance or repair event on installed equipment. Fires on the equipment's service timeline. Includes preventive maintenance, breakdown repair, and overhaul. Each service event is a revenue opportunity.")
+
+(isa DormancyAlert Collection)
+(genls DormancyAlert SIGNAL)
+(genls DormancyAlert EventEntity)
+(comment DormancyAlert "A customer exceeding their expected purchase cycle. Fires when the gap between last purchase and today crosses a dormancy threshold (60/90/180 days). Triggers reactivation campaign protocols.")
+
+(isa CompetitorAlert Collection)
+(genls CompetitorAlert SIGNAL)
+(genls CompetitorAlert EventEntity)
+(comment CompetitorAlert "A competitor changing price or availability on a tracked SKU. Fires from competitive scraping infrastructure. Triggers pricing review protocol.")
+
+;;; ============================================================
+;;; SECTION 10: METRIC TYPES
+;;; ============================================================
+;;; Quantitative dimensions that NODEs emit SIGNALs on.
+
+(isa RevenueMetric Collection)
+(genls RevenueMetric METRIC)
+(comment RevenueMetric "Dollar revenue accumulated over time. Tracked per customer, per product, per territory, and per salesperson. The primary business metric.")
+
+(isa MarginMetric Collection)
+(genls MarginMetric METRIC)
+(comment MarginMetric "Gross margin percentage tracked over time. Charlotte targets 200-300 basis points improvement through pricing intelligence.")
+
+(isa PriceMetric Collection)
+(genls PriceMetric METRIC)
+(comment PriceMetric "Product price tracked over time across distributors. The raw competitive intelligence data. Price is a time series -- every observation is a SIGNAL on the product's price line.")
+
+(isa DemandMetric Collection)
+(genls DemandMetric METRIC)
+(comment DemandMetric "Customer demand measured as purchase frequency and volume. Demand changes drive inventory planning, pricing decisions, and capacity investment.")
+
+(isa ServiceIntervalMetric Collection)
+(genls ServiceIntervalMetric METRIC)
+(comment ServiceIntervalMetric "Time or hours between service events on installed equipment. Deviations from expected intervals indicate maintenance compliance issues or equipment problems.")
+
+;;; ============================================================
+;;; SECTION 11: INFERENCE RULES
+;;; ============================================================
+
+;; A distributor that carries a brand distributes that brand's products
+(implies
+  (and (carriesBrand ?distributor ?brand)
+       (manufacturedBy ?product ?brand))
+  (distributedBy ?product ?distributor))
+
+;; A customer past 90 days since last purchase is dormant
+(implies
+  (and (hasLastPurchaseDate ?customer ?date)
+       (daysSince ?date ?days)
+       (greaterThan ?days 90)
+       (lessThanOrEqual ?days 180))
+  (hasDormancyStatus ?customer "Dormant"))
+
+;; A customer past 180 days is lapsed
+(implies
+  (and (hasLastPurchaseDate ?customer ?date)
+       (daysSince ?date ?days)
+       (greaterThan ?days 180)
+       (lessThanOrEqual ?days 365))
+  (hasDormancyStatus ?customer "Lapsed"))
+
+;; A customer past 365 days is lost
+(implies
+  (and (hasLastPurchaseDate ?customer ?date)
+       (daysSince ?date ?days)
+       (greaterThan ?days 365))
+  (hasDormancyStatus ?customer "Lost"))
+
+;; A product listing with competitor price below list price triggers alert
+(implies
+  (and (hasListPrice ?listing ?price)
+       (hasCompetitorPrice ?listing ?compPrice)
+       (lessThan ?compPrice ?price))
+  (needsPriceReview ?listing True))
+
+(isa needsPriceReview BinaryPredicate)
+(arity needsPriceReview 2)
+(arg1Isa needsPriceReview ProductListing)
+(arg2Isa needsPriceReview Thing)
+(comment needsPriceReview "Flag indicating a listing needs pricing review because a competitor is undercutting. Derived from competitive price comparison.")

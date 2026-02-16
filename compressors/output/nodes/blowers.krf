@@ -1,0 +1,530 @@
+;;; ================================================================
+;;; COMPRESSOR / OUTPUT / NODES / BLOWERS
+;;; Instantiated blower products from US retailers
+;;; Sources: CompressorWorld
+;;; ================================================================
+
+(in-microtheory CompressorOutputMt)
+
+;;; ============================================================
+;;; AIRTECH — BLOWERS
+;;; ============================================================
+
+;; 3BA Series — Regenerative Blowers
+(isa AT-3BA1 RegenerativeBlower)
+(hasProductName AT-3BA1 "Airtech 3BA1 Regenerative Blower 0.25 HP")
+(hasBrand AT-3BA1 AirtechUSA)
+(hasModelNumber AT-3BA1 "3BA1")
+(belongsToSeries AT-3BA1 AT-3BA-Series)
+(hasHP AT-3BA1 0.25)
+(hasListPrice AT-3BA1 499.00)
+(listedBy AT-3BA1 CompressorWorld)
+
+(isa AT-3BA7 RegenerativeBlower)
+(hasProductName AT-3BA7 "Airtech 3BA7 Regenerative Blower 0.5 HP")
+(hasBrand AT-3BA7 AirtechUSA)
+(hasModelNumber AT-3BA7 "3BA7")
+(belongsToSeries AT-3BA7 AT-3BA-Series)
+(hasHP AT-3BA7 0.5)
+(hasListPrice AT-3BA7 699.00)
+(listedBy AT-3BA7 CompressorWorld)
+
+(isa AT-3BA9 RegenerativeBlower)
+(hasProductName AT-3BA9 "Airtech 3BA9 Regenerative Blower 1 HP")
+(hasBrand AT-3BA9 AirtechUSA)
+(hasModelNumber AT-3BA9 "3BA9")
+(belongsToSeries AT-3BA9 AT-3BA-Series)
+(hasHP AT-3BA9 1)
+(hasListPrice AT-3BA9 999.00)
+(listedBy AT-3BA9 CompressorWorld)
+
+;; AKB Series — Positive Displacement Blowers
+(isa AT-AKB-200 PositiveDisplacementBlower)
+(hasProductName AT-AKB-200 "Airtech AKB-200 Positive Displacement Blower 2 HP")
+(hasBrand AT-AKB-200 AirtechUSA)
+(hasModelNumber AT-AKB-200 "AKB-200")
+(belongsToSeries AT-AKB-200 AT-AKB-Series)
+(hasHP AT-AKB-200 2)
+(hasListPrice AT-AKB-200 2499.00)
+(listedBy AT-AKB-200 CompressorWorld)
+
+(isa AT-AKB-400 PositiveDisplacementBlower)
+(hasProductName AT-AKB-400 "Airtech AKB-400 Positive Displacement Blower 4 HP")
+(hasBrand AT-AKB-400 AirtechUSA)
+(hasModelNumber AT-AKB-400 "AKB-400")
+(belongsToSeries AT-AKB-400 AT-AKB-Series)
+(hasHP AT-AKB-400 4)
+(hasListPrice AT-AKB-400 3999.00)
+(listedBy AT-AKB-400 CompressorWorld)
+
+;;; ============================================================
+;;; ALL-STAR — BLOWERS
+;;; ============================================================
+
+;; RB Series — Regenerative Blowers
+(isa AS-RB-100 RegenerativeBlower)
+(hasProductName AS-RB-100 "All-Star RB-100 Regenerative Blower 1 HP")
+(hasBrand AS-RB-100 AllStar)
+(hasModelNumber AS-RB-100 "RB-100")
+(belongsToSeries AS-RB-100 AS-RB-Series)
+(hasHP AS-RB-100 1)
+(hasListPrice AS-RB-100 799.00)
+(listedBy AS-RB-100 CompressorWorld)
+
+(isa AS-RB-200 RegenerativeBlower)
+(hasProductName AS-RB-200 "All-Star RB-200 Regenerative Blower 2 HP")
+(hasBrand AS-RB-200 AllStar)
+(hasModelNumber AS-RB-200 "RB-200")
+(belongsToSeries AS-RB-200 AS-RB-Series)
+(hasHP AS-RB-200 2)
+(hasListPrice AS-RB-200 1199.00)
+(listedBy AS-RB-200 CompressorWorld)
+
+(isa AS-RB-300 RegenerativeBlower)
+(hasProductName AS-RB-300 "All-Star RB-300 Regenerative Blower 3 HP")
+(hasBrand AS-RB-300 AllStar)
+(hasModelNumber AS-RB-300 "RB-300")
+(belongsToSeries AS-RB-300 AS-RB-Series)
+(hasHP AS-RB-300 3)
+(hasListPrice AS-RB-300 1699.00)
+(listedBy AS-RB-300 CompressorWorld)
+
+;; RBH Series — High-Pressure Regenerative Blowers
+(isa AS-RBH-100 RegenerativeBlower)
+(hasProductName AS-RBH-100 "All-Star RBH-100 High-Pressure Regenerative Blower 1 HP")
+(hasBrand AS-RBH-100 AllStar)
+(hasModelNumber AS-RBH-100 "RBH-100")
+(belongsToSeries AS-RBH-100 AS-RBH-Series)
+(hasHP AS-RBH-100 1)
+(hasListPrice AS-RBH-100 999.00)
+(listedBy AS-RBH-100 CompressorWorld)
+
+(isa AS-RBH-200 RegenerativeBlower)
+(hasProductName AS-RBH-200 "All-Star RBH-200 High-Pressure Regenerative Blower 2 HP")
+(hasBrand AS-RBH-200 AllStar)
+(hasModelNumber AS-RBH-200 "RBH-200")
+(belongsToSeries AS-RBH-200 AS-RBH-Series)
+(hasHP AS-RBH-200 2)
+(hasListPrice AS-RBH-200 1499.00)
+(listedBy AS-RBH-200 CompressorWorld)
+
+(isa AS-RBH-300 RegenerativeBlower)
+(hasProductName AS-RBH-300 "All-Star RBH-300 High-Pressure Regenerative Blower 3 HP")
+(hasBrand AS-RBH-300 AllStar)
+(hasModelNumber AS-RBH-300 "RBH-300")
+(belongsToSeries AS-RBH-300 AS-RBH-Series)
+(hasHP AS-RBH-300 3)
+(hasListPrice AS-RBH-300 1999.00)
+(listedBy AS-RBH-300 CompressorWorld)
+
+;;; ============================================================
+;;; DVP — BLOWERS
+;;; ============================================================
+
+;; TSL Series — Side Channel Blowers
+(isa DVP-TSL-100 RegenerativeBlower)
+(hasProductName DVP-TSL-100 "DVP TSL-100 Side Channel Blower 1 HP")
+(hasBrand DVP-TSL-100 DVP)
+(hasModelNumber DVP-TSL-100 "TSL-100")
+(belongsToSeries DVP-TSL-100 DVP-TSL-Series)
+(hasHP DVP-TSL-100 1)
+(hasListPrice DVP-TSL-100 1299.00)
+(listedBy DVP-TSL-100 CompressorWorld)
+
+(isa DVP-TSL-200 RegenerativeBlower)
+(hasProductName DVP-TSL-200 "DVP TSL-200 Side Channel Blower 2 HP")
+(hasBrand DVP-TSL-200 DVP)
+(hasModelNumber DVP-TSL-200 "TSL-200")
+(belongsToSeries DVP-TSL-200 DVP-TSL-Series)
+(hasHP DVP-TSL-200 2)
+(hasListPrice DVP-TSL-200 1799.00)
+(listedBy DVP-TSL-200 CompressorWorld)
+
+(isa DVP-TSL-300 RegenerativeBlower)
+(hasProductName DVP-TSL-300 "DVP TSL-300 Side Channel Blower 3 HP")
+(hasBrand DVP-TSL-300 DVP)
+(hasModelNumber DVP-TSL-300 "TSL-300")
+(belongsToSeries DVP-TSL-300 DVP-TSL-Series)
+(hasHP DVP-TSL-300 3)
+(hasListPrice DVP-TSL-300 2399.00)
+(listedBy DVP-TSL-300 CompressorWorld)
+
+;; TDL Series — Dual-Stage Side Channel Blowers
+(isa DVP-TDL-100 RegenerativeBlower)
+(hasProductName DVP-TDL-100 "DVP TDL-100 Dual-Stage Side Channel Blower 1 HP")
+(hasBrand DVP-TDL-100 DVP)
+(hasModelNumber DVP-TDL-100 "TDL-100")
+(belongsToSeries DVP-TDL-100 DVP-TDL-Series)
+(hasHP DVP-TDL-100 1)
+(hasListPrice DVP-TDL-100 1599.00)
+(listedBy DVP-TDL-100 CompressorWorld)
+
+(isa DVP-TDL-200 RegenerativeBlower)
+(hasProductName DVP-TDL-200 "DVP TDL-200 Dual-Stage Side Channel Blower 2 HP")
+(hasBrand DVP-TDL-200 DVP)
+(hasModelNumber DVP-TDL-200 "TDL-200")
+(belongsToSeries DVP-TDL-200 DVP-TDL-Series)
+(hasHP DVP-TDL-200 2)
+(hasListPrice DVP-TDL-200 2199.00)
+(listedBy DVP-TDL-200 CompressorWorld)
+
+;;; ============================================================
+;;; FPZ — BLOWERS
+;;; ============================================================
+
+;; MS Series — Side Channel Blowers
+(isa FPZ-MS-04 RegenerativeBlower)
+(hasProductName FPZ-MS-04 "FPZ MS-04 Side Channel Blower 0.4 HP")
+(hasBrand FPZ-MS-04 FPZ)
+(hasModelNumber FPZ-MS-04 "MS-04")
+(belongsToSeries FPZ-MS-04 FPZ-MS-Series)
+(hasHP FPZ-MS-04 0.4)
+(hasListPrice FPZ-MS-04 599.00)
+(listedBy FPZ-MS-04 CompressorWorld)
+
+(isa FPZ-MS-06 RegenerativeBlower)
+(hasProductName FPZ-MS-06 "FPZ MS-06 Side Channel Blower 0.6 HP")
+(hasBrand FPZ-MS-06 FPZ)
+(hasModelNumber FPZ-MS-06 "MS-06")
+(belongsToSeries FPZ-MS-06 FPZ-MS-Series)
+(hasHP FPZ-MS-06 0.6)
+(hasListPrice FPZ-MS-06 799.00)
+(listedBy FPZ-MS-06 CompressorWorld)
+
+(isa FPZ-MS-12 RegenerativeBlower)
+(hasProductName FPZ-MS-12 "FPZ MS-12 Side Channel Blower 1.2 HP")
+(hasBrand FPZ-MS-12 FPZ)
+(hasModelNumber FPZ-MS-12 "MS-12")
+(belongsToSeries FPZ-MS-12 FPZ-MS-Series)
+(hasHP FPZ-MS-12 1.2)
+(hasListPrice FPZ-MS-12 1199.00)
+(listedBy FPZ-MS-12 CompressorWorld)
+
+(isa FPZ-MS-25 RegenerativeBlower)
+(hasProductName FPZ-MS-25 "FPZ MS-25 Side Channel Blower 2.5 HP")
+(hasBrand FPZ-MS-25 FPZ)
+(hasModelNumber FPZ-MS-25 "MS-25")
+(belongsToSeries FPZ-MS-25 FPZ-MS-Series)
+(hasHP FPZ-MS-25 2.5)
+(hasListPrice FPZ-MS-25 1799.00)
+(listedBy FPZ-MS-25 CompressorWorld)
+
+(isa FPZ-MS-50 RegenerativeBlower)
+(hasProductName FPZ-MS-50 "FPZ MS-50 Side Channel Blower 5 HP")
+(hasBrand FPZ-MS-50 FPZ)
+(hasModelNumber FPZ-MS-50 "MS-50")
+(belongsToSeries FPZ-MS-50 FPZ-MS-Series)
+(hasHP FPZ-MS-50 5)
+(hasListPrice FPZ-MS-50 2699.00)
+(listedBy FPZ-MS-50 CompressorWorld)
+
+;; 06DH Series — High-Pressure Blowers
+(isa FPZ-06DH-3 RegenerativeBlower)
+(hasProductName FPZ-06DH-3 "FPZ 06DH-3 High-Pressure Blower 3 HP")
+(hasBrand FPZ-06DH-3 FPZ)
+(hasModelNumber FPZ-06DH-3 "06DH-3")
+(belongsToSeries FPZ-06DH-3 FPZ-06DH-Series)
+(hasHP FPZ-06DH-3 3)
+(hasListPrice FPZ-06DH-3 2499.00)
+(listedBy FPZ-06DH-3 CompressorWorld)
+
+(isa FPZ-06DH-5 RegenerativeBlower)
+(hasProductName FPZ-06DH-5 "FPZ 06DH-5 High-Pressure Blower 5 HP")
+(hasBrand FPZ-06DH-5 FPZ)
+(hasModelNumber FPZ-06DH-5 "06DH-5")
+(belongsToSeries FPZ-06DH-5 FPZ-06DH-Series)
+(hasHP FPZ-06DH-5 5)
+(hasListPrice FPZ-06DH-5 3499.00)
+(listedBy FPZ-06DH-5 CompressorWorld)
+
+;; 15DH Series — High-Pressure Blowers
+(isa FPZ-15DH-7.5 RegenerativeBlower)
+(hasProductName FPZ-15DH-7.5 "FPZ 15DH-7.5 High-Pressure Blower 7.5 HP")
+(hasBrand FPZ-15DH-7.5 FPZ)
+(hasModelNumber FPZ-15DH-7.5 "15DH-7.5")
+(belongsToSeries FPZ-15DH-7.5 FPZ-15DH-Series)
+(hasHP FPZ-15DH-7.5 7.5)
+(hasListPrice FPZ-15DH-7.5 4999.00)
+(listedBy FPZ-15DH-7.5 CompressorWorld)
+
+(isa FPZ-15DH-10 RegenerativeBlower)
+(hasProductName FPZ-15DH-10 "FPZ 15DH-10 High-Pressure Blower 10 HP")
+(hasBrand FPZ-15DH-10 FPZ)
+(hasModelNumber FPZ-15DH-10 "15DH-10")
+(belongsToSeries FPZ-15DH-10 FPZ-15DH-Series)
+(hasHP FPZ-15DH-10 10)
+(hasListPrice FPZ-15DH-10 6499.00)
+(listedBy FPZ-15DH-10 CompressorWorld)
+
+;; MD Series — Multi-Stage Blowers
+(isa FPZ-MD-04 RegenerativeBlower)
+(hasProductName FPZ-MD-04 "FPZ MD-04 Multi-Stage Blower 0.4 HP")
+(hasBrand FPZ-MD-04 FPZ)
+(hasModelNumber FPZ-MD-04 "MD-04")
+(belongsToSeries FPZ-MD-04 FPZ-MD-Series)
+(hasHP FPZ-MD-04 0.4)
+(hasListPrice FPZ-MD-04 899.00)
+(listedBy FPZ-MD-04 CompressorWorld)
+
+(isa FPZ-MD-12 RegenerativeBlower)
+(hasProductName FPZ-MD-12 "FPZ MD-12 Multi-Stage Blower 1.2 HP")
+(hasBrand FPZ-MD-12 FPZ)
+(hasModelNumber FPZ-MD-12 "MD-12")
+(belongsToSeries FPZ-MD-12 FPZ-MD-Series)
+(hasHP FPZ-MD-12 1.2)
+(hasListPrice FPZ-MD-12 1499.00)
+(listedBy FPZ-MD-12 CompressorWorld)
+
+;; Evolution Series — Blowers
+(isa FPZ-EVO-04 RegenerativeBlower)
+(hasProductName FPZ-EVO-04 "FPZ Evolution EVO-04 Blower 0.4 HP")
+(hasBrand FPZ-EVO-04 FPZ)
+(hasModelNumber FPZ-EVO-04 "EVO-04")
+(belongsToSeries FPZ-EVO-04 FPZ-Evolution-Series)
+(hasHP FPZ-EVO-04 0.4)
+(hasListPrice FPZ-EVO-04 699.00)
+(listedBy FPZ-EVO-04 CompressorWorld)
+
+(isa FPZ-EVO-12 RegenerativeBlower)
+(hasProductName FPZ-EVO-12 "FPZ Evolution EVO-12 Blower 1.2 HP")
+(hasBrand FPZ-EVO-12 FPZ)
+(hasModelNumber FPZ-EVO-12 "EVO-12")
+(belongsToSeries FPZ-EVO-12 FPZ-Evolution-Series)
+(hasHP FPZ-EVO-12 1.2)
+(hasListPrice FPZ-EVO-12 1299.00)
+(listedBy FPZ-EVO-12 CompressorWorld)
+
+;; TS Series — Turbine Blowers
+(isa FPZ-TS-100 RegenerativeBlower)
+(hasProductName FPZ-TS-100 "FPZ TS-100 Turbine Blower 1 HP")
+(hasBrand FPZ-TS-100 FPZ)
+(hasModelNumber FPZ-TS-100 "TS-100")
+(belongsToSeries FPZ-TS-100 FPZ-TS-Series)
+(hasHP FPZ-TS-100 1)
+(hasListPrice FPZ-TS-100 1499.00)
+(listedBy FPZ-TS-100 CompressorWorld)
+
+(isa FPZ-TS-200 RegenerativeBlower)
+(hasProductName FPZ-TS-200 "FPZ TS-200 Turbine Blower 2 HP")
+(hasBrand FPZ-TS-200 FPZ)
+(hasModelNumber FPZ-TS-200 "TS-200")
+(belongsToSeries FPZ-TS-200 FPZ-TS-Series)
+(hasHP FPZ-TS-200 2)
+(hasListPrice FPZ-TS-200 2199.00)
+(listedBy FPZ-TS-200 CompressorWorld)
+
+;; JDK Series — Linear Compressor/Blower
+(isa FPZ-JDK-100 RegenerativeBlower)
+(hasProductName FPZ-JDK-100 "FPZ JDK-100 Blower 1 HP")
+(hasBrand FPZ-JDK-100 FPZ)
+(hasModelNumber FPZ-JDK-100 "JDK-100")
+(belongsToSeries FPZ-JDK-100 FPZ-JDK-Series)
+(hasHP FPZ-JDK-100 1)
+(hasListPrice FPZ-JDK-100 1299.00)
+(listedBy FPZ-JDK-100 CompressorWorld)
+
+(isa FPZ-JDK-200 RegenerativeBlower)
+(hasProductName FPZ-JDK-200 "FPZ JDK-200 Blower 2 HP")
+(hasBrand FPZ-JDK-200 FPZ)
+(hasModelNumber FPZ-JDK-200 "JDK-200")
+(belongsToSeries FPZ-JDK-200 FPZ-JDK-Series)
+(hasHP FPZ-JDK-200 2)
+(hasListPrice FPZ-JDK-200 1899.00)
+(listedBy FPZ-JDK-200 CompressorWorld)
+
+;; TKO Series — Blowers
+(isa FPZ-TKO-100 RegenerativeBlower)
+(hasProductName FPZ-TKO-100 "FPZ TKO-100 Blower 1 HP")
+(hasBrand FPZ-TKO-100 FPZ)
+(hasModelNumber FPZ-TKO-100 "TKO-100")
+(belongsToSeries FPZ-TKO-100 FPZ-TKO-Series)
+(hasHP FPZ-TKO-100 1)
+(hasListPrice FPZ-TKO-100 1399.00)
+(listedBy FPZ-TKO-100 CompressorWorld)
+
+(isa FPZ-TKO-200 RegenerativeBlower)
+(hasProductName FPZ-TKO-200 "FPZ TKO-200 Blower 2 HP")
+(hasBrand FPZ-TKO-200 FPZ)
+(hasModelNumber FPZ-TKO-200 "TKO-200")
+(belongsToSeries FPZ-TKO-200 FPZ-TKO-Series)
+(hasHP FPZ-TKO-200 2)
+(hasListPrice FPZ-TKO-200 1999.00)
+(listedBy FPZ-TKO-200 CompressorWorld)
+
+;;; ============================================================
+;;; REPUBLIC — BLOWERS
+;;; ============================================================
+
+;; HRC Series — Regenerative Blowers
+(isa RP-HRC-200 RegenerativeBlower)
+(hasProductName RP-HRC-200 "Republic HRC-200 Regenerative Blower 2 HP")
+(hasBrand RP-HRC-200 Republic)
+(hasModelNumber RP-HRC-200 "HRC-200")
+(belongsToSeries RP-HRC-200 RP-HRC-Series)
+(hasHP RP-HRC-200 2)
+(hasListPrice RP-HRC-200 1499.00)
+(listedBy RP-HRC-200 CompressorWorld)
+
+(isa RP-HRC-300 RegenerativeBlower)
+(hasProductName RP-HRC-300 "Republic HRC-300 Regenerative Blower 3 HP")
+(hasBrand RP-HRC-300 Republic)
+(hasModelNumber RP-HRC-300 "HRC-300")
+(belongsToSeries RP-HRC-300 RP-HRC-Series)
+(hasHP RP-HRC-300 3)
+(hasListPrice RP-HRC-300 2199.00)
+(listedBy RP-HRC-300 CompressorWorld)
+
+(isa RP-HRC-500 RegenerativeBlower)
+(hasProductName RP-HRC-500 "Republic HRC-500 Regenerative Blower 5 HP")
+(hasBrand RP-HRC-500 Republic)
+(hasModelNumber RP-HRC-500 "HRC-500")
+(belongsToSeries RP-HRC-500 RP-HRC-Series)
+(hasHP RP-HRC-500 5)
+(hasListPrice RP-HRC-500 3199.00)
+(listedBy RP-HRC-500 CompressorWorld)
+
+;; 4RC Series — Four-Stage Regenerative Blowers
+(isa RP-4RC-100 RegenerativeBlower)
+(hasProductName RP-4RC-100 "Republic 4RC-100 Four-Stage Regenerative Blower 1 HP")
+(hasBrand RP-4RC-100 Republic)
+(hasModelNumber RP-4RC-100 "4RC-100")
+(belongsToSeries RP-4RC-100 RP-4RC-Series)
+(hasHP RP-4RC-100 1)
+(hasListPrice RP-4RC-100 1899.00)
+(listedBy RP-4RC-100 CompressorWorld)
+
+(isa RP-4RC-200 RegenerativeBlower)
+(hasProductName RP-4RC-200 "Republic 4RC-200 Four-Stage Regenerative Blower 2 HP")
+(hasBrand RP-4RC-200 Republic)
+(hasModelNumber RP-4RC-200 "4RC-200")
+(belongsToSeries RP-4RC-200 RP-4RC-Series)
+(hasHP RP-4RC-200 2)
+(hasListPrice RP-4RC-200 2699.00)
+(listedBy RP-4RC-200 CompressorWorld)
+
+;;; ============================================================
+;;; SPENCER TURBINE — BLOWERS
+;;; ============================================================
+
+;; Vortex VB Series — Regenerative Blowers
+(isa SP-VB-003 RegenerativeBlower)
+(hasProductName SP-VB-003 "Spencer Turbine Vortex VB-003 Blower 3 HP")
+(hasBrand SP-VB-003 SpencerTurbine)
+(hasModelNumber SP-VB-003 "VB-003")
+(belongsToSeries SP-VB-003 SP-VB-Series)
+(hasHP SP-VB-003 3)
+(hasListPrice SP-VB-003 2999.00)
+(listedBy SP-VB-003 CompressorWorld)
+
+(isa SP-VB-005 RegenerativeBlower)
+(hasProductName SP-VB-005 "Spencer Turbine Vortex VB-005 Blower 5 HP")
+(hasBrand SP-VB-005 SpencerTurbine)
+(hasModelNumber SP-VB-005 "VB-005")
+(belongsToSeries SP-VB-005 SP-VB-Series)
+(hasHP SP-VB-005 5)
+(hasListPrice SP-VB-005 4499.00)
+(listedBy SP-VB-005 CompressorWorld)
+
+(isa SP-VB-010 RegenerativeBlower)
+(hasProductName SP-VB-010 "Spencer Turbine Vortex VB-010 Blower 10 HP")
+(hasBrand SP-VB-010 SpencerTurbine)
+(hasModelNumber SP-VB-010 "VB-010")
+(belongsToSeries SP-VB-010 SP-VB-Series)
+(hasHP SP-VB-010 10)
+(hasListPrice SP-VB-010 6999.00)
+(listedBy SP-VB-010 CompressorWorld)
+
+;;; ============================================================
+;;; PRODUCT SERIES DEFINITIONS
+;;; ============================================================
+
+;; Airtech Series
+(isa AT-3BA-Series ProductSeries)
+(hasProductName AT-3BA-Series "Airtech 3BA Series")
+(seriesBy AT-3BA-Series AirtechUSA)
+(comment AT-3BA-Series "Regenerative blowers 0.25-1 HP. Oil-free, pulsation-free airflow. Aquaculture aeration, pneumatic conveying, vacuum hold-down.")
+
+(isa AT-AKB-Series ProductSeries)
+(hasProductName AT-AKB-Series "Airtech AKB Series")
+(seriesBy AT-AKB-Series AirtechUSA)
+(comment AT-AKB-Series "Positive displacement kinetic blowers 2-4 HP. Higher pressure capability than regenerative blowers.")
+
+;; All-Star Series
+(isa AS-RB-Series ProductSeries)
+(hasProductName AS-RB-Series "All-Star RB Series")
+(seriesBy AS-RB-Series AllStar)
+(comment AS-RB-Series "Regenerative blowers 1-3 HP. Value-tier alternative for standard pressure/vacuum applications.")
+
+(isa AS-RBH-Series ProductSeries)
+(hasProductName AS-RBH-Series "All-Star RBH Series")
+(seriesBy AS-RBH-Series AllStar)
+(comment AS-RBH-Series "High-pressure regenerative blowers 1-3 HP. Premium pressure output over standard RB series.")
+
+;; DVP Series
+(isa DVP-TSL-Series ProductSeries)
+(hasProductName DVP-TSL-Series "DVP TSL Series")
+(seriesBy DVP-TSL-Series DVP)
+(comment DVP-TSL-Series "Side channel blowers 1-3 HP. Single-stage regenerative design. Compact and reliable.")
+
+(isa DVP-TDL-Series ProductSeries)
+(hasProductName DVP-TDL-Series "DVP TDL Series")
+(seriesBy DVP-TDL-Series DVP)
+(comment DVP-TDL-Series "Dual-stage side channel blowers 1-2 HP. Higher pressure/vacuum than single-stage TSL.")
+
+;; FPZ Series
+(isa FPZ-MS-Series ProductSeries)
+(hasProductName FPZ-MS-Series "FPZ MS Series")
+(seriesBy FPZ-MS-Series FPZ)
+(comment FPZ-MS-Series "Side channel blowers 0.4-5 HP. FPZ's core regenerative blower line. Known for quality and performance.")
+
+(isa FPZ-06DH-Series ProductSeries)
+(hasProductName FPZ-06DH-Series "FPZ 06DH Series")
+(seriesBy FPZ-06DH-Series FPZ)
+(comment FPZ-06DH-Series "High-pressure regenerative blowers 3-5 HP. For applications requiring elevated pressure output.")
+
+(isa FPZ-15DH-Series ProductSeries)
+(hasProductName FPZ-15DH-Series "FPZ 15DH Series")
+(seriesBy FPZ-15DH-Series FPZ)
+(comment FPZ-15DH-Series "High-pressure regenerative blowers 7.5-10 HP. Largest FPZ high-pressure blower line.")
+
+(isa FPZ-MD-Series ProductSeries)
+(hasProductName FPZ-MD-Series "FPZ MD Series")
+(seriesBy FPZ-MD-Series FPZ)
+(comment FPZ-MD-Series "Multi-stage regenerative blowers 0.4-1.2 HP. Multiple impeller stages for higher pressure differential.")
+
+(isa FPZ-Evolution-Series ProductSeries)
+(hasProductName FPZ-Evolution-Series "FPZ Evolution Series")
+(seriesBy FPZ-Evolution-Series FPZ)
+(comment FPZ-Evolution-Series "Next-generation regenerative blowers 0.4-1.2 HP. Improved efficiency and reduced noise over standard MS series.")
+
+(isa FPZ-TS-Series ProductSeries)
+(hasProductName FPZ-TS-Series "FPZ TS Series")
+(seriesBy FPZ-TS-Series FPZ)
+(comment FPZ-TS-Series "Turbine blowers 1-2 HP. Regenerative turbine design for pressure and vacuum service.")
+
+(isa FPZ-JDK-Series ProductSeries)
+(hasProductName FPZ-JDK-Series "FPZ JDK Series")
+(seriesBy FPZ-JDK-Series FPZ)
+(comment FPZ-JDK-Series "Linear compressor/blower 1-2 HP. Compact design for OEM and integrated applications.")
+
+(isa FPZ-TKO-Series ProductSeries)
+(hasProductName FPZ-TKO-Series "FPZ TKO Series")
+(seriesBy FPZ-TKO-Series FPZ)
+(comment FPZ-TKO-Series "Regenerative blowers 1-2 HP. Robust industrial design for demanding environments.")
+
+;; Republic Series
+(isa RP-HRC-Series ProductSeries)
+(hasProductName RP-HRC-Series "Republic HRC Series")
+(seriesBy RP-HRC-Series Republic)
+(comment RP-HRC-Series "Regenerative blowers 2-5 HP. High-pressure regenerative design for pneumatic conveying and aeration.")
+
+(isa RP-4RC-Series ProductSeries)
+(hasProductName RP-4RC-Series "Republic 4RC Series")
+(seriesBy RP-4RC-Series Republic)
+(comment RP-4RC-Series "Four-stage regenerative blowers 1-2 HP. Maximum pressure output from regenerative technology.")
+
+;; Spencer Turbine Series
+(isa SP-VB-Series ProductSeries)
+(hasProductName SP-VB-Series "Spencer Turbine Vortex VB Series")
+(seriesBy SP-VB-Series SpencerTurbine)
+(comment SP-VB-Series "Vortex regenerative blowers 3-10 HP. Premium quality. Known for durability and performance in industrial blower applications.")

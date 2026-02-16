@@ -1,0 +1,537 @@
+;;; ================================================================
+;;; COMPRESSOR / KERNEL / TYPES
+;;; Domain-specific collections for the compressed air industry
+;;; Extends Charlotte's five primitives with compressor ontology
+;;; ================================================================
+
+(in-microtheory CompressorKernelMt)
+
+;; -- Microtheory inheritance --
+
+(genlMt CompressorKernelMt CharlotteKernelMt)
+
+;;; ============================================================
+;;; SECTION 1: EQUIPMENT TYPES (NODE extensions)
+;;; ============================================================
+;;; Every equipment type here is a NODE in the Charlotte graph.
+;;; A Compressor is a NODE. A Dryer is a NODE. A VacuumPump is
+;;; a NODE. They inherit all NODE properties -- :ID, :CREATED,
+;;; lifecycle state, attributes, and the ability to emit SIGNALs.
+
+;; -- Primary equipment --
+
+(isa CompressedAirEquipment Collection)
+(genls CompressedAirEquipment AssetEntity)
+(genls CompressedAirEquipment NODE)
+(comment CompressedAirEquipment "Any equipment in the compressed air ecosystem. The root type for all machinery -- compressors, dryers, filters, vacuum pumps, blowers, tanks, nitrogen generators, and piping systems.")
+
+;; -- Compressors --
+
+(isa AirCompressor Collection)
+(genls AirCompressor CompressedAirEquipment)
+(comment AirCompressor "A machine that converts power into compressed air. The atomic product entity in the compressor graph. Carries brand, model, HP, CFM, PSI, voltage, phase, drive type, and lubrication type.")
+
+(isa RotaryScrewCompressor Collection)
+(genls RotaryScrewCompressor AirCompressor)
+(comment RotaryScrewCompressor "Positive-displacement compressor using helical rotors. The workhorse of industrial compressed air -- 5 to 500+ HP. Continuous duty. Available in oil-injected and oil-free configurations. Dominant technology above 30 HP.")
+
+(isa FixedSpeedRotaryScrew Collection)
+(genls FixedSpeedRotaryScrew RotaryScrewCompressor)
+(comment FixedSpeedRotaryScrew "Rotary screw running at constant motor speed. Load/unload control. Most cost-effective at steady, high-demand applications. Available base-mounted or tank-mounted.")
+
+(isa VariableSpeedRotaryScrew Collection)
+(genls VariableSpeedRotaryScrew RotaryScrewCompressor)
+(comment VariableSpeedRotaryScrew "Rotary screw with variable frequency drive (VFD). Motor speed adjusts to match demand. 20-35% energy savings over fixed speed in variable-demand applications. Higher upfront cost, lower operating cost.")
+
+(isa PistonCompressor Collection)
+(genls PistonCompressor AirCompressor)
+(comment PistonCompressor "Reciprocating compressor using pistons in cylinders. The oldest and most common compressor type. 1-30 HP typical. Intermittent duty. Lower upfront cost than rotary screw. Also called reciprocating compressor.")
+
+(isa SingleStagePiston Collection)
+(genls SingleStagePiston PistonCompressor)
+(comment SingleStagePiston "Air compressed in one stroke to final pressure. Typically 100-125 PSI max. Simpler, fewer parts, lower cost. Common in light-duty applications under 5 HP.")
+
+(isa TwoStagePiston Collection)
+(genls TwoStagePiston PistonCompressor)
+(comment TwoStagePiston "Air compressed in two stages with intercooling. Achieves 150-175 PSI. More efficient at higher pressures than single stage. The standard for industrial piston compressors 5-30 HP.")
+
+(isa SimplexPiston Collection)
+(genls SimplexPiston PistonCompressor)
+(comment SimplexPiston "Single compressor pump on one motor. Standard configuration for most piston compressors.")
+
+(isa DuplexPiston Collection)
+(genls DuplexPiston PistonCompressor)
+(comment DuplexPiston "Two compressor pumps on independent motors sharing a common receiver tank. Provides redundancy -- if one pump fails, the other maintains partial capacity. Common in critical-air applications.")
+
+(isa RotaryVaneCompressor Collection)
+(genls RotaryVaneCompressor AirCompressor)
+(comment RotaryVaneCompressor "Positive-displacement compressor using sliding vanes in an eccentric rotor. Known for longevity, low noise, and consistent CFM output. Mattei is the dominant manufacturer. Less common than rotary screw but preferred in certain continuous-duty applications.")
+
+(isa ScrollCompressor Collection)
+(genls ScrollCompressor AirCompressor)
+(comment ScrollCompressor "Oil-free compressor using two interleaving spiral scrolls. Inherently oil-free operation. Used in medical, dental, laboratory, food/beverage, and pharmaceutical applications where air purity is critical.")
+
+(isa OilFreeCompressor Collection)
+(genls OilFreeCompressor AirCompressor)
+(comment OilFreeCompressor "Any compressor that delivers oil-free compressed air. Includes oil-free rotary screw, scroll, and oil-free piston designs. Required for Class 0, Class 1, and Class 2 air quality per ISO 8573-1. Premium pricing -- 2-3x oil-injected equivalents.")
+
+(isa PortableCompressor Collection)
+(genls PortableCompressor AirCompressor)
+(comment PortableCompressor "Mobile compressor unit on wheels, trailer, or truck-mount. Used for construction, utility, pipeline, and remote applications. Available as electric, gas, or diesel powered.")
+
+(isa TowableCompressor Collection)
+(genls TowableCompressor PortableCompressor)
+(comment TowableCompressor "Trailer-mounted compressor rated for highway towing. Typically diesel-driven, 185-1600 CFM. Used in construction, mining, pipeline, and utility work. Major brands: Atlas Copco, Chicago Pneumatic, Bobcat, Airman.")
+
+(isa EngineDrivenCompressor Collection)
+(genls EngineDrivenCompressor AirCompressor)
+(comment EngineDrivenCompressor "Compressor powered by an internal combustion engine rather than electric motor. Gas (Honda, Kohler) or diesel (Kubota, Deutz, Caterpillar) engines. Used where electric power is unavailable or impractical.")
+
+(isa GasDrivenCompressor Collection)
+(genls GasDrivenCompressor EngineDrivenCompressor)
+(comment GasDrivenCompressor "Gasoline engine-driven compressor. Typically Honda or Kohler engines. 5-25 HP range. Lower cost than diesel. Used in construction, farm, and mobile service applications.")
+
+(isa DieselDrivenCompressor Collection)
+(genls DieselDrivenCompressor EngineDrivenCompressor)
+(comment DieselDrivenCompressor "Diesel engine-driven compressor. Kubota, Deutz, or Caterpillar engines. 25-500+ HP range. More fuel-efficient than gas at higher HP. Dominant in heavy construction and mining.")
+
+(isa TotalAirSystem Collection)
+(genls TotalAirSystem CompressedAirEquipment)
+(comment TotalAirSystem "Integrated package combining compressor, dryer, and filtration in a single enclosure. Plug-and-play compressed air solution. Common in 5-30 HP range for shops and light industrial. Premium over component pricing but simpler installation.")
+
+;; -- Air treatment --
+
+(isa AirDryer Collection)
+(genls AirDryer CompressedAirEquipment)
+(comment AirDryer "Equipment that removes moisture from compressed air. Moisture causes corrosion, product contamination, and control system failures. Every compressed air system requires some form of air drying.")
+
+(isa RefrigeratedDryer Collection)
+(genls RefrigeratedDryer AirDryer)
+(comment RefrigeratedDryer "Dryer that cools compressed air to condense moisture. Achieves 35-39F pressure dew point. The most common dryer type -- adequate for most industrial applications. Available in cycling and non-cycling designs.")
+
+(isa CyclingRefrigeratedDryer Collection)
+(genls CyclingRefrigeratedDryer RefrigeratedDryer)
+(comment CyclingRefrigeratedDryer "Refrigerated dryer with thermal mass storage that allows the refrigeration compressor to cycle on/off. 50-80% energy savings over non-cycling at partial loads. Higher upfront cost, lower operating cost.")
+
+(isa NonCyclingRefrigeratedDryer Collection)
+(genls NonCyclingRefrigeratedDryer RefrigeratedDryer)
+(comment NonCyclingRefrigeratedDryer "Refrigerated dryer with refrigeration compressor running continuously. Simpler design, lower upfront cost. Most efficient when running at or near full load. The standard for steady-demand applications.")
+
+(isa DesiccantDryer Collection)
+(genls DesiccantDryer AirDryer)
+(comment DesiccantDryer "Dryer using hygroscopic desiccant material (activated alumina, silica gel, or molecular sieve) to adsorb moisture. Achieves -40F to -100F pressure dew point. Required for outdoor piping in cold climates and critical applications. Higher operating cost than refrigerated.")
+
+(isa MembraneDryer Collection)
+(genls MembraneDryer AirDryer)
+(comment MembraneDryer "Dryer using hollow-fiber membrane bundles to separate water vapor from compressed air. No moving parts, no electricity required. Compact. Used for point-of-use drying and small flow applications.")
+
+(isa AirFilter Collection)
+(genls AirFilter CompressedAirEquipment)
+(comment AirFilter "Equipment that removes particulate, oil aerosol, or vapor from compressed air. Stages include particulate pre-filter, coalescing filter, activated carbon filter, and sterile filter. ISO 8573-1 defines air quality classes.")
+
+(isa CoalescingFilter Collection)
+(genls CoalescingFilter AirFilter)
+(comment CoalescingFilter "Filter that removes oil aerosol and fine particulate by coalescing small droplets into larger ones that drain by gravity. The primary oil-removal stage. Available in grades from 1 ppm to 0.01 ppm oil carryover.")
+
+(isa ActivatedCarbonFilter Collection)
+(genls ActivatedCarbonFilter AirFilter)
+(comment ActivatedCarbonFilter "Filter using activated carbon to adsorb oil vapor and hydrocarbons. Achieves 0.003 ppm oil carryover. Required downstream of coalescing filters for food-grade and pharmaceutical air quality.")
+
+(isa MedicalFilter Collection)
+(genls MedicalFilter AirFilter)
+(comment MedicalFilter "Filter meeting NFPA 99 or USP standards for medical compressed air systems. Includes catalytic conversion of CO to CO2 and dew point suppression. Required in hospitals, dental offices, and veterinary clinics.")
+
+(isa SterileFilter Collection)
+(genls SterileFilter AirFilter)
+(comment SterileFilter "Membrane filter that removes bacteria and microorganisms from compressed air. 0.01 micron rating. Required in pharmaceutical, biotech, and food/beverage clean room applications.")
+
+;; -- Condensate management --
+
+(isa CondensateDrain Collection)
+(genls CondensateDrain CompressedAirEquipment)
+(comment CondensateDrain "Device that removes condensed water from compressed air system low points -- receivers, dryers, filters, aftercoolers. Available as timer drains, electronic demand drains, and zero-loss drains.")
+
+(isa OilWaterSeparator Collection)
+(genls OilWaterSeparator CompressedAirEquipment)
+(comment OilWaterSeparator "Device that separates compressor lubricant from condensate water to meet EPA discharge requirements. Condensate from oil-injected compressors contains emulsified oil that cannot be drained to sewer without treatment.")
+
+;; -- Vacuum equipment --
+
+(isa VacuumPump Collection)
+(genls VacuumPump CompressedAirEquipment)
+(comment VacuumPump "Equipment that creates vacuum (negative pressure) by removing gas molecules from a sealed volume. Industrial applications include pick-and-place, packaging, CNC hold-down, and process vacuum. Scientific applications include mass spectrometry, electron microscopy, and freeze drying.")
+
+(isa OilSealedRotaryVane Collection)
+(genls OilSealedRotaryVane VacuumPump)
+(comment OilSealedRotaryVane "Rotary vane vacuum pump with oil lubrication and sealing. The most common industrial vacuum pump type. Available single-stage (rough vacuum) and two-stage (high vacuum). Brands: Becker, DVP, Leybold, Republic.")
+
+(isa OilFreeRotaryVane Collection)
+(genls OilFreeRotaryVane VacuumPump)
+(comment OilFreeRotaryVane "Rotary vane vacuum pump with self-lubricating carbon or PTFE vanes. No oil contamination risk. Used in food packaging, medical, and clean applications. Higher vane wear than oil-sealed.")
+
+(isa DryClaw Collection)
+(genls DryClaw VacuumPump)
+(comment DryClaw "Vacuum pump using two claw-shaped rotors with no contact. Oil-free, dry operation. Robust and low-maintenance. Used in pneumatic conveying, packaging, and industrial process vacuum.")
+
+(isa LiquidRing Collection)
+(genls LiquidRing VacuumPump)
+(comment LiquidRing "Vacuum pump using a liquid (water or oil) sealant ring formed by centrifugal force. Isothermal compression. Handles wet, dirty, and corrosive gases. Used in chemical, paper, and marine industries. Brands: Dekker, DVP, Nash.")
+
+(isa RotaryPiston Collection)
+(genls RotaryPiston VacuumPump)
+(comment RotaryPiston "Single-stage or two-stage vacuum pump using an eccentric piston mechanism. Achieves deep vacuum (0.5-50 mTorr). Used in industrial coating, vacuum furnaces, and scientific applications. Brands: Dekker HullVac, Leybold.")
+
+(isa DryScrew Collection)
+(genls DryScrew VacuumPump)
+(comment DryScrew "Vacuum pump using intermeshing screw rotors with no contact or lubricant. Oil-free, handles condensable vapors. Used in chemical, semiconductor, and pharmaceutical vacuum. Brands: Leybold VARODRY, NAVAC HelixDrive.")
+
+(isa ScrollVacuum Collection)
+(genls ScrollVacuum VacuumPump)
+(comment ScrollVacuum "Vacuum pump using orbiting scroll mechanism. Oil-free, very low vibration and noise. Used in analytical instruments and laboratory applications. Brands: Welch SCSpro, Edwards.")
+
+(isa DiaphragmVacuum Collection)
+(genls DiaphragmVacuum VacuumPump)
+(comment DiaphragmVacuum "Vacuum pump using flexible diaphragm displacement. Oil-free, chemical-resistant. Used in laboratory, analytical, and light industrial applications. Brands: Welch, KNF.")
+
+(isa RotaryScrewVacuum Collection)
+(genls RotaryScrewVacuum VacuumPump)
+(comment RotaryScrewVacuum "Vacuum pump using helical rotary screw technology adapted from compressor design. High flow rates at moderate vacuum levels. Used in industrial process vacuum and centralized vacuum systems. Brands: Kaishan KRSV, Atlas Copco.")
+
+;; -- Blowers --
+
+(isa Blower Collection)
+(genls Blower CompressedAirEquipment)
+(comment Blower "Equipment that moves high volumes of air at low pressure (typically under 15 PSI). Used for pneumatic conveying, aeration, combustion air, and process gas boosting. Distinct from compressors by operating pressure range.")
+
+(isa RegenerativeBlower Collection)
+(genls RegenerativeBlower Blower)
+(comment RegenerativeBlower "Blower using a non-positive-displacement impeller that regenerates energy through multiple passes. Oil-free, pulsation-free airflow. Used in aquaculture aeration, pneumatic conveying, vacuum hold-down, and wastewater treatment. Brands: Airtech, FPZ, Republic, All-Star, DVP.")
+
+(isa RotaryScrewBlower Collection)
+(genls RotaryScrewBlower Blower)
+(comment RotaryScrewBlower "Blower using rotary screw compression technology optimized for low-pressure, high-volume applications. Energy-efficient alternative to positive displacement lobe blowers. Brands: Atlas Copco, Kaeser.")
+
+;; -- Nitrogen generation --
+
+(isa NitrogenGenerator Collection)
+(genls NitrogenGenerator CompressedAirEquipment)
+(comment NitrogenGenerator "Equipment that produces nitrogen gas on-site from compressed air. Eliminates bulk liquid nitrogen delivery. Used in food packaging, laser cutting, tire inflation, electronics, and pharmaceutical applications. Two primary technologies: PSA and membrane.")
+
+(isa PSANitrogenGenerator Collection)
+(genls PSANitrogenGenerator NitrogenGenerator)
+(comment PSANitrogenGenerator "Pressure Swing Adsorption nitrogen generator using carbon molecular sieve (CMS) to separate nitrogen from oxygen. Achieves 95-99.999% purity. Higher purity capability than membrane. Brands: Atlas Copco, Pneumatech, Parker, Hertz, Nano-Purification, OZEN.")
+
+(isa MembraneNitrogenGenerator Collection)
+(genls MembraneNitrogenGenerator NitrogenGenerator)
+(comment MembraneNitrogenGenerator "Membrane nitrogen generator using hollow-fiber membranes that selectively permeate oxygen. Achieves 95-99.5% purity. No moving parts, compact, low maintenance. Brands: Pneumatech, Parker, Nano-Purification.")
+
+;; -- Air storage and piping --
+
+(isa AirReceiver Collection)
+(genls AirReceiver CompressedAirEquipment)
+(comment AirReceiver "ASME-rated pressure vessel for compressed air storage. Damps pulsation, provides reserve capacity, and reduces compressor cycling. Vertical or horizontal. 30-10,000+ gallon capacity. Brands: Manchester Tank, Steel Fab, Morganton, Penway.")
+
+(isa AluminumAirPiping Collection)
+(genls AluminumAirPiping CompressedAirEquipment)
+(comment AluminumAirPiping "Modular aluminum piping system for compressed air distribution. Push-to-connect or press-fit joints. Corrosion-resistant, leak-free, and reconfigurable. Replaces black iron, copper, and PVC piping. Brands: RapidAir, Infinity, Engineered Air Products.")
+
+;; -- Accessories --
+
+(isa Aftercooler Collection)
+(genls Aftercooler CompressedAirEquipment)
+(comment Aftercooler "Heat exchanger that cools compressed air exiting the compressor. Removes 60-70% of moisture as liquid condensate. Air-cooled or water-cooled. Essential for compressed air quality and downstream equipment protection.")
+
+(isa CompressorLubricant Collection)
+(genls CompressorLubricant ConsumableEntity)
+(genls CompressorLubricant NODE)
+(comment CompressorLubricant "Synthetic or mineral oil lubricant for compressor internals. Different formulations for rotary screw (PAO, POE, PAG), piston (mineral, synthetic), and vane (PAO) compressors. Change intervals: 2,000-8,000 hours depending on type. Brands: Ingersoll Rand, Quincy, manufacturer-specific.")
+
+(isa HoseReel Collection)
+(genls HoseReel CompressedAirEquipment)
+(comment HoseReel "Spring-retractable or manual reel for compressed air hose management. Wall-mount, ceiling-mount, or pedestal. 25-100 ft hose lengths. Brands: Cox Reels, Coilhose Pneumatics.")
+
+(isa CompressorGeneratorCombo Collection)
+(genls CompressorGeneratorCombo CompressedAirEquipment)
+(comment CompressorGeneratorCombo "Combined unit providing both compressed air and electrical power from a single engine. Used in utility trucks and remote work sites. Brands: Vanair (Air N Arc), Mi-T-M, VMAC.")
+
+;; -- Service and parts --
+
+(isa CompressorPart Collection)
+(genls CompressorPart AssetEntity)
+(genls CompressorPart NODE)
+(comment CompressorPart "Replacement part for compressed air equipment. Includes air/oil filters, separator elements, belts, valves, bearings, and control boards. Parts revenue is the highest-margin segment of the compressed air business.")
+
+(isa ServiceAgreement Collection)
+(genls ServiceAgreement AbstractEntity)
+(genls ServiceAgreement NODE)
+(comment ServiceAgreement "Preventive maintenance contract between a distributor and an end-user. Covers scheduled maintenance, emergency response, and parts. The recurring revenue backbone of the service-first distribution model.")
+
+;;; ============================================================
+;;; SECTION 2: MARKET PARTICIPANT TYPES (NODE extensions)
+;;; ============================================================
+;;; The actors in the compressed air market -- who makes, sells,
+;;; services, and uses the equipment.
+
+(isa Manufacturer Collection)
+(genls Manufacturer Organization)
+(genls Manufacturer NODE)
+(comment Manufacturer "A company that designs and manufactures compressed air equipment. May sell direct, through distributors, or both. Examples: Ingersoll Rand, Atlas Copco, Quincy, ELGi. The brand owner.")
+
+(isa Distributor Collection)
+(genls Distributor Organization)
+(genls Distributor NODE)
+(comment Distributor "A company that sells and services compressed air equipment from multiple manufacturers. The primary sales channel for industrial compressors. Service-first model with pull-through distribution. ISG's Industrial Air Power and Industrial Air Centers are distributors.")
+
+(isa OnlineRetailer Collection)
+(genls OnlineRetailer Distributor)
+(comment OnlineRetailer "E-commerce distributor selling compressed air equipment online. Carries multiple brands, competes on price and availability. CompressorWorld.com, CompressorPros.com, CompressorsNow.com are major US online retailers.")
+
+(isa EndUser Collection)
+(genls EndUser Organization)
+(genls EndUser NODE)
+(comment EndUser "A company or individual that operates compressed air equipment. The customer. End users range from auto body shops to semiconductor fabs. Their demand patterns drive the entire market.")
+
+(isa ServiceProvider Collection)
+(genls ServiceProvider Organization)
+(genls ServiceProvider NODE)
+(comment ServiceProvider "A company that performs maintenance, repair, and installation of compressed air equipment. May be a distributor's service arm or an independent. Revenue model: labor + parts + preventive maintenance contracts.")
+
+;;; ============================================================
+;;; SECTION 3: PRODUCT CATALOG TYPES
+;;; ============================================================
+;;; Representing the commercial product catalog -- the SKUs
+;;; that distributors list, price, and sell.
+
+(isa ProductListing Collection)
+(genls ProductListing AbstractEntity)
+(genls ProductListing NODE)
+(comment ProductListing "A specific product offered for sale by a distributor. Combines a manufacturer's product with a distributor's price, availability, and fulfillment. The atomic unit of competitive pricing intelligence. A single compressor model may have multiple ProductListings across different distributors.")
+
+(isa ProductSeries Collection)
+(genls ProductSeries AbstractEntity)
+(genls ProductSeries NODE)
+(comment ProductSeries "A named product family from a manufacturer. Examples: Ingersoll Rand UP6 Series, Quincy QGS Series, Atlas Copco GA Series. A series groups models that share a common platform, appearance, and feature set but differ in HP, CFM, voltage, or options.")
+
+;;; ============================================================
+;;; SECTION 4: CATEGORICAL TYPES (enumerated values)
+;;; ============================================================
+;;; Fixed vocabularies that constrain attribute values.
+;;; A compressor has DriveType FixedSpeed. FixedSpeed is not a
+;;; NODE; it is a member of the DriveType collection.
+
+;; -- CompressorType (primary technology) --
+
+(isa CompressorType Collection)
+(comment CompressorType "Primary compression technology classification. Determines operating characteristics, efficiency curve, maintenance requirements, and application suitability.")
+
+(isa RotaryScrew CompressorType)
+(isa Piston CompressorType)
+(isa RotaryVane CompressorType)
+(isa Scroll CompressorType)
+(isa Centrifugal CompressorType)
+(isa Diaphragm CompressorType)
+
+(comment RotaryScrew "Helical rotor positive displacement. Continuous duty. Dominant technology 5-500 HP.")
+(comment Piston "Reciprocating cylinder positive displacement. Intermittent duty. Dominant under 30 HP.")
+(comment RotaryVane "Sliding vane in eccentric rotor. Continuous duty. Niche but valued for longevity.")
+(comment Scroll "Orbiting scroll positive displacement. Inherently oil-free. Medical/dental/lab focus.")
+(comment Centrifugal "Dynamic compression via impeller. Very large systems 200-100,000+ HP. Rare in distribution.")
+(comment Diaphragm "Flexible membrane displacement. Small, oil-free. Laboratory and analytical use.")
+
+;; -- DriveType --
+
+(isa DriveType Collection)
+(comment DriveType "Motor control method. Fixed speed or variable speed (VFD). Determines energy efficiency profile and suitability for variable-demand applications.")
+
+(isa FixedSpeed DriveType)
+(isa VariableSpeed DriveType)
+
+(comment FixedSpeed "Motor runs at constant RPM. Load/unload or start/stop control. Most efficient at steady, high-load operation.")
+(comment VariableSpeed "Variable Frequency Drive (VFD) adjusts motor speed to match demand. 20-35% energy savings over fixed speed in fluctuating demand. Also called VSD (Variable Speed Drive).")
+
+;; -- LubricationType --
+
+(isa LubricationType Collection)
+(comment LubricationType "Whether the compression chamber uses oil for sealing, cooling, and lubrication. Determines air quality class and application suitability.")
+
+(isa OilInjected LubricationType)
+(isa OilFree LubricationType)
+
+(comment OilInjected "Oil circulates through the compression chamber. Provides sealing, cooling, and lubrication. Requires oil-removal filtration downstream. Standard for industrial applications.")
+(comment OilFree "No oil in the compression chamber. Higher operating temperatures, more complex cooling. Inherently clean air. Required for food/beverage, pharmaceutical, electronics, and medical applications.")
+
+;; -- MountingType --
+
+(isa MountingType Collection)
+(comment MountingType "How the compressor is physically installed. Determines footprint, portability, and whether a separate air receiver is needed.")
+
+(isa BaseMount MountingType)
+(isa TankMount MountingType)
+(isa TrailerMount MountingType)
+(isa TruckMount MountingType)
+(isa Enclosed MountingType)
+
+(comment BaseMount "Compressor mounted on a steel base frame. Requires separate air receiver tank. Compact footprint for floor installation.")
+(comment TankMount "Compressor mounted directly on the air receiver tank. Self-contained unit. Common in 5-30 HP range for shop and light industrial.")
+(comment TrailerMount "Compressor mounted on a road-towable trailer. Highway-rated axle, lights, and hitch. For construction and utility applications.")
+(comment TruckMount "Compressor mounted in or on a service truck. Powered by truck engine PTO or auxiliary engine. For mobile service and utility work.")
+(comment Enclosed "Compressor in a sound-attenuated cabinet. Reduces noise to 65-75 dBA. Standard for indoor rotary screw installations.")
+
+;; -- PowerSource --
+
+(isa PowerSource Collection)
+(comment PowerSource "What provides motive power to the compressor. Electric motor (most common), gasoline engine, or diesel engine.")
+
+(isa Electric PowerSource)
+(isa Gasoline PowerSource)
+(isa Diesel PowerSource)
+(isa Hydraulic PowerSource)
+(isa PTO PowerSource)
+
+(comment Electric "Electric motor powered. Single-phase (115V, 230V) or three-phase (208V, 230V, 460V, 575V). The standard for stationary installations.")
+(comment Gasoline "Gasoline internal combustion engine. Honda, Kohler, Briggs & Stratton. For portable and remote applications.")
+(comment Diesel "Diesel internal combustion engine. Kubota, Deutz, Caterpillar, John Deere. For heavy portable and remote applications.")
+(comment Hydraulic "Powered by hydraulic fluid from a host machine's hydraulic system. For truck-mounted and equipment-mounted compressors.")
+(comment PTO "Power Take-Off from a truck or tractor drive train. For vehicle-mounted compressors.")
+
+;; -- ElectricalPhase --
+
+(isa ElectricalPhase Collection)
+(comment ElectricalPhase "Electrical supply configuration. Single-phase for small compressors in shops/garages. Three-phase for industrial applications 5 HP and above.")
+
+(isa SinglePhase ElectricalPhase)
+(isa ThreePhase ElectricalPhase)
+
+(comment SinglePhase "Single-phase power. 115V or 230V. Available in residential and small commercial facilities. Limits compressor size to approximately 7.5 HP.")
+(comment ThreePhase "Three-phase power. 208V, 230V, 460V, or 575V. Required for motors above 7.5 HP. Standard in industrial facilities.")
+
+;; -- Voltage --
+
+(isa Voltage Collection)
+(comment Voltage "Nominal supply voltage for the motor. Must match facility electrical service.")
+
+(isa V115 Voltage)
+(isa V208 Voltage)
+(isa V230 Voltage)
+(isa V460 Voltage)
+(isa V575 Voltage)
+
+(comment V115 "115 volt single-phase. Household outlets. For small portable compressors under 2 HP.")
+(comment V208 "208 volt three-phase. Common in commercial buildings. Standard in new construction.")
+(comment V230 "230 volt single-phase or three-phase. The most common industrial voltage in the US.")
+(comment V460 "460 volt three-phase. Standard for motors 25 HP and above. Most energy-efficient distribution voltage.")
+(comment V575 "575 volt three-phase. Used in heavy industrial and Canadian installations. Less common in US.")
+
+;; -- DryerType --
+
+(isa DryerType Collection)
+(comment DryerType "Air drying technology classification. Determines achievable dew point, energy consumption, and maintenance requirements.")
+
+(isa Refrigerated DryerType)
+(isa Desiccant DryerType)
+(isa Membrane DryerType)
+(isa Deliquescent DryerType)
+
+(comment Refrigerated "Chills air to condense moisture. 35-39F dew point. Most common and cost-effective. Cycling or non-cycling.")
+(comment Desiccant "Adsorbs moisture with desiccant media. -40F to -100F dew point. For cold environments and critical applications.")
+(comment Membrane "Permeates moisture through hollow-fiber membranes. -40F dew point. No moving parts. Point-of-use applications.")
+(comment Deliquescent "Dissolves hygroscopic tablets to absorb moisture. Simple, no power required. For outdoor and remote applications.")
+
+;; -- NitrogenPurity --
+
+(isa NitrogenPurity Collection)
+(comment NitrogenPurity "Nitrogen gas purity level. Application determines required purity. Higher purity requires larger generator or lower flow rate.")
+
+(isa Purity95 NitrogenPurity)
+(isa Purity99 NitrogenPurity)
+(isa Purity999 NitrogenPurity)
+(isa Purity9999 NitrogenPurity)
+(isa Purity99999 NitrogenPurity)
+
+(comment Purity95 "95% N2. Suitable for tire inflation, fire prevention, basic inerting.")
+(comment Purity99 "99% N2. Suitable for food packaging MAP, soldering, laser assist gas.")
+(comment Purity999 "99.9% N2. Suitable for heat treatment, pharmaceutical blanketing.")
+(comment Purity9999 "99.99% N2. Suitable for electronics, selective soldering, laser cutting.")
+(comment Purity99999 "99.999% N2. Suitable for semiconductor, analytical instruments, GC carrier gas.")
+
+;; -- AirQualityClass (ISO 8573-1) --
+
+(isa AirQualityClass Collection)
+(comment AirQualityClass "Compressed air quality classification per ISO 8573-1. Specifies limits for particulate, water, and oil content. Determines required filtration and drying equipment.")
+
+(isa Class0 AirQualityClass)
+(isa Class1 AirQualityClass)
+(isa Class2 AirQualityClass)
+(isa Class3 AirQualityClass)
+(isa Class4 AirQualityClass)
+
+(comment Class0 "Strictest classification. As specified by equipment user or manufacturer. Oil-free compressor + advanced filtration.")
+(comment Class1 "Max 0.01 mg/m3 oil, 0.1 micron particulate, -94F dew point. Pharmaceutical, food contact, electronics.")
+(comment Class2 "Max 0.1 mg/m3 oil, 1 micron particulate, -40F dew point. Food processing, painting, instrumentation.")
+(comment Class3 "Max 1 mg/m3 oil, 5 micron particulate, -4F dew point. General manufacturing, pneumatic tools.")
+(comment Class4 "Max 5 mg/m3 oil, 15 micron particulate, 37F dew point. Non-critical industrial, sandblasting.")
+
+;;; ============================================================
+;;; SECTION 5: DISJOINTNESS CONSTRAINTS
+;;; ============================================================
+
+(disjointWith FixedSpeed VariableSpeed)
+(disjointWith OilInjected OilFree)
+(disjointWith SinglePhase ThreePhase)
+(disjointWith Gasoline Diesel)
+(disjointWith Gasoline Electric)
+(disjointWith Diesel Electric)
+(disjointWith BaseMount TankMount)
+(disjointWith BaseMount TrailerMount)
+(disjointWith TankMount TrailerMount)
+(disjointWith Refrigerated Desiccant)
+(disjointWith Refrigerated Membrane)
+(disjointWith Desiccant Membrane)
+(disjointWith SingleStagePiston TwoStagePiston)
+(disjointWith SimplexPiston DuplexPiston)
+
+;;; ============================================================
+;;; SECTION 6: INFERENCE RULES
+;;; ============================================================
+
+;; An oil-free compressor delivers Class 0 air quality (before filtration)
+(implies
+  (and (isa ?comp AirCompressor)
+       (hasLubricationType ?comp OilFree))
+  (isa ?comp OilFreeCompressor))
+
+;; A scroll compressor is inherently oil-free
+(implies
+  (isa ?comp ScrollCompressor)
+  (hasLubricationType ?comp OilFree))
+
+;; A compressor with a VFD is a VariableSpeedRotaryScrew (if rotary screw)
+(implies
+  (and (isa ?comp RotaryScrewCompressor)
+       (hasDriveType ?comp VariableSpeed))
+  (isa ?comp VariableSpeedRotaryScrew))
+
+;; A compressor with fixed speed is a FixedSpeedRotaryScrew (if rotary screw)
+(implies
+  (and (isa ?comp RotaryScrewCompressor)
+       (hasDriveType ?comp FixedSpeed))
+  (isa ?comp FixedSpeedRotaryScrew))
+
+;; A gas-driven compressor is an engine-driven compressor
+(implies
+  (and (isa ?comp AirCompressor)
+       (hasPowerSource ?comp Gasoline))
+  (isa ?comp GasDrivenCompressor))
+
+;; A diesel-driven compressor is an engine-driven compressor
+(implies
+  (and (isa ?comp AirCompressor)
+       (hasPowerSource ?comp Diesel))
+  (isa ?comp DieselDrivenCompressor))
+
+;; Single-phase implies voltage is 115V or 230V
+(implies
+  (and (isa ?comp AirCompressor)
+       (hasPhase ?comp SinglePhase)
+       (hasVoltage ?comp V460))
+  (conflict "460V is three-phase only. Single-phase compressors use 115V or 230V."))

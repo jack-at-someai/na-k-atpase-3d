@@ -1,0 +1,119 @@
+;;; ================================================================
+;;; COMPRESSOR / KNOWLEDGE / META / SCHEMA
+;;; Schema definition for the compressed air industry substrate
+;;; Maps to Charlotte's five primitives
+;;; ================================================================
+
+(in-microtheory CompressorKnowledgeMt)
+
+;;; ============================================================
+;;; CHARLOTTE PRIMITIVE MAPPING
+;;; ============================================================
+;;; Every entity in the compressor substrate maps to one of
+;;; Charlotte's five primitives. This schema documents the mapping.
+
+;;; NODE — Identities that persist and emit signals
+;;;
+;;; Equipment NODEs:
+;;;   AirCompressor, AirDryer, AirFilter, VacuumPump, Blower,
+;;;   NitrogenGenerator, AirReceiver, AluminumAirPiping,
+;;;   Aftercooler, CondensateDrain, OilWaterSeparator,
+;;;   TotalAirSystem, CompressorGeneratorCombo, HoseReel
+;;;
+;;; Market Participant NODEs:
+;;;   Manufacturer, Distributor, OnlineRetailer, EndUser, ServiceProvider
+;;;
+;;; Commerce NODEs:
+;;;   ProductListing, ProductSeries, CompressorPart,
+;;;   CompressorLubricant, ServiceAgreement
+;;;
+;;; Categorical NODEs (not persistent, but referenced):
+;;;   CompressorType, DriveType, LubricationType, MountingType,
+;;;   PowerSource, ElectricalPhase, Voltage, DryerType,
+;;;   NitrogenPurity, AirQualityClass, HPTier, ApplicationSegment
+
+;;; EDGE — Relationships between NODEs
+;;;
+;;; Manufacturing edges:
+;;;   manufacturedBy, hasBrand, parentCompanyOf, belongsToSeries, seriesBy
+;;;
+;;; Distribution edges:
+;;;   distributedBy, carriesBrand, listedBy, listingForProduct,
+;;;   servicedBy, operatesEquipment
+;;;
+;;; Spatial edges:
+;;;   locatedIn, hasState, hasCity, servesTerritory
+
+;;; METRIC — Quantitative dimensions that accumulate over time
+;;;
+;;; Business metrics:
+;;;   RevenueMetric, MarginMetric, PriceMetric, DemandMetric
+;;;
+;;; Operational metrics:
+;;;   ServiceIntervalMetric
+;;;
+;;; Equipment specifications (static metrics):
+;;;   HP, CFM, PSI, TankSize, Weight, NoiseLevel, SpecificPower,
+;;;   RunHours, LoadPercentage
+
+;;; SIGNAL — Events that fire on metric lines
+;;;
+;;; PurchaseEvent — customer buys equipment or parts
+;;; PriceChangeEvent — distributor changes a product price
+;;; ServiceEvent — maintenance or repair on installed equipment
+;;; DormancyAlert — customer exceeds expected purchase cycle
+;;; CompetitorAlert — competitor price change on tracked SKU
+
+;;; PROTOCOL — Expected patterns and response logic
+;;;
+;;; CompetitivePricingScrape — daily competitor price monitoring
+;;; CustomerReactivation — dormancy detection and campaign triggers
+;;; ProductCrossReference — SKU and part number cross-referencing
+;;; EquipmentLifecycle — installed base tracking and replacement prediction
+
+;;; ============================================================
+;;; FILE MANIFEST
+;;; ============================================================
+;;;
+;;; /compressors/
+;;;   README.krf                              — Domain overview
+;;;   kernel/
+;;;     types.krf                             — 60+ entity types and enumerations
+;;;     predicates.krf                        — 80+ predicates (edges, attributes, metrics)
+;;;   knowledge/
+;;;     structural/
+;;;       taxonomy.krf                        — Full product category hierarchy (11 top-level, 100+ subcategories)
+;;;       brands.krf                          — 120+ brands with ownership, location, product focus
+;;;       retailers.krf                       — Online retailers and ISG competitive landscape
+;;;     heuristic/
+;;;       specifications.krf                  — Performance ranges, pricing tiers, industry benchmarks
+;;;     procedural/
+;;;       pricing_intelligence.krf            — Charlotte protocols for ISG deployment
+;;;     meta/
+;;;       schema.krf                          — This file: schema overview and primitive mapping
+;;;   output/
+;;;     nodes/                                — (future) Instantiated product catalog nodes
+;;;     edges/                                — (future) Product-brand-distributor edges
+;;;     signals/                              — (future) Price observation signals
+;;;     metrics/                              — (future) Revenue and margin time series
+;;;
+;;; TOTAL: 9 KRF files defining the complete ontology
+;;; NEXT: Populate output/ with actual product instances from
+;;;       CompressorWorld, CompressorPros, CompressorsNow, and
+;;;       ISG's NetSuite/BigCommerce data.
+
+;;; ============================================================
+;;; STATISTICS
+;;; ============================================================
+;;;
+;;; Entity Types:          60+
+;;; Categorical Values:    50+
+;;; Binary Predicates:     80+
+;;; Inference Rules:       20+
+;;; Disjointness Pairs:    14
+;;; Brands Cataloged:      120+
+;;; Product Categories:    11 top-level, 100+ leaf categories
+;;; Online Retailers:      3 primary + Amazon + ISG
+;;; Product Series:        25+ (top brands)
+;;; Price Points:          300+ specific prices captured
+;;; Protocols:             4 (pricing, reactivation, cross-ref, lifecycle)
