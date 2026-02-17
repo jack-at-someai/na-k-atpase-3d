@@ -1,3 +1,0 @@
-#!/bin/bash
-# clipper - wrapper for Git Bash
-"/c/Users/jack/AppData/Local/Programs/Python/Python312/python.exe" "/c/dev/clipper/clipper.py" "$@"
