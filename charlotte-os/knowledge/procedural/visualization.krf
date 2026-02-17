@@ -1,0 +1,431 @@
+;;; ================================================================
+;;; KNOWLEDGE / PROCEDURAL / VISUALIZATION
+;;; Charlotte's knowledge of the vis.gl visualization ecosystem
+;;; 13 frameworks, 33 deck.gl layer types, selection heuristics
+;;; ================================================================
+
+(in-microtheory CharlotteVisualizationMt)
+
+;; Microtheory inheritance
+(genlMt CharlotteVisualizationMt CharlotteProceduralMt)
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 1: COLLECTIONS
+;;; The type hierarchy for visualization concepts
+;;; ────────────────────────────────────────────────────────────────
+
+(isa VisualizationFramework Collection)
+(genls VisualizationFramework NODE)
+(comment VisualizationFramework "A software framework in the vis.gl ecosystem for rendering data visually.")
+
+(isa RenderingEngine Collection)
+(genls RenderingEngine NODE)
+(comment RenderingEngine "A low-level graphics engine that powers visualization frameworks.")
+
+(isa LayerType Collection)
+(genls LayerType NODE)
+(comment LayerType "A deck.gl layer class that renders a specific type of visual element.")
+
+(isa CoreLayer Collection)
+(genls CoreLayer LayerType)
+(comment CoreLayer "Fundamental deck.gl layers for common visualization patterns.")
+
+(isa AggregationLayer Collection)
+(genls AggregationLayer LayerType)
+(comment AggregationLayer "Layers that bin or aggregate data into spatial summaries.")
+
+(isa GeoLayer Collection)
+(genls GeoLayer LayerType)
+(comment GeoLayer "Layers optimized for geographic and tiled data sources.")
+
+(isa MeshLayer Collection)
+(genls MeshLayer LayerType)
+(comment MeshLayer "Layers that render 3D meshes and scenegraph objects.")
+
+(isa DataLoader Collection)
+(genls DataLoader NODE)
+(comment DataLoader "A loaders.gl module for parsing spatial and tabular data formats.")
+
+(isa SpatialIndex Collection)
+(genls SpatialIndex NODE)
+(comment SpatialIndex "A hierarchical spatial indexing system for geospatial data.")
+
+(isa AnimationTool Collection)
+(genls AnimationTool NODE)
+(comment AnimationTool "A tool for capturing or replaying visualization animations.")
+
+(isa EditingTool Collection)
+(genls EditingTool NODE)
+(comment EditingTool "A tool for interactive geometry editing on map visualizations.")
+
+(isa MathLibrary Collection)
+(genls MathLibrary NODE)
+(comment MathLibrary "A library providing math primitives for geospatial and 3D computation.")
+
+(isa DataShape Collection)
+(genls DataShape NODE)
+(comment DataShape "A structural pattern in data that determines appropriate visualization.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 2: VIS.GL FRAMEWORK INSTANCES
+;;; All 13 frameworks in the vis.gl ecosystem
+;;; ────────────────────────────────────────────────────────────────
+
+(isa DeckGL VisualizationFramework)
+(comment DeckGL "WebGL2/WebGPU-powered framework for large-scale data visualization. The core of the vis.gl ecosystem with 33 layer types.")
+
+(isa KeplerGL VisualizationFramework)
+(comment KeplerGL "Geospatial analysis tool built on deck.gl. Provides a full UI for exploring location data without code.")
+
+(isa LumaGL RenderingEngine)
+(comment LumaGL "High-performance WebGL2/WebGPU rendering engine. Powers deck.gl and all vis.gl visual output.")
+
+(isa LoadersGL DataLoader)
+(comment LoadersGL "Framework-agnostic loaders for 3D tiles, point clouds, GeoJSON, CSV, and 50+ spatial formats.")
+
+(isa MathGL MathLibrary)
+(comment MathGL "3D and geospatial math library. Vectors, matrices, bounding boxes, and geodesic calculations.")
+
+(isa HubbleGL AnimationTool)
+(comment HubbleGL "Video capture and animation export for deck.gl visualizations. Renders frame-by-frame to video.")
+
+(isa NebulaGL EditingTool)
+(comment NebulaGL "Interactive geometry editing framework for deck.gl. Draw, modify, and delete GeoJSON features on the map.")
+
+(isa ReactMapGL VisualizationFramework)
+(comment ReactMapGL "React wrapper for Mapbox GL and MapLibre GL. Provides the base map layer under deck.gl visualizations.")
+
+(isa ReactGoogleMaps VisualizationFramework)
+(comment ReactGoogleMaps "React wrapper for Google Maps API. Alternative base map provider for deck.gl overlays.")
+
+(isa FlowmapGL VisualizationFramework)
+(comment FlowmapGL "Animated flow visualization on maps. Renders origin-destination data as curved, animated lines.")
+
+(isa ProbeGL VisualizationFramework)
+(comment ProbeGL "Debugging and profiling toolkit for deck.gl applications. Performance monitoring and GPU inspection.")
+
+(isa PyDeck VisualizationFramework)
+(comment PyDeck "Python bindings for deck.gl. Enables Jupyter notebook and standalone HTML visualization from Python.")
+
+(isa H3SpatialIndex SpatialIndex)
+(comment H3SpatialIndex "Uber's hexagonal hierarchical spatial index. 16 resolution levels covering the globe.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 3: DECK.GL LAYER INSTANCES
+;;; All 33 layer types organized by category
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── Core Layers (13) ──
+
+(isa ArcLayer CoreLayer)
+(comment ArcLayer "Renders raised arcs between source-target coordinate pairs. Ideal for origin-destination flows.")
+
+(isa BitmapLayer CoreLayer)
+(comment BitmapLayer "Renders georeferenced bitmap images as map overlays. Used for satellite imagery and raster tiles.")
+
+(isa ColumnLayer CoreLayer)
+(comment ColumnLayer "Renders extruded cylinders at geographic positions. 3D bar charts on maps.")
+
+(isa GeoJsonLayer CoreLayer)
+(comment GeoJsonLayer "Renders GeoJSON features: points, lines, and polygons with automatic styling.")
+
+(isa GridCellLayer CoreLayer)
+(comment GridCellLayer "Renders individual grid cells as extruded rectangles. Building block for grid aggregation.")
+
+(isa IconLayer CoreLayer)
+(comment IconLayer "Renders icons from a texture atlas at geographic positions. Markers, pins, symbols.")
+
+(isa LineLayer CoreLayer)
+(comment LineLayer "Renders flat lines between coordinate pairs. Simpler and faster than ArcLayer for 2D connections.")
+
+(isa PathLayer CoreLayer)
+(comment PathLayer "Renders polylines from arrays of coordinates. Routes, trails, trajectories.")
+
+(isa PointCloudLayer CoreLayer)
+(comment PointCloudLayer "Renders large point cloud datasets in 3D. LiDAR data, depth scans.")
+
+(isa PolygonLayer CoreLayer)
+(comment PolygonLayer "Renders filled and extruded polygons. Geographic boundaries, building footprints.")
+
+(isa ScatterplotLayer CoreLayer)
+(comment ScatterplotLayer "Renders circles at geographic positions. The most common layer for point data.")
+
+(isa SolidPolygonLayer CoreLayer)
+(comment SolidPolygonLayer "Renders filled polygons without stroke. Higher performance than PolygonLayer for solid fills.")
+
+(isa TextLayer CoreLayer)
+(comment TextLayer "Renders text labels at geographic positions. Collision detection prevents overlap.")
+
+;; ── Aggregation Layers (5) ──
+
+(isa ContourLayer AggregationLayer)
+(comment ContourLayer "Renders density contour lines or filled isobands from point data. Topographic-style output.")
+
+(isa GridLayer AggregationLayer)
+(comment GridLayer "Bins points into a rectangular grid and renders as extruded columns. Spatial histogram.")
+
+(isa HeatmapLayer AggregationLayer)
+(comment HeatmapLayer "Renders point density as a continuous color gradient. GPU-accelerated kernel density estimation.")
+
+(isa HexagonLayer AggregationLayer)
+(comment HexagonLayer "Bins points into hexagonal cells and renders as extruded hexagons. Avoids rectangular grid bias.")
+
+(isa ScreenGridLayer AggregationLayer)
+(comment ScreenGridLayer "Bins points into a screen-space grid. Resolution adapts to zoom level.")
+
+;; ── Geo Layers (12) ──
+
+(isa A5Layer GeoLayer)
+(comment A5Layer "Renders data indexed by the A5 geospatial indexing system.")
+
+(isa GeohashLayer GeoLayer)
+(comment GeohashLayer "Renders data indexed by geohash strings as rectangular cells.")
+
+(isa GreatCircleLayer GeoLayer)
+(comment GreatCircleLayer "Renders great circle arcs between points. Accurate long-distance connections on the globe.")
+
+(isa H3ClusterLayer GeoLayer)
+(comment H3ClusterLayer "Renders clusters of H3 hexagons merged into polygons. Aggregated regional views.")
+
+(isa H3HexagonLayer GeoLayer)
+(comment H3HexagonLayer "Renders individual H3 hexagonal cells. Native integration with Uber's H3 spatial index.")
+
+(isa MVTLayer GeoLayer)
+(comment MVTLayer "Renders Mapbox Vector Tiles. Efficient streaming of pre-tiled vector data.")
+
+(isa QuadkeyLayer GeoLayer)
+(comment QuadkeyLayer "Renders data indexed by Bing Maps quadkey system as rectangular tiles.")
+
+(isa S2Layer GeoLayer)
+(comment S2Layer "Renders data indexed by Google's S2 geometry cells. Hierarchical spherical indexing.")
+
+(isa TerrainLayer GeoLayer)
+(comment TerrainLayer "Renders terrain meshes from elevation data. 3D topographic surfaces.")
+
+(isa TileLayer GeoLayer)
+(comment TileLayer "Manages loading and rendering of tiled data. Base class for MVT, terrain, and raster tiles.")
+
+(isa Tile3DLayer GeoLayer)
+(comment Tile3DLayer "Renders OGC 3D Tiles datasets. Buildings, city models, massive point clouds.")
+
+(isa TripsLayer GeoLayer)
+(comment TripsLayer "Renders animated trajectories along timestamped paths. Vehicle tracking, migration patterns.")
+
+;; ── Mesh Layers (2) ──
+
+(isa SimpleMeshLayer MeshLayer)
+(comment SimpleMeshLayer "Renders instanced 3D meshes at geographic positions. Custom 3D markers.")
+
+(isa ScenegraphLayer MeshLayer)
+(comment ScenegraphLayer "Renders glTF 3D models at geographic positions. Full scenegraph with animations.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 4: DATA SHAPE INSTANCES
+;;; Structural patterns in data that guide layer selection
+;;; ────────────────────────────────────────────────────────────────
+
+(isa PointData DataShape)
+(comment PointData "Records with latitude/longitude coordinates. The most common spatial data shape.")
+
+(isa ArcData DataShape)
+(comment ArcData "Records with source and target coordinates. Origin-destination pairs, network edges.")
+
+(isa TrajectoryData DataShape)
+(comment TrajectoryData "Records with coordinates and timestamps. Moving objects traced over time.")
+
+(isa DensityData DataShape)
+(comment DensityData "Large point datasets where individual points are less important than spatial density.")
+
+(isa PolygonData DataShape)
+(comment PolygonData "Records with polygon geometries. Boundaries, regions, building footprints.")
+
+(isa IndexedData DataShape)
+(comment IndexedData "Data keyed by spatial index tokens. H3 hexagons, S2 cells, geohashes, quadkeys.")
+
+(isa MeshData DataShape)
+(comment MeshData "3D geometry data. Vertices, faces, normals. Point clouds, terrain, 3D models.")
+
+(isa TiledData DataShape)
+(comment TiledData "Pre-tiled data served as map tiles. Vector tiles, raster tiles, 3D tiles.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 5: RELATIONS
+;;; How frameworks, layers, and data connect
+;;; ────────────────────────────────────────────────────────────────
+
+(isa rendersWith Predicate)
+(arity rendersWith 2)
+(arg1Isa rendersWith VisualizationFramework)
+(arg2Isa rendersWith RenderingEngine)
+(comment rendersWith "The rendering engine that powers a visualization framework.")
+
+(isa composedOf Predicate)
+(arity composedOf 2)
+(arg1Isa composedOf VisualizationFramework)
+(arg2Isa composedOf LayerType)
+(comment composedOf "A layer type available within a visualization framework.")
+
+(isa poweredBy Predicate)
+(arity poweredBy 2)
+(arg1Isa poweredBy VisualizationFramework)
+(arg2Isa poweredBy RenderingEngine)
+(comment poweredBy "The engine dependency that a framework requires at runtime.")
+
+(isa visualizesDataShape Predicate)
+(arity visualizesDataShape 2)
+(arg1Isa visualizesDataShape LayerType)
+(arg2Isa visualizesDataShape DataShape)
+(comment visualizesDataShape "The data shape that a layer is designed to render.")
+
+(isa supportsRealTime Predicate)
+(arity supportsRealTime 2)
+(arg1Isa supportsRealTime VisualizationFramework)
+(comment supportsRealTime "Whether a framework supports real-time data streaming and updates.")
+
+(isa capturesVideo Predicate)
+(arity capturesVideo 2)
+(arg1Isa capturesVideo AnimationTool)
+(comment capturesVideo "The tool captures frame-by-frame video of a visualization.")
+
+(isa editsGeometry Predicate)
+(arity editsGeometry 2)
+(arg1Isa editsGeometry EditingTool)
+(comment editsGeometry "The tool enables interactive editing of geometry data.")
+
+;; Framework → Engine relations
+(rendersWith DeckGL LumaGL)
+(rendersWith KeplerGL LumaGL)
+(rendersWith FlowmapGL LumaGL)
+(poweredBy DeckGL LumaGL)
+(poweredBy KeplerGL LumaGL)
+(poweredBy PyDeck LumaGL)
+
+;; Framework capabilities
+(supportsRealTime DeckGL True)
+(supportsRealTime KeplerGL True)
+(supportsRealTime FlowmapGL True)
+(supportsRealTime ReactMapGL True)
+(capturesVideo HubbleGL DeckGL)
+(editsGeometry NebulaGL GeoJsonLayer)
+
+;; Layer → DataShape relations
+(visualizesDataShape ScatterplotLayer PointData)
+(visualizesDataShape IconLayer PointData)
+(visualizesDataShape TextLayer PointData)
+(visualizesDataShape ColumnLayer PointData)
+(visualizesDataShape ArcLayer ArcData)
+(visualizesDataShape LineLayer ArcData)
+(visualizesDataShape GreatCircleLayer ArcData)
+(visualizesDataShape TripsLayer TrajectoryData)
+(visualizesDataShape PathLayer TrajectoryData)
+(visualizesDataShape HeatmapLayer DensityData)
+(visualizesDataShape HexagonLayer DensityData)
+(visualizesDataShape GridLayer DensityData)
+(visualizesDataShape ContourLayer DensityData)
+(visualizesDataShape ScreenGridLayer DensityData)
+(visualizesDataShape PolygonLayer PolygonData)
+(visualizesDataShape GeoJsonLayer PolygonData)
+(visualizesDataShape SolidPolygonLayer PolygonData)
+(visualizesDataShape H3HexagonLayer IndexedData)
+(visualizesDataShape H3ClusterLayer IndexedData)
+(visualizesDataShape S2Layer IndexedData)
+(visualizesDataShape GeohashLayer IndexedData)
+(visualizesDataShape QuadkeyLayer IndexedData)
+(visualizesDataShape SimpleMeshLayer MeshData)
+(visualizesDataShape ScenegraphLayer MeshData)
+(visualizesDataShape PointCloudLayer MeshData)
+(visualizesDataShape TerrainLayer MeshData)
+(visualizesDataShape TileLayer TiledData)
+(visualizesDataShape Tile3DLayer TiledData)
+(visualizesDataShape MVTLayer TiledData)
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 6: LAYER SELECTION RULES
+;;; Inference rules for choosing layers based on data characteristics
+;;; ────────────────────────────────────────────────────────────────
+
+;; If data has coordinates and timestamps, use TripsLayer for animated trajectories
+(implies
+  (and (isa ?D TrajectoryData)
+       (hasCoordinates ?D True)
+       (hasTimestamps ?D True))
+  (recommendedLayer ?D TripsLayer))
+
+;; If data has edges between nodes, use ArcLayer for connections
+(implies
+  (and (isa ?D ArcData)
+       (hasSourceTarget ?D True))
+  (recommendedLayer ?D ArcLayer))
+
+;; If data needs density aggregation, use HexagonLayer or HeatmapLayer
+(implies
+  (and (isa ?D DensityData)
+       (nodeCount ?D ?N)
+       (greaterThan ?N 10000))
+  (recommendedLayer ?D HexagonLayer))
+
+(implies
+  (and (isa ?D DensityData)
+       (requiresContinuousGradient ?D True))
+  (recommendedLayer ?D HeatmapLayer))
+
+;; If visualization needs video export, compose with HubbleGL
+(implies
+  (and (isa ?V VisualizationFramework)
+       (requiresVideoExport ?V True))
+  (composeWith ?V HubbleGL))
+
+;; If data has hierarchical spatial index, use H3HexagonLayer or S2Layer
+(implies
+  (and (isa ?D IndexedData)
+       (indexType ?D H3SpatialIndex))
+  (recommendedLayer ?D H3HexagonLayer))
+
+(implies
+  (and (isa ?D IndexedData)
+       (indexType ?D S2Geometry))
+  (recommendedLayer ?D S2Layer))
+
+;; If data is GeoJSON features, use GeoJsonLayer
+(implies
+  (and (isa ?D PolygonData)
+       (dataFormat ?D GeoJSON))
+  (recommendedLayer ?D GeoJsonLayer))
+
+;; If rendering 3D building models, use Tile3DLayer
+(implies
+  (and (isa ?D TiledData)
+       (tileFormat ?D OGC3DTiles))
+  (recommendedLayer ?D Tile3DLayer))
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 7: HEURISTIC DEFAULTS
+;;; Operational defaults for visualization configuration
+;;; ────────────────────────────────────────────────────────────────
+
+;; Default render engine is LumaGL (WebGL2 with WebGPU fallback)
+(defaultRenderEngine LumaGL)
+
+;; Maximum nodes before switching from individual to aggregation layers
+(maxNodesBeforeAggregation 10000)
+
+;; Default animation frame rate
+(defaultAnimationFPS 60)
+
+;; Default map projection for geographic layers
+(defaultProjection WebMercator)
+
+;; Minimum zoom level for text label visibility
+(minZoomForLabels 10)
+
+;; Maximum arc height ratio (arc elevation / arc length)
+(defaultArcHeightRatio 0.3)
+
+;; Default color scheme for unknown knowledge types
+(defaultVisualizationColor "#888888")

@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charlotte OS — Knowledge Topology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23E53E3E' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(120,120)'%3E%3Cline x1='0' y1='0' x2='0' y2='-108'/%3E%3Cline x1='0' y1='0' x2='65' y2='-87'/%3E%3Cline x1='0' y1='0' x2='103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='95' y2='50'/%3E%3Cline x1='0' y1='0' x2='40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-40' y2='100'/%3E%3Cline x1='0' y1='0' x2='-95' y2='50'/%3E%3Cline x1='0' y1='0' x2='-103' y2='-33'/%3E%3Cline x1='0' y1='0' x2='-65' y2='-87'/%3E%3Cpath d='M 0,-108 Q 38,-105 65,-87 Q 92,-65 103,-33 Q 108,10 95,50 Q 78,82 40,100 Q 5,110 -40,100 Q -78,82 -95,50 Q -108,10 -103,-33 Q -92,-65 -65,-87 Q -38,-105 0,-108 Z'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/deck.gl@9.1.4/dist.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0F0F0F;
+      color: #E8E0E0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    .header {
+      height: 52px;
+      background: #141414;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+    .header-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    .header-title span { color: #E53E3E; }
+    .phase-indicator {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .phase-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #222;
+      border: 1px solid #333;
+      transition: all 0.5s ease;
+    }
+    .phase-dot.lit {
+      border-color: transparent;
+      box-shadow: 0 0 8px var(--glow);
+    }
+    .phase-label {
+      font-size: 11px;
+      color: #555;
+      font-family: 'JetBrains Mono', monospace;
+      transition: color 0.5s;
+      margin-left: 4px;
+    }
+    .phase-label.ready { color: #68D391; }
+    .header-spacer { flex: 1; }
+    .header-btn {
+      padding: 5px 12px;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .header-btn:hover { color: #ccc; border-color: #555; }
+    .header-btn.active { color: #E53E3E; border-color: #E53E3E; background: rgba(229,62,62,0.08); }
+    .key-hint {
+      font-size: 9px;
+      color: #444;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 5px;
+      background: #1A1A1A;
+      border-radius: 3px;
+      border: 1px solid #2A2A2A;
+    }
+    .header-back {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-right: 8px;
+    }
+    .header-back:hover { color: #E53E3E; }
+
+    /* ── Canvas ── */
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #deck-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Tooltip ── */
+    .tooltip {
+      display: none;
+      position: absolute;
+      pointer-events: none;
+      background: #1A1A1A;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px 14px;
+      max-width: 320px;
+      z-index: 30;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .tooltip-name {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tooltip-badges {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .tooltip-badge {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .tooltip-comment {
+      font-size: 11px;
+      color: #999;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .tooltip-file {
+      font-size: 10px;
+      color: #555;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      height: 32px;
+      background: #141414;
+      border-top: 1px solid #222;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 20px;
+      font-size: 11px;
+      color: #555;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+    .footer-stat {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-stat strong {
+      color: #E8E0E0;
+      font-weight: 600;
+    }
+    .footer-spacer { flex: 1; }
+    .footer-brand {
+      font-size: 10px;
+      color: #444;
+    }
+
+    /* ── Loading ── */
+    .loading-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0F0F0F;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      gap: 12px;
+      transition: opacity 0.8s ease;
+    }
+    .loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #222;
+      border-top-color: #E53E3E;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-size: 12px;
+      color: #666;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      position: absolute;
+      bottom: 48px;
+      left: 16px;
+      background: rgba(20,20,20,0.92);
+      border: 1px solid #2A2A2A;
+      border-radius: 10px;
+      padding: 12px 14px;
+      z-index: 15;
+      font-size: 10px;
+    }
+    .legend-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 2px 0;
+      color: #888;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <a class="header-back" href="../">&larr;</a>
+  <div class="header-title"><span>Charlotte OS</span> — Knowledge Topology</div>
+  <div class="phase-indicator">
+    <div class="phase-dot" id="pd-0" style="--glow:#E53E3E"></div>
+    <div class="phase-dot" id="pd-1" style="--glow:#F59E0B"></div>
+    <div class="phase-dot" id="pd-2" style="--glow:#4A9EE5"></div>
+    <div class="phase-dot" id="pd-3" style="--glow:#A855F7"></div>
+    <div class="phase-dot" id="pd-4" style="--glow:#C4A8A8"></div>
+    <div class="phase-dot" id="pd-5" style="--glow:#68D391"></div>
+  </div>
+  <div class="phase-label" id="phase-label">Initializing...</div>
+  <div class="header-spacer"></div>
+  <button class="header-btn" id="btn-heatmap" title="Toggle heatmap layer">H <span class="key-hint">H</span></button>
+  <button class="header-btn" id="btn-arcs" title="Toggle arc layer">A <span class="key-hint">A</span></button>
+  <button class="header-btn active" id="btn-replay" title="Replay boot animation">R <span class="key-hint">R</span></button>
+</div>
+
+<!-- Canvas -->
+<div class="canvas-container">
+  <div id="deck-canvas"></div>
+  <div class="tooltip" id="tooltip">
+    <div class="tooltip-name" id="tip-name"></div>
+    <div class="tooltip-badges" id="tip-badges"></div>
+    <div class="tooltip-comment" id="tip-comment"></div>
+    <div class="tooltip-file" id="tip-file"></div>
+  </div>
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loading-text">Loading corpus...</div>
+  </div>
+  <div class="legend">
+    <div class="legend-title">Knowledge Types</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E53E3E"></div> Kernel / Primitives</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4A9EE5"></div> Structural</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#68D391"></div> Declarative</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div> Procedural</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ECC94B"></div> Heuristic</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#A855F7"></div> Meta</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-stat">Entities: <strong id="stat-entities">0</strong></div>
+  <div class="footer-stat">Edges: <strong id="stat-edges">0</strong></div>
+  <div class="footer-stat">Assertions: <strong id="stat-assertions">0</strong></div>
+  <div class="footer-stat">Microtheories: <strong id="stat-mts">0</strong></div>
+  <div class="footer-spacer"></div>
+  <div class="footer-stat">Phase <span class="key-hint">1</span>-<span class="key-hint">6</span> filter &nbsp; <span class="key-hint">0</span> all</div>
+  <div class="footer-spacer"></div>
+  <div class="footer-brand">Powered by deck.gl + luma.gl</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// KRF PARSER (from visualizer)
+// ════════════════════════════════════════════════════════════════
+
+class KRFParser {
+  constructor() { this.currentMicrotheory = null; }
+
+  tokenize(text) {
+    var tokens = [], i = 0;
+    while (i < text.length) {
+      var ch = text[i];
+      if (/\s/.test(ch)) { i++; continue; }
+      if (ch === ';') {
+        var start = i;
+        while (i < text.length && text[i] !== '\n') i++;
+        tokens.push({ type: 'comment', value: text.slice(start, i).replace(/^;+\s*/, '') });
+        continue;
+      }
+      if (ch === '(') { tokens.push({ type: 'lparen' }); i++; continue; }
+      if (ch === ')') { tokens.push({ type: 'rparen' }); i++; continue; }
+      if (ch === '"') {
+        i++;
+        var str = '';
+        while (i < text.length && text[i] !== '"') {
+          if (text[i] === '\\' && i + 1 < text.length) { str += text[i + 1]; i += 2; }
+          else { str += text[i]; i++; }
+        }
+        i++;
+        tokens.push({ type: 'string', value: str });
+        continue;
+      }
+      var sym = '';
+      while (i < text.length && !/[\s()";\r\n]/.test(text[i])) { sym += text[i]; i++; }
+      if (sym) {
+        if (/^-?\d+(\.\d+)?$/.test(sym)) tokens.push({ type: 'number', value: parseFloat(sym) });
+        else tokens.push({ type: 'symbol', value: sym });
+      }
+    }
+    return tokens;
+  }
+
+  parseExpr(tokens, pos) {
+    if (pos >= tokens.length) return [null, pos];
+    var tok = tokens[pos];
+    if (tok.type === 'lparen') {
+      var list = []; pos++;
+      while (pos < tokens.length && tokens[pos].type !== 'rparen') {
+        var r = this.parseExpr(tokens, pos);
+        if (r[0] !== null) list.push(r[0]);
+        pos = r[1];
+      }
+      pos++;
+      return [list, pos];
+    }
+    if (tok.type === 'rparen') return [null, pos + 1];
+    if (tok.type === 'comment') return [null, pos + 1];
+    return [{ type: tok.type, value: tok.value }, pos + 1];
+  }
+
+  av(node) {
+    if (!node || Array.isArray(node)) return null;
+    return node.value !== undefined ? node.value : null;
+  }
+
+  parseFile(text, fileName) {
+    var result = { fileName: fileName, microtheory: null, assertions: [], rules: [], comments: new Map() };
+    var tokens = this.tokenize(text);
+    this.currentMicrotheory = null;
+    var pos = 0;
+    while (pos < tokens.length) {
+      if (tokens[pos].type === 'comment') { pos++; continue; }
+      var r = this.parseExpr(tokens, pos);
+      pos = r[1];
+      if (!r[0] || !Array.isArray(r[0]) || r[0].length === 0) continue;
+      this._interpret(r[0], result);
+    }
+    return result;
+  }
+
+  _interpret(expr, result) {
+    if (!Array.isArray(expr) || expr.length === 0) return;
+    var head = this.av(expr[0]);
+    if (!head) return;
+    if (head === 'in-microtheory' && expr.length >= 2) {
+      this.currentMicrotheory = this.av(expr[1]);
+      result.microtheory = this.currentMicrotheory;
+      return;
+    }
+    if (head === 'comment' && expr.length >= 3) {
+      var target = this.av(expr[1]), text = this.av(expr[2]);
+      if (target && text) result.comments.set(target, text);
+      result.assertions.push({ predicate: 'comment', args: expr.slice(1).map(function(a) { return this.av(a); }.bind(this)).filter(Boolean), microtheory: this.currentMicrotheory, file: result.fileName });
+      return;
+    }
+    if (head === 'implies' && expr.length >= 3) {
+      result.rules.push({ file: result.fileName, microtheory: this.currentMicrotheory });
+      return;
+    }
+    var args = [];
+    for (var i = 1; i < expr.length; i++) {
+      var val = this.av(expr[i]);
+      if (val !== null) args.push(val);
+    }
+    result.assertions.push({ predicate: head, args: args, microtheory: this.currentMicrotheory, file: result.fileName });
+  }
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// KNOWLEDGE GRAPH BUILDER
+// ════════════════════════════════════════════════════════════════
+
+var KB = {
+  entities: new Map(),
+  edges: [],
+  comments: new Map(),
+  microtheories: new Set(),
+  assertions: 0,
+  rules: 0,
+  files: 0,
+  isaMap: new Map(),
+  genlsMap: new Map(),
+  genlMtMap: new Map()
+};
+
+// Knowledge type colors
+var KC = {
+  Kernel: '#E53E3E',
+  StructuralKnowledge: '#4A9EE5',
+  DeclarativeKnowledge: '#68D391',
+  ProceduralKnowledge: '#F59E0B',
+  HeuristicKnowledge: '#ECC94B',
+  MetaKnowledge: '#A855F7',
+  default: '#888888'
+};
+
+// Boot phase mapping based on file paths
+var PHASE_MAP = {
+  'kernel/': { phase: 1, color: '#E53E3E', name: 'Kernel' },
+  'spine/temporal/': { phase: 2, color: '#F59E0B', name: 'Temporal Spine' },
+  'spine/spatial/': { phase: 3, color: '#4A9EE5', name: 'Spatial Planes' },
+  'knowledge/': { phase: 4, color: '#A855F7', name: 'Knowledge Base' },
+  'reference/': { phase: 5, color: '#C4A8A8', name: 'Reference' },
+  'agent/': { phase: 6, color: '#68D391', name: 'Agent Identity' }
+};
+
+function getPhase(file) {
+  for (var prefix in PHASE_MAP) {
+    if (file.indexOf(prefix) !== -1) return PHASE_MAP[prefix];
+  }
+  return { phase: 4, color: '#A855F7', name: 'Knowledge Base' };
+}
+
+function getKnowledgeType(entityName) {
+  var types = KB.isaMap.get(entityName) || new Set();
+  var genls = KB.genlsMap.get(entityName) || new Set();
+  // Walk isa + genls chains
+  var all = new Set();
+  var queue = Array.from(types);
+  while (queue.length > 0) { var c = queue.pop(); if (all.has(c)) continue; all.add(c); var p = KB.isaMap.get(c); if (p) p.forEach(function(x) { queue.push(x); }); }
+  queue = Array.from(genls);
+  while (queue.length > 0) { var c = queue.pop(); if (all.has(c)) continue; all.add(c); var p = KB.genlsMap.get(c); if (p) p.forEach(function(x) { queue.push(x); }); }
+
+  if (all.has('Primitive') || entityName === 'FACT') return 'Kernel';
+  if (all.has('EDGE') || all.has('StructuralKnowledge')) return 'StructuralKnowledge';
+  if (all.has('NODE') || all.has('DeclarativeKnowledge')) return 'DeclarativeKnowledge';
+  if (all.has('PROTOCOL') || all.has('ProceduralKnowledge')) return 'ProceduralKnowledge';
+  if (all.has('METRIC') || all.has('SIGNAL') || all.has('HeuristicKnowledge')) return 'HeuristicKnowledge';
+  if (all.has('MetaKnowledge') || entityName.endsWith('Mt') || KB.microtheories.has(entityName)) return 'MetaKnowledge';
+
+  // Fallback: infer from file path
+  var ent = KB.entities.get(entityName);
+  if (ent) {
+    var f = ent.file;
+    if (f.indexOf('structural') !== -1) return 'StructuralKnowledge';
+    if (f.indexOf('declarative') !== -1) return 'DeclarativeKnowledge';
+    if (f.indexOf('procedural') !== -1) return 'ProceduralKnowledge';
+    if (f.indexOf('heuristic') !== -1) return 'HeuristicKnowledge';
+    if (f.indexOf('meta') !== -1) return 'MetaKnowledge';
+    if (f.indexOf('kernel') !== -1) return 'Kernel';
+  }
+  return null;
+}
+
+function buildGraph(parsedFiles) {
+  var skip = new Set(['Thing', 'and', 'or', 'not', 'thereExists', 'implies', 'defaultTrue', 'True', 'False', 'Integer', 'String']);
+  var edgeList = [];
+
+  for (var fi = 0; fi < parsedFiles.length; fi++) {
+    var pf = parsedFiles[fi];
+    KB.files++;
+    KB.assertions += pf.assertions.length;
+    KB.rules += pf.rules.length;
+    if (pf.microtheory) KB.microtheories.add(pf.microtheory);
+    for (var ci = pf.comments.entries(), c = ci.next(); !c.done; c = ci.next()) {
+      KB.comments.set(c.value[0], c.value[1]);
+    }
+
+    for (var ai = 0; ai < pf.assertions.length; ai++) {
+      var a = pf.assertions[ai];
+      if (a.predicate === 'isa' && a.args.length >= 2) {
+        var child = a.args[0], parent = a.args[1];
+        if (skip.has(child) || skip.has(parent)) continue;
+        if (typeof child !== 'string' || typeof parent !== 'string') continue;
+        if (child.startsWith('?') || parent.startsWith('?')) continue;
+        ensureEntity(child, pf.fileName);
+        ensureEntity(parent, pf.fileName);
+        if (!KB.isaMap.has(child)) KB.isaMap.set(child, new Set());
+        KB.isaMap.get(child).add(parent);
+        edgeList.push({ source: child, target: parent, type: 'isa' });
+      }
+      if (a.predicate === 'genls' && a.args.length >= 2) {
+        var child = a.args[0], parent = a.args[1];
+        if (skip.has(child) || skip.has(parent)) continue;
+        if (typeof child !== 'string' || typeof parent !== 'string') continue;
+        if (child.startsWith('?') || parent.startsWith('?')) continue;
+        ensureEntity(child, pf.fileName);
+        ensureEntity(parent, pf.fileName);
+        if (!KB.genlsMap.has(child)) KB.genlsMap.set(child, new Set());
+        KB.genlsMap.get(child).add(parent);
+        edgeList.push({ source: child, target: parent, type: 'genls' });
+      }
+      if (a.predicate === 'genlMt' && a.args.length >= 2) {
+        var child = a.args[0], parent = a.args[1];
+        if (typeof child !== 'string' || typeof parent !== 'string') continue;
+        ensureEntity(child, pf.fileName);
+        ensureEntity(parent, pf.fileName);
+        KB.microtheories.add(child);
+        KB.microtheories.add(parent);
+        if (!KB.genlMtMap.has(child)) KB.genlMtMap.set(child, new Set());
+        KB.genlMtMap.get(child).add(parent);
+        edgeList.push({ source: child, target: parent, type: 'genlMt' });
+      }
+    }
+  }
+
+  // Deduplicate edges
+  var edgeSet = new Set();
+  KB.edges = [];
+  for (var i = 0; i < edgeList.length; i++) {
+    var e = edgeList[i];
+    var key = e.source + '|' + e.type + '|' + e.target;
+    if (!edgeSet.has(key)) {
+      edgeSet.add(key);
+      KB.edges.push(e);
+    }
+  }
+
+  // Compute derived properties
+  KB.entities.forEach(function(ent, name) {
+    ent.knowledgeType = getKnowledgeType(name);
+    ent.color = KC[ent.knowledgeType] || KC.default;
+    ent.phase = getPhase(ent.file);
+    ent.comment = KB.comments.get(name) || '';
+    // Connection count for sizing
+    var conn = 0;
+    for (var j = 0; j < KB.edges.length; j++) {
+      if (KB.edges[j].source === name || KB.edges[j].target === name) conn++;
+    }
+    ent.connections = conn;
+  });
+}
+
+function ensureEntity(name, file) {
+  if (!KB.entities.has(name)) {
+    KB.entities.set(name, { name: name, file: file, x: 0, y: 0, knowledgeType: null, color: '#888', phase: null, comment: '', connections: 0 });
+  }
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// FORCE-DIRECTED LAYOUT
+// ════════════════════════════════════════════════════════════════
+
+function forceLayout(width, height) {
+  var nodes = [];
+  var nodeIndex = {};
+  var idx = 0;
+
+  KB.entities.forEach(function(ent, name) {
+    nodeIndex[name] = idx;
+    // Initial random position
+    var angle = Math.random() * Math.PI * 2;
+    var radius = Math.random() * Math.min(width, height) * 0.3;
+    nodes.push({
+      name: name,
+      x: width / 2 + Math.cos(angle) * radius,
+      y: height / 2 + Math.sin(angle) * radius,
+      vx: 0,
+      vy: 0,
+      entity: ent
+    });
+    idx++;
+  });
+
+  // Phase/type clustering centers
+  var phaseCenters = {};
+  var phaseAngleStep = (Math.PI * 2) / 6;
+  for (var p = 1; p <= 6; p++) {
+    var a = phaseAngleStep * (p - 1) - Math.PI / 2;
+    phaseCenters[p] = {
+      x: width / 2 + Math.cos(a) * Math.min(width, height) * 0.2,
+      y: height / 2 + Math.sin(a) * Math.min(width, height) * 0.2
+    };
+  }
+
+  var ITERATIONS = 150;
+  var REPULSION = 2000;
+  var ATTRACTION = 0.008;
+  var CLUSTER_PULL = 0.002;
+  var GRAVITY = 0.001;
+  var DAMPING = 0.92;
+  var MIN_DIST = 20;
+
+  for (var iter = 0; iter < ITERATIONS; iter++) {
+    var temp = 1 - iter / ITERATIONS; // cooling
+
+    // Repulsion between all node pairs (Barnes-Hut could optimize but 200 nodes is fine)
+    for (var i = 0; i < nodes.length; i++) {
+      for (var j = i + 1; j < nodes.length; j++) {
+        var dx = nodes[j].x - nodes[i].x;
+        var dy = nodes[j].y - nodes[i].y;
+        var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (dist < MIN_DIST) dist = MIN_DIST;
+        var force = REPULSION / (dist * dist) * temp;
+        var fx = (dx / dist) * force;
+        var fy = (dy / dist) * force;
+        nodes[i].vx -= fx;
+        nodes[i].vy -= fy;
+        nodes[j].vx += fx;
+        nodes[j].vy += fy;
+      }
+    }
+
+    // Attraction along edges
+    for (var e = 0; e < KB.edges.length; e++) {
+      var edge = KB.edges[e];
+      var si = nodeIndex[edge.source];
+      var ti = nodeIndex[edge.target];
+      if (si === undefined || ti === undefined) continue;
+      var dx = nodes[ti].x - nodes[si].x;
+      var dy = nodes[ti].y - nodes[si].y;
+      var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      var force = dist * ATTRACTION * temp;
+      var fx = (dx / dist) * force;
+      var fy = (dy / dist) * force;
+      nodes[si].vx += fx;
+      nodes[si].vy += fy;
+      nodes[ti].vx -= fx;
+      nodes[ti].vy -= fy;
+    }
+
+    // Cluster pull toward phase centers
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var phase = n.entity.phase ? n.entity.phase.phase : 4;
+      var center = phaseCenters[phase] || phaseCenters[4];
+      var dx = center.x - n.x;
+      var dy = center.y - n.y;
+      n.vx += dx * CLUSTER_PULL * temp;
+      n.vy += dy * CLUSTER_PULL * temp;
+    }
+
+    // Gravity toward center
+    for (var i = 0; i < nodes.length; i++) {
+      var dx = width / 2 - nodes[i].x;
+      var dy = height / 2 - nodes[i].y;
+      nodes[i].vx += dx * GRAVITY;
+      nodes[i].vy += dy * GRAVITY;
+    }
+
+    // Apply velocity with damping
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].vx *= DAMPING;
+      nodes[i].vy *= DAMPING;
+      nodes[i].x += nodes[i].vx;
+      nodes[i].y += nodes[i].vy;
+    }
+  }
+
+  // Compute bounding box and rescale to fill viewport with padding
+  var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].x < minX) minX = nodes[i].x;
+    if (nodes[i].x > maxX) maxX = nodes[i].x;
+    if (nodes[i].y < minY) minY = nodes[i].y;
+    if (nodes[i].y > maxY) maxY = nodes[i].y;
+  }
+  var rangeX = maxX - minX || 1;
+  var rangeY = maxY - minY || 1;
+  var pad = 80;
+  var scaleX = (width - pad * 2) / rangeX;
+  var scaleY = (height - pad * 2) / rangeY;
+  var scale = Math.min(scaleX, scaleY);
+
+  for (var i = 0; i < nodes.length; i++) {
+    var nx = (nodes[i].x - minX) * scale + pad;
+    var ny = (nodes[i].y - minY) * scale + pad;
+    // Store as centered coordinates for deck.gl (offset from center)
+    nodes[i].entity.x = nx - width / 2;
+    nodes[i].entity.y = -(ny - height / 2); // flip Y for screen coords
+  }
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// DECK.GL VISUALIZATION
+// ════════════════════════════════════════════════════════════════
+
+var deckInstance = null;
+var showHeatmap = true;
+var showArcs = true;
+var activePhaseFilter = 0; // 0 = all
+var highlightedNode = null;
+var bootAnimPhase = 0; // 0-7 during boot, 7 = done
+var bootStartTime = 0;
+
+function hexToRgb(hex) {
+  var r = parseInt(hex.slice(1, 3), 16);
+  var g = parseInt(hex.slice(3, 5), 16);
+  var b = parseInt(hex.slice(5, 7), 16);
+  return [r, g, b];
+}
+
+function getNodeData() {
+  var nodes = [];
+  KB.entities.forEach(function(ent, name) {
+    nodes.push(ent);
+  });
+  return nodes;
+}
+
+function getEdgeData() {
+  return KB.edges.map(function(e) {
+    var s = KB.entities.get(e.source);
+    var t = KB.entities.get(e.target);
+    if (!s || !t) return null;
+    return { source: e.source, target: e.target, type: e.type, sx: s.x, sy: s.y, tx: t.x, ty: t.y, sourcePhase: s.phase ? s.phase.phase : 4, targetPhase: t.phase ? t.phase.phase : 4 };
+  }).filter(Boolean);
+}
+
+function isNodeVisible(ent) {
+  if (activePhaseFilter > 0 && ent.phase && ent.phase.phase !== activePhaseFilter) return false;
+  if (bootAnimPhase < 7) {
+    var nodePhase = ent.phase ? ent.phase.phase : 4;
+    if (nodePhase > bootAnimPhase) return false;
+  }
+  return true;
+}
+
+function isEdgeVisible(edge) {
+  if (activePhaseFilter > 0 && edge.sourcePhase !== activePhaseFilter && edge.targetPhase !== activePhaseFilter) return false;
+  if (bootAnimPhase < 7) {
+    if (edge.sourcePhase > bootAnimPhase || edge.targetPhase > bootAnimPhase) return false;
+  }
+  return true;
+}
+
+function buildLayers() {
+  var nodeData = getNodeData();
+  var edgeData = getEdgeData();
+  var layers = [];
+  var now = Date.now();
+
+  // 1. HeatmapLayer — background glow
+  if (showHeatmap) {
+    layers.push(new deck.HeatmapLayer({
+      id: 'heatmap',
+      data: nodeData.filter(isNodeVisible),
+      getPosition: function(d) { return [d.x, d.y]; },
+      getWeight: function(d) { return Math.max(1, d.connections); },
+      radiusPixels: 80,
+      intensity: 0.6,
+      threshold: 0.05,
+      colorRange: [
+        [15, 15, 15], [40, 20, 40], [80, 30, 60],
+        [140, 40, 80], [200, 60, 60], [229, 62, 62]
+      ],
+      opacity: 0.4,
+      coordinateSystem: deck.COORDINATE_SYSTEM.CARTESIAN
+    }));
+  }
+
+  // 2. ArcLayer — edges
+  if (showArcs) {
+    layers.push(new deck.ArcLayer({
+      id: 'arcs',
+      data: edgeData.filter(isEdgeVisible),
+      getSourcePosition: function(d) { return [d.sx, d.sy]; },
+      getTargetPosition: function(d) { return [d.tx, d.ty]; },
+      getSourceColor: function(d) {
+        if (highlightedNode && d.source !== highlightedNode && d.target !== highlightedNode) return [60, 60, 60, 30];
+        if (d.type === 'genlMt') return [168, 85, 247, 180];
+        if (d.type === 'genls') return [200, 200, 200, 120];
+        return [120, 120, 120, 80]; // isa
+      },
+      getTargetColor: function(d) {
+        if (highlightedNode && d.source !== highlightedNode && d.target !== highlightedNode) return [60, 60, 60, 30];
+        if (d.type === 'genlMt') return [168, 85, 247, 120];
+        if (d.type === 'genls') return [200, 200, 200, 80];
+        return [120, 120, 120, 50];
+      },
+      getWidth: function(d) {
+        if (highlightedNode && (d.source === highlightedNode || d.target === highlightedNode)) return 3;
+        if (d.type === 'genlMt') return 2;
+        if (d.type === 'genls') return 1.5;
+        return 1;
+      },
+      getHeight: 0.3,
+      greatCircle: false,
+      coordinateSystem: deck.COORDINATE_SYSTEM.CARTESIAN,
+      pickable: false,
+      updateTriggers: {
+        getSourceColor: [highlightedNode],
+        getTargetColor: [highlightedNode],
+        getWidth: [highlightedNode]
+      }
+    }));
+  }
+
+  // 3. ScatterplotLayer — entity nodes
+  layers.push(new deck.ScatterplotLayer({
+    id: 'nodes',
+    data: nodeData.filter(isNodeVisible),
+    getPosition: function(d) { return [d.x, d.y]; },
+    getRadius: function(d) {
+      var base = 4 + Math.min(d.connections * 1.5, 16);
+      if (highlightedNode === d.name) return base * 1.5;
+      if (highlightedNode && !isConnectedTo(d.name, highlightedNode)) return base * 0.6;
+      return base;
+    },
+    getFillColor: function(d) {
+      var rgb = hexToRgb(d.color);
+      if (highlightedNode && highlightedNode !== d.name && !isConnectedTo(d.name, highlightedNode)) {
+        return [rgb[0], rgb[1], rgb[2], 40];
+      }
+      return [rgb[0], rgb[1], rgb[2], 220];
+    },
+    getLineColor: function(d) {
+      if (highlightedNode === d.name) return [255, 255, 255, 200];
+      return [0, 0, 0, 0];
+    },
+    lineWidthMinPixels: 0,
+    lineWidthMaxPixels: 2,
+    stroked: true,
+    pickable: true,
+    radiusMinPixels: 3,
+    radiusMaxPixels: 30,
+    coordinateSystem: deck.COORDINATE_SYSTEM.CARTESIAN,
+    updateTriggers: {
+      getRadius: [highlightedNode],
+      getFillColor: [highlightedNode],
+      getLineColor: [highlightedNode]
+    }
+  }));
+
+  // 4. TextLayer — labels for high-degree nodes
+  layers.push(new deck.TextLayer({
+    id: 'labels',
+    data: nodeData.filter(function(d) {
+      if (!isNodeVisible(d)) return false;
+      if (highlightedNode === d.name) return true;
+      if (highlightedNode && isConnectedTo(d.name, highlightedNode)) return true;
+      return d.connections >= 4;
+    }),
+    getPosition: function(d) { return [d.x, d.y]; },
+    getText: function(d) { return d.name; },
+    getSize: function(d) {
+      if (highlightedNode === d.name) return 14;
+      if (d.connections >= 8) return 12;
+      return 10;
+    },
+    getColor: function(d) {
+      if (highlightedNode && highlightedNode !== d.name && !isConnectedTo(d.name, highlightedNode)) return [200, 200, 200, 40];
+      return [230, 230, 230, 220];
+    },
+    getAngle: 0,
+    getTextAnchor: 'middle',
+    getAlignmentBaseline: 'top',
+    getPixelOffset: [0, 14],
+    fontFamily: 'Inter, sans-serif',
+    fontWeight: 600,
+    coordinateSystem: deck.COORDINATE_SYSTEM.CARTESIAN,
+    updateTriggers: {
+      getSize: [highlightedNode],
+      getColor: [highlightedNode]
+    }
+  }));
+
+  // 5. Pulsing rings on protocol nodes
+  var pulse = (Math.sin(now / 400) + 1) / 2; // 0 to 1
+  layers.push(new deck.ScatterplotLayer({
+    id: 'pulse-rings',
+    data: nodeData.filter(function(d) {
+      if (!isNodeVisible(d)) return false;
+      return d.knowledgeType === 'ProceduralKnowledge' || d.knowledgeType === 'Kernel';
+    }),
+    getPosition: function(d) { return [d.x, d.y]; },
+    getRadius: function(d) {
+      var base = 6 + Math.min(d.connections * 1.5, 16);
+      return base + 4 + pulse * 4;
+    },
+    getFillColor: [0, 0, 0, 0],
+    getLineColor: function(d) {
+      var rgb = hexToRgb(d.color);
+      var alpha = Math.floor(40 + pulse * 40);
+      if (highlightedNode && highlightedNode !== d.name) alpha = 10;
+      return [rgb[0], rgb[1], rgb[2], alpha];
+    },
+    lineWidthMinPixels: 1,
+    lineWidthMaxPixels: 2,
+    stroked: true,
+    filled: false,
+    pickable: false,
+    radiusMinPixels: 5,
+    radiusMaxPixels: 40,
+    coordinateSystem: deck.COORDINATE_SYSTEM.CARTESIAN,
+    updateTriggers: {
+      getRadius: [now],
+      getLineColor: [now, highlightedNode]
+    }
+  }));
+
+  return layers;
+}
+
+function isConnectedTo(name, target) {
+  for (var i = 0; i < KB.edges.length; i++) {
+    var e = KB.edges[i];
+    if ((e.source === name && e.target === target) || (e.target === name && e.source === target)) return true;
+  }
+  return false;
+}
+
+function initDeck(width, height) {
+  deckInstance = new deck.Deck({
+    parent: document.getElementById('deck-canvas'),
+    initialViewState: {
+      target: [0, 0],
+      zoom: 0,
+      minZoom: -3,
+      maxZoom: 6
+    },
+    controller: { dragPan: true, scrollZoom: true, doubleClickZoom: true },
+    views: new deck.OrthographicView(),
+    layers: buildLayers(),
+    getTooltip: null,
+    onHover: onHover,
+    onClick: onClick
+  });
+
+  // Start pulse animation loop
+  requestAnimationFrame(animationLoop);
+}
+
+function animationLoop() {
+  if (deckInstance) {
+    deckInstance.setProps({ layers: buildLayers() });
+  }
+  requestAnimationFrame(animationLoop);
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// INTERACTION
+// ════════════════════════════════════════════════════════════════
+
+function onHover(info) {
+  var tooltip = document.getElementById('tooltip');
+  if (info.object) {
+    var d = info.object;
+    document.getElementById('tip-name').textContent = d.name;
+    document.getElementById('tip-comment').textContent = d.comment ? d.comment.substring(0, 200) : '';
+    document.getElementById('tip-file').textContent = d.file || '';
+
+    var badges = document.getElementById('tip-badges');
+    badges.innerHTML = '';
+    if (d.knowledgeType) {
+      var b = document.createElement('span');
+      b.className = 'tooltip-badge';
+      var ktLabel = { Kernel: 'Kernel', StructuralKnowledge: 'Structural', DeclarativeKnowledge: 'Declarative', ProceduralKnowledge: 'Procedural', HeuristicKnowledge: 'Heuristic', MetaKnowledge: 'Meta' };
+      b.textContent = ktLabel[d.knowledgeType] || d.knowledgeType;
+      b.style.background = d.color + '20';
+      b.style.color = d.color;
+      badges.appendChild(b);
+    }
+    if (d.phase) {
+      var b2 = document.createElement('span');
+      b2.className = 'tooltip-badge';
+      b2.textContent = 'Phase ' + d.phase.phase;
+      b2.style.background = d.phase.color + '20';
+      b2.style.color = d.phase.color;
+      badges.appendChild(b2);
+    }
+
+    tooltip.style.display = 'block';
+    var x = info.x + 16;
+    var y = info.y + 16;
+    // Keep tooltip in viewport
+    var container = document.querySelector('.canvas-container');
+    if (x + 320 > container.offsetWidth) x = info.x - 330;
+    if (y + 150 > container.offsetHeight) y = info.y - 160;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  } else {
+    tooltip.style.display = 'none';
+  }
+}
+
+function onClick(info) {
+  if (info.object) {
+    highlightedNode = highlightedNode === info.object.name ? null : info.object.name;
+  } else {
+    highlightedNode = null;
+  }
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// BOOT ANIMATION
+// ════════════════════════════════════════════════════════════════
+
+var PHASE_NAMES = ['', 'Kernel', 'Temporal Spine', 'Spatial Planes', 'Knowledge Base', 'Reference', 'Agent Identity'];
+var PHASE_COLORS = ['', '#E53E3E', '#F59E0B', '#4A9EE5', '#A855F7', '#C4A8A8', '#68D391'];
+var PHASE_TIMINGS = [0, 0, 1000, 2000, 3000, 5000, 6000]; // ms when each phase starts
+
+function startBootAnimation() {
+  bootAnimPhase = 0;
+  bootStartTime = Date.now();
+  highlightedNode = null;
+  activePhaseFilter = 0;
+
+  // Reset dots
+  for (var i = 0; i < 6; i++) {
+    var dot = document.getElementById('pd-' + i);
+    dot.classList.remove('lit');
+    dot.style.background = '#222';
+    dot.style.boxShadow = 'none';
+  }
+  document.getElementById('phase-label').textContent = 'Booting...';
+  document.getElementById('phase-label').classList.remove('ready');
+
+  runBootPhase();
+}
+
+function runBootPhase() {
+  var elapsed = Date.now() - bootStartTime;
+
+  // Determine current phase
+  var phase = 0;
+  for (var p = 1; p <= 6; p++) {
+    if (elapsed >= PHASE_TIMINGS[p]) phase = p;
+  }
+
+  if (phase > bootAnimPhase) {
+    bootAnimPhase = phase;
+    // Light up dot
+    var dot = document.getElementById('pd-' + (phase - 1));
+    dot.classList.add('lit');
+    dot.style.background = PHASE_COLORS[phase];
+    dot.style.boxShadow = '0 0 8px ' + PHASE_COLORS[phase] + '60';
+    document.getElementById('phase-label').textContent = 'Loading ' + PHASE_NAMES[phase] + '...';
+  }
+
+  if (elapsed >= 7000) {
+    bootAnimPhase = 7;
+    document.getElementById('phase-label').textContent = 'Container Operational';
+    document.getElementById('phase-label').classList.add('ready');
+    return;
+  }
+
+  requestAnimationFrame(runBootPhase);
+}
+
+function replayBootAnimation() {
+  startBootAnimation();
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// KEYBOARD SHORTCUTS
+// ════════════════════════════════════════════════════════════════
+
+document.addEventListener('keydown', function(e) {
+  var key = e.key.toLowerCase();
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  if (key === 'h') {
+    showHeatmap = !showHeatmap;
+    document.getElementById('btn-heatmap').classList.toggle('active', showHeatmap);
+  }
+  if (key === 'a') {
+    showArcs = !showArcs;
+    document.getElementById('btn-arcs').classList.toggle('active', showArcs);
+  }
+  if (key === 'r') {
+    replayBootAnimation();
+  }
+  if (key >= '0' && key <= '6') {
+    activePhaseFilter = parseInt(key);
+    highlightedNode = null;
+  }
+});
+
+// Button handlers
+document.getElementById('btn-heatmap').addEventListener('click', function() {
+  showHeatmap = !showHeatmap;
+  this.classList.toggle('active', showHeatmap);
+});
+document.getElementById('btn-arcs').addEventListener('click', function() {
+  showArcs = !showArcs;
+  this.classList.toggle('active', showArcs);
+});
+document.getElementById('btn-replay').addEventListener('click', function() {
+  replayBootAnimation();
+});
+
+
+// ════════════════════════════════════════════════════════════════
+// CORPUS LOADER
+// ════════════════════════════════════════════════════════════════
+
+var KRF_MANIFEST = [
+  'README.krf',
+  'kernel/primitives.krf', 'kernel/types.krf', 'kernel/valuation-layer.krf', 'kernel/boot.krf',
+  'knowledge/structural/taxonomy.krf', 'knowledge/structural/mereology.krf', 'knowledge/structural/relations.krf',
+  'knowledge/declarative/entities.krf', 'knowledge/declarative/attributes.krf',
+  'knowledge/procedural/protocols.krf', 'knowledge/procedural/constraints.krf', 'knowledge/procedural/storytelling.krf',
+  'knowledge/procedural/pitch-narratives.krf', 'knowledge/procedural/market-intelligence.krf',
+  'knowledge/procedural/visualization.krf',
+  'knowledge/heuristic/defaults.krf', 'knowledge/heuristic/thresholds.krf',
+  'knowledge/meta/schema.krf', 'knowledge/meta/provenance.krf', 'knowledge/meta/completeness.krf',
+  'spine/temporal/epochs.krf', 'spine/temporal/units.krf', 'spine/temporal/lifecycle.krf', 'spine/temporal/encoding.krf',
+  'spine/spatial/geospatial.krf', 'spine/spatial/topological.krf', 'spine/spatial/theoretical.krf',
+  'reference/knowledge-primitives.krf', 'reference/convex-hull.krf', 'reference/convex-hull-library.krf',
+  'agent/identity.krf', 'agent/observer.krf', 'agent/directives.krf'
+];
+
+async function loadCorpus() {
+  var parser = new KRFParser();
+  var parsedFiles = [];
+  var loadingText = document.getElementById('loading-text');
+  var base = window.location.pathname.includes('/showcase') ? '../' : '';
+  var loaded = 0, failed = 0;
+
+  for (var i = 0; i < KRF_MANIFEST.length; i++) {
+    var path = KRF_MANIFEST[i];
+    try {
+      var resp = await fetch(base + path);
+      if (!resp.ok) throw new Error(resp.status);
+      var text = await resp.text();
+      var parsed = parser.parseFile(text, path);
+      parsedFiles.push(parsed);
+      loaded++;
+    } catch (e) {
+      failed++;
+      console.warn('Failed to fetch ' + path + ':', e);
+    }
+    loadingText.textContent = 'Loading ' + (loaded + failed) + '/' + KRF_MANIFEST.length + (failed ? ' (' + failed + ' failed)' : '') + '...';
+  }
+
+  if (parsedFiles.length === 0) {
+    loadingText.textContent = 'No files loaded. Serve from charlotte-os/ root.';
+    return;
+  }
+
+  loadingText.textContent = 'Building knowledge graph...';
+  await new Promise(function(r) { setTimeout(r, 50); });
+
+  buildGraph(parsedFiles);
+
+  loadingText.textContent = 'Computing layout...';
+  await new Promise(function(r) { setTimeout(r, 50); });
+
+  var container = document.querySelector('.canvas-container');
+  forceLayout(container.offsetWidth, container.offsetHeight);
+
+  // Update stats
+  document.getElementById('stat-entities').textContent = KB.entities.size;
+  document.getElementById('stat-edges').textContent = KB.edges.length;
+  document.getElementById('stat-assertions').textContent = KB.assertions;
+  document.getElementById('stat-mts').textContent = KB.microtheories.size;
+
+  // Initialize deck.gl
+  loadingText.textContent = 'Rendering...';
+  await new Promise(function(r) { setTimeout(r, 50); });
+
+  initDeck(container.offsetWidth, container.offsetHeight);
+
+  // Hide loading overlay and start boot animation
+  document.getElementById('loading').classList.add('hidden');
+
+  // Set initial toggle states
+  document.getElementById('btn-heatmap').classList.add('active');
+  document.getElementById('btn-arcs').classList.add('active');
+
+  startBootAnimation();
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.protocol.startsWith('http')) {
+    loadCorpus();
+  } else {
+    document.getElementById('loading-text').textContent = 'Serve via HTTP — python -m http.server 8000';
+  }
+});
+</script>
+
+</body>
+</html>

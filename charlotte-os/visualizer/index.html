@@ -22,22 +22,46 @@
     /* ── Dropzone ── */
     #dropzone {
       display: flex; flex-direction: column; align-items: center;
-      justify-content: center; height: 100vh; gap: 20px;
+      justify-content: center; height: 100vh; gap: 16px; padding: 24px;
     }
     #dropzone.dragover { background: rgba(168,85,247,0.05); }
     .drop-icon {
-      width: 80px; height: 80px; border: 3px dashed #333; border-radius: 20px;
+      width: 64px; height: 64px; border: 3px dashed #333; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 32px; color: #555; transition: border-color 0.2s, color 0.2s;
+      font-size: 28px; color: #555; transition: border-color 0.2s, color 0.2s;
     }
     .dragover .drop-icon { border-color: #A855F7; color: #A855F7; }
-    .drop-title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .drop-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
     .drop-sub { font-size: 13px; color: #666; }
+    .drop-actions { display: flex; gap: 10px; margin-top: 4px; }
     .drop-btn {
       padding: 10px 24px; background: #A855F7; color: #fff; border: none;
       border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background 0.15s;
     }
     .drop-btn:hover { background: #9333EA; }
+    .drop-divider {
+      display: flex; align-items: center; gap: 16px; width: 100%; max-width: 640px;
+      margin: 4px 0; color: #444; font-size: 11px; font-weight: 600;
+    }
+    .drop-divider::before, .drop-divider::after { content: ''; flex: 1; height: 1px; background: #222; }
+    .demo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 640px; width: 100%; }
+    .demo-card {
+      background: #141414; border: 1px solid #222; border-radius: 10px; padding: 16px 14px;
+      cursor: pointer; transition: all 0.15s; text-align: center;
+    }
+    .demo-card:hover { border-color: #444; background: #1A1A1A; transform: translateY(-2px); }
+    .demo-card-icon { font-size: 28px; margin-bottom: 8px; }
+    .demo-card-title { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .demo-card-desc { font-size: 10px; color: #666; line-height: 1.4; }
+    .demo-card.corpus { border-color: #68D39140; }
+    .demo-card.corpus:hover { border-color: #68D391; }
+    .demo-card.corpus .demo-card-title { color: #68D391; }
+    .drop-convert-link {
+      font-size: 12px; color: #666; margin-top: 4px; cursor: pointer;
+      transition: color 0.15s;
+    }
+    .drop-convert-link:hover { color: #A855F7; }
     /* ── Main UI ── */
     #main-ui { display: none; height: 100vh; flex-direction: column; }
     /* ── Top Bar ── */
@@ -53,6 +77,7 @@
     }
     .tab-btn:hover { color: #ccc; background: #1A1A1A; }
     .tab-btn.active { color: #E8E0E0; background: #1A1A1A; border-color: #333; }
+    .tab-sep { width: 1px; height: 20px; background: #222; margin: 0 4px; }
     .top-spacer { flex: 1; }
     .top-btn {
       padding: 5px 12px; background: #1A1A1A; border: 1px solid #333;
@@ -126,6 +151,71 @@
     .ed-issue-info { background: #4A9EE515; color: #4A9EE5; }
     .ed-sev { font-weight: 700; font-size: 9px; margin-right: 4px; }
     .ed-assertion { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #777; padding: 2px 0; line-height: 1.4; word-break: break-all; }
+    /* ── Converter Panel ── */
+    #converter-panel {
+      display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: #0F0F0F; z-index: 6; flex-direction: column;
+    }
+    .conv-header {
+      padding: 16px 24px 12px; border-bottom: 1px solid #222;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .conv-header h3 { font-size: 16px; font-weight: 700; }
+    .conv-format-pills { display: flex; gap: 6px; }
+    .conv-pill {
+      padding: 4px 12px; background: #1A1A1A; border: 1px solid #333; border-radius: 4px;
+      font-size: 10px; font-weight: 600; color: #888; cursor: pointer; transition: all 0.15s;
+    }
+    .conv-pill:hover { color: #ccc; border-color: #555; }
+    .conv-pill.active { color: #A855F7; border-color: #A855F7; background: #A855F710; }
+    .conv-body { flex: 1; display: flex; overflow: hidden; }
+    .conv-input-pane {
+      flex: 1; display: flex; flex-direction: column; border-right: 1px solid #222;
+    }
+    .conv-pane-header {
+      padding: 8px 16px; font-size: 10px; font-weight: 700; color: #555;
+      text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #1E1E1E;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .conv-pane-header .conv-upload-btn {
+      margin-left: auto; padding: 3px 10px; background: #1A1A1A; border: 1px solid #333;
+      border-radius: 4px; font-size: 10px; color: #888; cursor: pointer;
+    }
+    .conv-pane-header .conv-upload-btn:hover { color: #ccc; border-color: #555; }
+    #conv-input {
+      flex: 1; background: transparent; border: none; color: #E8E0E0; padding: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6;
+      resize: none; outline: none;
+    }
+    #conv-input::placeholder { color: #444; }
+    .conv-output-pane {
+      flex: 1; display: flex; flex-direction: column;
+    }
+    #conv-output {
+      flex: 1; background: transparent; border: none; color: #68D391; padding: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6;
+      resize: none; outline: none;
+    }
+    .conv-footer {
+      padding: 10px 24px; border-top: 1px solid #222;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .conv-size { font-size: 11px; color: #888; }
+    .conv-size strong { color: #E8E0E0; }
+    .conv-footer .conv-spacer { flex: 1; }
+    .conv-download-btn {
+      padding: 8px 20px; background: #A855F7; color: #fff; border: none;
+      border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .conv-download-btn:hover { background: #9333EA; }
+    .conv-download-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .conv-load-btn {
+      padding: 8px 20px; background: #1A1A1A; color: #ccc; border: 1px solid #333;
+      border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .conv-load-btn:hover { border-color: #555; }
+    .conv-load-btn:disabled { color: #555; cursor: not-allowed; }
     /* ── Bottom Bar ── */
     .bottom-bar {
       height: 32px; background: #141414; border-top: 1px solid #222;
@@ -145,6 +235,7 @@
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #555; }
     #file-input { display: none; }
+    #conv-file-input { display: none; }
   </style>
 </head>
 <body>
@@ -153,9 +244,34 @@
   <div class="drop-icon">&#x25C8;</div>
   <div class="drop-title">KRF Visualizer</div>
   <div class="drop-sub">Drop .krf files here or click to browse</div>
-  <button class="drop-btn" id="load-btn">Load KRF Files</button>
-  <button class="drop-btn" id="auto-load-btn" style="background:#68D391;color:#000;margin-top:8px">Auto-Load charlotte-os corpus</button>
-  <div id="load-status" style="font-size:11px;color:#888;margin-top:6px;display:none"></div>
+  <div class="drop-actions">
+    <button class="drop-btn" id="load-btn">Load KRF Files</button>
+  </div>
+  <div class="drop-divider">or try a demo</div>
+  <div class="demo-grid">
+    <div class="demo-card" data-demo="nfl">
+      <div class="demo-card-icon">&#x1F3C8;</div>
+      <div class="demo-card-title">NFL Demo</div>
+      <div class="demo-card-desc">Teams, players, divisions &amp; rules</div>
+    </div>
+    <div class="demo-card" data-demo="al-pacino">
+      <div class="demo-card-icon">&#x1F3AC;</div>
+      <div class="demo-card-title">Al Pacino Demo</div>
+      <div class="demo-card-desc">Films, directors, awards &amp; career</div>
+    </div>
+    <div class="demo-card" data-demo="board-games">
+      <div class="demo-card-icon">&#x265F;</div>
+      <div class="demo-card-title">Board Games</div>
+      <div class="demo-card-desc">Games, mechanics, designers &amp; eras</div>
+    </div>
+    <div class="demo-card corpus" data-demo="corpus">
+      <div class="demo-card-icon">&#x25C8;</div>
+      <div class="demo-card-title">Charlotte OS</div>
+      <div class="demo-card-desc">Full knowledge corpus (31 files)</div>
+    </div>
+  </div>
+  <div class="drop-convert-link" id="open-converter-link">Have text or data? Convert to KRF &rarr;</div>
+  <div id="load-status" style="font-size:11px;color:#888;margin-top:4px;display:none"></div>
   <input type="file" id="file-input" multiple accept=".krf">
 </div>
 
@@ -168,6 +284,8 @@
     <button class="tab-btn" data-view="arity">Arity</button>
     <button class="tab-btn" data-view="coverage">Coverage</button>
     <button class="tab-btn" data-view="rules">Rules</button>
+    <div class="tab-sep"></div>
+    <button class="tab-btn" data-view="convert">Convert</button>
     <div id="dive-controls">
       <label>Protocol:</label>
       <select id="dive-select"></select>
@@ -202,6 +320,37 @@
     <div class="canvas-wrap">
       <div id="cy"></div>
       <div id="coverage-panel"></div>
+      <div id="converter-panel">
+        <div class="conv-header">
+          <h3>Text to KRF Converter</h3>
+          <div class="conv-format-pills">
+            <div class="conv-pill active" data-format="auto">Auto-detect</div>
+            <div class="conv-pill" data-format="text">Plain Text</div>
+            <div class="conv-pill" data-format="csv">CSV</div>
+            <div class="conv-pill" data-format="json">JSON</div>
+          </div>
+        </div>
+        <div class="conv-body">
+          <div class="conv-input-pane">
+            <div class="conv-pane-header">
+              Input
+              <button class="conv-upload-btn" id="conv-upload-btn">Upload file</button>
+            </div>
+            <textarea id="conv-input" placeholder="Paste text, markdown, CSV, or JSON here...&#10;&#10;Examples:&#10;  Tom Brady is a Quarterback&#10;  Player: Tom Brady&#10;  Tom Brady -> New England Patriots&#10;  # NFL Teams (markdown header = microtheory)"></textarea>
+          </div>
+          <div class="conv-output-pane">
+            <div class="conv-pane-header">KRF Output</div>
+            <textarea id="conv-output" readonly></textarea>
+          </div>
+        </div>
+        <div class="conv-footer">
+          <div class="conv-size">Estimated size: <strong id="conv-size-val">0 B</strong></div>
+          <div class="conv-spacer"></div>
+          <button class="conv-load-btn" id="conv-load-viz-btn" disabled>Load in Visualizer</button>
+          <button class="conv-download-btn" id="conv-download-btn" disabled>Download .krf</button>
+        </div>
+        <input type="file" id="conv-file-input" accept=".txt,.md,.csv,.json,.tsv">
+      </div>
     </div>
     <div id="entity-detail"></div>
   </div>
@@ -785,12 +934,314 @@ class KRFAnalyzer {
 }
 
 // ════════════════════════════════════════════════════════════════
+// TEXT-TO-KRF CONVERTER
+// ════════════════════════════════════════════════════════════════
+
+class TextToKRF {
+  constructor() {
+    this.entities = new Set();
+    this.assertions = [];
+    this.mtName = 'ConvertedMt';
+  }
+
+  toCamelCase(str) {
+    return str.trim()
+      .replace(/[^a-zA-Z0-9\s]/g, '')
+      .split(/\s+/)
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join('');
+  }
+
+  toPredicateCase(str) {
+    const parts = str.trim()
+      .replace(/[^a-zA-Z0-9\s]/g, '')
+      .split(/\s+/)
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+    if (parts.length === 0) return 'unknownPred';
+    parts[0] = parts[0].toLowerCase();
+    return parts.join('');
+  }
+
+  detectFormat(text) {
+    const trimmed = text.trim();
+    // JSON detection
+    if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
+      try { JSON.parse(trimmed); return 'json'; } catch (e) { /* not json */ }
+    }
+    // CSV detection: first line has commas, multiple lines, consistent comma count
+    const lines = trimmed.split('\n').filter(l => l.trim());
+    if (lines.length >= 2) {
+      const firstCommas = (lines[0].match(/,/g) || []).length;
+      if (firstCommas >= 1) {
+        const consistent = lines.slice(1, 5).every(l => {
+          const c = (l.match(/,/g) || []).length;
+          return Math.abs(c - firstCommas) <= 1;
+        });
+        if (consistent) return 'csv';
+      }
+    }
+    // Default: text/markdown
+    return 'text';
+  }
+
+  convert(text, format) {
+    this.entities = new Set();
+    this.assertions = [];
+    this.mtName = 'ConvertedMt';
+
+    if (format === 'auto') format = this.detectFormat(text);
+
+    if (format === 'json') this._parseJSON(text);
+    else if (format === 'csv') this._parseCSV(text);
+    else this._parseText(text);
+
+    return this._render();
+  }
+
+  _parseText(text) {
+    const lines = text.split('\n');
+    let currentSection = null;
+    let indentStack = []; // for hierarchy from indented lists
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('//')) continue;
+
+      // Markdown headers → section names (potential microtheory sections)
+      const headerMatch = trimmed.match(/^(#{1,3})\s+(.+)/);
+      if (headerMatch) {
+        currentSection = this.toCamelCase(headerMatch[2]);
+        this.mtName = currentSection + 'Mt';
+        continue;
+      }
+
+      // "X is a Y" / "X is an Y" pattern → isa
+      const isaMatch = trimmed.match(/^(.+?)\s+is\s+an?\s+(.+)$/i);
+      if (isaMatch) {
+        const child = this.toCamelCase(isaMatch[1]);
+        const parent = this.toCamelCase(isaMatch[2]);
+        this.entities.add(child);
+        this.entities.add(parent);
+        this.assertions.push('(isa ' + child + ' ' + parent + ')');
+        continue;
+      }
+
+      // "X -> Y" or "X → Y" pattern → relationship edge
+      const arrowMatch = trimmed.match(/^(.+?)\s*(?:->|→)\s*(.+?)(?:\s*:\s*(.+))?$/);
+      if (arrowMatch) {
+        const source = this.toCamelCase(arrowMatch[1]);
+        const target = this.toCamelCase(arrowMatch[2]);
+        const rel = arrowMatch[3] ? this.toPredicateCase(arrowMatch[3]) : 'relatedTo';
+        this.entities.add(source);
+        this.entities.add(target);
+        this.assertions.push('(' + rel + ' ' + source + ' ' + target + ')');
+        continue;
+      }
+
+      // "Key: Value" pattern → attribute
+      const kvMatch = trimmed.match(/^([^:]+):\s+(.+)$/);
+      if (kvMatch) {
+        const key = this.toPredicateCase(kvMatch[1]);
+        const val = kvMatch[2].trim();
+        // Check if value looks like an entity name or a string literal
+        if (/^[A-Z]/.test(val) && !/\s/.test(val)) {
+          const entity = this.toCamelCase(val);
+          this.entities.add(entity);
+          this.assertions.push('(' + key + ' ' + entity + ')');
+        } else if (/^\d+(\.\d+)?$/.test(val)) {
+          this.assertions.push('(' + key + ' ' + val + ')');
+        } else {
+          this.assertions.push('(' + key + ' "' + val.replace(/"/g, '\\"') + '")');
+        }
+        continue;
+      }
+
+      // Indented list items → hierarchy (genls)
+      const listMatch = line.match(/^(\s*)([-*])\s+(.+)/);
+      if (listMatch) {
+        const indent = listMatch[1].length;
+        const item = this.toCamelCase(listMatch[3]);
+        this.entities.add(item);
+
+        // Track indent levels for hierarchy
+        while (indentStack.length > 0 && indentStack[indentStack.length - 1].indent >= indent) {
+          indentStack.pop();
+        }
+        if (indentStack.length > 0) {
+          const parent = indentStack[indentStack.length - 1].name;
+          this.assertions.push('(genls ' + item + ' ' + parent + ')');
+        } else {
+          this.assertions.push('(isa ' + item + ' Collection)');
+        }
+        indentStack.push({ indent, name: item });
+        continue;
+      }
+
+      // Plain line with no pattern → treat as entity declaration
+      if (trimmed.length > 0 && trimmed.length < 80 && !trimmed.includes('  ')) {
+        const entity = this.toCamelCase(trimmed);
+        if (entity && entity.length > 1) {
+          this.entities.add(entity);
+          this.assertions.push('(isa ' + entity + ' Thing)');
+        }
+      }
+    }
+  }
+
+  _parseCSV(text) {
+    const lines = text.split('\n').filter(l => l.trim());
+    if (lines.length < 2) return;
+
+    const headers = this._splitCSVRow(lines[0]);
+    const entityCol = headers[0];
+    const entityColPred = this.toCamelCase(entityCol);
+
+    for (let i = 1; i < lines.length; i++) {
+      const cells = this._splitCSVRow(lines[i]);
+      if (cells.length === 0) continue;
+
+      const entityName = this.toCamelCase(cells[0]);
+      if (!entityName) continue;
+      this.entities.add(entityName);
+      this.assertions.push('(isa ' + entityName + ' ' + entityColPred + ')');
+
+      for (let j = 1; j < headers.length && j < cells.length; j++) {
+        const val = cells[j].trim();
+        if (!val) continue;
+        const pred = this.toPredicateCase(headers[j]);
+        if (/^\d+(\.\d+)?$/.test(val)) {
+          this.assertions.push('(' + pred + ' ' + entityName + ' ' + val + ')');
+        } else {
+          this.assertions.push('(' + pred + ' ' + entityName + ' "' + val.replace(/"/g, '\\"') + '")');
+        }
+      }
+    }
+  }
+
+  _splitCSVRow(line) {
+    const cells = [];
+    let current = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') { inQuotes = !inQuotes; continue; }
+      if (ch === ',' && !inQuotes) { cells.push(current.trim()); current = ''; continue; }
+      current += ch;
+    }
+    cells.push(current.trim());
+    return cells;
+  }
+
+  _parseJSON(text) {
+    let data;
+    try { data = JSON.parse(text.trim()); } catch (e) { return; }
+
+    if (!Array.isArray(data)) data = [data];
+
+    for (const obj of data) {
+      if (typeof obj !== 'object' || obj === null) continue;
+
+      // Use 'name' or 'id' or first string field as entity name
+      let entityName = null;
+      for (const key of ['name', 'Name', 'id', 'ID', 'title', 'Title']) {
+        if (obj[key] && typeof obj[key] === 'string') { entityName = this.toCamelCase(obj[key]); break; }
+      }
+      if (!entityName) {
+        const firstStr = Object.values(obj).find(v => typeof v === 'string');
+        entityName = firstStr ? this.toCamelCase(firstStr) : 'Entity' + this.entities.size;
+      }
+
+      this.entities.add(entityName);
+
+      // Type from 'type' or 'category' field
+      const typeField = obj.type || obj.Type || obj.category || obj.Category;
+      if (typeField) {
+        const typeName = this.toCamelCase(String(typeField));
+        this.entities.add(typeName);
+        this.assertions.push('(isa ' + entityName + ' ' + typeName + ')');
+      } else {
+        this.assertions.push('(isa ' + entityName + ' Thing)');
+      }
+
+      for (const [key, val] of Object.entries(obj)) {
+        if (['name', 'Name', 'id', 'ID', 'title', 'Title', 'type', 'Type', 'category', 'Category'].includes(key)) continue;
+        const pred = this.toPredicateCase(key);
+        if (typeof val === 'number') {
+          this.assertions.push('(' + pred + ' ' + entityName + ' ' + val + ')');
+        } else if (typeof val === 'string') {
+          if (/^[A-Z][a-zA-Z]+$/.test(val)) {
+            this.assertions.push('(' + pred + ' ' + entityName + ' ' + this.toCamelCase(val) + ')');
+          } else {
+            this.assertions.push('(' + pred + ' ' + entityName + ' "' + val.replace(/"/g, '\\"') + '")');
+          }
+        } else if (typeof val === 'boolean') {
+          this.assertions.push('(' + pred + ' ' + entityName + ' ' + val + ')');
+        } else if (Array.isArray(val)) {
+          for (const item of val) {
+            if (typeof item === 'string') {
+              this.assertions.push('(' + pred + ' ' + entityName + ' "' + item.replace(/"/g, '\\"') + '")');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  _render() {
+    const lines = [];
+    lines.push(';;; ════════════════════════════════════════════════════════════════');
+    lines.push(';;; Auto-converted to KRF by Charlotte OS Visualizer');
+    lines.push(';;; ════════════════════════════════════════════════════════════════');
+    lines.push('');
+    lines.push('(in-microtheory ' + this.mtName + ')');
+    lines.push('');
+
+    // Deduplicate assertions
+    const seen = new Set();
+    const unique = [];
+    for (const a of this.assertions) {
+      if (!seen.has(a)) { seen.add(a); unique.push(a); }
+    }
+
+    // Group: isa first, then genls, then everything else
+    const isaLines = unique.filter(a => a.startsWith('(isa '));
+    const genlsLines = unique.filter(a => a.startsWith('(genls '));
+    const otherLines = unique.filter(a => !a.startsWith('(isa ') && !a.startsWith('(genls '));
+
+    if (isaLines.length > 0) {
+      lines.push(';;; ── Type Declarations ──');
+      lines.push('');
+      for (const a of isaLines) lines.push(a);
+      lines.push('');
+    }
+
+    if (genlsLines.length > 0) {
+      lines.push(';;; ── Hierarchy ──');
+      lines.push('');
+      for (const a of genlsLines) lines.push(a);
+      lines.push('');
+    }
+
+    if (otherLines.length > 0) {
+      lines.push(';;; ── Assertions ──');
+      lines.push('');
+      for (const a of otherLines) lines.push(a);
+      lines.push('');
+    }
+
+    return lines.join('\n');
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
 // APP
 // ════════════════════════════════════════════════════════════════
 
 let cy, kb, analyzer;
 const parser = new KRFParser();
+const converter = new TextToKRF();
 let currentView = 'hierarchy';
+let converterOutput = '';
 
 function initCy() {
   cy = cytoscape({
@@ -845,8 +1296,20 @@ async function loadFiles(fileList) {
 
 function switchView(name) {
   currentView = name;
-  cy.elements().remove();
   document.getElementById('coverage-panel').style.display = 'none';
+  document.getElementById('converter-panel').style.display = 'none';
+  document.getElementById('cy').style.display = 'block';
+  document.querySelector('.left-sidebar').style.display = 'flex';
+
+  if (name === 'convert') {
+    document.getElementById('converter-panel').style.display = 'flex';
+    document.getElementById('cy').style.display = 'none';
+    document.querySelector('.left-sidebar').style.display = 'none';
+    document.getElementById('entity-detail').style.display = 'none';
+    return;
+  }
+
+  cy.elements().remove();
   if (name === 'hierarchy') showHierarchy();
   else if (name === 'diveline') showDiveLine();
   else if (name === 'microtheory') showMicrotheory();
@@ -957,7 +1420,6 @@ function showCoverage() {
 function showRules() {
   const el = buildRuleElements(kb);
   cy.add([...el.nodes, ...el.edges]);
-  // Cycle detection
   const adj = new Map();
   cy.edges().forEach(e => { const s = e.data('source'), t = e.data('target'); if (!adj.has(s)) adj.set(s, []); adj.get(s).push(t); });
   const color = new Map(), cycleNodes = new Set();
@@ -1087,13 +1549,137 @@ function populateDiveSelect() {
   for (const p of protos.sort()) { const o = document.createElement('option'); o.value = p; o.textContent = p; sel.appendChild(o); }
 }
 
-// Events
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function runConverter() {
+  const input = document.getElementById('conv-input').value;
+  const formatPill = document.querySelector('.conv-pill.active');
+  const format = formatPill ? formatPill.dataset.format : 'auto';
+  const output = document.getElementById('conv-output');
+  const sizeEl = document.getElementById('conv-size-val');
+  const dlBtn = document.getElementById('conv-download-btn');
+  const loadBtn = document.getElementById('conv-load-viz-btn');
+
+  if (!input.trim()) {
+    output.value = '';
+    sizeEl.textContent = '0 B';
+    dlBtn.disabled = true;
+    loadBtn.disabled = true;
+    converterOutput = '';
+    return;
+  }
+
+  converterOutput = converter.convert(input, format);
+  output.value = converterOutput;
+  const size = new Blob([converterOutput]).size;
+  sizeEl.textContent = formatFileSize(size);
+  dlBtn.disabled = false;
+  loadBtn.disabled = false;
+}
+
+function downloadKRF() {
+  if (!converterOutput) return;
+  const blob = new Blob([converterOutput], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = converter.mtName.replace('Mt', '') + '.krf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function loadConverterOutputInVisualizer() {
+  if (!converterOutput) return;
+  const fakeFile = {
+    name: converter.mtName.replace('Mt', '') + '.krf',
+    text: () => Promise.resolve(converterOutput),
+    webkitRelativePath: ''
+  };
+  loadFiles([fakeFile]);
+}
+
+// ════════════════════════════════════════════════════════════════
+// DEMO LOADER
+// ════════════════════════════════════════════════════════════════
+
+const DEMO_MANIFESTS = {
+  nfl: ['demos/nfl.krf'],
+  'al-pacino': ['demos/al-pacino.krf'],
+  'board-games': ['demos/board-games.krf'],
+};
+
+const KRF_MANIFEST = [
+  'README.krf',
+  'kernel/primitives.krf', 'kernel/types.krf', 'kernel/valuation-layer.krf', 'kernel/boot.krf',
+  'knowledge/structural/taxonomy.krf', 'knowledge/structural/mereology.krf', 'knowledge/structural/relations.krf',
+  'knowledge/declarative/entities.krf', 'knowledge/declarative/attributes.krf',
+  'knowledge/procedural/protocols.krf', 'knowledge/procedural/constraints.krf', 'knowledge/procedural/storytelling.krf',
+  'knowledge/procedural/pitch-narratives.krf', 'knowledge/procedural/market-intelligence.krf',
+  'knowledge/procedural/visualization.krf',
+  'knowledge/heuristic/defaults.krf', 'knowledge/heuristic/thresholds.krf',
+  'knowledge/meta/schema.krf', 'knowledge/meta/provenance.krf', 'knowledge/meta/completeness.krf',
+  'spine/temporal/epochs.krf', 'spine/temporal/units.krf', 'spine/temporal/lifecycle.krf', 'spine/temporal/encoding.krf',
+  'spine/spatial/geospatial.krf', 'spine/spatial/topological.krf', 'spine/spatial/theoretical.krf',
+  'reference/knowledge-primitives.krf', 'reference/convex-hull.krf', 'reference/convex-hull-library.krf',
+  'agent/identity.krf', 'agent/observer.krf', 'agent/directives.krf'
+];
+
+async function loadDemoOrCorpus(manifest, label) {
+  const status = document.getElementById('load-status');
+  status.style.display = 'block';
+  status.textContent = 'Loading ' + label + '...';
+  const fakeFiles = [];
+  let loaded = 0, failed = 0;
+  // Resolve path: demos are relative to parent directory when served from visualizer/
+  const base = window.location.pathname.includes('/visualizer/') ? '../' : '';
+  for (const path of manifest) {
+    try {
+      const resp = await fetch(base + path);
+      if (!resp.ok) throw new Error(resp.status);
+      const text = await resp.text();
+      fakeFiles.push({ name: path, text: () => Promise.resolve(text), webkitRelativePath: path });
+      loaded++;
+    } catch (e) {
+      failed++;
+      console.warn('Failed to fetch ' + path + ':', e);
+    }
+    status.textContent = 'Loading ' + (loaded + failed) + '/' + manifest.length + (failed ? ' (' + failed + ' failed)' : '') + '...';
+  }
+  if (fakeFiles.length > 0) {
+    status.textContent = 'Parsing ' + fakeFiles.length + ' files...';
+    await loadFiles(fakeFiles);
+    status.textContent = 'Loaded ' + fakeFiles.length + ' files' + (failed ? ', ' + failed + ' failed' : '');
+  } else {
+    status.textContent = 'No files loaded. Serve from charlotte-os/ root directory.';
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// EVENTS
+// ════════════════════════════════════════════════════════════════
+
 document.addEventListener('DOMContentLoaded', () => {
   initCy();
+
+  // Tab buttons (including convert)
   document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.view; setActiveTab(v); if (kb) switchView(v);
+    const v = b.dataset.view;
+    setActiveTab(v);
+    if (v === 'convert') {
+      switchView('convert');
+    } else if (kb) {
+      switchView(v);
+    }
   }));
+
   document.getElementById('file-input').addEventListener('change', e => { if (e.target.files.length > 0) loadFiles(e.target.files); });
+
   const dz = document.getElementById('dropzone');
   document.body.addEventListener('dragover', e => { e.preventDefault(); if (dz.style.display !== 'none') dz.classList.add('dragover'); });
   document.body.addEventListener('dragleave', () => dz.classList.remove('dragover'));
@@ -1103,6 +1689,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.dataTransfer.items) for (const item of e.dataTransfer.items) { if (item.kind === 'file') { const f = item.getAsFile(); if (f.name.endsWith('.krf')) files.push(f); } }
     if (files.length > 0) loadFiles(files);
   });
+
   document.getElementById('load-btn').addEventListener('click', () => document.getElementById('file-input').click());
   document.getElementById('add-files-btn').addEventListener('click', () => document.getElementById('file-input').click());
   document.getElementById('reset-btn').addEventListener('click', () => {
@@ -1114,55 +1701,74 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('fit-btn').addEventListener('click', () => { if (cy) cy.fit(undefined, 40); });
 
-  // Auto-load from HTTP server
-  const KRF_MANIFEST = [
-    'README.krf',
-    'kernel/primitives.krf', 'kernel/types.krf', 'kernel/valuation-layer.krf', 'kernel/boot.krf',
-    'knowledge/structural/taxonomy.krf', 'knowledge/structural/mereology.krf', 'knowledge/structural/relations.krf',
-    'knowledge/declarative/entities.krf', 'knowledge/declarative/attributes.krf',
-    'knowledge/procedural/protocols.krf', 'knowledge/procedural/constraints.krf', 'knowledge/procedural/storytelling.krf',
-    'knowledge/procedural/pitch-narratives.krf', 'knowledge/procedural/market-intelligence.krf',
-    'knowledge/heuristic/defaults.krf', 'knowledge/heuristic/thresholds.krf',
-    'knowledge/meta/schema.krf', 'knowledge/meta/provenance.krf', 'knowledge/meta/completeness.krf',
-    'spine/temporal/epochs.krf', 'spine/temporal/units.krf', 'spine/temporal/lifecycle.krf', 'spine/temporal/encoding.krf',
-    'spine/spatial/geospatial.krf', 'spine/spatial/topological.krf', 'spine/spatial/theoretical.krf',
-    'reference/knowledge-primitives.krf', 'reference/convex-hull.krf', 'reference/convex-hull-library.krf',
-    'agent/identity.krf', 'agent/observer.krf', 'agent/directives.krf'
-  ];
-
-  async function autoLoadKRF() {
-    const status = document.getElementById('load-status');
-    status.style.display = 'block';
-    status.textContent = 'Loading 0/' + KRF_MANIFEST.length + ' files...';
-    const fakeFiles = [];
-    let loaded = 0, failed = 0;
-    for (const path of KRF_MANIFEST) {
-      try {
-        const resp = await fetch(path);
-        if (!resp.ok) throw new Error(resp.status);
-        const text = await resp.text();
-        fakeFiles.push({ name: path, text: () => Promise.resolve(text), webkitRelativePath: path });
-        loaded++;
-      } catch (e) {
-        failed++;
-        console.warn('Failed to fetch ' + path + ':', e);
+  // Demo cards
+  document.querySelectorAll('.demo-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const demo = card.dataset.demo;
+      if (demo === 'corpus') {
+        loadDemoOrCorpus(KRF_MANIFEST, 'Charlotte OS corpus');
+      } else if (DEMO_MANIFESTS[demo]) {
+        loadDemoOrCorpus(DEMO_MANIFESTS[demo], card.querySelector('.demo-card-title').textContent);
       }
-      status.textContent = 'Loading ' + (loaded + failed) + '/' + KRF_MANIFEST.length + (failed ? ' (' + failed + ' failed)' : '') + '...';
-    }
-    if (fakeFiles.length > 0) {
-      status.textContent = 'Parsing ' + fakeFiles.length + ' files...';
-      await loadFiles(fakeFiles);
-      status.textContent = 'Loaded ' + fakeFiles.length + ' files' + (failed ? ', ' + failed + ' failed' : '');
-    } else {
-      status.textContent = 'No files loaded. Are you running an HTTP server from the charlotte-os directory?';
-    }
-  }
+    });
+  });
 
-  document.getElementById('auto-load-btn').addEventListener('click', autoLoadKRF);
+  // Open converter from dropzone
+  document.getElementById('open-converter-link').addEventListener('click', () => {
+    // Show main UI with converter open, even without loaded files
+    document.getElementById('dropzone').style.display = 'none';
+    document.getElementById('main-ui').style.display = 'flex';
+    setActiveTab('convert');
+    switchView('convert');
+  });
+
+  // Converter: input handler with debounce
+  let convTimer = null;
+  document.getElementById('conv-input').addEventListener('input', () => {
+    clearTimeout(convTimer);
+    convTimer = setTimeout(runConverter, 200);
+  });
+
+  // Converter: format pills
+  document.querySelectorAll('.conv-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.conv-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      runConverter();
+    });
+  });
+
+  // Converter: upload file
+  document.getElementById('conv-upload-btn').addEventListener('click', () => {
+    document.getElementById('conv-file-input').click();
+  });
+  document.getElementById('conv-file-input').addEventListener('change', async e => {
+    if (e.target.files.length === 0) return;
+    const file = e.target.files[0];
+    const text = await file.text();
+    document.getElementById('conv-input').value = text;
+    // Auto-select format based on extension
+    const ext = file.name.split('.').pop().toLowerCase();
+    let format = 'auto';
+    if (ext === 'csv' || ext === 'tsv') format = 'csv';
+    else if (ext === 'json') format = 'json';
+    else if (ext === 'txt' || ext === 'md') format = 'text';
+    document.querySelectorAll('.conv-pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.format === format);
+    });
+    runConverter();
+    e.target.value = ''; // reset for re-upload
+  });
+
+  // Converter: download
+  document.getElementById('conv-download-btn').addEventListener('click', downloadKRF);
+
+  // Converter: load in visualizer
+  document.getElementById('conv-load-viz-btn').addEventListener('click', loadConverterOutputInVisualizer);
 
   // Auto-load if served via HTTP (not file://)
   if (window.location.protocol.startsWith('http')) {
-    autoLoadKRF();
+    loadDemoOrCorpus(KRF_MANIFEST, 'Charlotte OS corpus');
   }
 });
 
