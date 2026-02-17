@@ -30,6 +30,7 @@ jack-at-someai.github.io/
 
 # Large image assets (people docs — markdown IS tracked)
 charlotte/docs/people/donald_almquist_assets/
+team/donald_almquist_assets/
 
 # Large JSON observation data (knowledge graph .md and .json ARE tracked)
 charlotte/docs/artifacts/JOURNEY_OBSERVATIONS.json
@@ -38,6 +39,10 @@ charlotte/docs/artifacts/JOURNEY_OBSERVATIONS.json
 business/industrial-service-group/*.pdf
 business/industrial-service-group/*.csv
 business/industrial-service-group/*.xlsx
+business/industrial-service-group/data/*.pdf
+business/industrial-service-group/data/*.csv
+business/industrial-service-group/contracts/*.pdf
+business/industrial-service-group/contracts/*.docx
 business/top-tier-moving/*.jsonl
 business/top-tier-moving/*.json
 business/violins/*.xlsx
@@ -47,6 +52,18 @@ business/sounder/Filament Resources/
 business/sounder/Sounder/
 business/sounder/*.pdf
 business/sounder/sounder_scripts/
+
+# Brand book sensitive assets (PDFs)
+design/brandbook/isg/assets/*.pdf
+
+# LinkedIn profile exports
+research-lab/linkedin/
+
+# Raw photos
+**/*.HEIC
+
+# Generated PDFs in charlotte-os
+charlotte-os/nervous-system/*.pdf
 
 # Generated KRF output (re-create by running converter.py)
 business/sounder/substrate/output/
