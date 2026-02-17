@@ -1,8 +1,8 @@
 name: charlotte
-description: "Charlotte - Infrastructure for Observable Reality"
+description: "SomeAI — Infrastructure for Observable Reality"
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 2.0.0+1
 
 environment:
   sdk: ^3.9.0-286.0.dev
@@ -23,7 +23,7 @@ dependencies:
   # SVG Support
   flutter_svg: ^2.0.17
 
-  # Google Fonts (Oswald + Inter)
+  # Google Fonts
   google_fonts: ^6.2.1
 
   # Charlotte UI — shared glassmorphic design system
@@ -32,6 +32,21 @@ dependencies:
 
   # Graph visualization
   graphview: ^1.5.1
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # Markdown rendering
+  flutter_markdown: ^0.7.0
+
+  # State management
+  flutter_riverpod: ^2.5.0
+
+  # Search
+  fuzzy: ^0.5.0
+
+  # HTTP (Claude API)
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -42,8 +57,5 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/SOUNDER_BRAND_ICON.png
-    - assets/SOUNDER_BRAND_BACKGROUND.png
-    - assets/SOUNDER_BRAND_IMAGE.png
-    - assets/SOUNDER_BRAND_ILLUSTRATION.svg
-    - assets/SOUNDER_COLORS_AND_TYPOGRAPHY.svg
+    - assets/docs/
+    - assets/krf/
