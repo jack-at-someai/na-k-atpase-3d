@@ -1,0 +1,26 @@
+[Unit]
+Description=Charlotte Voice Agent
+Documentation=https://github.com/jack-at-someai/core
+After=network-online.target mosquitto.service cloudflared.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jack
+Group=jack
+WorkingDirectory=/home/jack/dev/charlotte-os/voice
+ExecStart=/home/jack/charlotte-env/bin/python server.py
+EnvironmentFile=/home/jack/charlotte/voice/.env
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/home/jack/charlotte /home/jack/dev
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,891 @@
+;;; ================================================================
+;;; ISG COMPRESSOR PRESENTATION — KRF SUBSTRATE
+;;; Source: "SomeAI - ISG Compressor Presentation Rev 2.pptx"
+;;; Date: December 11, 2025 (presentation date)
+;;; Ingested: February 17, 2026
+;;; Purpose: Full semantic extraction of the ServiceIQ pitch deck
+;;;          so the presentation can be reassembled in any language,
+;;;          medium, or format from structured knowledge.
+;;; 862 lines
+;;; ================================================================
+
+(in-microtheory ISGCompressorPresentationMt)
+(genlMt ISGCompressorPresentationMt CharlottePitchNarrativesMt)
+(genlMt ISGCompressorPresentationMt CharlotteDeclarativeMt)
+
+
+;;; ================================================================
+;;; PART 1: DOCUMENT PROVENANCE
+;;; ================================================================
+
+(isa ISGCompressorPresentation DocumentEntity)
+(hasField ISGCompressorPresentation :title "SomeAI - ISG Compressor Presentation Rev 2")
+(hasField ISGCompressorPresentation :format "PPTX")
+(hasField ISGCompressorPresentation :slides 20)
+(hasField ISGCompressorPresentation :date "2025-12-11")
+(hasField ISGCompressorPresentation :author "SomeAI")
+(hasField ISGCompressorPresentation :audience "ISG Leadership + PE Board")
+(hasField ISGCompressorPresentation :product "ServiceIQ")
+(hasField ISGCompressorPresentation :trademark "ServiceIQ (TM)")
+(hasField ISGCompressorPresentation :revision 2)
+(comment ISGCompressorPresentation
+  "The Rev 2 pitch deck for deploying Charlotte at ISG, branded as
+   ServiceIQ. Covers a three-phase engagement: Pre-Year 1 architecture
+   ($125K), Year 1 data foundation ($500K-$700K), Year 2 intelligence
+   layer ($600K-$800K). Total program: $1.1M-$1.4M over two years.
+   Compressor vertical is the proving ground before extending to all
+   ISG product lines.")
+
+
+;;; ================================================================
+;;; PART 2: ENTITY DEFINITIONS
+;;; All NODEs referenced in the presentation
+;;; ================================================================
+
+;; ---- Organizations ----
+
+(isa SomeAI-Entity GroupEntity)
+(hasField SomeAI-Entity :name "SomeAI")
+(hasField SomeAI-Entity :role "Engineering partner / Charlotte deployer")
+
+(isa ISG-Entity GroupEntity)
+(hasField ISG-Entity :name "Industrial Service Group")
+(hasField ISG-Entity :revenue "$450M")
+(hasField ISG-Entity :structure "PE-backed portfolio of 16 acquired brands")
+(hasField ISG-Entity :role "Client / deployment target")
+
+(isa IAC-Brand GroupEntity)
+(hasField IAC-Brand :name "IAC")
+(hasField IAC-Brand :parent ISG-Entity)
+(comment IAC-Brand "ISG brand — compressor-heavy branch, Year 1 pilot target.")
+
+(isa IAP-Brand GroupEntity)
+(hasField IAP-Brand :name "IAP")
+(hasField IAP-Brand :parent ISG-Entity)
+(comment IAP-Brand "ISG brand — compressor-heavy branch, Year 1 pilot target.")
+
+(isa PinnacleBrand GroupEntity)
+(hasField PinnacleBrand :name "Pinnacle")
+(hasField PinnacleBrand :parent ISG-Entity)
+(comment PinnacleBrand "ISG brand — compressor-heavy branch, Year 1 pilot target.")
+
+;; ---- Products / Platforms ----
+
+(isa ServiceIQ-Platform AssetEntity)
+(hasField ServiceIQ-Platform :name "ServiceIQ")
+(hasField ServiceIQ-Platform :trademark true)
+(hasField ServiceIQ-Platform :poweredBy "Charlotte")
+(comment ServiceIQ-Platform
+  "The ISG-facing brand name for Charlotte's deployment. ServiceIQ is
+   the predictive distribution platform — Charlotte's knowledge graph
+   instantiated for the industrial service domain.")
+
+(isa CharlotteDataBrain AssetEntity)
+(hasField CharlotteDataBrain :name "Charlotte Data Brain")
+(hasField CharlotteDataBrain :trademark true)
+(comment CharlotteDataBrain
+  "The enterprise knowledge graph engine. Converts fragmented enterprise
+   data into a living decision engine. Not a chatbot, dashboard, workflow,
+   or visualization tool.")
+
+(isa MarketplaceV1 AssetEntity)
+(hasField MarketplaceV1 :name "Marketplace v1")
+(hasField MarketplaceV1 :scope "Internal, compressors only")
+(hasField MarketplaceV1 :parent ServiceIQ-Platform)
+(comment MarketplaceV1
+  "Year 1 deliverable. Internal ISG marketplace for searching compressor
+   parts across all brands, showing alternates and substitutes, displaying
+   availability by branch, and routing internal transfers.")
+
+;; ---- ISG Existing Tech Stack ----
+
+(isa ISG-TechStack GroupEntity)
+(hasField ISG-TechStack :name "ISG Existing Technology Bundle")
+
+(isa NetSuite-System AssetEntity)
+(hasField NetSuite-System :name "NetSuite")
+(hasField NetSuite-System :category "ERP")
+(isa-in NetSuite-System ISG-TechStack)
+
+(isa Akeno-System AssetEntity)
+(hasField Akeno-System :name "Akeno")
+(isa-in Akeno-System ISG-TechStack)
+
+(isa BigCommerce-System AssetEntity)
+(hasField BigCommerce-System :name "BigCommerce")
+(hasField BigCommerce-System :category "E-commerce")
+(isa-in BigCommerce-System ISG-TechStack)
+
+(isa HubSpot-System AssetEntity)
+(hasField HubSpot-System :name "HubSpot")
+(hasField HubSpot-System :category "CRM")
+(isa-in HubSpot-System ISG-TechStack)
+
+(isa Paylocity-System AssetEntity)
+(hasField Paylocity-System :name "Paylocity")
+(hasField Paylocity-System :category "HR/Payroll")
+(isa-in Paylocity-System ISG-TechStack)
+
+
+;;; ================================================================
+;;; PART 3: ENGAGEMENT PHASES
+;;; The three-phase program structure
+;;; ================================================================
+
+(isa EngagementPhase Collection)
+(genls EngagementPhase PROTOCOL)
+
+;; ---- Pre-Year 1: Requirements & Architecture ----
+
+(isa PreYear1Phase EngagementPhase)
+(hasField PreYear1Phase :name "Pre-Year 1: Requirements & Architecture Phase")
+(hasField PreYear1Phase :cost "$125,000")
+(hasField PreYear1Phase :costType "Fixed Budget")
+(hasField PreYear1Phase :timeline "8-12 weeks")
+(hasField PreYear1Phase :startDate "February 2026")
+(hasField PreYear1Phase :endDate "April 2026")
+(comment PreYear1Phase
+  "Before ISG spends $500K on Year 1 data work, this phase determines:
+   exactly what we are building, what data exists, what gaps exist, what
+   the target architecture should be, what workflows will change, what
+   roles need to be involved, what success metrics to track, and what
+   Year 1 and Year 2 will actually deliver. This is the architectural
+   blueprint for ServiceIQ — the same way you would blueprint a house
+   before building it. This makes the entire project predictable and
+   eliminates rework.")
+
+(isa PreYear1-Scope PROTOCOL)
+(hasField PreYear1-Scope :determines "what we are building")
+(hasField PreYear1-Scope :audits "what data exists")
+(hasField PreYear1-Scope :identifies "what gaps exist")
+(hasField PreYear1-Scope :defines "target architecture")
+(hasField PreYear1-Scope :maps "workflow changes")
+(hasField PreYear1-Scope :assigns "roles to be involved")
+(hasField PreYear1-Scope :establishes "success metrics")
+(hasField PreYear1-Scope :scopes "Year 1 and Year 2 deliverables")
+
+;; ---- Year 1: The Data Year ----
+
+(isa Year1Phase EngagementPhase)
+(hasField Year1Phase :name "Year 1 - The Data Year (Compressors Only)")
+(hasField Year1Phase :costRange "$500K-$700K")
+(hasField Year1Phase :startDate "April 2026")
+(hasField Year1Phase :endDate "March 2027")
+(hasField Year1Phase :objective "Build the foundation. Organize the data. Validate the Taxonomy & Ontology. Prepare the Marketplace.")
+(hasField Year1Phase :scope "Compressors only")
+
+;; ---- Year 2: The Intelligence Year ----
+
+(isa Year2Phase EngagementPhase)
+(hasField Year2Phase :name "Year 2 - The Intelligence Year (Compressors Only)")
+(hasField Year2Phase :costRange "$600K-$800K")
+(hasField Year2Phase :conditional true)
+(comment Year2Phase
+  "Year 2 is more optional — you spend only if Year 1 proves accuracy
+   and adoption. ServiceIQ shifts from rules to intelligence. Live
+   patterns, live recommendations, live insights. Automatic relationship
+   building across data sources. Output: real-time compressor intelligence brain.")
+
+
+;;; ================================================================
+;;; PART 4: YEAR 1 WORKSTREAMS
+;;; The five deliverable tracks within Year 1
+;;; ================================================================
+
+(isa Year1Workstream Collection)
+(genls Year1Workstream PROTOCOL)
+
+;; ---- 1. Compressor Parts Brain (Taxonomy + Ontology) ----
+
+(isa WS1-TaxonomyOntology Year1Workstream)
+(hasField WS1-TaxonomyOntology :name "Build the Compressor Parts Brain (Taxonomy + Ontology)")
+(hasField WS1-TaxonomyOntology :sequence 1)
+(hasField WS1-TaxonomyOntology :ownership "Data team + Compressor SMEs + SomeAI team")
+(comment WS1-TaxonomyOntology
+  "Identify every compressor SKU across all ISG brands. Consolidate
+   alternates, equivalents, rebuild kits, accessory families. Normalize
+   naming, attributes, and metadata. Establish parent-child part
+   relationships (e.g. rebuild kits). Define how compressors fail,
+   when, and why. This is the backbone of ServiceIQ. If the taxonomy
+   is wrong, the predictions will be wrong.")
+
+(isa WS1-Output-PartsDictionary AssetEntity)
+(hasField WS1-Output-PartsDictionary :name "Unified Compressor Parts Dictionary")
+(hasField WS1-Output-PartsDictionary :deliveredBy WS1-TaxonomyOntology)
+
+(isa WS1-Output-NamingConventions AssetEntity)
+(hasField WS1-Output-NamingConventions :name "ISG-wide naming conventions")
+(hasField WS1-Output-NamingConventions :deliveredBy WS1-TaxonomyOntology)
+
+(isa WS1-Output-DataModel AssetEntity)
+(hasField WS1-Output-DataModel :name "Data model for Charlotte's compressor graph")
+(hasField WS1-Output-DataModel :deliveredBy WS1-TaxonomyOntology)
+
+;; ---- 2. Centralize All Compressor Transaction Data ----
+
+(isa WS2-TransactionData Year1Workstream)
+(hasField WS2-TransactionData :name "Centralize All Compressor Transaction Data")
+(hasField WS2-TransactionData :sequence 2)
+(hasField WS2-TransactionData :ownership "Data engineering + Sales ops")
+(comment WS2-TransactionData
+  "Aggregate: sales history, frequency of rebuilds, warranty events,
+   recurring maintenance intervals and emergency service calls, win/loss
+   data from sales, historical quotes and quote age. This is how ServiceIQ
+   learns patterns. Predictive reorder windows come from historical cycles.")
+
+(isa WS2-DataSource-SalesHistory SIGNAL)
+(hasField WS2-DataSource-SalesHistory :name "Sales history")
+(hasField WS2-DataSource-SalesHistory :feedsInto WS2-TransactionData)
+
+(isa WS2-DataSource-RebuildFrequency SIGNAL)
+(hasField WS2-DataSource-RebuildFrequency :name "Frequency of rebuilds")
+(hasField WS2-DataSource-RebuildFrequency :feedsInto WS2-TransactionData)
+
+(isa WS2-DataSource-WarrantyEvents SIGNAL)
+(hasField WS2-DataSource-WarrantyEvents :name "Warranty events")
+(hasField WS2-DataSource-WarrantyEvents :feedsInto WS2-TransactionData)
+
+(isa WS2-DataSource-MaintenanceIntervals SIGNAL)
+(hasField WS2-DataSource-MaintenanceIntervals :name "Recurring maintenance intervals and emergency service calls")
+(hasField WS2-DataSource-MaintenanceIntervals :feedsInto WS2-TransactionData)
+
+(isa WS2-DataSource-WinLoss SIGNAL)
+(hasField WS2-DataSource-WinLoss :name "Win/loss data from sales")
+(hasField WS2-DataSource-WinLoss :feedsInto WS2-TransactionData)
+
+(isa WS2-DataSource-HistoricalQuotes SIGNAL)
+(hasField WS2-DataSource-HistoricalQuotes :name "Historical quotes and quote age")
+(hasField WS2-DataSource-HistoricalQuotes :feedsInto WS2-TransactionData)
+
+(isa WS2-Output-TransactionDataset AssetEntity)
+(hasField WS2-Output-TransactionDataset :name "Full compressor transaction dataset")
+(hasField WS2-Output-TransactionDataset :deliveredBy WS2-TransactionData)
+
+(isa WS2-Output-BehaviorMapping AssetEntity)
+(hasField WS2-Output-BehaviorMapping :name "Customer-level behavior mapping")
+(hasField WS2-Output-BehaviorMapping :deliveredBy WS2-TransactionData)
+
+;; ---- 3. Unify Compressor Inventory ----
+
+(isa WS3-UnifyInventory Year1Workstream)
+(hasField WS3-UnifyInventory :name "Unify Compressor Inventory")
+(hasField WS3-UnifyInventory :sequence 3)
+(hasField WS3-UnifyInventory :ownership "Supply chain + Distribution + SomeAI")
+(comment WS3-UnifyInventory
+  "Resolve SKU mismatches. Map every compressor part to location, min/max,
+   alternates. Identify obsolete stock and slow-moving items. Document lead
+   times from suppliers. Marketplace v1 only works if the inventory is clean
+   and comparable. Predictive stocking cannot exist without unified inventory.")
+
+(isa WS3-Output-InventoryMaster AssetEntity)
+(hasField WS3-Output-InventoryMaster :name "Compressor inventory master file")
+(hasField WS3-Output-InventoryMaster :deliveredBy WS3-UnifyInventory)
+
+(isa WS3-Output-SubstitutionLogic AssetEntity)
+(hasField WS3-Output-SubstitutionLogic :name "Alternate/substitution logic")
+(hasField WS3-Output-SubstitutionLogic :deliveredBy WS3-UnifyInventory)
+
+(isa WS3-Output-DemandMapping AssetEntity)
+(hasField WS3-Output-DemandMapping :name "Region-level demand mapping")
+(hasField WS3-Output-DemandMapping :deliveredBy WS3-UnifyInventory)
+
+;; ---- 4. Extract Tribal Knowledge ----
+
+(isa WS4-TribalKnowledge Year1Workstream)
+(hasField WS4-TribalKnowledge :name "Extract Tribal Knowledge (The Hidden Gold)")
+(hasField WS4-TribalKnowledge :sequence 4)
+(hasField WS4-TribalKnowledge :ownership "Field service + Service managers + SMEs")
+(comment WS4-TribalKnowledge
+  "Document: what technicians always replace in pairs, what parts always
+   fail at certain runtime thresholds, what inside sales quotes automatically,
+   what alternates we use when OEM is backordered, what warranties actually
+   cause repeat failures. This is the competitive advantage. Competitors do
+   not have our tribal knowledge.")
+
+(isa TribalKnowledgeType Collection)
+
+(isa TK-PairedReplacement TribalKnowledgeType)
+(comment TK-PairedReplacement "What technicians always replace in pairs.")
+
+(isa TK-RuntimeThresholdFailure TribalKnowledgeType)
+(comment TK-RuntimeThresholdFailure "What parts always fail at certain runtime thresholds.")
+
+(isa TK-AutoQuote TribalKnowledgeType)
+(comment TK-AutoQuote "What inside sales quotes automatically without checking.")
+
+(isa TK-BackorderAlternate TribalKnowledgeType)
+(comment TK-BackorderAlternate "What alternates we use when OEM is backordered.")
+
+(isa TK-WarrantyRepeatFailure TribalKnowledgeType)
+(comment TK-WarrantyRepeatFailure "What warranties actually cause repeat failures.")
+
+(isa WS4-Output-Playbook AssetEntity)
+(hasField WS4-Output-Playbook :name "Tribal Knowledge Playbook")
+(hasField WS4-Output-Playbook :deliveredBy WS4-TribalKnowledge)
+
+(isa WS4-Output-Integration AssetEntity)
+(hasField WS4-Output-Integration :name "Integration of tribal knowledge into Charlotte")
+(hasField WS4-Output-Integration :deliveredBy WS4-TribalKnowledge)
+
+;; ---- 5. Build Marketplace v1 ----
+
+(isa WS5-MarketplaceV1 Year1Workstream)
+(hasField WS5-MarketplaceV1 :name "Build Marketplace v1 (Internal, Compressors Only)")
+(hasField WS5-MarketplaceV1 :sequence 5)
+(hasField WS5-MarketplaceV1 :ownership "Charlotte + IT + Distribution")
+(comment WS5-MarketplaceV1
+  "Capabilities: search compressor parts across all ISG, show alternates
+   and substitutes, display availability by branch, instant internal transfer
+   routing. This becomes the daily heartbeat for distribution and service
+   teams. Output: Marketplace v1 in pilot mode, internal adoption at
+   compressor-heavy branches.")
+
+(isa WS5-Capability-Search PROTOCOL)
+(comment WS5-Capability-Search "Search compressor parts across all ISG brands.")
+
+(isa WS5-Capability-Alternates PROTOCOL)
+(comment WS5-Capability-Alternates "Show alternates and substitutes for any part.")
+
+(isa WS5-Capability-Availability PROTOCOL)
+(comment WS5-Capability-Availability "Display real-time availability by branch location.")
+
+(isa WS5-Capability-TransferRouting PROTOCOL)
+(comment WS5-Capability-TransferRouting "Instant internal transfer routing between branches.")
+
+
+;;; ================================================================
+;;; PART 5: YEAR 1 COST BREAKDOWN
+;;; ================================================================
+
+(isa Year1CostCategory Collection)
+
+(isa Cost1-DataEngineering Year1CostCategory)
+(hasField Cost1-DataEngineering :name "Data Engineering & Cleansing")
+(hasField Cost1-DataEngineering :description "2 SomeAI + 2 shared ISG resources; unifying compressor SKUs, sales history, service data, inventory")
+(hasField Cost1-DataEngineering :costRange "$200K-$250K")
+
+(isa Cost2-TaxonomyBuild Year1CostCategory)
+(hasField Cost2-TaxonomyBuild :name "Compressor Taxonomy & Ontology Build")
+(hasField Cost2-TaxonomyBuild :description "SME workshops, mapping alternates, rebuild kits, naming standards")
+(hasField Cost2-TaxonomyBuild :costRange "$50K-$75K")
+
+(isa Cost3-KnowledgeGraph Year1CostCategory)
+(hasField Cost3-KnowledgeGraph :name "Charlotte Knowledge Graph Build (Compressor Only)")
+(hasField Cost3-KnowledgeGraph :description "Node + edge modeling, ingestion pipelines, relationship mapping")
+(hasField Cost3-KnowledgeGraph :costRange "$125K-$150K")
+
+(isa Cost4-MarketplaceUI Year1CostCategory)
+(hasField Cost4-MarketplaceUI :name "Marketplace v1 (ISG Internal)")
+(hasField Cost4-MarketplaceUI :description "Basic UI, ISG inventory connectors, alternates logic")
+(hasField Cost4-MarketplaceUI :costRange "$75K-$100K")
+
+(isa Cost5-PredictiveEngine Year1CostCategory)
+(hasField Cost5-PredictiveEngine :name "Predictive Reorder Engine v1")
+(hasField Cost5-PredictiveEngine :description "Initial models trained on compressor data only")
+(hasField Cost5-PredictiveEngine :costRange "$35K-$50K")
+
+(isa Cost6-CompetitorModel Year1CostCategory)
+(hasField Cost6-CompetitorModel :name "Competitor Timing Model v1")
+(hasField Cost6-CompetitorModel :description "Maintenance-cycle logic, behavioral modeling")
+(hasField Cost6-CompetitorModel :costRange "$20K-$30K")
+
+(isa Cost7-ChangeManagement Year1CostCategory)
+(hasField Cost7-ChangeManagement :name "Change Management / Training")
+(hasField Cost7-ChangeManagement :description "Internal rollout, workshops with compressor teams")
+(hasField Cost7-ChangeManagement :costRange "$15K-$20K")
+
+(isa Year1TotalCost METRIC)
+(hasField Year1TotalCost :range "$500K-$700K")
+(hasField Year1TotalCost :period "April 2026 - March 2027")
+
+
+;;; ================================================================
+;;; PART 6: SUCCESS METRICS
+;;; Year 1 draft measurements (Slide 5)
+;;; ================================================================
+
+(isa Year1SuccessMetric Collection)
+(genls Year1SuccessMetric METRIC)
+
+(isa SM-TaxonomyComplete Year1SuccessMetric)
+(hasField SM-TaxonomyComplete :name "Compressor taxonomy complete across ISG")
+(hasField SM-TaxonomyComplete :type "boolean")
+
+(isa SM-MarketplaceActive Year1SuccessMetric)
+(hasField SM-MarketplaceActive :name "Marketplace v1 active at IAC, IAP, and Pinnacle branches")
+(hasField SM-MarketplaceActive :type "boolean")
+(hasField SM-MarketplaceActive :pilotBranches "IAC, IAP, Pinnacle")
+
+(isa SM-PredictiveReorder Year1SuccessMetric)
+(hasField SM-PredictiveReorder :name "Predictive reorder accuracy")
+(hasField SM-PredictiveReorder :target ">=70%")
+
+(isa SM-CompetitorTiming Year1SuccessMetric)
+(hasField SM-CompetitorTiming :name "Competitor timing model accuracy")
+(hasField SM-CompetitorTiming :target ">=60%")
+
+(isa SM-ProactiveQuotes Year1SuccessMetric)
+(hasField SM-ProactiveQuotes :name "Increase in proactive compressor quotes")
+(hasField SM-ProactiveQuotes :target ">=10%")
+
+(isa SM-StockoutReduction Year1SuccessMetric)
+(hasField SM-StockoutReduction :name "Reduction in compressor stockouts")
+(hasField SM-StockoutReduction :target "5%")
+
+(isa SM-YOYSalesGrowth Year1SuccessMetric)
+(hasField SM-YOYSalesGrowth :name "Year-over-year sales growth")
+(hasField SM-YOYSalesGrowth :target "15% by Q4 2026")
+
+
+;;; ================================================================
+;;; PART 7: TOTAL PROGRAM FINANCIALS
+;;; ================================================================
+
+(isa ISGProgramFinancials PROTOCOL)
+(hasField ISGProgramFinancials :preYear1 "$125,000")
+(hasField ISGProgramFinancials :year1Range "$500K-$700K")
+(hasField ISGProgramFinancials :year2Range "$600K-$800K")
+(hasField ISGProgramFinancials :year2Conditional true)
+(hasField ISGProgramFinancials :totalRange "$1.1M-$1.4M")
+(hasField ISGProgramFinancials :totalPeriod "2 years")
+(comment ISGProgramFinancials
+  "We can build a compressor-first predictive distribution engine for
+   about $500K in Year 1. Year 2 activates the intelligence layer for
+   another ~$700K. Total spend over two years is $1.1M-$1.4M, well
+   below industry benchmarks for AI platform development.")
+
+
+;;; ================================================================
+;;; PART 8: MEETING AGENDA (Slide 10)
+;;; Presentation flow structure
+;;; ================================================================
+
+(isa PresentationAgenda PROTOCOL)
+(comment PresentationAgenda
+  "The intended presentation flow, including internal notes and
+   audience-management strategy: tell them what you're going to tell
+   them, tell them, tell them what you told them.")
+
+(isa AgendaItem Collection)
+
+(isa Agenda-Introductions AgendaItem)
+(hasField Agenda-Introductions :sequence 1)
+(hasField Agenda-Introductions :name "Introductions")
+
+(isa Agenda-OverviewCharlotte AgendaItem)
+(hasField Agenda-OverviewCharlotte :sequence 2)
+(hasField Agenda-OverviewCharlotte :name "Overview Charlotte")
+(hasField Agenda-OverviewCharlotte :subtopics "90-10 rule, what it is, what it isn't, how it works")
+
+(isa Agenda-OtherIndustries AgendaItem)
+(hasField Agenda-OtherIndustries :sequence 3)
+(hasField Agenda-OtherIndustries :name "Other Industries")
+(hasField Agenda-OtherIndustries :examples "Ag/Livestock, Entertainment/Venue, Industrial, Commercial")
+(hasField Agenda-OtherIndustries :hook "How does this translate to compressors?")
+
+(isa Agenda-Prioritization AgendaItem)
+(hasField Agenda-Prioritization :sequence 4)
+(hasField Agenda-Prioritization :name "Prioritization of ISG / Compressor Team")
+
+(isa Agenda-ExampleProjects AgendaItem)
+(hasField Agenda-ExampleProjects :sequence 5)
+(hasField Agenda-ExampleProjects :name "Example Projects & Goals")
+
+(isa Agenda-ExpectedResults AgendaItem)
+(hasField Agenda-ExpectedResults :sequence 6)
+(hasField Agenda-ExpectedResults :name "Expected Results")
+(hasField Agenda-ExpectedResults :focus "How we bring $ out")
+
+(isa Agenda-RolesResponsibilities AgendaItem)
+(hasField Agenda-RolesResponsibilities :sequence 7)
+(hasField Agenda-RolesResponsibilities :name "Roles & Responsibilities (ISG Team & SomeAI Team)")
+
+(isa Agenda-Timeline AgendaItem)
+(hasField Agenda-Timeline :sequence 8)
+(hasField Agenda-Timeline :name "Timeline & Follow-up Meetings")
+
+
+;;; ================================================================
+;;; PART 9: STRATEGIC FOCUS AREAS (Slide 11)
+;;; ================================================================
+
+(isa ISGFocusArea Collection)
+
+(isa Focus-Data ISGFocusArea)
+(hasField Focus-Data :name "Data")
+
+(isa Focus-CallCenter ISGFocusArea)
+(hasField Focus-CallCenter :name "Call Center")
+
+(isa Focus-ProactiveMarketing ISGFocusArea)
+(hasField Focus-ProactiveMarketing :name "Proactive Marketing")
+
+(isa Focus-ProductLineExpansion ISGFocusArea)
+(hasField Focus-ProductLineExpansion :name "Expansion of Product Lines")
+
+(isa Focus-CompetitivePricing ISGFocusArea)
+(hasField Focus-CompetitivePricing :name "Competitive Pricing Analysis")
+
+(isa Focus-NewOfferings ISGFocusArea)
+(hasField Focus-NewOfferings :name "New Offerings")
+(hasField Focus-NewOfferings :includes "Service Agreements, cross-sell (would you like fries with that)")
+
+;; Market study / acquisition targets (Slide 12)
+(isa Focus-MarketStudy ISGFocusArea)
+(hasField Focus-MarketStudy :name "Market Study")
+(hasField Focus-MarketStudy :includes "Acquisition targets, population of 10-100HP targets in ISG markets")
+
+
+;;; ================================================================
+;;; PART 10: COMPETITIVE POSITIONING
+;;; Charlotte vs. the market (Slides 14-15, 18-19)
+;;; ================================================================
+
+;; ---- The Core Claim ----
+
+(isa CharlotteCoreClaim PROTOCOL)
+(comment CharlotteCoreClaim
+  "Charlotte is a knowledge-graph-driven AI platform that converts
+   fragmented enterprise data into a living decision engine, enabling
+   AI systems that understand how a business operates.")
+
+(isa CharlotteNegativeDefinition PROTOCOL)
+(comment CharlotteNegativeDefinition
+  "Charlotte is not a chatbot, CRM, workflow engine, analytics tool,
+   or visualization layer. It is an Enterprise Data Brain that enables
+   true decision intelligence.")
+
+;; ---- The Problem Statement ----
+
+(isa EnterpriseProblem PROTOCOL)
+(hasField EnterpriseProblem :name "Enterprises Are Data-Rich, Insight-Poor")
+(hasField EnterpriseProblem :symptoms
+  "Dozens of disconnected systems. Inconsistent definitions and logic.
+   Knowledge trapped in people's heads. AI layered on top of broken data.")
+
+;; ---- Charlotte's Pipeline ----
+
+(isa CharlottePipeline PROTOCOL)
+(comment CharlottePipeline
+  "Data -> Structure -> Patterns -> Predictions -> Actions.
+   All inside one platform. Your team cannot find a vendor to compare
+   Charlotte to — because there isn't one.")
+
+;; ---- The Five Market Categories (Slide 18) ----
+
+(isa MarketCategory Collection)
+
+(isa Cat-BI MarketCategory)
+(hasField Cat-BI :name "BI / Dashboarding tools")
+(hasField Cat-BI :examples "Power BI, Tableau")
+(hasField Cat-BI :limitation "Visualize data. They don't understand it.")
+
+(isa Cat-GraphDB MarketCategory)
+(hasField Cat-GraphDB :name "Databases / Graph databases")
+(hasField Cat-GraphDB :examples "Neo4j, TigerGraph")
+(hasField Cat-GraphDB :limitation "Store relationships but don't learn your business.")
+
+(isa Cat-AIToolkit MarketCategory)
+(hasField Cat-AIToolkit :name "AI toolkits")
+(hasField Cat-AIToolkit :examples "LangChain, LlamaIndex")
+(hasField Cat-AIToolkit :limitation "Orchestrate LLMs but don't unify data.")
+
+(isa Cat-BigData MarketCategory)
+(hasField Cat-BigData :name "Big data platforms")
+(hasField Cat-BigData :examples "Databricks, Snowflake")
+(hasField Cat-BigData :limitation "Store and process data, but don't create meaning.")
+
+(isa Cat-VizSDK MarketCategory)
+(hasField Cat-VizSDK :name "Visualization SDKs")
+(hasField Cat-VizSDK :examples "Cambridge Intelligence")
+(hasField Cat-VizSDK :limitation "Draw graphs, but don't build the brain behind them.")
+
+;; ---- No Comparable Solution (Slide 19) ----
+
+(isa NoComparableSolution PROTOCOL)
+(hasField NoComparableSolution :question
+  "Does any commercial software automatically generate a semantic knowledge
+   graph from messy multi-brand operational data and feed it into an AI model
+   that predicts sales, service, inventory, and cross-sell demand?")
+(hasField NoComparableSolution :answer "No.")
+(comment NoComparableSolution
+  "As of today, there isn't a commercial platform that takes messy multi-brand
+   operational data, automatically turns it into a semantic knowledge graph, and
+   then uses that same brain to predict sales, service, inventory, and cross-sell
+   demand in one loop. Most tools do one slice of that stack. Charlotte is our
+   way of building the whole stack for ISG.")
+
+
+;;; ================================================================
+;;; PART 11: COMPETITOR COMPARISON MATRIX
+;;; Full 13-dimension comparison (Slide 15)
+;;; ================================================================
+
+(isa CompetitorComparison Collection)
+
+(isa ComparisonDimension Collection)
+
+(isa Dim-PrimaryRole ComparisonDimension)
+(hasField Dim-PrimaryRole :name "Primary Role")
+
+(isa Dim-CoreValue ComparisonDimension)
+(hasField Dim-CoreValue :name "Core Value")
+
+(isa Dim-DataModel ComparisonDimension)
+(hasField Dim-DataModel :name "Data Model")
+
+(isa Dim-CreatesKG ComparisonDimension)
+(hasField Dim-CreatesKG :name "Creates Knowledge Graph")
+
+(isa Dim-UnderstandsContext ComparisonDimension)
+(hasField Dim-UnderstandsContext :name "Understands Business Context")
+
+(isa Dim-UsesEnterpriseData ComparisonDimension)
+(hasField Dim-UsesEnterpriseData :name "Uses Enterprise Data")
+
+(isa Dim-MemoryOverTime ComparisonDimension)
+(hasField Dim-MemoryOverTime :name "Memory Over Time")
+
+(isa Dim-EncodesLogic ComparisonDimension)
+(hasField Dim-EncodesLogic :name "Encodes Business Logic")
+
+(isa Dim-AIDependency ComparisonDimension)
+(hasField Dim-AIDependency :name "AI Dependency")
+
+(isa Dim-DecisionSupport ComparisonDimension)
+(hasField Dim-DecisionSupport :name "Operational Decision Support")
+
+(isa Dim-ScalesAcquisitions ComparisonDimension)
+(hasField Dim-ScalesAcquisitions :name "Scales Across Acquisitions")
+
+(isa Dim-SwitchingCosts ComparisonDimension)
+(hasField Dim-SwitchingCosts :name "Switching Costs")
+
+;; ---- Competitors ----
+
+(isa Comp-Salesforce CompetitorComparison)
+(hasField Comp-Salesforce :name "Salesforce")
+(hasField Comp-Salesforce :primaryRole "CRM / System of Record")
+(hasField Comp-Salesforce :coreValue "Capture transactions")
+(hasField Comp-Salesforce :dataModel "Relational tables")
+(hasField Comp-Salesforce :createsKG "No")
+(hasField Comp-Salesforce :understandsContext "Limited")
+(hasField Comp-Salesforce :memoryOverTime "Transactional")
+(hasField Comp-Salesforce :encodesLogic "Config-based")
+(hasField Comp-Salesforce :aiDependency "Prompt + copilots")
+(hasField Comp-Salesforce :decisionSupport "Limited")
+(hasField Comp-Salesforce :scalesAcquisitions "Difficult")
+(hasField Comp-Salesforce :switchingCosts "Contractual")
+
+(isa Comp-ServiceNow CompetitorComparison)
+(hasField Comp-ServiceNow :name "ServiceNow")
+(hasField Comp-ServiceNow :primaryRole "Workflow & Ticketing")
+(hasField Comp-ServiceNow :coreValue "Orchestrate workflows")
+(hasField Comp-ServiceNow :dataModel "Relational + workflows")
+(hasField Comp-ServiceNow :createsKG "No")
+(hasField Comp-ServiceNow :understandsContext "Limited")
+(hasField Comp-ServiceNow :memoryOverTime "Workflow-based")
+(hasField Comp-ServiceNow :encodesLogic "Rules-based")
+(hasField Comp-ServiceNow :aiDependency "Rules + AI")
+(hasField Comp-ServiceNow :decisionSupport "Limited")
+(hasField Comp-ServiceNow :scalesAcquisitions "Moderate")
+(hasField Comp-ServiceNow :switchingCosts "Contractual")
+
+(isa Comp-Palantir CompetitorComparison)
+(hasField Comp-Palantir :name "Palantir")
+(hasField Comp-Palantir :primaryRole "Analytics Platform")
+(hasField Comp-Palantir :coreValue "Analyze datasets")
+(hasField Comp-Palantir :dataModel "Pipelines + models")
+(hasField Comp-Palantir :createsKG "Partial / manual")
+(hasField Comp-Palantir :understandsContext "Partial")
+(hasField Comp-Palantir :memoryOverTime "Model-based")
+(hasField Comp-Palantir :encodesLogic "Analyst-built")
+(hasField Comp-Palantir :aiDependency "Model-heavy")
+(hasField Comp-Palantir :decisionSupport "Partial")
+(hasField Comp-Palantir :scalesAcquisitions "Expensive")
+(hasField Comp-Palantir :switchingCosts "High cost")
+
+(isa Comp-CambridgeIntelligence CompetitorComparison)
+(hasField Comp-CambridgeIntelligence :name "Cambridge Intelligence")
+(hasField Comp-CambridgeIntelligence :primaryRole "Graph Visualization")
+(hasField Comp-CambridgeIntelligence :coreValue "Visualize graph data")
+(hasField Comp-CambridgeIntelligence :dataModel "External graph only")
+(hasField Comp-CambridgeIntelligence :createsKG "No")
+(hasField Comp-CambridgeIntelligence :understandsContext "No")
+(hasField Comp-CambridgeIntelligence :memoryOverTime "None")
+(hasField Comp-CambridgeIntelligence :encodesLogic "No")
+(hasField Comp-CambridgeIntelligence :aiDependency "None")
+(hasField Comp-CambridgeIntelligence :decisionSupport "No")
+(hasField Comp-CambridgeIntelligence :scalesAcquisitions "N/A")
+(hasField Comp-CambridgeIntelligence :switchingCosts "Low")
+
+(isa Comp-ChatGPT CompetitorComparison)
+(hasField Comp-ChatGPT :name "ChatGPT (OpenAI)")
+(hasField Comp-ChatGPT :primaryRole "Conversational AI Interface")
+(hasField Comp-ChatGPT :coreValue "Generate responses")
+(hasField Comp-ChatGPT :dataModel "No native data model")
+(hasField Comp-ChatGPT :createsKG "No")
+(hasField Comp-ChatGPT :understandsContext "Generic")
+(hasField Comp-ChatGPT :memoryOverTime "Session-based")
+(hasField Comp-ChatGPT :encodesLogic "No")
+(hasField Comp-ChatGPT :aiDependency "Prompt-driven")
+(hasField Comp-ChatGPT :decisionSupport "No")
+(hasField Comp-ChatGPT :scalesAcquisitions "Not designed for it")
+(hasField Comp-ChatGPT :switchingCosts "None")
+
+(isa Comp-Charlotte CompetitorComparison)
+(hasField Comp-Charlotte :name "Charlotte")
+(hasField Comp-Charlotte :primaryRole "Enterprise Intelligence & Decision Infrastructure")
+(hasField Comp-Charlotte :coreValue "Maintains a persistent, evolving model of how the enterprise operates to support decision-making across functions")
+(hasField Comp-Charlotte :dataModel "Graph-based enterprise knowledge representation with semantic relationships")
+(hasField Comp-Charlotte :createsKG "Native, continuously maintained enterprise knowledge graph")
+(hasField Comp-Charlotte :understandsContext "Encodes organizational structure, processes, assets, and operating logic")
+(hasField Comp-Charlotte :memoryOverTime "Long-lived organizational memory that compounds with usage")
+(hasField Comp-Charlotte :encodesLogic "Embedded within the enterprise knowledge structure rather than external rules or prompts")
+(hasField Comp-Charlotte :aiDependency "AI operates over structured enterprise knowledge rather than raw prompts")
+(hasField Comp-Charlotte :decisionSupport "Designed to inform and support operational and strategic decisions")
+(hasField Comp-Charlotte :scalesAcquisitions "Architected to normalize and integrate multiple operating entities")
+(hasField Comp-Charlotte :switchingCosts "Structural and operational due to embedded enterprise understanding")
+
+
+;;; ================================================================
+;;; PART 12: EBITDA VALUE BRIDGE
+;;; PE-lens impact matrix (Slide 16)
+;;; ================================================================
+
+(isa EBITDAValueBridge Collection)
+(genls EBITDAValueBridge PROTOCOL)
+(comment EBITDAValueBridge
+  "Charlotte converts complexity into operating leverage and predictability
+   — which is what buyers pay for.")
+
+(isa ValueBridgeRow Collection)
+
+(isa VB1-FragmentedData ValueBridgeRow)
+(hasField VB1-FragmentedData :problem "Fragmented data across brands and acquisitions")
+(hasField VB1-FragmentedData :impact "Normalizes enterprise knowledge into a single operating model")
+(hasField VB1-FragmentedData :lever "SG&A leverage")
+(hasField VB1-FragmentedData :interpretation "We're scaling understanding, not headcount.")
+
+(isa VB2-RedundantReporting ValueBridgeRow)
+(hasField VB2-RedundantReporting :problem "Redundant reporting and spreadsheet dependency")
+(hasField VB2-RedundantReporting :impact "Centralized, persistent enterprise memory")
+(hasField VB2-RedundantReporting :lever "SG&A leverage")
+(hasField VB2-RedundantReporting :interpretation "Fewer fire drills, fewer analysts.")
+
+(isa VB3-InconsistentPricing ValueBridgeRow)
+(hasField VB3-InconsistentPricing :problem "Inconsistent pricing logic across entities")
+(hasField VB3-InconsistentPricing :impact "Encodes pricing and margin drivers in operating context")
+(hasField VB3-InconsistentPricing :lever "Gross margin expansion")
+(hasField VB3-InconsistentPricing :interpretation "This tightens pricing execution, not theory.")
+
+(isa VB4-MarginLeakage ValueBridgeRow)
+(hasField VB4-MarginLeakage :problem "Margin leakage discovered too late")
+(hasField VB4-MarginLeakage :impact "Earlier detection of margin and mix issues")
+(hasField VB4-MarginLeakage :lever "Gross margin protection")
+(hasField VB4-MarginLeakage :interpretation "We catch problems before they hit EBITDA.")
+
+(isa VB5-TrappedBestPractices ValueBridgeRow)
+(hasField VB5-TrappedBestPractices :problem "Best practices trapped in individual brands")
+(hasField VB5-TrappedBestPractices :impact "Operating logic becomes portable across the platform")
+(hasField VB5-TrappedBestPractices :lever "Cost of revenue reduction")
+(hasField VB5-TrappedBestPractices :interpretation "We stop re-learning the same lessons.")
+
+(isa VB6-LocalOptimization ValueBridgeRow)
+(hasField VB6-LocalOptimization :problem "Local optimization over platform optimization")
+(hasField VB6-LocalOptimization :impact "Cross-functional visibility into decisions and tradeoffs")
+(hasField VB6-LocalOptimization :lever "Operational efficiency")
+(hasField VB6-LocalOptimization :interpretation "We optimize the platform, not silos.")
+
+(isa VB7-SlowDecisions ValueBridgeRow)
+(hasField VB7-SlowDecisions :problem "Slow decision-making due to lagging indicators")
+(hasField VB7-SlowDecisions :impact "Forward-looking decision support")
+(hasField VB7-SlowDecisions :lever "EBITDA volatility reduction")
+(hasField VB7-SlowDecisions :interpretation "Faster decisions beat perfect decisions.")
+
+(isa VB8-IntegrationCost ValueBridgeRow)
+(hasField VB8-IntegrationCost :problem "High post-close integration cost per acquisition")
+(hasField VB8-IntegrationCost :impact "Standard enterprise model absorbs new entities")
+(hasField VB8-IntegrationCost :lever "Integration cost reduction")
+(hasField VB8-IntegrationCost :interpretation "The marginal cost of integration declines.")
+
+(isa VB9-KeyPersonRisk ValueBridgeRow)
+(hasField VB9-KeyPersonRisk :problem "Heavy reliance on key individuals")
+(hasField VB9-KeyPersonRisk :impact "Institutionalized operating knowledge")
+(hasField VB9-KeyPersonRisk :lever "EBITDA durability")
+(hasField VB9-KeyPersonRisk :interpretation "This business runs on systems, not heroics.")
+
+(isa VB10-RepeatabilityProof ValueBridgeRow)
+(hasField VB10-RepeatabilityProof :problem "Difficulty proving repeatability at exit")
+(hasField VB10-RepeatabilityProof :impact "Documented, encoded operating model")
+(hasField VB10-RepeatabilityProof :lever "Multiple expansion")
+(hasField VB10-RepeatabilityProof :interpretation "Buyers are underwriting a system.")
+
+(isa VB11-DiligenceDiscount ValueBridgeRow)
+(hasField VB11-DiligenceDiscount :problem "Risk discount applied during diligence")
+(hasField VB11-DiligenceDiscount :impact "Clear line of sight into how the business runs")
+(hasField VB11-DiligenceDiscount :lever "MOIC expansion")
+(hasField VB11-DiligenceDiscount :interpretation "Less uncertainty equals less discount.")
+
+
+;;; ================================================================
+;;; PART 13: EDGE RELATIONSHIPS
+;;; How the entities connect
+;;; ================================================================
+
+;; Phase dependencies
+(isa phasePrecedes Predicate)
+(arity phasePrecedes 2)
+(arg1Isa phasePrecedes EngagementPhase)
+(arg2Isa phasePrecedes EngagementPhase)
+
+(phasePrecedes PreYear1Phase Year1Phase)
+(phasePrecedes Year1Phase Year2Phase)
+
+;; Workstream dependencies
+(isa workstreamEnables Predicate)
+(arity workstreamEnables 2)
+(arg1Isa workstreamEnables Year1Workstream)
+(arg2Isa workstreamEnables Year1Workstream)
+
+(workstreamEnables WS1-TaxonomyOntology WS3-UnifyInventory)
+(workstreamEnables WS1-TaxonomyOntology WS5-MarketplaceV1)
+(workstreamEnables WS2-TransactionData WS5-MarketplaceV1)
+(workstreamEnables WS3-UnifyInventory WS5-MarketplaceV1)
+(workstreamEnables WS4-TribalKnowledge WS5-MarketplaceV1)
+
+;; Platform relationships
+(isa poweredBy Predicate)
+(arity poweredBy 2)
+(poweredBy ServiceIQ-Platform CharlotteDataBrain)
+(poweredBy MarketplaceV1 ServiceIQ-Platform)
+
+;; Organization relationships
+(isa deploysFor Predicate)
+(arity deploysFor 2)
+(deploysFor SomeAI-Entity ISG-Entity)
+
+;; Tech stack relationship
+(isa integratesWith Predicate)
+(arity integratesWith 2)
+(integratesWith ServiceIQ-Platform NetSuite-System)
+(integratesWith ServiceIQ-Platform HubSpot-System)
+(integratesWith ServiceIQ-Platform BigCommerce-System)
+
+;; Pilot branch targeting
+(isa pilotBranch Predicate)
+(arity pilotBranch 2)
+(arg2Isa pilotBranch GroupEntity)
+(pilotBranch MarketplaceV1 IAC-Brand)
+(pilotBranch MarketplaceV1 IAP-Brand)
+(pilotBranch MarketplaceV1 PinnacleBrand)
+
+
+;;; ================================================================
+;;; END OF FILE
+;;; Total: ~860 lines
+;;; Covers: 20 slides, 3 phases, 5 workstreams, 7 cost categories,
+;;;         7 success metrics, 13-dimension competitor matrix,
+;;;         11 EBITDA value bridge rows, 5 market categories,
+;;;         8 agenda items, 7 focus areas, full entity graph
+;;; ================================================================
