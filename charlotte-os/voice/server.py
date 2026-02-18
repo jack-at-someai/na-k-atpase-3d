@@ -138,7 +138,15 @@ async def handle_twilio_media(request: web.Request) -> web.WebSocketResponse:
         except Exception:
             pass
 
+    _audio_chunks = 0
+
     async def on_audio(audio_bytes: bytes):
+        nonlocal _audio_chunks
+        _audio_chunks += 1
+        if _audio_chunks == 1:
+            log.info("First audio chunk received: %d bytes", len(audio_bytes))
+        elif _audio_chunks % 500 == 0:
+            log.info("Audio chunks received: %d", _audio_chunks)
         if deepgram:
             await deepgram.send_audio(audio_bytes)
 

@@ -81,29 +81,48 @@ class DeepgramStreamer:
 
     async def _receive_loop(self):
         """Listen for transcription results from Deepgram."""
+        msg_count = 0
         try:
             async for msg in self._ws:
+                msg_count += 1
+                if isinstance(msg, bytes):
+                    log.debug("Deepgram binary message (%d bytes)", len(msg))
+                    continue
                 data = json.loads(msg)
                 msg_type = data.get("type", "")
+
+                if msg_count <= 2:
+                    log.info("Deepgram msg #%d: type=%s", msg_count, msg_type)
 
                 if msg_type == "Results":
                     alt = data.get("channel", {}).get("alternatives", [{}])[0]
                     text = alt.get("transcript", "").strip()
                     is_final = data.get("is_final", False)
+                    speech_final = data.get("speech_final", False)
                     if text:
-                        await self._on_transcript(text, is_final)
+                        log.info("Deepgram transcript (final=%s, speech_final=%s): %s", is_final, speech_final, text)
+                        await self._on_transcript(text, is_final or speech_final)
+                    elif is_final:
+                        log.debug("Deepgram empty final result (silence)")
 
                 elif msg_type == "SpeechStarted":
+                    log.info("Deepgram: speech started")
                     if self._on_speech_started:
                         await self._on_speech_started()
+
+                elif msg_type == "Metadata":
+                    log.info("Deepgram metadata: request_id=%s", data.get("request_id", "?"))
 
                 elif msg_type == "Error":
                     log.error("Deepgram error: %s", data.get("message", data))
 
-        except websockets.ConnectionClosed:
-            log.info("Deepgram WebSocket closed")
+                elif msg_type == "UtteranceEnd":
+                    log.debug("Deepgram: utterance end")
+
+        except websockets.ConnectionClosed as e:
+            log.info("Deepgram WebSocket closed: code=%s reason=%s (after %d msgs)", e.code, e.reason, msg_count)
         except Exception:
-            log.exception("Deepgram receive error")
+            log.exception("Deepgram receive error (after %d msgs)", msg_count)
         finally:
             self._running = False
 
