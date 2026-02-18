@@ -69,7 +69,8 @@ async def handle_twilio_media(request: web.Request) -> web.WebSocketResponse:
             return
         pending_text = text
         log.info("STT [twilio]: %s", text)
-        await process_utterance(text)
+        # Run in background so Twilio WebSocket keeps being serviced
+        asyncio.create_task(process_utterance(text))
 
     async def on_speech_started():
         nonlocal is_speaking
