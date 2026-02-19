@@ -1,0 +1,99 @@
+;;; =============================================================================
+;;; BRAND-CORE-INDUSTRIAL.KRF — CORE Industrial Maintenance
+;;; ISG Specialty Services — Steel & Heavy Manufacturing Maintenance
+;;; =============================================================================
+;;;
+;;; Mount Vernon, AL. Founded 2017 by Bryan Brock (ex-Nucor, ex-Severstal).
+;;; Capital expansion, industrial maintenance, contract labor, steel fabrication.
+;;; 5 locations across Alabama and Mississippi. 50,000+ sq ft under overhead cranes.
+;;; Customer satisfaction: 9.7/10. Acquired under TJC era.
+;;;
+;;; =============================================================================
+
+(isa COREIndustrial ISGBrandNode)
+(hasLegalName COREIndustrial "CORE Industrial Maintenance")
+(hasWebsite COREIndustrial "coremaintenance.com")
+(hasHeadquarters COREIndustrial "17490 Hwy 43 N, Mount Vernon, AL 36560")
+(hasFounded COREIndustrial 2017)
+(hasFounder COREIndustrial "Bryan Brock"
+  :background "Nucor Corporation, Severstal"
+  :education "B.A. Eastern Oregon University")
+(hasVertical COREIndustrial "Specialty Services")
+(hasAcquisitionEra COREIndustrial "TJC"
+  :note "Exact date not publicly disclosed. Evidence: ISG Enterprises acquired entity codenamed 'Apple' based in Mount Vernon, AL matching CORE's profile.")
+(hasEmployees COREIndustrial "25-200" :note "Fluctuates with contract labor — RocketReach 25, TheOrg 51-200")
+(hasCustomerSatisfaction COREIndustrial "9.7/10")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS (5)
+;;; ---------------------------------------------------------------------------
+
+(hasLocation COREIndustrial "Mount Vernon, AL"
+  :address "17490 Hwy 43 N, Mount Vernon, AL 36560"
+  :role "HQ"
+  :note "Fabrication facility with overhead cranes")
+(hasLocation COREIndustrial "Dora, AL" :role "Fabrication facility with overhead cranes")
+(hasLocation COREIndustrial "Columbus, MS"
+  :address "380 North Steel Road, Columbus, MS 39701"
+  :note "Near steel industry customers")
+(hasLocation COREIndustrial "Birmingham, AL" :role "Office")
+(hasLocation COREIndustrial "Mobile, AL" :role "Fabrication facility")
+
+(hasFacility COREIndustrial "50,000+ sq ft combined under overhead cranes (Dora + Mount Vernon)")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel COREIndustrial "Bryan Brock" :title "Owner/Founder")
+(hasPersonnel COREIndustrial "Justin Swinsick" :title "Vice President / General Manager")
+(hasPersonnel COREIndustrial "Jason Weiler" :title "Project Superintendent")
+(hasPersonnel COREIndustrial "Alex Nicholson" :title "Columbus, MS office contact")
+(hasPersonnel COREIndustrial "Cody Goodwin" :title "Birmingham, AL office contact")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService COREIndustrial "Capital expansion projects")
+(hasService COREIndustrial "Industrial maintenance")
+(hasService COREIndustrial "Contract labor / industrial maintenance staffing")
+(hasService COREIndustrial "Steel fabrication — custom manufacturing")
+(hasService COREIndustrial "Equipment installation — turnkey projects")
+(hasService COREIndustrial "Pipe welding and installation")
+(hasService COREIndustrial "Laser alignment — precision laser leveling")
+(hasService COREIndustrial "Electrical and instrumentation work")
+(hasService COREIndustrial "Civil construction")
+(hasService COREIndustrial "Certified welding")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry COREIndustrial ("Steel" "Aluminum" "Heavy Manufacturing"))
+(hasTerritory COREIndustrial ("AL" "MS")
+  :note "Strategically located near steel industry customers. 5S methodology.")
+
+;;; ---------------------------------------------------------------------------
+;;; SAFETY & ACCREDITATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasCertification COREIndustrial ("OSHA" "Browz" "ISNetWorld" "Phi Consulting"))
+(hasMethodology COREIndustrial "5S" :note "Continuous safety education")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance COREIndustrial
+  :status "STABLE — niche vertical, strategic for steel/aluminum corridor"
+  :opportunity "Contract labor staffing generates workforce signal data.
+    Capital expansion projects create multi-month project tracking signals.
+    Bryan Brock designed CORE to correct deficiencies at larger companies —
+    Charlotte can amplify that operational discipline across ISG."
+  :note "9.7/10 customer satisfaction. Bryan Brock intentionally built CORE
+    to be what the larger companies couldn't — responsive, lean, disciplined.")
+
+;;; =============================================================================
+;;; END BRAND-CORE-INDUSTRIAL.KRF
+;;; =============================================================================

@@ -1,0 +1,126 @@
+;;; =============================================================================
+;;; BRAND-CTS.KRF — Compressor & Turbine Services (CTS)
+;;; ISG Compressor Vertical — Rotating Equipment Repair / Machine Shop
+;;; =============================================================================
+;;;
+;;; Houston, TX. Founded May 2005 (opened June 2006). ~25 employees.
+;;; Rotating equipment repair and engineering services.
+;;; Balance capability up to 30,000 lbs. Gulf Coast authorized repair center
+;;; for Schutte & Koerting, Skinner Power Systems, Griffin Gear.
+;;;
+;;; CRITICAL CONNECTION: CTS is connected to Turbomachinery Industries through
+;;; the Hickham family. Marc Hickham (CTS President), Steven Hickham (CTS Machine
+;;; Shop Manager), and Steve Hickham (TurboIndustries President) are family.
+;;; Jim Greene (CTS Co-Founder) appears as Jim Green at TurboIndustries.
+;;; The Hickham legacy traces to I.W. "Will" Hickham, described as an
+;;; "industry legend" who pioneered rotating equipment repair techniques.
+;;;
+;;; =============================================================================
+
+(isa CTS ISGBrandNode)
+(hasLegalName CTS "Compressor & Turbine Services")
+(hasWebsite CTS "compressorandturbineservices.com")
+(hasHeadquarters CTS "901 Old Genoa Red Bluff Rd, Houston, TX 77034")
+(hasFounded CTS "2005-05" :openedForBusiness "2006-06")
+(hasVertical CTS "Compressors / Turbomachinery"
+  :note "Repair/machine shop, NOT a distributor — unique within ISG compressor vertical")
+(hasAcquisitionEra CTS "TJC" :note "Post-December 2022")
+(hasEmployees CTS "~25")
+(hasTagline CTS "Craftsmanship. Technology. Service.")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel CTS "Marc Hickham"
+  :title "President & Co-Founder"
+  :credentials "BBA"
+  :experience "30+ years rotating equipment"
+  :note "Son/relative of I.W. 'Will' Hickham, industry legend")
+
+(hasPersonnel CTS "Jim Greene"
+  :title "Co-Founder"
+  :credentials "ME"
+  :experience "20+ years, hands-on — rebuilt up to 200 steam turbines/year"
+  :note "Same person as 'Jim Green' at Turbomachinery Industries")
+
+(hasPersonnel CTS "Steven Hickham"
+  :title "Machine Shop Manager"
+  :note "Related to Steve Hickham at Turbomachinery Industries — Hickham family")
+
+(hasPersonnel CTS "Austin Schmidt" :title "Account Executive")
+
+;;; ---------------------------------------------------------------------------
+;;; HICKHAM FAMILY CONNECTION
+;;; ---------------------------------------------------------------------------
+
+(hasHickhamConnection CTS TurboIndustries
+  :founder "I.W. 'Will' Hickham — industry legend, pioneered rotating equipment repair"
+  :ctsLeader "Marc Hickham (President, CTS)"
+  :ctsShopManager "Steven Hickham (Machine Shop Manager, CTS)"
+  :turboLeader "Steve Hickham (President, Turbomachinery Industries)"
+  :sharedPerson "Jim Green(e) — CTS Co-Founder AND TurboIndustries co-leader"
+  :significance "Two ISG brands run by the same family. Combined, they give ISG
+    both a Corpus Christi (Turbo) and Houston (CTS) rotating equipment presence
+    across the entire Gulf Coast petrochemical corridor.")
+
+;;; ---------------------------------------------------------------------------
+;;; FACILITY
+;;; ---------------------------------------------------------------------------
+
+(hasFacility CTS
+  :origin "Started in 10,000 sq ft building with 15-ton overhead crane and 1 employee"
+  :balanceCapacity "Up to 30,000 lbs"
+  :note "Complete machine shop with full balance capabilities")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService CTS "Rotating equipment repair and engineering services")
+(hasService CTS "Overhauls on turbines, pumps, gearboxes, compressors, fans, blowers")
+(hasService CTS "Complete machine shop with balance capabilities up to 30,000 lbs")
+(hasService CTS "Steam turbine repair")
+(hasService CTS "Throttle and trip valve repair")
+(hasService CTS "Compressor repair")
+(hasService CTS "Pump repair")
+(hasService CTS "Fan and blower repair")
+(hasService CTS "Boiler feed-water pump repair")
+(hasService CTS "OEM bearing housing inventory")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM / AUTHORIZED REPAIR LINES
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine CTS "Authorized Repair Center"
+  :brands ("Schutte & Koerting Valve Products (est. 1876, Philadelphia)"
+           "Skinner Power Systems"
+           "Griffin Gear")
+  :note "Gulf Coast authorized repair center")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry CTS ("Manufacturing" "Refining" "Energy"))
+(hasTerritory CTS ("TX" "Gulf Coast")
+  :note "Houston — heart of the refining and petrochemical industry.
+    Trusted vendor for some of the world's largest manufacturing, refining,
+    and energy companies. Attends Turbomachinery & Pump Symposia.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance CTS
+  :status "STABLE — niche repair/machine shop"
+  :opportunity "OEM bearing housing inventory creates cross-reference data.
+    Balance capability up to 30,000 lbs = high-value service signals.
+    Hickham family connection to TurboIndustries creates a natural
+    intelligence bridge between Corpus Christi and Houston operations."
+  :threat "EthosEnergy (OEP) and RMS (Arcline) compete in turbo aftermarket.
+    But CTS's niche is job-shop repair, not O&M contracts — different model.")
+
+;;; =============================================================================
+;;; END BRAND-CTS.KRF
+;;; =============================================================================

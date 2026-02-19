@@ -1,0 +1,172 @@
+;;; =============================================================================
+;;; DXP-ENTERPRISES.KRF — Pump/Rotating Equipment Platform Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: DXP Enterprises, Inc. (NASDAQ: DXPE), Houston, TX
+;;; TYPE: Publicly traded
+;;; VERTICAL: Pumps (DXP Water initiative), rotating equipment, compressed air,
+;;;           bearings, power transmission, safety products
+;;; STRATEGY: Most acquisitive industrial distributor in North America.
+;;;           27+ acquisitions since 2020. DXP Water initiative alone has
+;;;           17+ water/wastewater pump acquisitions coast-to-coast.
+;;; REVENUE: ~$1.92B (TTM)
+;;; THREAT LEVEL: MEDIUM — primarily pumps/water, limited compressor overlap.
+;;;              But Sullivan Environmental (OH/KY/IN) and Cisco Air (CA)
+;;;              show willingness to enter ISG verticals.
+;;;
+;;; =============================================================================
+
+(isa DXPEnterprises CompetitorNode)
+(hasHeadquarters DXPEnterprises "Houston, TX")
+(hasTicker DXPEnterprises "DXPE" :exchange "NASDAQ")
+(hasRevenue DXPEnterprises "$1.92B" :basis "TTM")
+(hasFounded DXPEnterprises 1908)
+(hasThreatLevel DXPEnterprises "MEDIUM" :reason "Primarily pumps, limited compressor overlap")
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (2020-2026) — 27+ ACQUISITIONS
+;;; ---------------------------------------------------------------------------
+
+;;; --- 2020 (5 acquisitions — DXP Water foundation) ---
+
+(hasAcquisition DXPEnterprises PumpingSystems :date "2020-01-01"
+  :revenue "$13M" :vertical "Pumps, water/wastewater")
+(hasAcquisition DXPEnterprises TurboMachineryRepair :date "2020-01-31"
+  :location "Richmond, CA" :revenue "$4M"
+  :specialty "Pump and industrial equipment repair, machining")
+(hasAcquisition DXPEnterprises TotalEquipmentCompany :date "2020-12-31"
+  :revenue "$114M combined (TEC + APO/CEC + PSI)" :employees 269
+  :specialty "Aftermarket rotating equipment service"
+  :note "Triple deal — foundation of DXP Water. Combined EBITDA ~$16M.")
+(hasAcquisition DXPEnterprises APOPumps :date "2020-12-31"
+  :specialty "Pumps, compressors, water/wastewater")
+(hasAcquisition DXPEnterprises PumpingSolutionsPSI :date "2020-12-31"
+  :revenue "$21M" :specialty "Water and wastewater pumps")
+
+;;; --- 2021 (3 acquisitions) ---
+
+(hasAcquisition DXPEnterprises CarterVerplanck :date "2021-04-30"
+  :location "Tampa, FL" :revenue "$29.5M" :price "$60.9M"
+  :founded 1927 :specialty "Water and wastewater distribution"
+  :territory "FL, TN, GA, AL"
+  :isgOverlap "MEDIUM — FL, TN, AL are ISG states")
+(hasAcquisition DXPEnterprises PremierWater :date "2021-09-20"
+  :location "Charlotte, NC" :revenue "$3.6M"
+  :specialty "Water and wastewater" :territory "NC, SC")
+
+;;; --- 2022 (4 acquisitions) ---
+
+(hasAcquisition DXPEnterprises DrydonEquipment :date "2022-03-01"
+  :location "IL" :revenue "$8.9M combined with Burlingame"
+  :specialty "Water/wastewater pumps, valves, controls"
+  :territory "IL, IN, WI, MI"
+  :isgOverlap "MEDIUM — IN and IL are ISG states")
+(hasAcquisition DXPEnterprises BurlingameEngineers :date "2022-03-01"
+  :location "CA" :specialty "Water/wastewater equipment")
+(hasAcquisition DXPEnterprises CiscoAirSystems :date "2022-05-02"
+  :location "Sacramento, CA" :revenue "$43.2M" :price "$52.2M"
+  :specialty "AIR COMPRESSORS, food and beverage, industrial"
+  :territory "CA, NV"
+  :note "DXP's entry into compressed air — shows willingness to cross into ISG vertical")
+(hasAcquisition DXPEnterprises SullivanEnvironmental :date "2022-09-02"
+  :location "OH" :revenue "$6.5M" :price "$6.5M"
+  :specialty "Water/wastewater pumps, valves, controls"
+  :territory "OH, KY, IN"
+  :isgOverlap "DIRECT — OH, KY, IN are ISG core states")
+
+;;; --- 2023 (3 acquisitions — quiet year, $10.4M total spend) ---
+
+(hasAcquisition DXPEnterprises RiordanMaterials :date "2023-05-01"
+  :location "Mid-Atlantic" :revenue "$14.2M combined with Florida Valve"
+  :specialty "Water/wastewater treatment" :territory "MD, NJ, PA, DE, VA")
+(hasAcquisition DXPEnterprises FloridaValveEMD :date "2023-05-01"
+  :location "FL" :specialty "Municipal water valve products"
+  :isgOverlap "LOW — municipal water, not industrial")
+(hasAcquisition DXPEnterprises AlliancePump :date "2023-11-01"
+  :location "Independence, MO"
+  :specialty "Municipal and industrial pump sales, service, repair")
+
+;;; --- 2024 (6 acquisitions — $156.6M deployed, peak spend year) ---
+
+(hasAcquisition DXPEnterprises HennesyMechanical :date "2024-01-02"
+  :location "Phoenix, AZ" :revenue "$10.1M"
+  :specialty "Municipal water/wastewater" :territory "AZ, NM, West TX"
+  :isgOverlap "LOW — West TX peripheral")
+(hasAcquisition DXPEnterprises KappeAssociates :date "2024-02-01"
+  :location "Frederick, MD" :revenue "$25.4M"
+  :specialty "Water/wastewater pumps, controls" :territory "MD, DC, DE, VA, PA, NJ, WV"
+  :isgOverlap "LOW — Mid-Atlantic, WV overlap minor")
+(hasAcquisition DXPEnterprises ProSeal :date "2024-03-01"
+  :location "Pontiac, MI" :revenue "$19.9M"
+  :specialty "Pumping systems, fluid sealing, industrial" :territory "Great Lakes, AK")
+(hasAcquisition DXPEnterprises HartwellEnvironmental :date "2024-09-01"
+  :location "Tomball, TX" :revenue "$18.4M"
+  :specialty "Water/wastewater pumps, controls" :territory "TX, OK"
+  :isgOverlap "MEDIUM — TX is ISG territory")
+(hasAcquisition DXPEnterprises BurtGurneyAssociates :date "2024-11-01"
+  :location "Omaha, NE" :revenue "$11.7M combined with MaxVac"
+  :specialty "Municipal water/wastewater")
+(hasAcquisition DXPEnterprises MaxVac :date "2024-11-01"
+  :location "CA (Central Valley / SF)"
+  :specialty "Vacuum pump sales, repair — semiconductors, pharma, F&B")
+
+;;; --- 2025 (4 acquisitions) ---
+
+(hasAcquisition DXPEnterprises MooresPump :date "2025-07-01"
+  :location "Broussard, LA" :revenue "$10.3M"
+  :specialty "Rotating equipment fabrication/repair, pumping systems"
+  :territory "Gulf Coast"
+  :isgOverlap "LOW — LA adjacent to ISG")
+(hasAcquisition DXPEnterprises TrianglePump :date "2025-11-01"
+  :location "Ridgefield, WA" :revenue "$15.1M"
+  :specialty "Water/wastewater pumps, process equipment" :territory "Pacific NW")
+(hasAcquisition DXPEnterprises PumpSolutionsInc :date "2025-12-01"
+  :location "New Caney, TX (4 locations)" :revenue "$36.8M"
+  :specialty "Water/wastewater pumps, controls, service"
+  :territory "TX"
+  :isgOverlap "MEDIUM — TX is ISG territory"
+  :milestone "15th DXP Water acquisition")
+
+;;; --- 2026 (3 acquisitions, Jan-Feb) ---
+
+(hasAcquisition DXPEnterprises PREMIERflow :date "2026-01-01"
+  :revenue "$93.7M combined with Mid Atlantic (11 mo.)" :employees "185+"
+  :specialty "Fire protection, water/wastewater, data center, HVAC pump systems"
+  :note "Largest DXP Water deal. Combined EBITDA ~$20.9M.")
+(hasAcquisition DXPEnterprises MidAtlanticStorage :date "2026-01-01"
+  :location "Washington Court House, OH"
+  :specialty "Liquid storage tanks, water/wastewater, fire suppression"
+  :isgOverlap "LOW — OH but water/storage specific")
+(hasAcquisition DXPEnterprises AmbienteH2O :date "2026-02-01"
+  :location "Sheridan, CO" :revenue "$8.1M"
+  :specialty "Water/wastewater pumps, process equipment"
+  :territory "CO, ID, MT, UT, WY")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection DXPEnterprises "2026"
+  :expectedDeals "5-7"
+  :likelyTargets "Continued DXP Water buildout in remaining US states.
+    Possible expansion of Cisco Air-style compressed air acquisitions.
+    Gulf Coast and Midwest pump distributors."
+  :rationale "DXP averages 4-5 deals/year and is accelerating. Public company
+    with strong balance sheet. PREMIERflow deal shows appetite for larger
+    platforms. May begin consolidating compressed air if they see ISG/OTC
+    creating competitive pressure in pump territories.")
+
+(hasProjection DXPEnterprises "2027"
+  :expectedDeals "5-8"
+  :likelyTargets "International expansion (DXP has Canadian presence).
+    More compressed air if Cisco Air model proves out.
+    Potential valve/flow control entry to match SunSource."
+  :rationale "At $1.92B revenue and 27+ acquisitions, DXP is a mature
+    acquirer with institutional M&A capability. They will continue
+    at 5+ deals/year until water/wastewater coverage is complete,
+    then pivot to adjacent verticals.")
+
+;;; =============================================================================
+;;; END DXP-ENTERPRISES.KRF
+;;; =============================================================================

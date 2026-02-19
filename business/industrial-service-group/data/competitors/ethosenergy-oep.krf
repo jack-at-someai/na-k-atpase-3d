@@ -1,0 +1,100 @@
+;;; =============================================================================
+;;; ETHOSENERGY-OEP.KRF — Turbomachinery Services Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: EthosEnergy, Houston, TX
+;;; PE SPONSOR: One Equity Partners (OEP, since January 2025)
+;;; PRIOR OWNERSHIP: JV between John Wood Group and Siemens Energy AG (2014-2025)
+;;; VERTICAL: Gas turbine and rotating equipment aftermarket services
+;;; DIVISIONS: Optimized Solutions, Operations & Maintenance, Aerospace & Defense MRO
+;;; EMPLOYEES: 3,600+
+;;; LOCATIONS: 23 global sites
+;;; STRATEGY: Independent (non-OEM) gas turbine aftermarket. OEP acquired,
+;;;           added parts manufacturing (TSL), divested steam turbine/compressor
+;;;           (TurboCare to RMS). Focusing on gas turbine specifically.
+;;; THREAT LEVEL: LOW-MEDIUM — turbomachinery is ISG's smallest vertical.
+;;;              EthosEnergy is global/OEM-scale, ISG is regional/aftermarket.
+;;;              But OEP may target ISG-territory turbo shops for bolt-ons.
+;;;
+;;; =============================================================================
+
+(isa EthosEnergy CompetitorNode)
+(hasHeadquarters EthosEnergy "Houston, TX")
+(hasPESponsor EthosEnergy "One Equity Partners (OEP)" :since "January 2025")
+(hasPriorOwnership EthosEnergy "JV: John Wood Group + Siemens Energy AG" :period "2014-2025")
+(hasEmployees EthosEnergy "3,600+")
+(hasLocations EthosEnergy "23 global sites")
+(hasThreatLevel EthosEnergy "LOW-MEDIUM" :reason "Global/OEM-scale, ISG is regional aftermarket")
+
+;;; ---------------------------------------------------------------------------
+;;; TIMELINE (2024-2026)
+;;; ---------------------------------------------------------------------------
+
+(hasEvent EthosEnergy OEPAcquisitionAnnounced :date "2024-08"
+  :description "One Equity Partners announces acquisition of EthosEnergy from Wood/Siemens JV")
+
+(hasEvent EthosEnergy OEPAcquisitionClosed :date "2025-01-07"
+  :description "OEP completes acquisition. Platform established.")
+
+(hasAcquisition EthosEnergy TurbineServicesLtd :date "2025-05-27"
+  :location "New York (HQ)"
+  :specialty "Non-OEM gas and steam turbine parts manufacturing. 50 years. 1,000+ global customers."
+  :rationale "Adds parts manufacturing to complement service. Vertical integration.")
+
+(hasDivestiture EthosEnergy TurboCare :date "2025-12-22"
+  :buyer "Rotating Machinery Services (RMS, Arcline Investment)"
+  :locations "4 facilities (US, UK, Netherlands)" :employees "160+"
+  :specialty "Steam turbine and centrifugal compressor services"
+  :rationale "Portfolio streamlining. OEP focusing EthosEnergy on gas turbine
+    specifically — shedding steam turbine and compressor assets to RMS.")
+
+;;; ---------------------------------------------------------------------------
+;;; RELATED: RMS (Arcline Investment)
+;;; ---------------------------------------------------------------------------
+
+(isa RMS CompetitorNode)
+(hasHeadquarters RMS "Houston, TX area")
+(hasPESponsor RMS "Arcline Investment Management" :aum "$9.1B")
+(hasPriorPE RMS "Cortec Group")
+(hasFounded RMS 1998)
+(hasAcquisition RMS TurboCareFromEthosEnergy :date "2025-12-22"
+  :employees "160+" :locations "4 (US, UK, Netherlands)"
+  :specialty "Steam turbine and centrifugal compressor services"
+  :note "RMS now owns the TurboCare legacy — directly competes with
+    ISG's Turbomachinery Industries and CTS brands.")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection EthosEnergy "2026"
+  :expectedDeals "1-2"
+  :likelyTargets "Gas turbine field service companies in Gulf Coast.
+    Additional parts manufacturing to vertically integrate further.
+    Unlikely to target ISG-scale regional shops."
+  :rationale "OEP is in Year 1 of ownership. Focus is on integration
+    and portfolio shaping. TSL added, TurboCare divested.
+    Next moves will be gas-turbine-specific.")
+
+(hasProjection EthosEnergy "2027"
+  :expectedDeals "2-3"
+  :likelyTargets "Potential O&M contract acquisitions (operations teams).
+    Aerospace MRO expansion. International growth.
+    May compete with ISG's CTS brand for centrifugal compressor service
+    contracts in Gulf Coast petrochemical facilities."
+  :rationale "OEP typically holds 5-7 years. By 2027 they'll be building
+    toward exit value. Gas turbine aftermarket is high-multiple at exit.")
+
+(hasProjection RMS "2026-2027"
+  :expectedDeals "1-3"
+  :likelyTargets "Steam turbine and compressor service shops.
+    May target ISG's Turbomachinery Industries or CTS brand territory.
+    Arcline has $9.1B AUM — capital is not a constraint."
+  :rationale "RMS just absorbed TurboCare (160+ employees, 4 facilities).
+    Now the leading independent steam turbine/compressor aftermarket platform.
+    Will acquire to build density against OEM competitors.")
+
+;;; =============================================================================
+;;; END ETHOSENERGY-OEP.KRF
+;;; =============================================================================

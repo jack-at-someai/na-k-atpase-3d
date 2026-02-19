@@ -1,0 +1,131 @@
+;;; =============================================================================
+;;; BRAND-ILLINOIS-ELECTRIC.KRF — Illinois Electric Works
+;;; ISG Motor Vertical — Large HP Motor Specialist
+;;; =============================================================================
+;;;
+;;; Granite City, IL (St. Louis metro). Founded 1931 (reopened 1983).
+;;; FIRST EASA-ACCREDITED SERVICE CENTER IN THE UNITED STATES.
+;;; 104,000 sq ft facility, 60-ton crane, 16 authorized OEM distributor lines.
+;;; Repair capacity up to 20,000 HP. Acquired November 2023 (TJC era).
+;;;
+;;; =============================================================================
+
+(isa IllinoisElectric ISGBrandNode)
+(hasLegalName IllinoisElectric "Illinois Electric Works")
+(hasWebsite IllinoisElectric "illinoiselectric.com")
+(hasISGBrandPage IllinoisElectric "isgservice.com/industrial-motors/")
+(hasHeadquarters IllinoisElectric "2161 Adams Street, Granite City, IL 62040")
+(hasFounded IllinoisElectric 1931 :reopened 1983 :reopenedBy "Dale Hamil and Ernie Hodge")
+(hasVertical IllinoisElectric "Motors")
+(hasAcquisitionDate IllinoisElectric "2023-11-02")
+(hasAcquisitionEra IllinoisElectric "TJC")
+(hasEmployees IllinoisElectric "~28-61" :note "Sources vary — RocketReach 28, ZoomInfo 61, Growjo 40")
+(hasRevenue IllinoisElectric "$11.3M-$17.2M" :basis "estimated range")
+(hasOperations IllinoisElectric "24/7/365")
+
+;;; ---------------------------------------------------------------------------
+;;; FACILITY
+;;; ---------------------------------------------------------------------------
+
+(hasFacility IllinoisElectric
+  :totalSqFt 104000
+  :lotAcres 7.16
+  :manufacturingSqFt 80000
+  :warehouseSqFt 20000
+  :craneCapacity "60 tons"
+  :balanceStands "Computerized, rotating elements up to 25,000 lbs"
+  :buildingAge "Completed 1970 (former Illinois Power building)"
+  :buildingValue "$6.4M")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel IllinoisElectric "Dale Hamil" :title "President" :note "Co-founded 1983 reopening")
+(hasPersonnel IllinoisElectric "Ernie Hodge" :title "Co-Founder" :note "Partnered with Dale Hamil in 1983")
+(hasPersonnel IllinoisElectric "Ron Keppel" :title "Sales Manager")
+(hasPersonnel IllinoisElectric "Michael Bongner" :title "Product Manager")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService IllinoisElectric "AC & DC Motor Repair — fractional HP up to 20,000 HP and beyond")
+(hasService IllinoisElectric "Motor types: induction, vertical, synchronous, wound rotor")
+(hasService IllinoisElectric "Crane & Hoist Repair — overhead traveling cranes, inspections, modernization")
+(hasService IllinoisElectric "Crane Modernization — motorization, cab-to-pendant/radio control conversion, hydraulic-to-electromagnetic brake conversion")
+(hasService IllinoisElectric "Pump Repair — vertical turbines, centrifugal pumps")
+(hasService IllinoisElectric "Generator Services / Power Generation")
+(hasService IllinoisElectric "Gearbox, Brake, Winch Repair")
+(hasService IllinoisElectric "Blower & Fan Repair")
+(hasService IllinoisElectric "Custom Control Panel Fabrication")
+(hasService IllinoisElectric "Precision Dynamic Balancing — computerized, elements up to 25,000 lbs")
+(hasService IllinoisElectric "Laser Alignment")
+(hasService IllinoisElectric "Vibration Analysis")
+(hasService IllinoisElectric "Infrared Thermography")
+(hasService IllinoisElectric "PdMA Motor Analysis")
+(hasService IllinoisElectric "AC/DC Drive and Soft-Start Repair")
+(hasService IllinoisElectric "Variable Frequency Drive (VFD) Services")
+(hasService IllinoisElectric "Selective Brush Plating, Metal Stitching, Metallizing")
+(hasService IllinoisElectric "Reverse Engineering — making new parts from scratch")
+(hasService IllinoisElectric "Complete Machine Shop — welding, shaft repair, Babbitt bearing repair")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS (16 Authorized Motor Distributor Lines)
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine IllinoisElectric "Motors — 16 authorized lines"
+  :brands ("Toshiba" "US Motors" "Tatung" "Marathon" "GE" "TECO-Westinghouse"
+           "WEG" "Emerson" "Leeson" "Baldor" "AO Smith" "Lafert" "Reuland"
+           "Worldwide Electric Corp" "Siemens" "Lincoln")
+  :note "Unusually large portfolio for a repair shop. New, used, rebuilt motors
+    in stock up to 5,000 HP. Repair capacity up to 13,200 volts and 20,000 HP.")
+
+;;; ---------------------------------------------------------------------------
+;;; CERTIFICATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasCertification IllinoisElectric "EASA Accredited"
+  :distinction "FIRST company in the United States to receive EASA accreditation"
+  :scope "23 categories, 70+ criteria elements"
+  :audit "Requires third-party audit to maintain"
+  :covers "Mechanical repairs and electrical rewinding")
+
+;;; ---------------------------------------------------------------------------
+;;; NOTABLE PROJECTS
+;;; ---------------------------------------------------------------------------
+
+(hasProject IllinoisElectric "U.S. Steel Hot Strip Motor Rewind"
+  :date "October 2022"
+  :scope "Rewound 10,000 HP GE Hot Strip Motors in 62 days"
+  :note "IEW received a model rotor commemorating the achievement")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry IllinoisElectric ("Steel Mills" "Power Generation" "Water Companies"
+                               "Refineries" "General Manufacturing" "Government/Municipal"))
+(hasTerritory IllinoisElectric ("IL" "MO" "IN" "Midwest US")
+  :note "St. Louis metro area. Aspires to be the preferred apparatus and motor
+    repair shop in the United States.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance IllinoisElectric
+  :status "PLANNED — defensive priority vs. IPS/MCE motor roll-ups"
+  :opportunity "16 OEM distributor lines = rich cross-reference data.
+    20,000 HP repair capacity = high-value lifecycle intelligence on critical equipment.
+    EASA accreditation = quality signal that differentiates from competitors.
+    Crane modernization service creates multi-year project signals."
+  :threat "IPS (Searchlight Capital) and MCE (Frontenac) are rolling up
+    motor repair shops in IL/MO/IN. IEW's 95-year brand and EASA distinction
+    make it defensible, but Charlotte needs to amplify that advantage."
+  :note "Founded 1931, reopened 1983. Dual heritage. 60-ton crane and 25,000 lb
+    balance stands indicate a facility that can handle virtually any job.")
+
+;;; =============================================================================
+;;; END BRAND-ILLINOIS-ELECTRIC.KRF
+;;; =============================================================================

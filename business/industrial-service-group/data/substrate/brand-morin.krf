@@ -1,0 +1,137 @@
+;;; =============================================================================
+;;; BRAND-MORIN.KRF — Morin Process Equipment / Morin Repair Services
+;;; ISG Process Equipment Platform — Most Diversified Brand
+;;; =============================================================================
+;;;
+;;; Pelham, Alabama (Birmingham metro). Founded 2007/2008 by Danny and April Morin.
+;;; 6th and final KCM-era acquisition (September 30, 2022). 100+ employees.
+;;; 4 divisions: Process Equipment, Repair Services, Valves & Controls, Marine/Power.
+;;; 50+ OEM lines — the largest manufacturer line card in ISG.
+;;;
+;;; Danny Morin chose ISG over traditional PE firms specifically because of
+;;; the autonomous operating model and his personal relationship with Jim Richard.
+;;;
+;;; =============================================================================
+
+(isa MorinProcess ISGBrandNode)
+(hasLegalName MorinProcess "Morin Process Equipment, L.L.C.")
+(hasRelatedEntity MorinProcess "Morin Repair Services")
+(hasWebsite MorinProcess "morinprocess.com")
+(hasISGBrandPage MorinProcess "isgservice.com/brand-story-morin-process-equipment/")
+(hasHeadquarters MorinProcess "301A Cahaba Valley Parkway N, Pelham, AL 35124")
+(hasFounded MorinProcess 2007 :repairServices 2008)
+(hasVertical MorinProcess "Process Equipment"
+  :note "ISG lists under Compressors, but Morin spans pumps, heat exchangers,
+    valves, controls, compressors, and marine/power equipment")
+(hasAcquisitionDate MorinProcess "2022-09-30")
+(hasAcquisitionEra MorinProcess "KCM" :order 6 :role "Final KCM-era acquisition")
+(hasEmployees MorinProcess "100+" :note "CB Insights: over 100 professionals")
+(hasRevenue MorinProcess "$9M-$50M" :basis "estimated range" :year 2025)
+(hasFounders MorinProcess "Danny Morin" "April Morin")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasLocation MorinProcess "Pelham, AL"
+  :address "301A Cahaba Valley Pkwy N, Pelham, AL 35124"
+  :phone "205-403-8844"
+  :role "HQ"
+  :manager "Danny Morin")
+
+(hasLocation MorinProcess "Decatur, AL"
+  :address "75 Safety Way, Decatur, AL 35601"
+  :phone "256-350-8600"
+  :manager "Jim Routon")
+
+(hasLocation MorinProcess "Saraland, AL"
+  :address "1438 Industrial Parkway, Saraland, AL 36571"
+  :phone "251-675-0070"
+  :manager "Thomas Johns")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel MorinProcess "Danny Morin"
+  :title "Founder, Owner, President"
+  :email "dmorin@morinprocess.com" :phone "205-790-5905")
+(hasPersonnel MorinProcess "April Morin" :title "Co-Founder, Owner")
+(hasPersonnel MorinProcess "Jim Routon"
+  :title "Decatur Manager"
+  :email "jrouton@morinprocess.com" :phone "256-612-9712")
+(hasPersonnel MorinProcess "Thomas Johns"
+  :title "Saraland Manager"
+  :email "tjohns@morinprocess.com" :phone "205-767-7683")
+(hasPersonnel MorinProcess "Jim Traylor"
+  :title "Valves & Controls Division"
+  :email "jtraylor@morinprocess.com" :phone "205-936-2679")
+
+;;; ---------------------------------------------------------------------------
+;;; OPERATING DIVISIONS
+;;; ---------------------------------------------------------------------------
+
+(hasDivision MorinProcess "Morin Process Equipment" :focus "Pumps and mechanical equipment sales/distribution")
+(hasDivision MorinProcess "Morin Repair Services" :focus "Equipment repair and refurbishment")
+(hasDivision MorinProcess "Morin Valves & Controls" :focus "Valve and control products")
+(hasDivision MorinProcess "Morin Marine / Morin Power" :focus "Specialized marine and power service")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS / MANUFACTURER LINES (50+)
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine MorinProcess "Heat Exchangers"
+  :brands ("API Basco" "Schmidt-Bretten" "Alfa Laval" "SPX" "Tranter"
+           "WCR" "Mueller" "ITT" "American Standard" "Kelvion" "GEA Rainey"))
+
+(hasOEMLine MorinProcess "Strainers & Filtration"
+  :brands ("Eaton Hayward" "Simplex" "Duplex" "Wright Austin"))
+
+(hasOEMLine MorinProcess "Pumps — Slurry"
+  :brands ("Weir Minerals (Warman, Galigher, Ash, Cavex, Geho, Vulco, Hazleton, Linatex, Isogate, Begemann)" "Floway"))
+
+(hasOEMLine MorinProcess "Pumps — General Purpose"
+  :brands ("Hyundai" "AnsiPro" "CPC" "Flux" "KSB" "Iwaki" "LMI Milton Roy"
+           "Magnatex" "Munsch" "Phantom" "Richter" "DESMI Rotan" "SYDEX"
+           "Travaini" "Vanton" "Witte" "Robinson" "Gusher" "American Marsh"))
+
+(hasOEMLine MorinProcess "Compressors & Gas Equipment"
+  :brands ("Howden Burton Corblin" "Hydro-Thermal" "Travaini"))
+
+(hasOEMLine MorinProcess "Air & Environmental"
+  :brands ("KCH Engineering" "Kirk & Blum" "NAFCO" "United Air Specialist (UAS)"))
+
+(hasOEMLine MorinProcess "Motors & Drives" :brands ("Hyundai (motors, VFDs, starters)"))
+
+(hasOEMLine MorinProcess "Valves & Controls"
+  :brands ("Pentair Valves & Controls" "Siemens/Flender"))
+
+(hasOEMLine MorinProcess "Specialized"
+  :brands ("Titanium Fabrication Corporation" "Baltimore Aircoil Company (BAC)"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry MorinProcess ("Chemical Process" "Oil & Gas" "Power" "Water"
+                           "General Industrial" "Steel" "Marine"))
+(hasTerritory MorinProcess ("AL" "GA" "FL" "MS" "TN" "KY" "AR" "LA")
+  :note "Southeastern US. All three facilities in Alabama.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance MorinProcess
+  :status "PLANNED — Year 2 expansion"
+  :opportunity "Morin's 50+ OEM line card is the richest cross-reference dataset
+    in ISG. Product cross-reference protocol maps directly to Morin's catalog.
+    Repair Services division generates equipment lifecycle signals.
+    Heat exchanger + pump + valve data across the same customer base
+    creates multi-vertical intelligence that no other ISG brand has alone."
+  :dannyMorinQuote "What would have taken 8-10 years of organic growth
+    could be compressed to 2-3 years with ISG's backing.")
+
+;;; =============================================================================
+;;; END BRAND-MORIN.KRF
+;;; =============================================================================

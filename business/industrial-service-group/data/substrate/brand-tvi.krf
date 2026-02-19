@@ -1,0 +1,108 @@
+;;; =============================================================================
+;;; BRAND-TVI.KRF — Tri-State Valve & Instrument (TVI, Inc.)
+;;; ISG Valve Vertical — Overpressure Protection Specialist
+;;; =============================================================================
+;;;
+;;; Memphis, TN headquartered. 7 stocking locations across 8-state region.
+;;; Farris-anchored pressure relief valve specialist since 1984.
+;;; Acquired by ISG under TJC in January 2024.
+;;;
+;;; =============================================================================
+
+(isa TVI ISGBrandNode)
+(hasLegalName TVI "TVI, Inc." :fka "Tri-State Valve & Instrument, Co.")
+(hasWebsite TVI "tvimem.com")
+(hasISGBrandPage TVI "isgservice.com/our-brands/tri-state-valve/")
+(hasHeadquarters TVI "3497 Stanton Rd., Memphis, TN 38108")
+(hasFounded TVI 1984)
+(hasVertical TVI "Valves")
+(hasAcquisitionDate TVI "2024-01-08")
+(hasAcquisitionEra TVI "TJC")
+(hasEmployees TVI "~24")
+(hasRevenue TVI "$11.6M" :basis "estimated" :year 2025)
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS (7 stocking locations)
+;;; ---------------------------------------------------------------------------
+
+(hasLocation TVI "Memphis, TN"
+  :address "3497 Stanton Rd., Memphis, TN 38108"
+  :role "HQ" :vrCertified true)
+(hasLocation TVI "El Dorado, AR"
+  :address "1374 Southfield Rd., El Dorado, AR 71730"
+  :vrCertified true)
+(hasLocation TVI "Calvert City, KY"
+  :address "326 N. Main St., Calvert City, KY 42029"
+  :vrCertified true)
+(hasLocation TVI "Evansville, IN"
+  :address "1415 W. Franklin St., Evansville, IN 47710"
+  :vrCertified false)
+(hasLocation TVI "Hamilton, MS"
+  :address "40537 Old Highway 45S, Hamilton, MS 39746"
+  :vrCertified false)
+(hasLocation TVI "St. Louis, MO" :vrCertified false)
+(hasLocation TVI "Beaumont, TX" :vrCertified false)
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel TVI "Bill Henson" :title "President")
+
+;;; ---------------------------------------------------------------------------
+;;; CERTIFICATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasCertification TVI "National Board of Boiler and Pressure Vessel Inspectors")
+(hasCertification TVI "ASME" :stamps ("V" "UV" "VR"))
+(hasCertification TVI "Three certified VR repair shops — Memphis, El Dorado, Calvert City")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService TVI "Overpressure protection products and solutions (core specialty since 1984)")
+(hasService TVI "Pressure relief valve repair — VR-certified at 3 locations")
+(hasService TVI "Valve automation — all locations")
+(hasService TVI "On-site repair capabilities")
+(hasService TVI "Custom valve configuration to exact specifications")
+(hasService TVI "Instrumentation components distribution")
+(hasService TVI "Corrosion resistance products")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS / MANUFACTURER LINES
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine TVI "Overpressure/Relief Valves"
+  :brands ("Farris")
+  :note "Primary line — uses Farris SizeMaster software, iPRSM technology,
+    spring loaded and pilot operated PRV hardware, Smart PRV monitoring")
+
+(hasOEMLine TVI "Instrumentation"
+  :brands ("Check-All" "Custom Control Sensors" "Dwyer Instruments" "Fairchild"
+           "Greyline" "Hedland Flow Meters" "Herion" "Mac Process"
+           "Magnatrol Valves" "Murphy" "Palmer Instruments" "Reotemp" "Winters"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry TVI ("Chemical" "Refinery" "Pulp & Paper" "Food Processing" "Manufacturing"))
+(hasTerritory TVI ("TN" "AR" "KY" "IN" "MS" "MO" "TX")
+  :note "8-state region from 7 stocking locations — widest geographic footprint
+    of the three ISG valve brands by location count")
+(hasContact TVI :main "800-682-9948" :afterHours "901-340-5882" :email "sales@tvimem.com")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance TVI
+  :status "PLANNED — Year 2 expansion"
+  :opportunity "Farris Smart PRV monitoring data is real-time signal data.
+    TVI's 7-location network creates geographic density for route optimization.
+    Instrumentation distribution generates cross-sell signals across ISG brands.")
+
+;;; =============================================================================
+;;; END BRAND-TVI.KRF
+;;; =============================================================================

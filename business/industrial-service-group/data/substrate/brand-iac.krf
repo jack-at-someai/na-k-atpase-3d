@@ -1,0 +1,111 @@
+;;; =============================================================================
+;;; BRAND-IAC.KRF — Industrial Air Centers (IAC)
+;;; ISG Compressor Vertical — Full-Service Compressed Air Platform
+;;; =============================================================================
+;;;
+;;; CHARLOTTE LAUNCHES HERE FEBRUARY 24, 2026.
+;;;
+;;; Jeffersonville, IN. FOUNDED 1950 — oldest ISG brand by founding date
+;;; (75+ years in business). 84-95 employees. ~$39.4M revenue.
+;;; 8 office locations across IN, OH, KY, FL. Region's largest rental fleet.
+;;; Full-service: sales, installation, service, rentals, energy management,
+;;; CAS (Compressed Air Supply) outsourcing program.
+;;; 200+ years combined team experience.
+;;;
+;;; =============================================================================
+
+(isa IAC ISGBrandNode)
+(hasLegalName IAC "Industrial Air Centers, Inc.")
+(hasWebsite IAC "iacserv.com")
+(hasISGBrandPage IAC "isgservice.com/our-brands/industrial-air-centers/")
+(hasHeadquarters IAC "731 E Market St, Jeffersonville, IN 47130")
+(hasFounded IAC 1950 :note "75+ years in business — oldest ISG brand by founding date")
+(hasVertical IAC "Compressors")
+(hasAcquisitionDate IAC "~2020" :note "Funding round closed April 10, 2020")
+(hasAcquisitionEra IAC "KCM" :note "Early KCM-era add-on or TJC-era — timing ambiguous")
+(hasEmployees IAC "84-95" :note "Datanyze 84, RocketReach 95, ZoomInfo 51-200 range")
+(hasRevenue IAC "$39.4M" :basis "RocketReach estimate")
+(hasTeamExperience IAC "200+ years combined")
+(hasOperations IAC "24/7/365")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS (8 offices)
+;;; ---------------------------------------------------------------------------
+
+(hasLocation IAC "Jeffersonville, IN" :role "HQ")
+(hasLocation IAC "Indianapolis, IN")
+(hasLocation IAC "Evansville, IN")
+(hasLocation IAC "Lexington, KY")
+(hasLocation IAC "Cincinnati, OH")
+(hasLocation IAC "Dayton, OH")
+(hasLocation IAC "Columbus, OH")
+(hasLocation IAC "Florida" :note "State location, specific city TBD")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel IAC "George Burch" :title "CEO")
+(hasPersonnel IAC "Dave Suder"
+  :title "President"
+  :background "Previously Group VP of Service for nearly two decades")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService IAC "Full-service compressed air systems — sales, installation, service")
+(hasService IAC "Rentals — 24/7/365, region's largest rental fleet of compressors, dryers, vacuum pumps, accessories")
+(hasService IAC "Energy management and compressed air audits")
+(hasService IAC "Piping — design and installation")
+(hasService IAC "Compressed Air Supply (CAS) outsourcing program — air as a fourth utility")
+(hasService IAC "Predictive maintenance programs")
+(hasService IAC "Engineered turnkey solutions")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS (Extensive line card)
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine IAC "Primary Lines"
+  :brands ("Sullair" "Hitachi" "Kaishan" "ELGi" "Sullivan-Palatek" "Champion"
+           "Hankison (SPX)" "Parker" "Kobelco" "Tamturbo" "Hanwha" "Anest Iwata"
+           "Beko" "Mikropor"))
+
+(hasOEMLine IAC "Service/Parts For"
+  :brands ("Atlas Copco" "Chicago Pneumatic" "Curtis" "Devair" "Gardner Denver"
+           "Ingersoll Rand" "Kaeser" "Quincy"))
+
+(hasOEMLine IAC "Piping & Accessories"
+  :brands ("Pfannenberg" "Infinity & Elevation Piping"))
+
+;;; ---------------------------------------------------------------------------
+;;; TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasTerritory IAC ("IN" "OH" "KY" "FL")
+  :note "8 office locations. Core Midwest + Florida. Region's largest rental fleet.
+    This is the field-service complement to IAP's parts distribution model.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE DEPLOYMENT — LAUNCHING FEB 24, 2026
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteDeployment IAC
+  :launchDate "2026-02-24"
+  :scope "Compressor vertical — IAP + IAC combined"
+  :contract "$480K Year 1 ($40K/mo), $310K Year 2+"
+  :opportunity "IAC's 8-location network with 200+ years of service history
+    generates massive equipment lifecycle data. CAS (air as utility) contracts
+    create recurring revenue signals. Rental fleet tracking = real-time
+    equipment utilization metrics. Energy audit data maps directly to
+    Charlotte METRIC primitives."
+  :synergy "IAP provides the parts catalog intelligence. IAC provides the
+    field service and customer relationship intelligence. Together they form
+    a complete compressor vertical intelligence layer for Charlotte."
+  :significance "IAC's territory (IN, OH, KY, FL) is where Atlas Copco has been
+    acquiring ISG's neighbors. Charlotte must demonstrate competitive advantage
+    against OEM-direct model.")
+
+;;; =============================================================================
+;;; END BRAND-IAC.KRF
+;;; =============================================================================

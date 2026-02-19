@@ -1,0 +1,368 @@
+;;; =============================================================================
+;;; TARGETS-MOTORS.KRF — Motor Vertical Acquisition Targets
+;;; ISG Acquisition Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; 28 named targets across 3 tiers. Motor repair is consolidating faster
+;;; than any other ISG vertical — IPS (Searchlight, 115+ locations) and
+;;; MCE (Frontenac, 62 facilities) are rolling up the entire US.
+;;; ISG has only 2 motor brands (Soles Electric WV, Illinois Electric IL).
+;;;
+;;; =============================================================================
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 1 — Acquire Now, Present to TJC (6 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa JayIndustrial AcquisitionTargetNode)
+(hasTargetID JayIndustrial "M1")
+(hasLegalName JayIndustrial "Jay Industrial Repair")
+(hasHeadquarters JayIndustrial "Birmingham, AL")
+(hasVertical JayIndustrial "Motors")
+(hasRevenue JayIndustrial "$46-48M" :basis "estimated")
+(hasEmployees JayIndustrial "125-166")
+(hasFounded JayIndustrial 1984)
+(hasOwnership JayIndustrial "Private — Joel McMahon (Chairman/CEO), William Shiver (President)")
+(hasLocations JayIndustrial "Birmingham AL, Macon GA, Montgomery AL, Mobile AL, Muscle Shoals AL, Jacksonville FL, Oklahoma City OK")
+(hasCertification JayIndustrial ("EASA Accredited" "SKF Certified" "UL Certified"))
+(hasTerritory JayIndustrial ("AL" "GA" "FL" "OK"))
+(hasUrgency JayIndustrial "CRITICAL"
+  :reason "Largest remaining independent motor shop in the Southeast.
+    7 locations across 4 states. If IPS buys Jay, ISG loses the entire SE motor market.")
+(hasEffort JayIndustrial "MEDIUM")
+
+(isa BrandonClark AcquisitionTargetNode)
+(hasTargetID BrandonClark "M2")
+(hasLegalName BrandonClark "Brandon & Clark, Inc.")
+(hasHeadquarters BrandonClark "Lubbock, TX")
+(hasVertical BrandonClark "Motors")
+(hasRevenue BrandonClark "$54M" :basis "estimated")
+(hasEmployees BrandonClark "137-200+")
+(hasFounded BrandonClark 1950)
+(hasOwnership BrandonClark "Private — Scott Clark (CEO/President), Clark family")
+(hasLocations BrandonClark "6 locations across Southwest")
+(hasCertification BrandonClark ("EASA Accredited (since 1953)" "ISO 9001 (first US motor shop, 1997)"))
+(hasOEMLine BrandonClark ("Toshiba" "Siemens" "Yaskawa" "Nidec"))
+(hasTerritory BrandonClark ("TX" "NM" "Southwest"))
+(hasUrgency BrandonClark "HIGH"
+  :reason "74 years in business. Covers Southwest — territory ISG doesn't reach.
+    First ISO 9001 motor repair in the US.")
+(hasEffort BrandonClark "MEDIUM")
+
+(isa SouthwestElectric AcquisitionTargetNode)
+(hasTargetID SouthwestElectric "M3")
+(hasLegalName SouthwestElectric "Southwest Electric Company")
+(hasHeadquarters SouthwestElectric "Oklahoma City, OK")
+(hasVertical SouthwestElectric "Motors")
+(hasRevenue SouthwestElectric "$44.5M" :basis "estimated")
+(hasEmployees SouthwestElectric "115-207")
+(hasFounded SouthwestElectric 1946)
+(hasOwnership SouthwestElectric "Private — family-founded (3 brothers, 1946)")
+(hasLocations SouthwestElectric "4 Oklahoma locations")
+(hasOEMLine SouthwestElectric ("TECO-Westinghouse" "GE") :role "Authorized distributor")
+(hasSpecialty SouthwestElectric "Motor repair + transformer design/manufacturing + switchgear")
+(hasTerritory SouthwestElectric ("OK"))
+(hasUrgency SouthwestElectric "HIGH"
+  :reason "One of the largest motor shop facilities in the country. Fills Oklahoma gap.")
+(hasEffort SouthwestElectric "MEDIUM")
+
+(isa HECO AcquisitionTargetNode)
+(hasTargetID HECO "M4")
+(hasLegalName HECO "HECO Inc.")
+(hasHeadquarters HECO "Kalamazoo, MI")
+(hasVertical HECO "Motors")
+(hasRevenue HECO "$34M" :basis "estimated")
+(hasEmployees HECO "120-174")
+(hasFounded HECO 1959)
+(hasOwnership HECO "Private — Hatfield family, 3rd generation (Justin Hatfield, President)")
+(hasSpecialty HECO "Actively acquiring — bought Fife-Pearce Electric (Detroit), Warwood Armature (WV), Alran (metro Detroit)")
+(hasTerritory HECO ("MI"))
+(hasUrgency HECO "HIGH"
+  :reason "Largest independent motor shop in Michigan. RISK: actively acquiring competitors —
+    may become a PE target itself or evolve into a competing platform.")
+(hasEffort HECO "MEDIUM")
+
+(isa LSElectric AcquisitionTargetNode)
+(hasTargetID LSElectric "M5")
+(hasLegalName LSElectric "L&S Electric, Inc.")
+(hasHeadquarters LSElectric "Schofield, WI")
+(hasVertical LSElectric "Motors")
+(hasRevenue LSElectric "$44-70M" :basis "estimated")
+(hasEmployees LSElectric "200-350")
+(hasFounded LSElectric 1983 :note "Roots to 1930s")
+(hasOwnership LSElectric "Private — Lewitzke family, 3rd generation (Jeremy Lewitzke)")
+(hasLocations LSElectric "13 locations (WI, MN, MI, Canada)")
+(hasSpecialty LSElectric "Power generation, rail, pulp/paper, mining. 10,000+ pieces/year.")
+(hasTerritory LSElectric ("WI" "MN" "MI" "Canada"))
+(hasUrgency LSElectric "HIGH"
+  :reason "Largest upper Midwest motor service provider. 13 locations.
+    3rd-gen family business — succession opportunity. Fills WI/MN gap.")
+(hasEffort LSElectric "MEDIUM")
+
+(isa IEMCO AcquisitionTargetNode)
+(hasTargetID IEMCO "M6")
+(hasLegalName IEMCO "Independent Electric (IEMCO)")
+(hasHeadquarters IEMCO "Kansas City, KS")
+(hasVertical IEMCO "Motors")
+(hasRevenue IEMCO "$10-41M" :basis "estimated range")
+(hasEmployees IEMCO "36-82")
+(hasFounded IEMCO 1908)
+(hasOwnership IEMCO "Private — David Launder (President), Launder family, multi-generational")
+(hasLocations IEMCO "6 EASA-accredited locations (KS, MO)")
+(hasCertification IEMCO "EASA Accredited")
+(hasSpecialty IEMCO "Motor repair + hoist/crane repair + switchgear + railroad traction motors")
+(hasTerritory IEMCO ("KS" "MO"))
+(hasUrgency IEMCO "HIGH"
+  :reason "116+ years in business. Dominant independent in KS/MO corridor.
+    If MCE or IPS buys IEMCO, ISG loses the region entirely.")
+(hasEffort IEMCO "LOW-MEDIUM")
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 2 — Acquire Q3-Q4 2026 (8 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa EMSIndustrial AcquisitionTargetNode)
+(hasTargetID EMSIndustrial "M7")
+(hasLegalName EMSIndustrial "EMS Industrial")
+(hasHeadquarters EMSIndustrial "Madison, WI")
+(hasVertical EMSIndustrial "Motors")
+(hasRevenue EMSIndustrial "$20M" :basis "estimated")
+(hasEmployees EMSIndustrial "100+")
+(hasFounded EMSIndustrial 1933)
+(hasOwnership EMSIndustrial "Private — Joe Carey (President), family-owned, 3rd generation")
+(hasLocations EMSIndustrial "5 locations (WI, IA)")
+(hasTerritory EMSIndustrial ("WI" "IA"))
+
+(isa Dreisilker AcquisitionTargetNode)
+(hasTargetID Dreisilker "M8")
+(hasLegalName Dreisilker "Dreisilker Electric Motors")
+(hasHeadquarters Dreisilker "Glen Ellyn, IL")
+(hasVertical Dreisilker "Motors")
+(hasRevenue Dreisilker "$21M" :basis "estimated")
+(hasEmployees Dreisilker "64-91")
+(hasFounded Dreisilker 1955)
+(hasOwnership Dreisilker "Private — Dreisilker family")
+(hasFacility Dreisilker "73,000 sq ft climate-controlled remanufacturing center")
+(hasTerritory Dreisilker ("IL" "GA"))
+
+(isa NorthEndElectric AcquisitionTargetNode)
+(hasTargetID NorthEndElectric "M9")
+(hasLegalName NorthEndElectric "North End Electric")
+(hasHeadquarters NorthEndElectric "Scranton, PA")
+(hasVertical NorthEndElectric "Motors")
+(hasRevenue NorthEndElectric "$14M" :basis "estimated")
+(hasEmployees NorthEndElectric "50+")
+(hasFounded NorthEndElectric 1956)
+(hasOwnership NorthEndElectric "Private — family-owned, 3rd generation")
+(hasFacility NorthEndElectric "100,000 sq ft")
+(hasTerritory NorthEndElectric ("PA" "NY" "NJ"))
+
+(isa ElectricalRepairService AcquisitionTargetNode)
+(hasTargetID ElectricalRepairService "M10")
+(hasLegalName ElectricalRepairService "Electrical Repair Service Company")
+(hasHeadquarters ElectricalRepairService "Birmingham, AL")
+(hasVertical ElectricalRepairService "Motors")
+(hasRevenue ElectricalRepairService "$7-12M" :basis "estimated")
+(hasEmployees ElectricalRepairService "~48")
+(hasFounded ElectricalRepairService 1918)
+(hasOwnership ElectricalRepairService "Private — James D. Stewart Jr. (President)")
+(hasCertification ElectricalRepairService ("EASA Accredited" "First SKF certified motor rebuilder"))
+(hasTerritory ElectricalRepairService ("AL"))
+
+(isa ElectricMotorShopWF AcquisitionTargetNode)
+(hasTargetID ElectricMotorShopWF "M11")
+(hasLegalName ElectricMotorShopWF "Electric Motor Shop of Wake Forest")
+(hasHeadquarters ElectricMotorShopWF "Wake Forest, NC")
+(hasVertical ElectricMotorShopWF "Motors")
+(hasRevenue ElectricMotorShopWF "$11M" :basis "estimated")
+(hasEmployees ElectricMotorShopWF "11-50")
+(hasFounded ElectricMotorShopWF 1952)
+(hasOwnership ElectricMotorShopWF "Private — Thomas R. Wright (President), Wright family")
+(hasCertification ElectricMotorShopWF ("EASA Member (since 1952)" "ISO 9001:2015"))
+(hasTerritory ElectricMotorShopWF ("NC" "VA" "SC" "GA" "FL" "TN"))
+
+(isa TekwellServices AcquisitionTargetNode)
+(hasTargetID TekwellServices "M12")
+(hasLegalName TekwellServices "Tekwell Services")
+(hasHeadquarters TekwellServices "Chattanooga, TN")
+(hasVertical TekwellServices "Motors")
+(hasRevenue TekwellServices "$3M" :basis "estimated")
+(hasEmployees TekwellServices "42")
+(hasLocations TekwellServices "Chattanooga TN, Knoxville TN, Cartersville GA")
+(hasCertification TekwellServices "SKF Certified")
+(hasTerritory TekwellServices ("TN" "GA"))
+
+(isa YorkRepair AcquisitionTargetNode)
+(hasTargetID YorkRepair "M13")
+(hasLegalName YorkRepair "York Repair Inc.")
+(hasHeadquarters YorkRepair "Bay City, MI")
+(hasVertical YorkRepair "Motors")
+(hasRevenue YorkRepair "$10-17M" :basis "estimated")
+(hasEmployees YorkRepair "29-71")
+(hasFounded YorkRepair 1978)
+(hasOwnership YorkRepair "Private — Kevin Krupp (President)")
+(hasCertification YorkRepair "EASA Accredited (first in Lower Michigan)")
+(hasTerritory YorkRepair ("MI"))
+
+(isa IEMS AcquisitionTargetNode)
+(hasTargetID IEMS "M14")
+(hasLegalName IEMS "Industrial Electric Motor Service (IEMS)")
+(hasHeadquarters IEMS "Baton Rouge, LA")
+(hasVertical IEMS "Motors")
+(hasRevenue IEMS "$11-12M" :basis "estimated")
+(hasEmployees IEMS "~60")
+(hasFounded IEMS 1976)
+(hasOwnership IEMS "Private — David Goforth (Owner), Archie Shaw (President)")
+(hasSpecialty IEMS "Petrochemical, marine, dredging, offshore")
+(hasTerritory IEMS ("LA"))
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 3 — Opportunistic / Tuck-In (14 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa BodineElectric AcquisitionTargetNode)
+(hasTargetID BodineElectric "M15")
+(hasLegalName BodineElectric "Bodine Electric of Decatur")
+(hasHeadquarters BodineElectric "Decatur, IL")
+(hasRevenue BodineElectric "$40-120M") (hasEmployees BodineElectric "200-400+")
+(hasFounded BodineElectric 1922)
+(hasNote BodineElectric "Motor repair is legacy division — company is primarily electrical contractor. Division carve-out possible.")
+
+(isa HeightsArmature AcquisitionTargetNode)
+(hasTargetID HeightsArmature "M16")
+(hasLegalName HeightsArmature "Heights Armature Works")
+(hasHeadquarters HeightsArmature "Houston, TX")
+(hasRevenue HeightsArmature "$5M") (hasEmployees HeightsArmature "10-30")
+(hasFounded HeightsArmature 1932)
+
+(isa HoustonArmature AcquisitionTargetNode)
+(hasTargetID HoustonArmature "M17")
+(hasLegalName HoustonArmature "Houston Armature Works")
+(hasHeadquarters HoustonArmature "Houston, TX")
+(hasRevenue HoustonArmature "$10-20M") (hasEmployees HoustonArmature "20-50")
+(hasFounded HoustonArmature 1907)
+(hasNote HoustonArmature "119 years old. Largest new motor inventory on Gulf Coast — 9,000+ units.")
+
+(isa CommunityMotors AcquisitionTargetNode)
+(hasTargetID CommunityMotors "M18")
+(hasLegalName CommunityMotors "Community Motors, Inc.")
+(hasHeadquarters CommunityMotors "New Caney (Houston), TX")
+(hasRevenue CommunityMotors "$1-5M") (hasEmployees CommunityMotors "10-49")
+(hasFounded CommunityMotors 1991)
+
+(isa UnitedIndustrialGroup AcquisitionTargetNode)
+(hasTargetID UnitedIndustrialGroup "M19")
+(hasLegalName UnitedIndustrialGroup "United Industrial Group")
+(hasHeadquarters UnitedIndustrialGroup "Washington, PA")
+(hasRevenue UnitedIndustrialGroup "$4M") (hasEmployees UnitedIndustrialGroup "5-12")
+(hasCertification UnitedIndustrialGroup "EASA Accredited")
+(hasNote UnitedIndustrialGroup "Serves 600+ customers in PA, WV, OH — ISG's tri-state corridor.")
+
+(isa LewisMotorRepair AcquisitionTargetNode)
+(hasTargetID LewisMotorRepair "M20")
+(hasLegalName LewisMotorRepair "Lewis Motor Repair")
+(hasHeadquarters LewisMotorRepair "Waite Park, MN")
+(hasRevenue LewisMotorRepair "$6-11M") (hasEmployees LewisMotorRepair "9-16")
+(hasFounded LewisMotorRepair 1969)
+
+(isa ClarkFowler AcquisitionTargetNode)
+(hasTargetID ClarkFowler "M21")
+(hasLegalName ClarkFowler "Clark Fowler Electric")
+(hasHeadquarters ClarkFowler "Wooster, OH")
+(hasRevenue ClarkFowler "$5-10M") (hasEmployees ClarkFowler "13")
+(hasFounded ClarkFowler 1995)
+(hasNote ClarkFowler "Motor repair + pump distributor + cell tower division. Blocks MCE expansion from Toledo.")
+
+(isa TraverIDC AcquisitionTargetNode)
+(hasTargetID TraverIDC "M22")
+(hasLegalName TraverIDC "Traver IDC")
+(hasHeadquarters TraverIDC "Waterbury, CT")
+(hasRevenue TraverIDC "$8M") (hasEmployees TraverIDC "34-50")
+(hasFounded TraverIDC 1938)
+(hasCertification TraverIDC "EASA Accredited")
+(hasNote TraverIDC "Only EASA Accredited center in New England, NY, and NJ. 4th-gen family.")
+
+(isa AllStateElectricMotors AcquisitionTargetNode)
+(hasTargetID AllStateElectricMotors "M23")
+(hasLegalName AllStateElectricMotors "All State Electric Motors")
+(hasHeadquarters AllStateElectricMotors "Oklahoma City, OK")
+(hasRevenue AllStateElectricMotors "$2-5M") (hasEmployees AllStateElectricMotors "11-50")
+(hasFounded AllStateElectricMotors 1947)
+
+(isa ApparatusRepair AcquisitionTargetNode)
+(hasTargetID ApparatusRepair "M24")
+(hasLegalName ApparatusRepair "Apparatus Repair & Engineering")
+(hasHeadquarters ApparatusRepair "Hagerstown, MD")
+(hasRevenue ApparatusRepair "$5M") (hasEmployees ApparatusRepair "11-20")
+(hasCertification ApparatusRepair "EASA Accredited")
+(hasNote ApparatusRepair "Veteran-owned. 70,000 sq ft new facility (2020). Serves MD, PA, WV, VA.")
+
+(isa BeaudryElectric AcquisitionTargetNode)
+(hasTargetID BeaudryElectric "M25")
+(hasLegalName BeaudryElectric "Beaudry Electric Motors & Controls")
+(hasHeadquarters BeaudryElectric "Sheboygan, WI")
+(hasRevenue BeaudryElectric "$2-5M") (hasEmployees BeaudryElectric "12")
+(hasFounded BeaudryElectric 1979)
+
+(isa ElectricMotorWorks AcquisitionTargetNode)
+(hasTargetID ElectricMotorWorks "M26")
+(hasLegalName ElectricMotorWorks "Electric Motor Works")
+(hasHeadquarters ElectricMotorWorks "Bakersfield, CA")
+(hasRevenue ElectricMotorWorks "$6M") (hasEmployees ElectricMotorWorks "8")
+(hasFounded ElectricMotorWorks 1939)
+
+(isa RockyMountElectric AcquisitionTargetNode)
+(hasTargetID RockyMountElectric "M27")
+(hasLegalName RockyMountElectric "Rocky Mount Electric Motor")
+(hasHeadquarters RockyMountElectric "Rocky Mount, NC")
+(hasEmployees RockyMountElectric "12")
+(hasCertification RockyMountElectric "EASA Accredited (2018)")
+(hasFounded RockyMountElectric 1972)
+
+(isa EpsilonMotorDiv AcquisitionTargetNode)
+(hasTargetID EpsilonMotorDiv "M28")
+(hasLegalName EpsilonMotorDiv "Epsilon Systems (Motor Division)")
+(hasHeadquarters EpsilonMotorDiv "San Diego, CA")
+(hasEmployees EpsilonMotorDiv "50+ in motor division")
+(hasCertification EpsilonMotorDiv "EASA Accredited")
+(hasFounded EpsilonMotorDiv 1964 :note "Originally Chick's Electric")
+(hasNote EpsilonMotorDiv "100% employee-owned (ESOP). Serves Navy, power plants. Division carve-out.")
+
+;;; ---------------------------------------------------------------------------
+;;; ALREADY LOST — Motor Shops Acquired by IPS or Others
+;;; ---------------------------------------------------------------------------
+
+(hasLostTarget ISG "Industrial Electric Motor Works" :acquirer "IPS" :date "2020-12" :location "Meridian, MS")
+(hasLostTarget ISG "Delta Electric Motors" :acquirer "IPS" :date "2021-04" :location "Tukwila, WA")
+(hasLostTarget ISG "Reed Electric & Field Service" :acquirer "IPS" :date "2022-01" :location "Los Angeles, CA")
+(hasLostTarget ISG "A+ Electric Motor" :acquirer "IPS" :date "2022-01" :location "Billings, MT")
+(hasLostTarget ISG "Industrial Electric Machinery" :acquirer "IPS" :date "2022-01" :location "Longview WA, Visalia CA")
+(hasLostTarget ISG "Tampa Armature Works" :acquirer "IPS" :date "2022-07" :location "Riverview, FL")
+(hasLostTarget ISG "Demaria Electric" :acquirer "IPS" :date "2025-02" :location "Paramount, CA")
+(hasLostTarget ISG "Brithinee Electric" :acquirer "Sulzer" :date "2018-11" :location "Colton, CA")
+(hasLostTarget ISG "Joliet Electric Motors" :acquirer "Hitachi" :date "2025-01" :location "Joliet, IL")
+(hasLostTarget ISG "Piedmont Electric Motor Repair" :acquirer "MCE/Frontenac" :date "2024-01" :location "Asheboro, NC")
+(hasLostTarget ISG "Romanoff Industries" :acquirer "MCE/Frontenac" :date "2024-07" :location "Toledo, OH")
+(hasLostTarget ISG "Industrial Electrical Co. (IEC)" :acquirer "Egan Company" :date "2020-04" :location "Modesto, CA")
+
+;;; ---------------------------------------------------------------------------
+;;; COMPETITIVE THREATS
+;;; ---------------------------------------------------------------------------
+
+(hasCompetitiveThreat ISG "IPS"
+  :vertical "Motors"
+  :peSponsor "Searchlight Capital"
+  :pace "34 acquisitions since 2019, ~6-8/year"
+  :scale "115+ locations, US/Canada/UK/Caribbean"
+  :isgOverlap "Nationwide — every state ISG operates in")
+
+(hasCompetitiveThreat ISG "MCE"
+  :vertical "Motors"
+  :peSponsor "Frontenac"
+  :pace "24 acquisitions since 2020, 16 in 2023-24"
+  :scale "62 facilities, 18 states, EBITDA grown 15x"
+  :isgOverlap "OH, AL, IN, GA — direct ISG territory")
+
+;;; =============================================================================
+;;; END TARGETS-MOTORS.KRF
+;;; =============================================================================

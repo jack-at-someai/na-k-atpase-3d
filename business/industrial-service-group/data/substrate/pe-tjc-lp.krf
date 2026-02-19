@@ -1,0 +1,90 @@
+;;; =============================================================================
+;;; PE-TJC-LP.KRF — The Jordan Company, L.P.
+;;; PE Sponsor Entity Profile
+;;; =============================================================================
+;;;
+;;; Current owner of ISG. New York-based middle-market PE firm.
+;;; 520+ add-on acquisitions since 2002. 41 add-ons across 15 portfolio
+;;; companies in 2024 alone. This is the capital engine behind ISG's
+;;; acquisition strategy.
+;;;
+;;; =============================================================================
+
+(isa TJCLP PEEntity)
+(hasLegalName TJCLP "TJC LP" :dba "The Jordan Company")
+(hasHeadquarters TJCLP "New York, NY")
+(hasFounded TJCLP 1982)
+(hasWebsite TJCLP "tjclp.com")
+
+;;; ---------------------------------------------------------------------------
+;;; FIRM PROFILE
+;;; ---------------------------------------------------------------------------
+
+(hasStrategy TJCLP
+  :type "Middle-market private equity"
+  :focus "Partnering with management teams to build market-leading companies"
+  :sectors "Diversified Industrials, Consumer, Healthcare, Technology, Business Services"
+  :approach "Buy-and-build. Acquire platform, add bolt-on acquisitions,
+    improve operations, exit at premium multiple.")
+
+(hasTrackRecord TJCLP
+  :addOnAcquisitions "520+ since 2002"
+  :addOns2024 "41 across 15 portfolio companies"
+  :holdPeriod "Typically 4-7 years"
+  :note "TJC's add-on velocity is among the highest in middle-market PE.
+    41 add-ons in a single year across 15 companies = ~2.7 per company per year.")
+
+;;; ---------------------------------------------------------------------------
+;;; ISG RELATIONSHIP
+;;; ---------------------------------------------------------------------------
+
+(hasPortfolioCompany TJCLP ISG
+  :acquisitionDate "2022-12-07"
+  :sector "Diversified Industrials"
+  :description "Provider of critical-to-process MRO rotating equipment
+    for diversified industrial markets"
+  :coreProducts "Valves, actuators, compressors, pumps, motors, heat exchangers,
+    other rotating equipment"
+  :management "Jim Richard (CEO), Daved Karl (CIO)"
+  :seller "KCM Capital Partners"
+  :advisors "Stephens (investment banking, sell-side)")
+
+;;; ---------------------------------------------------------------------------
+;;; TJC TEAM (ISG-relevant)
+;;; ---------------------------------------------------------------------------
+
+;;; Note: Specific TJC deal team members for ISG not publicly disclosed.
+;;; TJC's portfolio page lists ISG under "Diversified Industrials" vertical.
+
+;;; ---------------------------------------------------------------------------
+;;; TJC PORTFOLIO (Industrial Sector — Relevant Comps)
+;;; ---------------------------------------------------------------------------
+
+;;; Other TJC industrial portfolio companies provide context for how TJC
+;;; thinks about industrial services platforms:
+
+(hasTJCPortfolioComp TJCLP
+  :note "TJC's broader industrial portfolio is not fully public.
+    The 2024 Year in Review references 41 add-ons across 15 portfolio companies.
+    ISG is one of at minimum 15 active platform investments.
+    TJC's industrial thesis: non-discretionary services, critical-to-process,
+    recurring revenue, fragmented markets ripe for consolidation.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE THESIS FOR TJC
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteThesis TJCLP
+  :thesis "Charlotte reduces post-acquisition integration from 6-12 months to 90 days.
+    Every target ISG acquires gets dormant customers reactivated on Day 1.
+    Charlotte makes ISG a better acquirer than any competitor — faster integration,
+    immediate revenue capture, unified intelligence across all brands."
+  :presentationDate "March/April 2026 (Tampa)"
+  :presenter "Jim Richard (CEO) + Jack Richard (SomeAI, Chief Architect)"
+  :ask "Accelerated acquisition capital: 4-6 add-ons per year vs. historical ~2"
+  :evidence "Charlotte results from first 30-60 days on IAP + IAC compressor data"
+  :meshGradient "15 named targets across 5 verticals. ISG from $450M to $620-700M in 18 months.")
+
+;;; =============================================================================
+;;; END PE-TJC-LP.KRF
+;;; =============================================================================

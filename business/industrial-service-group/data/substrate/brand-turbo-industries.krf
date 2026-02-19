@@ -1,0 +1,105 @@
+;;; =============================================================================
+;;; BRAND-TURBO-INDUSTRIES.KRF — Turbomachinery Industries
+;;; ISG Compressor/Turbomachinery Vertical
+;;; =============================================================================
+;;;
+;;; Corpus Christi, TX. Founded 1979 by I.W. "Will" Hickham and son Steve.
+;;; Third generation. Rotating equipment repair, steam turbines, compressors.
+;;; 30,000+ sq ft shop, 20-ton cranes, HVOF coating, CNC machining.
+;;; Gulf Coast petrochemical corridor. Acquired under TJC era.
+;;;
+;;; =============================================================================
+
+(isa TurboIndustries ISGBrandNode)
+(hasLegalName TurboIndustries "Turbomachinery Industries")
+(hasWebsite TurboIndustries "turbo-ind.com")
+(hasHeadquarters TurboIndustries "1305 Vermont Street, Corpus Christi, TX 78409")
+(hasFounded TurboIndustries 1979 :founders "I.W. 'Will' Hickham and Steve Hickham")
+(hasVertical TurboIndustries "Compressors / Turbomachinery")
+(hasAcquisitionEra TurboIndustries "TJC" :note "Exact date not publicly disclosed")
+(hasEmployees TurboIndustries "~6-12" :note "Lean shop operation, high-skill workforce")
+(hasPhone TurboIndustries "361-289-0001")
+(hasEmail TurboIndustries "info@turbo-ind.com")
+
+;;; ---------------------------------------------------------------------------
+;;; FACILITY
+;;; ---------------------------------------------------------------------------
+
+(hasFacility TurboIndustries
+  :sqFt "30,000+"
+  :cranes "20-ton overhead cranes, double-lift cranes"
+  :machining "Complete CNC machining center"
+  :coating "HVOF thermal spray coating system"
+  :balancing "Dynamic balancing up to 20,000 lbs"
+  :testing "Nondestructive examination — Magnuflux, penetrant testing")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel TurboIndustries "Steve Hickham"
+  :title "President"
+  :note "Co-founded with father Will. Third generation family business.")
+(hasPersonnel TurboIndustries "Jim Green"
+  :title "Co-leads operations with Steve")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService TurboIndustries "Rotating equipment repair, machining, and field services")
+(hasService TurboIndustries "Steam turbine repair — multi-stage")
+(hasService TurboIndustries "Compressor repair")
+(hasService TurboIndustries "Centrifuge, gearbox, impeller, pump repair")
+(hasService TurboIndustries "CNC and manual machining — vertical/horizontal, line boring, grinding, key seat cutting")
+(hasService TurboIndustries "HVOF thermal spray coating")
+(hasService TurboIndustries "Nondestructive examination — Magnuflux, penetrant testing")
+(hasService TurboIndustries "Dynamic balancing up to 20,000 lbs")
+(hasService TurboIndustries "Field service with laser shaft alignment and on-site balancing")
+(hasService TurboIndustries "24/7 on-call support")
+(hasService TurboIndustries "Aftermarket parts inventory — Elliott YR, Coppus, Worthington, Turbodyne")
+(hasService TurboIndustries "Online parts catalog with interactive schematics and quote request system")
+
+;;; ---------------------------------------------------------------------------
+;;; EQUIPMENT TYPES SERVICED
+;;; ---------------------------------------------------------------------------
+
+(hasEquipmentTypes TurboIndustries
+  ("Steam turbines" "Compressors" "Centrifuges" "Gearboxes" "Impellers" "Pumps"
+   "Steam chests" "Overspeed trip pin assemblies" "Carbon seals" "PG/TG governors"))
+
+;;; ---------------------------------------------------------------------------
+;;; KEY CUSTOMERS
+;;; ---------------------------------------------------------------------------
+
+(hasCustomer TurboIndustries "Valero")
+(hasCustomer TurboIndustries "Flint Hills")
+(hasCustomer TurboIndustries "BASF")
+(hasCustomer TurboIndustries "Chemours")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry TurboIndustries ("Refining" "Chemical" "Power Generation"))
+(hasTerritory TurboIndustries ("TX" "Gulf Coast")
+  :note "Corpus Christi — heart of the Gulf Coast petrochemical corridor.
+    Described as one of the fastest-growing rotating-equipment service companies on the Gulf Coast.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance TurboIndustries
+  :status "STABLE — niche vertical, opportunistic growth"
+  :opportunity "Online parts catalog with interactive schematics is a rich data source.
+    Elliott YR, Coppus, Worthington, Turbodyne parts inventory maps to
+    Charlotte cross-reference protocol. Gulf Coast refinery relationships
+    (Valero, Flint Hills, BASF, Chemours) are recurring revenue anchors."
+  :threat "EthosEnergy (OEP) and RMS (Arcline, $9.1B AUM) compete in turbo aftermarket.
+    But they're targeting larger/global-scale work. TurboIndustries' niche is
+    regional aftermarket — different customer base.")
+
+;;; =============================================================================
+;;; END BRAND-TURBO-INDUSTRIES.KRF
+;;; =============================================================================

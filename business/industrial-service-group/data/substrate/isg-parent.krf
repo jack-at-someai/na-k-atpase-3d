@@ -1,0 +1,233 @@
+;;; =============================================================================
+;;; ISG-PARENT.KRF — Industrial Service Group Holdings, LLC
+;;; Master Entity Profile
+;;; =============================================================================
+;;;
+;;; The platform. 16 brands, 5 verticals, 42+ locations, ~$450M revenue.
+;;; Founded 2019 by KCM Capital + Jim Richard through 6 acquisitions.
+;;; Sold to TJC LP December 2022. TJC has added 6+ brands since.
+;;; Charlotte OS deployment launching February 24, 2026.
+;;;
+;;; =============================================================================
+
+(isa ISG PlatformEntity)
+(hasLegalName ISG "Industrial Service Group Holdings, LLC")
+(hasHeadquarters ISG "Indianapolis, IN")
+(hasCEO ISG "Jim Richard")
+(hasCIO ISG "Daved Karl")
+(hasCMO ISG "Bryan LiBrandi")
+(hasCDO ISG "Matt Branigan")
+(hasVPIAP ISG "Chris Seibel")
+(hasRevenue ISG "$450M" :basis "estimated" :year 2025)
+(hasEmployees ISG "~1,200")
+(hasLocations ISG "42+")
+(hasBrands ISG 16)
+(hasWebsite ISG "isgservice.com")
+
+;;; ---------------------------------------------------------------------------
+;;; OWNERSHIP HISTORY
+;;; ---------------------------------------------------------------------------
+
+(hasOwnership ISG KCMCapital
+  :period "2019-2022"
+  :role "Founding PE sponsor"
+  :action "Formed ISG in 2019 with Jim Richard. Made 6 strategic acquisitions."
+  :equityPartners "PNC Mezzanine Capital, Five Points Capital"
+  :exitDate "2022-12-07"
+  :exitBuyer "TJC LP")
+
+(hasOwnership ISG TJCLP
+  :period "2022-present"
+  :role "Current PE sponsor"
+  :acquisitionDate "2022-12-07"
+  :action "Continued add-on acquisition strategy. Added 6+ brands post-close."
+  :investmentBanker "Stephens (sell-side for KCM)")
+
+;;; ---------------------------------------------------------------------------
+;;; CORRECTED FORMATION — KCM ERA (2019-2022): 6 ACQUISITIONS
+;;; ---------------------------------------------------------------------------
+;;; Research confirmed the actual chronological order and dates.
+;;; They were NOT all in 2019 — spread across 2019-2022.
+
+(hasFormationAcquisition ISG IndustrialValveSalesService
+  :order 1 :date "2019-09-12" :vertical "Valves"
+  :location "Mobile, AL"
+  :note "THE FOUNDING PLATFORM ACQUISITION. IVS was the original entity
+    that launched ISG when KCM Capital partnered with Jim Richard.")
+
+(hasFormationAcquisition ISG GeorgiaWestern
+  :order 2 :date "2021-04-16" :vertical "Valves & Actuators"
+  :location "Kennesaw, GA"
+  :note "CORRECTION: Georgia Western is a valve actuator specialist, NOT a pump company.
+    Largest electric valve actuator stocking distributor in the Southeastern US.")
+
+(hasFormationAcquisition ISG IndustrialAirPower
+  :order 3 :date "2021-10" :vertical "Compressed Air"
+  :location "Muskego, WI"
+  :note "ISG's expansion into the compressor vertical. Largest reseller of
+    air compressor parts in the world (300,000+ SKUs).")
+
+(hasFormationAcquisition ISG SolesElectricCompany
+  :order 4 :date "2022-06" :vertical "Electric Motors"
+  :location "Fairmont, WV"
+  :note "CORRECTION: Soles Electric is in Fairmont, WV, not Texas.
+    DC motor and diesel rail equipment specialist.")
+
+(hasFormationAcquisition ISG DynamicMechanicalSolutions
+  :order 5 :date "2022-08" :vertical "Specialty Services (Valve Distribution)"
+  :location "Saraland/Mobile, AL"
+  :note "CORRECTION: DMS is Alabama-based, not Texas.
+    Valve and actuator distribution, not mechanical field services.")
+
+(hasFormationAcquisition ISG MorinProcessEquipment
+  :order 6 :date "2022-09-30" :vertical "Process Equipment"
+  :location "Pelham, AL (Birmingham metro)"
+  :note "6th and FINAL KCM-era acquisition. Morin Process + Morin Repair Services.
+    CORRECTION: Morin is Alabama-based, not Texas. 50+ OEM lines.")
+
+;;; Additional KCM-era acquisitions (timing ambiguous — funding rounds ~2020):
+;;; IAC (Industrial Air Centers) and ASE (Air Specialty & Equipment) may have
+;;; been acquired during the KCM era (~April 2020 funding rounds) rather than
+;;; TJC era. Research shows funding rounds closing April 2020 for both.
+
+;;; ---------------------------------------------------------------------------
+;;; TJC ERA ADD-ONS (2023-2024)
+;;; ---------------------------------------------------------------------------
+
+;;; Note: IAC and ASE may be KCM-era (~2020), not TJC-era.
+;;; Listed here per previous classification; exact handoff unclear.
+
+(hasTJCAddOn ISG IndustrialAirCenters :year "~2020 or 2023" :vertical "Compressed Air"
+  :location "Jeffersonville, IN" :note "Founded 1950. 8 locations. ~$39.4M revenue.")
+(hasTJCAddOn ISG AirSpecialtyEquipment :year "~2020 or 2023" :vertical "Compressed Air"
+  :location "Corpus Christi, TX" :note "Founded 1984. 5 TX locations.")
+(hasTJCAddOn ISG RenewalServiceInc :year "2023-08-01" :vertical "Pumps"
+  :location "Rock Island, IL" :note "Founded 1984. Family business (Nonnenmann).")
+(hasTJCAddOn ISG IllinoisElectricWorks :year "2023-11-02" :vertical "Electric Motors"
+  :location "Granite City, IL" :note "Founded 1931. First EASA-accredited in the US.")
+(hasTJCAddOn ISG TriStateValve :year "2024-01-08" :vertical "Valves"
+  :location "Memphis, TN" :note "CORRECTION: TVI is Memphis-based, NOT West Virginia. 7 locations.")
+(hasTJCAddOn ISG NationalMillMaintenance :year "2024-04-15" :vertical "Specialty Maintenance"
+  :location "Birmingham, AL" :note "ISG's 13th investment. Most recent confirmed deal.")
+(hasTJCAddOn ISG PinnacleIndustries :year "est. TJC era" :vertical "Compressed Air"
+  :location "Pasadena, TX" :note "Founded 1985. Gardner Denver specialist.")
+(hasTJCAddOn ISG COREIndustrialMaintenance :year "est. TJC era" :vertical "Specialty Maintenance"
+  :location "Mount Vernon, AL" :note "Founded 2017. 5 locations (AL, MS).")
+(hasTJCAddOn ISG CompressorTurbineServices :year "est. TJC era" :vertical "Turbomachinery"
+  :location "Houston, TX" :note "Founded 2005. Hickham family.")
+(hasTJCAddOn ISG TurbomachineryIndustries :year "est. TJC era" :vertical "Turbomachinery"
+  :location "Corpus Christi, TX" :note "Founded 1979. Hickham family.")
+
+;;; ---------------------------------------------------------------------------
+;;; VERTICAL STRUCTURE
+;;; ---------------------------------------------------------------------------
+
+(hasVertical ISG "Compressors"
+  :brands ("Industrial Air Power" "Industrial Air Centers" "Pinnacle Industries"
+           "Air Specialty & Equipment Co." "Compressor & Turbine Services"
+           "Turbomachinery Industries")
+  :territory "WI (IAP), IN/OH/KY/FL (IAC), TX (Pinnacle/ASE/CTS/Turbo)"
+  :charlotteStatus "LAUNCHING — Feb 24, 2026 on IAP + IAC"
+  :note "IAP is parts distribution (national/global). IAC is full-service (Midwest/FL).
+    Pinnacle/ASE/CTS/Turbo are TX Gulf Coast service/repair.")
+
+(hasVertical ISG "Valves & Actuators"
+  :brands ("Industrial Valve Service" "Tri-State Valve" "Georgia Western"
+           "Morin Process Equipment" "Dynamic Mechanical Solutions")
+  :territory "AL/LA/TN (IVS), TN/AR/KY/IN/MS/MO/TX (TVI), GA (GW), AL (Morin/DMS)"
+  :charlotteStatus "PLANNED — Year 2 expansion"
+  :note "CORRECTED: Georgia Western is valve actuators, not pumps.
+    DMS is valve/actuator distribution, not mechanical services.
+    IVS was the founding platform. Morin spans pumps/HX/valves/controls.")
+
+(hasVertical ISG "Pumps"
+  :brands ("Renewal Service Inc.")
+  :territory "IL (HQ Rock Island), AL (RSI South Sylacauga)"
+  :charlotteStatus "PLANNED — Year 2 expansion"
+  :note "CORRECTED: Georgia Western removed (valve actuators, not pumps).
+    RSI is the sole dedicated pump brand. Morin also carries pump lines
+    but is classified under valves/process equipment.")
+
+(hasVertical ISG "Motors"
+  :brands ("Soles Electric" "Illinois Electric Works")
+  :territory "WV (Soles — Fairmont/Huntington), IL (IEW — Granite City/St. Louis metro)"
+  :charlotteStatus "PLANNED — defensive acquisitions needed vs. IPS"
+  :note "CORRECTED: Soles is WV-based, not TX. IEW was first EASA-accredited in the US.")
+
+(hasVertical ISG "Specialty Services"
+  :brands ("CORE Industrial Maintenance" "National Mill Maintenance")
+  :territory "AL/MS (CORE), AL/AR (NMM)"
+  :charlotteStatus "STABLE — niche vertical, opportunistic growth"
+  :note "Steel, aluminum, and heavy manufacturing maintenance. Both founded 2017.")
+
+;;; ---------------------------------------------------------------------------
+;;; GEOGRAPHIC FOOTPRINT
+;;; ---------------------------------------------------------------------------
+
+;;; CORRECTED per individual brand research:
+(hasState ISG "TX" :brands "Pinnacle (Pasadena), ASE (Corpus Christi + 4 more), CTS (Houston), Turbo (Corpus Christi), TVI (Beaumont)")
+(hasState ISG "IN" :brands "ISG HQ (Indianapolis), IAC (Jeffersonville/Indianapolis/Evansville), TVI (Evansville)")
+(hasState ISG "OH" :brands "IAC (Cincinnati/Dayton/Columbus)")
+(hasState ISG "KY" :brands "IAC (Lexington), TVI (Calvert City)")
+(hasState ISG "FL" :brands "IAC (location TBD)")
+(hasState ISG "IL" :brands "Illinois Electric Works (Granite City), RSI (Rock Island)")
+(hasState ISG "GA" :brands "Georgia Western (Kennesaw)")
+(hasState ISG "AL" :brands "IVS (Mobile/Eight Mile), Morin (Pelham/Decatur/Saraland), DMS (Saraland/Mobile), CORE (Mount Vernon/Dora/Birmingham/Mobile), NMM (Birmingham/Mobile), RSI South (Sylacauga)")
+(hasState ISG "WV" :brands "Soles Electric (Fairmont/Huntington)")
+(hasState ISG "TN" :brands "IVS (Cleveland), TVI HQ (Memphis)")
+(hasState ISG "AR" :brands "NMM (Blytheville/Manila), TVI (El Dorado)")
+(hasState ISG "WI" :brands "IAP HQ (Muskego)")
+(hasState ISG "MS" :brands "CORE (Columbus), TVI (Hamilton)")
+(hasState ISG "LA" :brands "IVS (Bastrop)")
+(hasState ISG "MO" :brands "TVI (St. Louis)")
+
+;;; ---------------------------------------------------------------------------
+;;; MARKET POSITION
+;;; ---------------------------------------------------------------------------
+
+(hasMarketPosition ISG
+  :tam "$12-15B US compressed air market"
+  :addressableFacilities "105,000-115,000 (>10HP compressors in 6-state territory)"
+  :sweetSpot "62,275 facilities (10-100HP e-commerce segment)"
+  :competitors "Atlas Copco (OEM direct), OTC Industrial (PE platform),
+    ACS (parts specialist), CompressorNow (subscription), CompressorWorld (catalog)")
+
+(hasCompetitiveAdvantage ISG
+  :advantage1 "Multi-brand — serves ANY brand, ANY vintage (OEMs are brand-locked)"
+  :advantage2 "Service + equipment + financing bundle (no competitor offers all three)"
+  :advantage3 "Charlotte OS — first intelligence-native industrial service platform"
+  :advantage4 "Jim Richard — 40 years, ~80 acquisitions led or supported"
+  :advantage5 "PE-familiar management — KCM formation, TJC growth, ready for next phase")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE OS DEPLOYMENT
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteDeployment ISG
+  :launchDate "2026-02-24"
+  :scope "Compressor vertical — IAP + IAC"
+  :contract "$480K Year 1 ($40K/mo), $310K Year 2+"
+  :waived "$375K (requirements, architecture, platform subscription)"
+  :signatory "Daved Karl (CIO)"
+  :expectedROI "5-7x implementation cost"
+  :protocols ("Pricing Intelligence" "Customer Reactivation" "Product Cross-Reference" "Equipment Lifecycle")
+  :integrations ("NetSuite (bi-directional)" "BigCommerce (bi-directional)"
+                 "HubSpot (bi-directional)" "Amazon (read)" "Paylocity (read)" "Websites (read)"))
+
+;;; ---------------------------------------------------------------------------
+;;; JIM RICHARD — OPERATOR PROFILE
+;;; ---------------------------------------------------------------------------
+
+(hasOperator ISG JimRichard
+  :title "CEO"
+  :experience "40 years engineering, private equity, leadership"
+  :acquisitionHistory "~80 acquisitions led or supported"
+  :priorRoles "Chairman — Richard Enterprises"
+  :relationship "Father of Jack Richard (Chief Architect, SomeAI)"
+  :style "Lion King. Leads swarms of people. Attacks problems with heuristic
+    model built from 4 decades of pattern recognition."
+  :serengetiRole "Leader. The guidance structure. Board of advisors anchor.")
+
+;;; =============================================================================
+;;; END ISG-PARENT.KRF
+;;; =============================================================================

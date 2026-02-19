@@ -1,0 +1,100 @@
+;;; =============================================================================
+;;; BRAND-IAP.KRF — Industrial Air Power (IAP)
+;;; ISG Compressor Vertical — Global Aftermarket Parts Distribution
+;;; =============================================================================
+;;;
+;;; CHARLOTTE LAUNCHES HERE FEBRUARY 24, 2026.
+;;;
+;;; Muskego, WI. Founded 2008. Claims to be the LARGEST RESELLER OF AIR
+;;; COMPRESSOR PARTS IN THE WORLD. 300,000+ SKUs. 10,000+ parts ready for
+;;; immediate shipment. Prices up to 40% less than local dealers.
+;;; NOT a field service operation — centralized parts distribution hub
+;;; shipping nationally and internationally (employees on 3 continents).
+;;;
+;;; Third KCM-era acquisition (~2021). Charlotte deployment launching
+;;; February 24, 2026 alongside IAC.
+;;;
+;;; =============================================================================
+
+(isa IAP ISGBrandNode)
+(hasLegalName IAP "Industrial Air Power")
+(hasWebsite IAP "industrialairpower.com")
+(hasISGBrandPage IAP "isgservice.com/our-brands/industrial-air-power/")
+(hasHeadquarters IAP "W144S6303 College Ct, Muskego, WI 53150")
+(hasFounded IAP 2008)
+(hasVertical IAP "Compressors")
+(hasAcquisitionDate IAP "2021-10" :note "October 2021, 3rd KCM add-on")
+(hasAcquisitionEra IAP "KCM" :order 3)
+(hasEmployees IAP "11-50" :note "LinkedIn/ZoomInfo range")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel IAP "Chris Klemz"
+  :title "Founder / Leader"
+  :note "Quoted in KCM acquisition announcement")
+
+;;; ---------------------------------------------------------------------------
+;;; BUSINESS MODEL
+;;; ---------------------------------------------------------------------------
+
+(hasBusinessModel IAP "Aftermarket parts distribution"
+  :scope "National / Global — ships across USA and internationally"
+  :employees3Continents "North America, Europe, Asia"
+  :skuCount "300,000+"
+  :readyToShip "10,000+ parts for immediate shipment"
+  :pricing "Up to 40% less than local dealers"
+  :claim "Largest reseller of air compressor parts in the world"
+  :teamExperience "30+ years accumulated expertise")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService IAP "Aftermarket air compressor parts — 300,000+ SKUs")
+(hasService IAP "Lubricants — synthetic compressor lubricants")
+(hasService IAP "Filters and accessories")
+(hasService IAP "Refrigerated air dryers")
+(hasService IAP "Rotary screw airend rebuilding")
+(hasService IAP "Parts for every make/model from 10 to 1,000 HP")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS SUPPORTED (Aftermarket Parts For)
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine IAP "Compressor Parts — All Major Brands"
+  :brands ("Atlas Copco" "Gardner Denver" "Quincy" "Sullair" "Sullivan-Palatek"
+           "Joy" "Ingersoll Rand" "Kaeser" "CompAir" "Champion")
+  :note "Brand-agnostic aftermarket. Parts for any make, any model, any vintage.")
+
+;;; ---------------------------------------------------------------------------
+;;; TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasTerritory IAP "National / Global"
+  :note "Not a regional field-service operation. Centralized distribution hub.
+    Ships to all 50 states and internationally.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE DEPLOYMENT — LAUNCHING FEB 24, 2026
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteDeployment IAP
+  :launchDate "2026-02-24"
+  :scope "Compressor vertical — IAP + IAC combined"
+  :contract "$480K Year 1 ($40K/mo), $310K Year 2+"
+  :protocols ("Pricing Intelligence" "Customer Reactivation" "Product Cross-Reference" "Equipment Lifecycle")
+  :integrations ("NetSuite (bi-directional)" "BigCommerce (bi-directional)"
+                 "HubSpot (bi-directional)" "Amazon (read)" "Paylocity (read)" "Websites (read)")
+  :opportunity "IAP's 300,000+ SKU catalog is the richest cross-reference dataset
+    in the compressor aftermarket. Charlotte maps every part number to every
+    compressor make/model/vintage. Pricing intelligence shows margin opportunities
+    vs. OEM direct. Customer reactivation identifies dormant accounts across
+    the entire US compressor installed base."
+  :significance "FIRST Charlotte deployment on a real client. Proof of concept
+    for TJC board presentation in Tampa (March/April 2026).")
+
+;;; =============================================================================
+;;; END BRAND-IAP.KRF
+;;; =============================================================================

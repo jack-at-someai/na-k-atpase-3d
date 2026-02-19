@@ -1,0 +1,133 @@
+;;; =============================================================================
+;;; BRAND-GEORGIA-WESTERN.KRF — Georgia Western LLC
+;;; ISG Valve Actuator Specialist
+;;; =============================================================================
+;;;
+;;; CORRECTION: Georgia Western is a VALVE ACTUATOR specialist, not a pump company.
+;;; Largest electric valve actuator stocking distributor in the Southeastern US.
+;;; Kennesaw, GA. Founded 1992. Acquired April 2021 (KCM era, 2nd add-on).
+;;; Emerson Gold Seal Service Center. Pipeline field service with mobile units.
+;;;
+;;; =============================================================================
+
+(isa GeorgiaWestern ISGBrandNode)
+(hasLegalName GeorgiaWestern "Georgia Western, LLC")
+(hasWebsite GeorgiaWestern "georgiawestern.com")
+(hasISGBrandPage GeorgiaWestern "isgservice.com/our-brands/georgia-western/")
+(hasHeadquarters GeorgiaWestern "2275 McCollum Parkway, Kennesaw, GA 30144")
+(hasFounded GeorgiaWestern 1992)
+(hasVertical GeorgiaWestern "Valves & Actuators"
+  :correction "Previously listed as Pumps — Georgia Western is a valve actuator specialist")
+(hasAcquisitionDate GeorgiaWestern "2021-04-16")
+(hasAcquisitionEra GeorgiaWestern "KCM" :order 2 :role "2nd add-on acquisition")
+(hasEmployees GeorgiaWestern "~27-28")
+(hasRevenue GeorgiaWestern "$6.8M" :basis "estimated")
+(hasFacility GeorgiaWestern "25,000 sq ft" :expansion "Second 25,000 sq ft facility announced ~2016")
+(hasPhone GeorgiaWestern "770-426-6070" :tollFree "800-536-6070")
+
+;;; ---------------------------------------------------------------------------
+;;; FOUNDERS
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel GeorgiaWestern "Neil Hutcheson"
+  :title "President / Co-Founder"
+  :note "Continues day-to-day operations post-ISG acquisition")
+(hasPersonnel GeorgiaWestern "Greg Giles"
+  :title "Owner / Secretary / Co-Founder"
+  :note "Continues day-to-day operations post-ISG acquisition")
+(hasPersonnel GeorgiaWestern "Jennifer Blair" :title "Staff" :note "Extensive electric actuator knowledge")
+(hasPersonnel GeorgiaWestern "Clarke Quinn" :title "Manager of Shop / Process Planner"
+  :note "Builds and refurbishes EIM actuators, gearboxes, Limitorque, Rotork, AUMA")
+(hasPersonnel GeorgiaWestern "Melissa Faircloth" :title "Office Manager")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService GeorgiaWestern "Electric Valve Actuator Sales and Distribution — extensive stocking inventory")
+(hasService GeorgiaWestern "Field Services — 24/7 emergency response with mobile units (F350, F550, F750 with integrated cranes)")
+(hasService GeorgiaWestern "Valve Adaptation and Machining — custom modifications and fabrication")
+(hasService GeorgiaWestern "Pipeline Service — actuator installation, commissioning, valve lubrication, stem seal replacement, line break and Rate of Drop calibration")
+(hasService GeorgiaWestern "Preventative Maintenance — scheduled upkeep programs")
+(hasService GeorgiaWestern "Refurbishment and Repair — restoration of actuator assemblies")
+(hasService GeorgiaWestern "Valve/Actuator Package Assembly — complete Motor Operated Valve (MOV) assemblies")
+(hasService GeorgiaWestern "In-House Automation — designs, fabricates, installs, tests electric actuators")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine GeorgiaWestern "Primary Lines"
+  :brands ("EIM (2000HP, G Series pneumatic, 2000 Series electric, EB series)"
+           "Limitorque (SMA, HM, HMB, SMC series)"))
+
+(hasOEMLine GeorgiaWestern "Emerson Partnership"
+  :brands ("Bettis" "Shafer" "HyTork" "El-O-Matic" "Morin" "Biffi")
+  :certification "Emerson Gold Seal Service Center for Bettis M2CP Electric actuators")
+
+(hasOEMLine GeorgiaWestern "Other Actuator Brands"
+  :brands ("Auma" "Crown Fusion" "Jordan Controls" "Kennedy" "Powell"
+           "Rotork" "Sambo" "Stream-Flo" "Val-Matic"))
+
+(hasOEMLine GeorgiaWestern "Lubricants"
+  :brands ("MOV Long Life" "Reolube" "Royal Purple" "Schaffer"))
+
+;;; ---------------------------------------------------------------------------
+;;; SAFETY CERTIFICATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasCertification GeorgiaWestern ("CCS Certification (formerly MICCS)" "Avetta (formerly PICS and Browz)"
+  "ISNetworld" "Veriforce" "Safeland USA / PEC Safety" "Industry-leading EMR safety rating"))
+
+;;; ---------------------------------------------------------------------------
+;;; PIPELINE CUSTOMERS (Named)
+;;; ---------------------------------------------------------------------------
+
+(hasCustomer GeorgiaWestern "Southern Natural Gas")
+(hasCustomer GeorgiaWestern "Tennessee Gas Pipeline")
+(hasCustomer GeorgiaWestern "Williams Transco")
+(hasCustomer GeorgiaWestern "Williams Gulfstream")
+(hasCustomer GeorgiaWestern "Plantation Pipeline")
+(hasCustomer GeorgiaWestern "Colonial Pipeline")
+(hasCustomer GeorgiaWestern "Florida Gas Transmission")
+(hasCustomer GeorgiaWestern "Kinder Morgan")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry GeorgiaWestern ("Nuclear Power" "Natural Gas Pipelines" "Petroleum Pipelines"
+                             "Water Treatment" "Petrochemical" "Utilities"))
+(hasTerritory GeorgiaWestern ("GA" "SE US")
+  :note "Largest electric valve actuator stocking distributor in the Southeastern US.
+    Staff combines over 250 years of combined industry experience.")
+
+;;; ---------------------------------------------------------------------------
+;;; NOTABLE PIPELINE PROJECTS
+;;; ---------------------------------------------------------------------------
+
+(hasProject GeorgiaWestern "Kinder Morgan North Alabama Pipeline"
+  :scope "Installation and commissioning of 8 Shafer actuators")
+(hasProject GeorgiaWestern "Florida Gas Transmission Phase VIII Expansion"
+  :scope "Installation and commissioning of 13 control upgrades and 13 new Bettis actuators")
+(hasProject GeorgiaWestern "Tennessee Gas Pipeline"
+  :scope "Installation and commissioning of 21 Shafer actuators and 6 control upgrades")
+(hasProject GeorgiaWestern "Southern Natural Gas Elba Express"
+  :scope "Installation and commissioning of 18 Shafer actuators")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance GeorgiaWestern
+  :status "PLANNED — Year 2 expansion"
+  :opportunity "Pipeline actuator installation data is high-value signal.
+    Named pipeline customers (Colonial, Kinder Morgan, etc.) are blue-chip
+    recurring relationships. Mobile field service units generate GPS + job signals.
+    Emerson Gold Seal certification creates OEM data bridge."
+  :note "Georgia Western started in a garage in 1992 with two founders.
+    30 years of organic growth before ISG. Deep customer loyalty.")
+
+;;; =============================================================================
+;;; END BRAND-GEORGIA-WESTERN.KRF
+;;; =============================================================================

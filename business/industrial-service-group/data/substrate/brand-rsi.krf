@@ -1,0 +1,112 @@
+;;; =============================================================================
+;;; BRAND-RSI.KRF — Renewal Service Industrial, LLC (RSI)
+;;; ISG Pump Vertical — "We Are The Pump People"
+;;; =============================================================================
+;;;
+;;; Rock Island, IL. Founded 1984 by John Nonnenmann in a garage with 2 employees.
+;;; Now 30+ employees in 60,000+ sq ft. Acquired August 2023 (TJC era).
+;;; Brand-agnostic pump specialist. 500+ pattern library. Family business.
+;;; "Quickly became a cornerstone within the brand network."
+;;;
+;;; =============================================================================
+
+(isa RSI ISGBrandNode)
+(hasLegalName RSI "Renewal Service Industrial, LLC" :aka "RSI" :motto "We Are The Pump People")
+(hasWebsite RSI "rsipumps.com")
+(hasISGBrandPage RSI "isgservice.com/our-brands/renewal-service-inc/")
+(hasHeadquarters RSI "2600 5th Street, Rock Island, IL 61201")
+(hasFounded RSI 1984)
+(hasFounder RSI "John F. Nonnenmann" :origin "Started in a garage with 2 employees")
+(hasVertical RSI "Pumps")
+(hasAcquisitionDate RSI "2023-08-01")
+(hasAcquisitionEra RSI "TJC")
+(hasEmployees RSI "~21-30+" :note "ZoomInfo 21, ISG says 30+")
+(hasRevenue RSI "$2.6M+" :basis "ZoomInfo estimate, likely understated")
+(hasOperations RSI "24/7 emergency service, same/next-day shipping on stock items")
+(hasPhone RSI "309-788-0128" :tollFree "800-747-0128")
+(hasEmail RSI "sales@rsipumps.com")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasLocation RSI "Rock Island, IL"
+  :address "2600 5th Street, Rock Island, IL 61201"
+  :role "HQ"
+  :facility "60,000+ sq ft on 3.5 acres")
+
+(hasLocation RSI "Sylacauga, AL"
+  :address "24 Eastern Avenue, Sylacauga, AL 35150"
+  :role "RSI South — Southeast expansion facility")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL (Nonnenmann family business)
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel RSI "John F. Nonnenmann" :title "Owner and President" :note "Founder (1984)")
+(hasPersonnel RSI "Ben Nonnenmann" :title "Vice President, Production" :note "Family member")
+(hasPersonnel RSI "Joe Nonnenmann" :title "Vice President, Production" :note "Family member")
+(hasPersonnel RSI "Thomas Nonnenmann" :title "Staff" :note "Family member")
+(hasPersonnel RSI "Chris Carr" :title "Vice President, Sales" :location "Rock Island")
+(hasPersonnel RSI "Chris Gardino" :title "VP Sales, Southeast Region" :location "Sylacauga, AL")
+(hasPersonnel RSI "Steve Rummans" :title "Pump Specialist" :location "Rock Island")
+(hasPersonnel RSI "Michael Springsteen" :title "Improvement Director")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService RSI "Industrial Pump Sales — new, surplus, discontinued, rebuilt")
+(hasService RSI "Aftermarket Parts — ANSI B73.1 compliant, multiple alloys")
+(hasService RSI "OEM Surplus Parts — network of spotters/buyers across US and Canada")
+(hasService RSI "Pump Repair and Rebuilding — detailed inspection reports with photo documentation, failure analysis, as-built reports, OEM spec and tolerance, with warranty")
+(hasService RSI "Part Repair — welding and machining casings, stuffing box covers, impellers back to OEM specs")
+(hasService RSI "Impeller Trimming and Balancing")
+(hasService RSI "Power End Exchange")
+(hasService RSI "CNC Machining — vertical up to 84in, horizontal up to 60in")
+(hasService RSI "Pump Consumables Supply")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS (Brand-Agnostic — "Not tied to a single brand")
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine RSI "Major Pump OEMs"
+  :brands ("Goulds" "Durco" "Ahlstrom/Sulzer" "Worthington" "Allis Chalmers" "Ingersoll Rand"))
+(hasOEMLine RSI "Additional OEMs"
+  :brands ("Gorman Rupp" "Nash" "Vooner" "Patterson" "Viking" "Travaini" "Taco" "Warren" "Paco"))
+
+;;; ---------------------------------------------------------------------------
+;;; PUMP TYPES HANDLED
+;;; ---------------------------------------------------------------------------
+
+(hasPumpTypes RSI ("ANSI Standard" "Split Case" "Centrifugal" "Chemical" "Vacuum"
+                   "Vertical Turbine" "Multi-Stage" "Trash" "Axial Flow" "Self-Priming"
+                   "In-Line" "End Suction" "Paper Stock" "Submersible"
+                   "AOD (Air-Operated Diaphragm)" "Gear" "Vane"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry RSI ("General Industrial" "Manufacturing" "Chemical" "Water/Wastewater"
+                  "Pulp & Paper" "Power Generation"))
+(hasTerritory RSI ("IL" "AL" "North America")
+  :note "Network of spotters and buyers across US and Canada. Southeast expansion via RSI South.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance RSI
+  :status "PLANNED — Year 2 expansion"
+  :opportunity "500+ pattern library is a structured dataset waiting for Charlotte.
+    Brand-agnostic model = cross-reference intelligence across ANY pump OEM.
+    Surplus parts network creates supply/demand signals in real time.
+    CNC machining specs generate equipment lifecycle metrics.
+    Family business culture + 40 years of customer relationships = deep loyalty."
+  :note "Nonnenmann family — John, Ben, Joe, Thomas all in the business.
+    Remarkable employee retention. ISG says RSI quickly became a cornerstone.")
+
+;;; =============================================================================
+;;; END BRAND-RSI.KRF
+;;; =============================================================================

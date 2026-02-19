@@ -1,0 +1,228 @@
+;;; =============================================================================
+;;; OTC-INDUSTRIAL.KRF — Multi-Vertical Platform Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: OTC Industrial Technologies (Columbus, OH)
+;;;         Formerly Ohio Transmission Corporation (rebranded March 2022)
+;;; PE SPONSOR: Genstar Capital (since April 2019)
+;;; VERTICAL: Air Supply, Rotating Equipment, Automation, Finishing/Filtration
+;;; STRATEGY: Largest authorized compressed air distributor in US + largest
+;;;           Atlas Copco distributor in North America. Expanding into pumps,
+;;;           motors, seals, controls via add-on acquisitions.
+;;; REVENUE: $800M-$1B+ (estimated, private company)
+;;; EMPLOYEES: 2,000+
+;;; LOCATIONS: 70+
+;;; THREAT LEVEL: HIGH — multi-vertical competitor in ISG's exact territory
+;;;
+;;; =============================================================================
+
+(isa OTCIndustrial CompetitorNode)
+(hasHeadquarters OTCIndustrial "Columbus, OH")
+(hasPESponsor OTCIndustrial "Genstar Capital" :since "April 2019")
+(hasPriorPE OTCIndustrial "Irving Place Capital" :period "2015-2019")
+(hasPriorPE OTCIndustrial "Frontenac" :period "2013-2015")
+(hasRevenue OTCIndustrial "$800M-$1B+" :basis "estimated, private")
+(hasEmployees OTCIndustrial "2,000+")
+(hasLocations OTCIndustrial "70+" :serviceShops "60+")
+(hasFounded OTCIndustrial 1963)
+(hasRebranded OTCIndustrial "March 2022" :from "Ohio Transmission Corporation")
+(hasDistinction OTCIndustrial "Largest authorized compressed air distributor in the US")
+(hasDistinction OTCIndustrial "Largest Atlas Copco distributor in North America")
+(hasThreatLevel OTCIndustrial "HIGH" :reason "Multi-vertical overlap with ISG in compressed air, pumps, motors")
+
+;;; ---------------------------------------------------------------------------
+;;; VERTICALS
+;;; ---------------------------------------------------------------------------
+
+(hasVertical OTCIndustrial "Air Supply" :description "Compressed air systems, oil-free rental, vacuum")
+(hasVertical OTCIndustrial "Rotating Equipment" :description "Pumps, motors, mechanical seals, process equipment")
+(hasVertical OTCIndustrial "Industrial Automation" :description "Motion control, factory automation, fluid power, controls")
+(hasVertical OTCIndustrial "Finishing Dispensing Filtration" :description "Spray finishing, coatings, sealants, adhesives, filtration")
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (2020-2026)
+;;; ---------------------------------------------------------------------------
+
+;;; --- 2020 (2 deals, ~340 employees) ---
+
+(hasAcquisition OTCIndustrial Laron
+  :date "2020-01"
+  :location "Kingman, AZ (+ Phoenix, Salt Lake City, Tucson)"
+  :employees 190
+  :founded 1975
+  :specialty "Mechanical and electric motor repair, machining, fabrication, field service"
+  :vertical "Rotating Equipment"
+  :territory "AZ, UT"
+  :isgOverlap "NONE")
+
+(hasAcquisition OTCIndustrial JCIIndustries
+  :date "2020-12"
+  :location "Lee's Summit, MO (7 locations: KS, NE, IA, AR)"
+  :employees 150
+  :founded 1975
+  :specialty "Pumps, motors, controls, field service, remanufacturing"
+  :vertical "Rotating Equipment"
+  :territory "MO, KS, NE, IA, AR"
+  :isgOverlap "LOW — AR overlaps ISG")
+
+;;; --- 2021 (4 deals in 4 consecutive days, ~122 employees) ---
+
+(hasAcquisition OTCIndustrial CriticalRentalSolutions
+  :date "2021-12-14"
+  :location "Houston, TX (2 locations)"
+  :employees 42
+  :specialty "Oil-free air and temperature control rental equipment"
+  :vertical "Air Supply"
+  :territory "National (from TX base)"
+  :isgOverlap "MEDIUM — Houston is ISG territory")
+
+(hasAcquisition OTCIndustrial TPPump
+  :date "2021-12-15"
+  :location "Albuquerque, NM"
+  :employees 15
+  :founded 1940
+  :specialty "Complete pump lines — commercial, domestic, municipal, industrial, fire"
+  :vertical "Rotating Equipment"
+  :territory "NM, Northern AZ"
+  :isgOverlap "NONE")
+
+(hasAcquisition OTCIndustrial AAPAutomation
+  :date "2021-12-16"
+  :location "Englewood, CO (+ AZ, UT, ID, WY, NM)"
+  :employees 55
+  :founded 1982
+  :specialty "Machine automation, control solutions, design, fabrication"
+  :vertical "Industrial Automation"
+  :territory "Mountain West"
+  :isgOverlap "NONE")
+
+(hasAcquisition OTCIndustrial DiversifiedPump
+  :date "2021-12-17"
+  :location "Brentwood, NH"
+  :employees 10
+  :specialty "Pumps, heat exchangers, gas compressors — corrosive/toxic/high-temp"
+  :vertical "Rotating Equipment"
+  :territory "New England"
+  :isgOverlap "NONE")
+
+;;; --- 2022 (2 deals, ~78 employees) ---
+
+(hasAcquisition OTCIndustrial AmericanIndustrialCorp
+  :date "2022-03-30"
+  :location "Greenwood, IN (Indianapolis metro)"
+  :employees 50
+  :founded 1969
+  :specialty "Painting, powder coating, dispensing systems"
+  :vertical "Finishing Dispensing Filtration"
+  :territory "14 states (IL, IN, IA, KS, KY, TN, MI, MN, MO, NE, ND, OH, SD, WI)"
+  :isgOverlap "MEDIUM — IN and OH are ISG core states")
+
+(hasAcquisition OTCIndustrial ePumps
+  :date "2022-05-02"
+  :location "Tulsa, OK (+ OKC, Amarillo TX)"
+  :employees 28
+  :specialty "Pumps, mechanical seals, vacuum systems, compressors"
+  :vertical "Rotating Equipment"
+  :territory "OK, TX Panhandle"
+  :isgOverlap "LOW — TX Panhandle peripheral to ISG")
+
+;;; --- 2023: NO ACQUISITIONS ---
+;;; Infrastructure investment year: new 100K sq ft Cincinnati facility,
+;;; centralized distribution center development.
+
+;;; --- 2024 (1 deal, 33 employees) ---
+
+(hasAcquisition OTCIndustrial AlliedSalesService
+  :date "2024-04-04"
+  :location "LaPlace, LA (+ Mobile, AL)"
+  :employees 33
+  :founded 1954
+  :specialty "Pumps and mechanical seals, leading brands"
+  :vertical "Rotating Equipment"
+  :territory "Gulf Coast (LA, AL)"
+  :isgOverlap "MEDIUM — AL is ISG territory")
+
+;;; --- 2025 (4 companies in 2 deals, 85+ employees) ---
+
+(hasAcquisition OTCIndustrial PremierEquipmentCorp
+  :date "2025-02-03"
+  :location "Baton Rouge, LA (3 locations: LA, TX)"
+  :employees 65
+  :founded 1965
+  :specialty "Air compressors, blowers, pumps, cooling towers, PM, repair"
+  :vertical "Rotating Equipment + Air Supply"
+  :territory "Gulf Coast, Permian Basin"
+  :isgOverlap "MEDIUM — TX overlap, LA expansion")
+
+(hasAcquisition OTCIndustrial PremierControlSystems
+  :date "2025-02-03"
+  :location "Baton Rouge, LA"
+  :employees 20
+  :specialty "Control panel design, fabrication, programming, installation"
+  :vertical "Industrial Automation"
+  :territory "Gulf Coast"
+  :isgOverlap "LOW")
+
+(hasAcquisition OTCIndustrial FleetwoodIndustrial
+  :date "2025-08-12"
+  :location "Boothwyn, PA"
+  :founded 1986
+  :specialty "Mechanical seals, couplings, gaskets — authorized Flowserve distributor"
+  :vertical "Rotating Equipment"
+  :territory "Eastern PA"
+  :isgOverlap "NONE — Northeast")
+
+(hasAcquisition OTCIndustrial PMIndustrial
+  :date "2025-08-12"
+  :location "Easton, PA"
+  :founded 1964
+  :specialty "Mechanical seals, gaskets, packing, lubricants"
+  :vertical "Rotating Equipment"
+  :territory "NJ, NYC metro"
+  :isgOverlap "NONE — Northeast")
+
+;;; ---------------------------------------------------------------------------
+;;; PATTERN ANALYSIS
+;;; ---------------------------------------------------------------------------
+
+(hasPattern OTCIndustrial "RotatingEquipmentPivot"
+  :description "9 of 13 post-2020 acquisitions target rotating equipment (pumps,
+    motors, seals). OTC already dominates compressed air — now building a
+    parallel national footprint in pump and seal distribution to complement.")
+
+(hasPattern OTCIndustrial "GulfCoastExpansion"
+  :description "3 deals in LA/AL/TX since 2024: Allied Sales, Premier Equipment,
+    Premier Control Systems. Building Gulf Coast industrial services presence
+    that directly competes with ISG's TX and AL operations.")
+
+(hasPattern OTCIndustrial "DigestThenAccelerate"
+  :description "0 deals in 2023 (infrastructure investment year), then 5 companies
+    in 2024-2025. Integration pause followed by acceleration — same pattern
+    as Atlas Copco's 2023 pause.")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection OTCIndustrial "2026"
+  :expectedDeals "3-5"
+  :likelyTargets "Gulf Coast pump/valve distributors, Midwest compressed air
+    independents, Southeast rotating equipment shops.
+    May target ISG-adjacent territories in TN, KY, FL."
+  :rationale "Genstar has been patient — only 13 deals in 6 years vs. DXP's 27.
+    But the infrastructure year (2023) and 2025 acceleration suggest a new
+    acquisition phase. OTC has capital and platform to absorb larger targets.")
+
+(hasProjection OTCIndustrial "2027"
+  :expectedDeals "4-6"
+  :likelyTargets "Potential move into valve distribution (currently not a vertical).
+    Larger platform acquisitions ($50M+) to match DXP's pace.
+    Southeast expansion to compete with ISG and Tencarva."
+  :rationale "As the largest US compressed air distributor, OTC needs growth
+    from adjacent verticals. Pumps are being addressed. Valves and specialty
+    services are the logical next verticals.")
+
+;;; =============================================================================
+;;; END OTC-INDUSTRIAL.KRF
+;;; =============================================================================

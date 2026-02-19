@@ -1,0 +1,115 @@
+;;; =============================================================================
+;;; TENCARVA-BESSEMER.KRF — Pump/Valve/Coatings Platform Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: Tencarva Machinery Company, Greensboro, NC
+;;; PE SPONSOR: Bessemer Investors (since November 2021)
+;;; VERTICAL: Pumps, valves, coatings, motors, fluid handling
+;;; STRATEGY: Methodical SE/Midwest pump platform buildout. 5 add-on
+;;;           acquisitions since Bessemer partnership. Slower than DXP
+;;;           but geographically precise — every deal overlaps ISG territory.
+;;; EMPLOYEES: 580+
+;;; LOCATIONS: 35+
+;;; THREAT LEVEL: HIGH — every acquisition targets ISG's exact footprint
+;;;
+;;; =============================================================================
+
+(isa Tencarva CompetitorNode)
+(hasHeadquarters Tencarva "Greensboro, NC")
+(hasPESponsor Tencarva "Bessemer Investors" :since "November 2021")
+(hasEmployees Tencarva "580+")
+(hasLocations Tencarva "35+")
+(hasThreatLevel Tencarva "HIGH" :reason "Every deal targets ISG's exact SE/Midwest footprint")
+
+;;; ---------------------------------------------------------------------------
+;;; BRAND PORTFOLIO (Pre-Bessemer Foundation)
+;;; ---------------------------------------------------------------------------
+
+(hasBrand Tencarva "Southern Sales Company" :specialty "Pumps/equipment, Southeast")
+(hasBrand Tencarva "Hudson Pump & Equipment" :specialty "Pumps, FL and Southern GA")
+(hasBrand Tencarva "Saladin Pump & Equipment" :specialty "Pump distribution")
+(hasBrand Tencarva "ESSCO Service & Sales" :specialty "Electric motors and drives")
+(hasBrand Tencarva "Engineering Equipment Company" :specialty "Process equipment")
+(hasBrand Tencarva "Uniguard Machine Guards" :specialty "Machine guarding manufacturer" :acquired 2005)
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (Post-Bessemer, 2021-2026) — 5 ACQUISITIONS
+;;; ---------------------------------------------------------------------------
+
+(hasAcquisition Tencarva FischerProcessIndustries :date "2022-08-22"
+  :location "Loveland OH (HQ) + Alpharetta GA + Owensboro KY + Marietta OH + Indianapolis IN"
+  :founded "57+ years" :specialty "Pumps, valves, process equipment distribution"
+  :territory "OH, IN, KY, WV, GA"
+  :isgOverlap "DIRECT — OH, IN, KY, WV, GA are all ISG states or targets"
+  :note "Fischer was ISG acquisition target #2 in mesh gradient.
+    ALREADY ACQUIRED BY TENCARVA. Removes this option from ISG's list.")
+
+(hasAcquisition Tencarva TriStateCoatingMachine :date "2024-05-30"
+  :location "Salt Rock, WV"
+  :specialty "Thermal coatings — fusion, HVOF, wire spray, plasma, metalizing"
+  :territory "WV"
+  :isgOverlap "LOW — WV is ISG territory but coatings is niche")
+
+(hasAcquisition Tencarva DetroitPumpMfg :date "2025-01-09"
+  :location "Warren, MI"
+  :specialty "Process pumping, fluid handling — centrifugal, seal-less, self-priming, submersible"
+  :territory "MI, Midwest"
+  :isgOverlap "MEDIUM — MI is ISG expansion target")
+
+(hasAcquisition Tencarva AtlanticValveEquipment :date "2025-04-02"
+  :location "VA/Carolinas/MD/DC/WV"
+  :specialty "Municipal and industrial water/wastewater valves"
+  :territory "VA, NC, SC, MD, DC, WV"
+  :isgOverlap "MEDIUM — WV overlaps, VA/Carolinas are ISG expansion targets")
+
+(hasAcquisition Tencarva HoffmanKane :date "2026-02-17"
+  :location "Western PA / Eastern OH / WV"
+  :specialty "Industrial fluid handling and sealing solutions"
+  :territory "PA, OH, WV"
+  :isgOverlap "DIRECT — OH and WV are ISG territory")
+
+;;; ---------------------------------------------------------------------------
+;;; PATTERN ANALYSIS
+;;; ---------------------------------------------------------------------------
+
+(hasPattern Tencarva "PreciseGeographicOverlap"
+  :description "Every single Tencarva acquisition overlaps ISG territory:
+    Fischer (OH, IN, KY, WV, GA), Tri-State Coating (WV),
+    Detroit Pump (MI), Atlantic Valve (VA/WV), Hoffman-Kane (PA/OH/WV).
+    Tencarva is building a parallel platform in ISG's exact footprint
+    focused on pumps and valves — the two verticals where ISG is weakest.")
+
+(hasPattern Tencarva "PumpValvePincer"
+  :description "Tencarva's pump brands (Fischer, Detroit Pump, Southern Sales,
+    Hudson, Saladin) combined with valve brands (Atlantic Valve) and
+    fluid handling (Hoffman-Kane) create a multi-vertical presence
+    in ISG's territory that mirrors what ISG is trying to build.
+    Tencarva is ISG's most direct structural competitor.")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection Tencarva "2026"
+  :expectedDeals "2-3"
+  :likelyTargets "Additional pump or valve distributors in ISG's Midwest/SE territory.
+    May target FL (Hudson Pump already there), TX (geographic gap),
+    or additional OH/IN density to compete with ISG directly."
+  :rationale "Bessemer cadence is ~1-2 deals/year. Methodical, not frantic.
+    But every deal is surgically placed in ISG's footprint.")
+
+(hasProjection Tencarva "2027"
+  :expectedDeals "2-3"
+  :likelyTargets "TX pump/valve entry (Tencarva's biggest geographic gap).
+    Motor repair shops to compete with IPS.
+    Potential Bessemer exit — Tencarva could be sold to a larger platform
+    or strategic buyer, which changes the competitive dynamic entirely."
+  :rationale "Bessemer typically holds 4-6 years. Acquired Nov 2021.
+    Exit window opens 2025-2027. If Tencarva is sold to a larger
+    acquirer (OTC, DXP, or a new PE platform), it becomes a much
+    larger competitive threat to ISG.")
+
+;;; =============================================================================
+;;; END TENCARVA-BESSEMER.KRF
+;;; =============================================================================

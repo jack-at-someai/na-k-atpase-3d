@@ -1,0 +1,101 @@
+;;; =============================================================================
+;;; BRAND-NATIONAL-MILL.KRF — National Mill Maintenance (NMM)
+;;; ISG Specialty Services — Millwright & Hydraulic Services
+;;; =============================================================================
+;;;
+;;; Birmingham, AL. Founded 2017. Acquired April 15, 2024 — ISG's most recent
+;;; confirmed deal and 13th investment overall. $10.2M revenue.
+;;; Millwright, piping, welding, hydraulic repair. 4 locations (AL, AR).
+;;; Keith Waid (founding President) retired after acquisition.
+;;; Adam Carter now leads as President.
+;;;
+;;; =============================================================================
+
+(isa NationalMill ISGBrandNode)
+(hasLegalName NationalMill "National Mill Maintenance")
+(hasWebsite NationalMill "nationalmillmaintenance.com")
+(hasHeadquarters NationalMill "1321 Pinson Valley Pkwy, Birmingham, AL 35217")
+(hasFounded NationalMill 2017)
+(hasVertical NationalMill "Specialty Services")
+(hasAcquisitionDate NationalMill "2024-04-15")
+(hasAcquisitionEra NationalMill "TJC" :investmentNumber 13 :note "ISG's most recent confirmed deal")
+(hasEmployees NationalMill "~26-41" :note "PitchBook 41, RocketReach 28, Salary.com 21-50")
+(hasRevenue NationalMill "$10.2M" :basis "ZoomInfo" :year 2025)
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS (4)
+;;; ---------------------------------------------------------------------------
+
+(hasLocation NationalMill "Birmingham, AL"
+  :address "1321 Pinson Valley Pkwy, Birmingham, AL 35217"
+  :phone "205-783-5114"
+  :role "HQ")
+(hasLocation NationalMill "Mobile, AL" :phone "251-725-6712")
+(hasLocation NationalMill "Blytheville, AR" :phone "870-824-6530")
+(hasLocation NationalMill "Manila, AR")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel NationalMill "Adam Carter"
+  :title "President"
+  :background "Warrior Met Coal Inc, Commercial Metals Company"
+  :location "Bessemer, AL"
+  :note "Promoted from Service Manager/Sales role within NMM")
+(hasPersonnel NationalMill "Keith Waid"
+  :title "Former President / Founder"
+  :status "Retired after ISG acquisition")
+(hasPersonnel NationalMill "Zachary Sanger" :title "Project Lead")
+(hasPersonnel NationalMill "Maureen Seay" :title "Human Resources/Payroll")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService NationalMill "Millwright services")
+(hasService NationalMill "Piping design and fitting")
+(hasService NationalMill "Certified welding and fabrication")
+(hasService NationalMill "Hydraulic pump and cylinder repair")
+(hasService NationalMill "Industrial maintenance")
+(hasService NationalMill "Fabrication services")
+(hasService NationalMill "Gearbox repairs")
+(hasService NationalMill "Mining maintenance")
+(hasService NationalMill "Mechanical contracting")
+(hasService NationalMill "Fluid power repair services")
+(hasService NationalMill "24/7 emergency hydraulic repair")
+
+;;; ---------------------------------------------------------------------------
+;;; EQUIPMENT & TECHNOLOGY
+;;; ---------------------------------------------------------------------------
+
+(hasEquipment NationalMill "Faro equipment for pre-work on new installations")
+(hasEquipmentTypes NationalMill
+  ("Hydraulic pumps" "Hydraulic cylinders" "Gearboxes" "Piping systems"
+   "Industrial machinery" "Fluid power systems"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry NationalMill ("Steel" "Stainless Steel" "Paper" "Oil & Gas" "Energy" "Manufacturing" "Mining"))
+(hasTerritory NationalMill ("AL" "AR")
+  :note "Self-describes as one of the leading mechanical contractors and
+    mill services providers in the US. 4 locations across Alabama and Arkansas.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance NationalMill
+  :status "STABLE — niche vertical, recently acquired"
+  :opportunity "Hydraulic pump and cylinder repair generates lifecycle signals.
+    Millwright services create project-based recurring revenue.
+    Faro equipment data (3D scanning) is Charlotte-ready dimensional intelligence.
+    Mining maintenance extends ISG's reach beyond pure industrial services."
+  :note "ISG's 13th investment. Keith Waid retired post-acquisition — leadership
+    transition to Adam Carter. This is the newest brand in the network.")
+
+;;; =============================================================================
+;;; END BRAND-NATIONAL-MILL.KRF
+;;; =============================================================================

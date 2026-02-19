@@ -1,0 +1,166 @@
+;;; =============================================================================
+;;; MCE-FRONTENAC.KRF — Industrial Distribution Platform Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: Motion & Control Enterprises (MCE), Zelienople, PA
+;;; PE SPONSOR: Frontenac (Chicago, since 2018 via CEO1ST with Charley Hale)
+;;; VERTICAL: Fluid power, automation, flow control, compressed air,
+;;;           filtration, motors, rotating equipment, repair services
+;;; STRATEGY: Multi-vertical industrial distribution roll-up. 23 acquisitions
+;;;           since 2020. EBITDA grown 15x since 2018. Continuation vehicle
+;;;           closed Aug 2023 for accelerated acquisition.
+;;; LOCATIONS: 62 facilities across 18 states
+;;; CUSTOMERS: 33,400+
+;;; THREAT LEVEL: MEDIUM-HIGH — overlaps ISG in OH (Romanoff/Toledo),
+;;;              IN (Nova Hydraulics), AL/TN (GMC, AIC), and expanding
+;;;              into motors, compressed air, and valve repair
+;;;
+;;; =============================================================================
+
+(isa MCE CompetitorNode)
+(hasHeadquarters MCE "Zelienople, PA")
+(hasPESponsor MCE "Frontenac" :since 2018)
+(hasCEO MCE "Charles 'Charley' Hale")
+(hasLocations MCE "62 facilities" :states 18)
+(hasCustomers MCE "33,400+")
+(hasEBITDAGrowth MCE "15x since 2018 platform investment")
+(hasContinuationVehicle MCE "August 2023" :leads "Churchill Asset Management, 50 South Capital")
+(hasThreatLevel MCE "MEDIUM-HIGH" :reason "Multi-vertical overlap, OH presence, rapid pace")
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (2020-2024) — 23 ACQUISITIONS
+;;; ---------------------------------------------------------------------------
+
+;;; --- 2020 (1 acquisition) ---
+(hasAcquisition MCE DiversifiedAirSystems :date "2020-12-31" :specialty "Compressed air systems")
+
+;;; --- 2021 (3 acquisitions) ---
+(hasAcquisition MCE SwansonFlow :date "2021-02-04" :specialty "Flow control distribution")
+(hasAcquisition MCE InstrumentAssociates :date "2021-08-31" :specialty "Instrumentation distribution")
+(hasAcquisition MCE RSAGlobalControls :date "2021-12-31" :specialty "Controls and automation")
+
+;;; --- 2022 (3 acquisitions) ---
+(hasAcquisition MCE LoneStarMachineWorks :date "2022-06-01" :specialty "Machine shop / repair services")
+(hasAcquisition MCE QuestEngineering :date "2022-09-01" :specialty "Engineering services")
+(hasAcquisition MCE NightwineValvesActuation :date "2022-11-01" :specialty "Valve and actuation distribution")
+
+;;; --- 2023 (8 acquisitions — acceleration year, continuation vehicle) ---
+
+(hasAcquisition MCE PrecisionPumpValve :date "2023-02-06"
+  :location "Lake Charles LA (HQ) + 5 locations in LA, TX, OH"
+  :founded 1985 :specialty "Safety relief and control valve repair/remanufacturing, pumps"
+  :territory "LA, TX, OH" :isgOverlap "MEDIUM — TX and OH are ISG states"
+  :milestone "MCE at 31 facilities")
+
+(hasAcquisition MCE PowerPump :date "2023-06-05"
+  :location "Jacksonville, FL"
+  :specialty "Pumps, motors, drives, blowers, vacuum, power transmission"
+  :territory "FL, GA" :isgOverlap "MEDIUM — FL is ISG territory"
+  :milestone "MCE at 39 facilities, 13 states")
+
+(hasAcquisition MCE IndustrialControlServices :date "2023-06-05"
+  :location "Zeeland, MI"
+  :specialty "Robotics, motion control, machine vision, barcoding, controls")
+
+(hasAcquisition MCE UltimationIndustries :date "2023-08-22"
+  :location "Roseville, MI"
+  :specialty "Conveyor and engineered automation/material handling. Inc. 5000 company.")
+
+(hasAcquisition MCE NovaHydraulics :date "2023-10-03"
+  :location "Indianapolis, IN"
+  :founded 1998 :specialty "Hydraulic parts repair, remanufacture, supply"
+  :isgOverlap "MEDIUM — IN is ISG HQ state")
+
+(hasAcquisition MCE AppliedIndustrialControls :date "2023-11-02"
+  :location "Buford, GA"
+  :specialty "Motors, drives, controls distribution — industrial and municipal"
+  :territory "GA, SC, NC, AL, TN, FL"
+  :isgOverlap "MEDIUM-HIGH — AL, TN, FL are ISG states"
+  :milestone "MCE at 44 facilities, 14 states")
+
+(hasAcquisition MCE EngineeredSystemsGroup :date "2023-11-02"
+  :location "Buford, GA"
+  :specialty "Systems integration, panel shop, engineering, programming")
+
+(hasAcquisition MCE FilterResources :date "2023-12-05"
+  :location "Pasadena TX + Lake Charles LA"
+  :specialty "Process filtration — downstream oil and gas, petrochemical"
+  :isgOverlap "MEDIUM — TX and LA")
+
+;;; --- 2024 (8 acquisitions — matched 2023 pace) ---
+
+(hasAcquisition MCE PiedmontElectricMotor :date "2024-01-18"
+  :location "Asheboro, NC" :founded 1971
+  :specialty "Motor repair, crane/hoist, material handling, custom fabrication"
+  :milestone "MCE at 47 facilities, 15 states")
+
+(hasAcquisition MCE DaughtridgeSales :date "2024-04-04"
+  :location "Rocky Mount, NC" :founded 1970
+  :specialty "Pressure and temperature instrumentation"
+  :milestone "MCE at 50 facilities")
+
+(hasAcquisition MCE GeneralMachineryCo :date "2024-05-03"
+  :location "Birmingham AL (HQ) + Mobile AL + Madison AL" :founded 1908
+  :specialty "Automation, electrical products, process pumps, compressed air, repair"
+  :territory "AL, NW FL, E MS"
+  :isgOverlap "DIRECT — AL is ISG territory (Soles Electric, ASE, National Mill)"
+  :milestone "MCE at 53 facilities, 16 states")
+
+(hasAcquisition MCE IvesEquipment :date "2024-06-04"
+  :location "King of Prussia, PA" :founded 1954
+  :specialty "Process valves and instrumentation — Mid-Atlantic"
+  :territory "PA, DE, MD, NJ, DC, VA"
+  :milestone "MCE at 54 facilities, 30,000 customers")
+
+(hasAcquisition MCE RomanoffIndustries :date "2024-07-01"
+  :location "Toledo OH + Henderson NV" :founded 1979
+  :specialty "New, used, refurbished electric motors — one of largest surplus inventories in NA"
+  :isgOverlap "DIRECT — OH is ISG territory"
+  :milestone "MCE at 56 facilities, 17 states")
+
+(hasAcquisition MCE AirAutomationEngineering :date "2024-08-02"
+  :location "Fridley MN + Fargo ND" :founded 1978
+  :specialty "Automation products, robotic/PLC programming, calibration"
+  :milestone "MCE at 58 facilities")
+
+(hasAcquisition MCE ThreeParkerStores :date "2024-10-03"
+  :location "Williston ND + Sioux Falls SD + Sidney MT"
+  :specialty "Hose, fittings, hydraulics, filtration — Bakken region"
+  :milestone "MCE at 61 facilities, 18 states")
+
+(hasAcquisition MCE NorthEastTechnicalSales :date "2024-12-02"
+  :location "Harleysville, PA" :founded 1973
+  :specialty "Instrumentation and control solutions"
+  :territory "Metro NY, E PA, NJ, DE, MD, WV, VA"
+  :milestone "MCE at 62 facilities, 33,400 customers")
+
+;;; --- 2025: No announced acquisitions as of Feb 2026 ---
+;;; Continuation vehicle capital available. Likely digesting 2023-2024 sprint.
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection MCE "2026"
+  :expectedDeals "4-6"
+  :likelyTargets "Southeast motor/pump shops (building on AIC/ESG/GMC footprint).
+    Additional valve repair shops. Compressed air independents in Midwest.
+    Potential ISG-territory targets in OH, IN, AL, TN, FL."
+  :rationale "16 deals in 2 years (2023-2024) then a pause. Frontenac's
+    continuation vehicle provides capital. MCE will likely resume
+    acquisitions in 2026 after integration period.")
+
+(hasProjection MCE "2027"
+  :expectedDeals "6-8"
+  :likelyTargets "National expansion beyond 18 states. Potential move into
+    ISG's TX market (already in LA via PPV and Filter Resources).
+    More motor repair shops to compete with IPS."
+  :rationale "Frontenac typically holds 5-7 years. Acquired MCE in 2018.
+    Continuation vehicle in 2023 extended the hold. Exit likely 2026-2028,
+    meaning 2027 could see either acceleration to maximize exit value
+    or a strategic sale to a larger platform.")
+
+;;; =============================================================================
+;;; END MCE-FRONTENAC.KRF
+;;; =============================================================================

@@ -1,0 +1,243 @@
+;;; =============================================================================
+;;; ATLAS-COPCO.KRF — US Compressed Air Distribution Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: Atlas Copco Group (Stockholm, Sweden)
+;;; VERTICAL: Compressors (primary threat to ISG compressor brands)
+;;; STRATEGY: Vertical integration — OEM buying its own distributors to own
+;;;           the aftermarket customer relationship directly
+;;; REVENUE: $15B global (2021), ~20% market share
+;;; THREAT LEVEL: CRITICAL — 12 US distributor acquisitions since 2020,
+;;;              5 directly in ISG territory (MS, TX, IN, TX, FL)
+;;;
+;;; =============================================================================
+
+;;; ---------------------------------------------------------------------------
+;;; SECTION 1: ENTITY
+;;; ---------------------------------------------------------------------------
+
+(isa AtlasCopco CompetitorNode)
+(hasHeadquarters AtlasCopco "Stockholm, Sweden")
+(hasRevenue AtlasCopco "$15B" :year 2021)
+(hasMarketShare AtlasCopco "20%" :market "Global Compressed Air")
+(hasStrategy AtlasCopco "Vertical integration — acquire independent distributors
+  to own the channel, own the aftermarket, control the customer relationship")
+(hasThreatLevel AtlasCopco "CRITICAL" :reason "5 acquisitions in ISG territory since 2024")
+(hasUSDistributors AtlasCopco "16 authorized" :note "acquiring more each quarter")
+(hasSubsidiary AtlasCopco "Quincy Compressor" :acquired 2017)
+
+;;; ---------------------------------------------------------------------------
+;;; SECTION 2: ACQUISITION TIMELINE (2020-2026)
+;;; ---------------------------------------------------------------------------
+
+;;; --- 2020 ---
+
+(hasAcquisition AtlasCopco HydraFlowWest
+  :date "2020-01-16"
+  :location "Walnut, CA"
+  :employees 7
+  :specialty "Compressor spare parts and accessories distributor"
+  :territory "US West Coast"
+  :division "Compressor Technique Service"
+  :isgOverlap "NONE")
+
+;;; --- 2021 ---
+
+(hasAcquisition AtlasCopco PurificationSolutions
+  :date "2021-01-04"
+  :location "Charlotte, NC"
+  :employees 60
+  :revenue "$26M"
+  :specialty "Air treatment equipment and on-site nitrogen generators"
+  :territory "US + Europe"
+  :division "Industrial Air"
+  :isgOverlap "LOW — adjacent to ISG SE territory")
+
+(hasAcquisition AtlasCopco MidStateAirCompressor
+  :date "2021-05-10"
+  :location "Berlin, CT"
+  :employees 15
+  :specialty "Compressor distribution and maintenance services"
+  :territory "CT, RI, MA"
+  :division "Quincy Compressor / Industrial Air"
+  :isgOverlap "NONE — Northeast")
+
+(hasAcquisition AtlasCopco CompressedAirSystemsCAS
+  :date "2021-06-14"
+  :location "Salisbury, NC"
+  :employees 30
+  :specialty "Compressor distributor with strong service focus"
+  :territory "NC, SC, VA"
+  :division "Compressor Technique Service"
+  :isgOverlap "LOW — adjacent SE, potential ISG expansion territory")
+
+;;; --- 2022 ---
+
+(hasAcquisition AtlasCopco CompressedAirProductsCAP
+  :date "2022-07-29"
+  :location "Newnan, GA (SW of Atlanta)"
+  :employees 20
+  :specialty "Compressed air equipment distributor with service division"
+  :territory "Georgia"
+  :division "Compressor Technique Service"
+  :isgOverlap "MEDIUM — GA is ISG expansion target")
+
+(hasAcquisition AtlasCopco MesaEquipment
+  :date "2022-10-04"
+  :location "Albuquerque, NM"
+  :employees 19
+  :specialty "Oil-free and oil-injected compressors, parts, service"
+  :territory "New Mexico"
+  :division "Compressor Technique Service"
+  :isgOverlap "NONE")
+
+(hasAcquisition AtlasCopco NortheastCompressor
+  :date "2022-11-11"
+  :location "North Syracuse, NY"
+  :employees 6
+  :specialty "Air compressors, equipment, services"
+  :territory "Upstate New York"
+  :division "Compressor Technique Service"
+  :isgOverlap "NONE")
+
+;;; --- 2023 ---
+;;; No compressed air distribution acquisitions. Integration/digest year.
+
+;;; --- 2024 ---
+
+(hasAcquisition AtlasCopco PacificSalesService
+  :date "2024-03-04"
+  :location "Portland, OR"
+  :employees 15
+  :specialty "Compressors, replacement parts, accessories"
+  :territory "Oregon"
+  :division "Compressor Technique Service"
+  :isgOverlap "NONE")
+
+(hasAcquisition AtlasCopco CompressedAirTechnologies
+  :date "2024-07-29"
+  :location "Mississippi (HQ)"
+  :employees 53
+  :specialty "Full-line Quincy distributor — systems, compressors, dryers, accessories, service, auditing"
+  :territory "MS, AL, GA, TN, FL, AR"
+  :division "Compressor Technique Service"
+  :isgOverlap "DIRECT — AL, TN, FL, AR overlap ISG territory"
+  :urgency "HIGH — 6-state territory lost to Atlas Copco")
+
+(hasAcquisition AtlasCopco CompressedAirSolutionsTX
+  :date "2024-09"
+  :location "Texas"
+  :specialty "Compressed air solutions"
+  :territory "Texas"
+  :isgOverlap "DIRECT — TX is ISG's largest market"
+  :urgency "HIGH")
+
+;;; --- 2025 ---
+
+(hasAcquisition AtlasCopco PCS
+  :date "2025-04-09"
+  :location "Terre Haute, IN"
+  :employees 12
+  :specialty "Compressor sales and service"
+  :territory "IN, IL"
+  :division "Compressor Technique Service"
+  :isgOverlap "DIRECT — IN is ISG HQ state"
+  :urgency "CRITICAL — Atlas Copco now in Indiana")
+
+(hasAcquisition AtlasCopco RMBoggs
+  :date "2025-10-08"
+  :location "Iowa City, IA"
+  :employees 3
+  :specialty "Compressor equipment sales and service, agricultural"
+  :territory "Iowa"
+  :division "Compressor Technique Service"
+  :isgOverlap "LOW")
+
+;;; --- 2026 ---
+
+(hasAcquisition AtlasCopco AirCompressorWorks
+  :date "2026-01-07"
+  :location "Riviera Beach, FL"
+  :employees 50
+  :revenue "$16M"
+  :specialty "Air compressor equipment and service, founded 1979"
+  :territory "South Florida"
+  :division "Quincy Compressor"
+  :isgOverlap "DIRECT — FL is ISG territory, only Cape Coral presence"
+  :urgency "HIGH — ISG's FL coverage weakened")
+
+;;; ---------------------------------------------------------------------------
+;;; SECTION 3: PATTERN ANALYSIS
+;;; ---------------------------------------------------------------------------
+
+(hasPattern AtlasCopco "QuincyRollup"
+  :description "Systematically acquiring Quincy Compressor authorized distributors
+    to convert independent distribution into OEM-direct operations.
+    Compressed Air Technologies (MS), MidState (CT), and Air Compressor Works (FL)
+    were all Quincy channel partners absorbed into Atlas Copco direct operations.")
+
+(hasPattern AtlasCopco "GeographicGapFill"
+  :description "Systematic geographic coverage:
+    Northeast: CT/RI/MA (MidState), Upstate NY (Northeast Compressor)
+    Southeast: NC/SC/VA (CAS), GA (CAP), MS/AL/GA/TN/FL/AR (CAT), S.FL (ACW)
+    Midwest: IN/IL (PCS), IA (RM Boggs)
+    West: CA (Hydra Flow), OR (Pacific), NM (Mesa)
+    Notable gaps: TX (one deal), OH, MI, PA, MN")
+
+(hasPattern AtlasCopco "AcceleratingPace"
+  :description "2020: 1 deal, 2021: 3 deals, 2022: 3 deals, 2023: 0 (digest),
+    2024: 3 deals, 2025: 2 deals, 2026: 1 (Jan only). Paused in 2023 to integrate,
+    then resumed. Average 2 deals/year, trending upward.")
+
+(hasPattern AtlasCopco "SmallTargetProfile"
+  :description "Most deals are 6-53 employees, sub-$30M revenue, undisclosed price.
+    Family-owned distributors being rolled up. Identical to PE platform pattern.")
+
+;;; ---------------------------------------------------------------------------
+;;; SECTION 4: PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection AtlasCopco "2026"
+  :expectedDeals "2-4"
+  :likelyTargets "Remaining independents in TX, OH, TN, KY — ISG's core territory.
+    Any Quincy-authorized distributor not already acquired.
+    Potential targets: Brehob (IN/OH/KY/MI), John Bouchard (TN/KY),
+    Blake & Pendleton (SE states — if not acquired by ISG first)."
+  :rationale "Atlas Copco has no reason to slow down. Vertical integration
+    into distribution is a stated strategic priority. The US is their
+    largest market and they are filling geographic gaps systematically.")
+
+(hasProjection AtlasCopco "2027"
+  :expectedDeals "3-5"
+  :likelyTargets "Expansion into service-agreement-heavy distributors.
+    Potential move into adjacent verticals (vacuum, nitrogen generation).
+    May target larger platforms ($50M+) as small independents dry up."
+  :rationale "The independent distributor pool is shrinking. Atlas Copco
+    will need to pursue larger targets or compete with PE platforms
+    (ISG, OTC) for the remaining independents. Pace may accelerate
+    as fewer targets remain.")
+
+;;; ---------------------------------------------------------------------------
+;;; SECTION 5: ISG RESPONSE PROTOCOL
+;;; ---------------------------------------------------------------------------
+
+(hasResponse ISG AtlasCopco
+  :urgency "IMMEDIATE"
+  :action "Acquire remaining independent compressor distributors in ISG territory
+    before Atlas Copco reaches them. Priority targets:
+    1. Blake & Pendleton (8 SE states, 220+ employees — largest available)
+    2. John Bouchard & Sons (TN/KY, Gardner Denver authorization)
+    3. Brehob Corporation (IN/OH/KY/MI, 7 locations)
+    4. Compressed Air Systems Inc. (Orlando/Tampa FL)
+    Atlas Copco has already taken Compressed Air Technologies (6 SE states),
+    PCS (Indiana), and Air Compressor Works (South Florida).
+    The window is closing."
+  :charlotteAdvantage "Every target ISG acquires plugs into Charlotte substrate
+    immediately. Atlas Copco integrates into their own siloed OEM systems.
+    ISG + Charlotte offers multi-brand intelligence that Atlas Copco
+    structurally cannot provide — they are brand-locked.")
+
+;;; =============================================================================
+;;; END ATLAS-COPCO.KRF
+;;; =============================================================================

@@ -1,0 +1,104 @@
+;;; =============================================================================
+;;; BRAND-SOLES-ELECTRIC.KRF — Soles Electric Company
+;;; ISG Motor Vertical — DC Motor & Rail Equipment Specialist
+;;; =============================================================================
+;;;
+;;; Fairmont, West Virginia. Founded 1960. Acquired June 2022 (KCM era, 4th add-on).
+;;; "One of the leading electric repair facilities East of the Mississippi."
+;;; Unusual niche: DC motors + diesel locomotive rebuilds.
+;;; Roger Stewart (President since 2012) specifically chose ISG's autonomous model.
+;;;
+;;; =============================================================================
+
+(isa SolesElectric ISGBrandNode)
+(hasLegalName SolesElectric "Soles Electric Company, Inc.")
+(hasWebsite SolesElectric "soleselectric.com")
+(hasISGBrandPage SolesElectric "isgservice.com/our-brands/soles-electric/")
+(hasHeadquarters SolesElectric "1552 Tulip Lane, Fairmont, WV 26554")
+(hasFounded SolesElectric 1960)
+(hasVertical SolesElectric "Motors")
+(hasAcquisitionDate SolesElectric "2022-06" :note "June 2022, 4th KCM add-on")
+(hasAcquisitionEra SolesElectric "KCM" :order 4)
+(hasEmployees SolesElectric "~52" :note "Combined across both locations")
+(hasRevenue SolesElectric "$5.6M" :basis "D&B estimate")
+(hasOperations SolesElectric "24/7/365")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasLocation SolesElectric "Fairmont, WV"
+  :address "1552 Tulip Lane, Fairmont, WV 26554"
+  :phone "304-363-2058"
+  :role "HQ")
+
+(hasLocation SolesElectric "Huntington, WV"
+  :established 2004
+  :role "Second location"
+  :employees "~15")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel SolesElectric "Roger Stewart"
+  :title "President"
+  :since 2012
+  :quote "We got to be who we are, my employees got to receive better benefits
+    and resources, we got to be part of a network that provides so many
+    opportunities, and we could accelerate OUR growth plan.")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService SolesElectric "Electric Motor Repair (AC and DC) — rewinding, reconditioning, parts replacement")
+(hasService SolesElectric "Pump Repair")
+(hasService SolesElectric "Gearbox Repair")
+(hasService SolesElectric "Generator Maintenance")
+(hasService SolesElectric "Electric & Diesel Rail Equipment Rebuilds — engine replacements, torque converters, custom mounts, performance and emissions testing")
+(hasService SolesElectric "Fan Repair")
+(hasService SolesElectric "Predictive & Preventive Maintenance")
+(hasService SolesElectric "Vacuum Pressure Impregnation (VPI) insulation process")
+(hasService SolesElectric "Cryogenic (Dry Ice) Cleaning — residue-free cleaning for motor windings and electronic components")
+(hasService SolesElectric "Laser Precision Alignment")
+(hasService SolesElectric "Load Testing with recorded final data")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine SolesElectric "Motors"
+  :brands ("Toshiba (Authorized Distributor)" "WEG")
+  :note "Also has access to ISG network 250+ product lines")
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry SolesElectric ("Steel" "Aluminum" "Oil & Gas" "Refineries" "Chemical Plants"
+                            "Manufacturing" "Healthcare/Hospitals" "Education"
+                            "Government" "Power Plants" "Coal"))
+(hasTerritory SolesElectric ("WV" "Eastern US")
+  :note "Described as one of the leading electric repair facilities East of the Mississippi")
+
+(hasLicense SolesElectric "WV Electrician License #WV062779")
+(hasLicense SolesElectric "WV Specialty License #WV053108")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance SolesElectric
+  :status "PLANNED — defensive priority vs. IPS/MCE motor roll-ups"
+  :opportunity "DC motor expertise is rare and defensible. Rail equipment rebuild data
+    is high-value lifecycle intelligence. Roger Stewart immediately connected
+    ISG brands to his top customers upon joining — proof of network effect.
+    Charlotte can automate that cross-introduction at scale."
+  :threat "IPS (Searchlight Capital, 115+ locations) and MCE (Frontenac, 62 facilities)
+    are rolling up motor repair shops nationwide. Soles Electric's WV territory
+    could be targeted. Charlotte-powered intelligence is the defensive moat.")
+
+;;; =============================================================================
+;;; END BRAND-SOLES-ELECTRIC.KRF
+;;; =============================================================================

@@ -1,0 +1,331 @@
+;;; =============================================================================
+;;; TARGETS-PUMPS.KRF — Pump Vertical Acquisition Targets
+;;; ISG Acquisition Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; 18 named targets across 3 tiers. ISG's thinnest vertical — only RSI
+;;; (IL/AL) as dedicated pump brand. DXP Enterprises (15 pump acquisitions),
+;;; Tencarva/Bessemer (5 pump acquisitions), and SunSource/CDR are competitors.
+;;;
+;;; P1 Fischer Process acquired by Tencarva Aug 2022.
+;;; P3 PumpWorks confirmed DXP subsidiary since 2014.
+;;; Both OFF THE BOARD.
+;;;
+;;; =============================================================================
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 1 — Acquire Now, Present to TJC (4 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa KnightenIndustries AcquisitionTargetNode)
+(hasTargetID KnightenIndustries "P1")
+(hasLegalName KnightenIndustries "Knighten Industries")
+(hasHeadquarters KnightenIndustries "Odessa, TX")
+(hasVertical KnightenIndustries "Pumps")
+(hasRevenue KnightenIndustries "$70.6M" :basis "2025 estimate")
+(hasFounded KnightenIndustries 1969)
+(hasOwnership KnightenIndustries "Private — Brian Knighten (CEO), family-owned")
+(hasLocations KnightenIndustries "3 TX locations")
+(hasOEMLine KnightenIndustries ("ITT Goulds" "EBARA") :note "Brand-agnostic service model")
+(hasSpecialty KnightenIndustries "Oil & gas, industrial, municipal pumps. Full machine shop, fabrication, 24/7 service.")
+(hasTerritory KnightenIndustries ("TX"))
+(hasUrgency KnightenIndustries "HIGH"
+  :reason "Largest independent pump distributor in West Texas. At $70M, this is
+    a transformative pump vertical acquisition. DXP is aggressively acquiring in TX.")
+(hasEffort KnightenIndustries "HIGH")
+
+(isa HayesPump AcquisitionTargetNode)
+(hasTargetID HayesPump "P2")
+(hasLegalName HayesPump "Hayes Pump, Inc.")
+(hasHeadquarters HayesPump "Concord, MA")
+(hasVertical HayesPump "Pumps")
+(hasRevenue HayesPump "$23.1M" :basis "2025 estimate")
+(hasFounded HayesPump 1898)
+(hasOwnership HayesPump "Private — Eric Zadravec and Joe Larkin Sr. (purchased 2011)")
+(hasOEMLine HayesPump "ITT Goulds" :role "Exclusive NE distributor"
+  :additional ("Viking Pump" "Gorman-Rupp" "Aurora" "Moyno" "Warren Rupp" "John Crane"))
+(hasSpecialty HayesPump "Largest and oldest pump distributor in the Northeast. 40+ application specialists. Has made own acquisitions (Atlantic Pump, Muller Process).")
+(hasTerritory HayesPump ("ME" "MA" "VT" "NH" "RI" "CT" "NJ" "NY"))
+(hasUrgency HayesPump "MEDIUM"
+  :reason "Opens entire Northeast for ISG. Exclusive Goulds authorization is a defensible moat. 127 years in business.")
+(hasEffort HayesPump "MEDIUM")
+
+(isa HydraService AcquisitionTargetNode)
+(hasTargetID HydraService "P3")
+(hasLegalName HydraService "Hydra Service, Inc.")
+(hasHeadquarters HydraService "Warrior, AL")
+(hasVertical HydraService "Pumps")
+(hasRevenue HydraService "$19.8M" :basis "2025 estimate")
+(hasEmployees HydraService "80")
+(hasFounded HydraService 1982)
+(hasOwnership HydraService "Private — F.J. Doyle II (Founder/CEO), Rick Bentley (President)")
+(hasFacility HydraService "65,000+ sq ft — pump repair, motor rewind, machine shop, two test pits")
+(hasSpecialty HydraService "700,000+ pumps sold/rented over 40+ years. Equipment rental fleet. 24/7 crane trucks.")
+(hasTerritory HydraService ("AL" "MS" "GA" "FL"))
+(hasUrgency HydraService "HIGH"
+  :reason "Perfect geographic overlap with Morin Process (Pelham, AL). Motor rewind shop
+    adds cross-sell into ISG motor vertical. Founder age = succession play.
+    Tencarva already has Hudson Pump in FL — they will target AL/MS next.")
+(hasEffort HydraService "MEDIUM")
+
+(isa EstabrookCorp AcquisitionTargetNode)
+(hasTargetID EstabrookCorp "P4")
+(hasLegalName EstabrookCorp "Estabrook Corporation")
+(hasHeadquarters EstabrookCorp "Berea, OH")
+(hasVertical EstabrookCorp "Pumps")
+(hasRevenue EstabrookCorp "$15.1M" :basis "2025 estimate")
+(hasFounded EstabrookCorp 1965)
+(hasOwnership EstabrookCorp "Private — Jeffrey Tarr (President), family-owned")
+(hasLocations EstabrookCorp "Berea OH + Penn Yan NY (2 repair shops, 21,000 sq ft total)")
+(hasOEMLine EstabrookCorp "ITT Goulds" :role "Exclusive regional distributor"
+  :note "2,000+ customers across OH, NY, PA, WV")
+(hasTerritory EstabrookCorp ("OH" "NY" "PA" "WV"))
+(hasUrgency EstabrookCorp "HIGH"
+  :reason "Fills OH/PA/WV/NY. Family-owned since 1965 = succession opportunity.
+    Tencarva acquired Hoffman-Kane in PA/OH/WV (Feb 2026). Window closing.")
+(hasEffort EstabrookCorp "LOW-MEDIUM")
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 2 — Acquire Q3-Q4 2026 (5 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa StraefferPump AcquisitionTargetNode)
+(hasTargetID StraefferPump "P5")
+(hasLegalName StraefferPump "Straeffer Pump & Supply")
+(hasHeadquarters StraefferPump "Chandler, IN")
+(hasVertical StraefferPump "Pumps")
+(hasRevenue StraefferPump "$7-10M" :basis "estimated")
+(hasEmployees StraefferPump "12-18")
+(hasFounded StraefferPump 1967)
+(hasOwnership StraefferPump "Private — Charlie Straeffer, family-founded")
+(hasSpecialty StraefferPump "Full-line pump distributor, municipal/wastewater vertical")
+(hasTerritory StraefferPump ("IN" "IL" "TN" "KY"))
+(hasUrgency StraefferPump "MEDIUM"
+  :reason "Exact ISG territory overlap. Adds municipal/wastewater vertical.")
+(hasEffort StraefferPump "LOW")
+
+(isa SEPumpSpecialist AcquisitionTargetNode)
+(hasTargetID SEPumpSpecialist "P6")
+(hasLegalName SEPumpSpecialist "Southeast Pump Specialist, Inc.")
+(hasHeadquarters SEPumpSpecialist "Augusta, GA")
+(hasVertical SEPumpSpecialist "Pumps")
+(hasRevenue SEPumpSpecialist "$5-15M" :basis "estimated from 37 employees")
+(hasEmployees SEPumpSpecialist "37")
+(hasFounded SEPumpSpecialist 2004)
+(hasLocations SEPumpSpecialist "Augusta GA, Tampa FL, Wilson NC")
+(hasOEMLine SEPumpSpecialist ("Summit Pump" "American Marsh" "Chesterton Seals"))
+(hasCertification SEPumpSpecialist "SKF Certified repair facilities")
+(hasTerritory SEPumpSpecialist ("GA" "FL" "NC"))
+(hasUrgency SEPumpSpecialist "MEDIUM")
+(hasEffort SEPumpSpecialist "LOW")
+
+(isa CBEquipment AcquisitionTargetNode)
+(hasTargetID CBEquipment "P7")
+(hasLegalName CBEquipment "C&B Equipment, Inc.")
+(hasHeadquarters CBEquipment "Wichita, KS")
+(hasVertical CBEquipment "Pumps + Compressors")
+(hasRevenue CBEquipment "$10-25M" :basis "estimated")
+(hasFounded CBEquipment 1974)
+(hasOwnership CBEquipment "Private — Dennis Noyes (President). Has made 3 acquisitions.")
+(hasOEMLine CBEquipment ("Grundfos" "Roper Pump" "Summit Pump" "Gardner Denver"))
+(hasSpecialty CBEquipment "Industrial pumps + air compressors. Proprietary 'Uptime Solutioneering' service model.")
+(hasTerritory CBEquipment ("KS" "MO" "OK" "AR" "TX"))
+(hasUrgency CBEquipment "MEDIUM"
+  :reason "Covers 5 states ISG lacks pump coverage in. Air compressor line creates compressor vertical cross-sell.")
+(hasEffort CBEquipment "LOW-MEDIUM")
+
+(isa PioneerEquipment AcquisitionTargetNode)
+(hasTargetID PioneerEquipment "P8")
+(hasLegalName PioneerEquipment "Pioneer Equipment, Inc.")
+(hasHeadquarters PioneerEquipment "Phoenix, AZ")
+(hasVertical PioneerEquipment "Pumps + Compressors")
+(hasRevenue PioneerEquipment "$10-25M" :basis "estimated")
+(hasFounded PioneerEquipment 1959)
+(hasOwnership PioneerEquipment "Private — family-owned and operated")
+(hasLocations PioneerEquipment "Phoenix AZ, Tucson AZ, Albuquerque NM, Southern NV")
+(hasOEMLine PioneerEquipment ("Flowserve" "Byron Jackson" "Goulds" "Grundfos" "Sullair" "Champion"))
+(hasTerritory PioneerEquipment ("AZ" "NM" "NV"))
+(hasUrgency PioneerEquipment "MEDIUM"
+  :reason "Opens entire Southwest. Carries both pumps AND compressors. Family-owned since 1959 = succession play.")
+(hasEffort PioneerEquipment "MEDIUM")
+
+(isa TraskDecrow AcquisitionTargetNode)
+(hasTargetID TraskDecrow "P9")
+(hasLegalName TraskDecrow "Trask-Decrow Machinery (TDM)")
+(hasHeadquarters TraskDecrow "Scarborough, ME")
+(hasVertical TraskDecrow "Pumps")
+(hasRevenue TraskDecrow "$10.1M")
+(hasEmployees TraskDecrow "22")
+(hasFounded TraskDecrow 1983)
+(hasOEMLine TraskDecrow ("Sulzer" "Weir") :role "Sole authorized NE distributor for both")
+(hasTerritory TraskDecrow ("ME" "MA" "CT" "VT" "NH" "RI" "NY"))
+(hasUrgency TraskDecrow "MEDIUM"
+  :reason "Sulzer + Weir exclusive NE franchise is irreplaceable.
+    Paired with Hayes Pump (Goulds NE), ISG would own New England pump market.")
+(hasEffort TraskDecrow "LOW")
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 3 — Opportunistic / Tuck-In (9 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa IndustrialTechnical AcquisitionTargetNode)
+(hasTargetID IndustrialTechnical "P10")
+(hasLegalName IndustrialTechnical "Industrial Technical Sales & Service Inc.")
+(hasHeadquarters IndustrialTechnical "Mansfield, OH")
+(hasRevenue IndustrialTechnical "$4M")
+(hasFounded IndustrialTechnical 1954)
+(hasOwnership IndustrialTechnical "Private — Bill Newdome (President/Owner), family-owned")
+(hasOEMLine IndustrialTechnical ("Gorman-Rupp" "Warren-Rupp" "Pentair" "AMT"))
+(hasTerritory IndustrialTechnical ("OH"))
+
+(isa KrumPump AcquisitionTargetNode)
+(hasTargetID KrumPump "P11")
+(hasLegalName KrumPump "Krum Pump & Equipment Co.")
+(hasHeadquarters KrumPump "Kalamazoo, MI")
+(hasRevenue KrumPump "$5-10M" :basis "estimated")
+(hasFounded KrumPump 1950)
+(hasOwnership KrumPump "Private — Travis VanderKolk (Owner)")
+(hasOEMLine KrumPump ("Peerless Pump" "Grundfos" "Sandpiper" "Xylem" "Gorman-Rupp"))
+(hasNote KrumPump "Oldest US Peerless Pump distributor")
+(hasTerritory KrumPump ("MI"))
+
+(isa IllinoisProcessEquip AcquisitionTargetNode)
+(hasTargetID IllinoisProcessEquip "P12")
+(hasLegalName IllinoisProcessEquip "Illinois Process Equipment (IPE)")
+(hasHeadquarters IllinoisProcessEquip "Schaumburg, IL")
+(hasRevenue IllinoisProcessEquip "$5M")
+(hasEmployees IllinoisProcessEquip "21")
+(hasOEMLine IllinoisProcessEquip "Grundfos" :role "Premier distributor and authorized service center")
+(hasTerritory IllinoisProcessEquip ("IL"))
+(hasNote IllinoisProcessEquip "Chicagoland. Pairs with Illinois Electric Works.")
+
+(isa IPEC AcquisitionTargetNode)
+(hasTargetID IPEC "P13")
+(hasLegalName IPEC "Industrial Pump & Equipment Corporation")
+(hasRevenue IPEC "$5-15M" :basis "estimated")
+(hasFounded IPEC 1952)
+(hasOwnership IPEC "Private — Scott R. Gunselman (sole owner), 3rd generation")
+(hasOEMLine IPEC ("Sundyne" "Milton Roy" "Fybroc" "Yamada" "Badger Meter"))
+(hasSpecialty IPEC "Corrosive/toxic liquid handling, chemical/petrochemical niche")
+
+(isa ThompsonHopps AcquisitionTargetNode)
+(hasTargetID ThompsonHopps "P14")
+(hasLegalName ThompsonHopps "Thompson-Hopps Pumps")
+(hasHeadquarters ThompsonHopps "Loves Park, IL")
+(hasRevenue ThompsonHopps "$5.5M")
+(hasFounded ThompsonHopps 1975)
+(hasTerritory ThompsonHopps ("IL"))
+(hasNote ThompsonHopps "Pairs with RSI (Rock Island, IL). Municipal systems.")
+
+(isa MidStateIndustrialPump AcquisitionTargetNode)
+(hasTargetID MidStateIndustrialPump "P15")
+(hasLegalName MidStateIndustrialPump "Mid-State Industrial Pump Services")
+(hasHeadquarters MidStateIndustrialPump "Florida")
+(hasRevenue MidStateIndustrialPump "$10-30M" :basis "estimated from 27,500 sq ft facility")
+(hasOEMLine MidStateIndustrialPump "Weir" :role "Florida distributor")
+(hasSpecialty MidStateIndustrialPump "Largest machining equipment in the Southeast. Slurry pumps for mining, aggregates, power gen.")
+(hasTerritory MidStateIndustrialPump ("FL"))
+
+(isa OwensPump AcquisitionTargetNode)
+(hasTargetID OwensPump "P16")
+(hasLegalName OwensPump "Owens Pump & Equipment")
+(hasHeadquarters OwensPump "Canby, OR")
+(hasRevenue OwensPump "$3-8M" :basis "estimated")
+(hasOEMLine OwensPump ("EBARA"))
+(hasTerritory OwensPump ("OR" "WA" "ID" "Northern CA"))
+
+(isa PhoenixPumps AcquisitionTargetNode)
+(hasTargetID PhoenixPumps "P17")
+(hasLegalName PhoenixPumps "Phoenix Pumps, Inc.")
+(hasHeadquarters PhoenixPumps "Phoenix, AZ")
+(hasRevenue PhoenixPumps "$5-15M" :basis "estimated")
+(hasOEMLine PhoenixPumps "ITT Goulds" :role "Authorized distributor AZ/NM")
+(hasTerritory PhoenixPumps ("AZ" "NM"))
+
+(isa PumpsOfOklahoma AcquisitionTargetNode)
+(hasTargetID PumpsOfOklahoma "P18")
+(hasLegalName PumpsOfOklahoma "Pumps of Oklahoma, Inc.")
+(hasHeadquarters PumpsOfOklahoma "Oklahoma")
+(hasRevenue PumpsOfOklahoma "$3-8M" :basis "estimated")
+(hasFounded PumpsOfOklahoma "50+ years")
+(hasOwnership PumpsOfOklahoma "Private — family-owned, multi-generational")
+(hasOEMLine PumpsOfOklahoma ("Goulds" "Franklin Electric" "Grundfos" "BJM" "Liberty" "Wilo"))
+(hasSpecialty PumpsOfOklahoma "Oilfield water handling — produced water, frac water, saltwater disposal. Custom pump skid fabrication.")
+(hasTerritory PumpsOfOklahoma ("OK"))
+
+;;; ---------------------------------------------------------------------------
+;;; REMOVED FROM TARGET LIST (confirmed acquired)
+;;; ---------------------------------------------------------------------------
+
+;;; Fischer Process Industries — Tencarva (Bessemer), Aug 2022. OH/IN/KY/PA/WV.
+;;; PumpWorks — DXP Enterprises subsidiary since 2014 (via B27 LLC acquisition).
+;;; Arroyo Process Equipment — DXP, Feb 2025. FL, $26M.
+;;; Pump Solutions Inc. — DXP, Dec 2025. TX, $36.8M.
+;;; Triangle Pump — DXP, 2024. WA.
+;;; Carotek — SunSource/CDR, Aug 2020. NC, $46.2M.
+;;; Hudson Pump — Tencarva, 2001. FL.
+;;; Detroit Pump — Tencarva, Jan 2025. MI.
+;;; Hoffman-Kane — Tencarva, Feb 2026. PA/OH/WV.
+
+;;; ---------------------------------------------------------------------------
+;;; LARGE STRATEGIC TARGETS (would require TJC board approval)
+;;; ---------------------------------------------------------------------------
+
+(isa CumminsWagner AcquisitionTargetNode)
+(hasTargetID CumminsWagner "PS1")
+(hasLegalName CumminsWagner "Cummins-Wagner Co., Inc.")
+(hasHeadquarters CumminsWagner "Annapolis Junction, MD")
+(hasVertical CumminsWagner "Pumps + Compressors + Heat Transfer")
+(hasRevenue CumminsWagner "$135M+" :basis "2019 estimate")
+(hasEmployees CumminsWagner "300")
+(hasFounded CumminsWagner 1960)
+(hasOwnership CumminsWagner "100% Employee-Owned (ESOP since 1985)")
+(hasLocations CumminsWagner "13 locations — MD, PA, DE, VA, NY, MA, FL")
+(hasOEMLine CumminsWagner "Flowserve" :role "Authorized since 1973 (50-year franchise)")
+(hasNote CumminsWagner "Platform-scale. Would instantly make ISG pump vertical competitive.
+  Has made own acquisitions (Siewert, FEECO, EESCO, F.R. Mahony, Thermoflo, Envirep).
+  ESOP structure requires specialized deal approach.")
+
+(isa CogentCompanies AcquisitionTargetNode)
+(hasTargetID CogentCompanies "PS2")
+(hasLegalName CogentCompanies "Cogent Companies")
+(hasHeadquarters CogentCompanies "Riverside, MO")
+(hasVertical CogentCompanies "Pumps (multi-company platform)")
+(hasRevenue CogentCompanies "$50-100M+" :basis "estimated from 400+ employees")
+(hasEmployees CogentCompanies "400+")
+(hasOwnership CogentCompanies "100% Employee-Owned (ESOP since 2020)")
+(hasLocations CogentCompanies "12 companies, 10 service centers, Midwest + West US")
+(hasNote CogentCompanies "Inc. 5000 for 7 consecutive years. Would add 12 companies in single transaction.
+  Portfolio: Automatic Engineering, BRI, Fluid Equipment, iME Solutions, Lee Mathews,
+  Vanco, Vandevanter Engineering, Velocity Pump Rental, Water Technology Group, and more.")
+
+;;; ---------------------------------------------------------------------------
+;;; COMPETITIVE THREATS
+;;; ---------------------------------------------------------------------------
+
+(hasCompetitiveThreat ISG "DXP Enterprises"
+  :vertical "Pumps"
+  :type "Public company (DXPE)"
+  :action "15+ acquisitions under 'DXP Water' initiative. Largest distributor
+    of rotating equipment in North America. Arroyo (FL $26M, Feb 2025),
+    Pump Solutions (TX $36.8M, Dec 2025), Triangle Pump (WA, 2024),
+    Kappe Associates (2024), Hennesy Mechanical (AZ/NM/TX, 2024).
+    PumpWorks is a DXP subsidiary since 2014.")
+
+(hasCompetitiveThreat ISG "Tencarva"
+  :vertical "Pumps"
+  :peSponsor "Bessemer Trust"
+  :action "35 locations, 580+ employees across SE and Midwest.
+    Fischer Process (OH, Aug 2022), Detroit Pump (MI, Jan 2025),
+    Hoffman-Kane (PA/OH/WV, Feb 2026). Hudson Pump (FL) since 2001.
+    Saladin Pump (TX/LA) is a Tencarva division.")
+
+(hasCompetitiveThreat ISG "SunSource"
+  :vertical "Pumps"
+  :peSponsor "Clayton Dubilier & Rice"
+  :action "Carotek (NC, $46.2M, Aug 2020). Master Pumps & Power (TX).
+    Denver Industrial Pumps (CO). Multi-vertical distribution platform.")
+
+;;; =============================================================================
+;;; END TARGETS-PUMPS.KRF
+;;; =============================================================================

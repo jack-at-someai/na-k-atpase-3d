@@ -1,0 +1,121 @@
+;;; =============================================================================
+;;; BRAND-IVS.KRF — Industrial Valve Sales & Service, Inc.
+;;; ISG Founding Platform Entity
+;;; =============================================================================
+;;;
+;;; THE PLATFORM THAT STARTED IT ALL. IVS was the original acquisition that
+;;; launched ISG in September 2019 when KCM Capital partnered with Jim Richard.
+;;; Every other ISG brand was built around this foundation.
+;;;
+;;; Founded 1975. Mobile, Alabama. Safety relief valve specialists.
+;;; Three locations, VR-certified at all three. ~98-301 employees.
+;;;
+;;; =============================================================================
+
+(isa IVS ISGBrandNode)
+(hasLegalName IVS "Industrial Valve Sales & Service, Inc.")
+(hasWebsite IVS "indvalve.com")
+(hasISGBrandPage IVS "isgservice.com/our-brands/industrial-valve-service/")
+(hasHeadquarters IVS "5310 US-45, Eight Mile (Mobile), AL 36613")
+(hasFounded IVS 1975)
+(hasVertical IVS "Valves")
+(hasAcquisitionDate IVS "2019-09-12")
+(hasAcquisitionEra IVS "KCM" :order 1 :role "Founding platform acquisition")
+(hasEmployees IVS "~98-301" :note "Sources vary — RocketReach 98, ZoomInfo 301")
+(hasRevenue IVS "$53.4M" :basis "estimated" :year 2025)
+(hasCoreValues IVS "Family, faith, friendship")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasLocation IVS "Mobile, AL"
+  :address "5310 US-45, Eight Mile, AL 36613"
+  :phone "251-675-5282"
+  :role "HQ / Southern Operations"
+  :vrCertified true)
+
+(hasLocation IVS "Bastrop, LA"
+  :address "9045 Industrial Drive, Bastrop, LA 71220"
+  :phone "318-283-1004"
+  :role "West South Central Operations"
+  :vrCertified true)
+
+(hasLocation IVS "Cleveland, TN"
+  :address "510 Industrial Drive SW, Cleveland, TN 37311"
+  :phone "423-472-6110"
+  :role "Eastern Central & South Atlantic Operations"
+  :vrCertified true)
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel IVS "Jeremy Koen" :title "CEO")
+(hasPersonnel IVS "Eric Chandler" :title "President")
+(hasPersonnel IVS "Gary Dumas" :title "Decision Maker")
+(hasPersonnel IVS "Keith Boyd" :title "Decision Maker")
+(hasPersonnel IVS "Colby Smith" :title "Account Manager")
+(hasPersonnel IVS "Alex James" :title "Financial Controller")
+
+;;; ---------------------------------------------------------------------------
+;;; CERTIFICATIONS
+;;; ---------------------------------------------------------------------------
+
+(hasCertification IVS "National Board of Boiler & Pressure Vessel Inspectors"
+  :stamps ("NB" "VR"))
+(hasCertification IVS "ASME" :stamps ("V" "UV"))
+(hasCertification IVS "All three locations fully certified")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService IVS "Safety relief valve (SRV) and pressure relief valve (PRV) repair")
+(hasService IVS "Manual valve repair — angle, ball, check, gate, globe, knife, plug — 1/4in to 108in")
+(hasService IVS "Control valve repair")
+(hasService IVS "Actuator repair")
+(hasService IVS "Field services with in-line diagnostic testing")
+(hasService IVS "Metallurgical testing — Niton portable alloy analyzer")
+(hasService IVS "Particle-free cleaning — in-house facility + mobile cleaning trailer")
+(hasService IVS "Repair-by-Exchange (RBE) program — full removal, transport, install, testing")
+(hasService IVS "Valve Management System (VMS) with barcoding software")
+(hasService IVS "24/7/365 emergency service — 800-523-2159")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS / MANUFACTURER LINES
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine IVS "Safety & Relief Valves"
+  :brands ("Farris" "Consolidated" "Crosby" "Anderson Greenwood" "Kunkle"))
+(hasOEMLine IVS "Control Valves"
+  :brands ("Masoneilan" "Fisher" "Samson" "Copes Vulcan" "Valtek"))
+(hasOEMLine IVS "Manual / Process Valves"
+  :brands ("Bray/Flow-Tek" "Crane Fluid Handling" "Crane Pacific"
+           "Dyna-Flo" "Sambo" "Gestra"))
+(hasOEMLine IVS "Actuators" :brands ("Rotork"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry IVS ("Power" "Pulp & Paper" "Chemical" "Gas & Refinery"))
+(hasTerritory IVS ("AL" "LA" "TN")
+  :note "Three-state footprint from Gulf Coast to Tennessee")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance IVS
+  :status "PLANNED — Year 2 expansion"
+  :opportunity "VMS barcoding system is a natural Charlotte integration point.
+    Valve management data (tag numbers, set pressures, test results, service history)
+    maps directly to Charlotte NODE/METRIC/SIGNAL primitives.
+    RBE program generates recurring revenue signals — track reactivation."
+  :note "As the founding platform, IVS sets the cultural standard.
+    Jim Richard's relationship with this team predates ISG itself.")
+
+;;; =============================================================================
+;;; END BRAND-IVS.KRF
+;;; =============================================================================

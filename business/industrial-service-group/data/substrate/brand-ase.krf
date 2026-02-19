@@ -1,0 +1,104 @@
+;;; =============================================================================
+;;; BRAND-ASE.KRF — Air Specialty & Equipment Co. (ASE)
+;;; ISG Compressor Vertical — Texas Multi-Location Service & Rental
+;;; =============================================================================
+;;;
+;;; Corpus Christi, TX. Founded 1984. Family-owned 40+ years.
+;;; 5 Texas locations: Corpus Christi, Gregory, San Antonio (Schertz),
+;;; Houston (Deer Park), Dallas/Fort Worth (Fort Worth).
+;;; Sales, service, rental of compressors and related equipment.
+;;; 24-hour service with pickup & delivery.
+;;;
+;;; =============================================================================
+
+(isa ASE ISGBrandNode)
+(hasLegalName ASE "Air Specialty & Equipment Co.")
+(hasWebsite ASE "airspecialty.com")
+(hasISGBrandPage ASE "isgservice.com/our-brands/air-specialty-equipment/")
+(hasHeadquarters ASE "406 S Navigation Blvd, Corpus Christi, TX 78405")
+(hasFounded ASE 1984)
+(hasVertical ASE "Compressors")
+(hasAcquisitionDate ASE "~2020" :note "Funding round closed April 27, 2020")
+(hasAcquisitionEra ASE "KCM" :note "Early KCM-era add-on")
+(hasEmployees ASE "32" :note "ZoomInfo")
+
+;;; ---------------------------------------------------------------------------
+;;; LOCATIONS (5 across Texas)
+;;; ---------------------------------------------------------------------------
+
+(hasLocation ASE "Corpus Christi, TX"
+  :address "406 S Navigation Blvd, Corpus Christi, TX 78405"
+  :role "HQ")
+(hasLocation ASE "Gregory, TX")
+(hasLocation ASE "San Antonio, TX (Schertz)")
+(hasLocation ASE "Houston, TX (Deer Park)")
+(hasLocation ASE "Dallas/Fort Worth, TX (Fort Worth)")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel ASE "Trey Pena" :title "Field Sales and Service")
+(hasPersonnel ASE "Joe Passino" :title "Lead Technician" :note "Featured in ISG Technician Tuesday")
+(hasPersonnel ASE "Joe Mize" :title "Technician" :note "Featured in ISG Technician Tuesday")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService ASE "Air compressor sales — reciprocating and rotary screw")
+(hasService ASE "Air treatment systems")
+(hasService ASE "Generator sales and rental")
+(hasService ASE "Light tower rental")
+(hasService ASE "Pressure washer sales")
+(hasService ASE "Pump sales — diesel trash and diaphragm")
+(hasService ASE "Sand blast cabinets and air tools")
+(hasService ASE "Air end rebuilding")
+(hasService ASE "Custom fabrication")
+(hasService ASE "Preventive maintenance programs")
+(hasService ASE "Diaphragm pump repair")
+(hasService ASE "24-hour service with pickup and delivery")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine ASE "Compressors & Air Treatment"
+  :brands ("Atlas Copco" "Champion" "ZEKS" "Parker Hannifin"
+           "SPX Hankison" "Sullivan-Palatek" "Ingersoll Rand"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry ASE ("Oil Field" "Industrial" "Refinery" "Chemical" "Manufacturing"))
+(hasTerritory ASE ("TX")
+  :note "5 locations spanning Corpus Christi to Dallas/Fort Worth.
+    Covers the full Texas industrial corridor from Gulf Coast to Permian Basin support.")
+
+;;; ---------------------------------------------------------------------------
+;;; NOTABLE PROJECTS
+;;; ---------------------------------------------------------------------------
+
+(hasProject ASE "8,000 CFM Heated Blower Purge Desiccant Dryer Replacement"
+  :note "Featured in ISG Technician Tuesday. ASE acted as General Contractor
+    after the OEM failed to support the client. Demonstrates ISG's multi-brand
+    advantage — independent service when OEMs can't/won't respond.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance ASE
+  :status "PLANNED — post-IAP/IAC proof of concept"
+  :opportunity "5 Texas locations create geographic density for route optimization.
+    Generator and light tower rental = fleet utilization signals.
+    ASE's OEM-failure project proves the Charlotte thesis: multi-brand service
+    platform outperforms OEM-locked competitors when it matters most.
+    Corpus Christi location shares market with TurboIndustries (also Corpus Christi)."
+  :note "Family-owned 40+ years. ISG featured ASE's technicians Joe Passino and
+    Joe Mize in marketing — brand has strong operator identity.")
+
+;;; =============================================================================
+;;; END BRAND-ASE.KRF
+;;; =============================================================================

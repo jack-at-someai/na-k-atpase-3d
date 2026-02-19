@@ -1,0 +1,78 @@
+;;; =============================================================================
+;;; BRAND-DMS.KRF — Dynamic Mechanical Solutions (DMS)
+;;; ISG Specialty Services — Valve & Actuator Distribution
+;;; =============================================================================
+;;;
+;;; Saraland/Mobile, Alabama. Founded 2011. Acquired August 2022 (KCM era, 5th add-on).
+;;; Lean distributor operation (~2 employees) with 80+ years combined sales experience.
+;;; KCM described DMS as "a leading distributor of high-quality, third-party OEM
+;;; valve and actuator parts across the Southeastern U.S."
+;;;
+;;; =============================================================================
+
+(isa DMS ISGBrandNode)
+(hasLegalName DMS "Dynamic Mechanical Solutions, LLC")
+(hasWebsite DMS "dynamic-ms.com")
+(hasHeadquarters DMS "Saraland, AL"
+  :altAddress "28420 Burkart Dr, Orange Beach, AL 36561"
+  :altAddress2 "1074 Southern Way, Mobile, AL 36609")
+(hasFounded DMS 2011)
+(hasVertical DMS "Specialty Services"
+  :note "Valve and actuator distribution — not mechanical field services as name suggests")
+(hasAcquisitionDate DMS "2022-08")
+(hasAcquisitionEra DMS "KCM" :order 5 :role "5th add-on acquisition")
+(hasEmployees DMS "~2" :note "Lean distributor operation per Manta estimate")
+(hasRevenue DMS "$1.5M" :basis "Manta estimate")
+(hasPhone DMS "251-980-4064")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel DMS "Dave Young" :title "Owner")
+(hasPersonnel DMS "Jason Weatherby" :title "Sales Manager, Industrial")
+(hasPersonnel DMS "Kim Johns" :title "Office Manager")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService DMS "Industrial distribution of valves and automation products")
+(hasService DMS "FRP (Fiberglass Reinforced Plastic) products — grating, rolling stairs, fencing, platforms, cable trays")
+(hasService DMS "Engineered products — chemical loading/unloading equipment, fall protection, spill containment")
+(hasService DMS "Safety shields, steam traps, and strainers")
+(hasService DMS "24/7 service availability")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS (13+ brands)
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine DMS "Valve Products"
+  :brands ("Titan Flow Control" "AZ Valves" "QRC" "Flo-Tite" "ITT Fabri-Valve")
+  :types ("Diaphragm valves" "Butterfly valves" "Ball valves" "Check valves"
+          "Gate valves" "Plug valves"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry DMS ("Chemical" "Pulp & Paper" "Power Generation" "Refining"))
+(hasTerritory DMS ("AL" "SE US")
+  :note "KCM described as serving the Southeastern US.
+    Sales team collectively has over 80 years of experience.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance DMS
+  :status "PLANNED — low priority (lean operation)"
+  :opportunity "Distribution orders generate cross-sell signals.
+    DMS's valve/actuator catalog overlaps with Georgia Western and IVS —
+    Charlotte can unify these product lines into a single intelligence layer."
+  :note "Small revenue but strategically important as a distribution node
+    that connects ISG's valve brands to southeastern chemical and refining customers.")
+
+;;; =============================================================================
+;;; END BRAND-DMS.KRF
+;;; =============================================================================

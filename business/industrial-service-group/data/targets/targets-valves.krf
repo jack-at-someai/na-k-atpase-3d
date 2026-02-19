@@ -1,0 +1,369 @@
+;;; =============================================================================
+;;; TARGETS-VALVES.KRF — Valve Vertical Acquisition Targets
+;;; ISG Acquisition Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; 20 named targets across 3 tiers. Massive expansion from original 5.
+;;; United Valve ($21M, Houston) and Louisiana Safety Systems ($25-33M) are
+;;; the top finds. Mercer Valve ($50-75M, OKC) is a potential platform deal.
+;;;
+;;; PE roll-up accelerating: Ovation Holdings (3 shops), ISS/Wynnchurch,
+;;; MCE/Frontenac, FloWorks/Clearlake, and SunSource/CDR (Vytl Controls)
+;;; are all actively acquiring. Window narrowing.
+;;;
+;;; 11 confirmed PE-owned exclusions documented.
+;;;
+;;; =============================================================================
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 1 — Present to TJC in Tampa (6 targets, $150-250M combined revenue)
+;;; ---------------------------------------------------------------------------
+
+(isa UnitedValve AcquisitionTargetNode)
+(hasTargetID UnitedValve "V1")
+(hasLegalName UnitedValve "United Valve")
+(hasHeadquarters UnitedValve "Houston, TX")
+(hasVertical UnitedValve "Valves")
+(hasRevenue UnitedValve "~$21M")
+(hasEmployees UnitedValve "~50")
+(hasOwnership UnitedValve "Private — LP structure. CEO: Greg Johnson")
+(hasFounded UnitedValve "Partners with 40+ OEM valve manufacturers")
+(hasFacility UnitedValve "108,000 sq ft Houston plant (handles valves up to 40 tons)")
+(hasLocations UnitedValve "Houston TX, Corpus Christi TX, Lake Charles LA (via GRS Services acquisition)")
+(hasSpecialty UnitedValve "Metal-seated coker ball valves. Authorized by 40+ OEMs.")
+(hasTerritory UnitedValve ("TX" "LA"))
+(hasUrgency UnitedValve "HIGH"
+  :reason "Largest independent valve shop in Houston refining corridor.
+    108K sq ft facility. Already acquiring (GRS Services, Lake Charles).
+    40+ OEM authorizations. Fills TX gap IVS doesn't cover.")
+(hasEffort UnitedValve "MEDIUM")
+
+(isa LouisianaSafetySystems AcquisitionTargetNode)
+(hasTargetID LouisianaSafetySystems "V2")
+(hasLegalName LouisianaSafetySystems "Louisiana Safety Systems (LSS)")
+(hasHeadquarters LouisianaSafetySystems "Lafayette, LA")
+(hasVertical LouisianaSafetySystems "Valves")
+(hasRevenue LouisianaSafetySystems "$25-33M")
+(hasEmployees LouisianaSafetySystems "~36")
+(hasOwnership LouisianaSafetySystems "Private. President: Scottie Richard")
+(hasFacility LouisianaSafetySystems "120,000 sq ft + new 40,000 sq ft climate-controlled facility on 20-acre compound")
+(hasSpecialty LouisianaSafetySystems "PSV testing/repair. One of largest ANSI/API valve inventories in Gulf of Mexico region. Fisher, Cameron, Barton, Anderson Greenwood authorized.")
+(hasTerritory LouisianaSafetySystems ("LA"))
+(hasUrgency LouisianaSafetySystems "HIGH"
+  :reason "$25-33M revenue. 160K sq ft total facility on 20-acre compound.
+    Dominates Louisiana petrochemical corridor (Lafayette).
+    PSV testing aligns directly with IVS capabilities.")
+(hasEffort LouisianaSafetySystems "MEDIUM")
+
+(isa MercerValve AcquisitionTargetNode)
+(hasTargetID MercerValve "V3")
+(hasLegalName MercerValve "Mercer Valve Co.")
+(hasHeadquarters MercerValve "Oklahoma City, OK")
+(hasVertical MercerValve "Valves (Manufacturer + Service)")
+(hasRevenue MercerValve "$50-75M" :basis "estimated from 187 employees, wide range in sources")
+(hasEmployees MercerValve "187")
+(hasOwnership MercerValve "Private — Taylor family, founded by Wesley Taylor 1985")
+(hasLocations MercerValve "6 US repair branches + Houston TX + Calgary AB")
+(hasSpecialty MercerValve "Pressure relief valve MANUFACTURER + repair (MVSR division). VR and T/O certified at all 6 US locations. Also repairs glycol pumps, ball valves, orbit valves.")
+(hasTerritory MercerValve ("OK" "TX" "National"))
+(hasUrgency MercerValve "HIGH"
+  :reason "Major independent: manufacturer + repair. 187 employees across 6+ locations.
+    VR/T/O certified everywhere. Family-owned = succession potential.
+    Opens Oklahoma + broadens TX presence. May be platform-scale deal.")
+(hasEffort MercerValve "HIGH")
+
+(isa GreatWesternValve AcquisitionTargetNode)
+(hasTargetID GreatWesternValve "V4")
+(hasLegalName GreatWesternValve "Great Western Valve")
+(hasHeadquarters GreatWesternValve "Houston, TX")
+(hasVertical GreatWesternValve "Valves")
+(hasRevenue GreatWesternValve "~$29M")
+(hasEmployees GreatWesternValve "~71")
+(hasOwnership GreatWesternValve "Private. CEO: Jim Reilly. CAUTION: Murphree Venture Partners (Houston PE) made growth capital investment 2010 — current ownership status unclear.")
+(hasSpecialty GreatWesternValve "Control valve, pipeline valve, relief valve repair and remanufacturing. API Spec Q1 certified — only independent valve shop in TX with this.")
+(hasTerritory GreatWesternValve ("TX"))
+(hasUrgency GreatWesternValve "HIGH"
+  :reason "$29M revenue. Only API Q1 certified independent valve shop in Texas.
+    71 employees. Houston refining corridor. Electric actuation repairs.
+    CAUTION: May have partial PE backing from Murphree (2010). Requires diligence.")
+(hasEffort GreatWesternValve "MEDIUM")
+
+(isa SouthernValveService AcquisitionTargetNode)
+(hasTargetID SouthernValveService "V5")
+(hasLegalName SouthernValveService "Southern Valve Service")
+(hasHeadquarters SouthernValveService "La Porte, TX")
+(hasVertical SouthernValveService "Valves")
+(hasRevenue SouthernValveService "$10-11M")
+(hasEmployees SouthernValveService "27-42")
+(hasOwnership SouthernValveService "Private (Inc. structure)")
+(hasLocations SouthernValveService "La Porte TX, Baton Rouge LA")
+(hasSpecialty SouthernValveService "Severe service, nuclear, oil & gas. Subsidiary Southern Actuation Service for actuator troubleshooting. Proprietary valve data software.")
+(hasTerritory SouthernValveService ("TX" "LA"))
+(hasUrgency SouthernValveService "HIGH"
+  :reason "TX + LA presence. Nuclear valve capability. Proprietary data analytics.
+    Actuator service subsidiary adds cross-sell.")
+(hasEffort SouthernValveService "LOW-MEDIUM")
+
+(isa SVIBREMCO AcquisitionTargetNode)
+(hasTargetID SVIBREMCO "V6")
+(hasLegalName SVIBREMCO "SVI BREMCO")
+(hasHeadquarters SVIBREMCO "Pineville, NC")
+(hasVertical SVIBREMCO "Valves")
+(hasRevenue SVIBREMCO "$15-40M" :basis "estimated from employee count and capabilities")
+(hasEmployees SVIBREMCO "57-200")
+(hasOwnership SVIBREMCO "Private — founded by Lisa and Larry Ballard, 1993. Family-operated.")
+(hasLocations SVIBREMCO "Pineville NC + satellite shops in GA, VA, IN")
+(hasSpecialty SVIBREMCO "Triple VR certification (VR stamps 27, 56, 173 — shop + field + machining/NDE). 7 mobile repair shops with lathes/mills/test equipment. Authorized BHDT and LESER repair.")
+(hasTerritory SVIBREMCO ("NC" "GA" "VA" "IN"))
+(hasUrgency SVIBREMCO "HIGH"
+  :reason "Southeast + Midwest satellite presence near ISG footprint.
+    Triple VR certified. 7 mobile repair shop fleet. LESER authorized.
+    Refineries, utilities, chemical, pulp & paper customer base.")
+(hasEffort SVIBREMCO "MEDIUM")
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 2 — Acquire Q3-Q4 2026 (10 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa PrecisionPumpValve AcquisitionTargetNode)
+(hasTargetID PrecisionPumpValve "V7")
+(hasLegalName PrecisionPumpValve "Precision Pump & Valve Service")
+(hasHeadquarters PrecisionPumpValve "Cross Lanes, WV")
+(hasVertical PrecisionPumpValve "Valves + Pumps")
+(hasRevenue PrecisionPumpValve "$10-18M")
+(hasEmployees PrecisionPumpValve "16-41")
+(hasOwnership PrecisionPumpValve "Private — Kemerer family, 4th generation. Founded 1956.")
+(hasLocations PrecisionPumpValve "Cross Lanes WV, Louisville KY + Ohio Valley sales offices")
+(hasSpecialty PrecisionPumpValve "DOT-certified, VR certified for pipeline valves. Valve + actuator + pump + controls. Recently acquired Derby City Pump & Valve Service.")
+(hasTerritory PrecisionPumpValve ("WV" "KY" "OH"))
+(hasUrgency PrecisionPumpValve "MEDIUM"
+  :reason "Ohio Valley coverage. 4th gen family = succession play.
+    Dual-vertical (pumps + valves). Already doing own acquisitions.")
+(hasEffort PrecisionPumpValve "LOW")
+
+(isa ValveReconditioningService AcquisitionTargetNode)
+(hasTargetID ValveReconditioningService "V8")
+(hasLegalName ValveReconditioningService "Valve Reconditioning Service (VRS)")
+(hasHeadquarters ValveReconditioningService "Melvindale, MI")
+(hasVertical ValveReconditioningService "Valves")
+(hasRevenue ValveReconditioningService "$5-15M" :basis "manages outages $500K-$1.5M each; $5M+ inventory")
+(hasEmployees ValveReconditioningService "40+")
+(hasOwnership ValveReconditioningService "Private — Carbonaro family. Woman-owned, WBENC certified.")
+(hasFacility ValveReconditioningService "40,000 sq ft facility. VR Stamp 30+ years.")
+(hasSpecialty ValveReconditioningService "One of only 8 independent shops in US with welding scope in VR program. R Stamp (2016). Services 18 states.")
+(hasTerritory ValveReconditioningService ("MI" "18 states"))
+(hasUrgency ValveReconditioningService "MEDIUM"
+  :reason "Michigan industrial base. Rare VR welding scope (1 of 8 in US).
+    WBENC certification = government contracting advantage.
+    40+ employees, $5M+ inventory, 18-state reach.")
+(hasEffort ValveReconditioningService "MEDIUM")
+
+(isa SullivanProcessControls AcquisitionTargetNode)
+(hasTargetID SullivanProcessControls "V9")
+(hasLegalName SullivanProcessControls "Sullivan Process Controls")
+(hasHeadquarters SullivanProcessControls "Haughton, LA")
+(hasVertical SullivanProcessControls "Valves (Control Valves)")
+(hasRevenue SullivanProcessControls "$6-8M")
+(hasEmployees SullivanProcessControls "34-43")
+(hasOwnership SullivanProcessControls "Private LLC. PinHigh Capital Partners + LFM Investments (family offices) since 2019.")
+(hasLocations SullivanProcessControls "Haughton LA, Houston TX")
+(hasSpecialty SullivanProcessControls "Control valve MANUFACTURER — direct Fisher replacement with interchangeable parts. 40-75% savings off OEM with 2-year warranty. Also Fisher/Rosemount remanufacturing.")
+(hasTerritory SullivanProcessControls ("LA" "TX"))
+(hasUrgency SullivanProcessControls "MEDIUM"
+  :reason "Fisher-replacement manufacturing capability is unique asset.
+    LA + Houston presence. Note: Has family office investors (PinHigh, LFM).")
+(hasEffort SullivanProcessControls "MEDIUM")
+
+(isa DupillGroup AcquisitionTargetNode)
+(hasTargetID DupillGroup "V10")
+(hasLegalName DupillGroup "Dupill Group")
+(hasHeadquarters DupillGroup "Leechburg, PA")
+(hasVertical DupillGroup "Valves (Nuclear + Industrial)")
+(hasRevenue DupillGroup "$5-20M" :basis "estimated")
+(hasOwnership DupillGroup "Private — acquired by sons Chad and Cornell Dupill, 2010. Service-disabled veteran-owned.")
+(hasSpecialty DupillGroup "NUCLEAR QUALIFIED: NQA-1, 10CFR Part 21, 10CFR50 Appendix B. VR Stamp all Section I and VIII. ISO 9001. Specialty welding + engineering consulting.")
+(hasLocations DupillGroup "PA/NY/NJ/OH/KY/TN/NC/WV + WA/OR/ID/MT")
+(hasTerritory DupillGroup ("PA" "NY" "NJ" "OH" "KY" "TN" "NC" "WV" "WA" "OR"))
+(hasUrgency DupillGroup "MEDIUM"
+  :reason "Nuclear qualification (NQA-1) is rare and high-value.
+    Coast-to-coast coverage. Veteran-owned = gov't contracting advantage.")
+(hasEffort DupillGroup "MEDIUM")
+
+(isa IndependenceValve AcquisitionTargetNode)
+(hasTargetID IndependenceValve "V11")
+(hasLegalName IndependenceValve "Independence Valve & Supply")
+(hasHeadquarters IndependenceValve "Houston, TX")
+(hasVertical IndependenceValve "Valves")
+(hasRevenue IndependenceValve "$8-15M" :basis "estimated")
+(hasLocations IndependenceValve "Houston TX, Orange TX")
+(hasTerritory IndependenceValve ("TX"))
+(hasUrgency IndependenceValve "MEDIUM"
+  :reason "Gulf Coast valve distribution. Covers Beaumont/Port Arthur petrochem corridor.")
+(hasEffort IndependenceValve "LOW")
+
+(isa GulfCoastOilGas AcquisitionTargetNode)
+(hasTargetID GulfCoastOilGas "V12")
+(hasLegalName GulfCoastOilGas "Gulf Coast Oil & Gas Industries (GCI)")
+(hasHeadquarters GulfCoastOilGas "Houston, TX")
+(hasVertical GulfCoastOilGas "Valves")
+(hasRevenue GulfCoastOilGas "$10-20M" :basis "estimated")
+(hasFounded GulfCoastOilGas 1946 :note "80-year business")
+(hasSpecialty GulfCoastOilGas "Valve manufacture + remanufacture + instrumentation")
+(hasTerritory GulfCoastOilGas ("TX"))
+(hasUrgency GulfCoastOilGas "MEDIUM"
+  :reason "Adds manufacturing capability ISG lacks in valves. 80-year business.")
+(hasEffort GulfCoastOilGas "MEDIUM")
+
+(isa TotalValveSystems AcquisitionTargetNode)
+(hasTargetID TotalValveSystems "V13")
+(hasLegalName TotalValveSystems "Total Valve Systems")
+(hasHeadquarters TotalValveSystems "Broken Arrow, OK")
+(hasVertical TotalValveSystems "Valves")
+(hasRevenue TotalValveSystems "~$5M")
+(hasEmployees TotalValveSystems "~30")
+(hasOwnership TotalValveSystems "Private, recent new ownership")
+(hasFacility TotalValveSystems "70,000 sq ft on 10 acres")
+(hasSpecialty TotalValveSystems "VR, UV, NB certified. ISO 9001. PRV service/repair + manufactures custom valves (excess flow, isolation, check).")
+(hasLocations TotalValveSystems "Broken Arrow OK + international offices")
+(hasTerritory TotalValveSystems ("OK" "TX" "KS" "MO" "NE" "IA" "WY" "AR" "LA" "NM" "CO" "UT" "ID" "MT" "ND" "SD" "MN"))
+(hasUrgency TotalValveSystems "MEDIUM"
+  :reason "17-state territory from single location. VR/UV/NB triple certified.
+    Both manufacturer and servicer. Oklahoma base near ISG footprint.")
+(hasEffort TotalValveSystems "LOW")
+
+(isa CascadeAutomation AcquisitionTargetNode)
+(hasTargetID CascadeAutomation "V14")
+(hasLegalName CascadeAutomation "Cascade Automation")
+(hasHeadquarters CascadeAutomation "Springfield, OR")
+(hasVertical CascadeAutomation "Valves (Control Valves)")
+(hasRevenue CascadeAutomation "~$12M")
+(hasSpecialty CascadeAutomation "Independent control valve repair, modification, calibration, installation. Fisher/Foxboro authorized. Valve diagnostics, control panel fabrication.")
+(hasTerritory CascadeAutomation ("OR" "Pacific NW"))
+(hasUrgency CascadeAutomation "MEDIUM"
+  :reason "Pacific Northwest industrial presence. Fisher/Foxboro authorized. Opens OR/WA.")
+(hasEffort CascadeAutomation "MEDIUM")
+
+(isa DanteValve AcquisitionTargetNode)
+(hasTargetID DanteValve "V15")
+(hasLegalName DanteValve "Dante Valve Company")
+(hasHeadquarters DanteValve "Bellflower, CA")
+(hasVertical DanteValve "Valves (Manufacturer + Repair)")
+(hasRevenue DanteValve "~$9.5M")
+(hasEmployees DanteValve "50-56")
+(hasOwnership DanteValve "Private — Dante family, 3rd generation. CEO: Lisa Dante Papini.")
+(hasLocations DanteValve "Bellflower CA, Norfolk VA")
+(hasSpecialty DanteValve "PRV manufacturer + distributor + VR repair. Military spec (Danco) valve manufacturing. CNC machining. Kunkle distribution.")
+(hasTerritory DanteValve ("CA" "VA"))
+(hasUrgency DanteValve "MEDIUM"
+  :reason "West Coast VR repair (rare). Dual-coast presence CA + VA.
+    Military spec manufacturing. 3rd gen family = succession timing.")
+(hasEffort DanteValve "MEDIUM")
+
+(isa FlowControlServices AcquisitionTargetNode)
+(hasTargetID FlowControlServices "V16")
+(hasLegalName FlowControlServices "Flow Control Services / Flow Control Equipment")
+(hasHeadquarters FlowControlServices "Scott, LA")
+(hasVertical FlowControlServices "Valves (Control Valves)")
+(hasRevenue FlowControlServices "~$4.6M" :note "FCS division; parent FCE additional")
+(hasEmployees FlowControlServices "~18")
+(hasOwnership FlowControlServices "Private LLC. Managing Member: Dru Fisher.")
+(hasFacility FlowControlServices "31,000 sq ft covered warehouse + 5 acres outdoor storage + machine shop")
+(hasSpecialty FlowControlServices "Deep Fisher control valve specialization. Remanufacturing. 24-hour service.")
+(hasTerritory FlowControlServices ("LA"))
+(hasUrgency FlowControlServices "MEDIUM"
+  :reason "Fisher specialist in Louisiana petrochem corridor. Tuck-in alongside LSS.")
+(hasEffort FlowControlServices "LOW")
+
+;;; ---------------------------------------------------------------------------
+;;; TIER 3 — Opportunistic / Watch List (4 targets)
+;;; ---------------------------------------------------------------------------
+
+(isa CustomValveRepair AcquisitionTargetNode)
+(hasTargetID CustomValveRepair "V17")
+(hasLegalName CustomValveRepair "Custom Valve Repair")
+(hasHeadquarters CustomValveRepair "New Castle, PA")
+(hasVertical CustomValveRepair "Valves")
+(hasRevenue CustomValveRepair "$3-6M")
+(hasEmployees CustomValveRepair "17-25")
+(hasFounded CustomValveRepair 2002)
+(hasSpecialty CustomValveRepair "PRV, control valve, manual valve repair. 15 field repair trailers. Valve application engineers.")
+(hasTerritory CustomValveRepair ("PA"))
+(hasUrgency CustomValveRepair "LOW"
+  :reason "Smaller tuck-in. 15 mobile repair trailers. PA steel/power/chemical corridor.")
+
+(isa SunbeltValve AcquisitionTargetNode)
+(hasTargetID SunbeltValve "V18")
+(hasLegalName SunbeltValve "Sunbelt Valve Services")
+(hasHeadquarters SunbeltValve "Sandy Point, TX")
+(hasVertical SunbeltValve "Valves")
+(hasRevenue SunbeltValve "~$4.4M")
+(hasEmployees SunbeltValve "14-19")
+(hasFounded SunbeltValve 2011)
+(hasSpecialty SunbeltValve "API 6D pipeline valve repair/remanufacturing. Total Valve Management. 24/7 on-call, onshore + offshore.")
+(hasTerritory SunbeltValve ("TX"))
+(hasUrgency SunbeltValve "LOW"
+  :reason "Small Houston-area tuck-in. API 6D pipeline specialization.")
+
+(isa RKTOperating AcquisitionTargetNode)
+(hasTargetID RKTOperating "V19")
+(hasLegalName RKTOperating "RKT Operating")
+(hasHeadquarters RKTOperating "Longview, TX")
+(hasVertical RKTOperating "Valves + Field Services")
+(hasRevenue RKTOperating "$5-15M" :basis "estimated")
+(hasFounded RKTOperating 2011)
+(hasLocations RKTOperating "Longview TX, Midland TX, Shreveport LA")
+(hasSpecialty RKTOperating "PVF distribution + VR-certified relief valve testing/repair + pump service + roustabout services.")
+(hasTerritory RKTOperating ("TX" "OK" "LA"))
+(hasUrgency RKTOperating "LOW-MEDIUM"
+  :reason "3 locations across TX/LA oil corridor. VR certified. Multi-service.")
+
+(isa CoastalValve AcquisitionTargetNode)
+(hasTargetID CoastalValve "V20")
+(hasLegalName CoastalValve "Coastal Valve & Equipment")
+(hasHeadquarters CoastalValve "South Texas")
+(hasVertical CoastalValve "Valves")
+(hasRevenue CoastalValve "$5-12M" :basis "estimated")
+(hasTerritory CoastalValve ("TX"))
+(hasUrgency CoastalValve "LOW"
+  :reason "Fills South TX valve gap alongside Corpus Christi presence.")
+
+;;; ---------------------------------------------------------------------------
+;;; PE-OWNED EXCLUSIONS (11 confirmed — do NOT target)
+;;; ---------------------------------------------------------------------------
+
+(hasExcluded ISG "Allied Valve Inc." :owner "Ovation Holdings" :location "Bettendorf, IA")
+(hasExcluded ISG "Valve Sales Inc. (VSI)" :owner "Ovation Holdings" :location "Tulsa, OK")
+(hasExcluded ISG "Millennium Power Services" :owner "Ovation Holdings" :location "Westfield, MA")
+(hasExcluded ISG "Bay Valve Service" :owner "ISS/Wynnchurch Capital" :location "Seattle, WA")
+(hasExcluded ISG "Flotech" :owner "FloWorks/Clearlake Capital" :location "Jacksonville, FL")
+(hasExcluded ISG "Precision Pump & Valve (PPV)" :owner "MCE/Frontenac" :location "Lake Charles, LA" :note "NOT same as V7 Precision Pump & Valve Service (WV)")
+(hasExcluded ISG "Valsource International" :owner "Vytl Controls/SunSource" :location "Pasadena, TX")
+(hasExcluded ISG "ERL Inc. (Law Valve of TX)" :owner "CapitalWorks PE" :location "Channelview, TX")
+(hasExcluded ISG "Quality Valve Inc." :owner "Stephens Group" :location "National")
+(hasExcluded ISG "Midwest Valve Services" :owner "Novaspect/Emerson" :location "Upper Midwest")
+(hasExcluded ISG "A-T Controls" :owner "Vytl Controls/SunSource" :location "Various")
+
+;;; ---------------------------------------------------------------------------
+;;; COMPETITIVE THREATS
+;;; ---------------------------------------------------------------------------
+
+(hasCompetitiveThreat ISG "SunSource"
+  :vertical "Valves"
+  :peSponsor "Clayton Dubilier & Rice"
+  :action "Acquired Vytl Controls Group (Jan 2026) — 1,100 employees,
+    valve automation + remanufacturing. Valsource International + A-T Controls
+    in their portfolio. This is the PE platform ISG competes against in valves.")
+
+(hasCompetitiveThreat ISG "Ovation Holdings"
+  :vertical "Valves"
+  :action "Owns Allied Valve (IA), Valve Sales Inc. (OK), Millennium Power (MA).
+    Multi-location valve platform building through Automation Service brand.")
+
+(hasCompetitiveThreat ISG "MCE/Frontenac"
+  :vertical "Valves"
+  :action "Acquired Precision Pump & Valve (Lake Charles, LA).
+    Multi-vertical industrial service platform now touching valve repair.")
+
+;;; =============================================================================
+;;; END TARGETS-VALVES.KRF
+;;; =============================================================================

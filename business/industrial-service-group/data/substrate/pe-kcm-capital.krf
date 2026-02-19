@@ -1,0 +1,72 @@
+;;; =============================================================================
+;;; PE-KCM-CAPITAL.KRF — KCM Capital Partners LLC
+;;; Prior PE Sponsor Entity Profile
+;;; =============================================================================
+;;;
+;;; Founded ISG in 2019 with Jim Richard. Made 6 acquisitions to build the
+;;; platform, then sold to TJC LP in December 2022. Understanding KCM's
+;;; thesis and approach is critical — they built the foundation Jim operates on.
+;;;
+;;; =============================================================================
+
+(isa KCMCapital PEEntity)
+(hasLegalName KCMCapital "KCM Capital Partners LLC")
+
+;;; ---------------------------------------------------------------------------
+;;; ISG FORMATION
+;;; ---------------------------------------------------------------------------
+
+(hasFormation KCMCapital ISG
+  :year 2019
+  :partner "Jim Richard (industry veteran, CEO)"
+  :equityPartners "PNC Mezzanine Capital, Five Points Capital"
+  :thesis "Consolidation of fragmented industrial services market.
+    Non-discretionary MRO rotating equipment — critical-to-process,
+    recurring aftermarket revenue, PE-friendly economics."
+  :acquisitionCount 6
+  :acquisitions ("Industrial Valve Sales & Service (founding platform, Sept 2019)"
+                 "Georgia Western (valve actuators, April 2021)"
+                 "Industrial Air Power (compressor parts, Oct 2021)"
+                 "Soles Electric Company (motors, June 2022)"
+                 "Dynamic Mechanical Solutions (valve distribution, Aug 2022)"
+                 "Morin Process Equipment + Morin Repair Services (process equipment, Sept 2022)")
+  :ambiguous ("Industrial Air Centers (~April 2020)" "Air Specialty & Equipment (~April 2020)")
+  :exitDate "2022-12-07"
+  :exitBuyer "TJC LP"
+  :exitAdvisor "Stephens (investment banking)"
+  :exitType "Sale to larger PE firm (PE-to-PE secondary)"
+  :holdPeriod "~3 years (2019-2022)")
+
+;;; ---------------------------------------------------------------------------
+;;; KCM THESIS ANALYSIS
+;;; ---------------------------------------------------------------------------
+
+(hasThesisAnalysis KCMCapital
+  :whatWorked "Jim Richard as operator/CEO. 6 acquisitions in 3 years created
+    a multi-vertical platform covering compressors, pumps, motors, process equipment,
+    and mechanical services. Enough scale and diversity to attract a larger PE buyer."
+  :whatTJCAdded "TJC brought larger acquisition capital, added 6+ more brands,
+    expanded geographic footprint from core TX/GA into Midwest and Appalachia.
+    TJC's add-on machine (520+ add-ons since 2002) accelerated the roll-up."
+  :jimRichardValue "Jim Richard is the constant. He built ISG for KCM, continued
+    as CEO under TJC, and is now deploying Charlotte to create the next
+    value inflection. His ~80 acquisition track record is the moat —
+    he knows how to find, evaluate, close, and integrate targets.")
+
+;;; ---------------------------------------------------------------------------
+;;; PNC MEZZANINE + FIVE POINTS (CO-INVESTORS)
+;;; ---------------------------------------------------------------------------
+
+(hasCoInvestor KCMCapital "PNC Mezzanine Capital"
+  :role "Mezzanine financing for ISG formation"
+  :note "PNC also announced exit alongside KCM in December 2022")
+
+(hasCoInvestor KCMCapital "Five Points Capital"
+  :role "Equity co-investor"
+  :note "Five Points Capital also backed Blake & Pendleton (compressor distributor)
+    after Svoboda Capital's exit. This is relevant — Five Points has relationships
+    in both ISG and Blake & Pendleton. Could facilitate introduction for acquisition.")
+
+;;; =============================================================================
+;;; END PE-KCM-CAPITAL.KRF
+;;; =============================================================================

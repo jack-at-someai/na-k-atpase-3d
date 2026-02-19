@@ -1,0 +1,205 @@
+;;; =============================================================================
+;;; IPS-SEARCHLIGHT.KRF — Electric Motor/Power Services Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: Integrated Power Services (IPS), Greenville, SC
+;;; PE SPONSOR: Searchlight Capital Partners (since December 2021, from Odyssey)
+;;; VERTICAL: Electric motors, generators, transformers, switchgear, pumps,
+;;;           power management, wind/solar services
+;;; STRATEGY: Roll up the entire US motor repair industry. 34 acquisitions
+;;;           since 2019 — from 33 locations to 115+.
+;;; EMPLOYEES: ~2,200 technicians and engineers
+;;; LOCATIONS: 115+ (US, Canada, UK, Europe, Caribbean)
+;;; THREAT LEVEL: HIGH — nationwide motor repair monopoly forming.
+;;;              ISG has 2 motor brands (Soles Electric, Illinois Electric Works).
+;;;              IPS has 115 locations. The window to acquire independent
+;;;              motor shops in ISG territory is closing fast.
+;;;
+;;; =============================================================================
+
+(isa IPS CompetitorNode)
+(hasHeadquarters IPS "Greenville, SC")
+(hasPESponsor IPS "Searchlight Capital Partners" :since "December 2021")
+(hasPriorPE IPS "Odyssey Investment Partners" :period "2012-2021")
+(hasEmployees IPS "~2,200 technicians and engineers")
+(hasLocations IPS "115+")
+(hasCEO IPS "John Zuleger")
+(hasThreatLevel IPS "HIGH" :reason "Rolling up entire US motor repair industry")
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (2019-2026) — 34 ACQUISITIONS
+;;; ---------------------------------------------------------------------------
+
+;;; --- 2019 (under Odyssey) ---
+
+(hasAcquisition IPS ExcelApparatusServices :date "2019-10" :location "Charleston, SC"
+  :specialty "Industrial/marine motor, pump, switchgear repair" :territory "NC, SC, GA, FL")
+(hasAcquisition IPS PrecisionElectricMotorWorks :date "2019-10" :location "Clifton, NJ"
+  :specialty "Motors, pumps, fans, blowers — in-shop and on-site" :territory "Northeast US")
+
+;;; --- 2020 ---
+
+(hasAcquisition IPS TescoIndustrial :date "2020-11" :location "Regina, Saskatchewan"
+  :specialty "Motor and generator repair — industrial, mining, agricultural")
+(hasAcquisition IPS IndustrialElectricMotorWorks :date "2020-12" :location "Meridian, MS"
+  :employees 56 :founded 1965 :specialty "Full-service motor and generator repair"
+  :isgOverlap "MEDIUM — MS adjacent to ISG AL territory")
+
+;;; --- 2021 (Searchlight acquires from Odyssey, December) ---
+
+(hasAcquisition IPS DeltaElectricMotors :date "2021-04-14" :location "Tukwila, WA"
+  :employees 48 :founded 1976 :specialty "Electrical apparatus repair" :territory "WA, MT, ID, AK")
+(hasAcquisition IPS EastsideElectricMotors :date "2021-04-14" :location "Spokane, WA"
+  :founded 2002 :specialty "Part of DiPietro family acquisition with Delta")
+(hasAcquisition IPS RotekServices :date "2021-04" :location "Wichita, KS (+ Enid, OK)"
+  :specialty "Electromechanical services")
+(hasAcquisition IPS NationalSwitchgear :date "2021-12" :location "Lewisville, TX"
+  :specialty "Switchgear sales, remanufacturing, field services"
+  :isgOverlap "MEDIUM — TX is ISG territory")
+
+;;; --- 2022 (6 acquisitions — reached 55 locations) ---
+
+(hasAcquisition IPS IndustrialElectricMachinery :date "2022-01-05"
+  :location "Longview WA, Visalia CA, Carson CA" :founded 1988
+  :specialty "Electrical apparatus repair — Pacific NW and CA")
+(hasAcquisition IPS ReedElectric :date "2022-01-05"
+  :location "Los Angeles CA, Reno NV" :founded 1929
+  :specialty "4th-generation family. Motors up to 10,000 HP. Longest-running motor business in CA.")
+(hasAcquisition IPS APlusElectricMotor :date "2022-01-05"
+  :location "Billings MT, Butte MT" :founded 1999
+  :specialty "Pump and motor repair up to 3,000 HP")
+(hasAcquisition IPS ABBHydroGeneratorAssets :date "2022-06-01"
+  :location "Beloeil QC, Denver CO"
+  :specialty "Hydro generator rewind up to 250 MW, transformer repair")
+(hasAcquisition IPS TampaArmatureWorks :date "2022-07-06"
+  :location "Riverview FL (HQ) + 10 locations" :founded 1921 :employees "large"
+  :specialty "4th-gen family. Motors, generators, transformers, switchgear, pumps. 11 SE locations."
+  :isgOverlap "DIRECT — FL is ISG territory. 11 SE US locations overlap."
+  :milestone "IPS reached 55 locations, 1,700 employees")
+(hasAcquisition IPS EvansEnterprises :date "2022-12-20"
+  :location "Norman OK (HQ) + Tulsa, Pryor OK; Waco, Abilene TX; Fort Smith, Conway AR; Springfield MO"
+  :founded 1954 :specialty "4th-gen. Switchgear, machining, crane/hoist, pump/fan/gearbox, wind turbine. 8 locations."
+  :isgOverlap "MEDIUM — TX and AR overlap ISG territory")
+
+;;; --- 2023 (4 acquisitions) ---
+
+(hasAcquisition IPS SouthlandElectricalGroup :date "2023-02-02"
+  :location "Burlington NC (HQ) + Birmingham AL + Chattanooga TN + High Point NC"
+  :founded 1987 :specialty "7 businesses. Power distribution, motor control. 2nd-gen family."
+  :isgOverlap "MEDIUM — AL and TN are ISG territory")
+(hasAcquisition IPS Surplec :date "2023-06-23" :location "Sherbrooke QC + ON + AB"
+  :specialty "Medium/high-voltage transformer management and remanufacturing")
+(hasAcquisition IPS LighthouseGlobalEnergy :date "2023-10-24" :location "Abilene, TX"
+  :specialty "OEM wind turbine parts supplier and manufacturer"
+  :isgOverlap "LOW — TX but wind-specific")
+(hasAcquisition IPS WindSolutions :date "2023-12-04" :location "Sanford, NC"
+  :specialty "Wind turbine repair, upgrades, patent-protected yaw system components")
+
+;;; --- 2024 (10 acquisitions — heaviest year, reached 92 locations) ---
+
+(hasAcquisition IPS ElectricMotorServiceLtd :date "2024-03-05"
+  :location "Edmonton AB + Fort McMurray AB + Calgary AB" :founded 1945
+  :specialty "AC motors up to 25,000 HP/13.8 kV, DC up to 10,000 HP")
+(hasAcquisition IPS SwigerCoilSystems :date "2024-04-11" :location "Cleveland, OH"
+  :specialty "200K sq ft. Electric coil manufacturing. Traction motor remanufacturing."
+  :isgOverlap "MEDIUM — OH is ISG territory")
+(hasAcquisition IPS CortesIndustrial :date "2024-05-21" :location "Caguas, Puerto Rico"
+  :founded 1977 :specialty "Motors, generators, pumps, coatings. 58K sq ft."
+  :milestone "IPS reached 50 electromechanical centers")
+(hasAcquisition IPS HoughtonInternational :date "2024-05-23" :location "Newcastle upon Tyne, UK"
+  :founded 1984 :specialty "Motor, generator, pump repair; coil manufacturing. 124K sq ft."
+  :milestone "First IPS expansion into UK/Europe")
+(hasAcquisition IPS MidwestSwitchgearServices :date "2024-06-03" :location "Hamilton, OH"
+  :founded 2003 :specialty "Low/medium-voltage switchgear, circuit breakers, motor control centers"
+  :territory "OH, KY, IN, WV, TN"
+  :isgOverlap "DIRECT — OH, KY, IN, WV, TN are all ISG states"
+  :milestone "IPS reached 81 locations")
+(hasAcquisition IPS BBTransformer :date "2024-08-13" :location "Farmington, MN"
+  :specialty "Transformer repair, remanufacturing, custom-engineered design")
+(hasAcquisition IPS DUALElectrotech :date "2024-08-26" :location "Sherbrooke, QC"
+  :founded 1995 :specialty "Low/medium/high-voltage products and services"
+  :milestone "IPS reached 83 locations")
+(hasAcquisition IPS ABBIndustrialServices :date "2024-08-31"
+  :location "Tucson AZ; Evansville IN; Charlotte NC; Edmonton AB; Burlington ON"
+  :employees 114 :specialty "Motor repair up to 50,000 HP, switchgear, pumps, compressors, gearboxes"
+  :isgOverlap "DIRECT — Evansville IN is ISG territory"
+  :milestone "IPS reached 88 locations")
+(hasAcquisition IPS MDLEnergie :date "2024-10-16"
+  :location "Terrebonne QC + Quebec City + Sherbrooke" :founded 2005
+  :specialty "Electrical services inspection, maintenance, commissioning"
+  :milestone "IPS reached 91 locations")
+(hasAcquisition IPS SwitchgearSolutions :date "2024-12-19" :location "Tucson, AZ"
+  :founded 1992 :specialty "Switchgear field/shop/engineering for mining, utilities"
+  :milestone "IPS reached 92 locations")
+
+;;; --- 2025 (5 acquisitions) ---
+
+(hasAcquisition IPS DemariaElectric :date "2025-02-13" :location "Paramount, CA"
+  :founded 1977 :specialty "2nd-gen. 24/7 emergency motor, pump, generator, crane, blower repair"
+  :milestone "IPS reached 93 locations, 56 electromechanical centers")
+(hasAcquisition IPS TramElectric :date "2025-04-01"
+  :location "Price UT (HQ) + SLC UT + Rock Springs WY + Delta CO"
+  :founded 1981 :specialty "Electromechanical products and services across UT, AZ, WY, CO"
+  :milestone "IPS reached 97 locations, 61 electromechanical centers")
+(hasAcquisition IPS PowerSystemsTesting :date "2025-05-01"
+  :location "Livermore CA + Fresno CA + Santa Ana CA" :founded 1975
+  :specialty "NETA-accredited electrical equipment evaluation, arc flash analysis"
+  :milestone "IPS reached 500+ field service technicians")
+(hasAcquisition IPS CFMServices :date "2025-09-04" :location "St-Jean-sur-Richelieu, QC"
+  :specialty "NETA-certified field service, transformer reconditioning")
+(hasAcquisition IPS ENAElectronics :date "2025-11-26" :location "Hamilton ON + Buffalo NY"
+  :founded 2000 :specialty "Wind and solar specialist — inspection, fault detection, repair")
+
+;;; --- 2026 ---
+
+(hasAcquisition IPS TechProPowerGroup :date "2026-01-29"
+  :location "Multiple US locations" :founded 2017
+  :employees "250+ technicians (180 NETA-certified)"
+  :specialty "5 subsidiary companies: Potomac Testing, Sentinel Power Services,
+    Sentinel-TDS, TDS Equipment, Electric Power Inc. Electrical testing,
+    commissioning, equipment rental/repair."
+  :milestone "IPS reached 115+ locations, ~2,200 total technicians/engineers")
+
+;;; ---------------------------------------------------------------------------
+;;; GROWTH SUMMARY
+;;; ---------------------------------------------------------------------------
+
+(hasGrowthTrajectory IPS
+  :y2019 "~33 locations"
+  :y2020 "~35 locations (2 acquisitions)"
+  :y2021 "~40 locations (4 acquisitions, Searchlight buys from Odyssey)"
+  :y2022 "55 locations (6 acquisitions — TAW adds 11 locations)"
+  :y2023 "~65 locations (4 acquisitions)"
+  :y2024 "92 locations (10 acquisitions — heaviest year)"
+  :y2025 "~105 locations (5 acquisitions)"
+  :y2026 "115+ locations (TechPro — 250+ technicians added)")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection IPS "2026"
+  :expectedDeals "6-8"
+  :likelyTargets "Remaining independent motor shops in Midwest and Southeast.
+    OH, IN, KY, TN, TX — all ISG states with independent motor shops
+    IPS hasn't reached yet. EASA member shops are the target list.
+    Potential international expansion (more UK/Europe)."
+  :rationale "IPS acquired 10 companies in 2024. 2025 was 5 (partial year data).
+    TechPro in Jan 2026 shows no slowing. The ABB Industrial Services deal
+    proves they'll buy divisions from major OEMs. Nothing is off-limits.")
+
+(hasProjection IPS "2027"
+  :expectedDeals "8-10"
+  :likelyTargets "ISG's Soles Electric and Illinois Electric Works become
+    increasingly isolated as IPS controls the surrounding territory.
+    IPS may approach ISG motor brands directly. ISG should either
+    aggressively acquire motor shops to build defensible density
+    or accept that motors becomes an IPS-dominated vertical."
+  :rationale "At current pace IPS will exceed 150 locations by end of 2027.
+    The independent motor repair industry will be >50% consolidated
+    under IPS within 3 years.")
+
+;;; =============================================================================
+;;; END IPS-SEARCHLIGHT.KRF
+;;; =============================================================================

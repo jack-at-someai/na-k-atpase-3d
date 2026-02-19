@@ -1,0 +1,84 @@
+;;; =============================================================================
+;;; BRAND-PINNACLE.KRF — Pinnacle Industries
+;;; ISG Compressor Vertical — Gardner Denver Specialist (TX Gulf Coast)
+;;; =============================================================================
+;;;
+;;; Pasadena, TX (Houston metro). Founded 1985. Family-owned for 40+ years
+;;; before joining ISG. Authorized Gardner Denver distributor (primary line).
+;;; Three specialized divisions: compressors, blowers/vacuum, and fabrication.
+;;; Gulf Coast petrochemical corridor.
+;;;
+;;; =============================================================================
+
+(isa Pinnacle ISGBrandNode)
+(hasLegalName Pinnacle "Pinnacle Industries, Ltd.")
+(hasWebsite Pinnacle "pinnacleindustriestexas.com")
+(hasISGBrandPage Pinnacle "isgservice.com/our-brands/pinnacle-industries/")
+(hasHeadquarters Pinnacle "Pasadena, TX 77506")
+(hasFounded Pinnacle 1985)
+(hasVertical Pinnacle "Compressors"
+  :note "ISG may list under Specialty Services due to blower/vacuum focus")
+(hasAcquisitionEra Pinnacle "TJC" :note "Post-December 2022")
+(hasEmployees Pinnacle "26-55" :note "RocketReach 26, other sources 55")
+
+;;; ---------------------------------------------------------------------------
+;;; KEY PERSONNEL
+;;; ---------------------------------------------------------------------------
+
+(hasPersonnel Pinnacle "Greg Holden" :title "Business Owner")
+(hasPersonnel Pinnacle "Louis Araiza" :title "Accountant")
+(hasPersonnel Pinnacle "Ryan Guidry" :title "Sales Representative")
+
+;;; ---------------------------------------------------------------------------
+;;; SERVICES
+;;; ---------------------------------------------------------------------------
+
+(hasService Pinnacle "Air compressor sales, service, parts")
+(hasService Pinnacle "Positive displacement blowers")
+(hasService Pinnacle "Vacuum pumps")
+(hasService Pinnacle "Nitrogen generators")
+(hasService Pinnacle "Air dryers and air knives")
+(hasService Pinnacle "Engineered packaging and fabrication")
+(hasService Pinnacle "Proprietary PM-tracking database system")
+(hasService Pinnacle "24/7 support")
+
+;;; ---------------------------------------------------------------------------
+;;; OEM BRANDS
+;;; ---------------------------------------------------------------------------
+
+(hasOEMLine Pinnacle "Primary Line — Gardner Denver (Authorized Distributor)"
+  :brands ("Gardner Denver")
+  :blowerLine ("CycloBlower" "HeliFlow" "TriFlow" "DuroFlow" "Sutorbilt" "IQ Package")
+  :note "40+ years supporting Gardner Denver product line specifically")
+
+(hasOEMLine Pinnacle "Additional Lines"
+  :brands ("Great Lakes Air" "Elmo Rietschle" "Hydrovane" "Sonic Air Systems" "Mann Filter"))
+
+;;; ---------------------------------------------------------------------------
+;;; INDUSTRIES & TERRITORY
+;;; ---------------------------------------------------------------------------
+
+(hasIndustry Pinnacle ("Manufacturing" "Petrochemical" "Oil Field Drilling" "Chemical Processing"
+                       "Power Generation" "Food & Beverage" "Wastewater Treatment"
+                       "Industrial & Medical Vacuum" "Dry Bulk Handling" "Pneumatic Conveying"
+                       "Soil Remediation"))
+(hasTerritory Pinnacle ("TX" "Gulf Coast")
+  :note "South-central United States. Houston/Pasadena petrochemical corridor.")
+
+;;; ---------------------------------------------------------------------------
+;;; CHARLOTTE RELEVANCE
+;;; ---------------------------------------------------------------------------
+
+(hasCharlotteRelevance Pinnacle
+  :status "PLANNED — post-IAP/IAC proof of concept"
+  :opportunity "Gardner Denver authorized distributor status creates OEM data bridge.
+    Proprietary PM-tracking database system is a Charlotte integration target.
+    Blower/vacuum focus differentiates from other ISG compressor brands —
+    adds vertical breadth. Gulf Coast petrochemical customer base overlaps
+    with TurboIndustries and CTS customers — network effect."
+  :note "Family-owned 40+ years. Pasadena Chamber of Commerce member.
+    Three specialized divisions indicate mature operational structure.")
+
+;;; =============================================================================
+;;; END BRAND-PINNACLE.KRF
+;;; =============================================================================

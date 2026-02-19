@@ -1,0 +1,85 @@
+;;; =============================================================================
+;;; SUNSOURCE-CDR.KRF — Valve/Fluid Power Platform Acquisition Timeline
+;;; ISG Competitive Intelligence Substrate
+;;; =============================================================================
+;;;
+;;; ENTITY: SunSource Holdings, Addison, IL
+;;; PE SPONSOR: Clayton, Dubilier & Rice (CD&R, since December 2017)
+;;; VERTICAL: Fluid power, flow control, valves, automation, process equipment,
+;;;           industrial repair services
+;;; STRATEGY: North America's largest distributor for fluid power and motion
+;;;           control. Fewer but larger transformative acquisitions.
+;;;           Vytl Controls (Jan 2026) was a major valve platform bolt-on.
+;;; AFFILIATES: 30+ companies
+;;; THREAT LEVEL: MEDIUM — primarily valve/fluid power, limited direct ISG overlap.
+;;;              But Vytl Controls acquisition signals expansion into valve
+;;;              service/MRO that competes with ISG valve brands.
+;;;
+;;; =============================================================================
+
+(isa SunSource CompetitorNode)
+(hasHeadquarters SunSource "Addison, IL")
+(hasPESponsor SunSource "Clayton Dubilier & Rice (CD&R)" :since "December 2017")
+(hasAffiliates SunSource "30+")
+(hasThreatLevel SunSource "MEDIUM" :reason "Valve platform expansion via Vytl Controls")
+
+;;; ---------------------------------------------------------------------------
+;;; ACQUISITION TIMELINE (2018-2026)
+;;; ---------------------------------------------------------------------------
+
+(hasAcquisition SunSource RyanHercoFlowSolutions :date "2018-04-30"
+  :priorPE "Greenbriar Equity Group" :specialty "Fluid handling, filtration, flow control"
+  :note "70,000+ SKUs")
+
+(hasAcquisition SunSource UnitedDistributionGroup :date "2018-08"
+  :specialty "Industrial components — gaskets, hoses, MRO"
+  :subsidiaries "GHX Industrial, United Central Supply"
+  :note "140,000+ SKUs")
+
+(hasAcquisition SunSource Carotek :date "2020-08"
+  :location "Charlotte, NC"
+  :specialty "Process equipment, pumps, heat exchangers"
+  :isgOverlap "LOW — NC is ISG expansion territory")
+
+(hasAcquisition SunSource KSServices :date "2021-07"
+  :specialty "Industrial repair — robotics, automation, electronics, hydraulics")
+
+(hasAcquisition SunSource AppliedControls :date "2021-12"
+  :location "Malvern, PA" :founded 1996
+  :specialty "IoT services, industrial automation, controls")
+
+(hasAcquisition SunSource VytlControlsGroup :date "2026-01-30"
+  :priorPE "MiddleGround Capital" :employees 1100
+  :specialty "Valve automation, remanufacturing, maritime flow control, instrumentation"
+  :subsidiaries "Setpoint Integrated Solutions, W&O Supply, AT Controls, Valsource, GMS Instruments"
+  :territory "National — Setpoint is leader in chemical/downstream valve automation"
+  :isgOverlap "MEDIUM — Setpoint competes in petrochemical valve service where ISG operates"
+  :note "Largest SunSource acquisition. Transforms SunSource into a major valve platform.
+    Valsource adds valve remanufacturing/MRO — directly competes with ISG valve brands.")
+
+;;; ---------------------------------------------------------------------------
+;;; PROJECTION (2026-2027)
+;;; ---------------------------------------------------------------------------
+
+(hasProjection SunSource "2026"
+  :expectedDeals "1-2"
+  :likelyTargets "Valve service/repair shops to complement Vytl Controls.
+    Additional IoT/automation bolt-ons.
+    Potential Gulf Coast valve presence expansion."
+  :rationale "CD&R has held SunSource since 2017 (8+ years). Long hold.
+    Vytl was a major platform expansion — will need integration time.
+    But Setpoint's petrochemical focus means Gulf Coast valve service
+    shops become natural targets.")
+
+(hasProjection SunSource "2027"
+  :expectedDeals "1-3 OR EXIT"
+  :likelyTargets "CD&R exit likely in 2027-2028 range. 10-year hold.
+    Either accelerate to maximize exit value or sell to strategic buyer.
+    Potential buyers: Honeywell, Parker Hannifin, or larger PE platform."
+  :rationale "CD&R's typical hold is 5-7 years. At 10 years, exit pressure
+    is high. SunSource may be sold, which changes the competitive dynamic —
+    a strategic buyer adds SunSource's 30+ affiliates to an even larger platform.")
+
+;;; =============================================================================
+;;; END SUNSOURCE-CDR.KRF
+;;; =============================================================================
