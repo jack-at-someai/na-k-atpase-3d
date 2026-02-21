@@ -41,11 +41,13 @@ def validate_twilio_signature(url: str, params: dict, signature: str) -> bool:
     return hmac.compare_digest(expected, signature)
 
 
-def generate_twiml(stream_url: str) -> str:
+def generate_twiml(stream_url: str, greeting: str = "Connecting to Charlotte.") -> str:
     """Generate TwiML that connects caller to our WebSocket media stream."""
+    import xml.sax.saxutils
+    escaped = xml.sax.saxutils.escape(greeting)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say voice="Polly.Joanna">Connecting to Charlotte.</Say>
+    <Say voice="Polly.Joanna">{escaped}</Say>
     <Connect>
         <Stream url="{stream_url}">
             <Parameter name="source" value="twilio" />
@@ -92,11 +94,28 @@ async def handle_voice_webhook(request: web.Request) -> web.Response:
     caller = post_data.get("From", "unknown")
     log.info("Incoming call from %s", caller)
 
+    # Look up caller in KRF index for personalized greeting
+    greeting = "Connecting to Charlotte."
+    try:
+        from tools.krf import _index
+        if _index:
+            # Search for phone number across all entities
+            for entity, attrs in _index.attributes.items():
+                phones = attrs.get("::PHONE", [])
+                if caller in phones:
+                    label = attrs.get("::LABEL", [None])[0]
+                    if label:
+                        greeting = f"Hey {label.split()[0]}, connecting you now."
+                        log.info("Caller recognized: %s -> %s", caller, entity)
+                    break
+    except Exception:
+        pass  # Fall back to generic greeting
+
     # Build the WebSocket URL for the media stream
     tunnel_domain = Config.TUNNEL_DOMAIN
     stream_url = f"wss://{tunnel_domain}/twilio/media"
 
-    twiml = generate_twiml(stream_url)
+    twiml = generate_twiml(stream_url, greeting=greeting)
     return web.Response(
         text=twiml,
         content_type="application/xml",

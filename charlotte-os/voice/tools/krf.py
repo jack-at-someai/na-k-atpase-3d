@@ -430,6 +430,10 @@ _TIERS = {
         "patterns": ["knowledge/**/*.krf"],
         "auto": True,
     },
+    "contacts": {
+        "patterns": ["domains/*/contacts.krf", "domains/*/personnel/*.krf"],
+        "auto": True,
+    },
     "spine": {
         "patterns": ["spine/**/*.krf"],
         "auto": False,
