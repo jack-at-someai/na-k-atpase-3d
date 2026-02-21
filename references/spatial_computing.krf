@@ -1,0 +1,960 @@
+;;; ================================================================
+;;; REFERENCE / SPATIAL COMPUTING
+;;; 94 resources across 8 sections — Charlotte's spatial substrate
+;;; ================================================================
+;;;
+;;; GIS, spatial databases & geospatial algorithms.
+;;; The indexing theory behind Charlotte's spatial planes.
+;;;
+;;; Charlotte Paper 6 (Spatial Perception) requires a pre-built
+;;; spatial substrate: every country, state, city, latitude/longitude
+;;; tuple, and administrative boundary must be encoded for fast lookups,
+;;; hierarchical containment queries, and distance computations.
+;;;
+;;; Learning path: GIS Fundamentals → Coordinate Systems → Spatial
+;;; Databases → Spatial Indexing → Algorithms → Remote Sensing →
+;;; Datasets & Software
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa SC-Longley-GISScience ReferenceWork)
+(title SC-Longley-GISScience "Geographic Information Systems and Science")
+(author SC-Longley-GISScience "Longley, Goodchild, Maguire & Rhind")
+(resourceType SC-Longley-GISScience book)
+(level SC-Longley-GISScience beginner)
+(section SC-Longley-GISScience SpatialComputingOverview)
+(url SC-Longley-GISScience "https://www.wiley.com/en-us/Geographic+Information+Systems+and+Science-p-9781119031307")
+(desc SC-Longley-GISScience "The canonical GIS textbook covering spatial data models, analysis, and applications across four editions.")
+
+(isa SC-Bolstad-GISFundamentals ReferenceWork)
+(title SC-Bolstad-GISFundamentals "GIS Fundamentals (6th ed.)")
+(author SC-Bolstad-GISFundamentals "Paul Bolstad")
+(resourceType SC-Bolstad-GISFundamentals book)
+(level SC-Bolstad-GISFundamentals beginner)
+(section SC-Bolstad-GISFundamentals SpatialComputingOverview)
+(url SC-Bolstad-GISFundamentals "https://www.paulbolstad.net/gisbook.html")
+(desc SC-Bolstad-GISFundamentals "Practical introduction to GIS concepts, projections, GPS, remote sensing, and spatial analysis with exercises.")
+
+(isa SC-Rigaux-SpatialDatabases ReferenceWork)
+(title SC-Rigaux-SpatialDatabases "Spatial Databases: With Application to GIS")
+(author SC-Rigaux-SpatialDatabases "Philippe Rigaux, Michel Scholl & Agnes Voisard")
+(resourceType SC-Rigaux-SpatialDatabases book)
+(level SC-Rigaux-SpatialDatabases intermediate)
+(section SC-Rigaux-SpatialDatabases SpatialComputingOverview)
+(url SC-Rigaux-SpatialDatabases "https://www.elsevier.com/books/spatial-databases/rigaux/978-1-55860-588-6")
+(desc SC-Rigaux-SpatialDatabases "Theoretical foundations of spatial data management: spatial data types, query languages, indexing, and optimization.")
+
+(isa SC-DeBerg-CompGeom ReferenceWork)
+(title SC-DeBerg-CompGeom "Computational Geometry: Algorithms and Applications")
+(author SC-DeBerg-CompGeom "Mark de Berg, Otfried Cheong, Marc van Kreveld & Mark Overmars")
+(resourceType SC-DeBerg-CompGeom book)
+(level SC-DeBerg-CompGeom intermediate)
+(section SC-DeBerg-CompGeom SpatialComputingOverview)
+(url SC-DeBerg-CompGeom "https://link.springer.com/book/10.1007/978-3-540-77974-2")
+(desc SC-DeBerg-CompGeom "Definitive textbook on geometric algorithms: convex hulls, Voronoi diagrams, Delaunay triangulation, range searching.")
+
+;; ── Introductory Courses & Overviews ──
+
+(isa SC-PennState-GEOG485 ReferenceWork)
+(title SC-PennState-GEOG485 "Introduction to GIS (Penn State GEOG 485)")
+(author SC-PennState-GEOG485 "Penn State University")
+(resourceType SC-PennState-GEOG485 course)
+(level SC-PennState-GEOG485 beginner)
+(section SC-PennState-GEOG485 SpatialComputingOverview)
+(url SC-PennState-GEOG485 "https://www.e-education.psu.edu/geog485/")
+(desc SC-PennState-GEOG485 "Free online course covering GIS fundamentals, spatial data, coordinate systems, and basic analysis with ArcGIS/QGIS.")
+
+(isa SC-Anselin-SpatialDataSci ReferenceWork)
+(title SC-Anselin-SpatialDataSci "Spatial Data Science (Luc Anselin)")
+(author SC-Anselin-SpatialDataSci "University of Chicago / GeoDa Center")
+(resourceType SC-Anselin-SpatialDataSci course)
+(level SC-Anselin-SpatialDataSci intermediate)
+(section SC-Anselin-SpatialDataSci SpatialComputingOverview)
+(url SC-Anselin-SpatialDataSci "https://spatial.uchicago.edu/content/spatial-data-science")
+(desc SC-Anselin-SpatialDataSci "Open course on spatial data science concepts: spatial autocorrelation, clustering, spatial regression.")
+
+(isa SC-Lovelace-GeocompR ReferenceWork)
+(title SC-Lovelace-GeocompR "Geocomputation with R")
+(author SC-Lovelace-GeocompR "Robin Lovelace, Jakub Nowosad & Jannes Muenchow")
+(resourceType SC-Lovelace-GeocompR book)
+(level SC-Lovelace-GeocompR beginner)
+(section SC-Lovelace-GeocompR SpatialComputingOverview)
+(url SC-Lovelace-GeocompR "https://r.geocompx.org/")
+(desc SC-Lovelace-GeocompR "Free online book covering geographic data in R using sf, terra, and tmap. Practical approach to spatial analysis.")
+
+(isa SC-Helsinki-AutoGIS ReferenceWork)
+(title SC-Helsinki-AutoGIS "Automating GIS Processes (University of Helsinki)")
+(author SC-Helsinki-AutoGIS "Henrikki Tenkanen & Vuokko Heikinheimo")
+(resourceType SC-Helsinki-AutoGIS course)
+(level SC-Helsinki-AutoGIS beginner)
+(section SC-Helsinki-AutoGIS SpatialComputingOverview)
+(url SC-Helsinki-AutoGIS "https://autogis-site.readthedocs.io/")
+(desc SC-Helsinki-AutoGIS "Python-based open course on automating GIS workflows with GeoPandas, Shapely, and Fiona.")
+
+(isa SC-DiBiase-NatureGeoInfo ReferenceWork)
+(title SC-DiBiase-NatureGeoInfo "The Nature of Geographic Information")
+(author SC-DiBiase-NatureGeoInfo "David DiBiase (Penn State)")
+(resourceType SC-DiBiase-NatureGeoInfo course)
+(level SC-DiBiase-NatureGeoInfo beginner)
+(section SC-DiBiase-NatureGeoInfo SpatialComputingOverview)
+(url SC-DiBiase-NatureGeoInfo "https://www.e-education.psu.edu/natureofgeoinfo/")
+(desc SC-DiBiase-NatureGeoInfo "Comprehensive free online textbook on geographic information concepts, coordinate systems, and map design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: GIS FUNDAMENTALS
+;; Vector/raster models, CRS, spatial analysis, geostatistics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & References ──
+
+(isa SC-Longley-GISScience4ed ReferenceWork)
+(title SC-Longley-GISScience4ed "Geographic Information Systems and Science (4th ed.)")
+(author SC-Longley-GISScience4ed "Longley, Goodchild, Maguire & Rhind")
+(resourceType SC-Longley-GISScience4ed book)
+(level SC-Longley-GISScience4ed beginner)
+(section SC-Longley-GISScience4ed GISFundamentals)
+(url SC-Longley-GISScience4ed "https://www.wiley.com/en-us/Geographic+Information+Systems+and+Science-p-9781119031307")
+(desc SC-Longley-GISScience4ed "Comprehensive GIS textbook covering data models, spatial analysis, uncertainty, and GIS design. The standard reference.")
+
+(isa SC-Bolstad-GISFund6ed ReferenceWork)
+(title SC-Bolstad-GISFund6ed "GIS Fundamentals: A First Text on GIS (6th ed.)")
+(author SC-Bolstad-GISFund6ed "Paul Bolstad")
+(resourceType SC-Bolstad-GISFund6ed book)
+(level SC-Bolstad-GISFund6ed beginner)
+(section SC-Bolstad-GISFund6ed GISFundamentals)
+(url SC-Bolstad-GISFund6ed "https://www.paulbolstad.net/gisbook.html")
+(desc SC-Bolstad-GISFund6ed "Hands-on introduction with clear explanations of projections, GPS, data quality, spatial analysis, and raster operations.")
+
+(isa SC-OSullivan-GeoInfoAnalysis ReferenceWork)
+(title SC-OSullivan-GeoInfoAnalysis "Geographic Information Analysis (2nd ed.)")
+(author SC-OSullivan-GeoInfoAnalysis "David O'Sullivan & David Unwin")
+(resourceType SC-OSullivan-GeoInfoAnalysis book)
+(level SC-OSullivan-GeoInfoAnalysis intermediate)
+(section SC-OSullivan-GeoInfoAnalysis GISFundamentals)
+(url SC-OSullivan-GeoInfoAnalysis "https://www.wiley.com/en-us/Geographic+Information+Analysis-p-9780470288573")
+(desc SC-OSullivan-GeoInfoAnalysis "Focuses on spatial analysis methods: point pattern analysis, area objects, fields, and spatial autocorrelation.")
+
+(isa SC-Burrough-PrinciplesGIS ReferenceWork)
+(title SC-Burrough-PrinciplesGIS "Principles of Geographical Information Systems")
+(author SC-Burrough-PrinciplesGIS "Peter Burrough, Rachael McDonnell & Christopher Lloyd")
+(resourceType SC-Burrough-PrinciplesGIS book)
+(level SC-Burrough-PrinciplesGIS intermediate)
+(section SC-Burrough-PrinciplesGIS GISFundamentals)
+(url SC-Burrough-PrinciplesGIS "https://global.oup.com/academic/product/principles-of-geographical-information-systems-9780198742845")
+(desc SC-Burrough-PrinciplesGIS "Covers the principles behind GIS technology: data models, spatial referencing, error propagation, and terrain analysis.")
+
+;; ── Software & Tutorials ──
+
+(isa SC-QGIS-Docs ReferenceWork)
+(title SC-QGIS-Docs "QGIS Documentation & Tutorials")
+(author SC-QGIS-Docs "QGIS Project")
+(resourceType SC-QGIS-Docs notes)
+(level SC-QGIS-Docs beginner)
+(section SC-QGIS-Docs GISFundamentals)
+(url SC-QGIS-Docs "https://docs.qgis.org/")
+(desc SC-QGIS-Docs "Official documentation for the leading open-source GIS. Includes training manual, user guide, and PyQGIS cookbook.")
+
+(isa SC-Sketsketches-QGIS ReferenceWork)
+(title SC-Sketsketches-QGIS "QGIS Sketsketches (YouTube)")
+(author SC-Sketsketches-QGIS "Sketsketches")
+(resourceType SC-Sketsketches-QGIS video)
+(level SC-Sketsketches-QGIS beginner)
+(section SC-Sketsketches-QGIS GISFundamentals)
+(url SC-Sketsketches-QGIS "https://www.youtube.com/c/sketsketches")
+(desc SC-Sketsketches-QGIS "Practical QGIS video tutorials covering data loading, styling, analysis, plugins, and Python scripting.")
+
+(isa SC-Lovelace-GeocompR-GIS ReferenceWork)
+(title SC-Lovelace-GeocompR-GIS "Geocomputation with R")
+(author SC-Lovelace-GeocompR-GIS "Robin Lovelace, Jakub Nowosad & Jannes Muenchow")
+(resourceType SC-Lovelace-GeocompR-GIS book)
+(level SC-Lovelace-GeocompR-GIS beginner)
+(section SC-Lovelace-GeocompR-GIS GISFundamentals)
+(url SC-Lovelace-GeocompR-GIS "https://r.geocompx.org/")
+(desc SC-Lovelace-GeocompR-GIS "Free online book on geographic data manipulation, visualization, and modeling in R using sf and terra packages.")
+
+(isa SC-Dorman-GeocompPy ReferenceWork)
+(title SC-Dorman-GeocompPy "Geocomputation with Python")
+(author SC-Dorman-GeocompPy "Michael Dorman, Jakub Nowosad & Robin Lovelace")
+(resourceType SC-Dorman-GeocompPy book)
+(level SC-Dorman-GeocompPy beginner)
+(section SC-Dorman-GeocompPy GISFundamentals)
+(url SC-Dorman-GeocompPy "https://py.geocompx.org/")
+(desc SC-Dorman-GeocompPy "Companion to the R book, covering spatial analysis in Python with GeoPandas, Rasterio, and Shapely.")
+
+(isa SC-PennState-GEOG489 ReferenceWork)
+(title SC-PennState-GEOG489 "Introduction to GIS Programming (GEOG 489)")
+(author SC-PennState-GEOG489 "Penn State University")
+(resourceType SC-PennState-GEOG489 course)
+(level SC-PennState-GEOG489 intermediate)
+(section SC-PennState-GEOG489 GISFundamentals)
+(url SC-PennState-GEOG489 "https://www.e-education.psu.edu/geog489/")
+(desc SC-PennState-GEOG489 "Advanced GIS programming with Python: arcpy, spatial databases, web mapping, and geoprocessing automation.")
+
+;; ── Spatial Analysis Methods ──
+
+(isa SC-Bivand-AppliedSpatialR ReferenceWork)
+(title SC-Bivand-AppliedSpatialR "Applied Spatial Data Analysis with R (2nd ed.)")
+(author SC-Bivand-AppliedSpatialR "Roger Bivand, Edzer Pebesma & Virgilio Gomez-Rubio")
+(resourceType SC-Bivand-AppliedSpatialR book)
+(level SC-Bivand-AppliedSpatialR advanced)
+(section SC-Bivand-AppliedSpatialR GISFundamentals)
+(url SC-Bivand-AppliedSpatialR "https://link.springer.com/book/10.1007/978-1-4614-7618-4")
+(desc SC-Bivand-AppliedSpatialR "Spatial data handling, visualization, geostatistics, and spatial regression in R. The reference for spatial statistics.")
+
+(isa SC-Brunsdon-IntroSpatialR ReferenceWork)
+(title SC-Brunsdon-IntroSpatialR "An Introduction to R for Spatial Analysis and Mapping")
+(author SC-Brunsdon-IntroSpatialR "Chris Brunsdon & Lex Comber")
+(resourceType SC-Brunsdon-IntroSpatialR book)
+(level SC-Brunsdon-IntroSpatialR intermediate)
+(section SC-Brunsdon-IntroSpatialR GISFundamentals)
+(url SC-Brunsdon-IntroSpatialR "https://uk.sagepub.com/en-gb/eur/an-introduction-to-r-for-spatial-analysis-and-mapping/book258267")
+(desc SC-Brunsdon-IntroSpatialR "Practical guide to spatial analysis in R covering mapping, point patterns, geostatistics, and spatial regression.")
+
+(isa SC-ChunGriffith-SpatialStats ReferenceWork)
+(title SC-ChunGriffith-SpatialStats "Spatial Statistics & Geostatistics (SAGE)")
+(author SC-ChunGriffith-SpatialStats "Yongwan Chun & Daniel Griffith")
+(resourceType SC-ChunGriffith-SpatialStats book)
+(level SC-ChunGriffith-SpatialStats advanced)
+(section SC-ChunGriffith-SpatialStats GISFundamentals)
+(url SC-ChunGriffith-SpatialStats "https://us.sagepub.com/en-us/nam/spatial-statistics-and-geostatistics/book257013")
+(desc SC-ChunGriffith-SpatialStats "Theory and applications of spatial statistics: variograms, kriging, spatial filtering, and eigenvector methods.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SPATIAL DATABASES
+;; PostGIS, SpatiaLite, MongoDB, R-tree indexing, OGC standards
+;; ════════════════════════════════════════════════════════════
+
+;; ── PostGIS ──
+
+(isa SC-Obe-PostGISInAction ReferenceWork)
+(title SC-Obe-PostGISInAction "PostGIS in Action (3rd ed.)")
+(author SC-Obe-PostGISInAction "Regina Obe & Leo Hsu")
+(resourceType SC-Obe-PostGISInAction book)
+(level SC-Obe-PostGISInAction intermediate)
+(section SC-Obe-PostGISInAction SpatialDatabases)
+(url SC-Obe-PostGISInAction "https://www.manning.com/books/postgis-in-action-third-edition")
+(desc SC-Obe-PostGISInAction "The definitive PostGIS book: geometry/geography types, spatial indexing, raster, topology, routing, and 3D.")
+
+(isa SC-PostGIS-OfficialDocs ReferenceWork)
+(title SC-PostGIS-OfficialDocs "PostGIS Official Documentation")
+(author SC-PostGIS-OfficialDocs "PostGIS Project")
+(resourceType SC-PostGIS-OfficialDocs notes)
+(level SC-PostGIS-OfficialDocs beginner)
+(section SC-PostGIS-OfficialDocs SpatialDatabases)
+(url SC-PostGIS-OfficialDocs "https://postgis.net/documentation/")
+(desc SC-PostGIS-OfficialDocs "Comprehensive reference for all ST_* functions, spatial indexing, raster support, and configuration.")
+
+(isa SC-PostGIS-IntroWorkshop ReferenceWork)
+(title SC-PostGIS-IntroWorkshop "Introduction to PostGIS (Workshop)")
+(author SC-PostGIS-IntroWorkshop "Boundless / Crunchy Data")
+(resourceType SC-PostGIS-IntroWorkshop course)
+(level SC-PostGIS-IntroWorkshop beginner)
+(section SC-PostGIS-IntroWorkshop SpatialDatabases)
+(url SC-PostGIS-IntroWorkshop "https://postgis.net/workshops/postgis-intro/")
+(desc SC-PostGIS-IntroWorkshop "Free hands-on workshop: loading spatial data, spatial queries, joins, indexing, and projections in PostGIS.")
+
+(isa SC-Corti-PostGISCookbook ReferenceWork)
+(title SC-Corti-PostGISCookbook "PostGIS Cookbook (2nd ed.)")
+(author SC-Corti-PostGISCookbook "Paolo Corti, Thomas Kraft, Stephen Mather & Bborie Park")
+(resourceType SC-Corti-PostGISCookbook book)
+(level SC-Corti-PostGISCookbook intermediate)
+(section SC-Corti-PostGISCookbook SpatialDatabases)
+(url SC-Corti-PostGISCookbook "https://www.packtpub.com/product/postgis-cookbook/9781788299442")
+(desc SC-Corti-PostGISCookbook "Recipe-style guide covering importing data, spatial queries, raster analysis, routing, and web integration.")
+
+;; ── Other Spatial Databases ──
+
+(isa SC-SpatiaLite-Cookbook ReferenceWork)
+(title SC-SpatiaLite-Cookbook "SpatiaLite Cookbook")
+(author SC-SpatiaLite-Cookbook "SpatiaLite Project")
+(resourceType SC-SpatiaLite-Cookbook notes)
+(level SC-SpatiaLite-Cookbook beginner)
+(section SC-SpatiaLite-Cookbook SpatialDatabases)
+(url SC-SpatiaLite-Cookbook "https://www.gaia-gis.it/fossil/libspatialite/wiki?name=SpatiaLite+Cookbook")
+(desc SC-SpatiaLite-Cookbook "Tutorial-style guide to SpatiaLite: loading shapefiles, spatial queries, and analysis in an embedded database.")
+
+(isa SC-MongoDB-GeospatialQueries ReferenceWork)
+(title SC-MongoDB-GeospatialQueries "MongoDB Geospatial Queries")
+(author SC-MongoDB-GeospatialQueries "MongoDB Documentation")
+(resourceType SC-MongoDB-GeospatialQueries notes)
+(level SC-MongoDB-GeospatialQueries beginner)
+(section SC-MongoDB-GeospatialQueries SpatialDatabases)
+(url SC-MongoDB-GeospatialQueries "https://www.mongodb.com/docs/manual/geospatial-queries/")
+(desc SC-MongoDB-GeospatialQueries "Official guide to MongoDB's 2dsphere and 2d indexes, GeoJSON support, and $geoWithin/$near operators.")
+
+(isa SC-DuckDB-Spatial ReferenceWork)
+(title SC-DuckDB-Spatial "DuckDB Spatial Extension")
+(author SC-DuckDB-Spatial "DuckDB Foundation")
+(resourceType SC-DuckDB-Spatial code)
+(level SC-DuckDB-Spatial intermediate)
+(section SC-DuckDB-Spatial SpatialDatabases)
+(url SC-DuckDB-Spatial "https://duckdb.org/docs/extensions/spatial.html")
+(desc SC-DuckDB-Spatial "Analytical spatial queries in DuckDB: read Shapefiles/GeoJSON/GeoParquet, perform spatial joins at columnar speed.")
+
+(isa SC-ApacheSedona ReferenceWork)
+(title SC-ApacheSedona "Apache Sedona (GeoSpark)")
+(author SC-ApacheSedona "Apache Software Foundation")
+(resourceType SC-ApacheSedona code)
+(level SC-ApacheSedona advanced)
+(section SC-ApacheSedona SpatialDatabases)
+(url SC-ApacheSedona "https://sedona.apache.org/")
+(desc SC-ApacheSedona "Cluster-computing system for processing large-scale spatial data on Spark and Flink with spatial SQL support.")
+
+;; ── Spatial Indexing Theory ──
+
+(isa SC-Guttman-RTree ReferenceWork)
+(title SC-Guttman-RTree "The R-tree: An Efficient and Robust Access Method")
+(author SC-Guttman-RTree "Antonin Guttman (1984)")
+(resourceType SC-Guttman-RTree notes)
+(level SC-Guttman-RTree intermediate)
+(section SC-Guttman-RTree SpatialDatabases)
+(url SC-Guttman-RTree "https://dl.acm.org/doi/10.1145/602259.602266")
+(desc SC-Guttman-RTree "The foundational R-tree paper describing the balanced tree structure for spatial data with minimum bounding rectangles.")
+
+(isa SC-Beckmann-RStarTree ReferenceWork)
+(title SC-Beckmann-RStarTree "The R*-tree: An Efficient and Robust Access Method for Points and Rectangles")
+(author SC-Beckmann-RStarTree "Beckmann, Kriegel, Schneider & Seeger (1990)")
+(resourceType SC-Beckmann-RStarTree notes)
+(level SC-Beckmann-RStarTree advanced)
+(section SC-Beckmann-RStarTree SpatialDatabases)
+(url SC-Beckmann-RStarTree "https://dl.acm.org/doi/10.1145/93597.98741")
+(desc SC-Beckmann-RStarTree "Improved R-tree variant with better split and reinsertion heuristics, reducing overlap and improving query performance.")
+
+(isa SC-QuadtreeHilbert ReferenceWork)
+(title SC-QuadtreeHilbert "Spatial Indexing with Quadtrees and Hilbert Curves")
+(author SC-QuadtreeHilbert "Various / GeeksforGeeks")
+(resourceType SC-QuadtreeHilbert notes)
+(level SC-QuadtreeHilbert intermediate)
+(section SC-QuadtreeHilbert SpatialDatabases)
+(url SC-QuadtreeHilbert "https://www.geeksforgeeks.org/quad-tree/")
+(desc SC-QuadtreeHilbert "Introduction to quadtree decomposition and space-filling curves for spatial indexing and range queries.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: ALGORITHMS
+;; Point-in-polygon, nearest neighbor, Voronoi, convex hull
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Textbooks ──
+
+(isa SC-DeBerg-CompGeom3ed ReferenceWork)
+(title SC-DeBerg-CompGeom3ed "Computational Geometry: Algorithms and Applications (3rd ed.)")
+(author SC-DeBerg-CompGeom3ed "de Berg, Cheong, van Kreveld & Overmars")
+(resourceType SC-DeBerg-CompGeom3ed book)
+(level SC-DeBerg-CompGeom3ed intermediate)
+(section SC-DeBerg-CompGeom3ed GeospatialAlgorithms)
+(url SC-DeBerg-CompGeom3ed "https://link.springer.com/book/10.1007/978-3-540-77974-2")
+(desc SC-DeBerg-CompGeom3ed "The standard textbook: convex hulls, line segment intersection, polygon triangulation, Voronoi, Delaunay, range trees.")
+
+(isa SC-ORourke-CompGeomC ReferenceWork)
+(title SC-ORourke-CompGeomC "Computational Geometry in C (2nd ed.)")
+(author SC-ORourke-CompGeomC "Joseph O'Rourke")
+(resourceType SC-ORourke-CompGeomC book)
+(level SC-ORourke-CompGeomC intermediate)
+(section SC-ORourke-CompGeomC GeospatialAlgorithms)
+(url SC-ORourke-CompGeomC "https://cs.smith.edu/~jorourke/books/compgeom.html")
+(desc SC-ORourke-CompGeomC "Practical approach with C implementations: polygon operations, convex hulls, Voronoi, motion planning.")
+
+(isa SC-Schneider-GeomTools ReferenceWork)
+(title SC-Schneider-GeomTools "Geometric Tools for Computer Graphics")
+(author SC-Schneider-GeomTools "Philip Schneider & David Eberly")
+(resourceType SC-Schneider-GeomTools book)
+(level SC-Schneider-GeomTools advanced)
+(section SC-Schneider-GeomTools GeospatialAlgorithms)
+(url SC-Schneider-GeomTools "https://www.geometrictools.com/")
+(desc SC-Schneider-GeomTools "Exhaustive reference: intersection tests, distance queries, containment, curves, surfaces. Companion code library.")
+
+(isa SC-Heineman-AlgoNutshell ReferenceWork)
+(title SC-Heineman-AlgoNutshell "Algorithms in a Nutshell (Ch. Computational Geometry)")
+(author SC-Heineman-AlgoNutshell "George Heineman, Gary Pollice & Stanley Selkow")
+(resourceType SC-Heineman-AlgoNutshell book)
+(level SC-Heineman-AlgoNutshell beginner)
+(section SC-Heineman-AlgoNutshell GeospatialAlgorithms)
+(url SC-Heineman-AlgoNutshell "https://www.oreilly.com/library/view/algorithms-in-a/9780596516246/")
+(desc SC-Heineman-AlgoNutshell "Accessible introduction to convex hull, line sweep, nearest neighbor, and Voronoi algorithms with code.")
+
+;; ── Specific Algorithms & Implementations ──
+
+(isa SC-Franklin-PnPoly ReferenceWork)
+(title SC-Franklin-PnPoly "Point-in-Polygon (Ray Casting Algorithm)")
+(author SC-Franklin-PnPoly "W. Randolph Franklin")
+(resourceType SC-Franklin-PnPoly notes)
+(level SC-Franklin-PnPoly beginner)
+(section SC-Franklin-PnPoly GeospatialAlgorithms)
+(url SC-Franklin-PnPoly "https://wrfranklin.org/Research/Short_Notes/pnpoly.html")
+(desc SC-Franklin-PnPoly "Classic short C implementation of the ray casting point-in-polygon test. Simple, robust, widely cited.")
+
+(isa SC-Fortune-Voronoi ReferenceWork)
+(title SC-Fortune-Voronoi "Fortune's Algorithm for Voronoi Diagrams")
+(author SC-Fortune-Voronoi "Steven Fortune (1987)")
+(resourceType SC-Fortune-Voronoi notes)
+(level SC-Fortune-Voronoi advanced)
+(section SC-Fortune-Voronoi GeospatialAlgorithms)
+(url SC-Fortune-Voronoi "https://dl.acm.org/doi/10.1007/BF01840357")
+(desc SC-Fortune-Voronoi "O(n log n) sweep-line algorithm for computing Voronoi diagrams. The standard efficient approach.")
+
+(isa SC-Shewchuk-RobustPredicates ReferenceWork)
+(title SC-Shewchuk-RobustPredicates "Robust Predicates for Computational Geometry")
+(author SC-Shewchuk-RobustPredicates "Jonathan Shewchuk")
+(resourceType SC-Shewchuk-RobustPredicates notes)
+(level SC-Shewchuk-RobustPredicates advanced)
+(section SC-Shewchuk-RobustPredicates GeospatialAlgorithms)
+(url SC-Shewchuk-RobustPredicates "https://www.cs.cmu.edu/~quake/robust.html")
+(desc SC-Shewchuk-RobustPredicates "Exact arithmetic predicates (orient2d, incircle) that prevent floating-point errors in geometric computation.")
+
+(isa SC-CGAL ReferenceWork)
+(title SC-CGAL "CGAL: Computational Geometry Algorithms Library")
+(author SC-CGAL "CGAL Project")
+(resourceType SC-CGAL code)
+(level SC-CGAL intermediate)
+(section SC-CGAL GeospatialAlgorithms)
+(url SC-CGAL "https://www.cgal.org/")
+(desc SC-CGAL "C++ library implementing robust, efficient geometric algorithms: triangulations, Voronoi, hulls, mesh generation.")
+
+(isa SC-Shapely ReferenceWork)
+(title SC-Shapely "Shapely (Python)")
+(author SC-Shapely "Sean Gillies / Toblerity")
+(resourceType SC-Shapely code)
+(level SC-Shapely beginner)
+(section SC-Shapely GeospatialAlgorithms)
+(url SC-Shapely "https://shapely.readthedocs.io/")
+(desc SC-Shapely "Python library for manipulation and analysis of planar geometric objects. Wraps GEOS for point-in-polygon, buffers, intersections.")
+
+(isa SC-TurfJS ReferenceWork)
+(title SC-TurfJS "Turf.js: Advanced Geospatial Analysis")
+(author SC-TurfJS "Mapbox")
+(resourceType SC-TurfJS code)
+(level SC-TurfJS beginner)
+(section SC-TurfJS GeospatialAlgorithms)
+(url SC-TurfJS "https://turfjs.org/")
+(desc SC-TurfJS "JavaScript library for spatial operations in the browser: buffer, union, Voronoi, tin, nearest, boolean operations.")
+
+(isa SC-JTS ReferenceWork)
+(title SC-JTS "JTS Topology Suite")
+(author SC-JTS "Martin Davis / LocationTech")
+(resourceType SC-JTS code)
+(level SC-JTS intermediate)
+(section SC-JTS GeospatialAlgorithms)
+(url SC-JTS "https://locationtech.github.io/jts/")
+(desc SC-JTS "Java library for 2D geometry operations. The upstream of GEOS (C++) which powers PostGIS and Shapely.")
+
+(isa SC-S2Geometry ReferenceWork)
+(title SC-S2Geometry "S2 Geometry Library")
+(author SC-S2Geometry "Google")
+(resourceType SC-S2Geometry code)
+(level SC-S2Geometry advanced)
+(section SC-S2Geometry GeospatialAlgorithms)
+(url SC-S2Geometry "https://s2geometry.io/")
+(desc SC-S2Geometry "Spherical geometry library using Hilbert curve cell decomposition. Exact predicates on the sphere; used by BigQuery GIS.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: COORDINATES
+;; Datums, CRS, projections, EPSG, transformations
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & References ──
+
+(isa SC-Snyder-MapProjections ReferenceWork)
+(title SC-Snyder-MapProjections "Map Projections: A Working Manual (USGS PP 1395)")
+(author SC-Snyder-MapProjections "John P. Snyder")
+(resourceType SC-Snyder-MapProjections book)
+(level SC-Snyder-MapProjections intermediate)
+(section SC-Snyder-MapProjections CoordinateSystems)
+(url SC-Snyder-MapProjections "https://pubs.usgs.gov/pp/1395/report.pdf")
+(desc SC-Snyder-MapProjections "The definitive reference on map projections: derivations, formulas, and properties for every standard projection.")
+
+(isa SC-Bugayevskiy-MapProjRef ReferenceWork)
+(title SC-Bugayevskiy-MapProjRef "Map Projections: A Reference Manual")
+(author SC-Bugayevskiy-MapProjRef "Lev Bugayevskiy & John Snyder")
+(resourceType SC-Bugayevskiy-MapProjRef book)
+(level SC-Bugayevskiy-MapProjRef advanced)
+(section SC-Bugayevskiy-MapProjRef CoordinateSystems)
+(url SC-Bugayevskiy-MapProjRef "https://link.springer.com/book/10.1007/978-3-642-56628-0")
+(desc SC-Bugayevskiy-MapProjRef "Comprehensive mathematical treatment of map projections, distortion analysis, and optimal projection selection.")
+
+(isa SC-Iliffe-DatumsMapProj ReferenceWork)
+(title SC-Iliffe-DatumsMapProj "Datums and Map Projections (2nd ed.)")
+(author SC-Iliffe-DatumsMapProj "Jonathan Iliffe & Roger Lott")
+(resourceType SC-Iliffe-DatumsMapProj book)
+(level SC-Iliffe-DatumsMapProj intermediate)
+(section SC-Iliffe-DatumsMapProj CoordinateSystems)
+(url SC-Iliffe-DatumsMapProj "https://www.whittlespublishing.com/Datums-and-Map-Projections")
+(desc SC-Iliffe-DatumsMapProj "Practical guide to geodetic datums, transformations, and projections for GIS and surveying professionals.")
+
+(isa SC-Snyder-FlatteningEarth ReferenceWork)
+(title SC-Snyder-FlatteningEarth "Flattening the Earth: Two Thousand Years of Map Projections")
+(author SC-Snyder-FlatteningEarth "John P. Snyder")
+(resourceType SC-Snyder-FlatteningEarth book)
+(level SC-Snyder-FlatteningEarth beginner)
+(section SC-Snyder-FlatteningEarth CoordinateSystems)
+(url SC-Snyder-FlatteningEarth "https://press.uchicago.edu/ucp/books/book/chicago/F/bo3632853.html")
+(desc SC-Snyder-FlatteningEarth "Historical survey of map projections from antiquity to modern computing. Accessible and fascinating.")
+
+;; ── Standards & Online Tools ──
+
+(isa SC-EPSG-IO ReferenceWork)
+(title SC-EPSG-IO "EPSG.io: Coordinate Systems Worldwide")
+(author SC-EPSG-IO "MapTiler")
+(resourceType SC-EPSG-IO data)
+(level SC-EPSG-IO beginner)
+(section SC-EPSG-IO CoordinateSystems)
+(url SC-EPSG-IO "https://epsg.io/")
+(desc SC-EPSG-IO "Search engine for EPSG codes with WKT definitions, proj4 strings, transformation parameters, and interactive map.")
+
+(isa SC-PROJ-Docs ReferenceWork)
+(title SC-PROJ-Docs "PROJ Documentation")
+(author SC-PROJ-Docs "PROJ Contributors / OSGeo")
+(resourceType SC-PROJ-Docs code)
+(level SC-PROJ-Docs intermediate)
+(section SC-PROJ-Docs CoordinateSystems)
+(url SC-PROJ-Docs "https://proj.org/")
+(desc SC-PROJ-Docs "The foundational coordinate transformation library used by GDAL, PostGIS, QGIS, and virtually all open-source GIS.")
+
+(isa SC-OGC-WKTCRS ReferenceWork)
+(title SC-OGC-WKTCRS "Spatial Reference Systems (OGC/ISO 19111)")
+(author SC-OGC-WKTCRS "OGC / ISO")
+(resourceType SC-OGC-WKTCRS notes)
+(level SC-OGC-WKTCRS advanced)
+(section SC-OGC-WKTCRS CoordinateSystems)
+(url SC-OGC-WKTCRS "https://www.ogc.org/standard/wkt-crs/")
+(desc SC-OGC-WKTCRS "The standard for Well-Known Text representation of coordinate reference systems (WKT2). Adopted by ISO 19162.")
+
+(isa SC-Esri-UTMZones ReferenceWork)
+(title SC-Esri-UTMZones "Understanding UTM Zones")
+(author SC-Esri-UTMZones "ArcGIS Blog / Esri")
+(resourceType SC-Esri-UTMZones notes)
+(level SC-Esri-UTMZones beginner)
+(section SC-Esri-UTMZones CoordinateSystems)
+(url SC-Esri-UTMZones "https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/gcs_vs_pcs/")
+(desc SC-Esri-UTMZones "Clear explanation of UTM zones, when to use geographic vs. projected coordinate systems, and common pitfalls.")
+
+;; ── Practical Guides ──
+
+(isa SC-Pyproj ReferenceWork)
+(title SC-Pyproj "pyproj: Python Interface to PROJ")
+(author SC-Pyproj "Jeff Whitaker & pyproj contributors")
+(resourceType SC-Pyproj code)
+(level SC-Pyproj beginner)
+(section SC-Pyproj CoordinateSystems)
+(url SC-Pyproj "https://pyproj4.github.io/pyproj/")
+(desc SC-Pyproj "Python bindings for PROJ. Transform coordinates between CRS, query EPSG database, handle datum shifts.")
+
+(isa SC-GeoPandas-Projections ReferenceWork)
+(title SC-GeoPandas-Projections "Coordinate Transformations & Conversions (GeoPandas Guide)")
+(author SC-GeoPandas-Projections "GeoPandas Project")
+(resourceType SC-GeoPandas-Projections notes)
+(level SC-GeoPandas-Projections beginner)
+(section SC-GeoPandas-Projections CoordinateSystems)
+(url SC-GeoPandas-Projections "https://geopandas.org/en/stable/docs/user_guide/projections.html")
+(desc SC-GeoPandas-Projections "Practical guide to reprojecting GeoDataFrames between coordinate systems using .to_crs() method.")
+
+(isa SC-AxisMaps-Projections ReferenceWork)
+(title SC-AxisMaps-Projections "Mercator vs. Equal-Area: Choosing the Right Projection")
+(author SC-AxisMaps-Projections "Axis Maps / Cartography Guide")
+(resourceType SC-AxisMaps-Projections notes)
+(level SC-AxisMaps-Projections beginner)
+(section SC-AxisMaps-Projections CoordinateSystems)
+(url SC-AxisMaps-Projections "https://www.axismaps.com/guide/map-projections")
+(desc SC-AxisMaps-Projections "Visual guide to projection properties, distortion patterns, and choosing projections for different purposes.")
+
+(isa SC-DMA-GeodesyLayman ReferenceWork)
+(title SC-DMA-GeodesyLayman "Geodesy for the Layman (Defense Mapping Agency)")
+(author SC-DMA-GeodesyLayman "DMA Technical Report")
+(resourceType SC-DMA-GeodesyLayman notes)
+(level SC-DMA-GeodesyLayman beginner)
+(section SC-DMA-GeodesyLayman CoordinateSystems)
+(url SC-DMA-GeodesyLayman "https://www.ngs.noaa.gov/PUBS_LIB/Geodesy4Layman/toc.htm")
+(desc SC-DMA-GeodesyLayman "Classic accessible introduction to geodesy: Earth's shape, datums, coordinate systems, and satellite geodesy.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: SPATIAL INDEXING
+;; H3, S2, Geohash, R-tree, k-d tree
+;; ════════════════════════════════════════════════════════════
+
+;; ── Hexagonal & Spherical Grids ──
+
+(isa SC-H3-Docs ReferenceWork)
+(title SC-H3-Docs "H3: Uber's Hexagonal Hierarchical Spatial Index")
+(author SC-H3-Docs "Uber Engineering")
+(resourceType SC-H3-Docs code)
+(level SC-H3-Docs intermediate)
+(section SC-H3-Docs SpatialIndexing)
+(url SC-H3-Docs "https://h3geo.org/")
+(desc SC-H3-Docs "Documentation for Uber's H3 system: hexagonal cells at 16 resolutions, edge/vertex functions, and hierarchical operations.")
+
+(isa SC-H3-Paper ReferenceWork)
+(title SC-H3-Paper "H3: A Hexagonal Hierarchical Geospatial Indexing System (Paper)")
+(author SC-H3-Paper "Isaac Brodsky (Uber, 2018)")
+(resourceType SC-H3-Paper notes)
+(level SC-H3-Paper intermediate)
+(section SC-H3-Paper SpatialIndexing)
+(url SC-H3-Paper "https://eng.uber.com/h3/")
+(desc SC-H3-Paper "Engineering blog post explaining H3's design: icosahedron projection, aperture-7 hierarchy, and use cases at Uber.")
+
+(isa SC-S2Geometry-Idx ReferenceWork)
+(title SC-S2Geometry-Idx "S2 Geometry Library")
+(author SC-S2Geometry-Idx "Google")
+(resourceType SC-S2Geometry-Idx code)
+(level SC-S2Geometry-Idx advanced)
+(section SC-S2Geometry-Idx SpatialIndexing)
+(url SC-S2Geometry-Idx "https://s2geometry.io/")
+(desc SC-S2Geometry-Idx "Documentation for Google's S2: cell IDs, coverings, boolean operations on the sphere. Powers BigQuery GIS.")
+
+(isa SC-S2CellsExplorer ReferenceWork)
+(title SC-S2CellsExplorer "S2 Cells Explorer")
+(author SC-S2CellsExplorer "sidewalklabs")
+(resourceType SC-S2CellsExplorer data)
+(level SC-S2CellsExplorer beginner)
+(section SC-S2CellsExplorer SpatialIndexing)
+(url SC-S2CellsExplorer "https://s2.sidewalklabs.com/regioncoverer/")
+(desc SC-S2CellsExplorer "Interactive visualization of S2 cell decomposition. Explore cell hierarchies, coverings, and containment visually.")
+
+(isa SC-GeohashExplorer ReferenceWork)
+(title SC-GeohashExplorer "Geohash Explorer")
+(author SC-GeohashExplorer "Movable Type Scripts")
+(resourceType SC-GeohashExplorer data)
+(level SC-GeohashExplorer beginner)
+(section SC-GeohashExplorer SpatialIndexing)
+(url SC-GeohashExplorer "https://www.movable-type.co.uk/scripts/geohash.html")
+(desc SC-GeohashExplorer "Interactive geohash calculator and map. Encode/decode coordinates, visualize cell boundaries, understand precision levels.")
+
+;; ── Tree-Based Indexes ──
+
+(isa SC-Guttman-RTreeSIGMOD ReferenceWork)
+(title SC-Guttman-RTreeSIGMOD "R-Trees: A Dynamic Index Structure for Spatial Searching")
+(author SC-Guttman-RTreeSIGMOD "Antonin Guttman (1984, SIGMOD)")
+(resourceType SC-Guttman-RTreeSIGMOD notes)
+(level SC-Guttman-RTreeSIGMOD intermediate)
+(section SC-Guttman-RTreeSIGMOD SpatialIndexing)
+(url SC-Guttman-RTreeSIGMOD "https://dl.acm.org/doi/10.1145/602259.602266")
+(desc SC-Guttman-RTreeSIGMOD "The original R-tree paper. Describes insertion, deletion, splitting, and search in balanced spatial trees.")
+
+(isa SC-Beckmann-RStarTree-Idx ReferenceWork)
+(title SC-Beckmann-RStarTree-Idx "The R*-tree: An Efficient Access Method (1990)")
+(author SC-Beckmann-RStarTree-Idx "Beckmann, Kriegel, Schneider & Seeger")
+(resourceType SC-Beckmann-RStarTree-Idx notes)
+(level SC-Beckmann-RStarTree-Idx advanced)
+(section SC-Beckmann-RStarTree-Idx SpatialIndexing)
+(url SC-Beckmann-RStarTree-Idx "https://dl.acm.org/doi/10.1145/93597.98741")
+(desc SC-Beckmann-RStarTree-Idx "Improved R-tree with forced reinsertion and better split strategy. Significantly better query performance.")
+
+(isa SC-Stanford-KDTree ReferenceWork)
+(title SC-Stanford-KDTree "k-d Trees (Stanford CS Library)")
+(author SC-Stanford-KDTree "Stanford University")
+(resourceType SC-Stanford-KDTree notes)
+(level SC-Stanford-KDTree beginner)
+(section SC-Stanford-KDTree SpatialIndexing)
+(url SC-Stanford-KDTree "https://web.stanford.edu/class/cs106l/")
+(desc SC-Stanford-KDTree "Introduction to k-d tree construction, nearest-neighbor search, and range queries in low-dimensional space.")
+
+(isa SC-Bentley-KDTree ReferenceWork)
+(title SC-Bentley-KDTree "Multidimensional Binary Search Trees (k-d trees)")
+(author SC-Bentley-KDTree "Jon Louis Bentley (1975)")
+(resourceType SC-Bentley-KDTree notes)
+(level SC-Bentley-KDTree intermediate)
+(section SC-Bentley-KDTree SpatialIndexing)
+(url SC-Bentley-KDTree "https://dl.acm.org/doi/10.1145/361002.361007")
+(desc SC-Bentley-KDTree "The foundational paper on k-d trees: binary partitioning of k-dimensional space for efficient search.")
+
+;; ── Comparisons & Practical Guides ──
+
+(isa SC-Carto-SpatialIndexes ReferenceWork)
+(title SC-Carto-SpatialIndexes "Spatial Indexes: Geohash vs. H3 vs. S2")
+(author SC-Carto-SpatialIndexes "Carto Engineering Blog")
+(resourceType SC-Carto-SpatialIndexes notes)
+(level SC-Carto-SpatialIndexes intermediate)
+(section SC-Carto-SpatialIndexes SpatialIndexing)
+(url SC-Carto-SpatialIndexes "https://carto.com/blog/spatial-indexes-geohash-h3-s2")
+(desc SC-Carto-SpatialIndexes "Side-by-side comparison of the three major discrete global grid systems: cell shapes, hierarchies, and trade-offs.")
+
+(isa SC-H3Py ReferenceWork)
+(title SC-H3Py "h3-py: H3 Python Bindings")
+(author SC-H3Py "Uber Technologies")
+(resourceType SC-H3Py code)
+(level SC-H3Py beginner)
+(section SC-H3Py SpatialIndexing)
+(url SC-H3Py "https://uber.github.io/h3-py/")
+(desc SC-H3Py "Python API for H3: lat/lon to cell, k-ring neighbors, polyfill polygons, compact/uncompact hierarchies.")
+
+(isa SC-PythonGeohash ReferenceWork)
+(title SC-PythonGeohash "python-geohash")
+(author SC-PythonGeohash "Hideo Hattori")
+(resourceType SC-PythonGeohash code)
+(level SC-PythonGeohash beginner)
+(section SC-PythonGeohash SpatialIndexing)
+(url SC-PythonGeohash "https://github.com/hkwi/python-geohash")
+(desc SC-PythonGeohash "Python library for geohash encoding/decoding, neighbor finding, and bounding box computation.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: REMOTE SENSING
+;; Satellite imagery, LiDAR, spectral indices, GEE
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa SC-Jensen-DigitalImageProc ReferenceWork)
+(title SC-Jensen-DigitalImageProc "Introductory Digital Image Processing: A Remote Sensing Perspective (4th ed.)")
+(author SC-Jensen-DigitalImageProc "John R. Jensen")
+(resourceType SC-Jensen-DigitalImageProc book)
+(level SC-Jensen-DigitalImageProc beginner)
+(section SC-Jensen-DigitalImageProc RemoteSensing)
+(url SC-Jensen-DigitalImageProc "https://www.pearson.com/en-us/subject-catalog/p/introductory-digital-image-processing/P200000006760")
+(desc SC-Jensen-DigitalImageProc "The standard remote sensing textbook: electromagnetic radiation, sensors, image enhancement, classification, change detection.")
+
+(isa SC-Lillesand-RemoteSensing ReferenceWork)
+(title SC-Lillesand-RemoteSensing "Remote Sensing and Image Interpretation (7th ed.)")
+(author SC-Lillesand-RemoteSensing "Thomas Lillesand, Ralph Kiefer & Jonathan Chipman")
+(resourceType SC-Lillesand-RemoteSensing book)
+(level SC-Lillesand-RemoteSensing beginner)
+(section SC-Lillesand-RemoteSensing RemoteSensing)
+(url SC-Lillesand-RemoteSensing "https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation-p-9781118343289")
+(desc SC-Lillesand-RemoteSensing "Comprehensive introduction covering photographic, thermal, radar, and LiDAR remote sensing with interpretation techniques.")
+
+(isa SC-Sabins-RemoteSensing ReferenceWork)
+(title SC-Sabins-RemoteSensing "Remote Sensing: Principles, Interpretation, and Applications (4th ed.)")
+(author SC-Sabins-RemoteSensing "Floyd Sabins & James Ellis")
+(resourceType SC-Sabins-RemoteSensing book)
+(level SC-Sabins-RemoteSensing intermediate)
+(section SC-Sabins-RemoteSensing RemoteSensing)
+(url SC-Sabins-RemoteSensing "https://www.waveland.com/browse.php?t=728")
+(desc SC-Sabins-RemoteSensing "Covers remote sensing physics, sensors, and applications in geology, land use, oceanography, and environmental monitoring.")
+
+(isa SC-Gonzalez-DigitalImageProc ReferenceWork)
+(title SC-Gonzalez-DigitalImageProc "Digital Image Processing (4th ed.)")
+(author SC-Gonzalez-DigitalImageProc "Rafael Gonzalez & Richard Woods")
+(resourceType SC-Gonzalez-DigitalImageProc book)
+(level SC-Gonzalez-DigitalImageProc intermediate)
+(section SC-Gonzalez-DigitalImageProc RemoteSensing)
+(url SC-Gonzalez-DigitalImageProc "https://www.pearson.com/en-us/subject-catalog/p/digital-image-processing/P200000003224")
+(desc SC-Gonzalez-DigitalImageProc "Foundation text on image processing techniques widely applied in remote sensing: filtering, transforms, segmentation.")
+
+;; ── Google Earth Engine & Cloud Platforms ──
+
+(isa SC-GEE-OfficialDocs ReferenceWork)
+(title SC-GEE-OfficialDocs "Google Earth Engine Official Documentation")
+(author SC-GEE-OfficialDocs "Google")
+(resourceType SC-GEE-OfficialDocs notes)
+(level SC-GEE-OfficialDocs beginner)
+(section SC-GEE-OfficialDocs RemoteSensing)
+(url SC-GEE-OfficialDocs "https://developers.google.com/earth-engine")
+(desc SC-GEE-OfficialDocs "Complete guide to GEE: JavaScript/Python API, image collections, reducers, classifiers, and export workflows.")
+
+(isa SC-Wu-CloudRS-GEE ReferenceWork)
+(title SC-Wu-CloudRS-GEE "Cloud-Based Remote Sensing with Google Earth Engine")
+(author SC-Wu-CloudRS-GEE "Qiusheng Wu et al.")
+(resourceType SC-Wu-CloudRS-GEE book)
+(level SC-Wu-CloudRS-GEE beginner)
+(section SC-Wu-CloudRS-GEE RemoteSensing)
+(url SC-Wu-CloudRS-GEE "https://book.geemap.org/")
+(desc SC-Wu-CloudRS-GEE "Free online book on GEE using the geemap Python package: visualization, analysis, time series, and land cover mapping.")
+
+(isa SC-AwesomeGEE ReferenceWork)
+(title SC-AwesomeGEE "Awesome Earth Engine (GitHub)")
+(author SC-AwesomeGEE "Samapriya Roy & contributors")
+(resourceType SC-AwesomeGEE code)
+(level SC-AwesomeGEE beginner)
+(section SC-AwesomeGEE RemoteSensing)
+(url SC-AwesomeGEE "https://github.com/giswqs/Awesome-GEE")
+(desc SC-AwesomeGEE "Curated list of GEE resources: tutorials, datasets, community scripts, tools, and research papers.")
+
+(isa SC-GEE-DataCatalog ReferenceWork)
+(title SC-GEE-DataCatalog "Earth Engine Data Catalog")
+(author SC-GEE-DataCatalog "Google")
+(resourceType SC-GEE-DataCatalog data)
+(level SC-GEE-DataCatalog beginner)
+(section SC-GEE-DataCatalog RemoteSensing)
+(url SC-GEE-DataCatalog "https://developers.google.com/earth-engine/datasets")
+(desc SC-GEE-DataCatalog "Browse all datasets available in GEE: Landsat, Sentinel, MODIS, climate, terrain, land cover, and more.")
+
+;; ── Tools & Processing ──
+
+(isa SC-Rasterio ReferenceWork)
+(title SC-Rasterio "Rasterio: Geospatial Raster I/O for Python")
+(author SC-Rasterio "Mapbox / Sean Gillies")
+(resourceType SC-Rasterio code)
+(level SC-Rasterio beginner)
+(section SC-Rasterio RemoteSensing)
+(url SC-Rasterio "https://rasterio.readthedocs.io/")
+(desc SC-Rasterio "Pythonic interface to GDAL for reading/writing geospatial raster data. Clean API for band math, windowed reads, reprojection.")
+
+(isa SC-GDAL-OGR ReferenceWork)
+(title SC-GDAL-OGR "GDAL/OGR Documentation")
+(author SC-GDAL-OGR "OSGeo / GDAL Contributors")
+(resourceType SC-GDAL-OGR code)
+(level SC-GDAL-OGR intermediate)
+(section SC-GDAL-OGR RemoteSensing)
+(url SC-GDAL-OGR "https://gdal.org/")
+(desc SC-GDAL-OGR "The foundational geospatial data abstraction library: raster and vector I/O, format conversion, reprojection, warping.")
+
+(isa SC-SentinelHub-EOBrowser ReferenceWork)
+(title SC-SentinelHub-EOBrowser "Sentinel Hub EO Browser")
+(author SC-SentinelHub-EOBrowser "Sinergise")
+(resourceType SC-SentinelHub-EOBrowser data)
+(level SC-SentinelHub-EOBrowser beginner)
+(section SC-SentinelHub-EOBrowser RemoteSensing)
+(url SC-SentinelHub-EOBrowser "https://apps.sentinel-hub.com/eo-browser/")
+(desc SC-SentinelHub-EOBrowser "Free web app to browse and visualize Sentinel, Landsat, and MODIS imagery with custom band combinations and time series.")
+
+(isa SC-USGS-EarthExplorer ReferenceWork)
+(title SC-USGS-EarthExplorer "USGS EarthExplorer")
+(author SC-USGS-EarthExplorer "U.S. Geological Survey")
+(resourceType SC-USGS-EarthExplorer data)
+(level SC-USGS-EarthExplorer beginner)
+(section SC-USGS-EarthExplorer RemoteSensing)
+(url SC-USGS-EarthExplorer "https://earthexplorer.usgs.gov/")
+(desc SC-USGS-EarthExplorer "Portal for downloading Landsat, aerial photography, elevation data, and other USGS-hosted remote sensing datasets.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Boundary data, gazetteers, Python/JS spatial libraries
+;; ════════════════════════════════════════════════════════════
+
+;; ── Boundary & Reference Datasets ──
+
+(isa SC-NaturalEarth ReferenceWork)
+(title SC-NaturalEarth "Natural Earth")
+(author SC-NaturalEarth "Natural Earth Contributors")
+(resourceType SC-NaturalEarth data)
+(level SC-NaturalEarth beginner)
+(section SC-NaturalEarth DatasetsSoftware)
+(url SC-NaturalEarth "https://www.naturalearthdata.com/")
+(desc SC-NaturalEarth "Free vector and raster map data at 1:10m, 1:50m, and 1:110m scales. Countries, states, cities, rivers, lakes, coastlines.")
+
+(isa SC-GADM ReferenceWork)
+(title SC-GADM "GADM: Global Administrative Areas")
+(author SC-GADM "GADM Project")
+(resourceType SC-GADM data)
+(level SC-GADM beginner)
+(section SC-GADM DatasetsSoftware)
+(url SC-GADM "https://gadm.org/")
+(desc SC-GADM "High-resolution administrative boundaries for all countries: national, state/province, district, and sub-district levels.")
+
+(isa SC-OSM ReferenceWork)
+(title SC-OSM "OpenStreetMap (OSM)")
+(author SC-OSM "OpenStreetMap Contributors")
+(resourceType SC-OSM data)
+(level SC-OSM beginner)
+(section SC-OSM DatasetsSoftware)
+(url SC-OSM "https://www.openstreetmap.org/")
+(desc SC-OSM "Collaborative global map with roads, buildings, boundaries, POIs, land use. Planet file downloadable via Geofabrik.")
+
+(isa SC-GeoNames ReferenceWork)
+(title SC-GeoNames "GeoNames")
+(author SC-GeoNames "GeoNames.org")
+(resourceType SC-GeoNames data)
+(level SC-GeoNames beginner)
+(section SC-GeoNames DatasetsSoftware)
+(url SC-GeoNames "https://www.geonames.org/")
+(desc SC-GeoNames "Gazetteer with over 11 million place names, coordinates, population, elevation, and administrative hierarchy. Free download.")
+
+(isa SC-WhosOnFirst ReferenceWork)
+(title SC-WhosOnFirst "Who's On First (Gazetteer)")
+(author SC-WhosOnFirst "Geocode Earth / Mapzen")
+(resourceType SC-WhosOnFirst data)
+(level SC-WhosOnFirst intermediate)
+(section SC-WhosOnFirst DatasetsSoftware)
+(url SC-WhosOnFirst "https://whosonfirst.org/")
+(desc SC-WhosOnFirst "Open gazetteer of places with stable IDs, hierarchical containment, and concordances to other datasets.")
+
+;; ── Python Ecosystem ──
+
+(isa SC-GeoPandas ReferenceWork)
+(title SC-GeoPandas "GeoPandas")
+(author SC-GeoPandas "GeoPandas Developers")
+(resourceType SC-GeoPandas code)
+(level SC-GeoPandas beginner)
+(section SC-GeoPandas DatasetsSoftware)
+(url SC-GeoPandas "https://geopandas.org/")
+(desc SC-GeoPandas "Extends Pandas with spatial data types. Read/write spatial formats, spatial joins, overlay, dissolve, plotting.")
+
+(isa SC-Shapely-DS ReferenceWork)
+(title SC-Shapely-DS "Shapely")
+(author SC-Shapely-DS "Sean Gillies / Toblerity")
+(resourceType SC-Shapely-DS code)
+(level SC-Shapely-DS beginner)
+(section SC-Shapely-DS DatasetsSoftware)
+(url SC-Shapely-DS "https://shapely.readthedocs.io/")
+(desc SC-Shapely-DS "Python library for geometric operations: constructive geometry, predicates, prepared geometry, STR-tree spatial index.")
+
+(isa SC-Fiona ReferenceWork)
+(title SC-Fiona "Fiona: Streaming Vector I/O")
+(author SC-Fiona "Sean Gillies / Toblerity")
+(resourceType SC-Fiona code)
+(level SC-Fiona beginner)
+(section SC-Fiona DatasetsSoftware)
+(url SC-Fiona "https://fiona.readthedocs.io/")
+(desc SC-Fiona "Pythonic wrapper around GDAL/OGR for reading and writing vector spatial data formats (Shapefile, GeoJSON, GPKG).")
+
+(isa SC-Folium ReferenceWork)
+(title SC-Folium "Folium: Python Leaflet Maps")
+(author SC-Folium "Rob Story & contributors")
+(resourceType SC-Folium code)
+(level SC-Folium beginner)
+(section SC-Folium DatasetsSoftware)
+(url SC-Folium "https://python-visualization.github.io/folium/")
+(desc SC-Folium "Generate interactive Leaflet maps from Python. Choropleth maps, markers, GeoJSON overlays, heatmaps.")
+
+;; ── JavaScript & Web Mapping ──
+
+(isa SC-Leaflet ReferenceWork)
+(title SC-Leaflet "Leaflet")
+(author SC-Leaflet "Volodymyr Agafonkin")
+(resourceType SC-Leaflet code)
+(level SC-Leaflet beginner)
+(section SC-Leaflet DatasetsSoftware)
+(url SC-Leaflet "https://leafletjs.com/")
+(desc SC-Leaflet "Lightweight JavaScript library for interactive maps. Tiles, markers, popups, GeoJSON, mobile-friendly. The web mapping standard.")
+
+(isa SC-MapboxGLJS ReferenceWork)
+(title SC-MapboxGLJS "Mapbox GL JS")
+(author SC-MapboxGLJS "Mapbox")
+(resourceType SC-MapboxGLJS code)
+(level SC-MapboxGLJS intermediate)
+(section SC-MapboxGLJS DatasetsSoftware)
+(url SC-MapboxGLJS "https://docs.mapbox.com/mapbox-gl-js/")
+(desc SC-MapboxGLJS "WebGL-powered map rendering: vector tiles, 3D terrain, custom styles, data-driven styling, smooth camera transitions.")
+
+(isa SC-DeckGL ReferenceWork)
+(title SC-DeckGL "deck.gl")
+(author SC-DeckGL "Uber / vis.gl / OpenJS Foundation")
+(resourceType SC-DeckGL code)
+(level SC-DeckGL intermediate)
+(section SC-DeckGL DatasetsSoftware)
+(url SC-DeckGL "https://deck.gl/")
+(desc SC-DeckGL "WebGL2-powered framework for large-scale data visualization: point clouds, arcs, heatmaps, H3 hexagons, trips.")
+
+(isa SC-TurfJS-DS ReferenceWork)
+(title SC-TurfJS-DS "Turf.js")
+(author SC-TurfJS-DS "Mapbox")
+(resourceType SC-TurfJS-DS code)
+(level SC-TurfJS-DS beginner)
+(section SC-TurfJS-DS DatasetsSoftware)
+(url SC-TurfJS-DS "https://turfjs.org/")
+(desc SC-TurfJS-DS "Modular JavaScript library for geospatial analysis: measurement, transformation, classification, joins, boolean operations.")
+
+(isa SC-KeplerGL ReferenceWork)
+(title SC-KeplerGL "Kepler.gl")
+(author SC-KeplerGL "Uber / vis.gl")
+(resourceType SC-KeplerGL code)
+(level SC-KeplerGL beginner)
+(section SC-KeplerGL DatasetsSoftware)
+(url SC-KeplerGL "https://kepler.gl/")
+(desc SC-KeplerGL "Powerful open-source geospatial analysis tool for large-scale data sets. GPU-accelerated rendering, time playback.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources SpatialComputingReference 94)
+(totalSections SpatialComputingReference 8)
+(comment SpatialComputingReference
+  "8 sections: Overview (9), GIS Fundamentals (12), Spatial Databases (11),
+   Algorithms (12), Coordinates (12), Spatial Indexing (12),
+   Remote Sensing (12), Datasets & Software (14). Total: 94 resources.")

@@ -1,0 +1,1017 @@
+;;; ================================================================
+;;; REFERENCE / KNOWLEDGE PRIMITIVES
+;;; 100 resources across 8 sections — Charlotte's convex hull of knowledge
+;;; ================================================================
+;;;
+;;; Structural, declarative, procedural, heuristic & meta knowledge.
+;;; The five vertices of the convex hull itself.
+;;;
+;;; The Atlas Knowledge Primitives diagram decomposes knowledge into
+;;; five irreducible types mapped to Charlotte's five primitives:
+;;; NODE (declarative), EDGE (structural), PROTOCOL (procedural),
+;;; SIGNAL/METRIC (heuristic), and the system itself (meta).
+;;;
+;;; Learning path: Overview → Structural → Declarative → Procedural →
+;;; Heuristic → Meta → Engineering → Datasets & Benchmarks
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts on Knowledge ──
+
+(isa KP-Brachman-KRR ReferenceWork)
+(title KP-Brachman-KRR "Knowledge Representation and Reasoning")
+(author KP-Brachman-KRR "Ronald Brachman & Hector Levesque")
+(resourceType KP-Brachman-KRR book)
+(level KP-Brachman-KRR intermediate)
+(section KP-Brachman-KRR KnowledgePrimitivesOverview)
+(url KP-Brachman-KRR "https://www.elsevier.com/books/knowledge-representation-and-reasoning/brachman/978-0-12-382432-1")
+(desc KP-Brachman-KRR "The standard textbook on KR&R covering logic, frames, semantic networks, description logics, and non-monotonic reasoning.")
+
+(isa KP-Sowa-KR ReferenceWork)
+(title KP-Sowa-KR "Knowledge Representation: Logical, Philosophical, and Computational Foundations")
+(author KP-Sowa-KR "John F. Sowa")
+(resourceType KP-Sowa-KR book)
+(level KP-Sowa-KR advanced)
+(section KP-Sowa-KR KnowledgePrimitivesOverview)
+(url KP-Sowa-KR "https://www.jfsowa.com/krbook/")
+(desc KP-Sowa-KR "Encyclopaedic treatment of knowledge representation spanning philosophy, logic, linguistics, and AI. Introduces conceptual graphs.")
+
+(isa KP-Newell-KnowledgeLevel ReferenceWork)
+(title KP-Newell-KnowledgeLevel "The Knowledge Level")
+(author KP-Newell-KnowledgeLevel "Allen Newell (1982)")
+(resourceType KP-Newell-KnowledgeLevel notes)
+(level KP-Newell-KnowledgeLevel advanced)
+(section KP-Newell-KnowledgeLevel KnowledgePrimitivesOverview)
+(url KP-Newell-KnowledgeLevel "https://doi.org/10.1016/0004-3702(82)90012-1")
+(desc KP-Newell-KnowledgeLevel "Newell's seminal AI paper proposing knowledge as an independent level of analysis above the symbol level, characterised by goals and rationality.")
+
+(isa KP-SEP-Epistemology ReferenceWork)
+(title KP-SEP-Epistemology "Epistemology (Stanford Encyclopedia of Philosophy)")
+(author KP-SEP-Epistemology "SEP / Matthias Steup")
+(resourceType KP-SEP-Epistemology notes)
+(level KP-SEP-Epistemology beginner)
+(section KP-SEP-Epistemology KnowledgePrimitivesOverview)
+(url KP-SEP-Epistemology "https://plato.stanford.edu/entries/epistemology/")
+(desc KP-SEP-Epistemology "Authoritative philosophical survey of what knowledge is, the conditions for justified belief, and the structure of epistemic warrant.")
+
+(isa KP-Polanyi-PersonalKnowledge ReferenceWork)
+(title KP-Polanyi-PersonalKnowledge "Personal Knowledge: Towards a Post-Critical Philosophy")
+(author KP-Polanyi-PersonalKnowledge "Michael Polanyi")
+(resourceType KP-Polanyi-PersonalKnowledge book)
+(level KP-Polanyi-PersonalKnowledge intermediate)
+(section KP-Polanyi-PersonalKnowledge KnowledgePrimitivesOverview)
+(url KP-Polanyi-PersonalKnowledge "https://press.uchicago.edu/ucp/books/book/chicago/P/bo19722848.html")
+(desc KP-Polanyi-PersonalKnowledge "Polanyi's classic on tacit knowledge — the idea that 'we know more than we can tell' — foundational for heuristic and procedural knowledge.")
+
+;; ── Knowledge in AI Systems ──
+
+(isa KP-Russell-AIMA ReferenceWork)
+(title KP-Russell-AIMA "Artificial Intelligence: A Modern Approach (4th Ed.)")
+(author KP-Russell-AIMA "Stuart Russell & Peter Norvig")
+(resourceType KP-Russell-AIMA book)
+(level KP-Russell-AIMA beginner)
+(section KP-Russell-AIMA KnowledgePrimitivesOverview)
+(url KP-Russell-AIMA "https://aima.cs.berkeley.edu/")
+(desc KP-Russell-AIMA "The definitive AI textbook. Chapters on knowledge representation, logical agents, planning, and probabilistic reasoning cover all five knowledge types.")
+
+(isa KP-Kejriwal-BuildingKG ReferenceWork)
+(title KP-Kejriwal-BuildingKG "Building Knowledge Graphs")
+(author KP-Kejriwal-BuildingKG "Mayank Kejriwal, Craig Knoblock & Pedro Szekely")
+(resourceType KP-Kejriwal-BuildingKG book)
+(level KP-Kejriwal-BuildingKG intermediate)
+(section KP-Kejriwal-BuildingKG KnowledgePrimitivesOverview)
+(url KP-Kejriwal-BuildingKG "https://mitpress.mit.edu/9780262045094/building-knowledge-graphs/")
+(desc KP-Kejriwal-BuildingKG "End-to-end guide to constructing knowledge graphs from heterogeneous sources, covering extraction, integration, completion, and querying.")
+
+(isa KP-Kejriwal-KGFundamentals ReferenceWork)
+(title KP-Kejriwal-KGFundamentals "Knowledge Graphs: Fundamentals, Techniques, and Applications")
+(author KP-Kejriwal-KGFundamentals "Mayank Kejriwal, Craig Knoblock & Pedro Szekely")
+(resourceType KP-Kejriwal-KGFundamentals book)
+(level KP-Kejriwal-KGFundamentals intermediate)
+(section KP-Kejriwal-KGFundamentals KnowledgePrimitivesOverview)
+(url KP-Kejriwal-KGFundamentals "https://mitpress.mit.edu/9780262045094/knowledge-graphs/")
+(desc KP-Kejriwal-KGFundamentals "Comprehensive textbook on knowledge graph construction, embedding, reasoning, and deployment in real-world applications.")
+
+(isa KP-W3C-SemanticWeb ReferenceWork)
+(title KP-W3C-SemanticWeb "The Semantic Web (W3C Overview)")
+(author KP-W3C-SemanticWeb "W3C")
+(resourceType KP-W3C-SemanticWeb notes)
+(level KP-W3C-SemanticWeb beginner)
+(section KP-W3C-SemanticWeb KnowledgePrimitivesOverview)
+(url KP-W3C-SemanticWeb "https://www.w3.org/standards/semanticweb/")
+(desc KP-W3C-SemanticWeb "W3C standards page covering RDF, OWL, SPARQL, and linked data — the web-scale infrastructure for machine-readable knowledge.")
+
+;; ── Lectures & Surveys ──
+
+(isa KP-Stanford-CS520 ReferenceWork)
+(title KP-Stanford-CS520 "Knowledge Graphs (Stanford CS520)")
+(author KP-Stanford-CS520 "Vinay Chaudhri et al.")
+(resourceType KP-Stanford-CS520 course)
+(level KP-Stanford-CS520 intermediate)
+(section KP-Stanford-CS520 KnowledgePrimitivesOverview)
+(url KP-Stanford-CS520 "https://web.stanford.edu/class/cs520/")
+(desc KP-Stanford-CS520 "Stanford seminar covering knowledge graph construction, reasoning, embedding, and applications across industry.")
+
+(isa KP-Dai-KGEmbeddingSurvey ReferenceWork)
+(title KP-Dai-KGEmbeddingSurvey "A Survey of Knowledge Graph Embedding Methods")
+(author KP-Dai-KGEmbeddingSurvey "Dai et al. (2020)")
+(resourceType KP-Dai-KGEmbeddingSurvey notes)
+(level KP-Dai-KGEmbeddingSurvey advanced)
+(section KP-Dai-KGEmbeddingSurvey KnowledgePrimitivesOverview)
+(url KP-Dai-KGEmbeddingSurvey "https://doi.org/10.1109/TKDE.2017.2754499")
+(desc KP-Dai-KGEmbeddingSurvey "Comprehensive survey of KG embedding techniques including TransE, RotatE, ComplEx, and their theoretical properties.")
+
+(isa KP-Levesque-KRLectures ReferenceWork)
+(title KP-Levesque-KRLectures "Knowledge Representation and Reasoning (Brachman & Levesque lectures)")
+(author KP-Levesque-KRLectures "Hector Levesque")
+(resourceType KP-Levesque-KRLectures video)
+(level KP-Levesque-KRLectures intermediate)
+(section KP-Levesque-KRLectures KnowledgePrimitivesOverview)
+(url KP-Levesque-KRLectures "https://www.youtube.com/results?search_query=Hector+Levesque+knowledge+representation")
+(desc KP-Levesque-KRLectures "Lectures by Levesque covering the foundations of KR: expressiveness vs tractability, the frame problem, and closed-world reasoning.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: STRUCTURAL KNOWLEDGE
+;; Relationships between objects and concepts — maps to EDGE
+;; ════════════════════════════════════════════════════════════
+
+;; ── Semantic Networks & Ontologies ──
+
+(isa KP-Sowa-SemanticNetworks ReferenceWork)
+(title KP-Sowa-SemanticNetworks "Semantic Networks in Artificial Intelligence")
+(author KP-Sowa-SemanticNetworks "John F. Sowa (1992)")
+(resourceType KP-Sowa-SemanticNetworks notes)
+(level KP-Sowa-SemanticNetworks intermediate)
+(section KP-Sowa-SemanticNetworks StructuralKnowledge)
+(url KP-Sowa-SemanticNetworks "https://www.jfsowa.com/pubs/semnet.htm")
+(desc KP-Sowa-SemanticNetworks "Sowa's definitive survey of semantic network formalisms from Quillian's Teachable Language Comprehender to modern conceptual graphs.")
+
+(isa KP-Noy-Ontology101 ReferenceWork)
+(title KP-Noy-Ontology101 "Ontology Development 101: A Guide to Creating Your First Ontology")
+(author KP-Noy-Ontology101 "Noy & McGuinness (Stanford)")
+(resourceType KP-Noy-Ontology101 notes)
+(level KP-Noy-Ontology101 beginner)
+(section KP-Noy-Ontology101 StructuralKnowledge)
+(url KP-Noy-Ontology101 "https://protege.stanford.edu/publications/ontology_development/ontology101.pdf")
+(desc KP-Noy-Ontology101 "The classic practical guide to ontology engineering with Protege, covering classes, properties, constraints, and design patterns.")
+
+(isa KP-Baader-DLHandbook ReferenceWork)
+(title KP-Baader-DLHandbook "The Description Logic Handbook (2nd Ed.)")
+(author KP-Baader-DLHandbook "Baader, Calvanese, McGuinness et al.")
+(resourceType KP-Baader-DLHandbook book)
+(level KP-Baader-DLHandbook advanced)
+(section KP-Baader-DLHandbook StructuralKnowledge)
+(url KP-Baader-DLHandbook "https://www.cambridge.org/core/books/description-logic-handbook/9780521150118")
+(desc KP-Baader-DLHandbook "Comprehensive reference on description logics — the formal foundation of OWL and modern ontology languages.")
+
+(isa KP-Baader-IntroDL ReferenceWork)
+(title KP-Baader-IntroDL "An Introduction to Description Logics")
+(author KP-Baader-IntroDL "Franz Baader & Werner Nutt")
+(resourceType KP-Baader-IntroDL notes)
+(level KP-Baader-IntroDL intermediate)
+(section KP-Baader-IntroDL StructuralKnowledge)
+(url KP-Baader-IntroDL "https://lat.inf.tu-dresden.de/research/papers/2003/BaaderNutt-IntroToDL-KR.pdf")
+(desc KP-Baader-IntroDL "Accessible introduction to DL syntax, semantics, reasoning services, and the expressiveness-tractability trade-off.")
+
+(isa KP-Fensel-Ontologies ReferenceWork)
+(title KP-Fensel-Ontologies "Ontologies: A Silver Bullet for Knowledge Management and Electronic Commerce")
+(author KP-Fensel-Ontologies "Dieter Fensel")
+(resourceType KP-Fensel-Ontologies book)
+(level KP-Fensel-Ontologies intermediate)
+(section KP-Fensel-Ontologies StructuralKnowledge)
+(url KP-Fensel-Ontologies "https://link.springer.com/book/10.1007/978-3-662-09083-1")
+(desc KP-Fensel-Ontologies "Early but influential monograph on the role of ontologies in enabling interoperability across knowledge systems.")
+
+;; ── Graph Data Models & Property Graphs ──
+
+(isa KP-Robinson-GraphDatabases ReferenceWork)
+(title KP-Robinson-GraphDatabases "Graph Databases (2nd Ed.)")
+(author KP-Robinson-GraphDatabases "Ian Robinson, Jim Webber & Emil Eifrem")
+(resourceType KP-Robinson-GraphDatabases book)
+(level KP-Robinson-GraphDatabases beginner)
+(section KP-Robinson-GraphDatabases StructuralKnowledge)
+(url KP-Robinson-GraphDatabases "https://neo4j.com/graph-databases-book/")
+(desc KP-Robinson-GraphDatabases "Free O'Reilly book introducing the property graph model, Cypher query language, and graph database design patterns.")
+
+(isa KP-W3C-RDF11Primer ReferenceWork)
+(title KP-W3C-RDF11Primer "RDF 1.1 Primer (W3C)")
+(author KP-W3C-RDF11Primer "W3C")
+(resourceType KP-W3C-RDF11Primer notes)
+(level KP-W3C-RDF11Primer beginner)
+(section KP-W3C-RDF11Primer StructuralKnowledge)
+(url KP-W3C-RDF11Primer "https://www.w3.org/TR/rdf11-primer/")
+(desc KP-W3C-RDF11Primer "Official W3C primer on the Resource Description Framework — subject-predicate-object triples as the atomic unit of structural knowledge.")
+
+(isa KP-W3C-SPARQL11 ReferenceWork)
+(title KP-W3C-SPARQL11 "SPARQL 1.1 Query Language (W3C)")
+(author KP-W3C-SPARQL11 "W3C")
+(resourceType KP-W3C-SPARQL11 notes)
+(level KP-W3C-SPARQL11 intermediate)
+(section KP-W3C-SPARQL11 StructuralKnowledge)
+(url KP-W3C-SPARQL11 "https://www.w3.org/TR/sparql11-query/")
+(desc KP-W3C-SPARQL11 "The W3C specification for querying RDF graphs. SPARQL is the SQL of the semantic web.")
+
+(isa KP-Deutsch-PropertyGraphISO ReferenceWork)
+(title KP-Deutsch-PropertyGraphISO "Property Graph Model (ISO GQL & SQL/PGQ)")
+(author KP-Deutsch-PropertyGraphISO "ISO / Deutsch et al.")
+(resourceType KP-Deutsch-PropertyGraphISO notes)
+(level KP-Deutsch-PropertyGraphISO advanced)
+(section KP-Deutsch-PropertyGraphISO StructuralKnowledge)
+(url KP-Deutsch-PropertyGraphISO "https://doi.org/10.1145/3183713.3190657")
+(desc KP-Deutsch-PropertyGraphISO "Academic foundation for the ISO Graph Query Language standard, unifying property graph models across database systems.")
+
+;; ── Knowledge Graph Construction & Link Prediction ──
+
+(isa KP-Bordes-TransE ReferenceWork)
+(title KP-Bordes-TransE "Translating Embeddings for Modeling Multi-relational Data (TransE)")
+(author KP-Bordes-TransE "Bordes et al. (2013)")
+(resourceType KP-Bordes-TransE notes)
+(level KP-Bordes-TransE advanced)
+(section KP-Bordes-TransE StructuralKnowledge)
+(url KP-Bordes-TransE "https://proceedings.neurips.cc/paper/2013/hash/1cecc7a77928ca8133fa24680a88d2f9-Abstract.html")
+(desc KP-Bordes-TransE "The foundational KG embedding paper: model relations as translations in embedding space (h + r ≈ t). Over 10,000 citations.")
+
+(isa KP-Sun-RotatE ReferenceWork)
+(title KP-Sun-RotatE "RotatE: Knowledge Graph Embedding by Relational Rotation in Complex Space")
+(author KP-Sun-RotatE "Sun et al. (2019)")
+(resourceType KP-Sun-RotatE notes)
+(level KP-Sun-RotatE advanced)
+(section KP-Sun-RotatE StructuralKnowledge)
+(url KP-Sun-RotatE "https://openreview.net/forum?id=HkgEQnRqYQ")
+(desc KP-Sun-RotatE "Models relations as rotations in complex vector space, capturing symmetry, antisymmetry, inversion, and composition patterns.")
+
+(isa KP-Trouillon-ComplEx ReferenceWork)
+(title KP-Trouillon-ComplEx "Knowledge Graph Completion via Complex Tensor Factorization (ComplEx)")
+(author KP-Trouillon-ComplEx "Trouillon et al. (2016)")
+(resourceType KP-Trouillon-ComplEx notes)
+(level KP-Trouillon-ComplEx advanced)
+(section KP-Trouillon-ComplEx StructuralKnowledge)
+(url KP-Trouillon-ComplEx "https://jmlr.org/papers/v18/16-563.html")
+(desc KP-Trouillon-ComplEx "Complex-valued tensor factorization for KG link prediction, handling asymmetric relations through complex conjugation.")
+
+(isa KP-Nickel-RelationalML ReferenceWork)
+(title KP-Nickel-RelationalML "A Review of Relational Machine Learning for Knowledge Graphs")
+(author KP-Nickel-RelationalML "Nickel et al. (2016)")
+(resourceType KP-Nickel-RelationalML notes)
+(level KP-Nickel-RelationalML intermediate)
+(section KP-Nickel-RelationalML StructuralKnowledge)
+(url KP-Nickel-RelationalML "https://doi.org/10.1109/JPROC.2015.2483592")
+(desc KP-Nickel-RelationalML "IEEE Proceedings survey covering statistical relational learning, tensor factorization, and neural approaches for KG completion.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: DECLARATIVE KNOWLEDGE
+;; Object facts, ground truths, assertions — maps to NODE
+;; ════════════════════════════════════════════════════════════
+
+;; ── Logic & Formal Foundations ──
+
+(isa KP-Mendelson-MathLogic ReferenceWork)
+(title KP-Mendelson-MathLogic "Introduction to Mathematical Logic (6th Ed.)")
+(author KP-Mendelson-MathLogic "Elliott Mendelson")
+(resourceType KP-Mendelson-MathLogic book)
+(level KP-Mendelson-MathLogic intermediate)
+(section KP-Mendelson-MathLogic DeclarativeKnowledge)
+(url KP-Mendelson-MathLogic "https://www.routledge.com/Introduction-to-Mathematical-Logic/Mendelson/p/book/9781482237726")
+(desc KP-Mendelson-MathLogic "Classic textbook on propositional and predicate logic, completeness, incompleteness, and model theory — the foundation of declarative knowledge.")
+
+(isa KP-Gallier-LogicForCS ReferenceWork)
+(title KP-Gallier-LogicForCS "Logic for Computer Science: Foundations of Automatic Theorem Proving")
+(author KP-Gallier-LogicForCS "Jean Gallier")
+(resourceType KP-Gallier-LogicForCS book)
+(level KP-Gallier-LogicForCS intermediate)
+(section KP-Gallier-LogicForCS DeclarativeKnowledge)
+(url KP-Gallier-LogicForCS "https://www.cis.upenn.edu/~jean/gbooks/logic.html")
+(desc KP-Gallier-LogicForCS "Free textbook covering resolution, unification, Herbrand's theorem, and automated reasoning — the computational engine behind declarative knowledge.")
+
+(isa KP-Green-Datalog ReferenceWork)
+(title KP-Green-Datalog "Datalog and Recursive Query Processing")
+(author KP-Green-Datalog "Todd J. Green et al. (2013)")
+(resourceType KP-Green-Datalog notes)
+(level KP-Green-Datalog intermediate)
+(section KP-Green-Datalog DeclarativeKnowledge)
+(url KP-Green-Datalog "https://doi.org/10.1561/1900000017")
+(desc KP-Green-Datalog "Survey of Datalog as a knowledge representation language: stratified negation, aggregation, and modern implementations.")
+
+(isa KP-Levesque-WhatIsKB ReferenceWork)
+(title KP-Levesque-WhatIsKB "What is a Knowledge Base? (Levesque 1986)")
+(author KP-Levesque-WhatIsKB "Hector Levesque")
+(resourceType KP-Levesque-WhatIsKB notes)
+(level KP-Levesque-WhatIsKB advanced)
+(section KP-Levesque-WhatIsKB DeclarativeKnowledge)
+(url KP-Levesque-WhatIsKB "https://www.cs.toronto.edu/~hector/Papers/whatis.pdf")
+(desc KP-Levesque-WhatIsKB "Foundational paper distinguishing a knowledge base (declarative semantics) from a database (extensional semantics).")
+
+;; ── Large-Scale Knowledge Bases ──
+
+(isa KP-Vrandecic-Wikidata ReferenceWork)
+(title KP-Vrandecic-Wikidata "Wikidata: A Free Collaborative Knowledgebase")
+(author KP-Vrandecic-Wikidata "Vrandecic & Krotzsch (2014)")
+(resourceType KP-Vrandecic-Wikidata notes)
+(level KP-Vrandecic-Wikidata beginner)
+(section KP-Vrandecic-Wikidata DeclarativeKnowledge)
+(url KP-Vrandecic-Wikidata "https://doi.org/10.1145/2629489")
+(desc KP-Vrandecic-Wikidata "The foundational paper on Wikidata — the free, multilingual knowledge base with 100M+ items serving as structured backbone of Wikipedia.")
+
+(isa KP-Lehmann-DBpedia ReferenceWork)
+(title KP-Lehmann-DBpedia "DBpedia: A Large-Scale, Multilingual Knowledge Base")
+(author KP-Lehmann-DBpedia "Lehmann et al. (2015)")
+(resourceType KP-Lehmann-DBpedia notes)
+(level KP-Lehmann-DBpedia intermediate)
+(section KP-Lehmann-DBpedia DeclarativeKnowledge)
+(url KP-Lehmann-DBpedia "https://doi.org/10.3233/SW-140134")
+(desc KP-Lehmann-DBpedia "Describes DBpedia's extraction framework, ontology, and interlinks. One of the central hubs of the Linked Open Data cloud.")
+
+(isa KP-Suchanek-YAGO ReferenceWork)
+(title KP-Suchanek-YAGO "YAGO: A Core of Semantic Knowledge")
+(author KP-Suchanek-YAGO "Suchanek, Kasneci & Weikum (2007)")
+(resourceType KP-Suchanek-YAGO notes)
+(level KP-Suchanek-YAGO intermediate)
+(section KP-Suchanek-YAGO DeclarativeKnowledge)
+(url KP-Suchanek-YAGO "https://doi.org/10.1145/1242572.1242667")
+(desc KP-Suchanek-YAGO "Introduces YAGO, unifying WordNet taxonomy with Wikipedia facts into a high-precision knowledge base with 120M+ facts.")
+
+(isa KP-Bollacker-Freebase ReferenceWork)
+(title KP-Bollacker-Freebase "Freebase: A Collaboratively Created Graph Database for Structuring Human Knowledge")
+(author KP-Bollacker-Freebase "Bollacker et al. (2008)")
+(resourceType KP-Bollacker-Freebase notes)
+(level KP-Bollacker-Freebase intermediate)
+(section KP-Bollacker-Freebase DeclarativeKnowledge)
+(url KP-Bollacker-Freebase "https://doi.org/10.1145/1376616.1376746")
+(desc KP-Bollacker-Freebase "The Freebase paper — the collaborative structured knowledge project that became Google's Knowledge Graph.")
+
+(isa KP-Lenat-Cyc ReferenceWork)
+(title KP-Lenat-Cyc "Cyc: A Large-Scale Investment in Knowledge Infrastructure")
+(author KP-Lenat-Cyc "Douglas Lenat (1995)")
+(resourceType KP-Lenat-Cyc notes)
+(level KP-Lenat-Cyc intermediate)
+(section KP-Lenat-Cyc DeclarativeKnowledge)
+(url KP-Lenat-Cyc "https://doi.org/10.1145/219717.219745")
+(desc KP-Lenat-Cyc "Lenat's overview of the Cyc project — the ambitious 30+ year effort to encode common-sense declarative knowledge in formal logic.")
+
+;; ── Fact Extraction & Knowledge Base Construction ──
+
+(isa KP-Dong-KnowledgeVault ReferenceWork)
+(title KP-Dong-KnowledgeVault "Knowledge Vault: A Web-Scale Approach to Probabilistic Knowledge Fusion")
+(author KP-Dong-KnowledgeVault "Dong et al. (Google, 2014)")
+(resourceType KP-Dong-KnowledgeVault notes)
+(level KP-Dong-KnowledgeVault advanced)
+(section KP-Dong-KnowledgeVault DeclarativeKnowledge)
+(url KP-Dong-KnowledgeVault "https://doi.org/10.1145/2623330.2623623")
+(desc KP-Dong-KnowledgeVault "Google's probabilistic approach to extracting and fusing facts from web text, DOM structure, and existing KBs at web scale.")
+
+(isa KP-Banko-OpenIE ReferenceWork)
+(title KP-Banko-OpenIE "OpenIE: Open Information Extraction from the Web")
+(author KP-Banko-OpenIE "Banko et al. (2007)")
+(resourceType KP-Banko-OpenIE notes)
+(level KP-Banko-OpenIE intermediate)
+(section KP-Banko-OpenIE DeclarativeKnowledge)
+(url KP-Banko-OpenIE "https://dl.acm.org/doi/10.5555/1625275.1625705")
+(desc KP-Banko-OpenIE "Seminal paper on domain-independent relation extraction from text — extracting (subject, relation, object) triples without pre-defined schemas.")
+
+(isa KP-Zhang-DeepDive ReferenceWork)
+(title KP-Zhang-DeepDive "DeepDive: A Knowledge Management System for Science")
+(author KP-Zhang-DeepDive "Zhang et al. (2017)")
+(resourceType KP-Zhang-DeepDive notes)
+(level KP-Zhang-DeepDive intermediate)
+(section KP-Zhang-DeepDive DeclarativeKnowledge)
+(url KP-Zhang-DeepDive "https://doi.org/10.1109/TKDE.2017.2697432")
+(desc KP-Zhang-DeepDive "Stanford's system for constructing knowledge bases from dark data using statistical inference, distant supervision, and user feedback.")
+
+(isa KP-NIST-TACKBP ReferenceWork)
+(title KP-NIST-TACKBP "Knowledge Base Population (TAC-KBP)")
+(author KP-NIST-TACKBP "NIST / TAC")
+(resourceType KP-NIST-TACKBP data)
+(level KP-NIST-TACKBP intermediate)
+(section KP-NIST-TACKBP DeclarativeKnowledge)
+(url KP-NIST-TACKBP "https://tac.nist.gov/")
+(desc KP-NIST-TACKBP "NIST's Text Analysis Conference benchmark for extracting entities, relations, and events from text to populate knowledge bases.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: PROCEDURAL KNOWLEDGE
+;; Rules, procedures, recipes for action — maps to PROTOCOL
+;; ════════════════════════════════════════════════════════════
+
+;; ── Production Systems & Rule Engines ──
+
+(isa KP-Brownston-ProductionSystems ReferenceWork)
+(title KP-Brownston-ProductionSystems "Production Systems and Rule-Based Inference")
+(author KP-Brownston-ProductionSystems "Brownston, Farrell, Kant & Martin")
+(resourceType KP-Brownston-ProductionSystems book)
+(level KP-Brownston-ProductionSystems intermediate)
+(section KP-Brownston-ProductionSystems ProceduralKnowledge)
+(url KP-Brownston-ProductionSystems "https://dl.acm.org/doi/book/10.5555/4944")
+(desc KP-Brownston-ProductionSystems "Classic reference on production system architectures: working memory, conflict resolution, the Rete algorithm, and OPS5.")
+
+(isa KP-Forgy-Rete ReferenceWork)
+(title KP-Forgy-Rete "The Rete Match Algorithm")
+(author KP-Forgy-Rete "Charles Forgy (1982)")
+(resourceType KP-Forgy-Rete notes)
+(level KP-Forgy-Rete advanced)
+(section KP-Forgy-Rete ProceduralKnowledge)
+(url KP-Forgy-Rete "https://doi.org/10.1016/0004-3702(82)90020-0")
+(desc KP-Forgy-Rete "The original paper on the Rete algorithm — the efficient pattern-matching algorithm at the heart of production rule systems.")
+
+(isa KP-CLIPS-Reference ReferenceWork)
+(title KP-CLIPS-Reference "CLIPS Reference Manual")
+(author KP-CLIPS-Reference "NASA / Gary Riley")
+(resourceType KP-CLIPS-Reference code)
+(level KP-CLIPS-Reference intermediate)
+(section KP-CLIPS-Reference ProceduralKnowledge)
+(url KP-CLIPS-Reference "https://www.clipsrules.net/")
+(desc KP-CLIPS-Reference "CLIPS (C Language Integrated Production System) — NASA's expert system shell, still the standard teaching tool for rule-based AI.")
+
+(isa KP-Drools-BRMS ReferenceWork)
+(title KP-Drools-BRMS "Drools: Business Rules Management System")
+(author KP-Drools-BRMS "Red Hat / KIE Group")
+(resourceType KP-Drools-BRMS code)
+(level KP-Drools-BRMS intermediate)
+(section KP-Drools-BRMS ProceduralKnowledge)
+(url KP-Drools-BRMS "https://www.drools.org/")
+(desc KP-Drools-BRMS "Open-source Java rule engine implementing the Rete algorithm. Widely used in enterprise for encoding procedural business logic.")
+
+;; ── Planning & Automated Reasoning ──
+
+(isa KP-Ghallab-AutomatedPlanning ReferenceWork)
+(title KP-Ghallab-AutomatedPlanning "Automated Planning: Theory and Practice")
+(author KP-Ghallab-AutomatedPlanning "Ghallab, Nau & Traverso")
+(resourceType KP-Ghallab-AutomatedPlanning book)
+(level KP-Ghallab-AutomatedPlanning intermediate)
+(section KP-Ghallab-AutomatedPlanning ProceduralKnowledge)
+(url KP-Ghallab-AutomatedPlanning "https://www.elsevier.com/books/automated-planning/ghallab/978-1-55860-856-6")
+(desc KP-Ghallab-AutomatedPlanning "The definitive textbook on AI planning covering STRIPS, partial-order planning, hierarchical task networks, and planning under uncertainty.")
+
+(isa KP-Fikes-STRIPS ReferenceWork)
+(title KP-Fikes-STRIPS "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving")
+(author KP-Fikes-STRIPS "Fikes & Nilsson (1971)")
+(resourceType KP-Fikes-STRIPS notes)
+(level KP-Fikes-STRIPS intermediate)
+(section KP-Fikes-STRIPS ProceduralKnowledge)
+(url KP-Fikes-STRIPS "https://doi.org/10.1016/0004-3702(71)90010-5")
+(desc KP-Fikes-STRIPS "The foundational planning paper introducing preconditions and effects as the formalism for procedural knowledge of actions.")
+
+(isa KP-McDermott-PDDL ReferenceWork)
+(title KP-McDermott-PDDL "PDDL — The Planning Domain Definition Language")
+(author KP-McDermott-PDDL "McDermott et al. (1998)")
+(resourceType KP-McDermott-PDDL notes)
+(level KP-McDermott-PDDL intermediate)
+(section KP-McDermott-PDDL ProceduralKnowledge)
+(url KP-McDermott-PDDL "https://planning.wiki/ref/pddl")
+(desc KP-McDermott-PDDL "The standard language for encoding planning domains, used across the International Planning Competition. Encodes procedural knowledge as action schemas.")
+
+(isa KP-Erol-HTN ReferenceWork)
+(title KP-Erol-HTN "Hierarchical Task Network Planning: Formalization, Analysis, and Implementation")
+(author KP-Erol-HTN "Erol, Hendler & Nau (1994)")
+(resourceType KP-Erol-HTN notes)
+(level KP-Erol-HTN advanced)
+(section KP-Erol-HTN ProceduralKnowledge)
+(url KP-Erol-HTN "https://doi.org/10.1016/0004-3702(94)90022-1")
+(desc KP-Erol-HTN "Formal treatment of HTN planning — decomposing complex procedures into sub-tasks, the closest planning formalism to human procedural knowledge.")
+
+;; ── Workflow, State Machines & Process Modelling ──
+
+(isa KP-OMG-BPMN ReferenceWork)
+(title KP-OMG-BPMN "Business Process Model and Notation (BPMN 2.0)")
+(author KP-OMG-BPMN "OMG")
+(resourceType KP-OMG-BPMN notes)
+(level KP-OMG-BPMN beginner)
+(section KP-OMG-BPMN ProceduralKnowledge)
+(url KP-OMG-BPMN "https://www.omg.org/spec/BPMN/2.0/")
+(desc KP-OMG-BPMN "The OMG standard for graphically modelling business processes — the industry-standard language for encoding procedural knowledge in organisations.")
+
+(isa KP-Hoare-CSP ReferenceWork)
+(title KP-Hoare-CSP "Communicating Sequential Processes")
+(author KP-Hoare-CSP "C.A.R. Hoare")
+(resourceType KP-Hoare-CSP book)
+(level KP-Hoare-CSP advanced)
+(section KP-Hoare-CSP ProceduralKnowledge)
+(url KP-Hoare-CSP "http://www.usingcsp.com/cspbook.pdf")
+(desc KP-Hoare-CSP "Hoare's landmark work on process algebra — a formal language for describing concurrent procedural interactions. Free PDF.")
+
+(isa KP-Khourshid-XState ReferenceWork)
+(title KP-Khourshid-XState "XState: State Machines and Statecharts for JavaScript")
+(author KP-Khourshid-XState "David Khourshid")
+(resourceType KP-Khourshid-XState code)
+(level KP-Khourshid-XState beginner)
+(section KP-Khourshid-XState ProceduralKnowledge)
+(url KP-Khourshid-XState "https://xstate.js.org/")
+(desc KP-Khourshid-XState "Modern implementation of Harel statecharts in JavaScript/TypeScript — encoding procedural UI and system logic as finite state machines.")
+
+(isa KP-Harel-Statecharts ReferenceWork)
+(title KP-Harel-Statecharts "Statecharts: A Visual Formalism for Complex Systems")
+(author KP-Harel-Statecharts "David Harel (1987)")
+(resourceType KP-Harel-Statecharts notes)
+(level KP-Harel-Statecharts intermediate)
+(section KP-Harel-Statecharts ProceduralKnowledge)
+(url KP-Harel-Statecharts "https://doi.org/10.1016/0167-6423(87)90035-9")
+(desc KP-Harel-Statecharts "Harel's influential paper extending finite state machines with hierarchy, concurrency, and history — the theoretical basis for UML state diagrams.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: HEURISTIC KNOWLEDGE
+;; Rules of thumb, approximate reasoning — maps to SIGNAL / METRIC
+;; ════════════════════════════════════════════════════════════
+
+;; ── Expert Systems & Certainty Reasoning ──
+
+(isa KP-Buchanan-MYCIN ReferenceWork)
+(title KP-Buchanan-MYCIN "Rule-Based Expert Systems: The MYCIN Experiments")
+(author KP-Buchanan-MYCIN "Buchanan & Shortliffe (Eds.)")
+(resourceType KP-Buchanan-MYCIN book)
+(level KP-Buchanan-MYCIN intermediate)
+(section KP-Buchanan-MYCIN HeuristicKnowledge)
+(url KP-Buchanan-MYCIN "https://people.dbmi.columbia.edu/~ehs7001/Buchanan-Shortliffe-1984/MYCIN%20Book.htm")
+(desc KP-Buchanan-MYCIN "The definitive account of MYCIN — the landmark expert system for antibiotic therapy, introducing certainty factors for heuristic reasoning.")
+
+(isa KP-Giarratano-ExpertSystems ReferenceWork)
+(title KP-Giarratano-ExpertSystems "Expert Systems: Principles and Programming")
+(author KP-Giarratano-ExpertSystems "Giarratano & Riley")
+(resourceType KP-Giarratano-ExpertSystems book)
+(level KP-Giarratano-ExpertSystems beginner)
+(section KP-Giarratano-ExpertSystems HeuristicKnowledge)
+(url KP-Giarratano-ExpertSystems "https://www.cengage.com/c/expert-systems-4e-giarratano/9780534384470/")
+(desc KP-Giarratano-ExpertSystems "Standard textbook on expert system design covering forward/backward chaining, certainty factors, and CLIPS programming.")
+
+(isa KP-Linstone-Delphi ReferenceWork)
+(title KP-Linstone-Delphi "The Delphi Method: Techniques and Applications")
+(author KP-Linstone-Delphi "Linstone & Turoff (Eds.)")
+(resourceType KP-Linstone-Delphi book)
+(level KP-Linstone-Delphi intermediate)
+(section KP-Linstone-Delphi HeuristicKnowledge)
+(url KP-Linstone-Delphi "https://web.njit.edu/~turMDoff/pubs/delphibook/")
+(desc KP-Linstone-Delphi "Classic reference on structured expert elicitation — systematically extracting heuristic knowledge from human experts.")
+
+(isa KP-Pearl-Heuristics ReferenceWork)
+(title KP-Pearl-Heuristics "Heuristics: Intelligent Search Strategies for Computer Problem Solving")
+(author KP-Pearl-Heuristics "Judea Pearl")
+(resourceType KP-Pearl-Heuristics book)
+(level KP-Pearl-Heuristics advanced)
+(section KP-Pearl-Heuristics HeuristicKnowledge)
+(url KP-Pearl-Heuristics "https://www.pearson.com/en-us/subject-catalog/p/heuristics-intelligent-search-strategies-for-computer-problem-solving/P200000003530")
+(desc KP-Pearl-Heuristics "Pearl's early masterwork on heuristic search: A*, branch-and-bound, and the theory of admissible heuristics.")
+
+;; ── Bounded Rationality & Cognitive Heuristics ──
+
+(isa KP-Simon-BoundedRationality ReferenceWork)
+(title KP-Simon-BoundedRationality "Models of Bounded Rationality (Vols 1-3)")
+(author KP-Simon-BoundedRationality "Herbert A. Simon")
+(resourceType KP-Simon-BoundedRationality book)
+(level KP-Simon-BoundedRationality advanced)
+(section KP-Simon-BoundedRationality HeuristicKnowledge)
+(url KP-Simon-BoundedRationality "https://mitpress.mit.edu/9780262193726/models-of-bounded-rationality-volume-3/")
+(desc KP-Simon-BoundedRationality "Simon's collected works on bounded rationality, satisficing, and the adaptive toolbox — the theoretical foundation of heuristic reasoning.")
+
+(isa KP-Kahneman-JudgmentUncertainty ReferenceWork)
+(title KP-Kahneman-JudgmentUncertainty "Judgment Under Uncertainty: Heuristics and Biases")
+(author KP-Kahneman-JudgmentUncertainty "Kahneman, Slovic & Tversky (Eds.)")
+(resourceType KP-Kahneman-JudgmentUncertainty book)
+(level KP-Kahneman-JudgmentUncertainty intermediate)
+(section KP-Kahneman-JudgmentUncertainty HeuristicKnowledge)
+(url KP-Kahneman-JudgmentUncertainty "https://www.cambridge.org/core/books/judgment-under-uncertainty/5F2C8FFD09766B8E2B85B5B00D3B0B20")
+(desc KP-Kahneman-JudgmentUncertainty "The landmark collection of papers on representativeness, availability, anchoring, and other cognitive heuristics that shape human judgment.")
+
+(isa KP-Kahneman-ThinkingFastSlow ReferenceWork)
+(title KP-Kahneman-ThinkingFastSlow "Thinking, Fast and Slow")
+(author KP-Kahneman-ThinkingFastSlow "Daniel Kahneman")
+(resourceType KP-Kahneman-ThinkingFastSlow book)
+(level KP-Kahneman-ThinkingFastSlow beginner)
+(section KP-Kahneman-ThinkingFastSlow HeuristicKnowledge)
+(url KP-Kahneman-ThinkingFastSlow "https://us.macmillan.com/books/9780374533557/thinkingfastandslow")
+(desc KP-Kahneman-ThinkingFastSlow "Kahneman's popular masterwork on dual-process theory — System 1 (heuristic, fast) vs System 2 (deliberate, slow) thinking.")
+
+(isa KP-Gigerenzer-SimpleHeuristics ReferenceWork)
+(title KP-Gigerenzer-SimpleHeuristics "Simple Heuristics That Make Us Smart")
+(author KP-Gigerenzer-SimpleHeuristics "Gigerenzer, Todd & the ABC Research Group")
+(resourceType KP-Gigerenzer-SimpleHeuristics book)
+(level KP-Gigerenzer-SimpleHeuristics intermediate)
+(section KP-Gigerenzer-SimpleHeuristics HeuristicKnowledge)
+(url KP-Gigerenzer-SimpleHeuristics "https://global.oup.com/academic/product/simple-heuristics-that-make-us-smart-9780195143812")
+(desc KP-Gigerenzer-SimpleHeuristics "The 'fast and frugal heuristics' programme showing that simple heuristics can outperform complex optimization in uncertain environments.")
+
+(isa KP-Todd-EcologicalRationality ReferenceWork)
+(title KP-Todd-EcologicalRationality "Ecological Rationality: Intelligence in the World")
+(author KP-Todd-EcologicalRationality "Todd & Gigerenzer (2012)")
+(resourceType KP-Todd-EcologicalRationality notes)
+(level KP-Todd-EcologicalRationality intermediate)
+(section KP-Todd-EcologicalRationality HeuristicKnowledge)
+(url KP-Todd-EcologicalRationality "https://doi.org/10.1093/acprof:oso/9780195315448.001.0001")
+(desc KP-Todd-EcologicalRationality "Framework for understanding when and why heuristics succeed by matching their structure to environmental regularities.")
+
+;; ── Fuzzy Logic & Approximate Reasoning ──
+
+(isa KP-Zadeh-FuzzySets ReferenceWork)
+(title KP-Zadeh-FuzzySets "Fuzzy Sets")
+(author KP-Zadeh-FuzzySets "Lotfi Zadeh (1965)")
+(resourceType KP-Zadeh-FuzzySets notes)
+(level KP-Zadeh-FuzzySets intermediate)
+(section KP-Zadeh-FuzzySets HeuristicKnowledge)
+(url KP-Zadeh-FuzzySets "https://doi.org/10.1016/S0019-9958(65)90241-X")
+(desc KP-Zadeh-FuzzySets "Zadeh's foundational paper introducing fuzzy sets — graded membership functions that formalize heuristic vagueness.")
+
+(isa KP-Ross-FuzzyLogic ReferenceWork)
+(title KP-Ross-FuzzyLogic "Fuzzy Logic with Engineering Applications (4th Ed.)")
+(author KP-Ross-FuzzyLogic "Timothy J. Ross")
+(resourceType KP-Ross-FuzzyLogic book)
+(level KP-Ross-FuzzyLogic intermediate)
+(section KP-Ross-FuzzyLogic HeuristicKnowledge)
+(url KP-Ross-FuzzyLogic "https://www.wiley.com/en-us/Fuzzy+Logic+with+Engineering+Applications,+4th+Edition-p-9781119235866")
+(desc KP-Ross-FuzzyLogic "Standard engineering textbook on fuzzy sets, fuzzy inference systems, and fuzzy control — the applied side of heuristic knowledge.")
+
+(isa KP-Pearl-ProbabilisticReasoning ReferenceWork)
+(title KP-Pearl-ProbabilisticReasoning "Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference")
+(author KP-Pearl-ProbabilisticReasoning "Judea Pearl")
+(resourceType KP-Pearl-ProbabilisticReasoning book)
+(level KP-Pearl-ProbabilisticReasoning advanced)
+(section KP-Pearl-ProbabilisticReasoning HeuristicKnowledge)
+(url KP-Pearl-ProbabilisticReasoning "https://www.elsevier.com/books/probabilistic-reasoning-in-intelligent-systems/pearl/978-0-08-051489-5")
+(desc KP-Pearl-ProbabilisticReasoning "Pearl's seminal work on Bayesian networks — the formal framework for propagating heuristic beliefs through graphical models.")
+
+(isa KP-Jensen-BayesianNetworks ReferenceWork)
+(title KP-Jensen-BayesianNetworks "An Introduction to Bayesian Networks")
+(author KP-Jensen-BayesianNetworks "Finn V. Jensen & Thomas D. Nielsen")
+(resourceType KP-Jensen-BayesianNetworks book)
+(level KP-Jensen-BayesianNetworks intermediate)
+(section KP-Jensen-BayesianNetworks HeuristicKnowledge)
+(url KP-Jensen-BayesianNetworks "https://link.springer.com/book/10.1007/978-0-387-68282-2")
+(desc KP-Jensen-BayesianNetworks "Accessible textbook on Bayesian network construction, inference algorithms, and applications to uncertain heuristic reasoning.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: META KNOWLEDGE
+;; Knowledge about knowledge, self-awareness — maps to the system itself
+;; ════════════════════════════════════════════════════════════
+
+;; ── Epistemology & Philosophy of Knowledge ──
+
+(isa KP-Audi-Epistemology ReferenceWork)
+(title KP-Audi-Epistemology "Epistemology: A Contemporary Introduction to the Theory of Knowledge")
+(author KP-Audi-Epistemology "Robert Audi")
+(resourceType KP-Audi-Epistemology book)
+(level KP-Audi-Epistemology beginner)
+(section KP-Audi-Epistemology MetaKnowledge)
+(url KP-Audi-Epistemology "https://www.routledge.com/Epistemology-A-Contemporary-Introduction-to-the-Theory-of-Knowledge/Audi/p/book/9780415879231")
+(desc KP-Audi-Epistemology "Leading introductory textbook covering justified true belief, Gettier problems, foundationalism, coherentism, and reliabilism.")
+
+(isa KP-Kuhn-ScientificRevolutions ReferenceWork)
+(title KP-Kuhn-ScientificRevolutions "The Structure of Scientific Revolutions")
+(author KP-Kuhn-ScientificRevolutions "Thomas Kuhn")
+(resourceType KP-Kuhn-ScientificRevolutions book)
+(level KP-Kuhn-ScientificRevolutions beginner)
+(section KP-Kuhn-ScientificRevolutions MetaKnowledge)
+(url KP-Kuhn-ScientificRevolutions "https://press.uchicago.edu/ucp/books/book/chicago/S/bo13179781.html")
+(desc KP-Kuhn-ScientificRevolutions "Kuhn's paradigm-shifting work on how scientific knowledge evolves through normal science, crisis, and paradigm shifts — meta knowledge at civilisational scale.")
+
+(isa KP-Wittgenstein-OnCertainty ReferenceWork)
+(title KP-Wittgenstein-OnCertainty "On Certainty")
+(author KP-Wittgenstein-OnCertainty "Ludwig Wittgenstein")
+(resourceType KP-Wittgenstein-OnCertainty book)
+(level KP-Wittgenstein-OnCertainty advanced)
+(section KP-Wittgenstein-OnCertainty MetaKnowledge)
+(url KP-Wittgenstein-OnCertainty "https://www.wiley.com/en-us/On+Certainty-p-9780631169406")
+(desc KP-Wittgenstein-OnCertainty "Wittgenstein's final work examining the foundations of knowledge — what it means to 'know' something and the role of bedrock propositions.")
+
+(isa KP-SEP-Metacognition ReferenceWork)
+(title KP-SEP-Metacognition "Metacognition (Stanford Encyclopedia)")
+(author KP-SEP-Metacognition "SEP / Joelle Proust")
+(resourceType KP-SEP-Metacognition notes)
+(level KP-SEP-Metacognition intermediate)
+(section KP-SEP-Metacognition MetaKnowledge)
+(url KP-SEP-Metacognition "https://plato.stanford.edu/entries/metacognition/")
+(desc KP-SEP-Metacognition "Comprehensive philosophical survey of metacognition: monitoring, control, and the relationship between knowing and knowing that you know.")
+
+;; ── Belief Revision & Truth Maintenance ──
+
+(isa KP-AGM-BeliefRevision ReferenceWork)
+(title KP-AGM-BeliefRevision "On the Logic of Theory Change: Partial Meet Contraction and Revision Functions (AGM)")
+(author KP-AGM-BeliefRevision "Alchourron, Gardenfors & Makinson (1985)")
+(resourceType KP-AGM-BeliefRevision notes)
+(level KP-AGM-BeliefRevision advanced)
+(section KP-AGM-BeliefRevision MetaKnowledge)
+(url KP-AGM-BeliefRevision "https://doi.org/10.2307/2274239")
+(desc KP-AGM-BeliefRevision "The AGM paper — the foundational framework for belief revision, defining rational postulates for how knowledge bases should change when new information arrives.")
+
+(isa KP-Gardenfors-KnowledgeInFlux ReferenceWork)
+(title KP-Gardenfors-KnowledgeInFlux "Knowledge in Flux: Modeling the Dynamics of Epistemic States")
+(author KP-Gardenfors-KnowledgeInFlux "Peter Gardenfors")
+(resourceType KP-Gardenfors-KnowledgeInFlux book)
+(level KP-Gardenfors-KnowledgeInFlux advanced)
+(section KP-Gardenfors-KnowledgeInFlux MetaKnowledge)
+(url KP-Gardenfors-KnowledgeInFlux "https://mitpress.mit.edu/9780262071116/knowledge-in-flux/")
+(desc KP-Gardenfors-KnowledgeInFlux "Book-length treatment of belief revision theory: expansion, contraction, revision, and the epistemic entrenchment ordering.")
+
+(isa KP-Doyle-TMS ReferenceWork)
+(title KP-Doyle-TMS "A Truth Maintenance System")
+(author KP-Doyle-TMS "Jon Doyle (1979)")
+(resourceType KP-Doyle-TMS notes)
+(level KP-Doyle-TMS advanced)
+(section KP-Doyle-TMS MetaKnowledge)
+(url KP-Doyle-TMS "https://doi.org/10.1016/0004-3702(79)90008-0")
+(desc KP-Doyle-TMS "The original TMS paper — maintaining consistency of beliefs and their justifications, enabling non-monotonic reasoning and dependency-directed backtracking.")
+
+(isa KP-deKleer-ATMS ReferenceWork)
+(title KP-deKleer-ATMS "An Assumption-based Truth Maintenance System (ATMS)")
+(author KP-deKleer-ATMS "Johan de Kleer (1986)")
+(resourceType KP-deKleer-ATMS notes)
+(level KP-deKleer-ATMS advanced)
+(section KP-deKleer-ATMS MetaKnowledge)
+(url KP-deKleer-ATMS "https://doi.org/10.1016/0004-3702(86)90080-9")
+(desc KP-deKleer-ATMS "De Kleer's ATMS — tracking all possible consistent belief sets simultaneously, enabling efficient hypothetical reasoning about what is known.")
+
+;; ── Schema, Provenance & Knowledge Quality ──
+
+(isa KP-W3C-PROVO ReferenceWork)
+(title KP-W3C-PROVO "PROV-O: The PROV Ontology (W3C)")
+(author KP-W3C-PROVO "W3C Provenance Working Group")
+(resourceType KP-W3C-PROVO notes)
+(level KP-W3C-PROVO intermediate)
+(section KP-W3C-PROVO MetaKnowledge)
+(url KP-W3C-PROVO "https://www.w3.org/TR/prov-o/")
+(desc KP-W3C-PROVO "W3C standard for representing provenance of knowledge — who created it, how, when, and from what sources. Essential meta knowledge infrastructure.")
+
+(isa KP-Batini-DataQuality ReferenceWork)
+(title KP-Batini-DataQuality "Data Quality: Concepts, Methodologies and Techniques")
+(author KP-Batini-DataQuality "Batini & Scannapieco")
+(resourceType KP-Batini-DataQuality book)
+(level KP-Batini-DataQuality intermediate)
+(section KP-Batini-DataQuality MetaKnowledge)
+(url KP-Batini-DataQuality "https://link.springer.com/book/10.1007/978-3-540-33173-5")
+(desc KP-Batini-DataQuality "Comprehensive treatment of data quality dimensions (accuracy, completeness, timeliness, consistency) — the quantitative side of meta knowledge.")
+
+(isa KP-W3C-OWL2Primer ReferenceWork)
+(title KP-W3C-OWL2Primer "OWL 2 Web Ontology Language Primer (W3C)")
+(author KP-W3C-OWL2Primer "W3C OWL Working Group")
+(resourceType KP-W3C-OWL2Primer notes)
+(level KP-W3C-OWL2Primer intermediate)
+(section KP-W3C-OWL2Primer MetaKnowledge)
+(url KP-W3C-OWL2Primer "https://www.w3.org/TR/owl2-primer/")
+(desc KP-W3C-OWL2Primer "The W3C OWL 2 primer — defining what kinds of knowledge are expressible in a domain, the schema-level meta knowledge.")
+
+(isa KP-Paulheim-KGRefinement ReferenceWork)
+(title KP-Paulheim-KGRefinement "Knowledge Graph Refinement: A Survey of Approaches and Evaluation Methods")
+(author KP-Paulheim-KGRefinement "Paulheim (2017)")
+(resourceType KP-Paulheim-KGRefinement notes)
+(level KP-Paulheim-KGRefinement intermediate)
+(section KP-Paulheim-KGRefinement MetaKnowledge)
+(url KP-Paulheim-KGRefinement "https://doi.org/10.3233/SW-160218")
+(desc KP-Paulheim-KGRefinement "Survey of methods for assessing and improving KG quality: completeness estimation, error detection, and type prediction.")
+
+(isa KP-SEP-OpenWorldAssumption ReferenceWork)
+(title KP-SEP-OpenWorldAssumption "Open World Assumption (SEP entry on Logic and Databases)")
+(author KP-SEP-OpenWorldAssumption "SEP / Raymond Reiter")
+(resourceType KP-SEP-OpenWorldAssumption notes)
+(level KP-SEP-OpenWorldAssumption intermediate)
+(section KP-SEP-OpenWorldAssumption MetaKnowledge)
+(url KP-SEP-OpenWorldAssumption "https://plato.stanford.edu/entries/logic-ai/")
+(desc KP-SEP-OpenWorldAssumption "Philosophical treatment of open vs closed world assumptions — the fundamental meta-knowledge decision about what absence of information means.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: KNOWLEDGE ENGINEERING
+;; Eliciting, formalising, and deploying knowledge in systems
+;; ════════════════════════════════════════════════════════════
+
+;; ── Knowledge Elicitation & Acquisition ──
+
+(isa KP-Shadbolt-KnowledgeAcquisition ReferenceWork)
+(title KP-Shadbolt-KnowledgeAcquisition "Knowledge Acquisition in Practice: A Step-by-step Guide")
+(author KP-Shadbolt-KnowledgeAcquisition "Shadbolt, Smart & Wilson")
+(resourceType KP-Shadbolt-KnowledgeAcquisition book)
+(level KP-Shadbolt-KnowledgeAcquisition beginner)
+(section KP-Shadbolt-KnowledgeAcquisition KnowledgeEngineering)
+(url KP-Shadbolt-KnowledgeAcquisition "https://link.springer.com/book/10.1007/978-1-84628-667-0")
+(desc KP-Shadbolt-KnowledgeAcquisition "Practical guide to structured knowledge elicitation techniques: interviews, protocol analysis, card sorting, and repertory grids.")
+
+(isa KP-Scott-PracticalGuideKA ReferenceWork)
+(title KP-Scott-PracticalGuideKA "A Practical Guide to Knowledge Acquisition")
+(author KP-Scott-PracticalGuideKA "Scott, Clayton & Gibson")
+(resourceType KP-Scott-PracticalGuideKA book)
+(level KP-Scott-PracticalGuideKA beginner)
+(section KP-Scott-PracticalGuideKA KnowledgeEngineering)
+(url KP-Scott-PracticalGuideKA "https://www.springer.com/gp/book/9781461283546")
+(desc KP-Scott-PracticalGuideKA "Classic reference on knowledge acquisition methodology for building expert systems, covering task analysis and structured interviews.")
+
+(isa KP-Cimiano-OntologyLearning ReferenceWork)
+(title KP-Cimiano-OntologyLearning "Ontology Learning from Text: Methods, Evaluation, and Applications")
+(author KP-Cimiano-OntologyLearning "Cimiano (2006)")
+(resourceType KP-Cimiano-OntologyLearning book)
+(level KP-Cimiano-OntologyLearning advanced)
+(section KP-Cimiano-OntologyLearning KnowledgeEngineering)
+(url KP-Cimiano-OntologyLearning "https://link.springer.com/book/10.1007/978-0-387-39252-3")
+(desc KP-Cimiano-OntologyLearning "Methods for automatically extracting ontological knowledge from unstructured text — bridging NLP and knowledge engineering.")
+
+(isa KP-SEP-KnowledgeHow ReferenceWork)
+(title KP-SEP-KnowledgeHow "Knowledge Elicitation Techniques (SEP)")
+(author KP-SEP-KnowledgeHow "SEP / Various")
+(resourceType KP-SEP-KnowledgeHow notes)
+(level KP-SEP-KnowledgeHow beginner)
+(section KP-SEP-KnowledgeHow KnowledgeEngineering)
+(url KP-SEP-KnowledgeHow "https://plato.stanford.edu/entries/knowledge-how/")
+(desc KP-SEP-KnowledgeHow "Philosophical perspective on knowledge-how vs knowledge-that, relevant to eliciting procedural vs declarative knowledge from experts.")
+
+;; ── Ontology Engineering & Design Patterns ──
+
+(isa KP-ODP-OntologyDesignPatterns ReferenceWork)
+(title KP-ODP-OntologyDesignPatterns "Ontology Design Patterns (ODP)")
+(author KP-ODP-OntologyDesignPatterns "ontologydesignpatterns.org")
+(resourceType KP-ODP-OntologyDesignPatterns notes)
+(level KP-ODP-OntologyDesignPatterns intermediate)
+(section KP-ODP-OntologyDesignPatterns KnowledgeEngineering)
+(url KP-ODP-OntologyDesignPatterns "http://ontologydesignpatterns.org/")
+(desc KP-ODP-OntologyDesignPatterns "Community catalogue of reusable ontology design patterns — best practices for encoding structural and declarative knowledge.")
+
+(isa KP-Blomqvist-PatternBasedOntology ReferenceWork)
+(title KP-Blomqvist-PatternBasedOntology "A Pattern-Based Method for Building Ontologies")
+(author KP-Blomqvist-PatternBasedOntology "Blomqvist & Sandkuhl (2005)")
+(resourceType KP-Blomqvist-PatternBasedOntology notes)
+(level KP-Blomqvist-PatternBasedOntology intermediate)
+(section KP-Blomqvist-PatternBasedOntology KnowledgeEngineering)
+(url KP-Blomqvist-PatternBasedOntology "https://doi.org/10.1007/11575863_45")
+(desc KP-Blomqvist-PatternBasedOntology "Methodology for using ontology design patterns to systematically build domain ontologies — knowledge engineering as pattern composition.")
+
+(isa KP-Protege-OntologyEditor ReferenceWork)
+(title KP-Protege-OntologyEditor "Protege Ontology Editor")
+(author KP-Protege-OntologyEditor "Stanford BMIR")
+(resourceType KP-Protege-OntologyEditor code)
+(level KP-Protege-OntologyEditor beginner)
+(section KP-Protege-OntologyEditor KnowledgeEngineering)
+(url KP-Protege-OntologyEditor "https://protege.stanford.edu/")
+(desc KP-Protege-OntologyEditor "The most widely-used open-source ontology editor, supporting OWL 2 and SWRL rules. The de facto tool for knowledge engineers.")
+
+(isa KP-ISWC-Proceedings ReferenceWork)
+(title KP-ISWC-Proceedings "The Semantic Web — ISWC Conference Proceedings")
+(author KP-ISWC-Proceedings "Various (Annual)")
+(resourceType KP-ISWC-Proceedings notes)
+(level KP-ISWC-Proceedings advanced)
+(section KP-ISWC-Proceedings KnowledgeEngineering)
+(url KP-ISWC-Proceedings "https://iswc2024.semanticweb.org/")
+(desc KP-ISWC-Proceedings "Proceedings of the International Semantic Web Conference — the premier venue for knowledge engineering research.")
+
+;; ── Knowledge Graph Platforms & Tools ──
+
+(isa KP-Neo4j-GraphDatabase ReferenceWork)
+(title KP-Neo4j-GraphDatabase "Neo4j Graph Database")
+(author KP-Neo4j-GraphDatabase "Neo4j Inc.")
+(resourceType KP-Neo4j-GraphDatabase code)
+(level KP-Neo4j-GraphDatabase beginner)
+(section KP-Neo4j-GraphDatabase KnowledgeEngineering)
+(url KP-Neo4j-GraphDatabase "https://neo4j.com/")
+(desc KP-Neo4j-GraphDatabase "The leading property graph database with Cypher query language. Over 800 enterprise customers using knowledge graphs in production.")
+
+(isa KP-Apache-Jena ReferenceWork)
+(title KP-Apache-Jena "Apache Jena: A Semantic Web Framework for Java")
+(author KP-Apache-Jena "Apache Foundation")
+(resourceType KP-Apache-Jena code)
+(level KP-Apache-Jena intermediate)
+(section KP-Apache-Jena KnowledgeEngineering)
+(url KP-Apache-Jena "https://jena.apache.org/")
+(desc KP-Apache-Jena "Full-featured RDF/OWL framework with SPARQL engine, reasoner, and TDB triple store. The workhorse of semantic web applications.")
+
+(isa KP-Stardog-KGPlatform ReferenceWork)
+(title KP-Stardog-KGPlatform "Stardog: Enterprise Knowledge Graph Platform")
+(author KP-Stardog-KGPlatform "Stardog Union")
+(resourceType KP-Stardog-KGPlatform code)
+(level KP-Stardog-KGPlatform intermediate)
+(section KP-Stardog-KGPlatform KnowledgeEngineering)
+(url KP-Stardog-KGPlatform "https://www.stardog.com/")
+(desc KP-Stardog-KGPlatform "Enterprise KG platform supporting OWL reasoning, SPARQL, GraphQL, and virtual knowledge graphs over relational sources.")
+
+(isa KP-CloudGraph-Neptune ReferenceWork)
+(title KP-CloudGraph-Neptune "Amazon Neptune / Azure Cosmos DB (Graph)")
+(author KP-CloudGraph-Neptune "AWS / Microsoft")
+(resourceType KP-CloudGraph-Neptune code)
+(level KP-CloudGraph-Neptune intermediate)
+(section KP-CloudGraph-Neptune KnowledgeEngineering)
+(url KP-CloudGraph-Neptune "https://aws.amazon.com/neptune/")
+(desc KP-CloudGraph-Neptune "Cloud-native graph database services supporting both property graph (Gremlin/openCypher) and RDF (SPARQL) models at scale.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & BENCHMARKS
+;; Empirical backbone for knowledge systems research
+;; ════════════════════════════════════════════════════════════
+
+;; ── Knowledge Graph Benchmarks ──
+
+(isa KP-Toutanova-FB15k237 ReferenceWork)
+(title KP-Toutanova-FB15k237 "FB15k-237: A Filtered Version of FB15k")
+(author KP-Toutanova-FB15k237 "Toutanova & Chen (2015)")
+(resourceType KP-Toutanova-FB15k237 data)
+(level KP-Toutanova-FB15k237 intermediate)
+(section KP-Toutanova-FB15k237 DatasetsBenchmarks)
+(url KP-Toutanova-FB15k237 "https://www.microsoft.com/en-us/download/details.aspx?id=52312")
+(desc KP-Toutanova-FB15k237 "Standard benchmark for KG link prediction, derived from Freebase with test leakage removed. 14,541 entities, 237 relations.")
+
+(isa KP-Dettmers-WN18RR ReferenceWork)
+(title KP-Dettmers-WN18RR "WN18RR: A Reinvestigation of WordNet-based KG Benchmarks")
+(author KP-Dettmers-WN18RR "Dettmers et al. (2018)")
+(resourceType KP-Dettmers-WN18RR data)
+(level KP-Dettmers-WN18RR intermediate)
+(section KP-Dettmers-WN18RR DatasetsBenchmarks)
+(url KP-Dettmers-WN18RR "https://github.com/TimDettmers/ConvE")
+(desc KP-Dettmers-WN18RR "Cleaned WordNet benchmark for link prediction. 40,943 entities and 11 relations capturing lexical relationships.")
+
+(isa KP-Hu-OGBLWikiKG2 ReferenceWork)
+(title KP-Hu-OGBLWikiKG2 "OGBL-WikiKG2 (Open Graph Benchmark)")
+(author KP-Hu-OGBLWikiKG2 "Hu et al. (2021)")
+(resourceType KP-Hu-OGBLWikiKG2 data)
+(level KP-Hu-OGBLWikiKG2 advanced)
+(section KP-Hu-OGBLWikiKG2 DatasetsBenchmarks)
+(url KP-Hu-OGBLWikiKG2 "https://ogb.stanford.edu/docs/linkprop/#ogbl-wikikg2")
+(desc KP-Hu-OGBLWikiKG2 "Large-scale Wikidata-based KG benchmark with 2.5M entities, 535 relations, and 17M triples for realistic link prediction evaluation.")
+
+(isa KP-Wikidata-EntityLinking ReferenceWork)
+(title KP-Wikidata-EntityLinking "Freebase/Wikidata Entity Linking Benchmarks")
+(author KP-Wikidata-EntityLinking "Various")
+(resourceType KP-Wikidata-EntityLinking data)
+(level KP-Wikidata-EntityLinking intermediate)
+(section KP-Wikidata-EntityLinking DatasetsBenchmarks)
+(url KP-Wikidata-EntityLinking "https://www.wikidata.org/wiki/Wikidata:Tools/For_programmers")
+(desc KP-Wikidata-EntityLinking "Collection of entity linking and disambiguation benchmarks built on Wikidata, testing the ability to ground text mentions to KG entities.")
+
+;; ── Question Answering over Knowledge ──
+
+(isa KP-Bordes-SimpleQuestions ReferenceWork)
+(title KP-Bordes-SimpleQuestions "SimpleQuestions: A Resource for Question Answering over KGs")
+(author KP-Bordes-SimpleQuestions "Bordes et al. (2015)")
+(resourceType KP-Bordes-SimpleQuestions data)
+(level KP-Bordes-SimpleQuestions beginner)
+(section KP-Bordes-SimpleQuestions DatasetsBenchmarks)
+(url KP-Bordes-SimpleQuestions "https://research.facebook.com/downloads/babi/")
+(desc KP-Bordes-SimpleQuestions "108K simple factual questions paired with Freebase triples. The foundational benchmark for single-hop KGQA.")
+
+(isa KP-Talmor-ComplexWebQuestions ReferenceWork)
+(title KP-Talmor-ComplexWebQuestions "ComplexWebQuestions: Multi-Hop QA over Knowledge Graphs")
+(author KP-Talmor-ComplexWebQuestions "Talmor & Berant (2018)")
+(resourceType KP-Talmor-ComplexWebQuestions data)
+(level KP-Talmor-ComplexWebQuestions intermediate)
+(section KP-Talmor-ComplexWebQuestions DatasetsBenchmarks)
+(url KP-Talmor-ComplexWebQuestions "https://www.tau-nlp.sites.tau.ac.il/compwebq")
+(desc KP-Talmor-ComplexWebQuestions "34K complex questions requiring multi-hop reasoning, comparison, and aggregation over a knowledge graph.")
+
+(isa KP-Yih-WebQuestionsSP ReferenceWork)
+(title KP-Yih-WebQuestionsSP "WebQuestionsSP: Semantic Parsing on Freebase")
+(author KP-Yih-WebQuestionsSP "Yih et al. (2016)")
+(resourceType KP-Yih-WebQuestionsSP data)
+(level KP-Yih-WebQuestionsSP intermediate)
+(section KP-Yih-WebQuestionsSP DatasetsBenchmarks)
+(url KP-Yih-WebQuestionsSP "https://www.microsoft.com/en-us/research/publication/the-value-of-semantic-parse-labeling/")
+(desc KP-Yih-WebQuestionsSP "4,737 questions with SPARQL annotations over Freebase, bridging NL understanding and structured knowledge retrieval.")
+
+(isa KP-Lan-KGQASurvey ReferenceWork)
+(title KP-Lan-KGQASurvey "KGQA Survey: Knowledge Graph Question Answering")
+(author KP-Lan-KGQASurvey "Lan et al. (2021)")
+(resourceType KP-Lan-KGQASurvey notes)
+(level KP-Lan-KGQASurvey intermediate)
+(section KP-Lan-KGQASurvey DatasetsBenchmarks)
+(url KP-Lan-KGQASurvey "https://doi.org/10.1145/3512467")
+(desc KP-Lan-KGQASurvey "Comprehensive survey of KGQA methods: semantic parsing, embedding-based, and retrieval-augmented approaches.")
+
+;; ── Reasoning & Commonsense Benchmarks ──
+
+(isa KP-Sap-ATOMIC ReferenceWork)
+(title KP-Sap-ATOMIC "ATOMIC: An Atlas of Machine Commonsense for If-Then Reasoning")
+(author KP-Sap-ATOMIC "Sap et al. (2019)")
+(resourceType KP-Sap-ATOMIC data)
+(level KP-Sap-ATOMIC intermediate)
+(section KP-Sap-ATOMIC DatasetsBenchmarks)
+(url KP-Sap-ATOMIC "https://homes.cs.washington.edu/~msap/atomic/")
+(desc KP-Sap-ATOMIC "877K inferential knowledge tuples covering causes, effects, mental states — a commonsense knowledge graph for heuristic reasoning.")
+
+(isa KP-Speer-ConceptNet ReferenceWork)
+(title KP-Speer-ConceptNet "ConceptNet 5.5: An Open Multilingual Graph of General Knowledge")
+(author KP-Speer-ConceptNet "Speer, Chin & Havasi (2017)")
+(resourceType KP-Speer-ConceptNet data)
+(level KP-Speer-ConceptNet beginner)
+(section KP-Speer-ConceptNet DatasetsBenchmarks)
+(url KP-Speer-ConceptNet "https://conceptnet.io/")
+(desc KP-Speer-ConceptNet "Large-scale commonsense knowledge graph with 21M edges across 36 relation types. Links to WordNet, DBpedia, and Wikidata.")
+
+(isa KP-Talmor-CommonsenseQA ReferenceWork)
+(title KP-Talmor-CommonsenseQA "CommonsenseQA: A Question Answering Challenge Targeting World Knowledge")
+(author KP-Talmor-CommonsenseQA "Talmor et al. (2019)")
+(resourceType KP-Talmor-CommonsenseQA data)
+(level KP-Talmor-CommonsenseQA intermediate)
+(section KP-Talmor-CommonsenseQA DatasetsBenchmarks)
+(url KP-Talmor-CommonsenseQA "https://www.tau-nlp.sites.tau.ac.il/commonsenseqa")
+(desc KP-Talmor-CommonsenseQA "12K multiple-choice questions requiring commonsense reasoning, sourced from ConceptNet relation triples.")
+
+(isa KP-Clark-RuleTaker ReferenceWork)
+(title KP-Clark-RuleTaker "RuleTaker: Probing Neural Models for Compositional Reasoning")
+(author KP-Clark-RuleTaker "Clark et al. (2020)")
+(resourceType KP-Clark-RuleTaker data)
+(level KP-Clark-RuleTaker advanced)
+(section KP-Clark-RuleTaker DatasetsBenchmarks)
+(url KP-Clark-RuleTaker "https://allenai.org/data/ruletaker")
+(desc KP-Clark-RuleTaker "Benchmark testing whether language models can follow logical rules and derive conclusions — probing procedural and meta knowledge in neural systems.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources KnowledgePrimitivesReference 100)
+(totalSections KnowledgePrimitivesReference 8)
+(comment KnowledgePrimitivesReference
+  "8 sections: Overview (12), Structural (13), Declarative (13),
+   Procedural (12), Heuristic (13), Meta (13), Engineering (12),
+   Datasets & Benchmarks (12). Total: 100 resources.")

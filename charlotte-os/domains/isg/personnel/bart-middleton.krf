@@ -1,0 +1,76 @@
+;;; ================================================================
+;;; ISG PERSONNEL / BART MIDDLETON
+;;; President, ISG Valve & Actuation Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa BartMiddleton Person)
+(isa BartMiddleton Executive)
+(hasAttribute BartMiddleton ::LABEL "Bart Middleton")
+(hasAttribute BartMiddleton ::ROLE "President, ISG Valve & Actuation Group")
+(hasAttribute BartMiddleton ::TITLE_SHORT "President V&A")
+(hasAttribute BartMiddleton ::EMAIL "bmiddleton@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo BartMiddleton JimRichard)
+(MEMBER_OF BartMiddleton ISGExecutiveTeam)
+(MEMBER_OF BartMiddleton ISGCharlotteLaunchTeam)
+(LEADS BartMiddleton ISGValveActuationGroup)
+(LEADS BartMiddleton IndustrialValveService)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt BartMiddleton Indianapolis-IN)
+(hasAttribute BartMiddleton ::FACILITIES "IVS locations in AL, LA, TN")
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute BartMiddleton ::ORG_LEVEL 2)
+(hasAttribute BartMiddleton ::SPAN_OF_CONTROL "Valve & Actuation vertical — IVS, Georgia Western, Tri-State Valve")
+(hasAttribute BartMiddleton ::DECISION_AUTHORITY "V&A sales strategy, service operations, brand integration")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch BartMiddleton "Industrial Valve Service — President" 2010 2023)
+(careerEpoch BartMiddleton "The Industrial Service Group — President V&A Group" 2023 9999)
+
+(hasAttribute BartMiddleton ::IVS_TENURE "Long-tenured president of ISG's flagship valve subsidiary")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn BartMiddleton ValveActuation)
+(expertiseIn BartMiddleton IndustrialSalesStrategy)
+(expertiseIn BartMiddleton AccountManagement)
+(expertiseIn BartMiddleton TeamBuilding)
+(expertiseIn BartMiddleton BusinessDevelopment)
+(expertiseIn BartMiddleton FieldServiceOperations)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa BartMiddleton-ValveExpertise METRIC)
+(attachedTo BartMiddleton-ValveExpertise BartMiddleton)
+(hasAttribute BartMiddleton-ValveExpertise ::VALUE 13)
+(hasAttribute BartMiddleton-ValveExpertise ::UNIT "years leading valve & actuation operations")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa BartMiddleton-FlagshipOperator SIGNAL)
+(derivedFrom BartMiddleton-FlagshipOperator BartMiddleton-ValveExpertise)
+(comment BartMiddleton-FlagshipOperator
+  "Bart ran IVS (founded 1975) before being elevated to lead the entire
+   V&A group. He knows valve service operations at the ground level.
+   He is both a strategic leader and a hands-on operator.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithPresVA PROTOCOL)
+(hasTrigger Protocol-InteractWithPresVA (sessionCaller ?Session BartMiddleton))
+(comment Protocol-InteractWithPresVA
+  "Bart is a sales and service leader with deep valve domain expertise.
+   He thinks in customer relationships and deal flow. Frame Charlotte's
+   value in terms of service visibility, customer retention, and sales
+   pipeline intelligence. He was CC'd on the Charlotte launch meeting.")

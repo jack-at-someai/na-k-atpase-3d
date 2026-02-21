@@ -1,0 +1,107 @@
+;;; ================================================================
+;;; ISG PERSONNEL / JIM RICHARD
+;;; Chief Executive Officer — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa JimRichard Person)
+(isa JimRichard Executive)
+(hasAttribute JimRichard ::LABEL "Jim Richard")
+(hasAttribute JimRichard ::ROLE "Chief Executive Officer")
+(hasAttribute JimRichard ::TITLE_SHORT "CEO")
+(hasAttribute JimRichard ::EMAIL "jtrichard@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(LEADS JimRichard ISGParent)
+(MEMBER_OF JimRichard ISGExecutiveTeam)
+
+;; Direct reports
+(reportsTo JeffDubois JimRichard)
+(reportsTo JohnJensen JimRichard)
+(reportsTo RogerStewart JimRichard)
+(reportsTo MattBranigan JimRichard)
+(reportsTo BartMiddleton JimRichard)
+(reportsTo JeffPratt JimRichard)
+(reportsTo SherryCaldwell JimRichard)
+
+;; Family — founder lineage
+(PARENT_OF JimRichard JackRichard)
+(comment JackRichard "Chief Architect, SomeAI. Builder of Charlotte OS.")
+
+;; Ownership chain
+(hasAttribute JimRichard ::OWNERSHIP_CONTEXT "Co-founded ISG with KCM Capital 2019. TJC LP acquired Dec 2022.")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt JimRichard Indianapolis-IN)
+(hasAttribute JimRichard ::HQ "9355 Delegates Row, Indianapolis, IN 46240")
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute JimRichard ::ORG_LEVEL 1)
+(hasAttribute JimRichard ::SPAN_OF_CONTROL "7 direct reports, ~1200 total employees")
+(hasAttribute JimRichard ::DECISION_AUTHORITY "Final authority on M&A, strategy, executive hires")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch JimRichard "Purdue University — BS Management, Engineering & Construction" 1980 1984)
+(careerEpoch JimRichard "Florida International University — MS Management" 1993 1995)
+(careerEpoch JimRichard "Invensys (now Schneider Electric) — President & CEO" 2001 2003)
+(careerEpoch JimRichard "Rexnord — Executive Vice President" 2003 2006)
+(careerEpoch JimRichard "Horsburgh & Scott Service — President" 2006 2010)
+(careerEpoch JimRichard "Industrial Service Solutions — Founder & CEO" 2010 2019)
+(careerEpoch JimRichard "The Industrial Service Group — CEO" 2019 9999)
+
+(hasAttribute JimRichard ::TENURE_ISG_YEARS 7)
+(hasAttribute JimRichard ::CAREER_YEARS 40)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn JimRichard IndustrialServices)
+(expertiseIn JimRichard MergersAndAcquisitions)
+(expertiseIn JimRichard PrivateEquityOperations)
+(expertiseIn JimRichard ExecutiveLeadership)
+(expertiseIn JimRichard RotatingEquipment)
+(expertiseIn JimRichard SalesStrategy)
+(expertiseIn JimRichard PlatformBuilding)
+
+(hasAttribute JimRichard ::ACQUISITIONS_LED "~80 acquisitions across career")
+(hasAttribute JimRichard ::EBITDA_GROWTH "~30% organic EBITDA CAGR under KCM ownership")
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa JimRichard-LeadershipExperience METRIC)
+(attachedTo JimRichard-LeadershipExperience JimRichard)
+(hasAttribute JimRichard-LeadershipExperience ::VALUE 40)
+(hasAttribute JimRichard-LeadershipExperience ::UNIT "years")
+(comment JimRichard-LeadershipExperience "Decades of CEO/President experience in industrial services and PE-backed platforms.")
+
+(isa JimRichard-AcquisitionVelocity METRIC)
+(attachedTo JimRichard-AcquisitionVelocity JimRichard)
+(hasAttribute JimRichard-AcquisitionVelocity ::VALUE 80)
+(hasAttribute JimRichard-AcquisitionVelocity ::UNIT "acquisitions")
+(comment JimRichard-AcquisitionVelocity "Total acquisitions led or supported across career.")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa JimRichard-FounderVision SIGNAL)
+(derivedFrom JimRichard-FounderVision JimRichard-LeadershipExperience)
+(comment JimRichard-FounderVision
+  "Jim co-founded ISG from scratch, executing 6 acquisitions in 3 years
+   and growing to ~$450M revenue. He sees the platform model — acquire
+   best-in-class operators, give them resources, let them run. This is
+   the same pattern Charlotte OS applies to knowledge.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCEO PROTOCOL)
+(hasTrigger Protocol-InteractWithCEO (sessionCaller ?Session JimRichard))
+(comment Protocol-InteractWithCEO
+  "Jim is the CEO and Charlotte OS sponsor's father. He values directness,
+   operational clarity, and ROI. Lead with numbers and impact. He has
+   deep M&A intuition — do not oversimplify financial or strategic topics.
+   He thinks in platform economics and growth multiples.")

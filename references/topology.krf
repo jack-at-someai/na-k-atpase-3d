@@ -1,0 +1,887 @@
+;;; ================================================================
+;;; REFERENCE / TOPOLOGY
+;;; 85 resources across 7 sections — Algebraic topology, topological
+;;; data analysis & higher dimensions. Shape-invariant reasoning for
+;;; spatial substrate.
+;;; ================================================================
+;;;
+;;; Topology is the branch of mathematics concerned with properties
+;;; of spaces preserved under continuous deformations. It provides
+;;; the foundational language for understanding shape, connectivity,
+;;; and dimension in the most general sense.
+;;;
+;;; Charlotte's Paper 9 explores 4-dimensional tesseract navigation,
+;;; where an agent must reason about spatial structure beyond three
+;;; dimensions. Topology supplies the exact mathematical machinery.
+;;;
+;;; Learning path: Point-Set → Algebraic Topology → Persistent
+;;; Homology → TDA → Higher Dimensions → Fiber Bundles → Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Textbooks ──
+
+(isa TOP-Munkres-Topology ReferenceWork)
+(title TOP-Munkres-Topology "Topology (2nd Edition)")
+(author TOP-Munkres-Topology "James R. Munkres")
+(resourceType TOP-Munkres-Topology book)
+(level TOP-Munkres-Topology beginner)
+(section TOP-Munkres-Topology TopologyOverview)
+(url TOP-Munkres-Topology "https://www.pearson.com/en-us/subject-catalog/p/topology/P200000003526")
+(desc TOP-Munkres-Topology "The gold-standard undergraduate/graduate text. Part I covers point-set topology; Part II covers algebraic topology. Clear exposition, excellent exercises.")
+
+(isa TOP-Hatcher-AlgTop ReferenceWork)
+(title TOP-Hatcher-AlgTop "Algebraic Topology")
+(author TOP-Hatcher-AlgTop "Allen Hatcher")
+(resourceType TOP-Hatcher-AlgTop book)
+(level TOP-Hatcher-AlgTop intermediate)
+(section TOP-Hatcher-AlgTop TopologyOverview)
+(url TOP-Hatcher-AlgTop "https://pi.math.cornell.edu/~hatcher/AT/ATpage.html")
+(desc TOP-Hatcher-AlgTop "Freely available online. Covers fundamental group, homology, cohomology with geometric intuition. The most-used graduate algebraic topology text worldwide.")
+
+(isa TOP-Coxeter-RegularPolytopes ReferenceWork)
+(title TOP-Coxeter-RegularPolytopes "Regular Polytopes")
+(author TOP-Coxeter-RegularPolytopes "H.S.M. Coxeter")
+(resourceType TOP-Coxeter-RegularPolytopes book)
+(level TOP-Coxeter-RegularPolytopes intermediate)
+(section TOP-Coxeter-RegularPolytopes TopologyOverview)
+(url TOP-Coxeter-RegularPolytopes "https://store.doverpublications.com/0486614808.html")
+(desc TOP-Coxeter-RegularPolytopes "The classic reference on polytopes in all dimensions. Essential for understanding the tesseract and its symmetries within the broader theory of regular figures.")
+
+(isa TOP-Edelsbrunner-CompTop ReferenceWork)
+(title TOP-Edelsbrunner-CompTop "Computational Topology: An Introduction")
+(author TOP-Edelsbrunner-CompTop "Herbert Edelsbrunner & John L. Harer")
+(resourceType TOP-Edelsbrunner-CompTop book)
+(level TOP-Edelsbrunner-CompTop intermediate)
+(section TOP-Edelsbrunner-CompTop TopologyOverview)
+(url TOP-Edelsbrunner-CompTop "https://bookstore.ams.org/mbk-69")
+(desc TOP-Edelsbrunner-CompTop "Bridges pure topology and computation. Covers simplicial complexes, homology algorithms, persistent homology, and Morse theory for data analysis.")
+
+;; ── Video Introductions ──
+
+(isa TOP-Tokieda-TopGeom ReferenceWork)
+(title TOP-Tokieda-TopGeom "Topology & Geometry by Dr. Tadashi Tokieda")
+(author TOP-Tokieda-TopGeom "African Institute for Mathematical Sciences")
+(resourceType TOP-Tokieda-TopGeom video)
+(level TOP-Tokieda-TopGeom beginner)
+(section TOP-Tokieda-TopGeom TopologyOverview)
+(url TOP-Tokieda-TopGeom "https://www.youtube.com/playlist?list=PLTBqohhFNBE_09L0i-lf3fYXF5woAbrzJ")
+(desc TOP-Tokieda-TopGeom "Charismatic, intuition-driven lectures covering surfaces, Euler characteristic, knots, and topological invariants. Ideal starting point.")
+
+(isa TOP-3Blue1Brown-Tesseract ReferenceWork)
+(title TOP-3Blue1Brown-Tesseract "Understanding 4D: The Tesseract")
+(author TOP-3Blue1Brown-Tesseract "3Blue1Brown / Grant Sanderson")
+(resourceType TOP-3Blue1Brown-Tesseract video)
+(level TOP-3Blue1Brown-Tesseract beginner)
+(section TOP-3Blue1Brown-Tesseract TopologyOverview)
+(url TOP-3Blue1Brown-Tesseract "https://www.youtube.com/watch?v=XGsS9OKCd5k")
+(desc TOP-3Blue1Brown-Tesseract "Visual explanation of higher-dimensional cubes, projections from 4D to 3D, and how to build geometric intuition for the tesseract.")
+
+(isa TOP-Penn-TopBeginners ReferenceWork)
+(title TOP-Penn-TopBeginners "Topology for Beginners")
+(author TOP-Penn-TopBeginners "Michael Penn (YouTube)")
+(resourceType TOP-Penn-TopBeginners video)
+(level TOP-Penn-TopBeginners beginner)
+(section TOP-Penn-TopBeginners TopologyOverview)
+(url TOP-Penn-TopBeginners "https://www.youtube.com/playlist?list=PL22w63XsKjqJmyKJlMQ1LGGEE_zeaOFCM")
+(desc TOP-Penn-TopBeginners "Step-by-step lecture series walking through open sets, continuity, compactness, and connectedness with proofs and examples.")
+
+;; ── Quick References & Overviews ──
+
+(isa TOP-Morris-TopWithoutTears ReferenceWork)
+(title TOP-Morris-TopWithoutTears "Topology Without Tears")
+(author TOP-Morris-TopWithoutTears "Sidney A. Morris")
+(resourceType TOP-Morris-TopWithoutTears notes)
+(level TOP-Morris-TopWithoutTears beginner)
+(section TOP-Morris-TopWithoutTears TopologyOverview)
+(url TOP-Morris-TopWithoutTears "https://www.topologywithouttears.net/")
+(desc TOP-Morris-TopWithoutTears "Free online textbook designed for self-study. Covers topological spaces, subspaces, products, quotients, and compactness with a gentle learning curve.")
+
+(isa TOP-nLab-Topology ReferenceWork)
+(title TOP-nLab-Topology "nLab: Topology")
+(author TOP-nLab-Topology "nLab Community")
+(resourceType TOP-nLab-Topology notes)
+(level TOP-nLab-Topology advanced)
+(section TOP-nLab-Topology TopologyOverview)
+(url TOP-nLab-Topology "https://ncatlab.org/nlab/show/topology")
+(desc TOP-nLab-Topology "Comprehensive wiki-style reference with a category-theoretic perspective. Deep coverage of point-set, algebraic, and differential topology.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: POINT-SET TOPOLOGY
+;; Open sets, continuity, compactness, connectedness, metric spaces
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa TOP-Munkres-PointSet ReferenceWork)
+(title TOP-Munkres-PointSet "Topology (2nd Edition)")
+(author TOP-Munkres-PointSet "James R. Munkres")
+(resourceType TOP-Munkres-PointSet book)
+(level TOP-Munkres-PointSet beginner)
+(section TOP-Munkres-PointSet PointSetTopology)
+(url TOP-Munkres-PointSet "https://www.pearson.com/en-us/subject-catalog/p/topology/P200000003526")
+(desc TOP-Munkres-PointSet "Part I (Chapters 1-8) is the definitive treatment of point-set topology. Covers all separation axioms, metrization theorems, Tychonoff's theorem.")
+
+(isa TOP-Willard-GenTop ReferenceWork)
+(title TOP-Willard-GenTop "General Topology")
+(author TOP-Willard-GenTop "Stephen Willard")
+(resourceType TOP-Willard-GenTop book)
+(level TOP-Willard-GenTop intermediate)
+(section TOP-Willard-GenTop PointSetTopology)
+(url TOP-Willard-GenTop "https://store.doverpublications.com/0486434796.html")
+(desc TOP-Willard-GenTop "More comprehensive than Munkres on general topology. Covers nets, filters, uniform spaces, and function spaces. Dover reprint makes it affordable.")
+
+(isa TOP-Kelley-GenTop ReferenceWork)
+(title TOP-Kelley-GenTop "General Topology")
+(author TOP-Kelley-GenTop "John L. Kelley")
+(resourceType TOP-Kelley-GenTop book)
+(level TOP-Kelley-GenTop advanced)
+(section TOP-Kelley-GenTop PointSetTopology)
+(url TOP-Kelley-GenTop "https://link.springer.com/book/10.1007/978-1-4612-5361-9")
+(desc TOP-Kelley-GenTop "A classic graduate text with a more abstract approach. Known for rigorous treatment of nets, filters, and the axiom of choice in topology.")
+
+(isa TOP-Morris-PointSet ReferenceWork)
+(title TOP-Morris-PointSet "Topology Without Tears")
+(author TOP-Morris-PointSet "Sidney A. Morris")
+(resourceType TOP-Morris-PointSet notes)
+(level TOP-Morris-PointSet beginner)
+(section TOP-Morris-PointSet PointSetTopology)
+(url TOP-Morris-PointSet "https://www.topologywithouttears.net/")
+(desc TOP-Morris-PointSet "Freely available self-study text. Builds from set theory through topological spaces, continuity, compactness, and connectedness with exercises.")
+
+(isa TOP-Steen-Counterexamples ReferenceWork)
+(title TOP-Steen-Counterexamples "Counterexamples in Topology")
+(author TOP-Steen-Counterexamples "Lynn Arthur Steen & J. Arthur Seebach Jr.")
+(resourceType TOP-Steen-Counterexamples book)
+(level TOP-Steen-Counterexamples intermediate)
+(section TOP-Steen-Counterexamples PointSetTopology)
+(url TOP-Steen-Counterexamples "https://store.doverpublications.com/0486687353.html")
+(desc TOP-Steen-Counterexamples "Catalog of 143 topological spaces illustrating how properties (compact, Hausdorff, connected, etc.) interact. Essential reference for building counterexamples.")
+
+;; ── Lecture Notes & Courses ──
+
+(isa TOP-MIT18901-IntroTop ReferenceWork)
+(title TOP-MIT18901-IntroTop "MIT 18.901: Introduction to Topology")
+(author TOP-MIT18901-IntroTop "MIT OpenCourseWare")
+(resourceType TOP-MIT18901-IntroTop course)
+(level TOP-MIT18901-IntroTop beginner)
+(section TOP-MIT18901-IntroTop PointSetTopology)
+(url TOP-MIT18901-IntroTop "https://ocw.mit.edu/courses/18-901-introduction-to-topology-fall-2004/")
+(desc TOP-MIT18901-IntroTop "Full MIT course with lecture notes, problem sets, and exams. Based on Munkres. Covers topological spaces through Urysohn metrization.")
+
+(isa TOP-Schilling-PointSetNotes ReferenceWork)
+(title TOP-Schilling-PointSetNotes "Point-Set Topology Lecture Notes")
+(author TOP-Schilling-PointSetNotes "Rene L. Schilling (TU Dresden)")
+(resourceType TOP-Schilling-PointSetNotes notes)
+(level TOP-Schilling-PointSetNotes beginner)
+(section TOP-Schilling-PointSetNotes PointSetTopology)
+(url TOP-Schilling-PointSetNotes "https://math.mit.edu/~jhirsh/topology.pdf")
+(desc TOP-Schilling-PointSetNotes "Concise lecture notes covering the essentials: topological spaces, bases, continuity, compactness, connectedness, and product spaces.")
+
+(isa TOP-Zimmermann-TopLectures ReferenceWork)
+(title TOP-Zimmermann-TopLectures "Topology Video Lectures")
+(author TOP-Zimmermann-TopLectures "Bruno Zimmermann (ICTP)")
+(resourceType TOP-Zimmermann-TopLectures video)
+(level TOP-Zimmermann-TopLectures beginner)
+(section TOP-Zimmermann-TopLectures PointSetTopology)
+(url TOP-Zimmermann-TopLectures "https://www.youtube.com/playlist?list=PLLq_gUfXAnkl8bjQh-hGQ9u24xZP9x0dx")
+(desc TOP-Zimmermann-TopLectures "Complete video lecture course from the International Centre for Theoretical Physics. Covers point-set topology with algebraic topology motivation.")
+
+;; ── Advanced & Specialized ──
+
+(isa TOP-Brown-TopGroupoids ReferenceWork)
+(title TOP-Brown-TopGroupoids "Topology and Groupoids")
+(author TOP-Brown-TopGroupoids "Ronald Brown")
+(resourceType TOP-Brown-TopGroupoids book)
+(level TOP-Brown-TopGroupoids advanced)
+(section TOP-Brown-TopGroupoids PointSetTopology)
+(url TOP-Brown-TopGroupoids "https://groupoids.org.uk/topgpds.html")
+(desc TOP-Brown-TopGroupoids "Unique approach combining point-set and algebraic topology using groupoids. Free online. Emphasizes the fundamental groupoid over the fundamental group.")
+
+(isa TOP-Engelking-GenTop ReferenceWork)
+(title TOP-Engelking-GenTop "Engelking: General Topology (Revised Edition)")
+(author TOP-Engelking-GenTop "Ryszard Engelking")
+(resourceType TOP-Engelking-GenTop book)
+(level TOP-Engelking-GenTop advanced)
+(section TOP-Engelking-GenTop PointSetTopology)
+(url TOP-Engelking-GenTop "https://www.heldermann.de/SSPM/SSPM06/sspm06.htm")
+(desc TOP-Engelking-GenTop "Encyclopedic reference for general topology. Covers dimension theory, paracompactness, and the most general versions of key theorems.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: ALGEBRAIC TOPOLOGY
+;; Fundamental group, homology, cohomology, CW complexes
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Textbooks ──
+
+(isa TOP-Hatcher-AlgTopCore ReferenceWork)
+(title TOP-Hatcher-AlgTopCore "Algebraic Topology")
+(author TOP-Hatcher-AlgTopCore "Allen Hatcher")
+(resourceType TOP-Hatcher-AlgTopCore book)
+(level TOP-Hatcher-AlgTopCore intermediate)
+(section TOP-Hatcher-AlgTopCore AlgebraicTopology)
+(url TOP-Hatcher-AlgTopCore "https://pi.math.cornell.edu/~hatcher/AT/ATpage.html")
+(desc TOP-Hatcher-AlgTopCore "Freely available. The standard graduate text covering fundamental group, van Kampen's theorem, homology (simplicial, singular, cellular), and cohomology.")
+
+(isa TOP-Munkres-ElemAlgTop ReferenceWork)
+(title TOP-Munkres-ElemAlgTop "Elements of Algebraic Topology")
+(author TOP-Munkres-ElemAlgTop "James R. Munkres")
+(resourceType TOP-Munkres-ElemAlgTop book)
+(level TOP-Munkres-ElemAlgTop intermediate)
+(section TOP-Munkres-ElemAlgTop AlgebraicTopology)
+(url TOP-Munkres-ElemAlgTop "https://www.pearson.com/en-us/subject-catalog/p/elements-of-algebraic-topology/P200000003513")
+(desc TOP-Munkres-ElemAlgTop "Computational emphasis. Covers simplicial homology in great detail with explicit algorithms, then develops singular homology. Excellent for understanding chain complexes.")
+
+(isa TOP-May-ConciseAlgTop ReferenceWork)
+(title TOP-May-ConciseAlgTop "A Concise Course in Algebraic Topology")
+(author TOP-May-ConciseAlgTop "J. Peter May")
+(resourceType TOP-May-ConciseAlgTop book)
+(level TOP-May-ConciseAlgTop advanced)
+(section TOP-May-ConciseAlgTop AlgebraicTopology)
+(url TOP-May-ConciseAlgTop "https://www.math.uchicago.edu/~may/CONCISE/ConciseRevised.pdf")
+(desc TOP-May-ConciseAlgTop "Free online. Dense, elegant treatment for the mathematically mature reader. Covers homotopy theory, cofibrations, fibrations, and spectral sequences.")
+
+(isa TOP-Spanier-AlgTop ReferenceWork)
+(title TOP-Spanier-AlgTop "Algebraic Topology")
+(author TOP-Spanier-AlgTop "Edwin H. Spanier")
+(resourceType TOP-Spanier-AlgTop book)
+(level TOP-Spanier-AlgTop advanced)
+(section TOP-Spanier-AlgTop AlgebraicTopology)
+(url TOP-Spanier-AlgTop "https://link.springer.com/book/10.1007/978-1-4684-9322-1")
+(desc TOP-Spanier-AlgTop "Classic comprehensive reference. Rigorous and complete. Covers homotopy, homology, cohomology, duality theorems, and fiber bundles.")
+
+;; ── Lecture Notes & Videos ──
+
+(isa TOP-Albin-AlgTopLectures ReferenceWork)
+(title TOP-Albin-AlgTopLectures "Algebraic Topology Lectures")
+(author TOP-Albin-AlgTopLectures "Pierre Albin (UIUC)")
+(resourceType TOP-Albin-AlgTopLectures video)
+(level TOP-Albin-AlgTopLectures intermediate)
+(section TOP-Albin-AlgTopLectures AlgebraicTopology)
+(url TOP-Albin-AlgTopLectures "https://www.youtube.com/playlist?list=PLpRLWqLFLVTCL15U6N3o35g4uhMSBVA2b")
+(desc TOP-Albin-AlgTopLectures "Full semester video course following Hatcher. Clear blackboard lectures covering fundamental group, covering spaces, and homology.")
+
+(isa TOP-MIT18905-AlgTopI ReferenceWork)
+(title TOP-MIT18905-AlgTopI "MIT 18.905: Algebraic Topology I")
+(author TOP-MIT18905-AlgTopI "Haynes Miller (MIT OCW)")
+(resourceType TOP-MIT18905-AlgTopI course)
+(level TOP-MIT18905-AlgTopI intermediate)
+(section TOP-MIT18905-AlgTopI AlgebraicTopology)
+(url TOP-MIT18905-AlgTopI "https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/")
+(desc TOP-MIT18905-AlgTopI "Graduate-level MIT course with detailed lecture notes. Covers singular homology, CW complexes, cohomology, and Poincare duality.")
+
+(isa TOP-Mathew-AlgTopNotes ReferenceWork)
+(title TOP-Mathew-AlgTopNotes "Algebraic Topology Lecture Notes")
+(author TOP-Mathew-AlgTopNotes "Akhil Mathew")
+(resourceType TOP-Mathew-AlgTopNotes notes)
+(level TOP-Mathew-AlgTopNotes intermediate)
+(section TOP-Mathew-AlgTopNotes AlgebraicTopology)
+(url TOP-Mathew-AlgTopNotes "https://math.uchicago.edu/~amathew/ATnotes.pdf")
+(desc TOP-Mathew-AlgTopNotes "Well-written notes covering the fundamental group, covering spaces, homology, and cohomology with a modern perspective.")
+
+(isa TOP-TopExplained-Interactive ReferenceWork)
+(title TOP-TopExplained-Interactive "Interactive Algebraic Topology")
+(author TOP-TopExplained-Interactive "Topology Explained (YouTube)")
+(resourceType TOP-TopExplained-Interactive video)
+(level TOP-TopExplained-Interactive beginner)
+(section TOP-TopExplained-Interactive AlgebraicTopology)
+(url TOP-TopExplained-Interactive "https://www.youtube.com/playlist?list=PLd8NbPjkXPliJunBcGKMBVSMA1ztCBlfv")
+(desc TOP-TopExplained-Interactive "Visual, intuition-building videos on homology, the fundamental group, exact sequences, and key theorems of algebraic topology.")
+
+;; ── Specialized & Advanced ──
+
+(isa TOP-HoTT-Book ReferenceWork)
+(title TOP-HoTT-Book "Homotopy Type Theory (HoTT Book)")
+(author TOP-HoTT-Book "Univalent Foundations Program")
+(resourceType TOP-HoTT-Book book)
+(level TOP-HoTT-Book advanced)
+(section TOP-HoTT-Book AlgebraicTopology)
+(url TOP-HoTT-Book "https://homotopytypetheory.org/book/")
+(desc TOP-HoTT-Book "Free online. Radical new foundation blending homotopy theory with type theory. Relevant to computational approaches to higher-dimensional topology.")
+
+(isa TOP-Lundell-HomologyCellCx ReferenceWork)
+(title TOP-Lundell-HomologyCellCx "Homology of Cell Complexes")
+(author TOP-Lundell-HomologyCellCx "George Lundell & Stephen Weingram")
+(resourceType TOP-Lundell-HomologyCellCx book)
+(level TOP-Lundell-HomologyCellCx advanced)
+(section TOP-Lundell-HomologyCellCx AlgebraicTopology)
+(url TOP-Lundell-HomologyCellCx "https://www.sciencedirect.com/book/9780124605503/the-topology-of-cw-complexes")
+(desc TOP-Lundell-HomologyCellCx "Detailed treatment of CW complexes and cellular homology. Directly applicable to computing the homology of polytopes like the tesseract.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: PERSISTENT HOMOLOGY
+;; Filtrations, barcodes, persistence diagrams, stability
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa TOP-Edelsbrunner-CompTopPH ReferenceWork)
+(title TOP-Edelsbrunner-CompTopPH "Computational Topology: An Introduction")
+(author TOP-Edelsbrunner-CompTopPH "Herbert Edelsbrunner & John L. Harer")
+(resourceType TOP-Edelsbrunner-CompTopPH book)
+(level TOP-Edelsbrunner-CompTopPH intermediate)
+(section TOP-Edelsbrunner-CompTopPH PersistentHomology)
+(url TOP-Edelsbrunner-CompTopPH "https://bookstore.ams.org/mbk-69")
+(desc TOP-Edelsbrunner-CompTopPH "The first comprehensive textbook on computational topology. Covers simplicial complexes, homology computation, persistent homology, and Morse theory.")
+
+(isa TOP-Carlsson-TopAndData ReferenceWork)
+(title TOP-Carlsson-TopAndData "Topology and Data")
+(author TOP-Carlsson-TopAndData "Gunnar Carlsson")
+(resourceType TOP-Carlsson-TopAndData notes)
+(level TOP-Carlsson-TopAndData intermediate)
+(section TOP-Carlsson-TopAndData PersistentHomology)
+(url TOP-Carlsson-TopAndData "https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/")
+(desc TOP-Carlsson-TopAndData "Influential 2009 survey paper in the Bulletin of the AMS. Explains the philosophical underpinning of TDA and the role of persistent homology.")
+
+(isa TOP-Oudot-PersistenceTheory ReferenceWork)
+(title TOP-Oudot-PersistenceTheory "Persistence Theory: From Quiver Representations to Data Analysis")
+(author TOP-Oudot-PersistenceTheory "Steve Y. Oudot")
+(resourceType TOP-Oudot-PersistenceTheory book)
+(level TOP-Oudot-PersistenceTheory advanced)
+(section TOP-Oudot-PersistenceTheory PersistentHomology)
+(url TOP-Oudot-PersistenceTheory "https://bookstore.ams.org/surv-209")
+(desc TOP-Oudot-PersistenceTheory "Rigorous algebraic treatment of persistence modules via quiver theory. Covers decomposition theorems, stability, and multi-parameter persistence.")
+
+(isa TOP-Edelsbrunner-PHSurvey ReferenceWork)
+(title TOP-Edelsbrunner-PHSurvey "Persistent Homology: A Survey")
+(author TOP-Edelsbrunner-PHSurvey "Herbert Edelsbrunner & Dmitriy Morozov")
+(resourceType TOP-Edelsbrunner-PHSurvey notes)
+(level TOP-Edelsbrunner-PHSurvey intermediate)
+(section TOP-Edelsbrunner-PHSurvey PersistentHomology)
+(url TOP-Edelsbrunner-PHSurvey "https://mrzv.org/publications/persistent-homology-survey/")
+(desc TOP-Edelsbrunner-PHSurvey "Concise survey covering the development of persistent homology from simplicial complexes through stability and computational aspects.")
+
+;; ── Lectures & Courses ──
+
+(isa TOP-AATRN-Webinars ReferenceWork)
+(title TOP-AATRN-Webinars "Applied Algebraic Topology Network (AATRN) Webinars")
+(author TOP-AATRN-Webinars "AATRN Community")
+(resourceType TOP-AATRN-Webinars video)
+(level TOP-AATRN-Webinars intermediate)
+(section TOP-AATRN-Webinars PersistentHomology)
+(url TOP-AATRN-Webinars "https://www.youtube.com/@aaaboringmorning/playlists")
+(desc TOP-AATRN-Webinars "Archive of research seminars on persistent homology, mapper, TDA applications. Features talks by leading researchers.")
+
+(isa TOP-Wright-PHTutorial ReferenceWork)
+(title TOP-Wright-PHTutorial "Computational Persistent Homology (Tutorial)")
+(author TOP-Wright-PHTutorial "Matthew Wright")
+(resourceType TOP-Wright-PHTutorial video)
+(level TOP-Wright-PHTutorial beginner)
+(section TOP-Wright-PHTutorial PersistentHomology)
+(url TOP-Wright-PHTutorial "https://www.youtube.com/watch?v=h0bnG1Wavag")
+(desc TOP-Wright-PHTutorial "Self-contained video tutorial building persistent homology from scratch with examples. Good entry point before diving into textbooks.")
+
+(isa TOP-Bauer-PHTDAMunich ReferenceWork)
+(title TOP-Bauer-PHTDAMunich "Persistent Homology and TDA (TU Munich)")
+(author TOP-Bauer-PHTDAMunich "Ulrich Bauer")
+(resourceType TOP-Bauer-PHTDAMunich course)
+(level TOP-Bauer-PHTDAMunich intermediate)
+(section TOP-Bauer-PHTDAMunich PersistentHomology)
+(url TOP-Bauer-PHTDAMunich "https://www.youtube.com/playlist?list=PLBh0vFJaw0GCR1JY8Qb1KmU1R-BjQOVvr")
+(desc TOP-Bauer-PHTDAMunich "University lecture course by the creator of Ripser. Covers filtrations, barcodes, stability, and computational algorithms.")
+
+(isa TOP-Chazal-StructStability ReferenceWork)
+(title TOP-Chazal-StructStability "The Structure and Stability of Persistence Modules")
+(author TOP-Chazal-StructStability "Frederic Chazal et al.")
+(resourceType TOP-Chazal-StructStability notes)
+(level TOP-Chazal-StructStability advanced)
+(section TOP-Chazal-StructStability PersistentHomology)
+(url TOP-Chazal-StructStability "https://link.springer.com/book/10.1007/978-3-319-42545-0")
+(desc TOP-Chazal-StructStability "Springer monograph giving a thorough algebraic treatment of persistence modules, interleaving distance, and stability in general settings.")
+
+;; ── Key Papers ──
+
+(isa TOP-ELZ2002-TopPersistence ReferenceWork)
+(title TOP-ELZ2002-TopPersistence "Topological Persistence and Simplification")
+(author TOP-ELZ2002-TopPersistence "Edelsbrunner, Letscher & Zomorodian (2002)")
+(resourceType TOP-ELZ2002-TopPersistence notes)
+(level TOP-ELZ2002-TopPersistence advanced)
+(section TOP-ELZ2002-TopPersistence PersistentHomology)
+(url TOP-ELZ2002-TopPersistence "https://link.springer.com/article/10.1007/s00454-002-2885-2")
+(desc TOP-ELZ2002-TopPersistence "The foundational paper introducing persistent homology and the pairing algorithm. Required reading for understanding the field's origins.")
+
+(isa TOP-ZC2005-ComputingPH ReferenceWork)
+(title TOP-ZC2005-ComputingPH "Computing Persistent Homology")
+(author TOP-ZC2005-ComputingPH "Afra Zomorodian & Gunnar Carlsson (2005)")
+(resourceType TOP-ZC2005-ComputingPH notes)
+(level TOP-ZC2005-ComputingPH intermediate)
+(section TOP-ZC2005-ComputingPH PersistentHomology)
+(url TOP-ZC2005-ComputingPH "https://link.springer.com/article/10.1007/s00454-004-1146-y")
+(desc TOP-ZC2005-ComputingPH "Introduces the standard algorithm and the persistence module decomposition theorem. Established the algebraic framework used by most implementations.")
+
+(isa TOP-CEH2007-StabilityPD ReferenceWork)
+(title TOP-CEH2007-StabilityPD "Stability of Persistence Diagrams")
+(author TOP-CEH2007-StabilityPD "David Cohen-Steiner, Herbert Edelsbrunner & John Harer (2007)")
+(resourceType TOP-CEH2007-StabilityPD notes)
+(level TOP-CEH2007-StabilityPD advanced)
+(section TOP-CEH2007-StabilityPD PersistentHomology)
+(url TOP-CEH2007-StabilityPD "https://link.springer.com/article/10.1007/s00454-006-1276-5")
+(desc TOP-CEH2007-StabilityPD "Proves the celebrated stability theorem: small changes in the input function produce small changes in the persistence diagram. Foundation of statistical TDA.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: TOPOLOGICAL DATA ANALYSIS (TDA)
+;; Vietoris-Rips, Mapper, persistence landscapes, TDA+ML
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Monographs ──
+
+(isa TOP-Ghrist-ElemAppliedTop ReferenceWork)
+(title TOP-Ghrist-ElemAppliedTop "Elementary Applied Topology")
+(author TOP-Ghrist-ElemAppliedTop "Robert Ghrist")
+(resourceType TOP-Ghrist-ElemAppliedTop book)
+(level TOP-Ghrist-ElemAppliedTop intermediate)
+(section TOP-Ghrist-ElemAppliedTop TopologicalDataAnalysis)
+(url TOP-Ghrist-ElemAppliedTop "https://www.math.upenn.edu/~ghrist/notes.html")
+(desc TOP-Ghrist-ElemAppliedTop "Beautifully illustrated text covering topology, sheaves, Morse theory, and persistent homology with applications to robotics, sensing, and data.")
+
+(isa TOP-Oudot-PersistenceTheoryTDA ReferenceWork)
+(title TOP-Oudot-PersistenceTheoryTDA "Persistence Theory: From Quiver Representations to Data Analysis")
+(author TOP-Oudot-PersistenceTheoryTDA "Steve Y. Oudot")
+(resourceType TOP-Oudot-PersistenceTheoryTDA book)
+(level TOP-Oudot-PersistenceTheoryTDA advanced)
+(section TOP-Oudot-PersistenceTheoryTDA TopologicalDataAnalysis)
+(url TOP-Oudot-PersistenceTheoryTDA "https://bookstore.ams.org/surv-209")
+(desc TOP-Oudot-PersistenceTheoryTDA "Theoretical foundations of persistence for data analysis. Covers algebraic stability, interleaving distances, and multiparameter persistence.")
+
+(isa TOP-Boissonnat-GeomTopInf ReferenceWork)
+(title TOP-Boissonnat-GeomTopInf "Geometric and Topological Inference")
+(author TOP-Boissonnat-GeomTopInf "Jean-Daniel Boissonnat, Frederic Chazal & Mariette Yvinec")
+(resourceType TOP-Boissonnat-GeomTopInf book)
+(level TOP-Boissonnat-GeomTopInf intermediate)
+(section TOP-Boissonnat-GeomTopInf TopologicalDataAnalysis)
+(url TOP-Boissonnat-GeomTopInf "https://www.cambridge.org/core/books/geometric-and-topological-inference/96B596D5FCFB279F0B43F1F258B3E886")
+(desc TOP-Boissonnat-GeomTopInf "Covers geometric inference, distance functions, simplicial complexes, and topological persistence from a computational geometry perspective.")
+
+(isa TOP-Chazal-IntroTDA ReferenceWork)
+(title TOP-Chazal-IntroTDA "An Introduction to Topological Data Analysis")
+(author TOP-Chazal-IntroTDA "Frederic Chazal & Bertrand Michel")
+(resourceType TOP-Chazal-IntroTDA notes)
+(level TOP-Chazal-IntroTDA beginner)
+(section TOP-Chazal-IntroTDA TopologicalDataAnalysis)
+(url TOP-Chazal-IntroTDA "https://arxiv.org/abs/1710.04019")
+(desc TOP-Chazal-IntroTDA "Accessible introduction aimed at statisticians and data scientists. Covers simplicial complexes, persistent homology, stability, and statistical aspects.")
+
+;; ── Tutorials & Courses ──
+
+(isa TOP-CRAN-TDAwithR ReferenceWork)
+(title TOP-CRAN-TDAwithR "TDA with R (CRAN Vignette)")
+(author TOP-CRAN-TDAwithR "CRAN / Fasy, Kim, Lecci, Maria")
+(resourceType TOP-CRAN-TDAwithR course)
+(level TOP-CRAN-TDAwithR beginner)
+(section TOP-CRAN-TDAwithR TopologicalDataAnalysis)
+(url TOP-CRAN-TDAwithR "https://cran.r-project.org/web/packages/TDA/vignettes/article.pdf")
+(desc TOP-CRAN-TDAwithR "Practical tutorial using the TDA R package. Covers Rips filtrations, persistence diagrams, landscapes, and statistical inference with code examples.")
+
+(isa TOP-ScikitTDA-Tutorial ReferenceWork)
+(title TOP-ScikitTDA-Tutorial "Topological Data Analysis with scikit-tda")
+(author TOP-ScikitTDA-Tutorial "Nathaniel Saul & Chris Tralie")
+(resourceType TOP-ScikitTDA-Tutorial course)
+(level TOP-ScikitTDA-Tutorial beginner)
+(section TOP-ScikitTDA-Tutorial TopologicalDataAnalysis)
+(url TOP-ScikitTDA-Tutorial "https://scikit-tda.org/")
+(desc TOP-ScikitTDA-Tutorial "Python ecosystem for TDA. Tutorials covering Ripser (persistent homology), Persim (diagram distances), KeplerMapper, and integration with scikit-learn.")
+
+(isa TOP-McInnes-TDAPractical ReferenceWork)
+(title TOP-McInnes-TDAPractical "TDA: A Practical Guide for Non-Mathematicians")
+(author TOP-McInnes-TDAPractical "Leland McInnes (Talk)")
+(resourceType TOP-McInnes-TDAPractical video)
+(level TOP-McInnes-TDAPractical beginner)
+(section TOP-McInnes-TDAPractical TopologicalDataAnalysis)
+(url TOP-McInnes-TDAPractical "https://www.youtube.com/watch?v=F3s2SBmyEZs")
+(desc TOP-McInnes-TDAPractical "Talk by the creator of UMAP explaining TDA concepts (persistent homology, Mapper) for practitioners without heavy math background.")
+
+(isa TOP-Carlsson-StanfordTDA ReferenceWork)
+(title TOP-Carlsson-StanfordTDA "Topological Methods in Data Analysis (Stanford)")
+(author TOP-Carlsson-StanfordTDA "Gunnar Carlsson (Stanford)")
+(resourceType TOP-Carlsson-StanfordTDA course)
+(level TOP-Carlsson-StanfordTDA intermediate)
+(section TOP-Carlsson-StanfordTDA TopologicalDataAnalysis)
+(url TOP-Carlsson-StanfordTDA "https://online.stanford.edu/courses/cme-291-topological-methods-data-analysis")
+(desc TOP-Carlsson-StanfordTDA "Stanford course covering TDA fundamentals, persistent homology, Mapper, and applications to biomedicine and materials science.")
+
+;; ── Key Papers & Surveys ──
+
+(isa TOP-Ghrist-Barcodes ReferenceWork)
+(title TOP-Ghrist-Barcodes "Barcodes: The Persistent Topology of Data")
+(author TOP-Ghrist-Barcodes "Robert Ghrist")
+(resourceType TOP-Ghrist-Barcodes notes)
+(level TOP-Ghrist-Barcodes intermediate)
+(section TOP-Ghrist-Barcodes TopologicalDataAnalysis)
+(url TOP-Ghrist-Barcodes "https://www.ams.org/journals/bull/2008-45-01/S0273-0979-07-01191-3/")
+(desc TOP-Ghrist-Barcodes "Influential Bulletin of the AMS article providing an accessible overview of persistent homology and its role in data analysis.")
+
+(isa TOP-Carlsson-TopPatternRecog ReferenceWork)
+(title TOP-Carlsson-TopPatternRecog "Topological Pattern Recognition for Point Cloud Data")
+(author TOP-Carlsson-TopPatternRecog "Gunnar Carlsson (2014)")
+(resourceType TOP-Carlsson-TopPatternRecog notes)
+(level TOP-Carlsson-TopPatternRecog intermediate)
+(section TOP-Carlsson-TopPatternRecog TopologicalDataAnalysis)
+(url TOP-Carlsson-TopPatternRecog "https://www.cambridge.org/core/journals/acta-numerica/article/topological-pattern-recognition-for-point-cloud-data/BB0DA0F0EBD79809C563AF80B555A23C")
+(desc TOP-Carlsson-TopPatternRecog "Acta Numerica survey covering the full TDA pipeline from point clouds through persistent homology to statistical and machine-learning applications.")
+
+(isa TOP-Otter-RoadmapPH ReferenceWork)
+(title TOP-Otter-RoadmapPH "A Roadmap for the Computation of Persistent Homology")
+(author TOP-Otter-RoadmapPH "Nina Otter et al. (2017)")
+(resourceType TOP-Otter-RoadmapPH notes)
+(level TOP-Otter-RoadmapPH intermediate)
+(section TOP-Otter-RoadmapPH TopologicalDataAnalysis)
+(url TOP-Otter-RoadmapPH "https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-017-0109-5")
+(desc TOP-Otter-RoadmapPH "Practical guide comparing TDA software and workflows. Benchmarks different persistent homology implementations on real datasets.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: HIGHER DIMENSIONS
+;; Polytopes, manifolds, hyperbolic geometry, visualization
+;; ════════════════════════════════════════════════════════════
+
+;; ── Polytopes & Higher-Dimensional Geometry ──
+
+(isa TOP-Coxeter-RegPolyHD ReferenceWork)
+(title TOP-Coxeter-RegPolyHD "Regular Polytopes (3rd Edition)")
+(author TOP-Coxeter-RegPolyHD "H.S.M. Coxeter")
+(resourceType TOP-Coxeter-RegPolyHD book)
+(level TOP-Coxeter-RegPolyHD intermediate)
+(section TOP-Coxeter-RegPolyHD HigherDimensions)
+(url TOP-Coxeter-RegPolyHD "https://store.doverpublications.com/0486614808.html")
+(desc TOP-Coxeter-RegPolyHD "The definitive classical work on regular polytopes in all dimensions. Covers the tesseract, 16-cell, 24-cell, 120-cell, and 600-cell with full symmetry analysis.")
+
+(isa TOP-Grunbaum-ConvexPolytopes ReferenceWork)
+(title TOP-Grunbaum-ConvexPolytopes "Convex Polytopes (2nd Edition)")
+(author TOP-Grunbaum-ConvexPolytopes "Branko Grunbaum")
+(resourceType TOP-Grunbaum-ConvexPolytopes book)
+(level TOP-Grunbaum-ConvexPolytopes advanced)
+(section TOP-Grunbaum-ConvexPolytopes HigherDimensions)
+(url TOP-Grunbaum-ConvexPolytopes "https://link.springer.com/book/10.1007/978-1-4613-0019-9")
+(desc TOP-Grunbaum-ConvexPolytopes "Comprehensive treatment of the combinatorial theory of convex polytopes. Face lattices, f-vectors, Dehn-Sommerville equations, and the upper-bound theorem.")
+
+(isa TOP-Ziegler-LectPolytopes ReferenceWork)
+(title TOP-Ziegler-LectPolytopes "Lectures on Polytopes")
+(author TOP-Ziegler-LectPolytopes "Gunter M. Ziegler")
+(resourceType TOP-Ziegler-LectPolytopes book)
+(level TOP-Ziegler-LectPolytopes intermediate)
+(section TOP-Ziegler-LectPolytopes HigherDimensions)
+(url TOP-Ziegler-LectPolytopes "https://link.springer.com/book/10.1007/978-1-4613-8431-1")
+(desc TOP-Ziegler-LectPolytopes "Modern, accessible introduction to polytope theory. Covers face lattices, Schlegel diagrams, shellability, and the g-theorem. Rich in examples.")
+
+(isa TOP-Conway-SymmetriesOfThings ReferenceWork)
+(title TOP-Conway-SymmetriesOfThings "The Symmetries of Things")
+(author TOP-Conway-SymmetriesOfThings "John H. Conway, Heidi Burgiel & Chaim Goodman-Strauss")
+(resourceType TOP-Conway-SymmetriesOfThings book)
+(level TOP-Conway-SymmetriesOfThings intermediate)
+(section TOP-Conway-SymmetriesOfThings HigherDimensions)
+(url TOP-Conway-SymmetriesOfThings "https://www.routledge.com/The-Symmetries-of-Things/Conway-Burgiel-Goodman-Strauss/p/book/9781568812205")
+(desc TOP-Conway-SymmetriesOfThings "Beautiful exploration of symmetry from frieze patterns to higher-dimensional symmetry groups. The hyperoctahedral group B_4 governing the tesseract is covered.")
+
+;; ── Manifolds & Geometric Topology ──
+
+(isa TOP-Thurston-GeomTop3Manifolds ReferenceWork)
+(title TOP-Thurston-GeomTop3Manifolds "The Geometry and Topology of Three-Manifolds")
+(author TOP-Thurston-GeomTop3Manifolds "William P. Thurston")
+(resourceType TOP-Thurston-GeomTop3Manifolds notes)
+(level TOP-Thurston-GeomTop3Manifolds advanced)
+(section TOP-Thurston-GeomTop3Manifolds HigherDimensions)
+(url TOP-Thurston-GeomTop3Manifolds "https://library.msri.org/books/gt3m/")
+(desc TOP-Thurston-GeomTop3Manifolds "Thurston's legendary lecture notes, freely available from MSRI. Covers hyperbolic geometry, geometric structures, and the eight Thurston geometries.")
+
+(isa TOP-Lee-IntroTopManifolds ReferenceWork)
+(title TOP-Lee-IntroTopManifolds "Introduction to Topological Manifolds (2nd Edition)")
+(author TOP-Lee-IntroTopManifolds "John M. Lee")
+(resourceType TOP-Lee-IntroTopManifolds book)
+(level TOP-Lee-IntroTopManifolds intermediate)
+(section TOP-Lee-IntroTopManifolds HigherDimensions)
+(url TOP-Lee-IntroTopManifolds "https://link.springer.com/book/10.1007/978-1-4419-7940-7")
+(desc TOP-Lee-IntroTopManifolds "Graduate text covering topological manifolds, fundamental group, covering spaces, CW complexes, and classification of surfaces.")
+
+(isa TOP-Miyazaki-4DGeom ReferenceWork)
+(title TOP-Miyazaki-4DGeom "Four-Dimensional Geometry")
+(author TOP-Miyazaki-4DGeom "Koji Miyazaki")
+(resourceType TOP-Miyazaki-4DGeom video)
+(level TOP-Miyazaki-4DGeom beginner)
+(section TOP-Miyazaki-4DGeom HigherDimensions)
+(url TOP-Miyazaki-4DGeom "https://www.youtube.com/watch?v=0t4aKJuKP0Q")
+(desc TOP-Miyazaki-4DGeom "Visual exploration of 4D objects including the tesseract, featuring cross-sections, projections, and unfolding into 3D nets.")
+
+(isa TOP-Dimensions-Film ReferenceWork)
+(title TOP-Dimensions-Film "Dimensions (Film Series)")
+(author TOP-Dimensions-Film "Jos Leys, Etienne Ghys & Aurelien Alvarez")
+(resourceType TOP-Dimensions-Film video)
+(level TOP-Dimensions-Film beginner)
+(section TOP-Dimensions-Film HigherDimensions)
+(url TOP-Dimensions-Film "https://www.dimensions-math.org/")
+(desc TOP-Dimensions-Film "Award-winning nine-chapter film series on geometry and dimensions. Chapters 5-6 cover 4D polytopes including the tesseract with stunning visualizations.")
+
+;; ── Visualization & Interactive Tools ──
+
+(isa TOP-4DVizProject ReferenceWork)
+(title TOP-4DVizProject "4D Visualization Project")
+(author TOP-4DVizProject "Mathematics Visualization Group")
+(resourceType TOP-4DVizProject code)
+(level TOP-4DVizProject beginner)
+(section TOP-4DVizProject HigherDimensions)
+(url TOP-4DVizProject "https://github.com/henryseg/Hyperbolica")
+(desc TOP-4DVizProject "Open-source tools for visualizing 4D objects via projections, cross-sections, and rotations. Useful for building intuition about the tesseract.")
+
+(isa TOP-DeKeninck-Hyperspace ReferenceWork)
+(title TOP-DeKeninck-Hyperspace "Exploring Hyperspace with the Geometric Product")
+(author TOP-DeKeninck-Hyperspace "Steven De Keninck")
+(resourceType TOP-DeKeninck-Hyperspace notes)
+(level TOP-DeKeninck-Hyperspace intermediate)
+(section TOP-DeKeninck-Hyperspace HigherDimensions)
+(url TOP-DeKeninck-Hyperspace "https://bivector.net/")
+(desc TOP-DeKeninck-Hyperspace "Projective and conformal geometric algebra tools for working with higher-dimensional geometry. Interactive demos for 4D rotations and reflections.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: FIBER BUNDLES & SHEAVES
+;; Vector bundles, principal bundles, characteristic classes, sheaves
+;; ════════════════════════════════════════════════════════════
+
+;; ── Fiber Bundles ──
+
+(isa TOP-Husemoller-FibreBundles ReferenceWork)
+(title TOP-Husemoller-FibreBundles "Fibre Bundles (3rd Edition)")
+(author TOP-Husemoller-FibreBundles "Dale Husemoller")
+(resourceType TOP-Husemoller-FibreBundles book)
+(level TOP-Husemoller-FibreBundles intermediate)
+(section TOP-Husemoller-FibreBundles FiberBundles)
+(url TOP-Husemoller-FibreBundles "https://link.springer.com/book/10.1007/978-1-4757-2261-1")
+(desc TOP-Husemoller-FibreBundles "Standard graduate text on fiber bundles. Covers vector bundles, principal bundles, classifying spaces, characteristic classes, and K-theory.")
+
+(isa TOP-Bredon-TopGeom ReferenceWork)
+(title TOP-Bredon-TopGeom "Topology and Geometry")
+(author TOP-Bredon-TopGeom "Glen E. Bredon")
+(resourceType TOP-Bredon-TopGeom book)
+(level TOP-Bredon-TopGeom intermediate)
+(section TOP-Bredon-TopGeom FiberBundles)
+(url TOP-Bredon-TopGeom "https://link.springer.com/book/10.1007/978-1-4757-6848-0")
+(desc TOP-Bredon-TopGeom "Comprehensive text covering general topology, differentiable manifolds, fundamental group, homology, cohomology, and fiber bundles in a unified treatment.")
+
+(isa TOP-Milnor-CharClasses ReferenceWork)
+(title TOP-Milnor-CharClasses "Characteristic Classes")
+(author TOP-Milnor-CharClasses "John W. Milnor & James D. Stasheff")
+(resourceType TOP-Milnor-CharClasses book)
+(level TOP-Milnor-CharClasses advanced)
+(section TOP-Milnor-CharClasses FiberBundles)
+(url TOP-Milnor-CharClasses "https://press.princeton.edu/books/paperback/9780691081229/characteristic-classes-am-76-volume-76")
+(desc TOP-Milnor-CharClasses "The classic Princeton Annals volume. Constructs Stiefel-Whitney, Chern, and Pontryagin classes from scratch. Essential for understanding bundle invariants.")
+
+(isa TOP-Steenrod-TopFibreBundles ReferenceWork)
+(title TOP-Steenrod-TopFibreBundles "The Topology of Fibre Bundles")
+(author TOP-Steenrod-TopFibreBundles "Norman Steenrod")
+(resourceType TOP-Steenrod-TopFibreBundles book)
+(level TOP-Steenrod-TopFibreBundles advanced)
+(section TOP-Steenrod-TopFibreBundles FiberBundles)
+(url TOP-Steenrod-TopFibreBundles "https://press.princeton.edu/books/paperback/9780691005485/the-topology-of-fibre-bundles-pms-14-volume-14")
+(desc TOP-Steenrod-TopFibreBundles "The original systematic treatment of fiber bundles. Historical importance and still relevant for coordinate bundles and the homotopy classification of bundles.")
+
+;; ── Sheaves & Derived Categories ──
+
+(isa TOP-MacLane-SheavesGeomLogic ReferenceWork)
+(title TOP-MacLane-SheavesGeomLogic "Sheaves in Geometry and Logic")
+(author TOP-MacLane-SheavesGeomLogic "Saunders Mac Lane & Ieke Moerdijk")
+(resourceType TOP-MacLane-SheavesGeomLogic book)
+(level TOP-MacLane-SheavesGeomLogic advanced)
+(section TOP-MacLane-SheavesGeomLogic FiberBundles)
+(url TOP-MacLane-SheavesGeomLogic "https://link.springer.com/book/10.1007/978-1-4612-0927-0")
+(desc TOP-MacLane-SheavesGeomLogic "Introduces sheaves, topoi, and their applications. Connects sheaf theory with logic and category theory in an accessible style for the prerequisites.")
+
+(isa TOP-Kashiwara-SheavesManifolds ReferenceWork)
+(title TOP-Kashiwara-SheavesManifolds "Sheaves on Manifolds")
+(author TOP-Kashiwara-SheavesManifolds "Masaki Kashiwara & Pierre Schapira")
+(resourceType TOP-Kashiwara-SheavesManifolds book)
+(level TOP-Kashiwara-SheavesManifolds advanced)
+(section TOP-Kashiwara-SheavesManifolds FiberBundles)
+(url TOP-Kashiwara-SheavesManifolds "https://link.springer.com/book/10.1007/978-3-662-02661-8")
+(desc TOP-Kashiwara-SheavesManifolds "Comprehensive treatment of sheaf theory and derived categories on manifolds. Covers microlocal analysis, constructible sheaves, and D-modules.")
+
+(isa TOP-Curry-CellularSheaves ReferenceWork)
+(title TOP-Curry-CellularSheaves "Cellular Sheaves and Applications")
+(author TOP-Curry-CellularSheaves "Justin Curry (PhD Thesis)")
+(resourceType TOP-Curry-CellularSheaves notes)
+(level TOP-Curry-CellularSheaves advanced)
+(section TOP-Curry-CellularSheaves FiberBundles)
+(url TOP-Curry-CellularSheaves "https://arxiv.org/abs/1303.3255")
+(desc TOP-Curry-CellularSheaves "Develops sheaves on cell complexes (like polytopes) with applications to network coding, opinion dynamics, and topological signal processing.")
+
+(isa TOP-Rosiak-SheafExamples ReferenceWork)
+(title TOP-Rosiak-SheafExamples "Sheaf Theory through Examples")
+(author TOP-Rosiak-SheafExamples "Daniel Rosiak")
+(resourceType TOP-Rosiak-SheafExamples book)
+(level TOP-Rosiak-SheafExamples intermediate)
+(section TOP-Rosiak-SheafExamples FiberBundles)
+(url TOP-Rosiak-SheafExamples "https://mitpress.mit.edu/9780262542159/sheaf-theory-through-examples/")
+(desc TOP-Rosiak-SheafExamples "Recent, accessible introduction to sheaves with concrete examples from topology, logic, linguistics, and data science. Good entry point.")
+
+;; ── Lectures & Visual Resources ──
+
+(isa TOP-Schuller-FiberBundlesGauge ReferenceWork)
+(title TOP-Schuller-FiberBundlesGauge "Fiber Bundles and Gauge Theory (Schuller)")
+(author TOP-Schuller-FiberBundlesGauge "Frederic Schuller")
+(resourceType TOP-Schuller-FiberBundlesGauge video)
+(level TOP-Schuller-FiberBundlesGauge intermediate)
+(section TOP-Schuller-FiberBundlesGauge FiberBundles)
+(url TOP-Schuller-FiberBundlesGauge "https://www.youtube.com/playlist?list=PLFeEvEPtX_0S6vxxiiNPrJbLu9aK1UVC_")
+(desc TOP-Schuller-FiberBundlesGauge "Rigorous lecture series covering manifolds, fiber bundles, connections, curvature, and gauge theory. Physics-motivated but mathematically precise.")
+
+(isa TOP-Johnson-HopfFibration ReferenceWork)
+(title TOP-Johnson-HopfFibration "The Hopf Fibration (Niles Johnson)")
+(author TOP-Johnson-HopfFibration "Niles Johnson")
+(resourceType TOP-Johnson-HopfFibration video)
+(level TOP-Johnson-HopfFibration beginner)
+(section TOP-Johnson-HopfFibration FiberBundles)
+(url TOP-Johnson-HopfFibration "https://nilesjohnson.net/hopf.html")
+(desc TOP-Johnson-HopfFibration "Beautiful visualizations of the Hopf fibration S^3 -> S^2, directly relevant to 4-dimensional geometry and the topology of the 3-sphere (tesseract boundary).")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Persistent homology libraries, TDA pipelines, benchmarks
+;; ════════════════════════════════════════════════════════════
+
+;; ── Persistent Homology Libraries ──
+
+(isa TOP-GUDHI ReferenceWork)
+(title TOP-GUDHI "GUDHI (Geometry Understanding in Higher Dimensions)")
+(author TOP-GUDHI "INRIA / GUDHI Project")
+(resourceType TOP-GUDHI code)
+(level TOP-GUDHI intermediate)
+(section TOP-GUDHI DatasetsSoftware)
+(url TOP-GUDHI "https://gudhi.inria.fr/")
+(desc TOP-GUDHI "Comprehensive C++/Python library. Simplicial/cubical complexes, Alpha/Rips/witness complexes, persistent homology, bottleneck/Wasserstein distances, Mapper.")
+
+(isa TOP-Ripser ReferenceWork)
+(title TOP-Ripser "Ripser")
+(author TOP-Ripser "Ulrich Bauer")
+(resourceType TOP-Ripser code)
+(level TOP-Ripser intermediate)
+(section TOP-Ripser DatasetsSoftware)
+(url TOP-Ripser "https://github.com/Ripser/ripser")
+(desc TOP-Ripser "State-of-the-art Vietoris-Rips persistent homology. Extremely fast and memory-efficient via implicit matrix reduction and cohomology.")
+
+(isa TOP-RipserPy ReferenceWork)
+(title TOP-RipserPy "ripser.py (Scikit-TDA)")
+(author TOP-RipserPy "Chris Tralie & Nathaniel Saul")
+(resourceType TOP-RipserPy code)
+(level TOP-RipserPy beginner)
+(section TOP-RipserPy DatasetsSoftware)
+(url TOP-RipserPy "https://github.com/scikit-tda/ripser.py")
+(desc TOP-RipserPy "Python bindings for Ripser with scikit-learn-compatible API. Pip-installable, integrates with NumPy/SciPy. The easiest way to compute persistence in Python.")
+
+(isa TOP-Dionysus2 ReferenceWork)
+(title TOP-Dionysus2 "Dionysus 2")
+(author TOP-Dionysus2 "Dmitriy Morozov")
+(resourceType TOP-Dionysus2 code)
+(level TOP-Dionysus2 intermediate)
+(section TOP-Dionysus2 DatasetsSoftware)
+(url TOP-Dionysus2 "https://mrzv.org/software/dionysus2/")
+(desc TOP-Dionysus2 "C++/Python library supporting standard and zigzag persistent homology, cohomology, Wasserstein distances, and persistence diagram operations.")
+
+(isa TOP-JavaPlex ReferenceWork)
+(title TOP-JavaPlex "JavaPlex")
+(author TOP-JavaPlex "Stanford Applied Topology Group")
+(resourceType TOP-JavaPlex code)
+(level TOP-JavaPlex beginner)
+(section TOP-JavaPlex DatasetsSoftware)
+(url TOP-JavaPlex "https://appliedtopology.github.io/javaplex/")
+(desc TOP-JavaPlex "Java library for persistent homology with Matlab interface. Designed for teaching and experimentation. Good documentation and tutorials.")
+
+;; ── TDA Ecosystems & Pipelines ──
+
+(isa TOP-ScikitTDA ReferenceWork)
+(title TOP-ScikitTDA "scikit-tda")
+(author TOP-ScikitTDA "Nathaniel Saul & Chris Tralie")
+(resourceType TOP-ScikitTDA code)
+(level TOP-ScikitTDA beginner)
+(section TOP-ScikitTDA DatasetsSoftware)
+(url TOP-ScikitTDA "https://scikit-tda.org/")
+(desc TOP-ScikitTDA "Unified Python ecosystem: Ripser (persistence), Persim (diagram distances/visualization), KeplerMapper (Mapper algorithm), tadasets (sample datasets).")
+
+(isa TOP-GiottoTDA ReferenceWork)
+(title TOP-GiottoTDA "giotto-tda")
+(author TOP-GiottoTDA "giotto.ai / L2F EPFL")
+(resourceType TOP-GiottoTDA code)
+(level TOP-GiottoTDA intermediate)
+(section TOP-GiottoTDA DatasetsSoftware)
+(url TOP-GiottoTDA "https://giotto-ai.github.io/gtda-docs/")
+(desc TOP-GiottoTDA "High-performance Python library for TDA + ML. Scikit-learn API, GPU-accelerated Ripser, persistence diagrams to feature vectors, time-series TDA.")
+
+(isa TOP-KeplerMapper ReferenceWork)
+(title TOP-KeplerMapper "KeplerMapper")
+(author TOP-KeplerMapper "Hendrik Jacob van Veen & Nathaniel Saul")
+(resourceType TOP-KeplerMapper code)
+(level TOP-KeplerMapper beginner)
+(section TOP-KeplerMapper DatasetsSoftware)
+(url TOP-KeplerMapper "https://kepler-mapper.scikit-tda.org/")
+(desc TOP-KeplerMapper "Python implementation of the Mapper algorithm. Interactive HTML visualizations. Integrates with scikit-learn for clustering and dimensionality reduction.")
+
+(isa TOP-TDA-RPackage ReferenceWork)
+(title TOP-TDA-RPackage "TDA R Package")
+(author TOP-TDA-RPackage "Fasy, Kim, Lecci, Maria et al.")
+(resourceType TOP-TDA-RPackage code)
+(level TOP-TDA-RPackage intermediate)
+(section TOP-TDA-RPackage DatasetsSoftware)
+(url TOP-TDA-RPackage "https://cran.r-project.org/web/packages/TDA/")
+(desc TOP-TDA-RPackage "R package for TDA: persistent homology via GUDHI/Dionysus/PHAT backends, kernel density estimation, confidence sets for persistence diagrams.")
+
+;; ── Topological Deep Learning ──
+
+(isa TOP-TopoX ReferenceWork)
+(title TOP-TopoX "TopoX (TopoNetX + TopoModelX + TopoEmbedX)")
+(author TOP-TopoX "PyT-Team")
+(resourceType TOP-TopoX code)
+(level TOP-TopoX intermediate)
+(section TOP-TopoX DatasetsSoftware)
+(url TOP-TopoX "https://github.com/pyt-team/TopoNetX")
+(desc TOP-TopoX "Python suite for topological deep learning. TopoNetX computes on cell/simplicial/combinatorial complexes. TopoModelX provides neural network layers.")
+
+(isa TOP-TopoBenchmarkX ReferenceWork)
+(title TOP-TopoBenchmarkX "TopoBenchmarkX")
+(author TOP-TopoBenchmarkX "PyT-Team")
+(resourceType TOP-TopoBenchmarkX code)
+(level TOP-TopoBenchmarkX intermediate)
+(section TOP-TopoBenchmarkX DatasetsSoftware)
+(url TOP-TopoBenchmarkX "https://github.com/pyt-team/TopoBenchmarkX")
+(desc TOP-TopoBenchmarkX "Benchmarking framework for topological deep learning methods. Standardized datasets, metrics, and model comparison on cell complexes and simplicial complexes.")
+
+(isa TOP-TTK ReferenceWork)
+(title TOP-TTK "Topology ToolKit (TTK)")
+(author TOP-TTK "Julien Tierny et al.")
+(resourceType TOP-TTK code)
+(level TOP-TTK intermediate)
+(section TOP-TTK DatasetsSoftware)
+(url TOP-TTK "https://topology-tool-kit.github.io/")
+(desc TOP-TTK "Open-source library for topological analysis and visualization of scientific data. Integrates with ParaView/VTK. Morse-Smale complexes, contour trees, persistence.")
+
+;; ── Datasets & Benchmarks ──
+
+(isa TOP-Tadasets ReferenceWork)
+(title TOP-Tadasets "tadasets (Sample Point Clouds for TDA)")
+(author TOP-Tadasets "scikit-tda")
+(resourceType TOP-Tadasets data)
+(level TOP-Tadasets beginner)
+(section TOP-Tadasets DatasetsSoftware)
+(url TOP-Tadasets "https://github.com/scikit-tda/tadasets")
+(desc TOP-Tadasets "Python package generating standard point-cloud datasets for TDA experiments: torus, sphere, Swiss roll, clusters, and other shapes in various dimensions.")
+
+(isa TOP-Eirene-Datasets ReferenceWork)
+(title TOP-Eirene-Datasets "Eirene.jl Datasets")
+(author TOP-Eirene-Datasets "Gregory Henselman-Petrusek")
+(resourceType TOP-Eirene-Datasets data)
+(level TOP-Eirene-Datasets intermediate)
+(section TOP-Eirene-Datasets DatasetsSoftware)
+(url TOP-Eirene-Datasets "https://github.com/Eetion/Eirene.jl")
+(desc TOP-Eirene-Datasets "Julia persistent homology library with bundled datasets including Betti curve examples and benchmark complexes for performance testing.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources TopologyReference 85)
+(totalSections TopologyReference 8)
+(comment TopologyReference
+  "8 sections: Overview (9), Point-Set (10), Algebraic (10),
+   Persistent Homology (11), TDA (11), Higher Dimensions (10),
+   Fiber Bundles (10), Datasets/Software (14). Total: 85 resources.")

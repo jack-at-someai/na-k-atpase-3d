@@ -1,0 +1,43 @@
+;;; ================================================================
+;;; ISG PERSONNEL / ERIC CHANDLER
+;;; President, Industrial Valve Service (IVS)
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa EricChandler Person)
+(isa EricChandler SubsidiaryPresident)
+(hasAttribute EricChandler ::LABEL "Eric Chandler")
+(hasAttribute EricChandler ::ROLE "President, Industrial Valve Service")
+(hasAttribute EricChandler ::EMAIL "echandler@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo EricChandler JohnJensen)
+(LEADS EricChandler IndustrialValveService)
+(MEMBER_OF EricChandler ISGValveActuationGroup)
+
+;; IVS is the flagship subsidiary — founded 1975
+(hasAttribute EricChandler ::SUBSIDIARY_FOUNDED 1975)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt EricChandler Mobile-AL)
+(hasAttribute EricChandler ::FACILITIES "IVS locations in Mobile AL, plus LA, TN")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn EricChandler ValveService)
+(expertiseIn EricChandler Actuation)
+(expertiseIn EricChandler IndustrialFieldService)
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithIVSPres PROTOCOL)
+(hasTrigger Protocol-InteractWithIVSPres (sessionCaller ?Session EricChandler))
+(comment Protocol-InteractWithIVSPres
+  "Eric runs ISG's flagship and oldest subsidiary (IVS, founded 1975).
+   He is a field operations leader in the V&A vertical. Practical and
+   operations-focused. IVS covers the Gulf Coast industrial corridor.")

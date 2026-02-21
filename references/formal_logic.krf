@@ -1,0 +1,936 @@
+;;; ================================================================
+;;; REFERENCE / FORMAL LOGIC
+;;; 91 resources across 8 sections — Charlotte's inference backbone
+;;; ================================================================
+;;;
+;;; Formal logic is the mathematical backbone of Charlotte's architecture.
+;;; Every reasoning chain, every proof obligation, every KRF S-expression
+;;; rests on the syntax and semantics studied here.
+;;;
+;;; Charlotte's FOL backbone translates natural-language claims into
+;;; first-order formulas, checks consistency via SAT/SMT solvers, and
+;;; generates Lisp code that mirrors logical structure.
+;;;
+;;; Learning path: Propositional → Predicate (FOL) → Model Theory →
+;;; Lambda Calculus → Lisp/Scheme → Automated Reasoning → Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Textbooks ──
+
+(isa FL-Enderton-MathIntroLogic ReferenceWork)
+(title FL-Enderton-MathIntroLogic "A Mathematical Introduction to Logic")
+(author FL-Enderton-MathIntroLogic "Herbert B. Enderton")
+(resourceType FL-Enderton-MathIntroLogic book)
+(level FL-Enderton-MathIntroLogic beginner)
+(section FL-Enderton-MathIntroLogic FormalLogicOverview)
+(url FL-Enderton-MathIntroLogic "https://www.amazon.com/Mathematical-Introduction-Logic-Herbert-Enderton/dp/0122384520")
+(desc FL-Enderton-MathIntroLogic "The standard introduction covering propositional and predicate logic with completeness proofs. Ideal first textbook.")
+
+(isa FL-Mendelson-IntroMathLogic ReferenceWork)
+(title FL-Mendelson-IntroMathLogic "Introduction to Mathematical Logic")
+(author FL-Mendelson-IntroMathLogic "Elliott Mendelson")
+(resourceType FL-Mendelson-IntroMathLogic book)
+(level FL-Mendelson-IntroMathLogic intermediate)
+(section FL-Mendelson-IntroMathLogic FormalLogicOverview)
+(url FL-Mendelson-IntroMathLogic "https://www.amazon.com/Introduction-Mathematical-Logic-Elliott-Mendelson/dp/1482237725")
+(desc FL-Mendelson-IntroMathLogic "Comprehensive treatment of propositional calculus, FOL, formal number theory, and axiomatic set theory.")
+
+(isa FL-HuthRyan-LogicInCS ReferenceWork)
+(title FL-HuthRyan-LogicInCS "Logic in Computer Science")
+(author FL-HuthRyan-LogicInCS "Michael Huth & Mark Ryan")
+(resourceType FL-HuthRyan-LogicInCS book)
+(level FL-HuthRyan-LogicInCS beginner)
+(section FL-HuthRyan-LogicInCS FormalLogicOverview)
+(url FL-HuthRyan-LogicInCS "https://www.amazon.com/Logic-Computer-Science-Modelling-Reasoning/dp/052154310X")
+(desc FL-HuthRyan-LogicInCS "Propositional logic, predicate logic, temporal logic, and model checking oriented toward CS applications.")
+
+(isa FL-Shoenfield-MathLogic ReferenceWork)
+(title FL-Shoenfield-MathLogic "Mathematical Logic")
+(author FL-Shoenfield-MathLogic "Joseph R. Shoenfield")
+(resourceType FL-Shoenfield-MathLogic book)
+(level FL-Shoenfield-MathLogic advanced)
+(section FL-Shoenfield-MathLogic FormalLogicOverview)
+(url FL-Shoenfield-MathLogic "https://www.amazon.com/Mathematical-Logic-Joseph-Shoenfield/dp/1568811357")
+(desc FL-Shoenfield-MathLogic "Classic graduate-level text: completeness, compactness, incompleteness, recursion theory.")
+
+;; ── Courses & Lecture Series ──
+
+(isa FL-MIT6042J ReferenceWork)
+(title FL-MIT6042J "MIT 6.042J — Mathematics for Computer Science")
+(author FL-MIT6042J "MIT OpenCourseWare")
+(resourceType FL-MIT6042J course)
+(level FL-MIT6042J beginner)
+(section FL-MIT6042J FormalLogicOverview)
+(url FL-MIT6042J "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/")
+(desc FL-MIT6042J "Covers propositional and predicate logic fundamentals, proofs, induction, and discrete math essentials.")
+
+(isa FL-StanfordCS157 ReferenceWork)
+(title FL-StanfordCS157 "Stanford CS 157 — Computational Logic")
+(author FL-StanfordCS157 "Michael Genesereth")
+(resourceType FL-StanfordCS157 course)
+(level FL-StanfordCS157 intermediate)
+(section FL-StanfordCS157 FormalLogicOverview)
+(url FL-StanfordCS157 "http://intrologic.stanford.edu/")
+(desc FL-StanfordCS157 "Herbrand logic, relational logic, proofs, and logic programming. Full course materials online.")
+
+(isa FL-CMU-LogicProof ReferenceWork)
+(title FL-CMU-LogicProof "Logic & Proof (Carnegie Mellon)")
+(author FL-CMU-LogicProof "Jeremy Avigad et al.")
+(resourceType FL-CMU-LogicProof course)
+(level FL-CMU-LogicProof beginner)
+(section FL-CMU-LogicProof FormalLogicOverview)
+(url FL-CMU-LogicProof "https://leanprover.github.io/logic_and_proof/")
+(desc FL-CMU-LogicProof "Interactive textbook combining logic fundamentals with the Lean theorem prover.")
+
+(isa FL-Smith-TeachYourselfLogic ReferenceWork)
+(title FL-Smith-TeachYourselfLogic "Teach Yourself Logic — Study Guide")
+(author FL-Smith-TeachYourselfLogic "Peter Smith")
+(resourceType FL-Smith-TeachYourselfLogic notes)
+(level FL-Smith-TeachYourselfLogic beginner)
+(section FL-Smith-TeachYourselfLogic FormalLogicOverview)
+(url FL-Smith-TeachYourselfLogic "https://www.logicmatters.net/tyl/")
+(desc FL-Smith-TeachYourselfLogic "Comprehensive reading guide for self-study in mathematical logic, regularly updated with book recommendations.")
+
+;; ── Encyclopedias & References ──
+
+(isa FL-SEP-Logic ReferenceWork)
+(title FL-SEP-Logic "Stanford Encyclopedia of Philosophy — Logic")
+(author FL-SEP-Logic "SEP Editorial Board")
+(resourceType FL-SEP-Logic notes)
+(level FL-SEP-Logic intermediate)
+(section FL-SEP-Logic FormalLogicOverview)
+(url FL-SEP-Logic "https://plato.stanford.edu/entries/logic-classical/")
+(desc FL-SEP-Logic "Authoritative survey article on classical logic with extensive bibliography.")
+
+(isa FL-OpenLogicProject ReferenceWork)
+(title FL-OpenLogicProject "Open Logic Project")
+(author FL-OpenLogicProject "Open Logic Project contributors")
+(resourceType FL-OpenLogicProject notes)
+(level FL-OpenLogicProject intermediate)
+(section FL-OpenLogicProject FormalLogicOverview)
+(url FL-OpenLogicProject "https://openlogicproject.org/")
+(desc FL-OpenLogicProject "Open-source, modular textbook on mathematical logic. Covers syntax, semantics, proofs, computability.")
+
+(isa FL-Magnus-ForallX ReferenceWork)
+(title FL-Magnus-ForallX "forall x: An Introduction to Formal Logic")
+(author FL-Magnus-ForallX "P.D. Magnus")
+(resourceType FL-Magnus-ForallX book)
+(level FL-Magnus-ForallX beginner)
+(section FL-Magnus-ForallX FormalLogicOverview)
+(url FL-Magnus-ForallX "https://forallx.openlogicproject.org/")
+(desc FL-Magnus-ForallX "Free, open-source introductory logic textbook covering TFL and FOL with natural deduction.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: PROPOSITIONAL LOGIC
+;; Truth tables, connectives, normal forms, SAT, resolution
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Monographs ──
+
+(isa FL-Enderton-Ch1 ReferenceWork)
+(title FL-Enderton-Ch1 "A Mathematical Introduction to Logic (Ch. 1)")
+(author FL-Enderton-Ch1 "Herbert B. Enderton")
+(resourceType FL-Enderton-Ch1 book)
+(level FL-Enderton-Ch1 beginner)
+(section FL-Enderton-Ch1 PropositionalLogic)
+(url FL-Enderton-Ch1 "https://www.amazon.com/Mathematical-Introduction-Logic-Herbert-Enderton/dp/0122384520")
+(desc FL-Enderton-Ch1 "Chapter 1 provides a rigorous treatment of sentential logic: syntax, semantics, compactness, and completeness.")
+
+(isa FL-HuthRyan-Ch12 ReferenceWork)
+(title FL-HuthRyan-Ch12 "Logic in Computer Science (Ch. 1-2)")
+(author FL-HuthRyan-Ch12 "Michael Huth & Mark Ryan")
+(resourceType FL-HuthRyan-Ch12 book)
+(level FL-HuthRyan-Ch12 beginner)
+(section FL-HuthRyan-Ch12 PropositionalLogic)
+(url FL-HuthRyan-Ch12 "https://www.amazon.com/Logic-Computer-Science-Modelling-Reasoning/dp/052154310X")
+(desc FL-HuthRyan-Ch12 "Propositional logic with natural deduction, semantic tableaux, and SAT-solving applications.")
+
+(isa FL-Biere-HandbookSAT ReferenceWork)
+(title FL-Biere-HandbookSAT "Handbook of Satisfiability")
+(author FL-Biere-HandbookSAT "Armin Biere et al. (eds.)")
+(resourceType FL-Biere-HandbookSAT book)
+(level FL-Biere-HandbookSAT advanced)
+(section FL-Biere-HandbookSAT PropositionalLogic)
+(url FL-Biere-HandbookSAT "https://www.amazon.com/Handbook-Satisfiability-Artificial-Intelligence-Applications/dp/1643681605")
+(desc FL-Biere-HandbookSAT "Definitive reference on SAT: DPLL, CDCL, preprocessing, applications in verification and AI.")
+
+(isa FL-Kroening-DecisionProc ReferenceWork)
+(title FL-Kroening-DecisionProc "Decision Procedures: An Algorithmic Point of View")
+(author FL-Kroening-DecisionProc "Daniel Kroening & Ofer Strichman")
+(resourceType FL-Kroening-DecisionProc book)
+(level FL-Kroening-DecisionProc intermediate)
+(section FL-Kroening-DecisionProc PropositionalLogic)
+(url FL-Kroening-DecisionProc "https://www.amazon.com/Decision-Procedures-Algorithmic-Theoretical-Computer/dp/3662504960")
+(desc FL-Kroening-DecisionProc "Covers SAT solvers, BDDs, and decision procedures for propositional and first-order theories.")
+
+;; ── Courses & Online Resources ──
+
+(isa FL-Coursera-IntroLogic ReferenceWork)
+(title FL-Coursera-IntroLogic "Coursera — Introduction to Logic")
+(author FL-Coursera-IntroLogic "Stanford University")
+(resourceType FL-Coursera-IntroLogic course)
+(level FL-Coursera-IntroLogic beginner)
+(section FL-Coursera-IntroLogic PropositionalLogic)
+(url FL-Coursera-IntroLogic "https://www.coursera.org/learn/logic-introduction")
+(desc FL-Coursera-IntroLogic "Full course on propositional and relational logic with interactive exercises. Based on Stanford CS 157.")
+
+(isa FL-Brilliant-Logic ReferenceWork)
+(title FL-Brilliant-Logic "Brilliant — Logic Course")
+(author FL-Brilliant-Logic "Brilliant.org")
+(resourceType FL-Brilliant-Logic course)
+(level FL-Brilliant-Logic beginner)
+(section FL-Brilliant-Logic PropositionalLogic)
+(url FL-Brilliant-Logic "https://brilliant.org/courses/logic/")
+(desc FL-Brilliant-Logic "Interactive puzzles and lessons on propositional logic, truth tables, and logical equivalences.")
+
+(isa FL-SEP-Propositional ReferenceWork)
+(title FL-SEP-Propositional "SEP — Propositional Logic")
+(author FL-SEP-Propositional "Stanford Encyclopedia of Philosophy")
+(resourceType FL-SEP-Propositional notes)
+(level FL-SEP-Propositional intermediate)
+(section FL-SEP-Propositional PropositionalLogic)
+(url FL-SEP-Propositional "https://plato.stanford.edu/entries/logic-propositional/")
+(desc FL-SEP-Propositional "Thorough encyclopedia article on the syntax, semantics, and proof theory of propositional calculus.")
+
+(isa FL-Smith-PropGuide ReferenceWork)
+(title FL-Smith-PropGuide "Logic Matters — Propositional Logic Guide")
+(author FL-Smith-PropGuide "Peter Smith")
+(resourceType FL-Smith-PropGuide notes)
+(level FL-Smith-PropGuide beginner)
+(section FL-Smith-PropGuide PropositionalLogic)
+(url FL-Smith-PropGuide "https://www.logicmatters.net/tyl/booknotes/prop/")
+(desc FL-Smith-PropGuide "Curated reading list for propositional logic self-study with annotations on difficulty and coverage.")
+
+;; ── Tools & Implementations ──
+
+(isa FL-MiniSat ReferenceWork)
+(title FL-MiniSat "MiniSat")
+(author FL-MiniSat "Niklas Een & Niklas Sorensson")
+(resourceType FL-MiniSat code)
+(level FL-MiniSat intermediate)
+(section FL-MiniSat PropositionalLogic)
+(url FL-MiniSat "http://minisat.se/")
+(desc FL-MiniSat "Minimalistic, high-performance SAT solver. Great for learning CDCL internals.")
+
+(isa FL-TruthTableGen ReferenceWork)
+(title FL-TruthTableGen "Truth Table Generator")
+(author FL-TruthTableGen "Stanford")
+(resourceType FL-TruthTableGen code)
+(level FL-TruthTableGen beginner)
+(section FL-TruthTableGen PropositionalLogic)
+(url FL-TruthTableGen "https://web.stanford.edu/class/cs103/tools/truth-table-tool/")
+(desc FL-TruthTableGen "Online tool for generating truth tables from propositional formulas. Useful for quick verification.")
+
+(isa FL-SATCompBenchmarks ReferenceWork)
+(title FL-SATCompBenchmarks "SAT Competition Benchmarks")
+(author FL-SATCompBenchmarks "SAT Competition organizers")
+(resourceType FL-SATCompBenchmarks data)
+(level FL-SATCompBenchmarks advanced)
+(section FL-SATCompBenchmarks PropositionalLogic)
+(url FL-SATCompBenchmarks "https://satcompetition.github.io/")
+(desc FL-SATCompBenchmarks "Annual competition benchmarks for SAT solvers. Excellent source of test instances.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: PREDICATE LOGIC (FOL)
+;; Quantifiers, models, soundness, completeness
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Textbooks ──
+
+(isa FL-Enderton-Ch2 ReferenceWork)
+(title FL-Enderton-Ch2 "A Mathematical Introduction to Logic (Ch. 2)")
+(author FL-Enderton-Ch2 "Herbert B. Enderton")
+(resourceType FL-Enderton-Ch2 book)
+(level FL-Enderton-Ch2 intermediate)
+(section FL-Enderton-Ch2 PredicateLogic)
+(url FL-Enderton-Ch2 "https://www.amazon.com/Mathematical-Introduction-Logic-Herbert-Enderton/dp/0122384520")
+(desc FL-Enderton-Ch2 "Chapter 2: first-order logic syntax, semantics, deductive calculus, completeness theorem, compactness.")
+
+(isa FL-Mendelson-Ch23 ReferenceWork)
+(title FL-Mendelson-Ch23 "Introduction to Mathematical Logic (Ch. 2-3)")
+(author FL-Mendelson-Ch23 "Elliott Mendelson")
+(resourceType FL-Mendelson-Ch23 book)
+(level FL-Mendelson-Ch23 intermediate)
+(section FL-Mendelson-Ch23 PredicateLogic)
+(url FL-Mendelson-Ch23 "https://www.amazon.com/Introduction-Mathematical-Logic-Elliott-Mendelson/dp/1482237725")
+(desc FL-Mendelson-Ch23 "First-order predicate calculus, formal theories, Godel's completeness and incompleteness theorems.")
+
+(isa FL-Rautenberg-ConciseMathLogic ReferenceWork)
+(title FL-Rautenberg-ConciseMathLogic "A Concise Introduction to Mathematical Logic")
+(author FL-Rautenberg-ConciseMathLogic "Wolfgang Rautenberg")
+(resourceType FL-Rautenberg-ConciseMathLogic book)
+(level FL-Rautenberg-ConciseMathLogic intermediate)
+(section FL-Rautenberg-ConciseMathLogic PredicateLogic)
+(url FL-Rautenberg-ConciseMathLogic "https://www.amazon.com/Concise-Introduction-Mathematical-Logic-Universitext/dp/1441912207")
+(desc FL-Rautenberg-ConciseMathLogic "Compact yet thorough: propositional logic, FOL, completeness, incompleteness, and model theory basics.")
+
+(isa FL-Fitting-FOLAutoThm ReferenceWork)
+(title FL-Fitting-FOLAutoThm "First-Order Logic and Automated Theorem Proving")
+(author FL-Fitting-FOLAutoThm "Melvin Fitting")
+(resourceType FL-Fitting-FOLAutoThm book)
+(level FL-Fitting-FOLAutoThm intermediate)
+(section FL-Fitting-FOLAutoThm PredicateLogic)
+(url FL-Fitting-FOLAutoThm "https://www.amazon.com/First-Order-Logic-Automated-Theorem-Proving/dp/1461275156")
+(desc FL-Fitting-FOLAutoThm "Bridges mathematical logic and CS: tableaux, resolution, Herbrand's theorem, unification.")
+
+;; ── Courses & Encyclopedia Entries ──
+
+(isa FL-SEP-ClassicalLogic ReferenceWork)
+(title FL-SEP-ClassicalLogic "SEP — Classical Logic")
+(author FL-SEP-ClassicalLogic "Stanford Encyclopedia of Philosophy")
+(resourceType FL-SEP-ClassicalLogic notes)
+(level FL-SEP-ClassicalLogic intermediate)
+(section FL-SEP-ClassicalLogic PredicateLogic)
+(url FL-SEP-ClassicalLogic "https://plato.stanford.edu/entries/logic-classical/")
+(desc FL-SEP-ClassicalLogic "Comprehensive article covering syntax, semantics, and metatheory of classical first-order logic.")
+
+(isa FL-SEP-FOModelTheory ReferenceWork)
+(title FL-SEP-FOModelTheory "SEP — First-Order Model Theory")
+(author FL-SEP-FOModelTheory "Wilfrid Hodges")
+(resourceType FL-SEP-FOModelTheory notes)
+(level FL-SEP-FOModelTheory advanced)
+(section FL-SEP-FOModelTheory PredicateLogic)
+(url FL-SEP-FOModelTheory "https://plato.stanford.edu/entries/modeltheory-fo/")
+(desc FL-SEP-FOModelTheory "Survey of first-order model theory: definability, quantifier elimination, categoricity.")
+
+(isa FL-UCLA-MathLogic ReferenceWork)
+(title FL-UCLA-MathLogic "UCLA Math 220A-C — Mathematical Logic")
+(author FL-UCLA-MathLogic "UCLA Mathematics")
+(resourceType FL-UCLA-MathLogic course)
+(level FL-UCLA-MathLogic advanced)
+(section FL-UCLA-MathLogic PredicateLogic)
+(url FL-UCLA-MathLogic "https://www.math.ucla.edu/~ynm/lectures.htm")
+(desc FL-UCLA-MathLogic "Graduate sequence in mathematical logic covering model theory, set theory, and recursion theory.")
+
+(isa FL-Marker-LectureNotes ReferenceWork)
+(title FL-Marker-LectureNotes "Marker — Lecture Notes on Model Theory")
+(author FL-Marker-LectureNotes "David Marker")
+(resourceType FL-Marker-LectureNotes notes)
+(level FL-Marker-LectureNotes advanced)
+(section FL-Marker-LectureNotes PredicateLogic)
+(url FL-Marker-LectureNotes "https://homepages.math.uic.edu/~marker/math511/")
+(desc FL-Marker-LectureNotes "Lecture notes from UIC graduate model theory course. Accessible companion to Marker's textbook.")
+
+;; ── Interactive & Computational ──
+
+(isa FL-CMU-OLI-LogicProofs ReferenceWork)
+(title FL-CMU-OLI-LogicProofs "Logic & Proofs (CMU OLI)")
+(author FL-CMU-OLI-LogicProofs "Carnegie Mellon")
+(resourceType FL-CMU-OLI-LogicProofs course)
+(level FL-CMU-OLI-LogicProofs beginner)
+(section FL-CMU-OLI-LogicProofs PredicateLogic)
+(url FL-CMU-OLI-LogicProofs "https://oli.cmu.edu/courses/logic-proofs/")
+(desc FL-CMU-OLI-LogicProofs "Interactive online course on propositional and predicate logic with automated proof checking.")
+
+(isa FL-IncredibleProofMachine ReferenceWork)
+(title FL-IncredibleProofMachine "The Incredible Proof Machine")
+(author FL-IncredibleProofMachine "Joachim Breitner")
+(resourceType FL-IncredibleProofMachine code)
+(level FL-IncredibleProofMachine beginner)
+(section FL-IncredibleProofMachine PredicateLogic)
+(url FL-IncredibleProofMachine "https://incredible.pm/")
+(desc FL-IncredibleProofMachine "Visual, interactive proof system for propositional and predicate logic. Drag-and-drop natural deduction.")
+
+(isa FL-Carnap ReferenceWork)
+(title FL-Carnap "Carnap.io — Logic Framework")
+(author FL-Carnap "Graham Leach-Krouse et al.")
+(resourceType FL-Carnap code)
+(level FL-Carnap intermediate)
+(section FL-Carnap PredicateLogic)
+(url FL-Carnap "https://carnap.io/")
+(desc FL-Carnap "Open-source Haskell framework for teaching and studying formal logic, with interactive proof exercises.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: MODEL THEORY
+;; Structures, ultraproducts, types, compactness
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Texts ──
+
+(isa FL-Marker-ModelTheory ReferenceWork)
+(title FL-Marker-ModelTheory "Model Theory: An Introduction")
+(author FL-Marker-ModelTheory "David Marker")
+(resourceType FL-Marker-ModelTheory book)
+(level FL-Marker-ModelTheory intermediate)
+(section FL-Marker-ModelTheory ModelTheory)
+(url FL-Marker-ModelTheory "https://www.amazon.com/Model-Theory-Introduction-Graduate-Mathematics/dp/0387987606")
+(desc FL-Marker-ModelTheory "The modern standard: structures, theories, types, prime and saturated models, strongly minimal sets.")
+
+(isa FL-ChangKeisler-ModelTheory ReferenceWork)
+(title FL-ChangKeisler-ModelTheory "Model Theory")
+(author FL-ChangKeisler-ModelTheory "C.C. Chang & H.J. Keisler")
+(resourceType FL-ChangKeisler-ModelTheory book)
+(level FL-ChangKeisler-ModelTheory advanced)
+(section FL-ChangKeisler-ModelTheory ModelTheory)
+(url FL-ChangKeisler-ModelTheory "https://www.amazon.com/Model-Theory-Studies-Foundations-Mathematics/dp/0486488217")
+(desc FL-ChangKeisler-ModelTheory "The classic reference. Ultraproducts, saturated models, preservation theorems, two-cardinal theorems.")
+
+(isa FL-Hodges-ShorterModelTheory ReferenceWork)
+(title FL-Hodges-ShorterModelTheory "A Shorter Model Theory")
+(author FL-Hodges-ShorterModelTheory "Wilfrid Hodges")
+(resourceType FL-Hodges-ShorterModelTheory book)
+(level FL-Hodges-ShorterModelTheory intermediate)
+(section FL-Hodges-ShorterModelTheory ModelTheory)
+(url FL-Hodges-ShorterModelTheory "https://www.amazon.com/Shorter-Model-Theory-Wilfrid-Hodges/dp/0521587131")
+(desc FL-Hodges-ShorterModelTheory "Concise introduction covering the essentials: compactness, Lowenheim-Skolem, quantifier elimination, types.")
+
+(isa FL-Baldwin-ModelTheoryPhil ReferenceWork)
+(title FL-Baldwin-ModelTheoryPhil "Model Theory and the Philosophy of Mathematical Practice")
+(author FL-Baldwin-ModelTheoryPhil "John Baldwin")
+(resourceType FL-Baldwin-ModelTheoryPhil book)
+(level FL-Baldwin-ModelTheoryPhil advanced)
+(section FL-Baldwin-ModelTheoryPhil ModelTheory)
+(url FL-Baldwin-ModelTheoryPhil "https://www.amazon.com/Model-Theory-Philosophy-Mathematical-Practice/dp/1107189217")
+(desc FL-Baldwin-ModelTheoryPhil "Connects model-theoretic methods to broader mathematical and philosophical themes.")
+
+;; ── Lecture Notes & Surveys ──
+
+(isa FL-Pillay-GeomStability ReferenceWork)
+(title FL-Pillay-GeomStability "Geometric Stability Theory")
+(author FL-Pillay-GeomStability "Anand Pillay")
+(resourceType FL-Pillay-GeomStability book)
+(level FL-Pillay-GeomStability advanced)
+(section FL-Pillay-GeomStability ModelTheory)
+(url FL-Pillay-GeomStability "https://www.amazon.com/Geometric-Stability-Theory-Oxford-Monographs/dp/0198534574")
+(desc FL-Pillay-GeomStability "Advanced monograph on stable groups, orthogonality, regular types. For specialists.")
+
+(isa FL-SEP-ModelTheory ReferenceWork)
+(title FL-SEP-ModelTheory "SEP — Model Theory")
+(author FL-SEP-ModelTheory "Wilfrid Hodges")
+(resourceType FL-SEP-ModelTheory notes)
+(level FL-SEP-ModelTheory intermediate)
+(section FL-SEP-ModelTheory ModelTheory)
+(url FL-SEP-ModelTheory "https://plato.stanford.edu/entries/model-theory/")
+(desc FL-SEP-ModelTheory "Accessible philosophical overview of model theory, its methods, and its applications.")
+
+(isa FL-TentZiegler-ModelTheory ReferenceWork)
+(title FL-TentZiegler-ModelTheory "A Course in Model Theory")
+(author FL-TentZiegler-ModelTheory "Katrin Tent & Martin Ziegler")
+(resourceType FL-TentZiegler-ModelTheory book)
+(level FL-TentZiegler-ModelTheory intermediate)
+(section FL-TentZiegler-ModelTheory ModelTheory)
+(url FL-TentZiegler-ModelTheory "https://www.amazon.com/Course-Model-Theory-Lecture-Notes/dp/0521763246")
+(desc FL-TentZiegler-ModelTheory "Modern graduate text with applications to algebra. Covers quantifier elimination, types, stability.")
+
+(isa FL-Poizat-ModelTheory ReferenceWork)
+(title FL-Poizat-ModelTheory "A Course in Model Theory")
+(author FL-Poizat-ModelTheory "Bruno Poizat (trans. Moses Klein)")
+(resourceType FL-Poizat-ModelTheory book)
+(level FL-Poizat-ModelTheory advanced)
+(section FL-Poizat-ModelTheory ModelTheory)
+(url FL-Poizat-ModelTheory "https://www.amazon.com/Course-Model-Theory-Introduction-Contemporary/dp/0387986553")
+(desc FL-Poizat-ModelTheory "French tradition in model theory: back-and-forth, ultraproducts, Morley's theorem, Shelah's classification.")
+
+;; ── Computational Connections ──
+
+(isa FL-EbbinghausFlum-FiniteModelTheory ReferenceWork)
+(title FL-EbbinghausFlum-FiniteModelTheory "Finite Model Theory")
+(author FL-EbbinghausFlum-FiniteModelTheory "Heinz-Dieter Ebbinghaus & Jorg Flum")
+(resourceType FL-EbbinghausFlum-FiniteModelTheory book)
+(level FL-EbbinghausFlum-FiniteModelTheory advanced)
+(section FL-EbbinghausFlum-FiniteModelTheory ModelTheory)
+(url FL-EbbinghausFlum-FiniteModelTheory "https://www.amazon.com/Finite-Model-Theory-Springer-Monographs/dp/3540287876")
+(desc FL-EbbinghausFlum-FiniteModelTheory "Model theory over finite structures: Ehrenfeucht-Fraisse games, 0-1 laws, descriptive complexity.")
+
+(isa FL-Libkin-FiniteModelTheory ReferenceWork)
+(title FL-Libkin-FiniteModelTheory "Elements of Finite Model Theory")
+(author FL-Libkin-FiniteModelTheory "Leonid Libkin")
+(resourceType FL-Libkin-FiniteModelTheory book)
+(level FL-Libkin-FiniteModelTheory advanced)
+(section FL-Libkin-FiniteModelTheory ModelTheory)
+(url FL-Libkin-FiniteModelTheory "https://www.amazon.com/Elements-Finite-Model-Theory-Computing/dp/3540212027")
+(desc FL-Libkin-FiniteModelTheory "Connects logic to database theory and computational complexity. Pebble games, locality, fixed-point logics.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: LAMBDA CALCULUS
+;; Church encoding, typed systems, Curry-Howard
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational References ──
+
+(isa FL-Barendregt-LambdaCalc ReferenceWork)
+(title FL-Barendregt-LambdaCalc "The Lambda Calculus: Its Syntax and Semantics")
+(author FL-Barendregt-LambdaCalc "Henk Barendregt")
+(resourceType FL-Barendregt-LambdaCalc book)
+(level FL-Barendregt-LambdaCalc advanced)
+(section FL-Barendregt-LambdaCalc LambdaCalculus)
+(url FL-Barendregt-LambdaCalc "https://www.amazon.com/Lambda-Calculus-Semantics-Studies-Foundations/dp/0444875085")
+(desc FL-Barendregt-LambdaCalc "The definitive monograph on untyped lambda calculus: Church-Rosser, Bohm trees, models, lambda definability.")
+
+(isa FL-Barendregt-LambdaCube ReferenceWork)
+(title FL-Barendregt-LambdaCube "Lambda Calculi with Types")
+(author FL-Barendregt-LambdaCube "Henk Barendregt")
+(resourceType FL-Barendregt-LambdaCube notes)
+(level FL-Barendregt-LambdaCube advanced)
+(section FL-Barendregt-LambdaCube LambdaCalculus)
+(url FL-Barendregt-LambdaCube "https://doi.org/10.1016/S0049-237X(08)71776-5")
+(desc FL-Barendregt-LambdaCube "Barendregt's lambda cube: systematizes typed lambda calculi from simple types through System F to the Calculus of Constructions.")
+
+(isa FL-Sorensen-CurryHoward ReferenceWork)
+(title FL-Sorensen-CurryHoward "Lectures on the Curry-Howard Isomorphism")
+(author FL-Sorensen-CurryHoward "Morten Heine Sorensen & Pawel Urzyczyn")
+(resourceType FL-Sorensen-CurryHoward book)
+(level FL-Sorensen-CurryHoward intermediate)
+(section FL-Sorensen-CurryHoward LambdaCalculus)
+(url FL-Sorensen-CurryHoward "https://www.amazon.com/Lectures-Curry-Howard-Isomorphism-Foundations-Mathematics/dp/0444520775")
+(desc FL-Sorensen-CurryHoward "Systematic treatment: untyped and typed lambda calculus, intuitionistic logic, second-order logic, System F.")
+
+(isa FL-Hankin-LambdaIntro ReferenceWork)
+(title FL-Hankin-LambdaIntro "An Introduction to Lambda Calculi for Computer Scientists")
+(author FL-Hankin-LambdaIntro "Chris Hankin")
+(resourceType FL-Hankin-LambdaIntro book)
+(level FL-Hankin-LambdaIntro beginner)
+(section FL-Hankin-LambdaIntro LambdaCalculus)
+(url FL-Hankin-LambdaIntro "https://www.amazon.com/Introduction-Lambda-Calculi-Computer-Scientists/dp/0954300653")
+(desc FL-Hankin-LambdaIntro "Accessible introduction aimed at CS students: reduction strategies, type systems, denotational semantics.")
+
+;; ── Types & Programming Languages ──
+
+(isa FL-Pierce-TAPL ReferenceWork)
+(title FL-Pierce-TAPL "Types and Programming Languages (TAPL)")
+(author FL-Pierce-TAPL "Benjamin C. Pierce")
+(resourceType FL-Pierce-TAPL book)
+(level FL-Pierce-TAPL intermediate)
+(section FL-Pierce-TAPL LambdaCalculus)
+(url FL-Pierce-TAPL "https://www.cis.upenn.edu/~bcpierce/tapl/")
+(desc FL-Pierce-TAPL "The standard reference on type systems: untyped lambda calculus, simple types, subtyping, recursive types, polymorphism, System F.")
+
+(isa FL-Pierce-ATTAPL ReferenceWork)
+(title FL-Pierce-ATTAPL "Advanced Topics in Types and Programming Languages (ATTAPL)")
+(author FL-Pierce-ATTAPL "Benjamin C. Pierce (ed.)")
+(resourceType FL-Pierce-ATTAPL book)
+(level FL-Pierce-ATTAPL advanced)
+(section FL-Pierce-ATTAPL LambdaCalculus)
+(url FL-Pierce-ATTAPL "https://www.cis.upenn.edu/~bcpierce/attapl/")
+(desc FL-Pierce-ATTAPL "Sequel to TAPL covering dependent types, effect systems, linear types, module systems, and more.")
+
+(isa FL-Harper-PFPL ReferenceWork)
+(title FL-Harper-PFPL "Practical Foundations for Programming Languages")
+(author FL-Harper-PFPL "Robert Harper")
+(resourceType FL-Harper-PFPL book)
+(level FL-Harper-PFPL advanced)
+(section FL-Harper-PFPL LambdaCalculus)
+(url FL-Harper-PFPL "https://www.cs.cmu.edu/~rwh/pfpl/")
+(desc FL-Harper-PFPL "CMU approach to PL theory: statics, dynamics, function types, polymorphism, inductive and coinductive types.")
+
+(isa FL-Selinger-LambdaNotes ReferenceWork)
+(title FL-Selinger-LambdaNotes "Lecture Notes on the Lambda Calculus")
+(author FL-Selinger-LambdaNotes "Peter Selinger")
+(resourceType FL-Selinger-LambdaNotes notes)
+(level FL-Selinger-LambdaNotes intermediate)
+(section FL-Selinger-LambdaNotes LambdaCalculus)
+(url FL-Selinger-LambdaNotes "https://arxiv.org/abs/0804.3434")
+(desc FL-Selinger-LambdaNotes "Clear, self-contained notes: untyped lambda calculus, Church-Rosser theorem, simply typed calculus, strong normalization.")
+
+;; ── Video Lectures & Tutorials ──
+
+(isa FL-OPLSS ReferenceWork)
+(title FL-OPLSS "Oregon Programming Languages Summer School (OPLSS)")
+(author FL-OPLSS "Various lecturers")
+(resourceType FL-OPLSS video)
+(level FL-OPLSS intermediate)
+(section FL-OPLSS LambdaCalculus)
+(url FL-OPLSS "https://www.cs.uoregon.edu/research/summerschool/")
+(desc FL-OPLSS "Annual summer school with recorded lectures on type theory, lambda calculus, category theory, and PL foundations.")
+
+(isa FL-Wadler-PropsAsTypes ReferenceWork)
+(title FL-Wadler-PropsAsTypes "Philip Wadler — Propositions as Types")
+(author FL-Wadler-PropsAsTypes "Philip Wadler")
+(resourceType FL-Wadler-PropsAsTypes video)
+(level FL-Wadler-PropsAsTypes intermediate)
+(section FL-Wadler-PropsAsTypes LambdaCalculus)
+(url FL-Wadler-PropsAsTypes "https://www.youtube.com/watch?v=IOiZatlZtGU")
+(desc FL-Wadler-PropsAsTypes "Classic talk explaining the Curry-Howard correspondence between logic and programming.")
+
+(isa FL-Computerphile-Lambda ReferenceWork)
+(title FL-Computerphile-Lambda "Computerphile — Lambda Calculus")
+(author FL-Computerphile-Lambda "Computerphile / Graham Hutton")
+(resourceType FL-Computerphile-Lambda video)
+(level FL-Computerphile-Lambda beginner)
+(section FL-Computerphile-Lambda LambdaCalculus)
+(url FL-Computerphile-Lambda "https://www.youtube.com/watch?v=eis11j_iGMs")
+(desc FL-Computerphile-Lambda "Accessible video introduction to lambda calculus, beta-reduction, and Church numerals.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: LISP & SCHEME
+;; SICP, The Little Schemer, practical implementations
+;; ════════════════════════════════════════════════════════════
+
+;; ── Essential Books ──
+
+(isa FL-SICP ReferenceWork)
+(title FL-SICP "Structure and Interpretation of Computer Programs (SICP)")
+(author FL-SICP "Harold Abelson & Gerald Jay Sussman")
+(resourceType FL-SICP book)
+(level FL-SICP beginner)
+(section FL-SICP LispScheme)
+(url FL-SICP "https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html")
+(desc FL-SICP "The legendary MIT textbook. Teaches computation through Scheme: abstraction, higher-order procedures, metalinguistic abstraction, interpreters.")
+
+(isa FL-LittleSchemer ReferenceWork)
+(title FL-LittleSchemer "The Little Schemer (4th ed.)")
+(author FL-LittleSchemer "Daniel P. Friedman & Matthias Felleisen")
+(resourceType FL-LittleSchemer book)
+(level FL-LittleSchemer beginner)
+(section FL-LittleSchemer LispScheme)
+(url FL-LittleSchemer "https://www.amazon.com/Little-Schemer-Daniel-P-Friedman/dp/0262560992")
+(desc FL-LittleSchemer "Socratic dialogue teaching recursion, lambda, and computation through Scheme. The classic introduction.")
+
+(isa FL-SeasonedSchemer ReferenceWork)
+(title FL-SeasonedSchemer "The Seasoned Schemer")
+(author FL-SeasonedSchemer "Daniel P. Friedman & Matthias Felleisen")
+(resourceType FL-SeasonedSchemer book)
+(level FL-SeasonedSchemer intermediate)
+(section FL-SeasonedSchemer LispScheme)
+(url FL-SeasonedSchemer "https://www.amazon.com/Seasoned-Schemer-Daniel-P-Friedman/dp/026256100X")
+(desc FL-SeasonedSchemer "Sequel to The Little Schemer: continuations, set!, letrec, and higher-order thinking.")
+
+(isa FL-ReasonedSchemer ReferenceWork)
+(title FL-ReasonedSchemer "The Reasoned Schemer (2nd ed.)")
+(author FL-ReasonedSchemer "Daniel P. Friedman, William E. Byrd & Oleg Kiselyov")
+(resourceType FL-ReasonedSchemer book)
+(level FL-ReasonedSchemer intermediate)
+(section FL-ReasonedSchemer LispScheme)
+(url FL-ReasonedSchemer "https://www.amazon.com/Reasoned-Schemer-MIT-Press/dp/0262535513")
+(desc FL-ReasonedSchemer "Logic programming in Scheme via miniKanren. Bridges Lisp and formal logic — directly relevant to Charlotte.")
+
+(isa FL-Seibel-PracticalCL ReferenceWork)
+(title FL-Seibel-PracticalCL "Practical Common Lisp")
+(author FL-Seibel-PracticalCL "Peter Seibel")
+(resourceType FL-Seibel-PracticalCL book)
+(level FL-Seibel-PracticalCL intermediate)
+(section FL-Seibel-PracticalCL LispScheme)
+(url FL-Seibel-PracticalCL "https://gigamonkeys.com/book/")
+(desc FL-Seibel-PracticalCL "Modern Common Lisp tutorial. Practical projects: unit testing, binary parsing, spam filter, MP3 database, web server.")
+
+;; ── Advanced & Specialized ──
+
+(isa FL-Graham-OnLisp ReferenceWork)
+(title FL-Graham-OnLisp "On Lisp: Advanced Techniques for Common Lisp")
+(author FL-Graham-OnLisp "Paul Graham")
+(resourceType FL-Graham-OnLisp book)
+(level FL-Graham-OnLisp advanced)
+(section FL-Graham-OnLisp LispScheme)
+(url FL-Graham-OnLisp "https://www.paulgraham.com/onlisp.html")
+(desc FL-Graham-OnLisp "Master class in macros, closures, continuations, and embedded languages. Free PDF available.")
+
+(isa FL-Hoyte-LetOverLambda ReferenceWork)
+(title FL-Hoyte-LetOverLambda "Let Over Lambda")
+(author FL-Hoyte-LetOverLambda "Doug Hoyte")
+(resourceType FL-Hoyte-LetOverLambda book)
+(level FL-Hoyte-LetOverLambda advanced)
+(section FL-Hoyte-LetOverLambda LispScheme)
+(url FL-Hoyte-LetOverLambda "https://letoverlambda.com/")
+(desc FL-Hoyte-LetOverLambda "Deep dive into Common Lisp macros: closures over macros, reader macros, and anaphoric macros.")
+
+(isa FL-Norvig-PAIP ReferenceWork)
+(title FL-Norvig-PAIP "Paradigms of AI Programming (PAIP)")
+(author FL-Norvig-PAIP "Peter Norvig")
+(resourceType FL-Norvig-PAIP book)
+(level FL-Norvig-PAIP advanced)
+(section FL-Norvig-PAIP LispScheme)
+(url FL-Norvig-PAIP "https://github.com/norvig/paip-lisp")
+(desc FL-Norvig-PAIP "AI programming in Common Lisp: search, logic programming, natural language, expert systems. GitHub repo with full code.")
+
+(isa FL-Kiczales-AMOP ReferenceWork)
+(title FL-Kiczales-AMOP "The Art of the Metaobject Protocol (AMOP)")
+(author FL-Kiczales-AMOP "Gregor Kiczales, Jim des Rivieres & Daniel G. Bobrow")
+(resourceType FL-Kiczales-AMOP book)
+(level FL-Kiczales-AMOP advanced)
+(section FL-Kiczales-AMOP LispScheme)
+(url FL-Kiczales-AMOP "https://www.amazon.com/Art-Metaobject-Protocol-Gregor-Kiczales/dp/0262610744")
+(desc FL-Kiczales-AMOP "CLOS metaobject protocol: introspection, intercessory techniques, reflective OOP in Common Lisp.")
+
+;; ── Modern Dialects & Tutorials ──
+
+(isa FL-Higginbotham-ClojureBrave ReferenceWork)
+(title FL-Higginbotham-ClojureBrave "Clojure for the Brave and True")
+(author FL-Higginbotham-ClojureBrave "Daniel Higginbotham")
+(resourceType FL-Higginbotham-ClojureBrave book)
+(level FL-Higginbotham-ClojureBrave beginner)
+(section FL-Higginbotham-ClojureBrave LispScheme)
+(url FL-Higginbotham-ClojureBrave "https://www.braveclojure.com/")
+(desc FL-Higginbotham-ClojureBrave "Fun, accessible introduction to Clojure: functional programming, concurrency, macros on the JVM.")
+
+(isa FL-Felleisen-HtDP ReferenceWork)
+(title FL-Felleisen-HtDP "How to Design Programs (HtDP)")
+(author FL-Felleisen-HtDP "Matthias Felleisen et al.")
+(resourceType FL-Felleisen-HtDP book)
+(level FL-Felleisen-HtDP beginner)
+(section FL-Felleisen-HtDP LispScheme)
+(url FL-Felleisen-HtDP "https://htdp.org/")
+(desc FL-Felleisen-HtDP "Systematic program design using Racket. Design recipes, data-driven programming, testing.")
+
+(isa FL-RacketGuide ReferenceWork)
+(title FL-RacketGuide "The Racket Guide")
+(author FL-RacketGuide "Racket Documentation Team")
+(resourceType FL-RacketGuide notes)
+(level FL-RacketGuide beginner)
+(section FL-RacketGuide LispScheme)
+(url FL-RacketGuide "https://docs.racket-lang.org/guide/")
+(desc FL-RacketGuide "Official Racket tutorial: language-oriented programming, macros, contracts, modules.")
+
+(isa FL-Queinnec-LispSmallPieces ReferenceWork)
+(title FL-Queinnec-LispSmallPieces "Lisp in Small Pieces")
+(author FL-Queinnec-LispSmallPieces "Christian Queinnec")
+(resourceType FL-Queinnec-LispSmallPieces book)
+(level FL-Queinnec-LispSmallPieces advanced)
+(section FL-Queinnec-LispSmallPieces LispScheme)
+(url FL-Queinnec-LispSmallPieces "https://www.amazon.com/Lisp-Small-Pieces-Christian-Queinnec/dp/0521545668")
+(desc FL-Queinnec-LispSmallPieces "Eleven interpreters and two compilers for Lisp/Scheme. Deep understanding of evaluation, compilation, reflection.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: PROOF ASSISTANTS / AUTOMATED REASONING
+;; Theorem provers, SMT solvers, formal verification
+;; ════════════════════════════════════════════════════════════
+
+;; ── Proof Assistants ──
+
+(isa FL-SoftwareFoundations ReferenceWork)
+(title FL-SoftwareFoundations "Software Foundations")
+(author FL-SoftwareFoundations "Benjamin C. Pierce et al.")
+(resourceType FL-SoftwareFoundations course)
+(level FL-SoftwareFoundations intermediate)
+(section FL-SoftwareFoundations ProofAssistants)
+(url FL-SoftwareFoundations "https://softwarefoundations.cis.upenn.edu/")
+(desc FL-SoftwareFoundations "The gold standard for learning Coq: logic, functional programming, program verification, PLT. Free online.")
+
+(isa FL-Chlipala-CPDT ReferenceWork)
+(title FL-Chlipala-CPDT "Certified Programming with Dependent Types (CPDT)")
+(author FL-Chlipala-CPDT "Adam Chlipala")
+(resourceType FL-Chlipala-CPDT book)
+(level FL-Chlipala-CPDT advanced)
+(section FL-Chlipala-CPDT ProofAssistants)
+(url FL-Chlipala-CPDT "http://adam.chlipala.net/cpdt/")
+(desc FL-Chlipala-CPDT "Advanced Coq techniques: proof automation, dependent types, certified compilers and interpreters.")
+
+(isa FL-Lean4-TheoremProving ReferenceWork)
+(title FL-Lean4-TheoremProving "Theorem Proving in Lean 4")
+(author FL-Lean4-TheoremProving "Jeremy Avigad et al.")
+(resourceType FL-Lean4-TheoremProving book)
+(level FL-Lean4-TheoremProving intermediate)
+(section FL-Lean4-TheoremProving ProofAssistants)
+(url FL-Lean4-TheoremProving "https://leanprover.github.io/theorem_proving_in_lean4/")
+(desc FL-Lean4-TheoremProving "Official tutorial for Lean 4: dependent type theory, tactics, term-mode proofs, and metaprogramming.")
+
+(isa FL-MathInLean ReferenceWork)
+(title FL-MathInLean "Mathematics in Lean")
+(author FL-MathInLean "Jeremy Avigad & Patrick Massot")
+(resourceType FL-MathInLean course)
+(level FL-MathInLean intermediate)
+(section FL-MathInLean ProofAssistants)
+(url FL-MathInLean "https://leanprover-community.github.io/mathematics_in_lean/")
+(desc FL-MathInLean "Learn to formalize mathematics in Lean 4 using mathlib. Sets, functions, topology, algebra.")
+
+(isa FL-NipkowKlein-ConcreteSemantics ReferenceWork)
+(title FL-NipkowKlein-ConcreteSemantics "Concrete Semantics (with Isabelle/HOL)")
+(author FL-NipkowKlein-ConcreteSemantics "Tobias Nipkow & Gerwin Klein")
+(resourceType FL-NipkowKlein-ConcreteSemantics book)
+(level FL-NipkowKlein-ConcreteSemantics intermediate)
+(section FL-NipkowKlein-ConcreteSemantics ProofAssistants)
+(url FL-NipkowKlein-ConcreteSemantics "http://concrete-semantics.org/")
+(desc FL-NipkowKlein-ConcreteSemantics "Programming language semantics formalized in Isabelle/HOL. Free PDF, highly practical.")
+
+;; ── SMT Solvers & Automated Provers ──
+
+(isa FL-Z3 ReferenceWork)
+(title FL-Z3 "Z3 — SMT Solver")
+(author FL-Z3 "Microsoft Research")
+(resourceType FL-Z3 code)
+(level FL-Z3 intermediate)
+(section FL-Z3 ProofAssistants)
+(url FL-Z3 "https://github.com/Z3Prover/z3")
+(desc FL-Z3 "Industry-standard SMT solver. Python, C++, and .NET APIs. Used in program verification, symbolic execution, and testing.")
+
+(isa FL-Z3-Tutorial ReferenceWork)
+(title FL-Z3-Tutorial "Z3 Tutorial (Rise4Fun)")
+(author FL-Z3-Tutorial "Microsoft Research")
+(resourceType FL-Z3-Tutorial course)
+(level FL-Z3-Tutorial intermediate)
+(section FL-Z3-Tutorial ProofAssistants)
+(url FL-Z3-Tutorial "https://microsoft.github.io/z3guide/")
+(desc FL-Z3-Tutorial "Interactive tutorial for Z3: propositional logic, arithmetic, bit-vectors, arrays, quantifiers.")
+
+(isa FL-Vampire ReferenceWork)
+(title FL-Vampire "Vampire — First-Order Theorem Prover")
+(author FL-Vampire "Andrei Voronkov et al.")
+(resourceType FL-Vampire code)
+(level FL-Vampire advanced)
+(section FL-Vampire ProofAssistants)
+(url FL-Vampire "https://vprover.github.io/")
+(desc FL-Vampire "State-of-the-art superposition-based first-order theorem prover. Multiple CASC competition winner.")
+
+(isa FL-EProver ReferenceWork)
+(title FL-EProver "E Theorem Prover")
+(author FL-EProver "Stephan Schulz")
+(resourceType FL-EProver code)
+(level FL-EProver advanced)
+(section FL-EProver ProofAssistants)
+(url FL-EProver "https://eprover.org/")
+(desc FL-EProver "High-performance equational theorem prover for full first-order logic with equality. Open source.")
+
+;; ── Courses & Surveys ──
+
+(isa FL-ITP-Course ReferenceWork)
+(title FL-ITP-Course "Interactive Theorem Proving (ITP) Course")
+(author FL-ITP-Course "Jasmin Blanchette (Vrije Universiteit Amsterdam)")
+(resourceType FL-ITP-Course course)
+(level FL-ITP-Course intermediate)
+(section FL-ITP-Course ProofAssistants)
+(url FL-ITP-Course "https://www21.in.tum.de/teaching/itp/")
+(desc FL-ITP-Course "Course materials on interactive theorem proving with Isabelle. Slides, exercises, and recordings.")
+
+(isa FL-QEDManifesto ReferenceWork)
+(title FL-QEDManifesto "The QED Manifesto Revisited")
+(author FL-QEDManifesto "Various authors")
+(resourceType FL-QEDManifesto notes)
+(level FL-QEDManifesto intermediate)
+(section FL-QEDManifesto ProofAssistants)
+(url FL-QEDManifesto "https://www.cs.ru.nl/~freek/qed/qed2.pdf")
+(desc FL-QEDManifesto "Vision document for formalizing all of mathematics. Context for the proof assistant ecosystem.")
+
+(isa FL-HandbookAutoReasoning ReferenceWork)
+(title FL-HandbookAutoReasoning "Handbook of Automated Reasoning")
+(author FL-HandbookAutoReasoning "Alan Robinson & Andrei Voronkov (eds.)")
+(resourceType FL-HandbookAutoReasoning book)
+(level FL-HandbookAutoReasoning advanced)
+(section FL-HandbookAutoReasoning ProofAssistants)
+(url FL-HandbookAutoReasoning "https://www.amazon.com/Handbook-Automated-Reasoning-Alan-Robinson/dp/0444508139")
+(desc FL-HandbookAutoReasoning "Comprehensive two-volume reference: resolution, rewriting, decision procedures, higher-order reasoning.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & TOOLS
+;; Logic programming, benchmarks, solvers
+;; ════════════════════════════════════════════════════════════
+
+;; ── Logic Programming ──
+
+(isa FL-SWIProlog ReferenceWork)
+(title FL-SWIProlog "SWI-Prolog")
+(author FL-SWIProlog "Jan Wielemaker et al.")
+(resourceType FL-SWIProlog code)
+(level FL-SWIProlog beginner)
+(section FL-SWIProlog DatasetsTools)
+(url FL-SWIProlog "https://www.swi-prolog.org/")
+(desc FL-SWIProlog "The most widely used open-source Prolog system. Comprehensive libraries, constraint solving, web frameworks.")
+
+(isa FL-miniKanren ReferenceWork)
+(title FL-miniKanren "miniKanren")
+(author FL-miniKanren "William E. Byrd et al.")
+(resourceType FL-miniKanren code)
+(level FL-miniKanren intermediate)
+(section FL-miniKanren DatasetsTools)
+(url FL-miniKanren "http://minikanren.org/")
+(desc FL-miniKanren "Minimalist relational programming language embeddable in Scheme, Python, Clojure. Core of The Reasoned Schemer.")
+
+(isa FL-LearnPrologNow ReferenceWork)
+(title FL-LearnPrologNow "Learn Prolog Now!")
+(author FL-LearnPrologNow "Patrick Blackburn, Johan Bos & Kristina Striegnitz")
+(resourceType FL-LearnPrologNow course)
+(level FL-LearnPrologNow beginner)
+(section FL-LearnPrologNow DatasetsTools)
+(url FL-LearnPrologNow "http://www.learnprolognow.org/")
+(desc FL-LearnPrologNow "Free online textbook: unification, proof search, lists, definite clause grammars, cuts.")
+
+(isa FL-SterlingShapiro-ArtOfProlog ReferenceWork)
+(title FL-SterlingShapiro-ArtOfProlog "The Art of Prolog")
+(author FL-SterlingShapiro-ArtOfProlog "Leon Sterling & Ehud Shapiro")
+(resourceType FL-SterlingShapiro-ArtOfProlog book)
+(level FL-SterlingShapiro-ArtOfProlog intermediate)
+(section FL-SterlingShapiro-ArtOfProlog DatasetsTools)
+(url FL-SterlingShapiro-ArtOfProlog "https://www.amazon.com/Art-Prolog-Advanced-Programming-Techniques/dp/0262691639")
+(desc FL-SterlingShapiro-ArtOfProlog "Classic text on logic programming: database programming, meta-interpreters, search strategies, constraint logic.")
+
+;; ── Benchmarks & Standards ──
+
+(isa FL-TPTP ReferenceWork)
+(title FL-TPTP "TPTP Problem Library")
+(author FL-TPTP "Geoff Sutcliffe")
+(resourceType FL-TPTP data)
+(level FL-TPTP intermediate)
+(section FL-TPTP DatasetsTools)
+(url FL-TPTP "https://www.tptp.org/")
+(desc FL-TPTP "Thousands of first-order and higher-order logic problems. Standard benchmark for automated theorem provers.")
+
+(isa FL-SMTLIB ReferenceWork)
+(title FL-SMTLIB "SMT-LIB — Standard for SMT Solvers")
+(author FL-SMTLIB "Clark Barrett et al.")
+(resourceType FL-SMTLIB data)
+(level FL-SMTLIB intermediate)
+(section FL-SMTLIB DatasetsTools)
+(url FL-SMTLIB "https://smtlib.cs.uiowa.edu/")
+(desc FL-SMTLIB "Standard language and benchmark library for SMT solvers. Logics, benchmarks, and solver interface specification.")
+
+(isa FL-CASC ReferenceWork)
+(title FL-CASC "CASC — CADE ATP System Competition")
+(author FL-CASC "Geoff Sutcliffe")
+(resourceType FL-CASC data)
+(level FL-CASC advanced)
+(section FL-CASC DatasetsTools)
+(url FL-CASC "https://www.tptp.org/CASC/")
+(desc FL-CASC "Annual competition for automated theorem provers. Results, problem sets, system descriptions.")
+
+(isa FL-Metamath ReferenceWork)
+(title FL-Metamath "Metamath")
+(author FL-Metamath "Norman Megill")
+(resourceType FL-Metamath code)
+(level FL-Metamath intermediate)
+(section FL-Metamath DatasetsTools)
+(url FL-Metamath "https://us.metamath.org/")
+(desc FL-Metamath "Formal proof database with over 40,000 verified proofs. Minimal logical foundation, community-maintained.")
+
+;; ── Solvers & Implementations ──
+
+(isa FL-CaDiCaL ReferenceWork)
+(title FL-CaDiCaL "CaDiCaL SAT Solver")
+(author FL-CaDiCaL "Armin Biere")
+(resourceType FL-CaDiCaL code)
+(level FL-CaDiCaL advanced)
+(section FL-CaDiCaL DatasetsTools)
+(url FL-CaDiCaL "https://github.com/arminbiere/cadical")
+(desc FL-CaDiCaL "Award-winning CDCL SAT solver by a leading SAT researcher. Clean C++ codebase, excellent for learning modern SAT.")
+
+(isa FL-CVC5 ReferenceWork)
+(title FL-CVC5 "CVC5 SMT Solver")
+(author FL-CVC5 "Stanford / Iowa / NYU")
+(resourceType FL-CVC5 code)
+(level FL-CVC5 advanced)
+(section FL-CVC5 DatasetsTools)
+(url FL-CVC5 "https://cvc5.github.io/")
+(desc FL-CVC5 "Open-source SMT solver supporting many theories: arithmetic, strings, datatypes, sets, sequences.")
+
+(isa FL-Alloy ReferenceWork)
+(title FL-Alloy "Alloy Analyzer")
+(author FL-Alloy "Daniel Jackson (MIT)")
+(resourceType FL-Alloy code)
+(level FL-Alloy intermediate)
+(section FL-Alloy DatasetsTools)
+(url FL-Alloy "https://alloytools.org/")
+(desc FL-Alloy "Lightweight formal modeling tool using relational logic. Automatic analysis of structural models via SAT.")
+
+(isa FL-LogisimEvolution ReferenceWork)
+(title FL-LogisimEvolution "Logisim Evolution")
+(author FL-LogisimEvolution "logisim-evolution contributors")
+(resourceType FL-LogisimEvolution code)
+(level FL-LogisimEvolution beginner)
+(section FL-LogisimEvolution DatasetsTools)
+(url FL-LogisimEvolution "https://github.com/logisim-evolution/logisim-evolution")
+(desc FL-LogisimEvolution "Digital logic circuit simulator. Great for visualizing Boolean logic, gates, and truth tables.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources FormalLogicReference 91)
+(totalSections FormalLogicReference 8)
+(comment FormalLogicReference
+  "8 sections: Overview (11), Propositional (11), Predicate/FOL (11),
+   Model Theory (10), Lambda Calculus (11), Lisp/Scheme (13),
+   Proof Assistants (12), Datasets/Tools (12). Total: 91 resources.")

@@ -34,6 +34,7 @@
 (bootOrder BootPhase-Spine 2)
 (bootLoads BootPhase-Spine "spine/temporal/epochs.krf")
 (bootLoads BootPhase-Spine "spine/temporal/units.krf")
+(bootLoads BootPhase-Spine "spine/temporal/granularity.krf")
 (bootLoads BootPhase-Spine "spine/temporal/lifecycle.krf")
 (bootLoads BootPhase-Spine "spine/temporal/encoding.krf")
 
@@ -43,6 +44,7 @@
 (bootLoads BootPhase-Spatial "spine/spatial/geospatial.krf")
 (bootLoads BootPhase-Spatial "spine/spatial/topological.krf")
 (bootLoads BootPhase-Spatial "spine/spatial/theoretical.krf")
+(bootLoads BootPhase-Spatial "spine/spatial/us-states.krf")
 
 ;; Phase 4: Load knowledge base (all five types)
 (isa BootPhase-Knowledge BootPhase)

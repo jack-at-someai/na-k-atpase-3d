@@ -1,0 +1,93 @@
+;;; ================================================================
+;;; ISG PERSONNEL / ROGER STEWART
+;;; Chief Performance Officer / President, Motor & Pump Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa RogerStewart Person)
+(isa RogerStewart Executive)
+(hasAttribute RogerStewart ::LABEL "Roger Stewart")
+(hasAttribute RogerStewart ::ROLE "Chief Performance Officer")
+(hasAttribute RogerStewart ::ROLE_SECONDARY "President, ISG Motor & Pump Group")
+(hasAttribute RogerStewart ::TITLE_SHORT "CPO")
+(hasAttribute RogerStewart ::EMAIL "rstewart@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo RogerStewart JimRichard)
+(MEMBER_OF RogerStewart ISGExecutiveTeam)
+(LEADS RogerStewart ISGMotorPumpGroup)
+(LEADS RogerStewart SolesElectric)
+(MEMBER_OF RogerStewart ISGCharlotteLaunchTeam)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt RogerStewart Fairmont-WV)
+(hasAttribute RogerStewart ::PRIMARY_FACILITY "Soles Electric, Fairmont, WV")
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute RogerStewart ::ORG_LEVEL 2)
+(hasAttribute RogerStewart ::SPAN_OF_CONTROL "Electric Motors and Specialty Field Service verticals")
+(hasAttribute RogerStewart ::DECISION_AUTHORITY "Motor & pump operations, performance metrics across group")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch RogerStewart "West Virginia University" 1986 1990)
+(careerEpoch RogerStewart "Dixon Hughes Goodman LLP — Early career" 1990 2000)
+(careerEpoch RogerStewart "Coventry Health Care / Carelink" 2000 2012)
+(careerEpoch RogerStewart "Soles Electric Company — President" 2012 2019)
+(careerEpoch RogerStewart "The Industrial Service Group — CPO / President Motor & Pump" 2019 9999)
+
+(hasAttribute RogerStewart ::SOLES_TENURE "President since 2012, pre-dates ISG")
+(hasAttribute RogerStewart ::SOLES_FOUNDED 1960)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn RogerStewart ElectricMotorRepair)
+(expertiseIn RogerStewart IndustrialFieldService)
+(expertiseIn RogerStewart ManagerialFinance)
+(expertiseIn RogerStewart DueDiligence)
+(expertiseIn RogerStewart MergersIntegration)
+(expertiseIn RogerStewart PerformanceManagement)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa RogerStewart-PreAcquisitionTenure METRIC)
+(attachedTo RogerStewart-PreAcquisitionTenure RogerStewart)
+(hasAttribute RogerStewart-PreAcquisitionTenure ::VALUE 7)
+(hasAttribute RogerStewart-PreAcquisitionTenure ::UNIT "years as Soles president before ISG")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa RogerStewart-SkepticTurnedAdvocate SIGNAL)
+(derivedFrom RogerStewart-SkepticTurnedAdvocate RogerStewart-PreAcquisitionTenure)
+(comment RogerStewart-SkepticTurnedAdvocate
+  "Roger was initially skeptical of ISG's acquisition — typical PE
+   concerns. After understanding Jim's platform model, he became a
+   strong advocate. His quote: 'Once it clicked that this was not the
+   typical acquisition, the game changed.' This pattern of earned trust
+   is critical context for Charlotte interactions.")
+
+(isa RogerStewart-OperatorIdentity SIGNAL)
+(derivedFrom RogerStewart-OperatorIdentity RogerStewart-PreAcquisitionTenure)
+(comment RogerStewart-OperatorIdentity
+  "Roger ran Soles Electric independently for 7 years before ISG.
+   He thinks like an owner-operator, not a corporate executive. He
+   values autonomy and will resist anything that feels like
+   centralized control imposed from above.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCPO PROTOCOL)
+(hasTrigger Protocol-InteractWithCPO (sessionCaller ?Session RogerStewart))
+(comment Protocol-InteractWithCPO
+  "Roger is a PE-background operator who values autonomy. Do not
+   present Charlotte as a top-down control system. Frame it as a
+   tool that makes HIS operations more visible and efficient. He
+   has deep financial acumen — speak in margin and performance terms.
+   He was CC'd on the Charlotte OS launch meeting — engaged but
+   watching from a distance.")

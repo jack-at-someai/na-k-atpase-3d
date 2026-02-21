@@ -1,0 +1,976 @@
+;;; ================================================================
+;;; REFERENCE / GRAPH THEORY
+;;; 96 resources across 8 sections — Knowledge graphs, ontologies
+;;; & graph databases. The relational fabric of NODE-EDGE primitives.
+;;; ================================================================
+;;;
+;;; Graph theory is the mathematical study of structures made up of
+;;; vertices (nodes) connected by edges (links). It underpins
+;;; social-network analysis, route planning, knowledge representation,
+;;; the FINN Data Model (Charlotte Paper 1) and Domain Modeling
+;;; patterns (Charlotte Paper 5).
+;;;
+;;; Learning path: Fundamentals → Knowledge Graphs → Ontology Design →
+;;; Graph Databases → Algorithms → Temporal Graphs → Datasets & Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Getting Started ──
+
+(isa GT-Diestel-FreeEdition ReferenceWork)
+(title GT-Diestel-FreeEdition "Graph Theory (Diestel) — Free Online Edition")
+(author GT-Diestel-FreeEdition "Reinhard Diestel")
+(resourceType GT-Diestel-FreeEdition book)
+(level GT-Diestel-FreeEdition intermediate)
+(section GT-Diestel-FreeEdition GraphTheoryOverview)
+(url GT-Diestel-FreeEdition "https://diestel-graph-theory.com/")
+(desc GT-Diestel-FreeEdition "The standard graduate textbook on graph theory, available free online. Covers all foundational topics rigorously from connectivity to minors.")
+
+(isa GT-Herke-YouTubeSeries ReferenceWork)
+(title GT-Herke-YouTubeSeries "Introduction to Graph Theory — Sarada Herke YouTube Series")
+(author GT-Herke-YouTubeSeries "Sarada Herke")
+(resourceType GT-Herke-YouTubeSeries video)
+(level GT-Herke-YouTubeSeries beginner)
+(section GT-Herke-YouTubeSeries GraphTheoryOverview)
+(url GT-Herke-YouTubeSeries "https://www.youtube.com/playlist?list=PLoJC20gNfC2gmT_5WgwYwGMvgCjYVsIQg")
+(desc GT-Herke-YouTubeSeries "Gentle and highly visual introduction to graph theory fundamentals. Over 50 short lectures covering vertices, edges, trees, Euler paths, and more.")
+
+(isa GT-Hogan-KGSurvey ReferenceWork)
+(title GT-Hogan-KGSurvey "Knowledge Graphs — Comprehensive Survey")
+(author GT-Hogan-KGSurvey "Aidan Hogan et al.")
+(resourceType GT-Hogan-KGSurvey notes)
+(level GT-Hogan-KGSurvey intermediate)
+(section GT-Hogan-KGSurvey GraphTheoryOverview)
+(url GT-Hogan-KGSurvey "https://arxiv.org/abs/2003.02320")
+(desc GT-Hogan-KGSurvey "The definitive survey paper on knowledge graphs covering data models, creation, enrichment, quality, and applications. Essential reading.")
+
+(isa GT-MIT18217-Overview ReferenceWork)
+(title GT-MIT18217-Overview "MIT 18.217: Graph Theory and Additive Combinatorics")
+(author GT-MIT18217-Overview "Yufei Zhao (MIT OCW)")
+(resourceType GT-MIT18217-Overview course)
+(level GT-MIT18217-Overview advanced)
+(section GT-MIT18217-Overview GraphTheoryOverview)
+(url GT-MIT18217-Overview "https://ocw.mit.edu/courses/18-217-graph-theory-and-additive-combinatorics-fall-2019/")
+(desc GT-MIT18217-Overview "Advanced MIT course connecting graph theory with additive combinatorics. Covers extremal graph theory, Szemeredi regularity lemma, and graph limits.")
+
+(isa GT-Neo4j-GettingStarted-Overview ReferenceWork)
+(title GT-Neo4j-GettingStarted-Overview "Neo4j Graph Database — Getting Started")
+(author GT-Neo4j-GettingStarted-Overview "Neo4j Inc.")
+(resourceType GT-Neo4j-GettingStarted-Overview notes)
+(level GT-Neo4j-GettingStarted-Overview beginner)
+(section GT-Neo4j-GettingStarted-Overview GraphTheoryOverview)
+(url GT-Neo4j-GettingStarted-Overview "https://neo4j.com/docs/getting-started/")
+(desc GT-Neo4j-GettingStarted-Overview "Official getting-started guide for Neo4j, the most widely adopted graph database. Learn Cypher queries and property graph modeling from scratch.")
+
+(isa GT-NetworkX-Overview ReferenceWork)
+(title GT-NetworkX-Overview "NetworkX: Python Graph Library")
+(author GT-NetworkX-Overview "Aric Hagberg et al.")
+(resourceType GT-NetworkX-Overview code)
+(level GT-NetworkX-Overview beginner)
+(section GT-NetworkX-Overview GraphTheoryOverview)
+(url GT-NetworkX-Overview "https://networkx.org/")
+(desc GT-NetworkX-Overview "The standard Python library for creating, manipulating, and studying complex networks. Includes generators, algorithms, and visualization utilities.")
+
+(isa GT-W3C-RDF-Overview ReferenceWork)
+(title GT-W3C-RDF-Overview "W3C RDF 1.1 Primer")
+(author GT-W3C-RDF-Overview "W3C")
+(resourceType GT-W3C-RDF-Overview notes)
+(level GT-W3C-RDF-Overview beginner)
+(section GT-W3C-RDF-Overview GraphTheoryOverview)
+(url GT-W3C-RDF-Overview "https://www.w3.org/TR/rdf11-primer/")
+(desc GT-W3C-RDF-Overview "Official W3C primer for the Resource Description Framework. The foundational standard for representing knowledge as subject-predicate-object triples.")
+
+(isa GT-Holme-TemporalNetworks-Overview ReferenceWork)
+(title GT-Holme-TemporalNetworks-Overview "Temporal Network Theory — Holme & Saramaki")
+(author GT-Holme-TemporalNetworks-Overview "Petter Holme, Jari Saramaki")
+(resourceType GT-Holme-TemporalNetworks-Overview notes)
+(level GT-Holme-TemporalNetworks-Overview advanced)
+(section GT-Holme-TemporalNetworks-Overview GraphTheoryOverview)
+(url GT-Holme-TemporalNetworks-Overview "https://arxiv.org/abs/1108.1780")
+(desc GT-Holme-TemporalNetworks-Overview "Foundational survey of temporal networks — graphs where edges carry time information. Covers models, metrics, and spreading processes on temporal structures.")
+
+(isa GT-SNAP-Overview ReferenceWork)
+(title GT-SNAP-Overview "Stanford SNAP: Large Network Dataset Collection")
+(author GT-SNAP-Overview "Jure Leskovec (Stanford)")
+(resourceType GT-SNAP-Overview data)
+(level GT-SNAP-Overview beginner)
+(section GT-SNAP-Overview GraphTheoryOverview)
+(url GT-SNAP-Overview "https://snap.stanford.edu/data/")
+(desc GT-SNAP-Overview "Massive collection of real-world network datasets for research: social networks, web graphs, road networks, citation networks, and more.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: FUNDAMENTALS
+;; Vertices, edges, trees, planarity, coloring, matchings
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa GT-Diestel-5thEd ReferenceWork)
+(title GT-Diestel-5thEd "Graph Theory (5th Edition)")
+(author GT-Diestel-5thEd "Reinhard Diestel")
+(resourceType GT-Diestel-5thEd book)
+(level GT-Diestel-5thEd intermediate)
+(section GT-Diestel-5thEd GraphTheoryFundamentals)
+(url GT-Diestel-5thEd "https://diestel-graph-theory.com/")
+(desc GT-Diestel-5thEd "The standard graduate text. Covers connectivity, matching, planarity, coloring, flows, extremal problems, and infinite graphs. Free online edition available.")
+
+(isa GT-West-IntroGraphTheory ReferenceWork)
+(title GT-West-IntroGraphTheory "Introduction to Graph Theory (2nd Edition)")
+(author GT-West-IntroGraphTheory "Douglas B. West")
+(resourceType GT-West-IntroGraphTheory book)
+(level GT-West-IntroGraphTheory intermediate)
+(section GT-West-IntroGraphTheory GraphTheoryFundamentals)
+(url GT-West-IntroGraphTheory "https://faculty.math.illinois.edu/~west/igt/")
+(desc GT-West-IntroGraphTheory "Comprehensive undergraduate/graduate textbook with extensive exercises. Covers matchings, connectivity, coloring, planar graphs, and Ramsey theory.")
+
+(isa GT-BondyMurty-GraphTheory ReferenceWork)
+(title GT-BondyMurty-GraphTheory "Graph Theory with Applications")
+(author GT-BondyMurty-GraphTheory "J.A. Bondy, U.S.R. Murty")
+(resourceType GT-BondyMurty-GraphTheory book)
+(level GT-BondyMurty-GraphTheory intermediate)
+(section GT-BondyMurty-GraphTheory GraphTheoryFundamentals)
+(url GT-BondyMurty-GraphTheory "https://www.springer.com/gp/book/9781846289699")
+(desc GT-BondyMurty-GraphTheory "Classic textbook covering graph theory from basics through advanced topics. Known for elegant proofs and thorough treatment of extremal graph theory.")
+
+(isa GT-ChartrandZhang-FirstCourse ReferenceWork)
+(title GT-ChartrandZhang-FirstCourse "A First Course in Graph Theory")
+(author GT-ChartrandZhang-FirstCourse "Gary Chartrand, Ping Zhang")
+(resourceType GT-ChartrandZhang-FirstCourse book)
+(level GT-ChartrandZhang-FirstCourse beginner)
+(section GT-ChartrandZhang-FirstCourse GraphTheoryFundamentals)
+(url GT-ChartrandZhang-FirstCourse "https://store.doverpublications.com/0486483681.html")
+(desc GT-ChartrandZhang-FirstCourse "Accessible introduction to graph theory for undergraduates. Covers fundamentals with clear exposition, many examples, and exercises at varying difficulty levels.")
+
+(isa GT-GrossYellen-Applications ReferenceWork)
+(title GT-GrossYellen-Applications "Graph Theory and Its Applications (3rd Edition)")
+(author GT-GrossYellen-Applications "Jonathan L. Gross, Jay Yellen, Mark Anderson")
+(resourceType GT-GrossYellen-Applications book)
+(level GT-GrossYellen-Applications beginner)
+(section GT-GrossYellen-Applications GraphTheoryFundamentals)
+(url GT-GrossYellen-Applications "https://www.routledge.com/Graph-Theory-and-Its-Applications/Gross-Yellen-Anderson/p/book/9781482249484")
+(desc GT-GrossYellen-Applications "Applied perspective on graph theory covering algorithms, network flows, and combinatorial optimization alongside pure theory.")
+
+;; ── Courses & Lectures ──
+
+(isa GT-Herke-FullCourse ReferenceWork)
+(title GT-Herke-FullCourse "Graph Theory — Sarada Herke Full Course")
+(author GT-Herke-FullCourse "Sarada Herke")
+(resourceType GT-Herke-FullCourse video)
+(level GT-Herke-FullCourse beginner)
+(section GT-Herke-FullCourse GraphTheoryFundamentals)
+(url GT-Herke-FullCourse "https://www.youtube.com/playlist?list=PLoJC20gNfC2gmT_5WgwYwGMvgCjYVsIQg")
+(desc GT-Herke-FullCourse "Comprehensive YouTube playlist covering graph theory from scratch: definitions, trees, Euler circuits, Hamiltonian paths, coloring, planarity, and matchings.")
+
+(isa GT-MIT18217-Fundamentals ReferenceWork)
+(title GT-MIT18217-Fundamentals "MIT 18.217: Graph Theory and Additive Combinatorics")
+(author GT-MIT18217-Fundamentals "Yufei Zhao")
+(resourceType GT-MIT18217-Fundamentals course)
+(level GT-MIT18217-Fundamentals advanced)
+(section GT-MIT18217-Fundamentals GraphTheoryFundamentals)
+(url GT-MIT18217-Fundamentals "https://ocw.mit.edu/courses/18-217-graph-theory-and-additive-combinatorics-fall-2019/")
+(desc GT-MIT18217-Fundamentals "Advanced MIT course. Topics include extremal graph theory, Szemeredi regularity lemma, pseudorandomness, and graph limits (graphons).")
+
+(isa GT-MIT18212-AlgComb ReferenceWork)
+(title GT-MIT18212-AlgComb "MIT 18.212: Algebraic Combinatorics")
+(author GT-MIT18212-AlgComb "Alexander Postnikov")
+(resourceType GT-MIT18212-AlgComb course)
+(level GT-MIT18212-AlgComb advanced)
+(section GT-MIT18212-AlgComb GraphTheoryFundamentals)
+(url GT-MIT18212-AlgComb "https://ocw.mit.edu/courses/18-212-algebraic-combinatorics-spring-2019/")
+(desc GT-MIT18212-AlgComb "MIT course covering algebraic methods in combinatorics including graph eigenvalues, chromatic polynomials, and matroid theory.")
+
+(isa GT-3B1B-LinearAlgebra ReferenceWork)
+(title GT-3B1B-LinearAlgebra "Essence of Linear Algebra (Graph Eigenvalues Context)")
+(author GT-3B1B-LinearAlgebra "3Blue1Brown (Grant Sanderson)")
+(resourceType GT-3B1B-LinearAlgebra video)
+(level GT-3B1B-LinearAlgebra beginner)
+(section GT-3B1B-LinearAlgebra GraphTheoryFundamentals)
+(url GT-3B1B-LinearAlgebra "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab")
+(desc GT-3B1B-LinearAlgebra "While focused on linear algebra, this series provides essential visual intuition for spectral graph theory — understanding graphs through their eigenvalues.")
+
+(isa GT-Coursera-UCSanDiego-Graphs ReferenceWork)
+(title GT-Coursera-UCSanDiego-Graphs "Graph Theory (Coursera / UC San Diego)")
+(author GT-Coursera-UCSanDiego-Graphs "Alexander S. Kulikov, Michael Levin")
+(resourceType GT-Coursera-UCSanDiego-Graphs course)
+(level GT-Coursera-UCSanDiego-Graphs beginner)
+(section GT-Coursera-UCSanDiego-Graphs GraphTheoryFundamentals)
+(url GT-Coursera-UCSanDiego-Graphs "https://www.coursera.org/learn/graphs")
+(desc GT-Coursera-UCSanDiego-Graphs "Part of the Data Structures and Algorithms specialization. Covers BFS, DFS, strongly connected components, and shortest paths with hands-on programming assignments.")
+
+;; ── Visual & Interactive Resources ──
+
+(isa GT-D3GT-InteractiveTutorials ReferenceWork)
+(title GT-D3GT-InteractiveTutorials "D3 Graph Theory — Interactive Tutorials")
+(author GT-D3GT-InteractiveTutorials "Avinash Pandey")
+(resourceType GT-D3GT-InteractiveTutorials code)
+(level GT-D3GT-InteractiveTutorials beginner)
+(section GT-D3GT-InteractiveTutorials GraphTheoryFundamentals)
+(url GT-D3GT-InteractiveTutorials "https://d3gt.com/")
+(desc GT-D3GT-InteractiveTutorials "Beautiful interactive tutorials teaching graph theory concepts through D3.js visualizations. Covers vertices, edges, walks, paths, connectivity, and trees.")
+
+(isa GT-VisuAlgo-GraphViz ReferenceWork)
+(title GT-VisuAlgo-GraphViz "VisuAlgo — Graph Visualizations")
+(author GT-VisuAlgo-GraphViz "Steven Halim")
+(resourceType GT-VisuAlgo-GraphViz code)
+(level GT-VisuAlgo-GraphViz beginner)
+(section GT-VisuAlgo-GraphViz GraphTheoryFundamentals)
+(url GT-VisuAlgo-GraphViz "https://visualgo.net/en/graphds")
+(desc GT-VisuAlgo-GraphViz "Interactive visualization platform for graph data structures and algorithms. Step through BFS, DFS, shortest path, MST, and more with animated execution.")
+
+(isa GT-Spielman-SpectralNotes ReferenceWork)
+(title GT-Spielman-SpectralNotes "Spectral Graph Theory (Spielman Lecture Notes)")
+(author GT-Spielman-SpectralNotes "Daniel A. Spielman")
+(resourceType GT-Spielman-SpectralNotes notes)
+(level GT-Spielman-SpectralNotes advanced)
+(section GT-Spielman-SpectralNotes GraphTheoryFundamentals)
+(url GT-Spielman-SpectralNotes "http://www.cs.yale.edu/homes/spielman/sgta/")
+(desc GT-Spielman-SpectralNotes "Yale lecture notes on spectral graph theory covering Laplacian matrices, Cheeger inequality, expander graphs, and spectral sparsification.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: KNOWLEDGE GRAPHS
+;; RDF, OWL, SPARQL, property graphs, linked data
+;; ════════════════════════════════════════════════════════════
+
+;; ── Books & Surveys ──
+
+(isa GT-Hogan-KGSynthesis ReferenceWork)
+(title GT-Hogan-KGSynthesis "Knowledge Graphs (Synthesis Lectures)")
+(author GT-Hogan-KGSynthesis "Aidan Hogan, Eva Blomqvist, Michael Cochez et al.")
+(resourceType GT-Hogan-KGSynthesis book)
+(level GT-Hogan-KGSynthesis intermediate)
+(section GT-Hogan-KGSynthesis KnowledgeGraphs)
+(url GT-Hogan-KGSynthesis "https://arxiv.org/abs/2003.02320")
+(desc GT-Hogan-KGSynthesis "The definitive comprehensive survey covering knowledge graph data models, creation, enrichment, quality assessment, refinement, and applications. 170+ pages.")
+
+(isa GT-Hitzler-SemanticWeb ReferenceWork)
+(title GT-Hitzler-SemanticWeb "Foundations of Semantic Web Technologies")
+(author GT-Hitzler-SemanticWeb "Pascal Hitzler, Markus Krotzsch, Sebastian Rudolph")
+(resourceType GT-Hitzler-SemanticWeb book)
+(level GT-Hitzler-SemanticWeb intermediate)
+(section GT-Hitzler-SemanticWeb KnowledgeGraphs)
+(url GT-Hitzler-SemanticWeb "https://www.semantic-web-book.org/")
+(desc GT-Hitzler-SemanticWeb "Textbook covering RDF, RDFS, OWL, SPARQL, and semantic web reasoning. Provides solid theoretical foundations for building knowledge graphs.")
+
+(isa GT-Pan-LinkedDataOrgs ReferenceWork)
+(title GT-Pan-LinkedDataOrgs "Exploiting Linked Data and Knowledge Graphs in Large Organisations")
+(author GT-Pan-LinkedDataOrgs "Jeff Z. Pan et al.")
+(resourceType GT-Pan-LinkedDataOrgs book)
+(level GT-Pan-LinkedDataOrgs intermediate)
+(section GT-Pan-LinkedDataOrgs KnowledgeGraphs)
+(url GT-Pan-LinkedDataOrgs "https://www.springer.com/gp/book/9783319456522")
+(desc GT-Pan-LinkedDataOrgs "Practical guide on deploying knowledge graph technologies in enterprise settings. Covers integration, querying, and real-world case studies.")
+
+(isa GT-Nickel-RelationalML ReferenceWork)
+(title GT-Nickel-RelationalML "A Review of Relational Machine Learning for Knowledge Graphs")
+(author GT-Nickel-RelationalML "Maximilian Nickel, Kevin Murphy, Volker Tresp, Evgeniy Gabrilovich")
+(resourceType GT-Nickel-RelationalML notes)
+(level GT-Nickel-RelationalML advanced)
+(section GT-Nickel-RelationalML KnowledgeGraphs)
+(url GT-Nickel-RelationalML "https://arxiv.org/abs/1503.00759")
+(desc GT-Nickel-RelationalML "Influential survey on statistical relational learning methods for knowledge graphs including tensor factorization and neural embedding approaches.")
+
+;; ── Standards & Specifications ──
+
+(isa GT-W3C-RDF-Primer ReferenceWork)
+(title GT-W3C-RDF-Primer "W3C RDF 1.1 Primer")
+(author GT-W3C-RDF-Primer "W3C")
+(resourceType GT-W3C-RDF-Primer notes)
+(level GT-W3C-RDF-Primer beginner)
+(section GT-W3C-RDF-Primer KnowledgeGraphs)
+(url GT-W3C-RDF-Primer "https://www.w3.org/TR/rdf11-primer/")
+(desc GT-W3C-RDF-Primer "Official W3C introduction to RDF. Explains triples, graphs, serialization formats (Turtle, JSON-LD, N-Triples), and the RDF data model.")
+
+(isa GT-W3C-SPARQL ReferenceWork)
+(title GT-W3C-SPARQL "SPARQL 1.1 Query Language Specification")
+(author GT-W3C-SPARQL "W3C")
+(resourceType GT-W3C-SPARQL notes)
+(level GT-W3C-SPARQL intermediate)
+(section GT-W3C-SPARQL KnowledgeGraphs)
+(url GT-W3C-SPARQL "https://www.w3.org/TR/sparql11-query/")
+(desc GT-W3C-SPARQL "The complete W3C specification for SPARQL, the standard query language for RDF data. Covers SELECT, CONSTRUCT, ASK, DESCRIBE, and federation.")
+
+(isa GT-SchemaOrg ReferenceWork)
+(title GT-SchemaOrg "Schema.org — Vocabulary for Structured Data")
+(author GT-SchemaOrg "Schema.org Community")
+(resourceType GT-SchemaOrg notes)
+(level GT-SchemaOrg beginner)
+(section GT-SchemaOrg KnowledgeGraphs)
+(url GT-SchemaOrg "https://schema.org/")
+(desc GT-SchemaOrg "Collaborative vocabulary supported by Google, Microsoft, Yahoo, and Yandex for marking up web content with structured data understood by search engines.")
+
+(isa GT-W3C-JSONLD ReferenceWork)
+(title GT-W3C-JSONLD "JSON-LD 1.1 Specification")
+(author GT-W3C-JSONLD "W3C")
+(resourceType GT-W3C-JSONLD notes)
+(level GT-W3C-JSONLD intermediate)
+(section GT-W3C-JSONLD KnowledgeGraphs)
+(url GT-W3C-JSONLD "https://www.w3.org/TR/json-ld11/")
+(desc GT-W3C-JSONLD "W3C standard for serializing linked data in JSON format. The bridge between developer-friendly JSON and the semantic web's RDF model.")
+
+;; ── Tools & Platforms ──
+
+(isa GT-Wikidata-KnowledgeBase ReferenceWork)
+(title GT-Wikidata-KnowledgeBase "Wikidata — Free Knowledge Base")
+(author GT-Wikidata-KnowledgeBase "Wikimedia Foundation")
+(resourceType GT-Wikidata-KnowledgeBase data)
+(level GT-Wikidata-KnowledgeBase beginner)
+(section GT-Wikidata-KnowledgeBase KnowledgeGraphs)
+(url GT-Wikidata-KnowledgeBase "https://www.wikidata.org/")
+(desc GT-Wikidata-KnowledgeBase "The largest open knowledge graph with 100M+ items. Structured data backbone for Wikipedia. Queryable via SPARQL endpoint, excellent for learning and experimentation.")
+
+(isa GT-ApacheJena ReferenceWork)
+(title GT-ApacheJena "Apache Jena — RDF Framework for Java")
+(author GT-ApacheJena "Apache Software Foundation")
+(resourceType GT-ApacheJena code)
+(level GT-ApacheJena intermediate)
+(section GT-ApacheJena KnowledgeGraphs)
+(url GT-ApacheJena "https://jena.apache.org/")
+(desc GT-ApacheJena "Open-source Java framework for building semantic web and linked data applications. Includes TDB triple store, Fuseki SPARQL server, and OWL reasoner.")
+
+(isa GT-RDFLib ReferenceWork)
+(title GT-RDFLib "rdflib — Python RDF Library")
+(author GT-RDFLib "RDFLib Team")
+(resourceType GT-RDFLib code)
+(level GT-RDFLib beginner)
+(section GT-RDFLib KnowledgeGraphs)
+(url GT-RDFLib "https://rdflib.readthedocs.io/")
+(desc GT-RDFLib "Pure Python library for working with RDF. Parse, serialize, and query RDF data. Supports SPARQL, Turtle, JSON-LD, and N-Triples formats.")
+
+(isa GT-Google-KGSearchAPI ReferenceWork)
+(title GT-Google-KGSearchAPI "Google Knowledge Graph Search API")
+(author GT-Google-KGSearchAPI "Google")
+(resourceType GT-Google-KGSearchAPI code)
+(level GT-Google-KGSearchAPI beginner)
+(section GT-Google-KGSearchAPI KnowledgeGraphs)
+(url GT-Google-KGSearchAPI "https://developers.google.com/knowledge-graph")
+(desc GT-Google-KGSearchAPI "API for searching Google's Knowledge Graph, which contains billions of facts about people, places, and things. Useful for entity resolution and enrichment.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: TEMPORAL GRAPHS
+;; Time-varying graphs, temporal paths, streaming graphs
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Papers ──
+
+(isa GT-Holme-TemporalNetworks ReferenceWork)
+(title GT-Holme-TemporalNetworks "Temporal Networks")
+(author GT-Holme-TemporalNetworks "Petter Holme, Jari Saramaki")
+(resourceType GT-Holme-TemporalNetworks notes)
+(level GT-Holme-TemporalNetworks advanced)
+(section GT-Holme-TemporalNetworks TemporalGraphs)
+(url GT-Holme-TemporalNetworks "https://arxiv.org/abs/1108.1780")
+(desc GT-Holme-TemporalNetworks "The foundational survey on temporal networks. Covers representations, metrics (temporal distance, reachability), burstiness, and processes on temporal structures.")
+
+(isa GT-Holme-TemporalNetworkBook ReferenceWork)
+(title GT-Holme-TemporalNetworkBook "Temporal Network Theory (Book)")
+(author GT-Holme-TemporalNetworkBook "Petter Holme, Jari Saramaki (Editors)")
+(resourceType GT-Holme-TemporalNetworkBook book)
+(level GT-Holme-TemporalNetworkBook advanced)
+(section GT-Holme-TemporalNetworkBook TemporalGraphs)
+(url GT-Holme-TemporalNetworkBook "https://www.springer.com/gp/book/9783030234942")
+(desc GT-Holme-TemporalNetworkBook "Comprehensive edited volume on temporal network theory covering mathematical foundations, analysis methods, generative models, and applications across disciplines.")
+
+(isa GT-Latapy-StreamGraphs ReferenceWork)
+(title GT-Latapy-StreamGraphs "Stream Graphs and Link Streams for the Modeling of Interactions over Time")
+(author GT-Latapy-StreamGraphs "Matthieu Latapy, Tiphaine Viard, Clemence Magnien")
+(resourceType GT-Latapy-StreamGraphs notes)
+(level GT-Latapy-StreamGraphs advanced)
+(section GT-Latapy-StreamGraphs TemporalGraphs)
+(url GT-Latapy-StreamGraphs "https://arxiv.org/abs/1710.04073")
+(desc GT-Latapy-StreamGraphs "Introduces the stream graph formalism as a unified framework for temporal networks, extending classical graph concepts (density, clustering, paths) to the temporal setting.")
+
+(isa GT-Michail-TemporalAlgorithmic ReferenceWork)
+(title GT-Michail-TemporalAlgorithmic "An Introduction to Temporal Graphs: An Algorithmic Perspective")
+(author GT-Michail-TemporalAlgorithmic "Othon Michail")
+(resourceType GT-Michail-TemporalAlgorithmic notes)
+(level GT-Michail-TemporalAlgorithmic intermediate)
+(section GT-Michail-TemporalAlgorithmic TemporalGraphs)
+(url GT-Michail-TemporalAlgorithmic "https://arxiv.org/abs/1503.00278")
+(desc GT-Michail-TemporalAlgorithmic "Algorithmic perspective on temporal graphs covering temporal connectivity, exploration problems, and computational complexity of temporal graph problems.")
+
+(isa GT-Casteigts-ComputingTemporal ReferenceWork)
+(title GT-Casteigts-ComputingTemporal "Computing with Temporal Graphs")
+(author GT-Casteigts-ComputingTemporal "Arnaud Casteigts, Paola Flocchini, Walter Quattrociocchi, Nicola Santoro")
+(resourceType GT-Casteigts-ComputingTemporal notes)
+(level GT-Casteigts-ComputingTemporal advanced)
+(section GT-Casteigts-ComputingTemporal TemporalGraphs)
+(url GT-Casteigts-ComputingTemporal "https://arxiv.org/abs/1012.0009")
+(desc GT-Casteigts-ComputingTemporal "Foundational framework for classifying temporal graphs based on their properties: edge recurrence, connectivity over time, and the computability hierarchy.")
+
+;; ── Temporal Databases & Tools ──
+
+(isa GT-ApacheKafka ReferenceWork)
+(title GT-ApacheKafka "Apache Kafka — Event Streaming Platform")
+(author GT-ApacheKafka "Apache Software Foundation")
+(resourceType GT-ApacheKafka code)
+(level GT-ApacheKafka intermediate)
+(section GT-ApacheKafka TemporalGraphs)
+(url GT-ApacheKafka "https://kafka.apache.org/")
+(desc GT-ApacheKafka "Distributed event streaming platform used to build real-time streaming data pipelines and applications. Essential infrastructure for streaming graph processing.")
+
+(isa GT-Raphtory ReferenceWork)
+(title GT-Raphtory "Raphtory — Temporal Graph Analytics")
+(author GT-Raphtory "Pometry")
+(resourceType GT-Raphtory code)
+(level GT-Raphtory intermediate)
+(section GT-Raphtory TemporalGraphs)
+(url GT-Raphtory "https://www.raphtory.com/")
+(desc GT-Raphtory "Open-source temporal graph analytics engine. Query and analyze graph data that changes over time. Supports both batch and streaming temporal graph analysis.")
+
+(isa GT-SNAP-TemporalDatasets ReferenceWork)
+(title GT-SNAP-TemporalDatasets "SNAP Temporal Datasets")
+(author GT-SNAP-TemporalDatasets "Jure Leskovec (Stanford)")
+(resourceType GT-SNAP-TemporalDatasets data)
+(level GT-SNAP-TemporalDatasets beginner)
+(section GT-SNAP-TemporalDatasets TemporalGraphs)
+(url GT-SNAP-TemporalDatasets "https://snap.stanford.edu/data/#temporal")
+(desc GT-SNAP-TemporalDatasets "Collection of temporal network datasets from SNAP including email networks, social media interaction streams, and Wikipedia edit histories with timestamps.")
+
+(isa GT-Rossi-TGN ReferenceWork)
+(title GT-Rossi-TGN "Temporal Graph Networks for Deep Learning on Dynamic Graphs")
+(author GT-Rossi-TGN "Emanuele Rossi et al.")
+(resourceType GT-Rossi-TGN notes)
+(level GT-Rossi-TGN advanced)
+(section GT-Rossi-TGN TemporalGraphs)
+(url GT-Rossi-TGN "https://arxiv.org/abs/2006.10637")
+(desc GT-Rossi-TGN "Introduces TGN, a generic framework for deep learning on continuous-time dynamic graphs combining memory modules with graph neural networks.")
+
+(isa GT-NetworkX-TemporalExt ReferenceWork)
+(title GT-NetworkX-TemporalExt "NetworkX Temporal Extensions")
+(author GT-NetworkX-TemporalExt "NetworkX Community")
+(resourceType GT-NetworkX-TemporalExt code)
+(level GT-NetworkX-TemporalExt intermediate)
+(section GT-NetworkX-TemporalExt TemporalGraphs)
+(url GT-NetworkX-TemporalExt "https://networkx.org/documentation/stable/reference/classes/index.html")
+(desc GT-NetworkX-TemporalExt "NetworkX supports temporal modeling through attributed edges with time properties. Documentation covers approaches for representing and analyzing time-varying networks.")
+
+;; ── Courses & Tutorials ──
+
+(isa GT-Barabasi-NetworkScience ReferenceWork)
+(title GT-Barabasi-NetworkScience "Network Science — Chapter on Temporal Networks")
+(author GT-Barabasi-NetworkScience "Albert-Laszlo Barabasi")
+(resourceType GT-Barabasi-NetworkScience book)
+(level GT-Barabasi-NetworkScience intermediate)
+(section GT-Barabasi-NetworkScience TemporalGraphs)
+(url GT-Barabasi-NetworkScience "http://networksciencebook.com/")
+(desc GT-Barabasi-NetworkScience "Barabasi's free online Network Science textbook includes coverage of dynamic and temporal network phenomena including spreading processes and epidemic modeling.")
+
+(isa GT-NeurIPS-TGL-Workshop ReferenceWork)
+(title GT-NeurIPS-TGL-Workshop "Temporal Graph Learning Workshop (NeurIPS)")
+(author GT-NeurIPS-TGL-Workshop "Various")
+(resourceType GT-NeurIPS-TGL-Workshop notes)
+(level GT-NeurIPS-TGL-Workshop advanced)
+(section GT-NeurIPS-TGL-Workshop TemporalGraphs)
+(url GT-NeurIPS-TGL-Workshop "https://sites.google.com/view/tglworkshop2023/")
+(desc GT-NeurIPS-TGL-Workshop "Workshop papers and presentations from the NeurIPS Temporal Graph Learning Workshop covering cutting-edge research in learning on time-varying graph data.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: ONTOLOGY & SCHEMA
+;; OWL, description logics, upper ontologies, SHACL
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Foundational Works ──
+
+(isa GT-Baader-DLHandbook ReferenceWork)
+(title GT-Baader-DLHandbook "The Description Logic Handbook (2nd Edition)")
+(author GT-Baader-DLHandbook "Franz Baader, Diego Calvanese, Deborah McGuinness et al.")
+(resourceType GT-Baader-DLHandbook book)
+(level GT-Baader-DLHandbook advanced)
+(section GT-Baader-DLHandbook OntologySchema)
+(url GT-Baader-DLHandbook "https://www.cambridge.org/core/books/description-logic-handbook/2A6B3E0C7A418C837E498EF96ECB4E28")
+(desc GT-Baader-DLHandbook "The authoritative reference on description logics — the formal foundation of OWL. Covers complexity, reasoning algorithms, and extensions. Essential for ontology theorists.")
+
+(isa GT-Keet-OntologyEngineering ReferenceWork)
+(title GT-Keet-OntologyEngineering "Ontology Engineering (Keet)")
+(author GT-Keet-OntologyEngineering "C. Maria Keet")
+(resourceType GT-Keet-OntologyEngineering book)
+(level GT-Keet-OntologyEngineering intermediate)
+(section GT-Keet-OntologyEngineering OntologySchema)
+(url GT-Keet-OntologyEngineering "https://people.cs.uct.ac.za/~mkeet/OEbook/")
+(desc GT-Keet-OntologyEngineering "Comprehensive textbook on ontology engineering methodology. Covers top-down and bottom-up approaches, ontology design patterns, and evaluation methods. Free online.")
+
+(isa GT-Antoniou-SemanticWebPrimer ReferenceWork)
+(title GT-Antoniou-SemanticWebPrimer "A Semantic Web Primer (3rd Edition)")
+(author GT-Antoniou-SemanticWebPrimer "Grigoris Antoniou, Paul Groth, Frank van Harmelen, Rinke Hoekstra")
+(resourceType GT-Antoniou-SemanticWebPrimer book)
+(level GT-Antoniou-SemanticWebPrimer beginner)
+(section GT-Antoniou-SemanticWebPrimer OntologySchema)
+(url GT-Antoniou-SemanticWebPrimer "https://mitpress.mit.edu/books/semantic-web-primer")
+(desc GT-Antoniou-SemanticWebPrimer "Accessible introduction to semantic web technologies including RDF, OWL, SPARQL, and ontology engineering. Good starting point for newcomers.")
+
+(isa GT-ODP-Portal ReferenceWork)
+(title GT-ODP-Portal "Ontology Design Patterns (ODP Portal)")
+(author GT-ODP-Portal "ODP Community")
+(resourceType GT-ODP-Portal notes)
+(level GT-ODP-Portal intermediate)
+(section GT-ODP-Portal OntologySchema)
+(url GT-ODP-Portal "http://ontologydesignpatterns.org/")
+(desc GT-ODP-Portal "Community portal cataloging reusable ontology design patterns. Includes content patterns, structural patterns, and correspondence patterns with examples and best practices.")
+
+;; ── Standards & Specifications ──
+
+(isa GT-W3C-OWL2-Primer ReferenceWork)
+(title GT-W3C-OWL2-Primer "OWL 2 Web Ontology Language Primer")
+(author GT-W3C-OWL2-Primer "W3C")
+(resourceType GT-W3C-OWL2-Primer notes)
+(level GT-W3C-OWL2-Primer intermediate)
+(section GT-W3C-OWL2-Primer OntologySchema)
+(url GT-W3C-OWL2-Primer "https://www.w3.org/TR/owl2-primer/")
+(desc GT-W3C-OWL2-Primer "Official W3C primer for OWL 2. Covers classes, properties, individuals, axioms, and the three OWL 2 profiles (EL, QL, RL) with their computational tradeoffs.")
+
+(isa GT-W3C-SHACL ReferenceWork)
+(title GT-W3C-SHACL "SHACL — Shapes Constraint Language")
+(author GT-W3C-SHACL "W3C")
+(resourceType GT-W3C-SHACL notes)
+(level GT-W3C-SHACL intermediate)
+(section GT-W3C-SHACL OntologySchema)
+(url GT-W3C-SHACL "https://www.w3.org/TR/shacl/")
+(desc GT-W3C-SHACL "W3C recommendation for validating RDF graphs against a set of conditions (shapes). Essential for enforcing data quality in knowledge graphs.")
+
+(isa GT-W3C-SKOS ReferenceWork)
+(title GT-W3C-SKOS "SKOS — Simple Knowledge Organization System")
+(author GT-W3C-SKOS "W3C")
+(resourceType GT-W3C-SKOS notes)
+(level GT-W3C-SKOS beginner)
+(section GT-W3C-SKOS OntologySchema)
+(url GT-W3C-SKOS "https://www.w3.org/TR/skos-reference/")
+(desc GT-W3C-SKOS "W3C standard for representing controlled vocabularies, thesauri, and taxonomies in RDF. Simpler than OWL, useful for organizing concepts hierarchically.")
+
+(isa GT-W3C-RDFS ReferenceWork)
+(title GT-W3C-RDFS "RDFS — RDF Schema 1.1")
+(author GT-W3C-RDFS "W3C")
+(resourceType GT-W3C-RDFS notes)
+(level GT-W3C-RDFS beginner)
+(section GT-W3C-RDFS OntologySchema)
+(url GT-W3C-RDFS "https://www.w3.org/TR/rdf-schema/")
+(desc GT-W3C-RDFS "W3C specification for RDF Schema — the basic type system for RDF. Defines classes, subclasses, properties, and domains/ranges for lightweight ontologies.")
+
+;; ── Upper Ontologies & Tools ──
+
+(isa GT-SUMO ReferenceWork)
+(title GT-SUMO "SUMO — Suggested Upper Merged Ontology")
+(author GT-SUMO "Adam Pease et al.")
+(resourceType GT-SUMO code)
+(level GT-SUMO advanced)
+(section GT-SUMO OntologySchema)
+(url GT-SUMO "https://www.ontologyportal.org/")
+(desc GT-SUMO "One of the largest and most comprehensive formal ontologies, with over 20,000 terms and 70,000 axioms. Freely available, mapped to WordNet.")
+
+(isa GT-DOLCE ReferenceWork)
+(title GT-DOLCE "DOLCE — Descriptive Ontology for Linguistic and Cognitive Engineering")
+(author GT-DOLCE "Nicola Guarino et al.")
+(resourceType GT-DOLCE notes)
+(level GT-DOLCE advanced)
+(section GT-DOLCE OntologySchema)
+(url GT-DOLCE "http://www.loa.istc.cnr.it/dolce/overview.html")
+(desc GT-DOLCE "Foundational ontology focused on cognitive and linguistic adequacy. Distinguishes endurants from perdurants, qualities from abstracts. Influential in ontology engineering.")
+
+(isa GT-Protege ReferenceWork)
+(title GT-Protege "Protege — Ontology Editor")
+(author GT-Protege "Stanford Center for Biomedical Informatics Research")
+(resourceType GT-Protege code)
+(level GT-Protege beginner)
+(section GT-Protege OntologySchema)
+(url GT-Protege "https://protege.stanford.edu/")
+(desc GT-Protege "The most widely used free, open-source ontology editor. Supports OWL 2, includes reasoners (HermiT, Pellet), and provides visualization of class hierarchies.")
+
+(isa GT-BFO ReferenceWork)
+(title GT-BFO "Basic Formal Ontology (BFO)")
+(author GT-BFO "Barry Smith et al.")
+(resourceType GT-BFO notes)
+(level GT-BFO advanced)
+(section GT-BFO OntologySchema)
+(url GT-BFO "https://basic-formal-ontology.org/")
+(desc GT-BFO "Upper-level ontology adopted as ISO/IEC 21838-2. Used as the foundation for hundreds of domain ontologies in biomedicine, defense, and industry.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: GRAPH DATABASES
+;; Neo4j, TinkerPop, Neptune, ArangoDB, Dgraph
+;; ════════════════════════════════════════════════════════════
+
+;; ── Neo4j Ecosystem ──
+
+(isa GT-Neo4j-GettingStarted ReferenceWork)
+(title GT-Neo4j-GettingStarted "Neo4j Documentation — Getting Started")
+(author GT-Neo4j-GettingStarted "Neo4j Inc.")
+(resourceType GT-Neo4j-GettingStarted notes)
+(level GT-Neo4j-GettingStarted beginner)
+(section GT-Neo4j-GettingStarted GraphDatabases)
+(url GT-Neo4j-GettingStarted "https://neo4j.com/docs/getting-started/")
+(desc GT-Neo4j-GettingStarted "Official Neo4j documentation covering installation, Cypher query language basics, data modeling in property graphs, and driver APIs for multiple languages.")
+
+(isa GT-Robinson-GraphDBBook ReferenceWork)
+(title GT-Robinson-GraphDBBook "Graph Databases (2nd Edition)")
+(author GT-Robinson-GraphDBBook "Ian Robinson, Jim Webber, Emil Eifrem")
+(resourceType GT-Robinson-GraphDBBook book)
+(level GT-Robinson-GraphDBBook beginner)
+(section GT-Robinson-GraphDBBook GraphDatabases)
+(url GT-Robinson-GraphDBBook "https://neo4j.com/graph-databases-book/")
+(desc GT-Robinson-GraphDBBook "Free ebook from Neo4j covering graph database concepts, data modeling patterns, Cypher query language, and real-world use cases. Excellent introduction.")
+
+(isa GT-Neo4j-GDS ReferenceWork)
+(title GT-Neo4j-GDS "Neo4j Graph Data Science Library")
+(author GT-Neo4j-GDS "Neo4j Inc.")
+(resourceType GT-Neo4j-GDS code)
+(level GT-Neo4j-GDS intermediate)
+(section GT-Neo4j-GDS GraphDatabases)
+(url GT-Neo4j-GDS "https://neo4j.com/docs/graph-data-science/current/")
+(desc GT-Neo4j-GDS "Neo4j's graph analytics library with 60+ algorithms including PageRank, community detection, node similarity, path finding, and graph embeddings.")
+
+(isa GT-OpenCypher ReferenceWork)
+(title GT-OpenCypher "Cypher Query Language Reference")
+(author GT-OpenCypher "openCypher Project")
+(resourceType GT-OpenCypher notes)
+(level GT-OpenCypher intermediate)
+(section GT-OpenCypher GraphDatabases)
+(url GT-OpenCypher "https://opencypher.org/")
+(desc GT-OpenCypher "The open standard for the Cypher graph query language. Specification, grammar, and compatibility documentation for implementing Cypher across platforms.")
+
+;; ── Other Graph Databases ──
+
+(isa GT-TinkerPop-Gremlin ReferenceWork)
+(title GT-TinkerPop-Gremlin "Apache TinkerPop / Gremlin Documentation")
+(author GT-TinkerPop-Gremlin "Apache Software Foundation")
+(resourceType GT-TinkerPop-Gremlin notes)
+(level GT-TinkerPop-Gremlin intermediate)
+(section GT-TinkerPop-Gremlin GraphDatabases)
+(url GT-TinkerPop-Gremlin "https://tinkerpop.apache.org/docs/current/")
+(desc GT-TinkerPop-Gremlin "Documentation for Apache TinkerPop graph computing framework and Gremlin traversal language. Vendor-neutral standard supported by many graph databases.")
+
+(isa GT-AmazonNeptune ReferenceWork)
+(title GT-AmazonNeptune "Amazon Neptune — Developer Guide")
+(author GT-AmazonNeptune "Amazon Web Services")
+(resourceType GT-AmazonNeptune notes)
+(level GT-AmazonNeptune intermediate)
+(section GT-AmazonNeptune GraphDatabases)
+(url GT-AmazonNeptune "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html")
+(desc GT-AmazonNeptune "AWS managed graph database supporting both property graphs (Gremlin) and RDF (SPARQL). Documentation covers setup, data loading, querying, and best practices.")
+
+(isa GT-ArangoDB ReferenceWork)
+(title GT-ArangoDB "ArangoDB Documentation")
+(author GT-ArangoDB "ArangoDB GmbH")
+(resourceType GT-ArangoDB notes)
+(level GT-ArangoDB intermediate)
+(section GT-ArangoDB GraphDatabases)
+(url GT-ArangoDB "https://www.arangodb.com/docs/stable/")
+(desc GT-ArangoDB "Multi-model database supporting graphs, documents, and key-value. AQL query language unifies access patterns. Good for projects needing flexible data modeling.")
+
+(isa GT-Dgraph ReferenceWork)
+(title GT-Dgraph "Dgraph Documentation")
+(author GT-Dgraph "Dgraph Labs")
+(resourceType GT-Dgraph notes)
+(level GT-Dgraph intermediate)
+(section GT-Dgraph GraphDatabases)
+(url GT-Dgraph "https://dgraph.io/docs/")
+(desc GT-Dgraph "Distributed, horizontally scalable graph database with native GraphQL support. Documentation covers DQL query language, schema design, and cluster management.")
+
+;; ── Comparisons & Architecture ──
+
+(isa GT-LDBC-Benchmark ReferenceWork)
+(title GT-LDBC-Benchmark "Graph Database Benchmark (LDBC)")
+(author GT-LDBC-Benchmark "Linked Data Benchmark Council")
+(resourceType GT-LDBC-Benchmark notes)
+(level GT-LDBC-Benchmark advanced)
+(section GT-LDBC-Benchmark GraphDatabases)
+(url GT-LDBC-Benchmark "https://ldbcouncil.org/")
+(desc GT-LDBC-Benchmark "Industry benchmarks for graph database performance. The Social Network Benchmark (SNB) and Financial Benchmark provide standardized workloads for comparing systems.")
+
+(isa GT-GQL-ISOStandard ReferenceWork)
+(title GT-GQL-ISOStandard "GQL — Graph Query Language (ISO Standard)")
+(author GT-GQL-ISOStandard "ISO/IEC JTC 1")
+(resourceType GT-GQL-ISOStandard notes)
+(level GT-GQL-ISOStandard intermediate)
+(section GT-GQL-ISOStandard GraphDatabases)
+(url GT-GQL-ISOStandard "https://www.gqlstandards.org/")
+(desc GT-GQL-ISOStandard "The emerging ISO standard graph query language unifying Cypher, PGQL, and G-CORE. Will become the SQL equivalent for graph databases.")
+
+(isa GT-Lawrence-PracticalGremlin ReferenceWork)
+(title GT-Lawrence-PracticalGremlin "Practical Gremlin — An Apache TinkerPop Tutorial")
+(author GT-Lawrence-PracticalGremlin "Kelvin R. Lawrence")
+(resourceType GT-Lawrence-PracticalGremlin book)
+(level GT-Lawrence-PracticalGremlin beginner)
+(section GT-Lawrence-PracticalGremlin GraphDatabases)
+(url GT-Lawrence-PracticalGremlin "https://kelvinlawrence.net/book/Gremlin-Graph-Guide.html")
+(desc GT-Lawrence-PracticalGremlin "Comprehensive free online book teaching Gremlin from basics to advanced traversals. Uses an air routes dataset for hands-on examples throughout.")
+
+(isa GT-Neo4j-GraphVsRDBMS ReferenceWork)
+(title GT-Neo4j-GraphVsRDBMS "Graph Databases vs Relational Databases (Neo4j Guide)")
+(author GT-Neo4j-GraphVsRDBMS "Neo4j Inc.")
+(resourceType GT-Neo4j-GraphVsRDBMS notes)
+(level GT-Neo4j-GraphVsRDBMS beginner)
+(section GT-Neo4j-GraphVsRDBMS GraphDatabases)
+(url GT-Neo4j-GraphVsRDBMS "https://neo4j.com/developer/graph-db-vs-rdbms/")
+(desc GT-Neo4j-GraphVsRDBMS "Clear comparison of graph vs relational databases covering data modeling differences, query patterns, performance characteristics, and when to choose each approach.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: ALGORITHMS
+;; Traversal, shortest paths, centrality, community detection
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa GT-CLRS-GraphChapters ReferenceWork)
+(title GT-CLRS-GraphChapters "Introduction to Algorithms (CLRS) — Graph Chapters")
+(author GT-CLRS-GraphChapters "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein")
+(resourceType GT-CLRS-GraphChapters book)
+(level GT-CLRS-GraphChapters intermediate)
+(section GT-CLRS-GraphChapters GraphAlgorithms)
+(url GT-CLRS-GraphChapters "https://mitpress.mit.edu/books/introduction-algorithms-fourth-edition")
+(desc GT-CLRS-GraphChapters "The definitive algorithms textbook. Chapters 20-26 cover BFS, DFS, topological sort, strongly connected components, MST, shortest paths, and network flow.")
+
+(isa GT-Newman-Networks ReferenceWork)
+(title GT-Newman-Networks "Networks: An Introduction")
+(author GT-Newman-Networks "Mark Newman")
+(resourceType GT-Newman-Networks book)
+(level GT-Newman-Networks intermediate)
+(section GT-Newman-Networks GraphAlgorithms)
+(url GT-Newman-Networks "https://global.oup.com/academic/product/networks-9780198805090")
+(desc GT-Newman-Networks "Comprehensive textbook on network science covering graph metrics, random graphs, community detection, network dynamics, and applications across many fields.")
+
+(isa GT-KleinbergTardos-AlgDesign ReferenceWork)
+(title GT-KleinbergTardos-AlgDesign "Algorithm Design")
+(author GT-KleinbergTardos-AlgDesign "Jon Kleinberg, Eva Tardos")
+(resourceType GT-KleinbergTardos-AlgDesign book)
+(level GT-KleinbergTardos-AlgDesign intermediate)
+(section GT-KleinbergTardos-AlgDesign GraphAlgorithms)
+(url GT-KleinbergTardos-AlgDesign "https://www.cs.cornell.edu/home/kleinber/algorithm-design-book/")
+(desc GT-KleinbergTardos-AlgDesign "Excellent algorithms text with strong coverage of graph algorithms, network flow, and NP-completeness. Known for clear exposition and real-world motivation.")
+
+(isa GT-Skiena-AlgDesignManual ReferenceWork)
+(title GT-Skiena-AlgDesignManual "The Algorithm Design Manual")
+(author GT-Skiena-AlgDesignManual "Steven S. Skiena")
+(resourceType GT-Skiena-AlgDesignManual book)
+(level GT-Skiena-AlgDesignManual intermediate)
+(section GT-Skiena-AlgDesignManual GraphAlgorithms)
+(url GT-Skiena-AlgDesignManual "https://www.algorist.com/")
+(desc GT-Skiena-AlgDesignManual "Practical algorithms reference with a catalog of graph algorithm problems. Covers implementations, war stories, and guidance on choosing the right algorithm.")
+
+;; ── Libraries & Implementations ──
+
+(isa GT-NetworkX-Algorithms ReferenceWork)
+(title GT-NetworkX-Algorithms "NetworkX — Python Graph Library")
+(author GT-NetworkX-Algorithms "Aric Hagberg, Dan Schult, Pieter Swart")
+(resourceType GT-NetworkX-Algorithms code)
+(level GT-NetworkX-Algorithms beginner)
+(section GT-NetworkX-Algorithms GraphAlgorithms)
+(url GT-NetworkX-Algorithms "https://networkx.org/")
+(desc GT-NetworkX-Algorithms "The standard Python library for network analysis. Implements 500+ graph algorithms including shortest paths, centrality, community detection, and isomorphism.")
+
+(isa GT-igraph ReferenceWork)
+(title GT-igraph "igraph — High-Performance Graph Library")
+(author GT-igraph "Gabor Csardi, Tamas Nepusz et al.")
+(resourceType GT-igraph code)
+(level GT-igraph intermediate)
+(section GT-igraph GraphAlgorithms)
+(url GT-igraph "https://igraph.org/")
+(desc GT-igraph "High-performance graph library with R, Python, and C interfaces. Faster than NetworkX for large graphs. Strong community detection and layout algorithms.")
+
+(isa GT-GraphTool ReferenceWork)
+(title GT-GraphTool "graph-tool — Efficient Graph Analysis in Python")
+(author GT-GraphTool "Tiago P. Peixoto")
+(resourceType GT-GraphTool code)
+(level GT-GraphTool advanced)
+(section GT-GraphTool GraphAlgorithms)
+(url GT-GraphTool "https://graph-tool.skewed.de/")
+(desc GT-GraphTool "Python library using C++ and Boost under the hood for maximum performance. Excellent statistical analysis including stochastic block models for community detection.")
+
+(isa GT-JUNG ReferenceWork)
+(title GT-JUNG "JUNG — Java Universal Network/Graph Framework")
+(author GT-JUNG "Joshua O'Madadhain et al.")
+(resourceType GT-JUNG code)
+(level GT-JUNG intermediate)
+(section GT-JUNG GraphAlgorithms)
+(url GT-JUNG "https://jrtom.github.io/jung/")
+(desc GT-JUNG "Java library for graph/network analysis. Provides algorithms for clustering, decomposition, optimization, random graph generation, and visualization.")
+
+;; ── Courses & Tutorials ──
+
+(isa GT-Roughgarden-AlgSpec ReferenceWork)
+(title GT-Roughgarden-AlgSpec "Algorithms Specialization (Stanford / Coursera)")
+(author GT-Roughgarden-AlgSpec "Tim Roughgarden")
+(resourceType GT-Roughgarden-AlgSpec course)
+(level GT-Roughgarden-AlgSpec intermediate)
+(section GT-Roughgarden-AlgSpec GraphAlgorithms)
+(url GT-Roughgarden-AlgSpec "https://www.coursera.org/specializations/algorithms")
+(desc GT-Roughgarden-AlgSpec "Stanford algorithms course covering graph search, shortest paths, minimum spanning trees, and NP-completeness with rigorous analysis and programming assignments.")
+
+(isa GT-Coursera-BigDataGraphAnalytics ReferenceWork)
+(title GT-Coursera-BigDataGraphAnalytics "Graph Analytics for Big Data (Coursera / UC San Diego)")
+(author GT-Coursera-BigDataGraphAnalytics "Ilkay Altintas")
+(resourceType GT-Coursera-BigDataGraphAnalytics course)
+(level GT-Coursera-BigDataGraphAnalytics intermediate)
+(section GT-Coursera-BigDataGraphAnalytics GraphAlgorithms)
+(url GT-Coursera-BigDataGraphAnalytics "https://www.coursera.org/learn/big-data-graph-analytics")
+(desc GT-Coursera-BigDataGraphAnalytics "Course on graph analytics at scale covering community detection, influence propagation, and practical tools for analyzing large networks.")
+
+(isa GT-Fiset-GraphAlgorithms ReferenceWork)
+(title GT-Fiset-GraphAlgorithms "William Fiset — Graph Theory Algorithms (YouTube)")
+(author GT-Fiset-GraphAlgorithms "William Fiset")
+(resourceType GT-Fiset-GraphAlgorithms video)
+(level GT-Fiset-GraphAlgorithms beginner)
+(section GT-Fiset-GraphAlgorithms GraphAlgorithms)
+(url GT-Fiset-GraphAlgorithms "https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P")
+(desc GT-Fiset-GraphAlgorithms "Excellent YouTube playlist covering graph algorithm implementations: DFS, BFS, Dijkstra, Bellman-Ford, Floyd-Warshall, topological sort, bridges, and articulation points.")
+
+(isa GT-Leskovec-MMDS ReferenceWork)
+(title GT-Leskovec-MMDS "Mining of Massive Datasets — Graph Chapters")
+(author GT-Leskovec-MMDS "Jure Leskovec, Anand Rajaraman, Jeff Ullman")
+(resourceType GT-Leskovec-MMDS book)
+(level GT-Leskovec-MMDS intermediate)
+(section GT-Leskovec-MMDS GraphAlgorithms)
+(url GT-Leskovec-MMDS "http://www.mmds.org/")
+(desc GT-Leskovec-MMDS "Free textbook covering PageRank, link analysis, community detection, and graph mining at web scale. Based on Stanford CS246 course.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Repositories, visualization tools, analysis frameworks
+;; ════════════════════════════════════════════════════════════
+
+;; ── Dataset Repositories ──
+
+(isa GT-SNAP-Datasets ReferenceWork)
+(title GT-SNAP-Datasets "SNAP — Stanford Large Network Dataset Collection")
+(author GT-SNAP-Datasets "Jure Leskovec (Stanford)")
+(resourceType GT-SNAP-Datasets data)
+(level GT-SNAP-Datasets beginner)
+(section GT-SNAP-Datasets DatasetsSoftware)
+(url GT-SNAP-Datasets "https://snap.stanford.edu/data/")
+(desc GT-SNAP-Datasets "The most widely used network dataset repository. Includes social networks, web graphs, road networks, citation networks, Amazon co-purchasing, and Wikipedia.")
+
+(isa GT-KONECT ReferenceWork)
+(title GT-KONECT "KONECT — The Koblenz Network Collection")
+(author GT-KONECT "Jerome Kunegis")
+(resourceType GT-KONECT data)
+(level GT-KONECT beginner)
+(section GT-KONECT DatasetsSoftware)
+(url GT-KONECT "http://konect.cc/")
+(desc GT-KONECT "Large collection of network datasets with 300+ networks. Provides statistics, visualizations, and downloadable data in multiple formats.")
+
+(isa GT-NetworkRepository ReferenceWork)
+(title GT-NetworkRepository "Network Repository — Interactive Analysis")
+(author GT-NetworkRepository "Ryan A. Rossi, Nesreen K. Ahmed")
+(resourceType GT-NetworkRepository data)
+(level GT-NetworkRepository beginner)
+(section GT-NetworkRepository DatasetsSoftware)
+(url GT-NetworkRepository "https://networkrepository.com/")
+(desc GT-NetworkRepository "Interactive network data repository with thousands of datasets. Provides real-time visual analytics, statistics, and benchmarks for network analysis research.")
+
+(isa GT-OGB ReferenceWork)
+(title GT-OGB "Open Graph Benchmark (OGB)")
+(author GT-OGB "Weihua Hu, Matthias Fey et al.")
+(resourceType GT-OGB data)
+(level GT-OGB intermediate)
+(section GT-OGB DatasetsSoftware)
+(url GT-OGB "https://ogb.stanford.edu/")
+(desc GT-OGB "Standardized benchmark datasets for graph machine learning. Covers node classification, link prediction, and graph classification across diverse domains.")
+
+(isa GT-Wikidata-SPARQL ReferenceWork)
+(title GT-Wikidata-SPARQL "Wikidata SPARQL Endpoint")
+(author GT-Wikidata-SPARQL "Wikimedia Foundation")
+(resourceType GT-Wikidata-SPARQL data)
+(level GT-Wikidata-SPARQL beginner)
+(section GT-Wikidata-SPARQL DatasetsSoftware)
+(url GT-Wikidata-SPARQL "https://query.wikidata.org/")
+(desc GT-Wikidata-SPARQL "Public SPARQL endpoint for querying Wikidata's knowledge graph of 100M+ items. Includes query editor with autocompletion and visualization tools.")
+
+;; ── Visualization Tools ──
+
+(isa GT-Gephi ReferenceWork)
+(title GT-Gephi "Gephi — Open Graph Visualization Platform")
+(author GT-Gephi "Gephi Consortium")
+(resourceType GT-Gephi code)
+(level GT-Gephi beginner)
+(section GT-Gephi DatasetsSoftware)
+(url GT-Gephi "https://gephi.org/")
+(desc GT-Gephi "The leading open-source software for network visualization and exploration. Supports large graphs, multiple layout algorithms, dynamic filtering, and plugin ecosystem.")
+
+(isa GT-D3js ReferenceWork)
+(title GT-D3js "D3.js — Force-Directed Graph Layouts")
+(author GT-D3js "Mike Bostock")
+(resourceType GT-D3js code)
+(level GT-D3js intermediate)
+(section GT-D3js DatasetsSoftware)
+(url GT-D3js "https://d3js.org/")
+(desc GT-D3js "JavaScript library for data-driven visualizations. Its force simulation module creates interactive, physics-based graph layouts in the browser.")
+
+(isa GT-Sigmajs ReferenceWork)
+(title GT-Sigmajs "Sigma.js — Large Graph Rendering for the Web")
+(author GT-Sigmajs "Sciences Po medialab")
+(resourceType GT-Sigmajs code)
+(level GT-Sigmajs intermediate)
+(section GT-Sigmajs DatasetsSoftware)
+(url GT-Sigmajs "https://www.sigmajs.org/")
+(desc GT-Sigmajs "JavaScript library dedicated to graph drawing using WebGL for performance. Optimized for rendering large networks (100K+ nodes) in the browser.")
+
+(isa GT-Cytoscape ReferenceWork)
+(title GT-Cytoscape "Cytoscape — Network Analysis and Visualization")
+(author GT-Cytoscape "Cytoscape Consortium")
+(resourceType GT-Cytoscape code)
+(level GT-Cytoscape intermediate)
+(section GT-Cytoscape DatasetsSoftware)
+(url GT-Cytoscape "https://cytoscape.org/")
+(desc GT-Cytoscape "Open-source platform for visualizing complex networks originally designed for biology. Rich plugin ecosystem, supports large networks, and exports publication-quality figures.")
+
+(isa GT-Graphviz ReferenceWork)
+(title GT-Graphviz "Graphviz — Graph Visualization Software")
+(author GT-Graphviz "AT&T Labs Research")
+(resourceType GT-Graphviz code)
+(level GT-Graphviz beginner)
+(section GT-Graphviz DatasetsSoftware)
+(url GT-Graphviz "https://graphviz.org/")
+(desc GT-Graphviz "Classic open-source graph visualization software using the DOT language. Produces static layouts (hierarchical, radial, force-directed) for documentation and analysis.")
+
+;; ── Analysis Libraries & Frameworks ──
+
+(isa GT-SparkGraphX ReferenceWork)
+(title GT-SparkGraphX "Apache Spark GraphX")
+(author GT-SparkGraphX "Apache Software Foundation")
+(resourceType GT-SparkGraphX code)
+(level GT-SparkGraphX advanced)
+(section GT-SparkGraphX DatasetsSoftware)
+(url GT-SparkGraphX "https://spark.apache.org/graphx/")
+(desc GT-SparkGraphX "Distributed graph processing framework built on Apache Spark. Implements Pregel-style computation for PageRank, connected components, and triangle counting at scale.")
+
+(isa GT-PyG ReferenceWork)
+(title GT-PyG "PyTorch Geometric (PyG)")
+(author GT-PyG "Matthias Fey, Jan Eric Lenssen")
+(resourceType GT-PyG code)
+(level GT-PyG advanced)
+(section GT-PyG DatasetsSoftware)
+(url GT-PyG "https://pyg.org/")
+(desc GT-PyG "Library for deep learning on graphs and other irregular structures built on PyTorch. Implements GCN, GAT, GraphSAGE, and many other graph neural network architectures.")
+
+(isa GT-DGL ReferenceWork)
+(title GT-DGL "DGL — Deep Graph Library")
+(author GT-DGL "DGL Team (Amazon)")
+(resourceType GT-DGL code)
+(level GT-DGL advanced)
+(section GT-DGL DatasetsSoftware)
+(url GT-DGL "https://www.dgl.ai/")
+(desc GT-DGL "Framework-agnostic library for implementing graph neural networks on top of PyTorch, TensorFlow, or MXNet. Strong support for heterogeneous graphs.")
+
+(isa GT-SNAPpy ReferenceWork)
+(title GT-SNAPpy "SNAP.py — Stanford Network Analysis Platform for Python")
+(author GT-SNAPpy "Jure Leskovec (Stanford)")
+(resourceType GT-SNAPpy code)
+(level GT-SNAPpy intermediate)
+(section GT-SNAPpy DatasetsSoftware)
+(url GT-SNAPpy "https://snap.stanford.edu/snappy/")
+(desc GT-SNAPpy "Python interface to the SNAP C++ library for large-scale network analysis. Efficient implementations of graph algorithms for networks with millions of nodes.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources GraphTheoryReference 96)
+(totalSections GraphTheoryReference 8)
+(comment GraphTheoryReference
+  "8 sections: Overview (9), Fundamentals (13), Knowledge Graphs (12),
+   Temporal Graphs (12), Ontology & Schema (12), Graph Databases (12),
+   Algorithms (12), Datasets & Software (14). Total: 96 resources.")

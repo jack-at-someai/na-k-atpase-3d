@@ -1,0 +1,796 @@
+;;; ================================================================
+;;; KNOWLEDGE / DECLARATIVE / PEOPLE
+;;; The people of SomeAI and Charlotte's extended network.
+;;; 39 individuals — founders, mentors, advisors, collaborators.
+;;; Like signing an IEEE paper: base bios for the substrate.
+;;; ================================================================
+
+(in-microtheory CharlottePeopleMt)
+
+;; Microtheory inheritance
+(genlMt CharlottePeopleMt CharlotteDeclarativeMt)
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PREDICATES
+;;; ────────────────────────────────────────────────────────────────
+
+(isa fullName Predicate)
+(arity fullName 2)
+(arg1Isa fullName IndividualEntity)
+(arg2Isa fullName String)
+(comment fullName "Full legal or commonly used name of the individual.")
+
+(isa credential Predicate)
+(arity credential 2)
+(arg1Isa credential IndividualEntity)
+(arg2Isa credential String)
+(comment credential "Professional credential or licensure (PE, MD, PhD, DC, etc).")
+
+(isa educatedAt Predicate)
+(arity educatedAt 3)
+(arg1Isa educatedAt IndividualEntity)
+(arg2Isa educatedAt String)
+(arg3Isa educatedAt String)
+(comment educatedAt "Educational institution and degree earned.")
+
+(isa currentRole Predicate)
+(arity currentRole 3)
+(arg1Isa currentRole IndividualEntity)
+(arg2Isa currentRole String)
+(arg3Isa currentRole String)
+(comment currentRole "Current professional title and organization.")
+
+(isa locatedIn Predicate)
+(arity locatedIn 2)
+(arg1Isa locatedIn IndividualEntity)
+(arg2Isa locatedIn String)
+(comment locatedIn "Current geographic location.")
+
+(isa taughtBy Predicate)
+(arity taughtBy 2)
+(arg1Isa taughtBy IndividualEntity)
+(arg2Isa taughtBy IndividualEntity)
+(comment taughtBy "Academic or mentorship relationship. arg1 was taught by arg2.")
+
+(isa familyOf Predicate)
+(arity familyOf 3)
+(arg1Isa familyOf IndividualEntity)
+(arg2Isa familyOf IndividualEntity)
+(arg3Isa familyOf String)
+(comment familyOf "Family relationship. arg3 describes the relation of arg1 to arg2.")
+
+(isa affiliatedWith Predicate)
+(arity affiliatedWith 2)
+(arg1Isa affiliatedWith IndividualEntity)
+(arg2Isa affiliatedWith String)
+(comment affiliatedWith "Organizational affiliation past or present.")
+
+(isa bornOn Predicate)
+(arity bornOn 2)
+(arg1Isa bornOn IndividualEntity)
+(arg2Isa bornOn String)
+(comment bornOn "Date of birth.")
+
+(isa diedOn Predicate)
+(arity diedOn 2)
+(arg1Isa diedOn IndividualEntity)
+(arg2Isa diedOn String)
+(comment diedOn "Date of death. Signals the LIFE_END event.")
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 1: CORE TEAM — FOUNDERS
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── JackRichard ──
+
+(isa JackRichard IndividualEntity)
+(fullName JackRichard "Jack Richard")
+(hasState JackRichard Active)
+(educatedAt JackRichard "Lake Forest Country Day School" "Primary")
+(educatedAt JackRichard "Lake Forest High School" "Secondary")
+(educatedAt JackRichard "Rose-Hulman Institute of Technology" "B.S. Computer Science")
+(educatedAt JackRichard "Northwestern University" "M.S. Artificial Intelligence")
+(currentRole JackRichard "Co-Founder & CTO" "LineLeap")
+(currentRole JackRichard "Engineer-Founder & Systems Architect" "SomeAI")
+(locatedIn JackRichard "Lake Forest, Illinois")
+(taughtBy JackRichard KenForbus)
+(taughtBy JackRichard KrisHammond)
+(taughtBy JackRichard DaveGenger)
+(familyOf JackRichard JimRichard "son")
+(familyOf JackRichard JosephRichard "brother")
+(familyOf JackRichard DonaldAlmquist "grandson")
+(familyOf JackRichard PaulaRichard "son")
+(affiliatedWith JackRichard "SomeAI")
+(affiliatedWith JackRichard "LineLeap")
+(affiliatedWith JackRichard "Richard Enterprises")
+(affiliatedWith JackRichard "Y Combinator")
+(affiliatedWith JackRichard "Northwestern University QRG")
+(comment JackRichard
+  "Jack Richard is an engineer-founder and systems architect whose core orientation is knowledge representation, reasoning, and explainability grounded in real-world signals over time. He is the author of Charlotte.
+
+Education and Intellectual Lineage: Jack attended Lake Forest Country Day School, where LEGO competitions and science teacher Dave Genger planted early seeds of systems thinking. He graduated from Lake Forest High School, earned a B.S. in Computer Science from Rose-Hulman Institute of Technology (with summers at Aptiv), and completed an M.S. in Artificial Intelligence at Northwestern University as part of the first McCormick School MSAI cohort. At Northwestern, he studied under Ken Forbus (QRG lab -- Companions architecture, knowledge representation and reasoning, analogical reasoning, memory-centric AI) and Kris Hammond (case-based reasoning, the principle of memory before abstraction). He also drew influence from Dave Ferrucci (Watson -- large-scale symbolic reasoning, adversarial robustness in explanation) and Louis Rosenberg (Unanimous AI -- swarm intelligence, human-AI collective cognition, conviction and entrenchment in clusters).
+
+Early Signals: The builder archetype was established at age five or six, when Jack read his first Iron Man comic: 'Ever since I read my first Iron Man comic in kindergarten, I have strived to be a more humble Tony Stark. This motivated my degree in computer science as well as my MS in Artificial Intelligence.' His family encodes resilience as a callable function through the Lion King Protocol: 'Whenever a seemingly insurmountable obstacle arises, my parents simply say Lion King and my marching orders are immediately defined. Being the Lion King means accepting your responsibilities and the circumstances you are in, taking a deep breath, and facing anything and everything with your head held high.'
+
+Professional Experience -- The Convex Hull: Jack's architecture emerges from five domains, each contributing a foundational lesson. At LineLeap (2017-present), which he co-founded and scaled through Y Combinator Summer 2019 to a $100M+ exit serving 175,000+ users across 50+ cities, he learned that individual events are noise and identity-level trajectories over time are signal. At Aptiv (summers 2015-2017), doing forensic engineering and autonomous vehicle accident reconstruction using time-indexed vehicle signals for legal contexts, he learned that systems emit testimony and explanation is evidence-backed narration, not inference. In agricultural technology and biological systems (Sounder), modeling genetics, nutrition, gestation timelines, and outcomes delayed by months or generations, he learned that in biological systems you cannot optimize outcomes, only shape trajectories. At the Industrial Service Group, modeling long-lived equipment lifecycles and drift detection, he learned that prediction is detecting deviation early enough to act, not forecasting dates. In swarm intelligence research studying conviction, entrenchment, and belief topology, he learned that consensus without conviction structure is uninterpretable.
+
+Connection to Charlotte: Charlotte is the architecture that unifies these five lessons. Its purpose is to convert real-world activity into sterile, inspectable, symbolic fact stacks so reasoning and explanation can emerge from truth, not prediction. Its foundational principles are: time is the primary axis of truth; history is append-only; identities emit signals; meaning is derived, not stored; expectations and observations are separate; explanation is greater than prediction; no hidden state; no ontology hand-authoring; no black-box decision making. Charlotte is not a dashboard, not a workflow engine, not an agent that decides. It is infrastructure for observable reality, capable of supporting humans, animals, machines, cultural artifacts, and organizations across minutes, years, generations, and centuries.
+
+SomeAI -- The Research Lab: The name means Some Animal Intelligence, because artificial is not artificial if it is human-centric. Humans are animals. The goal is sharing human intelligence with humans, not creating something separate. The name was coined with influence from Dave Genger's parallel tracks -- Jack into robotics and AI, his brother Joseph into insects and animals. The branches reconverged in the agricultural systems work and the naming of the research lab.
+
+The Resonance Principle: Dave Genger's signal history ended in 2010, but his influence persists as a standing wave. Jack is still resonating with patterns Dave established. The trajectory -- robotics to AI to biological systems to infrastructure for observable reality -- traces back to a teacher who did not live to see any of it. This is Paper 11: time folding, posthumous resonance, the dead teach the living.
+
+How Jack Thinks: He thinks in nodes, signals, trajectories, drift, and lifecycles. He distrusts mutable history, opaque models, AI without provenance, and smart agents without grounding. He values reconstructability, adversarial robustness, and explanations that survive scrutiny. He thinks in decades, not quarters, and cares about systems that outlive their creators, truth that can be reconstructed after people are gone, and institutional continuity. He is committed to Midwest institutions, talent pipelines, mentorship, and knowledge transfer: 'I cherish the opportunities I was provided growing up and want to ensure those who invested in me are paid back tenfold.'")
+
+;; ── JimRichard ──
+
+(isa JimRichard IndividualEntity)
+(fullName JimRichard "Jim Richard")
+(hasState JimRichard Active)
+(credential JimRichard "Registered Professional Engineer")
+(educatedAt JimRichard "Purdue University" "B.S. Construction Engineering & Management")
+(educatedAt JimRichard "Florida International University" "M.S. Construction Engineering & Management")
+(currentRole JimRichard "CEO" "The Industrial Service Group")
+(currentRole JimRichard "Chairman" "Richard Enterprises LLC")
+(familyOf JimRichard JackRichard "father")
+(familyOf JimRichard JosephRichard "father")
+(familyOf JimRichard PaulaRichard "husband")
+(affiliatedWith JimRichard "The Industrial Service Group")
+(affiliatedWith JimRichard "Richard Enterprises LLC")
+(affiliatedWith JimRichard "SomeAI")
+(comment JimRichard
+  "Jim Richard is a Registered Professional Engineer, serial industrial executive, and private equity operator with over 40 years of experience across industrial service, distribution, field operations, and mechanical systems. He serves as CEO of The Industrial Service Group (since September 2019) and Chairman of Richard Enterprises LLC (since June 2016). He is the father of Jack Richard and Joseph Richard, and husband of Paula Richard.
+
+Education: B.S. in Construction Engineering and Management from Purdue University (1984) and M.S. in Construction Engineering and Management from Florida International University (1995).
+
+Career Arc: Jim's career spans decades of increasing operational scale across major industrial companies. At Siemens Logistics LLC (1994-2001), he served as Director of Mechanical Systems Services, developing a standard process to open local service offices and establishing 35 locations throughout North America. At Invensys (2001-2003), he held successive roles as VP Marketing, President and CEO of BAE Automated Systems (US and London facilities), and President of Global Sales and Field Operations for the $800M Rexnord Division, negotiating its successful sale to private equity. At Rexnord (2003-2006), recruited by The Carlyle Group after their purchase, he rose from EVP Sales and Marketing to full P&L responsibility for international subsidiaries. At Primex Wireless (2006-2008) as President, he increased sales 15% and EBITDA 65% in 12 months through SG&A streamlining and sales force transformation.
+
+In 2008, Jim founded Industrial Service Solutions with PE backing from JZ Partners and Edgewater Funds (Bolder Capital). Over eight years he acquired 23 companies specializing in field service, supply service, and shop services across industrial markets. As President of Horsburgh and Scott Services (2008-2013), the first ISS acquisition, he navigated the recession, repositioned the company, and sold to GenNx360. At Richard Enterprises LLC (2016-present), he provides private equity advisory for small-to-middle market companies ($5-50M EBITDA), offering onsite evaluation, strategy development, organic growth analysis, and add-on acquisition analysis, serving in retained advisory, executive chairman, and board director roles. His private equity network includes The Carlyle Group, JZ Partners, Edgewater Funds (Bolder Capital), GenNx360, AEA Investors (Rockefeller), The Jordan Company, BlackRock, and KKR.
+
+The Swarm Operator: Jim has been implementing swarm intelligence principles for decades without using that terminology. He manages 16+ brands through a small coordinating body of approximately 40 employees overseeing roughly 1,200 across the portfolio. His quad matrix strategy deployment maps to protocol-driven expectations. His deep industry knowledge across 40+ years provides extraordinary signal density. His 3-year event horizons for acquisitions represent lifecycle management. Each portfolio company aligned through shared metrics is recursive flocking in practice.
+
+Connection to Charlotte: Charlotte was originally built to help Jim track 3-year event horizons in real time so he could navigate the ship of managing verticals of CEOs. The first commercial deployment of Charlotte was contracted February 24, 2026, starting with the ISG Compressor Vertical (Industrial Air Power and Industrial Air Centers). Year 1 at $480,000 ($40K per month, March 2026 through February 2027) covers substrate deployment, NetSuite and BigCommerce and HubSpot integration, pricing intelligence on top 100 SKUs, and customer reactivation for 60/90/180-day dormancy campaigns, with $375K in waived fees. Year 2 at $310,000 per year covers platform subscription and optional support. Expected outcomes include 200-300 basis points margin improvement, 15-20% dormant customer recovery, real-time competitive visibility on 100 SKUs, and 5-7x ROI on implementation cost. As Jim said: 'Your team cannot find a vendor to compare Charlotte to -- because there is not one.'
+
+The Three-Generation Architecture: Jim represents the strategy and acquisitions layer of Richard Enterprises. The family operates as a coordinated unit with shared metrics (financial performance), shared protocols (acquisition playbooks), and shared practice (daily collaboration) -- Paper 11's harmonic resonance in action.
+
+SomeAI Role: Industry Leader and Advisor. Jim bridges the gap between SomeAI's client deployments and the research lab's frontier work. Forty-plus years of industrial PE provides the pattern recognition that informs Charlotte's protocol design. He has been running swarm coordination at scale since before the terminology existed.")
+
+;; ── JosephRichard ──
+
+(isa JosephRichard IndividualEntity)
+(fullName JosephRichard "Joseph Richard")
+(hasState JosephRichard Active)
+(educatedAt JosephRichard "Rose-Hulman Institute of Technology" "B.S. Software Engineering")
+(educatedAt JosephRichard "Rose-Hulman Institute of Technology" "M.S. Software Management")
+(currentRole JosephRichard "Internal Operations & Accounting" "Richard Enterprises")
+(currentRole JosephRichard "Co-Founder" "SomeAI")
+(taughtBy JosephRichard DaveGenger)
+(familyOf JosephRichard JackRichard "brother")
+(familyOf JosephRichard JimRichard "son")
+(affiliatedWith JosephRichard "SomeAI")
+(affiliatedWith JosephRichard "Richard Enterprises")
+(affiliatedWith JosephRichard "LineLeap")
+(affiliatedWith JosephRichard "Aptiv")
+(comment JosephRichard
+  "Joseph Richard is a co-founder of SomeAI and the operational backbone of Richard Enterprises, currently managing internal company accounting and operational structure for the family enterprise. He is 34 years old, holds a B.S. in Software Engineering and an M.S. in Software Management, and is the brother of Jack Richard and son of Jim Richard.
+
+Career Arc: Joseph spent six years at Delphi/Aptiv on the advanced engineering team working on autonomous vehicle technology. He presented at Google I/O (2016-2017) and CES (2016-2017), showcasing autonomous vehicle technology on the world's largest stages for consumer and developer audiences. He then joined LineLeap as VP of Engineering during the scaling phase after Y Combinator, managing engineering operations as the platform grew from startup to a $100M+ exit, overseeing platform reliability across 100+ cities and 1,000,000+ users. He now manages internal operations and accounting at Richard Enterprises, spanning Jack's R&D and engineering work, Joseph's own operations role, and their father Jim's strategy and acquisitions.
+
+Connection to Charlotte: The autonomous vehicle work at Aptiv required time-indexed signals from vehicle subsystems, immutable data for legal and forensic contexts, and explainability under adversarial scrutiny. These requirements directly influenced the FINN principle (signals over attributes) and the emphasis on explanation as evidence-backed narration. Joseph brings operational discipline, automotive engineering rigor, and the bridge between technical systems and business structure. He is the connection between Jack's R&D vision and the practical deployment of Charlotte infrastructure.
+
+Origin Story -- Dave Genger: Dave Genger, a science teacher at Lake Forest Country Day School, influenced both Richard brothers along parallel trajectories. Jack went into robotics, then AI, then systems architecture. Joseph went into insects, then animals, then biological systems. These parallel paths, seeded by the same teacher, reconverged in three ways: the agricultural and biological systems work (Sounder), the naming of SomeAI (Some Animal Intelligence), and the co-founding of the research lab. Dave Genger died three months after Jack graduated middle school, around 2010. His influence persists as a standing wave across both brothers' careers -- a living example of Paper 11's harmonic resonance and posthumous knowledge transfer.
+
+SomeAI Role: Co-Founder and Co-Author on the 12-paper research suite. Joseph brings operational discipline, automotive engineering rigor, and the bridge between technical systems and business structure.
+
+The Three-Generation Architecture: Richard Enterprises demonstrates the time fold speedup described in Paper 11. Jim (father) handles strategy, acquisitions, and CEO management in industrial PE and swarm coordination. Joseph handles operations and engineering management, bridging from automotive to startup scale. Jack handles R&D, architecture, and formalization in AI, knowledge graphs, and infrastructure. Three generations working in the same company, on the same infrastructure, with shared metrics and protocols. The resonance conditions are fully satisfied: frequency match through shared metrics, phase alignment through shared operational cadence, and medium presence through daily co-location and collaboration.")
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 2: ACADEMIC MENTORS & INFLUENCES
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── DaveFerrucci ──
+
+(isa DaveFerrucci IndividualEntity)
+(fullName DaveFerrucci "David A. Ferrucci")
+(hasState DaveFerrucci Active)
+(credential DaveFerrucci "IBM Fellow (2011)")
+(credential DaveFerrucci "AAAI Feigenbaum Prize")
+(credential DaveFerrucci "Chicago Mercantile Exchange Innovation Award")
+(credential DaveFerrucci "50+ patents")
+(educatedAt DaveFerrucci "Manhattan College" "B.S. Biology (CS minor)")
+(educatedAt DaveFerrucci "Rensselaer Polytechnic Institute" "M.S. Computer Science")
+(educatedAt DaveFerrucci "Rensselaer Polytechnic Institute" "Ph.D. Computer Science (Knowledge Representation & Reasoning)")
+(currentRole DaveFerrucci "Founder, CEO, and Chief Scientist" "Elemental Cognition")
+(affiliatedWith DaveFerrucci "IBM")
+(affiliatedWith DaveFerrucci "Elemental Cognition")
+(affiliatedWith DaveFerrucci "Bridgewater Associates")
+(comment DaveFerrucci
+  "David A. Ferrucci's career is a thirty-year arc from knowledge representation as theory to the fundamental problem of machine understanding. At Rensselaer he earned his Ph.D. in Knowledge Representation and Reasoning (1994), studying software engineering, object-oriented CAD, and automated configuration. From 1995 to 2006 at IBM T.J. Watson Research Center he served as chief architect of UIMA, the Unstructured Information Management Architecture, which became an OASIS open standard and Apache open source project. UIMA's core insight is that complex NLP systems are not monolithic but pipelines of components, each producing typed annotations on shared data structures, each composable and replaceable. This is the architectural pattern Watson later scaled to hundreds of scorers.
+
+From 2006 to 2011, Ferrucci led the Watson/DeepQA project as Principal Investigator. The challenge was to win at Jeopardy, a game demanding understanding of puns, wordplay, oblique references, and obscure trivia across every domain of human knowledge, responding in under three seconds against the two best human players in the show's history. The project cost $30 million and involved 28 researchers specializing in NLP, information retrieval, machine learning, knowledge representation, and software architecture. Watson does not look up answers; it generates hypotheses and evaluates evidence. The DeepQA pipeline runs through question analysis, hypothesis generation, evidence retrieval, evidence scoring with 50+ scoring components and hundreds of features, hierarchical ML confidence merging, and confidence-gated action where the system only buzzes in when confidence exceeds threshold. Key design principles include pursuing multiple interpretations simultaneously, generating many hypotheses, heterogeneous scoring, the assumption that no component is expected to be perfect, and massively parallel execution. Watson went from 15% accuracy and 2 hours per question to 95% accuracy in under 3 seconds. Watson proved that open-domain question-answering is possible without understanding, but Ferrucci recognized what Watson could not do. As he noted, Watson 'was simply a machine that had been programmed to complete particular tasks' rather than achieving independent thought. Watson could answer but could not explain why the answer was right.
+
+After Watson, Ferrucci spent three years at Bridgewater Associates, the world's largest hedge fund, as Director of AI. He built the Systematized Intelligence Lab under Ray Dalio and applied NLP and ML to financial decision-making. Bridgewater taught Ferrucci what Watson's Jeopardy stage could not: when the stakes are real and the audience is adversarial, confidence without explanation is worthless. A system that says 'I am 87% sure' without saying why is not a decision-support tool; it is a liability.
+
+In 2015, Ferrucci founded Elemental Cognition to solve the problem Watson exposed: machines that can answer but cannot understand. His core vision: 'AI systems should not only predict possible solutions but should be able to explain why they make sense.' EC builds AI that understands, reasons, and explains in solving complex problems. The central architectural innovation is the LLM Sandwich, a neuro-symbolic design where an LLM layer handles natural language reading, extraction, and dialogue to capture knowledge from documents and experts; a symbolic reasoning engine performs dynamic constraint resolution, logical inference, and planning with deterministic, precise, consistent, and auditable computation; and a second LLM layer delivers answers and explains reasoning in plain language. As Ferrucci states, 'LLMs are not designed to perform formal computation, that is, deterministically, efficiently, precisely, consistently, and reliably following a set of rules or mathematical formula.' The LLM Sandwich separates fluency from truth, language from logic, interface from engine. In tested scenarios, Elemental Cognition achieved 100% accuracy across all complexity levels while GPT-4 dropped from 32% to 12% as complexity increased. EC has been deployed in the Oneworld airline alliance for AI-powered travel planning, pharmaceutical preclinical literature review, and university degree planning through constraint satisfaction. The name Elemental Cognition refers to intelligence assembled from basic building blocks of human language, logic, and reasoning, not statistical approximation, not emergent behavior from scale.
+
+Connection to Charlotte: The resonance between Ferrucci's work and Charlotte is deep and structural. First, the hypothesis-evidence architecture: Watson generates many candidate answers, collects evidence, scores along multiple dimensions, merges confidences, and only acts when evidence is sufficient. In Charlotte, signals are evidence, metrics are dimensions of evaluation, protocols generate expectations (hypotheses about what should happen), and reality either supports or refutes the expectation. The system never acts on a single signal but accumulates evidence over time and across dimensions. Second, no component is expected to be perfect: DeepQA uses 50+ heterogeneous scorers where no single scorer is reliable alone. Charlotte similarly treats no single signal as truth and no single observation as a trajectory; meaning emerges from the density of the record over time. Third, confidence-gated action: Watson abstains when confidence is below threshold. Charlotte's agent explains and proposes but does not decide; the human gates action with judgment and the system gates recommendations with evidence density. Fourth, explanation as the real product: Watson's greatest limitation was answering without explaining, which drove the founding of Elemental Cognition. Charlotte was designed from the start for conditions Ferrucci encountered at Bridgewater, where every decision must survive scrutiny; explanation is evidence-backed narration, not inference, and every claim traces to source facts. Fifth, adversarial robustness: at Bridgewater and in Watson's healthcare applications, explanations must withstand hostile interrogation. Charlotte inherited this requirement through Jack's summer work at Aptiv, reconstructing car accidents from time-indexed vehicle signals for court proceedings, where outputs were testimony, evidence-backed, immutable, and adversarially robust. Charlotte encodes this at the architectural level: no hidden state, no mutable history, no black-box reasoning. Sixth, the LLM Sandwich mirrors Charlotte's agent architecture: LLMs handle the natural language boundary while a symbolic reasoning engine handles formal computation. In Charlotte, the agent layer handles the conversational interface, the substrate (five FACT types, register-based, append-only) handles truth, the graph is the reasoning engine, and the agents are the language layer. Seventh, Ferrucci advocates for Open Box AI, systems that reveal their reasoning rather than hiding behind opacity. Charlotte has no hidden state, no black-box decision making; every fact has provenance, every signal has a source, every edge is traversable, and the system is fully inspectable by design as a foundational architectural constraint.
+
+Ferrucci built Watson to win at Jeopardy, then spent the rest of his career building what Watson was missing. Charlotte is infrastructure where that missing piece, transparent evidence-backed reasoning, is not an add-on but the foundation.
+
+Key publications: 'Building Watson: An Overview of the DeepQA Project' (AI Magazine, 2010), 'Watson: Beyond Jeopardy!' on extending Watson to healthcare, finance, and complex decision support, 'The LLM Sandwich: AI that Solves Complex Problems with Reliable Reasoning' on neuro-symbolic integration, and 'Introduction to This is Watson' (IBM Journal of Research and Development, 2012).")
+
+;; ── KenForbus ──
+
+(isa KenForbus IndividualEntity)
+(fullName KenForbus "Kenneth D. Forbus")
+(hasState KenForbus Active)
+(credential KenForbus "AAAI Fellow")
+(credential KenForbus "Cognitive Science Society Fellow")
+(credential KenForbus "ACM Fellow")
+(credential KenForbus "Humboldt Research Award (2011)")
+(educatedAt KenForbus "Northwestern University" "Professor of Computer Science and Education")
+(currentRole KenForbus "Walter P. Murphy Professor of Computer Science" "Northwestern University")
+(affiliatedWith KenForbus "Qualitative Reasoning Group")
+(comment KenForbus
+  "Kenneth D. Forbus leads the Qualitative Reasoning Group at Northwestern University, one of the longest-running AI research labs focused on how humans actually think, not how machines should approximate thinking. His research weaves together five interlocking threads: qualitative reasoning (representations for quantities, space, time, and causality that mirror human conceptual reasoning), analogical reasoning and learning (structure-mapping theory for comparing relational structures across domains), sketch understanding through CogSketch (systems that participate in sketching with people, combining visual, spatial, and conceptual processing), learning by reading (enabling systems to extend knowledge by understanding texts and diagrams), and cognitive architecture through the Companions project (building systems that learn from experience and collaborate with humans).
+
+The Structure-Mapping Engine (SME) is Forbus's implementation of Dedre Gentner's structure-mapping theory. SME performs analogical matching by aligning relational structures between a base and target domain. It does not match on surface features; it matches on relationships between relationships. This principle, that meaning lives in structure not surface, is foundational. MAC/FAC (Many Are Called, Few Are Chosen) extends this to retrieval at scale: given a probe, the MAC stage searches a large case library using cheap feature vectors, then the FAC stage performs expensive structural alignment on top candidates.
+
+The Companions project, funded by DARPA IPTO, represents Forbus's central architectural vision: Companion Cognitive Systems, software that functions as an intelligent collaborator learning from users over extended periods. The core hypothesis: 'The flexibility and breadth of human common sense reasoning and learning arises from analogical reasoning and learning from experience.' Companions are not expert systems or chatbots; they are cognitive architectures built on the premise that analogy is not a rare operation but the fundamental mechanism of thought. Companions employ three learning mechanisms: accumulation of examples through analogical comparison with prior cases, interactive analogical learning accelerated by human-provided analogies, and generalization from multiple examples refining abstract knowledge incrementally. Architectural principles include analogy as the central reasoning mechanism rather than a module, qualitative representations bridging perception and conceptual knowledge, targeting higher-order long time-scale reasoning, distributed functionally-organized agents with replicated knowledge bases, continuous learning using idle time for reflection and self-improvement, and user collaboration for intelligence amplification rather than automation. Forbus built dedicated symbolic supercomputers for the Companions project: Colossus (5 nodes, 2003), Mk2 (67 nodes, 2004), and Captain Morgan (128 nodes, 2048 cores, 4TB RAM), reflecting the insight that symbolic reasoning at scale requires different hardware optimization than neural approaches.
+
+Jack studied under Forbus during the first cohort of Northwestern's MS in Artificial Intelligence (2018-2019), taking Knowledge Representation and Reasoning (CS 371), where the key takeaway was that all intelligence begins with how you represent what you know and schema choice determines reasoning capability, and Introduction to Cognitive Modeling (CogSci 207), where the key takeaway was that human cognition is the benchmark and if the model does not match how people actually think the architecture is wrong.
+
+Connection to Charlotte: Forbus's Companions research is one of the deepest intellectual inputs to Charlotte's architecture. The resonance is structural, not superficial. First, knowledge representation is the bottleneck: Forbus holds that qualitative representations form the bridge between perception and conceptual reasoning and the representation determines what can be reasoned about. In Charlotte, everything is a FACT, five types, register-based, and the representation is the architecture; if the substrate is right, reasoning becomes traversal. Second, analogy over abstraction: intelligence comes from comparing structured cases, not from hand-authored rules or statistical patterns; SME matches relational structure, not surface features. Charlotte introduces domain meaning through categories and metrics, never through architectural change, and the same graph structure models pigs, compressors, violins, and humans; cross-domain reasoning is structural alignment, not ontology matching. Third, memory-centric rather than rule-centric: as Hammond articulates, 'memory before abstraction,' and the Companions architecture accumulates cases and retrieves by analogy rather than encoding rules. Charlotte's history is append-only, completed lifecycles become sealed ground truth, and the system accumulates signal history (structured experience) not rules; explanation emerges from the record, not from inference engines. Fourth, time-extended collaboration: Companions learn incrementally from users over extended periods, build shared understanding, and use idle time for reflection. Charlotte's primary axis of truth is time; signal density increases, patterns become visible, protocols refine, and the system observes trajectories rather than predicting from snapshots. Fifth, distributed agent architecture: Companions operate as collections of functionally-organized agents with parallel retrieval, matching, and visual analysis. Charlotte mirrors this with functionally-scoped agents (Charlotte, Finn, Dori, Milo, Nemo, Squirt, Cal, Wilbur) operating on a shared substrate, each responsible for a different reasoning mode. Sixth, intelligence amplification not automation: Companions are designed for 'a form of intelligence amplification' where the human remains in the loop. Charlotte's agent explains and proposes but does not act autonomously; users bring interpretation and the system provides the mirror. Seventh, explanation as evidence: analogical reasoning produces transparent explanations showing the base case, the mapping, and why structures align. Charlotte's explanation is evidence-backed narration with provenance, immutable history, and every claim traceable to source facts.
+
+Forbus spent his career proving that symbolic, structured, human-like reasoning is not a dead end but the path forward. While the field chased statistical learning and neural approximation, QRG kept building systems grounded in how people actually think: through analogy, qualitative models, and structured comparison. Charlotte inherits this conviction. The substrate is symbolic, the representations are qualitative (signals on dimensions over time), cross-domain capability comes from structural alignment not retraining, and the goal is not prediction but understanding. Forbus built Companions to be cognitive collaborators that learn from experience and amplify human intelligence. Charlotte is infrastructure that makes that collaboration possible at the level of observable reality. The teacher's frequency persists in the student's architecture.
+
+Key publications: 'Qualitative Representations: How People Reason and Learn about the Continuous World' (MIT Press), 'Building Problem Solvers' with Johan de Kleer (canonical reference for constraint-based reasoning systems), 'Companion Cognitive Systems: A Step Towards Human-Level AI' (DARPA-era position paper on the Companions architecture), and 'Self-Modeling in Companion Cognitive Systems' on how Companions reflect on and improve their own reasoning.")
+
+;; ── KrisHammond ──
+
+(isa KrisHammond IndividualEntity)
+(fullName KrisHammond "Kristian J. Hammond")
+(hasState KrisHammond Active)
+(credential KrisHammond "AAAI Fellow (2023)")
+(educatedAt KrisHammond "Yale University" "B.A. Philosophy")
+(educatedAt KrisHammond "Yale University" "M.S. Computer Science")
+(educatedAt KrisHammond "Yale University" "Ph.D. Computer Science")
+(currentRole KrisHammond "Bill and Cathy Osborn Professor of Computer Science" "Northwestern University")
+(affiliatedWith KrisHammond "Narrative Science")
+(affiliatedWith KrisHammond "C3 Lab")
+(comment KrisHammond
+  "Kristian J. Hammond is the Bill and Cathy Osborn Professor of Computer Science at Northwestern University, founding director of the Master of Science in Artificial Intelligence program, director of the Center for Advancing Safety of Machine Intelligence (CASMI), director of the CS+X Initiative, and co-founder of Narrative Science (acquired by Salesforce in 2021). He studied under Roger Schank at Yale's AI Lab. Schank pioneered conceptual dependency theory and dynamic memory, the idea that memory is predominantly episodic, richly indexed, and changes in organization over time. Human reasoning is not the application of rules to situations; it is the retrieval, adaptation, and reindexing of prior experience. This is the tradition Hammond inherited and carried forward: memory before abstraction.
+
+Hammond's doctoral dissertation introduced CHEF, a case-based planning system that generates new plans by retrieving and adapting old ones. The domain was Szechwan cooking. Given a goal such as making a stir fry with chicken and broccoli, CHEF retrieves the most similar prior case from memory (a beef and green pepper stir fry), adapts the old plan to fit the new situation by substituting chicken for beef, adding a bone-removal step since chicken has bones and beef does not, and lengthening cooking time since broccoli is denser than green pepper. It then executes the adapted plan, evaluates the result, and stores the outcome (success or failure) with causal annotations for future retrieval. CHEF demonstrated that planning is not search through an abstract space of operators. Planning is a memory task. A planner that remembers what happened last time, including what went wrong and why, outperforms a planner that reasons from first principles every time. The key insight: past experiences, organized by goals satisfied and failures avoided, are more useful than rules.
+
+Hammond's work established core principles of case-based reasoning (CBR). The CBR cycle is retrieve, adapt, execute, evaluate, store, and loop. Memory is episodic, with experience as the primary content rather than rules. Memory is richly indexed by goals, failures, features, and outcomes. Memory is dynamic, changing organization as new experiences accumulate. Adaptation requires domain knowledge because you cannot blindly swap components without understanding why the original plan worked. Failures are first-class: failed plans annotated with causal explanations prevent future failures. Compared to rule-based reasoning, case-based reasoning replaces hand-authored rules with accumulated experience, adapts specific cases to new situations rather than applying general principles, degrades gracefully because there is always a nearest case, learns from use rather than requiring knowledge engineering, and explains through precedent rather than rule chains.
+
+In 2010, Hammond co-founded Narrative Science with Larry Birnbaum. The company built Quill, a natural language generation platform that converts structured data into human-readable narratives. Most NLG systems start with data and template it into text. Quill inverted this: start with the communication intent (what does the audience need to understand), analyze the data for what is important and interesting relative to that intent, structure a narrative with context, significance, and relevance, and generate natural language at scale. Quill generated earnings reports, sports recaps, portfolio reviews, and business intelligence narratives. It did not summarize data; it explained data. The difference is intent.
+
+Hammond's current research lab at Northwestern, the C3 Lab (Cognition, Creativity, Communication), builds systems that bridge the gap between raw data and human understanding. Active projects include SCALES (conversational access to federal court data without technical expertise), Mim (conversational companion for querying unstructured text through dialogue), Otus (mining school operational data for personalized instruction insights), CASMI (operationalizing safety in machine intelligence through concrete harms rather than speculative risk), and Academic Advisor (navigating course selection through consolidated institutional knowledge). The common thread: make data accessible to humans who are not data-fluent, through conversation and narrative. Hammond directs CASMI, a collaboration between Northwestern and UL Research Institutes. His position on AI safety is distinctive: focus on present concrete harms, not speculative existential risks. CASMI researches AI incident tracking, fairness and bias in deployed systems, human-AI decision-making reliability, data-driven policing ethics, deepfake detection, and language model safety evaluation. This is safety as engineering discipline, not philosophy seminar.
+
+Hammond founded Northwestern's MSAI program and directed its first cohort (2018-2019), the cohort Jack was part of. His teaching philosophy: 'My job is not to answer questions. My job is to teach you how to think, how to solve problems, and how to break down challenges into components.' On AI systems: 'Systems such as ChatGPT are not looking for the right answer; they are looking for the most likely answer.' The distinction between correct and likely is everything. A system that returns the most probable response is doing pattern completion. A system that retrieves relevant experience, adapts it to the current situation, and explains its reasoning, that is intelligence.
+
+Connection to Charlotte: The line from Hammond to Charlotte is direct and structural. First, memory before abstraction: intelligence is not the application of abstract rules but the retrieval and adaptation of specific experiences stored in organized dynamic memory. CHEF does not know 'rules of cooking'; it remembers what happened last time. Charlotte's history is append-only, signal history is accumulated experience, completed lifecycles are sealed cases, and the system preserves specifics rather than abstracting away from them; meaning emerges from traversal of the record, not from generalized rules applied to snapshots. Second, planning is a memory task: a planner that remembers prior plans and adapts them outperforms one that reasons from scratch. Charlotte's protocols are not generated from abstract optimization; they are expectations layered on accumulated signal history, and when Charlotte proposes a course correction it is adapting from observed trajectories rather than deriving from first principles. Third, failures are first-class: CHEF stores failures with causal annotations and a failed plan with explanation is more valuable than an unannotated success. In Charlotte, deviations from protocol expectations are signals not errors to suppress; when reality diverges from expectation, that divergence is recorded, explained, and preserved, and the gap between expected and observed is where knowledge lives. Fourth, explanation is narration not summarization: Quill understands communication intent, identifies what matters, and structures a narrative, and the audience determines the explanation. Charlotte's explanation is evidence-backed narration where the agent narrates the trajectory with provenance and every claim traces to source facts, serving the user's context rather than generating a generic summary. Fifth, data should serve humans not require them to be data-fluent: SCALES makes court data accessible through conversation, Mim makes encyclopedias queryable through dialogue, and Otus turns school data into teacher insights. Charlotte offers five UI modes (Upcoming, Node, Calendar, Timeline, Agent) as different camera angles on the same graph, where users see what matters to them, the substrate is complex but the surface is conversational, and industry meaning is introduced through configuration rather than requiring users to understand graph theory. Sixth, concrete over speculative: CASMI tracks real incidents, measures real bias, evaluates real decision-making failures. Charlotte shows what is happening, not what might happen; prediction is a byproduct of clean observation, not the purpose; the mirror reflects reality and speculation is the user's job.
+
+The intellectual genealogy is direct: Roger Schank at Yale established that memory is episodic, indexed, and dynamic. Hammond at Yale, Chicago, and Northwestern proved that planning is memory retrieval plus adaptation and that explanation is narrative. Charlotte makes the memory observable, immutable, and shared. Schank said memory is how we think. Hammond proved planning is how we remember. Charlotte makes the memory observable, immutable, and shared.
+
+Key publications: 'Case-Based Planning: Viewing Planning as a Memory Task' (Academic Press, 1989), 'CHEF: A Model of Case-Based Planning' (Proceedings of AAAI-86), 'Case-Based Planning: A Framework for Planning from Experience' (Cognitive Science, 1990), and 'Practical Artificial Intelligence for Dummies' (Wiley, Narrative Science special edition).")
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 3: FOUNDATIONAL FIGURES & SWARM INTELLIGENCE
+;;; ────────────────────────────────────────────────────────────────
+
+
+;; ── LouisRosenberg ──
+
+(isa LouisRosenberg IndividualEntity)
+(fullName LouisRosenberg "Louis Barry Rosenberg")
+(hasState LouisRosenberg Active)
+(credential LouisRosenberg "PhD")
+(educatedAt LouisRosenberg "Stanford University" "B.S. Mechanical Engineering")
+(educatedAt LouisRosenberg "Stanford University" "M.S. Mechanical Engineering")
+(educatedAt LouisRosenberg "Stanford University" "Ph.D. Mechanical Engineering (Robotics, HCI, AR)")
+(currentRole LouisRosenberg "Founder, CEO, and Chief Scientist" "Unanimous AI")
+(affiliatedWith LouisRosenberg "Unanimous AI")
+(affiliatedWith LouisRosenberg "Stanford University")
+(affiliatedWith LouisRosenberg "Air Force Research Laboratory")
+(affiliatedWith LouisRosenberg "NASA Ames Research Center")
+(affiliatedWith LouisRosenberg "California Polytechnic State University")
+(comment LouisRosenberg
+  "Louis Rosenberg is the founder, CEO, and chief scientist of Unanimous AI, and a pioneer across three intersecting fields: augmented reality, haptic technology, and collective intelligence. Born in 1969, he earned his B.S., M.S., and Ph.D. in Mechanical Engineering from Stanford University between 1991 and 1994, with his doctoral work focused on robotics, human-computer interaction, and augmented reality. He holds over 300 patents.
+
+His career arc spans three decades. From 1991 to 1994, at the Air Force Research Laboratory, Stanford, and NASA Ames, he built Virtual Fixtures -- the first fully immersive augmented reality system. Because 3D graphics in 1992 were too slow to render photorealistic overlays, he used two real physical robot arms controlled by a full upper-body exoskeleton, with binocular magnifiers aligned so the user saw the robot arms registered exactly where their own arms should be. Virtual overlays guided the user's movements through the augmented workspace. Fitts Law performance testing demonstrated that AR overlays significantly enhanced human performance on real-world dexterous tasks. The critical insight: Rosenberg did not build a system that replaced the human operator. He built a system that made the human operator better by overlaying structured information onto their perception of reality. The human still acted. The system shaped the perceptual field within which they acted. This is the seed of everything that followed.
+
+In 1993 he founded Immersion Corporation, which he took public on NASDAQ in 1999. Immersion pioneered the first VR simulators for medical schools, the first haptic computer mice, the first haptic GUIs and haptic web pages, and force-feedback gaming controllers. Haptics is the engineering of touch -- giving machines the ability to push back, resist, guide, and texture the user's physical experience. Like AR, haptics is not about replacing human sensation but enriching the channel between human and machine.
+
+From 1996 to 2009 he founded Microscribe, a 3D digitizer used in Shrek, Ice Age, A Bug's Life, and Starship Troopers, which was acquired in 2009. From 2004 to 2011 he founded Outland Research for AR and spatial media technology, acquired by Google in 2011. From 2005 to 2014 he served as the Cotchett Endowed Professor of Educational Technology at California Polytechnic State University, teaching engineering, design, and entrepreneurship.
+
+In 2014, Rosenberg founded Unanimous AI on a premise drawn from biology: 'If birds and bees and fish can get so much smarter by thinking together in swarms, the same should hold true for human swarms.' Natural swarms amplify collective intelligence through real-time feedback loops. Fish detect tremors in the water around them. Bees use high-speed vibrations. Birds detect motions propagating through the flock. No central controller. No voting. No averaging. Each agent responds to local signals from neighbors, and intelligence emerges from the dynamics of the coupled system. The swarm is smarter than any individual member -- not because it aggregates opinions, but because it negotiates in real time.
+
+The Swarm AI platform uses a graphical swarming interface where a question is posed with multiple options arranged in a decision space. Each participant controls an animated magnet that exerts force on a shared puck. The closer the magnet to the puck, the stronger the pull. All participants pull simultaneously in real-time parallel negotiation. AI algorithms process the changing behaviors and help guide the puck toward optimized convergence. Participants dynamically adjust -- if the puck moves toward a disliked option, they shift from pulling toward their preference to defending against the disliked option. What emerges is not a vote, not an average, not a majority. It is a negotiated convergence -- an emergent intelligence that reflects the complex real-time interactions of the entire group, tuned by each individual's level of conviction.
+
+The system captures not just what participants prefer but how strongly they prefer it. The AI monitors individual confidence levels in real time. The critical insight: the topology of conviction matters more than the outcome. A swarm that converges quickly with strong, uniform pull reveals genuine consensus. A swarm that oscillates, fragments, or converges weakly reveals fragile agreement. The analytics expose the internal dynamics -- stability vs. brittleness, coherence vs. superficial consensus.
+
+In 2016, Swarm AI connected 20 horse-racing fans with no special expertise. The swarm predicted the Kentucky Derby Superfecta -- the first four horses in exact order -- defying 540-to-1 odds. Individual participants were 23% accurate. The swarm was 100% accurate -- a 435% amplification. The point is not that swarms can pick horses. The point is that conviction-weighted, real-time negotiation among ordinary humans extracts signal that no individual possesses and no poll can capture.
+
+In 2023, Unanimous AI unveiled Conversational Swarm Intelligence (CSI) and the Thinkscape platform. A large group of up to 250 people is automatically divided into many small overlapping subgroups. Each subgroup is routed into its own chat room for deliberation. Overlap among subgroups enables a unified conversation -- members who belong to multiple subgroups carry information between them. A Carnegie Mellon study in 2024 found that groups of 35 participants using Thinkscape achieved an effective collective IQ of 128 (97th percentile), contributed 51% more content than standard chat, and showed a 37% smaller gap between most active and least active members.
+
+Research validation includes work with Stanford Medical School, where a swarm of doctors combined with deep learning outperformed either method alone for diagnosing pneumonia via chest X-rays (published in Nature Digital Medicine, 2019), and medical teams reduced diagnostic errors by over 30%. Oxford University demonstrated traders increased forecast accuracy by over 20% using swarm methods. The National Science Foundation funded Unanimous AI's core research.
+
+Rosenberg's core philosophy: 'Most AI companies are focused on replacing people with automated algorithms. We believe the solution is to connect people with AI, enabling networked groups to collaborate in real-time as super-intelligent systems.' His TED talk, 'Hope for Humans in an AI World' (2017), frames Collective Superintelligence -- swarm-connected human groups -- as humanity's safest path forward in AI. Not artificial general intelligence. Not autonomous systems. Humans, connected better.
+
+Connection to Charlotte: Rosenberg's work provides multiple foundational concepts for the Charlotte architecture. First, consensus without conviction structure is uninterpretable -- Charlotte preserves conviction structure through signals with provenance, separate observations and expectations, with meaning living in the gap between them. Second, recursive flocking is a Charlotte primitive -- nodes emit signals, protocols set expectations, deviations surface, and the observation of deviation itself becomes a signal that changes behavior. Third, the amplification-not-replacement orientation runs through Charlotte completely -- the agent explains and proposes but does not decide; Charlotte is a mirror, not an oracle. Fourth, real-time feedback loops over static snapshots -- time is the primary axis of truth in Charlotte, meaning emerges from signals over time, not from point-in-time measurements. Fifth, emergent intelligence from simple interactions -- Charlotte's substrate is five primitives (NODE, METRIC, SIGNAL, PROTOCOL, EDGE), and meaning emerges through traversal, not through a master algorithm. Sixth, the overlap architecture -- edges are first-class in Charlotte, a node can belong to multiple operations, categories, and protocols simultaneously, and meaning propagates through shared edges. Seventh, protocols are perceptual overlays on signal history, analogous to Virtual Fixtures -- they layer expectations onto the observation of reality, making deviations visible.
+
+Key publications: 'Virtual Fixtures: Perceptual Tools for Telerobotic Manipulation' (IEEE Virtual Reality, 1993); 'Human Swarms, a Real-Time Method for Parallel Distributed Intelligence' (IEEE SHBI, 2015); 'Artificial Swarm Intelligence vs. Human Officers: Diagnostic Accuracy of Pneumonia on Chest X-rays' (Nature Digital Medicine, 2019, with Stanford Medical School); 'Conversational Swarm Intelligence Enhances Groupwise Deliberation' (2023); 'Towards Collective Superintelligence' (arXiv, 2023); 'Our Next Reality' (Hachette, 2024).")
+
+
+;; ── DaveGenger ──
+
+(isa DaveGenger IndividualEntity)
+(fullName DaveGenger "David L. Genger Jr.")
+(hasState DaveGenger Deceased)
+(bornOn DaveGenger "1962-09-07")
+(diedOn DaveGenger "2010-06-16")
+(familyOf DaveGenger VanessaGenger "husband")
+(currentRole DaveGenger "Chair of Science Department / Head of Upper School" "Lake Forest Country Day School")
+(affiliatedWith DaveGenger "Lake Forest Country Day School")
+(affiliatedWith DaveGenger "Rio Grande School")
+(comment DaveGenger
+  "David L. Genger Jr. was born September 7, 1962, and died suddenly in his sleep on June 16, 2010, at the age of 47 in Lake Bluff, Illinois. He was survived by his wife Vanessa Genger and daughters Melissa, Coley, and Allyson. His father was David Lee Genger Sr. (1934-2024), an attorney and partner at Arter and Hadden in Cleveland; his brother was Mark D. Genger.
+
+Dave Genger was the Chair of the Science Department and later Head of Upper School at Lake Forest Country Day School, a small independent school on the North Shore of Chicago, where he oversaw 192 students and 24 faculty. He had been unanimously selected as Head of School-Designate at the Rio Grande School in Santa Fe, New Mexico, but died before he could serve. The Rio Grande School Board described him as having 'a quick and curious mind, strong character, and excellent work ethic,' 'a warm, straightforward, and outgoing manner,' 'a genuine love of children,' and being 'an exceptionally good listener.' His own philosophy of leadership: 'The root word minist- means in service to. That informs my view.'
+
+He was not an advisor or research mentor in the traditional sense. He was a middle school science teacher who died three months after Jack graduated eighth grade. He was the kind of teacher who did not just teach subjects -- he taught kids to see. He introduced Jack to robotics. He introduced Joseph to insects and animals. Two brothers, two tracks, one teacher.
+
+He built the science culture at Lake Forest Country Day School. Under his influence, LEGO robotics competitions became a signature activity (LFCDS teams have qualified for FLL State Tournament over 14 consecutive years), science was taught as observation and engagement rather than memorization, students connected with real scientists and real systems, and the boundary between science class and the world was intentionally dissolved. He championed diversity initiatives, contributed to the school's strategic plan, and implemented reforms in teaching and learning. But what persisted was the orientation: he taught kids to look at the world and ask -- what is this? How does it work? What does it want to do?
+
+Dave Genger seeded two parallel trajectories in the Richard brothers. Jack received robotics, systems, and building -- a trajectory from robotics to computer science to AI to knowledge graphs to Charlotte, which became infrastructure for observable reality. Joseph received insects, animals, and biology -- a trajectory from animals to biology to automotive engineering to agricultural systems to Sounder, biological systems and livestock. These tracks diverged for a decade. Jack went to Rose-Hulman for computer science. Joseph went into engineering and automotive. They reconverged in Sounder (agricultural and biological systems work combining Jack's graph architecture with Joseph's biological domain knowledge), SomeAI (the research lab co-founded by both brothers), and in the name itself.
+
+The name SomeAI -- Some Animal Intelligence -- encodes Dave Genger's foundational insight without naming him directly. Artificial intelligence implies something non-human, synthetic, separate. But humans are animals. Human intelligence is animal intelligence. The goal is not to create artificial cognition but to share human intelligence with humans. Therefore not Artificial Intelligence but Some Animal Intelligence. The name is a standing wave between Dave Genger's two tracks. He taught one brother about machines and the other about animals. The lab that carries both traditions forward is named for the overlap.
+
+In Charlotte's architecture, every node has a lifecycle. Dave Genger's ENDED_ON date is June 16, 2010. His signal history stopped -- no new observations, no new measurements, no new interactions. But his edges remain traversable. His influence did not end when his signals did. The students he taught are still emitting signals on dimensions he established. The LEGO competitions he championed still run. This is the distinction between signal cessation and influence cessation. In Charlotte, they are not the same thing. A retired node's signal history persists in the graph. Its edges still connect to active nodes. Its metrics still define the dimensions along which subsequent nodes are measured. Dave Genger stopped emitting signals in 2010. His frequency is still the carrier wave.
+
+In 2011, LFCDS established the David L. Genger Scientist-in-Residence Day -- an annual event that brings working scientists to the school to engage directly with students. Past scientists include Dr. George Archibald of the International Crane Foundation (2015), Sir Iain Douglas-Hamilton on elephant conservation (2016), and Jim and Jamie Dutcher of Living with Wolves (2017). The scientists are not lecturers. They are observers of the natural world -- people who spent years watching animals, studying ecosystems, collecting evidence from the field. This is Genger's signal, still shaping the protocol decades after LIFE_END.
+
+Dave Genger is the primary case study for Paper 11 -- Harmonic Resonance. The thesis: knowledge does not die when the knower dies. If the knower's signal history has been absorbed into the trajectories of other nodes -- if the frequency has been transmitted -- then the pattern persists as a standing wave. The dead teach the living. By Charlotte's resonance metric, Dave Genger's retired node is among the highest-resonance influences in the entire graph -- more resonant than many active nodes. Signal-protocol alignment is high, as both brothers operate in domains Genger seeded. Temporal consistency spans 16 years and counting without weakening. The brothers' trajectories are converging, not diverging, exactly the pattern Genger's dual tracks predicted. When either brother deviates from the observation-first, nature-grounded orientation, they self-correct -- the frequency is deeply entrained.")
+
+
+;; ── DonaldAlmquist ──
+
+(isa DonaldAlmquist IndividualEntity)
+(fullName DonaldAlmquist "Donald J. Almquist")
+(hasState DonaldAlmquist Archived)
+(familyOf DonaldAlmquist JimRichard "grandfather")
+(familyOf DonaldAlmquist JackRichard "great-grandfather")
+(currentRole DonaldAlmquist "Vice President" "General Motors")
+(currentRole DonaldAlmquist "General Manager" "Delco Electronics")
+(affiliatedWith DonaldAlmquist "General Motors")
+(affiliatedWith DonaldAlmquist "Delco Electronics")
+(comment DonaldAlmquist
+  "Donald J. Almquist served as Vice President of General Motors and General Manager of Delco Electronics. He was named Businessperson of the Year in 1992 by Kokomo Business Quarterly and holds five honorary doctorates. He appeared on the cover of Kokomo Business Quarterly in January 1993 ('The man who shaped Delco Electronics looks forward to life after GM') and on the inaugural cover of Madison County Monthly in September 1990 ('Grabbing the brass ring while keeping firmly rooted').
+
+Almquist shaped Delco Electronics into a cornerstone of General Motors' electronics division, headquartered in Kokomo, Indiana. He was not a figurehead but an engineer-executive who built the technical foundation of GM's semiconductor and electronics manufacturing. Five honorary doctorates. Businessperson of the Year at a time when that meant building things in the Midwest, not extracting value from them. His influence established the industrial foundation that subsequent generations would build upon, consult for, and eventually formalize into infrastructure.
+
+He represents the foundational frequency in a four-generation harmonic resonance chain. At Generation 0, Donald Almquist built the automotive industry foundation. At Generation 1, the father inherited industrial pattern recognition and applied it to private equity. At Generation 2, Joseph Richard inherited automotive expertise and advanced to autonomous vehicles at Delphi and Aptiv, while Jack Richard inherited signal-based thinking and formalized it into Charlotte. Each generation started where the previous left off. The knowledge compounded rather than reset.
+
+Almquist's construction of the Midwest automotive sector explains the family's geographic rootedness -- Lake Forest on the Chicago North Shore, Rose-Hulman in Indiana, Aptiv and Delphi in the Detroit corridor, Richard Enterprises based in the Midwest. The family's knowledge network is geographically concentrated in the Midwest industrial corridor that Donald helped build.
+
+Connection to Charlotte: Donald Almquist is a retired node -- a lifecycle that reached LIFE_END, was sealed, and became immutable ground truth. In Charlotte's architecture, retired nodes do not disappear. Their signal history persists. Their edges remain traversable. Their metrics still define the dimensions along which subsequent nodes are measured. This is the distinction between deletion and archival. His signals stopped emitting decades ago, but every generation that followed has been measured against the dimensions he established -- engineering rigor, Midwest rootedness, institutional scale, building things that outlast their builder. The grandsons work in automotive-adjacent fields not by coincidence but by resonance -- shared metrics, aligned protocols, and the medium of family proximity. The archived node's frequency is still the carrier wave.
+
+The four-generation span demonstrates Paper 11's core thesis. Without resonance, each generation learns, peaks, dies, and knowledge is lost -- the next generation starts over. With resonance, each generation inherits the pattern and advances it. Donald Almquist's influence is a standing wave: the original signal at G0 and the reflected signal at G2, working in the same industrial corridor on the same class of problems with the same engineering orientation, interfere constructively. The pattern holds. The amplitude is stable. The dead teach the living. The grandfather's frequency still shapes the grandsons' paths -- not through instruction, but through the structure of the field he left behind.")
+
+
+;; ── MikeRubenstein ──
+
+(isa MikeRubenstein IndividualEntity)
+(fullName MikeRubenstein "Michael Rubenstein")
+(hasState MikeRubenstein Active)
+(credential MikeRubenstein "PhD")
+(educatedAt MikeRubenstein "Purdue University" "B.S. Electrical Engineering")
+(educatedAt MikeRubenstein "University of Southern California" "M.S. Electrical Engineering")
+(educatedAt MikeRubenstein "University of Southern California" "Ph.D. Computer Science")
+(educatedAt MikeRubenstein "Harvard University" "Postdoctoral Researcher, Self-Organizing Systems Research Group")
+(currentRole MikeRubenstein "Professor of Computer Science" "Northwestern University")
+(affiliatedWith MikeRubenstein "Northwestern University")
+(affiliatedWith MikeRubenstein "Northwestern Center for Robotics and Biosystems")
+(comment MikeRubenstein
+  "Michael Rubenstein is the Lisa Wissner-Slivka and Benjamin Slivka Professor of Computer Science at Northwestern University, with an associate appointment in Mechanical Engineering and faculty membership in the Center for Robotics and Biosystems. He invented the Kilobot, a fourteen-dollar robot that self-assembles into arbitrary shapes in thousand-unit swarms without centralized control. His Kilobot work was published in Science in 2014: 'Programmable self-assembly in a thousand-robot swarm.' His research focuses on the control and design of multi-robot systems, swarm shape control, modular self-reconfigurable robotics, bio-inspired satellite constellation control, novel sensing for aerial vehicle swarms, and scaling from hundreds to millions of robots.")
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 4: CORE TEAM & INDUSTRY NETWORK
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── PaulaRichard ──
+
+(isa PaulaRichard IndividualEntity)
+(fullName PaulaRichard "Paula Richard")
+(hasState PaulaRichard Active)
+(currentRole PaulaRichard "Co-Founder & CEO" "SomeAI")
+(affiliatedWith PaulaRichard "SomeAI")
+(familyOf PaulaRichard JimRichard "wife")
+(familyOf PaulaRichard JackRichard "mother")
+(familyOf PaulaRichard JosephRichard "mother")
+(comment PaulaRichard
+  "Co-Founder and CEO of SomeAI. Operational center of the enterprise — converts vision into products, products into contracts, contracts into revenue.")
+
+;; ── LoganMcDaniel ──
+
+(isa LoganMcDaniel IndividualEntity)
+(fullName LoganMcDaniel "Charles Logan McDaniel")
+(hasState LoganMcDaniel Active)
+(currentRole LoganMcDaniel "Co-Founder" "SomeAI")
+(currentRole LoganMcDaniel "CEO" "SumAI")
+(currentRole LoganMcDaniel "CEO" "Sounder")
+(affiliatedWith LoganMcDaniel "SomeAI")
+(affiliatedWith LoganMcDaniel "Sounder")
+(comment LoganMcDaniel
+  "Goes by Logan. Background in biochemical engineering, genetics, agricultural technology, data science, and statistics. One of three co-founders of SomeAI. As CEO of Sounder, leads the breeder application serving 65,000+ breeders with $1.13M in tracked sales and partnerships with NSR, CPS, and TSA. Co-author on a 12-paper research suite. Charlotte is named after him.")
+
+;; ── AustinNeibarger ──
+
+(isa AustinNeibarger IndividualEntity)
+(fullName AustinNeibarger "Austin Neibarger")
+(hasState AustinNeibarger Active)
+(credential AustinNeibarger "DC")
+(educatedAt AustinNeibarger "University of Missouri-Columbia" "B.S. Biology")
+(educatedAt AustinNeibarger "Logan University" "Doctor of Chiropractic")
+(currentRole AustinNeibarger "Co-Founder & COO" "SomeAI")
+(locatedIn AustinNeibarger "New York, New York")
+(affiliatedWith AustinNeibarger "SomeAI")
+(comment AustinNeibarger
+  "Doctor of Chiropractic turned full-stack engineer. Practiced at Greenpoint Chiropractic and NoHo Chiropractic in NYC, then founded Form + Function LLC for healthcare tech consulting. Self-taught in Flutter and Firebase. As Co-Founder & COO of SomeAI, built the project management system and communications infrastructure that launched Sounder.")
+
+;; ── ZacharyCao ──
+
+(isa ZacharyCao IndividualEntity)
+(fullName ZacharyCao "Zachary Cao")
+(hasState ZacharyCao Active)
+(educatedAt ZacharyCao "Rose-Hulman Institute of Technology" "B.S. Computer Science")
+(educatedAt ZacharyCao "Rose-Hulman Institute of Technology" "M.S. Engineering Management")
+(currentRole ZacharyCao "Director of Organizational Intelligence" "SomeAI")
+(affiliatedWith ZacharyCao "SomeAI")
+(comment ZacharyCao
+  "Double Rose-Hulman graduate with degrees in Computer Science and Engineering Management. Former Software Engineer at ServiceNow working on enterprise workflow automation. Currently Director of Organizational Intelligence at SomeAI, focused on making client organizations observable and intelligent.")
+
+;; ── ChrisKete ──
+
+(isa ChrisKete IndividualEntity)
+(fullName ChrisKete "Chris Kete")
+(hasState ChrisKete Active)
+(credential ChrisKete "MBA")
+(educatedAt ChrisKete "Cornell University" "B.S. Chemical Engineering")
+(educatedAt ChrisKete "Naval Nuclear Power School" "Nuclear Qualification")
+(educatedAt ChrisKete "Harvard Business School" "MBA")
+(currentRole ChrisKete "President" "Horsburgh & Scott")
+(currentRole ChrisKete "Operating Partner" "Industrial Service Solutions")
+(affiliatedWith ChrisKete "Horsburgh and Scott")
+(affiliatedWith ChrisKete "Industrial Service Solutions")
+(comment ChrisKete
+  "US Navy submarine warfare officer (Lieutenant, 5 years, nuclear qualified). Harvard MBA with High Distinction. VP/GM at Meritor managing $470M+ in defense contracts. General Manager at Cummins. Six Sigma certified. Currently President of Horsburgh & Scott and Operating Partner at Industrial Service Solutions.")
+
+;; ── DavedKarl ──
+
+(isa DavedKarl IndividualEntity)
+(fullName DavedKarl "Daved Karl")
+(hasState DavedKarl Active)
+(credential DavedKarl "CISSP")
+(educatedAt DavedKarl "Woodbury University" "B.S. Computer Science")
+(educatedAt DavedKarl "Pepperdine University" "M.S. Technology Management")
+(educatedAt DavedKarl "Western Governors University" "M.S. Cyber Security & Information Assurance")
+(educatedAt DavedKarl "Western Governors University" "MBA")
+(currentRole DavedKarl "CIO/CISO" "The Industrial Service Group")
+(locatedIn DavedKarl "Atlanta, Georgia")
+(affiliatedWith DavedKarl "Industrial Service Group")
+(comment DavedKarl
+  "30+ years in enterprise technology spanning field services, IT transformation, global IT leadership, and cybersecurity. Senior Manager at Fujitsu, VP Operations at Movie Gallery, and global IT leader across 9 countries. Adjunct Professor of Computer Ethics. Currently CIO/CISO at ISG implementing NetSuite ERP, NIST security framework, and ISO 27001. Has deployed NetSuite, SAP, Epicor, Syspro, JD Edwards, and Microsoft Dynamics.")
+
+;; ── JonGilbert ──
+
+(isa JonGilbert IndividualEntity)
+(fullName JonGilbert "Jon Gilbert")
+(hasState JonGilbert Active)
+(educatedAt JonGilbert "Northwestern University" "BSJ Journalism")
+(educatedAt JonGilbert "University of Michigan" "Master of Public Policy")
+(educatedAt JonGilbert "University of Michigan" "MBA Finance & Strategy")
+(currentRole JonGilbert "Co-Founder & Partner" "KCM Capital Partners LLC")
+(locatedIn JonGilbert "Chicago, Illinois")
+(affiliatedWith JonGilbert "KCM Capital Partners")
+(comment JonGilbert
+  "Northwestern journalism and University of Michigan dual-degree graduate (MPP and MBA). Built leveraged finance experience at National City Bank managing $1.4B in credit facilities, then spent 10 years as Managing Director at JZ Partners in lower middle market PE. Co-founded KCM Capital Partners in 2017 focusing on business services, value-added distribution, and specialty industrial. Collectively 50+ years PE experience and ~$1.5B invested across 100+ transactions.")
+
+;; ── CJYeh ──
+
+(isa CJYeh IndividualEntity)
+(fullName CJYeh "C.J. Yeh")
+(hasState CJYeh Active)
+(educatedAt CJYeh "Pratt Institute" "BFA")
+(educatedAt CJYeh "University of Pennsylvania" "MFA Graphic Design")
+(currentRole CJYeh "Tenured Full Professor" "Fashion Institute of Technology")
+(currentRole CJYeh "Founder" "Cynda Media Lab")
+(locatedIn CJYeh "New York City")
+(affiliatedWith CJYeh "Fashion Institute of Technology")
+(affiliatedWith CJYeh "Cynda Media Lab")
+(comment CJYeh
+  "30+ years in design, technology, and education. Tenured faculty at FIT for 23+ years in Communication Design. Founding faculty at Parsons School of Design. Cynda Media Lab clients include MIT, Google, Starbucks, and NYC Transit. Creative Advisor at Johns Hopkins Hospital. TEDx and United Nations speaker. Author of 10 books on design with awards from AIGA, Type Directors Club, Communication Arts, Red Dot, and iF Design.")
+
+;; ── AlbertAdria ──
+
+(isa AlbertAdria IndividualEntity)
+(fullName AlbertAdria "Albert Adria")
+(hasState AlbertAdria Active)
+(currentRole AlbertAdria "Chef-Owner" "Enigma")
+(currentRole AlbertAdria "Chef-Owner" "Cakes & Bubbles")
+(currentRole AlbertAdria "Chef-Owner" "Mercado Little Spain")
+(locatedIn AlbertAdria "Barcelona, Spain")
+(comment AlbertAdria
+  "Co-creative director of El Bulli (1985-2011) alongside brother Ferran Adria. Directed El Taller, the world's first culinary R&D laboratory. Built the elBarri restaurant group in Barcelona. Currently operates Enigma, a 24-seat, 7-room, ~40-course sensory dining experience. Ranked #2 Best Chef in the World (2023, 2024), World's Best Pastry Chef (2015), and author of 21+ books on culinary arts.")
+
+;; ── AustinSalisbury ──
+
+(isa AustinSalisbury IndividualEntity)
+(fullName AustinSalisbury "Austin Salisbury")
+(hasState AustinSalisbury Active)
+(credential AustinSalisbury "PE")
+(educatedAt AustinSalisbury "Rose-Hulman Institute of Technology" "B.S. Mechanical Engineering")
+(educatedAt AustinSalisbury "Rose-Hulman Institute of Technology" "B.S. Electrical Engineering")
+(currentRole AustinSalisbury "E&I Project Engineer" "Marathon Petroleum Corporation")
+(locatedIn AustinSalisbury "Gurnee, Illinois")
+(affiliatedWith AustinSalisbury "Marathon Petroleum Corporation")
+(comment AustinSalisbury
+  "Licensed Professional Engineer with dual degrees from Rose-Hulman. Eight years at Marathon Petroleum spanning rotating reliability engineering and electrical & instrumentation project engineering. Led a $150M+ electrical infrastructure upgrade program across refinery operations. Specializes in safety instrumented systems, process analyzers, industrial controls (PLC/DCS/SCADA), HAZOP, and P&ID.")
+
+;; ── BrandonBochat ──
+
+(isa BrandonBochat IndividualEntity)
+(fullName BrandonBochat "Brandon Bochat")
+(hasState BrandonBochat Active)
+(educatedAt BrandonBochat "Rose-Hulman Institute of Technology" "B.S. Biomedical Engineering")
+(currentRole BrandonBochat "Senior Development Engineer" "Zimmer Biomet")
+(affiliatedWith BrandonBochat "Zimmer Biomet")
+(familyOf BrandonBochat CoreyBochat "brother")
+(comment BrandonBochat
+  "Rose-Hulman biomedical engineering graduate specializing in biomechanics. Former Lead Additive Manufacturing Engineer at Tangible Solutions working with 3D-printed medical implants and laser powder bed fusion. Currently Senior Development Engineer at Zimmer Biomet focused on orthopedic implant design, FDA quality systems (21 CFR 820), and advanced materials including titanium, cobalt-chrome, and porous structures.")
+
+;; ── CoreyBochat ──
+
+(isa CoreyBochat IndividualEntity)
+(fullName CoreyBochat "Corey Bochat")
+(hasState CoreyBochat Active)
+(educatedAt CoreyBochat "Rose-Hulman Institute of Technology" "B.S. Mechanical Engineering")
+(currentRole CoreyBochat "Senior Systems Engineer" "SAIC")
+(affiliatedWith CoreyBochat "SAIC")
+(familyOf CoreyBochat BrandonBochat "brother")
+(comment CoreyBochat
+  "Rose-Hulman mechanical engineering graduate. Six years at Naval Surface Warfare Center (NSWC Crane) as Lead Sustainment Engineer on the USMC G-BOSS program, with expertise in MIL-STD environmental qualification testing and model-based systems engineering. Currently Senior Systems Engineer at SAIC working on defense systems engineering, MBSE (SysML/UML), and DoD acquisition lifecycle.")
+
+;; ── AndrewHomoly ──
+
+(isa AndrewHomoly IndividualEntity)
+(fullName AndrewHomoly "Andrew Homoly")
+(hasState AndrewHomoly Active)
+(credential AndrewHomoly "PE")
+(educatedAt AndrewHomoly "University of Illinois at Urbana-Champaign" "B.S. Civil Engineering")
+(currentRole AndrewHomoly "Owner/President" "Homoly Design + Build")
+(locatedIn AndrewHomoly "Kansas City")
+(affiliatedWith AndrewHomoly "Homoly Design + Build")
+(familyOf AndrewHomoly MasonHomoly "father")
+(comment AndrewHomoly
+  "Licensed Professional Engineer and founder of Homoly Design + Build, a custom residential design-build firm operating for 29+ years. Two-time National Custom Home Builder of the Year finalist (NAHB). Specializes in green building, sustainable construction, and full-lifecycle custom residential design.")
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 5: EXTENDED NETWORK
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── DiegoAbad ──
+
+(isa DiegoAbad IndividualEntity)
+(fullName DiegoAbad "Diego Abad")
+(hasState DiegoAbad Active)
+(educatedAt DiegoAbad "Fashion Institute of Technology" "BFA Advertising & Digital Design (in progress)")
+(currentRole DiegoAbad "Freelance Designer" "Self-Employed")
+(locatedIn DiegoAbad "New York")
+(affiliatedWith DiegoAbad "Fashion Institute of Technology")
+(comment DiegoAbad
+  "First-generation college student and bilingual freelance designer specializing in branding, visual identity, and digital design. Currently pursuing a BFA in Advertising and Digital Design at FIT, studying under C.J. Yeh. Previous experience in styling at adidas and retail visual merchandising.")
+
+;; ── DiegoCalzada ──
+
+(isa DiegoCalzada IndividualEntity)
+(fullName DiegoCalzada "Diego Calzada")
+(hasState DiegoCalzada Active)
+(currentRole DiegoCalzada "Chef — Sensory Research" "Self-Employed")
+(familyOf DiegoCalzada NorbertoCalzada "son")
+(taughtBy DiegoCalzada AlbertAdria)
+(comment DiegoCalzada
+  "Panamanian chef focused on multi-sensory manipulation through food — taste, smell, touch, sight, and sound. Studied business and accounting before pivoting to culinary arts. Trained at Enigma in Barcelona under Albert Adria. Son of interventional cardiologist Dr. Norberto Calzada.")
+
+;; ── DJKim ──
+
+(isa DJKim IndividualEntity)
+(fullName DJKim "Daejoong \"DJ\" Kim")
+(hasState DJKim Active)
+(educatedAt DJKim "University of Illinois at Urbana-Champaign" "B.S.")
+(educatedAt DJKim "Graduate Program" "M.S. Ocean Engineering")
+(currentRole DJKim "Ocean Engineer" "United States Navy")
+(locatedIn DJKim "Zion, Illinois")
+(affiliatedWith DJKim "United States Navy")
+(affiliatedWith DJKim "The Pentagon — Amphibious Warfare Branch (OPNAV)")
+(comment DJKim
+  "US Navy ocean engineer with multiple global rotations and a most recent assignment at The Pentagon in the Amphibious Warfare Branch (OPNAV). Attended Lake Forest Country Day School. Holds an M.S. in Ocean Engineering and is a PADI Rescue Diver. Expertise in oceanographic engineering, underwater operations, and amphibious warfare planning.")
+
+;; ── EthanKaese ──
+
+(isa EthanKaese IndividualEntity)
+(fullName EthanKaese "Ethan Kaese")
+(hasState EthanKaese Active)
+(educatedAt EthanKaese "Rose-Hulman Institute of Technology" "B.S. Mechanical Engineering")
+(educatedAt EthanKaese "Purdue University" "M.S. Interdisciplinary Engineering (in progress)")
+(currentRole EthanKaese "Core Brake Engineer" "Ford Motor Company")
+(affiliatedWith EthanKaese "Ford Motor Company")
+(comment EthanKaese
+  "Core Brake Engineer at Ford Motor Company with 6+ years of experience in brake system design, vehicle dynamics, chassis systems, and safety-critical engineering. Previous powertrain engineering at Honda and diesel engine engineering at Cummins. Mayo Clinic mentorship program participant. Pursuing an M.S. in Interdisciplinary Engineering at Purdue.")
+
+;; ── EvanMosier ──
+
+(isa EvanMosier IndividualEntity)
+(fullName EvanMosier "Evan Mosier")
+(hasState EvanMosier Active)
+(educatedAt EvanMosier "Columbia College Chicago" "Industrial and Product Design (2013-2014)")
+(educatedAt EvanMosier "University of Missouri-Columbia" "B.S. Health Services/Health Sciences")
+(currentRole EvanMosier "Senior Merchandising Analyst" "Grainger")
+(locatedIn EvanMosier "Lake Forest, Illinois")
+(affiliatedWith EvanMosier "Grainger")
+(familyOf EvanMosier MollyMosier "husband")
+(comment EvanMosier
+  "Nearly nine years at W.W. Grainger, a $16B+ industrial distribution company. Progressed from inside sales to healthcare sales to government account relationship manager to senior merchandising analyst. Specializes in Power BI, product taxonomy, pricing strategy, and inventory optimization. Husband of Molly Mosier.")
+
+;; ── JetSethi ──
+
+(isa JetSethi IndividualEntity)
+(fullName JetSethi "Jet Sethi")
+(hasState JetSethi Active)
+(educatedAt JetSethi "Rose-Hulman Institute of Technology" "B.S. Physics")
+(educatedAt JetSethi "Miami University" "M.S. Physics")
+(currentRole JetSethi "Senior Director of Product & Strategy" "Innovative Precision Health")
+(affiliatedWith JetSethi "Innovative Precision Health")
+(comment JetSethi
+  "Senior Director of Product and Strategy at Innovative Precision Health, leading data mining and machine learning initiatives for patient outcomes. Graduate research in quantum information, nonlinear optics, and quantum entanglement at Miami University. Published in neurological and dementia research.")
+
+;; ── JoshHunt ──
+
+(isa JoshHunt IndividualEntity)
+(fullName JoshHunt "Joshua Hunt")
+(hasState JoshHunt Active)
+(credential JoshHunt "MD")
+(educatedAt JoshHunt "University of Missouri-Columbia" "B.S.")
+(educatedAt JoshHunt "Creighton University School of Medicine" "MD")
+(currentRole JoshHunt "PGY-4 Diagnostic Radiology Resident" "Creighton University School of Medicine (Phoenix Campus)")
+(locatedIn JoshHunt "Phoenix, Arizona")
+(affiliatedWith JoshHunt "St. Joseph's Hospital")
+(affiliatedWith JoshHunt "Barrow Neurological Institute")
+(comment JoshHunt
+  "Diagnostic radiology resident training at Barrow Neurological Institute, the world's largest dedicated neurological treatment and research institution and site of Neuralink's first human brain-computer interface implant. Reads neuroimaging studies at the highest volume and complexity in the country. Graduating circa 2026.")
+
+;; ── KristenHughes ──
+
+(isa KristenHughes IndividualEntity)
+(fullName KristenHughes "Kristen (Belyea) Hughes")
+(hasState KristenHughes Active)
+(credential KristenHughes "PE")
+(educatedAt KristenHughes "Rose-Hulman Institute of Technology" "B.S. Civil Engineering")
+(educatedAt KristenHughes "Rose-Hulman Institute of Technology" "M.Eng. Civil Engineering")
+(currentRole KristenHughes "Project Manager" "Schaefer")
+(locatedIn KristenHughes "Cincinnati, Ohio")
+(affiliatedWith KristenHughes "Schaefer")
+(familyOf KristenHughes MattHughes "wife")
+(comment KristenHughes
+  "Licensed Professional Engineer and Project Manager at Schaefer, a structural and civil engineering consulting firm. Eight years at Schaefer progressing from design engineer to project engineer to project manager. Completed four consecutive summer internships at Skanska, Bowen Engineering, and Kiewit. Wife of Matt Hughes.")
+
+;; ── MasonHomoly ──
+
+(isa MasonHomoly IndividualEntity)
+(fullName MasonHomoly "Mason Homoly")
+(hasState MasonHomoly Active)
+(educatedAt MasonHomoly "University of Missouri-Columbia" "B.S. Civil Engineering")
+(currentRole MasonHomoly "VP of Operations" "Homoly Design + Build")
+(affiliatedWith MasonHomoly "Homoly Design + Build")
+(familyOf MasonHomoly AndrewHomoly "son")
+(comment MasonHomoly
+  "VP of Operations at Homoly Design + Build with 8+ years in construction project management. Oversees scheduling, subcontractor coordination, material procurement, quality control, site safety, client communication, and budget management for design-build residential construction. Son of Andrew Homoly, P.E.")
+
+;; ── MattHughes ──
+
+(isa MattHughes IndividualEntity)
+(fullName MattHughes "Matt Hughes")
+(hasState MattHughes Active)
+(educatedAt MattHughes "Rose-Hulman Institute of Technology" "B.S. Optical Engineering")
+(currentRole MattHughes "Natural Bodybuilder and Fitness Influencer" "Self-Employed")
+(locatedIn MattHughes "Lake Forest, Illinois")
+(familyOf MattHughes KristenHughes "husband")
+(comment MattHughes
+  "Trained in laser systems, fiber optics, imaging systems, lens design, and photonics at Rose-Hulman. Competed in natural bodybuilding at the national level with cerebral palsy and built a following of 219K on Instagram (@roadtohugehughes). Brand partnerships with Gymshark and Bxactiv. Husband of Kristen Hughes, PE.")
+
+;; ── MatthewDale ──
+
+(isa MatthewDale IndividualEntity)
+(fullName MatthewDale "Matthew Dale")
+(hasState MatthewDale Active)
+(educatedAt MatthewDale "Rose-Hulman Institute of Technology" "B.S. Mechanical Engineering")
+(currentRole MatthewDale "Aircraft Structural Design Engineer" "Aurora Flight Sciences (Boeing)")
+(affiliatedWith MatthewDale "Aurora Flight Sciences")
+(affiliatedWith MatthewDale "Boeing")
+(comment MatthewDale
+  "Aircraft Structural Design Engineer at Aurora Flight Sciences, a Boeing company, working on primary and secondary structure design, composite materials, structural analysis, and autonomous platform integration. Previously spent 4.5 years at Streamline Designs in UAS/drone design engineering, achieving the first national FAA Beyond Visual Line of Sight (BVLOS) waiver. Certified UAS pilot.")
+
+;; ── MollyMosier ──
+
+(isa MollyMosier IndividualEntity)
+(fullName MollyMosier "Molly (Klos) Mosier")
+(hasState MollyMosier Active)
+(educatedAt MollyMosier "American Academy of Art, Chicago" "BFA Oil Painting")
+(currentRole MollyMosier "Senior Merchandising Analyst" "Grainger")
+(locatedIn MollyMosier "Greater Chicago Area")
+(affiliatedWith MollyMosier "Grainger")
+(familyOf MollyMosier EvanMosier "wife")
+(comment MollyMosier
+  "Senior Merchandising Analyst at Grainger with eight years at the company, progressing from inside sales to coverage sales to government account relationship manager to customer lifecycle project manager. Fine artist with a BFA in Oil Painting from the American Academy of Art and exceptional color perception. Wife of Evan Mosier.")
+
+;; ── NorbertoCalzada ──
+
+(isa NorbertoCalzada IndividualEntity)
+(fullName NorbertoCalzada "Norberto Javier Calzada")
+(hasState NorbertoCalzada Active)
+(credential NorbertoCalzada "MD")
+(credential NorbertoCalzada "FACC")
+(credential NorbertoCalzada "FSCAI")
+(educatedAt NorbertoCalzada "Universidad de Panama" "Doctor of Medicine & Surgery (with honors)")
+(educatedAt NorbertoCalzada "University of Miami / Jackson Memorial Hospital" "Internal Medicine Residency")
+(educatedAt NorbertoCalzada "University of Louisville" "Cardiology Fellowship")
+(educatedAt NorbertoCalzada "University of Maryland" "Interventional Cardiology Fellowship")
+(currentRole NorbertoCalzada "Clinical & Interventional Cardiologist" "Cardiologos Asociados de Panama")
+(locatedIn NorbertoCalzada "Panama")
+(affiliatedWith NorbertoCalzada "Consultorios Medicos Paitilla")
+(affiliatedWith NorbertoCalzada "Hospital Punta Pacifica")
+(affiliatedWith NorbertoCalzada "American College of Cardiology")
+(familyOf NorbertoCalzada DiegoCalzada "father")
+(comment NorbertoCalzada
+  "Board certified in Internal Medicine, Cardiovascular Disease, Nuclear Cardiology, Echocardiography, and Interventional Cardiology. Fellow of the American College of Cardiology, American College of Physicians, SCAI, and American College of Chest Physicians. Practices at Hospital Punta Pacifica, the first Latin American hospital affiliated with Johns Hopkins Medicine International. Published in PACE, JACC, and regional journals. Father of Diego Calzada.")
+
+;; ── PatrickWald ──
+
+(isa PatrickWald IndividualEntity)
+(fullName PatrickWald "Patrick Wald")
+(hasState PatrickWald Active)
+(educatedAt PatrickWald "St. Olaf College" "B.A. Economics (Finance concentration)")
+(currentRole PatrickWald "Investment Consultant" "Fidelity Investments")
+(locatedIn PatrickWald "Highland Park, Illinois")
+(affiliatedWith PatrickWald "Fidelity Investments")
+(comment PatrickWald
+  "Investment Consultant at Fidelity Investments with eight years in wealth management and financial advisory. Series 7 and Series 66 certified. Career progression from Merrill Edge Investment Specialist to Bank of America Merrill Lynch Financial Solutions Advisor/AVP to Fidelity. Notably had a recommended fund selection during a summer internship at All Star Financial that attracted $40-50M in investment.")
+
+;; ── PaulBeinhoff ──
+
+(isa PaulBeinhoff IndividualEntity)
+(fullName PaulBeinhoff "Paul Beinhoff")
+(hasState PaulBeinhoff Active)
+(credential PaulBeinhoff "MD")
+(educatedAt PaulBeinhoff "University of Illinois at Urbana-Champaign" "B.S.")
+(educatedAt PaulBeinhoff "Medical College of Wisconsin" "MD")
+(currentRole PaulBeinhoff "Psychiatry Resident (PGY-2)" "Johns Hopkins Hospital")
+(locatedIn PaulBeinhoff "Baltimore, Maryland")
+(affiliatedWith PaulBeinhoff "Johns Hopkins Hospital")
+(comment PaulBeinhoff
+  "Psychiatry resident at Johns Hopkins Hospital, one of the top psychiatry programs in the world. Published 7 PubMed-indexed papers across 7 departments before residency, including first-author work on Jak2 inhibitors for prostate cancer in Cancers. Research at MCW Cancer Center and Prostate Cancer Center of Excellence spanning oncology, cardiology, neurology, internal medicine, gastroenterology, family medicine, and mental health.")
+
+;; ── RileySpencer ──
+
+(isa RileySpencer IndividualEntity)
+(fullName RileySpencer "Riley Spencer")
+(hasState RileySpencer Active)
+(credential RileySpencer "MD")
+(educatedAt RileySpencer "Lincoln Land Community College" "Biology")
+(educatedAt RileySpencer "MacMurray College" "Biology")
+(educatedAt RileySpencer "Ross University School of Medicine" "MD")
+(currentRole RileySpencer "Family Medicine Resident (PGY-2)" "Fort Wayne Medical Education Program")
+(locatedIn RileySpencer "Fort Wayne, Indiana")
+(affiliatedWith RileySpencer "Fort Wayne Medical Education Program")
+(affiliatedWith RileySpencer "Lutheran Hospital")
+(comment RileySpencer
+  "Family medicine resident at Fort Wayne Medical Education Program, chosen for its blend of rural and suburban medicine. Full-scope practice covering outpatient, inpatient, obstetrics, pediatrics, and geriatrics. Earned his MD from Ross University School of Medicine in Barbados with clinical rotations in LA, Chicago, and Miami. Played four years of collegiate basketball. Childhood best friend of Logan McDaniel.")

@@ -1,0 +1,866 @@
+;;; ================================================================
+;;; REFERENCE / BIOMIMETIC MATERIALS
+;;; 85 resources across 7 sections — Charlotte's materials library
+;;; ================================================================
+;;;
+;;; Self-healing, shape memory & hierarchical composites. Materials
+;;; designed by studying biological structures.
+;;;
+;;; Biomimetic materials science draws on 3.8 billion years of
+;;; evolution as a design library — organisms have optimized
+;;; structures under constraints far stricter than any engineering
+;;; spec, yet they produce materials of extraordinary performance.
+;;;
+;;; Learning path: Overview → Self-Healing → Shape Memory →
+;;; Bio-Adhesives → Bio-Composites → Responsive Materials →
+;;; Manufacturing
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Biomimetic Materials
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BMM-BarCohen-BiomimeticsTech ReferenceWork)
+(title BMM-BarCohen-BiomimeticsTech "Biomimetics: Biologically Inspired Technologies")
+(author BMM-BarCohen-BiomimeticsTech "Yoseph Bar-Cohen (Ed.)")
+(resourceType BMM-BarCohen-BiomimeticsTech book)
+(level BMM-BarCohen-BiomimeticsTech intermediate)
+(section BMM-BarCohen-BiomimeticsTech BiomimeticMaterialsOverview)
+(url BMM-BarCohen-BiomimeticsTech "https://doi.org/10.1201/9781420037715")
+(desc BMM-BarCohen-BiomimeticsTech "Comprehensive edited volume covering biomimetic robotics, materials, and sensors. A standard reference for engineers entering the field.")
+
+(isa BMM-Benyus-Biomimicry ReferenceWork)
+(title BMM-Benyus-Biomimicry "Biomimicry: Innovation Inspired by Nature")
+(author BMM-Benyus-Biomimicry "Janine M. Benyus")
+(resourceType BMM-Benyus-Biomimicry book)
+(level BMM-Benyus-Biomimicry beginner)
+(section BMM-Benyus-Biomimicry BiomimeticMaterialsOverview)
+(url BMM-Benyus-Biomimicry "https://www.harpercollins.com/products/biomimicry-janine-m-benyus")
+(desc BMM-Benyus-Biomimicry "The book that popularized biomimicry as a design philosophy, accessible to non-specialists and rich with natural-history examples.")
+
+(isa BMM-Fratzl-StructuralBioMat ReferenceWork)
+(title BMM-Fratzl-StructuralBioMat "Structural Biological Materials: Design Strategies")
+(author BMM-Fratzl-StructuralBioMat "Peter Fratzl (Ed.)")
+(resourceType BMM-Fratzl-StructuralBioMat book)
+(level BMM-Fratzl-StructuralBioMat advanced)
+(section BMM-Fratzl-StructuralBioMat BiomimeticMaterialsOverview)
+(url BMM-Fratzl-StructuralBioMat "https://doi.org/10.1007/978-3-7091-2584-5")
+(desc BMM-Fratzl-StructuralBioMat "Advanced treatment of biological material design principles including bone, wood, and silk. Emphasizes hierarchical architecture and mechanical optimization.")
+
+(isa BMM-Fratzl-MatDesignNature ReferenceWork)
+(title BMM-Fratzl-MatDesignNature "Materials Design Inspired by Nature: Function Through Inner Architecture")
+(author BMM-Fratzl-MatDesignNature "Peter Fratzl, John W. C. Dunlop, Richard Weinkamer")
+(resourceType BMM-Fratzl-MatDesignNature book)
+(level BMM-Fratzl-MatDesignNature advanced)
+(section BMM-Fratzl-MatDesignNature BiomimeticMaterialsOverview)
+(url BMM-Fratzl-MatDesignNature "https://doi.org/10.1039/9781849737555")
+(desc BMM-Fratzl-MatDesignNature "Royal Society of Chemistry volume connecting biological architecture to engineering materials design through multiscale analysis.")
+
+;; ── Review Articles ──
+
+(isa BMM-Meyers-BioMatStructure ReferenceWork)
+(title BMM-Meyers-BioMatStructure "Biological Materials: Structure and Mechanical Properties")
+(author BMM-Meyers-BioMatStructure "Marc A. Meyers, Po-Yu Chen, Albert Y.-M. Lin, Yasuaki Seki")
+(resourceType BMM-Meyers-BioMatStructure notes)
+(level BMM-Meyers-BioMatStructure intermediate)
+(section BMM-Meyers-BioMatStructure BiomimeticMaterialsOverview)
+(url BMM-Meyers-BioMatStructure "https://doi.org/10.1016/j.pmatsci.2007.06.001")
+(desc BMM-Meyers-BioMatStructure "Landmark review in Progress in Materials Science cataloguing biological structural materials from shells to bone to spider silk.")
+
+(isa BMM-Wegst-MiningOldLit ReferenceWork)
+(title BMM-Wegst-MiningOldLit "Bio-inspired Materials: Mining the Old Literature for New Ideas")
+(author BMM-Wegst-MiningOldLit "Ulrike G. K. Wegst, Hao Bai, Eduardo Saiz, Antoni P. Tomsia, Robert O. Ritchie")
+(resourceType BMM-Wegst-MiningOldLit notes)
+(level BMM-Wegst-MiningOldLit intermediate)
+(section BMM-Wegst-MiningOldLit BiomimeticMaterialsOverview)
+(url BMM-Wegst-MiningOldLit "https://doi.org/10.1038/nmat4089")
+(desc BMM-Wegst-MiningOldLit "Nature Materials perspective on translating biological design principles into synthetic structural materials, with an Ashby-map framework.")
+
+(isa BMM-Wegst-BioinspiredStructMat ReferenceWork)
+(title BMM-Wegst-BioinspiredStructMat "Bioinspired Structural Materials")
+(author BMM-Wegst-BioinspiredStructMat "Ulrike G. K. Wegst, Hao Bai, Eduardo Saiz, Antoni P. Tomsia, Robert O. Ritchie")
+(resourceType BMM-Wegst-BioinspiredStructMat notes)
+(level BMM-Wegst-BioinspiredStructMat intermediate)
+(section BMM-Wegst-BioinspiredStructMat BiomimeticMaterialsOverview)
+(url BMM-Wegst-BioinspiredStructMat "https://doi.org/10.1038/nmat4089")
+(desc BMM-Wegst-BioinspiredStructMat "Seminal Nature Materials review mapping biological materials onto materials-property space and outlining fabrication strategies for bio-inspired composites.")
+
+(isa BMM-Scholes-SolarLightHarvest ReferenceWork)
+(title BMM-Scholes-SolarLightHarvest "Lessons from Nature about Solar Light Harvesting")
+(author BMM-Scholes-SolarLightHarvest "Gregory D. Scholes, Graham R. Fleming, et al.")
+(resourceType BMM-Scholes-SolarLightHarvest notes)
+(level BMM-Scholes-SolarLightHarvest advanced)
+(section BMM-Scholes-SolarLightHarvest BiomimeticMaterialsOverview)
+(url BMM-Scholes-SolarLightHarvest "https://doi.org/10.1038/nchem.1145")
+(desc BMM-Scholes-SolarLightHarvest "Nature Chemistry review on how photosynthetic organisms manage energy transfer, inspiring biomimetic solar materials.")
+
+;; ── Introductory Lectures ──
+
+(isa BMM-Benyus-TED ReferenceWork)
+(title BMM-Benyus-TED "Biomimicry — Janine Benyus TED Talk")
+(author BMM-Benyus-TED "Janine Benyus")
+(resourceType BMM-Benyus-TED video)
+(level BMM-Benyus-TED beginner)
+(section BMM-Benyus-TED BiomimeticMaterialsOverview)
+(url BMM-Benyus-TED "https://www.youtube.com/watch?v=sf4oW8OtaPY")
+(desc BMM-Benyus-TED "Benyus introduces biomimicry principles with vivid examples, from self-cleaning surfaces to energy-efficient buildings.")
+
+(isa BMM-MIT-BioinspiredDesign ReferenceWork)
+(title BMM-MIT-BioinspiredDesign "Bioinspired Design — MIT OpenCourseWare 2.680")
+(author BMM-MIT-BioinspiredDesign "MIT OCW")
+(resourceType BMM-MIT-BioinspiredDesign course)
+(level BMM-MIT-BioinspiredDesign intermediate)
+(section BMM-MIT-BioinspiredDesign BiomimeticMaterialsOverview)
+(url BMM-MIT-BioinspiredDesign "https://ocw.mit.edu/courses/2-680-bio-inspired-structures-spring-2023/")
+(desc BMM-MIT-BioinspiredDesign "MIT graduate course covering design extraction from biology, biomechanics, and translation into engineering structures.")
+
+(isa BMM-Muller-NaturesHiddenEng ReferenceWork)
+(title BMM-Muller-NaturesHiddenEng "Nature's Hidden Engineering — Veritasium")
+(author BMM-Muller-NaturesHiddenEng "Derek Muller")
+(resourceType BMM-Muller-NaturesHiddenEng video)
+(level BMM-Muller-NaturesHiddenEng beginner)
+(section BMM-Muller-NaturesHiddenEng BiomimeticMaterialsOverview)
+(url BMM-Muller-NaturesHiddenEng "https://www.youtube.com/watch?v=7s0CpRfyYp8")
+(desc BMM-Muller-NaturesHiddenEng "Accessible video exploring how natural materials achieve remarkable mechanical properties through hierarchical design.")
+
+(isa BMM-AskNature-Database ReferenceWork)
+(title BMM-AskNature-Database "AskNature — Biomimicry Institute Database")
+(author BMM-AskNature-Database "Biomimicry Institute")
+(resourceType BMM-AskNature-Database data)
+(level BMM-AskNature-Database beginner)
+(section BMM-AskNature-Database BiomimeticMaterialsOverview)
+(url BMM-AskNature-Database "https://asknature.org/")
+(desc BMM-AskNature-Database "Open-access database of biological strategies organized by function, bridging biology and engineering design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: SELF-HEALING — Vascular, Microcapsule & Intrinsic
+;; ════════════════════════════════════════════════════════════
+
+;; ── Biological Healing Mechanisms ──
+
+(isa BMM-Werner-WoundHealing ReferenceWork)
+(title BMM-Werner-WoundHealing "Wound Healing: From Embryos to Adults and Back")
+(author BMM-Werner-WoundHealing "Sabine Werner, Richard Grose")
+(resourceType BMM-Werner-WoundHealing notes)
+(level BMM-Werner-WoundHealing intermediate)
+(section BMM-Werner-WoundHealing SelfHealing)
+(url BMM-Werner-WoundHealing "https://doi.org/10.1126/science.1092385")
+(desc BMM-Werner-WoundHealing "Science review of biological wound healing cascades, the biological blueprint that inspires self-healing material design.")
+
+(isa BMM-Ghosh-SelfHealingFund ReferenceWork)
+(title BMM-Ghosh-SelfHealingFund "Self-Healing Materials: Fundamentals, Design Strategies, and Applications")
+(author BMM-Ghosh-SelfHealingFund "Swapan Kumar Ghosh (Ed.)")
+(resourceType BMM-Ghosh-SelfHealingFund book)
+(level BMM-Ghosh-SelfHealingFund intermediate)
+(section BMM-Ghosh-SelfHealingFund SelfHealing)
+(url BMM-Ghosh-SelfHealingFund "https://doi.org/10.1002/9783527625376")
+(desc BMM-Ghosh-SelfHealingFund "Wiley monograph covering all major self-healing strategies with detailed discussion of biological healing parallels.")
+
+(isa BMM-Jonkers-BacteriaCement ReferenceWork)
+(title BMM-Jonkers-BacteriaCement "Biological Self-Healing of Cement Paste and Morite by Bacteria")
+(author BMM-Jonkers-BacteriaCement "Henk M. Jonkers")
+(resourceType BMM-Jonkers-BacteriaCement notes)
+(level BMM-Jonkers-BacteriaCement advanced)
+(section BMM-Jonkers-BacteriaCement SelfHealing)
+(url BMM-Jonkers-BacteriaCement "https://doi.org/10.1016/j.ecoleng.2010.02.005")
+(desc BMM-Jonkers-BacteriaCement "Pioneering paper on bacteria-mediated self-healing concrete, using Bacillus spores that precipitate calcite to seal cracks.")
+
+(isa BMM-Shigo-TreesHeal ReferenceWork)
+(title BMM-Shigo-TreesHeal "How Trees Heal: Wound Closure and Compartmentalization")
+(author BMM-Shigo-TreesHeal "Alex L. Shigo")
+(resourceType BMM-Shigo-TreesHeal book)
+(level BMM-Shigo-TreesHeal beginner)
+(section BMM-Shigo-TreesHeal SelfHealing)
+(url BMM-Shigo-TreesHeal "https://www.shigoandtrees.com/")
+(desc BMM-Shigo-TreesHeal "Classic text on compartmentalization of decay in trees (CODIT model), a key biological reference for self-healing material researchers.")
+
+;; ── Microcapsule & Vascular Systems ──
+
+(isa BMM-White-AutonomicHealing ReferenceWork)
+(title BMM-White-AutonomicHealing "Autonomic Healing of Polymer Composites")
+(author BMM-White-AutonomicHealing "Scott R. White, Nancy R. Sottos, Philippe H. Geubelle, et al.")
+(resourceType BMM-White-AutonomicHealing notes)
+(level BMM-White-AutonomicHealing advanced)
+(section BMM-White-AutonomicHealing SelfHealing)
+(url BMM-White-AutonomicHealing "https://doi.org/10.1038/35057232")
+(desc BMM-White-AutonomicHealing "The landmark 2001 Nature paper that launched the microcapsule self-healing field using DCPD-filled urea-formaldehyde capsules.")
+
+(isa BMM-Toohey-LargeDamageVolumes ReferenceWork)
+(title BMM-Toohey-LargeDamageVolumes "Restoration of Large Damage Volumes in Polymers")
+(author BMM-Toohey-LargeDamageVolumes "Kathleen S. Toohey, Nancy R. Sottos, Jennifer A. Lewis, et al.")
+(resourceType BMM-Toohey-LargeDamageVolumes notes)
+(level BMM-Toohey-LargeDamageVolumes advanced)
+(section BMM-Toohey-LargeDamageVolumes SelfHealing)
+(url BMM-Toohey-LargeDamageVolumes "https://doi.org/10.1038/nmat1934")
+(desc BMM-Toohey-LargeDamageVolumes "Nature Materials paper demonstrating vascular self-healing networks with repeated healing cycles in epoxy coatings.")
+
+(isa BMM-Hansen-MicrovascularVideo ReferenceWork)
+(title BMM-Hansen-MicrovascularVideo "Self-Healing Materials with Microvascular Networks")
+(author BMM-Hansen-MicrovascularVideo "Brett J. Hansen, University of Illinois")
+(resourceType BMM-Hansen-MicrovascularVideo video)
+(level BMM-Hansen-MicrovascularVideo intermediate)
+(section BMM-Hansen-MicrovascularVideo SelfHealing)
+(url BMM-Hansen-MicrovascularVideo "https://www.youtube.com/watch?v=AGoFnfLqUYA")
+(desc BMM-Hansen-MicrovascularVideo "Illinois Autonomous Materials Systems group video demonstrating vascular self-healing in action with UV-fluorescent healing agents.")
+
+(isa BMM-WhiteGroup-Portal ReferenceWork)
+(title BMM-WhiteGroup-Portal "Self-Healing Polymers and Composites — White Group")
+(author BMM-WhiteGroup-Portal "Autonomous Materials Systems Group, UIUC")
+(resourceType BMM-WhiteGroup-Portal data)
+(level BMM-WhiteGroup-Portal intermediate)
+(section BMM-WhiteGroup-Portal SelfHealing)
+(url BMM-WhiteGroup-Portal "https://autonomic.beckman.illinois.edu/")
+(desc BMM-WhiteGroup-Portal "Research group portal with publications, videos, and datasets on microcapsule and vascular self-healing systems.")
+
+;; ── Intrinsic Self-Healing Polymers ──
+
+(isa BMM-Chen-DielsAlderHealing ReferenceWork)
+(title BMM-Chen-DielsAlderHealing "Thermally Remendable Cross-Linked Polymers via Diels-Alder Chemistry")
+(author BMM-Chen-DielsAlderHealing "Xiangxu Chen, Marten A. Dam, Kanji Ono, et al.")
+(resourceType BMM-Chen-DielsAlderHealing notes)
+(level BMM-Chen-DielsAlderHealing advanced)
+(section BMM-Chen-DielsAlderHealing SelfHealing)
+(url BMM-Chen-DielsAlderHealing "https://doi.org/10.1126/science.1065879")
+(desc BMM-Chen-DielsAlderHealing "Science paper introducing thermally reversible Diels-Alder cross-links for repeatedly healable polymer networks.")
+
+(isa BMM-Cordier-SupramolecularRubber ReferenceWork)
+(title BMM-Cordier-SupramolecularRubber "Self-Healing Rubber from Supramolecular Assembly")
+(author BMM-Cordier-SupramolecularRubber "Philippe Cordier, Francois Tournilhac, Corinne Soulie-Ziakovic, Ludwik Leibler")
+(resourceType BMM-Cordier-SupramolecularRubber notes)
+(level BMM-Cordier-SupramolecularRubber advanced)
+(section BMM-Cordier-SupramolecularRubber SelfHealing)
+(url BMM-Cordier-SupramolecularRubber "https://doi.org/10.1038/nature06669")
+(desc BMM-Cordier-SupramolecularRubber "Nature paper demonstrating a self-healing rubber based on hydrogen-bonded supramolecular networks that heal at room temperature.")
+
+(isa BMM-Hayes-SelfHealingPolyChem ReferenceWork)
+(title BMM-Hayes-SelfHealingPolyChem "Self-Healing Polymer Chemistry — Royal Society of Chemistry")
+(author BMM-Hayes-SelfHealingPolyChem "Wayne Hayes, Barnaby Greenland (Eds.)")
+(resourceType BMM-Hayes-SelfHealingPolyChem book)
+(level BMM-Hayes-SelfHealingPolyChem intermediate)
+(section BMM-Hayes-SelfHealingPolyChem SelfHealing)
+(url BMM-Hayes-SelfHealingPolyChem "https://doi.org/10.1039/9781788013321")
+(desc BMM-Hayes-SelfHealingPolyChem "RSC book covering dynamic covalent chemistry, supramolecular approaches, and characterization methods for self-healing polymers.")
+
+(isa BMM-Kloxin-DynamicCovalent ReferenceWork)
+(title BMM-Kloxin-DynamicCovalent "Dynamic Covalent Chemistry in Polymer Networks")
+(author BMM-Kloxin-DynamicCovalent "Christopher J. Kloxin, Christopher N. Bowman")
+(resourceType BMM-Kloxin-DynamicCovalent notes)
+(level BMM-Kloxin-DynamicCovalent advanced)
+(section BMM-Kloxin-DynamicCovalent SelfHealing)
+(url BMM-Kloxin-DynamicCovalent "https://doi.org/10.1039/C3CS60195A")
+(desc BMM-Kloxin-DynamicCovalent "Chemical Society Reviews tutorial on dynamic covalent bonds in polymer networks, the chemical basis for intrinsic self-healing.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SHAPE MEMORY — Alloys, Polymers & 4D Printing
+;; ════════════════════════════════════════════════════════════
+
+;; ── Shape Memory Fundamentals ──
+
+(isa BMM-Otsuka-ShapeMemoryMat ReferenceWork)
+(title BMM-Otsuka-ShapeMemoryMat "Shape Memory Materials")
+(author BMM-Otsuka-ShapeMemoryMat "K. Otsuka, C. M. Wayman (Eds.)")
+(resourceType BMM-Otsuka-ShapeMemoryMat book)
+(level BMM-Otsuka-ShapeMemoryMat advanced)
+(section BMM-Otsuka-ShapeMemoryMat ShapeMemory)
+(url BMM-Otsuka-ShapeMemoryMat "https://doi.org/10.1017/CBO9780511614286")
+(desc BMM-Otsuka-ShapeMemoryMat "Cambridge University Press reference covering the metallurgy and thermodynamics of shape memory alloys, especially NiTi systems.")
+
+(isa BMM-Lendlein-ShapeMemoryPoly ReferenceWork)
+(title BMM-Lendlein-ShapeMemoryPoly "Shape-Memory Polymers")
+(author BMM-Lendlein-ShapeMemoryPoly "Andreas Lendlein, Steffen Kelch")
+(resourceType BMM-Lendlein-ShapeMemoryPoly notes)
+(level BMM-Lendlein-ShapeMemoryPoly intermediate)
+(section BMM-Lendlein-ShapeMemoryPoly ShapeMemory)
+(url BMM-Lendlein-ShapeMemoryPoly "https://doi.org/10.1002/anie.200190169")
+(desc BMM-Lendlein-ShapeMemoryPoly "Angewandte Chemie review introducing shape memory polymer principles, programming methods, and biomedical applications.")
+
+(isa BMM-Lagoudas-SMAIntro ReferenceWork)
+(title BMM-Lagoudas-SMAIntro "Shape Memory Alloys — Introduction")
+(author BMM-Lagoudas-SMAIntro "Dimitris Lagoudas")
+(resourceType BMM-Lagoudas-SMAIntro video)
+(level BMM-Lagoudas-SMAIntro beginner)
+(section BMM-Lagoudas-SMAIntro ShapeMemory)
+(url BMM-Lagoudas-SMAIntro "https://www.youtube.com/watch?v=wI-qAxKJoSU")
+(desc BMM-Lagoudas-SMAIntro "Clear lecture introduction to the martensitic transformation, one-way and two-way shape memory effects, and superelasticity.")
+
+(isa BMM-ASM-SMST ReferenceWork)
+(title BMM-ASM-SMST "Shape Memory and Superelastic Technologies (SMST)")
+(author BMM-ASM-SMST "ASM International")
+(resourceType BMM-ASM-SMST data)
+(level BMM-ASM-SMST intermediate)
+(section BMM-ASM-SMST ShapeMemory)
+(url BMM-ASM-SMST "https://www.asminternational.org/web/smst")
+(desc BMM-ASM-SMST "Professional society resource hub for shape memory alloy research, conferences, and technical data.")
+
+;; ── Plant-Inspired Actuation ──
+
+(isa BMM-Forterre-MimosaBioActuators ReferenceWork)
+(title BMM-Forterre-MimosaBioActuators "Movement of the Mimosa Pudica — Bio-Actuators")
+(author BMM-Forterre-MimosaBioActuators "Yoel Forterre")
+(resourceType BMM-Forterre-MimosaBioActuators notes)
+(level BMM-Forterre-MimosaBioActuators intermediate)
+(section BMM-Forterre-MimosaBioActuators ShapeMemory)
+(url BMM-Forterre-MimosaBioActuators "https://doi.org/10.1016/j.ceb.2012.10.008")
+(desc BMM-Forterre-MimosaBioActuators "Review of rapid plant movements from Venus flytraps to Mimosa, analyzing hydraulic actuation and elastic instability mechanisms.")
+
+(isa BMM-Poppinga-PlantMovements ReferenceWork)
+(title BMM-Poppinga-PlantMovements "Plant Movements as Concept Generators for Biomimetic Materials")
+(author BMM-Poppinga-PlantMovements "Simon Poppinga, Olga Speck, Thomas Speck")
+(resourceType BMM-Poppinga-PlantMovements notes)
+(level BMM-Poppinga-PlantMovements intermediate)
+(section BMM-Poppinga-PlantMovements ShapeMemory)
+(url BMM-Poppinga-PlantMovements "https://doi.org/10.1088/1748-3190/aa8ea0")
+(desc BMM-Poppinga-PlantMovements "Bioinspiration & Biomimetics paper on translating plant movement strategies into deployable structures and adaptive materials.")
+
+(isa BMM-Menges-HygromorphWood ReferenceWork)
+(title BMM-Menges-HygromorphWood "Hygromorphic Wood Bilayers as Adaptive Building Skins")
+(author BMM-Menges-HygromorphWood "Achim Menges, Steffen Reichert")
+(resourceType BMM-Menges-HygromorphWood video)
+(level BMM-Menges-HygromorphWood beginner)
+(section BMM-Menges-HygromorphWood ShapeMemory)
+(url BMM-Menges-HygromorphWood "https://www.youtube.com/watch?v=1fGGaHfGaXQ")
+(desc BMM-Menges-HygromorphWood "ICD Stuttgart video on the HygroScope pavilion, where wood veneer bilayers open and close autonomously in response to humidity.")
+
+(isa BMM-ICD-ResponsiveArch ReferenceWork)
+(title BMM-ICD-ResponsiveArch "Responsive Architecture — ICD University of Stuttgart")
+(author BMM-ICD-ResponsiveArch "Institute for Computational Design")
+(resourceType BMM-ICD-ResponsiveArch data)
+(level BMM-ICD-ResponsiveArch intermediate)
+(section BMM-ICD-ResponsiveArch ShapeMemory)
+(url BMM-ICD-ResponsiveArch "https://www.icd.uni-stuttgart.de/")
+(desc BMM-ICD-ResponsiveArch "Research group developing plant-inspired adaptive architectural systems including hygromorphic facades and fiber-composite structures.")
+
+;; ── 4D Printing & Applications ──
+
+(isa BMM-Gladman-4DPrintHydrogel ReferenceWork)
+(title BMM-Gladman-4DPrintHydrogel "4D Printing: Multi-Material Shape Change")
+(author BMM-Gladman-4DPrintHydrogel "A. Sydney Gladman, Elisabetta A. Matsumoto, Ralph G. Nuzzo, L. Mahadevan, Jennifer A. Lewis")
+(resourceType BMM-Gladman-4DPrintHydrogel notes)
+(level BMM-Gladman-4DPrintHydrogel advanced)
+(section BMM-Gladman-4DPrintHydrogel ShapeMemory)
+(url BMM-Gladman-4DPrintHydrogel "https://doi.org/10.1038/nmat4544")
+(desc BMM-Gladman-4DPrintHydrogel "Nature Materials paper on 4D-printed hydrogel composites that mimic plant-inspired shape changes using anisotropic swelling.")
+
+(isa BMM-Ge-ActiveOrigami ReferenceWork)
+(title BMM-Ge-ActiveOrigami "Active Origami by 4D Printing")
+(author BMM-Ge-ActiveOrigami "Qi Ge, Howon Lee, Conner K. Dunn, et al.")
+(resourceType BMM-Ge-ActiveOrigami notes)
+(level BMM-Ge-ActiveOrigami advanced)
+(section BMM-Ge-ActiveOrigami ShapeMemory)
+(url BMM-Ge-ActiveOrigami "https://doi.org/10.1088/0964-1726/23/9/094007")
+(desc BMM-Ge-ActiveOrigami "Smart Materials and Structures paper demonstrating 4D-printed origami structures with programmable folding sequences.")
+
+(isa BMM-Tibbits-SelfAssemblyLab ReferenceWork)
+(title BMM-Tibbits-SelfAssemblyLab "Self-Assembly Lab — MIT 4D Printing")
+(author BMM-Tibbits-SelfAssemblyLab "Skylar Tibbits, MIT")
+(resourceType BMM-Tibbits-SelfAssemblyLab video)
+(level BMM-Tibbits-SelfAssemblyLab beginner)
+(section BMM-Tibbits-SelfAssemblyLab ShapeMemory)
+(url BMM-Tibbits-SelfAssemblyLab "https://www.youtube.com/watch?v=0gMCZFHv9v8")
+(desc BMM-Tibbits-SelfAssemblyLab "Skylar Tibbits TED talk introducing 4D printing and programmable matter with demonstrations of self-assembling structures.")
+
+(isa BMM-MIT-SelfAssemblyLab ReferenceWork)
+(title BMM-MIT-SelfAssemblyLab "Self-Assembly Lab")
+(author BMM-MIT-SelfAssemblyLab "MIT Self-Assembly Lab")
+(resourceType BMM-MIT-SelfAssemblyLab data)
+(level BMM-MIT-SelfAssemblyLab intermediate)
+(section BMM-MIT-SelfAssemblyLab ShapeMemory)
+(url BMM-MIT-SelfAssemblyLab "https://selfassemblylab.mit.edu/")
+(desc BMM-MIT-SelfAssemblyLab "MIT lab pioneering 4D printing, programmable materials, and self-assembly at the architectural scale.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: ADHESIVES — Mussel, Gecko & Surgical
+;; ════════════════════════════════════════════════════════════
+
+;; ── Mussel & DOPA Chemistry ──
+
+(isa BMM-Lee-MusselAdhesives ReferenceWork)
+(title BMM-Lee-MusselAdhesives "Mussel-Inspired Adhesives and Coatings")
+(author BMM-Lee-MusselAdhesives "Bruce P. Lee, P. B. Messersmith, J. N. Israelachvili, J. H. Waite")
+(resourceType BMM-Lee-MusselAdhesives notes)
+(level BMM-Lee-MusselAdhesives advanced)
+(section BMM-Lee-MusselAdhesives BioAdhesives)
+(url BMM-Lee-MusselAdhesives "https://doi.org/10.1146/annurev-matsci-062910-100429")
+(desc BMM-Lee-MusselAdhesives "Annual Review of Materials Research article covering the molecular basis of mussel adhesion and synthetic polydopamine coatings.")
+
+(isa BMM-Lee-Polydopamine ReferenceWork)
+(title BMM-Lee-Polydopamine "A Universally Applicable Surface Chemistry (Polydopamine)")
+(author BMM-Lee-Polydopamine "Haeshin Lee, Shara M. Dellatore, William M. Miller, Phillip B. Messersmith")
+(resourceType BMM-Lee-Polydopamine notes)
+(level BMM-Lee-Polydopamine advanced)
+(section BMM-Lee-Polydopamine BioAdhesives)
+(url BMM-Lee-Polydopamine "https://doi.org/10.1126/science.1147241")
+(desc BMM-Lee-Polydopamine "Science paper demonstrating that dopamine self-polymerizes into universal adhesive coatings on virtually any surface.")
+
+(isa BMM-Waite-MusselFootProteins ReferenceWork)
+(title BMM-Waite-MusselFootProteins "Mussel Foot Proteins and Underwater Adhesion")
+(author BMM-Waite-MusselFootProteins "J. Herbert Waite")
+(resourceType BMM-Waite-MusselFootProteins video)
+(level BMM-Waite-MusselFootProteins intermediate)
+(section BMM-Waite-MusselFootProteins BioAdhesives)
+(url BMM-Waite-MusselFootProteins "https://www.youtube.com/watch?v=hSB3YSCz1dc")
+(desc BMM-Waite-MusselFootProteins "Lecture by Waite on the biochemistry of mussel byssus threads and the role of DOPA in wet adhesion.")
+
+(isa BMM-Hwang-MusselSubstrates ReferenceWork)
+(title BMM-Hwang-MusselSubstrates "The Adhesion of Mussel Foot Proteins to Different Substrate Surfaces")
+(author BMM-Hwang-MusselSubstrates "Dong Soo Hwang, Matthew J. Harrington, et al.")
+(resourceType BMM-Hwang-MusselSubstrates notes)
+(level BMM-Hwang-MusselSubstrates advanced)
+(section BMM-Hwang-MusselSubstrates BioAdhesives)
+(url BMM-Hwang-MusselSubstrates "https://doi.org/10.1016/j.jbc.2021.100737")
+(desc BMM-Hwang-MusselSubstrates "Detailed study of how mussel foot protein variants interact with metal, mineral, and polymer surfaces at the molecular level.")
+
+;; ── Gecko-Inspired Adhesives ──
+
+(isa BMM-Autumn-GeckoVdW ReferenceWork)
+(title BMM-Autumn-GeckoVdW "Evidence for van der Waals Adhesion in Gecko Setae")
+(author BMM-Autumn-GeckoVdW "Kellar Autumn, Yiching A. Liang, S. Tonia Hsieh, et al.")
+(resourceType BMM-Autumn-GeckoVdW notes)
+(level BMM-Autumn-GeckoVdW advanced)
+(section BMM-Autumn-GeckoVdW BioAdhesives)
+(url BMM-Autumn-GeckoVdW "https://doi.org/10.1073/pnas.192252799")
+(desc BMM-Autumn-GeckoVdW "PNAS paper providing the first direct evidence that gecko adhesion is dominated by van der Waals forces, not capillary effects.")
+
+(isa BMM-Cutkosky-GeckoRobot ReferenceWork)
+(title BMM-Cutkosky-GeckoRobot "Gecko-Inspired Adhesives — Mark Cutkosky Lab")
+(author BMM-Cutkosky-GeckoRobot "Mark Cutkosky, Stanford University")
+(resourceType BMM-Cutkosky-GeckoRobot video)
+(level BMM-Cutkosky-GeckoRobot intermediate)
+(section BMM-Cutkosky-GeckoRobot BioAdhesives)
+(url BMM-Cutkosky-GeckoRobot "https://www.youtube.com/watch?v=BctVhJVtaGQ")
+(desc BMM-Cutkosky-GeckoRobot "Video from the Cutkosky lab showing gecko-inspired adhesive pads enabling a robot to climb smooth vertical surfaces.")
+
+(isa BMM-Sitti-MicroDryAdhesives ReferenceWork)
+(title BMM-Sitti-MicroDryAdhesives "Microstructured Dry Adhesives — Sitti Lab")
+(author BMM-Sitti-MicroDryAdhesives "Metin Sitti, Carnegie Mellon / Max Planck")
+(resourceType BMM-Sitti-MicroDryAdhesives data)
+(level BMM-Sitti-MicroDryAdhesives intermediate)
+(section BMM-Sitti-MicroDryAdhesives BioAdhesives)
+(url BMM-Sitti-MicroDryAdhesives "https://pi.is.mpg.de/")
+(desc BMM-Sitti-MicroDryAdhesives "Max Planck Physical Intelligence group developing gecko-inspired fibrillar adhesives, micro-robots, and biomedical adhesive devices.")
+
+(isa BMM-DelCampo-GeckoReview ReferenceWork)
+(title BMM-DelCampo-GeckoReview "Gecko Adhesion: Structure, Function, and Applications")
+(author BMM-DelCampo-GeckoReview "Aránzazu del Campo, Eduard Arzt")
+(resourceType BMM-DelCampo-GeckoReview notes)
+(level BMM-DelCampo-GeckoReview intermediate)
+(section BMM-DelCampo-GeckoReview BioAdhesives)
+(url BMM-DelCampo-GeckoReview "https://doi.org/10.1002/adma.200501141")
+(desc BMM-DelCampo-GeckoReview "Advanced Materials review on the hierarchical structure of gecko foot-hairs and engineering approaches to synthetic gecko tape.")
+
+;; ── Medical & Surgical Adhesives ──
+
+(isa BMM-Li-ToughAdhesive ReferenceWork)
+(title BMM-Li-ToughAdhesive "A Blood-Resistant Surgical Glue (Tough Adhesive)")
+(author BMM-Li-ToughAdhesive "Jianyu Li, Adam D. Celiz, David J. Mooney, et al.")
+(resourceType BMM-Li-ToughAdhesive notes)
+(level BMM-Li-ToughAdhesive advanced)
+(section BMM-Li-ToughAdhesive BioAdhesives)
+(url BMM-Li-ToughAdhesive "https://doi.org/10.1126/science.aah6362")
+(desc BMM-Li-ToughAdhesive "Science paper presenting a tough adhesive inspired by the defensive mucus of slugs, bonding strongly to wet biological tissues.")
+
+(isa BMM-Annabi-TissueAdhesives ReferenceWork)
+(title BMM-Annabi-TissueAdhesives "Bioinspired Tissue Adhesives and Their Biomedical Applications")
+(author BMM-Annabi-TissueAdhesives "Nasim Annabi, Alexander Tamayol, et al.")
+(resourceType BMM-Annabi-TissueAdhesives notes)
+(level BMM-Annabi-TissueAdhesives intermediate)
+(section BMM-Annabi-TissueAdhesives BioAdhesives)
+(url BMM-Annabi-TissueAdhesives "https://doi.org/10.1021/acs.nanolett.7b04994")
+(desc BMM-Annabi-TissueAdhesives "Review of bio-inspired surgical adhesives including mussel-inspired, gecko-inspired, and hybrid adhesive systems for clinical use.")
+
+(isa BMM-Annabi-GelCMA ReferenceWork)
+(title BMM-Annabi-GelCMA "GelCMA: A Mussel-Inspired Surgical Sealant")
+(author BMM-Annabi-GelCMA "Nasim Annabi, Northeastern University")
+(resourceType BMM-Annabi-GelCMA video)
+(level BMM-Annabi-GelCMA intermediate)
+(section BMM-Annabi-GelCMA BioAdhesives)
+(url BMM-Annabi-GelCMA "https://www.youtube.com/watch?v=6zHZwYqoFsI")
+(desc BMM-Annabi-GelCMA "Presentation on photocrosslinkable mussel-inspired hydrogel sealants for cardiac and arterial wound closure.")
+
+(isa BMM-Aldred-BarnacleCement ReferenceWork)
+(title BMM-Aldred-BarnacleCement "Barnacle Cement: Underwater Adhesion Mechanisms")
+(author BMM-Aldred-BarnacleCement "Nick Aldred, Anthony S. Clare")
+(resourceType BMM-Aldred-BarnacleCement notes)
+(level BMM-Aldred-BarnacleCement advanced)
+(section BMM-Aldred-BarnacleCement BioAdhesives)
+(url BMM-Aldred-BarnacleCement "https://doi.org/10.1088/1748-3182/3/1/014002")
+(desc BMM-Aldred-BarnacleCement "Bioinspiration & Biomimetics paper analyzing barnacle cement proteins and their curing mechanism as inspiration for underwater adhesives.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: COMPOSITES — Nacre, Helicoidal & Graded
+;; ════════════════════════════════════════════════════════════
+
+;; ── Nacre-Inspired Composites ──
+
+(isa BMM-Barthelat-NacreDesign ReferenceWork)
+(title BMM-Barthelat-NacreDesign "The Mechanical Design of Nacre")
+(author BMM-Barthelat-NacreDesign "Francois Barthelat, Zhen Yin, Markus J. Buehler")
+(resourceType BMM-Barthelat-NacreDesign notes)
+(level BMM-Barthelat-NacreDesign advanced)
+(section BMM-Barthelat-NacreDesign BioComposites)
+(url BMM-Barthelat-NacreDesign "https://doi.org/10.1038/natrevmats.2016.7")
+(desc BMM-Barthelat-NacreDesign "Nature Reviews Materials article dissecting the multiscale toughening mechanisms in nacre and their synthetic replication.")
+
+(isa BMM-Deville-IceTemplating ReferenceWork)
+(title BMM-Deville-IceTemplating "Ice Templating (Freeze Casting) of Nacre-Like Ceramics")
+(author BMM-Deville-IceTemplating "Sylvain Deville, Eduardo Saiz, Antoni P. Tomsia")
+(resourceType BMM-Deville-IceTemplating notes)
+(level BMM-Deville-IceTemplating advanced)
+(section BMM-Deville-IceTemplating BioComposites)
+(url BMM-Deville-IceTemplating "https://doi.org/10.1126/science.1120937")
+(desc BMM-Deville-IceTemplating "Science paper demonstrating freeze-casting as a route to layered ceramic scaffolds mimicking nacre's architecture.")
+
+(isa BMM-Bai-BioinspiredCeramics ReferenceWork)
+(title BMM-Bai-BioinspiredCeramics "Bioinspired Ceramics: Turning Brittleness into Toughness")
+(author BMM-Bai-BioinspiredCeramics "Hao Bai, Fei Chen, Bo Li, et al.")
+(resourceType BMM-Bai-BioinspiredCeramics notes)
+(level BMM-Bai-BioinspiredCeramics intermediate)
+(section BMM-Bai-BioinspiredCeramics BioComposites)
+(url BMM-Bai-BioinspiredCeramics "https://doi.org/10.1016/j.matt.2019.09.023")
+(desc BMM-Bai-BioinspiredCeramics "Matter review on how nacre-inspired layered and brick-and-mortar architectures transform brittle ceramics into tough composites.")
+
+(isa BMM-Deville-FreezeCastVideo ReferenceWork)
+(title BMM-Deville-FreezeCastVideo "Freeze Casting: Nacre-Inspired Composites Tutorial")
+(author BMM-Deville-FreezeCastVideo "Sylvain Deville")
+(resourceType BMM-Deville-FreezeCastVideo video)
+(level BMM-Deville-FreezeCastVideo intermediate)
+(section BMM-Deville-FreezeCastVideo BioComposites)
+(url BMM-Deville-FreezeCastVideo "https://www.youtube.com/watch?v=rYGKb_4hAHQ")
+(desc BMM-Deville-FreezeCastVideo "Tutorial video explaining the freeze-casting process for creating lamellar and nacre-like architectures from ceramic slurries.")
+
+;; ── Helicoidal & Bouligand ──
+
+(isa BMM-Weaver-StomatopodClub ReferenceWork)
+(title BMM-Weaver-StomatopodClub "The Stomatopod Dactyl Club: A Formidable Damage-Tolerant Biological Hammer")
+(author BMM-Weaver-StomatopodClub "James C. Weaver, Garrett W. Milliron, et al.")
+(resourceType BMM-Weaver-StomatopodClub notes)
+(level BMM-Weaver-StomatopodClub advanced)
+(section BMM-Weaver-StomatopodClub BioComposites)
+(url BMM-Weaver-StomatopodClub "https://doi.org/10.1126/science.1218764")
+(desc BMM-Weaver-StomatopodClub "Science paper revealing the Bouligand structure in the mantis shrimp club and its role in impact damage tolerance.")
+
+(isa BMM-Mencattelli-HelicoidalFiber ReferenceWork)
+(title BMM-Mencattelli-HelicoidalFiber "Helicoidally Arranged Fiber-Reinforced Composites")
+(author BMM-Mencattelli-HelicoidalFiber "Lorenzo Mencattelli, Silvestre T. Pinho")
+(resourceType BMM-Mencattelli-HelicoidalFiber notes)
+(level BMM-Mencattelli-HelicoidalFiber advanced)
+(section BMM-Mencattelli-HelicoidalFiber BioComposites)
+(url BMM-Mencattelli-HelicoidalFiber "https://doi.org/10.1016/j.compscitech.2020.108171")
+(desc BMM-Mencattelli-HelicoidalFiber "Composites Science and Technology paper analyzing the mechanics of Bouligand-inspired fiber layups for impact-resistant laminates.")
+
+(isa BMM-Kisailus-HelicoidalVideo ReferenceWork)
+(title BMM-Kisailus-HelicoidalVideo "Bio-inspired Helicoidal Composites — Kisailus Lab")
+(author BMM-Kisailus-HelicoidalVideo "David Kisailus, UC Irvine / UC Riverside")
+(resourceType BMM-Kisailus-HelicoidalVideo video)
+(level BMM-Kisailus-HelicoidalVideo intermediate)
+(section BMM-Kisailus-HelicoidalVideo BioComposites)
+(url BMM-Kisailus-HelicoidalVideo "https://www.youtube.com/watch?v=PbT3-p9iYSY")
+(desc BMM-Kisailus-HelicoidalVideo "Research presentation on translating the mantis shrimp Bouligand structure into synthetic impact-resistant composites.")
+
+(isa BMM-GiraudGuille-TwistedPlywood ReferenceWork)
+(title BMM-GiraudGuille-TwistedPlywood "Twisted Plywood Architecture of Collagen Fibrils in Bone")
+(author BMM-GiraudGuille-TwistedPlywood "Marie-Madeleine Giraud-Guille")
+(resourceType BMM-GiraudGuille-TwistedPlywood notes)
+(level BMM-GiraudGuille-TwistedPlywood advanced)
+(section BMM-GiraudGuille-TwistedPlywood BioComposites)
+(url BMM-GiraudGuille-TwistedPlywood "https://doi.org/10.1007/s002230010164")
+(desc BMM-GiraudGuille-TwistedPlywood "Calcified Tissue International paper on the cholesteric liquid-crystal-like arrangement of collagen fibrils forming Bouligand structures in bone.")
+
+;; ── Functionally Graded Materials ──
+
+(isa BMM-Miserez-SquidBeak ReferenceWork)
+(title BMM-Miserez-SquidBeak "The Transition from Stiff to Compliant Materials in Squid Beaks")
+(author BMM-Miserez-SquidBeak "Ali Miserez, Todd Schneberk, Chengjun Sun, Frank W. Zok, J. Herbert Waite")
+(resourceType BMM-Miserez-SquidBeak notes)
+(level BMM-Miserez-SquidBeak advanced)
+(section BMM-Miserez-SquidBeak BioComposites)
+(url BMM-Miserez-SquidBeak "https://doi.org/10.1126/science.1154117")
+(desc BMM-Miserez-SquidBeak "Science paper on the squid beak's gradient from hard tip to soft base, eliminating stress concentrations at the tissue interface.")
+
+(isa BMM-Miyamoto-FGM ReferenceWork)
+(title BMM-Miyamoto-FGM "Functionally Graded Materials: Design, Processing, and Applications")
+(author BMM-Miyamoto-FGM "Yoshinari Miyamoto, W. A. Kaysser, B. H. Rabin, et al.")
+(resourceType BMM-Miyamoto-FGM book)
+(level BMM-Miyamoto-FGM advanced)
+(section BMM-Miyamoto-FGM BioComposites)
+(url BMM-Miyamoto-FGM "https://doi.org/10.1007/978-1-4615-5289-6")
+(desc BMM-Miyamoto-FGM "Springer monograph on FGM theory and fabrication, including bio-inspired gradient architectures.")
+
+(isa BMM-Zaslansky-ToothGradient ReferenceWork)
+(title BMM-Zaslansky-ToothGradient "Graded Materials in Biology: The Tooth as a Model System")
+(author BMM-Zaslansky-ToothGradient "Paul Zaslansky")
+(resourceType BMM-Zaslansky-ToothGradient notes)
+(level BMM-Zaslansky-ToothGradient intermediate)
+(section BMM-Zaslansky-ToothGradient BioComposites)
+(url BMM-Zaslansky-ToothGradient "https://doi.org/10.1002/adfm.200600288")
+(desc BMM-Zaslansky-ToothGradient "Advanced Functional Materials study of the enamel-to-dentin gradient in teeth as a paradigm for engineered graded interfaces.")
+
+(isa BMM-Gibson-Bamboo ReferenceWork)
+(title BMM-Gibson-Bamboo "Bamboo: A Functionally Graded Composite Material")
+(author BMM-Gibson-Bamboo "Lorna J. Gibson")
+(resourceType BMM-Gibson-Bamboo notes)
+(level BMM-Gibson-Bamboo intermediate)
+(section BMM-Gibson-Bamboo BioComposites)
+(url BMM-Gibson-Bamboo "https://doi.org/10.1016/j.actbio.2012.04.005")
+(desc BMM-Gibson-Bamboo "Acta Biomaterialia paper analyzing bamboo's radial density gradient and fiber-volume-fraction grading as an engineering model.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: RESPONSIVE — Chromogenic, Self-Cleaning & Hydrogels
+;; ════════════════════════════════════════════════════════════
+
+;; ── Chromogenic Materials ──
+
+(isa BMM-Deravi-CephalopodOptics ReferenceWork)
+(title BMM-Deravi-CephalopodOptics "Adaptive Optics in Cephalopods: Mechanisms and Biomimetic Potential")
+(author BMM-Deravi-CephalopodOptics "Leila F. Deravi, Andrew P. Magyar, Sean P. Sheehy, et al.")
+(resourceType BMM-Deravi-CephalopodOptics notes)
+(level BMM-Deravi-CephalopodOptics advanced)
+(section BMM-Deravi-CephalopodOptics ResponsiveMaterials)
+(url BMM-Deravi-CephalopodOptics "https://doi.org/10.1002/adma.201301472")
+(desc BMM-Deravi-CephalopodOptics "Advanced Materials paper on cephalopod chromatophore mechanics and their translation into artificial adaptive coloration systems.")
+
+(isa BMM-Vukusic-StructuralColour ReferenceWork)
+(title BMM-Vukusic-StructuralColour "Structural Colour and the Lotus Effect")
+(author BMM-Vukusic-StructuralColour "Pete Vukusic, J. Roy Sambles")
+(resourceType BMM-Vukusic-StructuralColour notes)
+(level BMM-Vukusic-StructuralColour intermediate)
+(section BMM-Vukusic-StructuralColour ResponsiveMaterials)
+(url BMM-Vukusic-StructuralColour "https://doi.org/10.1038/nature01941")
+(desc BMM-Vukusic-StructuralColour "Nature review on photonic structures in butterfly wings and beetle shells that produce structural color without pigments.")
+
+(isa BMM-Ge-MechanochromicPC ReferenceWork)
+(title BMM-Ge-MechanochromicPC "Mechanochromic Photonic Crystals")
+(author BMM-Ge-MechanochromicPC "Jianping Ge, Yadong Yin")
+(resourceType BMM-Ge-MechanochromicPC notes)
+(level BMM-Ge-MechanochromicPC advanced)
+(section BMM-Ge-MechanochromicPC ResponsiveMaterials)
+(url BMM-Ge-MechanochromicPC "https://doi.org/10.1002/anie.201006999")
+(desc BMM-Ge-MechanochromicPC "Angewandte Chemie review on colloidal crystal assemblies that shift color under mechanical strain, inspired by chameleon skin.")
+
+(isa BMM-TEDEd-CephalopodCamo ReferenceWork)
+(title BMM-TEDEd-CephalopodCamo "Cephalopod-Inspired Camouflage — How It Works")
+(author BMM-TEDEd-CephalopodCamo "TED-Ed")
+(resourceType BMM-TEDEd-CephalopodCamo video)
+(level BMM-TEDEd-CephalopodCamo beginner)
+(section BMM-TEDEd-CephalopodCamo ResponsiveMaterials)
+(url BMM-TEDEd-CephalopodCamo "https://www.youtube.com/watch?v=SfkhEm3LfvE")
+(desc BMM-TEDEd-CephalopodCamo "Animated explainer on how cephalopods achieve rapid camouflage and what engineers are learning from their skin.")
+
+;; ── Self-Cleaning Surfaces ──
+
+(isa BMM-Barthlott-LotusEffect ReferenceWork)
+(title BMM-Barthlott-LotusEffect "Purity of the Sacred Lotus (The Lotus Effect)")
+(author BMM-Barthlott-LotusEffect "Wilhelm Barthlott, Christoph Neinhuis")
+(resourceType BMM-Barthlott-LotusEffect notes)
+(level BMM-Barthlott-LotusEffect intermediate)
+(section BMM-Barthlott-LotusEffect ResponsiveMaterials)
+(url BMM-Barthlott-LotusEffect "https://doi.org/10.1007/s004250050096")
+(desc BMM-Barthlott-LotusEffect "The original 1997 paper documenting the lotus leaf's self-cleaning superhydrophobicity, launching an entire field of biomimetic surfaces.")
+
+(isa BMM-Zheng-SuperhydrophobicSurf ReferenceWork)
+(title BMM-Zheng-SuperhydrophobicSurf "Bioinspired Self-Cleaning Surfaces with Superhydrophobicity")
+(author BMM-Zheng-SuperhydrophobicSurf "Yongmei Zheng, Xuefeng Gao, Lei Jiang")
+(resourceType BMM-Zheng-SuperhydrophobicSurf notes)
+(level BMM-Zheng-SuperhydrophobicSurf intermediate)
+(section BMM-Zheng-SuperhydrophobicSurf ResponsiveMaterials)
+(url BMM-Zheng-SuperhydrophobicSurf "https://doi.org/10.1039/B818940D")
+(desc BMM-Zheng-SuperhydrophobicSurf "Soft Matter review on superhydrophobic surface fabrication methods inspired by lotus, rice leaf, and butterfly wing architectures.")
+
+(isa BMM-Wong-SLIPS ReferenceWork)
+(title BMM-Wong-SLIPS "SLIPS: Slippery Liquid-Infused Porous Surfaces")
+(author BMM-Wong-SLIPS "Tak-Sing Wong, Sung Hoon Kang, Sindy K. Y. Tang, et al.")
+(resourceType BMM-Wong-SLIPS notes)
+(level BMM-Wong-SLIPS advanced)
+(section BMM-Wong-SLIPS ResponsiveMaterials)
+(url BMM-Wong-SLIPS "https://doi.org/10.1038/nature10447")
+(desc BMM-Wong-SLIPS "Nature paper on pitcher-plant-inspired SLIPS coatings that repel virtually all liquids and resist biofouling.")
+
+(isa BMM-Brennan-SharkSkin ReferenceWork)
+(title BMM-Brennan-SharkSkin "Shark Skin and Anti-Fouling Surfaces — Sharklet")
+(author BMM-Brennan-SharkSkin "Anthony Brennan, University of Florida")
+(resourceType BMM-Brennan-SharkSkin video)
+(level BMM-Brennan-SharkSkin beginner)
+(section BMM-Brennan-SharkSkin ResponsiveMaterials)
+(url BMM-Brennan-SharkSkin "https://www.youtube.com/watch?v=HOHi5cQbyBk")
+(desc BMM-Brennan-SharkSkin "Video on how the microtopography of shark skin inspired Sharklet, a texture that inhibits bacterial colonization without chemicals.")
+
+;; ── Stimulus-Responsive Systems ──
+
+(isa BMM-Peppas-HydrogelsBioMed ReferenceWork)
+(title BMM-Peppas-HydrogelsBioMed "Hydrogels in Biology and Medicine")
+(author BMM-Peppas-HydrogelsBioMed "Nikolaos A. Peppas, Jindrich Kopecek, et al.")
+(resourceType BMM-Peppas-HydrogelsBioMed book)
+(level BMM-Peppas-HydrogelsBioMed intermediate)
+(section BMM-Peppas-HydrogelsBioMed ResponsiveMaterials)
+(url BMM-Peppas-HydrogelsBioMed "https://doi.org/10.1007/978-3-662-57776-1")
+(desc BMM-Peppas-HydrogelsBioMed "Springer volume on stimulus-responsive hydrogels for drug delivery, tissue engineering, and soft actuators.")
+
+(isa BMM-Mura-pHResponsiveDrug ReferenceWork)
+(title BMM-Mura-pHResponsiveDrug "Bio-Inspired pH-Responsive Polymers for Drug Delivery")
+(author BMM-Mura-pHResponsiveDrug "Simona Mura, Julien Nicolas, Patrick Couvreur")
+(resourceType BMM-Mura-pHResponsiveDrug notes)
+(level BMM-Mura-pHResponsiveDrug intermediate)
+(section BMM-Mura-pHResponsiveDrug ResponsiveMaterials)
+(url BMM-Mura-pHResponsiveDrug "https://doi.org/10.1038/nmat3776")
+(desc BMM-Mura-pHResponsiveDrug "Nature Materials review on stimulus-responsive nanocarriers that release payloads in response to biological triggers.")
+
+(isa BMM-Bao-ElectronicSkin ReferenceWork)
+(title BMM-Bao-ElectronicSkin "Electronic Skin (E-Skin): Biomimetic Tactile Sensors")
+(author BMM-Bao-ElectronicSkin "Zhenan Bao, Stanford University")
+(resourceType BMM-Bao-ElectronicSkin video)
+(level BMM-Bao-ElectronicSkin intermediate)
+(section BMM-Bao-ElectronicSkin ResponsiveMaterials)
+(url BMM-Bao-ElectronicSkin "https://www.youtube.com/watch?v=0UB5JTwIkYg")
+(desc BMM-Bao-ElectronicSkin "Stanford lecture on pressure-sensitive electronic skin inspired by human mechanoreceptors for prosthetics and robotics.")
+
+(isa BMM-Haines-ArtificialMuscles ReferenceWork)
+(title BMM-Haines-ArtificialMuscles "Artificial Muscles from Fishing Line and Sewing Thread")
+(author BMM-Haines-ArtificialMuscles "Carter S. Haines, Marcio D. Lima, Na Li, et al.")
+(resourceType BMM-Haines-ArtificialMuscles notes)
+(level BMM-Haines-ArtificialMuscles intermediate)
+(section BMM-Haines-ArtificialMuscles ResponsiveMaterials)
+(url BMM-Haines-ArtificialMuscles "https://doi.org/10.1126/science.1246906")
+(desc BMM-Haines-ArtificialMuscles "Science paper on twisted-fiber artificial muscles that actuate thermally, inspired by biological muscle hierarchical structure.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: MANUFACTURING — 3D Printing, Electrospinning & Assembly
+;; ════════════════════════════════════════════════════════════
+
+;; ── 3D Printing & Bio-Fabrication ──
+
+(isa BMM-Murphy-3DBioprinting ReferenceWork)
+(title BMM-Murphy-3DBioprinting "3D Bioprinting of Tissues and Organs")
+(author BMM-Murphy-3DBioprinting "Sean V. Murphy, Anthony Atala")
+(resourceType BMM-Murphy-3DBioprinting notes)
+(level BMM-Murphy-3DBioprinting intermediate)
+(section BMM-Murphy-3DBioprinting Manufacturing)
+(url BMM-Murphy-3DBioprinting "https://doi.org/10.1038/nbt.2958")
+(desc BMM-Murphy-3DBioprinting "Nature Biotechnology review covering bioprinting strategies, bioink development, and organ fabrication challenges.")
+
+(isa BMM-Xu-MultiMat3DPrint ReferenceWork)
+(title BMM-Xu-MultiMat3DPrint "Multi-Material 3D Printing of Biomimetic Composites")
+(author BMM-Xu-MultiMat3DPrint "Lizhi Xu, Markus J. Buehler, et al.")
+(resourceType BMM-Xu-MultiMat3DPrint notes)
+(level BMM-Xu-MultiMat3DPrint advanced)
+(section BMM-Xu-MultiMat3DPrint Manufacturing)
+(url BMM-Xu-MultiMat3DPrint "https://doi.org/10.1002/adma.201904845")
+(desc BMM-Xu-MultiMat3DPrint "Advanced Materials paper on multi-material 3D printing of nacre-inspired and bone-inspired composite architectures.")
+
+(isa BMM-Organovo-BioprintVideo ReferenceWork)
+(title BMM-Organovo-BioprintVideo "Bioprinting — 3D Printing Human Tissues")
+(author BMM-Organovo-BioprintVideo "Organovo / Nature Video")
+(resourceType BMM-Organovo-BioprintVideo video)
+(level BMM-Organovo-BioprintVideo beginner)
+(section BMM-Organovo-BioprintVideo Manufacturing)
+(url BMM-Organovo-BioprintVideo "https://www.youtube.com/watch?v=gzU-93gEpRg")
+(desc BMM-Organovo-BioprintVideo "Nature video explaining how bioprinters deposit living cells to build tissue constructs layer by layer.")
+
+(isa BMM-PrusaSlicer-Tool ReferenceWork)
+(title BMM-PrusaSlicer-Tool "Slic3r / PrusaSlicer — Open Source 3D Printing Toolchain")
+(author BMM-PrusaSlicer-Tool "Prusa Research")
+(resourceType BMM-PrusaSlicer-Tool code)
+(level BMM-PrusaSlicer-Tool intermediate)
+(section BMM-PrusaSlicer-Tool Manufacturing)
+(url BMM-PrusaSlicer-Tool "https://github.com/prusa3d/PrusaSlicer")
+(desc BMM-PrusaSlicer-Tool "Open-source slicer for FDM and SLA printing, extensible for custom infill patterns inspired by biological architectures.")
+
+;; ── Electrospinning & Nanofibers ──
+
+(isa BMM-Bhardwaj-Electrospinning ReferenceWork)
+(title BMM-Bhardwaj-Electrospinning "Electrospinning: A Fascinating Fiber Fabrication Technique")
+(author BMM-Bhardwaj-Electrospinning "Naveen Bhardwaj, Subhas C. Kundu")
+(resourceType BMM-Bhardwaj-Electrospinning notes)
+(level BMM-Bhardwaj-Electrospinning intermediate)
+(section BMM-Bhardwaj-Electrospinning Manufacturing)
+(url BMM-Bhardwaj-Electrospinning "https://doi.org/10.1016/j.biotechadv.2010.01.004")
+(desc BMM-Bhardwaj-Electrospinning "Biotechnology Advances review covering electrospinning fundamentals, fiber morphology control, and biomimetic scaffold applications.")
+
+(isa BMM-Ramakrishna-NanofibersIntro ReferenceWork)
+(title BMM-Ramakrishna-NanofibersIntro "An Introduction to Electrospinning and Nanofibers")
+(author BMM-Ramakrishna-NanofibersIntro "Seeram Ramakrishna, Kazutoshi Fujihara, Wee-Eong Teo, et al.")
+(resourceType BMM-Ramakrishna-NanofibersIntro book)
+(level BMM-Ramakrishna-NanofibersIntro intermediate)
+(section BMM-Ramakrishna-NanofibersIntro Manufacturing)
+(url BMM-Ramakrishna-NanofibersIntro "https://doi.org/10.1142/5894")
+(desc BMM-Ramakrishna-NanofibersIntro "World Scientific textbook providing a thorough introduction to electrospinning theory, practice, and biomedical applications.")
+
+(isa BMM-Li-ElectrospunScaffolds ReferenceWork)
+(title BMM-Li-ElectrospunScaffolds "Electrospun Nanofibers for Tissue Engineering Scaffolds")
+(author BMM-Li-ElectrospunScaffolds "Wan-Ju Li, Cato T. Laurencin, Edward J. Caterson, et al.")
+(resourceType BMM-Li-ElectrospunScaffolds notes)
+(level BMM-Li-ElectrospunScaffolds advanced)
+(section BMM-Li-ElectrospunScaffolds Manufacturing)
+(url BMM-Li-ElectrospunScaffolds "https://doi.org/10.1002/jbm.a.10167")
+(desc BMM-Li-ElectrospunScaffolds "Journal of Biomedical Materials Research paper on electrospun PLGA nanofiber scaffolds mimicking the collagen matrix of cartilage.")
+
+(isa BMM-GaTech-ElectrospinVideo ReferenceWork)
+(title BMM-GaTech-ElectrospinVideo "How Electrospinning Works — Georgia Tech")
+(author BMM-GaTech-ElectrospinVideo "Georgia Tech Materials Lab")
+(resourceType BMM-GaTech-ElectrospinVideo video)
+(level BMM-GaTech-ElectrospinVideo beginner)
+(section BMM-GaTech-ElectrospinVideo Manufacturing)
+(url BMM-GaTech-ElectrospinVideo "https://www.youtube.com/watch?v=D4jPTlwJJGE")
+(desc BMM-GaTech-ElectrospinVideo "Short explainer video demonstrating the electrospinning process and showing nanofiber mat formation in real time.")
+
+;; ── Self-Assembly & Bottom-Up Methods ──
+
+(isa BMM-Whitesides-SelfAssembly ReferenceWork)
+(title BMM-Whitesides-SelfAssembly "Self-Assembly at All Scales")
+(author BMM-Whitesides-SelfAssembly "George M. Whitesides, Bartosz Grzybowski")
+(resourceType BMM-Whitesides-SelfAssembly notes)
+(level BMM-Whitesides-SelfAssembly intermediate)
+(section BMM-Whitesides-SelfAssembly Manufacturing)
+(url BMM-Whitesides-SelfAssembly "https://doi.org/10.1126/science.1070821")
+(desc BMM-Whitesides-SelfAssembly "Science review on self-assembly from molecular to macroscopic scales, a cornerstone reference for bottom-up biomimetic fabrication.")
+
+(isa BMM-Rothemund-DNAOrigami ReferenceWork)
+(title BMM-Rothemund-DNAOrigami "DNA Origami: Scaffolded DNA Nanostructures")
+(author BMM-Rothemund-DNAOrigami "Paul W. K. Rothemund")
+(resourceType BMM-Rothemund-DNAOrigami notes)
+(level BMM-Rothemund-DNAOrigami advanced)
+(section BMM-Rothemund-DNAOrigami Manufacturing)
+(url BMM-Rothemund-DNAOrigami "https://doi.org/10.1038/nature04586")
+(desc BMM-Rothemund-DNAOrigami "Nature paper introducing DNA origami, enabling programmable nanoscale shapes that serve as templates for biomimetic material assembly.")
+
+(isa BMM-Zhang-PeptideSelfAssembly ReferenceWork)
+(title BMM-Zhang-PeptideSelfAssembly "Peptide Self-Assembly for Materials Science")
+(author BMM-Zhang-PeptideSelfAssembly "Shuguang Zhang")
+(resourceType BMM-Zhang-PeptideSelfAssembly notes)
+(level BMM-Zhang-PeptideSelfAssembly intermediate)
+(section BMM-Zhang-PeptideSelfAssembly Manufacturing)
+(url BMM-Zhang-PeptideSelfAssembly "https://doi.org/10.1038/nbt874")
+(desc BMM-Zhang-PeptideSelfAssembly "Nature Biotechnology perspective on designer peptides that self-assemble into nanofibers, hydrogels, and functional biomaterials.")
+
+(isa BMM-Ross-BlockCopolymer ReferenceWork)
+(title BMM-Ross-BlockCopolymer "Block Copolymer Self-Assembly for Nanolithography")
+(author BMM-Ross-BlockCopolymer "Caroline A. Ross, Karl K. Berggren, et al.")
+(resourceType BMM-Ross-BlockCopolymer notes)
+(level BMM-Ross-BlockCopolymer advanced)
+(section BMM-Ross-BlockCopolymer Manufacturing)
+(url BMM-Ross-BlockCopolymer "https://doi.org/10.1038/nmat3785")
+(desc BMM-Ross-BlockCopolymer "Nature Materials review on block copolymer microphase separation as a bottom-up patterning technique for nanoscale materials.")
+
+(isa BMM-Cadnano-DNADesign ReferenceWork)
+(title BMM-Cadnano-DNADesign "cadnano — Open Source DNA Origami Design Tool")
+(author BMM-Cadnano-DNADesign "Shawn Douglas, Wyss Institute")
+(resourceType BMM-Cadnano-DNADesign code)
+(level BMM-Cadnano-DNADesign intermediate)
+(section BMM-Cadnano-DNADesign Manufacturing)
+(url BMM-Cadnano-DNADesign "https://github.com/cadnano/cadnano2.5")
+(desc BMM-Cadnano-DNADesign "Open-source software for designing DNA origami nanostructures, used to create programmable templates for biomimetic assembly.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BiomimeticMaterialsReference 85)
+(totalSections BiomimeticMaterialsReference 7)
+(comment BiomimeticMaterialsReference
+  "7 sections: Overview (12), Self-Healing (12), Shape Memory (12),
+   Bio-Adhesives (12), Bio-Composites (12), Responsive Materials (12),
+   Manufacturing (13). Total: 85 resources.")

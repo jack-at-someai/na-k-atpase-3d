@@ -1,0 +1,26 @@
+;;; ================================================================
+;;; ISG PERSONNEL / NICOLE RODIECK
+;;; CFO, ISG Enterprises Division
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa NicoleRodieck Person)
+(isa NicoleRodieck Executive)
+(hasAttribute NicoleRodieck ::LABEL "Nicole Rodieck")
+(hasAttribute NicoleRodieck ::ROLE "CFO, ISG Enterprises Division")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn NicoleRodieck DivisionalFinance)
+(expertiseIn NicoleRodieck FinancialReporting)
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithEntCFO PROTOCOL)
+(hasTrigger Protocol-InteractWithEntCFO (sessionCaller ?Session NicoleRodieck))
+(comment Protocol-InteractWithEntCFO
+  "Nicole serves as divisional CFO. She manages financial operations
+   for the ISG Enterprises division. Financial and reporting focused.")

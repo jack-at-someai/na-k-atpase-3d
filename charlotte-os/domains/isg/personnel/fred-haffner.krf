@@ -1,0 +1,43 @@
+;;; ================================================================
+;;; ISG PERSONNEL / FRED HAFFNER
+;;; CFO, Compressor Group — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa FredHaffner Person)
+(isa FredHaffner Executive)
+(hasAttribute FredHaffner ::LABEL "Fred Haffner")
+(hasAttribute FredHaffner ::ROLE "CFO, Compressor Group")
+(hasAttribute FredHaffner ::EMAIL "fhaffner@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo FredHaffner ChrisSeibel)
+(MEMBER_OF FredHaffner ISGCompressorGroup)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt FredHaffner Magnolia-TX)
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch FredHaffner "Keller Graduate School of Management, DeVry University" 2000 2005)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn FredHaffner FinancialManagement)
+(expertiseIn FredHaffner DivisionalAccounting)
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCompressorCFO PROTOCOL)
+(hasTrigger Protocol-InteractWithCompressorCFO (sessionCaller ?Session FredHaffner))
+(comment Protocol-InteractWithCompressorCFO
+  "Fred is the divisional CFO for the Compressor Group — Charlotte's
+   initial deployment vertical. He manages the financial operations
+   for the 5 compressor brands. He will care about Charlotte's cost
+   reporting, inventory valuation, and service profitability metrics.
+   Located in Texas, near Houston's energy corridor.")

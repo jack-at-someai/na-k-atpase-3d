@@ -1,0 +1,27 @@
+;;; ================================================================
+;;; ISG BRAND / CORE INDUSTRIAL MAINTENANCE
+;;; Steel fabrication, maintenance & millwright — Mt. Vernon AL
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa CoreIndustrialMaintenance ISGBrand)
+(hasAttribute CoreIndustrialMaintenance ::LABEL "CORE Industrial Maintenance")
+(hasAttribute CoreIndustrialMaintenance ::ABBREVIATION "CORE")
+(hasAttribute CoreIndustrialMaintenance ::VERTICAL "Specialty Services")
+(hasAttribute CoreIndustrialMaintenance ::HEADCOUNT "38-51")
+(hasAttribute CoreIndustrialMaintenance ::WEBSITE "coreindustrialmaintenance.com")
+(hasAttribute CoreIndustrialMaintenance ::SPECIALTIES "Steel fabrication, plant maintenance, millwright services, turnarounds, welding, rigging")
+(hasAttribute CoreIndustrialMaintenance ::INDUSTRIES "Chemical, pulp & paper, steel, manufacturing")
+(MEMBER_OF CoreIndustrialMaintenance ISGServicesGroup)
+
+(hasAttribute CoreIndustrialMaintenance ::FACILITY_HQ "Mt. Vernon, AL")
+(hasAttribute CoreIndustrialMaintenance ::FACILITY_SOUTH "Daphne, AL")
+
+;; Personnel — Leadership
+
+(isa BryanBrock Person)
+(hasAttribute BryanBrock ::LABEL "Bryan Brock")
+(hasAttribute BryanBrock ::ROLE "Founder / President")
+(LEADS BryanBrock CoreIndustrialMaintenance)
+(MEMBER_OF BryanBrock CoreIndustrialMaintenance)

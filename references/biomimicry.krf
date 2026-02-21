@@ -1,0 +1,840 @@
+;;; ================================================================
+;;; REFERENCE / BIOMIMICRY
+;;; 82 resources across 7 sections
+;;; Principles, methodology & case studies. Design by emulating
+;;; nature's time-tested patterns.
+;;; ================================================================
+;;;
+;;; Biomimicry is the practice of learning from and emulating
+;;; nature's time-tested strategies to solve human design challenges.
+;;; Coined by biologist Janine Benyus in 1997, the field rests on
+;;; a simple but profound insight: life has been solving engineering
+;;; problems for 3.8 billion years, and the survivors hold the answers.
+;;;
+;;; Key premises: Nature as Model, Nature as Measure, Nature as Mentor.
+;;;
+;;; Learning path: Overview → Methodology → Organisms → Ecosystems →
+;;; Applications → Education → Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Biomimicry
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BM-Benyus-BiomimicryBook ReferenceWork)
+(title BM-Benyus-BiomimicryBook "Biomimicry: Innovation Inspired by Nature")
+(author BM-Benyus-BiomimicryBook "Janine M. Benyus")
+(resourceType BM-Benyus-BiomimicryBook book)
+(level BM-Benyus-BiomimicryBook beginner)
+(section BM-Benyus-BiomimicryBook BiomimicryOverview)
+(url BM-Benyus-BiomimicryBook "https://www.harpercollins.com/products/biomimicry-janine-m-benyus")
+(desc BM-Benyus-BiomimicryBook "The seminal 1997 book that launched the modern biomimicry movement, exploring how nature's designs can inspire human innovation across energy, food, medicine, and manufacturing.")
+
+(isa BM-Baumeister-ResourceHandbook ReferenceWork)
+(title BM-Baumeister-ResourceHandbook "Biomimicry Resource Handbook: A Seed Bank of Best Practices")
+(author BM-Baumeister-ResourceHandbook "Dayna Baumeister")
+(resourceType BM-Baumeister-ResourceHandbook book)
+(level BM-Baumeister-ResourceHandbook intermediate)
+(section BM-Baumeister-ResourceHandbook BiomimicryOverview)
+(url BM-Baumeister-ResourceHandbook "https://biomimicry.net/the-buzz/resources/biomimicry-resource-handbook/")
+(desc BM-Baumeister-ResourceHandbook "A 300-page practitioner's guide covering biomimicry thinking, methodology, and tools. The definitive companion for applying Life's Principles to real design work.")
+
+(isa BM-Forbes-GeckosFoot ReferenceWork)
+(title BM-Forbes-GeckosFoot "The Gecko's Foot: Bio-Inspiration -- Engineering New Materials from Nature")
+(author BM-Forbes-GeckosFoot "Peter Forbes")
+(resourceType BM-Forbes-GeckosFoot book)
+(level BM-Forbes-GeckosFoot beginner)
+(section BM-Forbes-GeckosFoot BiomimicryOverview)
+(url BM-Forbes-GeckosFoot "https://wwnorton.com/books/The-Geckos-Foot/")
+(desc BM-Forbes-GeckosFoot "An accessible account of how nature's nano-scale engineering -- from lotus leaves to gecko feet -- is inspiring a new generation of smart materials.")
+
+(isa BM-Harman-SharksPaintbrush ReferenceWork)
+(title BM-Harman-SharksPaintbrush "The Shark's Paintbrush: Biomimicry and How Nature Is Inspiring Innovation")
+(author BM-Harman-SharksPaintbrush "Jay Harman")
+(resourceType BM-Harman-SharksPaintbrush book)
+(level BM-Harman-SharksPaintbrush beginner)
+(section BM-Harman-SharksPaintbrush BiomimicryOverview)
+(url BM-Harman-SharksPaintbrush "https://www.penguinrandomhouse.com/books/312796/the-sharks-paintbrush-by-jay-harman/")
+(desc BM-Harman-SharksPaintbrush "Inventor Jay Harman explores how spiral geometries and other natural patterns are being translated into breakthrough industrial designs.")
+
+;; ── Introductory Courses ──
+
+(isa BM-Benyus-TEDEngineers ReferenceWork)
+(title BM-Benyus-TEDEngineers "Biomimicry's Surprising Lessons from Nature's Engineers (TED Talk)")
+(author BM-Benyus-TEDEngineers "Janine Benyus")
+(resourceType BM-Benyus-TEDEngineers video)
+(level BM-Benyus-TEDEngineers beginner)
+(section BM-Benyus-TEDEngineers BiomimicryOverview)
+(url BM-Benyus-TEDEngineers "https://www.ted.com/talks/janine_benyus_biomimicry_s_surprising_lessons_from_nature_s_engineers")
+(desc BM-Benyus-TEDEngineers "Benyus's foundational TED talk introducing the biomimicry concept with vivid examples of nature-inspired engineering.")
+
+(isa BM-Benyus-TEDAction ReferenceWork)
+(title BM-Benyus-TEDAction "Biomimicry in Action (TED Talk)")
+(author BM-Benyus-TEDAction "Janine Benyus")
+(resourceType BM-Benyus-TEDAction video)
+(level BM-Benyus-TEDAction beginner)
+(section BM-Benyus-TEDAction BiomimicryOverview)
+(url BM-Benyus-TEDAction "https://www.ted.com/talks/janine_benyus_biomimicry_in_action")
+(desc BM-Benyus-TEDAction "A follow-up talk revealing dozens of new products and systems that take their cue from nature with spectacular results.")
+
+(isa BM-IITMadras-IntroBiomimicry ReferenceWork)
+(title BM-IITMadras-IntroBiomimicry "Introduction to Biomimicry (NPTEL / IIT Madras)")
+(author BM-IITMadras-IntroBiomimicry "IIT Madras via SWAYAM")
+(resourceType BM-IITMadras-IntroBiomimicry course)
+(level BM-IITMadras-IntroBiomimicry beginner)
+(section BM-IITMadras-IntroBiomimicry BiomimicryOverview)
+(url BM-IITMadras-IntroBiomimicry "https://www.classcentral.com/course/swayam-introduction-to-biomimicry-91688")
+(desc BM-IITMadras-IntroBiomimicry "A free online course from IIT Madras covering biomimicry fundamentals, from tree-leaf solar cells to sharkskin antibacterial surfaces.")
+
+(isa BM-MCAD-SustainableDesign ReferenceWork)
+(title BM-MCAD-SustainableDesign "Biomimicry: A Sustainable Design Methodology")
+(author BM-MCAD-SustainableDesign "Minneapolis College of Art and Design")
+(resourceType BM-MCAD-SustainableDesign course)
+(level BM-MCAD-SustainableDesign beginner)
+(section BM-MCAD-SustainableDesign BiomimicryOverview)
+(url BM-MCAD-SustainableDesign "https://www.classcentral.com/course/canvas-network-biomimicry-a-sustainable-design-methodology-3259")
+(desc BM-MCAD-SustainableDesign "Students explore nature weekly and develop novel biomimetic designs using the biomimicry design spiral.")
+
+;; ── Cross-Disciplinary Resources ──
+
+(isa BM-Helms-SustainabilityFramework ReferenceWork)
+(title BM-Helms-SustainabilityFramework "Biomimicry as a Sustainable Design Methodology -- Introducing the 'Biomimicry for Sustainability' Framework")
+(author BM-Helms-SustainabilityFramework "Katharina Helms et al.")
+(resourceType BM-Helms-SustainabilityFramework notes)
+(level BM-Helms-SustainabilityFramework intermediate)
+(section BM-Helms-SustainabilityFramework BiomimicryOverview)
+(url BM-Helms-SustainabilityFramework "https://doi.org/10.3390/su14095biomimicry")
+(desc BM-Helms-SustainabilityFramework "A peer-reviewed paper synthesizing biomimicry literature across architecture, philosophy, sustainability, and design into a unified framework.")
+
+(isa BM-Institute-WhatIsBiomimicry ReferenceWork)
+(title BM-Institute-WhatIsBiomimicry "Biomimicry Institute -- What Is Biomimicry?")
+(author BM-Institute-WhatIsBiomimicry "The Biomimicry Institute")
+(resourceType BM-Institute-WhatIsBiomimicry notes)
+(level BM-Institute-WhatIsBiomimicry beginner)
+(section BM-Institute-WhatIsBiomimicry BiomimicryOverview)
+(url BM-Institute-WhatIsBiomimicry "https://biomimicry.org/what-is-biomimicry/")
+(desc BM-Institute-WhatIsBiomimicry "The Biomimicry Institute's official primer on the discipline, with introductory definitions, examples, and links to deeper resources.")
+
+(isa BM-Institute-UnifyingPatterns ReferenceWork)
+(title BM-Institute-UnifyingPatterns "Nature's Unifying Patterns -- Biomimicry Toolbox")
+(author BM-Institute-UnifyingPatterns "The Biomimicry Institute")
+(resourceType BM-Institute-UnifyingPatterns notes)
+(level BM-Institute-UnifyingPatterns beginner)
+(section BM-Institute-UnifyingPatterns BiomimicryOverview)
+(url BM-Institute-UnifyingPatterns "https://toolbox.biomimicry.org/core-concepts/natures-unifying-patterns/")
+(desc BM-Institute-UnifyingPatterns "An overview of the ten deep patterns found across all living systems, forming the conceptual foundation of biomimicry practice.")
+
+(isa BM-BarCohen-Biomimetics ReferenceWork)
+(title BM-BarCohen-Biomimetics "Biomimetics: Nature-Based Innovation (Routledge Handbook)")
+(author BM-BarCohen-Biomimetics "Yoseph Bar-Cohen (ed.)")
+(resourceType BM-BarCohen-Biomimetics book)
+(level BM-BarCohen-Biomimetics advanced)
+(section BM-BarCohen-Biomimetics BiomimicryOverview)
+(url BM-BarCohen-Biomimetics "https://www.routledge.com/Biomimetics-Nature-Based-Innovation/Bar-Cohen/p/book/9781439834763")
+(desc BM-BarCohen-Biomimetics "A comprehensive reference covering the full breadth of biomimetics -- from robotics and materials to medical devices and artificial intelligence.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: METHODOLOGY — The Biomimicry Design Process
+;; ════════════════════════════════════════════════════════════
+
+;; ── Design Frameworks ──
+
+(isa BM-38-DesignLensThinking ReferenceWork)
+(title BM-38-DesignLensThinking "DesignLens: Biomimicry Thinking")
+(author BM-38-DesignLensThinking "Biomimicry 3.8")
+(resourceType BM-38-DesignLensThinking notes)
+(level BM-38-DesignLensThinking intermediate)
+(section BM-38-DesignLensThinking BiomimicryMethodology)
+(url BM-38-DesignLensThinking "https://biomimicry.net/the-buzz/resources/designlens-biomimicry-thinking/")
+(desc BM-38-DesignLensThinking "The official DesignLens visual framework showing Biology-to-Design and Design-to-Biology pathways with the four-phase process.")
+
+(isa BM-38-DesignLensLifesPrinciples ReferenceWork)
+(title BM-38-DesignLensLifesPrinciples "DesignLens: Life's Principles")
+(author BM-38-DesignLensLifesPrinciples "Biomimicry 3.8")
+(resourceType BM-38-DesignLensLifesPrinciples notes)
+(level BM-38-DesignLensLifesPrinciples intermediate)
+(section BM-38-DesignLensLifesPrinciples BiomimicryMethodology)
+(url BM-38-DesignLensLifesPrinciples "https://biomimicry.net/the-buzz/resources/designlens-lifes-principles/")
+(desc BM-38-DesignLensLifesPrinciples "A visual diagram of the 27 strategies all life on Earth uses to create conditions conducive to life, serving as the evaluation benchmark.")
+
+(isa BM-Institute-DesignProcess ReferenceWork)
+(title BM-Institute-DesignProcess "The Biomimicry Design Process -- Biomimicry Toolbox")
+(author BM-Institute-DesignProcess "The Biomimicry Institute")
+(resourceType BM-Institute-DesignProcess notes)
+(level BM-Institute-DesignProcess beginner)
+(section BM-Institute-DesignProcess BiomimicryMethodology)
+(url BM-Institute-DesignProcess "https://toolbox.biomimicry.org/methods/process/")
+(desc BM-Institute-DesignProcess "A step-by-step walkthrough of the six-step Biomimicry Design Spiral with downloadable exercises and worksheets.")
+
+(isa BM-Nagel-DesignProcessFramework ReferenceWork)
+(title BM-Nagel-DesignProcessFramework "A Design Process Framework and Tools for Teaching and Practicing Biomimicry")
+(author BM-Nagel-DesignProcessFramework "Jacquelyn K. S. Nagel et al.")
+(resourceType BM-Nagel-DesignProcessFramework notes)
+(level BM-Nagel-DesignProcessFramework advanced)
+(section BM-Nagel-DesignProcessFramework BiomimicryMethodology)
+(url BM-Nagel-DesignProcessFramework "https://doi.org/10.3390/biomimetics9010050")
+(desc BM-Nagel-DesignProcessFramework "A peer-reviewed article presenting a pedagogical framework for integrating biomimicry into engineering design curricula.")
+
+;; ── Research Methods ──
+
+(isa BM-Institute-DiscoverStrategies ReferenceWork)
+(title BM-Institute-DiscoverStrategies "Discover Biological Strategies -- Biomimicry Toolbox")
+(author BM-Institute-DiscoverStrategies "The Biomimicry Institute")
+(resourceType BM-Institute-DiscoverStrategies notes)
+(level BM-Institute-DiscoverStrategies intermediate)
+(section BM-Institute-DiscoverStrategies BiomimicryMethodology)
+(url BM-Institute-DiscoverStrategies "https://toolbox.biomimicry.org/methods/discover/")
+(desc BM-Institute-DiscoverStrategies "Guidance on translating design functions into biological search terms and using databases like AskNature to find relevant strategies.")
+
+(isa BM-Goel-CompMethodsTools ReferenceWork)
+(title BM-Goel-CompMethodsTools "Biologically Inspired Design: Computational Methods and Tools")
+(author BM-Goel-CompMethodsTools "Ashok K. Goel et al. (eds.)")
+(resourceType BM-Goel-CompMethodsTools book)
+(level BM-Goel-CompMethodsTools advanced)
+(section BM-Goel-CompMethodsTools BiomimicryMethodology)
+(url BM-Goel-CompMethodsTools "https://link.springer.com/book/10.1007/978-1-4471-5248-4")
+(desc BM-Goel-CompMethodsTools "An edited volume covering computational approaches to biomimetic design, including the AskNature database and AI-driven biological analogy retrieval.")
+
+(isa BM-LearnBiomimicry-Frameworks ReferenceWork)
+(title BM-LearnBiomimicry-Frameworks "Biomimicry Design Frameworks for Nature-Inspired Innovation")
+(author BM-LearnBiomimicry-Frameworks "Learn Biomimicry")
+(resourceType BM-LearnBiomimicry-Frameworks notes)
+(level BM-LearnBiomimicry-Frameworks intermediate)
+(section BM-LearnBiomimicry-Frameworks BiomimicryMethodology)
+(url BM-LearnBiomimicry-Frameworks "https://www.learnbiomimicry.com/blog/biomimicry-design-frameworks")
+(desc BM-LearnBiomimicry-Frameworks "A comparative overview of the major biomimicry design frameworks, including the Design Spiral, BioTRIZ, and Dane and colleagues' four-box method.")
+
+;; ── Case Study Collections ──
+
+(isa BM-AskNature-Main ReferenceWork)
+(title BM-AskNature-Main "AskNature -- Innovation Inspired by Nature")
+(author BM-AskNature-Main "The Biomimicry Institute")
+(resourceType BM-AskNature-Main data)
+(level BM-AskNature-Main beginner)
+(section BM-AskNature-Main BiomimicryMethodology)
+(url BM-AskNature-Main "https://asknature.org/")
+(desc BM-AskNature-Main "The largest free database of biological strategies for sustainable innovation, with over 1,600 articles organized by function.")
+
+(isa BM-ChayaamorHeil-ArchReview ReferenceWork)
+(title BM-ChayaamorHeil-ArchReview "Biomimicry in Architecture: A Review of Definitions, Case Studies, and Design Methods")
+(author BM-ChayaamorHeil-ArchReview "Natasha Chayaamor-Heil et al.")
+(resourceType BM-ChayaamorHeil-ArchReview notes)
+(level BM-ChayaamorHeil-ArchReview advanced)
+(section BM-ChayaamorHeil-ArchReview BiomimicryMethodology)
+(url BM-ChayaamorHeil-ArchReview "https://doi.org/10.3390/biomimetics8010107")
+(desc BM-ChayaamorHeil-ArchReview "A systematic survey of biomimicry in architecture covering terminologies, classification systems, and methodological frameworks with extensive case studies.")
+
+(isa BM-38-PackagingToolkit ReferenceWork)
+(title BM-38-PackagingToolkit "Biomimicry Innovation Toolkit: Sustainable Packaging")
+(author BM-38-PackagingToolkit "Biomimicry 3.8")
+(resourceType BM-38-PackagingToolkit notes)
+(level BM-38-PackagingToolkit intermediate)
+(section BM-38-PackagingToolkit BiomimicryMethodology)
+(url BM-38-PackagingToolkit "https://biomimicry.net/the-buzz/resources/biomimicry-innovation-toolkit-sustainable-packaging/")
+(desc BM-38-PackagingToolkit "A worked example applying the biomimicry design process to sustainable packaging, demonstrating each phase from scoping to evaluation.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: ORGANISMS — Biology Fundamentals for Biomimics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Evolutionary Biology ──
+
+(isa BM-Dawkins-BlindWatchmaker ReferenceWork)
+(title BM-Dawkins-BlindWatchmaker "The Blind Watchmaker: Why the Evidence of Evolution Reveals a Universe Without Design")
+(author BM-Dawkins-BlindWatchmaker "Richard Dawkins")
+(resourceType BM-Dawkins-BlindWatchmaker book)
+(level BM-Dawkins-BlindWatchmaker beginner)
+(section BM-Dawkins-BlindWatchmaker BiomimicryOrganisms)
+(url BM-Dawkins-BlindWatchmaker "https://wwnorton.com/books/The-Blind-Watchmaker/")
+(desc BM-Dawkins-BlindWatchmaker "A classic introduction to evolutionary theory that explains how natural selection produces complex, functional biological designs without a designer.")
+
+(isa BM-Thompson-OnGrowthAndForm ReferenceWork)
+(title BM-Thompson-OnGrowthAndForm "On Growth and Form")
+(author BM-Thompson-OnGrowthAndForm "D'Arcy Wentworth Thompson")
+(resourceType BM-Thompson-OnGrowthAndForm book)
+(level BM-Thompson-OnGrowthAndForm advanced)
+(section BM-Thompson-OnGrowthAndForm BiomimicryOrganisms)
+(url BM-Thompson-OnGrowthAndForm "https://doi.org/10.1017/CBO9781107325852")
+(desc BM-Thompson-OnGrowthAndForm "The pioneering 1917 work arguing that physical forces and mathematical laws, alongside natural selection, shape biological form. A foundational text for biomimicry.")
+
+(isa BM-Dawkins-ExtendedPhenotype ReferenceWork)
+(title BM-Dawkins-ExtendedPhenotype "The Extended Phenotype: The Long Reach of the Gene")
+(author BM-Dawkins-ExtendedPhenotype "Richard Dawkins")
+(resourceType BM-Dawkins-ExtendedPhenotype book)
+(level BM-Dawkins-ExtendedPhenotype advanced)
+(section BM-Dawkins-ExtendedPhenotype BiomimicryOrganisms)
+(url BM-Dawkins-ExtendedPhenotype "https://global.oup.com/academic/product/the-extended-phenotype-9780198788911")
+(desc BM-Dawkins-ExtendedPhenotype "Dawkins expands the concept of the phenotype beyond the organism to include structures like beaver dams and termite mounds -- key precedents for biomimicry.")
+
+(isa BM-McGhee-ConvergentEvolution ReferenceWork)
+(title BM-McGhee-ConvergentEvolution "Convergent Evolution: Limited Forms Most Beautiful")
+(author BM-McGhee-ConvergentEvolution "George McGhee")
+(resourceType BM-McGhee-ConvergentEvolution book)
+(level BM-McGhee-ConvergentEvolution intermediate)
+(section BM-McGhee-ConvergentEvolution BiomimicryOrganisms)
+(url BM-McGhee-ConvergentEvolution "https://mitpress.mit.edu/9780262016421/convergent-evolution/")
+(desc BM-McGhee-ConvergentEvolution "An exploration of how unrelated species independently evolve similar solutions, demonstrating that nature's design space has reliable, repeatable patterns.")
+
+;; ── Functional Morphology ──
+
+(isa BM-Vogel-ComparativeBiomechanics ReferenceWork)
+(title BM-Vogel-ComparativeBiomechanics "Comparative Biomechanics: Life's Physical World (2nd Edition)")
+(author BM-Vogel-ComparativeBiomechanics "Steven Vogel")
+(resourceType BM-Vogel-ComparativeBiomechanics book)
+(level BM-Vogel-ComparativeBiomechanics intermediate)
+(section BM-Vogel-ComparativeBiomechanics BiomimicryOrganisms)
+(url BM-Vogel-ComparativeBiomechanics "https://press.princeton.edu/books/hardcover/9780691155661/comparative-biomechanics")
+(desc BM-Vogel-ComparativeBiomechanics "The definitive textbook on biological mechanics covering fluid dynamics, structural engineering, and material properties across the living world.")
+
+(isa BM-Vogel-CatsPawsCatapults ReferenceWork)
+(title BM-Vogel-CatsPawsCatapults "Cat's Paws and Catapults: Mechanical Worlds of Nature and People")
+(author BM-Vogel-CatsPawsCatapults "Steven Vogel")
+(resourceType BM-Vogel-CatsPawsCatapults book)
+(level BM-Vogel-CatsPawsCatapults beginner)
+(section BM-Vogel-CatsPawsCatapults BiomimicryOrganisms)
+(url BM-Vogel-CatsPawsCatapults "https://wwnorton.com/books/Cats-Paws-and-Catapults/")
+(desc BM-Vogel-CatsPawsCatapults "Vogel compares biological and human-engineered mechanical systems, revealing why nature and technology have diverged and what each can learn from the other.")
+
+(isa BM-Vincent-StructuralBiomaterials ReferenceWork)
+(title BM-Vincent-StructuralBiomaterials "Structural Biomaterials (3rd Edition)")
+(author BM-Vincent-StructuralBiomaterials "Julian F. V. Vincent")
+(resourceType BM-Vincent-StructuralBiomaterials book)
+(level BM-Vincent-StructuralBiomaterials advanced)
+(section BM-Vincent-StructuralBiomaterials BiomimicryOrganisms)
+(url BM-Vincent-StructuralBiomaterials "https://press.princeton.edu/books/paperback/9780691154008/structural-biomaterials")
+(desc BM-Vincent-StructuralBiomaterials "A molecular-to-macro analysis of biological structural materials -- silk, bone, wood, cuticle -- and what they teach about engineering better synthetics.")
+
+(isa BM-Vogel-LifesDevices ReferenceWork)
+(title BM-Vogel-LifesDevices "Life's Devices: The Physical World of Animals and Plants")
+(author BM-Vogel-LifesDevices "Steven Vogel")
+(resourceType BM-Vogel-LifesDevices book)
+(level BM-Vogel-LifesDevices intermediate)
+(section BM-Vogel-LifesDevices BiomimicryOrganisms)
+(url BM-Vogel-LifesDevices "https://press.princeton.edu/books/paperback/9780691024189/lifes-devices")
+(desc BM-Vogel-LifesDevices "An engaging introduction to biomechanics showing how organisms interact with the physical forces of gravity, drag, and surface tension.")
+
+;; ── Organism Databases & Field Guides ──
+
+(isa BM-AskNature-BioStrategies ReferenceWork)
+(title BM-AskNature-BioStrategies "AskNature -- Biological Strategies")
+(author BM-AskNature-BioStrategies "The Biomimicry Institute")
+(resourceType BM-AskNature-BioStrategies data)
+(level BM-AskNature-BioStrategies beginner)
+(section BM-AskNature-BioStrategies BiomimicryOrganisms)
+(url BM-AskNature-BioStrategies "https://asknature.org/biological-strategies/")
+(desc BM-AskNature-BioStrategies "Over 1,600 biological strategy articles organized by function -- the primary search tool for finding natural models relevant to a design challenge.")
+
+(isa BM-EOL-EncyclopediaOfLife ReferenceWork)
+(title BM-EOL-EncyclopediaOfLife "Encyclopedia of Life (EOL)")
+(author BM-EOL-EncyclopediaOfLife "Smithsonian / EOL Consortium")
+(resourceType BM-EOL-EncyclopediaOfLife data)
+(level BM-EOL-EncyclopediaOfLife beginner)
+(section BM-EOL-EncyclopediaOfLife BiomimicryOrganisms)
+(url BM-EOL-EncyclopediaOfLife "https://eol.org/")
+(desc BM-EOL-EncyclopediaOfLife "An open-access encyclopedia of species providing taxonomy, images, distribution maps, and ecological information for over 1.9 million species.")
+
+(isa BM-TreeOfLife-WebProject ReferenceWork)
+(title BM-TreeOfLife-WebProject "Tree of Life Web Project")
+(author BM-TreeOfLife-WebProject "University of Arizona")
+(resourceType BM-TreeOfLife-WebProject data)
+(level BM-TreeOfLife-WebProject intermediate)
+(section BM-TreeOfLife-WebProject BiomimicryOrganisms)
+(url BM-TreeOfLife-WebProject "http://tolweb.org/tree/")
+(desc BM-TreeOfLife-WebProject "An interactive phylogenetic tree providing information about the diversity and evolutionary relationships of all life on Earth.")
+
+(isa BM-iNaturalist-Organisms ReferenceWork)
+(title BM-iNaturalist-Organisms "iNaturalist")
+(author BM-iNaturalist-Organisms "California Academy of Sciences / National Geographic")
+(resourceType BM-iNaturalist-Organisms data)
+(level BM-iNaturalist-Organisms beginner)
+(section BM-iNaturalist-Organisms BiomimicryOrganisms)
+(url BM-iNaturalist-Organisms "https://www.inaturalist.org/")
+(desc BM-iNaturalist-Organisms "A citizen-science platform with millions of species observations; an invaluable field tool for biomimics studying organisms in their natural context.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: ECOSYSTEMS — Ecosystem-Level Biomimicry
+;; ════════════════════════════════════════════════════════════
+
+;; ── Ecosystem Ecology ──
+
+(isa BM-Meadows-ThinkingInSystems ReferenceWork)
+(title BM-Meadows-ThinkingInSystems "Thinking in Systems: A Primer")
+(author BM-Meadows-ThinkingInSystems "Donella H. Meadows")
+(resourceType BM-Meadows-ThinkingInSystems book)
+(level BM-Meadows-ThinkingInSystems beginner)
+(section BM-Meadows-ThinkingInSystems BiomimicryEcosystems)
+(url BM-Meadows-ThinkingInSystems "https://www.chelseagreen.com/product/thinking-in-systems/")
+(desc BM-Meadows-ThinkingInSystems "The essential introduction to systems thinking, explaining feedback loops, leverage points, and emergent behavior -- foundational concepts for ecosystem-level biomimicry.")
+
+(isa BM-Hawken-EcologyOfCommerce ReferenceWork)
+(title BM-Hawken-EcologyOfCommerce "The Ecology of Commerce: A Declaration of Sustainability")
+(author BM-Hawken-EcologyOfCommerce "Paul Hawken")
+(resourceType BM-Hawken-EcologyOfCommerce book)
+(level BM-Hawken-EcologyOfCommerce beginner)
+(section BM-Hawken-EcologyOfCommerce BiomimicryEcosystems)
+(url BM-Hawken-EcologyOfCommerce "https://www.harpercollins.com/products/the-ecology-of-commerce-revised-edition-paul-hawken")
+(desc BM-Hawken-EcologyOfCommerce "Hawken argues that business can model itself on ecosystems, where waste equals food and energy flows from the sun, laying groundwork for industrial ecology.")
+
+(isa BM-McDonough-CradleToCradle ReferenceWork)
+(title BM-McDonough-CradleToCradle "Cradle to Cradle: Remaking the Way We Make Things")
+(author BM-McDonough-CradleToCradle "William McDonough & Michael Braungart")
+(resourceType BM-McDonough-CradleToCradle book)
+(level BM-McDonough-CradleToCradle beginner)
+(section BM-McDonough-CradleToCradle BiomimicryEcosystems)
+(url BM-McDonough-CradleToCradle "https://mcdonough.com/cradle-to-cradle/")
+(desc BM-McDonough-CradleToCradle "A manifesto for designing products and systems that mimic nature's nutrient cycles, eliminating the concept of waste entirely.")
+
+(isa BM-Institute-SystemsView ReferenceWork)
+(title BM-Institute-SystemsView "The Systems View -- Biomimicry Toolbox")
+(author BM-Institute-SystemsView "The Biomimicry Institute")
+(resourceType BM-Institute-SystemsView notes)
+(level BM-Institute-SystemsView intermediate)
+(section BM-Institute-SystemsView BiomimicryEcosystems)
+(url BM-Institute-SystemsView "https://toolbox.biomimicry.org/core-concepts/systems/")
+(desc BM-Institute-SystemsView "An introduction to viewing design challenges through an ecosystem lens, with guidance on identifying systemic functions and relationships.")
+
+;; ── Symbiosis & Mutualism ──
+
+(isa BM-Wohlleben-HiddenLifeTrees ReferenceWork)
+(title BM-Wohlleben-HiddenLifeTrees "The Hidden Life of Trees: What They Feel, How They Communicate")
+(author BM-Wohlleben-HiddenLifeTrees "Peter Wohlleben")
+(resourceType BM-Wohlleben-HiddenLifeTrees book)
+(level BM-Wohlleben-HiddenLifeTrees beginner)
+(section BM-Wohlleben-HiddenLifeTrees BiomimicryEcosystems)
+(url BM-Wohlleben-HiddenLifeTrees "https://www.greystone books.com/products/the-hidden-life-of-trees")
+(desc BM-Wohlleben-HiddenLifeTrees "A forester reveals how trees communicate and share resources through mycorrhizal networks -- the 'wood wide web' -- demonstrating ecosystem-level cooperation.")
+
+(isa BM-Margulis-SymbioticPlanet ReferenceWork)
+(title BM-Margulis-SymbioticPlanet "The Symbiotic Planet: A New Look at Evolution")
+(author BM-Margulis-SymbioticPlanet "Lynn Margulis")
+(resourceType BM-Margulis-SymbioticPlanet book)
+(level BM-Margulis-SymbioticPlanet intermediate)
+(section BM-Margulis-SymbioticPlanet BiomimicryEcosystems)
+(url BM-Margulis-SymbioticPlanet "https://www.hachettebookgroup.com/titles/lynn-margulis/symbiotic-planet/9780465072729/")
+(desc BM-Margulis-SymbioticPlanet "Margulis presents symbiosis as a major driver of evolutionary innovation, arguing that cooperation is as fundamental as competition in shaping life.")
+
+(isa BM-Sheldrake-EntangledLife ReferenceWork)
+(title BM-Sheldrake-EntangledLife "Entangled Life: How Fungi Make Our Worlds, Change Our Minds & Shape Our Futures")
+(author BM-Sheldrake-EntangledLife "Merlin Sheldrake")
+(resourceType BM-Sheldrake-EntangledLife book)
+(level BM-Sheldrake-EntangledLife beginner)
+(section BM-Sheldrake-EntangledLife BiomimicryEcosystems)
+(url BM-Sheldrake-EntangledLife "https://www.penguinrandomhouse.com/books/612710/entangled-life-by-merlin-sheldrake/")
+(desc BM-Sheldrake-EntangledLife "An exploration of the fungal kingdom and its role in ecosystems, from mycorrhizal networks to decomposition -- rich with biomimicry inspiration.")
+
+(isa BM-Simard-TEDTreesTalk ReferenceWork)
+(title BM-Simard-TEDTreesTalk "Suzanne Simard: How Trees Talk to Each Other (TED Talk)")
+(author BM-Simard-TEDTreesTalk "Suzanne Simard")
+(resourceType BM-Simard-TEDTreesTalk video)
+(level BM-Simard-TEDTreesTalk beginner)
+(section BM-Simard-TEDTreesTalk BiomimicryEcosystems)
+(url BM-Simard-TEDTreesTalk "https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other")
+(desc BM-Simard-TEDTreesTalk "Forest ecologist Suzanne Simard explains her discovery of underground fungal networks connecting trees, with implications for resilient network design.")
+
+;; ── Resilience & Adaptation ──
+
+(isa BM-Walker-ResilienceThinking ReferenceWork)
+(title BM-Walker-ResilienceThinking "Resilience Thinking: Sustaining Ecosystems and People in a Changing World")
+(author BM-Walker-ResilienceThinking "Brian Walker & David Salt")
+(resourceType BM-Walker-ResilienceThinking book)
+(level BM-Walker-ResilienceThinking intermediate)
+(section BM-Walker-ResilienceThinking BiomimicryEcosystems)
+(url BM-Walker-ResilienceThinking "https://islandpress.org/books/resilience-thinking")
+(desc BM-Walker-ResilienceThinking "An accessible introduction to resilience science, explaining adaptive cycles, thresholds, and panarchy -- essential concepts for systems-level biomimicry.")
+
+(isa BM-Gunderson-Panarchy ReferenceWork)
+(title BM-Gunderson-Panarchy "Panarchy: Understanding Transformations in Human and Natural Systems")
+(author BM-Gunderson-Panarchy "Lance Gunderson & C. S. Holling (eds.)")
+(resourceType BM-Gunderson-Panarchy book)
+(level BM-Gunderson-Panarchy advanced)
+(section BM-Gunderson-Panarchy BiomimicryEcosystems)
+(url BM-Gunderson-Panarchy "https://islandpress.org/books/panarchy")
+(desc BM-Gunderson-Panarchy "The foundational text on panarchy theory, describing how nested adaptive cycles at different scales create resilient systems.")
+
+(isa BM-Berlow-TEDSimplifyingComplexity ReferenceWork)
+(title BM-Berlow-TEDSimplifyingComplexity "Eric Berlow: Simplifying Complexity (TED Talk)")
+(author BM-Berlow-TEDSimplifyingComplexity "Eric Berlow")
+(resourceType BM-Berlow-TEDSimplifyingComplexity video)
+(level BM-Berlow-TEDSimplifyingComplexity beginner)
+(section BM-Berlow-TEDSimplifyingComplexity BiomimicryEcosystems)
+(url BM-Berlow-TEDSimplifyingComplexity "https://www.ted.com/talks/eric_berlow_simplifying_complexity")
+(desc BM-Berlow-TEDSimplifyingComplexity "Ecologist Eric Berlow demonstrates how stepping back to see more of a complex system can actually make it simpler to understand and act upon.")
+
+(isa BM-Villanueva-UrbanBiomimetics ReferenceWork)
+(title BM-Villanueva-UrbanBiomimetics "Application of Biomimetics to Architectural and Urban Design: A Review across Scales")
+(author BM-Villanueva-UrbanBiomimetics "Maria Teresa Villanueva et al.")
+(resourceType BM-Villanueva-UrbanBiomimetics notes)
+(level BM-Villanueva-UrbanBiomimetics advanced)
+(section BM-Villanueva-UrbanBiomimetics BiomimicryEcosystems)
+(url BM-Villanueva-UrbanBiomimetics "https://doi.org/10.3390/su122399813")
+(desc BM-Villanueva-UrbanBiomimetics "A review of 107 papers examining how ecosystem-level principles of resilience and adaptation are applied in urban design and architecture.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: APPLICATIONS — Real-World Biomimicry
+;; ════════════════════════════════════════════════════════════
+
+;; ── Architecture & Built Environment ──
+
+(isa BM-Pawlyn-BiomimicryInArch ReferenceWork)
+(title BM-Pawlyn-BiomimicryInArch "Biomimicry in Architecture (3rd Edition)")
+(author BM-Pawlyn-BiomimicryInArch "Michael Pawlyn")
+(resourceType BM-Pawlyn-BiomimicryInArch book)
+(level BM-Pawlyn-BiomimicryInArch intermediate)
+(section BM-Pawlyn-BiomimicryInArch BiomimicryApplications)
+(url BM-Pawlyn-BiomimicryInArch "https://www.routledge.com/Biomimicry-in-Architecture/Pawlyn/p/book/9781915722683")
+(desc BM-Pawlyn-BiomimicryInArch "RIBA's best-selling international title covering structural efficiency, closed-loop systems, and energy strategies inspired by living organisms.")
+
+(isa BM-Pawlyn-TEDNaturesGenius ReferenceWork)
+(title BM-Pawlyn-TEDNaturesGenius "Using Nature's Genius in Architecture (TED Talk)")
+(author BM-Pawlyn-TEDNaturesGenius "Michael Pawlyn")
+(resourceType BM-Pawlyn-TEDNaturesGenius video)
+(level BM-Pawlyn-TEDNaturesGenius beginner)
+(section BM-Pawlyn-TEDNaturesGenius BiomimicryApplications)
+(url BM-Pawlyn-TEDNaturesGenius "https://www.ted.com/talks/michael_pawlyn_using_nature_s_genius_in_architecture")
+(desc BM-Pawlyn-TEDNaturesGenius "Architect Michael Pawlyn describes three habits of nature -- radical resource efficiency, closed loops, and solar energy -- that can transform architecture.")
+
+(isa BM-AskNature-EastgateCentre ReferenceWork)
+(title BM-AskNature-EastgateCentre "Passively Cooled Building Inspired by Termite Mounds (Eastgate Centre)")
+(author BM-AskNature-EastgateCentre "AskNature / Mick Pearce")
+(resourceType BM-AskNature-EastgateCentre notes)
+(level BM-AskNature-EastgateCentre beginner)
+(section BM-AskNature-EastgateCentre BiomimicryApplications)
+(url BM-AskNature-EastgateCentre "https://asknature.org/innovation/passively-cooled-building-inspired-by-termite-mounds/")
+(desc BM-AskNature-EastgateCentre "A case study of the Eastgate Centre in Harare, Zimbabwe, which uses 35% less energy than conventional buildings by emulating termite-mound ventilation.")
+
+(isa BM-Imani-ArchConstructionCivil ReferenceWork)
+(title BM-Imani-ArchConstructionCivil "Applications of Biomimicry in Architecture, Construction and Civil Engineering")
+(author BM-Imani-ArchConstructionCivil "Negin Imani et al.")
+(resourceType BM-Imani-ArchConstructionCivil notes)
+(level BM-Imani-ArchConstructionCivil intermediate)
+(section BM-Imani-ArchConstructionCivil BiomimicryApplications)
+(url BM-Imani-ArchConstructionCivil "https://doi.org/10.3390/biomimetics8010062")
+(desc BM-Imani-ArchConstructionCivil "A comprehensive review of biomimetic strategies in the built environment, covering sustainable materials, energy-efficient designs, and waste reduction.")
+
+;; ── Medicine & Healthcare ──
+
+(isa BM-GeckoAdhesive-Review ReferenceWork)
+(title BM-GeckoAdhesive-Review "Gecko-Inspired Controllable Adhesive: Structure, Fabrication, and Application")
+(author BM-GeckoAdhesive-Review "Various (PMC Review)")
+(resourceType BM-GeckoAdhesive-Review notes)
+(level BM-GeckoAdhesive-Review advanced)
+(section BM-GeckoAdhesive-Review BiomimicryApplications)
+(url BM-GeckoAdhesive-Review "https://doi.org/10.3390/biomimetics9030159")
+(desc BM-GeckoAdhesive-Review "A review of gecko-inspired adhesive technologies, from fundamental van der Waals mechanics to medical bandages that grip in wet environments.")
+
+(isa BM-MIT-GeckoBandage ReferenceWork)
+(title BM-MIT-GeckoBandage "MIT Creates Gecko-Inspired Bandage")
+(author BM-MIT-GeckoBandage "MIT News Office")
+(resourceType BM-MIT-GeckoBandage notes)
+(level BM-MIT-GeckoBandage intermediate)
+(section BM-MIT-GeckoBandage BiomimicryApplications)
+(url BM-MIT-GeckoBandage "https://news.mit.edu/2008/adhesive-0218")
+(desc BM-MIT-GeckoBandage "MIT engineers developed a waterproof, biodegradable surgical bandage inspired by gecko foot nanoscale structures that adheres to wet tissue.")
+
+(isa BM-Sharklet-InfectionPrevention ReferenceWork)
+(title BM-Sharklet-InfectionPrevention "Shark-Inspired Biomimicry and Infection Prevention Technology")
+(author BM-Sharklet-InfectionPrevention "Sharklet Technologies / TEDxMileHigh")
+(resourceType BM-Sharklet-InfectionPrevention video)
+(level BM-Sharklet-InfectionPrevention beginner)
+(section BM-Sharklet-InfectionPrevention BiomimicryApplications)
+(url BM-Sharklet-InfectionPrevention "https://www.youtube.com/watch?v=BB2Z_QaA2wg")
+(desc BM-Sharklet-InfectionPrevention "How shark skin's micro-texture inspired Sharklet, a surface pattern that reduces bacterial colonization by up to 97% without chemicals.")
+
+(isa BM-Liu-BioinspiredSurfaces ReferenceWork)
+(title BM-Liu-BioinspiredSurfaces "Bioinspired Surfaces and Applications (Nature Reviews Materials)")
+(author BM-Liu-BioinspiredSurfaces "Ke Liu et al.")
+(resourceType BM-Liu-BioinspiredSurfaces notes)
+(level BM-Liu-BioinspiredSurfaces advanced)
+(section BM-Liu-BioinspiredSurfaces BiomimicryApplications)
+(url BM-Liu-BioinspiredSurfaces "https://doi.org/10.1038/natrevmats.2016.36")
+(desc BM-Liu-BioinspiredSurfaces "A comprehensive review in Nature Reviews Materials covering lotus-effect self-cleaning, gecko adhesion, and other bio-inspired surface technologies.")
+
+;; ── Energy & Water Systems ──
+
+(isa BM-AskNature-WhaleTurbines ReferenceWork)
+(title BM-AskNature-WhaleTurbines "Tubercle Effect: Whale-Inspired Wind Turbines")
+(author BM-AskNature-WhaleTurbines "AskNature / WhalePower")
+(resourceType BM-AskNature-WhaleTurbines notes)
+(level BM-AskNature-WhaleTurbines intermediate)
+(section BM-AskNature-WhaleTurbines BiomimicryApplications)
+(url BM-AskNature-WhaleTurbines "https://asknature.org/innovation/wind-turbines-increase-efficiency/")
+(desc BM-AskNature-WhaleTurbines "Humpback whale flipper tubercles inspired wind turbine blade designs that increase efficiency and reduce stall, based on research by Frank Fish.")
+
+(isa BM-AskNature-FogCollection ReferenceWork)
+(title BM-AskNature-FogCollection "Fog Collection Inspired by Namib Desert Beetle")
+(author BM-AskNature-FogCollection "AskNature")
+(resourceType BM-AskNature-FogCollection notes)
+(level BM-AskNature-FogCollection beginner)
+(section BM-AskNature-FogCollection BiomimicryApplications)
+(url BM-AskNature-FogCollection "https://asknature.org/strategy/water-vapor-harvesting/")
+(desc BM-AskNature-FogCollection "The Namib Desert beetle's hydrophilic bumps and hydrophobic troughs inspire fog-harvesting surfaces for water collection in arid regions.")
+
+(isa BM-SaharaForestProject ReferenceWork)
+(title BM-SaharaForestProject "Sahara Forest Project")
+(author BM-SaharaForestProject "Sahara Forest Project Foundation")
+(resourceType BM-SaharaForestProject notes)
+(level BM-SaharaForestProject intermediate)
+(section BM-SaharaForestProject BiomimicryApplications)
+(url BM-SaharaForestProject "https://www.saharaforestproject.com/")
+(desc BM-SaharaForestProject "A biomimicry-driven initiative combining concentrated solar power and seawater greenhouses to create sustainable energy and agriculture in desert environments.")
+
+(isa BM-RenewableEnergy-Review ReferenceWork)
+(title BM-RenewableEnergy-Review "Biomimicry and Renewable Energy: Nature-Inspired Solutions")
+(author BM-RenewableEnergy-Review "Various Authors")
+(resourceType BM-RenewableEnergy-Review notes)
+(level BM-RenewableEnergy-Review intermediate)
+(section BM-RenewableEnergy-Review BiomimicryApplications)
+(url BM-RenewableEnergy-Review "https://doi.org/10.3390/en15030935")
+(desc BM-RenewableEnergy-Review "A review of bio-inspired approaches to renewable energy including artificial photosynthesis, bio-inspired solar cells, and nature-inspired turbine designs.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: EDUCATION — Teaching and Learning Biomimicry
+;; ════════════════════════════════════════════════════════════
+
+;; ── University Programs & Courses ──
+
+(isa BM-ASU-MSBiomimicry ReferenceWork)
+(title BM-ASU-MSBiomimicry "Master of Science in Biomimicry -- Arizona State University (Online)")
+(author BM-ASU-MSBiomimicry "ASU College of Global Futures")
+(resourceType BM-ASU-MSBiomimicry course)
+(level BM-ASU-MSBiomimicry advanced)
+(section BM-ASU-MSBiomimicry BiomimicryEducation)
+(url BM-ASU-MSBiomimicry "https://asuonline.asu.edu/online-degree-programs/graduate/master-science-biomimicry/")
+(desc BM-ASU-MSBiomimicry "The world's only M.S. in Biomimicry, delivered fully online in partnership with Biomimicry 3.8. A two-year program for working professionals.")
+
+(isa BM-ASU-GradCertificate ReferenceWork)
+(title BM-ASU-GradCertificate "Graduate Certificate in Biomimicry -- Arizona State University")
+(author BM-ASU-GradCertificate "ASU Biomimicry Center")
+(resourceType BM-ASU-GradCertificate course)
+(level BM-ASU-GradCertificate intermediate)
+(section BM-ASU-GradCertificate BiomimicryEducation)
+(url BM-ASU-GradCertificate "https://globalfutures.asu.edu/biomimicry-center/asu-online-certificate-program/")
+(desc BM-ASU-GradCertificate "A shorter ASU credential covering biomimicry fundamentals, design methodology, and Life's Principles for professionals seeking targeted training.")
+
+(isa BM-Imperial-CreativeThinkingAI ReferenceWork)
+(title BM-Imperial-CreativeThinkingAI "Advanced Creative Thinking and AI: Tools for Success (Biomimicry Module)")
+(author BM-Imperial-CreativeThinkingAI "Imperial College London via Coursera")
+(resourceType BM-Imperial-CreativeThinkingAI course)
+(level BM-Imperial-CreativeThinkingAI intermediate)
+(section BM-Imperial-CreativeThinkingAI BiomimicryEducation)
+(url BM-Imperial-CreativeThinkingAI "https://www.coursera.org/learn/advanced-creative-thinking")
+(desc BM-Imperial-CreativeThinkingAI "A Coursera course from Imperial College London featuring a dedicated week exploring biomimicry principles and case studies.")
+
+(isa BM-Institute-DiscoverBiology ReferenceWork)
+(title BM-Institute-DiscoverBiology "Discover Biology on Coursera -- Biomimicry Institute Recommendation")
+(author BM-Institute-DiscoverBiology "The Biomimicry Institute")
+(resourceType BM-Institute-DiscoverBiology course)
+(level BM-Institute-DiscoverBiology beginner)
+(section BM-Institute-DiscoverBiology BiomimicryEducation)
+(url BM-Institute-DiscoverBiology "https://biomimicry.org/discover-biology-on-coursera/")
+(desc BM-Institute-DiscoverBiology "The Biomimicry Institute's curated list of Coursera biology courses recommended as prerequisites for biomimicry practice.")
+
+;; ── Professional Training ──
+
+(isa BM-38-ProfessionalCert ReferenceWork)
+(title BM-38-ProfessionalCert "Biomimicry Professional Certification Program")
+(author BM-38-ProfessionalCert "Biomimicry 3.8 / ASU")
+(resourceType BM-38-ProfessionalCert course)
+(level BM-38-ProfessionalCert advanced)
+(section BM-38-ProfessionalCert BiomimicryEducation)
+(url BM-38-ProfessionalCert "https://biomimicry.net/what-we-do/professional-training/b-professional-certification/")
+(desc BM-38-ProfessionalCert "Combines ASU online coursework with in-person immersion workshops led by Dayna Baumeister, earning the Certified Biomimicry Professional designation.")
+
+(isa BM-38-SpecialistCert ReferenceWork)
+(title BM-38-SpecialistCert "Biomimicry Specialist Certification")
+(author BM-38-SpecialistCert "Biomimicry 3.8 / ASU")
+(resourceType BM-38-SpecialistCert course)
+(level BM-38-SpecialistCert intermediate)
+(section BM-38-SpecialistCert BiomimicryEducation)
+(url BM-38-SpecialistCert "https://biomimicry.net/what-we-do/professional-training/b-professional-certification/")
+(desc BM-38-SpecialistCert "A certification pathway combining online study with immersive field workshops, designed for professionals integrating biomimicry into their existing practice.")
+
+(isa BM-LearnBiomimicry-ShortCourses ReferenceWork)
+(title BM-LearnBiomimicry-ShortCourses "Learn Biomimicry -- Short Courses")
+(author BM-LearnBiomimicry-ShortCourses "Learn Biomimicry")
+(resourceType BM-LearnBiomimicry-ShortCourses course)
+(level BM-LearnBiomimicry-ShortCourses beginner)
+(section BM-LearnBiomimicry-ShortCourses BiomimicryEducation)
+(url BM-LearnBiomimicry-ShortCourses "https://www.learnbiomimicry.com/short-courses")
+(desc BM-LearnBiomimicry-ShortCourses "Self-paced online short courses introducing biomimicry concepts, design methods, and Life's Principles for beginners and professionals.")
+
+(isa BM-LearnBiomimicry-TopCourses ReferenceWork)
+(title BM-LearnBiomimicry-TopCourses "The Top Biomimicry Courses and Certificates of 2025")
+(author BM-LearnBiomimicry-TopCourses "Learn Biomimicry")
+(resourceType BM-LearnBiomimicry-TopCourses notes)
+(level BM-LearnBiomimicry-TopCourses beginner)
+(section BM-LearnBiomimicry-TopCourses BiomimicryEducation)
+(url BM-LearnBiomimicry-TopCourses "https://www.learnbiomimicry.com/blog/top-biomimicry-courses")
+(desc BM-LearnBiomimicry-TopCourses "A comprehensive comparison of all available biomimicry courses and certificates, helping learners choose the right path.")
+
+;; ── K-12 & Public Engagement ──
+
+(isa BM-Institute-YouthDesignChallenge ReferenceWork)
+(title BM-Institute-YouthDesignChallenge "Biomimicry Youth Design Challenge")
+(author BM-Institute-YouthDesignChallenge "The Biomimicry Institute")
+(resourceType BM-Institute-YouthDesignChallenge course)
+(level BM-Institute-YouthDesignChallenge beginner)
+(section BM-Institute-YouthDesignChallenge BiomimicryEducation)
+(url BM-Institute-YouthDesignChallenge "https://www.youthchallenge.biomimicry.org/")
+(desc BM-Institute-YouthDesignChallenge "A free, project-based learning challenge for grades 6-12 aligned with NGSS standards, asking students to design bio-inspired solutions to real-world problems.")
+
+(isa BM-Institute-YouthLegacyCurriculum ReferenceWork)
+(title BM-Institute-YouthLegacyCurriculum "Youth Design Challenge -- Full Legacy Curriculum")
+(author BM-Institute-YouthLegacyCurriculum "The Biomimicry Institute")
+(resourceType BM-Institute-YouthLegacyCurriculum notes)
+(level BM-Institute-YouthLegacyCurriculum beginner)
+(section BM-Institute-YouthLegacyCurriculum BiomimicryEducation)
+(url BM-Institute-YouthLegacyCurriculum "https://www.youthchallenge.biomimicry.org/challenge-details")
+(desc BM-Institute-YouthLegacyCurriculum "Downloadable curriculum materials for educators, covering the biomimicry design process from problem identification to prototype evaluation.")
+
+(isa BM-TED-BiomimicryTopic ReferenceWork)
+(title BM-TED-BiomimicryTopic "Biomimicry -- Ideas Worth Spreading (TED Topic Page)")
+(author BM-TED-BiomimicryTopic "TED")
+(resourceType BM-TED-BiomimicryTopic video)
+(level BM-TED-BiomimicryTopic beginner)
+(section BM-TED-BiomimicryTopic BiomimicryEducation)
+(url BM-TED-BiomimicryTopic "https://www.ted.com/topics/biomimicry")
+(desc BM-TED-BiomimicryTopic "TED's curated collection of biomimicry talks spanning architecture, materials, robotics, and sustainability -- ideal for classroom use.")
+
+(isa BM-iNaturalist-CitizenScience ReferenceWork)
+(title BM-iNaturalist-CitizenScience "iNaturalist -- Citizen Science for Biomimics")
+(author BM-iNaturalist-CitizenScience "California Academy of Sciences / National Geographic")
+(resourceType BM-iNaturalist-CitizenScience data)
+(level BM-iNaturalist-CitizenScience beginner)
+(section BM-iNaturalist-CitizenScience BiomimicryEducation)
+(url BM-iNaturalist-CitizenScience "https://www.inaturalist.org/")
+(desc BM-iNaturalist-CitizenScience "A citizen-science platform where students and the public can observe, identify, and record species -- building the biological literacy that biomimicry demands.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: TOOLS — Digital Tools, Databases & Organizations
+;; ════════════════════════════════════════════════════════════
+
+;; ── Databases & Platforms ──
+
+(isa BM-AskNature-Database ReferenceWork)
+(title BM-AskNature-Database "AskNature")
+(author BM-AskNature-Database "The Biomimicry Institute")
+(resourceType BM-AskNature-Database data)
+(level BM-AskNature-Database beginner)
+(section BM-AskNature-Database BiomimicryTools)
+(url BM-AskNature-Database "https://asknature.org/")
+(desc BM-AskNature-Database "The world's largest free, open-source database of biological strategies organized by function, with over 1,600 articles and bio-inspired innovation case studies.")
+
+(isa BM-Institute-DesignToolbox ReferenceWork)
+(title BM-Institute-DesignToolbox "Biomimicry Design Toolbox")
+(author BM-Institute-DesignToolbox "The Biomimicry Institute")
+(resourceType BM-Institute-DesignToolbox data)
+(level BM-Institute-DesignToolbox intermediate)
+(section BM-Institute-DesignToolbox BiomimicryTools)
+(url BM-Institute-DesignToolbox "https://toolbox.biomimicry.org/")
+(desc BM-Institute-DesignToolbox "A comprehensive guide to applying biomimicry with downloadable exercises, worksheets, and a step-by-step design process.")
+
+(isa BM-GloBI-BioticInteractions ReferenceWork)
+(title BM-GloBI-BioticInteractions "Global Biotic Interactions (GloBI)")
+(author BM-GloBI-BioticInteractions "Jorrit Poelen et al.")
+(resourceType BM-GloBI-BioticInteractions data)
+(level BM-GloBI-BioticInteractions advanced)
+(section BM-GloBI-BioticInteractions BiomimicryTools)
+(url BM-GloBI-BioticInteractions "https://www.globalbioticinteractions.org/")
+(desc BM-GloBI-BioticInteractions "An open dataset of species interaction records -- who eats whom, who pollinates whom -- providing ecosystem-level data for biomimicry research.")
+
+(isa BM-GBIF-Biodiversity ReferenceWork)
+(title BM-GBIF-Biodiversity "GBIF -- Global Biodiversity Information Facility")
+(author BM-GBIF-Biodiversity "GBIF Secretariat")
+(resourceType BM-GBIF-Biodiversity data)
+(level BM-GBIF-Biodiversity intermediate)
+(section BM-GBIF-Biodiversity BiomimicryTools)
+(url BM-GBIF-Biodiversity "https://www.gbif.org/")
+(desc BM-GBIF-Biodiversity "An international open-data infrastructure providing access to over 2 billion species occurrence records from around the world.")
+
+;; ── Organizations & Networks ──
+
+(isa BM-Institute-Org ReferenceWork)
+(title BM-Institute-Org "The Biomimicry Institute")
+(author BM-Institute-Org "Biomimicry Institute")
+(resourceType BM-Institute-Org notes)
+(level BM-Institute-Org beginner)
+(section BM-Institute-Org BiomimicryTools)
+(url BM-Institute-Org "https://biomimicry.org/")
+(desc BM-Institute-Org "The leading 501(c)(3) nonprofit advancing biomimicry through AskNature, the Youth Design Challenge, the Global Design Challenge, and public education.")
+
+(isa BM-38-Org ReferenceWork)
+(title BM-38-Org "Biomimicry 3.8")
+(author BM-38-Org "Biomimicry 3.8")
+(resourceType BM-38-Org notes)
+(level BM-38-Org intermediate)
+(section BM-38-Org BiomimicryTools)
+(url BM-38-Org "https://biomimicry.net/")
+(desc BM-38-Org "The world's leading biomimicry consultancy, co-founded by Janine Benyus and Dayna Baumeister, offering professional training and corporate consulting.")
+
+(isa BM-ASU-BiomimicryCenter ReferenceWork)
+(title BM-ASU-BiomimicryCenter "The Biomimicry Center at Arizona State University")
+(author BM-ASU-BiomimicryCenter "ASU College of Global Futures")
+(resourceType BM-ASU-BiomimicryCenter notes)
+(level BM-ASU-BiomimicryCenter intermediate)
+(section BM-ASU-BiomimicryCenter BiomimicryTools)
+(url BM-ASU-BiomimicryCenter "https://globalfutures.asu.edu/biomimicry-center/")
+(desc BM-ASU-BiomimicryCenter "ASU's academic center housing the M.S. program, research initiatives, and partnerships bridging biology and design.")
+
+(isa BM-ExplorationArchitecture ReferenceWork)
+(title BM-ExplorationArchitecture "Exploration Architecture (Michael Pawlyn)")
+(author BM-ExplorationArchitecture "Exploration Architecture Ltd.")
+(resourceType BM-ExplorationArchitecture notes)
+(level BM-ExplorationArchitecture intermediate)
+(section BM-ExplorationArchitecture BiomimicryTools)
+(url BM-ExplorationArchitecture "https://www.exploration-architecture.com/")
+(desc BM-ExplorationArchitecture "Michael Pawlyn's architecture practice specializing in biomimicry, responsible for the Sahara Forest Project and other landmark bio-inspired designs.")
+
+;; ── Software & Simulation ──
+
+(isa BM-MIT-BiomimeticRoboticsLab ReferenceWork)
+(title BM-MIT-BiomimeticRoboticsLab "MIT Biomimetic Robotics Lab -- GitHub Repositories")
+(author BM-MIT-BiomimeticRoboticsLab "MIT Biomimetic Robotics Lab")
+(resourceType BM-MIT-BiomimeticRoboticsLab code)
+(level BM-MIT-BiomimeticRoboticsLab advanced)
+(section BM-MIT-BiomimeticRoboticsLab BiomimicryTools)
+(url BM-MIT-BiomimeticRoboticsLab "https://github.com/mit-biomimetics")
+(desc BM-MIT-BiomimeticRoboticsLab "Open-source repositories from MIT's biomimetic robotics lab, including controllers for legged locomotion inspired by animal movement.")
+
+(isa BM-AskNature-DesignAssistant ReferenceWork)
+(title BM-AskNature-DesignAssistant "AskNature Biomimicry Design Assistant (Open-Source)")
+(author BM-AskNature-DesignAssistant "mjdyibrahim")
+(resourceType BM-AskNature-DesignAssistant code)
+(level BM-AskNature-DesignAssistant intermediate)
+(section BM-AskNature-DesignAssistant BiomimicryTools)
+(url BM-AskNature-DesignAssistant "https://github.com/mjdyibrahim/askNature")
+(desc BM-AskNature-DesignAssistant "An open-source biomimicry design assistant built on the AskNature dataset, using AI to help users find biological strategies for design challenges.")
+
+(isa BM-OpenFOAM-CFD ReferenceWork)
+(title BM-OpenFOAM-CFD "OpenFOAM -- Computational Fluid Dynamics")
+(author BM-OpenFOAM-CFD "OpenFOAM Foundation")
+(resourceType BM-OpenFOAM-CFD code)
+(level BM-OpenFOAM-CFD advanced)
+(section BM-OpenFOAM-CFD BiomimicryTools)
+(url BM-OpenFOAM-CFD "https://www.openfoam.com/")
+(desc BM-OpenFOAM-CFD "The leading open-source CFD toolkit used for simulating bio-inspired fluid dynamics -- from fish locomotion to ventilation systems modeled on termite mounds.")
+
+(isa BM-GitHub-BiomimeticsTopic ReferenceWork)
+(title BM-GitHub-BiomimeticsTopic "Biomimetics on GitHub Topics")
+(author BM-GitHub-BiomimeticsTopic "GitHub Community")
+(resourceType BM-GitHub-BiomimeticsTopic code)
+(level BM-GitHub-BiomimeticsTopic intermediate)
+(section BM-GitHub-BiomimeticsTopic BiomimicryTools)
+(url BM-GitHub-BiomimeticsTopic "https://github.com/topics/biomimetics")
+(desc BM-GitHub-BiomimeticsTopic "A curated collection of GitHub repositories tagged with biomimetics, spanning evolutionary computation, robotics, and 3D printing applications.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BiomimicryReference 82)
+(totalSections BiomimicryReference 7)
+(comment BiomimicryReference
+  "7 sections: Overview (12), Methodology (10), Organisms (12),
+   Ecosystems (12), Applications (12), Education (12), Tools (12).
+   Total: 82 resources.")

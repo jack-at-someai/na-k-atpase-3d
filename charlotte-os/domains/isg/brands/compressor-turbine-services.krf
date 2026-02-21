@@ -1,0 +1,52 @@
+;;; ================================================================
+;;; ISG BRAND / COMPRESSOR & TURBINE SERVICES (CTS)
+;;; Rotating equipment repair — Houston TX
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa CompressorTurbineServices ISGBrand)
+(hasAttribute CompressorTurbineServices ::LABEL "Compressor & Turbine Services")
+(hasAttribute CompressorTurbineServices ::ABBREVIATION "CTS")
+(hasAttribute CompressorTurbineServices ::FOUNDED 2005)
+(hasAttribute CompressorTurbineServices ::VERTICAL "Compressor")
+(hasAttribute CompressorTurbineServices ::HEADCOUNT "11-50")
+(hasAttribute CompressorTurbineServices ::WEBSITE "compressorandturbineservices.com")
+(hasAttribute CompressorTurbineServices ::FACILITY "901 Old Genoa Red Bluff Rd, Houston, TX 77034")
+(hasAttribute CompressorTurbineServices ::SPECIALTIES "Steam turbines, compressors, pumps, blowers, gearboxes, balancing")
+(MEMBER_OF CompressorTurbineServices ISGCompressorGroup)
+(locatedAt CompressorTurbineServices Houston-TX)
+
+;; Personnel
+
+(isa MarcHickham Person)
+(hasAttribute MarcHickham ::LABEL "Marc Hickham")
+(hasAttribute MarcHickham ::ROLE "President & Co-Founder")
+(hasAttribute MarcHickham ::EDUCATION "BBA, Sam Houston State University")
+(hasAttribute MarcHickham ::CAREER "TurboCare (Marketing Manager) → Co-founded CTS 2005")
+(hasAttribute MarcHickham ::FAMILY "Hickham family — deep roots in turbomachinery since 1972")
+(LEADS MarcHickham CompressorTurbineServices)
+(MEMBER_OF MarcHickham CompressorTurbineServices)
+
+(isa JimGreene Person)
+(hasAttribute JimGreene ::LABEL "Jim Greene")
+(hasAttribute JimGreene ::ROLE "Co-Founder")
+(hasAttribute JimGreene ::EXPERTISE "20 years rotating equipment repair, 200+ steam turbines rebuilt/year")
+(MEMBER_OF JimGreene CompressorTurbineServices)
+
+(isa StevenHickham Person)
+(hasAttribute StevenHickham ::LABEL "Steven Hickham")
+(hasAttribute StevenHickham ::ROLE "Machine Shop Manager")
+(hasAttribute StevenHickham ::CAREER "Owner, Atlantic Machine and Repair → CTS")
+(MEMBER_OF StevenHickham CompressorTurbineServices)
+
+(isa SteveTownsend Person)
+(hasAttribute SteveTownsend ::LABEL "Steve Townsend")
+(hasAttribute SteveTownsend ::ROLE "Supervisor, Operations")
+(hasAttribute SteveTownsend ::EDUCATION "Alvin Community College")
+(MEMBER_OF SteveTownsend CompressorTurbineServices)
+
+(isa TomMcGee Person)
+(hasAttribute TomMcGee ::LABEL "Tom McGee")
+(hasAttribute TomMcGee ::ROLE "Outside Sales Engineer")
+(MEMBER_OF TomMcGee CompressorTurbineServices)

@@ -429,3 +429,634 @@
 
 ;; Default color scheme for unknown knowledge types
 (defaultVisualizationColor "#888888")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 8: CHART TYPE HIERARCHY
+;;; Charlotte Charts v3.3 — 34 chart types, 0 dependencies
+;;; ────────────────────────────────────────────────────────────────
+
+(isa ChartType Collection)
+(genls ChartType NODE)
+(comment ChartType "A 2D canvas chart in Charlotte's charting library. 34 types across 8 categories, zero external dependencies.")
+
+(isa TimeSeriesChart ChartType)
+(comment TimeSeriesChart "Charts for temporal trends, decomposition, and cumulative views.")
+
+(isa ComparisonChart ChartType)
+(comment ComparisonChart "Charts for ranking, profiling, and before/after comparison.")
+
+(isa DistributionChart ChartType)
+(comment DistributionChart "Charts for statistical distribution: quartiles, density, and spread.")
+
+(isa FinancialChart ChartType)
+(comment FinancialChart "Charts for OHLC, technical analysis, and financial time series.")
+
+(isa FlowCompositionChart ChartType)
+(comment FlowCompositionChart "Charts for flow, hierarchy, and proportional composition.")
+
+(isa ActivityChart ChartType)
+(comment ActivityChart "Charts for engagement patterns, heatmaps, and temporal activity streams.")
+
+(isa NetworkTerritoryChart ChartType)
+(comment NetworkTerritoryChart "Charts for spatial, relational, and goal-tracking data.")
+
+(isa AdvancedAnalyticsChart ChartType)
+(comment AdvancedAnalyticsChart "Charts for multi-band compression, correlation, and signal quality.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 9: CHART TYPE INSTANCES
+;;; All 34 chart types from the Charlotte Charts showcase
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── Time Series & Decomposition (8) ──
+
+(isa LineChart TimeSeriesChart)
+(comment LineChart "Multi-series line with Catmull-Rom spline interpolation. Core temporal visualization for trends and comparisons across time.")
+
+(isa BarChart TimeSeriesChart)
+(comment BarChart "Vertical, horizontal, grouped, and stacked variants. Categorical comparison with configurable bar radius and gap ratios.")
+
+(isa AreaChart TimeSeriesChart)
+(comment AreaChart "Filled region beneath a line. Emphasizes volume and magnitude over time with gradient fills.")
+
+(isa StackedAreaChart TimeSeriesChart)
+(comment StackedAreaChart "Multiple series stacked vertically to show composition over time. Total height encodes cumulative value.")
+
+(isa SparklineChart TimeSeriesChart)
+(comment SparklineChart "Compact inline trend for stat cards and table cells. Minimal chrome, maximum information density.")
+
+(isa GaugeChart TimeSeriesChart)
+(comment GaugeChart "Circular arc progress indicator. Single-value visualization against a target or range.")
+
+(isa WaterfallChart TimeSeriesChart)
+(comment WaterfallChart "Sequential additive/subtractive bars showing how initial value decomposes into final. Revenue-to-profit breakdowns.")
+
+(isa DonutChart TimeSeriesChart)
+(comment DonutChart "Ring chart with configurable inner radius. Pie when innerRadius=0. Segment gaps, percentage labels, center widgets.")
+
+;; ── Rankings & Comparisons (6) ──
+
+(isa BumpChart ComparisonChart)
+(comment BumpChart "Rank progression over time. Lines connect rank positions across periods, revealing competitive dynamics.")
+
+(isa SlopeChart ComparisonChart)
+(comment SlopeChart "Two-point comparison showing before/after value shift. Minimal encoding for directional change.")
+
+(isa RadarChart ComparisonChart)
+(comment RadarChart "Multi-axis polygon profile on radial grid. Compares entities across 6+ dimensions simultaneously.")
+
+(isa ParallelCoordinatesChart ComparisonChart)
+(comment ParallelCoordinatesChart "Multi-dimensional data with vertical parallel axes. Cross-axis line patterns reveal clusters and outliers.")
+
+(isa LollipopChart ComparisonChart)
+(comment LollipopChart "Dot-and-line combination. Cleaner than bar charts for sparse categorical data with precise value reading.")
+
+(isa DumbbellChart ComparisonChart)
+(comment DumbbellChart "Range between two points per category. Gap encoding for before/after, min/max, or target/actual.")
+
+;; ── Distribution & Statistical (4) ──
+
+(isa BoxPlotChart DistributionChart)
+(comment BoxPlotChart "Five-number summary: min, Q1, median, Q3, max with outlier dots. Quartile structure at a glance.")
+
+(isa ViolinPlotChart DistributionChart)
+(comment ViolinPlotChart "Kernel density estimation rendered as symmetric shape. Distribution shape visible where box plots show only quartiles.")
+
+(isa HistogramChart DistributionChart)
+(comment HistogramChart "Binned frequency distribution with optional KDE overlay. Per-group variants for multi-population comparison.")
+
+(isa ScatterPlotChart DistributionChart)
+(comment ScatterPlotChart "Individual points in 2D space. Optional bubble sizing for third dimension. Correlation and clustering.")
+
+;; ── Financial & Technical (2) ──
+
+(isa CandlestickChart FinancialChart)
+(comment CandlestickChart "OHLC with wicks and colored bodies. Green/red encoding for gain/loss. Standard financial time series.")
+
+(isa BollingerBandsChart FinancialChart)
+(comment BollingerBandsChart "Moving average with confidence envelope at plus/minus two sigma. Volatility and trend strength indicator.")
+
+;; ── Flow & Composition (4) ──
+
+(isa SankeyDiagram FlowCompositionChart)
+(comment SankeyDiagram "Node-to-node flow with proportional link width. Source to destination through intermediate stages.")
+
+(isa FunnelChart FlowCompositionChart)
+(comment FunnelChart "Pipeline narrowing through sequential stages. Conversion rate from wide top to narrow bottom.")
+
+(isa MarimekkoChart FlowCompositionChart)
+(comment MarimekkoChart "Two-dimensional composition: width encodes one variable, height another. Market share by region and segment.")
+
+(isa TreemapChart FlowCompositionChart)
+(comment TreemapChart "Proportional rectangular space allocation using squarified layout. Hierarchical part-of-whole with drill-down.")
+
+;; ── Activity & Engagement (2) ──
+
+(isa ContributionHeatmap ActivityChart)
+(comment ContributionHeatmap "52-week by 7-day grid with intensity coloring. GitHub-style activity calendar with cell hover tooltips.")
+
+(isa StreamChart ActivityChart)
+(comment StreamChart "Stacked area flow centered on baseline. Organic channel mix over time with smooth category transitions.")
+
+;; ── Network & Territory (6) ──
+
+(isa NetworkGraphChart NetworkTerritoryChart)
+(comment NetworkGraphChart "Force-directed node graph with weighted edges and cluster grouping. Drag, zoom, collision detection.")
+
+(isa ChoroplethMap NetworkTerritoryChart)
+(comment ChoroplethMap "Geographic region shading by data intensity. State/county/country boundaries with sequential color scales.")
+
+(isa TimelineChart NetworkTerritoryChart)
+(comment TimelineChart "Gantt-style horizontal bars for project phases. Status indicators, dependencies, milestone markers.")
+
+(isa RingChart NetworkTerritoryChart)
+(comment RingChart "Concentric progress rings for multi-metric goals. Each ring represents independent progress toward a target.")
+
+(isa ProgressChart NetworkTerritoryChart)
+(comment ProgressChart "Linear progress bars with status coloring. Multiple items compared side-by-side against targets.")
+
+(isa BulletChart NetworkTerritoryChart)
+(comment BulletChart "Actual vs target with qualitative range bands. Stephen Few's design for compact KPI dashboards.")
+
+;; ── Advanced Analytics (2) ──
+
+(isa HorizonChart AdvancedAnalyticsChart)
+(comment HorizonChart "Multi-band magnitude compression. 4 color bands fold large value ranges into compact vertical space. 10+ metrics in the height of one line chart.")
+
+(isa CorrelationMatrixChart AdvancedAnalyticsChart)
+(comment CorrelationMatrixChart "Pearson r between signal pairs as color-coded grid. Symmetric matrix with diagonal identity.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 10: CHART DATA SHAPES
+;;; Data patterns that determine chart selection
+;;; ────────────────────────────────────────────────────────────────
+
+(isa CategoricalData DataShape)
+(comment CategoricalData "Named categories with numeric values. Bar, lollipop, donut charts.")
+
+(isa TimeSeriesData DataShape)
+(comment TimeSeriesData "Timestamped numeric values. Line, area, sparkline, candlestick charts.")
+
+(isa RankedData DataShape)
+(comment RankedData "Ordinal position across periods. Bump and slope charts.")
+
+(isa MultiDimensionalData DataShape)
+(comment MultiDimensionalData "Multiple numeric dimensions per entity. Radar, parallel coordinates.")
+
+(isa StatisticalData DataShape)
+(comment StatisticalData "Raw observations requiring distribution analysis. Box plot, violin, histogram.")
+
+(isa FlowData DataShape)
+(comment FlowData "Source-to-destination records with magnitude. Sankey, funnel charts.")
+
+(isa HierarchicalData DataShape)
+(comment HierarchicalData "Nested parent-child records with values. Treemap, marimekko charts.")
+
+(isa OHLCData DataShape)
+(comment OHLCData "Open-high-low-close price records with volume. Candlestick, bollinger bands.")
+
+(isa ActivityData DataShape)
+(comment ActivityData "Date-stamped event counts or intensities. Contribution heatmap, stream charts.")
+
+(isa GraphData DataShape)
+(comment GraphData "Nodes and edges with optional weights. Network graph, force-directed layout.")
+
+(isa SpatialRegionData DataShape)
+(comment SpatialRegionData "Geographic boundaries with associated values. Choropleth maps.")
+
+(isa ProgressData DataShape)
+(comment ProgressData "Current value against target. Gauge, ring, progress, bullet charts.")
+
+(isa CorrelationData DataShape)
+(comment CorrelationData "Pairwise signal comparisons. Correlation matrix, horizon charts.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 11: CHART SELECTION RULES
+;;; Choosing the right chart for the data shape
+;;; ────────────────────────────────────────────────────────────────
+
+(implies
+  (and (isa ?D TimeSeriesData) (seriesCount ?D 1))
+  (recommendedChart ?D LineChart))
+
+(implies
+  (and (isa ?D TimeSeriesData) (seriesCount ?D ?N) (greaterThan ?N 3))
+  (recommendedChart ?D StackedAreaChart))
+
+(implies
+  (and (isa ?D TimeSeriesData) (requiresCompactDisplay ?D True))
+  (recommendedChart ?D SparklineChart))
+
+(implies
+  (and (isa ?D CategoricalData) (categoryCount ?D ?N) (lessThan ?N 12))
+  (recommendedChart ?D BarChart))
+
+(implies
+  (and (isa ?D CategoricalData) (requiresProportional ?D True))
+  (recommendedChart ?D DonutChart))
+
+(implies (isa ?D RankedData) (recommendedChart ?D BumpChart))
+
+(implies (isa ?D MultiDimensionalData) (recommendedChart ?D RadarChart))
+
+(implies
+  (and (isa ?D StatisticalData) (requiresDistributionShape ?D True))
+  (recommendedChart ?D ViolinPlotChart))
+
+(implies
+  (and (isa ?D StatisticalData) (requiresQuartiles ?D True))
+  (recommendedChart ?D BoxPlotChart))
+
+(implies (isa ?D FlowData) (recommendedChart ?D SankeyDiagram))
+
+(implies
+  (and (isa ?D FlowData) (isSequentialPipeline ?D True))
+  (recommendedChart ?D FunnelChart))
+
+(implies (isa ?D OHLCData) (recommendedChart ?D CandlestickChart))
+
+(implies (isa ?D ActivityData) (recommendedChart ?D ContributionHeatmap))
+
+(implies (isa ?D GraphData) (recommendedChart ?D NetworkGraphChart))
+
+(implies (isa ?D SpatialRegionData) (recommendedChart ?D ChoroplethMap))
+
+(implies (isa ?D ProgressData) (recommendedChart ?D GaugeChart))
+
+(implies (isa ?D CorrelationData) (recommendedChart ?D CorrelationMatrixChart))
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 12: CHART LIBRARY METADATA
+;;; ────────────────────────────────────────────────────────────────
+
+(isa CharlotteChartsLibrary VisualizationFramework)
+(comment CharlotteChartsLibrary
+  "Charlotte Charts v3.3: zero-dependency Canvas 2D charting library.
+   34 chart types, 6 brand themes (Platform, SomeAI, Sounder, ISG,
+   Richard Enterprises, All State), mobile-first responsive,
+   Catmull-Rom spline interpolation, Figma-matched card styling.")
+(totalChartTypes CharlotteChartsLibrary 34)
+(totalThemes CharlotteChartsLibrary 6)
+(renderingBackend CharlotteChartsLibrary "Canvas 2D")
+(externalDependencies CharlotteChartsLibrary 0)
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 13: PARTICLE VISUALIZATION PARADIGM
+;;; GeoParticles — when in doubt, we go to dust particles,
+;;; cluster density, and neural synapses as explanations.
+;;; 20 parametric 3D surfaces, 3 render styles, KNN graph traversal.
+;;; ────────────────────────────────────────────────────────────────
+
+;; Charlotte's default fallback: complex relationships → particle clouds
+;; This is the "when in doubt" rule — if no conventional chart fits,
+;; render the data as particles and let structure emerge from density.
+
+(isa ParticleVisualization Collection)
+(genls ParticleVisualization NODE)
+(comment ParticleVisualization
+  "A 3D particle point cloud rendered in brand palette. Charlotte's
+   fallback visualization for complex relational data. When conventional
+   charts fail, reduce to dust particles — cluster density reveals
+   structure, neural synapse edges reveal connections.")
+
+(isa MathSurface Collection)
+(genls MathSurface NODE)
+(comment MathSurface
+  "A parametric 3D mathematical surface sampled as a point cloud.
+   Each brand gets unique mathematical identity art — same geometry
+   engine, distinct visual DNA through brand color mapping.")
+
+(isa ParticleRenderStyle Collection)
+(genls ParticleRenderStyle NODE)
+(comment ParticleRenderStyle
+  "A coloring strategy for mapping brand palette onto depth-sorted particles.")
+
+;; ── 20 Mathematical Surfaces ──
+
+(isa LorenzAttractor MathSurface)
+(comment LorenzAttractor "Chaotic attractor. sigma=10, rho=28, beta=8/3. The butterfly — deterministic chaos.")
+
+(isa TrefoilKnot MathSurface)
+(comment TrefoilKnot "Simplest nontrivial knot. Tube around a (2,3)-torus knot curve with Frenet frame.")
+
+(isa MobiusStrip MathSurface)
+(comment MobiusStrip "Non-orientable surface with one side and one boundary. Half-twist ruled surface.")
+
+(isa KleinBottle MathSurface)
+(comment KleinBottle "Non-orientable closed surface. Self-intersects in 3D — the bottle with no inside.")
+
+(isa TorusKnot35 MathSurface)
+(comment TorusKnot35 "Torus knot (p=3, q=5). Winds 3 times around the torus hole, 5 times through it.")
+
+(isa DiniSurface MathSurface)
+(comment DiniSurface "Surface of constant negative curvature. Pseudosphere unwound into a helical scroll.")
+
+(isa EnneperSurface MathSurface)
+(comment EnneperSurface "Self-intersecting minimal surface. Saddle-like with nine-fold symmetry.")
+
+(isa SphericalHarmonics MathSurface)
+(comment SphericalHarmonics "Angular solutions to Laplace's equation on the sphere. l=4, m=3 produces petal lobes.")
+
+(isa Catenoid MathSurface)
+(comment Catenoid "Minimal surface of revolution. Soap film between two coaxial rings.")
+
+(isa Helicoid MathSurface)
+(comment Helicoid "Ruled minimal surface. Infinite spiral staircase — the only ruled minimal surface besides the plane.")
+
+(isa Seashell MathSurface)
+(comment Seashell "Logarithmic spiral tube. Exponential growth with cross-section — natural shell geometry.")
+
+(isa BreatherSurface MathSurface)
+(comment BreatherSurface "Pseudospherical surface from soliton solutions of sine-Gordon equation. Rippling wave topology.")
+
+(isa RomanSurface MathSurface)
+(comment RomanSurface "Steiner surface. Projection of the real projective plane into 3D with tetrahedral symmetry.")
+
+(isa HeartSurface MathSurface)
+(comment HeartSurface "Cardioid-family parametric surface. Symbolic geometry for non-technical audiences.")
+
+(isa FigureEightKnot MathSurface)
+(comment FigureEightKnot "The unique prime knot with 4 crossings. Tube around a (2,3)x(3,4) winding curve.")
+
+(isa GyroidApprox MathSurface)
+(comment GyroidApprox "Triply periodic minimal surface. cos(x)sin(y)+cos(y)sin(z)+cos(z)sin(x)≈0. Found in butterfly wings.")
+
+(isa Mandelbulb MathSurface)
+(comment Mandelbulb "3D Mandelbrot fractal. Power-8 spherical iteration — fractal boundary in three dimensions.")
+
+(isa SpringHelix MathSurface)
+(comment SpringHelix "Helical tube with 5 coils. Circular cross-section swept along helix curve.")
+
+(isa CrossCap MathSurface)
+(comment CrossCap "Immersion of the real projective plane. Self-intersects at a pinch point.")
+
+(isa CliffordTorus MathSurface)
+(comment CliffordTorus "Flat torus living in S^3. Stereographic projection from 4D — the perfectly symmetric torus.")
+
+;; ── 3 Render Styles ──
+
+(isa NeonDualTone ParticleRenderStyle)
+(comment NeonDualTone "Depth-interpolated dual-tone. Front=secondary, cross at 60% to primary→accent. Brand chromatic identity.")
+
+(isa MonochromeStyle ParticleRenderStyle)
+(comment MonochromeStyle "Single-hue primary with alpha modulated by depth. Clean, technical presence.")
+
+(isa DepthGradient ParticleRenderStyle)
+(comment DepthGradient "Three-band gradient: secondary→primary→accent→primary. Full palette expression through depth.")
+
+;; ── Particle Graph Concepts ──
+
+(isa KNNGraphConstruction Collection)
+(genls KNNGraphConstruction NODE)
+(comment KNNGraphConstruction
+  "k-nearest-neighbors adjacency from 3D point positions. Each particle connects
+   to k nearest neighbors — undirected graph emerges from spatial proximity.
+   The neural synapse view of complex data: nodes are particles, edges are
+   proximity connections. This is Charlotte's graph-as-dust-cloud metaphor.")
+
+(isa AlgorithmicTraversal Collection)
+(genls AlgorithmicTraversal NODE)
+(comment AlgorithmicTraversal
+  "A* pathfinding over the KNN particle graph. Explored edges appear sequentially
+   in animation — the algorithm becomes visible as a glowing traversal through
+   the point cloud. Exported as Lottie JSON for web playback.")
+
+;; ── The "When In Doubt" Rules ──
+
+;; When data has too many dimensions for any chart, use particles
+(implies
+  (and (isa ?D MultiDimensionalData)
+       (dimensionCount ?D ?N)
+       (greaterThan ?N 6))
+  (recommendedVisualization ?D ParticleVisualization))
+
+;; When showing graph relationships, use neural synapse rendering
+(implies
+  (and (isa ?D GraphData)
+       (requiresRelationshipExplanation ?D True))
+  (recommendedVisualization ?D KNNGraphConstruction))
+
+;; When data is too complex for conventional charts, default to particles
+(implies
+  (and (isa ?D DataShape)
+       (not (recommendedChart ?D ?AnyChart))
+       (not (recommendedLayer ?D ?AnyLayer)))
+  (recommendedVisualization ?D ParticleVisualization))
+
+;; When showing algorithmic process, use traversal animation
+(implies
+  (and (isa ?D GraphData)
+       (requiresProcessAnimation ?D True))
+  (recommendedVisualization ?D AlgorithmicTraversal))
+
+;; ── GeoParticles Library Metadata ──
+
+(isa GeoParticlesLibrary VisualizationFramework)
+(comment GeoParticlesLibrary
+  "GeoParticles: parametric 3D math surfaces rendered as particle point clouds
+   in brand design systems. 20 surfaces, 3 styles, 10 brand palettes.
+   KNN graph construction + A* traversal + Lottie export. Zero dependencies.
+   Every business gets unique mathematical identity art — same geometry engine,
+   distinct visual DNA.")
+(totalSurfaces GeoParticlesLibrary 20)
+(totalRenderStyles GeoParticlesLibrary 3)
+(totalBrandPalettes GeoParticlesLibrary 10)
+(renderingBackend GeoParticlesLibrary "Canvas 2D + ImageData")
+(externalDependencies GeoParticlesLibrary 0)
+(exportFormats GeoParticlesLibrary "PNG, Lottie JSON")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 14: PITCH ENGINE
+;;; Trained deck compiler: structured business data → narrative
+;;; arc selection → automatic deck generation. The engine pattern
+;;; matters, not the individual slides. Before/After is signature.
+;;; Trained on 8 real business profiles across 5 industries.
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── The Engine Pattern ──
+;; Input:  structured business data (name, problem, solution, metrics,
+;;         TAM/SAM/SOM, team, customers, competitors, pricing, ask)
+;; Select: narrative arc based on stage and strategy
+;; Output: compiled deck with widgets auto-selected per section
+
+(isa PitchEngine Collection)
+(genls PitchEngine PROTOCOL)
+(comment PitchEngine
+  "A deck compiler. Structured business data in, narrative arc selected,
+   presentation compiled automatically. The engine selects widgets from
+   4 categories mapped to Charlotte's five primitives:
+     Text widgets    → NODE     (hero, subhead, body, quote, section label)
+     Data widgets    → METRIC   (stat block, stat grid, bar, pie, TAM circles,
+                                 timeline, unit economics, growth chart)
+     Entity widgets  → NODE     (team grid, logo wall, icon grid, screenshot)
+     Structure widgets → EDGE/PROTOCOL (comparison matrix, flow diagram,
+                                        pricing table, before/after split)
+   21 widgets total. The Before/After split is Charlotte's signature —
+   red pain on the left, green resolution on the right.")
+
+;; ── Narrative Arcs (5) ──
+;; These are the plans — the sequencing protocols that determine
+;; what story gets told and in what order.
+
+(isa NarrativeArc Collection)
+(genls NarrativeArc PROTOCOL)
+(comment NarrativeArc
+  "A storytelling sequence — the plan that determines what gets said
+   and in what order. Each arc is optimized for a specific fundraising
+   stage or sales motion. Arc selection is the most important decision
+   in deck compilation.")
+
+(isa SeedArc NarrativeArc)
+(comment SeedArc
+  "Pre-revenue. 9 sections. Problem severity → solution elegance → team.
+   Used when the story is 'we found something broken and we know how to fix it.'
+   Pattern: Cradle, Spektr, Copy.ai, Kyra.")
+
+(isa SeriesAArc NarrativeArc)
+(comment SeriesAArc
+  "Post-traction. 13 sections. Vision → PMF proof → path to scale.
+   Used when the story is 'we proved it works, now fund the machine.'
+   Pattern: Rippling, Wayflyer, Read AI, Flo, Pennylane.")
+
+(isa GrowthArc NarrativeArc)
+(comment GrowthArc
+  "Revenue-first. 11 sections. Metrics lead, expansion thesis follows.
+   Used when traction speaks for itself and the numbers open the door.")
+
+(isa InfrastructureArc NarrativeArc)
+(comment InfrastructureArc
+  "Platform play. 14 sections. Thesis → architecture → moat depth.
+   Used when the story is 'we're building the layer everything else runs on.'
+   Pattern: MoonHub, ValidMind, Filigran.")
+
+(isa CharlotteArc NarrativeArc)
+(comment CharlotteArc
+  "Category creation. 15 sections. The thesis that 97% of businesses
+   were built before AI. Before/After as the core proof pattern.
+   Vision → BeforeAfter → Problem → Solution → HowItWorks → Proof.
+   Charlotte's own arc — the one that creates the category.")
+
+;; ── Training Data: 8 Validated Business Profiles ──
+;; The engine was trained on real Charlotte deployments.
+;; Each profile has: before/after narrative, metrics, TAM/SAM/SOM,
+;; team, competitors, pricing model, projections, and ask.
+
+(isa TrainedBusinessProfile Collection)
+(genls TrainedBusinessProfile NODE)
+(comment TrainedBusinessProfile
+  "A real business whose data was used to train and validate the pitch
+   engine. Each profile contains the full structured input needed to
+   compile a deck in any narrative arc.")
+
+(isa ISGProfile TrainedBusinessProfile)
+(comment ISGProfile
+  "Industrial Service Group. $450M revenue, 16 brands, 42 locations,
+   259K+ SKUs, 200+ technicians. $1.4M/2yr contract. Industry: MRO.
+   Before: 16 islands of data. After: unified equipment graph.
+   The enterprise beachhead — PE portfolio unification.")
+
+(isa CardVaultProfile TrainedBusinessProfile)
+(comment CardVaultProfile
+  "CardVault by Tom Brady. $35M revenue, 12 locations, 338% growth,
+   $33B market. $510K/24mo contract. Industry: Sports Collectibles.
+   Before: 12 retail islands. After: unified collector graph.
+   The celebrity-brand retail play.")
+
+(isa AllStateProfile TrainedBusinessProfile)
+(comment AllStateProfile
+  "All State Manufacturing. $2.2M revenue, ~10 employees, founded 1975.
+   $105K/24mo contract. Industry: Micro market fixtures.
+   Before: 50 years of tribal knowledge. After: observable manufacturing.
+   The '97%' archetype — profitable, invisible, zero digital presence.")
+
+(isa SCOnlineProfile TrainedBusinessProfile)
+(comment SCOnlineProfile
+  "SC Online Sales. 40K+ auctions, 5 species, 10K+ users, 3 platforms.
+   $135K/24mo contract. Industry: Livestock auctions.
+   Before: species-siloed. After: cross-species buyer intelligence.
+   The multi-sided marketplace play.")
+
+(isa WendtProfile TrainedBusinessProfile)
+(comment WendtProfile
+  "The Wendt Group / ShowPig.com. 12K+ online auctions, 6.5K+ live,
+   65K+ breeders, 4 platforms. $156K/24mo. Industry: Swine genetics.
+   Before: no crossbred pedigree system. After: AI-built ancestry.
+   The industry-infrastructure play.")
+
+(isa PPPProfile TrainedBusinessProfile)
+(comment PPPProfile
+  "PPP Instruments / Prier Violins. 21 instruments, $5.3M portfolio,
+   88.3% appreciation, $100M fund target. Industry: Alternative assets.
+   Before: paper provenance. After: instrument identity graph.
+   The alternative-asset intelligence play.")
+
+(isa TopTierProfile TrainedBusinessProfile)
+(comment TopTierProfile
+  "Top Tier Moving. $14.4M billed, $10.9M collected (75.7%), 98 crew,
+   10,606 jobs, 52 states. $93K/24mo. Industry: Interstate moving.
+   Before: $3.5M revenue leakage. After: crew baseball cards + collection intel.
+   The operational-recovery play — ROI from day one.")
+
+(isa SounderProfile TrainedBusinessProfile)
+(comment SounderProfile
+  "Sounder. 3 registries (NSR/CPS/Tamworth), 77,982 breeders,
+   401,788 KRF facts, $1.13M tracked sales. Internal deployment.
+   Before: disconnected registries. After: unified swine genetics OS.
+   The first vertical — Charlotte's own proof of concept.")
+
+;; ── Engine Compilation Rules ──
+
+;; Pre-revenue businesses → Seed Arc
+(implies
+  (and (isa ?B TrainedBusinessProfile)
+       (hasRevenue ?B False))
+  (recommendedArc ?B SeedArc))
+
+;; Revenue + traction → Series A or Growth Arc
+(implies
+  (and (isa ?B TrainedBusinessProfile)
+       (hasRevenue ?B True)
+       (hasTractionMetrics ?B True))
+  (recommendedArc ?B SeriesAArc))
+
+;; Platform/infrastructure businesses → Infrastructure Arc
+(implies
+  (and (isa ?B TrainedBusinessProfile)
+       (isPlatformPlay ?B True))
+  (recommendedArc ?B InfrastructureArc))
+
+;; Category-creating businesses → Charlotte Arc
+(implies
+  (and (isa ?B TrainedBusinessProfile)
+       (createsCategory ?B True))
+  (recommendedArc ?B CharlotteArc))
+
+;; Before/After is always available — Charlotte's signature
+(implies
+  (and (isa ?B TrainedBusinessProfile)
+       (hasBeforeState ?B True)
+       (hasAfterState ?B True))
+  (canUseBeforeAfter ?B True))
+
+;; ── Pitch Engine Metadata ──
+
+(isa CharlottePitchEngine PitchEngine)
+(comment CharlottePitchEngine
+  "Charlotte Pitch Engine: a trained deck compiler. Structured business
+   data in, narrative arc selected, presentation compiled automatically.
+   21 composable widgets, 5 narrative arcs, Before/After as signature.
+   Trained on 8 real business profiles across industrial services,
+   sports collectibles, manufacturing, livestock, alternative assets,
+   logistics, and swine genetics. Neural network background animation.
+   Zero external dependencies.")
+(totalWidgets CharlottePitchEngine 21)
+(totalNarrativeArcs CharlottePitchEngine 5)
+(totalTrainedProfiles CharlottePitchEngine 8)
+(externalDependencies CharlottePitchEngine 0)

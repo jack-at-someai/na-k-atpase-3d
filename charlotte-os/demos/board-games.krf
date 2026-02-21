@@ -1,0 +1,363 @@
+;;; ════════════════════════════════════════════════════════════════
+;;; Board Games Demo — History & Mechanics Knowledge Graph
+;;; Charlotte OS · KRF Visualizer Demo
+;;; ════════════════════════════════════════════════════════════════
+
+(in-microtheory BoardGamesDemoMt)
+
+;;; ── Collections ──────────────────────────────────────────────
+
+(isa BoardGame Collection)
+(comment BoardGame "A tabletop game played on a board with pieces, cards, or tokens")
+
+(isa GameMechanic Collection)
+(comment GameMechanic "A core gameplay system or rule structure that defines how players interact")
+
+(isa Designer Collection)
+(comment Designer "A person who creates the rules and systems of a board game")
+
+(isa Publisher Collection)
+(comment Publisher "A company that produces and distributes board games")
+
+(isa Era Collection)
+(comment Era "A historical period in the evolution of board game design")
+
+(isa PlayerCount Collection)
+(comment PlayerCount "A classification of games by how many players they support")
+
+(isa GameAward Collection)
+(comment GameAward "A recognition given for excellence in board game design")
+
+;;; ── Game Type Hierarchy ──────────────────────────────────────
+
+(isa StrategyGame BoardGame)
+(comment StrategyGame "Games where decisions and planning determine the outcome more than chance")
+
+(isa PartyGame BoardGame)
+(comment PartyGame "Games designed for large groups emphasizing social interaction")
+
+(isa AbstractGame BoardGame)
+(comment AbstractGame "Games with perfect information and no random elements")
+
+(isa CooperativeGame BoardGame)
+(comment CooperativeGame "Games where all players work together against the game system")
+
+(isa EuroGame StrategyGame)
+(comment EuroGame "European-style strategy games emphasizing resource management over conflict")
+
+(isa AmeritrashGame StrategyGame)
+(comment AmeritrashGame "American-style games emphasizing theme, narrative, and direct conflict")
+
+(isa WargameBoard StrategyGame)
+(comment WargameBoard "Games simulating military conflicts with detailed rules")
+
+(genls StrategyGame BoardGame)
+(genls PartyGame BoardGame)
+(genls AbstractGame BoardGame)
+(genls CooperativeGame BoardGame)
+(genls EuroGame StrategyGame)
+(genls AmeritrashGame StrategyGame)
+(genls WargameBoard StrategyGame)
+
+;;; ── Mechanic Hierarchy ───────────────────────────────────────
+
+(isa WorkerPlacement GameMechanic)
+(comment WorkerPlacement "Players assign tokens to action spaces, blocking opponents from those actions")
+
+(isa DeckBuilding GameMechanic)
+(comment DeckBuilding "Players construct their card deck during play, improving it over time")
+
+(isa TilePlacement GameMechanic)
+(comment TilePlacement "Players place tiles to build a shared or personal map")
+
+(isa AreaControl GameMechanic)
+(comment AreaControl "Players compete to dominate regions of the board")
+
+(isa DiceRolling GameMechanic)
+(comment DiceRolling "Random outcomes determined by rolling dice")
+
+(isa HandManagement GameMechanic)
+(comment HandManagement "Players choose when and how to play cards from a limited hand")
+
+(isa RouteBuilding GameMechanic)
+(comment RouteBuilding "Players claim connections between locations on a network")
+
+(isa SetCollection GameMechanic)
+(comment SetCollection "Players gather specific combinations of items for scoring")
+
+(isa EngineBuilding GameMechanic)
+(comment EngineBuilding "Players construct systems that generate increasing returns each turn")
+
+(isa Auction GameMechanic)
+(comment Auction "Players bid resources to acquire items or advantages")
+
+;;; ── Relations ────────────────────────────────────────────────
+
+(isa designedBy Predicate)
+(arity designedBy 2)
+(arg1Isa designedBy BoardGame)
+(arg2Isa designedBy Designer)
+(comment designedBy "The person who designed a board game")
+
+(isa publishedBy Predicate)
+(arity publishedBy 2)
+(arg1Isa publishedBy BoardGame)
+(arg2Isa publishedBy Publisher)
+(comment publishedBy "The company that publishes a board game")
+
+(isa usesMechanic Predicate)
+(arity usesMechanic 2)
+(arg1Isa usesMechanic BoardGame)
+(arg2Isa usesMechanic GameMechanic)
+(comment usesMechanic "Indicates a core mechanic used in a board game")
+
+(isa inventedInYear Predicate)
+(arity inventedInYear 2)
+(arg1Isa inventedInYear BoardGame)
+(comment inventedInYear "The year a board game was first created or published")
+
+(isa originCountry Predicate)
+(arity originCountry 2)
+(arg1Isa originCountry BoardGame)
+(comment originCountry "The country where a board game was designed or originated")
+
+(isa playerRange Predicate)
+(arity playerRange 2)
+(arg1Isa playerRange BoardGame)
+(comment playerRange "The supported number of players, e.g. '2-4'")
+
+(isa complexityRating Predicate)
+(arity complexityRating 2)
+(arg1Isa complexityRating BoardGame)
+(comment complexityRating "BGG-style weight rating from 1.0 (light) to 5.0 (heavy)")
+
+(isa wonGameAward Predicate)
+(arity wonGameAward 2)
+(arg1Isa wonGameAward BoardGame)
+(arg2Isa wonGameAward GameAward)
+(comment wonGameAward "Records that a game won a specific award")
+
+;;; ── Award Instances ──────────────────────────────────────────
+
+(isa SpieleDesJahres GameAward)
+(comment SpieleDesJahres "German 'Game of the Year' award, the most prestigious in board gaming")
+
+(isa KennerspielDesJahres GameAward)
+(comment KennerspielDesJahres "German 'Connoisseur Game of the Year' for more complex titles")
+
+;;; ── Era Instances ────────────────────────────────────────────
+
+(isa AncientEra Era)
+(comment AncientEra "Board games from antiquity through the medieval period")
+
+(isa ClassicEra Era)
+(comment ClassicEra "Mass-market games of the 19th and 20th centuries")
+
+(isa ModernEra Era)
+(comment ModernEra "The designer game revolution from 1995 to present")
+
+;;; ── Publisher Instances ──────────────────────────────────────
+
+(isa Ravensburger Publisher)
+(isa Hasbro Publisher)
+(isa StonemaierGames Publisher)
+(isa DaysOfWonder Publisher)
+(isa CzechGamesEdition Publisher)
+(isa KosmosGames Publisher)
+
+;;; ── Designer Instances ───────────────────────────────────────
+
+(isa KlausTeuber Designer)
+(comment KlausTeuber "Creator of Catan, catalyzed the modern board game renaissance")
+
+(isa AlanMoon Designer)
+(comment AlanMoon "Designer of Ticket to Ride, master of accessible strategy games")
+
+(isa ElizabethHargrave Designer)
+(comment ElizabethHargrave "Designer of Wingspan, pioneer of nature-themed engine builders")
+
+(isa UweRosenberg Designer)
+(comment UweRosenberg "Prolific designer of farming and resource management games")
+
+(isa VladaChvatil Designer)
+(comment VladaChvatil "Czech designer known for innovative, highly thematic games")
+
+(isa ReinerKnizia Designer)
+(comment ReinerKnizia "Mathematician-designer with over 700 published games")
+
+;;; ── Game Instances ───────────────────────────────────────────
+
+(isa Chess AbstractGame)
+(inventedInYear Chess 600)
+(originCountry Chess "India")
+(playerRange Chess "2")
+(complexityRating Chess 3.7)
+(comment Chess "The defining abstract strategy game, played worldwide for over a millennium")
+
+(isa Go AbstractGame)
+(inventedInYear Go -2500)
+(originCountry Go "China")
+(playerRange Go "2")
+(complexityRating Go 4.0)
+(comment Go "Ancient game of territorial control with simple rules and extraordinary depth")
+
+(isa Monopoly BoardGame)
+(inventedInYear Monopoly 1935)
+(originCountry Monopoly "USA")
+(playerRange Monopoly "2-8")
+(publishedBy Monopoly Hasbro)
+(usesMechanic Monopoly DiceRolling)
+(usesMechanic Monopoly Auction)
+(complexityRating Monopoly 1.7)
+(comment Monopoly "Iconic mass-market game of real estate trading and economic domination")
+
+(isa SettlersOfCatan EuroGame)
+(inventedInYear SettlersOfCatan 1995)
+(originCountry SettlersOfCatan "Germany")
+(playerRange SettlersOfCatan "3-4")
+(designedBy SettlersOfCatan KlausTeuber)
+(publishedBy SettlersOfCatan KosmosGames)
+(usesMechanic SettlersOfCatan DiceRolling)
+(usesMechanic SettlersOfCatan RouteBuilding)
+(wonGameAward SettlersOfCatan SpieleDesJahres)
+(complexityRating SettlersOfCatan 2.3)
+(comment SettlersOfCatan "The game that launched the modern board gaming revolution in 1995")
+
+(isa TicketToRide EuroGame)
+(inventedInYear TicketToRide 2004)
+(originCountry TicketToRide "USA")
+(playerRange TicketToRide "2-5")
+(designedBy TicketToRide AlanMoon)
+(publishedBy TicketToRide DaysOfWonder)
+(usesMechanic TicketToRide RouteBuilding)
+(usesMechanic TicketToRide SetCollection)
+(usesMechanic TicketToRide HandManagement)
+(wonGameAward TicketToRide SpieleDesJahres)
+(complexityRating TicketToRide 1.8)
+(comment TicketToRide "Gateway game of cross-country train routes, beloved for elegance and accessibility")
+
+(isa Wingspan EuroGame)
+(inventedInYear Wingspan 2019)
+(originCountry Wingspan "USA")
+(playerRange Wingspan "1-5")
+(designedBy Wingspan ElizabethHargrave)
+(publishedBy Wingspan StonemaierGames)
+(usesMechanic Wingspan EngineBuilding)
+(usesMechanic Wingspan HandManagement)
+(usesMechanic Wingspan SetCollection)
+(wonGameAward Wingspan KennerspielDesJahres)
+(complexityRating Wingspan 2.4)
+(comment Wingspan "Engine-building game of attracting birds to wildlife preserves")
+
+(isa Agricola EuroGame)
+(inventedInYear Agricola 2007)
+(originCountry Agricola "Germany")
+(playerRange Agricola "1-5")
+(designedBy Agricola UweRosenberg)
+(publishedBy Agricola Ravensburger)
+(usesMechanic Agricola WorkerPlacement)
+(usesMechanic Agricola HandManagement)
+(complexityRating Agricola 3.6)
+(comment Agricola "Tense farming simulation that popularized the worker placement mechanic")
+
+(isa Dominion BoardGame)
+(inventedInYear Dominion 2008)
+(originCountry Dominion "USA")
+(playerRange Dominion "2-4")
+(usesMechanic Dominion DeckBuilding)
+(usesMechanic Dominion HandManagement)
+(wonGameAward Dominion SpieleDesJahres)
+(complexityRating Dominion 2.4)
+(comment Dominion "The original deck-building game that spawned an entire genre")
+
+(isa Carcassonne EuroGame)
+(inventedInYear Carcassonne 2000)
+(originCountry Carcassonne "Germany")
+(playerRange Carcassonne "2-5")
+(publishedBy Carcassonne Ravensburger)
+(usesMechanic Carcassonne TilePlacement)
+(usesMechanic Carcassonne AreaControl)
+(wonGameAward Carcassonne SpieleDesJahres)
+(complexityRating Carcassonne 1.9)
+(comment Carcassonne "Tile-laying classic where players build a medieval French landscape")
+
+(isa Pandemic CooperativeGame)
+(inventedInYear Pandemic 2008)
+(originCountry Pandemic "USA")
+(playerRange Pandemic "2-4")
+(usesMechanic Pandemic HandManagement)
+(usesMechanic Pandemic SetCollection)
+(complexityRating Pandemic 2.4)
+(comment Pandemic "Cooperative game where players work as a CDC team to stop global disease outbreaks")
+
+(isa TerraformingMars EuroGame)
+(inventedInYear TerraformingMars 2016)
+(originCountry TerraformingMars "Sweden")
+(playerRange TerraformingMars "1-5")
+(usesMechanic TerraformingMars EngineBuilding)
+(usesMechanic TerraformingMars TilePlacement)
+(usesMechanic TerraformingMars HandManagement)
+(complexityRating TerraformingMars 3.3)
+(comment TerraformingMars "Engine-building game of making Mars habitable for humanity")
+
+(isa Codenames PartyGame)
+(inventedInYear Codenames 2015)
+(originCountry Codenames "CzechRepublic")
+(playerRange Codenames "4-8")
+(designedBy Codenames VladaChvatil)
+(publishedBy Codenames CzechGamesEdition)
+(wonGameAward Codenames SpieleDesJahres)
+(complexityRating Codenames 1.3)
+(comment Codenames "Word association party game of giving one-word clues to identify secret agents")
+
+(isa RaTileGame BoardGame)
+(inventedInYear RaTileGame 1999)
+(originCountry RaTileGame "Germany")
+(playerRange RaTileGame "2-5")
+(designedBy RaTileGame ReinerKnizia)
+(usesMechanic RaTileGame Auction)
+(usesMechanic RaTileGame SetCollection)
+(complexityRating RaTileGame 2.5)
+(comment RaTileGame "Egyptian-themed auction game of collecting civilization tiles across three epochs")
+
+;;; ── Rules ────────────────────────────────────────────────────
+
+;; If a game uses worker placement and was published after 2000, it is a modern euro
+(implies
+  (and
+    (usesMechanic ?game WorkerPlacement)
+    (inventedInYear ?game ?year)
+    (greaterThan ?year 2000))
+  (isa ?game ModernEuroGame))
+
+;; If a game won the Spiel des Jahres, it is a gateway game
+(implies
+  (wonGameAward ?game SpieleDesJahres)
+  (isa ?game GatewayGame))
+
+;; If a game has complexity over 3.0 and uses engine building, it is a heavy euro
+(implies
+  (and
+    (complexityRating ?game ?rating)
+    (greaterThan ?rating 3.0)
+    (usesMechanic ?game EngineBuilding))
+  (isa ?game HeavyEuroGame))
+
+;; If a game supports 1 player, it has a solo mode
+(implies
+  (playerRange ?game "1-5")
+  (hasSoloMode ?game))
+
+;;; ── Heuristics ───────────────────────────────────────────────
+
+(isa defaultPlayTime Predicate)
+(arity defaultPlayTime 1)
+(comment defaultPlayTime "Typical play time for a medium-weight euro game in minutes")
+
+(defaultTrue (defaultPlayTime 90))
+
+(isa defaultComplexity Predicate)
+(arity defaultComplexity 1)
+(comment defaultComplexity "Default BGG complexity weight for an unrated game")
+
+(defaultTrue (defaultComplexity 2.5))

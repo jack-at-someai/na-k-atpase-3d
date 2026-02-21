@@ -1,0 +1,919 @@
+;;; ================================================================
+;;; REFERENCE / COGNITIVE SCIENCE
+;;; 89 resources across 8 sections — Charlotte's observer model
+;;; ================================================================
+;;;
+;;; Predictive coding, Bayesian brain & resonance.
+;;; Charlotte's observer model — perception as inference.
+;;;
+;;; Charlotte's Paper 11 (Harmonic Resonance) conceives the brain as
+;;; a collection of oscillatory nodes tuned to characteristic frequencies.
+;;; Paper 0 (Synthesis) frames cognition as a multi-scale integration
+;;; problem spanning molecular signalling through embodied interaction.
+;;;
+;;; Learning path: Overview → Predictive Coding → Neural Oscillations →
+;;; Bayesian Brain → Embodied Cognition → Memory & Resonance →
+;;; Consciousness → Datasets & Software
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa CS-MITEncycCogSci ReferenceWork)
+(title CS-MITEncycCogSci "The MIT Encyclopedia of Cognitive Sciences")
+(author CS-MITEncycCogSci "Wilson & Keil (Eds.)")
+(resourceType CS-MITEncycCogSci book)
+(level CS-MITEncycCogSci beginner)
+(section CS-MITEncycCogSci CognitiveScienceOverview)
+(url CS-MITEncycCogSci "https://mitpress.mit.edu/9780262731447/the-mit-encyclopedia-of-the-cognitive-sciences/")
+(desc CS-MITEncycCogSci "Comprehensive A-Z reference covering every major topic in cognitive science, from attention to working memory.")
+
+(isa CS-Friedenberg-CogSciIntro ReferenceWork)
+(title CS-Friedenberg-CogSciIntro "Cognitive Science: An Introduction to the Study of Mind")
+(author CS-Friedenberg-CogSciIntro "Jay Friedenberg & Gordon Silverman")
+(resourceType CS-Friedenberg-CogSciIntro book)
+(level CS-Friedenberg-CogSciIntro beginner)
+(section CS-Friedenberg-CogSciIntro CognitiveScienceOverview)
+(url CS-Friedenberg-CogSciIntro "https://us.sagepub.com/en-us/nam/cognitive-science/book253955")
+(desc CS-Friedenberg-CogSciIntro "Widely-used undergraduate textbook covering perception, memory, language, and computational modeling.")
+
+(isa CS-Thagard-Mind ReferenceWork)
+(title CS-Thagard-Mind "Mind: Introduction to Cognitive Science (2nd Ed.)")
+(author CS-Thagard-Mind "Paul Thagard")
+(resourceType CS-Thagard-Mind book)
+(level CS-Thagard-Mind beginner)
+(section CS-Thagard-Mind CognitiveScienceOverview)
+(url CS-Thagard-Mind "https://mitpress.mit.edu/9780262701099/mind/")
+(desc CS-Thagard-Mind "Concise introduction comparing representational approaches: logic, rules, concepts, analogies, images, neural networks.")
+
+(isa CS-Pinker-HowMindWorks ReferenceWork)
+(title CS-Pinker-HowMindWorks "How the Mind Works")
+(author CS-Pinker-HowMindWorks "Steven Pinker")
+(resourceType CS-Pinker-HowMindWorks book)
+(level CS-Pinker-HowMindWorks beginner)
+(section CS-Pinker-HowMindWorks CognitiveScienceOverview)
+(url CS-Pinker-HowMindWorks "https://www.penguinrandomhouse.com/books/159918/how-the-mind-works-by-steven-pinker/")
+(desc CS-Pinker-HowMindWorks "Evolutionary psychology meets computational theory of mind; an accessible tour of cognitive architecture.")
+
+(isa CS-CambridgeHandbookCogSci ReferenceWork)
+(title CS-CambridgeHandbookCogSci "The Cambridge Handbook of Cognitive Science")
+(author CS-CambridgeHandbookCogSci "Frankish & Ramsey (Eds.)")
+(resourceType CS-CambridgeHandbookCogSci book)
+(level CS-CambridgeHandbookCogSci intermediate)
+(section CS-CambridgeHandbookCogSci CognitiveScienceOverview)
+(url CS-CambridgeHandbookCogSci "https://www.cambridge.org/core/books/cambridge-handbook-of-cognitive-science/32F1B7E4A0703A228AE9B7D554B2B57A")
+(desc CS-CambridgeHandbookCogSci "Authoritative survey of current debates in cognitive science including embodiment, consciousness, and modularity.")
+
+;; ── Lectures & Courses ──
+
+(isa CS-MIT900SC ReferenceWork)
+(title CS-MIT900SC "MIT 9.00SC Introduction to Psychology")
+(author CS-MIT900SC "MIT OpenCourseWare")
+(resourceType CS-MIT900SC course)
+(level CS-MIT900SC beginner)
+(section CS-MIT900SC CognitiveScienceOverview)
+(url CS-MIT900SC "https://ocw.mit.edu/courses/9-00sc-introduction-to-psychology-fall-2011/")
+(desc CS-MIT900SC "Full MIT course covering perception, cognition, emotion, and development with video lectures and problem sets.")
+
+(isa CS-CourseraCogSci ReferenceWork)
+(title CS-CourseraCogSci "Cognitive Science: A Multidisciplinary Introduction (Coursera)")
+(author CS-CourseraCogSci "University of Toronto")
+(resourceType CS-CourseraCogSci course)
+(level CS-CourseraCogSci beginner)
+(section CS-CourseraCogSci CognitiveScienceOverview)
+(url CS-CourseraCogSci "https://www.coursera.org/learn/cognitive-science")
+(desc CS-CourseraCogSci "Broad introduction to cognitive science spanning AI, neuroscience, psychology, and philosophy.")
+
+(isa CS-SEP-ComputationalMind ReferenceWork)
+(title CS-SEP-ComputationalMind "The Computational Brain (Stanford Encyclopedia)")
+(author CS-SEP-ComputationalMind "SEP / Gualtiero Piccinini")
+(resourceType CS-SEP-ComputationalMind notes)
+(level CS-SEP-ComputationalMind intermediate)
+(section CS-SEP-ComputationalMind CognitiveScienceOverview)
+(url CS-SEP-ComputationalMind "https://plato.stanford.edu/entries/computational-mind/")
+(desc CS-SEP-ComputationalMind "Rigorous philosophical overview of the computational theory of mind and its variants.")
+
+(isa CS-UTHealth-NeuroOnline ReferenceWork)
+(title CS-UTHealth-NeuroOnline "Neuroscience Online — UTHealth")
+(author CS-UTHealth-NeuroOnline "UT Houston")
+(resourceType CS-UTHealth-NeuroOnline course)
+(level CS-UTHealth-NeuroOnline intermediate)
+(section CS-UTHealth-NeuroOnline CognitiveScienceOverview)
+(url CS-UTHealth-NeuroOnline "https://nba.uth.tmc.edu/neuroscience/")
+(desc CS-UTHealth-NeuroOnline "Free open-access neuroscience textbook with rich multimedia covering cellular, systems, and cognitive neuroscience.")
+
+;; ── Cross-Disciplinary Resources ──
+
+(isa CS-Clark-SurfingUncertainty ReferenceWork)
+(title CS-Clark-SurfingUncertainty "Surfing Uncertainty: Prediction, Action, and the Embodied Mind")
+(author CS-Clark-SurfingUncertainty "Andy Clark")
+(resourceType CS-Clark-SurfingUncertainty book)
+(level CS-Clark-SurfingUncertainty intermediate)
+(section CS-Clark-SurfingUncertainty CognitiveScienceOverview)
+(url CS-Clark-SurfingUncertainty "https://global.oup.com/academic/product/surfing-uncertainty-9780190217013")
+(desc CS-Clark-SurfingUncertainty "A bridge between predictive coding, embodied cognition, and philosophy of mind by one of the field's most influential thinkers.")
+
+(isa CS-Buzsaki-BrainInsideOut ReferenceWork)
+(title CS-Buzsaki-BrainInsideOut "The Brain from Inside Out")
+(author CS-Buzsaki-BrainInsideOut "Gyorgy Buzsaki")
+(resourceType CS-Buzsaki-BrainInsideOut book)
+(level CS-Buzsaki-BrainInsideOut advanced)
+(section CS-Buzsaki-BrainInsideOut CognitiveScienceOverview)
+(url CS-Buzsaki-BrainInsideOut "https://global.oup.com/academic/product/the-brain-from-inside-out-9780190905385")
+(desc CS-Buzsaki-BrainInsideOut "Buzsaki argues the brain is not a passive input-output device but an active, self-organized explorer of the world.")
+
+(isa CS-CogSciSociety-Proceedings ReferenceWork)
+(title CS-CogSciSociety-Proceedings "Cognitive Science Society — Annual Conference Proceedings")
+(author CS-CogSciSociety-Proceedings "CogSci Society")
+(resourceType CS-CogSciSociety-Proceedings notes)
+(level CS-CogSciSociety-Proceedings advanced)
+(section CS-CogSciSociety-Proceedings CognitiveScienceOverview)
+(url CS-CogSciSociety-Proceedings "https://cognitivesciencesociety.org/past-conferences/")
+(desc CS-CogSciSociety-Proceedings "Archive of proceedings from the premier interdisciplinary cognitive science conference.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: PREDICTIVE CODING
+;; Top-down predictions, prediction errors, free energy
+;; ════════════════════════════════════════════════════════════
+
+;; ── Seminal Papers ──
+
+(isa CS-RaoBallard-PredCodingV1 ReferenceWork)
+(title CS-RaoBallard-PredCodingV1 "Predictive coding in the visual cortex")
+(author CS-RaoBallard-PredCodingV1 "Rao & Ballard (1999)")
+(resourceType CS-RaoBallard-PredCodingV1 notes)
+(level CS-RaoBallard-PredCodingV1 advanced)
+(section CS-RaoBallard-PredCodingV1 PredictiveCoding)
+(url CS-RaoBallard-PredCodingV1 "https://www.nature.com/articles/nn0199_79")
+(desc CS-RaoBallard-PredCodingV1 "The landmark computational model showing how hierarchical prediction and error correction explains extra-classical receptive field effects in V1.")
+
+(isa CS-Friston-FreeEnergy2005 ReferenceWork)
+(title CS-Friston-FreeEnergy2005 "A free energy principle for the brain")
+(author CS-Friston-FreeEnergy2005 "Karl Friston (2005)")
+(resourceType CS-Friston-FreeEnergy2005 notes)
+(level CS-Friston-FreeEnergy2005 advanced)
+(section CS-Friston-FreeEnergy2005 PredictiveCoding)
+(url CS-Friston-FreeEnergy2005 "https://www.sciencedirect.com/science/article/pii/S0022249605000828")
+(desc CS-Friston-FreeEnergy2005 "Friston's foundational paper unifying perception, learning, and action under the variational free energy principle.")
+
+(isa CS-Clark-WhateverNext ReferenceWork)
+(title CS-Clark-WhateverNext "Whatever next? Predictive brains, situated agents, and the future of cognitive science")
+(author CS-Clark-WhateverNext "Andy Clark (2013)")
+(resourceType CS-Clark-WhateverNext notes)
+(level CS-Clark-WhateverNext intermediate)
+(section CS-Clark-WhateverNext PredictiveCoding)
+(url CS-Clark-WhateverNext "https://doi.org/10.1017/S0140525X12000477")
+(desc CS-Clark-WhateverNext "Influential BBS target article arguing that predictive processing is the unifying framework for understanding mind, brain, and behavior.")
+
+(isa CS-Friston-FreeEnergy2010 ReferenceWork)
+(title CS-Friston-FreeEnergy2010 "The free-energy principle: a unified brain theory?")
+(author CS-Friston-FreeEnergy2010 "Karl Friston (2010)")
+(resourceType CS-Friston-FreeEnergy2010 notes)
+(level CS-Friston-FreeEnergy2010 advanced)
+(section CS-Friston-FreeEnergy2010 PredictiveCoding)
+(url CS-Friston-FreeEnergy2010 "https://www.nature.com/articles/nrn2787")
+(desc CS-Friston-FreeEnergy2010 "Nature Reviews Neuroscience piece positioning free energy as the single imperative behind all neural computation.")
+
+;; ── Books & Monographs ──
+
+(isa CS-Clark-SurfingUncertaintyPC ReferenceWork)
+(title CS-Clark-SurfingUncertaintyPC "Surfing Uncertainty")
+(author CS-Clark-SurfingUncertaintyPC "Andy Clark")
+(resourceType CS-Clark-SurfingUncertaintyPC book)
+(level CS-Clark-SurfingUncertaintyPC intermediate)
+(section CS-Clark-SurfingUncertaintyPC PredictiveCoding)
+(url CS-Clark-SurfingUncertaintyPC "https://global.oup.com/academic/product/surfing-uncertainty-9780190217013")
+(desc CS-Clark-SurfingUncertaintyPC "Book-length treatment of the predictive processing paradigm, linking it to embodied cognition, attention, and consciousness.")
+
+(isa CS-Clark-ExperienceMachine ReferenceWork)
+(title CS-Clark-ExperienceMachine "The Experience Machine: How Our Minds Predict and Shape Reality")
+(author CS-Clark-ExperienceMachine "Andy Clark")
+(resourceType CS-Clark-ExperienceMachine book)
+(level CS-Clark-ExperienceMachine beginner)
+(section CS-Clark-ExperienceMachine PredictiveCoding)
+(url CS-Clark-ExperienceMachine "https://www.penguinrandomhouse.com/books/717971/the-experience-machine-by-andy-clark/")
+(desc CS-Clark-ExperienceMachine "Clark's accessible 2023 popular-science book on how the brain constructs experience through prediction.")
+
+(isa CS-Parr-ActiveInference ReferenceWork)
+(title CS-Parr-ActiveInference "Active Inference: The Free Energy Principle in Mind, Brain, and Behavior")
+(author CS-Parr-ActiveInference "Thomas Parr, Giovanni Pezzulo & Karl Friston")
+(resourceType CS-Parr-ActiveInference book)
+(level CS-Parr-ActiveInference advanced)
+(section CS-Parr-ActiveInference PredictiveCoding)
+(url CS-Parr-ActiveInference "https://mitpress.mit.edu/9780262045353/active-inference/")
+(desc CS-Parr-ActiveInference "Comprehensive textbook on active inference, covering mathematical foundations, neuroscience, and applications.")
+
+;; ── Lectures & Tutorials ──
+
+(isa CS-Friston-FEPLecture ReferenceWork)
+(title CS-Friston-FEPLecture "Karl Friston: The Free Energy Principle (MLSS)")
+(author CS-Friston-FEPLecture "Karl Friston")
+(resourceType CS-Friston-FEPLecture video)
+(level CS-Friston-FEPLecture advanced)
+(section CS-Friston-FEPLecture PredictiveCoding)
+(url CS-Friston-FEPLecture "https://www.youtube.com/watch?v=NIu_dJGyIQI")
+(desc CS-Friston-FEPLecture "Friston's own tutorial lecture on the free energy principle, variational inference, and active inference.")
+
+(isa CS-Seth-PredProcessingRI ReferenceWork)
+(title CS-Seth-PredProcessingRI "Predictive Processing — Anil Seth (Royal Institution)")
+(author CS-Seth-PredProcessingRI "Anil Seth")
+(resourceType CS-Seth-PredProcessingRI video)
+(level CS-Seth-PredProcessingRI beginner)
+(section CS-Seth-PredProcessingRI PredictiveCoding)
+(url CS-Seth-PredProcessingRI "https://www.youtube.com/watch?v=lyu7v7nWzfo")
+(desc CS-Seth-PredProcessingRI "Engaging public lecture on how the brain constructs reality through controlled hallucination and prediction.")
+
+(isa CS-Bogacz-PredCodingTutorial ReferenceWork)
+(title CS-Bogacz-PredCodingTutorial "Predictive Coding: A Tutorial (Bogacz 2017)")
+(author CS-Bogacz-PredCodingTutorial "Rafal Bogacz")
+(resourceType CS-Bogacz-PredCodingTutorial notes)
+(level CS-Bogacz-PredCodingTutorial intermediate)
+(section CS-Bogacz-PredCodingTutorial PredictiveCoding)
+(url CS-Bogacz-PredCodingTutorial "https://doi.org/10.1016/j.jmp.2015.11.003")
+(desc CS-Bogacz-PredCodingTutorial "Step-by-step mathematical tutorial deriving predictive coding from first principles, highly cited pedagogical resource.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: NEURAL OSCILLATIONS
+;; Rhythmic coordination, frequency bands, phase coupling
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core References ──
+
+(isa CS-Buzsaki-RhythmsOfBrain ReferenceWork)
+(title CS-Buzsaki-RhythmsOfBrain "Rhythms of the Brain")
+(author CS-Buzsaki-RhythmsOfBrain "Gyorgy Buzsaki")
+(resourceType CS-Buzsaki-RhythmsOfBrain book)
+(level CS-Buzsaki-RhythmsOfBrain intermediate)
+(section CS-Buzsaki-RhythmsOfBrain NeuralOscillations)
+(url CS-Buzsaki-RhythmsOfBrain "https://global.oup.com/academic/product/rhythms-of-the-brain-9780195301069")
+(desc CS-Buzsaki-RhythmsOfBrain "The definitive monograph on neural oscillations: from single neurons to large-scale brain dynamics, by the field's leading figure.")
+
+(isa CS-BuzsakiDraguhn-OscCortical ReferenceWork)
+(title CS-BuzsakiDraguhn-OscCortical "Neuronal oscillations in cortical networks")
+(author CS-BuzsakiDraguhn-OscCortical "Buzsaki & Draguhn (2004)")
+(resourceType CS-BuzsakiDraguhn-OscCortical notes)
+(level CS-BuzsakiDraguhn-OscCortical advanced)
+(section CS-BuzsakiDraguhn-OscCortical NeuralOscillations)
+(url CS-BuzsakiDraguhn-OscCortical "https://doi.org/10.1126/science.1099745")
+(desc CS-BuzsakiDraguhn-OscCortical "Science review explaining how oscillatory frequency bands emerge from network architecture and support cognitive functions.")
+
+(isa CS-EngelFriesSinger-DynPredictions ReferenceWork)
+(title CS-EngelFriesSinger-DynPredictions "Dynamic predictions: Oscillations and synchrony in top-down processing")
+(author CS-EngelFriesSinger-DynPredictions "Engel, Fries & Singer (2001)")
+(resourceType CS-EngelFriesSinger-DynPredictions notes)
+(level CS-EngelFriesSinger-DynPredictions advanced)
+(section CS-EngelFriesSinger-DynPredictions NeuralOscillations)
+(url CS-EngelFriesSinger-DynPredictions "https://doi.org/10.1038/35094565")
+(desc CS-EngelFriesSinger-DynPredictions "Influential Nature Reviews Neuroscience paper on how oscillatory synchrony implements top-down predictions.")
+
+(isa CS-Fries-CTC ReferenceWork)
+(title CS-Fries-CTC "A mechanism for cognitive dynamics: neuronal communication through neuronal coherence")
+(author CS-Fries-CTC "Pascal Fries (2005)")
+(resourceType CS-Fries-CTC notes)
+(level CS-Fries-CTC advanced)
+(section CS-Fries-CTC NeuralOscillations)
+(url CS-Fries-CTC "https://doi.org/10.1016/j.tics.2005.08.011")
+(desc CS-Fries-CTC "Communication Through Coherence (CTC) hypothesis: effective connectivity depends on phase-synchronization between oscillating populations.")
+
+;; ── Cross-Frequency Coupling & Phase Coding ──
+
+(isa CS-Tort-ThetaGammaCoupling ReferenceWork)
+(title CS-Tort-ThetaGammaCoupling "Theta-gamma coupling in hippocampus during memory encoding")
+(author CS-Tort-ThetaGammaCoupling "Tort et al. (2009)")
+(resourceType CS-Tort-ThetaGammaCoupling notes)
+(level CS-Tort-ThetaGammaCoupling advanced)
+(section CS-Tort-ThetaGammaCoupling NeuralOscillations)
+(url CS-Tort-ThetaGammaCoupling "https://doi.org/10.1073/pnas.0911331106")
+(desc CS-Tort-ThetaGammaCoupling "Demonstrates that theta-gamma phase-amplitude coupling in hippocampus predicts successful memory encoding in rodents.")
+
+(isa CS-Axmacher-PACWorkingMem ReferenceWork)
+(title CS-Axmacher-PACWorkingMem "Phase-amplitude coupling and working memory capacity")
+(author CS-Axmacher-PACWorkingMem "Axmacher et al. (2010)")
+(resourceType CS-Axmacher-PACWorkingMem notes)
+(level CS-Axmacher-PACWorkingMem advanced)
+(section CS-Axmacher-PACWorkingMem NeuralOscillations)
+(url CS-Axmacher-PACWorkingMem "https://doi.org/10.1523/JNEUROSCI.1871-10.2010")
+(desc CS-Axmacher-PACWorkingMem "Human intracranial EEG study linking theta-gamma coupling strength to individual differences in working memory capacity.")
+
+(isa CS-Colgin-HippThetaOsc ReferenceWork)
+(title CS-Colgin-HippThetaOsc "Hippocampal theta oscillations: from single cells to networks")
+(author CS-Colgin-HippThetaOsc "Colgin (2013)")
+(resourceType CS-Colgin-HippThetaOsc notes)
+(level CS-Colgin-HippThetaOsc intermediate)
+(section CS-Colgin-HippThetaOsc NeuralOscillations)
+(url CS-Colgin-HippThetaOsc "https://doi.org/10.1016/j.conb.2013.01.004")
+(desc CS-Colgin-HippThetaOsc "Review of theta oscillation generation, function, and interaction with gamma oscillations in memory and navigation.")
+
+(isa CS-Hafting-GridCellPhase ReferenceWork)
+(title CS-Hafting-GridCellPhase "Phase coding by grid cells in the hippocampal formation")
+(author CS-Hafting-GridCellPhase "Hafting et al. (2008)")
+(resourceType CS-Hafting-GridCellPhase notes)
+(level CS-Hafting-GridCellPhase advanced)
+(section CS-Hafting-GridCellPhase NeuralOscillations)
+(url CS-Hafting-GridCellPhase "https://doi.org/10.1038/nature06957")
+(desc CS-Hafting-GridCellPhase "Nature paper demonstrating theta phase precession in entorhinal grid cells, linking oscillations to spatial cognition.")
+
+;; ── Tutorials & Practical Resources ──
+
+(isa CS-Cohen-ANTS ReferenceWork)
+(title CS-Cohen-ANTS "Analyzing Neural Time Series Data (ANTS)")
+(author CS-Cohen-ANTS "Mike X Cohen")
+(resourceType CS-Cohen-ANTS book)
+(level CS-Cohen-ANTS intermediate)
+(section CS-Cohen-ANTS NeuralOscillations)
+(url CS-Cohen-ANTS "https://mitpress.mit.edu/9780262019873/analyzing-neural-time-series-data/")
+(desc CS-Cohen-ANTS "The go-to practical textbook for time-frequency analysis, coherence, and oscillatory connectivity in EEG/MEG data.")
+
+(isa CS-Cohen-LectureSeries ReferenceWork)
+(title CS-Cohen-LectureSeries "Mike X Cohen's Lecture Series on Neural Signal Processing")
+(author CS-Cohen-LectureSeries "Mike X Cohen")
+(resourceType CS-Cohen-LectureSeries video)
+(level CS-Cohen-LectureSeries intermediate)
+(section CS-Cohen-LectureSeries NeuralOscillations)
+(url CS-Cohen-LectureSeries "https://www.youtube.com/channel/UCUR_LsXk7IYyueSnXcNextQ")
+(desc CS-Cohen-LectureSeries "YouTube channel with extensive tutorials on Fourier analysis, wavelets, connectivity, and oscillatory dynamics.")
+
+(isa CS-FieldTrip-Toolbox ReferenceWork)
+(title CS-FieldTrip-Toolbox "FieldTrip Toolbox for MEG/EEG Analysis")
+(author CS-FieldTrip-Toolbox "Donders Institute")
+(resourceType CS-FieldTrip-Toolbox code)
+(level CS-FieldTrip-Toolbox intermediate)
+(section CS-FieldTrip-Toolbox NeuralOscillations)
+(url CS-FieldTrip-Toolbox "https://www.fieldtriptoolbox.org/")
+(desc CS-FieldTrip-Toolbox "Open-source MATLAB toolbox for advanced analysis of MEG, EEG, and intracranial data including time-frequency and connectivity.")
+
+(isa CS-MNE-Python ReferenceWork)
+(title CS-MNE-Python "MNE-Python: MEG + EEG Analysis in Python")
+(author CS-MNE-Python "Gramfort et al.")
+(resourceType CS-MNE-Python code)
+(level CS-MNE-Python intermediate)
+(section CS-MNE-Python NeuralOscillations)
+(url CS-MNE-Python "https://mne.tools/stable/index.html")
+(desc CS-MNE-Python "Comprehensive Python package for processing, analyzing, and visualizing neurophysiological data with excellent documentation.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: BAYESIAN BRAIN
+;; Probabilistic inference, priors, likelihoods, posteriors
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Papers ──
+
+(isa CS-KordingWolpert-BayesSensorimotor ReferenceWork)
+(title CS-KordingWolpert-BayesSensorimotor "Bayesian integration in sensorimotor learning")
+(author CS-KordingWolpert-BayesSensorimotor "Kording & Wolpert (2004)")
+(resourceType CS-KordingWolpert-BayesSensorimotor notes)
+(level CS-KordingWolpert-BayesSensorimotor advanced)
+(section CS-KordingWolpert-BayesSensorimotor BayesianBrain)
+(url CS-KordingWolpert-BayesSensorimotor "https://doi.org/10.1038/nature03169")
+(desc CS-KordingWolpert-BayesSensorimotor "Nature paper demonstrating that humans combine prior knowledge and sensory information in a statistically optimal (Bayesian) way during reaching.")
+
+(isa CS-KnillPouget-PerceptionBayes ReferenceWork)
+(title CS-KnillPouget-PerceptionBayes "Perception as Bayesian Inference")
+(author CS-KnillPouget-PerceptionBayes "Knill & Pouget (2004)")
+(resourceType CS-KnillPouget-PerceptionBayes notes)
+(level CS-KnillPouget-PerceptionBayes advanced)
+(section CS-KnillPouget-PerceptionBayes BayesianBrain)
+(url CS-KnillPouget-PerceptionBayes "https://doi.org/10.1016/j.tics.2004.05.004")
+(desc CS-KnillPouget-PerceptionBayes "Influential TICS review arguing that Bayesian inference provides the unifying computational framework for understanding perception.")
+
+(isa CS-Doya-BayesBrain ReferenceWork)
+(title CS-Doya-BayesBrain "Bayesian approaches to brain function")
+(author CS-Doya-BayesBrain "Doya, Ishii, Pouget & Rao (Eds.)")
+(resourceType CS-Doya-BayesBrain book)
+(level CS-Doya-BayesBrain advanced)
+(section CS-Doya-BayesBrain BayesianBrain)
+(url CS-Doya-BayesBrain "https://mitpress.mit.edu/9780262042383/bayesian-brain/")
+(desc CS-Doya-BayesBrain "Edited volume collecting key perspectives on probabilistic computation in neural circuits, decision-making, and motor control.")
+
+(isa CS-KnillPouget-BayesUncertainty ReferenceWork)
+(title CS-KnillPouget-BayesUncertainty "The Bayesian brain: the role of uncertainty in neural coding and computation")
+(author CS-KnillPouget-BayesUncertainty "Knill & Pouget (2004)")
+(resourceType CS-KnillPouget-BayesUncertainty notes)
+(level CS-KnillPouget-BayesUncertainty intermediate)
+(section CS-KnillPouget-BayesUncertainty BayesianBrain)
+(url CS-KnillPouget-BayesUncertainty "https://doi.org/10.1016/j.tins.2004.10.007")
+(desc CS-KnillPouget-BayesUncertainty "TINS review on how neural populations might encode probability distributions and perform Bayesian inference.")
+
+;; ── Multisensory Integration & Cue Combination ──
+
+(isa CS-ErnstBanks-OptimalMultisensory ReferenceWork)
+(title CS-ErnstBanks-OptimalMultisensory "Optimal multisensory integration (Ernst & Banks 2002)")
+(author CS-ErnstBanks-OptimalMultisensory "Ernst & Banks")
+(resourceType CS-ErnstBanks-OptimalMultisensory notes)
+(level CS-ErnstBanks-OptimalMultisensory intermediate)
+(section CS-ErnstBanks-OptimalMultisensory BayesianBrain)
+(url CS-ErnstBanks-OptimalMultisensory "https://doi.org/10.1038/nature00694")
+(desc CS-ErnstBanks-OptimalMultisensory "Classic Nature paper showing that humans combine visual and haptic cues in a statistically optimal, reliability-weighted manner.")
+
+(isa CS-AlaisBurr-AudioVisualBayes ReferenceWork)
+(title CS-AlaisBurr-AudioVisualBayes "Humans integrate visual and haptic information in a statistically optimal fashion")
+(author CS-AlaisBurr-AudioVisualBayes "Alais & Burr (2004)")
+(resourceType CS-AlaisBurr-AudioVisualBayes notes)
+(level CS-AlaisBurr-AudioVisualBayes intermediate)
+(section CS-AlaisBurr-AudioVisualBayes BayesianBrain)
+(url CS-AlaisBurr-AudioVisualBayes "https://doi.org/10.1016/j.cub.2003.12.033")
+(desc CS-AlaisBurr-AudioVisualBayes "Demonstrates Bayesian cue combination in audio-visual spatial localisation, extending the optimal integration framework.")
+
+(isa CS-Kording-CausalInference ReferenceWork)
+(title CS-Kording-CausalInference "Causal inference in multisensory perception")
+(author CS-Kording-CausalInference "Kording et al. (2007)")
+(resourceType CS-Kording-CausalInference notes)
+(level CS-Kording-CausalInference advanced)
+(section CS-Kording-CausalInference BayesianBrain)
+(url CS-Kording-CausalInference "https://doi.org/10.1371/journal.pone.0000943")
+(desc CS-Kording-CausalInference "Bayesian causal inference model explaining how the brain decides whether to integrate or segregate multisensory signals.")
+
+;; ── Computational Tutorials & Tools ──
+
+(isa CS-Barber-BayesReasoning ReferenceWork)
+(title CS-Barber-BayesReasoning "Bayesian Reasoning and Machine Learning")
+(author CS-Barber-BayesReasoning "David Barber")
+(resourceType CS-Barber-BayesReasoning book)
+(level CS-Barber-BayesReasoning intermediate)
+(section CS-Barber-BayesReasoning BayesianBrain)
+(url CS-Barber-BayesReasoning "http://www.cs.ucl.ac.uk/staff/d.barber/brml/")
+(desc CS-Barber-BayesReasoning "Free online textbook covering graphical models, inference algorithms, and connections to neural computation.")
+
+(isa CS-ProbMods ReferenceWork)
+(title CS-ProbMods "Probabilistic Models of Cognition (probmods.org)")
+(author CS-ProbMods "Goodman & Tenenbaum")
+(resourceType CS-ProbMods course)
+(level CS-ProbMods intermediate)
+(section CS-ProbMods BayesianBrain)
+(url CS-ProbMods "https://probmods.org/")
+(desc CS-ProbMods "Interactive online textbook using WebPPL to teach probabilistic models of cognition, from perception to language.")
+
+(isa CS-Stan ReferenceWork)
+(title CS-Stan "Stan: Statistical Modeling Platform")
+(author CS-Stan "Stan Development Team")
+(resourceType CS-Stan code)
+(level CS-Stan intermediate)
+(section CS-Stan BayesianBrain)
+(url CS-Stan "https://mc-stan.org/")
+(desc CS-Stan "State-of-the-art probabilistic programming framework for Bayesian inference with interfaces to R, Python, and Julia.")
+
+(isa CS-LeeWagenmakers-BayesCogModel ReferenceWork)
+(title CS-LeeWagenmakers-BayesCogModel "Bayesian Cognitive Modeling: A Practical Course")
+(author CS-LeeWagenmakers-BayesCogModel "Lee & Wagenmakers")
+(resourceType CS-LeeWagenmakers-BayesCogModel book)
+(level CS-LeeWagenmakers-BayesCogModel intermediate)
+(section CS-LeeWagenmakers-BayesCogModel BayesianBrain)
+(url CS-LeeWagenmakers-BayesCogModel "https://bayesmodels.com/")
+(desc CS-LeeWagenmakers-BayesCogModel "Hands-on textbook teaching Bayesian cognitive modeling with worked examples in JAGS/WinBUGS.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: EMBODIED COGNITION
+;; Enactivism, affordances, extended mind, sensorimotor
+;; ════════════════════════════════════════════════════════════
+
+;; ── Classic Texts ──
+
+(isa CS-Varela-EmbodiedMind ReferenceWork)
+(title CS-Varela-EmbodiedMind "The Embodied Mind: Cognitive Science and Human Experience")
+(author CS-Varela-EmbodiedMind "Varela, Thompson & Rosch")
+(resourceType CS-Varela-EmbodiedMind book)
+(level CS-Varela-EmbodiedMind intermediate)
+(section CS-Varela-EmbodiedMind EmbodiedCognition)
+(url CS-Varela-EmbodiedMind "https://mitpress.mit.edu/9780262529365/the-embodied-mind/")
+(desc CS-Varela-EmbodiedMind "Founding text of enactivism, bridging cognitive science and phenomenology. Argues cognition arises from embodied action.")
+
+(isa CS-LakoffJohnson-PhilosophyFlesh ReferenceWork)
+(title CS-LakoffJohnson-PhilosophyFlesh "Philosophy in the Flesh")
+(author CS-LakoffJohnson-PhilosophyFlesh "George Lakoff & Mark Johnson")
+(resourceType CS-LakoffJohnson-PhilosophyFlesh book)
+(level CS-LakoffJohnson-PhilosophyFlesh intermediate)
+(section CS-LakoffJohnson-PhilosophyFlesh EmbodiedCognition)
+(url CS-LakoffJohnson-PhilosophyFlesh "https://www.basicbooks.com/titles/george-lakoff/philosophy-in-the-flesh/9780465056743/")
+(desc CS-LakoffJohnson-PhilosophyFlesh "Argues that abstract thought is fundamentally metaphorical and grounded in bodily experience.")
+
+(isa CS-Clark-BeingThere ReferenceWork)
+(title CS-Clark-BeingThere "Being There: Putting Brain, Body, and World Together Again")
+(author CS-Clark-BeingThere "Andy Clark")
+(resourceType CS-Clark-BeingThere book)
+(level CS-Clark-BeingThere beginner)
+(section CS-Clark-BeingThere EmbodiedCognition)
+(url CS-Clark-BeingThere "https://mitpress.mit.edu/9780262531566/being-there/")
+(desc CS-Clark-BeingThere "Clark's influential argument for situated, embodied, and dynamical approaches to cognitive science.")
+
+(isa CS-Gibson-EcologicalPerception ReferenceWork)
+(title CS-Gibson-EcologicalPerception "The Ecological Approach to Visual Perception")
+(author CS-Gibson-EcologicalPerception "James J. Gibson")
+(resourceType CS-Gibson-EcologicalPerception book)
+(level CS-Gibson-EcologicalPerception intermediate)
+(section CS-Gibson-EcologicalPerception EmbodiedCognition)
+(url CS-Gibson-EcologicalPerception "https://www.routledge.com/The-Ecological-Approach-to-Visual-Perception/Gibson/p/book/9781848725782")
+(desc CS-Gibson-EcologicalPerception "Gibson's masterwork introducing affordances, optic flow, and direct perception. A paradigm-defining text.")
+
+(isa CS-Clark-SupersizingMind ReferenceWork)
+(title CS-Clark-SupersizingMind "Supersizing the Mind: Embodiment, Action, and Cognitive Extension")
+(author CS-Clark-SupersizingMind "Andy Clark")
+(resourceType CS-Clark-SupersizingMind book)
+(level CS-Clark-SupersizingMind intermediate)
+(section CS-Clark-SupersizingMind EmbodiedCognition)
+(url CS-Clark-SupersizingMind "https://global.oup.com/academic/product/supersizing-the-mind-9780195333213")
+(desc CS-Clark-SupersizingMind "Extended mind thesis developed in full, arguing tools, language, and social structures are part of the cognitive system.")
+
+;; ── Key Papers ──
+
+(isa CS-ClarkChalmers-ExtendedMind ReferenceWork)
+(title CS-ClarkChalmers-ExtendedMind "The Extended Mind")
+(author CS-ClarkChalmers-ExtendedMind "Clark & Chalmers (1998)")
+(resourceType CS-ClarkChalmers-ExtendedMind notes)
+(level CS-ClarkChalmers-ExtendedMind intermediate)
+(section CS-ClarkChalmers-ExtendedMind EmbodiedCognition)
+(url CS-ClarkChalmers-ExtendedMind "https://doi.org/10.1093/analys/58.1.7")
+(desc CS-ClarkChalmers-ExtendedMind "The original paper proposing that cognitive processes can extend beyond the biological brain into the environment.")
+
+(isa CS-OReganNoe-Sensorimotor ReferenceWork)
+(title CS-OReganNoe-Sensorimotor "Sensorimotor contingencies and perceptual experience")
+(author CS-OReganNoe-Sensorimotor "O'Regan & Noe (2001)")
+(resourceType CS-OReganNoe-Sensorimotor notes)
+(level CS-OReganNoe-Sensorimotor advanced)
+(section CS-OReganNoe-Sensorimotor EmbodiedCognition)
+(url CS-OReganNoe-Sensorimotor "https://doi.org/10.1017/S0140525X01000115")
+(desc CS-OReganNoe-Sensorimotor "BBS target article proposing that perception is constituted by practical knowledge of sensorimotor contingencies.")
+
+(isa CS-Gallagher-BodyShapesMind ReferenceWork)
+(title CS-Gallagher-BodyShapesMind "How the body shapes the mind")
+(author CS-Gallagher-BodyShapesMind "Shaun Gallagher")
+(resourceType CS-Gallagher-BodyShapesMind book)
+(level CS-Gallagher-BodyShapesMind advanced)
+(section CS-Gallagher-BodyShapesMind EmbodiedCognition)
+(url CS-Gallagher-BodyShapesMind "https://global.oup.com/academic/product/how-the-body-shapes-the-mind-9780199271948")
+(desc CS-Gallagher-BodyShapesMind "Systematic philosophical treatment of body schema, body image, and their role in shaping cognitive processes.")
+
+;; ── Lectures & Courses ──
+
+(isa CS-SEP-EmbodiedCognition ReferenceWork)
+(title CS-SEP-EmbodiedCognition "Embodied Cognition (Stanford Encyclopedia)")
+(author CS-SEP-EmbodiedCognition "SEP / Robert Wilson & Lucia Foglia")
+(resourceType CS-SEP-EmbodiedCognition notes)
+(level CS-SEP-EmbodiedCognition beginner)
+(section CS-SEP-EmbodiedCognition EmbodiedCognition)
+(url CS-SEP-EmbodiedCognition "https://plato.stanford.edu/entries/embodied-cognition/")
+(desc CS-SEP-EmbodiedCognition "Authoritative philosophical overview of the embodied cognition research programme, its varieties, and critiques.")
+
+(isa CS-4ECognition-Lectures ReferenceWork)
+(title CS-4ECognition-Lectures "4E Cognition: Embodied, Embedded, Enacted, Extended")
+(author CS-4ECognition-Lectures "Various lecturers")
+(resourceType CS-4ECognition-Lectures video)
+(level CS-4ECognition-Lectures intermediate)
+(section CS-4ECognition-Lectures EmbodiedCognition)
+(url CS-4ECognition-Lectures "https://www.youtube.com/results?search_query=4E+cognition+lecture")
+(desc CS-4ECognition-Lectures "Collection of lectures covering the four E's of cognition: embodied, embedded, enacted, and extended.")
+
+(isa CS-Chemero-RadicalEmbodied ReferenceWork)
+(title CS-Chemero-RadicalEmbodied "Radical Embodied Cognitive Science")
+(author CS-Chemero-RadicalEmbodied "Anthony Chemero")
+(resourceType CS-Chemero-RadicalEmbodied book)
+(level CS-Chemero-RadicalEmbodied advanced)
+(section CS-Chemero-RadicalEmbodied EmbodiedCognition)
+(url CS-Chemero-RadicalEmbodied "https://mitpress.mit.edu/9780262516471/radical-embodied-cognitive-science/")
+(desc CS-Chemero-RadicalEmbodied "Argues for a non-representational, dynamical-systems approach to embodied cognition, drawing on Gibson and phenomenology.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: MEMORY & RESONANCE
+;; Consolidation, replay, ART, theta-gamma coding
+;; ════════════════════════════════════════════════════════════
+
+;; ── Adaptive Resonance Theory ──
+
+(isa CS-Grossberg-ART2013 ReferenceWork)
+(title CS-Grossberg-ART2013 "Adaptive Resonance Theory: How a brain learns to consciously attend, learn, and recognize a changing world")
+(author CS-Grossberg-ART2013 "Stephen Grossberg (2013)")
+(resourceType CS-Grossberg-ART2013 notes)
+(level CS-Grossberg-ART2013 advanced)
+(section CS-Grossberg-ART2013 MemoryResonance)
+(url CS-Grossberg-ART2013 "https://doi.org/10.1016/j.neunet.2012.09.017")
+(desc CS-Grossberg-ART2013 "Grossberg's comprehensive review of ART covering its neural architecture, vigilance parameter, and applications to attention and learning.")
+
+(isa CS-Grossberg-NeuralNetsNatIntel ReferenceWork)
+(title CS-Grossberg-NeuralNetsNatIntel "Neural Networks and Natural Intelligence")
+(author CS-Grossberg-NeuralNetsNatIntel "Stephen Grossberg")
+(resourceType CS-Grossberg-NeuralNetsNatIntel book)
+(level CS-Grossberg-NeuralNetsNatIntel advanced)
+(section CS-Grossberg-NeuralNetsNatIntel MemoryResonance)
+(url CS-Grossberg-NeuralNetsNatIntel "https://mitpress.mit.edu/9780262071055/neural-networks-and-natural-intelligence/")
+(desc CS-Grossberg-NeuralNetsNatIntel "Foundational collection of Grossberg's work on ART, competitive learning, and resonant neural dynamics.")
+
+(isa CS-GrossbergVersace-ARTHippocampus ReferenceWork)
+(title CS-GrossbergVersace-ARTHippocampus "A neural model of attention and memory in the hippocampus (ART + hippocampus)")
+(author CS-GrossbergVersace-ARTHippocampus "Grossberg & Versace (2008)")
+(resourceType CS-GrossbergVersace-ARTHippocampus notes)
+(level CS-GrossbergVersace-ARTHippocampus advanced)
+(section CS-GrossbergVersace-ARTHippocampus MemoryResonance)
+(url CS-GrossbergVersace-ARTHippocampus "https://doi.org/10.1016/j.neunet.2007.09.002")
+(desc CS-GrossbergVersace-ARTHippocampus "Extends ART to hippocampal memory circuits, modelling how resonant matching drives encoding and retrieval.")
+
+;; ── Memory Consolidation & Replay ──
+
+(isa CS-DiekelmannBorn-SleepConsol ReferenceWork)
+(title CS-DiekelmannBorn-SleepConsol "Memory consolidation during sleep: a form of brain restitution")
+(author CS-DiekelmannBorn-SleepConsol "Diekelmann & Born (2010)")
+(resourceType CS-DiekelmannBorn-SleepConsol notes)
+(level CS-DiekelmannBorn-SleepConsol intermediate)
+(section CS-DiekelmannBorn-SleepConsol MemoryResonance)
+(url CS-DiekelmannBorn-SleepConsol "https://doi.org/10.1016/j.neubiorev.2009.05.001")
+(desc CS-DiekelmannBorn-SleepConsol "Major review of how sleep-dependent replay consolidates declarative and procedural memories.")
+
+(isa CS-Buzsaki-SharpWaveRipples ReferenceWork)
+(title CS-Buzsaki-SharpWaveRipples "Hippocampal sharp-wave ripples and memory replay")
+(author CS-Buzsaki-SharpWaveRipples "Buzsaki (2015)")
+(resourceType CS-Buzsaki-SharpWaveRipples notes)
+(level CS-Buzsaki-SharpWaveRipples advanced)
+(section CS-Buzsaki-SharpWaveRipples MemoryResonance)
+(url CS-Buzsaki-SharpWaveRipples "https://doi.org/10.1126/science.1217230")
+(desc CS-Buzsaki-SharpWaveRipples "Science review on sharp-wave ripples as the key mechanism for offline memory consolidation and planning.")
+
+(isa CS-NadelMoscovitch-MultipleTrace ReferenceWork)
+(title CS-NadelMoscovitch-MultipleTrace "Memory, Amnesia, and the Hippocampal System")
+(author CS-NadelMoscovitch-MultipleTrace "Nadel & Moscovitch (1997)")
+(resourceType CS-NadelMoscovitch-MultipleTrace notes)
+(level CS-NadelMoscovitch-MultipleTrace intermediate)
+(section CS-NadelMoscovitch-MultipleTrace MemoryResonance)
+(url CS-NadelMoscovitch-MultipleTrace "https://doi.org/10.1002/(SICI)1098-1063(1997)7:2<130::AID-HIPO2>3.0.CO;2-M")
+(desc CS-NadelMoscovitch-MultipleTrace "The Multiple Trace Theory proposing that hippocampus is always needed for episodic memory retrieval, not just consolidation.")
+
+(isa CS-Eichenbaum-CogNeuroMemory ReferenceWork)
+(title CS-Eichenbaum-CogNeuroMemory "Cognitive and Neural Mechanisms of Memory")
+(author CS-Eichenbaum-CogNeuroMemory "Howard Eichenbaum")
+(resourceType CS-Eichenbaum-CogNeuroMemory book)
+(level CS-Eichenbaum-CogNeuroMemory intermediate)
+(section CS-Eichenbaum-CogNeuroMemory MemoryResonance)
+(url CS-Eichenbaum-CogNeuroMemory "https://global.oup.com/academic/product/the-cognitive-neuroscience-of-memory-9780199778614")
+(desc CS-Eichenbaum-CogNeuroMemory "Comprehensive textbook covering hippocampal anatomy, relational memory, and systems consolidation.")
+
+;; ── Working Memory & Oscillatory Coding ──
+
+(isa CS-Engle-WMCapacity ReferenceWork)
+(title CS-Engle-WMCapacity "Working memory capacity as controlled attention")
+(author CS-Engle-WMCapacity "Engle (2002)")
+(resourceType CS-Engle-WMCapacity notes)
+(level CS-Engle-WMCapacity intermediate)
+(section CS-Engle-WMCapacity MemoryResonance)
+(url CS-Engle-WMCapacity "https://doi.org/10.1111/1467-8721.00167")
+(desc CS-Engle-WMCapacity "Influential framework linking working memory capacity to executive attention control.")
+
+(isa CS-LismanJensen-ThetaGammaCode ReferenceWork)
+(title CS-LismanJensen-ThetaGammaCode "Theta-gamma neural code for memory")
+(author CS-LismanJensen-ThetaGammaCode "Lisman & Jensen (2013)")
+(resourceType CS-LismanJensen-ThetaGammaCode notes)
+(level CS-LismanJensen-ThetaGammaCode advanced)
+(section CS-LismanJensen-ThetaGammaCode MemoryResonance)
+(url CS-LismanJensen-ThetaGammaCode "https://doi.org/10.1016/j.neuron.2013.03.007")
+(desc CS-LismanJensen-ThetaGammaCode "Detailed model of how multiple items are maintained in working memory via gamma cycles nested within theta oscillations.")
+
+(isa CS-Hanslmayr-OscMemory ReferenceWork)
+(title CS-Hanslmayr-OscMemory "The role of neural oscillations in memory processes")
+(author CS-Hanslmayr-OscMemory "Hanslmayr et al. (2016)")
+(resourceType CS-Hanslmayr-OscMemory notes)
+(level CS-Hanslmayr-OscMemory intermediate)
+(section CS-Hanslmayr-OscMemory MemoryResonance)
+(url CS-Hanslmayr-OscMemory "https://doi.org/10.1016/j.coph.2015.09.004")
+(desc CS-Hanslmayr-OscMemory "Review unifying oscillatory correlates of encoding (desynchronisation) and retrieval (synchronisation) in human memory.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: CONSCIOUSNESS
+;; IIT, Global Workspace, higher-order theories, NCC
+;; ════════════════════════════════════════════════════════════
+
+;; ── Integrated Information Theory ──
+
+(isa CS-Tononi-IIT2012 ReferenceWork)
+(title CS-Tononi-IIT2012 "Integrated information theory of consciousness: an updated account")
+(author CS-Tononi-IIT2012 "Tononi (2012)")
+(resourceType CS-Tononi-IIT2012 notes)
+(level CS-Tononi-IIT2012 advanced)
+(section CS-Tononi-IIT2012 Consciousness)
+(url CS-Tononi-IIT2012 "https://doi.org/10.1007/s10439-012-0658-0")
+(desc CS-Tononi-IIT2012 "Tononi's updated formulation of IIT (version 3.0) with the mathematical framework for computing integrated information.")
+
+(isa CS-TononiKoch-ConsciousnessEverywhere ReferenceWork)
+(title CS-TononiKoch-ConsciousnessEverywhere "Consciousness: Here, There and Everywhere?")
+(author CS-TononiKoch-ConsciousnessEverywhere "Tononi & Koch (2015)")
+(resourceType CS-TononiKoch-ConsciousnessEverywhere notes)
+(level CS-TononiKoch-ConsciousnessEverywhere intermediate)
+(section CS-TononiKoch-ConsciousnessEverywhere Consciousness)
+(url CS-TononiKoch-ConsciousnessEverywhere "https://doi.org/10.1098/rstb.2014.0167")
+(desc CS-TononiKoch-ConsciousnessEverywhere "Accessible overview of IIT's postulates and their implications, including why it predicts consciousness in some surprising systems.")
+
+(isa CS-Tononi-Phi ReferenceWork)
+(title CS-Tononi-Phi "Phi: A Voyage from the Brain to the Soul")
+(author CS-Tononi-Phi "Giulio Tononi")
+(resourceType CS-Tononi-Phi book)
+(level CS-Tononi-Phi beginner)
+(section CS-Tononi-Phi Consciousness)
+(url CS-Tononi-Phi "https://www.penguinrandomhouse.com/books/315649/phi-by-giulio-tononi/")
+(desc CS-Tononi-Phi "Tononi's literary-scientific exploration of IIT through Galilean dialogues, blending neuroscience with art and philosophy.")
+
+;; ── Global Workspace & Higher-Order Theories ──
+
+(isa CS-Dehaene-ConsciousnessBrain ReferenceWork)
+(title CS-Dehaene-ConsciousnessBrain "Consciousness and the Brain: Deciphering How the Brain Codes Our Thoughts")
+(author CS-Dehaene-ConsciousnessBrain "Stanislas Dehaene")
+(resourceType CS-Dehaene-ConsciousnessBrain book)
+(level CS-Dehaene-ConsciousnessBrain beginner)
+(section CS-Dehaene-ConsciousnessBrain Consciousness)
+(url CS-Dehaene-ConsciousnessBrain "https://www.penguinrandomhouse.com/books/233932/consciousness-and-the-brain-by-stanislas-dehaene/")
+(desc CS-Dehaene-ConsciousnessBrain "Dehaene's accessible account of Global Neuronal Workspace theory with rich experimental evidence from masking and brain imaging.")
+
+(isa CS-Baars-CogTheoryConsciousness ReferenceWork)
+(title CS-Baars-CogTheoryConsciousness "A Cognitive Theory of Consciousness")
+(author CS-Baars-CogTheoryConsciousness "Bernard Baars")
+(resourceType CS-Baars-CogTheoryConsciousness book)
+(level CS-Baars-CogTheoryConsciousness intermediate)
+(section CS-Baars-CogTheoryConsciousness Consciousness)
+(url CS-Baars-CogTheoryConsciousness "https://www.cambridge.org/core/books/cognitive-theory-of-consciousness/AE55D019D72E71C6F2695E994E6B2B39")
+(desc CS-Baars-CogTheoryConsciousness "The original formulation of Global Workspace Theory, proposing consciousness as a broadcast mechanism for cognitive access.")
+
+(isa CS-Merker-SubcorticalConsciousness ReferenceWork)
+(title CS-Merker-SubcorticalConsciousness "Consciousness without a cerebral cortex: A challenge for neuroscience and medicine")
+(author CS-Merker-SubcorticalConsciousness "Bjorn Merker (2007)")
+(resourceType CS-Merker-SubcorticalConsciousness notes)
+(level CS-Merker-SubcorticalConsciousness advanced)
+(section CS-Merker-SubcorticalConsciousness Consciousness)
+(url CS-Merker-SubcorticalConsciousness "https://doi.org/10.1017/S0140525X07000891")
+(desc CS-Merker-SubcorticalConsciousness "Provocative BBS paper arguing that subcortical structures can support basic forms of consciousness.")
+
+(isa CS-Koch-NCCUpdate ReferenceWork)
+(title CS-Koch-NCCUpdate "The neural correlates of consciousness: an update")
+(author CS-Koch-NCCUpdate "Christof Koch et al. (2016)")
+(resourceType CS-Koch-NCCUpdate notes)
+(level CS-Koch-NCCUpdate intermediate)
+(section CS-Koch-NCCUpdate Consciousness)
+(url CS-Koch-NCCUpdate "https://doi.org/10.1111/nyas.13171")
+(desc CS-Koch-NCCUpdate "Comprehensive review of NCC research including the distinction between full, content, and background NCC.")
+
+;; ── Philosophical & Popular Works ──
+
+(isa CS-Chalmers-ConsciousMind ReferenceWork)
+(title CS-Chalmers-ConsciousMind "The Conscious Mind: In Search of a Fundamental Theory")
+(author CS-Chalmers-ConsciousMind "David Chalmers")
+(resourceType CS-Chalmers-ConsciousMind book)
+(level CS-Chalmers-ConsciousMind intermediate)
+(section CS-Chalmers-ConsciousMind Consciousness)
+(url CS-Chalmers-ConsciousMind "https://global.oup.com/academic/product/the-conscious-mind-9780195117899")
+(desc CS-Chalmers-ConsciousMind "Chalmers' landmark work introducing the hard problem of consciousness and defending property dualism.")
+
+(isa CS-Seth-BeingYou ReferenceWork)
+(title CS-Seth-BeingYou "Being You: A New Science of Consciousness")
+(author CS-Seth-BeingYou "Anil Seth")
+(resourceType CS-Seth-BeingYou book)
+(level CS-Seth-BeingYou beginner)
+(section CS-Seth-BeingYou Consciousness)
+(url CS-Seth-BeingYou "https://www.penguinrandomhouse.com/books/600300/being-you-by-anil-seth/")
+(desc CS-Seth-BeingYou "Seth's bestselling 2021 book connecting predictive processing to consciousness through the concept of controlled hallucination.")
+
+(isa CS-Dennett-ConsciousnessExplained ReferenceWork)
+(title CS-Dennett-ConsciousnessExplained "Consciousness Explained")
+(author CS-Dennett-ConsciousnessExplained "Daniel Dennett")
+(resourceType CS-Dennett-ConsciousnessExplained book)
+(level CS-Dennett-ConsciousnessExplained intermediate)
+(section CS-Dennett-ConsciousnessExplained Consciousness)
+(url CS-Dennett-ConsciousnessExplained "https://www.hachettebookgroup.com/titles/daniel-c-dennett/consciousness-explained/9780316180665/")
+(desc CS-Dennett-ConsciousnessExplained "Dennett's influential eliminativist-functionalist account of consciousness, rejecting the Cartesian Theatre.")
+
+(isa CS-GodfreySmith-OtherMinds ReferenceWork)
+(title CS-GodfreySmith-OtherMinds "Other Minds: The Octopus, the Sea, and the Deep Origins of Consciousness")
+(author CS-GodfreySmith-OtherMinds "Peter Godfrey-Smith")
+(resourceType CS-GodfreySmith-OtherMinds book)
+(level CS-GodfreySmith-OtherMinds beginner)
+(section CS-GodfreySmith-OtherMinds Consciousness)
+(url CS-GodfreySmith-OtherMinds "https://us.macmillan.com/books/9780374537197/otherminds")
+(desc CS-GodfreySmith-OtherMinds "Philosophical exploration of consciousness through cephalopod cognition, asking what it is like to be an octopus.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Cognitive architectures, brain imaging, analysis tools
+;; ════════════════════════════════════════════════════════════
+
+;; ── Cognitive Architectures ──
+
+(isa CS-ACTR ReferenceWork)
+(title CS-ACTR "ACT-R: Adaptive Control of Thought - Rational")
+(author CS-ACTR "John Anderson Lab (CMU)")
+(resourceType CS-ACTR code)
+(level CS-ACTR intermediate)
+(section CS-ACTR DatasetsSoftware)
+(url CS-ACTR "http://act-r.psy.cmu.edu/")
+(desc CS-ACTR "The most widely-used cognitive architecture, modeling human cognition through production rules, declarative memory chunks, and Bayesian learning.")
+
+(isa CS-Soar ReferenceWork)
+(title CS-Soar "Soar Cognitive Architecture")
+(author CS-Soar "John Laird Lab (Michigan)")
+(resourceType CS-Soar code)
+(level CS-Soar intermediate)
+(section CS-Soar DatasetsSoftware)
+(url CS-Soar "https://soar.eecs.umich.edu/")
+(desc CS-Soar "General cognitive architecture for developing intelligent agents, based on problem spaces, chunking, and reinforcement learning.")
+
+(isa CS-Nengo ReferenceWork)
+(title CS-Nengo "Nengo: Neural Engineering Framework")
+(author CS-Nengo "Applied Brain Research")
+(resourceType CS-Nengo code)
+(level CS-Nengo intermediate)
+(section CS-Nengo DatasetsSoftware)
+(url CS-Nengo "https://www.nengo.ai/")
+(desc CS-Nengo "Python framework implementing the Neural Engineering Framework (NEF) for building large-scale brain models with spiking or rate neurons.")
+
+(isa CS-NEST ReferenceWork)
+(title CS-NEST "NEST Simulator")
+(author CS-NEST "NEST Initiative")
+(resourceType CS-NEST code)
+(level CS-NEST advanced)
+(section CS-NEST DatasetsSoftware)
+(url CS-NEST "https://www.nest-simulator.org/")
+(desc CS-NEST "Simulator for spiking neural network models focusing on the dynamics, size, and structure of neural systems.")
+
+;; ── Brain Imaging Datasets ──
+
+(isa CS-HCP ReferenceWork)
+(title CS-HCP "Human Connectome Project (HCP)")
+(author CS-HCP "WU-Minn Consortium")
+(resourceType CS-HCP data)
+(level CS-HCP intermediate)
+(section CS-HCP DatasetsSoftware)
+(url CS-HCP "https://www.humanconnectome.org/")
+(desc CS-HCP "Massive dataset of high-resolution fMRI, diffusion MRI, and behavioral data from 1,200 healthy adults.")
+
+(isa CS-OpenNeuro ReferenceWork)
+(title CS-OpenNeuro "OpenNeuro")
+(author CS-OpenNeuro "Stanford Center for Reproducible Neuroscience")
+(resourceType CS-OpenNeuro data)
+(level CS-OpenNeuro beginner)
+(section CS-OpenNeuro DatasetsSoftware)
+(url CS-OpenNeuro "https://openneuro.org/")
+(desc CS-OpenNeuro "Free platform for sharing neuroimaging data in BIDS format. Thousands of fMRI, EEG, MEG, and iEEG datasets.")
+
+(isa CS-AllenBrainAtlas ReferenceWork)
+(title CS-AllenBrainAtlas "Allen Brain Atlas")
+(author CS-AllenBrainAtlas "Allen Institute for Brain Science")
+(resourceType CS-AllenBrainAtlas data)
+(level CS-AllenBrainAtlas intermediate)
+(section CS-AllenBrainAtlas DatasetsSoftware)
+(url CS-AllenBrainAtlas "https://portal.brain-map.org/")
+(desc CS-AllenBrainAtlas "Comprehensive gene expression atlas, connectivity atlas, and cell-type databases for mouse and human brains.")
+
+(isa CS-NeuroVault ReferenceWork)
+(title CS-NeuroVault "NeuroVault: Repository of brain statistical maps")
+(author CS-NeuroVault "Gorgolewski et al.")
+(resourceType CS-NeuroVault data)
+(level CS-NeuroVault beginner)
+(section CS-NeuroVault DatasetsSoftware)
+(url CS-NeuroVault "https://neurovault.org/")
+(desc CS-NeuroVault "Public repository for sharing unthresholded statistical maps, parcellations, and atlases from neuroimaging studies.")
+
+;; ── Analysis & Simulation Frameworks ──
+
+(isa CS-Nilearn ReferenceWork)
+(title CS-Nilearn "nilearn: Machine Learning for Neuroimaging in Python")
+(author CS-Nilearn "nilearn contributors")
+(resourceType CS-Nilearn code)
+(level CS-Nilearn intermediate)
+(section CS-Nilearn DatasetsSoftware)
+(url CS-Nilearn "https://nilearn.github.io/stable/index.html")
+(desc CS-Nilearn "Python library for statistical learning on neuroimaging data: decoding, connectivity, parcellation, and visualization.")
+
+(isa CS-Brian2 ReferenceWork)
+(title CS-Brian2 "Brian2: Spiking Neural Network Simulator")
+(author CS-Brian2 "Goodman & Brette")
+(resourceType CS-Brian2 code)
+(level CS-Brian2 intermediate)
+(section CS-Brian2 DatasetsSoftware)
+(url CS-Brian2 "https://brian2.readthedocs.io/")
+(desc CS-Brian2 "Flexible Python simulator for spiking neural networks defined by equations, ideal for computational neuroscience research.")
+
+(isa CS-PyMC ReferenceWork)
+(title CS-PyMC "PyMC: Probabilistic Programming in Python")
+(author CS-PyMC "PyMC Developers")
+(resourceType CS-PyMC code)
+(level CS-PyMC intermediate)
+(section CS-PyMC DatasetsSoftware)
+(url CS-PyMC "https://www.pymc.io/")
+(desc CS-PyMC "Bayesian modeling framework using MCMC and variational inference, widely used for cognitive modeling and data analysis.")
+
+(isa CS-PsychoPy ReferenceWork)
+(title CS-PsychoPy "PsychoPy: Psychology Experiment Software")
+(author CS-PsychoPy "Jonathan Peirce")
+(resourceType CS-PsychoPy code)
+(level CS-PsychoPy beginner)
+(section CS-PsychoPy DatasetsSoftware)
+(url CS-PsychoPy "https://www.psychopy.org/")
+(desc CS-PsychoPy "Free Python-based software for running psychology and neuroscience experiments with precise timing control.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources CognitiveScienceReference 89)
+(totalSections CognitiveScienceReference 8)
+(comment CognitiveScienceReference
+  "8 sections: Overview (12), Predictive Coding (10), Neural Oscillations (12),
+   Bayesian Brain (11), Embodied Cognition (11), Memory & Resonance (10),
+   Consciousness (11), Datasets & Software (12). Total: 89 resources.")

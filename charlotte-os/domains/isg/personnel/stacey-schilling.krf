@@ -1,0 +1,61 @@
+;;; ================================================================
+;;; ISG PERSONNEL / STACEY SCHILLING
+;;; VP M&A Financial Integration & CFO, Specialty Services Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa StaceySchilling Person)
+(isa StaceySchilling Executive)
+(hasAttribute StaceySchilling ::LABEL "Stacey Schilling")
+(hasAttribute StaceySchilling ::ROLE "VP, M&A Financial Integration")
+(hasAttribute StaceySchilling ::ROLE_SECONDARY "CFO, Specialty Services Group")
+(hasAttribute StaceySchilling ::EMAIL "sschilling@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF StaceySchilling ISGServicesGroup)
+
+;; Dual role: M&A integration + divisional CFO
+(hasAttribute StaceySchilling ::DUAL_ROLE "Leads financial integration of new acquisitions AND serves as CFO for Specialty Services")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt StaceySchilling WinstonSalem-NC)
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch StaceySchilling "Camco Manufacturing — Finance" 2000 2006)
+(careerEpoch StaceySchilling "Dentsply Sirona — Division Controller" 2006 2016)
+(careerEpoch StaceySchilling "Dentsply Sirona — VP Corporate Controller" 2018 2020)
+(careerEpoch StaceySchilling "The Industrial Service Group — VP M&A Integration / CFO Services" 2020 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn StaceySchilling MAIntegration)
+(expertiseIn StaceySchilling FinancialIntegration)
+(expertiseIn StaceySchilling CorporateControlling)
+(expertiseIn StaceySchilling DivisionFinance)
+(expertiseIn StaceySchilling DueDiligence)
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa StaceySchilling-IntegrationExpert SIGNAL)
+(comment StaceySchilling-IntegrationExpert
+  "Stacey runs the financial integration of every new ISG acquisition.
+   She has integrated the books of 16+ acquired companies into a unified
+   financial reporting structure. She also serves as CFO for the Specialty
+   Services division. Her Dentsply Sirona background (medical devices)
+   gives her experience with complex multi-entity financial operations.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithMAFinance PROTOCOL)
+(hasTrigger Protocol-InteractWithMAFinance (sessionCaller ?Session StaceySchilling))
+(comment Protocol-InteractWithMAFinance
+  "Stacey is the financial integration expert for acquisitions. She cares
+   about chart of accounts harmonization, entity consolidation, and clean
+   financial reporting. Charlotte's ability to map knowledge across
+   entities directly supports her integration work.")

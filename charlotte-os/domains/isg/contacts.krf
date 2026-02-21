@@ -1,0 +1,80 @@
+;;; ================================================================
+;;; ISG DOMAIN / CONTACTS
+;;; Caller identity resolution — phone, email, persona lookup
+;;; ================================================================
+;;;
+;;; When a call or message arrives, Charlotte resolves the sender
+;;; to a persona NODE and loads the corresponding persona file.
+;;; This file is the index. Each person's full substrate profile
+;;; lives in personnel/<name>.krf.
+;;;
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Microtheory inheritance ──
+;; ISGPersonnelMt specializes the ISG domain context.
+
+(genlMt ISGPersonnelMt ISGDomainMt)
+
+;; ── Contact resolution rule ──
+;; Given an incoming identifier (phone or email), resolve to a person.
+
+(implies
+  (and (hasAttribute ?Person ::PHONE ?Number)
+       (incomingFrom ?Session ?Number))
+  (sessionCaller ?Session ?Person))
+
+(implies
+  (and (hasAttribute ?Person ::EMAIL ?Address)
+       (incomingFrom ?Session ?Address))
+  (sessionCaller ?Session ?Person))
+
+;; ── Contact directory ──
+;; Format: (hasAttribute PersonID ::PHONE "+1XXXXXXXXXX")
+;; Format: (hasAttribute PersonID ::EMAIL "user@isgservice.com")
+
+;; ── C-Suite ──
+
+(hasAttribute JimRichard ::EMAIL "jtrichard@isgservice.com")
+(hasAttribute JimRichard ::PHONE "+18475332127")
+(hasAttribute JeffDubois ::EMAIL "jdubois@isgservice.com")
+(hasAttribute JohnJensen ::EMAIL "jjensen@isgservice.com")
+(hasAttribute RogerStewart ::EMAIL "rstewart@isgservice.com")
+(hasAttribute DavedKarl ::EMAIL "dkarl@isgservice.com")
+(hasAttribute MattBranigan ::EMAIL "mbranigan@isgservice.com")
+(hasAttribute BartMiddleton ::EMAIL "bmiddleton@isgservice.com")
+(hasAttribute BryanLiBrandi ::EMAIL "blibrandi@isgservice.com")
+(hasAttribute JeffPratt ::EMAIL "jpratt@isgservice.com")
+(hasAttribute SteveMeacham ::EMAIL "smeacham@isgservice.com")
+
+;; ── Group & Subsidiary Leaders ──
+
+(hasAttribute ChrisSeibel ::EMAIL "cseibel@isgservice.com")
+(hasAttribute EricChandler ::EMAIL "echandler@isgservice.com")
+(hasAttribute DannyMorin ::EMAIL "dmorin@isgservice.com")
+(hasAttribute NeilHutcheson ::EMAIL "nhutcheson@isgservice.com")
+(hasAttribute FredHaffner ::EMAIL "fhaffner@isgservice.com")
+(hasAttribute JoeMalizia ::EMAIL "jmalizia@isgservice.com")
+(hasAttribute StaceySchilling ::EMAIL "sschilling@isgservice.com")
+(hasAttribute EricGlaze ::EMAIL "eglaze@isgservice.com")
+
+;; ── Charlotte OS Launch Attendees ──
+
+(hasAttribute SheriMorgan ::EMAIL "smorgan@isgservice.com")
+(hasAttribute ChrisMcCoy ::EMAIL "cmccoy@isgservice.com")
+(hasAttribute SherryCaldwell ::EMAIL "scaldwell@isgservice.com")
+
+;; ── Organizational membership ──
+;; Every person in this file is an ISG employee.
+
+(isa ISGExecutiveTeam GroupEntity)
+(isa ISGCompressorGroup GroupEntity)
+(isa ISGValveActuationGroup GroupEntity)
+(isa ISGMotorPumpGroup GroupEntity)
+(isa ISGServicesGroup GroupEntity)
+(isa ISGCharlotteLaunchTeam GroupEntity)
+
+(comment ISGCharlotteLaunchTeam
+  "The attendees of the Feb 24, 2026 Charlotte OS launch meeting.
+   These are the first ISG employees to interact with Charlotte.")

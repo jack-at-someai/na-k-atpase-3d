@@ -1,0 +1,998 @@
+;;; ================================================================
+;;; REFERENCE / NEUROSCIENCE
+;;; 99 resources across 8 sections
+;;; ================================================================
+;;;
+;;; Neural geometry reference hub. How biological networks encode
+;;; spatial and temporal structure.
+;;;
+;;; Neural geometry studies the geometric, topological, and algebraic
+;;; structures that arise in neural representations — both biological
+;;; and artificial. Neural activity traces out manifolds in
+;;; high-dimensional firing-rate space. Symmetries of the world are
+;;; mirrored by equivariances in neural codes. The topology of
+;;; cognitive maps reveals deep structure that pure statistics would
+;;; miss.
+;;;
+;;; Learning path: Group Theory → Differential Geometry → Topology →
+;;; Geometric ML → Computational Neuroscience → Information Geometry
+;;;
+;;; ================================================================
+
+(in-microtheory NeuralGeometryReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: ABSTRACT ALGEBRA & GROUP THEORY
+;; Symmetry, representations, tensors, equivariance
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Notes ──
+
+(isa NS-Costa-GroupTheoryPrimer ReferenceWork)
+(title NS-Costa-GroupTheoryPrimer "Group Theory: A Primer")
+(author NS-Costa-GroupTheoryPrimer "Luciano da Fontoura Costa")
+(year NS-Costa-GroupTheoryPrimer 2019)
+(resourceType NS-Costa-GroupTheoryPrimer book)
+(level NS-Costa-GroupTheoryPrimer beginner)
+(section NS-Costa-GroupTheoryPrimer AbstractAlgebraGroupTheory)
+(url NS-Costa-GroupTheoryPrimer "https://www.researchgate.net/profile/Luciano-Da-F-Costa/publication/334126746_Group_Theory_A_Primer_CDT-11/links/5da83b2f299bf1c1e4c8ffb4/Group-Theory-A-Primer-CDT-11.pdf")
+(desc NS-Costa-GroupTheoryPrimer "Concise introduction covering the core definitions and theorems of group theory without heavy prerequisites.")
+
+(isa NS-Lim-TensorsComputations ReferenceWork)
+(title NS-Lim-TensorsComputations "Tensors in Computations")
+(author NS-Lim-TensorsComputations "Lek-Heng Lim")
+(year NS-Lim-TensorsComputations 2021)
+(resourceType NS-Lim-TensorsComputations notes)
+(level NS-Lim-TensorsComputations intermediate)
+(section NS-Lim-TensorsComputations AbstractAlgebraGroupTheory)
+(url NS-Lim-TensorsComputations "https://arxiv.org/pdf/2106.08090.pdf")
+(desc NS-Lim-TensorsComputations "Comprehensive treatment of tensors from the computational perspective — decompositions, ranks, and applications.")
+
+(isa NS-GallierQuaintance-HarmonicAnalysis ReferenceWork)
+(title NS-GallierQuaintance-HarmonicAnalysis "Aspects of Harmonic Analysis and Representation Theory")
+(author NS-GallierQuaintance-HarmonicAnalysis "Gallier & Quaintance")
+(year NS-GallierQuaintance-HarmonicAnalysis 2021)
+(resourceType NS-GallierQuaintance-HarmonicAnalysis book)
+(level NS-GallierQuaintance-HarmonicAnalysis advanced)
+(section NS-GallierQuaintance-HarmonicAnalysis AbstractAlgebraGroupTheory)
+(url NS-GallierQuaintance-HarmonicAnalysis "https://drive.google.com/file/d/1eK8B1UpTJTnCXV6DL4-blDaKo6XQk28r/view?usp=sharing")
+(desc NS-GallierQuaintance-HarmonicAnalysis "Deep treatment of harmonic analysis on groups, connecting Fourier analysis to representation theory.")
+
+(isa NS-Prasad-RepTheoryBasics ReferenceWork)
+(title NS-Prasad-RepTheoryBasics "Basic Concepts of Representation Theory")
+(author NS-Prasad-RepTheoryBasics "Amritanshu Prasad")
+(year NS-Prasad-RepTheoryBasics 2013)
+(resourceType NS-Prasad-RepTheoryBasics notes)
+(level NS-Prasad-RepTheoryBasics intermediate)
+(section NS-Prasad-RepTheoryBasics AbstractAlgebraGroupTheory)
+(url NS-Prasad-RepTheoryBasics "https://cel.archives-ouvertes.fr/cel-00963677/document")
+(desc NS-Prasad-RepTheoryBasics "Accessible lecture notes on how groups act on vector spaces — the mathematical backbone of equivariant networks.")
+
+(isa NS-Steinberg-RepTheoryFinite ReferenceWork)
+(title NS-Steinberg-RepTheoryFinite "Representation Theory of Finite Groups")
+(author NS-Steinberg-RepTheoryFinite "Benjamin Steinberg")
+(year NS-Steinberg-RepTheoryFinite 2012)
+(resourceType NS-Steinberg-RepTheoryFinite book)
+(level NS-Steinberg-RepTheoryFinite intermediate)
+(section NS-Steinberg-RepTheoryFinite AbstractAlgebraGroupTheory)
+(url NS-Steinberg-RepTheoryFinite "https://drive.google.com/file/d/1fe1qnVAkCHEY1hn9sOvcA6Ocww66fMmP/view?usp=sharing")
+(desc NS-Steinberg-RepTheoryFinite "Thorough textbook on finite group representations with applications to combinatorics and algebra.")
+
+;; ── Courses & Videos ──
+
+(isa NS-Mathemaniac-EssenceGroupTheory ReferenceWork)
+(title NS-Mathemaniac-EssenceGroupTheory "Essence of Group Theory")
+(author NS-Mathemaniac-EssenceGroupTheory "Mathemaniac")
+(resourceType NS-Mathemaniac-EssenceGroupTheory video)
+(level NS-Mathemaniac-EssenceGroupTheory beginner)
+(section NS-Mathemaniac-EssenceGroupTheory AbstractAlgebraGroupTheory)
+(url NS-Mathemaniac-EssenceGroupTheory "https://youtube.com/playlist?list=PLDcSwjT2BF_VuNbn8HiHZKKy59SgnIAeO")
+(desc NS-Mathemaniac-EssenceGroupTheory "Visual, intuition-first introduction to groups, subgroups, cosets, and quotient groups.")
+
+(isa NS-Socratica-AbstractAlgebra ReferenceWork)
+(title NS-Socratica-AbstractAlgebra "Abstract Algebra")
+(author NS-Socratica-AbstractAlgebra "Socratica")
+(resourceType NS-Socratica-AbstractAlgebra video)
+(level NS-Socratica-AbstractAlgebra beginner)
+(section NS-Socratica-AbstractAlgebra AbstractAlgebraGroupTheory)
+(url NS-Socratica-AbstractAlgebra "https://youtube.com/playlist?list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6")
+(desc NS-Socratica-AbstractAlgebra "Short, clear videos covering groups, rings, and fields from scratch.")
+
+(isa NS-3B1B-EulersFormula ReferenceWork)
+(title NS-3B1B-EulersFormula "Euler's Formula with Introductory Group Theory")
+(author NS-3B1B-EulersFormula "3Blue1Brown")
+(resourceType NS-3B1B-EulersFormula video)
+(level NS-3B1B-EulersFormula beginner)
+(section NS-3B1B-EulersFormula AbstractAlgebraGroupTheory)
+(url NS-3B1B-EulersFormula "https://www.youtube.com/watch?v=mvmuCPvRoWQ")
+(desc NS-3B1B-EulersFormula "Beautiful visual exploration connecting complex exponentials to group structure.")
+
+(isa NS-XylyXylyX-WhatIsATensor ReferenceWork)
+(title NS-XylyXylyX-WhatIsATensor "What is a Tensor?")
+(author NS-XylyXylyX-WhatIsATensor "XylyXylyX")
+(resourceType NS-XylyXylyX-WhatIsATensor video)
+(level NS-XylyXylyX-WhatIsATensor intermediate)
+(section NS-XylyXylyX-WhatIsATensor AbstractAlgebraGroupTheory)
+(url NS-XylyXylyX-WhatIsATensor "https://youtube.com/playlist?list=PLRlVmXqzHjUQARA37r4Qw3SHPqVXgqO6c")
+(desc NS-XylyXylyX-WhatIsATensor "Detailed series building tensor understanding from first principles.")
+
+(isa NS-MathDoctorBob-RepTheory ReferenceWork)
+(title NS-MathDoctorBob-RepTheory "Representation Theory")
+(author NS-MathDoctorBob-RepTheory "Math Doctor Bob")
+(resourceType NS-MathDoctorBob-RepTheory video)
+(level NS-MathDoctorBob-RepTheory intermediate)
+(section NS-MathDoctorBob-RepTheory AbstractAlgebraGroupTheory)
+(url NS-MathDoctorBob-RepTheory "https://youtube.com/playlist?list=PL57457844458A5A1F")
+(desc NS-MathDoctorBob-RepTheory "University-level lectures on representation theory of finite groups and Lie algebras.")
+
+(isa NS-CatsForAI-CategoryTheory ReferenceWork)
+(title NS-CatsForAI-CategoryTheory "Category Theory for AI")
+(author NS-CatsForAI-CategoryTheory "cats.for.ai")
+(year NS-CatsForAI-CategoryTheory 2022)
+(resourceType NS-CatsForAI-CategoryTheory course)
+(level NS-CatsForAI-CategoryTheory advanced)
+(section NS-CatsForAI-CategoryTheory AbstractAlgebraGroupTheory)
+(url NS-CatsForAI-CategoryTheory "https://cats.for.ai/")
+(desc NS-CatsForAI-CategoryTheory "Online course connecting category theory — the \"mathematics of mathematics\" — to AI and machine learning.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: DIFFERENTIAL GEOMETRY & LIE GROUPS
+;; Manifolds, Riemannian metrics, geodesics, connections
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Notes ──
+
+(isa NS-Hall-LieGroupsReps ReferenceWork)
+(title NS-Hall-LieGroupsReps "Lie Groups, Lie Algebras, and Representations")
+(author NS-Hall-LieGroupsReps "Brian C. Hall")
+(year NS-Hall-LieGroupsReps 2003)
+(resourceType NS-Hall-LieGroupsReps book)
+(level NS-Hall-LieGroupsReps intermediate)
+(section NS-Hall-LieGroupsReps DifferentialGeometryLieGroups)
+(url NS-Hall-LieGroupsReps "https://link.springer.com/book/10.1007/978-3-319-13467-3")
+(desc NS-Hall-LieGroupsReps "Standard graduate text. Matrix Lie groups approach makes it concrete and accessible.")
+
+(isa NS-GallierQuaintance-DiffGeoLieGroups ReferenceWork)
+(title NS-GallierQuaintance-DiffGeoLieGroups "Differential Geometry and Lie Groups: A Computational Perspective")
+(author NS-GallierQuaintance-DiffGeoLieGroups "Gallier & Quaintance")
+(year NS-GallierQuaintance-DiffGeoLieGroups 2020)
+(resourceType NS-GallierQuaintance-DiffGeoLieGroups book)
+(level NS-GallierQuaintance-DiffGeoLieGroups intermediate)
+(section NS-GallierQuaintance-DiffGeoLieGroups DifferentialGeometryLieGroups)
+(url NS-GallierQuaintance-DiffGeoLieGroups "https://link.springer.com/book/10.1007/978-3-030-46040-2")
+(desc NS-GallierQuaintance-DiffGeoLieGroups "Computationally-oriented treatment ideal for ML practitioners.")
+
+(isa NS-GuiguiMiolanePennec-GeomstatsIntro ReferenceWork)
+(title NS-GuiguiMiolanePennec-GeomstatsIntro "Intro to Riemannian Geometry and Geometric Statistics with Geomstats")
+(author NS-GuiguiMiolanePennec-GeomstatsIntro "Guigui, Miolane & Pennec")
+(year NS-GuiguiMiolanePennec-GeomstatsIntro 2022)
+(resourceType NS-GuiguiMiolanePennec-GeomstatsIntro notes)
+(level NS-GuiguiMiolanePennec-GeomstatsIntro intermediate)
+(section NS-GuiguiMiolanePennec-GeomstatsIntro DifferentialGeometryLieGroups)
+(url NS-GuiguiMiolanePennec-GeomstatsIntro "https://hal.inria.fr/hal-03766900/")
+(desc NS-GuiguiMiolanePennec-GeomstatsIntro "Theory-to-code bridge: Riemannian geometry concepts with working Python implementations.")
+
+(isa NS-Nakahara-GeoTopoPhysics ReferenceWork)
+(title NS-Nakahara-GeoTopoPhysics "Geometry, Topology and Physics")
+(author NS-Nakahara-GeoTopoPhysics "Nakahara")
+(year NS-Nakahara-GeoTopoPhysics 2003)
+(resourceType NS-Nakahara-GeoTopoPhysics book)
+(level NS-Nakahara-GeoTopoPhysics advanced)
+(section NS-Nakahara-GeoTopoPhysics DifferentialGeometryLieGroups)
+(url NS-Nakahara-GeoTopoPhysics "https://www.amazon.com/Geometry-Topology-Physics-Graduate-Student/dp/0750306068")
+(desc NS-Nakahara-GeoTopoPhysics "Classic reference covering manifolds, fiber bundles, characteristic classes. Dense but comprehensive.")
+
+(isa NS-Darling-DiffFormsConnections ReferenceWork)
+(title NS-Darling-DiffFormsConnections "Differential Forms and Connections")
+(author NS-Darling-DiffFormsConnections "Darling")
+(year NS-Darling-DiffFormsConnections 2012)
+(resourceType NS-Darling-DiffFormsConnections book)
+(level NS-Darling-DiffFormsConnections intermediate)
+(section NS-Darling-DiffFormsConnections DifferentialGeometryLieGroups)
+(url NS-Darling-DiffFormsConnections "https://www.cambridge.org/core/books/differential-forms-and-connections/767FC792F030D351AF5E65D0434248F5")
+(desc NS-Darling-DiffFormsConnections "Gentle introduction to differential forms, the modern language of calculus on manifolds.")
+
+(isa NS-Tu-ConnectionsCurvature ReferenceWork)
+(title NS-Tu-ConnectionsCurvature "Connections, Curvature, and Characteristic Classes")
+(author NS-Tu-ConnectionsCurvature "Loring W. Tu")
+(year NS-Tu-ConnectionsCurvature 2017)
+(resourceType NS-Tu-ConnectionsCurvature book)
+(level NS-Tu-ConnectionsCurvature advanced)
+(section NS-Tu-ConnectionsCurvature DifferentialGeometryLieGroups)
+(url NS-Tu-ConnectionsCurvature "https://link.springer.com/book/10.1007/978-3-319-55084-8")
+(desc NS-Tu-ConnectionsCurvature "Sequel to Tu's \"Introduction to Manifolds.\" Vector bundles, connections, Chern-Weil theory.")
+
+(isa NS-Lee-RiemannianManifolds ReferenceWork)
+(title NS-Lee-RiemannianManifolds "Riemannian Manifolds: An Introduction to Curvature")
+(author NS-Lee-RiemannianManifolds "John M. Lee")
+(year NS-Lee-RiemannianManifolds 2000)
+(resourceType NS-Lee-RiemannianManifolds book)
+(level NS-Lee-RiemannianManifolds intermediate)
+(section NS-Lee-RiemannianManifolds DifferentialGeometryLieGroups)
+(url NS-Lee-RiemannianManifolds "https://link.springer.com/book/10.1007/b98852")
+(desc NS-Lee-RiemannianManifolds "Exceptionally clear introduction to Riemannian geometry. Gold standard for self-study.")
+
+(isa NS-Spivak-ComprehensiveDiffGeo ReferenceWork)
+(title NS-Spivak-ComprehensiveDiffGeo "A Comprehensive Introduction to Differential Geometry")
+(author NS-Spivak-ComprehensiveDiffGeo "Michael Spivak")
+(year NS-Spivak-ComprehensiveDiffGeo 1999)
+(resourceType NS-Spivak-ComprehensiveDiffGeo book)
+(level NS-Spivak-ComprehensiveDiffGeo advanced)
+(section NS-Spivak-ComprehensiveDiffGeo DifferentialGeometryLieGroups)
+(url NS-Spivak-ComprehensiveDiffGeo "https://dl.icdst.org/pdfs/files3/e9091aa2ddcfcbf04faeb46c68d7dc49.pdf")
+(desc NS-Spivak-ComprehensiveDiffGeo "Five-volume masterwork. Exhaustive and rigorous. Reference rather than first read.")
+
+(isa NS-Postnikov-RiemannianGeo ReferenceWork)
+(title NS-Postnikov-RiemannianGeo "Riemannian Geometry")
+(author NS-Postnikov-RiemannianGeo "Mikhail Postnikov")
+(year NS-Postnikov-RiemannianGeo 2001)
+(resourceType NS-Postnikov-RiemannianGeo book)
+(level NS-Postnikov-RiemannianGeo advanced)
+(section NS-Postnikov-RiemannianGeo DifferentialGeometryLieGroups)
+(url NS-Postnikov-RiemannianGeo "https://link.springer.com/book/10.1007/978-3-662-04433-9")
+(desc NS-Postnikov-RiemannianGeo "Russian school approach to Riemannian geometry. Elegant, compact proofs.")
+
+;; ── Courses & Videos ──
+
+(isa NS-Carroll-GeoTopology ReferenceWork)
+(title NS-Carroll-GeoTopology "Geometry and Topology")
+(author NS-Carroll-GeoTopology "Sean Carroll")
+(resourceType NS-Carroll-GeoTopology video)
+(level NS-Carroll-GeoTopology beginner)
+(section NS-Carroll-GeoTopology DifferentialGeometryLieGroups)
+(url NS-Carroll-GeoTopology "https://youtu.be/kp1k90zNVLc")
+(desc NS-Carroll-GeoTopology "Physicist's intuitive overview of manifolds, metrics, and curvature.")
+
+(isa NS-Carroll-Symmetry ReferenceWork)
+(title NS-Carroll-Symmetry "Symmetry")
+(author NS-Carroll-Symmetry "Sean Carroll")
+(resourceType NS-Carroll-Symmetry video)
+(level NS-Carroll-Symmetry beginner)
+(section NS-Carroll-Symmetry DifferentialGeometryLieGroups)
+(url NS-Carroll-Symmetry "https://youtu.be/yCxacFBLHIY")
+(desc NS-Carroll-Symmetry "Accessible lecture on symmetry in physics — groups, Noether's theorem, gauge symmetry.")
+
+(isa NS-Solomon-DiffGeoCS ReferenceWork)
+(title NS-Solomon-DiffGeoCS "Differential Geometry for Computer Science")
+(author NS-Solomon-DiffGeoCS "Justin Solomon")
+(resourceType NS-Solomon-DiffGeoCS course)
+(level NS-Solomon-DiffGeoCS intermediate)
+(section NS-Solomon-DiffGeoCS DifferentialGeometryLieGroups)
+(url NS-Solomon-DiffGeoCS "https://youtube.com/playlist?list=PLQ3UicqQtfNvPmZftPyQ-qK1wdXBxj86W")
+(desc NS-Solomon-DiffGeoCS "MIT-style course connecting differential geometry to graphics, vision, and ML.")
+
+(isa NS-CMU-DiscreteDiffGeo ReferenceWork)
+(title NS-CMU-DiscreteDiffGeo "Discrete Differential Geometry")
+(author NS-CMU-DiscreteDiffGeo "CMU")
+(resourceType NS-CMU-DiscreteDiffGeo course)
+(level NS-CMU-DiscreteDiffGeo intermediate)
+(section NS-CMU-DiscreteDiffGeo DifferentialGeometryLieGroups)
+(url NS-CMU-DiscreteDiffGeo "https://www.youtube.com/playlist?list=PL9_jI1bdZmz0hIrNCMQW1YmZysAiIYSSS")
+(desc NS-CMU-DiscreteDiffGeo "CMU course on computational differential geometry — meshes, curvature, Laplacians.")
+
+(isa NS-XylyXylyX-WhatIsAManifold ReferenceWork)
+(title NS-XylyXylyX-WhatIsAManifold "What is a Manifold?")
+(author NS-XylyXylyX-WhatIsAManifold "XylyXylyX")
+(resourceType NS-XylyXylyX-WhatIsAManifold video)
+(level NS-XylyXylyX-WhatIsAManifold beginner)
+(section NS-XylyXylyX-WhatIsAManifold DifferentialGeometryLieGroups)
+(url NS-XylyXylyX-WhatIsAManifold "https://youtube.com/playlist?list=PLRlVmXqzHjUQHEx63ZFxV-0Ortgf-rpJo")
+(desc NS-XylyXylyX-WhatIsAManifold "Patient, thorough series building manifold intuition from topological spaces.")
+
+(isa NS-Davie-Manifolds ReferenceWork)
+(title NS-Davie-Manifolds "Manifolds")
+(author NS-Davie-Manifolds "Robert Davie")
+(resourceType NS-Davie-Manifolds video)
+(level NS-Davie-Manifolds intermediate)
+(section NS-Davie-Manifolds DifferentialGeometryLieGroups)
+(url NS-Davie-Manifolds "https://youtube.com/playlist?list=PLeFwDGOexoe8cjplxwQFMvGLSxbOTUyLv")
+(desc NS-Davie-Manifolds "Focused playlist on smooth manifolds, tangent spaces, and differential maps.")
+
+(isa NS-XylyXylyX-LieGroupsAlgebras ReferenceWork)
+(title NS-XylyXylyX-LieGroupsAlgebras "Lie Groups and Lie Algebras")
+(author NS-XylyXylyX-LieGroupsAlgebras "XylyXylyX")
+(resourceType NS-XylyXylyX-LieGroupsAlgebras video)
+(level NS-XylyXylyX-LieGroupsAlgebras intermediate)
+(section NS-XylyXylyX-LieGroupsAlgebras DifferentialGeometryLieGroups)
+(url NS-XylyXylyX-LieGroupsAlgebras "https://youtube.com/playlist?list=PLRlVmXqzHjURZO0fviJuyikvKlGS6rXrb")
+(desc NS-XylyXylyX-LieGroupsAlgebras "Deep dive into Lie theory from the manifold perspective.")
+
+(isa NS-Schuller-GeometricAnatomy ReferenceWork)
+(title NS-Schuller-GeometricAnatomy "Geometric Anatomy of Theoretical Physics")
+(author NS-Schuller-GeometricAnatomy "Frederic Schuller")
+(resourceType NS-Schuller-GeometricAnatomy course)
+(level NS-Schuller-GeometricAnatomy advanced)
+(section NS-Schuller-GeometricAnatomy DifferentialGeometryLieGroups)
+(url NS-Schuller-GeometricAnatomy "https://youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic")
+(desc NS-Schuller-GeometricAnatomy "Legendary lecture series covering topology, manifolds, bundles, connections with extraordinary clarity.")
+
+(isa NS-Hauberg-WeekendWithBernie ReferenceWork)
+(title NS-Hauberg-WeekendWithBernie "Weekend with Bernie (Riemann)")
+(author NS-Hauberg-WeekendWithBernie "Soren Hauberg (DTU)")
+(resourceType NS-Hauberg-WeekendWithBernie course)
+(level NS-Hauberg-WeekendWithBernie intermediate)
+(section NS-Hauberg-WeekendWithBernie DifferentialGeometryLieGroups)
+(url NS-Hauberg-WeekendWithBernie "http://www2.compute.dtu.dk/~sohau/weekendwithbernie/")
+(desc NS-Hauberg-WeekendWithBernie "Crash-course in Riemannian geometry for ML researchers. Hands-on with code.")
+
+(isa NS-IROS2022-GeoMethodsRobotLearning ReferenceWork)
+(title NS-IROS2022-GeoMethodsRobotLearning "Geometric Methods in Robot Learning")
+(author NS-IROS2022-GeoMethodsRobotLearning "IROS 2022 Tutorial")
+(year NS-IROS2022-GeoMethodsRobotLearning 2022)
+(resourceType NS-IROS2022-GeoMethodsRobotLearning video)
+(level NS-IROS2022-GeoMethodsRobotLearning intermediate)
+(section NS-IROS2022-GeoMethodsRobotLearning DifferentialGeometryLieGroups)
+(url NS-IROS2022-GeoMethodsRobotLearning "https://youtube.com/playlist?list=PL_oEZ6dld4ignAdbFvcP_LAJgNbdrNBKC")
+(desc NS-IROS2022-GeoMethodsRobotLearning "Riemannian optimization and control for robotics applications.")
+
+(isa NS-ParkJang-RiemannianGeoML ReferenceWork)
+(title NS-ParkJang-RiemannianGeoML "Riemannian Geometry and ML for Non-Euclidean Data")
+(author NS-ParkJang-RiemannianGeoML "Park & Jang")
+(year NS-ParkJang-RiemannianGeoML 2019)
+(resourceType NS-ParkJang-RiemannianGeoML notes)
+(level NS-ParkJang-RiemannianGeoML intermediate)
+(section NS-ParkJang-RiemannianGeoML DifferentialGeometryLieGroups)
+(url NS-ParkJang-RiemannianGeoML "https://aisociety.kr/KJMLW2019/slides/fcp.pdf")
+(desc NS-ParkJang-RiemannianGeoML "Slide deck bridging Riemannian geometry concepts to practical ML on non-Euclidean data.")
+
+;; ── Notebooks & Blogposts ──
+
+(isa NS-Geomstats-JupyterNotebooks ReferenceWork)
+(title NS-Geomstats-JupyterNotebooks "Geomstats Jupyter Notebooks")
+(author NS-Geomstats-JupyterNotebooks "Geomstats Team")
+(resourceType NS-Geomstats-JupyterNotebooks code)
+(level NS-Geomstats-JupyterNotebooks intermediate)
+(section NS-Geomstats-JupyterNotebooks DifferentialGeometryLieGroups)
+(url NS-Geomstats-JupyterNotebooks "https://github.com/geomstats/geomstats/tree/master/notebooks")
+(desc NS-Geomstats-JupyterNotebooks "Hands-on notebooks implementing Riemannian operations, geodesics, and statistics on manifolds.")
+
+(isa NS-Grosse-DiffGeoML ReferenceWork)
+(title NS-Grosse-DiffGeoML "Differential Geometry for Machine Learning")
+(author NS-Grosse-DiffGeoML "Roger Grosse")
+(resourceType NS-Grosse-DiffGeoML notes)
+(level NS-Grosse-DiffGeoML intermediate)
+(section NS-Grosse-DiffGeoML DifferentialGeometryLieGroups)
+(url NS-Grosse-DiffGeoML "https://metacademy.org/roadmaps/rgrosse/dgml")
+(desc NS-Grosse-DiffGeoML "Structured learning roadmap connecting differential geometry concepts to ML applications.")
+
+(isa NS-Keng-ManifoldsGentleIntro ReferenceWork)
+(title NS-Keng-ManifoldsGentleIntro "Manifolds: A Gentle Introduction")
+(author NS-Keng-ManifoldsGentleIntro "Brian Keng")
+(resourceType NS-Keng-ManifoldsGentleIntro notes)
+(level NS-Keng-ManifoldsGentleIntro beginner)
+(section NS-Keng-ManifoldsGentleIntro DifferentialGeometryLieGroups)
+(url NS-Keng-ManifoldsGentleIntro "https://bjlkeng.github.io/posts/manifolds/")
+(desc NS-Keng-ManifoldsGentleIntro "Blog post building manifold intuition with clear examples and minimal prerequisites.")
+
+(isa NS-Choi-DiffGeoML ReferenceWork)
+(title NS-Choi-DiffGeoML "Differential Geometry of ML")
+(author NS-Choi-DiffGeoML "Kyuhyeon Choi")
+(resourceType NS-Choi-DiffGeoML notes)
+(level NS-Choi-DiffGeoML intermediate)
+(section NS-Choi-DiffGeoML DifferentialGeometryLieGroups)
+(url NS-Choi-DiffGeoML "https://research.fal.ai/blog/differential-geometry-of-ml/")
+(desc NS-Choi-DiffGeoML "Modern blog post connecting curvature, geodesics, and parallel transport to loss landscapes.")
+
+(isa NS-Lu-RiemannianIntelligence ReferenceWork)
+(title NS-Lu-RiemannianIntelligence "A Mathematical Framework of Intelligence and Consciousness Based on Riemannian Geometry")
+(author NS-Lu-RiemannianIntelligence "Meng Lu")
+(year NS-Lu-RiemannianIntelligence 2024)
+(resourceType NS-Lu-RiemannianIntelligence notes)
+(level NS-Lu-RiemannianIntelligence advanced)
+(section NS-Lu-RiemannianIntelligence DifferentialGeometryLieGroups)
+(url NS-Lu-RiemannianIntelligence "https://arxiv.org/abs/2407.11024")
+(desc NS-Lu-RiemannianIntelligence "Speculative but fascinating paper framing intelligence and consciousness through Riemannian geometry.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: INFORMATION GEOMETRY
+;; Fisher information, statistical manifolds, natural gradient
+;; ════════════════════════════════════════════════════════════
+
+;; ── Primers ──
+
+(isa NS-Nielsen-ManyFacesInfoGeo ReferenceWork)
+(title NS-Nielsen-ManyFacesInfoGeo "The Many Faces of Information Geometry")
+(author NS-Nielsen-ManyFacesInfoGeo "Frank Nielsen")
+(year NS-Nielsen-ManyFacesInfoGeo 2022)
+(resourceType NS-Nielsen-ManyFacesInfoGeo notes)
+(level NS-Nielsen-ManyFacesInfoGeo intermediate)
+(section NS-Nielsen-ManyFacesInfoGeo InformationGeometry)
+(url NS-Nielsen-ManyFacesInfoGeo "https://www.ams.org/journals/notices/202201/rnoti-p36.pdf")
+(desc NS-Nielsen-ManyFacesInfoGeo "AMS Notices survey covering dualistic geometry, divergences, and connections to statistics and ML.")
+
+(isa NS-LeBrigant-ParametricInfoGeo ReferenceWork)
+(title NS-LeBrigant-ParametricInfoGeo "Parametric Information Geometry with Geomstats")
+(author NS-LeBrigant-ParametricInfoGeo "Alice Le Brigant et al.")
+(year NS-LeBrigant-ParametricInfoGeo 2022)
+(resourceType NS-LeBrigant-ParametricInfoGeo notes)
+(level NS-LeBrigant-ParametricInfoGeo intermediate)
+(section NS-LeBrigant-ParametricInfoGeo InformationGeometry)
+(url NS-LeBrigant-ParametricInfoGeo "https://arxiv.org/abs/2211.11643")
+(desc NS-LeBrigant-ParametricInfoGeo "Hands-on paper implementing information geometric computations with the Geomstats library.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: TOPOLOGY
+;; Persistent homology, TDA, topological deep learning
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Notes ──
+
+(isa NS-Ghrist-ElementaryAppliedTopology ReferenceWork)
+(title NS-Ghrist-ElementaryAppliedTopology "Elementary Applied Topology")
+(author NS-Ghrist-ElementaryAppliedTopology "Robert Ghrist")
+(resourceType NS-Ghrist-ElementaryAppliedTopology book)
+(level NS-Ghrist-ElementaryAppliedTopology intermediate)
+(section NS-Ghrist-ElementaryAppliedTopology Topology)
+(url NS-Ghrist-ElementaryAppliedTopology "https://www2.math.upenn.edu/~ghrist/notes.html")
+(desc NS-Ghrist-ElementaryAppliedTopology "Beautiful, illustrated textbook covering homology, cohomology, and applications. Free online.")
+
+(isa NS-HenselMoorRieck-SurveyTopoML ReferenceWork)
+(title NS-HenselMoorRieck-SurveyTopoML "A Survey of Topological Machine Learning Methods")
+(author NS-HenselMoorRieck-SurveyTopoML "Hensel, Moor & Rieck")
+(year NS-HenselMoorRieck-SurveyTopoML 2021)
+(resourceType NS-HenselMoorRieck-SurveyTopoML notes)
+(level NS-HenselMoorRieck-SurveyTopoML intermediate)
+(section NS-HenselMoorRieck-SurveyTopoML Topology)
+(url NS-HenselMoorRieck-SurveyTopoML "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2021.681108/full")
+(desc NS-HenselMoorRieck-SurveyTopoML "Comprehensive survey mapping the landscape of TDA methods applied to machine learning.")
+
+(isa NS-Bodnar-TopoDLThesis ReferenceWork)
+(title NS-Bodnar-TopoDLThesis "Topological Deep Learning: Graphs, Complexes, Sheaves")
+(author NS-Bodnar-TopoDLThesis "Cristian Bodnar")
+(year NS-Bodnar-TopoDLThesis 2022)
+(resourceType NS-Bodnar-TopoDLThesis book)
+(level NS-Bodnar-TopoDLThesis advanced)
+(section NS-Bodnar-TopoDLThesis Topology)
+(url NS-Bodnar-TopoDLThesis "https://www.repository.cam.ac.uk/items/06b0b8e5-57d1-4120-8fad-643ce4d40eda")
+(desc NS-Bodnar-TopoDLThesis "PhD thesis extending message-passing beyond graphs to simplicial and cell complexes.")
+
+(isa NS-Hajij-TopoDLFoundations ReferenceWork)
+(title NS-Hajij-TopoDLFoundations "Topological Deep Learning: Going Beyond Graph Data")
+(author NS-Hajij-TopoDLFoundations "Mustafa Hajij et al.")
+(year NS-Hajij-TopoDLFoundations 2023)
+(resourceType NS-Hajij-TopoDLFoundations notes)
+(level NS-Hajij-TopoDLFoundations intermediate)
+(section NS-Hajij-TopoDLFoundations Topology)
+(url NS-Hajij-TopoDLFoundations "https://arxiv.org/abs/2206.00606")
+(desc NS-Hajij-TopoDLFoundations "Foundational paper defining the topological deep learning framework and its building blocks.")
+
+(isa NS-Papillon-ArchToposDL ReferenceWork)
+(title NS-Papillon-ArchToposDL "Architectures of Topological Deep Learning")
+(author NS-Papillon-ArchToposDL "Mathilde Papillon et al.")
+(year NS-Papillon-ArchToposDL 2023)
+(resourceType NS-Papillon-ArchToposDL notes)
+(level NS-Papillon-ArchToposDL intermediate)
+(section NS-Papillon-ArchToposDL Topology)
+(url NS-Papillon-ArchToposDL "https://arxiv.org/abs/2304.10031")
+(desc NS-Papillon-ArchToposDL "Survey of message-passing topological neural networks — taxonomy and comparison of architectures.")
+
+;; ── Courses & Videos ──
+
+(isa NS-Nanda-CompAlgTopology ReferenceWork)
+(title NS-Nanda-CompAlgTopology "Computational Algebraic Topology")
+(author NS-Nanda-CompAlgTopology "Vidit Nanda")
+(resourceType NS-Nanda-CompAlgTopology course)
+(level NS-Nanda-CompAlgTopology intermediate)
+(section NS-Nanda-CompAlgTopology Topology)
+(url NS-Nanda-CompAlgTopology "https://youtube.com/playlist?list=PLnLAqsCN_2ke8_EUd_KoJsLkPO0BKrrc6")
+(desc NS-Nanda-CompAlgTopology "Oxford lectures on computational homology, persistent homology, and discrete Morse theory.")
+
+(isa NS-GhristNanda-FoundationsTDA ReferenceWork)
+(title NS-GhristNanda-FoundationsTDA "Foundations of Topological Data Analysis")
+(author NS-GhristNanda-FoundationsTDA "Robert Ghrist & Vidit Nanda")
+(resourceType NS-GhristNanda-FoundationsTDA course)
+(level NS-GhristNanda-FoundationsTDA intermediate)
+(section NS-GhristNanda-FoundationsTDA Topology)
+(url NS-GhristNanda-FoundationsTDA "https://www.youtube.com/playlist?list=PL8erL0pXF3JaR4no7ivppQ5zwhq2QnzzQ")
+(desc NS-GhristNanda-FoundationsTDA "Foundational course on TDA from two leading researchers in applied topology.")
+
+(isa NS-Rieck-TDAforML ReferenceWork)
+(title NS-Rieck-TDAforML "Topological Data Analysis for Machine Learning")
+(author NS-Rieck-TDAforML "Bastian Rieck")
+(resourceType NS-Rieck-TDAforML course)
+(level NS-Rieck-TDAforML intermediate)
+(section NS-Rieck-TDAforML Topology)
+(url NS-Rieck-TDAforML "https://www.youtube.com/playlist?list=PLjFHG9gPsecYteKmbVbPhjiz2jHRtKT20")
+(desc NS-Rieck-TDAforML "Practical course on using TDA features in ML pipelines — persistence images, landscapes, kernels.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: GEOMETRIC MACHINE LEARNING
+;; Equivariance, GDL blueprint, Riemannian optimization
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Surveys ──
+
+(isa NS-Bronstein-GDLBlueprint ReferenceWork)
+(title NS-Bronstein-GDLBlueprint "Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges")
+(author NS-Bronstein-GDLBlueprint "Bronstein, Bruna, Cohen & Velickovic")
+(year NS-Bronstein-GDLBlueprint 2021)
+(resourceType NS-Bronstein-GDLBlueprint book)
+(level NS-Bronstein-GDLBlueprint intermediate)
+(section NS-Bronstein-GDLBlueprint GeometricMachineLearning)
+(url NS-Bronstein-GDLBlueprint "https://arxiv.org/abs/2104.13478")
+(desc NS-Bronstein-GDLBlueprint "THE foundational text. Unifies CNNs, GNNs, Transformers under symmetry principles. Essential reading.")
+
+(isa NS-Eaton-GroupInvarianceStats ReferenceWork)
+(title NS-Eaton-GroupInvarianceStats "Group Invariance Applications in Statistics")
+(author NS-Eaton-GroupInvarianceStats "Morris Eaton")
+(year NS-Eaton-GroupInvarianceStats 1989)
+(resourceType NS-Eaton-GroupInvarianceStats book)
+(level NS-Eaton-GroupInvarianceStats advanced)
+(section NS-Eaton-GroupInvarianceStats GeometricMachineLearning)
+(url NS-Eaton-GroupInvarianceStats "https://www.jstor.org/stable/4153172")
+(desc NS-Eaton-GroupInvarianceStats "Classic text on how group invariance structures statistical problems. Historical foundation.")
+
+(isa NS-Kondor-GroupTheoryML ReferenceWork)
+(title NS-Kondor-GroupTheoryML "Group Theoretical Methods in Machine Learning")
+(author NS-Kondor-GroupTheoryML "Risi Kondor (PhD Thesis)")
+(year NS-Kondor-GroupTheoryML 2008)
+(resourceType NS-Kondor-GroupTheoryML book)
+(level NS-Kondor-GroupTheoryML advanced)
+(section NS-Kondor-GroupTheoryML GeometricMachineLearning)
+(url NS-Kondor-GroupTheoryML "http://www.cs.columbia.edu/~jebara/papers/thesisKondor.pdf")
+(desc NS-Kondor-GroupTheoryML "Pioneering thesis applying group theory to kernels, features, and learning on non-Euclidean domains.")
+
+(isa NS-MumfordDesolneux-PatternTheory ReferenceWork)
+(title NS-MumfordDesolneux-PatternTheory "Pattern Theory: The Stochastic Analysis of Real-World Signals")
+(author NS-MumfordDesolneux-PatternTheory "Mumford & Desolneux")
+(year NS-MumfordDesolneux-PatternTheory 2010)
+(resourceType NS-MumfordDesolneux-PatternTheory book)
+(level NS-MumfordDesolneux-PatternTheory advanced)
+(section NS-MumfordDesolneux-PatternTheory GeometricMachineLearning)
+(url NS-MumfordDesolneux-PatternTheory "https://www.routledge.com/Pattern-Theory-The-Stochastic-Analysis-of-Real-World-Signals/Mumford-Desolneux/p/book/9781568815794")
+(desc NS-MumfordDesolneux-PatternTheory "Grenander's pattern theory: understanding signals through their symmetry and deformation groups.")
+
+(isa NS-Cohen-EquivariantCNNsThesis ReferenceWork)
+(title NS-Cohen-EquivariantCNNsThesis "Equivariant Convolutional Networks")
+(author NS-Cohen-EquivariantCNNsThesis "Taco Cohen (PhD Thesis)")
+(year NS-Cohen-EquivariantCNNsThesis 2021)
+(resourceType NS-Cohen-EquivariantCNNsThesis book)
+(level NS-Cohen-EquivariantCNNsThesis advanced)
+(section NS-Cohen-EquivariantCNNsThesis GeometricMachineLearning)
+(url NS-Cohen-EquivariantCNNsThesis "https://pure.uva.nl/ws/files/60770359/Thesis.pdf")
+(desc NS-Cohen-EquivariantCNNsThesis "Definitive treatment of group-equivariant CNNs, steerable filters, and gauge equivariance.")
+
+(isa NS-Boumal-OptimManifolds ReferenceWork)
+(title NS-Boumal-OptimManifolds "An Introduction to Optimization on Smooth Manifolds")
+(author NS-Boumal-OptimManifolds "Nicolas Boumal")
+(year NS-Boumal-OptimManifolds 2022)
+(resourceType NS-Boumal-OptimManifolds book)
+(level NS-Boumal-OptimManifolds intermediate)
+(section NS-Boumal-OptimManifolds GeometricMachineLearning)
+(url NS-Boumal-OptimManifolds "https://sma.epfl.ch/~nboumal/book/IntroOptimManifolds_Boumal_2022.pdf")
+(desc NS-Boumal-OptimManifolds "Modern, accessible textbook on Riemannian optimization. Free PDF. Excellent for ML researchers.")
+
+(isa NS-Papillon-BeyondEuclid ReferenceWork)
+(title NS-Papillon-BeyondEuclid "Beyond Euclid: An Illustrated Guide to Modern ML with Geometric Structures")
+(author NS-Papillon-BeyondEuclid "Mathilde Papillon et al.")
+(year NS-Papillon-BeyondEuclid 2025)
+(resourceType NS-Papillon-BeyondEuclid notes)
+(level NS-Papillon-BeyondEuclid intermediate)
+(section NS-Papillon-BeyondEuclid GeometricMachineLearning)
+(url NS-Papillon-BeyondEuclid "https://arxiv.org/abs/2407.09468")
+(desc NS-Papillon-BeyondEuclid "Beautifully illustrated guide connecting geometric, topological, and algebraic structures to modern ML.")
+
+(isa NS-ZhaoWaltersYu-SymmetryNNParams ReferenceWork)
+(title NS-ZhaoWaltersYu-SymmetryNNParams "Symmetry in Neural Network Parameter Spaces")
+(author NS-ZhaoWaltersYu-SymmetryNNParams "Zhao, Walters & Yu")
+(year NS-ZhaoWaltersYu-SymmetryNNParams 2025)
+(resourceType NS-ZhaoWaltersYu-SymmetryNNParams notes)
+(level NS-ZhaoWaltersYu-SymmetryNNParams advanced)
+(section NS-ZhaoWaltersYu-SymmetryNNParams GeometricMachineLearning)
+(url NS-ZhaoWaltersYu-SymmetryNNParams "https://arxiv.org/abs/2506.13018")
+(desc NS-ZhaoWaltersYu-SymmetryNNParams "Studies symmetries in weight space itself — permutation symmetries, mode connectivity, loss landscape geometry.")
+
+;; ── Courses & Videos ──
+
+(isa NS-Bronstein-GDLCourse ReferenceWork)
+(title NS-Bronstein-GDLCourse "Geometric Deep Learning (2nd Edition)")
+(author NS-Bronstein-GDLCourse "Bronstein, Bruna, Cohen & Velickovic")
+(resourceType NS-Bronstein-GDLCourse course)
+(level NS-Bronstein-GDLCourse intermediate)
+(section NS-Bronstein-GDLCourse GeometricMachineLearning)
+(url NS-Bronstein-GDLCourse "https://www.youtube.com/watch?v=5c_-KX1sRDQ&list=PLn2-dEmQeTfSLXW8yXP4q_Ii58wFdxb3C")
+(desc NS-Bronstein-GDLCourse "AMMI course by the authors of the GDL blueprint. The definitive video lecture series.")
+
+(isa NS-Garg-3DGeoML ReferenceWork)
+(title NS-Garg-3DGeoML "Machine Learning Methods in 3D and Geometric Deep Learning")
+(author NS-Garg-3DGeoML "Animesh Garg (U of T)")
+(year NS-Garg-3DGeoML 2021)
+(resourceType NS-Garg-3DGeoML course)
+(level NS-Garg-3DGeoML intermediate)
+(section NS-Garg-3DGeoML GeometricMachineLearning)
+(url NS-Garg-3DGeoML "https://youtube.com/playlist?list=PLki3HkfgNEsLrbI_r2iqNogmL5DW6HJXF")
+(desc NS-Garg-3DGeoML "Graduate course covering point clouds, meshes, implicit surfaces, and equivariant architectures.")
+
+(isa NS-Bekkers-GroupEquivariantDL ReferenceWork)
+(title NS-Bekkers-GroupEquivariantDL "An Introduction to Group-Equivariant Deep Learning")
+(author NS-Bekkers-GroupEquivariantDL "Erik Bekkers (UvA)")
+(year NS-Bekkers-GroupEquivariantDL 2022)
+(resourceType NS-Bekkers-GroupEquivariantDL course)
+(level NS-Bekkers-GroupEquivariantDL intermediate)
+(section NS-Bekkers-GroupEquivariantDL GeometricMachineLearning)
+(url NS-Bekkers-GroupEquivariantDL "https://www.youtube.com/playlist?list=PL8FnQMH2k7jzPrxqdYufoiYVHim8PyZWd")
+(desc NS-Bekkers-GroupEquivariantDL "Focused course on building equivariant networks from scratch. Excellent pedagogy.")
+
+(isa NS-ItalianSummerSchool-GDL ReferenceWork)
+(title NS-ItalianSummerSchool-GDL "Italian Summer School on Geometric Deep Learning")
+(author NS-ItalianSummerSchool-GDL "Bodnar, Bronstein, Di Giovanni, de Haan, Weiler")
+(year NS-ItalianSummerSchool-GDL 2022)
+(resourceType NS-ItalianSummerSchool-GDL course)
+(level NS-ItalianSummerSchool-GDL intermediate)
+(section NS-ItalianSummerSchool-GDL GeometricMachineLearning)
+(url NS-ItalianSummerSchool-GDL "https://www.youtube.com/playlist?list=PLn2-dEmQeTfRQXLKf9Fmlk3HmReGg3YZZ")
+(desc NS-ItalianSummerSchool-GDL "Intensive summer school covering the full spectrum of geometric deep learning.")
+
+(isa NS-BosePanangaden-GeoGenModels ReferenceWork)
+(title NS-BosePanangaden-GeoGenModels "Geometry and Generative Models")
+(author NS-BosePanangaden-GeoGenModels "Joey Bose & Prakash Panangaden (MILA)")
+(year NS-BosePanangaden-GeoGenModels 2022)
+(resourceType NS-BosePanangaden-GeoGenModels course)
+(level NS-BosePanangaden-GeoGenModels advanced)
+(section NS-BosePanangaden-GeoGenModels GeometricMachineLearning)
+(url NS-BosePanangaden-GeoGenModels "https://joeybose.github.io/Blog/GenCourse")
+(desc NS-BosePanangaden-GeoGenModels "MILA course on geometric structure in generative models — flows on manifolds, Riemannian diffusion.")
+
+;; ── Notebooks & Blogposts ──
+
+(isa NS-Bronstein-GDLFoundationsBlog ReferenceWork)
+(title NS-Bronstein-GDLFoundationsBlog "Geometric Foundations of Deep Learning")
+(author NS-Bronstein-GDLFoundationsBlog "Bronstein, Bruna, Cohen & Velickovic")
+(resourceType NS-Bronstein-GDLFoundationsBlog notes)
+(level NS-Bronstein-GDLFoundationsBlog beginner)
+(section NS-Bronstein-GDLFoundationsBlog GeometricMachineLearning)
+(url NS-Bronstein-GDLFoundationsBlog "https://towardsdatascience.com/geometric-foundations-of-deep-learning-94cdd45b451d")
+(desc NS-Bronstein-GDLFoundationsBlog "Accessible blog post summarizing the GDL blueprint for a general ML audience.")
+
+(isa NS-Bronstein-GeoGraphML2022 ReferenceWork)
+(title NS-Bronstein-GeoGraphML2022 "What Does 2022 Hold for Geometric & Graph ML?")
+(author NS-Bronstein-GeoGraphML2022 "Michael Bronstein")
+(year NS-Bronstein-GeoGraphML2022 2022)
+(resourceType NS-Bronstein-GeoGraphML2022 notes)
+(level NS-Bronstein-GeoGraphML2022 beginner)
+(section NS-Bronstein-GeoGraphML2022 GeometricMachineLearning)
+(url NS-Bronstein-GeoGraphML2022 "https://towardsdatascience.com/predictions-and-hopes-for-geometric-graph-ml-in-2022-aa3b8b79f5cc")
+(desc NS-Bronstein-GeoGraphML2022 "Survey of open problems and future directions in geometric and graph ML.")
+
+(isa NS-Miolane-GeoMLShapeAnalysis ReferenceWork)
+(title NS-Miolane-GeoMLShapeAnalysis "Geometric ML for Shape Analysis (Jupyter Notebooks)")
+(author NS-Miolane-GeoMLShapeAnalysis "Nina Miolane")
+(resourceType NS-Miolane-GeoMLShapeAnalysis code)
+(level NS-Miolane-GeoMLShapeAnalysis intermediate)
+(section NS-Miolane-GeoMLShapeAnalysis GeometricMachineLearning)
+(url NS-Miolane-GeoMLShapeAnalysis "https://github.com/bioshape-lab/ece594n/tree/main/lectures")
+(desc NS-Miolane-GeoMLShapeAnalysis "Course notebooks implementing shape analysis with Geomstats — geodesics, Frechet means, shape spaces.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: COMPUTATIONAL NEUROSCIENCE
+;; Dynamical systems, neural coding, network models
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa NS-HertzKroghPalmer-NeuralComputation ReferenceWork)
+(title NS-HertzKroghPalmer-NeuralComputation "Introduction to the Theory of Neural Computation")
+(author NS-HertzKroghPalmer-NeuralComputation "Hertz, Krogh & Palmer")
+(year NS-HertzKroghPalmer-NeuralComputation 1991)
+(resourceType NS-HertzKroghPalmer-NeuralComputation book)
+(level NS-HertzKroghPalmer-NeuralComputation intermediate)
+(section NS-HertzKroghPalmer-NeuralComputation ComputationalNeuroscience)
+(url NS-HertzKroghPalmer-NeuralComputation "https://drive.google.com/file/d/1jjAHNSZld1tjH0wiqXc9wCv3Y6h5sjok/view?usp=sharing")
+(desc NS-HertzKroghPalmer-NeuralComputation "Classic text on neural network theory — Hopfield nets, Boltzmann machines, perceptrons, statistical mechanics.")
+
+(isa NS-DayanAbbott-TheoreticalNeuro ReferenceWork)
+(title NS-DayanAbbott-TheoreticalNeuro "Theoretical Neuroscience")
+(author NS-DayanAbbott-TheoreticalNeuro "Peter Dayan & L.F. Abbott")
+(year NS-DayanAbbott-TheoreticalNeuro 2001)
+(resourceType NS-DayanAbbott-TheoreticalNeuro book)
+(level NS-DayanAbbott-TheoreticalNeuro intermediate)
+(section NS-DayanAbbott-TheoreticalNeuro ComputationalNeuroscience)
+(url NS-DayanAbbott-TheoreticalNeuro "http://www.gatsby.ucl.ac.uk/~lmate/biblio/dayanabbott.pdf")
+(desc NS-DayanAbbott-TheoreticalNeuro "THE standard textbook. Neural coding, network models, adaptation, plasticity. Essential.")
+
+(isa NS-Izhikevich-DynSysNeuro ReferenceWork)
+(title NS-Izhikevich-DynSysNeuro "Dynamical Systems in Neuroscience")
+(author NS-Izhikevich-DynSysNeuro "Eugene M. Izhikevich")
+(year NS-Izhikevich-DynSysNeuro 2006)
+(resourceType NS-Izhikevich-DynSysNeuro book)
+(level NS-Izhikevich-DynSysNeuro intermediate)
+(section NS-Izhikevich-DynSysNeuro ComputationalNeuroscience)
+(url NS-Izhikevich-DynSysNeuro "https://drive.google.com/file/d/1CXQCPl6MN8XSmoyo6J0TbdlWhBmaib62/view?usp=sharing")
+(desc NS-Izhikevich-DynSysNeuro "Bifurcation theory meets neuroscience. Shows how the geometry of phase portraits explains neuronal excitability.")
+
+(isa NS-Gerstner-NeuronalDynamics ReferenceWork)
+(title NS-Gerstner-NeuronalDynamics "Neuronal Dynamics")
+(author NS-Gerstner-NeuronalDynamics "Gerstner, Kistler, Naud & Paninsky")
+(year NS-Gerstner-NeuronalDynamics 2014)
+(resourceType NS-Gerstner-NeuronalDynamics book)
+(level NS-Gerstner-NeuronalDynamics intermediate)
+(section NS-Gerstner-NeuronalDynamics ComputationalNeuroscience)
+(url NS-Gerstner-NeuronalDynamics "https://neuronaldynamics.epfl.ch/")
+(desc NS-Gerstner-NeuronalDynamics "Free online textbook. Single neurons to networks to cognition. Interactive Python exercises.")
+
+(isa NS-SterlingLaughlin-NeuralDesign ReferenceWork)
+(title NS-SterlingLaughlin-NeuralDesign "Principles of Neural Design")
+(author NS-SterlingLaughlin-NeuralDesign "Peter Sterling & Simon Laughlin")
+(year NS-SterlingLaughlin-NeuralDesign 2015)
+(resourceType NS-SterlingLaughlin-NeuralDesign book)
+(level NS-SterlingLaughlin-NeuralDesign intermediate)
+(section NS-SterlingLaughlin-NeuralDesign ComputationalNeuroscience)
+(url NS-SterlingLaughlin-NeuralDesign "https://drive.google.com/file/d/1cskdlUJBjAY5wH7GeZa2IxT9iSXZ_3_0/view?usp=sharing")
+(desc NS-SterlingLaughlin-NeuralDesign "Why brains are designed the way they are. Information theory meets neuroanatomy.")
+
+;; ── General Audience Books ──
+
+(isa NS-Buzsaki-RhythmsOfTheBrain ReferenceWork)
+(title NS-Buzsaki-RhythmsOfTheBrain "Rhythms of the Brain")
+(author NS-Buzsaki-RhythmsOfTheBrain "Gyorgy Buzsaki")
+(year NS-Buzsaki-RhythmsOfTheBrain 2006)
+(resourceType NS-Buzsaki-RhythmsOfTheBrain book)
+(level NS-Buzsaki-RhythmsOfTheBrain beginner)
+(section NS-Buzsaki-RhythmsOfTheBrain ComputationalNeuroscience)
+(url NS-Buzsaki-RhythmsOfTheBrain "https://drive.google.com/file/d/1DtGEb54qJNS2wkny1FXM4b_dfT-b140y/view?usp=sharing")
+(desc NS-Buzsaki-RhythmsOfTheBrain "Masterful overview of neural oscillations, hippocampal rhythms, and the temporal organization of the brain.")
+
+(isa NS-Sporns-NetworksOfTheBrain ReferenceWork)
+(title NS-Sporns-NetworksOfTheBrain "Networks of the Brain")
+(author NS-Sporns-NetworksOfTheBrain "Olaf Sporns")
+(year NS-Sporns-NetworksOfTheBrain 2010)
+(resourceType NS-Sporns-NetworksOfTheBrain book)
+(level NS-Sporns-NetworksOfTheBrain beginner)
+(section NS-Sporns-NetworksOfTheBrain ComputationalNeuroscience)
+(url NS-Sporns-NetworksOfTheBrain "https://drive.google.com/file/d/1MsGNsFVF7AxPtnyv1WnH-YnZMGvhUkHb/view?usp=sharing")
+(desc NS-Sporns-NetworksOfTheBrain "Graph theory and network science applied to brain connectivity. Connectomics, small-world networks, hubs.")
+
+(isa NS-Lindsay-ModelsOfTheMind ReferenceWork)
+(title NS-Lindsay-ModelsOfTheMind "Models of the Mind")
+(author NS-Lindsay-ModelsOfTheMind "Grace Lindsay")
+(year NS-Lindsay-ModelsOfTheMind 2021)
+(resourceType NS-Lindsay-ModelsOfTheMind book)
+(level NS-Lindsay-ModelsOfTheMind beginner)
+(section NS-Lindsay-ModelsOfTheMind ComputationalNeuroscience)
+(url NS-Lindsay-ModelsOfTheMind "https://www.goodreads.com/en/book/show/50884536-models-of-the-mind")
+(desc NS-Lindsay-ModelsOfTheMind "Engaging popular science book on how physics, engineering, and mathematics have shaped neuroscience.")
+
+;; ── Courses & Tutorials ──
+
+(isa NS-Olshausen-NeuralCompVS265 ReferenceWork)
+(title NS-Olshausen-NeuralCompVS265 "Neural Computation VS265")
+(author NS-Olshausen-NeuralCompVS265 "Bruno Olshausen (UC Berkeley)")
+(resourceType NS-Olshausen-NeuralCompVS265 course)
+(level NS-Olshausen-NeuralCompVS265 intermediate)
+(section NS-Olshausen-NeuralCompVS265 ComputationalNeuroscience)
+(url NS-Olshausen-NeuralCompVS265 "https://redwood.berkeley.edu/courses/vs265/")
+(desc NS-Olshausen-NeuralCompVS265 "Berkeley course on neural computation — efficient coding, sparse representations, neural dynamics.")
+
+(isa NS-COSYNE2023-GenModels ReferenceWork)
+(title NS-COSYNE2023-GenModels "Generative Models for Neural Data Analysis")
+(author NS-COSYNE2023-GenModels "COSYNE Workshops 2023")
+(year NS-COSYNE2023-GenModels 2023)
+(resourceType NS-COSYNE2023-GenModels code)
+(level NS-COSYNE2023-GenModels advanced)
+(section NS-COSYNE2023-GenModels ComputationalNeuroscience)
+(url NS-COSYNE2023-GenModels "https://github.com/davindicode/cosyne-2023-generative-models")
+(desc NS-COSYNE2023-GenModels "Tutorial on using generative models (VAEs, flows, diffusion) to analyze neural population recordings.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: DATASETS & SOFTWARE
+;; Neural recordings, brain imaging, geometric libraries
+;; ════════════════════════════════════════════════════════════
+
+;; ── Neuroscience Datasets ──
+
+(isa NS-OpenNeuro ReferenceWork)
+(title NS-OpenNeuro "OpenNeuro")
+(resourceType NS-OpenNeuro data)
+(section NS-OpenNeuro DatasetsSoftware)
+(url NS-OpenNeuro "https://openneuro.org/")
+(desc NS-OpenNeuro "Free platform for sharing neuroimaging data — fMRI, EEG, MEG, iEEG, PET.")
+
+(isa NS-NeuroVault ReferenceWork)
+(title NS-NeuroVault "NeuroVault")
+(resourceType NS-NeuroVault data)
+(section NS-NeuroVault DatasetsSoftware)
+(url NS-NeuroVault "https://neurovault.org/")
+(desc NS-NeuroVault "Repository for unthresholded statistical brain maps — meta-analysis and visualization.")
+
+(isa NS-CRCNS ReferenceWork)
+(title NS-CRCNS "CRCNS")
+(resourceType NS-CRCNS data)
+(section NS-CRCNS DatasetsSoftware)
+(url NS-CRCNS "https://crcns.org/data-sets")
+(desc NS-CRCNS "Collaborative Research in Computational Neuroscience — electrophysiology, calcium imaging, behavior.")
+
+(isa NS-NWB ReferenceWork)
+(title NS-NWB "NeuroData Without Borders")
+(resourceType NS-NWB data)
+(section NS-NWB DatasetsSoftware)
+(url NS-NWB "https://www.nwb.org/example-datasets/")
+(desc NS-NWB "Standardized format for neurophysiology data. Example datasets for getting started.")
+
+(isa NS-AllenBrainAtlas ReferenceWork)
+(title NS-AllenBrainAtlas "Allen Brain Atlas")
+(resourceType NS-AllenBrainAtlas data)
+(section NS-AllenBrainAtlas DatasetsSoftware)
+(url NS-AllenBrainAtlas "https://portal.brain-map.org/")
+(desc NS-AllenBrainAtlas "Comprehensive gene expression, connectivity, and cell type atlases for mouse and human brain.")
+
+(isa NS-KavliGridCellDB ReferenceWork)
+(title NS-KavliGridCellDB "Kavli Grid Cell Database")
+(resourceType NS-KavliGridCellDB data)
+(section NS-KavliGridCellDB DatasetsSoftware)
+(url NS-KavliGridCellDB "https://www.ntnu.edu/kavli/research/grid-cell-data")
+(desc NS-KavliGridCellDB "Grid cell, head-direction cell, and spatial cell recordings from the Moser lab.")
+
+(isa NS-NaturalScenesDataset ReferenceWork)
+(title NS-NaturalScenesDataset "The Natural Scenes Dataset")
+(resourceType NS-NaturalScenesDataset data)
+(section NS-NaturalScenesDataset DatasetsSoftware)
+(url NS-NaturalScenesDataset "http://naturalscenesdataset.org/")
+(desc NS-NaturalScenesDataset "Massive fMRI dataset: 8 subjects viewing 10,000 natural images. Gold standard for visual neuroscience.")
+
+;; ── Software Libraries ──
+
+(isa NS-Geomstats ReferenceWork)
+(title NS-Geomstats "Geomstats")
+(resourceType NS-Geomstats code)
+(section NS-Geomstats DatasetsSoftware)
+(url NS-Geomstats "https://geomstats.github.io/")
+(desc NS-Geomstats "Computation, statistics, and machine learning on Riemannian manifolds. Python/NumPy/PyTorch.")
+
+(isa NS-E3NN ReferenceWork)
+(title NS-E3NN "E3NN")
+(resourceType NS-E3NN code)
+(section NS-E3NN DatasetsSoftware)
+(url NS-E3NN "https://github.com/e3nn/e3nn")
+(desc NS-E3NN "E(3)-equivariant neural networks. Spherical harmonics, tensor products, steerable features.")
+
+(isa NS-GiottoTDA ReferenceWork)
+(title NS-GiottoTDA "Giotto-TDA")
+(resourceType NS-GiottoTDA code)
+(section NS-GiottoTDA DatasetsSoftware)
+(url NS-GiottoTDA "https://giotto-ai.github.io/gtda-docs/0.5.1/library.html")
+(desc NS-GiottoTDA "Topological Data Analysis for Python — persistent homology, Vietoris-Rips, persistence diagrams.")
+
+(isa NS-EquivariantMLP ReferenceWork)
+(title NS-EquivariantMLP "equivariant-MLP")
+(resourceType NS-EquivariantMLP code)
+(section NS-EquivariantMLP DatasetsSoftware)
+(url NS-EquivariantMLP "https://github.com/mfinzi/equivariant-MLP")
+(desc NS-EquivariantMLP "Construct equivariant multilayer perceptrons for arbitrary matrix groups automatically.")
+
+(isa NS-SHTOOLS ReferenceWork)
+(title NS-SHTOOLS "SHTOOLS")
+(resourceType NS-SHTOOLS code)
+(section NS-SHTOOLS DatasetsSoftware)
+(url NS-SHTOOLS "https://github.com/SHTOOLS/SHTOOLS")
+(desc NS-SHTOOLS "Spherical harmonic transforms, spectral analysis, and Slepian functions.")
+
+(isa NS-LieConv ReferenceWork)
+(title NS-LieConv "LieConv")
+(resourceType NS-LieConv code)
+(section NS-LieConv DatasetsSoftware)
+(url NS-LieConv "https://github.com/mfinzi/LieConv")
+(desc NS-LieConv "Convolutional networks equivariant to arbitrary Lie groups on continuous data.")
+
+(isa NS-LieTorch ReferenceWork)
+(title NS-LieTorch "LieTorch")
+(resourceType NS-LieTorch code)
+(section NS-LieTorch DatasetsSoftware)
+(url NS-LieTorch "https://gitlab.com/bsmetsjr/lietorch")
+(desc NS-LieTorch "Geometric machine learning and Lie analysis tools for PyTorch.")
+
+(isa NS-pyRiemann ReferenceWork)
+(title NS-pyRiemann "pyRiemann")
+(resourceType NS-pyRiemann code)
+(section NS-pyRiemann DatasetsSoftware)
+(url NS-pyRiemann "https://github.com/pyRiemann/pyRiemann")
+(desc NS-pyRiemann "ML through Riemannian geometry of symmetric positive definite matrices. BCI applications.")
+
+(isa NS-Pymanopt ReferenceWork)
+(title NS-Pymanopt "Pymanopt")
+(resourceType NS-Pymanopt code)
+(section NS-Pymanopt DatasetsSoftware)
+(url NS-Pymanopt "https://pymanopt.org/")
+(desc NS-Pymanopt "Optimization on manifolds — Stiefel, Grassmann, SPD, sphere. Automatic differentiation.")
+
+(isa NS-Geoopt ReferenceWork)
+(title NS-Geoopt "Geoopt")
+(resourceType NS-Geoopt code)
+(section NS-Geoopt DatasetsSoftware)
+(url NS-Geoopt "https://geoopt.readthedocs.io/en/latest/")
+(desc NS-Geoopt "Riemannian adaptive optimization for PyTorch — Riemannian SGD, Adam on manifolds.")
+
+(isa NS-TopoX ReferenceWork)
+(title NS-TopoX "TopoX")
+(resourceType NS-TopoX code)
+(section NS-TopoX DatasetsSoftware)
+(url NS-TopoX "https://pyt-team.github.io/")
+(desc NS-TopoX "Topological deep learning suite — simplicial, cell, and combinatorial complexes.")
+
+(isa NS-TopoBench ReferenceWork)
+(title NS-TopoBench "TopoBench")
+(resourceType NS-TopoBench code)
+(section NS-TopoBench DatasetsSoftware)
+(url NS-TopoBench "https://github.com/geometric-intelligence/TopoBench")
+(desc NS-TopoBench "Benchmarking framework for topological deep learning methods.")
+
+(isa NS-OpenNeuroscience ReferenceWork)
+(title NS-OpenNeuroscience "Open Neuroscience")
+(resourceType NS-OpenNeuroscience code)
+(section NS-OpenNeuroscience DatasetsSoftware)
+(url NS-OpenNeuroscience "https://open-neuroscience.com/")
+(desc NS-OpenNeuroscience "Database of open-source neuroscience tools, hardware, and software.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: CONFERENCES & WORKSHOPS
+;; Community meetings, workshops, symposia
+;; ════════════════════════════════════════════════════════════
+
+;; ── Workshops ──
+
+(isa NS-NeurIPS2023-NeURReps ReferenceWork)
+(title NS-NeurIPS2023-NeURReps "NeurIPS: Symmetry and Geometry in Neural Representations")
+(year NS-NeurIPS2023-NeURReps 2023)
+(resourceType NS-NeurIPS2023-NeURReps notes)
+(section NS-NeurIPS2023-NeURReps ConferencesWorkshops)
+(url NS-NeurIPS2023-NeURReps "https://neurreps.org")
+(desc NS-NeurIPS2023-NeURReps "The flagship workshop for the neural geometry community. Talks, posters, and discussions.")
+
+(isa NS-ICML2023-TAGML ReferenceWork)
+(title NS-ICML2023-TAGML "ICML: Topology, Algebra and Geometry in ML")
+(year NS-ICML2023-TAGML 2023)
+(resourceType NS-ICML2023-TAGML notes)
+(section NS-ICML2023-TAGML ConferencesWorkshops)
+(url NS-ICML2023-TAGML "https://www.tagds.com/events/conference-workshops/tag-ml23")
+(desc NS-ICML2023-TAGML "TAG-ML workshop connecting algebraic, geometric, and topological methods to machine learning.")
+
+(isa NS-RSS2023-SymRobotLearning ReferenceWork)
+(title NS-RSS2023-SymRobotLearning "RSS: Symmetries in Robot Learning")
+(year NS-RSS2023-SymRobotLearning 2023)
+(resourceType NS-RSS2023-SymRobotLearning notes)
+(section NS-RSS2023-SymRobotLearning ConferencesWorkshops)
+(url NS-RSS2023-SymRobotLearning "https://sites.google.com/view/rss23-sym")
+(desc NS-RSS2023-SymRobotLearning "Equivariance and symmetry priors for robotics — manipulation, locomotion, planning.")
+
+(isa NS-NeurIPS2022-NeURReps ReferenceWork)
+(title NS-NeurIPS2022-NeURReps "NeurIPS: Symmetry and Geometry in Neural Representations")
+(year NS-NeurIPS2022-NeURReps 2022)
+(resourceType NS-NeurIPS2022-NeURReps notes)
+(section NS-NeurIPS2022-NeURReps ConferencesWorkshops)
+(url NS-NeurIPS2022-NeURReps "https://www.neurreps.org/past-workshops")
+(desc NS-NeurIPS2022-NeURReps "First edition of the NeURReps workshop. Foundational talks and community formation.")
+
+(isa NS-ICML2022-TAGML ReferenceWork)
+(title NS-ICML2022-TAGML "ICML: Topology, Algebra and Geometry in ML")
+(year NS-ICML2022-TAGML 2022)
+(resourceType NS-ICML2022-TAGML notes)
+(section NS-ICML2022-TAGML ConferencesWorkshops)
+(url NS-ICML2022-TAGML "https://www.tagds.com/events/conference-workshops/tag-ml22")
+(desc NS-ICML2022-TAGML "Second TAG-ML workshop with expanded scope into topological deep learning.")
+
+(isa NS-ICLR2022-GeoTopoRepLearning ReferenceWork)
+(title NS-ICLR2022-GeoTopoRepLearning "ICLR: Geometrical and Topological Representation Learning")
+(year NS-ICLR2022-GeoTopoRepLearning 2022)
+(resourceType NS-ICLR2022-GeoTopoRepLearning notes)
+(section NS-ICLR2022-GeoTopoRepLearning ConferencesWorkshops)
+(url NS-ICLR2022-GeoTopoRepLearning "https://gt-rl.github.io/")
+(desc NS-ICLR2022-GeoTopoRepLearning "Workshop on geometric and topological inductive biases in representation learning.")
+
+(isa NS-Bernstein2022-SymInvNeural ReferenceWork)
+(title NS-Bernstein2022-SymInvNeural "Bernstein: Symmetry, Invariance and Neural Representations")
+(year NS-Bernstein2022-SymInvNeural 2022)
+(resourceType NS-Bernstein2022-SymInvNeural notes)
+(section NS-Bernstein2022-SymInvNeural ConferencesWorkshops)
+(url NS-Bernstein2022-SymInvNeural "https://bernstein-network.de/bernstein-conference/program/satellite-workshops/symmetry-invariance-and-neural-representations/")
+(desc NS-Bernstein2022-SymInvNeural "Satellite workshop at the Bernstein Conference on Computational Neuroscience.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources NeuralGeometryReference 99)
+(totalSections NeuralGeometryReference 8)
+(comment NeuralGeometryReference
+  "8 sections: Abstract Algebra & Group Theory (11), Differential Geometry
+   & Lie Groups (25), Information Geometry (2), Topology (8), Geometric
+   Machine Learning (16), Computational Neuroscience (10), Datasets &
+   Software (20), Conferences & Workshops (7). Total: 99 resources.")

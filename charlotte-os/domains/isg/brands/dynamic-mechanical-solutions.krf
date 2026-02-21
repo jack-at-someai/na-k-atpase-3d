@@ -1,0 +1,26 @@
+;;; ================================================================
+;;; ISG BRAND / DYNAMIC MECHANICAL SOLUTIONS (DMS)
+;;; Valve distribution & FRP products — Orange Beach / Mobile AL
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa DynamicMechanicalSolutions ISGBrand)
+(hasAttribute DynamicMechanicalSolutions ::LABEL "Dynamic Mechanical Solutions")
+(hasAttribute DynamicMechanicalSolutions ::ABBREVIATION "DMS")
+(hasAttribute DynamicMechanicalSolutions ::FOUNDED 2011)
+(hasAttribute DynamicMechanicalSolutions ::VERTICAL "Specialty Services")
+(hasAttribute DynamicMechanicalSolutions ::HEADCOUNT "~2-5")
+(hasAttribute DynamicMechanicalSolutions ::WEBSITE "dynamic-ms.com")
+(hasAttribute DynamicMechanicalSolutions ::SPECIALTIES "Valves, valve automation, FRP products, fall protection, spill containment, steam traps")
+(hasAttribute DynamicMechanicalSolutions ::OEM_REPS "Titan Flow Control, AZ Valves, QRC, Flo-Tite, ITT Fabri-Valve")
+(hasAttribute DynamicMechanicalSolutions ::INDUSTRIES "Chemical, pulp & paper, power generation, refining")
+(MEMBER_OF DynamicMechanicalSolutions ISGServicesGroup)
+(locatedAt DynamicMechanicalSolutions OrangeBeach-AL)
+
+(isa JasonWeatherby Person)
+(hasAttribute JasonWeatherby ::LABEL "Jason Weatherby")
+(hasAttribute JasonWeatherby ::ROLE "Industrial Sales Manager")
+(hasAttribute JasonWeatherby ::EDUCATION "University of South Alabama")
+(hasAttribute JasonWeatherby ::CAREER "PNC → C2 Wealth Strategies → Skeltons Fire Equipment → DMS")
+(MEMBER_OF JasonWeatherby DynamicMechanicalSolutions)

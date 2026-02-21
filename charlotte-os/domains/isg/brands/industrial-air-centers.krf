@@ -1,0 +1,67 @@
+;;; ================================================================
+;;; ISG BRAND / INDUSTRIAL AIR CENTERS (IAC)
+;;; Largest compressor group brand — Jeffersonville IN, 6+ locations
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa IndustrialAirCenters ISGBrand)
+(hasAttribute IndustrialAirCenters ::LABEL "Industrial Air Centers")
+(hasAttribute IndustrialAirCenters ::ABBREVIATION "IAC")
+(hasAttribute IndustrialAirCenters ::FOUNDED 1950)
+(hasAttribute IndustrialAirCenters ::VERTICAL "Compressor")
+(hasAttribute IndustrialAirCenters ::REVENUE "$39.4M est.")
+(hasAttribute IndustrialAirCenters ::HEADCOUNT "~84 (plus 150+ in Air Centers of Florida)")
+(hasAttribute IndustrialAirCenters ::WEBSITE "iacserv.com")
+(hasAttribute IndustrialAirCenters ::OEM_PARTNERS "FS-Curtis, Kaishan, Atlas Copco, Ingersoll Rand, Gardner Denver, Sullair, Kaeser, Quincy, Elgi")
+(MEMBER_OF IndustrialAirCenters ISGCompressorGroup)
+(locatedAt IndustrialAirCenters Jeffersonville-IN)
+
+;; Locations
+(hasAttribute IndustrialAirCenters ::LOCATIONS "Jeffersonville IN, Lexington KY, Evansville IN, Cincinnati OH, Dayton OH, Indianapolis IN, Columbus OH, Florida (multiple)")
+
+;; Personnel
+
+(isa GeorgeBurch Person)
+(hasAttribute GeorgeBurch ::LABEL "George Burch")
+(hasAttribute GeorgeBurch ::ROLE "CEO")
+(LEADS GeorgeBurch IndustrialAirCenters)
+(MEMBER_OF GeorgeBurch IndustrialAirCenters)
+
+(isa DaveSuder Person)
+(hasAttribute DaveSuder ::LABEL "Dave Suder")
+(hasAttribute DaveSuder ::ROLE "President")
+(hasAttribute DaveSuder ::EDUCATION "BS Mechanical Engineering, Rose-Hulman Institute of Technology")
+(hasAttribute DaveSuder ::CAREER "New Castle Engineering (Applications Engineer) → IAC Group VP Service (20 yrs) → President (2016)")
+(locatedAt DaveSuder Jeffersonville-IN)
+(MEMBER_OF DaveSuder IndustrialAirCenters)
+
+(isa DavidSwinney Person)
+(hasAttribute DavidSwinney ::LABEL "David Swinney")
+(hasAttribute DavidSwinney ::ROLE "VP Sales")
+(hasAttribute DavidSwinney ::TENURE "29 years experience")
+(MEMBER_OF DavidSwinney IndustrialAirCenters)
+
+(isa RickBurch Person)
+(hasAttribute RickBurch ::LABEL "Rick Burch")
+(hasAttribute RickBurch ::ROLE "VP Sales, Florida / VP Florida Operations")
+(hasAttribute RickBurch ::EDUCATION "Indiana University Southeast")
+(hasAttribute RickBurch ::CAREER "HVAC Parts → Ingersoll Rand → IAC Florida")
+(locatedAt RickBurch Tampa-FL)
+(MEMBER_OF RickBurch IndustrialAirCenters)
+
+(isa HollyRoach Person)
+(hasAttribute HollyRoach ::LABEL "Holly Roach")
+(hasAttribute HollyRoach ::ROLE "Director of Aftermarket")
+(MEMBER_OF HollyRoach IndustrialAirCenters)
+
+(isa KyleWurtz Person)
+(hasAttribute KyleWurtz ::LABEL "Kyle Wurtz")
+(hasAttribute KyleWurtz ::ROLE "Service Manager")
+(hasAttribute KyleWurtz ::BACKGROUND "15 years professional + 7 years US Army")
+(MEMBER_OF KyleWurtz IndustrialAirCenters)
+
+(isa KimForrest Person)
+(hasAttribute KimForrest ::LABEL "Kim Forrest")
+(hasAttribute KimForrest ::ROLE "Manager, HR & Office")
+(MEMBER_OF KimForrest IndustrialAirCenters)

@@ -1,0 +1,910 @@
+;;; ================================================================
+;;; REFERENCE / SIGNAL PROCESSING
+;;; 90 resources across 8 sections — Time series, frequency domain
+;;; & drift detection. The math behind SIGNAL primitives and METRIC
+;;; computation.
+;;; ================================================================
+;;;
+;;; Signal processing is the mathematical framework for analyzing,
+;;; transforming, and synthesizing signals — any quantity that varies
+;;; over time, space, or another independent variable.
+;;;
+;;; Charlotte's FINN architecture emits and interprets continuous
+;;; streams of information whose meaning lives in temporal patterns,
+;;; frequency content, and phase relationships.
+;;;
+;;; Learning path: Fundamentals → Frequency Domain → Time Series →
+;;; Drift Detection → Harmonic Analysis → Waveform Processing →
+;;; Datasets & Software
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; (No individual resources — the overview section provides
+;;  conceptual introduction and learning-path guidance only.)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: SIGNAL FUNDAMENTALS
+;; Continuous & discrete signals, sampling, convolution, correlation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa SP-Oppenheim-SignalsSystems ReferenceWork)
+(title SP-Oppenheim-SignalsSystems "Signals and Systems")
+(author SP-Oppenheim-SignalsSystems "Alan V. Oppenheim & Alan S. Willsky")
+(resourceType SP-Oppenheim-SignalsSystems book)
+(level SP-Oppenheim-SignalsSystems intermediate)
+(section SP-Oppenheim-SignalsSystems SignalFundamentals)
+(url SP-Oppenheim-SignalsSystems "https://www.amazon.com/Signals-Systems-2nd-Alan-Oppenheim/dp/0138147574")
+(desc SP-Oppenheim-SignalsSystems "THE classic textbook. Covers continuous and discrete signals, LTI systems, Fourier analysis, Laplace and Z-transforms. The gold standard for two decades.")
+
+(isa SP-Ulaby-SignalsSystemsTheory ReferenceWork)
+(title SP-Ulaby-SignalsSystemsTheory "Signals and Systems: Theory and Applications")
+(author SP-Ulaby-SignalsSystemsTheory "Fawwaz T. Ulaby & Andrew E. Yagle")
+(resourceType SP-Ulaby-SignalsSystemsTheory book)
+(level SP-Ulaby-SignalsSystemsTheory beginner)
+(section SP-Ulaby-SignalsSystemsTheory SignalFundamentals)
+(url SP-Ulaby-SignalsSystemsTheory "https://ss2.eecs.umich.edu/")
+(desc SP-Ulaby-SignalsSystemsTheory "Modern, freely available textbook with clear explanations and practical examples. Excellent for self-study.")
+
+(isa SP-Haykin-AdaptiveFilter ReferenceWork)
+(title SP-Haykin-AdaptiveFilter "Adaptive Filter Theory")
+(author SP-Haykin-AdaptiveFilter "Simon Haykin")
+(resourceType SP-Haykin-AdaptiveFilter book)
+(level SP-Haykin-AdaptiveFilter advanced)
+(section SP-Haykin-AdaptiveFilter SignalFundamentals)
+(url SP-Haykin-AdaptiveFilter "https://www.amazon.com/Adaptive-Filter-Theory-Simon-Haykin/dp/013267145X")
+(desc SP-Haykin-AdaptiveFilter "Comprehensive treatment of adaptive filtering — Wiener filters, LMS, RLS, Kalman filters. Essential for real-time signal processing.")
+
+(isa SP-Proakis-DSP ReferenceWork)
+(title SP-Proakis-DSP "Digital Signal Processing: Principles, Algorithms and Applications")
+(author SP-Proakis-DSP "John G. Proakis & Dimitris G. Manolakis")
+(resourceType SP-Proakis-DSP book)
+(level SP-Proakis-DSP intermediate)
+(section SP-Proakis-DSP SignalFundamentals)
+(url SP-Proakis-DSP "https://www.amazon.com/Digital-Signal-Processing-Principles-Applications/dp/0131873741")
+(desc SP-Proakis-DSP "Widely used DSP textbook covering sampling, quantization, DFT, FFT, filter design, and spectral estimation.")
+
+(isa SP-Lyons-UnderstandingDSP ReferenceWork)
+(title SP-Lyons-UnderstandingDSP "Understanding Digital Signal Processing")
+(author SP-Lyons-UnderstandingDSP "Richard G. Lyons")
+(resourceType SP-Lyons-UnderstandingDSP book)
+(level SP-Lyons-UnderstandingDSP beginner)
+(section SP-Lyons-UnderstandingDSP SignalFundamentals)
+(url SP-Lyons-UnderstandingDSP "https://www.amazon.com/Understanding-Digital-Signal-Processing-3rd/dp/0137027419")
+(desc SP-Lyons-UnderstandingDSP "Practical, intuition-focused guide to DSP. Less mathematical rigor, more engineering insight. Great first book.")
+
+;; ── Courses & Videos ──
+
+(isa SP-MIT6003-SignalsSystems ReferenceWork)
+(title SP-MIT6003-SignalsSystems "Signals and Systems (MIT OCW 6.003)")
+(author SP-MIT6003-SignalsSystems "Dennis Freeman (MIT)")
+(resourceType SP-MIT6003-SignalsSystems course)
+(level SP-MIT6003-SignalsSystems intermediate)
+(section SP-MIT6003-SignalsSystems SignalFundamentals)
+(url SP-MIT6003-SignalsSystems "https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/")
+(desc SP-MIT6003-SignalsSystems "Complete MIT course with lectures, problem sets, and exams. Covers LTI systems, Fourier, Laplace, Z-transforms.")
+
+(isa SP-Coursera-DSP ReferenceWork)
+(title SP-Coursera-DSP "Digital Signal Processing (Coursera)")
+(author SP-Coursera-DSP "Paolo Prandoni & Martin Vetterli (EPFL)")
+(resourceType SP-Coursera-DSP course)
+(level SP-Coursera-DSP intermediate)
+(section SP-Coursera-DSP SignalFundamentals)
+(url SP-Coursera-DSP "https://www.coursera.org/learn/dsp")
+(desc SP-Coursera-DSP "Excellent MOOC from EPFL covering sampling, filtering, DFT, and spectral analysis with hands-on Python labs.")
+
+(isa SP-MIT6341-DiscreteTimeSP ReferenceWork)
+(title SP-MIT6341-DiscreteTimeSP "Discrete-Time Signal Processing (MIT OCW 6.341)")
+(author SP-MIT6341-DiscreteTimeSP "Alan V. Oppenheim (MIT)")
+(resourceType SP-MIT6341-DiscreteTimeSP course)
+(level SP-MIT6341-DiscreteTimeSP advanced)
+(section SP-MIT6341-DiscreteTimeSP SignalFundamentals)
+(url SP-MIT6341-DiscreteTimeSP "https://ocw.mit.edu/courses/6-341-discrete-time-signal-processing-fall-2005/")
+(desc SP-MIT6341-DiscreteTimeSP "Advanced MIT course by Oppenheim himself. Multirate processing, parametric methods, advanced filter design.")
+
+(isa SP-NesoAcademy-SignalsSystems ReferenceWork)
+(title SP-NesoAcademy-SignalsSystems "Signals and Systems Explained")
+(author SP-NesoAcademy-SignalsSystems "Neso Academy")
+(resourceType SP-NesoAcademy-SignalsSystems video)
+(level SP-NesoAcademy-SignalsSystems beginner)
+(section SP-NesoAcademy-SignalsSystems SignalFundamentals)
+(url SP-NesoAcademy-SignalsSystems "https://www.youtube.com/playlist?list=PLBlnK6fEyqRhG6s3jYIU48CqsT5cyiDTO")
+(desc SP-NesoAcademy-SignalsSystems "Comprehensive YouTube playlist walking through signals, systems, convolution, and transforms step by step.")
+
+(isa SP-3B1B-FourierVisualIntro ReferenceWork)
+(title SP-3B1B-FourierVisualIntro "The Fourier Transform — A Visual Introduction")
+(author SP-3B1B-FourierVisualIntro "3Blue1Brown")
+(resourceType SP-3B1B-FourierVisualIntro video)
+(level SP-3B1B-FourierVisualIntro beginner)
+(section SP-3B1B-FourierVisualIntro SignalFundamentals)
+(url SP-3B1B-FourierVisualIntro "https://www.youtube.com/watch?v=spUNpyF58BY")
+(desc SP-3B1B-FourierVisualIntro "Beautiful visual explanation of what the Fourier transform really does. Perfect starting point.")
+
+;; ── Notes & Tutorials ──
+
+(isa SP-Smith-ScientistDSPGuide ReferenceWork)
+(title SP-Smith-ScientistDSPGuide "The Scientist and Engineer's Guide to Digital Signal Processing")
+(author SP-Smith-ScientistDSPGuide "Steven W. Smith")
+(resourceType SP-Smith-ScientistDSPGuide book)
+(level SP-Smith-ScientistDSPGuide beginner)
+(section SP-Smith-ScientistDSPGuide SignalFundamentals)
+(url SP-Smith-ScientistDSPGuide "http://www.dspguide.com/")
+(desc SP-Smith-ScientistDSPGuide "Free online textbook. Uniquely practical approach aimed at scientists who need DSP without heavy math prerequisites.")
+
+(isa SP-Girod-DSPIllustrations ReferenceWork)
+(title SP-Girod-DSPIllustrations "DSP Illustrations")
+(author SP-Girod-DSPIllustrations "Bernd Girod (Stanford)")
+(resourceType SP-Girod-DSPIllustrations notes)
+(level SP-Girod-DSPIllustrations beginner)
+(section SP-Girod-DSPIllustrations SignalFundamentals)
+(url SP-Girod-DSPIllustrations "https://dspillustrations.com/pages/index.html")
+(desc SP-Girod-DSPIllustrations "Interactive visualizations of core DSP concepts — sampling, aliasing, convolution, filtering. Learn by seeing.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: TIME SERIES ANALYSIS
+;; ARIMA, state space models, changepoints, forecasting
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa SP-Hyndman-FPP3 ReferenceWork)
+(title SP-Hyndman-FPP3 "Forecasting: Principles and Practice (3rd ed.)")
+(author SP-Hyndman-FPP3 "Rob J. Hyndman & George Athanasopoulos")
+(resourceType SP-Hyndman-FPP3 book)
+(level SP-Hyndman-FPP3 beginner)
+(section SP-Hyndman-FPP3 TimeSeriesAnalysis)
+(url SP-Hyndman-FPP3 "https://otexts.com/fpp3/")
+(desc SP-Hyndman-FPP3 "Free online textbook. The best introduction to time series forecasting — clear, practical, with R examples. Covers ETS, ARIMA, regression, and modern methods.")
+
+(isa SP-Shumway-TSAApplications ReferenceWork)
+(title SP-Shumway-TSAApplications "Time Series Analysis and Its Applications")
+(author SP-Shumway-TSAApplications "Robert H. Shumway & David S. Stoffer")
+(resourceType SP-Shumway-TSAApplications book)
+(level SP-Shumway-TSAApplications intermediate)
+(section SP-Shumway-TSAApplications TimeSeriesAnalysis)
+(url SP-Shumway-TSAApplications "https://www.stat.pitt.edu/stoffer/tsa4/")
+(desc SP-Shumway-TSAApplications "Standard graduate textbook. ARIMA, spectral analysis, state space models, multivariate methods. R code throughout.")
+
+(isa SP-Hamilton-TSA ReferenceWork)
+(title SP-Hamilton-TSA "Time Series Analysis")
+(author SP-Hamilton-TSA "James D. Hamilton")
+(resourceType SP-Hamilton-TSA book)
+(level SP-Hamilton-TSA advanced)
+(section SP-Hamilton-TSA TimeSeriesAnalysis)
+(url SP-Hamilton-TSA "https://www.amazon.com/Time-Analysis-James-Douglas-Hamilton/dp/0691042896")
+(desc SP-Hamilton-TSA "The definitive econometric treatment. VAR models, cointegration, regime switching, spectral methods. Dense but comprehensive.")
+
+(isa SP-Tsay-FinancialTS ReferenceWork)
+(title SP-Tsay-FinancialTS "Analysis of Financial Time Series")
+(author SP-Tsay-FinancialTS "Ruey S. Tsay")
+(resourceType SP-Tsay-FinancialTS book)
+(level SP-Tsay-FinancialTS intermediate)
+(section SP-Tsay-FinancialTS TimeSeriesAnalysis)
+(url SP-Tsay-FinancialTS "https://www.amazon.com/Analysis-Financial-Time-Ruey-Tsay/dp/0470414359")
+(desc SP-Tsay-FinancialTS "GARCH, volatility modeling, multivariate time series, high-frequency data. Financial signal processing.")
+
+(isa SP-Sarkka-BayesianFiltering ReferenceWork)
+(title SP-Sarkka-BayesianFiltering "Bayesian Filtering and Smoothing")
+(author SP-Sarkka-BayesianFiltering "Simo Sarkka")
+(resourceType SP-Sarkka-BayesianFiltering book)
+(level SP-Sarkka-BayesianFiltering intermediate)
+(section SP-Sarkka-BayesianFiltering TimeSeriesAnalysis)
+(url SP-Sarkka-BayesianFiltering "https://users.aalto.fi/~ssarkka/pub/cup_book_online_20131111.pdf")
+(desc SP-Sarkka-BayesianFiltering "Free PDF. Kalman filters, particle filters, and Bayesian state estimation. Clear, modern treatment of state space methods.")
+
+;; ── Courses & Videos ──
+
+(isa SP-MIT18S096-TSFinance ReferenceWork)
+(title SP-MIT18S096-TSFinance "Time Series Analysis (MIT OCW 18.S096)")
+(author SP-MIT18S096-TSFinance "Peter Hartigan & Choongbum Lee (MIT)")
+(resourceType SP-MIT18S096-TSFinance course)
+(level SP-MIT18S096-TSFinance intermediate)
+(section SP-MIT18S096-TSFinance TimeSeriesAnalysis)
+(url SP-MIT18S096-TSFinance "https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/")
+(desc SP-MIT18S096-TSFinance "MIT course covering time series models in the context of quantitative finance. Stationarity, ARIMA, GARCH.")
+
+(isa SP-Coursera-PracticalTSA ReferenceWork)
+(title SP-Coursera-PracticalTSA "Practical Time Series Analysis")
+(author SP-Coursera-PracticalTSA "SUNY (Coursera)")
+(resourceType SP-Coursera-PracticalTSA course)
+(level SP-Coursera-PracticalTSA beginner)
+(section SP-Coursera-PracticalTSA TimeSeriesAnalysis)
+(url SP-Coursera-PracticalTSA "https://www.coursera.org/learn/practical-time-series-analysis")
+(desc SP-Coursera-PracticalTSA "Hands-on Coursera course walking through time series concepts with R. Good for applied practitioners.")
+
+(isa SP-VanBiezen-KalmanFilter ReferenceWork)
+(title SP-VanBiezen-KalmanFilter "Kalman Filter Tutorial")
+(author SP-VanBiezen-KalmanFilter "Michel van Biezen")
+(resourceType SP-VanBiezen-KalmanFilter video)
+(level SP-VanBiezen-KalmanFilter intermediate)
+(section SP-VanBiezen-KalmanFilter TimeSeriesAnalysis)
+(url SP-VanBiezen-KalmanFilter "https://www.youtube.com/playlist?list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT")
+(desc SP-VanBiezen-KalmanFilter "Step-by-step video series building Kalman filter intuition from the ground up with worked examples.")
+
+;; ── Tools & Libraries ──
+
+(isa SP-Prophet ReferenceWork)
+(title SP-Prophet "Prophet")
+(author SP-Prophet "Meta (Facebook)")
+(resourceType SP-Prophet code)
+(level SP-Prophet beginner)
+(section SP-Prophet TimeSeriesAnalysis)
+(url SP-Prophet "https://facebook.github.io/prophet/")
+(desc SP-Prophet "Forecasting library handling multiple seasonalities, holidays, and trend changes. Python and R interfaces.")
+
+(isa SP-Statsmodels-TSA ReferenceWork)
+(title SP-Statsmodels-TSA "statsmodels — Time Series Analysis")
+(author SP-Statsmodels-TSA "statsmodels team")
+(resourceType SP-Statsmodels-TSA code)
+(level SP-Statsmodels-TSA intermediate)
+(section SP-Statsmodels-TSA TimeSeriesAnalysis)
+(url SP-Statsmodels-TSA "https://www.statsmodels.org/stable/tsa.html")
+(desc SP-Statsmodels-TSA "Python library with ARIMA, VAR, state space models, seasonal decomposition, and statistical tests.")
+
+(isa SP-Darts ReferenceWork)
+(title SP-Darts "Darts")
+(author SP-Darts "Unit8")
+(resourceType SP-Darts code)
+(level SP-Darts intermediate)
+(section SP-Darts TimeSeriesAnalysis)
+(url SP-Darts "https://github.com/unit8co/darts")
+(desc SP-Darts "Python library for easy manipulation and forecasting of time series. Supports classical and deep learning models.")
+
+(isa SP-Tslearn ReferenceWork)
+(title SP-Tslearn "tslearn")
+(author SP-Tslearn "Romain Tavenard")
+(resourceType SP-Tslearn code)
+(level SP-Tslearn intermediate)
+(section SP-Tslearn TimeSeriesAnalysis)
+(url SP-Tslearn "https://tslearn.readthedocs.io/")
+(desc SP-Tslearn "Machine learning tools for time series — DTW, clustering, classification, shapelets, kernel methods.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: FREQUENCY DOMAIN
+;; DFT, FFT, STFT, wavelets, filter design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa SP-Bracewell-FourierTransform ReferenceWork)
+(title SP-Bracewell-FourierTransform "The Fourier Transform and Its Applications")
+(author SP-Bracewell-FourierTransform "Ronald N. Bracewell")
+(resourceType SP-Bracewell-FourierTransform book)
+(level SP-Bracewell-FourierTransform intermediate)
+(section SP-Bracewell-FourierTransform FrequencyDomain)
+(url SP-Bracewell-FourierTransform "https://www.amazon.com/Fourier-Transform-Its-Applications/dp/0073039381")
+(desc SP-Bracewell-FourierTransform "Classic treatment of the Fourier transform with exceptional intuition. Covers DFT, convolution theorem, sampling, and applications to optics and imaging.")
+
+(isa SP-Mallat-WaveletTour ReferenceWork)
+(title SP-Mallat-WaveletTour "A Wavelet Tour of Signal Processing")
+(author SP-Mallat-WaveletTour "Stephane Mallat")
+(resourceType SP-Mallat-WaveletTour book)
+(level SP-Mallat-WaveletTour advanced)
+(section SP-Mallat-WaveletTour FrequencyDomain)
+(url SP-Mallat-WaveletTour "https://www.amazon.com/Wavelet-Tour-Signal-Processing-Third/dp/0123743702")
+(desc SP-Mallat-WaveletTour "The definitive wavelet textbook. Multi-resolution analysis, wavelet design, sparse representations, compressed sensing.")
+
+(isa SP-Stein-FourierAnalysis ReferenceWork)
+(title SP-Stein-FourierAnalysis "Fourier Analysis: An Introduction")
+(author SP-Stein-FourierAnalysis "Elias M. Stein & Rami Shakarchi")
+(resourceType SP-Stein-FourierAnalysis book)
+(level SP-Stein-FourierAnalysis intermediate)
+(section SP-Stein-FourierAnalysis FrequencyDomain)
+(url SP-Stein-FourierAnalysis "https://www.amazon.com/Fourier-Analysis-Introduction-Princeton-Lectures/dp/069111384X")
+(desc SP-Stein-FourierAnalysis "Princeton Lectures in Analysis. Rigorous mathematical treatment of Fourier series and transforms with beautiful exposition.")
+
+(isa SP-Oppenheim-DiscreteTimeSP ReferenceWork)
+(title SP-Oppenheim-DiscreteTimeSP "Discrete-Time Signal Processing")
+(author SP-Oppenheim-DiscreteTimeSP "Alan V. Oppenheim & Ronald W. Schafer")
+(resourceType SP-Oppenheim-DiscreteTimeSP book)
+(level SP-Oppenheim-DiscreteTimeSP intermediate)
+(section SP-Oppenheim-DiscreteTimeSP FrequencyDomain)
+(url SP-Oppenheim-DiscreteTimeSP "https://www.amazon.com/Discrete-Time-Signal-Processing-3rd-Prentice-Hall/dp/0131988425")
+(desc SP-Oppenheim-DiscreteTimeSP "The authoritative reference on discrete-time systems, DFT, FFT, and digital filter design. Companion to Signals and Systems.")
+
+(isa SP-Frazier-WaveletsLinAlg ReferenceWork)
+(title SP-Frazier-WaveletsLinAlg "An Introduction to Wavelets Through Linear Algebra")
+(author SP-Frazier-WaveletsLinAlg "Michael W. Frazier")
+(resourceType SP-Frazier-WaveletsLinAlg book)
+(level SP-Frazier-WaveletsLinAlg beginner)
+(section SP-Frazier-WaveletsLinAlg FrequencyDomain)
+(url SP-Frazier-WaveletsLinAlg "https://www.amazon.com/Introduction-Wavelets-Through-Linear-Algebra/dp/0387986391")
+(desc SP-Frazier-WaveletsLinAlg "Gentle introduction to wavelets requiring only linear algebra. Builds from Haar wavelets to Daubechies wavelets step by step.")
+
+;; ── Courses & Videos ──
+
+(isa SP-Brunton-Wavelets ReferenceWork)
+(title SP-Brunton-Wavelets "Wavelets and Multiresolution Analysis")
+(author SP-Brunton-Wavelets "Steve Brunton")
+(resourceType SP-Brunton-Wavelets video)
+(level SP-Brunton-Wavelets intermediate)
+(section SP-Brunton-Wavelets FrequencyDomain)
+(url SP-Brunton-Wavelets "https://www.youtube.com/playlist?list=PLMrJAkhIeNNRn1Oqo_PYJLiHoRa1j5Dm")
+(desc SP-Brunton-Wavelets "Excellent video series on wavelets, multiresolution analysis, and their applications in data science.")
+
+(isa SP-Stanford-EE261 ReferenceWork)
+(title SP-Stanford-EE261 "Fourier Analysis (Stanford EE261)")
+(author SP-Stanford-EE261 "Brad Osgood (Stanford)")
+(resourceType SP-Stanford-EE261 course)
+(level SP-Stanford-EE261 intermediate)
+(section SP-Stanford-EE261 FrequencyDomain)
+(url SP-Stanford-EE261 "https://see.stanford.edu/Course/EE261")
+(desc SP-Stanford-EE261 "Complete Stanford course on Fourier analysis — series, transforms, distributions, sampling, and applications.")
+
+(isa SP-Reducible-FFT ReferenceWork)
+(title SP-Reducible-FFT "FFT Algorithm — The Most Important Algorithm")
+(author SP-Reducible-FFT "Reducible")
+(resourceType SP-Reducible-FFT video)
+(level SP-Reducible-FFT beginner)
+(section SP-Reducible-FFT FrequencyDomain)
+(url SP-Reducible-FFT "https://www.youtube.com/watch?v=h7apO7q16V0")
+(desc SP-Reducible-FFT "Beautifully animated explanation of the FFT algorithm — why it works and why it changed the world.")
+
+(isa SP-3B1B-WhatIsFourier ReferenceWork)
+(title SP-3B1B-WhatIsFourier "But What is the Fourier Transform?")
+(author SP-3B1B-WhatIsFourier "3Blue1Brown")
+(resourceType SP-3B1B-WhatIsFourier video)
+(level SP-3B1B-WhatIsFourier beginner)
+(section SP-3B1B-WhatIsFourier FrequencyDomain)
+(url SP-3B1B-WhatIsFourier "https://www.youtube.com/watch?v=spUNpyF58BY")
+(desc SP-3B1B-WhatIsFourier "Visual, intuitive explanation of the Fourier transform as 'winding' a signal around a circle.")
+
+;; ── Tutorials & Code ──
+
+(isa SP-NumPy-FFT ReferenceWork)
+(title SP-NumPy-FFT "NumPy FFT Documentation")
+(author SP-NumPy-FFT "NumPy")
+(resourceType SP-NumPy-FFT code)
+(level SP-NumPy-FFT beginner)
+(section SP-NumPy-FFT FrequencyDomain)
+(url SP-NumPy-FFT "https://numpy.org/doc/stable/reference/routines.fft.html")
+(desc SP-NumPy-FFT "Official NumPy FFT reference. Practical entry point for computing Fourier transforms in Python.")
+
+(isa SP-SciPy-SignalTutorial ReferenceWork)
+(title SP-SciPy-SignalTutorial "SciPy Signal Processing Tutorial")
+(author SP-SciPy-SignalTutorial "SciPy")
+(resourceType SP-SciPy-SignalTutorial code)
+(level SP-SciPy-SignalTutorial intermediate)
+(section SP-SciPy-SignalTutorial FrequencyDomain)
+(url SP-SciPy-SignalTutorial "https://docs.scipy.org/doc/scipy/tutorial/signal.html")
+(desc SP-SciPy-SignalTutorial "Official SciPy tutorial covering filtering, spectral analysis, wavelets, and window functions.")
+
+(isa SP-PyWavelets-Freq ReferenceWork)
+(title SP-PyWavelets-Freq "PyWavelets")
+(author SP-PyWavelets-Freq "PyWavelets Team")
+(resourceType SP-PyWavelets-Freq code)
+(level SP-PyWavelets-Freq intermediate)
+(section SP-PyWavelets-Freq FrequencyDomain)
+(url SP-PyWavelets-Freq "https://pywavelets.readthedocs.io/")
+(desc SP-PyWavelets-Freq "Python wavelet transform library. CWT, DWT, wavelet packets, multi-level decomposition. Clean API.")
+
+(isa SP-PySpectrum ReferenceWork)
+(title SP-PySpectrum "Spectral Analysis with Python")
+(author SP-PySpectrum "Thomas Cokelaer")
+(resourceType SP-PySpectrum code)
+(level SP-PySpectrum intermediate)
+(section SP-PySpectrum FrequencyDomain)
+(url SP-PySpectrum "https://pyspectrum.readthedocs.io/")
+(desc SP-PySpectrum "Python library for spectral analysis — periodogram, Welch, multitaper, parametric methods (AR, ARMA).")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: DRIFT DETECTION
+;; Concept drift, CUSUM, ADWIN, MMD, distribution shift
+;; ════════════════════════════════════════════════════════════
+
+;; ── Papers & Surveys ──
+
+(isa SP-Gama-ConceptDriftSurvey ReferenceWork)
+(title SP-Gama-ConceptDriftSurvey "A Survey on Concept Drift Adaptation")
+(author SP-Gama-ConceptDriftSurvey "Joao Gama, Indre Zliobaite, Albert Bifet, Mykola Pechenizkiy & Abdelhamid Bouchachia")
+(resourceType SP-Gama-ConceptDriftSurvey notes)
+(level SP-Gama-ConceptDriftSurvey intermediate)
+(section SP-Gama-ConceptDriftSurvey DriftDetection)
+(url SP-Gama-ConceptDriftSurvey "https://dl.acm.org/doi/10.1145/2523813")
+(desc SP-Gama-ConceptDriftSurvey "Comprehensive ACM Computing Survey covering drift detection methods, adaptation strategies, and evaluation. The standard reference.")
+
+(isa SP-Lu-ConceptDriftReview ReferenceWork)
+(title SP-Lu-ConceptDriftReview "Learning under Concept Drift: A Review")
+(author SP-Lu-ConceptDriftReview "Jie Lu, Anjin Liu, Fan Dong, Feng Gu, Joao Gama & Guangquan Zhang")
+(resourceType SP-Lu-ConceptDriftReview notes)
+(level SP-Lu-ConceptDriftReview intermediate)
+(section SP-Lu-ConceptDriftReview DriftDetection)
+(url SP-Lu-ConceptDriftReview "https://ieeexplore.ieee.org/document/8496795")
+(desc SP-Lu-ConceptDriftReview "IEEE TKDE review with taxonomy of drift types, detection methods, and learning strategies. Modern and thorough.")
+
+(isa SP-Page-CUSUM ReferenceWork)
+(title SP-Page-CUSUM "Sequential Analysis and Optimal Design")
+(author SP-Page-CUSUM "E.S. Page (original CUSUM paper)")
+(resourceType SP-Page-CUSUM notes)
+(level SP-Page-CUSUM advanced)
+(section SP-Page-CUSUM DriftDetection)
+(url SP-Page-CUSUM "https://www.jstor.org/stable/2333009")
+(desc SP-Page-CUSUM "The foundational paper introducing the CUSUM (Cumulative Sum) test for detecting changes in sequential data. Historic.")
+
+(isa SP-Bifet-ADWIN ReferenceWork)
+(title SP-Bifet-ADWIN "ADWIN: Adaptive Windowing for Drift Detection")
+(author SP-Bifet-ADWIN "Albert Bifet & Ricard Gavalda")
+(resourceType SP-Bifet-ADWIN notes)
+(level SP-Bifet-ADWIN intermediate)
+(section SP-Bifet-ADWIN DriftDetection)
+(url SP-Bifet-ADWIN "https://epubs.siam.org/doi/10.1137/1.9781611972771.42")
+(desc SP-Bifet-ADWIN "Introduces the ADWIN algorithm — maintains adaptive-size windows and rigorously detects distribution changes.")
+
+(isa SP-Rabanser-FailingLoudly ReferenceWork)
+(title SP-Rabanser-FailingLoudly "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift")
+(author SP-Rabanser-FailingLoudly "Stephan Rabanser, Stephan Gunnemann & Zachary Lipton")
+(resourceType SP-Rabanser-FailingLoudly notes)
+(level SP-Rabanser-FailingLoudly intermediate)
+(section SP-Rabanser-FailingLoudly DriftDetection)
+(url SP-Rabanser-FailingLoudly "https://arxiv.org/abs/1810.11953")
+(desc SP-Rabanser-FailingLoudly "Practical comparison of dataset shift detection methods — MMD, KS test, classifier two-sample tests.")
+
+(isa SP-Gretton-KernelTwoSample ReferenceWork)
+(title SP-Gretton-KernelTwoSample "A Kernel Two-Sample Test")
+(author SP-Gretton-KernelTwoSample "Arthur Gretton, Karsten M. Borgwardt, Malte Rasch, Bernhard Scholkopf, Alexander Smola")
+(resourceType SP-Gretton-KernelTwoSample notes)
+(level SP-Gretton-KernelTwoSample advanced)
+(section SP-Gretton-KernelTwoSample DriftDetection)
+(url SP-Gretton-KernelTwoSample "https://jmlr.org/papers/v13/gretton12a.html")
+(desc SP-Gretton-KernelTwoSample "The Maximum Mean Discrepancy (MMD) test — a kernel-based method for detecting distribution differences. Foundational for modern drift detection.")
+
+;; ── Courses & Tutorials ──
+
+(isa SP-Shankar-DriftMLMonitoring ReferenceWork)
+(title SP-Shankar-DriftMLMonitoring "Concept Drift and Model Decay in Machine Learning")
+(author SP-Shankar-DriftMLMonitoring "Shreya Shankar (Stanford)")
+(resourceType SP-Shankar-DriftMLMonitoring notes)
+(level SP-Shankar-DriftMLMonitoring beginner)
+(section SP-Shankar-DriftMLMonitoring DriftDetection)
+(url SP-Shankar-DriftMLMonitoring "https://www.shreya-shankar.com/rethinking-ml-monitoring-2/")
+(desc SP-Shankar-DriftMLMonitoring "Accessible blog post on ML monitoring and drift detection in production systems. Practical perspective.")
+
+(isa SP-Bifet-ChangeDetectionTalk ReferenceWork)
+(title SP-Bifet-ChangeDetectionTalk "Change Detection in Streaming Data")
+(author SP-Bifet-ChangeDetectionTalk "Albert Bifet")
+(resourceType SP-Bifet-ChangeDetectionTalk video)
+(level SP-Bifet-ChangeDetectionTalk intermediate)
+(section SP-Bifet-ChangeDetectionTalk DriftDetection)
+(url SP-Bifet-ChangeDetectionTalk "https://www.youtube.com/watch?v=gMVOd_LVjgQ")
+(desc SP-Bifet-ChangeDetectionTalk "Talk by the creator of ADWIN and MOA on detecting changes in data streams.")
+
+;; ── Tools & Libraries ──
+
+(isa SP-River-Drift ReferenceWork)
+(title SP-River-Drift "River")
+(author SP-River-Drift "River Team")
+(resourceType SP-River-Drift code)
+(level SP-River-Drift intermediate)
+(section SP-River-Drift DriftDetection)
+(url SP-River-Drift "https://riverml.xyz/")
+(desc SP-River-Drift "Python library for online/streaming machine learning. Includes ADWIN, Page-Hinkley, DDM drift detectors.")
+
+(isa SP-MOA-Drift ReferenceWork)
+(title SP-MOA-Drift "MOA (Massive Online Analysis)")
+(author SP-MOA-Drift "Albert Bifet et al.")
+(resourceType SP-MOA-Drift code)
+(level SP-MOA-Drift intermediate)
+(section SP-MOA-Drift DriftDetection)
+(url SP-MOA-Drift "https://moa.cms.waikato.ac.nz/")
+(desc SP-MOA-Drift "Java framework for data stream mining — drift detection, classification, clustering, regression on streams.")
+
+(isa SP-AlibiDetect ReferenceWork)
+(title SP-AlibiDetect "Alibi Detect")
+(author SP-AlibiDetect "Seldon")
+(resourceType SP-AlibiDetect code)
+(level SP-AlibiDetect intermediate)
+(section SP-AlibiDetect DriftDetection)
+(url SP-AlibiDetect "https://github.com/SeldonIO/alibi-detect")
+(desc SP-AlibiDetect "Python library for outlier, adversarial, and drift detection. MMD, KS, Chi-squared, learned kernel detectors.")
+
+(isa SP-Evidently ReferenceWork)
+(title SP-Evidently "Evidently")
+(author SP-Evidently "Evidently AI")
+(resourceType SP-Evidently code)
+(level SP-Evidently beginner)
+(section SP-Evidently DriftDetection)
+(url SP-Evidently "https://github.com/evidentlyai/evidently")
+(desc SP-Evidently "ML monitoring tool with visual reports on data drift, target drift, and model performance degradation.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: HARMONIC ANALYSIS
+;; Resonance, synchronization, coupled oscillators, phase
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks ──
+
+(isa SP-Strogatz-Sync ReferenceWork)
+(title SP-Strogatz-Sync "Sync: How Order Emerges from Chaos in the Universe, Nature, and Daily Life")
+(author SP-Strogatz-Sync "Steven Strogatz")
+(resourceType SP-Strogatz-Sync book)
+(level SP-Strogatz-Sync beginner)
+(section SP-Strogatz-Sync HarmonicAnalysis)
+(url SP-Strogatz-Sync "https://www.amazon.com/Sync-Order-Emerges-Universe-Nature/dp/0786887214")
+(desc SP-Strogatz-Sync "Popular science masterpiece on synchronization — fireflies, heart cells, coupled oscillators, and the mathematics of collective rhythm. Essential reading for Paper 11.")
+
+(isa SP-Pikovsky-Synchronization ReferenceWork)
+(title SP-Pikovsky-Synchronization "Synchronization: A Universal Concept in Nonlinear Sciences")
+(author SP-Pikovsky-Synchronization "Arkady Pikovsky, Michael Rosenblum & Jurgen Kurths")
+(resourceType SP-Pikovsky-Synchronization book)
+(level SP-Pikovsky-Synchronization intermediate)
+(section SP-Pikovsky-Synchronization HarmonicAnalysis)
+(url SP-Pikovsky-Synchronization "https://www.amazon.com/Synchronization-Universal-Concept-Nonlinear-Sciences/dp/0521533520")
+(desc SP-Pikovsky-Synchronization "THE technical reference on synchronization. Phase locking, frequency entrainment, coupled oscillators, chaotic synchronization. Comprehensive and rigorous.")
+
+(isa SP-Strogatz-NonlinearDynamics ReferenceWork)
+(title SP-Strogatz-NonlinearDynamics "Nonlinear Dynamics and Chaos")
+(author SP-Strogatz-NonlinearDynamics "Steven Strogatz")
+(resourceType SP-Strogatz-NonlinearDynamics book)
+(level SP-Strogatz-NonlinearDynamics intermediate)
+(section SP-Strogatz-NonlinearDynamics HarmonicAnalysis)
+(url SP-Strogatz-NonlinearDynamics "https://www.amazon.com/Nonlinear-Dynamics-Chaos-Applications-Nonlinearity/dp/0813349109")
+(desc SP-Strogatz-NonlinearDynamics "Classic textbook on dynamical systems. Bifurcations, limit cycles, chaos, coupled oscillators. Chapter 8 on coupled oscillators is directly relevant.")
+
+(isa SP-Toussaint-GeometryMusicalRhythm ReferenceWork)
+(title SP-Toussaint-GeometryMusicalRhythm "The Geometry of Musical Rhythm")
+(author SP-Toussaint-GeometryMusicalRhythm "Godfried Toussaint")
+(resourceType SP-Toussaint-GeometryMusicalRhythm book)
+(level SP-Toussaint-GeometryMusicalRhythm beginner)
+(section SP-Toussaint-GeometryMusicalRhythm HarmonicAnalysis)
+(url SP-Toussaint-GeometryMusicalRhythm "https://www.amazon.com/Geometry-Musical-Rhythm-What-Makes/dp/1466512024")
+(desc SP-Toussaint-GeometryMusicalRhythm "Computational geometry meets music. Rhythmic patterns, necklaces, Euclidean rhythms. Surprising connections between geometry and temporal structure.")
+
+(isa SP-Kuramoto-ChemicalOscillations ReferenceWork)
+(title SP-Kuramoto-ChemicalOscillations "Chemical Oscillations, Waves, and Turbulence")
+(author SP-Kuramoto-ChemicalOscillations "Yoshiki Kuramoto")
+(resourceType SP-Kuramoto-ChemicalOscillations book)
+(level SP-Kuramoto-ChemicalOscillations advanced)
+(section SP-Kuramoto-ChemicalOscillations HarmonicAnalysis)
+(url SP-Kuramoto-ChemicalOscillations "https://link.springer.com/book/10.1007/978-3-642-69689-3")
+(desc SP-Kuramoto-ChemicalOscillations "Introduces the Kuramoto model of coupled phase oscillators — the foundational mathematical model of synchronization.")
+
+;; ── Papers & Notes ──
+
+(isa SP-Strogatz-KuramotoCrawford ReferenceWork)
+(title SP-Strogatz-KuramotoCrawford "From Kuramoto to Crawford: Exploring the Onset of Synchronization")
+(author SP-Strogatz-KuramotoCrawford "Steven Strogatz")
+(resourceType SP-Strogatz-KuramotoCrawford notes)
+(level SP-Strogatz-KuramotoCrawford advanced)
+(section SP-Strogatz-KuramotoCrawford HarmonicAnalysis)
+(url SP-Strogatz-KuramotoCrawford "https://doi.org/10.1016/S0167-2789(00)00094-4")
+(desc SP-Strogatz-KuramotoCrawford "Review paper tracing the mathematical theory of synchronization transitions in coupled oscillator networks.")
+
+(isa SP-Acebron-KuramotoModel ReferenceWork)
+(title SP-Acebron-KuramotoModel "The Kuramoto Model: A Simple Paradigm for Synchronization Phenomena")
+(author SP-Acebron-KuramotoModel "Juan A. Acebron et al.")
+(resourceType SP-Acebron-KuramotoModel notes)
+(level SP-Acebron-KuramotoModel intermediate)
+(section SP-Acebron-KuramotoModel HarmonicAnalysis)
+(url SP-Acebron-KuramotoModel "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.77.137")
+(desc SP-Acebron-KuramotoModel "Reviews of Modern Physics survey of the Kuramoto model — exact solutions, order parameter, generalizations.")
+
+(isa SP-Strogatz-CoupledOscillators ReferenceWork)
+(title SP-Strogatz-CoupledOscillators "Coupled Oscillators and Biological Synchronization")
+(author SP-Strogatz-CoupledOscillators "Steven Strogatz & Ian Stewart")
+(resourceType SP-Strogatz-CoupledOscillators notes)
+(level SP-Strogatz-CoupledOscillators beginner)
+(section SP-Strogatz-CoupledOscillators HarmonicAnalysis)
+(url SP-Strogatz-CoupledOscillators "https://www.scientificamerican.com/article/coupled-oscillators-and-b/")
+(desc SP-Strogatz-CoupledOscillators "Scientific American article making coupled oscillator theory accessible. Fireflies, crickets, cardiac pacemakers.")
+
+(isa SP-SmithIII-SpectralAudioSP ReferenceWork)
+(title SP-SmithIII-SpectralAudioSP "Spectral Audio Signal Processing")
+(author SP-SmithIII-SpectralAudioSP "Julius O. Smith III")
+(resourceType SP-SmithIII-SpectralAudioSP book)
+(level SP-SmithIII-SpectralAudioSP intermediate)
+(section SP-SmithIII-SpectralAudioSP HarmonicAnalysis)
+(url SP-SmithIII-SpectralAudioSP "https://ccrma.stanford.edu/~jos/sasp/")
+(desc SP-SmithIII-SpectralAudioSP "Free Stanford online book on spectral analysis of audio signals — windowing, STFT, sinusoidal modeling, phase vocoder.")
+
+;; ── Courses & Videos ──
+
+(isa SP-Strogatz-Lectures ReferenceWork)
+(title SP-Strogatz-Lectures "Nonlinear Dynamics and Chaos (Strogatz Lectures)")
+(author SP-Strogatz-Lectures "Steven Strogatz (Cornell)")
+(resourceType SP-Strogatz-Lectures course)
+(level SP-Strogatz-Lectures intermediate)
+(section SP-Strogatz-Lectures HarmonicAnalysis)
+(url SP-Strogatz-Lectures "https://www.youtube.com/playlist?list=PLbN57C5Zdl6j_qJA-pARJnKsmROzPnO9V")
+(desc SP-Strogatz-Lectures "Complete lecture series from Strogatz himself. Lectures 19-24 cover coupled oscillators and synchronization.")
+
+(isa SP-Veritasium-Synchronization ReferenceWork)
+(title SP-Veritasium-Synchronization "The Science of Synchronization")
+(author SP-Veritasium-Synchronization "Veritasium")
+(resourceType SP-Veritasium-Synchronization video)
+(level SP-Veritasium-Synchronization beginner)
+(section SP-Veritasium-Synchronization HarmonicAnalysis)
+(url SP-Veritasium-Synchronization "https://www.youtube.com/watch?v=t-_VPRCtiUg")
+(desc SP-Veritasium-Synchronization "Viral video demonstrating synchronization of metronomes and explaining the physics. 25M+ views.")
+
+(isa SP-Benson-MusicMath ReferenceWork)
+(title SP-Benson-MusicMath "Music and Mathematics")
+(author SP-Benson-MusicMath "David Benson (Aberdeen)")
+(resourceType SP-Benson-MusicMath book)
+(level SP-Benson-MusicMath beginner)
+(section SP-Benson-MusicMath HarmonicAnalysis)
+(url SP-Benson-MusicMath "https://homepages.abdn.ac.uk/d.j.benson/pages/html/music.pdf")
+(desc SP-Benson-MusicMath "Free online book connecting harmonic series, Fourier analysis, and tuning theory to musical acoustics.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: WAVEFORM PROCESSING
+;; Audio, speech, biomedical signals, sensor data
+;; ════════════════════════════════════════════════════════════
+
+;; ── Audio & Speech ──
+
+(isa SP-Jurafsky-SLP ReferenceWork)
+(title SP-Jurafsky-SLP "Speech and Language Processing")
+(author SP-Jurafsky-SLP "Dan Jurafsky & James H. Martin")
+(resourceType SP-Jurafsky-SLP book)
+(level SP-Jurafsky-SLP intermediate)
+(section SP-Jurafsky-SLP WaveformProcessing)
+(url SP-Jurafsky-SLP "https://web.stanford.edu/~jurafsky/slp3/")
+(desc SP-Jurafsky-SLP "Free online textbook. Definitive reference on NLP and speech processing. Chapters on phonetics, speech recognition, and speech synthesis.")
+
+(isa SP-Zolzer-DAFX ReferenceWork)
+(title SP-Zolzer-DAFX "DAFX: Digital Audio Effects")
+(author SP-Zolzer-DAFX "Udo Zolzer (editor)")
+(resourceType SP-Zolzer-DAFX book)
+(level SP-Zolzer-DAFX intermediate)
+(section SP-Zolzer-DAFX WaveformProcessing)
+(url SP-Zolzer-DAFX "https://www.amazon.com/DAFX-Digital-Audio-Effects-Zolzer/dp/0470665998")
+(desc SP-Zolzer-DAFX "Comprehensive treatment of audio effects — filters, delays, modulation, spatial effects, spectral processing, time-stretching.")
+
+(isa SP-Muller-MusicProcessing ReferenceWork)
+(title SP-Muller-MusicProcessing "Fundamentals of Music Processing")
+(author SP-Muller-MusicProcessing "Meinard Muller")
+(resourceType SP-Muller-MusicProcessing book)
+(level SP-Muller-MusicProcessing intermediate)
+(section SP-Muller-MusicProcessing WaveformProcessing)
+(url SP-Muller-MusicProcessing "https://www.amazon.com/Fundamentals-Music-Processing-Algorithms-Applications/dp/3319219448")
+(desc SP-Muller-MusicProcessing "Music signal analysis — beat tracking, chord recognition, melody extraction, audio alignment. Bridges theory and code.")
+
+(isa SP-LibROSA-Waveform ReferenceWork)
+(title SP-LibROSA-Waveform "LibROSA")
+(author SP-LibROSA-Waveform "Brian McFee et al.")
+(resourceType SP-LibROSA-Waveform code)
+(level SP-LibROSA-Waveform beginner)
+(section SP-LibROSA-Waveform WaveformProcessing)
+(url SP-LibROSA-Waveform "https://librosa.org/")
+(desc SP-LibROSA-Waveform "Python library for audio and music analysis. Spectrograms, MFCCs, beat tracking, onset detection, harmonic-percussive separation.")
+
+(isa SP-Coursera-AudioSP ReferenceWork)
+(title SP-Coursera-AudioSP "Audio Signal Processing for Music Applications")
+(author SP-Coursera-AudioSP "Xavier Serra & Julius O. Smith (Coursera/UPF-Stanford)")
+(resourceType SP-Coursera-AudioSP course)
+(level SP-Coursera-AudioSP intermediate)
+(section SP-Coursera-AudioSP WaveformProcessing)
+(url SP-Coursera-AudioSP "https://www.coursera.org/learn/audio-signal-processing")
+(desc SP-Coursera-AudioSP "Coursera course on audio analysis and synthesis. DFT, sinusoidal models, harmonic models, spectral processing.")
+
+;; ── Biomedical Signals ──
+
+(isa SP-Bruce-BiomedicalSP ReferenceWork)
+(title SP-Bruce-BiomedicalSP "Biomedical Signal Processing and Signal Modeling")
+(author SP-Bruce-BiomedicalSP "Eugene N. Bruce")
+(resourceType SP-Bruce-BiomedicalSP book)
+(level SP-Bruce-BiomedicalSP intermediate)
+(section SP-Bruce-BiomedicalSP WaveformProcessing)
+(url SP-Bruce-BiomedicalSP "https://www.amazon.com/Biomedical-Signal-Processing-Modeling/dp/0471345407")
+(desc SP-Bruce-BiomedicalSP "Signal processing techniques tailored for biomedical applications — ECG, EEG, EMG analysis with physiological context.")
+
+(isa SP-MNE-Python ReferenceWork)
+(title SP-MNE-Python "MNE-Python")
+(author SP-MNE-Python "MNE Team")
+(resourceType SP-MNE-Python code)
+(level SP-MNE-Python intermediate)
+(section SP-MNE-Python WaveformProcessing)
+(url SP-MNE-Python "https://mne.tools/")
+(desc SP-MNE-Python "Python library for processing MEG and EEG data. Filtering, source localization, time-frequency analysis, connectivity.")
+
+(isa SP-NeuroKit2 ReferenceWork)
+(title SP-NeuroKit2 "NeuroKit2")
+(author SP-NeuroKit2 "Dominique Makowski et al.")
+(resourceType SP-NeuroKit2 code)
+(level SP-NeuroKit2 beginner)
+(section SP-NeuroKit2 WaveformProcessing)
+(url SP-NeuroKit2 "https://neuropsychology.github.io/NeuroKit/")
+(desc SP-NeuroKit2 "Python toolbox for neurophysiological signal processing — ECG, EDA, EMG, EEG, PPG. Clean API for biosignal analysis.")
+
+(isa SP-BioSPPy ReferenceWork)
+(title SP-BioSPPy "BioSPPy")
+(author SP-BioSPPy "IT-BIST")
+(resourceType SP-BioSPPy code)
+(level SP-BioSPPy beginner)
+(section SP-BioSPPy WaveformProcessing)
+(url SP-BioSPPy "https://biosppy.readthedocs.io/")
+(desc SP-BioSPPy "Biosignal processing in Python. ECG, EDA, EEG, EMG analysis with simple, well-documented functions.")
+
+(isa SP-PhysioNet-Waveform ReferenceWork)
+(title SP-PhysioNet-Waveform "PhysioNet")
+(author SP-PhysioNet-Waveform "PhysioNet/MIT")
+(resourceType SP-PhysioNet-Waveform data)
+(section SP-PhysioNet-Waveform WaveformProcessing)
+(url SP-PhysioNet-Waveform "https://physionet.org/")
+(desc SP-PhysioNet-Waveform "Repository of physiological signal databases — ECG (MIT-BIH), EEG, gait, ICU monitoring. The standard source for biomedical signal data.")
+
+;; ── General Tools ──
+
+(isa SP-SciPySignal-Waveform ReferenceWork)
+(title SP-SciPySignal-Waveform "scipy.signal")
+(author SP-SciPySignal-Waveform "SciPy")
+(resourceType SP-SciPySignal-Waveform code)
+(level SP-SciPySignal-Waveform intermediate)
+(section SP-SciPySignal-Waveform WaveformProcessing)
+(url SP-SciPySignal-Waveform "https://docs.scipy.org/doc/scipy/reference/signal.html")
+(desc SP-SciPySignal-Waveform "Core Python signal processing module. Filtering, spectral analysis, wavelets, peak detection, resampling.")
+
+(isa SP-Essentia ReferenceWork)
+(title SP-Essentia "Essentia")
+(author SP-Essentia "Music Technology Group (UPF)")
+(resourceType SP-Essentia code)
+(level SP-Essentia intermediate)
+(section SP-Essentia WaveformProcessing)
+(url SP-Essentia "https://essentia.upf.edu/")
+(desc SP-Essentia "C++/Python library for audio analysis and music information retrieval. Feature extraction, classification, similarity.")
+
+(isa SP-Torchaudio ReferenceWork)
+(title SP-Torchaudio "torchaudio")
+(author SP-Torchaudio "PyTorch")
+(resourceType SP-Torchaudio code)
+(level SP-Torchaudio intermediate)
+(section SP-Torchaudio WaveformProcessing)
+(url SP-Torchaudio "https://pytorch.org/audio/")
+(desc SP-Torchaudio "PyTorch audio processing library. Waveform transformations, feature extraction, pretrained models (Wav2Vec, HuBERT).")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Core libraries, streaming tools, benchmark datasets
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Libraries ──
+
+(isa SP-SciPy-CoreLib ReferenceWork)
+(title SP-SciPy-CoreLib "SciPy Signal Processing")
+(author SP-SciPy-CoreLib "SciPy Community")
+(resourceType SP-SciPy-CoreLib code)
+(section SP-SciPy-CoreLib DatasetsSoftware)
+(url SP-SciPy-CoreLib "https://docs.scipy.org/doc/scipy/reference/signal.html")
+(desc SP-SciPy-CoreLib "Python signal processing module — convolution, filtering, spectral analysis, wavelets, window functions, peak detection.")
+
+(isa SP-NumPy-CoreLib ReferenceWork)
+(title SP-NumPy-CoreLib "NumPy FFT")
+(author SP-NumPy-CoreLib "NumPy Community")
+(resourceType SP-NumPy-CoreLib code)
+(section SP-NumPy-CoreLib DatasetsSoftware)
+(url SP-NumPy-CoreLib "https://numpy.org/doc/stable/reference/routines.fft.html")
+(desc SP-NumPy-CoreLib "Fast Fourier Transform implementation in NumPy. The computational backbone of spectral analysis in Python.")
+
+(isa SP-MATLAB-SignalToolbox ReferenceWork)
+(title SP-MATLAB-SignalToolbox "MATLAB Signal Processing Toolbox")
+(author SP-MATLAB-SignalToolbox "MathWorks")
+(resourceType SP-MATLAB-SignalToolbox code)
+(section SP-MATLAB-SignalToolbox DatasetsSoftware)
+(url SP-MATLAB-SignalToolbox "https://www.mathworks.com/products/signal.html")
+(desc SP-MATLAB-SignalToolbox "Industry-standard toolbox for signal generation, filtering, spectral analysis, and measurement. The original DSP software.")
+
+(isa SP-GNUOctave-Signal ReferenceWork)
+(title SP-GNUOctave-Signal "GNU Octave Signal Package")
+(author SP-GNUOctave-Signal "GNU Octave")
+(resourceType SP-GNUOctave-Signal code)
+(section SP-GNUOctave-Signal DatasetsSoftware)
+(url SP-GNUOctave-Signal "https://octave.sourceforge.io/signal/")
+(desc SP-GNUOctave-Signal "Free, open-source MATLAB-compatible signal processing package. Filter design, spectral analysis, window functions.")
+
+(isa SP-PyWavelets-CoreLib ReferenceWork)
+(title SP-PyWavelets-CoreLib "PyWavelets")
+(author SP-PyWavelets-CoreLib "PyWavelets Team")
+(resourceType SP-PyWavelets-CoreLib code)
+(section SP-PyWavelets-CoreLib DatasetsSoftware)
+(url SP-PyWavelets-CoreLib "https://pywavelets.readthedocs.io/")
+(desc SP-PyWavelets-CoreLib "Python wavelet transform library. CWT, DWT, MODWT, wavelet packets. Haar, Daubechies, Symlet, Coiflet families.")
+
+(isa SP-LibROSA-CoreLib ReferenceWork)
+(title SP-LibROSA-CoreLib "LibROSA")
+(author SP-LibROSA-CoreLib "Brian McFee et al.")
+(resourceType SP-LibROSA-CoreLib code)
+(section SP-LibROSA-CoreLib DatasetsSoftware)
+(url SP-LibROSA-CoreLib "https://librosa.org/")
+(desc SP-LibROSA-CoreLib "Python audio analysis library. Spectrograms, MFCCs, chromagrams, beat tracking, onset detection.")
+
+;; ── Streaming & Online Learning ──
+
+(isa SP-River-Streaming ReferenceWork)
+(title SP-River-Streaming "River")
+(author SP-River-Streaming "River Team")
+(resourceType SP-River-Streaming code)
+(section SP-River-Streaming DatasetsSoftware)
+(url SP-River-Streaming "https://riverml.xyz/")
+(desc SP-River-Streaming "Python online/streaming ML library. Drift detection (ADWIN, DDM, EDDM), incremental learning, streaming statistics.")
+
+(isa SP-MOA-Streaming ReferenceWork)
+(title SP-MOA-Streaming "MOA (Massive Online Analysis)")
+(author SP-MOA-Streaming "University of Waikato")
+(resourceType SP-MOA-Streaming code)
+(section SP-MOA-Streaming DatasetsSoftware)
+(url SP-MOA-Streaming "https://moa.cms.waikato.ac.nz/")
+(desc SP-MOA-Streaming "Java framework for mining data streams. Classification, regression, clustering, drift detection, evaluation.")
+
+(isa SP-KsqlDB ReferenceWork)
+(title SP-KsqlDB "Apache Kafka + ksqlDB")
+(author SP-KsqlDB "Confluent")
+(resourceType SP-KsqlDB code)
+(section SP-KsqlDB DatasetsSoftware)
+(url SP-KsqlDB "https://ksqldb.io/")
+(desc SP-KsqlDB "Stream processing platform for real-time signal pipelines. SQL-like interface for filtering, aggregating, and transforming streaming data.")
+
+;; ── Signal & Audio Datasets ──
+
+(isa SP-PhysioNet-Dataset ReferenceWork)
+(title SP-PhysioNet-Dataset "PhysioNet")
+(author SP-PhysioNet-Dataset "MIT Laboratory for Computational Physiology")
+(resourceType SP-PhysioNet-Dataset data)
+(section SP-PhysioNet-Dataset DatasetsSoftware)
+(url SP-PhysioNet-Dataset "https://physionet.org/")
+(desc SP-PhysioNet-Dataset "Repository of physiological signals — ECG (MIT-BIH Arrhythmia), EEG, blood pressure, gait. Gold standard for biomedical signals.")
+
+(isa SP-UCR-TSArchive ReferenceWork)
+(title SP-UCR-TSArchive "UCR Time Series Classification Archive")
+(author SP-UCR-TSArchive "UC Riverside")
+(resourceType SP-UCR-TSArchive data)
+(section SP-UCR-TSArchive DatasetsSoftware)
+(url SP-UCR-TSArchive "https://www.cs.ucr.edu/~eamonn/time_series_data_2018/")
+(desc SP-UCR-TSArchive "128 time series datasets for classification benchmarking. The standard benchmark suite for time series algorithms.")
+
+(isa SP-Monash-TSForecast ReferenceWork)
+(title SP-Monash-TSForecast "Monash Time Series Forecasting Archive")
+(author SP-Monash-TSForecast "Monash University")
+(resourceType SP-Monash-TSForecast data)
+(section SP-Monash-TSForecast DatasetsSoftware)
+(url SP-Monash-TSForecast "https://forecastingdata.org/")
+(desc SP-Monash-TSForecast "Curated collection of time series forecasting datasets spanning multiple domains — weather, energy, finance, transport.")
+
+(isa SP-MUSAN ReferenceWork)
+(title SP-MUSAN "MUSAN: Music, Speech, and Noise Corpus")
+(author SP-MUSAN "David Snyder et al.")
+(resourceType SP-MUSAN data)
+(section SP-MUSAN DatasetsSoftware)
+(url SP-MUSAN "https://www.openslr.org/17/")
+(desc SP-MUSAN "Free corpus of music, speech, and noise recordings for training and evaluating audio processing systems.")
+
+(isa SP-ESC50 ReferenceWork)
+(title SP-ESC50 "ESC-50: Environmental Sound Classification")
+(author SP-ESC50 "Karol Piczak")
+(resourceType SP-ESC50 data)
+(section SP-ESC50 DatasetsSoftware)
+(url SP-ESC50 "https://github.com/karolpiczak/ESC-50")
+(desc SP-ESC50 "2000 environmental audio recordings in 50 categories. Standard benchmark for environmental sound classification.")
+
+(isa SP-CHBMIT-EEG ReferenceWork)
+(title SP-CHBMIT-EEG "CHB-MIT EEG Database")
+(author SP-CHBMIT-EEG "MIT/Children's Hospital Boston")
+(resourceType SP-CHBMIT-EEG data)
+(section SP-CHBMIT-EEG DatasetsSoftware)
+(url SP-CHBMIT-EEG "https://physionet.org/content/chbmit/1.0.0/")
+(desc SP-CHBMIT-EEG "Scalp EEG recordings from pediatric patients with seizures. Standard benchmark for seizure detection algorithms.")
+
+(isa SP-M4Competition ReferenceWork)
+(title SP-M4Competition "M4 Competition Dataset")
+(author SP-M4Competition "Spyros Makridakis et al.")
+(resourceType SP-M4Competition data)
+(section SP-M4Competition DatasetsSoftware)
+(url SP-M4Competition "https://github.com/Mcompetitions/M4-methods")
+(desc SP-M4Competition "100,000 time series from the M4 forecasting competition. Diverse domains, multiple frequencies. The ultimate forecasting benchmark.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources SignalProcessingReference 90)
+(totalSections SignalProcessingReference 8)
+(comment SignalProcessingReference
+  "8 sections: Overview (0), Signal Fundamentals (12), Time Series (12),
+   Frequency Domain (13), Drift Detection (12), Harmonic Analysis (12),
+   Waveform Processing (13), Datasets & Software (16). Total: 90 resources.")

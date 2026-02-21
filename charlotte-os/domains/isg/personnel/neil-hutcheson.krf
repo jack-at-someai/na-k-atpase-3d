@@ -1,0 +1,54 @@
+;;; ================================================================
+;;; ISG PERSONNEL / NEIL HUTCHESON
+;;; President, Georgia Western LLC
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa NeilHutcheson Person)
+(isa NeilHutcheson SubsidiaryPresident)
+(hasAttribute NeilHutcheson ::LABEL "Neil Hutcheson")
+(hasAttribute NeilHutcheson ::ROLE "President, Georgia Western LLC")
+(hasAttribute NeilHutcheson ::EMAIL "nhutcheson@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(LEADS NeilHutcheson GeorgiaWestern)
+(MEMBER_OF NeilHutcheson ISGValveActuationGroup)
+
+;; Co-founded Georgia Western with Greg Giles
+(hasAttribute NeilHutcheson ::CO_FOUNDER "Greg Giles")
+(hasAttribute NeilHutcheson ::SUBSIDIARY_FOUNDED 1992)
+(hasAttribute NeilHutcheson ::ACQUISITION_DATE "April 2021")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt NeilHutcheson Kennesaw-GA)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn NeilHutcheson ElectricValveActuators)
+(expertiseIn NeilHutcheson IndustrialDistribution)
+(expertiseIn NeilHutcheson SoutheastMarket)
+
+(hasAttribute NeilHutcheson ::MARKET_POSITION "Largest electric valve actuator stocking distributor in the southeastern US")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa NeilHutcheson-FounderStillOperating SIGNAL)
+(comment NeilHutcheson-FounderStillOperating
+  "Neil co-founded Georgia Western in 1992 and continues day-to-day
+   operations after the April 2021 ISG acquisition. 30+ years of
+   actuator distribution expertise. Thinks like a founder-owner.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithGWPres PROTOCOL)
+(hasTrigger Protocol-InteractWithGWPres (sessionCaller ?Session NeilHutcheson))
+(comment Protocol-InteractWithGWPres
+  "Neil is a 30-year founder who knows electric valve actuators deeply.
+   He runs the dominant distributor in the southeast. Respect his domain
+   expertise and autonomy. He partnered with ISG for growth capital,
+   not to be managed.")

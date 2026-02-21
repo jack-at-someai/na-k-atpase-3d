@@ -1,0 +1,41 @@
+;;; ================================================================
+;;; ISG BRAND / INDUSTRIAL AIR POWER (IAP)
+;;; Compressed air parts distribution & e-commerce — Muskego WI
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa IndustrialAirPower ISGBrand)
+(hasAttribute IndustrialAirPower ::LABEL "Industrial Air Power")
+(hasAttribute IndustrialAirPower ::ABBREVIATION "IAP")
+(hasAttribute IndustrialAirPower ::FOUNDED 2008)
+(hasAttribute IndustrialAirPower ::ACQUIRED_BY_ISG "October 2021")
+(hasAttribute IndustrialAirPower ::VERTICAL "Compressor")
+(hasAttribute IndustrialAirPower ::HEADCOUNT "~22")
+(hasAttribute IndustrialAirPower ::WEBSITE "industrialairpower.com")
+(hasAttribute IndustrialAirPower ::FACILITY "W144 S6303 College Court, Muskego, WI 53150")
+(hasAttribute IndustrialAirPower ::MODEL "E-commerce parts distribution — 200K+ parts, ships worldwide")
+(hasAttribute IndustrialAirPower ::OEM_BRANDS "Atlas Copco, Gardner Denver, Ingersoll Rand, Kaeser, Sullair, Quincy, Palatek, Joy, LeRoi")
+(MEMBER_OF IndustrialAirPower ISGCompressorGroup)
+(locatedAt IndustrialAirPower Muskego-WI)
+
+;; President (Chris Seibel — full profile in personnel/)
+(LEADS ChrisSeibel IndustrialAirPower)
+
+(isa JamesEntringer Person)
+(hasAttribute JamesEntringer ::LABEL "James Entringer")
+(hasAttribute JamesEntringer ::ROLE "Inside Sales Representative")
+(hasAttribute JamesEntringer ::TENURE "Since October 2012")
+(MEMBER_OF JamesEntringer IndustrialAirPower)
+
+(isa AndyMeacham Person)
+(hasAttribute AndyMeacham ::LABEL "Andy Meacham")
+(hasAttribute AndyMeacham ::ROLE "Project Engineering Manager")
+(hasAttribute AndyMeacham ::EXPERTISE "30+ years in compressed air industry")
+(MEMBER_OF AndyMeacham IndustrialAirPower)
+
+(isa BethMlachnik Person)
+(hasAttribute BethMlachnik ::LABEL "Beth Mlachnik")
+(hasAttribute BethMlachnik ::ROLE "Manager, Accounting & Office")
+(hasAttribute BethMlachnik ::EDUCATION "General Studies, College of DuPage")
+(MEMBER_OF BethMlachnik IndustrialAirPower)

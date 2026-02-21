@@ -1,0 +1,81 @@
+;;; ================================================================
+;;; ISG PERSONNEL / BRYAN LIBRANDI
+;;; Chief Marketing Officer — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa BryanLiBrandi Person)
+(isa BryanLiBrandi Executive)
+(hasAttribute BryanLiBrandi ::LABEL "Bryan LiBrandi")
+(hasAttribute BryanLiBrandi ::ROLE "Chief Marketing Officer")
+(hasAttribute BryanLiBrandi ::TITLE_SHORT "CMO")
+(hasAttribute BryanLiBrandi ::EMAIL "blibrandi@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo BryanLiBrandi MattBranigan)
+(MEMBER_OF BryanLiBrandi ISGExecutiveTeam)
+(MEMBER_OF BryanLiBrandi ISGCharlotteLaunchTeam)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt BryanLiBrandi Dayton-OH)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute BryanLiBrandi ::ORG_LEVEL 3)
+(hasAttribute BryanLiBrandi ::SPAN_OF_CONTROL "Marketing, brand identity, digital presence across 16 brands")
+(hasAttribute BryanLiBrandi ::DECISION_AUTHORITY "Brand strategy, marketing campaigns, website, collateral")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch BryanLiBrandi "Penn State University — BS" 1990 1994)
+(careerEpoch BryanLiBrandi "LPK (Libby Perszyk Kathman) — Sr Director Brand Design Strategy" 1995 2005)
+(careerEpoch BryanLiBrandi "LiBrandi Group — Creative Director & Partner" 2005 2012)
+(careerEpoch BryanLiBrandi "Parts Town — SVP Strategic Marketing & eCommerce" 2012 2018)
+(careerEpoch BryanLiBrandi "Greenheck Group — Chief Marketing Officer" 2018 2023)
+(careerEpoch BryanLiBrandi "The Industrial Service Group — CMO" 2023 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn BryanLiBrandi BrandDesignStrategy)
+(expertiseIn BryanLiBrandi IndustrialMarketing)
+(expertiseIn BryanLiBrandi EcommerceStrategy)
+(expertiseIn BryanLiBrandi CreativeDirection)
+(expertiseIn BryanLiBrandi Storytelling)
+(expertiseIn BryanLiBrandi DigitalTransformation)
+
+(hasAttribute BryanLiBrandi ::CAREER_ARC "Unusual for industrial services — agency creative background")
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa BryanLiBrandi-BrandUnification METRIC)
+(attachedTo BryanLiBrandi-BrandUnification BryanLiBrandi)
+(hasAttribute BryanLiBrandi-BrandUnification ::VALUE 16)
+(hasAttribute BryanLiBrandi-BrandUnification ::UNIT "acquired brands needing unified marketing presence")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa BryanLiBrandi-DesignSensibility SIGNAL)
+(derivedFrom BryanLiBrandi-DesignSensibility BryanLiBrandi-BrandUnification)
+(comment BryanLiBrandi-DesignSensibility
+  "Bryan has a design-forward career arc rare in industrial services.
+   He ran his own brand agency (LiBrandi Group), then scaled to CMO
+   at Greenheck and ISG. He will have opinions on Charlotte's visual
+   presentation, brandbook, and collateral. The ISG brandbook deliverable
+   is directly in his domain. He appreciates craft.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCMO PROTOCOL)
+(hasTrigger Protocol-InteractWithCMO (sessionCaller ?Session BryanLiBrandi))
+(comment Protocol-InteractWithCMO
+  "Bryan is a creative leader who thinks in brand narrative and design
+   systems. He was a direct recipient on the Charlotte launch meeting.
+   Frame Charlotte's brandbook and UI work in his language — brand
+   consistency, visual identity, customer experience. He comes from
+   Parts Town (industrial parts ecommerce) so he understands the
+   catalog and e-commerce angle deeply.")

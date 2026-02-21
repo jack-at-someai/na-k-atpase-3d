@@ -1,0 +1,1014 @@
+;;; ================================================================
+;;; REFERENCE / TEMPORAL DATABASES
+;;; 99 resources across 8 sections — Event sourcing, bitemporal
+;;; modeling & CQRS. The storage theory behind Charlotte's temporal spine.
+;;; ================================================================
+;;;
+;;; Time is the primary axis of truth. Temporal databases treat time
+;;; not as metadata tacked onto rows but as a first-class structural
+;;; dimension. Every fact carries when it was true and when it was
+;;; recorded, enabling perfect audit trails, point-in-time queries,
+;;; and causal reasoning over change.
+;;;
+;;; Charlotte's temporal spine encodes time as a chain of DATE nodes
+;;; linked by NEXT edges, turning chronology into a traversable graph
+;;; structure for causal and historical queries.
+;;;
+;;; Learning path: Overview → Temporal Logic → Event Sourcing →
+;;; Bitemporal Modeling → Time-Series DBs → CQRS & EDA →
+;;; Calendar Systems → Datasets & Software
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Reading ──
+
+(isa TD-Kleppmann-DDIA ReferenceWork)
+(title TD-Kleppmann-DDIA "Designing Data-Intensive Applications")
+(author TD-Kleppmann-DDIA "Martin Kleppmann")
+(resourceType TD-Kleppmann-DDIA book)
+(level TD-Kleppmann-DDIA intermediate)
+(section TD-Kleppmann-DDIA TemporalDatabasesOverview)
+(url TD-Kleppmann-DDIA "https://dataintensive.net/")
+(desc TD-Kleppmann-DDIA "The essential systems text. Chapter 11 on stream processing and Chapter 12 on data integration cover temporal concerns deeply.")
+
+(isa TD-Date-TemporalRelational ReferenceWork)
+(title TD-Date-TemporalRelational "Temporal Data & the Relational Model")
+(author TD-Date-TemporalRelational "C.J. Date, Hugh Darwen, Nikos Lorentzos")
+(resourceType TD-Date-TemporalRelational book)
+(level TD-Date-TemporalRelational advanced)
+(section TD-Date-TemporalRelational TemporalDatabasesOverview)
+(url TD-Date-TemporalRelational "https://www.elsevier.com/books/temporal-data-and-the-relational-model/date/978-1-55860-855-9")
+(desc TD-Date-TemporalRelational "Rigorous treatment of how temporal data fits into relational theory. Foundational reference for anyone building temporal schemas.")
+
+(isa TD-Kreps-TheLog ReferenceWork)
+(title TD-Kreps-TheLog "The Log: What every software engineer should know about real-time data's unifying abstraction")
+(author TD-Kreps-TheLog "Jay Kreps (LinkedIn Engineering)")
+(resourceType TD-Kreps-TheLog notes)
+(level TD-Kreps-TheLog beginner)
+(section TD-Kreps-TheLog TemporalDatabasesOverview)
+(url TD-Kreps-TheLog "https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying")
+(desc TD-Kreps-TheLog "Seminal blog post explaining how append-only logs underpin event sourcing, stream processing, and temporal data systems.")
+
+(isa TD-Lamport-TimeClocksOrdering ReferenceWork)
+(title TD-Lamport-TimeClocksOrdering "Time, Clocks, and the Ordering of Events in a Distributed System")
+(author TD-Lamport-TimeClocksOrdering "Leslie Lamport")
+(resourceType TD-Lamport-TimeClocksOrdering notes)
+(level TD-Lamport-TimeClocksOrdering advanced)
+(section TD-Lamport-TimeClocksOrdering TemporalDatabasesOverview)
+(url TD-Lamport-TimeClocksOrdering "https://lamport.azurewebsites.net/pubs/time-clocks.pdf")
+(desc TD-Lamport-TimeClocksOrdering "The 1978 paper that defined causal ordering and Lamport clocks. The intellectual foundation for all temporal reasoning in distributed systems.")
+
+(isa TD-Kleppmann-TurningDBInsideOut ReferenceWork)
+(title TD-Kleppmann-TurningDBInsideOut "Turning the Database Inside-Out with Apache Samza")
+(author TD-Kleppmann-TurningDBInsideOut "Martin Kleppmann (Strange Loop 2014)")
+(resourceType TD-Kleppmann-TurningDBInsideOut video)
+(level TD-Kleppmann-TurningDBInsideOut intermediate)
+(section TD-Kleppmann-TurningDBInsideOut TemporalDatabasesOverview)
+(url TD-Kleppmann-TurningDBInsideOut "https://www.youtube.com/watch?v=fU9hR3kiOK0")
+(desc TD-Kleppmann-TurningDBInsideOut "Influential talk reframing databases as materialized views over an immutable event log. Core conceptual model for temporal architectures.")
+
+;; ── Introductory Talks & Tutorials ──
+
+(isa TD-Schmitz-ESDoingItWrong ReferenceWork)
+(title TD-Schmitz-ESDoingItWrong "Event Sourcing You Are Doing It Wrong")
+(author TD-Schmitz-ESDoingItWrong "David Schmitz (Devoxx)")
+(resourceType TD-Schmitz-ESDoingItWrong video)
+(level TD-Schmitz-ESDoingItWrong beginner)
+(section TD-Schmitz-ESDoingItWrong TemporalDatabasesOverview)
+(url TD-Schmitz-ESDoingItWrong "https://www.youtube.com/watch?v=GzrZworHpIk")
+(desc TD-Schmitz-ESDoingItWrong "Practical overview of common event sourcing mistakes and how temporal thinking helps avoid them.")
+
+(isa TD-Wikipedia-TemporalDB ReferenceWork)
+(title TD-Wikipedia-TemporalDB "Introduction to Temporal Databases (Wikipedia)")
+(author TD-Wikipedia-TemporalDB "Wikipedia Contributors")
+(resourceType TD-Wikipedia-TemporalDB notes)
+(level TD-Wikipedia-TemporalDB beginner)
+(section TD-Wikipedia-TemporalDB TemporalDatabasesOverview)
+(url TD-Wikipedia-TemporalDB "https://en.wikipedia.org/wiki/Temporal_database")
+(desc TD-Wikipedia-TemporalDB "Comprehensive encyclopedia article covering valid time, transaction time, and bitemporal models with academic references.")
+
+(isa TD-Cloudera-BitemporalEnvelope ReferenceWork)
+(title TD-Cloudera-BitemporalEnvelope "Bi-Temporal Data Modeling with Envelope")
+(author TD-Cloudera-BitemporalEnvelope "Cloudera Engineering Blog")
+(resourceType TD-Cloudera-BitemporalEnvelope notes)
+(level TD-Cloudera-BitemporalEnvelope intermediate)
+(section TD-Cloudera-BitemporalEnvelope TemporalDatabasesOverview)
+(url TD-Cloudera-BitemporalEnvelope "https://blog.cloudera.com/bi-temporal-data-modeling-with-envelope/")
+(desc TD-Cloudera-BitemporalEnvelope "Practical walkthrough of bitemporal modeling in big-data pipelines using Cloudera Envelope on Apache Spark.")
+
+(isa TD-Stanford-TimeInDBs ReferenceWork)
+(title TD-Stanford-TimeInDBs "Time in Databases (Stanford CS345 Lecture Notes)")
+(author TD-Stanford-TimeInDBs "Hector Garcia-Molina et al.")
+(resourceType TD-Stanford-TimeInDBs notes)
+(level TD-Stanford-TimeInDBs intermediate)
+(section TD-Stanford-TimeInDBs TemporalDatabasesOverview)
+(url TD-Stanford-TimeInDBs "https://cs.stanford.edu/people/chrismre/cs345/rl/temporal.pdf")
+(desc TD-Stanford-TimeInDBs "Academic lecture notes on temporal query languages, Allen's interval algebra, and temporal extensions to SQL.")
+
+;; ── Charlotte Framework Context ──
+
+(isa TD-Charlotte-Paper7 ReferenceWork)
+(title TD-Charlotte-Paper7 "Paper 7: Temporal Perception")
+(author TD-Charlotte-Paper7 "Charlotte Architecture Papers")
+(resourceType TD-Charlotte-Paper7 notes)
+(level TD-Charlotte-Paper7 advanced)
+(section TD-Charlotte-Paper7 TemporalDatabasesOverview)
+(url TD-Charlotte-Paper7 "#")
+(desc TD-Charlotte-Paper7 "The Charlotte paper defining the temporal spine model: DATE nodes, NEXT edges, and time as a graph-traversable dimension of truth.")
+
+(isa TD-Neo4j-GraphTemporal ReferenceWork)
+(title TD-Neo4j-GraphTemporal "Graph-Based Temporal Modeling (Neo4j Blog)")
+(author TD-Neo4j-GraphTemporal "Neo4j")
+(resourceType TD-Neo4j-GraphTemporal notes)
+(level TD-Neo4j-GraphTemporal intermediate)
+(section TD-Neo4j-GraphTemporal TemporalDatabasesOverview)
+(url TD-Neo4j-GraphTemporal "https://neo4j.com/blog/modeling-time-series-data-neo4j/")
+(desc TD-Neo4j-GraphTemporal "How to model time-series and temporal data natively in a property graph. Directly relevant to the Charlotte temporal spine approach.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: TEMPORAL LOGIC
+;; LTL, CTL, TLA+, Allen's Interval Algebra
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & References ──
+
+(isa TD-BaierKatoen-ModelChecking ReferenceWork)
+(title TD-BaierKatoen-ModelChecking "Principles of Model Checking")
+(author TD-BaierKatoen-ModelChecking "Christel Baier & Joost-Pieter Katoen")
+(resourceType TD-BaierKatoen-ModelChecking book)
+(level TD-BaierKatoen-ModelChecking advanced)
+(section TD-BaierKatoen-ModelChecking TemporalLogic)
+(url TD-BaierKatoen-ModelChecking "https://mitpress.mit.edu/books/principles-model-checking")
+(desc TD-BaierKatoen-ModelChecking "The definitive graduate textbook on LTL, CTL, CTL*, and model-checking algorithms. Rigorous and comprehensive.")
+
+(isa TD-Lamport-SpecifyingSystems ReferenceWork)
+(title TD-Lamport-SpecifyingSystems "Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers")
+(author TD-Lamport-SpecifyingSystems "Leslie Lamport")
+(resourceType TD-Lamport-SpecifyingSystems book)
+(level TD-Lamport-SpecifyingSystems advanced)
+(section TD-Lamport-SpecifyingSystems TemporalLogic)
+(url TD-Lamport-SpecifyingSystems "https://lamport.azurewebsites.net/tla/book.html")
+(desc TD-Lamport-SpecifyingSystems "Lamport's own book on TLA+. Freely available online. The canonical reference for temporal specification of systems.")
+
+(isa TD-OhrstromHasle-TemporalLogic ReferenceWork)
+(title TD-OhrstromHasle-TemporalLogic "Temporal Logic: From Ancient Ideas to Artificial Intelligence")
+(author TD-OhrstromHasle-TemporalLogic "Peter Ohrstrom & Per Hasle")
+(resourceType TD-OhrstromHasle-TemporalLogic book)
+(level TD-OhrstromHasle-TemporalLogic intermediate)
+(section TD-OhrstromHasle-TemporalLogic TemporalLogic)
+(url TD-OhrstromHasle-TemporalLogic "https://link.springer.com/book/10.1007/978-94-015-8616-2")
+(desc TD-OhrstromHasle-TemporalLogic "Traces temporal logic from medieval philosophy to modern computer science. Unique historical perspective.")
+
+(isa TD-HuthRyan-LogicInCS ReferenceWork)
+(title TD-HuthRyan-LogicInCS "Logic in Computer Science: Modelling and Reasoning about Systems")
+(author TD-HuthRyan-LogicInCS "Michael Huth & Mark Ryan")
+(resourceType TD-HuthRyan-LogicInCS book)
+(level TD-HuthRyan-LogicInCS intermediate)
+(section TD-HuthRyan-LogicInCS TemporalLogic)
+(url TD-HuthRyan-LogicInCS "https://www.cs.bham.ac.uk/research/projects/lics/")
+(desc TD-HuthRyan-LogicInCS "Excellent undergraduate text covering propositional, predicate, and temporal logics (LTL and CTL) with clear examples.")
+
+;; ── TLA+ & Formal Methods ──
+
+(isa TD-Lamport-TLAVideoCourse ReferenceWork)
+(title TD-Lamport-TLAVideoCourse "Lamport's TLA+ Video Course")
+(author TD-Lamport-TLAVideoCourse "Leslie Lamport")
+(resourceType TD-Lamport-TLAVideoCourse course)
+(level TD-Lamport-TLAVideoCourse intermediate)
+(section TD-Lamport-TLAVideoCourse TemporalLogic)
+(url TD-Lamport-TLAVideoCourse "https://lamport.azurewebsites.net/video/videos.html")
+(desc TD-Lamport-TLAVideoCourse "Free video lectures by Lamport himself teaching TLA+ from scratch. The authoritative introduction.")
+
+(isa TD-Wayne-LearnTLA ReferenceWork)
+(title TD-Wayne-LearnTLA "Learn TLA+ (Practical Guide)")
+(author TD-Wayne-LearnTLA "Hillel Wayne")
+(resourceType TD-Wayne-LearnTLA notes)
+(level TD-Wayne-LearnTLA beginner)
+(section TD-Wayne-LearnTLA TemporalLogic)
+(url TD-Wayne-LearnTLA "https://learntla.com/")
+(desc TD-Wayne-LearnTLA "A practical, example-driven introduction to TLA+ and PlusCal for working programmers. Much more approachable than the formal texts.")
+
+(isa TD-Wayne-PracticalTLA ReferenceWork)
+(title TD-Wayne-PracticalTLA "Practical TLA+: Planning Driven Development")
+(author TD-Wayne-PracticalTLA "Hillel Wayne")
+(resourceType TD-Wayne-PracticalTLA book)
+(level TD-Wayne-PracticalTLA beginner)
+(section TD-Wayne-PracticalTLA TemporalLogic)
+(url TD-Wayne-PracticalTLA "https://www.apress.com/gp/book/9781484238288")
+(desc TD-Wayne-PracticalTLA "Book-length guide to using TLA+ for real-world system design. Covers PlusCal, model checking, and specification patterns.")
+
+(isa TD-Newcombe-AWSFormalMethods ReferenceWork)
+(title TD-Newcombe-AWSFormalMethods "Use of Formal Methods at Amazon Web Services")
+(author TD-Newcombe-AWSFormalMethods "Chris Newcombe et al.")
+(resourceType TD-Newcombe-AWSFormalMethods notes)
+(level TD-Newcombe-AWSFormalMethods intermediate)
+(section TD-Newcombe-AWSFormalMethods TemporalLogic)
+(url TD-Newcombe-AWSFormalMethods "https://cacm.acm.org/magazines/2015/4/184701-how-amazon-web-services-uses-formal-methods/abstract")
+(desc TD-Newcombe-AWSFormalMethods "How AWS uses TLA+ to verify DynamoDB, S3, and other critical systems. Demonstrates industrial-scale value of temporal specification.")
+
+;; ── Allen's Interval Algebra & Temporal Reasoning ──
+
+(isa TD-Allen-TemporalIntervals ReferenceWork)
+(title TD-Allen-TemporalIntervals "Maintaining Knowledge about Temporal Intervals")
+(author TD-Allen-TemporalIntervals "James F. Allen (1983)")
+(resourceType TD-Allen-TemporalIntervals notes)
+(level TD-Allen-TemporalIntervals advanced)
+(section TD-Allen-TemporalIntervals TemporalLogic)
+(url TD-Allen-TemporalIntervals "https://cse.unl.edu/~choueiry/Documents/Allen-CACM1983.pdf")
+(desc TD-Allen-TemporalIntervals "The original paper defining the 13 interval relations. Foundational for qualitative temporal reasoning in AI and databases.")
+
+(isa TD-Stanford-TemporalReasoning ReferenceWork)
+(title TD-Stanford-TemporalReasoning "Temporal Reasoning with Constraints (Tutorial)")
+(author TD-Stanford-TemporalReasoning "Stanford AI Lab")
+(resourceType TD-Stanford-TemporalReasoning notes)
+(level TD-Stanford-TemporalReasoning intermediate)
+(section TD-Stanford-TemporalReasoning TemporalLogic)
+(url TD-Stanford-TemporalReasoning "https://ai.stanford.edu/~shoham/www%20papers/temporal-reasoning.pdf")
+(desc TD-Stanford-TemporalReasoning "Survey of constraint-based temporal reasoning covering Allen's algebra, point algebras, and their computational complexity.")
+
+(isa TD-SPIN-ModelChecker ReferenceWork)
+(title TD-SPIN-ModelChecker "SPIN Model Checker")
+(author TD-SPIN-ModelChecker "Gerard Holzmann")
+(resourceType TD-SPIN-ModelChecker code)
+(level TD-SPIN-ModelChecker advanced)
+(section TD-SPIN-ModelChecker TemporalLogic)
+(url TD-SPIN-ModelChecker "https://spinroot.com/spin/whatispin.html")
+(desc TD-SPIN-ModelChecker "The most widely used LTL model checker. Verifies concurrent software against temporal-logic specifications written in Promela.")
+
+(isa TD-NuSMV-ModelChecker ReferenceWork)
+(title TD-NuSMV-ModelChecker "NuSMV Model Checker")
+(author TD-NuSMV-ModelChecker "FBK-IRST")
+(resourceType TD-NuSMV-ModelChecker code)
+(level TD-NuSMV-ModelChecker advanced)
+(section TD-NuSMV-ModelChecker TemporalLogic)
+(url TD-NuSMV-ModelChecker "https://nusmv.fbk.eu/")
+(desc TD-NuSMV-ModelChecker "Symbolic model checker supporting both LTL and CTL specifications. Used extensively in hardware verification and protocol analysis.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: EVENT SOURCING
+;; Immutable event logs, projections, snapshots, aggregates
+;; ════════════════════════════════════════════════════════════
+
+;; ── Essential Talks ──
+
+(isa TD-Young-EventSourcing ReferenceWork)
+(title TD-Young-EventSourcing "Event Sourcing")
+(author TD-Young-EventSourcing "Greg Young (GOTO 2014)")
+(resourceType TD-Young-EventSourcing video)
+(level TD-Young-EventSourcing beginner)
+(section TD-Young-EventSourcing EventSourcing)
+(url TD-Young-EventSourcing "https://www.youtube.com/watch?v=8JKjvY4etTY")
+(desc TD-Young-EventSourcing "The canonical introduction to event sourcing by the person most associated with the pattern. Start here.")
+
+(isa TD-Young-DecadeDDDCQRS ReferenceWork)
+(title TD-Young-DecadeDDDCQRS "A Decade of DDD, CQRS, Event Sourcing")
+(author TD-Young-DecadeDDDCQRS "Greg Young (DDD Europe 2016)")
+(resourceType TD-Young-DecadeDDDCQRS video)
+(level TD-Young-DecadeDDDCQRS intermediate)
+(section TD-Young-DecadeDDDCQRS EventSourcing)
+(url TD-Young-DecadeDDDCQRS "https://www.youtube.com/watch?v=LDW0QWie21s")
+(desc TD-Young-DecadeDDDCQRS "Retrospective on lessons learned after a decade of applying event sourcing in production systems.")
+
+(isa TD-Kleppmann-ESStreamProcessing ReferenceWork)
+(title TD-Kleppmann-ESStreamProcessing "Event Sourcing & Stream Processing at Scale")
+(author TD-Kleppmann-ESStreamProcessing "Martin Kleppmann (Strange Loop 2016)")
+(resourceType TD-Kleppmann-ESStreamProcessing video)
+(level TD-Kleppmann-ESStreamProcessing intermediate)
+(section TD-Kleppmann-ESStreamProcessing EventSourcing)
+(url TD-Kleppmann-ESStreamProcessing "https://www.youtube.com/watch?v=avi-TZI9t2I")
+(desc TD-Kleppmann-ESStreamProcessing "Connects event sourcing to stream processing, Kafka, and the broader data-infrastructure landscape.")
+
+(isa TD-Fowler-ManyMeaningsEDA ReferenceWork)
+(title TD-Fowler-ManyMeaningsEDA "The Many Meanings of Event-Driven Architecture")
+(author TD-Fowler-ManyMeaningsEDA "Martin Fowler (GOTO 2017)")
+(resourceType TD-Fowler-ManyMeaningsEDA video)
+(level TD-Fowler-ManyMeaningsEDA beginner)
+(section TD-Fowler-ManyMeaningsEDA EventSourcing)
+(url TD-Fowler-ManyMeaningsEDA "https://www.youtube.com/watch?v=STKCRSUsyP0")
+(desc TD-Fowler-ManyMeaningsEDA "Fowler distinguishes four patterns: event notification, event-carried state transfer, event sourcing, and CQRS.")
+
+;; ── Articles & Patterns ──
+
+(isa TD-Fowler-ESPattern ReferenceWork)
+(title TD-Fowler-ESPattern "Event Sourcing Pattern")
+(author TD-Fowler-ESPattern "Martin Fowler")
+(resourceType TD-Fowler-ESPattern notes)
+(level TD-Fowler-ESPattern beginner)
+(section TD-Fowler-ESPattern EventSourcing)
+(url TD-Fowler-ESPattern "https://martinfowler.com/eaaDev/EventSourcing.html")
+(desc TD-Fowler-ESPattern "Fowler's original pattern description. Concise, clear, and widely referenced.")
+
+(isa TD-Microsoft-ESPattern ReferenceWork)
+(title TD-Microsoft-ESPattern "Event Sourcing Pattern (Microsoft Azure Architecture)")
+(author TD-Microsoft-ESPattern "Microsoft")
+(resourceType TD-Microsoft-ESPattern notes)
+(level TD-Microsoft-ESPattern intermediate)
+(section TD-Microsoft-ESPattern EventSourcing)
+(url TD-Microsoft-ESPattern "https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing")
+(desc TD-Microsoft-ESPattern "Detailed pattern documentation with implementation considerations, anti-patterns, and Azure-specific guidance.")
+
+(isa TD-Young-ESVersioning ReferenceWork)
+(title TD-Young-ESVersioning "Versioning in an Event Sourced System")
+(author TD-Young-ESVersioning "Greg Young")
+(resourceType TD-Young-ESVersioning book)
+(level TD-Young-ESVersioning intermediate)
+(section TD-Young-ESVersioning EventSourcing)
+(url TD-Young-ESVersioning "https://leanpub.com/esversioning")
+(desc TD-Young-ESVersioning "Free e-book covering the hardest practical problem in event sourcing: evolving event schemas over time.")
+
+(isa TD-Dudycz-ESMadeSimple ReferenceWork)
+(title TD-Dudycz-ESMadeSimple "Event Sourcing Made Simple")
+(author TD-Dudycz-ESMadeSimple "Oskar Dudycz")
+(resourceType TD-Dudycz-ESMadeSimple notes)
+(level TD-Dudycz-ESMadeSimple beginner)
+(section TD-Dudycz-ESMadeSimple EventSourcing)
+(url TD-Dudycz-ESMadeSimple "https://event-driven.io/en/event_sourcing_on_the_whole/")
+(desc TD-Dudycz-ESMadeSimple "Practical blog series walking through event sourcing step by step with .NET examples. Excellent for getting started.")
+
+;; ── Books & Deep Dives ──
+
+(isa TD-Vernon-ImplementingDDD ReferenceWork)
+(title TD-Vernon-ImplementingDDD "Implementing Domain-Driven Design")
+(author TD-Vernon-ImplementingDDD "Vaughn Vernon")
+(resourceType TD-Vernon-ImplementingDDD book)
+(level TD-Vernon-ImplementingDDD intermediate)
+(section TD-Vernon-ImplementingDDD EventSourcing)
+(url TD-Vernon-ImplementingDDD "https://www.oreilly.com/library/view/implementing-domain-driven-design/9780133039900/")
+(desc TD-Vernon-ImplementingDDD "Chapters on aggregates, domain events, and event sourcing within a DDD context. The practical companion to Evans' blue book.")
+
+(isa TD-Evans-DDD ReferenceWork)
+(title TD-Evans-DDD "Domain-Driven Design: Tackling Complexity in the Heart of Software")
+(author TD-Evans-DDD "Eric Evans")
+(resourceType TD-Evans-DDD book)
+(level TD-Evans-DDD advanced)
+(section TD-Evans-DDD EventSourcing)
+(url TD-Evans-DDD "https://www.domainlanguage.com/ddd/")
+(desc TD-Evans-DDD "The original DDD book. Event sourcing grew out of this community. Essential conceptual foundation.")
+
+(isa TD-Bellemare-EventDrivenMicro ReferenceWork)
+(title TD-Bellemare-EventDrivenMicro "Building Event-Driven Microservices")
+(author TD-Bellemare-EventDrivenMicro "Adam Bellemare (O'Reilly)")
+(resourceType TD-Bellemare-EventDrivenMicro book)
+(level TD-Bellemare-EventDrivenMicro intermediate)
+(section TD-Bellemare-EventDrivenMicro EventSourcing)
+(url TD-Bellemare-EventDrivenMicro "https://www.oreilly.com/library/view/building-event-driven-microservices/9781492057888/")
+(desc TD-Bellemare-EventDrivenMicro "Comprehensive guide to event-driven architecture with Kafka, event sourcing, and stream processing at the center.")
+
+(isa TD-Fowler-RetroactiveEvent ReferenceWork)
+(title TD-Fowler-RetroactiveEvent "Retroactive Events (Pattern)")
+(author TD-Fowler-RetroactiveEvent "Martin Fowler")
+(resourceType TD-Fowler-RetroactiveEvent notes)
+(level TD-Fowler-RetroactiveEvent advanced)
+(section TD-Fowler-RetroactiveEvent EventSourcing)
+(url TD-Fowler-RetroactiveEvent "https://martinfowler.com/eaaDev/RetroactiveEvent.html")
+(desc TD-Fowler-RetroactiveEvent "Pattern for handling late-arriving or corrected events. Critical for real-world temporal correctness.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: BITEMPORAL MODELING
+;; Valid time, transaction time, SQL:2011 temporal
+;; ════════════════════════════════════════════════════════════
+
+;; ── Canonical Textbooks ──
+
+(isa TD-Snodgrass-TimeOrientedDB ReferenceWork)
+(title TD-Snodgrass-TimeOrientedDB "Developing Time-Oriented Database Applications in SQL")
+(author TD-Snodgrass-TimeOrientedDB "Richard T. Snodgrass")
+(resourceType TD-Snodgrass-TimeOrientedDB book)
+(level TD-Snodgrass-TimeOrientedDB advanced)
+(section TD-Snodgrass-TimeOrientedDB BitemporalModeling)
+(url TD-Snodgrass-TimeOrientedDB "https://www2.cs.arizona.edu/~rts/tdbbook.pdf")
+(desc TD-Snodgrass-TimeOrientedDB "The Snodgrass textbook, freely available as PDF. The foundational reference for bitemporal SQL modeling. Every temporal DB practitioner should read this.")
+
+(isa TD-JohnstonWeis-BitemporalData ReferenceWork)
+(title TD-JohnstonWeis-BitemporalData "Bitemporal Data: Theory and Practice")
+(author TD-JohnstonWeis-BitemporalData "Tom Johnston & Randall Weis")
+(resourceType TD-JohnstonWeis-BitemporalData book)
+(level TD-JohnstonWeis-BitemporalData intermediate)
+(section TD-JohnstonWeis-BitemporalData BitemporalModeling)
+(url TD-JohnstonWeis-BitemporalData "https://www.elsevier.com/books/bitemporal-data/johnston/978-0-12-408067-2")
+(desc TD-JohnstonWeis-BitemporalData "Modern, practical treatment of bitemporal modeling. Covers asserted versioning, temporal foreign keys, and real-world patterns.")
+
+(isa TD-Johnston-ManagingTime ReferenceWork)
+(title TD-Johnston-ManagingTime "Managing Time in Relational Databases")
+(author TD-Johnston-ManagingTime "Tom Johnston")
+(resourceType TD-Johnston-ManagingTime book)
+(level TD-Johnston-ManagingTime intermediate)
+(section TD-Johnston-ManagingTime BitemporalModeling)
+(url TD-Johnston-ManagingTime "https://www.elsevier.com/books/managing-time-in-relational-databases/johnston/978-0-12-375041-9")
+(desc TD-Johnston-ManagingTime "Johnston's earlier book focusing on practical temporal modeling techniques for relational databases.")
+
+(isa TD-Date-TemporalRelational2 ReferenceWork)
+(title TD-Date-TemporalRelational2 "Temporal Data & the Relational Model")
+(author TD-Date-TemporalRelational2 "C.J. Date, Hugh Darwen, Nikos Lorentzos")
+(resourceType TD-Date-TemporalRelational2 book)
+(level TD-Date-TemporalRelational2 advanced)
+(section TD-Date-TemporalRelational2 BitemporalModeling)
+(url TD-Date-TemporalRelational2 "https://www.elsevier.com/books/temporal-data-and-the-relational-model/date/978-1-55860-855-9")
+(desc TD-Date-TemporalRelational2 "Theoretical treatment grounded in relational algebra. How temporal operators should work in a truly relational system.")
+
+;; ── SQL:2011 Temporal & Database Implementations ──
+
+(isa TD-KulkarniMichels-SQL2011 ReferenceWork)
+(title TD-KulkarniMichels-SQL2011 "SQL:2011 Temporal Features (Kulkarni & Michels)")
+(author TD-KulkarniMichels-SQL2011 "Krishna Kulkarni, Jan-Eike Michels")
+(resourceType TD-KulkarniMichels-SQL2011 notes)
+(level TD-KulkarniMichels-SQL2011 intermediate)
+(section TD-KulkarniMichels-SQL2011 BitemporalModeling)
+(url TD-KulkarniMichels-SQL2011 "https://dl.acm.org/doi/10.1145/2380776.2380786")
+(desc TD-KulkarniMichels-SQL2011 "Paper by the SQL:2011 temporal feature authors explaining the standard's application-time and system-time period support.")
+
+(isa TD-Microsoft-TemporalTables ReferenceWork)
+(title TD-Microsoft-TemporalTables "Temporal Tables in SQL Server")
+(author TD-Microsoft-TemporalTables "Microsoft Docs")
+(resourceType TD-Microsoft-TemporalTables notes)
+(level TD-Microsoft-TemporalTables beginner)
+(section TD-Microsoft-TemporalTables BitemporalModeling)
+(url TD-Microsoft-TemporalTables "https://learn.microsoft.com/en-us/sql/relational-databases/tables/temporal-tables")
+(desc TD-Microsoft-TemporalTables "Official documentation for system-versioned temporal tables in SQL Server. Includes creation, querying, and retention policies.")
+
+(isa TD-PostgreSQL-TemporalTables ReferenceWork)
+(title TD-PostgreSQL-TemporalTables "PostgreSQL Temporal Tables Extension")
+(author TD-PostgreSQL-TemporalTables "arkhipov/temporal_tables")
+(resourceType TD-PostgreSQL-TemporalTables code)
+(level TD-PostgreSQL-TemporalTables intermediate)
+(section TD-PostgreSQL-TemporalTables BitemporalModeling)
+(url TD-PostgreSQL-TemporalTables "https://github.com/arkhipov/temporal_tables")
+(desc TD-PostgreSQL-TemporalTables "PostgreSQL extension implementing system-versioned temporal tables. Automatic history tracking with FOR SYSTEM_TIME queries.")
+
+(isa TD-Oracle-WorkspaceManager ReferenceWork)
+(title TD-Oracle-WorkspaceManager "Oracle Workspace Manager (Temporal)")
+(author TD-Oracle-WorkspaceManager "Oracle Docs")
+(resourceType TD-Oracle-WorkspaceManager notes)
+(level TD-Oracle-WorkspaceManager intermediate)
+(section TD-Oracle-WorkspaceManager BitemporalModeling)
+(url TD-Oracle-WorkspaceManager "https://docs.oracle.com/en/database/oracle/oracle-database/19/adwsm/")
+(desc TD-Oracle-WorkspaceManager "Oracle's approach to temporal versioning using workspaces. Supports valid-time and transaction-time dimensions.")
+
+(isa TD-IBM-DB2TimeTravel ReferenceWork)
+(title TD-IBM-DB2TimeTravel "IBM DB2 Time Travel Query")
+(author TD-IBM-DB2TimeTravel "IBM Documentation")
+(resourceType TD-IBM-DB2TimeTravel notes)
+(level TD-IBM-DB2TimeTravel intermediate)
+(section TD-IBM-DB2TimeTravel BitemporalModeling)
+(url TD-IBM-DB2TimeTravel "https://www.ibm.com/docs/en/db2/11.5?topic=tables-temporal")
+(desc TD-IBM-DB2TimeTravel "DB2's bitemporal table support including system time, business time, and bitemporal queries with period specifications.")
+
+;; ── Tutorials & Practical Guides ──
+
+(isa TD-Fowler-BitemporalHistory ReferenceWork)
+(title TD-Fowler-BitemporalHistory "Bitemporal Modeling (Martin Fowler)")
+(author TD-Fowler-BitemporalHistory "Martin Fowler")
+(resourceType TD-Fowler-BitemporalHistory notes)
+(level TD-Fowler-BitemporalHistory beginner)
+(section TD-Fowler-BitemporalHistory BitemporalModeling)
+(url TD-Fowler-BitemporalHistory "https://martinfowler.com/articles/bitemporal-history.html")
+(desc TD-Fowler-BitemporalHistory "Clear introduction to bitemporal concepts with diagrams showing the four quadrants of temporal queries.")
+
+(isa TD-Kimball-SCDvsBitemporal ReferenceWork)
+(title TD-Kimball-SCDvsBitemporal "Slowly Changing Dimensions vs. Bitemporal Tables")
+(author TD-Kimball-SCDvsBitemporal "Kimball Group")
+(resourceType TD-Kimball-SCDvsBitemporal notes)
+(level TD-Kimball-SCDvsBitemporal intermediate)
+(section TD-Kimball-SCDvsBitemporal BitemporalModeling)
+(url TD-Kimball-SCDvsBitemporal "https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/")
+(desc TD-Kimball-SCDvsBitemporal "Data warehousing perspective comparing SCD Type 2 with full bitemporal modeling. Important for analytical temporal systems.")
+
+(isa TD-Datomic-BitemporalAdventures ReferenceWork)
+(title TD-Datomic-BitemporalAdventures "Bitemporal Adventures with Datomic")
+(author TD-Datomic-BitemporalAdventures "Cognitect / Rich Hickey community")
+(resourceType TD-Datomic-BitemporalAdventures notes)
+(level TD-Datomic-BitemporalAdventures intermediate)
+(section TD-Datomic-BitemporalAdventures BitemporalModeling)
+(url TD-Datomic-BitemporalAdventures "https://docs.datomic.com/cloud/whatis/data-model.html")
+(desc TD-Datomic-BitemporalAdventures "Datomic's immutable, time-aware database model. Every fact is stored with its transaction time, enabling as-of queries natively.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: TIME-SERIES DATABASES
+;; TSDBs, compression, PromQL, downsampling
+;; ════════════════════════════════════════════════════════════
+
+;; ── Major Time-Series Databases ──
+
+(isa TD-TimescaleDB-Docs ReferenceWork)
+(title TD-TimescaleDB-Docs "TimescaleDB Documentation")
+(author TD-TimescaleDB-Docs "Timescale Inc.")
+(resourceType TD-TimescaleDB-Docs notes)
+(level TD-TimescaleDB-Docs beginner)
+(section TD-TimescaleDB-Docs TimeSeriesDatabases)
+(url TD-TimescaleDB-Docs "https://docs.timescale.com/")
+(desc TD-TimescaleDB-Docs "PostgreSQL extension for time-series. Full SQL support, hypertables, continuous aggregates, and compression. Best choice for teams already on PostgreSQL.")
+
+(isa TD-InfluxDB-Docs ReferenceWork)
+(title TD-InfluxDB-Docs "InfluxDB Documentation")
+(author TD-InfluxDB-Docs "InfluxData")
+(resourceType TD-InfluxDB-Docs notes)
+(level TD-InfluxDB-Docs beginner)
+(section TD-InfluxDB-Docs TimeSeriesDatabases)
+(url TD-InfluxDB-Docs "https://docs.influxdata.com/influxdb/")
+(desc TD-InfluxDB-Docs "Purpose-built TSDB with its own query languages (Flux, InfluxQL). Strong ecosystem for monitoring and IoT.")
+
+(isa TD-QuestDB-Docs ReferenceWork)
+(title TD-QuestDB-Docs "QuestDB Documentation")
+(author TD-QuestDB-Docs "QuestDB")
+(resourceType TD-QuestDB-Docs notes)
+(level TD-QuestDB-Docs intermediate)
+(section TD-QuestDB-Docs TimeSeriesDatabases)
+(url TD-QuestDB-Docs "https://questdb.io/docs/")
+(desc TD-QuestDB-Docs "High-performance TSDB with SQL support, columnar storage, and SIMD-accelerated queries. Excellent benchmark performance.")
+
+(isa TD-Prometheus-Docs ReferenceWork)
+(title TD-Prometheus-Docs "Prometheus Documentation")
+(author TD-Prometheus-Docs "CNCF / Prometheus Authors")
+(resourceType TD-Prometheus-Docs notes)
+(level TD-Prometheus-Docs beginner)
+(section TD-Prometheus-Docs TimeSeriesDatabases)
+(url TD-Prometheus-Docs "https://prometheus.io/docs/introduction/overview/")
+(desc TD-Prometheus-Docs "The standard for cloud-native monitoring. Pull-based metrics collection with PromQL query language. Foundation of the observability stack.")
+
+(isa TD-VictoriaMetrics-Docs ReferenceWork)
+(title TD-VictoriaMetrics-Docs "VictoriaMetrics Documentation")
+(author TD-VictoriaMetrics-Docs "VictoriaMetrics")
+(resourceType TD-VictoriaMetrics-Docs notes)
+(level TD-VictoriaMetrics-Docs intermediate)
+(section TD-VictoriaMetrics-Docs TimeSeriesDatabases)
+(url TD-VictoriaMetrics-Docs "https://docs.victoriametrics.com/")
+(desc TD-VictoriaMetrics-Docs "High-performance, cost-effective Prometheus-compatible TSDB. Excellent for long-term storage and high-cardinality metrics.")
+
+;; ── Comparisons & Benchmarks ──
+
+(isa TD-DBEngines-TSDBRanking ReferenceWork)
+(title TD-DBEngines-TSDBRanking "DB-Engines Ranking: Time Series DBMS")
+(author TD-DBEngines-TSDBRanking "DB-Engines")
+(resourceType TD-DBEngines-TSDBRanking notes)
+(level TD-DBEngines-TSDBRanking beginner)
+(section TD-DBEngines-TSDBRanking TimeSeriesDatabases)
+(url TD-DBEngines-TSDBRanking "https://db-engines.com/en/ranking/time+series+dbms")
+(desc TD-DBEngines-TSDBRanking "Live popularity ranking of time-series databases. Useful for understanding market adoption and trends.")
+
+(isa TD-Timescale-TSBS ReferenceWork)
+(title TD-Timescale-TSBS "Time Series Benchmark Suite (TSBS)")
+(author TD-Timescale-TSBS "Timescale Inc.")
+(resourceType TD-Timescale-TSBS code)
+(level TD-Timescale-TSBS intermediate)
+(section TD-Timescale-TSBS TimeSeriesDatabases)
+(url TD-Timescale-TSBS "https://github.com/timescale/tsbs")
+(desc TD-Timescale-TSBS "Open-source benchmark framework for comparing TSDBs. Generates realistic workloads for InfluxDB, TimescaleDB, MongoDB, and others.")
+
+(isa TD-Percona-TSDBOverview ReferenceWork)
+(title TD-Percona-TSDBOverview "Choosing a Time-Series Database")
+(author TD-Percona-TSDBOverview "Percona Blog")
+(resourceType TD-Percona-TSDBOverview notes)
+(level TD-Percona-TSDBOverview beginner)
+(section TD-Percona-TSDBOverview TimeSeriesDatabases)
+(url TD-Percona-TSDBOverview "https://www.percona.com/blog/an-overview-of-time-series-databases/")
+(desc TD-Percona-TSDBOverview "Practical comparison of TSDB architectures, trade-offs, and use cases. Good starting point for technology selection.")
+
+(isa TD-ClickHouse-TimeSeries ReferenceWork)
+(title TD-ClickHouse-TimeSeries "ClickHouse for Time Series")
+(author TD-ClickHouse-TimeSeries "ClickHouse Documentation")
+(resourceType TD-ClickHouse-TimeSeries notes)
+(level TD-ClickHouse-TimeSeries intermediate)
+(section TD-ClickHouse-TimeSeries TimeSeriesDatabases)
+(url TD-ClickHouse-TimeSeries "https://clickhouse.com/docs/en/guides/developer/time-series")
+(desc TD-ClickHouse-TimeSeries "How to use ClickHouse's columnar OLAP engine for time-series workloads. MergeTree engine and time-based partitioning.")
+
+;; ── Architecture & Internals ──
+
+(isa TD-Facebook-Gorilla ReferenceWork)
+(title TD-Facebook-Gorilla "Gorilla: A Fast, Scalable, In-Memory Time Series Database")
+(author TD-Facebook-Gorilla "Facebook / Pelkonen et al. (VLDB 2015)")
+(resourceType TD-Facebook-Gorilla notes)
+(level TD-Facebook-Gorilla advanced)
+(section TD-Facebook-Gorilla TimeSeriesDatabases)
+(url TD-Facebook-Gorilla "http://www.vldb.org/pvldb/vol8/p1816-teller.pdf")
+(desc TD-Facebook-Gorilla "The paper behind Facebook's in-memory TSDB. Introduced delta-of-delta and XOR-based float compression, now used in Prometheus and others.")
+
+(isa TD-Reinartz-PrometheusTSDB ReferenceWork)
+(title TD-Reinartz-PrometheusTSDB "Prometheus TSDB (Fabian Reinartz)")
+(author TD-Reinartz-PrometheusTSDB "Fabian Reinartz")
+(resourceType TD-Reinartz-PrometheusTSDB video)
+(level TD-Reinartz-PrometheusTSDB advanced)
+(section TD-Reinartz-PrometheusTSDB TimeSeriesDatabases)
+(url TD-Reinartz-PrometheusTSDB "https://www.youtube.com/watch?v=b_pEevMAC3I")
+(desc TD-Reinartz-PrometheusTSDB "Deep dive into the internal architecture of Prometheus's time-series storage engine by its creator.")
+
+(isa TD-Reinartz-WritingTSDB ReferenceWork)
+(title TD-Reinartz-WritingTSDB "Writing a Time Series Database from Scratch")
+(author TD-Reinartz-WritingTSDB "Fabian Reinartz (blog)")
+(resourceType TD-Reinartz-WritingTSDB notes)
+(level TD-Reinartz-WritingTSDB advanced)
+(section TD-Reinartz-WritingTSDB TimeSeriesDatabases)
+(url TD-Reinartz-WritingTSDB "https://fabxc.org/tsdb/")
+(desc TD-Reinartz-WritingTSDB "Detailed walkthrough of designing and building a TSDB from first principles. Covers chunks, indexes, compaction, and WAL.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: CQRS & EVENT-DRIVEN ARCHITECTURE
+;; Command/query separation, messaging patterns, sagas
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core CQRS Resources ──
+
+(isa TD-Young-CQRSDocuments ReferenceWork)
+(title TD-Young-CQRSDocuments "CQRS Documents")
+(author TD-Young-CQRSDocuments "Greg Young")
+(resourceType TD-Young-CQRSDocuments notes)
+(level TD-Young-CQRSDocuments beginner)
+(section TD-Young-CQRSDocuments CQRSEDA)
+(url TD-Young-CQRSDocuments "https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf")
+(desc TD-Young-CQRSDocuments "Greg Young's original CQRS paper. Short, clear, and definitive. The primary source for the pattern.")
+
+(isa TD-Microsoft-CQRSPattern ReferenceWork)
+(title TD-Microsoft-CQRSPattern "CQRS Pattern (Microsoft Azure Architecture)")
+(author TD-Microsoft-CQRSPattern "Microsoft")
+(resourceType TD-Microsoft-CQRSPattern notes)
+(level TD-Microsoft-CQRSPattern beginner)
+(section TD-Microsoft-CQRSPattern CQRSEDA)
+(url TD-Microsoft-CQRSPattern "https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs")
+(desc TD-Microsoft-CQRSPattern "Well-structured pattern documentation with diagrams, implementation considerations, and guidance on when to use CQRS.")
+
+(isa TD-Young-CQRSTaskBasedUI ReferenceWork)
+(title TD-Young-CQRSTaskBasedUI "CQRS, Task Based UIs, Event Sourcing aaagh!")
+(author TD-Young-CQRSTaskBasedUI "Greg Young")
+(resourceType TD-Young-CQRSTaskBasedUI notes)
+(level TD-Young-CQRSTaskBasedUI beginner)
+(section TD-Young-CQRSTaskBasedUI CQRSEDA)
+(url TD-Young-CQRSTaskBasedUI "https://goodenoughsoftware.net/2012/03/02/cqrs/")
+(desc TD-Young-CQRSTaskBasedUI "Clarifying post disentangling CQRS from event sourcing. They're complementary but independent patterns.")
+
+(isa TD-Dahan-ClarifiedCQRS ReferenceWork)
+(title TD-Dahan-ClarifiedCQRS "Clarified CQRS")
+(author TD-Dahan-ClarifiedCQRS "Udi Dahan")
+(resourceType TD-Dahan-ClarifiedCQRS notes)
+(level TD-Dahan-ClarifiedCQRS intermediate)
+(section TD-Dahan-ClarifiedCQRS CQRSEDA)
+(url TD-Dahan-ClarifiedCQRS "https://udidahan.com/2009/12/09/clarified-cqrs/")
+(desc TD-Dahan-ClarifiedCQRS "Udi Dahan's influential take on CQRS emphasizing service boundaries and autonomous components.")
+
+;; ── Event-Driven Architecture ──
+
+(isa TD-HohpeWoolf-EIP ReferenceWork)
+(title TD-HohpeWoolf-EIP "Enterprise Integration Patterns")
+(author TD-HohpeWoolf-EIP "Gregor Hohpe & Bobby Woolf")
+(resourceType TD-HohpeWoolf-EIP book)
+(level TD-HohpeWoolf-EIP intermediate)
+(section TD-HohpeWoolf-EIP CQRSEDA)
+(url TD-HohpeWoolf-EIP "https://www.enterpriseintegrationpatterns.com/")
+(desc TD-HohpeWoolf-EIP "The canonical catalog of messaging patterns: publish-subscribe, message routing, event aggregation. Foundation for all EDA work.")
+
+(isa TD-Bellemare-EventDrivenMicro2 ReferenceWork)
+(title TD-Bellemare-EventDrivenMicro2 "Building Event-Driven Microservices")
+(author TD-Bellemare-EventDrivenMicro2 "Adam Bellemare")
+(resourceType TD-Bellemare-EventDrivenMicro2 book)
+(level TD-Bellemare-EventDrivenMicro2 intermediate)
+(section TD-Bellemare-EventDrivenMicro2 CQRSEDA)
+(url TD-Bellemare-EventDrivenMicro2 "https://www.oreilly.com/library/view/building-event-driven-microservices/9781492057888/")
+(desc TD-Bellemare-EventDrivenMicro2 "End-to-end guide to event-driven microservice architecture with Kafka, event stores, and stream processing.")
+
+(isa TD-Shapira-KafkaDefinitiveGuide ReferenceWork)
+(title TD-Shapira-KafkaDefinitiveGuide "Kafka: The Definitive Guide (2nd Edition)")
+(author TD-Shapira-KafkaDefinitiveGuide "Gwen Shapira, Todd Palino, Rajini Sivaram, Krit Petty")
+(resourceType TD-Shapira-KafkaDefinitiveGuide book)
+(level TD-Shapira-KafkaDefinitiveGuide intermediate)
+(section TD-Shapira-KafkaDefinitiveGuide CQRSEDA)
+(url TD-Shapira-KafkaDefinitiveGuide "https://www.oreilly.com/library/view/kafka-the-definitive/9781492043072/")
+(desc TD-Shapira-KafkaDefinitiveGuide "Comprehensive guide to Apache Kafka: the dominant event streaming platform powering most production event-driven systems.")
+
+(isa TD-Kreps-TheLog2 ReferenceWork)
+(title TD-Kreps-TheLog2 "The Log (Jay Kreps)")
+(author TD-Kreps-TheLog2 "Jay Kreps")
+(resourceType TD-Kreps-TheLog2 notes)
+(level TD-Kreps-TheLog2 beginner)
+(section TD-Kreps-TheLog2 CQRSEDA)
+(url TD-Kreps-TheLog2 "https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying")
+(desc TD-Kreps-TheLog2 "How the append-only log unifies event sourcing, stream processing, and data integration. Essential conceptual reading.")
+
+;; ── Tutorials & Implementation Guides ──
+
+(isa TD-Taylor-CQRSMediatR ReferenceWork)
+(title TD-Taylor-CQRSMediatR "Implementing CQRS with MediatR and .NET")
+(author TD-Taylor-CQRSMediatR "Jason Taylor")
+(resourceType TD-Taylor-CQRSMediatR video)
+(level TD-Taylor-CQRSMediatR intermediate)
+(section TD-Taylor-CQRSMediatR CQRSEDA)
+(url TD-Taylor-CQRSMediatR "https://www.youtube.com/watch?v=5kOzBRqZiDI")
+(desc TD-Taylor-CQRSMediatR "Practical walkthrough of implementing CQRS in .NET using MediatR for command/query dispatching.")
+
+(isa TD-Confluent-KafkaCourse ReferenceWork)
+(title TD-Confluent-KafkaCourse "Event-Driven Architecture with Apache Kafka (Confluent)")
+(author TD-Confluent-KafkaCourse "Confluent Developer")
+(resourceType TD-Confluent-KafkaCourse course)
+(level TD-Confluent-KafkaCourse beginner)
+(section TD-Confluent-KafkaCourse CQRSEDA)
+(url TD-Confluent-KafkaCourse "https://developer.confluent.io/learn-kafka/")
+(desc TD-Confluent-KafkaCourse "Free course series covering Kafka fundamentals, stream processing, and event-driven design patterns.")
+
+(isa TD-Richardson-SagaPattern ReferenceWork)
+(title TD-Richardson-SagaPattern "Saga Pattern for Distributed Transactions")
+(author TD-Richardson-SagaPattern "Chris Richardson / Microservices.io")
+(resourceType TD-Richardson-SagaPattern notes)
+(level TD-Richardson-SagaPattern intermediate)
+(section TD-Richardson-SagaPattern CQRSEDA)
+(url TD-Richardson-SagaPattern "https://microservices.io/patterns/data/saga.html")
+(desc TD-Richardson-SagaPattern "The Saga pattern for managing distributed transactions across event-sourced services. Choreography vs. orchestration approaches.")
+
+(isa TD-Morling-OutboxPattern ReferenceWork)
+(title TD-Morling-OutboxPattern "Outbox Pattern (Reliable Event Publishing)")
+(author TD-Morling-OutboxPattern "Debezium / Gunnar Morling")
+(resourceType TD-Morling-OutboxPattern notes)
+(level TD-Morling-OutboxPattern intermediate)
+(section TD-Morling-OutboxPattern CQRSEDA)
+(url TD-Morling-OutboxPattern "https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/")
+(desc TD-Morling-OutboxPattern "Transactional outbox pattern for reliable event publishing. Solves the dual-write problem in event-driven systems.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: CALENDAR SYSTEMS
+;; ISO 8601, timezones, falsehoods, date/time edge cases
+;; ════════════════════════════════════════════════════════════
+
+;; ── Standards & References ──
+
+(isa TD-Wikipedia-ISO8601 ReferenceWork)
+(title TD-Wikipedia-ISO8601 "ISO 8601 (Wikipedia)")
+(author TD-Wikipedia-ISO8601 "Wikipedia Contributors")
+(resourceType TD-Wikipedia-ISO8601 notes)
+(level TD-Wikipedia-ISO8601 beginner)
+(section TD-Wikipedia-ISO8601 CalendarSystems)
+(url TD-Wikipedia-ISO8601 "https://en.wikipedia.org/wiki/ISO_8601")
+(desc TD-Wikipedia-ISO8601 "Comprehensive overview of the ISO 8601 date/time standard including durations, intervals, and week numbering.")
+
+(isa TD-IANA-TimeZoneDB ReferenceWork)
+(title TD-IANA-TimeZoneDB "IANA Time Zone Database")
+(author TD-IANA-TimeZoneDB "ICANN / Paul Eggert")
+(resourceType TD-IANA-TimeZoneDB data)
+(level TD-IANA-TimeZoneDB intermediate)
+(section TD-IANA-TimeZoneDB CalendarSystems)
+(url TD-IANA-TimeZoneDB "https://www.iana.org/time-zones")
+(desc TD-IANA-TimeZoneDB "The tzdata database: the authoritative source for global timezone rules. Updated several times per year as governments change their rules.")
+
+(isa TD-Skeet-StoringUTC ReferenceWork)
+(title TD-Skeet-StoringUTC "The Complexity of Time Data Programming")
+(author TD-Skeet-StoringUTC "Jon Skeet (blog)")
+(resourceType TD-Skeet-StoringUTC notes)
+(level TD-Skeet-StoringUTC intermediate)
+(section TD-Skeet-StoringUTC CalendarSystems)
+(url TD-Skeet-StoringUTC "https://codeblog.jonskeet.uk/2019/03/27/storing-utc-is-not-a-silver-bullet/")
+(desc TD-Skeet-StoringUTC "Jon Skeet's incisive post on why 'just store UTC' is insufficient. Covers future events, timezone transitions, and calendar intent.")
+
+(isa TD-Sussman-FalsehoodsTime ReferenceWork)
+(title TD-Sussman-FalsehoodsTime "Falsehoods Programmers Believe About Time")
+(author TD-Sussman-FalsehoodsTime "Noah Sussman")
+(resourceType TD-Sussman-FalsehoodsTime notes)
+(level TD-Sussman-FalsehoodsTime beginner)
+(section TD-Sussman-FalsehoodsTime CalendarSystems)
+(url TD-Sussman-FalsehoodsTime "https://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time")
+(desc TD-Sussman-FalsehoodsTime "The classic list of time-related assumptions that break software. Required reading for every developer handling dates.")
+
+;; ── Falsehoods & Edge Cases ──
+
+(isa TD-Sussman-MoreFalsehoods ReferenceWork)
+(title TD-Sussman-MoreFalsehoods "More Falsehoods Programmers Believe About Time")
+(author TD-Sussman-MoreFalsehoods "Noah Sussman")
+(resourceType TD-Sussman-MoreFalsehoods notes)
+(level TD-Sussman-MoreFalsehoods beginner)
+(section TD-Sussman-MoreFalsehoods CalendarSystems)
+(url TD-Sussman-MoreFalsehoods "https://infiniteundo.com/post/25509354022/more-falsehoods-programmers-believe-about-time")
+(desc TD-Sussman-MoreFalsehoods "The sequel: even more broken assumptions about time, including timezone political changes and calendar transitions.")
+
+(isa TD-Scott-ProblemWithTimezones ReferenceWork)
+(title TD-Scott-ProblemWithTimezones "The Problem with Time & Timezones (Computerphile)")
+(author TD-Scott-ProblemWithTimezones "Tom Scott / Computerphile")
+(resourceType TD-Scott-ProblemWithTimezones video)
+(level TD-Scott-ProblemWithTimezones beginner)
+(section TD-Scott-ProblemWithTimezones CalendarSystems)
+(url TD-Scott-ProblemWithTimezones "https://www.youtube.com/watch?v=-5wpm-gesOY")
+(desc TD-Scott-ProblemWithTimezones "Entertaining and educational video on why timezone handling is a nightmare. Leap seconds, DST, and political whims.")
+
+(isa TD-Holman-UTCIsEnough ReferenceWork)
+(title TD-Holman-UTCIsEnough "UTC is Enough for Everyone, Right?")
+(author TD-Holman-UTCIsEnough "Zach Holman")
+(resourceType TD-Holman-UTCIsEnough notes)
+(level TD-Holman-UTCIsEnough beginner)
+(section TD-Holman-UTCIsEnough CalendarSystems)
+(url TD-Holman-UTCIsEnough "https://zachholman.com/talk/utc-is-enough-for-everyone-right")
+(desc TD-Holman-UTCIsEnough "Talk/post covering the full horror of date/time edge cases: leap seconds, date-line crossings, timezone abbreviation ambiguity.")
+
+(isa TD-Wikipedia-LeapSecond ReferenceWork)
+(title TD-Wikipedia-LeapSecond "Leap Second (Wikipedia)")
+(author TD-Wikipedia-LeapSecond "Wikipedia Contributors")
+(resourceType TD-Wikipedia-LeapSecond notes)
+(level TD-Wikipedia-LeapSecond beginner)
+(section TD-Wikipedia-LeapSecond CalendarSystems)
+(url TD-Wikipedia-LeapSecond "https://en.wikipedia.org/wiki/Leap_second")
+(desc TD-Wikipedia-LeapSecond "Explanation of leap seconds, their history, and the ongoing debate about abolishing them (tentatively scheduled for 2035).")
+
+;; ── Date/Time Libraries ──
+
+(isa TD-Oracle-JavaTime ReferenceWork)
+(title TD-Oracle-JavaTime "java.time (JSR 310) — Official Tutorial")
+(author TD-Oracle-JavaTime "Oracle")
+(resourceType TD-Oracle-JavaTime notes)
+(level TD-Oracle-JavaTime beginner)
+(section TD-Oracle-JavaTime CalendarSystems)
+(url TD-Oracle-JavaTime "https://docs.oracle.com/javase/tutorial/datetime/")
+(desc TD-Oracle-JavaTime "Official tutorial for Java's modern date/time API. ZonedDateTime, Instant, Duration, Period, and temporal adjusters.")
+
+(isa TD-Luxon-JSDateLib ReferenceWork)
+(title TD-Luxon-JSDateLib "Luxon (JavaScript Date Library)")
+(author TD-Luxon-JSDateLib "Isaac Cambron / Moment.js team")
+(resourceType TD-Luxon-JSDateLib code)
+(level TD-Luxon-JSDateLib beginner)
+(section TD-Luxon-JSDateLib CalendarSystems)
+(url TD-Luxon-JSDateLib "https://moment.github.io/luxon/")
+(desc TD-Luxon-JSDateLib "Modern JavaScript date/time library replacing Moment.js. Immutable, timezone-aware, and built on the Intl API.")
+
+(isa TD-TC39-Temporal ReferenceWork)
+(title TD-TC39-Temporal "Temporal Proposal (TC39)")
+(author TD-TC39-Temporal "TC39 / Maggie Pint, Philipp Dunkel et al.")
+(resourceType TD-TC39-Temporal code)
+(level TD-TC39-Temporal intermediate)
+(section TD-TC39-Temporal CalendarSystems)
+(url TD-TC39-Temporal "https://tc39.es/proposal-temporal/docs/")
+(desc TD-TC39-Temporal "The TC39 Temporal proposal: a complete replacement for JavaScript's broken Date object. PlainDate, ZonedDateTime, Duration, and more.")
+
+(isa TD-Arrow-PythonDateLib ReferenceWork)
+(title TD-Arrow-PythonDateLib "Arrow (Python Date Library)")
+(author TD-Arrow-PythonDateLib "Chris Smith et al.")
+(resourceType TD-Arrow-PythonDateLib code)
+(level TD-Arrow-PythonDateLib beginner)
+(section TD-Arrow-PythonDateLib CalendarSystems)
+(url TD-Arrow-PythonDateLib "https://arrow.readthedocs.io/")
+(desc TD-Arrow-PythonDateLib "Python library for sensible date/time handling. Human-friendly creation, timezone conversion, and relative delta support.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Event stores, frameworks, workflow engines, time libraries
+;; ════════════════════════════════════════════════════════════
+
+;; ── Event Stores & Streaming Platforms ──
+
+(isa TD-EventStoreDB ReferenceWork)
+(title TD-EventStoreDB "EventStoreDB")
+(author TD-EventStoreDB "Event Store Ltd.")
+(resourceType TD-EventStoreDB code)
+(level TD-EventStoreDB intermediate)
+(section TD-EventStoreDB DatasetsSoftware)
+(url TD-EventStoreDB "https://www.eventstore.com/")
+(desc TD-EventStoreDB "Purpose-built database for event sourcing. Supports projections, subscriptions, and optimistic concurrency. The reference event store implementation.")
+
+(isa TD-ApacheKafka ReferenceWork)
+(title TD-ApacheKafka "Apache Kafka")
+(author TD-ApacheKafka "Apache Software Foundation")
+(resourceType TD-ApacheKafka code)
+(level TD-ApacheKafka intermediate)
+(section TD-ApacheKafka DatasetsSoftware)
+(url TD-ApacheKafka "https://kafka.apache.org/documentation/")
+(desc TD-ApacheKafka "Distributed event streaming platform. The de facto standard for high-throughput event pipelines. Topic-based, partitioned, and replicated.")
+
+(isa TD-ApachePulsar ReferenceWork)
+(title TD-ApachePulsar "Apache Pulsar")
+(author TD-ApachePulsar "Apache Software Foundation")
+(resourceType TD-ApachePulsar code)
+(level TD-ApachePulsar intermediate)
+(section TD-ApachePulsar DatasetsSoftware)
+(url TD-ApachePulsar "https://pulsar.apache.org/docs/")
+(desc TD-ApachePulsar "Multi-tenant distributed messaging and streaming platform. Tiered storage, schema registry, and Kafka-compatible API.")
+
+(isa TD-Redpanda ReferenceWork)
+(title TD-Redpanda "Redpanda")
+(author TD-Redpanda "Redpanda Data")
+(resourceType TD-Redpanda code)
+(level TD-Redpanda intermediate)
+(section TD-Redpanda DatasetsSoftware)
+(url TD-Redpanda "https://docs.redpanda.com/")
+(desc TD-Redpanda "Kafka-compatible streaming platform written in C++. No JVM, no ZooKeeper. Simpler operations with Kafka API compatibility.")
+
+;; ── Event Sourcing Frameworks ──
+
+(isa TD-AxonFramework ReferenceWork)
+(title TD-AxonFramework "Axon Framework")
+(author TD-AxonFramework "AxonIQ")
+(resourceType TD-AxonFramework code)
+(level TD-AxonFramework intermediate)
+(section TD-AxonFramework DatasetsSoftware)
+(url TD-AxonFramework "https://docs.axoniq.io/reference-guide/")
+(desc TD-AxonFramework "Java/Kotlin framework for CQRS and event sourcing. Aggregates, sagas, projections, and the Axon Server event store.")
+
+(isa TD-Marten-DotNet ReferenceWork)
+(title TD-Marten-DotNet "Marten (.NET Document DB & Event Store)")
+(author TD-Marten-DotNet "Jeremy D. Miller et al.")
+(resourceType TD-Marten-DotNet code)
+(level TD-Marten-DotNet intermediate)
+(section TD-Marten-DotNet DatasetsSoftware)
+(url TD-Marten-DotNet "https://martendb.io/")
+(desc TD-Marten-DotNet ".NET library using PostgreSQL as both document database and event store. Excellent for .NET teams adopting event sourcing incrementally.")
+
+(isa TD-Eventuous-DotNet ReferenceWork)
+(title TD-Eventuous-DotNet "Eventuous (.NET Event Sourcing)")
+(author TD-Eventuous-DotNet "Alexey Zimarev")
+(resourceType TD-Eventuous-DotNet code)
+(level TD-Eventuous-DotNet intermediate)
+(section TD-Eventuous-DotNet DatasetsSoftware)
+(url TD-Eventuous-DotNet "https://eventuous.dev/")
+(desc TD-Eventuous-DotNet "Modern .NET event sourcing library with first-class support for EventStoreDB, subscriptions, and projections.")
+
+(isa TD-Commanded-Elixir ReferenceWork)
+(title TD-Commanded-Elixir "Commanded (Elixir CQRS/ES)")
+(author TD-Commanded-Elixir "Ben Smith")
+(resourceType TD-Commanded-Elixir code)
+(level TD-Commanded-Elixir intermediate)
+(section TD-Commanded-Elixir DatasetsSoftware)
+(url TD-Commanded-Elixir "https://github.com/commanded/commanded")
+(desc TD-Commanded-Elixir "Elixir framework for CQRS and event sourcing. Leverages OTP for fault-tolerant aggregate processes.")
+
+;; ── Temporal Workflow Engines ──
+
+(isa TD-TemporalIO ReferenceWork)
+(title TD-TemporalIO "Temporal.io")
+(author TD-TemporalIO "Temporal Technologies")
+(resourceType TD-TemporalIO code)
+(level TD-TemporalIO intermediate)
+(section TD-TemporalIO DatasetsSoftware)
+(url TD-TemporalIO "https://docs.temporal.io/")
+(desc TD-TemporalIO "Durable execution platform for long-running workflows. Automatic retries, timeouts, and state persistence. Supports Go, Java, TypeScript, Python.")
+
+(isa TD-Cadence-Uber ReferenceWork)
+(title TD-Cadence-Uber "Cadence (Uber)")
+(author TD-Cadence-Uber "Uber Engineering")
+(resourceType TD-Cadence-Uber code)
+(level TD-Cadence-Uber intermediate)
+(section TD-Cadence-Uber DatasetsSoftware)
+(url TD-Cadence-Uber "https://cadenceworkflow.io/docs/")
+(desc TD-Cadence-Uber "The predecessor to Temporal.io, built at Uber. Durable workflow orchestration with activity-based programming model.")
+
+(isa TD-Restate ReferenceWork)
+(title TD-Restate "Restate")
+(author TD-Restate "Restate Dev")
+(resourceType TD-Restate code)
+(level TD-Restate beginner)
+(section TD-Restate DatasetsSoftware)
+(url TD-Restate "https://restate.dev/")
+(desc TD-Restate "Lightweight durable execution engine. Simpler than Temporal for many use cases. SDK-first approach with journal-based durability.")
+
+(isa TD-Datomic ReferenceWork)
+(title TD-Datomic "Datomic")
+(author TD-Datomic "Cognitect (Rich Hickey)")
+(resourceType TD-Datomic code)
+(level TD-Datomic advanced)
+(section TD-Datomic DatasetsSoftware)
+(url TD-Datomic "https://www.datomic.com/")
+(desc TD-Datomic "Immutable database where all data is temporal by default. Every transaction is recorded with its time, enabling as-of queries across the full database history.")
+
+;; ── Time Libraries & Utilities ──
+
+(isa TD-Chrono-Rust ReferenceWork)
+(title TD-Chrono-Rust "chrono (Rust)")
+(author TD-Chrono-Rust "Kang Seonghoon et al.")
+(resourceType TD-Chrono-Rust code)
+(level TD-Chrono-Rust intermediate)
+(section TD-Chrono-Rust DatasetsSoftware)
+(url TD-Chrono-Rust "https://docs.rs/chrono/latest/chrono/")
+(desc TD-Chrono-Rust "The standard Rust date/time library. Timezone-aware, leap-second aware, with formatting and parsing.")
+
+(isa TD-NodaTime-DotNet ReferenceWork)
+(title TD-NodaTime-DotNet "Noda Time (.NET)")
+(author TD-NodaTime-DotNet "Jon Skeet et al.")
+(resourceType TD-NodaTime-DotNet code)
+(level TD-NodaTime-DotNet intermediate)
+(section TD-NodaTime-DotNet DatasetsSoftware)
+(url TD-NodaTime-DotNet "https://nodatime.org/")
+(desc TD-NodaTime-DotNet "Alternative .NET date/time library inspired by Joda-Time. Strict separation of concepts: Instant, LocalDate, ZonedDateTime.")
+
+(isa TD-Dateutil-Python ReferenceWork)
+(title TD-Dateutil-Python "dateutil (Python)")
+(author TD-Dateutil-Python "Gustavo Niemeyer / Paul Ganssle")
+(resourceType TD-Dateutil-Python code)
+(level TD-Dateutil-Python beginner)
+(section TD-Dateutil-Python DatasetsSoftware)
+(url TD-Dateutil-Python "https://dateutil.readthedocs.io/")
+(desc TD-Dateutil-Python "Powerful Python extensions to the standard datetime module. Relative deltas, timezone handling, and flexible date parsing.")
+
+(isa TD-DayJS ReferenceWork)
+(title TD-DayJS "day.js (JavaScript)")
+(author TD-DayJS "iamkun")
+(resourceType TD-DayJS code)
+(level TD-DayJS beginner)
+(section TD-DayJS DatasetsSoftware)
+(url TD-DayJS "https://day.js.org/")
+(desc TD-DayJS "Minimalist JavaScript date library (2KB). Moment.js-compatible API with immutable operations and plugin architecture.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources TemporalDatabasesReference 99)
+(totalSections TemporalDatabasesReference 8)
+(comment TemporalDatabasesReference
+  "8 sections: Overview (11), Temporal Logic (12), Event Sourcing (12),
+   Bitemporal Modeling (12), Time-Series DBs (12), CQRS & EDA (12),
+   Calendar Systems (12), Datasets & Software (16). Total: 99 resources.")

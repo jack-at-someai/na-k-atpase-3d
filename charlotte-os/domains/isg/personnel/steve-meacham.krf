@@ -1,0 +1,86 @@
+;;; ================================================================
+;;; ISG PERSONNEL / STEVE MEACHAM
+;;; VP Human Resources — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa SteveMeacham Person)
+(isa SteveMeacham Executive)
+(hasAttribute SteveMeacham ::LABEL "Steve Meacham")
+(hasAttribute SteveMeacham ::ROLE "Vice President, Human Resources")
+(hasAttribute SteveMeacham ::TITLE_SHORT "VP HR")
+(hasAttribute SteveMeacham ::EMAIL "smeacham@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo SteveMeacham JeffDubois)
+(MEMBER_OF SteveMeacham ISGExecutiveTeam)
+
+;; Systems ownership
+(GOVERNS SteveMeacham ISG-Paylocity)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt SteveMeacham Plainfield-IN)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute SteveMeacham ::ORG_LEVEL 3)
+(hasAttribute SteveMeacham ::SPAN_OF_CONTROL "HR, payroll, recruiting, onboarding across all 16 brands")
+(hasAttribute SteveMeacham ::DECISION_AUTHORITY "HR policy, benefits, recruiting, HRIS systems")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch SteveMeacham "Comcast Cable — HR" 2000 2005)
+(careerEpoch SteveMeacham "Vertellus — HR" 2005 2010)
+(careerEpoch SteveMeacham "Nexus Valve Inc — HR" 2010 2013)
+(careerEpoch SteveMeacham "ProTrans — HR" 2013 2019)
+(careerEpoch SteveMeacham "The Industrial Service Group — VP HR" 2019 9999)
+
+(hasAttribute SteveMeacham ::CAREER_YEARS 20)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn SteveMeacham BenefitsAdministration)
+(expertiseIn SteveMeacham HRIS)
+(expertiseIn SteveMeacham Recruiting)
+(expertiseIn SteveMeacham Onboarding)
+(expertiseIn SteveMeacham HRCompliance)
+(expertiseIn SteveMeacham PayrollIntegration)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa SteveMeacham-PaylocityDeployments METRIC)
+(attachedTo SteveMeacham-PaylocityDeployments SteveMeacham)
+(hasAttribute SteveMeacham-PaylocityDeployments ::VALUE 17)
+(hasAttribute SteveMeacham-PaylocityDeployments ::UNIT "Paylocity implementations (16 entities + corporate)")
+
+(isa SteveMeacham-EmployeeBase METRIC)
+(attachedTo SteveMeacham-EmployeeBase SteveMeacham)
+(hasAttribute SteveMeacham-EmployeeBase ::VALUE 1200)
+(hasAttribute SteveMeacham-EmployeeBase ::UNIT "employees across all brands")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa SteveMeacham-IntegrationArchitect SIGNAL)
+(derivedFrom SteveMeacham-IntegrationArchitect SteveMeacham-PaylocityDeployments)
+(comment SteveMeacham-IntegrationArchitect
+  "Steve implemented Paylocity 17 times — once per acquired entity plus
+   corporate. He is the person who has actually done the work of unifying
+   disparate companies under one system. His integration experience
+   parallels what Charlotte does for the knowledge graph. He understands
+   the pain of M&A integration at the ground level.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithVPHR PROTOCOL)
+(hasTrigger Protocol-InteractWithVPHR (sessionCaller ?Session SteveMeacham))
+(comment Protocol-InteractWithVPHR
+  "Steve is operationally focused — he cares about process, compliance,
+   and scalability. He's implemented 17 HR system deployments across
+   acquired companies. He understands integration pain viscerally.
+   If Charlotte touches workforce data (headcount, org structure,
+   location staffing), Steve is the authority.")

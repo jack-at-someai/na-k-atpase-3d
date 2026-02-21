@@ -1,0 +1,871 @@
+;;; ================================================================
+;;; REFERENCE / BIO-OPTICS & PHOTONICS
+;;; 85 resources across 7 sections
+;;; ================================================================
+;;;
+;;; Structural color, bioluminescence & camouflage. Light manipulation
+;;; strategies evolved by nature.
+;;;
+;;; Bio-optics spans how living organisms interact with light —
+;;; absorbing, reflecting, refracting, emitting, and detecting
+;;; photons across the electromagnetic spectrum.
+;;;
+;;; Learning path: Overview → Structural Color → Bioluminescence →
+;;; Vision Systems → Anti-Reflective → Camouflage → Light Harvesting
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Bio-Optics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BO-Quimby-PhotonicsLasers ReferenceWork)
+(title BO-Quimby-PhotonicsLasers "Photonics and Lasers: An Introduction")
+(author BO-Quimby-PhotonicsLasers "Richard S. Quimby")
+(resourceType BO-Quimby-PhotonicsLasers book)
+(level BO-Quimby-PhotonicsLasers beginner)
+(section BO-Quimby-PhotonicsLasers BioOpticsOverview)
+(url BO-Quimby-PhotonicsLasers "https://www.wiley.com/en-us/Photonics+and+Lasers%3A+An+Introduction-p-9780471719748")
+(desc BO-Quimby-PhotonicsLasers "Broad introduction to photonics principles including light-matter interactions relevant to biological systems. Excellent starting point for students new to optics.")
+
+(isa BO-Tuchin-OpticalProperties ReferenceWork)
+(title BO-Tuchin-OpticalProperties "Optical Properties of Biological Tissues and Other Turbid Media")
+(author BO-Tuchin-OpticalProperties "Valery V. Tuchin")
+(resourceType BO-Tuchin-OpticalProperties book)
+(level BO-Tuchin-OpticalProperties advanced)
+(section BO-Tuchin-OpticalProperties BioOpticsOverview)
+(url BO-Tuchin-OpticalProperties "https://doi.org/10.1117/3.684093")
+(desc BO-Tuchin-OpticalProperties "Comprehensive reference on how light propagates through biological tissues, covering absorption, scattering, and fluorescence in living matter.")
+
+(isa BO-Keiser-Biophotonics ReferenceWork)
+(title BO-Keiser-Biophotonics "Biophotonics: Concepts to Applications")
+(author BO-Keiser-Biophotonics "Gerd Keiser")
+(resourceType BO-Keiser-Biophotonics book)
+(level BO-Keiser-Biophotonics intermediate)
+(section BO-Keiser-Biophotonics BioOpticsOverview)
+(url BO-Keiser-Biophotonics "https://link.springer.com/book/10.1007/978-981-10-0945-7")
+(desc BO-Keiser-Biophotonics "Covers the fundamentals of light interaction with biological tissue and surveys modern biophotonics applications from diagnostics to therapy.")
+
+(isa BO-Hader-LightAndLife ReferenceWork)
+(title BO-Hader-LightAndLife "Light and Life: Processes in Photobiology")
+(author BO-Hader-LightAndLife "Donat-P. Hader & Gilad Jori")
+(resourceType BO-Hader-LightAndLife book)
+(level BO-Hader-LightAndLife intermediate)
+(section BO-Hader-LightAndLife BioOpticsOverview)
+(url BO-Hader-LightAndLife "https://doi.org/10.1039/9781847552266")
+(desc BO-Hader-LightAndLife "Explores the diverse roles of light in biological systems from photosynthesis and vision to photodynamic therapy and UV damage.")
+
+;; ── Review Articles ──
+
+(isa BO-Saranathan-BiologicalPhotonicCrystals ReferenceWork)
+(title BO-Saranathan-BiologicalPhotonicCrystals "Biological Photonic Crystals (Interface Focus, 2012)")
+(author BO-Saranathan-BiologicalPhotonicCrystals "Vinodkumar Saranathan et al.")
+(resourceType BO-Saranathan-BiologicalPhotonicCrystals notes)
+(level BO-Saranathan-BiologicalPhotonicCrystals intermediate)
+(section BO-Saranathan-BiologicalPhotonicCrystals BioOpticsOverview)
+(url BO-Saranathan-BiologicalPhotonicCrystals "https://doi.org/10.1098/rsfs.2011.0120")
+(desc BO-Saranathan-BiologicalPhotonicCrystals "Thorough review cataloguing photonic crystal structures found across the animal kingdom and explaining their optical properties.")
+
+(isa BO-Vukusic-NaturalPhotonics ReferenceWork)
+(title BO-Vukusic-NaturalPhotonics "Natural Photonics for Industrial Inspiration")
+(author BO-Vukusic-NaturalPhotonics "Pete Vukusic & J. Roy Sambles")
+(resourceType BO-Vukusic-NaturalPhotonics notes)
+(level BO-Vukusic-NaturalPhotonics intermediate)
+(section BO-Vukusic-NaturalPhotonics BioOpticsOverview)
+(url BO-Vukusic-NaturalPhotonics "https://doi.org/10.1038/nature02947")
+(desc BO-Vukusic-NaturalPhotonics "Landmark Nature article surveying how natural photonic structures inspire new technologies in anti-counterfeiting, sensing, and display design.")
+
+(isa BO-Hell-BiophotonicsNobel ReferenceWork)
+(title BO-Hell-BiophotonicsNobel "Biophotonics: Harnessing Light for Biology and Medicine (Nobel Lecture)")
+(author BO-Hell-BiophotonicsNobel "Stefan W. Hell")
+(resourceType BO-Hell-BiophotonicsNobel notes)
+(level BO-Hell-BiophotonicsNobel advanced)
+(section BO-Hell-BiophotonicsNobel BioOpticsOverview)
+(url BO-Hell-BiophotonicsNobel "https://doi.org/10.1002/anie.201504315")
+(desc BO-Hell-BiophotonicsNobel "Nobel laureate Stefan Hell outlines super-resolution microscopy and the broader role of photonics in biological discovery.")
+
+(isa BO-Kolle-BioInspiredOptics ReferenceWork)
+(title BO-Kolle-BioInspiredOptics "Bio-Inspired Optics: From Natural to Artificial (Advanced Materials)")
+(author BO-Kolle-BioInspiredOptics "Mathias Kolle & Seungwoo Lee")
+(resourceType BO-Kolle-BioInspiredOptics notes)
+(level BO-Kolle-BioInspiredOptics intermediate)
+(section BO-Kolle-BioInspiredOptics BioOpticsOverview)
+(url BO-Kolle-BioInspiredOptics "https://doi.org/10.1002/adma.201702669")
+(desc BO-Kolle-BioInspiredOptics "Reviews how biological optical systems are translated into engineered devices, covering structural colour, anti-reflection, and light guiding.")
+
+;; ── Introductory Lectures ──
+
+(isa BO-Parker-PhysicsBiologicalColour ReferenceWork)
+(title BO-Parker-PhysicsBiologicalColour "The Physics of Biological Colour (Royal Institution)")
+(author BO-Parker-PhysicsBiologicalColour "Andrew Parker")
+(resourceType BO-Parker-PhysicsBiologicalColour video)
+(level BO-Parker-PhysicsBiologicalColour beginner)
+(section BO-Parker-PhysicsBiologicalColour BioOpticsOverview)
+(url BO-Parker-PhysicsBiologicalColour "https://www.youtube.com/watch?v=lnOTCFMKJNk")
+(desc BO-Parker-PhysicsBiologicalColour "Engaging public lecture explaining how evolution has engineered photonic nanostructures in animals, by the scientist who proposed the Light Switch hypothesis.")
+
+(isa BO-MIT-Optics803SC ReferenceWork)
+(title BO-MIT-Optics803SC "MIT OpenCourseWare — Optics (8.03SC)")
+(author BO-MIT-Optics803SC "Walter Lewin / MIT")
+(resourceType BO-MIT-Optics803SC course)
+(level BO-MIT-Optics803SC beginner)
+(section BO-MIT-Optics803SC BioOpticsOverview)
+(url BO-MIT-Optics803SC "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/")
+(desc BO-MIT-Optics803SC "Classic MIT physics course covering wave optics, interference, and diffraction — the physical foundations needed for bio-optics study.")
+
+(isa BO-Psaltis-BiophotonicsCoursera ReferenceWork)
+(title BO-Psaltis-BiophotonicsCoursera "Biophotonics — Coursera (EPFL)")
+(author BO-Psaltis-BiophotonicsCoursera "Demetri Psaltis / EPFL")
+(resourceType BO-Psaltis-BiophotonicsCoursera course)
+(level BO-Psaltis-BiophotonicsCoursera intermediate)
+(section BO-Psaltis-BiophotonicsCoursera BioOpticsOverview)
+(url BO-Psaltis-BiophotonicsCoursera "https://www.coursera.org/learn/biophotonics")
+(desc BO-Psaltis-BiophotonicsCoursera "Online course introducing optical microscopy, spectroscopy, and photonic methods used in biological and medical research.")
+
+(isa BO-PBS-LightInvisibleEmbrace ReferenceWork)
+(title BO-PBS-LightInvisibleEmbrace "Light: The Invisible Embrace (PBS documentary excerpt)")
+(author BO-PBS-LightInvisibleEmbrace "PBS / NOVA")
+(resourceType BO-PBS-LightInvisibleEmbrace video)
+(level BO-PBS-LightInvisibleEmbrace beginner)
+(section BO-PBS-LightInvisibleEmbrace BioOpticsOverview)
+(url BO-PBS-LightInvisibleEmbrace "https://www.youtube.com/watch?v=IXxZRZxafEQ")
+(desc BO-PBS-LightInvisibleEmbrace "Documentary segment exploring how organisms across the tree of life have evolved to produce, detect, and manipulate light.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: STRUCTURAL COLORATION
+;; Photonic crystals, multilayer reflectors, diffraction gratings
+;; ════════════════════════════════════════════════════════════
+
+;; ── Physics of Structural Color ──
+
+(isa BO-Kinoshita-MorphoPhysics ReferenceWork)
+(title BO-Kinoshita-MorphoPhysics "Structural Colours: On the Mechanisms of Colours of Morpho Butterflies")
+(author BO-Kinoshita-MorphoPhysics "Shuichi Kinoshita, Shinya Yoshioka & Junichi Miyazaki")
+(resourceType BO-Kinoshita-MorphoPhysics notes)
+(level BO-Kinoshita-MorphoPhysics advanced)
+(section BO-Kinoshita-MorphoPhysics StructuralColoration)
+(url BO-Kinoshita-MorphoPhysics "https://doi.org/10.1088/0034-4885/71/7/076401")
+(desc BO-Kinoshita-MorphoPhysics "Detailed physics-focused review of how Morpho butterflies produce brilliant blue through multi-scale photonic nanostructures.")
+
+(isa BO-Kinoshita-StructuralColourBook ReferenceWork)
+(title BO-Kinoshita-StructuralColourBook "Structural Colour and Iridescence in Living Organisms")
+(author BO-Kinoshita-StructuralColourBook "Shuichi Kinoshita")
+(resourceType BO-Kinoshita-StructuralColourBook book)
+(level BO-Kinoshita-StructuralColourBook advanced)
+(section BO-Kinoshita-StructuralColourBook StructuralColoration)
+(url BO-Kinoshita-StructuralColourBook "https://doi.org/10.1142/front_cover/front_cover_7866.jpg")
+(desc BO-Kinoshita-StructuralColourBook "Monograph presenting the physics of structural colour across the animal and plant kingdoms with rigorous electromagnetic modelling.")
+
+(isa BO-Joannopoulos-PhotonicCrystals ReferenceWork)
+(title BO-Joannopoulos-PhotonicCrystals "Photonic Crystals: Molding the Flow of Light")
+(author BO-Joannopoulos-PhotonicCrystals "John D. Joannopoulos et al.")
+(resourceType BO-Joannopoulos-PhotonicCrystals book)
+(level BO-Joannopoulos-PhotonicCrystals intermediate)
+(section BO-Joannopoulos-PhotonicCrystals StructuralColoration)
+(url BO-Joannopoulos-PhotonicCrystals "http://ab-initio.mit.edu/book/")
+(desc BO-Joannopoulos-PhotonicCrystals "The standard textbook on photonic crystal theory, freely available online. Essential for understanding band gaps and light confinement.")
+
+(isa BO-Macleod-ThinFilmLecture ReferenceWork)
+(title BO-Macleod-ThinFilmLecture "Optical Thin-Film Physics and Coating Design (Lecture)")
+(author BO-Macleod-ThinFilmLecture "Angus Macleod")
+(resourceType BO-Macleod-ThinFilmLecture video)
+(level BO-Macleod-ThinFilmLecture intermediate)
+(section BO-Macleod-ThinFilmLecture StructuralColoration)
+(url BO-Macleod-ThinFilmLecture "https://www.youtube.com/watch?v=OIBM5soYf6w")
+(desc BO-Macleod-ThinFilmLecture "Lecture covering thin-film interference theory that underpins the multilayer reflectors found in beetle and fish scales.")
+
+;; ── Butterfly & Beetle Optics ──
+
+(isa BO-Vukusic-MorphoMechanisms ReferenceWork)
+(title BO-Vukusic-MorphoMechanisms "Mechanisms of Structural Colour in the Morpho Butterfly")
+(author BO-Vukusic-MorphoMechanisms "Pete Vukusic et al.")
+(resourceType BO-Vukusic-MorphoMechanisms notes)
+(level BO-Vukusic-MorphoMechanisms intermediate)
+(section BO-Vukusic-MorphoMechanisms StructuralColoration)
+(url BO-Vukusic-MorphoMechanisms "https://doi.org/10.1098/rspb.1999.0650")
+(desc BO-Vukusic-MorphoMechanisms "Seminal Proceedings B paper dissecting how Morpho rhetenor wing-scale architecture produces intense directional blue reflectance.")
+
+(isa BO-Wilts-MorphoScales ReferenceWork)
+(title BO-Wilts-MorphoScales "Quantified Interference and Diffraction in Single Morpho Butterfly Scales")
+(author BO-Wilts-MorphoScales "Bodo D. Wilts et al.")
+(resourceType BO-Wilts-MorphoScales notes)
+(level BO-Wilts-MorphoScales advanced)
+(section BO-Wilts-MorphoScales StructuralColoration)
+(url BO-Wilts-MorphoScales "https://doi.org/10.1073/pnas.1412621111")
+(desc BO-Wilts-MorphoScales "PNAS study using microspectrophotometry and modelling to quantify optical contributions of individual scale elements.")
+
+(isa BO-Sharma-JewelBeetle ReferenceWork)
+(title BO-Sharma-JewelBeetle "Photonics of the Jewel Beetle Chrysina gloriosa")
+(author BO-Sharma-JewelBeetle "Vivek Sharma, Mohan Crne, Jung Ok Park & Mohan Srinivasarao")
+(resourceType BO-Sharma-JewelBeetle notes)
+(level BO-Sharma-JewelBeetle advanced)
+(section BO-Sharma-JewelBeetle StructuralColoration)
+(url BO-Sharma-JewelBeetle "https://doi.org/10.1126/science.1172051")
+(desc BO-Sharma-JewelBeetle "Science paper revealing how the jewel beetle produces circularly polarised reflections using a cholesteric liquid-crystal-like exocuticle.")
+
+(isa BO-KQED-ButterflyStructuralColour ReferenceWork)
+(title BO-KQED-ButterflyStructuralColour "The Secret Life of Butterflies — Structural Colour (Deep Look)")
+(author BO-KQED-ButterflyStructuralColour "KQED / PBS")
+(resourceType BO-KQED-ButterflyStructuralColour video)
+(level BO-KQED-ButterflyStructuralColour beginner)
+(section BO-KQED-ButterflyStructuralColour StructuralColoration)
+(url BO-KQED-ButterflyStructuralColour "https://www.youtube.com/watch?v=LE2v3sUzTH4")
+(desc BO-KQED-ButterflyStructuralColour "Short, beautifully filmed video explaining how nanoscale structures on butterfly wings create colour without pigment.")
+
+;; ── Synthetic Structural Color ──
+
+(isa BO-Yang-PlasmonicPrinting ReferenceWork)
+(title BO-Yang-PlasmonicPrinting "Scalable, Full-Colour and Controllable Chromotropic Plasmonic Printing")
+(author BO-Yang-PlasmonicPrinting "Joel K. W. Yang et al.")
+(resourceType BO-Yang-PlasmonicPrinting notes)
+(level BO-Yang-PlasmonicPrinting advanced)
+(section BO-Yang-PlasmonicPrinting StructuralColoration)
+(url BO-Yang-PlasmonicPrinting "https://doi.org/10.1038/ncomms3361")
+(desc BO-Yang-PlasmonicPrinting "Nature Communications paper demonstrating high-resolution plasmonic colour printing inspired by natural structural coloration.")
+
+(isa BO-Dufresne-ColloidalAssembly ReferenceWork)
+(title BO-Dufresne-ColloidalAssembly "Colloidal Assembly for Structural Colour")
+(author BO-Dufresne-ColloidalAssembly "Eric R. Dufresne et al.")
+(resourceType BO-Dufresne-ColloidalAssembly notes)
+(level BO-Dufresne-ColloidalAssembly intermediate)
+(section BO-Dufresne-ColloidalAssembly StructuralColoration)
+(url BO-Dufresne-ColloidalAssembly "https://doi.org/10.1039/C5SM00549C")
+(desc BO-Dufresne-ColloidalAssembly "Review of colloidal self-assembly methods for producing synthetic photonic crystals that mimic biological structural colour.")
+
+(isa BO-Johnson-MPB ReferenceWork)
+(title BO-Johnson-MPB "MIT Photonic Bands (MPB) Simulation Software")
+(author BO-Johnson-MPB "Steven G. Johnson / MIT")
+(resourceType BO-Johnson-MPB code)
+(level BO-Johnson-MPB advanced)
+(section BO-Johnson-MPB StructuralColoration)
+(url BO-Johnson-MPB "https://github.com/NanoComp/mpb")
+(desc BO-Johnson-MPB "Open-source software for computing photonic band structures; widely used to model bio-inspired photonic crystal designs.")
+
+(isa BO-Wang-BioInspiredSelfAssembly ReferenceWork)
+(title BO-Wang-BioInspiredSelfAssembly "Bio-Inspired Structural Colors Fabricated via Self-Assembly")
+(author BO-Wang-BioInspiredSelfAssembly "Jingxia Wang & Yanlin Song")
+(resourceType BO-Wang-BioInspiredSelfAssembly notes)
+(level BO-Wang-BioInspiredSelfAssembly intermediate)
+(section BO-Wang-BioInspiredSelfAssembly StructuralColoration)
+(url BO-Wang-BioInspiredSelfAssembly "https://doi.org/10.1002/adfm.201302359")
+(desc BO-Wang-BioInspiredSelfAssembly "Reviews self-assembly techniques for creating structural colour films, coatings, and fibres inspired by beetle and butterfly optics.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: BIOLUMINESCENCE & FLUORESCENCE
+;; Luciferin-luciferase, GFP, bioimaging
+;; ════════════════════════════════════════════════════════════
+
+;; ── Bioluminescence Biology ──
+
+(isa BO-Wilson-BioluminescenceLivingLights ReferenceWork)
+(title BO-Wilson-BioluminescenceLivingLights "Bioluminescence: Living Lights, Lights for Living")
+(author BO-Wilson-BioluminescenceLivingLights "Therese Wilson & J. Woodland Hastings")
+(resourceType BO-Wilson-BioluminescenceLivingLights book)
+(level BO-Wilson-BioluminescenceLivingLights intermediate)
+(section BO-Wilson-BioluminescenceLivingLights BioluminescenceFluorescence)
+(url BO-Wilson-BioluminescenceLivingLights "https://www.hup.harvard.edu/books/9780674067165")
+(desc BO-Wilson-BioluminescenceLivingLights "Definitive survey of bioluminescence across the tree of life — from bacteria to fish — by two pioneers of the field.")
+
+(isa BO-Haddock-EvolutionBioluminescence ReferenceWork)
+(title BO-Haddock-EvolutionBioluminescence "The Evolution of Bioluminescence in Eukaryotes")
+(author BO-Haddock-EvolutionBioluminescence "Steven H. D. Haddock, Mark A. Moline & James F. Case")
+(resourceType BO-Haddock-EvolutionBioluminescence notes)
+(level BO-Haddock-EvolutionBioluminescence intermediate)
+(section BO-Haddock-EvolutionBioluminescence BioluminescenceFluorescence)
+(url BO-Haddock-EvolutionBioluminescence "https://doi.org/10.1146/annurev-marine-120308-081028")
+(desc BO-Haddock-EvolutionBioluminescence "Annual Review of Marine Science article surveying the independent evolutionary origins of bioluminescence across diverse marine lineages.")
+
+(isa BO-MBARI-DeepSeaBioluminescence ReferenceWork)
+(title BO-MBARI-DeepSeaBioluminescence "Deep-Sea Bioluminescence (Monterey Bay Aquarium Research Institute)")
+(author BO-MBARI-DeepSeaBioluminescence "MBARI")
+(resourceType BO-MBARI-DeepSeaBioluminescence video)
+(level BO-MBARI-DeepSeaBioluminescence beginner)
+(section BO-MBARI-DeepSeaBioluminescence BioluminescenceFluorescence)
+(url BO-MBARI-DeepSeaBioluminescence "https://www.youtube.com/watch?v=UXlGBb8ypMk")
+(desc BO-MBARI-DeepSeaBioluminescence "Stunning ROV footage of deep-sea bioluminescence with narration explaining the ecological functions of light production in the abyss.")
+
+(isa BO-Haddock-BioluminescenceInSea ReferenceWork)
+(title BO-Haddock-BioluminescenceInSea "Bioluminescence in the Sea")
+(author BO-Haddock-BioluminescenceInSea "Steven H. D. Haddock, Mark A. Moline & James F. Case")
+(resourceType BO-Haddock-BioluminescenceInSea notes)
+(level BO-Haddock-BioluminescenceInSea advanced)
+(section BO-Haddock-BioluminescenceInSea BioluminescenceFluorescence)
+(url BO-Haddock-BioluminescenceInSea "https://doi.org/10.1146/annurev-marine-120308-081028")
+(desc BO-Haddock-BioluminescenceInSea "Comprehensive review of marine bioluminescence covering biochemistry, ecology, and the extraordinary diversity of light-producing organisms.")
+
+;; ── GFP & Fluorescent Proteins ──
+
+(isa BO-Shimomura-GFPNobel ReferenceWork)
+(title BO-Shimomura-GFPNobel "The GFP Story (Nobel Lecture — Osamu Shimomura)")
+(author BO-Shimomura-GFPNobel "Osamu Shimomura")
+(resourceType BO-Shimomura-GFPNobel notes)
+(level BO-Shimomura-GFPNobel intermediate)
+(section BO-Shimomura-GFPNobel BioluminescenceFluorescence)
+(url BO-Shimomura-GFPNobel "https://doi.org/10.1002/anie.200902240")
+(desc BO-Shimomura-GFPNobel "Nobel laureate Shimomura's account of discovering green fluorescent protein in the jellyfish Aequorea victoria.")
+
+(isa BO-Shaner-FluorescentProteins ReferenceWork)
+(title BO-Shaner-FluorescentProteins "The Growing and Glowing Toolbox of Fluorescent and Photoactive Proteins")
+(author BO-Shaner-FluorescentProteins "Nathan C. Shaner, Paul A. Steinbach & Roger Y. Tsien")
+(resourceType BO-Shaner-FluorescentProteins notes)
+(level BO-Shaner-FluorescentProteins advanced)
+(section BO-Shaner-FluorescentProteins BioluminescenceFluorescence)
+(url BO-Shaner-FluorescentProteins "https://doi.org/10.1038/nmeth.1209")
+(desc BO-Shaner-FluorescentProteins "Authoritative review of engineered fluorescent protein variants and their applications in live-cell imaging.")
+
+(isa BO-Lambert-FPbase ReferenceWork)
+(title BO-Lambert-FPbase "FPbase — Fluorescent Protein Database")
+(author BO-Lambert-FPbase "Talley Lambert / Harvard Medical School")
+(resourceType BO-Lambert-FPbase data)
+(level BO-Lambert-FPbase intermediate)
+(section BO-Lambert-FPbase BioluminescenceFluorescence)
+(url BO-Lambert-FPbase "https://www.fpbase.org/")
+(desc BO-Lambert-FPbase "Curated online database of fluorescent protein spectra, properties, and references. Essential tool for choosing fluorescent reporters.")
+
+(isa BO-Tsien-GFPLightingUpLife ReferenceWork)
+(title BO-Tsien-GFPLightingUpLife "GFP: Lighting Up Life (iBiology Lecture)")
+(author BO-Tsien-GFPLightingUpLife "Roger Tsien")
+(resourceType BO-Tsien-GFPLightingUpLife video)
+(level BO-Tsien-GFPLightingUpLife beginner)
+(section BO-Tsien-GFPLightingUpLife BioluminescenceFluorescence)
+(url BO-Tsien-GFPLightingUpLife "https://www.youtube.com/watch?v=9mJYY4LiLjk")
+(desc BO-Tsien-GFPLightingUpLife "iBiology talk by Nobel laureate Roger Tsien explaining GFP engineering and the rainbow of fluorescent proteins it inspired.")
+
+;; ── Biomedical Imaging ──
+
+(isa BO-Contag-BioluminescenceImaging ReferenceWork)
+(title BO-Contag-BioluminescenceImaging "Bioluminescence Imaging in Living Organisms")
+(author BO-Contag-BioluminescenceImaging "Christopher H. Contag & Michael H. Bachmann")
+(resourceType BO-Contag-BioluminescenceImaging notes)
+(level BO-Contag-BioluminescenceImaging advanced)
+(section BO-Contag-BioluminescenceImaging BioluminescenceFluorescence)
+(url BO-Contag-BioluminescenceImaging "https://doi.org/10.1146/annurev.bioeng.4.111901.093336")
+(desc BO-Contag-BioluminescenceImaging "Annual Review of Biomedical Engineering paper covering how bioluminescent reporters enable non-invasive imaging of biological processes in vivo.")
+
+(isa BO-Kubitscheck-FluorescenceMicroscopy ReferenceWork)
+(title BO-Kubitscheck-FluorescenceMicroscopy "Fluorescence Microscopy: From Principles to Biological Applications")
+(author BO-Kubitscheck-FluorescenceMicroscopy "Ulrich Kubitscheck (ed.)")
+(resourceType BO-Kubitscheck-FluorescenceMicroscopy book)
+(level BO-Kubitscheck-FluorescenceMicroscopy intermediate)
+(section BO-Kubitscheck-FluorescenceMicroscopy BioluminescenceFluorescence)
+(url BO-Kubitscheck-FluorescenceMicroscopy "https://www.wiley.com/en-us/Fluorescence+Microscopy%3A+From+Principles+to+Biological+Applications%2C+2nd+Edition-p-9783527332711")
+(desc BO-Kubitscheck-FluorescenceMicroscopy "Textbook covering fluorescence microscopy theory and practical techniques for biologists, from widefield to super-resolution.")
+
+(isa BO-iBiology-MicroscopySeries ReferenceWork)
+(title BO-iBiology-MicroscopySeries "iBiology — Microscopy Series")
+(author BO-iBiology-MicroscopySeries "iBiology / HHMI")
+(resourceType BO-iBiology-MicroscopySeries course)
+(level BO-iBiology-MicroscopySeries intermediate)
+(section BO-iBiology-MicroscopySeries BioluminescenceFluorescence)
+(url BO-iBiology-MicroscopySeries "https://www.ibiology.org/online-biology-courses/microscopy-series/")
+(desc BO-iBiology-MicroscopySeries "Free video lecture series on modern microscopy methods, including confocal, two-photon, light-sheet, and super-resolution imaging.")
+
+(isa BO-Napari-ImageViewer ReferenceWork)
+(title BO-Napari-ImageViewer "Napari: Multi-Dimensional Image Viewer for Python")
+(author BO-Napari-ImageViewer "napari contributors")
+(resourceType BO-Napari-ImageViewer code)
+(level BO-Napari-ImageViewer intermediate)
+(section BO-Napari-ImageViewer BioluminescenceFluorescence)
+(url BO-Napari-ImageViewer "https://github.com/napari/napari")
+(desc BO-Napari-ImageViewer "Open-source Python tool for browsing and annotating multi-dimensional bioimaging data, widely used in fluorescence microscopy.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: BIOLOGICAL VISION SYSTEMS
+;; Compound eyes, exceptional vision, bio-inspired cameras
+;; ════════════════════════════════════════════════════════════
+
+;; ── Compound Eye Design ──
+
+(isa BO-Land-AnimalEyes ReferenceWork)
+(title BO-Land-AnimalEyes "Animal Eyes (Oxford Animal Biology Series)")
+(author BO-Land-AnimalEyes "Michael F. Land & Dan-Eric Nilsson")
+(resourceType BO-Land-AnimalEyes book)
+(level BO-Land-AnimalEyes intermediate)
+(section BO-Land-AnimalEyes BiologicalVision)
+(url BO-Land-AnimalEyes "https://global.oup.com/academic/product/animal-eyes-9780199581146")
+(desc BO-Land-AnimalEyes "The standard reference on comparative eye design, covering optics, photoreceptor physiology, and the evolutionary pathways of eye types.")
+
+(isa BO-Land-OpticsCompoundEyes ReferenceWork)
+(title BO-Land-OpticsCompoundEyes "The Optics of Compound Eyes")
+(author BO-Land-OpticsCompoundEyes "Michael F. Land")
+(resourceType BO-Land-OpticsCompoundEyes notes)
+(level BO-Land-OpticsCompoundEyes advanced)
+(section BO-Land-OpticsCompoundEyes BiologicalVision)
+(url BO-Land-OpticsCompoundEyes "https://doi.org/10.1098/rstb.1981.0159")
+(desc BO-Land-OpticsCompoundEyes "Classic Philosophical Transactions paper analysing the optical principles of apposition and superposition compound eyes.")
+
+(isa BO-Microcosmos-CompoundEyes ReferenceWork)
+(title BO-Microcosmos-CompoundEyes "How Do Compound Eyes Work? (Journey to the Microcosmos)")
+(author BO-Microcosmos-CompoundEyes "Journey to the Microcosmos / Complexly")
+(resourceType BO-Microcosmos-CompoundEyes video)
+(level BO-Microcosmos-CompoundEyes beginner)
+(section BO-Microcosmos-CompoundEyes BiologicalVision)
+(url BO-Microcosmos-CompoundEyes "https://www.youtube.com/watch?v=LUz8gPeCjjE")
+(desc BO-Microcosmos-CompoundEyes "Accessible video explaining how insect compound eyes form images, trade-offs between resolution and sensitivity, and neural superposition.")
+
+(isa BO-Baird-InsectVisionDataset ReferenceWork)
+(title BO-Baird-InsectVisionDataset "Insect Vision Simulation Dataset")
+(author BO-Baird-InsectVisionDataset "Emily Baird lab / Lund University")
+(resourceType BO-Baird-InsectVisionDataset data)
+(level BO-Baird-InsectVisionDataset intermediate)
+(section BO-Baird-InsectVisionDataset BiologicalVision)
+(url BO-Baird-InsectVisionDataset "https://doi.org/10.5281/zenodo.3836688")
+(desc BO-Baird-InsectVisionDataset "Zenodo-hosted dataset of simulated insect-eye views used for studying navigation and visual ecology in arthropods.")
+
+;; ── Exceptional Vision Systems ──
+
+(isa BO-Thoen-MantisShrimpColour ReferenceWork)
+(title BO-Thoen-MantisShrimpColour "A Different Form of Colour Vision in Mantis Shrimp")
+(author BO-Thoen-MantisShrimpColour "Hanne H. Thoen et al.")
+(resourceType BO-Thoen-MantisShrimpColour notes)
+(level BO-Thoen-MantisShrimpColour advanced)
+(section BO-Thoen-MantisShrimpColour BiologicalVision)
+(url BO-Thoen-MantisShrimpColour "https://doi.org/10.1126/science.1245824")
+(desc BO-Thoen-MantisShrimpColour "Science paper revealing that mantis shrimp use a unique colour-recognition system based on temporal scanning rather than opponent processing.")
+
+(isa BO-Marshall-PolarisationVision ReferenceWork)
+(title BO-Marshall-PolarisationVision "Polarisation Vision in Stomatopods")
+(author BO-Marshall-PolarisationVision "Justin Marshall & Thomas Cronin")
+(resourceType BO-Marshall-PolarisationVision notes)
+(level BO-Marshall-PolarisationVision advanced)
+(section BO-Marshall-PolarisationVision BiologicalVision)
+(url BO-Marshall-PolarisationVision "https://doi.org/10.1038/21264")
+(desc BO-Marshall-PolarisationVision "Nature paper demonstrating circular polarisation vision in mantis shrimp, the first such finding in any animal.")
+
+(isa BO-ZeFrank-MantisShrimpTrueFacts ReferenceWork)
+(title BO-ZeFrank-MantisShrimpTrueFacts "The Mantis Shrimp Sees Like Nothing Else (True Facts)")
+(author BO-ZeFrank-MantisShrimpTrueFacts "Ze Frank / BuzzFeed")
+(resourceType BO-ZeFrank-MantisShrimpTrueFacts video)
+(level BO-ZeFrank-MantisShrimpTrueFacts beginner)
+(section BO-ZeFrank-MantisShrimpTrueFacts BiologicalVision)
+(url BO-ZeFrank-MantisShrimpTrueFacts "https://www.youtube.com/watch?v=F5FEj9U-CJM")
+(desc BO-ZeFrank-MantisShrimpTrueFacts "Entertaining and informative video covering mantis shrimp visual superpowers, including their 16 photoreceptor types.")
+
+(isa BO-Douglas-TapetumLucidum ReferenceWork)
+(title BO-Douglas-TapetumLucidum "Tapetum Lucidum: Structure, Function and Evolution")
+(author BO-Douglas-TapetumLucidum "Ron H. Douglas & Jeffrey C. Partridge")
+(resourceType BO-Douglas-TapetumLucidum notes)
+(level BO-Douglas-TapetumLucidum intermediate)
+(section BO-Douglas-TapetumLucidum BiologicalVision)
+(url BO-Douglas-TapetumLucidum "https://doi.org/10.1007/978-1-4614-4355-1_2")
+(desc BO-Douglas-TapetumLucidum "Book chapter reviewing the structure, optical function, and evolutionary distribution of reflective tapeta across vertebrate taxa.")
+
+;; ── Bio-Inspired Cameras ──
+
+(isa BO-Song-ArthropodEyeCamera ReferenceWork)
+(title BO-Song-ArthropodEyeCamera "Digital Cameras with Designs Inspired by the Arthropod Eye")
+(author BO-Song-ArthropodEyeCamera "Young Min Song et al.")
+(resourceType BO-Song-ArthropodEyeCamera notes)
+(level BO-Song-ArthropodEyeCamera advanced)
+(section BO-Song-ArthropodEyeCamera BiologicalVision)
+(url BO-Song-ArthropodEyeCamera "https://doi.org/10.1038/nature12083")
+(desc BO-Song-ArthropodEyeCamera "Nature paper presenting a hemispherical compound-eye camera with 180-degree field of view and nearly infinite depth of field.")
+
+(isa BO-Jeong-ArtificialCompoundEye ReferenceWork)
+(title BO-Jeong-ArtificialCompoundEye "An Artificial Compound Eye for Machine Vision")
+(author BO-Jeong-ArtificialCompoundEye "Ki-Hun Jeong et al.")
+(resourceType BO-Jeong-ArtificialCompoundEye notes)
+(level BO-Jeong-ArtificialCompoundEye advanced)
+(section BO-Jeong-ArtificialCompoundEye BiologicalVision)
+(url BO-Jeong-ArtificialCompoundEye "https://doi.org/10.1126/science.1123053")
+(desc BO-Jeong-ArtificialCompoundEye "Science paper demonstrating microfabricated artificial ommatidia arrays that mimic insect compound-eye geometry.")
+
+(isa BO-Wetzstein-BioInspiredCamera ReferenceWork)
+(title BO-Wetzstein-BioInspiredCamera "Bio-Inspired Camera Design (Stanford Computational Imaging Lab)")
+(author BO-Wetzstein-BioInspiredCamera "Gordon Wetzstein / Stanford")
+(resourceType BO-Wetzstein-BioInspiredCamera video)
+(level BO-Wetzstein-BioInspiredCamera intermediate)
+(section BO-Wetzstein-BioInspiredCamera BiologicalVision)
+(url BO-Wetzstein-BioInspiredCamera "https://www.youtube.com/watch?v=oim7KzMNEDk")
+(desc BO-Wetzstein-BioInspiredCamera "Lecture on computational imaging approaches inspired by biological visual systems, including foveated and event-driven cameras.")
+
+(isa BO-UZH-EventCameraSimulator ReferenceWork)
+(title BO-UZH-EventCameraSimulator "Event Camera — Dynamic Vision Sensor Simulator")
+(author BO-UZH-EventCameraSimulator "Robotics and Perception Group / UZH-RPG")
+(resourceType BO-UZH-EventCameraSimulator code)
+(level BO-UZH-EventCameraSimulator advanced)
+(section BO-UZH-EventCameraSimulator BiologicalVision)
+(url BO-UZH-EventCameraSimulator "https://github.com/uzh-rpg/rpg_vid2e")
+(desc BO-UZH-EventCameraSimulator "Open-source simulator for event cameras, bio-inspired sensors that respond to changes in illumination like retinal ganglion cells.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: ANTI-REFLECTIVE SURFACES
+;; Moth-eye arrays, cicada wings, solar & display applications
+;; ════════════════════════════════════════════════════════════
+
+;; ── Moth-Eye Nanostructures ──
+
+(isa BO-Chen-MothEyeReview ReferenceWork)
+(title BO-Chen-MothEyeReview "Moth-Eye Anti-Reflection Coatings: A Review")
+(author BO-Chen-MothEyeReview "Wilson W. Chen & K. Y. Lam")
+(resourceType BO-Chen-MothEyeReview notes)
+(level BO-Chen-MothEyeReview intermediate)
+(section BO-Chen-MothEyeReview AntiReflectiveSurfaces)
+(url BO-Chen-MothEyeReview "https://doi.org/10.1016/j.optlaseng.2018.10.015")
+(desc BO-Chen-MothEyeReview "Comprehensive review of moth-eye-inspired anti-reflective surfaces covering fabrication techniques and optical performance.")
+
+(isa BO-Bernhard-MothEyePrinciple ReferenceWork)
+(title BO-Bernhard-MothEyePrinciple "Reduction of Lens Reflexion by the Moth-Eye Principle")
+(author BO-Bernhard-MothEyePrinciple "C. G. Bernhard & W. H. Miller")
+(resourceType BO-Bernhard-MothEyePrinciple notes)
+(level BO-Bernhard-MothEyePrinciple advanced)
+(section BO-Bernhard-MothEyePrinciple AntiReflectiveSurfaces)
+(url BO-Bernhard-MothEyePrinciple "https://doi.org/10.1016/0001-6160(62)90098-1")
+(desc BO-Bernhard-MothEyePrinciple "Pioneering paper identifying and explaining the anti-reflective nipple arrays on moth corneas — the origin of the moth-eye concept.")
+
+(isa BO-Huang-MothEyeSilicon ReferenceWork)
+(title BO-Huang-MothEyeSilicon "Broadband Moth-Eye Antireflection Coatings on Silicon")
+(author BO-Huang-MothEyeSilicon "Yu-Fang Huang et al.")
+(resourceType BO-Huang-MothEyeSilicon notes)
+(level BO-Huang-MothEyeSilicon advanced)
+(section BO-Huang-MothEyeSilicon AntiReflectiveSurfaces)
+(url BO-Huang-MothEyeSilicon "https://doi.org/10.1038/nnano.2007.227")
+(desc BO-Huang-MothEyeSilicon "Nature Nanotechnology paper demonstrating sub-wavelength silicon nanostructures that achieve extremely low broadband reflectance.")
+
+(isa BO-MinuteEarth-MothEye ReferenceWork)
+(title BO-MinuteEarth-MothEye "Why Don't Moth Eyes Reflect Light? (MinuteEarth)")
+(author BO-MinuteEarth-MothEye "MinuteEarth")
+(resourceType BO-MinuteEarth-MothEye video)
+(level BO-MinuteEarth-MothEye beginner)
+(section BO-MinuteEarth-MothEye AntiReflectiveSurfaces)
+(url BO-MinuteEarth-MothEye "https://www.youtube.com/watch?v=dSAhD4KGVtQ")
+(desc BO-MinuteEarth-MothEye "Short animated explainer on the gradient-index principle behind moth-eye anti-reflection and its industrial applications.")
+
+;; ── Cicada & Dragonfly Wings ──
+
+(isa BO-Ivanova-CicadaAntibacterial ReferenceWork)
+(title BO-Ivanova-CicadaAntibacterial "Biophysical Model of Cicada Wing Nanopillar Antibacterial Activity")
+(author BO-Ivanova-CicadaAntibacterial "Elena P. Ivanova et al.")
+(resourceType BO-Ivanova-CicadaAntibacterial notes)
+(level BO-Ivanova-CicadaAntibacterial advanced)
+(section BO-Ivanova-CicadaAntibacterial AntiReflectiveSurfaces)
+(url BO-Ivanova-CicadaAntibacterial "https://doi.org/10.1002/smll.201200528")
+(desc BO-Ivanova-CicadaAntibacterial "Small paper demonstrating that cicada wing nanopillars physically rupture bacteria on contact — a dual optical and antimicrobial surface.")
+
+(isa BO-Ivanova-CicadaBactericidal ReferenceWork)
+(title BO-Ivanova-CicadaBactericidal "Natural Bactericidal Surfaces: Mechanical Rupture of P. aeruginosa by Cicada Wings")
+(author BO-Ivanova-CicadaBactericidal "Elena P. Ivanova et al.")
+(resourceType BO-Ivanova-CicadaBactericidal notes)
+(level BO-Ivanova-CicadaBactericidal intermediate)
+(section BO-Ivanova-CicadaBactericidal AntiReflectiveSurfaces)
+(url BO-Ivanova-CicadaBactericidal "https://doi.org/10.1002/smll.201200528")
+(desc BO-Ivanova-CicadaBactericidal "Landmark study showing that the nanostructured surface of cicada wings kills gram-negative bacteria through physical mechanisms rather than chemistry.")
+
+(isa BO-Watson-DragonflyWing ReferenceWork)
+(title BO-Watson-DragonflyWing "Dragonfly Wing Nanostructures and Wettability")
+(author BO-Watson-DragonflyWing "Gregory S. Watson et al.")
+(resourceType BO-Watson-DragonflyWing notes)
+(level BO-Watson-DragonflyWing intermediate)
+(section BO-Watson-DragonflyWing AntiReflectiveSurfaces)
+(url BO-Watson-DragonflyWing "https://doi.org/10.1016/j.actbio.2012.11.046")
+(desc BO-Watson-DragonflyWing "Study of hierarchical nanostructures on dragonfly wings that provide combined anti-reflective, superhydrophobic, and self-cleaning properties.")
+
+(isa BO-Veritasium-InsectWingNano ReferenceWork)
+(title BO-Veritasium-InsectWingNano "Nano-Fabrication by Insect Wings (Veritasium)")
+(author BO-Veritasium-InsectWingNano "Derek Muller / Veritasium")
+(resourceType BO-Veritasium-InsectWingNano video)
+(level BO-Veritasium-InsectWingNano beginner)
+(section BO-Veritasium-InsectWingNano AntiReflectiveSurfaces)
+(url BO-Veritasium-InsectWingNano "https://www.youtube.com/watch?v=Nxb5JiKryDE")
+(desc BO-Veritasium-InsectWingNano "Popular science video exploring how insect wing nanostructures are inspiring next-generation antimicrobial and anti-reflective surfaces.")
+
+;; ── Solar & Display Applications ──
+
+(isa BO-Song-BioInspiredARSolar ReferenceWork)
+(title BO-Song-BioInspiredARSolar "Bio-Inspired Anti-Reflective Surfaces for Solar Cells")
+(author BO-Song-BioInspiredARSolar "Yanlin Song et al.")
+(resourceType BO-Song-BioInspiredARSolar notes)
+(level BO-Song-BioInspiredARSolar intermediate)
+(section BO-Song-BioInspiredARSolar AntiReflectiveSurfaces)
+(url BO-Song-BioInspiredARSolar "https://doi.org/10.1002/aenm.201200530")
+(desc BO-Song-BioInspiredARSolar "Advanced Energy Materials review of how moth-eye and leaf-inspired anti-reflective textures boost photovoltaic efficiency.")
+
+(isa BO-Jung-MothEyeOrganicSolar ReferenceWork)
+(title BO-Jung-MothEyeOrganicSolar "Moth-Eye-Inspired AR Coatings for Organic Solar Cells")
+(author BO-Jung-MothEyeOrganicSolar "Seung-Hwan Jung et al.")
+(resourceType BO-Jung-MothEyeOrganicSolar notes)
+(level BO-Jung-MothEyeOrganicSolar advanced)
+(section BO-Jung-MothEyeOrganicSolar AntiReflectiveSurfaces)
+(url BO-Jung-MothEyeOrganicSolar "https://doi.org/10.1021/nn5017724")
+(desc BO-Jung-MothEyeOrganicSolar "ACS Nano paper demonstrating that moth-eye textured PDMS films significantly reduce reflection losses in organic photovoltaics.")
+
+(isa BO-Liu-S4RCWA ReferenceWork)
+(title BO-Liu-S4RCWA "RCWA Simulation Tool (S4: Stanford Stratified Structure Solver)")
+(author BO-Liu-S4RCWA "Victor Liu / Stanford")
+(resourceType BO-Liu-S4RCWA code)
+(level BO-Liu-S4RCWA advanced)
+(section BO-Liu-S4RCWA AntiReflectiveSurfaces)
+(url BO-Liu-S4RCWA "https://github.com/victorliu/S4")
+(desc BO-Liu-S4RCWA "Open-source rigorous coupled-wave analysis solver for simulating light interaction with periodic nanostructures like moth-eye arrays.")
+
+(isa BO-Guo-NanoimprintLithography ReferenceWork)
+(title BO-Guo-NanoimprintLithography "Nanoimprint Lithography for Bio-Inspired Optical Surfaces")
+(author BO-Guo-NanoimprintLithography "L. Jay Guo")
+(resourceType BO-Guo-NanoimprintLithography notes)
+(level BO-Guo-NanoimprintLithography intermediate)
+(section BO-Guo-NanoimprintLithography AntiReflectiveSurfaces)
+(url BO-Guo-NanoimprintLithography "https://doi.org/10.1002/adma.200600882")
+(desc BO-Guo-NanoimprintLithography "Reviews nanoimprint lithography as a scalable fabrication route for replicating bio-inspired anti-reflective and photonic structures.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: CAMOUFLAGE & ADAPTIVE COLORATION
+;; Chromatophores, chameleon nanocrystals, adaptive technology
+;; ════════════════════════════════════════════════════════════
+
+;; ── Cephalopod Color Change ──
+
+(isa BO-Hanlon-CephalopodCamouflage ReferenceWork)
+(title BO-Hanlon-CephalopodCamouflage "Cephalopod Dynamic Camouflage")
+(author BO-Hanlon-CephalopodCamouflage "Roger T. Hanlon")
+(resourceType BO-Hanlon-CephalopodCamouflage notes)
+(level BO-Hanlon-CephalopodCamouflage intermediate)
+(section BO-Hanlon-CephalopodCamouflage CamouflageAdaptive)
+(url BO-Hanlon-CephalopodCamouflage "https://doi.org/10.1016/j.cub.2007.10.008")
+(desc BO-Hanlon-CephalopodCamouflage "Current Biology primer explaining how cuttlefish and octopus achieve rapid adaptive camouflage through neurally controlled chromatophore arrays.")
+
+(isa BO-Mathger-Chromatophores ReferenceWork)
+(title BO-Mathger-Chromatophores "Cephalopod Chromatophores: Neurobiology and Natural History")
+(author BO-Mathger-Chromatophores "Lydia M. Mathger, Eric J. Denton, N. Justin Marshall & Roger T. Hanlon")
+(resourceType BO-Mathger-Chromatophores notes)
+(level BO-Mathger-Chromatophores advanced)
+(section BO-Mathger-Chromatophores CamouflageAdaptive)
+(url BO-Mathger-Chromatophores "https://doi.org/10.1111/j.1469-185X.2008.00050.x")
+(desc BO-Mathger-Chromatophores "Biological Reviews paper providing a comprehensive treatment of chromatophore physiology, neural control, and optical properties.")
+
+(isa BO-NOVA-KingsOfCamouflage ReferenceWork)
+(title BO-NOVA-KingsOfCamouflage "Kings of Camouflage (NOVA Documentary)")
+(author BO-NOVA-KingsOfCamouflage "PBS / NOVA")
+(resourceType BO-NOVA-KingsOfCamouflage video)
+(level BO-NOVA-KingsOfCamouflage beginner)
+(section BO-NOVA-KingsOfCamouflage CamouflageAdaptive)
+(url BO-NOVA-KingsOfCamouflage "https://www.youtube.com/watch?v=PmDTtkZlMwM")
+(desc BO-NOVA-KingsOfCamouflage "Full documentary following researchers studying cuttlefish camouflage abilities — how they see, process, and replicate visual scenes.")
+
+(isa BO-Smithsonian-OctopusSkin ReferenceWork)
+(title BO-Smithsonian-OctopusSkin "Octopus Skin — The Bioengineering of Adaptive Camouflage")
+(author BO-Smithsonian-OctopusSkin "Smithsonian Channel")
+(resourceType BO-Smithsonian-OctopusSkin video)
+(level BO-Smithsonian-OctopusSkin beginner)
+(section BO-Smithsonian-OctopusSkin CamouflageAdaptive)
+(url BO-Smithsonian-OctopusSkin "https://www.youtube.com/watch?v=SfkhEm3LfsE")
+(desc BO-Smithsonian-OctopusSkin "Short video exploring how octopus skin acts as a distributed display, changing colour and texture without direct brain commands.")
+
+;; ── Chameleon & Other Systems ──
+
+(isa BO-Teyssier-ChameleonPhotonicCrystals ReferenceWork)
+(title BO-Teyssier-ChameleonPhotonicCrystals "Photonic Crystals Cause Active Colour Change in Chameleons")
+(author BO-Teyssier-ChameleonPhotonicCrystals "Jeremie Teyssier et al.")
+(resourceType BO-Teyssier-ChameleonPhotonicCrystals notes)
+(level BO-Teyssier-ChameleonPhotonicCrystals advanced)
+(section BO-Teyssier-ChameleonPhotonicCrystals CamouflageAdaptive)
+(url BO-Teyssier-ChameleonPhotonicCrystals "https://doi.org/10.1038/ncomms7368")
+(desc BO-Teyssier-ChameleonPhotonicCrystals "Nature Communications paper revealing that chameleons shift colour by actively tuning a lattice of guanine nanocrystals, not by dispersing pigments.")
+
+(isa BO-Gorodetsky-SquidIRCamouflage ReferenceWork)
+(title BO-Gorodetsky-SquidIRCamouflage "Adaptive Infrared Camouflage in Squid Skin")
+(author BO-Gorodetsky-SquidIRCamouflage "Alon A. Gorodetsky et al.")
+(resourceType BO-Gorodetsky-SquidIRCamouflage notes)
+(level BO-Gorodetsky-SquidIRCamouflage advanced)
+(section BO-Gorodetsky-SquidIRCamouflage CamouflageAdaptive)
+(url BO-Gorodetsky-SquidIRCamouflage "https://doi.org/10.1002/adma.201301472")
+(desc BO-Gorodetsky-SquidIRCamouflage "Advanced Materials paper on reflectin proteins in squid skin that dynamically modulate infrared reflectance, inspiring thermal camouflage.")
+
+(isa BO-Ligon-ColorChangeAnimals ReferenceWork)
+(title BO-Ligon-ColorChangeAnimals "Color Change in Animals: Mechanisms and Functions")
+(author BO-Ligon-ColorChangeAnimals "Russell Ligon & Kevin McGraw")
+(resourceType BO-Ligon-ColorChangeAnimals notes)
+(level BO-Ligon-ColorChangeAnimals intermediate)
+(section BO-Ligon-ColorChangeAnimals CamouflageAdaptive)
+(url BO-Ligon-ColorChangeAnimals "https://doi.org/10.1002/9780470015902.a0026557")
+(desc BO-Ligon-ColorChangeAnimals "Encyclopedia of Life Sciences article reviewing physiological and morphological colour change across vertebrates and invertebrates.")
+
+(isa BO-SciShow-ChameleonColorChange ReferenceWork)
+(title BO-SciShow-ChameleonColorChange "How Do Chameleons Change Color? (SciShow)")
+(author BO-SciShow-ChameleonColorChange "SciShow / Hank Green")
+(resourceType BO-SciShow-ChameleonColorChange video)
+(level BO-SciShow-ChameleonColorChange beginner)
+(section BO-SciShow-ChameleonColorChange CamouflageAdaptive)
+(url BO-SciShow-ChameleonColorChange "https://www.youtube.com/watch?v=fYJmFhTR3D0")
+(desc BO-SciShow-ChameleonColorChange "Clear explanation of the photonic crystal mechanism behind chameleon colour change, debunking the pigment-dispersion myth.")
+
+;; ── Adaptive Camouflage Technology ──
+
+(isa BO-Yu-AdaptiveCamouflage ReferenceWork)
+(title BO-Yu-AdaptiveCamouflage "Adaptive Camouflage Inspired by Cephalopods")
+(author BO-Yu-AdaptiveCamouflage "Cunjiang Yu et al.")
+(resourceType BO-Yu-AdaptiveCamouflage notes)
+(level BO-Yu-AdaptiveCamouflage advanced)
+(section BO-Yu-AdaptiveCamouflage CamouflageAdaptive)
+(url BO-Yu-AdaptiveCamouflage "https://doi.org/10.1073/pnas.1410494111")
+(desc BO-Yu-AdaptiveCamouflage "PNAS paper describing flexible optoelectronic sheets that sense and adapt to background colour, inspired by cephalopod skin.")
+
+(isa BO-Morin-SoftRoboticsCamouflage ReferenceWork)
+(title BO-Morin-SoftRoboticsCamouflage "Soft Robotics with Cephalopod-Inspired Camouflage")
+(author BO-Morin-SoftRoboticsCamouflage "Stephen A. Morin et al.")
+(resourceType BO-Morin-SoftRoboticsCamouflage notes)
+(level BO-Morin-SoftRoboticsCamouflage intermediate)
+(section BO-Morin-SoftRoboticsCamouflage CamouflageAdaptive)
+(url BO-Morin-SoftRoboticsCamouflage "https://doi.org/10.1126/science.1222149")
+(desc BO-Morin-SoftRoboticsCamouflage "Science paper demonstrating pneumatically driven colour-changing skins on soft robots, mimicking cephalopod adaptive camouflage.")
+
+(isa BO-Yu-ArtificialCephalopodSkin ReferenceWork)
+(title BO-Yu-ArtificialCephalopodSkin "Artificial Cephalopod Skin (Stretchable Electronics)")
+(author BO-Yu-ArtificialCephalopodSkin "Cunjiang Yu / University of Houston")
+(resourceType BO-Yu-ArtificialCephalopodSkin video)
+(level BO-Yu-ArtificialCephalopodSkin intermediate)
+(section BO-Yu-ArtificialCephalopodSkin CamouflageAdaptive)
+(url BO-Yu-ArtificialCephalopodSkin "https://www.youtube.com/watch?v=VYMnQeKX8T0")
+(desc BO-Yu-ArtificialCephalopodSkin "Research presentation on stretchable electronic skins that mimic cephalopod colour-changing abilities for wearable and robotics applications.")
+
+(isa BO-Butt-ThermochromicElectrochromic ReferenceWork)
+(title BO-Butt-ThermochromicElectrochromic "Thermochromic & Electrochromic Materials for Adaptive Camouflage")
+(author BO-Butt-ThermochromicElectrochromic "Haider Butt et al.")
+(resourceType BO-Butt-ThermochromicElectrochromic notes)
+(level BO-Butt-ThermochromicElectrochromic intermediate)
+(section BO-Butt-ThermochromicElectrochromic CamouflageAdaptive)
+(url BO-Butt-ThermochromicElectrochromic "https://doi.org/10.1002/adom.201800091")
+(desc BO-Butt-ThermochromicElectrochromic "Advanced Optical Materials review of stimuli-responsive materials that change colour in response to heat, electricity, or light for camouflage.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: BIO-INSPIRED LIGHT HARVESTING
+;; Photosynthesis, artificial leaves, bio-inspired solar cells
+;; ════════════════════════════════════════════════════════════
+
+;; ── Natural Photosynthesis Mechanisms ──
+
+(isa BO-Blankenship-MolecularPhotosynthesis ReferenceWork)
+(title BO-Blankenship-MolecularPhotosynthesis "Molecular Mechanisms of Photosynthesis")
+(author BO-Blankenship-MolecularPhotosynthesis "Robert E. Blankenship")
+(resourceType BO-Blankenship-MolecularPhotosynthesis book)
+(level BO-Blankenship-MolecularPhotosynthesis intermediate)
+(section BO-Blankenship-MolecularPhotosynthesis BioLightHarvesting)
+(url BO-Blankenship-MolecularPhotosynthesis "https://www.wiley.com/en-us/Molecular+Mechanisms+of+Photosynthesis%2C+3rd+Edition-p-9781119800019")
+(desc BO-Blankenship-MolecularPhotosynthesis "The leading textbook on photosynthesis at the molecular level, covering light-harvesting, electron transfer, and carbon fixation.")
+
+(isa BO-Engel-QuantumCoherence ReferenceWork)
+(title BO-Engel-QuantumCoherence "Evidence for Wavelike Energy Transfer Through Quantum Coherence in Photosynthetic Systems")
+(author BO-Engel-QuantumCoherence "Gregory S. Engel et al.")
+(resourceType BO-Engel-QuantumCoherence notes)
+(level BO-Engel-QuantumCoherence advanced)
+(section BO-Engel-QuantumCoherence BioLightHarvesting)
+(url BO-Engel-QuantumCoherence "https://doi.org/10.1038/nature05678")
+(desc BO-Engel-QuantumCoherence "Landmark Nature paper demonstrating long-lived quantum coherence in the Fenna-Matthews-Olson complex at physiological temperatures.")
+
+(isa BO-Scholes-QuantumBiology ReferenceWork)
+(title BO-Scholes-QuantumBiology "Quantum Biology: Photosynthesis (Royal Society Lecture)")
+(author BO-Scholes-QuantumBiology "Gregory Scholes")
+(resourceType BO-Scholes-QuantumBiology video)
+(level BO-Scholes-QuantumBiology intermediate)
+(section BO-Scholes-QuantumBiology BioLightHarvesting)
+(url BO-Scholes-QuantumBiology "https://www.youtube.com/watch?v=bDHuZBjKBbE")
+(desc BO-Scholes-QuantumBiology "Royal Society lecture explaining how quantum effects may enhance the efficiency of photosynthetic light harvesting.")
+
+(isa BO-KhanAcademy-Photosynthesis ReferenceWork)
+(title BO-KhanAcademy-Photosynthesis "Principles of Photosynthesis (Khan Academy)")
+(author BO-KhanAcademy-Photosynthesis "Khan Academy")
+(resourceType BO-KhanAcademy-Photosynthesis course)
+(level BO-KhanAcademy-Photosynthesis beginner)
+(section BO-KhanAcademy-Photosynthesis BioLightHarvesting)
+(url BO-KhanAcademy-Photosynthesis "https://www.khanacademy.org/science/biology/photosynthesis-in-plants")
+(desc BO-KhanAcademy-Photosynthesis "Free beginner-level course covering the light reactions, Calvin cycle, and the role of chlorophyll in photosynthesis.")
+
+;; ── Artificial Photosynthesis ──
+
+(isa BO-Gust-ArtificialPhotosynthesis ReferenceWork)
+(title BO-Gust-ArtificialPhotosynthesis "Artificial Photosynthesis: From Molecular Catalysts for Light-Driven Water Splitting to Photoelectrochemical Cells")
+(author BO-Gust-ArtificialPhotosynthesis "Devens Gust, Thomas A. Moore & Ana L. Moore")
+(resourceType BO-Gust-ArtificialPhotosynthesis notes)
+(level BO-Gust-ArtificialPhotosynthesis advanced)
+(section BO-Gust-ArtificialPhotosynthesis BioLightHarvesting)
+(url BO-Gust-ArtificialPhotosynthesis "https://doi.org/10.1021/ar200177q")
+(desc BO-Gust-ArtificialPhotosynthesis "Accounts of Chemical Research review tracing the evolution from natural photosynthetic reaction centres to artificial molecular devices for solar fuel production.")
+
+(isa BO-Nocera-ArtificialLeaf ReferenceWork)
+(title BO-Nocera-ArtificialLeaf "The Artificial Leaf")
+(author BO-Nocera-ArtificialLeaf "Daniel G. Nocera")
+(resourceType BO-Nocera-ArtificialLeaf notes)
+(level BO-Nocera-ArtificialLeaf intermediate)
+(section BO-Nocera-ArtificialLeaf BioLightHarvesting)
+(url BO-Nocera-ArtificialLeaf "https://doi.org/10.1021/ar2003013")
+(desc BO-Nocera-ArtificialLeaf "Nocera's influential review on silicon-based artificial leaves that split water using earth-abundant catalysts, mimicking photosystem II.")
+
+(isa BO-JCAP-SolarFuels ReferenceWork)
+(title BO-JCAP-SolarFuels "Solar Fuels via Artificial Photosynthesis (Caltech / JCAP)")
+(author BO-JCAP-SolarFuels "Joint Center for Artificial Photosynthesis / Caltech")
+(resourceType BO-JCAP-SolarFuels video)
+(level BO-JCAP-SolarFuels intermediate)
+(section BO-JCAP-SolarFuels BioLightHarvesting)
+(url BO-JCAP-SolarFuels "https://www.youtube.com/watch?v=qlFgPl-ELTU")
+(desc BO-JCAP-SolarFuels "Overview of the JCAP research program developing photoelectrochemical systems for solar-driven water splitting and CO2 reduction.")
+
+(isa BO-Burgelman-SCAPS ReferenceWork)
+(title BO-Burgelman-SCAPS "Photoelectrochemistry Simulation Tools (SCAPS)")
+(author BO-Burgelman-SCAPS "Marc Burgelman / University of Gent")
+(resourceType BO-Burgelman-SCAPS code)
+(level BO-Burgelman-SCAPS advanced)
+(section BO-Burgelman-SCAPS BioLightHarvesting)
+(url BO-Burgelman-SCAPS "https://scaps.elis.ugent.be/")
+(desc BO-Burgelman-SCAPS "Solar cell simulation software useful for modelling bio-inspired photoelectrochemical devices and dye-sensitized solar cells.")
+
+;; ── Bio-Inspired Solar Cells ──
+
+(isa BO-Gratzel-DyeSensitizedSolar ReferenceWork)
+(title BO-Gratzel-DyeSensitizedSolar "Dye-Sensitized Solar Cells (The Gratzel Cell)")
+(author BO-Gratzel-DyeSensitizedSolar "Michael Gratzel")
+(resourceType BO-Gratzel-DyeSensitizedSolar notes)
+(level BO-Gratzel-DyeSensitizedSolar intermediate)
+(section BO-Gratzel-DyeSensitizedSolar BioLightHarvesting)
+(url BO-Gratzel-DyeSensitizedSolar "https://doi.org/10.1016/j.jphotochemrev.2003.09.002")
+(desc BO-Gratzel-DyeSensitizedSolar "Foundational review by Gratzel himself on dye-sensitized solar cells, which mimic photosynthetic light harvesting with molecular dyes on nanostructured oxides.")
+
+(isa BO-Li-OrganicSolarCells ReferenceWork)
+(title BO-Li-OrganicSolarCells "Organic Solar Cells: An Overview (Chemical Reviews)")
+(author BO-Li-OrganicSolarCells "Gang Li et al.")
+(resourceType BO-Li-OrganicSolarCells notes)
+(level BO-Li-OrganicSolarCells advanced)
+(section BO-Li-OrganicSolarCells BioLightHarvesting)
+(url BO-Li-OrganicSolarCells "https://doi.org/10.1021/cr100440z")
+(desc BO-Li-OrganicSolarCells "Comprehensive Chemical Reviews article covering organic photovoltaics from donor-acceptor molecular design to device physics.")
+
+(isa BO-Snaith-PerovskiteSolar ReferenceWork)
+(title BO-Snaith-PerovskiteSolar "Perovskite Solar Cells: Stability and Bio-Inspired Design")
+(author BO-Snaith-PerovskiteSolar "Henry Snaith")
+(resourceType BO-Snaith-PerovskiteSolar notes)
+(level BO-Snaith-PerovskiteSolar advanced)
+(section BO-Snaith-PerovskiteSolar BioLightHarvesting)
+(url BO-Snaith-PerovskiteSolar "https://doi.org/10.1021/jz501983v")
+(desc BO-Snaith-PerovskiteSolar "Perspectives article discussing how lessons from biological light-harvesting antenna design inform perovskite photovoltaic architectures.")
+
+(isa BO-ThoughtEmporium-DSSCBuild ReferenceWork)
+(title BO-ThoughtEmporium-DSSCBuild "Build a Dye-Sensitized Solar Cell (DSSC) at Home")
+(author BO-ThoughtEmporium-DSSCBuild "The Thought Emporium")
+(resourceType BO-ThoughtEmporium-DSSCBuild video)
+(level BO-ThoughtEmporium-DSSCBuild beginner)
+(section BO-ThoughtEmporium-DSSCBuild BioLightHarvesting)
+(url BO-ThoughtEmporium-DSSCBuild "https://www.youtube.com/watch?v=TULirBqoEbY")
+(desc BO-ThoughtEmporium-DSSCBuild "Hands-on tutorial for building a working Gratzel cell from berry juice and titanium dioxide, demonstrating bio-inspired solar energy conversion.")
+
+(isa BO-MacKenzie-GPVDM ReferenceWork)
+(title BO-MacKenzie-GPVDM "GPVDM: General-Purpose Photovoltaic Device Model")
+(author BO-MacKenzie-GPVDM "Roderick C. I. MacKenzie")
+(resourceType BO-MacKenzie-GPVDM code)
+(level BO-MacKenzie-GPVDM advanced)
+(section BO-MacKenzie-GPVDM BioLightHarvesting)
+(url BO-MacKenzie-GPVDM "https://github.com/roderickmackenzie/gpvdm")
+(desc BO-MacKenzie-GPVDM "Open-source drift-diffusion simulator for organic and perovskite solar cells, useful for modelling bio-inspired photovoltaic architectures.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BioOpticsReference 85)
+(totalSections BioOpticsReference 7)
+(comment BioOpticsReference
+  "7 sections: Overview (12), Structural Coloration (12),
+   Bioluminescence & Fluorescence (12), Biological Vision (12),
+   Anti-Reflective Surfaces (12), Camouflage & Adaptive (12),
+   Bio-Inspired Light Harvesting (13). Total: 85 resources.")

@@ -1,0 +1,56 @@
+;;; ================================================================
+;;; ISG BRAND / SOLES ELECTRIC COMPANY
+;;; Leading electric repair east of the Mississippi — since 1960
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa SolesElectric ISGBrand)
+(hasAttribute SolesElectric ::LABEL "Soles Electric Company")
+(hasAttribute SolesElectric ::FOUNDED 1960)
+(hasAttribute SolesElectric ::VERTICAL "Electric Motors")
+(hasAttribute SolesElectric ::HEADCOUNT "50-99")
+(hasAttribute SolesElectric ::WEBSITE "soleselectric.com")
+(hasAttribute SolesElectric ::OPERATIONS "24/7/365")
+(hasAttribute SolesElectric ::INDUSTRIES "Steel, Aluminum, Oil & Gas, Manufacturing, Power Plants, Chemical Plants, Coal")
+(MEMBER_OF SolesElectric ISGMotorPumpGroup)
+
+(hasAttribute SolesElectric ::FACILITY_HQ "1552 Tulip Lane, Fairmont, WV 26554")
+(hasAttribute SolesElectric ::FACILITY_HUNT "212 17th St, Huntington, WV 25703")
+
+;; President (Roger Stewart — full profile in personnel/)
+(LEADS RogerStewart SolesElectric)
+
+(isa MikeMorrone Person)
+(hasAttribute MikeMorrone ::LABEL "Mike Morrone")
+(hasAttribute MikeMorrone ::ROLE "General Manager")
+(locatedAt MikeMorrone Fairmont-WV)
+(MEMBER_OF MikeMorrone SolesElectric)
+
+(isa GordonFields Person)
+(hasAttribute GordonFields ::LABEL "Gordon Fields")
+(hasAttribute GordonFields ::ROLE "Superintendent / Shop Foreman")
+(locatedAt GordonFields Huntington-WV)
+(MEMBER_OF GordonFields SolesElectric)
+
+(isa CharlesWimbish Person)
+(hasAttribute CharlesWimbish ::LABEL "Charles Wimbish")
+(hasAttribute CharlesWimbish ::ROLE "Purchasing Manager")
+(hasAttribute CharlesWimbish ::EDUCATION "West Virginia University")
+(locatedAt CharlesWimbish Fairmont-WV)
+(MEMBER_OF CharlesWimbish SolesElectric)
+
+(isa ChuckLeadman Person)
+(hasAttribute ChuckLeadman ::LABEL "Chuck Leadman")
+(hasAttribute ChuckLeadman ::ROLE "Sales Representative")
+(hasAttribute ChuckLeadman ::TERRITORY "Southern WV, Western VA, Eastern KY, SE Ohio")
+(hasAttribute ChuckLeadman ::TENURE "Since November 2012")
+(MEMBER_OF ChuckLeadman SolesElectric)
+
+(isa JohnBishop Person)
+(hasAttribute JohnBishop ::LABEL "John Bishop")
+(hasAttribute JohnBishop ::ROLE "Territory Manager")
+(hasAttribute JohnBishop ::EDUCATION "Marshall University")
+(hasAttribute JohnBishop ::TENURE "Since January 2018")
+(locatedAt JohnBishop Huntington-WV)
+(MEMBER_OF JohnBishop SolesElectric)

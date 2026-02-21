@@ -1,0 +1,34 @@
+;;; ================================================================
+;;; ISG PERSONNEL / CHRIS MCCOY
+;;; Role TBD — Charlotte OS Launch Team Member
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa ChrisMcCoy Person)
+(hasAttribute ChrisMcCoy ::LABEL "Chris McCoy")
+(hasAttribute ChrisMcCoy ::EMAIL "cmccoy@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF ChrisMcCoy ISGCharlotteLaunchTeam)
+(hasAttribute ChrisMcCoy ::CHARLOTTE_MEETING "Feb 24, 2026 launch — direct recipient (To:)")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa ChrisMcCoy-EarlyCharlotteContact SIGNAL)
+(comment ChrisMcCoy-EarlyCharlotteContact
+  "Chris was a direct recipient on the Charlotte OS launch meeting
+   invitation (Feb 24, 2026). His exact role is not yet documented.
+   He is an early Charlotte stakeholder.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithMcCoy PROTOCOL)
+(hasTrigger Protocol-InteractWithMcCoy (sessionCaller ?Session ChrisMcCoy))
+(comment Protocol-InteractWithMcCoy
+  "Chris's role at ISG is not yet fully documented. He was invited
+   as a direct recipient to the Charlotte OS launch meeting. On first
+   interaction, Charlotte should learn and record his role.")

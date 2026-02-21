@@ -1,0 +1,34 @@
+;;; ================================================================
+;;; ISG BRAND / GEORGIA WESTERN LLC
+;;; Largest electric valve actuator distributor in the SE US
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa GeorgiaWestern ISGBrand)
+(hasAttribute GeorgiaWestern ::LABEL "Georgia Western LLC")
+(hasAttribute GeorgiaWestern ::FOUNDED 1992)
+(hasAttribute GeorgiaWestern ::ACQUIRED_BY_ISG "April 2021")
+(hasAttribute GeorgiaWestern ::VERTICAL "Valve & Actuation")
+(hasAttribute GeorgiaWestern ::HEADCOUNT "27-29")
+(hasAttribute GeorgiaWestern ::WEBSITE "georgiawestern.com")
+(hasAttribute GeorgiaWestern ::FACILITY "25,000 sq ft, 2275 McCollum Pkwy, Kennesaw, GA 30144")
+(hasAttribute GeorgiaWestern ::MARKET_POSITION "Largest electric valve actuator stocking distributor in the southeastern US")
+(hasAttribute GeorgiaWestern ::CERTIFICATIONS "CCS, Avetta, ISNetworld, Veriforce, Emerson Gold Seal Service Center")
+(hasAttribute GeorgiaWestern ::OEM_PARTNERS "Emerson/Bettis, Auma, EIM, Limitorque, Rotork, El-O-Matic, HyTork")
+(MEMBER_OF GeorgiaWestern ISGValveActuationGroup)
+(locatedAt GeorgiaWestern Kennesaw-GA)
+
+;; Personnel (Neil Hutcheson & Greg Giles in personnel/)
+
+(isa ClarkeQuinn Person)
+(hasAttribute ClarkeQuinn ::LABEL "Clarke Quinn")
+(hasAttribute ClarkeQuinn ::ROLE "Process Planner")
+(hasAttribute ClarkeQuinn ::EDUCATION "University of Georgia")
+(hasAttribute ClarkeQuinn ::CAREER "Crane Nuclear → Movats → Williams (Dir. Operations) → Georgia Western")
+(MEMBER_OF ClarkeQuinn GeorgiaWestern)
+
+(isa JayMobley Person)
+(hasAttribute JayMobley ::LABEL "Jay Mobley")
+(hasAttribute JayMobley ::ROLE "Sales Representative")
+(MEMBER_OF JayMobley GeorgiaWestern)

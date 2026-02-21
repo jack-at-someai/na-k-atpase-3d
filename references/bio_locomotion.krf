@@ -1,0 +1,848 @@
+;;; ================================================================
+;;; REFERENCE / BIOLOGICAL LOCOMOTION
+;;; 83 resources across 7 sections
+;;; ================================================================
+;;;
+;;; Flight, swimming & collective motion. How bodies move through
+;;; fluid, air, and terrain.
+;;;
+;;; Biological locomotion is the study of how living organisms move
+;;; through their environments -- running, soaring, gliding, burrowing.
+;;; The field sits at the intersection of physics, biology, and
+;;; engineering, drawing on fluid mechanics, neuroscience, and
+;;; evolutionary biology.
+;;;
+;;; Learning path: Overview --> Flight --> Swimming --> Terrestrial -->
+;;; Soft Body --> Collective --> Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Biological Locomotion
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BL-Alexander-PrinciplesAnimalLoco ReferenceWork)
+(title BL-Alexander-PrinciplesAnimalLoco "Principles of Animal Locomotion")
+(author BL-Alexander-PrinciplesAnimalLoco "R. McNeill Alexander")
+(resourceType BL-Alexander-PrinciplesAnimalLoco book)
+(level BL-Alexander-PrinciplesAnimalLoco intermediate)
+(section BL-Alexander-PrinciplesAnimalLoco BioLocomotionOverview)
+(url BL-Alexander-PrinciplesAnimalLoco "https://press.princeton.edu/books/paperback/9780691126340/principles-of-animal-locomotion")
+(desc BL-Alexander-PrinciplesAnimalLoco "The definitive overview of how animals run, walk, jump, crawl, swim, soar, hover, and fly, covering mechanisms and energetics across all major locomotor modes.")
+
+(isa BL-Biewener-AnimalLocomotion ReferenceWork)
+(title BL-Biewener-AnimalLocomotion "Animal Locomotion (2nd Edition)")
+(author BL-Biewener-AnimalLocomotion "Andrew A. Biewener & Sheila N. Patek")
+(resourceType BL-Biewener-AnimalLocomotion book)
+(level BL-Biewener-AnimalLocomotion intermediate)
+(section BL-Biewener-AnimalLocomotion BioLocomotionOverview)
+(url BL-Biewener-AnimalLocomotion "https://biology.duke.edu/books/animal-locomotion-2nd-edition")
+(desc BL-Biewener-AnimalLocomotion "Integrates biomechanics, physiology, energetics, and neural control of locomotion with new content on non-vertebrate systems and bio-inspired robotics.")
+
+(isa BL-Gordon-AnimalLocoAdaptations ReferenceWork)
+(title BL-Gordon-AnimalLocoAdaptations "Animal Locomotion: Physical Principles and Adaptations")
+(author BL-Gordon-AnimalLocoAdaptations "Malcolm S. Gordon et al.")
+(resourceType BL-Gordon-AnimalLocoAdaptations book)
+(level BL-Gordon-AnimalLocoAdaptations advanced)
+(section BL-Gordon-AnimalLocoAdaptations BioLocomotionOverview)
+(url BL-Gordon-AnimalLocoAdaptations "https://www.routledge.com/Animal-Locomotion-Physical-Principles-and-Adaptations/Gordon-Blickhan-Dabiri-Videler/p/book/9780367657956")
+(desc BL-Gordon-AnimalLocoAdaptations "A professional-level review summarizing the current understanding of macroscopic metazoan animal movement, covering physical principles and evolutionary adaptations.")
+
+(isa BL-SchmidtNielsen-Scaling ReferenceWork)
+(title BL-SchmidtNielsen-Scaling "Scaling: Why is Animal Size So Important?")
+(author BL-SchmidtNielsen-Scaling "Knut Schmidt-Nielsen")
+(resourceType BL-SchmidtNielsen-Scaling book)
+(level BL-SchmidtNielsen-Scaling beginner)
+(section BL-SchmidtNielsen-Scaling BioLocomotionOverview)
+(url BL-SchmidtNielsen-Scaling "https://www.cambridge.org/core/books/scaling/9742A68BC9691FDCB14810AE74F89C8D")
+(desc BL-SchmidtNielsen-Scaling "A classic introduction to allometric scaling in biology, explaining how body size governs metabolic rate, locomotion cost, stride frequency, and structural design.")
+
+(isa BL-SchmidtNielsen-HowAnimalsWork ReferenceWork)
+(title BL-SchmidtNielsen-HowAnimalsWork "How Animals Work")
+(author BL-SchmidtNielsen-HowAnimalsWork "Knut Schmidt-Nielsen")
+(resourceType BL-SchmidtNielsen-HowAnimalsWork book)
+(level BL-SchmidtNielsen-HowAnimalsWork beginner)
+(section BL-SchmidtNielsen-HowAnimalsWork BioLocomotionOverview)
+(url BL-SchmidtNielsen-HowAnimalsWork "https://www.cambridge.org/core/books/how-animals-work/6641128B9EFC5AEDC3125354A7C0597F")
+(desc BL-SchmidtNielsen-HowAnimalsWork "A lucid introduction to comparative physiology covering respiration, circulation, energy supply, and locomotion energetics in relation to body size and environment.")
+
+;; ── Introductory Lectures ──
+
+(isa BL-Stanford-BiomechMovement ReferenceWork)
+(title BL-Stanford-BiomechMovement "Biomechanics of Movement (Stanford Course Materials)")
+(author BL-Stanford-BiomechMovement "Thomas K. Uchida & Scott L. Delp")
+(resourceType BL-Stanford-BiomechMovement course)
+(level BL-Stanford-BiomechMovement intermediate)
+(section BL-Stanford-BiomechMovement BioLocomotionOverview)
+(url BL-Stanford-BiomechMovement "https://biomech.stanford.edu/")
+(desc BL-Stanford-BiomechMovement "Open course materials from Stanford ME 281 including lecture slides and videos, using simple models to study walking, running, and musculoskeletal mechanics.")
+
+(isa BL-Dartmouth-Bipedalism ReferenceWork)
+(title BL-Dartmouth-Bipedalism "Bipedalism: The Science of Upright Walking")
+(author BL-Dartmouth-Bipedalism "Dartmouth College (Coursera)")
+(resourceType BL-Dartmouth-Bipedalism course)
+(level BL-Dartmouth-Bipedalism beginner)
+(section BL-Dartmouth-Bipedalism BioLocomotionOverview)
+(url BL-Dartmouth-Bipedalism "https://www.coursera.org/specializations/bipedalism-the-science-of-upright-walking")
+(desc BL-Dartmouth-Bipedalism "An interdisciplinary specialization exploring human bipedal locomotion through anthropology, biomechanics, anatomy, evolution, and paleontology.")
+
+(isa BL-CUBoulder-ScienceOfMovement ReferenceWork)
+(title BL-CUBoulder-ScienceOfMovement "The Science of Movement Specialization")
+(author BL-CUBoulder-ScienceOfMovement "University of Colorado Boulder (Coursera)")
+(resourceType BL-CUBoulder-ScienceOfMovement course)
+(level BL-CUBoulder-ScienceOfMovement beginner)
+(section BL-CUBoulder-ScienceOfMovement BioLocomotionOverview)
+(url BL-CUBoulder-ScienceOfMovement "https://www.coursera.org/specializations/science-of-movement")
+(desc BL-CUBoulder-ScienceOfMovement "Three-course series covering how the nervous system controls muscle forces that drive movement, from neural circuitry to whole-body coordination.")
+
+(isa BL-MIT-MolCellTissueBiomech ReferenceWork)
+(title BL-MIT-MolCellTissueBiomech "Molecular, Cellular, and Tissue Biomechanics")
+(author BL-MIT-MolCellTissueBiomech "MIT OpenCourseWare")
+(resourceType BL-MIT-MolCellTissueBiomech course)
+(level BL-MIT-MolCellTissueBiomech advanced)
+(section BL-MIT-MolCellTissueBiomech BioLocomotionOverview)
+(url BL-MIT-MolCellTissueBiomech "https://ocw.mit.edu/courses/20-310j-molecular-cellular-and-tissue-biomechanics-spring-2015/")
+(desc BL-MIT-MolCellTissueBiomech "MIT course applying scaling laws and continuum mechanics to biomechanical phenomena from molecular to tissue level, with full lecture notes available.")
+
+;; ── Review Articles ──
+
+(isa BL-SchmidtNielsen-EnergyCost ReferenceWork)
+(title BL-SchmidtNielsen-EnergyCost "Locomotion: Energy Cost of Swimming, Flying, and Running")
+(author BL-SchmidtNielsen-EnergyCost "Knut Schmidt-Nielsen")
+(resourceType BL-SchmidtNielsen-EnergyCost notes)
+(level BL-SchmidtNielsen-EnergyCost beginner)
+(section BL-SchmidtNielsen-EnergyCost BioLocomotionOverview)
+(url BL-SchmidtNielsen-EnergyCost "https://doi.org/10.1126/science.177.4045.222")
+(desc BL-SchmidtNielsen-EnergyCost "The seminal 1972 Science paper comparing the cost of transport across swimming, flying, and running, establishing the energetic hierarchy of locomotor modes.")
+
+(isa BL-Alexander-MechanicsMovement ReferenceWork)
+(title BL-Alexander-MechanicsMovement "Mechanics of Animal Movement")
+(author BL-Alexander-MechanicsMovement "R. McNeill Alexander")
+(resourceType BL-Alexander-MechanicsMovement notes)
+(level BL-Alexander-MechanicsMovement intermediate)
+(section BL-Alexander-MechanicsMovement BioLocomotionOverview)
+(url BL-Alexander-MechanicsMovement "https://doi.org/10.1016/j.cub.2005.08.016")
+(desc BL-Alexander-MechanicsMovement "A Current Biology primer reviewing the fundamental mechanical principles governing animal movement, from muscle mechanics to whole-body dynamics.")
+
+(isa BL-Ramdya-AnimalRobots ReferenceWork)
+(title BL-Ramdya-AnimalRobots "Animal Robots: The Neuromechanics of Animal Locomotion")
+(author BL-Ramdya-AnimalRobots "Pavan Ramdya & Auke Ijspeert")
+(resourceType BL-Ramdya-AnimalRobots notes)
+(level BL-Ramdya-AnimalRobots intermediate)
+(section BL-Ramdya-AnimalRobots BioLocomotionOverview)
+(url BL-Ramdya-AnimalRobots "https://www.epfl.ch/labs/ramdya-lab/wp-content/uploads/2024/05/RamdyaIjspeert_2023.pdf")
+(desc BL-Ramdya-AnimalRobots "A 2023 review bridging neuroscience and robotics, showing how robots can test hypotheses about biological locomotion control and vice versa.")
+
+(isa BL-ISB-AnimalLocoBiomech ReferenceWork)
+(title BL-ISB-AnimalLocoBiomech "Animal Locomotion Biomechanics (ISB Tutorial Videos)")
+(author BL-ISB-AnimalLocoBiomech "International Society of Biomechanics")
+(resourceType BL-ISB-AnimalLocoBiomech video)
+(level BL-ISB-AnimalLocoBiomech beginner)
+(section BL-ISB-AnimalLocoBiomech BioLocomotionOverview)
+(url BL-ISB-AnimalLocoBiomech "https://isbweb.org/activities/videos/154-tutorials/187-animal-locomotion-biomechanics")
+(desc BL-ISB-AnimalLocoBiomech "Tutorial video series from the International Society of Biomechanics introducing core concepts of animal locomotion research to newcomers.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: FLIGHT — Biological Flight & Bio-Inspired Aerodynamics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Insect Aerodynamics ──
+
+(isa BL-Dickinson-WingRotation ReferenceWork)
+(title BL-Dickinson-WingRotation "Wing Rotation and the Aerodynamic Basis of Insect Flight")
+(author BL-Dickinson-WingRotation "Michael H. Dickinson, Fritz-Olaf Lehmann & Sanjay P. Sane")
+(resourceType BL-Dickinson-WingRotation notes)
+(level BL-Dickinson-WingRotation advanced)
+(section BL-Dickinson-WingRotation BiologicalFlight)
+(url BL-Dickinson-WingRotation "https://doi.org/10.1126/science.284.5422.1954")
+(desc BL-Dickinson-WingRotation "The landmark 1999 Science paper identifying three distinct mechanisms of insect lift generation: delayed stall, rotational circulation, and wake capture.")
+
+(isa BL-Sane-AerodynamicsInsectFlight ReferenceWork)
+(title BL-Sane-AerodynamicsInsectFlight "The Aerodynamics of Insect Flight")
+(author BL-Sane-AerodynamicsInsectFlight "Sanjay P. Sane")
+(resourceType BL-Sane-AerodynamicsInsectFlight notes)
+(level BL-Sane-AerodynamicsInsectFlight intermediate)
+(section BL-Sane-AerodynamicsInsectFlight BiologicalFlight)
+(url BL-Sane-AerodynamicsInsectFlight "https://doi.org/10.1242/jeb.00663")
+(desc BL-Sane-AerodynamicsInsectFlight "Comprehensive 2003 review in the Journal of Experimental Biology surveying the unsteady aerodynamic mechanisms that allow insects to hover and maneuver.")
+
+(isa BL-Hefler-InsectScaleFlight ReferenceWork)
+(title BL-Hefler-InsectScaleFlight "Distinct Aerodynamics of Insect-Scale Flight")
+(author BL-Hefler-InsectScaleFlight "Csaba Hefler, Chang-kwon Kang, Huihe Qiu & Wei Shyy")
+(resourceType BL-Hefler-InsectScaleFlight book)
+(level BL-Hefler-InsectScaleFlight advanced)
+(section BL-Hefler-InsectScaleFlight BiologicalFlight)
+(url BL-Hefler-InsectScaleFlight "https://www.cambridge.org/core/books/distinct-aerodynamics-of-insectscale-flight/F31009849C52FFBB8316411BB19B50F3")
+(desc BL-Hefler-InsectScaleFlight "Cambridge monograph examining the unique aerodynamic phenomena at insect-relevant Reynolds numbers, including LEV stability and clap-and-fling mechanisms.")
+
+(isa BL-AntLab-InsectSlowMo ReferenceWork)
+(title BL-AntLab-InsectSlowMo "Insects Take Flight: Slow-Motion Footage (Ant Lab)")
+(author BL-AntLab-InsectSlowMo "Adrian Smith (Ant Lab)")
+(resourceType BL-AntLab-InsectSlowMo video)
+(level BL-AntLab-InsectSlowMo beginner)
+(section BL-AntLab-InsectSlowMo BiologicalFlight)
+(url BL-AntLab-InsectSlowMo "https://www.youtube.com/watch?v=NmyMnQR7KwA")
+(desc BL-AntLab-InsectSlowMo "Stunning 3200 fps slow-motion footage of 23 insect species taking flight, revealing the diversity of wing kinematics across taxonomic orders.")
+
+;; ── Bird & Bat Flight ──
+
+(isa BL-Hedenstrom-AvianFlight ReferenceWork)
+(title BL-Hedenstrom-AvianFlight "Aerodynamics, Evolution and Ecology of Avian Flight")
+(author BL-Hedenstrom-AvianFlight "Anders Hedenstrom")
+(resourceType BL-Hedenstrom-AvianFlight notes)
+(level BL-Hedenstrom-AvianFlight intermediate)
+(section BL-Hedenstrom-AvianFlight BiologicalFlight)
+(url BL-Hedenstrom-AvianFlight "https://doi.org/10.1016/S0169-5347(02)02440-4")
+(desc BL-Hedenstrom-AvianFlight "A Trends in Ecology & Evolution review linking aerodynamic theory with ecological and evolutionary perspectives on bird flight performance.")
+
+(isa BL-Altshuler-BiophysicsBirdFlight ReferenceWork)
+(title BL-Altshuler-BiophysicsBirdFlight "The Biophysics of Bird Flight: Functional Relationships")
+(author BL-Altshuler-BiophysicsBirdFlight "Douglas Altshuler et al.")
+(resourceType BL-Altshuler-BiophysicsBirdFlight notes)
+(level BL-Altshuler-BiophysicsBirdFlight advanced)
+(section BL-Altshuler-BiophysicsBirdFlight BiologicalFlight)
+(url BL-Altshuler-BiophysicsBirdFlight "https://doi.org/10.1139/cjz-2015-0103")
+(desc BL-Altshuler-BiophysicsBirdFlight "Integrates aerodynamics, morphology, kinematics, muscle physiology, and sensory biology into a unified framework for understanding avian flight.")
+
+(isa BL-Swartz-BatFlight ReferenceWork)
+(title BL-Swartz-BatFlight "Advances in the Study of Bat Flight: The Wing and the Wind")
+(author BL-Swartz-BatFlight "Sharon Swartz & Kenneth Breuer")
+(resourceType BL-Swartz-BatFlight notes)
+(level BL-Swartz-BatFlight advanced)
+(section BL-Swartz-BatFlight BiologicalFlight)
+(url BL-Swartz-BatFlight "https://doi.org/10.1139/cjz-2015-0117")
+(desc BL-Swartz-BatFlight "Reviews how bat wing flexibility, membrane dynamics, and hair-based sensing produce flight capabilities distinct from birds, including rapid maneuvers.")
+
+(isa BL-Bomphrey-BiomimeticsFlight ReferenceWork)
+(title BL-Bomphrey-BiomimeticsFlight "Biomechanics and Biomimetics in Insect-Inspired Flight Systems")
+(author BL-Bomphrey-BiomimeticsFlight "Richard Bomphrey et al.")
+(resourceType BL-Bomphrey-BiomimeticsFlight notes)
+(level BL-Bomphrey-BiomimeticsFlight intermediate)
+(section BL-Bomphrey-BiomimeticsFlight BiologicalFlight)
+(url BL-Bomphrey-BiomimeticsFlight "https://doi.org/10.1098/rstb.2015.0390")
+(desc BL-Bomphrey-BiomimeticsFlight "Philosophical Transactions review connecting insect and bird flight biomechanics to engineering design principles for bio-inspired aircraft.")
+
+;; ── Micro Air Vehicles ──
+
+(isa BL-Wood-RoboBees ReferenceWork)
+(title BL-Wood-RoboBees "RoboBees: Autonomous Flying Microrobots")
+(author BL-Wood-RoboBees "Robert J. Wood (Harvard Wyss Institute)")
+(resourceType BL-Wood-RoboBees notes)
+(level BL-Wood-RoboBees intermediate)
+(section BL-Wood-RoboBees BiologicalFlight)
+(url BL-Wood-RoboBees "https://wyss.harvard.edu/technology/robobees-autonomous-flying-microrobots/")
+(desc BL-Wood-RoboBees "Overview of the Harvard RoboBee project: an 80 mg flapping-wing MAV achieving controlled flight with piezoelectric actuators at 120 Hz wing beat frequency.")
+
+(isa BL-Chen-MAVLanding ReferenceWork)
+(title BL-Chen-MAVLanding "Sticking the Landing: Insect-Inspired Landing for Flapping-Wing MAVs")
+(author BL-Chen-MAVLanding "Kevin Chen et al.")
+(resourceType BL-Chen-MAVLanding notes)
+(level BL-Chen-MAVLanding advanced)
+(section BL-Chen-MAVLanding BiologicalFlight)
+(url BL-Chen-MAVLanding "https://doi.org/10.1126/scirobotics.adq3059")
+(desc BL-Chen-MAVLanding "A 2025 Science Robotics paper demonstrating controlled, safe landing on natural terrain using the RoboBee platform and insect-inspired strategies.")
+
+(isa BL-Nekoo-FlappingWingReview ReferenceWork)
+(title BL-Nekoo-FlappingWingReview "A Review of Flapping-Wing Robots: Recent Progress and Challenges")
+(author BL-Nekoo-FlappingWingReview "Saeed Rafee Nekoo et al.")
+(resourceType BL-Nekoo-FlappingWingReview notes)
+(level BL-Nekoo-FlappingWingReview intermediate)
+(section BL-Nekoo-FlappingWingReview BiologicalFlight)
+(url BL-Nekoo-FlappingWingReview "https://doi.org/10.1177/02783649251343638")
+(desc BL-Nekoo-FlappingWingReview "A 2025 review in the International Journal of Robotics Research surveying the state of the art in flapping-wing robot design, control, and autonomy.")
+
+(isa BL-PornsinSirirak-MAVKinematics ReferenceWork)
+(title BL-PornsinSirirak-MAVKinematics "Flapping Wing MAV Kinematics, Membranes, and Mechanisms")
+(author BL-PornsinSirirak-MAVKinematics "T.N. Pornsin-Sirirak et al.")
+(resourceType BL-PornsinSirirak-MAVKinematics notes)
+(level BL-PornsinSirirak-MAVKinematics intermediate)
+(section BL-PornsinSirirak-MAVKinematics BiologicalFlight)
+(url BL-PornsinSirirak-MAVKinematics "https://doi.org/10.1016/S1000-9361(16)30097-8")
+(desc BL-PornsinSirirak-MAVKinematics "Reviews ornithopter and insect-inspired flapping mechanisms, covering membrane wing design, kinematic modeling, and propulsive efficiency.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SWIMMING — Aquatic Locomotion
+;; ════════════════════════════════════════════════════════════
+
+;; ── Fish Hydrodynamics ──
+
+(isa BL-Triantafyllou-FishlikeSwimming ReferenceWork)
+(title BL-Triantafyllou-FishlikeSwimming "Hydrodynamics of Fishlike Swimming")
+(author BL-Triantafyllou-FishlikeSwimming "Michael S. Triantafyllou, George S. Triantafyllou & Dick K.P. Yue")
+(resourceType BL-Triantafyllou-FishlikeSwimming notes)
+(level BL-Triantafyllou-FishlikeSwimming advanced)
+(section BL-Triantafyllou-FishlikeSwimming AquaticLocomotion)
+(url BL-Triantafyllou-FishlikeSwimming "https://doi.org/10.1146/annurev.fluid.32.1.33")
+(desc BL-Triantafyllou-FishlikeSwimming "The authoritative Annual Review of Fluid Mechanics article on fish propulsion, covering vortex wake dynamics, Strouhal number optimization, and thrust generation.")
+
+(isa BL-Domenici-FishLocoEcoEthol ReferenceWork)
+(title BL-Domenici-FishLocoEcoEthol "Fish Locomotion: An Eco-Ethological Perspective")
+(author BL-Domenici-FishLocoEcoEthol "Paolo Domenici & B.G. Kapoor (Eds.)")
+(resourceType BL-Domenici-FishLocoEcoEthol book)
+(level BL-Domenici-FishLocoEcoEthol intermediate)
+(section BL-Domenici-FishLocoEcoEthol AquaticLocomotion)
+(url BL-Domenici-FishLocoEcoEthol "https://doi.org/10.1201/b10190")
+(desc BL-Domenici-FishLocoEcoEthol "Edited volume linking fish swimming biomechanics to ecology and behavior, covering fast-start escapes, sustained cruising, and environmental adaptations.")
+
+(isa BL-Borazjani-CarangiformCFD ReferenceWork)
+(title BL-Borazjani-CarangiformCFD "Numerical Investigation of Carangiform Swimming Hydrodynamics")
+(author BL-Borazjani-CarangiformCFD "Iman Borazjani & Fotis Sotiropoulos")
+(resourceType BL-Borazjani-CarangiformCFD notes)
+(level BL-Borazjani-CarangiformCFD advanced)
+(section BL-Borazjani-CarangiformCFD AquaticLocomotion)
+(url BL-Borazjani-CarangiformCFD "https://doi.org/10.1242/jeb.015644")
+(desc BL-Borazjani-CarangiformCFD "Journal of Experimental Biology paper using high-fidelity CFD to simulate carangiform swimming across transitional and inertial flow regimes.")
+
+(isa BL-Kurt-MultibodyHydro ReferenceWork)
+(title BL-Kurt-MultibodyHydro "Multi-Body Hydrodynamic Interactions in Fish-Like Swimming")
+(author BL-Kurt-MultibodyHydro "Melike Kurt et al.")
+(resourceType BL-Kurt-MultibodyHydro notes)
+(level BL-Kurt-MultibodyHydro advanced)
+(section BL-Kurt-MultibodyHydro AquaticLocomotion)
+(url BL-Kurt-MultibodyHydro "https://doi.org/10.1115/1.4062219")
+(desc BL-Kurt-MultibodyHydro "ASME Applied Mechanics Reviews paper examining how multiple fish interact hydrodynamically during schooling, with implications for efficient formation swimming.")
+
+;; ── Marine Mammal & Jellyfish Locomotion ──
+
+(isa BL-Fish-MarineMammalFlowControl ReferenceWork)
+(title BL-Fish-MarineMammalFlowControl "Hydrodynamic Flow Control in Marine Mammals")
+(author BL-Fish-MarineMammalFlowControl "Frank E. Fish")
+(resourceType BL-Fish-MarineMammalFlowControl notes)
+(level BL-Fish-MarineMammalFlowControl intermediate)
+(section BL-Fish-MarineMammalFlowControl AquaticLocomotion)
+(url BL-Fish-MarineMammalFlowControl "https://doi.org/10.1093/icb/icn029")
+(desc BL-Fish-MarineMammalFlowControl "Integrative and Comparative Biology review of how cetaceans, pinnipeds, and sirenians use flippers, flukes, and body morphology for hydrodynamic flow control.")
+
+(isa BL-Fish-CetaceanFlukes ReferenceWork)
+(title BL-Fish-CetaceanFlukes "Passive Cambering and Flexible Propulsors: Cetacean Flukes")
+(author BL-Fish-CetaceanFlukes "Frank E. Fish et al.")
+(resourceType BL-Fish-CetaceanFlukes notes)
+(level BL-Fish-CetaceanFlukes advanced)
+(section BL-Fish-CetaceanFlukes AquaticLocomotion)
+(url BL-Fish-CetaceanFlukes "https://doi.org/10.1088/1748-3182/1/4/S12")
+(desc BL-Fish-CetaceanFlukes "Bioinspiration & Biomimetics paper analyzing how the passive flexibility of dolphin and whale flukes contributes to propulsive efficiency and thrust modulation.")
+
+(isa BL-Gemmell-JellyfishEnergyRecapture ReferenceWork)
+(title BL-Gemmell-JellyfishEnergyRecapture "Passive Energy Recapture in Jellyfish Contributes to Propulsive Advantage")
+(author BL-Gemmell-JellyfishEnergyRecapture "Brad J. Gemmell et al.")
+(resourceType BL-Gemmell-JellyfishEnergyRecapture notes)
+(level BL-Gemmell-JellyfishEnergyRecapture intermediate)
+(section BL-Gemmell-JellyfishEnergyRecapture AquaticLocomotion)
+(url BL-Gemmell-JellyfishEnergyRecapture "https://doi.org/10.1073/pnas.1306983110")
+(desc BL-Gemmell-JellyfishEnergyRecapture "PNAS paper showing that Aurelia aurita recaptures energy during bell relaxation, traveling 30% further per cycle and achieving the lowest metazoan cost of transport.")
+
+(isa BL-Gemmell-SuctionPropulsion ReferenceWork)
+(title BL-Gemmell-SuctionPropulsion "Suction-Based Propulsion as a Basis for Efficient Animal Swimming")
+(author BL-Gemmell-SuctionPropulsion "Brad J. Gemmell, Sean P. Colin & John O. Dabiri")
+(resourceType BL-Gemmell-SuctionPropulsion notes)
+(level BL-Gemmell-SuctionPropulsion intermediate)
+(section BL-Gemmell-SuctionPropulsion AquaticLocomotion)
+(url BL-Gemmell-SuctionPropulsion "https://doi.org/10.1038/ncomms9790")
+(desc BL-Gemmell-SuctionPropulsion "Nature Communications paper revealing that suction-based propulsion, not jet thrust, is the primary mechanism in jellyfish and lamprey swimming.")
+
+;; ── Bio-Inspired Underwater Vehicles ──
+
+(isa BL-BartSmith-Tunabot ReferenceWork)
+(title BL-BartSmith-Tunabot "Tuna Robotics: A High-Frequency Experimental Platform")
+(author BL-BartSmith-Tunabot "Hilary Bart-Smith et al.")
+(resourceType BL-BartSmith-Tunabot notes)
+(level BL-BartSmith-Tunabot intermediate)
+(section BL-BartSmith-Tunabot AquaticLocomotion)
+(url BL-BartSmith-Tunabot "https://doi.org/10.1126/scirobotics.aax4615")
+(desc BL-BartSmith-Tunabot "Science Robotics paper on the Tunabot, a 255 mm robotic fish achieving 4.0 body lengths per second at 15 Hz tail-beat, closely matching real tuna kinematics.")
+
+(isa BL-Roper-BioInspiredAUV ReferenceWork)
+(title BL-Roper-BioInspiredAUV "A Review of Developments Towards Biologically Inspired Propulsion for AUVs")
+(author BL-Roper-BioInspiredAUV "D.T. Roper et al.")
+(resourceType BL-Roper-BioInspiredAUV notes)
+(level BL-Roper-BioInspiredAUV intermediate)
+(section BL-Roper-BioInspiredAUV AquaticLocomotion)
+(url BL-Roper-BioInspiredAUV "https://doi.org/10.1177/1475090210397438")
+(desc BL-Roper-BioInspiredAUV "Reviews the engineering of bio-inspired propulsion systems for autonomous underwater vehicles, comparing fish-like undulation, flapping fins, and jet propulsion.")
+
+(isa BL-Wang-JellyfishRobot ReferenceWork)
+(title BL-Wang-JellyfishRobot "A Versatile Jellyfish-Like Robotic Platform for Underwater Propulsion")
+(author BL-Wang-JellyfishRobot "Tianlu Wang et al.")
+(resourceType BL-Wang-JellyfishRobot notes)
+(level BL-Wang-JellyfishRobot intermediate)
+(section BL-Wang-JellyfishRobot AquaticLocomotion)
+(url BL-Wang-JellyfishRobot "https://doi.org/10.1126/sciadv.adg0292")
+(desc BL-Wang-JellyfishRobot "Science Advances paper presenting a soft jellyfish robot with effective underwater propulsion and manipulation capabilities inspired by medusa kinematics.")
+
+(isa BL-FishTypeSubmersible ReferenceWork)
+(title BL-FishTypeSubmersible "Biomimetic Robotic Fish-Type Submersible: Status and Challenges")
+(author BL-FishTypeSubmersible "Multiple authors")
+(resourceType BL-FishTypeSubmersible notes)
+(level BL-FishTypeSubmersible intermediate)
+(section BL-FishTypeSubmersible AquaticLocomotion)
+(url BL-FishTypeSubmersible "https://doi.org/10.34133/olar.0036")
+(desc BL-FishTypeSubmersible "Comprehensive review of current technical challenges in developing fish-type submersible robots, covering actuation, sensing, control, and hydrodynamic design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: TERRESTRIAL — Walking, Running, Jumping, Climbing
+;; ════════════════════════════════════════════════════════════
+
+;; ── Legged Locomotion Principles ──
+
+(isa BL-Ijspeert-CPGReview ReferenceWork)
+(title BL-Ijspeert-CPGReview "Central Pattern Generators for Locomotion Control in Animals and Robots: A Review")
+(author BL-Ijspeert-CPGReview "Auke Jan Ijspeert")
+(resourceType BL-Ijspeert-CPGReview notes)
+(level BL-Ijspeert-CPGReview intermediate)
+(section BL-Ijspeert-CPGReview TerrestrialLocomotion)
+(url BL-Ijspeert-CPGReview "https://doi.org/10.1016/j.neunet.2008.03.014")
+(desc BL-Ijspeert-CPGReview "Comprehensive Neural Networks review covering biological CPGs and their implementation as coupled oscillators for controlling locomotion in articulated robots.")
+
+(isa BL-Biewener-MammalTerrestrialLoco ReferenceWork)
+(title BL-Biewener-MammalTerrestrialLoco "Biomechanics of Mammalian Terrestrial Locomotion")
+(author BL-Biewener-MammalTerrestrialLoco "Andrew A. Biewener")
+(resourceType BL-Biewener-MammalTerrestrialLoco notes)
+(level BL-Biewener-MammalTerrestrialLoco intermediate)
+(section BL-Biewener-MammalTerrestrialLoco TerrestrialLocomotion)
+(url BL-Biewener-MammalTerrestrialLoco "https://doi.org/10.1126/science.250.4984.1097")
+(desc BL-Biewener-MammalTerrestrialLoco "Science paper examining how mammals from mice to elephants modulate limb posture, muscle mechanics, and skeletal loading to locomote across a 10,000-fold mass range.")
+
+(isa BL-Full-TemplatesAnchors ReferenceWork)
+(title BL-Full-TemplatesAnchors "Templates and Anchors: Neuromechanical Hypotheses of Legged Locomotion on Land")
+(author BL-Full-TemplatesAnchors "Robert J. Full & Daniel E. Koditschek")
+(resourceType BL-Full-TemplatesAnchors notes)
+(level BL-Full-TemplatesAnchors advanced)
+(section BL-Full-TemplatesAnchors TerrestrialLocomotion)
+(url BL-Full-TemplatesAnchors "https://doi.org/10.1242/jeb.202.23.3325")
+(desc BL-Full-TemplatesAnchors "Foundational paper proposing that simple mechanical templates (like SLIP) capture the dynamics of running, while anchors add neuromechanical detail.")
+
+(isa BL-Uchida-BiomechTextbook ReferenceWork)
+(title BL-Uchida-BiomechTextbook "Biomechanics of Movement (Textbook)")
+(author BL-Uchida-BiomechTextbook "Thomas K. Uchida & Scott L. Delp")
+(resourceType BL-Uchida-BiomechTextbook book)
+(level BL-Uchida-BiomechTextbook intermediate)
+(section BL-Uchida-BiomechTextbook TerrestrialLocomotion)
+(url BL-Uchida-BiomechTextbook "https://biomech.stanford.edu/")
+(desc BL-Uchida-BiomechTextbook "Stanford textbook presenting conceptual biomechanical models for walking and running, integrating musculoskeletal anatomy with mechanical analysis.")
+
+;; ── Climbing & Adhesion ──
+
+(isa BL-Autumn-GeckoFootHair ReferenceWork)
+(title BL-Autumn-GeckoFootHair "Adhesive Force of a Single Gecko Foot-Hair")
+(author BL-Autumn-GeckoFootHair "Kellar Autumn et al.")
+(resourceType BL-Autumn-GeckoFootHair notes)
+(level BL-Autumn-GeckoFootHair intermediate)
+(section BL-Autumn-GeckoFootHair TerrestrialLocomotion)
+(url BL-Autumn-GeckoFootHair "https://doi.org/10.1038/35015073")
+(desc BL-Autumn-GeckoFootHair "The landmark 2000 Nature paper measuring the adhesive force of individual gecko setae, revealing that van der Waals forces alone explain gecko adhesion.")
+
+(isa BL-Autumn-GeckoModelSystem ReferenceWork)
+(title BL-Autumn-GeckoModelSystem "Gecko Adhesion as a Model System for Integrative Biology")
+(author BL-Autumn-GeckoModelSystem "Kellar Autumn et al.")
+(resourceType BL-Autumn-GeckoModelSystem notes)
+(level BL-Autumn-GeckoModelSystem intermediate)
+(section BL-Autumn-GeckoModelSystem TerrestrialLocomotion)
+(url BL-Autumn-GeckoModelSystem "https://doi.org/10.1146/annurev-ecolsys-120213-091839")
+(desc BL-Autumn-GeckoModelSystem "Annual Review of Ecology, Evolution, and Systematics paper reviewing gecko adhesion as a model for interdisciplinary science and bio-inspired engineering.")
+
+(isa BL-Zhao-GeckoAttachDetach ReferenceWork)
+(title BL-Zhao-GeckoAttachDetach "Adhesion and Friction in Gecko Toe Attachment and Detachment")
+(author BL-Zhao-GeckoAttachDetach "Bing Zhao et al.")
+(resourceType BL-Zhao-GeckoAttachDetach notes)
+(level BL-Zhao-GeckoAttachDetach advanced)
+(section BL-Zhao-GeckoAttachDetach TerrestrialLocomotion)
+(url BL-Zhao-GeckoAttachDetach "https://doi.org/10.1073/pnas.0608841103")
+(desc BL-Zhao-GeckoAttachDetach "PNAS paper analyzing the micromechanics of how geckos rapidly switch between attachment and detachment through toe hyperextension and peeling angles.")
+
+(isa BL-GeckoInspiredAdhesive ReferenceWork)
+(title BL-GeckoInspiredAdhesive "Gecko-Inspired Controllable Adhesive: Structure, Fabrication, and Application")
+(author BL-GeckoInspiredAdhesive "Multiple authors")
+(resourceType BL-GeckoInspiredAdhesive notes)
+(level BL-GeckoInspiredAdhesive intermediate)
+(section BL-GeckoInspiredAdhesive TerrestrialLocomotion)
+(url BL-GeckoInspiredAdhesive "https://doi.org/10.3390/biomimetics9030149")
+(desc BL-GeckoInspiredAdhesive "A 2024 review of synthetic gecko-inspired adhesives covering micro/nanostructure fabrication methods and applications in robotics and manufacturing.")
+
+;; ── Jumping & Rapid Movement ──
+
+(isa BL-Harrison-MantisShrimp ReferenceWork)
+(title BL-Harrison-MantisShrimp "A Physical Model of Mantis Shrimp for Exploring Ultrafast Systems")
+(author BL-Harrison-MantisShrimp "Jacob S. Harrison et al.")
+(resourceType BL-Harrison-MantisShrimp notes)
+(level BL-Harrison-MantisShrimp advanced)
+(section BL-Harrison-MantisShrimp TerrestrialLocomotion)
+(url BL-Harrison-MantisShrimp "https://doi.org/10.1073/pnas.2026833118")
+(desc BL-Harrison-MantisShrimp "PNAS paper presenting a physical model of the mantis shrimp strike mechanism, achieving forces over 1500 N through latch-mediated spring actuation.")
+
+(isa BL-Burrows-Froghopper ReferenceWork)
+(title BL-Burrows-Froghopper "Biomechanics: Froghopper Insects Leap to New Heights")
+(author BL-Burrows-Froghopper "Malcolm Burrows")
+(resourceType BL-Burrows-Froghopper notes)
+(level BL-Burrows-Froghopper intermediate)
+(section BL-Burrows-Froghopper TerrestrialLocomotion)
+(url BL-Burrows-Froghopper "https://doi.org/10.1038/424509a")
+(desc BL-Burrows-Froghopper "Nature paper demonstrating that froghoppers are the champion insect jumpers, using catapult mechanisms in the pleural arch to produce extraordinary accelerations.")
+
+(isa BL-Nadein-FleaBeetleJump ReferenceWork)
+(title BL-Nadein-FleaBeetleJump "The Jumping Mechanism of Flea Beetles and Its Application to Bionics")
+(author BL-Nadein-FleaBeetleJump "Konstantin Nadein & Oliver Betz")
+(resourceType BL-Nadein-FleaBeetleJump notes)
+(level BL-Nadein-FleaBeetleJump intermediate)
+(section BL-Nadein-FleaBeetleJump TerrestrialLocomotion)
+(url BL-Nadein-FleaBeetleJump "https://doi.org/10.3390/biomimetics5010011")
+(desc BL-Nadein-FleaBeetleJump "Biomimetics paper analyzing the elastic energy storage and release mechanism in flea beetle legs with preliminary designs for a robotic jumping leg.")
+
+(isa BL-SmarterEveryDay-MantisShrimp ReferenceWork)
+(title BL-SmarterEveryDay-MantisShrimp "The Power of the Mantis Shrimp Strike (Smarter Every Day)")
+(author BL-SmarterEveryDay-MantisShrimp "Destin Sandlin")
+(resourceType BL-SmarterEveryDay-MantisShrimp video)
+(level BL-SmarterEveryDay-MantisShrimp beginner)
+(section BL-SmarterEveryDay-MantisShrimp TerrestrialLocomotion)
+(url BL-SmarterEveryDay-MantisShrimp "https://www.youtube.com/watch?v=E0Li1k5hGBE")
+(desc BL-SmarterEveryDay-MantisShrimp "Engaging high-speed video exploration of the mantis shrimp's extraordinary appendage strike, explaining the latch-spring mechanism behind its power.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: SOFT BODY — Soft-Bodied Locomotion
+;; ════════════════════════════════════════════════════════════
+
+;; ── Worm & Caterpillar Movement ──
+
+(isa BL-Zhang-PeristalticMechanics ReferenceWork)
+(title BL-Zhang-PeristalticMechanics "Mechanics of Peristaltic Locomotion and Role of Anchoring")
+(author BL-Zhang-PeristalticMechanics "Wendy Zhang et al.")
+(resourceType BL-Zhang-PeristalticMechanics notes)
+(level BL-Zhang-PeristalticMechanics intermediate)
+(section BL-Zhang-PeristalticMechanics SoftBodyLocomotion)
+(url BL-Zhang-PeristalticMechanics "https://doi.org/10.1098/rsif.2011.0386")
+(desc BL-Zhang-PeristalticMechanics "Journal of the Royal Society Interface paper modeling peristaltic crawling mechanics, showing how anchor zones and body elasticity determine locomotion speed and efficiency.")
+
+(isa BL-Wu-CaterpillarSoftRobot ReferenceWork)
+(title BL-Wu-CaterpillarSoftRobot "Caterpillar-Inspired Soft Crawling Robot with Programmable Thermal Actuation")
+(author BL-Wu-CaterpillarSoftRobot "Shuang Wu et al.")
+(resourceType BL-Wu-CaterpillarSoftRobot notes)
+(level BL-Wu-CaterpillarSoftRobot intermediate)
+(section BL-Wu-CaterpillarSoftRobot SoftBodyLocomotion)
+(url BL-Wu-CaterpillarSoftRobot "https://doi.org/10.1126/sciadv.adf8014")
+(desc BL-Wu-CaterpillarSoftRobot "Science Advances paper presenting a soft robot with distributed thermal actuators mimicking caterpillar wave locomotion across varied terrain.")
+
+(isa BL-EarthwormModularRobot ReferenceWork)
+(title BL-EarthwormModularRobot "An Earthworm-Like Modular Soft Robot for Multi-Terrain Locomotion")
+(author BL-EarthwormModularRobot "Multiple authors")
+(resourceType BL-EarthwormModularRobot notes)
+(level BL-EarthwormModularRobot intermediate)
+(section BL-EarthwormModularRobot SoftBodyLocomotion)
+(url BL-EarthwormModularRobot "https://doi.org/10.1038/s41598-023-28873-w")
+(desc BL-EarthwormModularRobot "Scientific Reports paper demonstrating a modular peristaltic robot that adapts to pipes, flat surfaces, and inclines by adjusting wave parameters.")
+
+;; ── Cephalopod Locomotion ──
+
+(isa BL-Laschi-OctopusArm ReferenceWork)
+(title BL-Laschi-OctopusArm "Soft Robot Arm Inspired by the Octopus")
+(author BL-Laschi-OctopusArm "Cecilia Laschi et al.")
+(resourceType BL-Laschi-OctopusArm notes)
+(level BL-Laschi-OctopusArm intermediate)
+(section BL-Laschi-OctopusArm SoftBodyLocomotion)
+(url BL-Laschi-OctopusArm "https://doi.org/10.1163/156855312X626343")
+(desc BL-Laschi-OctopusArm "Advanced Robotics paper describing the design and control of a soft robotic arm that replicates the bending, elongation, and stiffening of octopus arms.")
+
+(isa BL-Kim-SoftRoboticsEvolution ReferenceWork)
+(title BL-Kim-SoftRoboticsEvolution "Soft Robotics: A Bioinspired Evolution in Robotics")
+(author BL-Kim-SoftRoboticsEvolution "Sangbae Kim, Cecilia Laschi & Barry Trimmer")
+(resourceType BL-Kim-SoftRoboticsEvolution notes)
+(level BL-Kim-SoftRoboticsEvolution intermediate)
+(section BL-Kim-SoftRoboticsEvolution SoftBodyLocomotion)
+(url BL-Kim-SoftRoboticsEvolution "https://doi.org/10.1016/j.tibtech.2013.03.002")
+(desc BL-Kim-SoftRoboticsEvolution "Trends in Biotechnology review of how octopus, caterpillar, and worm locomotion principles are driving a paradigm shift from rigid to soft robotic systems.")
+
+(isa BL-Majidi-SoftRobotFundamentals ReferenceWork)
+(title BL-Majidi-SoftRobotFundamentals "Fundamentals of Soft Robot Locomotion")
+(author BL-Majidi-SoftRobotFundamentals "Carmel Majidi")
+(resourceType BL-Majidi-SoftRobotFundamentals notes)
+(level BL-Majidi-SoftRobotFundamentals advanced)
+(section BL-Majidi-SoftRobotFundamentals SoftBodyLocomotion)
+(url BL-Majidi-SoftRobotFundamentals "https://doi.org/10.1098/rsif.2017.0101")
+(desc BL-Majidi-SoftRobotFundamentals "Journal of the Royal Society Interface paper establishing a theoretical framework for soft robot locomotion, covering continuum mechanics and material nonlinearity.")
+
+(isa BL-Laschi-OctopusRobot ReferenceWork)
+(title BL-Laschi-OctopusRobot "Bioinspired Locomotion and Grasping: The Soft Eight-Arm OCTOPUS Robot")
+(author BL-Laschi-OctopusRobot "Cecilia Laschi et al.")
+(resourceType BL-Laschi-OctopusRobot notes)
+(level BL-Laschi-OctopusRobot intermediate)
+(section BL-Laschi-OctopusRobot SoftBodyLocomotion)
+(url BL-Laschi-OctopusRobot "https://doi.org/10.1088/1748-3190/10/3/035003")
+(desc BL-Laschi-OctopusRobot "Bioinspiration & Biomimetics paper on the OCTOPUS robot, a fully soft underwater robot with eight silicone arms for locomotion and grasping in water.")
+
+;; ── Soft Robotic Applications ──
+
+(isa BL-GymSoftRobot ReferenceWork)
+(title BL-GymSoftRobot "Gym-SoftRobot: OpenAI Gym Environments for Soft Robots")
+(author BL-GymSoftRobot "Seung Hyun Kim et al.")
+(resourceType BL-GymSoftRobot code)
+(level BL-GymSoftRobot intermediate)
+(section BL-GymSoftRobot SoftBodyLocomotion)
+(url BL-GymSoftRobot "https://github.com/skim0119/gym-softrobot")
+(desc BL-GymSoftRobot "Open-source Python package providing reinforcement learning gym environments for simulating soft robot locomotion including crawling and swimming gaits.")
+
+(isa BL-SofaGym ReferenceWork)
+(title BL-SofaGym "SofaGym: Machine Learning Framework for SOFA Simulation")
+(author BL-SofaGym "SOFA Consortium (Defrost Team)")
+(resourceType BL-SofaGym code)
+(level BL-SofaGym advanced)
+(section BL-SofaGym SoftBodyLocomotion)
+(url BL-SofaGym "https://github.com/SofaDefrost/SofaGym")
+(desc BL-SofaGym "Open-source framework integrating the SOFA physics engine with OpenAI Gym for reinforcement learning of soft robot locomotion and manipulation tasks.")
+
+(isa BL-SoftGym ReferenceWork)
+(title BL-SoftGym "SoftGym: Benchmarking Deep RL for Deformable Object Manipulation")
+(author BL-SoftGym "Xingyu Lin et al.")
+(resourceType BL-SoftGym code)
+(level BL-SoftGym advanced)
+(section BL-SoftGym SoftBodyLocomotion)
+(url BL-SoftGym "https://github.com/Xingyu-Lin/softgym")
+(desc BL-SoftGym "Benchmark environments built on Nvidia FleX for developing and comparing algorithms for manipulating and locomoting with deformable soft bodies.")
+
+(isa BL-Xu-JellyfishMicroelectronics ReferenceWork)
+(title BL-Xu-JellyfishMicroelectronics "Low-Power Microelectronics Embedded in Live Jellyfish Enhance Propulsion")
+(author BL-Xu-JellyfishMicroelectronics "Nicole W. Xu & John O. Dabiri")
+(resourceType BL-Xu-JellyfishMicroelectronics notes)
+(level BL-Xu-JellyfishMicroelectronics intermediate)
+(section BL-Xu-JellyfishMicroelectronics SoftBodyLocomotion)
+(url BL-Xu-JellyfishMicroelectronics "https://doi.org/10.1126/sciadv.aaz3194")
+(desc BL-Xu-JellyfishMicroelectronics "Science Advances paper demonstrating that embedded micro-electronics can triple jellyfish swimming speed, opening a path for biohybrid soft robots.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: COLLECTIVE — Collective & Swarm Movement
+;; ════════════════════════════════════════════════════════════
+
+;; ── Schooling & Flocking ──
+
+(isa BL-Couzin-CollectiveMemory ReferenceWork)
+(title BL-Couzin-CollectiveMemory "Collective Memory and Spatial Sorting in Animal Groups")
+(author BL-Couzin-CollectiveMemory "Iain D. Couzin et al.")
+(resourceType BL-Couzin-CollectiveMemory notes)
+(level BL-Couzin-CollectiveMemory advanced)
+(section BL-Couzin-CollectiveMemory CollectiveMovement)
+(url BL-Couzin-CollectiveMemory "https://doi.org/10.1006/jtbi.2002.3065")
+(desc BL-Couzin-CollectiveMemory "Foundational 2002 Journal of Theoretical Biology paper introducing the Couzin model with repulsion, alignment, and attraction zones that produces schooling and milling.")
+
+(isa BL-Li-HydrodynamicSchooling ReferenceWork)
+(title BL-Li-HydrodynamicSchooling "Hydrodynamic Schooling of Flapping Swimmers")
+(author BL-Li-HydrodynamicSchooling "Liang Li et al.")
+(resourceType BL-Li-HydrodynamicSchooling notes)
+(level BL-Li-HydrodynamicSchooling advanced)
+(section BL-Li-HydrodynamicSchooling CollectiveMovement)
+(url BL-Li-HydrodynamicSchooling "https://doi.org/10.1038/ncomms9514")
+(desc BL-Li-HydrodynamicSchooling "Nature Communications paper demonstrating through simulation and experiment that fish in diamond formations gain hydrodynamic energy savings of up to 50%.")
+
+(isa BL-Calovi-BehaviourToModels ReferenceWork)
+(title BL-Calovi-BehaviourToModels "From Behavioural Analyses to Models of Collective Motion in Fish Schools")
+(author BL-Calovi-BehaviourToModels "Daniel S. Calovi et al.")
+(resourceType BL-Calovi-BehaviourToModels notes)
+(level BL-Calovi-BehaviourToModels intermediate)
+(section BL-Calovi-BehaviourToModels CollectiveMovement)
+(url BL-Calovi-BehaviourToModels "https://doi.org/10.1098/rsfs.2012.0033")
+(desc BL-Calovi-BehaviourToModels "Interface Focus paper bridging behavioral experiments with mathematical models, showing how fish adjust speed, turning, and spacing to maintain group cohesion.")
+
+(isa BL-Reynolds-Boids ReferenceWork)
+(title BL-Reynolds-Boids "Flocks, Herds, and Schools: A Distributed Behavioral Model")
+(author BL-Reynolds-Boids "Craig W. Reynolds")
+(resourceType BL-Reynolds-Boids notes)
+(level BL-Reynolds-Boids intermediate)
+(section BL-Reynolds-Boids CollectiveMovement)
+(url BL-Reynolds-Boids "https://doi.org/10.1145/37402.37406")
+(desc BL-Reynolds-Boids "The landmark 1987 SIGGRAPH paper introducing the Boids algorithm with three simple rules (separation, alignment, cohesion) that produce realistic flocking behavior.")
+
+;; ── Insect Collective Movement ──
+
+(isa BL-Fonio-AntTrailNavigation ReferenceWork)
+(title BL-Fonio-AntTrailNavigation "A Locally-Blazed Ant Trail Achieves Efficient Collective Navigation")
+(author BL-Fonio-AntTrailNavigation "Ehud Fonio et al.")
+(resourceType BL-Fonio-AntTrailNavigation notes)
+(level BL-Fonio-AntTrailNavigation intermediate)
+(section BL-Fonio-AntTrailNavigation CollectiveMovement)
+(url BL-Fonio-AntTrailNavigation "https://doi.org/10.7554/eLife.20185")
+(desc BL-Fonio-AntTrailNavigation "eLife paper showing how ant colonies achieve efficient navigation through locally-blazed trails despite limited individual information, using pheromone amplification.")
+
+(isa BL-Brayshaw-BacterialSwarm ReferenceWork)
+(title BL-Brayshaw-BacterialSwarm "Surveying a Swarm: Techniques to Examine Bacterial Collective Motion")
+(author BL-Brayshaw-BacterialSwarm "Siobhan A. Brayshaw & Erin S. Gloag")
+(resourceType BL-Brayshaw-BacterialSwarm notes)
+(level BL-Brayshaw-BacterialSwarm intermediate)
+(section BL-Brayshaw-BacterialSwarm CollectiveMovement)
+(url BL-Brayshaw-BacterialSwarm "https://doi.org/10.1128/aem.01853-21")
+(desc BL-Brayshaw-BacterialSwarm "Applied and Environmental Microbiology review of experimental methods for cultivating genuine swarmers and observing collective bacterial motion patterns.")
+
+(isa BL-Grobas-BacterialPhaseDiagram ReferenceWork)
+(title BL-Grobas-BacterialPhaseDiagram "A Phase Diagram for Bacterial Swarming")
+(author BL-Grobas-BacterialPhaseDiagram "Iago Grobas et al.")
+(resourceType BL-Grobas-BacterialPhaseDiagram notes)
+(level BL-Grobas-BacterialPhaseDiagram advanced)
+(section BL-Grobas-BacterialPhaseDiagram CollectiveMovement)
+(url BL-Grobas-BacterialPhaseDiagram "https://doi.org/10.1038/s42005-020-0327-1")
+(desc BL-Grobas-BacterialPhaseDiagram "Communications Physics paper mapping how bacteria shape and density determine emergent swarming phases, connecting biological swarming to active matter physics.")
+
+;; ── Mathematical Models ──
+
+(isa BL-Kao-CollectiveMultistability ReferenceWork)
+(title BL-Kao-CollectiveMultistability "Collective States, Multistability, and Transitional Behavior in Schooling Fish")
+(author BL-Kao-CollectiveMultistability "Albert B. Kao & Iain D. Couzin")
+(resourceType BL-Kao-CollectiveMultistability notes)
+(level BL-Kao-CollectiveMultistability advanced)
+(section BL-Kao-CollectiveMultistability CollectiveMovement)
+(url BL-Kao-CollectiveMultistability "https://doi.org/10.1371/journal.pcbi.1002915")
+(desc BL-Kao-CollectiveMultistability "PLOS Computational Biology paper showing that fish groups exhibit multistability, with multiple collective states coexisting for identical individual behavior.")
+
+(isa BL-Giardina-CollectiveBehavior ReferenceWork)
+(title BL-Giardina-CollectiveBehavior "Collective Behavior in Animal Groups: Theoretical Models and Empirical Studies")
+(author BL-Giardina-CollectiveBehavior "Irene Giardina")
+(resourceType BL-Giardina-CollectiveBehavior notes)
+(level BL-Giardina-CollectiveBehavior advanced)
+(section BL-Giardina-CollectiveBehavior CollectiveMovement)
+(url BL-Giardina-CollectiveBehavior "https://doi.org/10.2976/1.2961038")
+(desc BL-Giardina-CollectiveBehavior "Reviews the Vicsek model and extensions, showing how minimal alignment rules in self-propelled particles produce phase transitions to ordered flocking states.")
+
+(isa BL-Strauss-BoidsPython ReferenceWork)
+(title BL-Strauss-BoidsPython "Boids: Craig Reynolds' Flocking Simulation")
+(author BL-Strauss-BoidsPython "Ryan Strauss")
+(resourceType BL-Strauss-BoidsPython code)
+(level BL-Strauss-BoidsPython beginner)
+(section BL-Strauss-BoidsPython CollectiveMovement)
+(url BL-Strauss-BoidsPython "https://github.com/rystrauss/boids")
+(desc BL-Strauss-BoidsPython "Clean Python implementation of Craig Reynolds' Boids algorithm for simulating flocking, schooling, and herding behaviors with adjustable interaction parameters.")
+
+(isa BL-Calovi-SchoolFlockShape ReferenceWork)
+(title BL-Calovi-SchoolFlockShape "Schools of Fish and Flocks of Birds: Shape and Internal Structure")
+(author BL-Calovi-SchoolFlockShape "Daniel S. Calovi et al.")
+(resourceType BL-Calovi-SchoolFlockShape notes)
+(level BL-Calovi-SchoolFlockShape intermediate)
+(section BL-Calovi-SchoolFlockShape CollectiveMovement)
+(url BL-Calovi-SchoolFlockShape "https://doi.org/10.1371/journal.pcbi.1002678")
+(desc BL-Calovi-SchoolFlockShape "PLOS Computational Biology paper analyzing how self-organized fish schools and bird flocks develop characteristic shapes and density distributions.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: TOOLS — Computational Tools & Datasets
+;; ════════════════════════════════════════════════════════════
+
+;; ── CFD & Simulation ──
+
+(isa BL-IBAMR ReferenceWork)
+(title BL-IBAMR "IBAMR: Adaptive Immersed Boundary Method Framework")
+(author BL-IBAMR "Boyce Griffith et al.")
+(resourceType BL-IBAMR code)
+(level BL-IBAMR advanced)
+(section BL-IBAMR ComputationalTools)
+(url BL-IBAMR "https://github.com/IBAMR/IBAMR")
+(desc BL-IBAMR "Distributed-memory parallel implementation of the immersed boundary method with AMR, widely used for simulating biological fluid-structure interaction in swimming and flying.")
+
+(isa BL-IB2d ReferenceWork)
+(title BL-IB2d "IB2d: Immersed Boundary Method in 2D (MATLAB & Python)")
+(author BL-IB2d "Nicholas A. Battista et al.")
+(resourceType BL-IB2d code)
+(level BL-IB2d intermediate)
+(section BL-IB2d ComputationalTools)
+(url BL-IB2d "https://github.com/nickabattista/IB2d")
+(desc BL-IB2d "User-friendly 2D immersed boundary solver with 75+ built-in biological examples including swimming, pumping, and locomotion through fluid.")
+
+(isa BL-OpenSim ReferenceWork)
+(title BL-OpenSim "OpenSim: Open-Source Musculoskeletal Modeling and Simulation")
+(author BL-OpenSim "Scott Delp et al. (SimTK)")
+(resourceType BL-OpenSim code)
+(level BL-OpenSim intermediate)
+(section BL-OpenSim ComputationalTools)
+(url BL-OpenSim "https://github.com/opensim-org/opensim-core")
+(desc BL-OpenSim "Stanford-developed platform for modeling, simulating, and analyzing the neuromusculoskeletal system with inverse kinematics, forward dynamics, and optimal control.")
+
+(isa BL-CFDBiomimeticReview ReferenceWork)
+(title BL-CFDBiomimeticReview "Review of CFD in Biomimetic Applications for Underwater Vehicles")
+(author BL-CFDBiomimeticReview "Multiple authors")
+(resourceType BL-CFDBiomimeticReview notes)
+(level BL-CFDBiomimeticReview intermediate)
+(section BL-CFDBiomimeticReview ComputationalTools)
+(url BL-CFDBiomimeticReview "https://doi.org/10.3390/biomimetics9010035")
+(desc BL-CFDBiomimeticReview "A 2024 Biomimetics review surveying CFD methods applied to bio-inspired underwater vehicle design, covering mesh strategies, turbulence models, and validation.")
+
+;; ── Motion Capture & Analysis ──
+
+(isa BL-DeepLabCut ReferenceWork)
+(title BL-DeepLabCut "DeepLabCut: Markerless Pose Estimation for All Animals")
+(author BL-DeepLabCut "Alexander Mathis et al.")
+(resourceType BL-DeepLabCut code)
+(level BL-DeepLabCut intermediate)
+(section BL-DeepLabCut ComputationalTools)
+(url BL-DeepLabCut "https://github.com/DeepLabCut/DeepLabCut")
+(desc BL-DeepLabCut "State-of-the-art deep learning toolbox for 2D and 3D markerless pose estimation of any animal, requiring only 50-200 labeled frames for training.")
+
+(isa BL-Mathis-MotionCapturePrimer ReferenceWork)
+(title BL-Mathis-MotionCapturePrimer "A Primer on Motion Capture with Deep Learning")
+(author BL-Mathis-MotionCapturePrimer "Alexander Mathis et al.")
+(resourceType BL-Mathis-MotionCapturePrimer notes)
+(level BL-Mathis-MotionCapturePrimer beginner)
+(section BL-Mathis-MotionCapturePrimer ComputationalTools)
+(url BL-Mathis-MotionCapturePrimer "https://github.com/DeepLabCut/Primer-MotionCapture")
+(desc BL-Mathis-MotionCapturePrimer "Companion guide to DeepLabCut covering principles, pitfalls, and best practices for applying deep learning to animal motion capture in research.")
+
+(isa BL-OpenSimCreator ReferenceWork)
+(title BL-OpenSimCreator "OpenSim Creator: A UI for Building OpenSim Models")
+(author BL-OpenSimCreator "Computational Biomechanics Lab")
+(resourceType BL-OpenSimCreator code)
+(level BL-OpenSimCreator beginner)
+(section BL-OpenSimCreator ComputationalTools)
+(url BL-OpenSimCreator "https://github.com/ComputationalBiomechanicsLab/opensim-creator")
+(desc BL-OpenSimCreator "Standalone graphical application for building and editing OpenSim musculoskeletal models without programming, available for Windows, Mac, and Linux.")
+
+(isa BL-AwesomeBiomechanics ReferenceWork)
+(title BL-AwesomeBiomechanics "Awesome Biomechanics: Curated Resource List")
+(author BL-AwesomeBiomechanics "Luca Modenese et al.")
+(resourceType BL-AwesomeBiomechanics data)
+(level BL-AwesomeBiomechanics beginner)
+(section BL-AwesomeBiomechanics ComputationalTools)
+(url BL-AwesomeBiomechanics "https://github.com/modenaxe/awesome-biomechanics")
+(desc BL-AwesomeBiomechanics "Community-curated list of biomechanics datasets, processing tools, simulation software, educational videos, and lectures for human and animal motion analysis.")
+
+;; ── Open Datasets ──
+
+(isa BL-AwesomeAnimalPapers ReferenceWork)
+(title BL-AwesomeAnimalPapers "Awesome Animal Papers: Markerless Animal Motion Capture")
+(author BL-AwesomeAnimalPapers "An Le")
+(resourceType BL-AwesomeAnimalPapers data)
+(level BL-AwesomeAnimalPapers intermediate)
+(section BL-AwesomeAnimalPapers ComputationalTools)
+(url BL-AwesomeAnimalPapers "https://github.com/anl13/animal_papers")
+(desc BL-AwesomeAnimalPapers "Curated collection of papers and datasets for markerless animal motion capture and 3D reconstruction, organized by species and method.")
+
+(isa BL-IBAMRPublications ReferenceWork)
+(title BL-IBAMRPublications "IBAMR Publications and Benchmark Data")
+(author BL-IBAMRPublications "IBAMR Development Team")
+(resourceType BL-IBAMRPublications data)
+(level BL-IBAMRPublications advanced)
+(section BL-IBAMRPublications ComputationalTools)
+(url BL-IBAMRPublications "https://ibamr.github.io/publications")
+(desc BL-IBAMRPublications "Publications list with associated benchmark data for immersed boundary simulations of biological fluid dynamics, including cardiac and locomotion problems.")
+
+(isa BL-OpenSimModels ReferenceWork)
+(title BL-OpenSimModels "OpenSim Models and Examples Repository")
+(author BL-OpenSimModels "OpenSim Project")
+(resourceType BL-OpenSimModels data)
+(level BL-OpenSimModels intermediate)
+(section BL-OpenSimModels ComputationalTools)
+(url BL-OpenSimModels "https://simtk.org/projects/opensim")
+(desc BL-OpenSimModels "Central repository hosting hundreds of validated musculoskeletal models, example simulations, and locomotion datasets contributed by the biomechanics community.")
+
+(isa BL-SMPL2AddBiomechanics ReferenceWork)
+(title BL-SMPL2AddBiomechanics "SMPL2AddBiomechanics: From 3D Pose to OpenSim Models")
+(author BL-SMPL2AddBiomechanics "Marilyn Keller")
+(resourceType BL-SMPL2AddBiomechanics code)
+(level BL-SMPL2AddBiomechanics advanced)
+(section BL-SMPL2AddBiomechanics ComputationalTools)
+(url BL-SMPL2AddBiomechanics "https://github.com/MarilynKeller/SMPL2AddBiomechanics")
+(desc BL-SMPL2AddBiomechanics "Pipeline for converting SMPL body model sequences into OpenSim musculoskeletal models, bridging computer vision motion capture with biomechanical analysis.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BioLocomotionReference 83)
+(totalSections BioLocomotionReference 7)
+(comment BioLocomotionReference
+  "7 sections: Overview (13), Flight (12), Swimming (12),
+   Terrestrial (12), Soft Body (11), Collective (11),
+   Tools (12). Total: 83 resources.")

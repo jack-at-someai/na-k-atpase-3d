@@ -1,0 +1,847 @@
+;;; ================================================================
+;;; REFERENCE / BIOMIMETIC ARCHITECTURE
+;;; 83 resources across 7 sections — nature-inspired building design
+;;; ================================================================
+;;;
+;;; Termite ventilation, shells & tensegrity. Buildings that breathe,
+;;; flex, and self-regulate.
+;;;
+;;; Biomimetic architecture draws design principles from biological
+;;; organisms and ecosystems, translating millions of years of
+;;; evolutionary refinement into buildings that breathe, adapt, and
+;;; perform.
+;;;
+;;; Learning path: Overview → Climate Control → Shells & Forms →
+;;; Adaptive Facades → Bio-Structures → Urban Ecology → Design Tools
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Biomimetic Architecture
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BA-Benyus-BiomimicryNature ReferenceWork)
+(title BA-Benyus-BiomimicryNature "Biomimicry: Innovation Inspired by Nature")
+(author BA-Benyus-BiomimicryNature "Janine Benyus")
+(resourceType BA-Benyus-BiomimicryNature book)
+(level BA-Benyus-BiomimicryNature beginner)
+(section BA-Benyus-BiomimicryNature BioArchOverview)
+(url BA-Benyus-BiomimicryNature "https://www.harpercollins.com/products/biomimicry-janine-m-benyus")
+(desc BA-Benyus-BiomimicryNature "The foundational text that popularized biomimicry as a design discipline. Benyus surveys how engineers and architects can learn from biological models across scales.")
+
+(isa BA-Nachtigall-ArchRelevance ReferenceWork)
+(title BA-Nachtigall-ArchRelevance "The Architectural Relevance of Biological Structures")
+(author BA-Nachtigall-ArchRelevance "Werner Nachtigall")
+(resourceType BA-Nachtigall-ArchRelevance book)
+(level BA-Nachtigall-ArchRelevance intermediate)
+(section BA-Nachtigall-ArchRelevance BioArchOverview)
+(url BA-Nachtigall-ArchRelevance "https://doi.org/10.1007/978-3-319-19120-1")
+(desc BA-Nachtigall-ArchRelevance "Comprehensive treatment of how structural principles in biology inform architectural engineering, from insect shells to plant mechanics.")
+
+(isa BA-Mazzoleni-ArchFollowsNature ReferenceWork)
+(title BA-Mazzoleni-ArchFollowsNature "Architecture Follows Nature: Biomimetic Principles for Innovative Design")
+(author BA-Mazzoleni-ArchFollowsNature "Ilaria Mazzoleni")
+(resourceType BA-Mazzoleni-ArchFollowsNature book)
+(level BA-Mazzoleni-ArchFollowsNature intermediate)
+(section BA-Mazzoleni-ArchFollowsNature BioArchOverview)
+(url BA-Mazzoleni-ArchFollowsNature "https://www.routledge.com/Architecture-Follows-Nature-Biomimetic-Principles-for-Innovative-Design/Mazzoleni/p/book/9781138794368")
+(desc BA-Mazzoleni-ArchFollowsNature "A richly illustrated guide linking specific biological organisms to architectural strategies, with detailed case studies and design methods.")
+
+(isa BA-Gruber-NaturesBuildingMethods ReferenceWork)
+(title BA-Gruber-NaturesBuildingMethods "Nature's Building Methods: Biology as Inspiration for Architecture")
+(author BA-Gruber-NaturesBuildingMethods "Petra Gruber")
+(resourceType BA-Gruber-NaturesBuildingMethods book)
+(level BA-Gruber-NaturesBuildingMethods advanced)
+(section BA-Gruber-NaturesBuildingMethods BioArchOverview)
+(url BA-Gruber-NaturesBuildingMethods "https://doi.org/10.1007/978-3-7091-1693-8")
+(desc BA-Gruber-NaturesBuildingMethods "Gruber systematically maps biological strategies to building functions, providing a rigorous methodology for translating nature's solutions into architecture.")
+
+;; ── Survey Articles ──
+
+(isa BA-GruberImhof-BiomimeticsArch ReferenceWork)
+(title BA-GruberImhof-BiomimeticsArch "Biomimetics in Architecture: Architecture of Life and Buildings")
+(author BA-GruberImhof-BiomimeticsArch "Petra Gruber & Barbara Imhof")
+(resourceType BA-GruberImhof-BiomimeticsArch notes)
+(level BA-GruberImhof-BiomimeticsArch intermediate)
+(section BA-GruberImhof-BiomimeticsArch BioArchOverview)
+(url BA-GruberImhof-BiomimeticsArch "https://doi.org/10.1007/978-3-7091-1693-8_1")
+(desc BA-GruberImhof-BiomimeticsArch "A survey chapter mapping the intersection of biology, materials science, and architectural design with a focus on transfer methodologies.")
+
+(isa BA-Alzoubi-BiomimicryEnergy ReferenceWork)
+(title BA-Alzoubi-BiomimicryEnergy "A Review of Biomimicry in Building Energy Efficiency")
+(author BA-Alzoubi-BiomimicryEnergy "Moham M. Alzoubi & Yousef Al-Zoubi")
+(resourceType BA-Alzoubi-BiomimicryEnergy notes)
+(level BA-Alzoubi-BiomimicryEnergy intermediate)
+(section BA-Alzoubi-BiomimicryEnergy BioArchOverview)
+(url BA-Alzoubi-BiomimicryEnergy "https://doi.org/10.1016/j.enbuild.2020.110448")
+(desc BA-Alzoubi-BiomimicryEnergy "Systematic review of how biomimetic strategies have been applied to building envelopes, HVAC systems, and energy management.")
+
+(isa BA-ChayaamorHeil-StateOfArt ReferenceWork)
+(title BA-ChayaamorHeil-StateOfArt "Biomimicry in Architecture: State of the Art and Challenges")
+(author BA-ChayaamorHeil-StateOfArt "Natasha Chayaamor-Heil & Nikoletta Hannachi-Belkadi")
+(resourceType BA-ChayaamorHeil-StateOfArt notes)
+(level BA-ChayaamorHeil-StateOfArt advanced)
+(section BA-ChayaamorHeil-StateOfArt BioArchOverview)
+(url BA-ChayaamorHeil-StateOfArt "https://doi.org/10.1051/e3sconf/202017218001")
+(desc BA-ChayaamorHeil-StateOfArt "Explores current challenges in translating biological knowledge into viable architectural systems, including interdisciplinary collaboration barriers.")
+
+(isa BA-PedersenZari-LearningFromNature ReferenceWork)
+(title BA-PedersenZari-LearningFromNature "Learning from Nature: Biomimetic Design for Sustainable Architecture")
+(author BA-PedersenZari-LearningFromNature "Maibritt Pedersen Zari")
+(resourceType BA-PedersenZari-LearningFromNature notes)
+(level BA-PedersenZari-LearningFromNature beginner)
+(section BA-PedersenZari-LearningFromNature BioArchOverview)
+(url BA-PedersenZari-LearningFromNature "https://doi.org/10.1108/14601060810845271")
+(desc BA-PedersenZari-LearningFromNature "Accessible introduction distinguishing organism-level mimicry from behaviour-level and ecosystem-level mimicry in architectural design.")
+
+;; ── Notable Lectures ──
+
+(isa BA-Benyus-BiomimicryInAction ReferenceWork)
+(title BA-Benyus-BiomimicryInAction "Janine Benyus: Biomimicry in Action")
+(author BA-Benyus-BiomimicryInAction "Janine Benyus (TED)")
+(resourceType BA-Benyus-BiomimicryInAction video)
+(level BA-Benyus-BiomimicryInAction beginner)
+(section BA-Benyus-BiomimicryInAction BioArchOverview)
+(url BA-Benyus-BiomimicryInAction "https://www.youtube.com/watch?v=k_GFq12w5WU")
+(desc BA-Benyus-BiomimicryInAction "Benyus presents real-world examples of designs inspired by nature, including self-cleaning surfaces and energy-efficient buildings.")
+
+(isa BA-Pawlyn-NatureGenius ReferenceWork)
+(title BA-Pawlyn-NatureGenius "Michael Pawlyn: Using Nature's Genius in Architecture")
+(author BA-Pawlyn-NatureGenius "Michael Pawlyn (TED)")
+(resourceType BA-Pawlyn-NatureGenius video)
+(level BA-Pawlyn-NatureGenius beginner)
+(section BA-Pawlyn-NatureGenius BioArchOverview)
+(url BA-Pawlyn-NatureGenius "https://www.youtube.com/watch?v=3QZp6smeSQA")
+(desc BA-Pawlyn-NatureGenius "Architect Michael Pawlyn demonstrates three habits of nature that could transform architecture: radical resource efficiency, closed loops, and solar energy.")
+
+(isa BA-Oxman-TechBiology ReferenceWork)
+(title BA-Oxman-TechBiology "Neri Oxman: Design at the Intersection of Technology and Biology")
+(author BA-Oxman-TechBiology "Neri Oxman (TED)")
+(resourceType BA-Oxman-TechBiology video)
+(level BA-Oxman-TechBiology intermediate)
+(section BA-Oxman-TechBiology BioArchOverview)
+(url BA-Oxman-TechBiology "https://www.youtube.com/watch?v=CVa_IZVzUoc")
+(desc BA-Oxman-TechBiology "Oxman presents her lab's work on material ecology, where computational design and biological fabrication converge to create adaptive structures.")
+
+(isa BA-BiomimicryInstitute-CrashCourse ReferenceWork)
+(title BA-BiomimicryInstitute-CrashCourse "Biomimicry: A Short Introduction (Crash Course)")
+(author BA-BiomimicryInstitute-CrashCourse "Biomimicry Institute")
+(resourceType BA-BiomimicryInstitute-CrashCourse video)
+(level BA-BiomimicryInstitute-CrashCourse beginner)
+(section BA-BiomimicryInstitute-CrashCourse BioArchOverview)
+(url BA-BiomimicryInstitute-CrashCourse "https://www.youtube.com/watch?v=UHb3TVMfOJg")
+(desc BA-BiomimicryInstitute-CrashCourse "A concise animated introduction to the core principles of biomimicry and how they apply across design disciplines including architecture.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: CLIMATE CONTROL — Termite-Inspired Climate Control
+;; ════════════════════════════════════════════════════════════
+
+;; ── Termite Mound Science ──
+
+(isa BA-Turner-MoundsOrganismal ReferenceWork)
+(title BA-Turner-MoundsOrganismal "Termite Mounds as Organismal Constructions")
+(author BA-Turner-MoundsOrganismal "J. Scott Turner")
+(resourceType BA-Turner-MoundsOrganismal book)
+(level BA-Turner-MoundsOrganismal advanced)
+(section BA-Turner-MoundsOrganismal ClimateControl)
+(url BA-Turner-MoundsOrganismal "https://www.hup.harvard.edu/books/9780674018150")
+(desc BA-Turner-MoundsOrganismal "Turner's landmark work recasts the termite mound as an extended organ of the colony, analyzing gas exchange, humidity regulation, and the physics of airflow.")
+
+(isa BA-SoarTurner-TermiteThermoreg ReferenceWork)
+(title BA-SoarTurner-TermiteThermoreg "Termite-Inspired Thermoregulation: Lessons for Architecture")
+(author BA-SoarTurner-TermiteThermoreg "Rupert Soar & J. Scott Turner")
+(resourceType BA-SoarTurner-TermiteThermoreg notes)
+(level BA-SoarTurner-TermiteThermoreg advanced)
+(section BA-SoarTurner-TermiteThermoreg ClimateControl)
+(url BA-SoarTurner-TermiteThermoreg "https://doi.org/10.1098/rsif.2008.0354")
+(desc BA-SoarTurner-TermiteThermoreg "Detailed study of how Macrotermes mounds regulate CO2 and temperature through porous wall structures, with implications for building-envelope design.")
+
+(isa BA-BBC-TermiteMounds ReferenceWork)
+(title BA-BBC-TermiteMounds "How Termites Build Complex Mounds (BBC Earth)")
+(author BA-BBC-TermiteMounds "BBC Earth")
+(resourceType BA-BBC-TermiteMounds video)
+(level BA-BBC-TermiteMounds beginner)
+(section BA-BBC-TermiteMounds ClimateControl)
+(url BA-BBC-TermiteMounds "https://www.youtube.com/watch?v=G1fz6KKBEaQ")
+(desc BA-BBC-TermiteMounds "Accessible documentary segment showing CT scans and thermal imaging of termite mound ventilation systems.")
+
+(isa BA-Turner-ExtendedOrganism ReferenceWork)
+(title BA-Turner-ExtendedOrganism "The Extended Organism: The Physiology of Animal-Built Structures")
+(author BA-Turner-ExtendedOrganism "J. Scott Turner")
+(resourceType BA-Turner-ExtendedOrganism book)
+(level BA-Turner-ExtendedOrganism intermediate)
+(section BA-Turner-ExtendedOrganism ClimateControl)
+(url BA-Turner-ExtendedOrganism "https://www.hup.harvard.edu/books/9780674009851")
+(desc BA-Turner-ExtendedOrganism "Broader treatment of animal-built structures as physiological extensions, with a central chapter on termite mound thermoregulation.")
+
+;; ── Passive Ventilation Design ──
+
+(isa BA-Allard-NatVentHandbook ReferenceWork)
+(title BA-Allard-NatVentHandbook "Natural Ventilation in Buildings: A Design Handbook")
+(author BA-Allard-NatVentHandbook "Francis Allard (ed.)")
+(resourceType BA-Allard-NatVentHandbook book)
+(level BA-Allard-NatVentHandbook intermediate)
+(section BA-Allard-NatVentHandbook ClimateControl)
+(url BA-Allard-NatVentHandbook "https://doi.org/10.4324/9781315073781")
+(desc BA-Allard-NatVentHandbook "Comprehensive engineering handbook covering stack-effect ventilation, cross-ventilation, and wind-driven strategies for naturally ventilated buildings.")
+
+(isa BA-Roulet-VentAirflow ReferenceWork)
+(title BA-Roulet-VentAirflow "Ventilation and Airflow in Buildings: Methods for Diagnosis and Evaluation")
+(author BA-Roulet-VentAirflow "Claude-Alain Roulet")
+(resourceType BA-Roulet-VentAirflow book)
+(level BA-Roulet-VentAirflow advanced)
+(section BA-Roulet-VentAirflow ClimateControl)
+(url BA-Roulet-VentAirflow "https://doi.org/10.4324/9781849770620")
+(desc BA-Roulet-VentAirflow "Technical guide to measuring and modeling airflow in buildings, including tracer gas methods and computational fluid dynamics techniques.")
+
+(isa BA-Coursera-PassiveCooling ReferenceWork)
+(title BA-Coursera-PassiveCooling "Passive Cooling of Buildings (Coursera)")
+(author BA-Coursera-PassiveCooling "University of Louvain")
+(resourceType BA-Coursera-PassiveCooling course)
+(level BA-Coursera-PassiveCooling intermediate)
+(section BA-Coursera-PassiveCooling ClimateControl)
+(url BA-Coursera-PassiveCooling "https://www.coursera.org/learn/energy-efficiency")
+(desc BA-Coursera-PassiveCooling "Online course covering passive cooling strategies including natural ventilation, thermal mass, earth coupling, and evaporative cooling.")
+
+(isa BA-DesignBuilder-CFD ReferenceWork)
+(title BA-DesignBuilder-CFD "DesignBuilder CFD Simulation Tutorials")
+(author BA-DesignBuilder-CFD "DesignBuilder Software")
+(resourceType BA-DesignBuilder-CFD code)
+(level BA-DesignBuilder-CFD intermediate)
+(section BA-DesignBuilder-CFD ClimateControl)
+(url BA-DesignBuilder-CFD "https://designbuilder.co.uk/helpv7.2/Content/CFDOverview.htm")
+(desc BA-DesignBuilder-CFD "Official tutorial series for simulating natural ventilation and thermal comfort in buildings using integrated EnergyPlus and CFD engines.")
+
+;; ── Case Studies ──
+
+(isa BA-Pearce-EastgateCentre ReferenceWork)
+(title BA-Pearce-EastgateCentre "Eastgate Centre, Harare: Biomimicry in Practice")
+(author BA-Pearce-EastgateCentre "Mick Pearce Architects")
+(resourceType BA-Pearce-EastgateCentre notes)
+(level BA-Pearce-EastgateCentre beginner)
+(section BA-Pearce-EastgateCentre ClimateControl)
+(url BA-Pearce-EastgateCentre "https://www.mickpearce.com/eastgate.html")
+(desc BA-Pearce-EastgateCentre "Architect's own account of the Eastgate Centre, which uses termite-inspired passive ventilation and thermal mass to cool a 31,000 m2 building without air conditioning.")
+
+(isa BA-Melbourne-CH2 ReferenceWork)
+(title BA-Melbourne-CH2 "CH2 Melbourne City Council House")
+(author BA-Melbourne-CH2 "City of Melbourne & DesignInc")
+(resourceType BA-Melbourne-CH2 notes)
+(level BA-Melbourne-CH2 intermediate)
+(section BA-Melbourne-CH2 ClimateControl)
+(url BA-Melbourne-CH2 "https://www.melbourne.vic.gov.au/building-and-development/sustainable-building/council-house-2/Pages/council-house-2.aspx")
+(desc BA-Melbourne-CH2 "Case study of Melbourne's 6-star Green Star building featuring biomimetic night-purge ventilation, shower towers, and phase-change materials.")
+
+(isa BA-Dunster-BedZED ReferenceWork)
+(title BA-Dunster-BedZED "BedZED: Beddington Zero Energy Development")
+(author BA-Dunster-BedZED "Bill Dunster Architects")
+(resourceType BA-Dunster-BedZED notes)
+(level BA-Dunster-BedZED beginner)
+(section BA-Dunster-BedZED ClimateControl)
+(url BA-Dunster-BedZED "https://www.bioregional.com/projects-and-services/case-studies/bedzed")
+(desc BA-Dunster-BedZED "South London mixed-use development using wind-driven ventilation cowls and high thermal mass to achieve near-zero heating demand.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SHELLS & FORMS — Shell Structures & Lightweight Construction
+;; ════════════════════════════════════════════════════════════
+
+;; ── Shell & Membrane Theory ──
+
+(isa BA-OttoRasch-FindingForm ReferenceWork)
+(title BA-OttoRasch-FindingForm "Finding Form: Towards an Architecture of the Minimal")
+(author BA-OttoRasch-FindingForm "Frei Otto & Bodo Rasch")
+(resourceType BA-OttoRasch-FindingForm book)
+(level BA-OttoRasch-FindingForm intermediate)
+(section BA-OttoRasch-FindingForm ShellsForms)
+(url BA-OttoRasch-FindingForm "https://www.degruyter.com/document/doi/10.1515/9783035603286/html")
+(desc BA-OttoRasch-FindingForm "Otto's seminal work documenting decades of form-finding experiments with soap films, hanging chains, and pneumatic models.")
+
+(isa BA-Billington-ThinShells ReferenceWork)
+(title BA-Billington-ThinShells "Thin Shell Concrete Structures")
+(author BA-Billington-ThinShells "David P. Billington")
+(resourceType BA-Billington-ThinShells book)
+(level BA-Billington-ThinShells advanced)
+(section BA-Billington-ThinShells ShellsForms)
+(url BA-Billington-ThinShells "https://doi.org/10.1007/978-1-4613-8017-1")
+(desc BA-Billington-ThinShells "Classic engineering text on the analysis and design of thin concrete shells, covering membrane theory, bending theory, and stability.")
+
+(isa BA-Studart-BiologyMechanicsShells ReferenceWork)
+(title BA-Studart-BiologyMechanicsShells "Biology and the Mechanics of Shells")
+(author BA-Studart-BiologyMechanicsShells "A. R. Studart")
+(resourceType BA-Studart-BiologyMechanicsShells notes)
+(level BA-Studart-BiologyMechanicsShells advanced)
+(section BA-Studart-BiologyMechanicsShells ShellsForms)
+(url BA-Studart-BiologyMechanicsShells "https://doi.org/10.1038/nmat4089")
+(desc BA-Studart-BiologyMechanicsShells "Review of how biological mineralized shells achieve fracture toughness through hierarchical microstructures, with lessons for engineered composites.")
+
+(isa BA-Chilton-HeinzIsler ReferenceWork)
+(title BA-Chilton-HeinzIsler "The Architecture of Heinz Isler: Shells for Living")
+(author BA-Chilton-HeinzIsler "John Chilton")
+(resourceType BA-Chilton-HeinzIsler book)
+(level BA-Chilton-HeinzIsler intermediate)
+(section BA-Chilton-HeinzIsler ShellsForms)
+(url BA-Chilton-HeinzIsler "https://www.routledge.com/Heinz-Isler-Shells-for-Architecture/Chilton/p/book/9780415522724")
+(desc BA-Chilton-HeinzIsler "Monograph on Isler's concrete shell designs, documenting his hanging-model technique and over 1,500 built shell structures.")
+
+;; ── Tensegrity & Geodesic ──
+
+(isa BA-Kenner-GeodesicMath ReferenceWork)
+(title BA-Kenner-GeodesicMath "Geodesic Math and How to Use It")
+(author BA-Kenner-GeodesicMath "Hugh Kenner")
+(resourceType BA-Kenner-GeodesicMath book)
+(level BA-Kenner-GeodesicMath intermediate)
+(section BA-Kenner-GeodesicMath ShellsForms)
+(url BA-Kenner-GeodesicMath "https://www.ucpress.edu/book/9780520239319/geodesic-math-and-how-to-use-it")
+(desc BA-Kenner-GeodesicMath "Practical mathematical guide to constructing geodesic structures, explaining the coordinate geometry and frequency subdivisions behind Fuller's domes.")
+
+(isa BA-Motro-Tensegrity ReferenceWork)
+(title BA-Motro-Tensegrity "Tensegrity: Structural Systems for the Future")
+(author BA-Motro-Tensegrity "Rene Motro")
+(resourceType BA-Motro-Tensegrity book)
+(level BA-Motro-Tensegrity advanced)
+(section BA-Motro-Tensegrity ShellsForms)
+(url BA-Motro-Tensegrity "https://www.elsevier.com/books/tensegrity/motro/978-1-903996-37-9")
+(desc BA-Motro-Tensegrity "Comprehensive treatment of tensegrity mechanics, from Kenneth Snelson's sculptures to deployable space structures and biological cytoskeletons.")
+
+(isa BA-Fuller-StartingUniverse ReferenceWork)
+(title BA-Fuller-StartingUniverse "Buckminster Fuller: Starting with the Universe")
+(author BA-Fuller-StartingUniverse "Whitney Museum of American Art")
+(resourceType BA-Fuller-StartingUniverse video)
+(level BA-Fuller-StartingUniverse beginner)
+(section BA-Fuller-StartingUniverse ShellsForms)
+(url BA-Fuller-StartingUniverse "https://www.youtube.com/watch?v=BfBkBKyHVm0")
+(desc BA-Fuller-StartingUniverse "Documentary overview of Fuller's geodesic domes, Dymaxion designs, and his philosophy of doing more with less.")
+
+(isa BA-ZhangOhsaki-TensegrityStructures ReferenceWork)
+(title BA-ZhangOhsaki-TensegrityStructures "Tensegrity Structures: Form, Stability, and Symmetry")
+(author BA-ZhangOhsaki-TensegrityStructures "Jing Yao Zhang & Makoto Ohsaki")
+(resourceType BA-ZhangOhsaki-TensegrityStructures book)
+(level BA-ZhangOhsaki-TensegrityStructures advanced)
+(section BA-ZhangOhsaki-TensegrityStructures ShellsForms)
+(url BA-ZhangOhsaki-TensegrityStructures "https://doi.org/10.1007/978-4-431-54813-3")
+(desc BA-ZhangOhsaki-TensegrityStructures "Mathematical framework for the analysis and design of tensegrity structures, covering form-finding algorithms, stability criteria, and symmetry groups.")
+
+;; ── Computational Form-Finding ──
+
+(isa BA-Piker-KangarooPhysics ReferenceWork)
+(title BA-Piker-KangarooPhysics "Kangaroo Physics for Grasshopper")
+(author BA-Piker-KangarooPhysics "Daniel Piker")
+(resourceType BA-Piker-KangarooPhysics code)
+(level BA-Piker-KangarooPhysics intermediate)
+(section BA-Piker-KangarooPhysics ShellsForms)
+(url BA-Piker-KangarooPhysics "https://www.food4rhino.com/en/app/kangaroo-physics")
+(desc BA-Piker-KangarooPhysics "Real-time physics engine for Grasshopper enabling interactive form-finding of shells, membranes, and tensile structures through particle-spring simulation.")
+
+(isa BA-Bletzinger-FormFindingMembranes ReferenceWork)
+(title BA-Bletzinger-FormFindingMembranes "Form Finding and Optimization of Membranes and Minimal Surfaces")
+(author BA-Bletzinger-FormFindingMembranes "Kai-Uwe Bletzinger")
+(resourceType BA-Bletzinger-FormFindingMembranes notes)
+(level BA-Bletzinger-FormFindingMembranes advanced)
+(section BA-Bletzinger-FormFindingMembranes ShellsForms)
+(url BA-Bletzinger-FormFindingMembranes "https://doi.org/10.1007/978-3-7091-2410-0_2")
+(desc BA-Bletzinger-FormFindingMembranes "Technical paper on finite-element-based form-finding methods for membrane structures, including the updated reference strategy and force density method.")
+
+(isa BA-Preisinger-Karamba3D ReferenceWork)
+(title BA-Preisinger-Karamba3D "Karamba3D: Parametric Structural Analysis")
+(author BA-Preisinger-Karamba3D "Clemens Preisinger")
+(resourceType BA-Preisinger-Karamba3D code)
+(level BA-Preisinger-Karamba3D intermediate)
+(section BA-Preisinger-Karamba3D ShellsForms)
+(url BA-Preisinger-Karamba3D "https://www.karamba3d.com/")
+(desc BA-Preisinger-Karamba3D "Structural analysis plugin for Grasshopper allowing real-time feedback on shell thickness, stress distribution, and deflection during parametric design.")
+
+(isa BA-ETH-ForceDensityMethod ReferenceWork)
+(title BA-ETH-ForceDensityMethod "The Force Density Method for Form Finding (Lecture)")
+(author BA-ETH-ForceDensityMethod "ETH Zurich Block Research Group")
+(resourceType BA-ETH-ForceDensityMethod video)
+(level BA-ETH-ForceDensityMethod advanced)
+(section BA-ETH-ForceDensityMethod ShellsForms)
+(url BA-ETH-ForceDensityMethod "https://www.youtube.com/watch?v=8hYKpMHU0cI")
+(desc BA-ETH-ForceDensityMethod "Lecture from Philippe Block's group explaining the force density method and thrust network analysis for compression-only shell design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: ADAPTIVE FACADES — Adaptive & Responsive Facades
+;; ════════════════════════════════════════════════════════════
+
+;; ── Adaptive Mechanisms in Nature ──
+
+(isa BA-Niklas-PlantBiomechanics ReferenceWork)
+(title BA-Niklas-PlantBiomechanics "Plant Biomechanics: An Engineering Approach to Plant Form and Function")
+(author BA-Niklas-PlantBiomechanics "Karl J. Niklas")
+(resourceType BA-Niklas-PlantBiomechanics book)
+(level BA-Niklas-PlantBiomechanics advanced)
+(section BA-Niklas-PlantBiomechanics AdaptiveFacades)
+(url BA-Niklas-PlantBiomechanics "https://press.uchicago.edu/ucp/books/book/chicago/P/bo3683003.html")
+(desc BA-Niklas-PlantBiomechanics "Rigorous biomechanical analysis of plant structures, including turgor-driven movements, hygroscopic actuation, and nastic responses relevant to facade design.")
+
+(isa BA-KnippersEtAl-BiomimeticResearch ReferenceWork)
+(title BA-KnippersEtAl-BiomimeticResearch "Biomimetic Research for Architecture and Building Construction")
+(author BA-KnippersEtAl-BiomimeticResearch "Jan Knippers, Klaus Nickel & Thomas Speck (eds.)")
+(resourceType BA-KnippersEtAl-BiomimeticResearch book)
+(level BA-KnippersEtAl-BiomimeticResearch advanced)
+(section BA-KnippersEtAl-BiomimeticResearch AdaptiveFacades)
+(url BA-KnippersEtAl-BiomimeticResearch "https://doi.org/10.1007/978-3-319-46374-2")
+(desc BA-KnippersEtAl-BiomimeticResearch "Collected research from the German SFB-TRR 141 programme, including chapters on plant-inspired adaptive shading and flap mechanisms.")
+
+(isa BA-Gibson-PineconesHygromorphic ReferenceWork)
+(title BA-Gibson-PineconesHygromorphic "How Do Pinecones Open? Hygromorphic Actuation Explained")
+(author BA-Gibson-PineconesHygromorphic "Lorna J. Gibson (MIT)")
+(resourceType BA-Gibson-PineconesHygromorphic video)
+(level BA-Gibson-PineconesHygromorphic beginner)
+(section BA-Gibson-PineconesHygromorphic AdaptiveFacades)
+(url BA-Gibson-PineconesHygromorphic "https://www.youtube.com/watch?v=wNVME6H0Yb0")
+(desc BA-Gibson-PineconesHygromorphic "Short lecture explaining the bilayer mechanism that drives pinecone scale opening and its potential for architectural applications.")
+
+(isa BA-MengesReichert-AdaptiveBuildingInit ReferenceWork)
+(title BA-MengesReichert-AdaptiveBuildingInit "The Adaptive Building Initiative: Bio-inspired Facades")
+(author BA-MengesReichert-AdaptiveBuildingInit "Achim Menges & Steffen Reichert")
+(resourceType BA-MengesReichert-AdaptiveBuildingInit notes)
+(level BA-MengesReichert-AdaptiveBuildingInit intermediate)
+(section BA-MengesReichert-AdaptiveBuildingInit AdaptiveFacades)
+(url BA-MengesReichert-AdaptiveBuildingInit "https://doi.org/10.1002/ad.1956")
+(desc BA-MengesReichert-AdaptiveBuildingInit "Description of the HygroScope and HygroSkin pavilions at the University of Stuttgart, where wood veneer elements respond passively to humidity changes.")
+
+;; ── Responsive Building Skins ──
+
+(isa BA-Aedas-AlBaharTowers ReferenceWork)
+(title BA-Aedas-AlBaharTowers "Al Bahar Towers: Adaptive Facade Case Study")
+(author BA-Aedas-AlBaharTowers "Aedas Architects & Arup")
+(resourceType BA-Aedas-AlBaharTowers notes)
+(level BA-Aedas-AlBaharTowers intermediate)
+(section BA-Aedas-AlBaharTowers AdaptiveFacades)
+(url BA-Aedas-AlBaharTowers "https://www.arup.com/projects/al-bahar-towers")
+(desc BA-Aedas-AlBaharTowers "Technical case study of the kinetic mashrabiya screen in Abu Dhabi, which uses origami-folding elements to reduce solar gain by up to 50%.")
+
+(isa BA-Knaack-AdaptiveBuildingSkins ReferenceWork)
+(title BA-Knaack-AdaptiveBuildingSkins "Adaptive Building Skins: Design and Technology")
+(author BA-Knaack-AdaptiveBuildingSkins "Ulrich Knaack et al.")
+(resourceType BA-Knaack-AdaptiveBuildingSkins book)
+(level BA-Knaack-AdaptiveBuildingSkins intermediate)
+(section BA-Knaack-AdaptiveBuildingSkins AdaptiveFacades)
+(url BA-Knaack-AdaptiveBuildingSkins "https://www.degruyter.com/document/doi/10.1515/9783035610246/html")
+(desc BA-Knaack-AdaptiveBuildingSkins "Survey of state-of-the-art responsive facades covering mechanical, pneumatic, and material-based actuation systems.")
+
+(isa BA-TUDelft-CABS ReferenceWork)
+(title BA-TUDelft-CABS "Climate Adaptive Building Shells (CABS) Database")
+(author BA-TUDelft-CABS "TU Delft")
+(resourceType BA-TUDelft-CABS data)
+(level BA-TUDelft-CABS intermediate)
+(section BA-TUDelft-CABS AdaptiveFacades)
+(url BA-TUDelft-CABS "https://www.cabs.bk.tudelft.nl/")
+(desc BA-TUDelft-CABS "Curated database of over 100 climate-adaptive building shell concepts with performance data, categorized by adaptation mechanism.")
+
+(isa BA-SOMA-OneOceanPavilion ReferenceWork)
+(title BA-SOMA-OneOceanPavilion "One Ocean Pavilion: Kinetic Facade (Yeosu Expo 2012)")
+(author BA-SOMA-OneOceanPavilion "soma architecture")
+(resourceType BA-SOMA-OneOceanPavilion video)
+(level BA-SOMA-OneOceanPavilion beginner)
+(section BA-SOMA-OneOceanPavilion AdaptiveFacades)
+(url BA-SOMA-OneOceanPavilion "https://www.youtube.com/watch?v=hPuo2C7ZXjw")
+(desc BA-SOMA-OneOceanPavilion "Time-lapse and behind-the-scenes footage of the SOMA pavilion's lamellar kinetic facade, inspired by the movement of fish gills.")
+
+;; ── Smart Materials for Facades ──
+
+(isa BA-Ritter-SmartMaterials ReferenceWork)
+(title BA-Ritter-SmartMaterials "Smart Materials in Architecture, Interior Architecture and Design")
+(author BA-Ritter-SmartMaterials "Axel Ritter")
+(resourceType BA-Ritter-SmartMaterials book)
+(level BA-Ritter-SmartMaterials intermediate)
+(section BA-Ritter-SmartMaterials AdaptiveFacades)
+(url BA-Ritter-SmartMaterials "https://doi.org/10.1007/978-3-7643-7327-6")
+(desc BA-Ritter-SmartMaterials "Comprehensive guide to shape-memory alloys, electrochromic glazing, thermochromic coatings, and photovoltaic integration in building envelopes.")
+
+(isa BA-Sung-Thermobimetal ReferenceWork)
+(title BA-Sung-Thermobimetal "Thermobimetal Responsive Architecture")
+(author BA-Sung-Thermobimetal "Doris Sung (USC)")
+(resourceType BA-Sung-Thermobimetal video)
+(level BA-Sung-Thermobimetal beginner)
+(section BA-Sung-Thermobimetal AdaptiveFacades)
+(url BA-Sung-Thermobimetal "https://www.youtube.com/watch?v=igrqMzGjXkI")
+(desc BA-Sung-Thermobimetal "Sung demonstrates thermobimetal panels that curl autonomously with temperature change, providing self-ventilating building skins without electricity.")
+
+(isa BA-Aelenei-SMAFacades ReferenceWork)
+(title BA-Aelenei-SMAFacades "Shape Memory Alloy Actuators for Adaptive Facades")
+(author BA-Aelenei-SMAFacades "A. Aelenei et al.")
+(resourceType BA-Aelenei-SMAFacades notes)
+(level BA-Aelenei-SMAFacades advanced)
+(section BA-Aelenei-SMAFacades AdaptiveFacades)
+(url BA-Aelenei-SMAFacades "https://doi.org/10.1016/j.rser.2016.01.043")
+(desc BA-Aelenei-SMAFacades "Review of shape-memory alloy applications in building facades, covering nitinol actuator design, fatigue life, and energy-harvesting potential.")
+
+(isa BA-Lee-ElectrochromicGlazing ReferenceWork)
+(title BA-Lee-ElectrochromicGlazing "Electrochromic Glazing: Performance and Control Strategies")
+(author BA-Lee-ElectrochromicGlazing "Eleanor S. Lee et al.")
+(resourceType BA-Lee-ElectrochromicGlazing notes)
+(level BA-Lee-ElectrochromicGlazing advanced)
+(section BA-Lee-ElectrochromicGlazing AdaptiveFacades)
+(url BA-Lee-ElectrochromicGlazing "https://doi.org/10.1016/j.enbuild.2005.12.008")
+(desc BA-Lee-ElectrochromicGlazing "Lawrence Berkeley National Lab study on dynamic electrochromic windows that modulate visible transmittance in response to glare and solar heat gain.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: BIO-STRUCTURES — Structural Optimization from Nature
+;; ════════════════════════════════════════════════════════════
+
+;; ── Topology Optimization ──
+
+(isa BA-BendsoeSignund-TopoOpt ReferenceWork)
+(title BA-BendsoeSignund-TopoOpt "Topology Optimization: Theory, Methods, and Applications")
+(author BA-BendsoeSignund-TopoOpt "Martin P. Bendsoe & Ole Sigmund")
+(resourceType BA-BendsoeSignund-TopoOpt book)
+(level BA-BendsoeSignund-TopoOpt advanced)
+(section BA-BendsoeSignund-TopoOpt BioStructures)
+(url BA-BendsoeSignund-TopoOpt "https://doi.org/10.1007/978-3-662-05086-6")
+(desc BA-BendsoeSignund-TopoOpt "The definitive textbook on computational topology optimization, covering SIMP, homogenization, and level-set methods with engineering applications.")
+
+(isa BA-Sigmund-99LineTopoOpt ReferenceWork)
+(title BA-Sigmund-99LineTopoOpt "A 99-Line Topology Optimization Code in MATLAB")
+(author BA-Sigmund-99LineTopoOpt "Ole Sigmund")
+(resourceType BA-Sigmund-99LineTopoOpt code)
+(level BA-Sigmund-99LineTopoOpt intermediate)
+(section BA-Sigmund-99LineTopoOpt BioStructures)
+(url BA-Sigmund-99LineTopoOpt "https://doi.org/10.1007/s001580050176")
+(desc BA-Sigmund-99LineTopoOpt "Classic paper and accompanying MATLAB code providing a minimal working implementation of SIMP-based topology optimization.")
+
+(isa BA-DTU-TopOpt ReferenceWork)
+(title BA-DTU-TopOpt "TopOpt: Interactive Topology Optimization (Web App)")
+(author BA-DTU-TopOpt "Technical University of Denmark")
+(resourceType BA-DTU-TopOpt code)
+(level BA-DTU-TopOpt beginner)
+(section BA-DTU-TopOpt BioStructures)
+(url BA-DTU-TopOpt "https://www.topopt.mek.dtu.dk/")
+(desc BA-DTU-TopOpt "Free web-based tool for experimenting with 2D topology optimization in real time, illustrating how bone-like structures emerge from load conditions.")
+
+(isa BA-Huiskes-WolffsLaw ReferenceWork)
+(title BA-Huiskes-WolffsLaw "Design in Nature: Wolff's Law and Bone Remodeling")
+(author BA-Huiskes-WolffsLaw "Rik Huiskes")
+(resourceType BA-Huiskes-WolffsLaw notes)
+(level BA-Huiskes-WolffsLaw intermediate)
+(section BA-Huiskes-WolffsLaw BioStructures)
+(url BA-Huiskes-WolffsLaw "https://doi.org/10.1038/35015116")
+(desc BA-Huiskes-WolffsLaw "Concise review of Wolff's law and computational bone remodeling, connecting biological adaptation to engineering topology optimization.")
+
+;; ── Tree-Inspired Structures ──
+
+(isa BA-Mattheck-DesignInNature ReferenceWork)
+(title BA-Mattheck-DesignInNature "Design in Nature: Learning from Trees")
+(author BA-Mattheck-DesignInNature "Claus Mattheck")
+(resourceType BA-Mattheck-DesignInNature book)
+(level BA-Mattheck-DesignInNature intermediate)
+(section BA-Mattheck-DesignInNature BioStructures)
+(url BA-Mattheck-DesignInNature "https://doi.org/10.1007/978-3-642-58747-4")
+(desc BA-Mattheck-DesignInNature "Mattheck presents the constant stress hypothesis, showing how trees optimize their shape at branch junctions, and applies these principles to engineering design.")
+
+(isa BA-Stuttgart-TreeColumns ReferenceWork)
+(title BA-Stuttgart-TreeColumns "The Stuttgart Airport Tree Columns")
+(author BA-Stuttgart-TreeColumns "Buro Happold & GMP Architects")
+(resourceType BA-Stuttgart-TreeColumns notes)
+(level BA-Stuttgart-TreeColumns beginner)
+(section BA-Stuttgart-TreeColumns BioStructures)
+(url BA-Stuttgart-TreeColumns "https://www.burohappold.com/projects/stuttgart-airport/")
+(desc BA-Stuttgart-TreeColumns "Case study of the Stuttgart Airport terminal's tree-like branching steel columns that distribute roof loads efficiently inspired by natural branching patterns.")
+
+(isa BA-Pedreschi-BranchingStructures ReferenceWork)
+(title BA-Pedreschi-BranchingStructures "Branching Structures in Architecture")
+(author BA-Pedreschi-BranchingStructures "Remo Pedreschi")
+(resourceType BA-Pedreschi-BranchingStructures video)
+(level BA-Pedreschi-BranchingStructures intermediate)
+(section BA-Pedreschi-BranchingStructures BioStructures)
+(url BA-Pedreschi-BranchingStructures "https://www.youtube.com/watch?v=tjRkdL-bMKs")
+(desc BA-Pedreschi-BranchingStructures "Lecture on how tree-branching morphology has been adapted for architectural columns, canopies, and long-span roof supports.")
+
+;; ── 3D-Printed Bio-Structures ──
+
+(isa BA-Khoshnevis-3DPrintConstruction ReferenceWork)
+(title BA-Khoshnevis-3DPrintConstruction "Large-Scale 3D Printing for Construction")
+(author BA-Khoshnevis-3DPrintConstruction "Behrokh Khoshnevis (USC)")
+(resourceType BA-Khoshnevis-3DPrintConstruction video)
+(level BA-Khoshnevis-3DPrintConstruction beginner)
+(section BA-Khoshnevis-3DPrintConstruction BioStructures)
+(url BA-Khoshnevis-3DPrintConstruction "https://www.youtube.com/watch?v=JdbJP8X3OYQ")
+(desc BA-Khoshnevis-3DPrintConstruction "Overview of Contour Crafting technology for 3D-printing buildings, including how topology-optimized and bio-inspired geometries become feasible at building scale.")
+
+(isa BA-HansmeyerDillenburger-DigitalGrotesque ReferenceWork)
+(title BA-HansmeyerDillenburger-DigitalGrotesque "Digital Grotesque: 3D Printed Room")
+(author BA-HansmeyerDillenburger-DigitalGrotesque "Michael Hansmeyer & Benjamin Dillenburger")
+(resourceType BA-HansmeyerDillenburger-DigitalGrotesque notes)
+(level BA-HansmeyerDillenburger-DigitalGrotesque intermediate)
+(section BA-HansmeyerDillenburger-DigitalGrotesque BioStructures)
+(url BA-HansmeyerDillenburger-DigitalGrotesque "https://www.yourarchitecturesite.com/digital-grotesque")
+(desc BA-HansmeyerDillenburger-DigitalGrotesque "Project documentation of the first fully 3D-printed room, featuring algorithmically generated ornamentation with coral-like fractal geometry.")
+
+(isa BA-Oxman-MediatedMatter ReferenceWork)
+(title BA-Oxman-MediatedMatter "Mediated Matter Group: Bio-Inspired Digital Fabrication")
+(author BA-Oxman-MediatedMatter "Neri Oxman (MIT Media Lab)")
+(resourceType BA-Oxman-MediatedMatter code)
+(level BA-Oxman-MediatedMatter advanced)
+(section BA-Oxman-MediatedMatter BioStructures)
+(url BA-Oxman-MediatedMatter "https://www.media.mit.edu/groups/mediated-matter/overview/")
+(desc BA-Oxman-MediatedMatter "Research group portfolio documenting multi-material 3D printing inspired by biological structures, including the Silk Pavilion and Aguahoja projects.")
+
+(isa BA-Baieta-3DPrintArch ReferenceWork)
+(title BA-Baieta-3DPrintArch "3D Printing Architecture: Workflows, Case Studies, Innovations")
+(author BA-Baieta-3DPrintArch "Carlos Baieta")
+(resourceType BA-Baieta-3DPrintArch book)
+(level BA-Baieta-3DPrintArch intermediate)
+(section BA-Baieta-3DPrintArch BioStructures)
+(url BA-Baieta-3DPrintArch "https://www.routledge.com/3D-Printing-Architecture/Baieta/p/book/9781032100173")
+(desc BA-Baieta-3DPrintArch "Survey of current 3D printing workflows for architecture, with case studies featuring bio-inspired structural optimization and computational design pipelines.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: URBAN ECOLOGY — Urban Ecology & Biophilic Design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Biophilic Design Principles ──
+
+(isa BA-Kellert-BiophilicDesign ReferenceWork)
+(title BA-Kellert-BiophilicDesign "Biophilic Design: The Theory, Science and Practice of Bringing Buildings to Life")
+(author BA-Kellert-BiophilicDesign "Stephen R. Kellert, Judith Heerwagen & Martin Mador")
+(resourceType BA-Kellert-BiophilicDesign book)
+(level BA-Kellert-BiophilicDesign intermediate)
+(section BA-Kellert-BiophilicDesign UrbanEcology)
+(url BA-Kellert-BiophilicDesign "https://www.wiley.com/en-us/Biophilic+Design%3A+The+Theory%2C+Science+and+Practice+of+Bringing+Buildings+to+Life-p-9780470163344")
+(desc BA-Kellert-BiophilicDesign "Foundational anthology defining 14 patterns of biophilic design with evidence from environmental psychology, neuroscience, and architectural practice.")
+
+(isa BA-Terrapin-14Patterns ReferenceWork)
+(title BA-Terrapin-14Patterns "14 Patterns of Biophilic Design")
+(author BA-Terrapin-14Patterns "Terrapin Bright Green")
+(resourceType BA-Terrapin-14Patterns notes)
+(level BA-Terrapin-14Patterns beginner)
+(section BA-Terrapin-14Patterns UrbanEcology)
+(url BA-Terrapin-14Patterns "https://www.terrapinbrightgreen.com/reports/14-patterns/")
+(desc BA-Terrapin-14Patterns "Free report distilling biophilic design into 14 actionable patterns with built examples, metrics, and implementation guidance for designers.")
+
+(isa BA-Beatley-BiophilicCities ReferenceWork)
+(title BA-Beatley-BiophilicCities "Biophilic Cities: Integrating Nature into Urban Design and Planning")
+(author BA-Beatley-BiophilicCities "Timothy Beatley")
+(resourceType BA-Beatley-BiophilicCities book)
+(level BA-Beatley-BiophilicCities beginner)
+(section BA-Beatley-BiophilicCities UrbanEcology)
+(url BA-Beatley-BiophilicCities "https://islandpress.org/books/biophilic-cities")
+(desc BA-Beatley-BiophilicCities "Beatley surveys cities worldwide that have successfully integrated nature into urban planning, from Singapore to Oslo.")
+
+(isa BA-Kaplan-NatureOfView ReferenceWork)
+(title BA-Kaplan-NatureOfView "The Nature of the View from Home: Psychological Benefits")
+(author BA-Kaplan-NatureOfView "Rachel & Stephen Kaplan")
+(resourceType BA-Kaplan-NatureOfView notes)
+(level BA-Kaplan-NatureOfView intermediate)
+(section BA-Kaplan-NatureOfView UrbanEcology)
+(url BA-Kaplan-NatureOfView "https://doi.org/10.1177/001391650103300401")
+(desc BA-Kaplan-NatureOfView "Landmark study demonstrating that views of nature from residential windows correlate with higher satisfaction, well-being, and cognitive function.")
+
+;; ── Green Infrastructure ──
+
+(isa BA-WeilerScholzBarth-GreenRoof ReferenceWork)
+(title BA-WeilerScholzBarth-GreenRoof "Green Roof Systems: A Guide to the Planning, Design and Construction")
+(author BA-WeilerScholzBarth-GreenRoof "Susan Weiler & Katrin Scholz-Barth")
+(resourceType BA-WeilerScholzBarth-GreenRoof book)
+(level BA-WeilerScholzBarth-GreenRoof intermediate)
+(section BA-WeilerScholzBarth-GreenRoof UrbanEcology)
+(url BA-WeilerScholzBarth-GreenRoof "https://www.wiley.com/en-us/Green+Roof+Systems-p-9780471674955")
+(desc BA-WeilerScholzBarth-GreenRoof "Practical design guide for extensive and intensive green roofs, covering substrate engineering, plant selection, waterproofing, and stormwater performance.")
+
+(isa BA-Boeri-BoscoVerticale ReferenceWork)
+(title BA-Boeri-BoscoVerticale "Bosco Verticale: Vertical Forest, Milan")
+(author BA-Boeri-BoscoVerticale "Stefano Boeri Architetti")
+(resourceType BA-Boeri-BoscoVerticale video)
+(level BA-Boeri-BoscoVerticale beginner)
+(section BA-Boeri-BoscoVerticale UrbanEcology)
+(url BA-Boeri-BoscoVerticale "https://www.youtube.com/watch?v=cMEyaLFsnSU")
+(desc BA-Boeri-BoscoVerticale "Documentary on Milan's Bosco Verticale towers, which host over 900 trees and 20,000 plants on residential balconies to filter air and moderate microclimate.")
+
+(isa BA-USDA-iTree ReferenceWork)
+(title BA-USDA-iTree "i-Tree: Urban Forest Assessment Tools")
+(author BA-USDA-iTree "USDA Forest Service")
+(resourceType BA-USDA-iTree code)
+(level BA-USDA-iTree intermediate)
+(section BA-USDA-iTree UrbanEcology)
+(url BA-USDA-iTree "https://www.itreetools.org/")
+(desc BA-USDA-iTree "Free suite of tools for quantifying the ecosystem services of urban trees, including carbon storage, air pollution removal, and stormwater interception.")
+
+(isa BA-Austin-GreenInfrastructure ReferenceWork)
+(title BA-Austin-GreenInfrastructure "Green Infrastructure for Landscape Planning")
+(author BA-Austin-GreenInfrastructure "Gary Austin")
+(resourceType BA-Austin-GreenInfrastructure book)
+(level BA-Austin-GreenInfrastructure intermediate)
+(section BA-Austin-GreenInfrastructure UrbanEcology)
+(url BA-Austin-GreenInfrastructure "https://www.routledge.com/Green-Infrastructure-for-Landscape-Planning/Austin/p/book/9780415843539")
+(desc BA-Austin-GreenInfrastructure "Integration of bioswales, rain gardens, constructed wetlands, and urban forests into landscape planning with quantitative sizing methods.")
+
+;; ── Urban Ecosystem Services ──
+
+(isa BA-TEEB-ManualCities ReferenceWork)
+(title BA-TEEB-ManualCities "The Economics of Ecosystems and Biodiversity (TEEB) Manual for Cities")
+(author BA-TEEB-ManualCities "TEEB")
+(resourceType BA-TEEB-ManualCities notes)
+(level BA-TEEB-ManualCities intermediate)
+(section BA-TEEB-ManualCities UrbanEcology)
+(url BA-TEEB-ManualCities "https://teebweb.org/publications/teeb-for/local-and-regional-policy-makers/")
+(desc BA-TEEB-ManualCities "Guidance document for municipal decision-makers on how to value and integrate urban ecosystem services into planning and budgeting.")
+
+(isa BA-GomezBaggethun-UrbanEcoServices ReferenceWork)
+(title BA-GomezBaggethun-UrbanEcoServices "Urban Ecosystem Services: A Review")
+(author BA-GomezBaggethun-UrbanEcoServices "Erik Gomez-Baggethun & David N. Barton")
+(resourceType BA-GomezBaggethun-UrbanEcoServices notes)
+(level BA-GomezBaggethun-UrbanEcoServices advanced)
+(section BA-GomezBaggethun-UrbanEcoServices UrbanEcology)
+(url BA-GomezBaggethun-UrbanEcoServices "https://doi.org/10.1016/j.ecolecon.2012.02.005")
+(desc BA-GomezBaggethun-UrbanEcoServices "Comprehensive review of urban ecosystem services research, covering valuation methods, typologies, and policy integration challenges.")
+
+(isa BA-EU-NatureBasedSolutions ReferenceWork)
+(title BA-EU-NatureBasedSolutions "Nature-Based Solutions for Climate Resilience (EU Report)")
+(author BA-EU-NatureBasedSolutions "European Commission")
+(resourceType BA-EU-NatureBasedSolutions data)
+(level BA-EU-NatureBasedSolutions intermediate)
+(section BA-EU-NatureBasedSolutions UrbanEcology)
+(url BA-EU-NatureBasedSolutions "https://research-and-innovation.ec.europa.eu/research-area/environment/nature-based-solutions_en")
+(desc BA-EU-NatureBasedSolutions "EU research portal on nature-based solutions for urban flood management, heat mitigation, and biodiversity conservation.")
+
+(isa BA-NParks-CityInNature ReferenceWork)
+(title BA-NParks-CityInNature "Singapore: City in Nature (National Parks Board)")
+(author BA-NParks-CityInNature "NParks Singapore")
+(resourceType BA-NParks-CityInNature video)
+(level BA-NParks-CityInNature beginner)
+(section BA-NParks-CityInNature UrbanEcology)
+(url BA-NParks-CityInNature "https://www.youtube.com/watch?v=NIqbBdEtS1k")
+(desc BA-NParks-CityInNature "Overview of Singapore's strategy to become a City in Nature by 2030, integrating skyrise greenery, ecological corridors, and therapeutic gardens.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: DESIGN TOOLS — Design Tools & Software
+;; ════════════════════════════════════════════════════════════
+
+;; ── Parametric & Generative Design ──
+
+(isa BA-McNeel-Grasshopper ReferenceWork)
+(title BA-McNeel-Grasshopper "Grasshopper: Algorithmic Modeling for Rhino")
+(author BA-McNeel-Grasshopper "Robert McNeel & Associates")
+(resourceType BA-McNeel-Grasshopper code)
+(level BA-McNeel-Grasshopper beginner)
+(section BA-McNeel-Grasshopper DesignTools)
+(url BA-McNeel-Grasshopper "https://www.grasshopper3d.com/")
+(desc BA-McNeel-Grasshopper "The industry-standard visual programming environment for parametric design, enabling complex bio-inspired geometry through node-based workflows.")
+
+(isa BA-Prusinkiewicz-AlgorithmicPlants ReferenceWork)
+(title BA-Prusinkiewicz-AlgorithmicPlants "The Algorithmic Beauty of Plants")
+(author BA-Prusinkiewicz-AlgorithmicPlants "Przemyslaw Prusinkiewicz & Aristid Lindenmayer")
+(resourceType BA-Prusinkiewicz-AlgorithmicPlants book)
+(level BA-Prusinkiewicz-AlgorithmicPlants intermediate)
+(section BA-Prusinkiewicz-AlgorithmicPlants DesignTools)
+(url BA-Prusinkiewicz-AlgorithmicPlants "http://algorithmicbotany.org/papers/abop/abop.pdf")
+(desc BA-Prusinkiewicz-AlgorithmicPlants "Classic text on L-systems for modeling plant growth and branching, freely available online. Foundation for generative branching algorithms in architecture.")
+
+(isa BA-Rutten-Galapagos ReferenceWork)
+(title BA-Rutten-Galapagos "Galapagos: Evolutionary Solver in Grasshopper")
+(author BA-Rutten-Galapagos "David Rutten")
+(resourceType BA-Rutten-Galapagos code)
+(level BA-Rutten-Galapagos intermediate)
+(section BA-Rutten-Galapagos DesignTools)
+(url BA-Rutten-Galapagos "https://www.grasshopper3d.com/group/galapagos")
+(desc BA-Rutten-Galapagos "Built-in evolutionary optimization component for Grasshopper that uses genetic algorithms to solve multi-objective design problems.")
+
+(isa BA-MIT-Morphogenesis ReferenceWork)
+(title BA-MIT-Morphogenesis "Morphogenesis and Computation: A Design Exploration (MIT OCW)")
+(author BA-MIT-Morphogenesis "MIT Media Lab / Neri Oxman")
+(resourceType BA-MIT-Morphogenesis course)
+(level BA-MIT-Morphogenesis advanced)
+(section BA-MIT-Morphogenesis DesignTools)
+(url BA-MIT-Morphogenesis "https://ocw.mit.edu/courses/4-500-design-computation-fall-2002/")
+(desc BA-MIT-Morphogenesis "MIT OpenCourseWare materials on computational design processes inspired by biological morphogenesis, covering agent-based models and reaction-diffusion systems.")
+
+(isa BA-Shiffman-NatureOfCode ReferenceWork)
+(title BA-Shiffman-NatureOfCode "Nature of Code")
+(author BA-Shiffman-NatureOfCode "Daniel Shiffman")
+(resourceType BA-Shiffman-NatureOfCode book)
+(level BA-Shiffman-NatureOfCode beginner)
+(section BA-Shiffman-NatureOfCode DesignTools)
+(url BA-Shiffman-NatureOfCode "https://natureofcode.com/")
+(desc BA-Shiffman-NatureOfCode "Free online textbook teaching simulation of natural systems (physics, flocking, cellular automata, fractals) through code, directly applicable to generative design.")
+
+;; ── Environmental Simulation ──
+
+(isa BA-Roudsari-LadybugTools ReferenceWork)
+(title BA-Roudsari-LadybugTools "Ladybug Tools: Environmental Analysis for Grasshopper")
+(author BA-Roudsari-LadybugTools "Mostapha Sadeghipour Roudsari")
+(resourceType BA-Roudsari-LadybugTools code)
+(level BA-Roudsari-LadybugTools intermediate)
+(section BA-Roudsari-LadybugTools DesignTools)
+(url BA-Roudsari-LadybugTools "https://www.ladybug.tools/")
+(desc BA-Roudsari-LadybugTools "Open-source plugin suite connecting Grasshopper to EnergyPlus, Radiance, and OpenFOAM for daylight, energy, and airflow simulation within parametric workflows.")
+
+(isa BA-DOE-EnergyPlus ReferenceWork)
+(title BA-DOE-EnergyPlus "EnergyPlus: Whole Building Energy Simulation")
+(author BA-DOE-EnergyPlus "US Department of Energy")
+(resourceType BA-DOE-EnergyPlus code)
+(level BA-DOE-EnergyPlus advanced)
+(section BA-DOE-EnergyPlus DesignTools)
+(url BA-DOE-EnergyPlus "https://energyplus.net/")
+(desc BA-DOE-EnergyPlus "Open-source building energy simulation engine capable of modeling natural ventilation, thermal mass, and adaptive facade strategies at sub-hourly resolution.")
+
+(isa BA-Ward-Radiance ReferenceWork)
+(title BA-Ward-Radiance "Radiance: Physically-Based Lighting Simulation")
+(author BA-Ward-Radiance "Greg Ward (LBNL)")
+(resourceType BA-Ward-Radiance code)
+(level BA-Ward-Radiance advanced)
+(section BA-Ward-Radiance DesignTools)
+(url BA-Ward-Radiance "https://www.radiance-online.org/")
+(desc BA-Ward-Radiance "Industry-standard ray-tracing engine for daylight analysis, used to optimize biomimetic shading and light-redirecting facades.")
+
+(isa BA-Cambridge-EnvDesign ReferenceWork)
+(title BA-Cambridge-EnvDesign "Environmental Design of Buildings (Coursera)")
+(author BA-Cambridge-EnvDesign "University of Cambridge")
+(resourceType BA-Cambridge-EnvDesign course)
+(level BA-Cambridge-EnvDesign intermediate)
+(section BA-Cambridge-EnvDesign DesignTools)
+(url BA-Cambridge-EnvDesign "https://www.coursera.org/learn/designing-sustainable-buildings")
+(desc BA-Cambridge-EnvDesign "Course covering building physics, thermal comfort, and environmental simulation methods for sustainable architecture.")
+
+;; ── Digital Fabrication ──
+
+(isa BA-RobotsInArch-KUKAprc ReferenceWork)
+(title BA-RobotsInArch-KUKAprc "Robots in Architecture: KUKA|prc for Grasshopper")
+(author BA-RobotsInArch-KUKAprc "Association for Robots in Architecture")
+(resourceType BA-RobotsInArch-KUKAprc code)
+(level BA-RobotsInArch-KUKAprc advanced)
+(section BA-RobotsInArch-KUKAprc DesignTools)
+(url BA-RobotsInArch-KUKAprc "https://www.robotsinarchitecture.org/kuka-prc")
+(desc BA-RobotsInArch-KUKAprc "Plugin for programming KUKA robotic arms directly from Grasshopper, enabling robotic fabrication of complex bio-inspired building components.")
+
+(isa BA-Gershenfeld-HowToMake ReferenceWork)
+(title BA-Gershenfeld-HowToMake "How to Make (Almost) Anything (MIT Fab Lab)")
+(author BA-Gershenfeld-HowToMake "Neil Gershenfeld (MIT)")
+(resourceType BA-Gershenfeld-HowToMake course)
+(level BA-Gershenfeld-HowToMake intermediate)
+(section BA-Gershenfeld-HowToMake DesignTools)
+(url BA-Gershenfeld-HowToMake "https://fab.cba.mit.edu/classes/863.24/")
+(desc BA-Gershenfeld-HowToMake "MIT course on digital fabrication spanning CNC milling, laser cutting, 3D printing, and electronics -- skills essential for prototyping biomimetic designs.")
+
+(isa BA-MengesKnippers-ICDITKEPavilions ReferenceWork)
+(title BA-MengesKnippers-ICDITKEPavilions "ICD/ITKE Research Pavilions (University of Stuttgart)")
+(author BA-MengesKnippers-ICDITKEPavilions "Achim Menges & Jan Knippers")
+(resourceType BA-MengesKnippers-ICDITKEPavilions video)
+(level BA-MengesKnippers-ICDITKEPavilions intermediate)
+(section BA-MengesKnippers-ICDITKEPavilions DesignTools)
+(url BA-MengesKnippers-ICDITKEPavilions "https://www.youtube.com/watch?v=elJDYMb4nMo")
+(desc BA-MengesKnippers-ICDITKEPavilions "Documentation of the ICD/ITKE research pavilion series, which uses robotic fabrication to build lightweight fiber structures inspired by beetle elytra and sea urchin plates.")
+
+(isa BA-ScheurerStehling-FabInfoModeling ReferenceWork)
+(title BA-ScheurerStehling-FabInfoModeling "Fabrication Information Modeling: Digital Fabrication Handbook")
+(author BA-ScheurerStehling-FabInfoModeling "Fabian Scheurer & Hanno Stehling")
+(resourceType BA-ScheurerStehling-FabInfoModeling notes)
+(level BA-ScheurerStehling-FabInfoModeling advanced)
+(section BA-ScheurerStehling-FabInfoModeling DesignTools)
+(url BA-ScheurerStehling-FabInfoModeling "https://doi.org/10.1002/ad.1416")
+(desc BA-ScheurerStehling-FabInfoModeling "Paper on integrating digital fabrication constraints into parametric design models, ensuring computationally derived bio-inspired forms are buildable.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BioArchitectureReference 83)
+(totalSections BioArchitectureReference 7)
+(comment BioArchitectureReference
+  "7 sections: Overview (12), Climate Control (11), Shells & Forms (12),
+   Adaptive Facades (12), Bio-Structures (11), Urban Ecology (12),
+   Design Tools (13). Total: 83 resources.")

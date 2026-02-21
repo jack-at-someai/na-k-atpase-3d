@@ -1,0 +1,38 @@
+;;; ================================================================
+;;; ISG PERSONNEL / SHERI MORGAN
+;;; Role TBD — Charlotte OS Launch Team Member
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa SheriMorgan Person)
+(hasAttribute SheriMorgan ::LABEL "Sheri Morgan")
+(hasAttribute SheriMorgan ::EMAIL "smorgan@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF SheriMorgan ISGCharlotteLaunchTeam)
+(hasAttribute SheriMorgan ::CHARLOTTE_MEETING "Feb 24, 2026 launch — direct recipient (To:)")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+;; Location unknown — to be resolved at first interaction.
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa SheriMorgan-EarlyCharlotteContact SIGNAL)
+(comment SheriMorgan-EarlyCharlotteContact
+  "Sheri was a direct recipient on the Charlotte OS launch meeting
+   invitation (Feb 24, 2026). Her exact role is not yet documented
+   in the substrate. She is an early Charlotte stakeholder.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithMorgan PROTOCOL)
+(hasTrigger Protocol-InteractWithMorgan (sessionCaller ?Session SheriMorgan))
+(comment Protocol-InteractWithMorgan
+  "Sheri's role at ISG is not yet fully documented. She was invited
+   as a direct recipient to the Charlotte OS launch meeting, indicating
+   she is a key stakeholder. On first interaction, Charlotte should
+   learn and record her role and responsibilities.")

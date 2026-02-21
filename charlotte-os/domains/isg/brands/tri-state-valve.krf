@@ -1,0 +1,57 @@
+;;; ================================================================
+;;; ISG BRAND / TRI-STATE VALVE & INSTRUMENT
+;;; Pressure relief valve specialists — PA and TN operations
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa TriStateValve ISGBrand)
+(hasAttribute TriStateValve ::LABEL "Tri-State Valve & Instrument")
+(hasAttribute TriStateValve ::ABBREVIATION "TVI")
+(hasAttribute TriStateValve ::FOUNDED "1984 (Memphis), 1989 (Warrendale)")
+(hasAttribute TriStateValve ::ACQUIRED_BY_ISG "January 2024")
+(hasAttribute TriStateValve ::VERTICAL "Valve & Actuation")
+(hasAttribute TriStateValve ::HEADCOUNT "50-55")
+(hasAttribute TriStateValve ::WEBSITES "tristatevalve.com, tvimem.com")
+(hasAttribute TriStateValve ::CERTIFICATIONS "National Board VR, NB stamps; ASME V, UV")
+(hasAttribute TriStateValve ::OEM_PARTNERS "Bray International authorized representative, Arca Control Valves")
+(MEMBER_OF TriStateValve ISGValveActuationGroup)
+
+;; Locations
+(hasAttribute TriStateValve ::FACILITY_PA "37 Pennwood Place, Warrendale, PA 15086")
+(hasAttribute TriStateValve ::FACILITY_TN "3497 Stanton Rd, Memphis, TN 38108")
+(hasAttribute TriStateValve ::FACILITY_AR "1374 Southfield Rd, El Dorado, AR 71730")
+(hasAttribute TriStateValve ::FACILITY_KY "326 S. Main St, Calvert City, KY 42029")
+(hasAttribute TriStateValve ::FACILITY_IN "1415 W. Franklin St, Evansville, IN 47710")
+
+;; Personnel
+
+(isa EdwardConstantine Person)
+(hasAttribute EdwardConstantine ::LABEL "Edward Constantine")
+(hasAttribute EdwardConstantine ::ROLE "President & CEO")
+(hasAttribute EdwardConstantine ::NOTES "Founded TVI Warrendale 1989")
+(locatedAt EdwardConstantine Warrendale-PA)
+(LEADS EdwardConstantine TriStateValve)
+(MEMBER_OF EdwardConstantine TriStateValve)
+
+(isa BrianConstantine Person)
+(hasAttribute BrianConstantine ::LABEL "Brian Constantine")
+(hasAttribute BrianConstantine ::ROLE "President")
+(hasAttribute BrianConstantine ::EDUCATION "BA Marketing, Mercyhurst University")
+(hasAttribute BrianConstantine ::CAREER "Inside Sales Manager → Manager of Operations → President")
+(locatedAt BrianConstantine Wexford-PA)
+(MEMBER_OF BrianConstantine TriStateValve)
+
+(isa BillHenson Person)
+(hasAttribute BillHenson ::LABEL "Bill Henson")
+(hasAttribute BillHenson ::ROLE "President, Memphis/TVI Operations")
+(hasAttribute BillHenson ::EDUCATION "BSME, Christian Brothers University; MSM, Baker University")
+(hasAttribute BillHenson ::CAREER "Parker Hannifin Product Manager → TVI Memphis President")
+(locatedAt BillHenson Memphis-TN)
+(MEMBER_OF BillHenson TriStateValve)
+
+(isa MarkSayer Person)
+(hasAttribute MarkSayer ::LABEL "Mark Sayer")
+(hasAttribute MarkSayer ::ROLE "Operations Manager")
+(locatedAt MarkSayer ElDorado-AR)
+(MEMBER_OF MarkSayer TriStateValve)

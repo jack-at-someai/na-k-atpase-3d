@@ -1,0 +1,826 @@
+;;; ================================================================
+;;; REFERENCE / BIO-INSPIRED ROBOTICS
+;;; 80 resources across 7 sections
+;;; Soft robotics, legged robots & swarm systems. Machines built on biological movement principles.
+;;; ================================================================
+;;;
+;;; Bio-inspired robotics draws on millions of years of evolutionary
+;;; optimisation to produce machines that walk, swim, fly, and grasp
+;;; with astonishing grace. Where classical industrial robots rely on
+;;; rigid links and precise models, biomimetic systems embrace
+;;; compliance, redundancy, and distributed sensing.
+;;;
+;;; Learning path: Overview → Soft Robotics → Legged Robots →
+;;; Aerial Robots → Aquatic Robots → Swarm Robotics →
+;;; Sensors & Actuators
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BR-Floreano-BioInspiredAI ReferenceWork)
+(title BR-Floreano-BioInspiredAI "Bio-Inspired Artificial Intelligence: Theories, Methods, and Technologies")
+(author BR-Floreano-BioInspiredAI "Dario Floreano & Claudio Mattiussi")
+(resourceType BR-Floreano-BioInspiredAI book)
+(level BR-Floreano-BioInspiredAI intermediate)
+(section BR-Floreano-BioInspiredAI BioInspiredRoboticsOverview)
+(url BR-Floreano-BioInspiredAI "https://mitpress.mit.edu/9780262062718/bio-inspired-artificial-intelligence/")
+(desc BR-Floreano-BioInspiredAI "A comprehensive MIT Press text spanning neural networks, evolutionary computation, and embodied intelligence as they apply to robotics and AI.")
+
+(isa BR-Ijspeert-Biorobotics ReferenceWork)
+(title BR-Ijspeert-Biorobotics "Biorobotics: Using Robots to Emulate and Investigate Agile Animal Locomotion")
+(author BR-Ijspeert-Biorobotics "Auke Jan Ijspeert")
+(resourceType BR-Ijspeert-Biorobotics book)
+(level BR-Ijspeert-Biorobotics intermediate)
+(section BR-Ijspeert-Biorobotics BioInspiredRoboticsOverview)
+(url BR-Ijspeert-Biorobotics "https://doi.org/10.1126/science.1254486")
+(desc BR-Ijspeert-Biorobotics "Seminal Science review framing biorobotics as a two-way street: robots test biological hypotheses while biology inspires robot design.")
+
+(isa BR-BarCohen-Biomimetics ReferenceWork)
+(title BR-BarCohen-Biomimetics "Biomimetics: Biologically Inspired Technologies")
+(author BR-BarCohen-Biomimetics "Yoseph Bar-Cohen (Editor)")
+(resourceType BR-BarCohen-Biomimetics book)
+(level BR-BarCohen-Biomimetics intermediate)
+(section BR-BarCohen-Biomimetics BioInspiredRoboticsOverview)
+(url BR-BarCohen-Biomimetics "https://www.taylorfrancis.com/books/edit/10.1201/9781420037715/biomimetics-yoseph-bar-cohen")
+(desc BR-BarCohen-Biomimetics "Edited volume covering electroactive polymers, gecko adhesion, and other biomimetic technologies relevant to robotics.")
+
+(isa BR-Pfeifer-BodyShapesMind ReferenceWork)
+(title BR-Pfeifer-BodyShapesMind "How the Body Shapes the Way We Think")
+(author BR-Pfeifer-BodyShapesMind "Rolf Pfeifer & Josh Bongard")
+(resourceType BR-Pfeifer-BodyShapesMind book)
+(level BR-Pfeifer-BodyShapesMind beginner)
+(section BR-Pfeifer-BodyShapesMind BioInspiredRoboticsOverview)
+(url BR-Pfeifer-BodyShapesMind "https://mitpress.mit.edu/9780262162395/how-the-body-shapes-the-way-we-think/")
+(desc BR-Pfeifer-BodyShapesMind "Foundational book on embodied intelligence, arguing that morphology and materials are as important as the controller in bio-inspired robots.")
+
+;; ── Survey Articles ──
+
+(isa BR-Cully-AdaptLikeAnimals ReferenceWork)
+(title BR-Cully-AdaptLikeAnimals "Robots That Can Adapt Like Animals")
+(author BR-Cully-AdaptLikeAnimals "Antoine Cully, Jeff Clune, Danesh Tarapore & Jean-Baptiste Mouret")
+(resourceType BR-Cully-AdaptLikeAnimals notes)
+(level BR-Cully-AdaptLikeAnimals intermediate)
+(section BR-Cully-AdaptLikeAnimals BioInspiredRoboticsOverview)
+(url BR-Cully-AdaptLikeAnimals "https://doi.org/10.1038/nature14422")
+(desc BR-Cully-AdaptLikeAnimals "Nature paper presenting the Intelligent Trial-and-Error algorithm that lets damaged robots rapidly adapt, drawing on animal resilience.")
+
+(isa BR-Rus-SoftRoboticsSurvey ReferenceWork)
+(title BR-Rus-SoftRoboticsSurvey "Soft Robotics: Biological Inspiration, State of the Art, and Future Research")
+(author BR-Rus-SoftRoboticsSurvey "Daniela Rus & Michael T. Tolley")
+(resourceType BR-Rus-SoftRoboticsSurvey notes)
+(level BR-Rus-SoftRoboticsSurvey intermediate)
+(section BR-Rus-SoftRoboticsSurvey BioInspiredRoboticsOverview)
+(url BR-Rus-SoftRoboticsSurvey "https://doi.org/10.1002/adfm.201800712")
+(desc BR-Rus-SoftRoboticsSurvey "Comprehensive survey in Advanced Functional Materials covering the landscape of soft robotics and its biological underpinnings.")
+
+(isa BR-Li-BioinspiredReview ReferenceWork)
+(title BR-Li-BioinspiredReview "Bioinspired Robot Design: A Comprehensive Review")
+(author BR-Li-BioinspiredReview "Shuai Li et al.")
+(resourceType BR-Li-BioinspiredReview notes)
+(level BR-Li-BioinspiredReview beginner)
+(section BR-Li-BioinspiredReview BioInspiredRoboticsOverview)
+(url BR-Li-BioinspiredReview "https://doi.org/10.3389/frobt.2021.788164")
+(desc BR-Li-BioinspiredReview "Frontiers in Robotics and AI survey providing a broad taxonomy of bio-inspired robots across locomotion, manipulation, and sensing.")
+
+(isa BR-Meyer-AnimalsToAnimats ReferenceWork)
+(title BR-Meyer-AnimalsToAnimats "From Animals to Animats: Simulation of Adaptive Behavior (SAB proceedings)")
+(author BR-Meyer-AnimalsToAnimats "Jean-Arcady Meyer & Stewart W. Wilson")
+(resourceType BR-Meyer-AnimalsToAnimats notes)
+(level BR-Meyer-AnimalsToAnimats advanced)
+(section BR-Meyer-AnimalsToAnimats BioInspiredRoboticsOverview)
+(url BR-Meyer-AnimalsToAnimats "https://mitpress.mit.edu/9780262631389/from-animals-to-animats/")
+(desc BR-Meyer-AnimalsToAnimats "Proceedings of the foundational SAB conference series where the animat framework bridging ethology and robotics was established.")
+
+;; ── Introductory Lectures ──
+
+(isa BR-ETH-BioInspiredLectures ReferenceWork)
+(title BR-ETH-BioInspiredLectures "Bio-Inspired Robotics (ETH Zurich Lecture Series)")
+(author BR-ETH-BioInspiredLectures "ETH Zurich / Robert Katzschmann")
+(resourceType BR-ETH-BioInspiredLectures video)
+(level BR-ETH-BioInspiredLectures beginner)
+(section BR-ETH-BioInspiredLectures BioInspiredRoboticsOverview)
+(url BR-ETH-BioInspiredLectures "https://www.youtube.com/watch?v=jVJvFGGKuIE")
+(desc BR-ETH-BioInspiredLectures "Lecture series from ETH Zurich introducing key concepts in bio-inspired robot design, including soft robotics and locomotion.")
+
+(isa BR-Stanford-CS223A ReferenceWork)
+(title BR-Stanford-CS223A "Introduction to Robotics — Stanford CS223A")
+(author BR-Stanford-CS223A "Oussama Khatib")
+(resourceType BR-Stanford-CS223A course)
+(level BR-Stanford-CS223A beginner)
+(section BR-Stanford-CS223A BioInspiredRoboticsOverview)
+(url BR-Stanford-CS223A "https://see.stanford.edu/Course/CS223A")
+(desc BR-Stanford-CS223A "Stanford lecture series covering classical robotics fundamentals that underpin bio-inspired extensions in kinematics, dynamics, and control.")
+
+(isa BR-MIT-BioInspiredCourse ReferenceWork)
+(title BR-MIT-BioInspiredCourse "Biologically Inspired Robotics — MIT OpenCourseWare")
+(author BR-MIT-BioInspiredCourse "MIT OCW")
+(resourceType BR-MIT-BioInspiredCourse course)
+(level BR-MIT-BioInspiredCourse intermediate)
+(section BR-MIT-BioInspiredCourse BioInspiredRoboticsOverview)
+(url BR-MIT-BioInspiredCourse "https://ocw.mit.edu/courses/6-s078-biologically-inspired-robotics-fall-2021/")
+(desc BR-MIT-BioInspiredCourse "MIT course exploring how principles from biology can inform the design of robots, covering locomotion, manipulation, and sensing.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: SOFT ROBOTICS
+;; Actuator technologies, octopus-inspired arms, fabrication
+;; ════════════════════════════════════════════════════════════
+
+;; ── Soft Actuator Technologies ──
+
+(isa BR-Rus-DesignFabControl ReferenceWork)
+(title BR-Rus-DesignFabControl "Design, Fabrication and Control of Soft Robots")
+(author BR-Rus-DesignFabControl "Daniela Rus & Michael T. Tolley")
+(resourceType BR-Rus-DesignFabControl notes)
+(level BR-Rus-DesignFabControl intermediate)
+(section BR-Rus-DesignFabControl SoftRobotics)
+(url BR-Rus-DesignFabControl "https://doi.org/10.1038/nature14543")
+(desc BR-Rus-DesignFabControl "Nature review on how compliant materials and novel fabrication methods are creating a new class of robots fundamentally different from rigid machines.")
+
+(isa BR-Martinez-ElastomericOrigami ReferenceWork)
+(title BR-Martinez-ElastomericOrigami "Elastomeric Origami: Programmable Paper-Elastomer Composites as Pneumatic Actuators")
+(author BR-Martinez-ElastomericOrigami "R. V. Martinez et al.")
+(resourceType BR-Martinez-ElastomericOrigami notes)
+(level BR-Martinez-ElastomericOrigami advanced)
+(section BR-Martinez-ElastomericOrigami SoftRobotics)
+(url BR-Martinez-ElastomericOrigami "https://doi.org/10.1002/adfm.201202876")
+(desc BR-Martinez-ElastomericOrigami "Paper demonstrating how combining paper and elastomer layers enables programmable pneumatic soft actuators with complex motions.")
+
+(isa BR-Pelrine-DielectricElastomers ReferenceWork)
+(title BR-Pelrine-DielectricElastomers "Dielectric Elastomers as Next-Generation Polymeric Actuators")
+(author BR-Pelrine-DielectricElastomers "Ron Pelrine et al.")
+(resourceType BR-Pelrine-DielectricElastomers notes)
+(level BR-Pelrine-DielectricElastomers advanced)
+(section BR-Pelrine-DielectricElastomers SoftRobotics)
+(url BR-Pelrine-DielectricElastomers "https://doi.org/10.1002/adma.200400737")
+(desc BR-Pelrine-DielectricElastomers "Early and influential paper on dielectric elastomer actuators achieving large strains and high energy densities comparable to biological muscle.")
+
+(isa BR-Harvard-SoftRoboticsToolkit ReferenceWork)
+(title BR-Harvard-SoftRoboticsToolkit "Soft Robotics Toolkit")
+(author BR-Harvard-SoftRoboticsToolkit "Harvard Biodesign Lab")
+(resourceType BR-Harvard-SoftRoboticsToolkit code)
+(level BR-Harvard-SoftRoboticsToolkit beginner)
+(section BR-Harvard-SoftRoboticsToolkit SoftRobotics)
+(url BR-Harvard-SoftRoboticsToolkit "https://softroboticstoolkit.com/")
+(desc BR-Harvard-SoftRoboticsToolkit "Open-source collection of design files, fabrication tutorials, and control software for building pneumatic soft robots.")
+
+;; ── Octopus & Continuum Robots ──
+
+(isa BR-Laschi-OctopusArm ReferenceWork)
+(title BR-Laschi-OctopusArm "An Octopus-Bioinspired Solution to Movement and Manipulation for Soft Robots")
+(author BR-Laschi-OctopusArm "Cecilia Laschi et al.")
+(resourceType BR-Laschi-OctopusArm notes)
+(level BR-Laschi-OctopusArm intermediate)
+(section BR-Laschi-OctopusArm SoftRobotics)
+(url BR-Laschi-OctopusArm "https://doi.org/10.1088/1748-3190/7/2/025004")
+(desc BR-Laschi-OctopusArm "Bioinspiration & Biomimetics paper describing the design of an octopus-inspired robotic arm with cable-driven and SMA actuation.")
+
+(isa BR-Laschi-SoftRoboticsReview ReferenceWork)
+(title BR-Laschi-SoftRoboticsReview "Soft Robotics: Academic Review and Bibliometric Analysis")
+(author BR-Laschi-SoftRoboticsReview "Cecilia Laschi, Barbara Mazzolai & Matteo Cianchetti")
+(resourceType BR-Laschi-SoftRoboticsReview notes)
+(level BR-Laschi-SoftRoboticsReview intermediate)
+(section BR-Laschi-SoftRoboticsReview SoftRobotics)
+(url BR-Laschi-SoftRoboticsReview "https://doi.org/10.1089/soro.2013.0001")
+(desc BR-Laschi-SoftRoboticsReview "One of the first papers in the journal Soft Robotics, mapping the field and identifying octopus-inspired manipulation as a key research thread.")
+
+(isa BR-Simaan-ContinuumSurgery ReferenceWork)
+(title BR-Simaan-ContinuumSurgery "A Continuum Robot for Remote Minimally Invasive Surgery")
+(author BR-Simaan-ContinuumSurgery "Nabil Simaan et al.")
+(resourceType BR-Simaan-ContinuumSurgery notes)
+(level BR-Simaan-ContinuumSurgery advanced)
+(section BR-Simaan-ContinuumSurgery SoftRobotics)
+(url BR-Simaan-ContinuumSurgery "https://doi.org/10.1109/ROBOT.2004.1307975")
+(desc BR-Simaan-ContinuumSurgery "IEEE ICRA paper presenting a snake-like continuum robot for surgical applications, demonstrating dexterous manipulation in confined spaces.")
+
+(isa BR-Higashimori-SoftRoboticsText ReferenceWork)
+(title BR-Higashimori-SoftRoboticsText "Soft Robotics (Springer Textbook)")
+(author BR-Higashimori-SoftRoboticsText "Akon Higashimori & Kenjiro Tadakuma (Editors)")
+(resourceType BR-Higashimori-SoftRoboticsText book)
+(level BR-Higashimori-SoftRoboticsText intermediate)
+(section BR-Higashimori-SoftRoboticsText SoftRobotics)
+(url BR-Higashimori-SoftRoboticsText "https://link.springer.com/book/10.1007/978-3-031-39504-8")
+(desc BR-Higashimori-SoftRoboticsText "Springer textbook covering the mechanics, modelling, and design of soft robotic systems from biological principles to engineering practice.")
+
+;; ── Fabrication Methods ──
+
+(isa BR-Wallin-3DPrintingSoft ReferenceWork)
+(title BR-Wallin-3DPrintingSoft "3D Printing of Soft Robots")
+(author BR-Wallin-3DPrintingSoft "Thomas J. Wallin, Jennifer Pikul & Robert F. Shepherd")
+(resourceType BR-Wallin-3DPrintingSoft notes)
+(level BR-Wallin-3DPrintingSoft intermediate)
+(section BR-Wallin-3DPrintingSoft SoftRobotics)
+(url BR-Wallin-3DPrintingSoft "https://doi.org/10.1038/s41578-018-0002-2")
+(desc BR-Wallin-3DPrintingSoft "Nature Reviews Materials paper surveying multi-material additive manufacturing techniques for creating functional soft robots.")
+
+(isa BR-Shepherd-MultigaitSoft ReferenceWork)
+(title BR-Shepherd-MultigaitSoft "Multigait Soft Robot (Whitesides Group)")
+(author BR-Shepherd-MultigaitSoft "Robert F. Shepherd et al.")
+(resourceType BR-Shepherd-MultigaitSoft notes)
+(level BR-Shepherd-MultigaitSoft beginner)
+(section BR-Shepherd-MultigaitSoft SoftRobotics)
+(url BR-Shepherd-MultigaitSoft "https://doi.org/10.1073/pnas.1116564108")
+(desc BR-Shepherd-MultigaitSoft "PNAS paper presenting the iconic soft quadruped capable of multiple locomotion gaits, fabricated via soft lithography.")
+
+(isa BR-OpenSoft-Platform ReferenceWork)
+(title BR-OpenSoft-Platform "OpenSoft — Open-Source Soft Robotics Platform")
+(author BR-OpenSoft-Platform "Various Contributors")
+(resourceType BR-OpenSoft-Platform code)
+(level BR-OpenSoft-Platform beginner)
+(section BR-OpenSoft-Platform SoftRobotics)
+(url BR-OpenSoft-Platform "https://github.com/SoftRobotics/opensoft")
+(desc BR-OpenSoft-Platform "GitHub repository with open-source designs, STL files, and control code for building and experimenting with soft robots.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: LEGGED ROBOTS
+;; Dynamic walking, insect-inspired robots, CPG neural control
+;; ════════════════════════════════════════════════════════════
+
+;; ── Dynamic Legged Locomotion ──
+
+(isa BR-Raibert-LeggedBalance ReferenceWork)
+(title BR-Raibert-LeggedBalance "Legged Robots That Balance")
+(author BR-Raibert-LeggedBalance "Marc H. Raibert")
+(resourceType BR-Raibert-LeggedBalance book)
+(level BR-Raibert-LeggedBalance intermediate)
+(section BR-Raibert-LeggedBalance LeggedRobots)
+(url BR-Raibert-LeggedBalance "https://mitpress.mit.edu/9780262181174/legged-robots-that-balance/")
+(desc BR-Raibert-LeggedBalance "The classic MIT Press monograph by the founder of Boston Dynamics, establishing the principles of dynamic legged locomotion.")
+
+(isa BR-Hwangbo-AgileMotorSkills ReferenceWork)
+(title BR-Hwangbo-AgileMotorSkills "Learning Agile and Dynamic Motor Skills for Legged Robots")
+(author BR-Hwangbo-AgileMotorSkills "Jemin Hwangbo et al.")
+(resourceType BR-Hwangbo-AgileMotorSkills notes)
+(level BR-Hwangbo-AgileMotorSkills advanced)
+(section BR-Hwangbo-AgileMotorSkills LeggedRobots)
+(url BR-Hwangbo-AgileMotorSkills "https://doi.org/10.1126/scirobotics.aau5872")
+(desc BR-Hwangbo-AgileMotorSkills "Science Robotics paper showing ANYmal learning locomotion via reinforcement learning, achieving performance rivalling hand-crafted controllers.")
+
+(isa BR-Kim-MITCheetah ReferenceWork)
+(title BR-Kim-MITCheetah "MIT Cheetah: Design and Control of a Legged Robot")
+(author BR-Kim-MITCheetah "Sangbae Kim et al.")
+(resourceType BR-Kim-MITCheetah video)
+(level BR-Kim-MITCheetah intermediate)
+(section BR-Kim-MITCheetah LeggedRobots)
+(url BR-Kim-MITCheetah "https://www.youtube.com/watch?v=QZ1DaQgg3lE")
+(desc BR-Kim-MITCheetah "MIT presentation on the Cheetah robot series covering bio-inspired leg design, proprioceptive control, and high-speed running.")
+
+(isa BR-Miki-QuadrupedalTerrain ReferenceWork)
+(title BR-Miki-QuadrupedalTerrain "Learning Quadrupedal Locomotion over Challenging Terrain")
+(author BR-Miki-QuadrupedalTerrain "Takahiro Miki et al.")
+(resourceType BR-Miki-QuadrupedalTerrain notes)
+(level BR-Miki-QuadrupedalTerrain advanced)
+(section BR-Miki-QuadrupedalTerrain LeggedRobots)
+(url BR-Miki-QuadrupedalTerrain "https://doi.org/10.1126/scirobotics.abk2822")
+(desc BR-Miki-QuadrupedalTerrain "Science Robotics paper on ANYmal navigating challenging outdoor terrain using learned proprioceptive policies with attention mechanisms.")
+
+;; ── Insect-Inspired Robots ──
+
+(isa BR-Saranli-RHex ReferenceWork)
+(title BR-Saranli-RHex "RHex: A Simple and Highly Mobile Hexapod Robot")
+(author BR-Saranli-RHex "Uluc Saranli, Martin Buehler & Daniel E. Koditschek")
+(resourceType BR-Saranli-RHex notes)
+(level BR-Saranli-RHex intermediate)
+(section BR-Saranli-RHex LeggedRobots)
+(url BR-Saranli-RHex "https://doi.org/10.1177/02783649020210070101")
+(desc BR-Saranli-RHex "International Journal of Robotics Research paper on RHex, a cockroach-inspired hexapod using compliant C-shaped legs for agile locomotion.")
+
+(isa BR-Birkmeyer-DASH ReferenceWork)
+(title BR-Birkmeyer-DASH "DASH: A Dynamic 16g Hexapedal Robot")
+(author BR-Birkmeyer-DASH "Paul Birkmeyer, Kevin Peterson & Ronald S. Fearing")
+(resourceType BR-Birkmeyer-DASH notes)
+(level BR-Birkmeyer-DASH intermediate)
+(section BR-Birkmeyer-DASH LeggedRobots)
+(url BR-Birkmeyer-DASH "https://doi.org/10.1109/IROS.2009.5354561")
+(desc BR-Birkmeyer-DASH "IEEE IROS paper on a palm-sized cockroach-inspired robot built using smart composite manufacturing and capable of rapid running.")
+
+(isa BR-StPierre-InsectScale ReferenceWork)
+(title BR-StPierre-InsectScale "An Insect-Scale Robot Reveals Design Principles for Locomotion on Small Scales")
+(author BR-StPierre-InsectScale "Ryan St. Pierre & Sarah Bergbreiter")
+(resourceType BR-StPierre-InsectScale notes)
+(level BR-StPierre-InsectScale advanced)
+(section BR-StPierre-InsectScale LeggedRobots)
+(url BR-StPierre-InsectScale "https://doi.org/10.1088/1748-3190/ab tried")
+(desc BR-StPierre-InsectScale "Bioinspiration & Biomimetics paper examining scaling laws and design trade-offs for miniature legged robots inspired by insects.")
+
+(isa BR-Hebi-DAISYHexapod ReferenceWork)
+(title BR-Hebi-DAISYHexapod "Hebi Robotics DAISY Hexapod")
+(author BR-Hebi-DAISYHexapod "Hebi Robotics")
+(resourceType BR-Hebi-DAISYHexapod code)
+(level BR-Hebi-DAISYHexapod beginner)
+(section BR-Hebi-DAISYHexapod LeggedRobots)
+(url BR-Hebi-DAISYHexapod "https://github.com/HebiRobotics/hebi-matlab-examples")
+(desc BR-Hebi-DAISYHexapod "Open-source MATLAB examples for controlling the DAISY hexapod, enabling experiments with biologically-inspired walking gaits.")
+
+;; ── CPG & Neural Control ──
+
+(isa BR-Ijspeert-CPGReview ReferenceWork)
+(title BR-Ijspeert-CPGReview "Central Pattern Generators for Locomotion Control in Animals and Robots")
+(author BR-Ijspeert-CPGReview "Auke Jan Ijspeert")
+(resourceType BR-Ijspeert-CPGReview notes)
+(level BR-Ijspeert-CPGReview intermediate)
+(section BR-Ijspeert-CPGReview LeggedRobots)
+(url BR-Ijspeert-CPGReview "https://doi.org/10.1016/j.neunet.2008.03.014")
+(desc BR-Ijspeert-CPGReview "Comprehensive Neural Networks review of CPG models, from lamprey swimming to quadruped trotting, with robot implementations.")
+
+(isa BR-Ijspeert-SalamandraRobotica ReferenceWork)
+(title BR-Ijspeert-SalamandraRobotica "From Swimming to Walking with a Salamander Robot Driven by a Spinal Cord Model")
+(author BR-Ijspeert-SalamandraRobotica "Auke Jan Ijspeert et al.")
+(resourceType BR-Ijspeert-SalamandraRobotica notes)
+(level BR-Ijspeert-SalamandraRobotica intermediate)
+(section BR-Ijspeert-SalamandraRobotica LeggedRobots)
+(url BR-Ijspeert-SalamandraRobotica "https://doi.org/10.1126/science.1138353")
+(desc BR-Ijspeert-SalamandraRobotica "Science paper on Salamandra robotica, demonstrating gait transitions from swimming to walking using a CPG-based spinal cord model.")
+
+(isa BR-Cohen-NeuromechanicsControl ReferenceWork)
+(title BR-Cohen-NeuromechanicsControl "Neuromechanics and Control of Physical Behavior (Neurobiology of Motor Control)")
+(author BR-Cohen-NeuromechanicsControl "Avis H. Cohen, Serge Rossignol & Sten Grillner")
+(resourceType BR-Cohen-NeuromechanicsControl book)
+(level BR-Cohen-NeuromechanicsControl advanced)
+(section BR-Cohen-NeuromechanicsControl LeggedRobots)
+(url BR-Cohen-NeuromechanicsControl "https://doi.org/10.1002/cne.903120209")
+(desc BR-Cohen-NeuromechanicsControl "Foundational work on vertebrate locomotion neuroscience, providing the biological basis for CPG models used in legged robotics.")
+
+(isa BR-PyBullet-Locomotion ReferenceWork)
+(title BR-PyBullet-Locomotion "PyBullet Locomotion Environments")
+(author BR-PyBullet-Locomotion "Erwin Coumans & Yunfei Bai")
+(resourceType BR-PyBullet-Locomotion code)
+(level BR-PyBullet-Locomotion beginner)
+(section BR-PyBullet-Locomotion LeggedRobots)
+(url BR-PyBullet-Locomotion "https://github.com/bulletphysics/bullet3")
+(desc BR-PyBullet-Locomotion "Open-source physics simulator with legged robot environments widely used for testing CPG and reinforcement-learning locomotion controllers.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: AERIAL ROBOTS
+;; Flapping-wing platforms, insect-scale flight, bird-inspired design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Flapping-Wing Platforms ──
+
+(isa BR-Karasek-DelFlyNimble ReferenceWork)
+(title BR-Karasek-DelFlyNimble "A Tailless Aerial Robotic Flapper Reveals that Flies Use Torque Coupling in Rapid Banked Turns")
+(author BR-Karasek-DelFlyNimble "Matej Karasek et al.")
+(resourceType BR-Karasek-DelFlyNimble notes)
+(level BR-Karasek-DelFlyNimble advanced)
+(section BR-Karasek-DelFlyNimble AerialRobots)
+(url BR-Karasek-DelFlyNimble "https://doi.org/10.1126/science.aat0350")
+(desc BR-Karasek-DelFlyNimble "Science paper presenting the DelFly Nimble, a tailless flapping-wing robot that reveals new insights into insect flight manoeuvres.")
+
+(isa BR-Festo-SmartBird ReferenceWork)
+(title BR-Festo-SmartBird "SmartBird — Festo Bionic Learning Network")
+(author BR-Festo-SmartBird "Festo")
+(resourceType BR-Festo-SmartBird video)
+(level BR-Festo-SmartBird beginner)
+(section BR-Festo-SmartBird AerialRobots)
+(url BR-Festo-SmartBird "https://www.youtube.com/watch?v=nnR8fDW3Ilo")
+(desc BR-Festo-SmartBird "Video showcasing Festo's SmartBird, a herring-gull-inspired robot that achieves efficient flight through active wing torsion.")
+
+(isa BR-deCroon-DelFlyBook ReferenceWork)
+(title BR-deCroon-DelFlyBook "The DelFly: Design, Aerodynamics, and Artificial Intelligence of a Flapping Wing Robot")
+(author BR-deCroon-DelFlyBook "Guido C. H. E. de Croon et al.")
+(resourceType BR-deCroon-DelFlyBook book)
+(level BR-deCroon-DelFlyBook intermediate)
+(section BR-deCroon-DelFlyBook AerialRobots)
+(url BR-deCroon-DelFlyBook "https://link.springer.com/book/10.1007/978-94-017-9208-0")
+(desc BR-deCroon-DelFlyBook "Springer book covering over a decade of research on the DelFly platform, from aerodynamic design to autonomous vision-based flight.")
+
+(isa BR-Liu-FlappingWingMAV ReferenceWork)
+(title BR-Liu-FlappingWingMAV "Flapping Wing Micro Air Vehicle Design and Control (AIAA)")
+(author BR-Liu-FlappingWingMAV "Hao Liu et al.")
+(resourceType BR-Liu-FlappingWingMAV notes)
+(level BR-Liu-FlappingWingMAV intermediate)
+(section BR-Liu-FlappingWingMAV AerialRobots)
+(url BR-Liu-FlappingWingMAV "https://doi.org/10.2514/1.C034804")
+(desc BR-Liu-FlappingWingMAV "AIAA Journal of Aircraft review covering computational and experimental approaches to flapping-wing MAV design and flight control.")
+
+;; ── Insect-Scale Flight ──
+
+(isa BR-Ma-RoboBee ReferenceWork)
+(title BR-Ma-RoboBee "Controlled Flight of a Biologically Inspired, Insect-Scale Robot")
+(author BR-Ma-RoboBee "Kevin Y. Ma et al.")
+(resourceType BR-Ma-RoboBee notes)
+(level BR-Ma-RoboBee advanced)
+(section BR-Ma-RoboBee AerialRobots)
+(url BR-Ma-RoboBee "https://doi.org/10.1126/science.1231806")
+(desc BR-Ma-RoboBee "Science paper presenting the RoboBee, achieving controlled hovering flight at the insect scale using piezoelectric bimorph actuators.")
+
+(isa BR-Jafferis-UntetheredRoboBee ReferenceWork)
+(title BR-Jafferis-UntetheredRoboBee "Untethered Flight of an Insect-Sized Flapping-Wing Microscale Aerial Vehicle")
+(author BR-Jafferis-UntetheredRoboBee "Noah T. Jafferis et al.")
+(resourceType BR-Jafferis-UntetheredRoboBee notes)
+(level BR-Jafferis-UntetheredRoboBee advanced)
+(section BR-Jafferis-UntetheredRoboBee AerialRobots)
+(url BR-Jafferis-UntetheredRoboBee "https://doi.org/10.1038/s41586-019-1322-0")
+(desc BR-Jafferis-UntetheredRoboBee "Nature paper demonstrating the first untethered flight of RoboBee X-Wing powered by lightweight solar cells.")
+
+(isa BR-Harvard-RoboBeeVideo ReferenceWork)
+(title BR-Harvard-RoboBeeVideo "Harvard Microrobotics Lab — RoboBee Project Page")
+(author BR-Harvard-RoboBeeVideo "Harvard SEAS")
+(resourceType BR-Harvard-RoboBeeVideo video)
+(level BR-Harvard-RoboBeeVideo beginner)
+(section BR-Harvard-RoboBeeVideo AerialRobots)
+(url BR-Harvard-RoboBeeVideo "https://www.youtube.com/watch?v=FfBEJHGzciI")
+(desc BR-Harvard-RoboBeeVideo "Overview video of the Harvard RoboBee project, explaining the fabrication, actuation, and control of insect-scale flying robots.")
+
+(isa BR-Fry-InsectFlightDynamics ReferenceWork)
+(title BR-Fry-InsectFlightDynamics "Insect Flight Dynamics and Stability (Annual Reviews)")
+(author BR-Fry-InsectFlightDynamics "Steven N. Fry, Rosalyn Sayaman & Michael H. Dickinson")
+(resourceType BR-Fry-InsectFlightDynamics notes)
+(level BR-Fry-InsectFlightDynamics intermediate)
+(section BR-Fry-InsectFlightDynamics AerialRobots)
+(url BR-Fry-InsectFlightDynamics "https://doi.org/10.1146/annurev.fluid.010908.165134")
+(desc BR-Fry-InsectFlightDynamics "Annual Review of Fluid Mechanics article explaining the unsteady aerodynamic mechanisms that insect-scale robots seek to replicate.")
+
+;; ── Bird-Inspired Design ──
+
+(isa BR-Mintchev-FoldableWings ReferenceWork)
+(title BR-Mintchev-FoldableWings "A Bioinspired Multi-Joint Soft Robotic Wing for Aerial Vehicles")
+(author BR-Mintchev-FoldableWings "Stefano Mintchev & Dario Floreano")
+(resourceType BR-Mintchev-FoldableWings notes)
+(level BR-Mintchev-FoldableWings intermediate)
+(section BR-Mintchev-FoldableWings AerialRobots)
+(url BR-Mintchev-FoldableWings "https://doi.org/10.1088/1748-3190/11/4/046001")
+(desc BR-Mintchev-FoldableWings "Bioinspiration & Biomimetics paper on a drone with bird-inspired foldable wings that passively absorb collisions and recover.")
+
+(isa BR-Stowers-MorphingFeathers ReferenceWork)
+(title BR-Stowers-MorphingFeathers "A Morphing Wing with Feather-Inspired Mechanisms")
+(author BR-Stowers-MorphingFeathers "Amanda Stowers & David Lentink")
+(resourceType BR-Stowers-MorphingFeathers notes)
+(level BR-Stowers-MorphingFeathers intermediate)
+(section BR-Stowers-MorphingFeathers AerialRobots)
+(url BR-Stowers-MorphingFeathers "https://doi.org/10.1088/1748-3190/10/4/046002")
+(desc BR-Stowers-MorphingFeathers "Paper exploring how overlapping feather-like structures can create morphing wing surfaces for improved aerodynamic performance.")
+
+(isa BR-Chang-PigeonBot ReferenceWork)
+(title BR-Chang-PigeonBot "PigeonBot: A Biohybrid Morphing Wing Robot with Real Feathers")
+(author BR-Chang-PigeonBot "Eric Chang et al.")
+(resourceType BR-Chang-PigeonBot notes)
+(level BR-Chang-PigeonBot intermediate)
+(section BR-Chang-PigeonBot AerialRobots)
+(url BR-Chang-PigeonBot "https://doi.org/10.1126/scirobotics.aay1246")
+(desc BR-Chang-PigeonBot "Science Robotics paper on PigeonBot, which uses real pigeon feathers to achieve bird-like wing morphing during flight.")
+
+(isa BR-Roderick-SNAG ReferenceWork)
+(title BR-Roderick-SNAG "SNAG: A Bird-Inspired Robot That Perches and Catches")
+(author BR-Roderick-SNAG "William Roderick et al.")
+(resourceType BR-Roderick-SNAG video)
+(level BR-Roderick-SNAG beginner)
+(section BR-Roderick-SNAG AerialRobots)
+(url BR-Roderick-SNAG "https://www.youtube.com/watch?v=pnuoGjS1eaE")
+(desc BR-Roderick-SNAG "Stanford video demonstrating SNAG, a raptor-inspired grasping mechanism that allows drones to perch on branches and catch objects.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: AQUATIC ROBOTS
+;; Robotic fish, ray & jellyfish robots, autonomous underwater bio-robots
+;; ════════════════════════════════════════════════════════════
+
+;; ── Robotic Fish ──
+
+(isa BR-Bekey-AutonomousRobots ReferenceWork)
+(title BR-Bekey-AutonomousRobots "Autonomous Robots: From Biological Inspiration to Implementation and Control (Chapter on Underwater Robots)")
+(author BR-Bekey-AutonomousRobots "George A. Bekey")
+(resourceType BR-Bekey-AutonomousRobots book)
+(level BR-Bekey-AutonomousRobots intermediate)
+(section BR-Bekey-AutonomousRobots AquaticRobots)
+(url BR-Bekey-AutonomousRobots "https://mitpress.mit.edu/9780262025782/autonomous-robots/")
+(desc BR-Bekey-AutonomousRobots "MIT Press textbook with chapters on bio-inspired underwater locomotion, including fish-like swimming and control architectures.")
+
+(isa BR-Triantafyllou-RoboTuna ReferenceWork)
+(title BR-Triantafyllou-RoboTuna "RoboTuna: An Autonomous Robotic Fish")
+(author BR-Triantafyllou-RoboTuna "Michael S. Triantafyllou & George S. Triantafyllou")
+(resourceType BR-Triantafyllou-RoboTuna notes)
+(level BR-Triantafyllou-RoboTuna intermediate)
+(section BR-Triantafyllou-RoboTuna AquaticRobots)
+(url BR-Triantafyllou-RoboTuna "https://doi.org/10.1109/100.382983")
+(desc BR-Triantafyllou-RoboTuna "IEEE Spectrum article on the MIT RoboTuna, one of the earliest robotic fish platforms demonstrating fish-like propulsive efficiency.")
+
+(isa BR-Katzschmann-SoFi ReferenceWork)
+(title BR-Katzschmann-SoFi "SoFi: A Soft Robotic Fish for Coral Reef Observation")
+(author BR-Katzschmann-SoFi "Robert K. Katzschmann et al.")
+(resourceType BR-Katzschmann-SoFi notes)
+(level BR-Katzschmann-SoFi intermediate)
+(section BR-Katzschmann-SoFi AquaticRobots)
+(url BR-Katzschmann-SoFi "https://doi.org/10.1126/scirobotics.aar3449")
+(desc BR-Katzschmann-SoFi "Science Robotics paper on a soft robotic fish that can swim alongside real fish in coral reefs without disturbing marine life.")
+
+(isa BR-MITCSAIL-SoFiDemo ReferenceWork)
+(title BR-MITCSAIL-SoFiDemo "SoFi Robot — MIT CSAIL Demo")
+(author BR-MITCSAIL-SoFiDemo "MIT CSAIL")
+(resourceType BR-MITCSAIL-SoFiDemo video)
+(level BR-MITCSAIL-SoFiDemo beginner)
+(section BR-MITCSAIL-SoFiDemo AquaticRobots)
+(url BR-MITCSAIL-SoFiDemo "https://www.youtube.com/watch?v=ux8KMAtfMzo")
+(desc BR-MITCSAIL-SoFiDemo "Video demonstration of the SoFi soft robotic fish operating autonomously in the ocean alongside live coral reef fish.")
+
+;; ── Ray & Jellyfish Robots ──
+
+(isa BR-Nawroth-Medusoid ReferenceWork)
+(title BR-Nawroth-Medusoid "A Tissue-Engineered Jellyfish with Biomimetic Propulsion")
+(author BR-Nawroth-Medusoid "Janna C. Nawroth et al.")
+(resourceType BR-Nawroth-Medusoid notes)
+(level BR-Nawroth-Medusoid advanced)
+(section BR-Nawroth-Medusoid AquaticRobots)
+(url BR-Nawroth-Medusoid "https://doi.org/10.1038/nbt.2269")
+(desc BR-Nawroth-Medusoid "Nature Biotechnology paper on Medusoid, a biohybrid jellyfish built from rat cardiac muscle cells on a silicone scaffold.")
+
+(isa BR-Park-BiohybridStingray ReferenceWork)
+(title BR-Park-BiohybridStingray "A Self-Powered Biohybrid Stingray Robot")
+(author BR-Park-BiohybridStingray "Sung-Jin Park et al.")
+(resourceType BR-Park-BiohybridStingray notes)
+(level BR-Park-BiohybridStingray advanced)
+(section BR-Park-BiohybridStingray AquaticRobots)
+(url BR-Park-BiohybridStingray "https://doi.org/10.1126/science.aaf4292")
+(desc BR-Park-BiohybridStingray "Science paper on a tissue-engineered stingray powered by optogenetically modified rat cardiomyocytes, steered by light.")
+
+(isa BR-Chen-MantaRayEAP ReferenceWork)
+(title BR-Chen-MantaRayEAP "Manta Ray Inspired Robotic Fish with Electro-Active Polymer Pectoral Fins")
+(author BR-Chen-MantaRayEAP "Zheng Chen et al.")
+(resourceType BR-Chen-MantaRayEAP notes)
+(level BR-Chen-MantaRayEAP intermediate)
+(section BR-Chen-MantaRayEAP AquaticRobots)
+(url BR-Chen-MantaRayEAP "https://doi.org/10.1109/ICMA.2012.6283508")
+(desc BR-Chen-MantaRayEAP "IEEE conference paper on a manta-ray-inspired underwater robot using ionic polymer-metal composite actuators for pectoral fin propulsion.")
+
+;; ── Autonomous Underwater Bio-Robots ──
+
+(isa BR-Shintake-NaroTartaruga ReferenceWork)
+(title BR-Shintake-NaroTartaruga "Naro-Tartaruga: A Bioinspired Sea Turtle Robot")
+(author BR-Shintake-NaroTartaruga "Jonas Shintake et al.")
+(resourceType BR-Shintake-NaroTartaruga notes)
+(level BR-Shintake-NaroTartaruga intermediate)
+(section BR-Shintake-NaroTartaruga AquaticRobots)
+(url BR-Shintake-NaroTartaruga "https://doi.org/10.1088/1748-3190/aa5d4e")
+(desc BR-Shintake-NaroTartaruga "Bioinspiration & Biomimetics paper on a sea-turtle-inspired robot with four flipper actuators for versatile underwater manoeuvring.")
+
+(isa BR-Pliant-Velox ReferenceWork)
+(title BR-Pliant-Velox "Pliant Energy Systems — Velox Bio-Inspired Underwater Robot")
+(author BR-Pliant-Velox "Pliant Energy Systems")
+(resourceType BR-Pliant-Velox video)
+(level BR-Pliant-Velox beginner)
+(section BR-Pliant-Velox AquaticRobots)
+(url BR-Pliant-Velox "https://www.youtube.com/watch?v=ZnVKLFGaBXI")
+(desc BR-Pliant-Velox "Video showing the Velox robot that uses undulating fins inspired by cuttlefish and rays for amphibious and underwater locomotion.")
+
+(isa BR-Dudek-Aqua2 ReferenceWork)
+(title BR-Dudek-Aqua2 "Aqua2: An Amphibious Hexapod Robot")
+(author BR-Dudek-Aqua2 "Gregory Dudek et al.")
+(resourceType BR-Dudek-Aqua2 notes)
+(level BR-Dudek-Aqua2 intermediate)
+(section BR-Dudek-Aqua2 AquaticRobots)
+(url BR-Dudek-Aqua2 "https://doi.org/10.1007/s10514-006-9014-0")
+(desc BR-Dudek-Aqua2 "Autonomous Robots journal paper on an amphibious hexapod that swims using oscillating flippers and walks on land using the same limbs.")
+
+(isa BR-UUVSimulator ReferenceWork)
+(title BR-UUVSimulator "Underwater Robot Simulation — UUV Simulator (ROS/Gazebo)")
+(author BR-UUVSimulator "Musa Morena Marcusso Manhaes et al.")
+(resourceType BR-UUVSimulator code)
+(level BR-UUVSimulator beginner)
+(section BR-UUVSimulator AquaticRobots)
+(url BR-UUVSimulator "https://github.com/uuvsimulator/uuv_simulator")
+(desc BR-UUVSimulator "Open-source ROS/Gazebo package for simulating underwater vehicles, useful for testing bio-inspired locomotion controllers.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: SWARM ROBOTICS
+;; Swarm algorithms, hardware platforms, collective construction
+;; ════════════════════════════════════════════════════════════
+
+;; ── Swarm Algorithms ──
+
+(isa BR-Bonabeau-SwarmIntelligence ReferenceWork)
+(title BR-Bonabeau-SwarmIntelligence "Swarm Intelligence: From Natural to Artificial Systems")
+(author BR-Bonabeau-SwarmIntelligence "Eric Bonabeau, Marco Dorigo & Guy Theraulaz")
+(resourceType BR-Bonabeau-SwarmIntelligence book)
+(level BR-Bonabeau-SwarmIntelligence intermediate)
+(section BR-Bonabeau-SwarmIntelligence SwarmRobotics)
+(url BR-Bonabeau-SwarmIntelligence "https://global.oup.com/academic/product/swarm-intelligence-9780195131598")
+(desc BR-Bonabeau-SwarmIntelligence "Oxford University Press foundational text on swarm intelligence, covering ant colony optimisation, particle swarms, and collective robotics.")
+
+(isa BR-Dorigo-AntColonyOpt ReferenceWork)
+(title BR-Dorigo-AntColonyOpt "Ant Colony Optimization — A New Meta-Heuristic")
+(author BR-Dorigo-AntColonyOpt "Marco Dorigo & Thomas Stuetzle")
+(resourceType BR-Dorigo-AntColonyOpt book)
+(level BR-Dorigo-AntColonyOpt intermediate)
+(section BR-Dorigo-AntColonyOpt SwarmRobotics)
+(url BR-Dorigo-AntColonyOpt "https://mitpress.mit.edu/9780262042192/ant-colony-optimization/")
+(desc BR-Dorigo-AntColonyOpt "MIT Press monograph on ACO algorithms inspired by ant foraging behaviour, with applications to combinatorial optimisation and robot path planning.")
+
+(isa BR-Rubenstein-KilobotSwarm ReferenceWork)
+(title BR-Rubenstein-KilobotSwarm "Programmable Self-Assembly in a Thousand-Robot Swarm")
+(author BR-Rubenstein-KilobotSwarm "Michael Rubenstein, Alejandro Cornejo & Radhika Nagpal")
+(resourceType BR-Rubenstein-KilobotSwarm notes)
+(level BR-Rubenstein-KilobotSwarm intermediate)
+(section BR-Rubenstein-KilobotSwarm SwarmRobotics)
+(url BR-Rubenstein-KilobotSwarm "https://doi.org/10.1126/science.1254295")
+(desc BR-Rubenstein-KilobotSwarm "Science paper demonstrating 1,024 Kilobots forming complex shapes through local interactions alone, a landmark in swarm robotics.")
+
+(isa BR-Brambilla-SwarmDesign ReferenceWork)
+(title BR-Brambilla-SwarmDesign "Designing Multi-Robot Systems (Swarm Robotics Tutorial)")
+(author BR-Brambilla-SwarmDesign "Manuele Brambilla et al.")
+(resourceType BR-Brambilla-SwarmDesign notes)
+(level BR-Brambilla-SwarmDesign beginner)
+(section BR-Brambilla-SwarmDesign SwarmRobotics)
+(url BR-Brambilla-SwarmDesign "https://doi.org/10.1007/s11721-012-0075-2")
+(desc BR-Brambilla-SwarmDesign "Swarm Intelligence journal paper providing a systematic design methodology for swarm robotics behaviour from specification to implementation.")
+
+;; ── Hardware Platforms ──
+
+(isa BR-Rubenstein-KilobotPlatform ReferenceWork)
+(title BR-Rubenstein-KilobotPlatform "Kilobot: A Low-Cost Robot for Swarm Robotics at Scale")
+(author BR-Rubenstein-KilobotPlatform "Michael Rubenstein, Christian Ahler & Radhika Nagpal")
+(resourceType BR-Rubenstein-KilobotPlatform notes)
+(level BR-Rubenstein-KilobotPlatform beginner)
+(section BR-Rubenstein-KilobotPlatform SwarmRobotics)
+(url BR-Rubenstein-KilobotPlatform "https://doi.org/10.1016/j.robot.2013.06.006")
+(desc BR-Rubenstein-KilobotPlatform "Robotics and Autonomous Systems paper on the Kilobot, a $14 vibration-motor robot designed for experiments with hundreds of units.")
+
+(isa BR-Epuck2-SwarmPlatform ReferenceWork)
+(title BR-Epuck2-SwarmPlatform "The e-puck2 Robot for Education and Swarm Research")
+(author BR-Epuck2-SwarmPlatform "GCtronic & EPFL")
+(resourceType BR-Epuck2-SwarmPlatform code)
+(level BR-Epuck2-SwarmPlatform beginner)
+(section BR-Epuck2-SwarmPlatform SwarmRobotics)
+(url BR-Epuck2-SwarmPlatform "https://github.com/e-puck2")
+(desc BR-Epuck2-SwarmPlatform "GitHub organisation hosting firmware and tools for the e-puck2 miniature robot, widely used in swarm robotics education and research.")
+
+(isa BR-Pickem-Robotarium ReferenceWork)
+(title BR-Pickem-Robotarium "Robotarium: A Remotely Accessible Swarm Robotics Research Testbed")
+(author BR-Pickem-Robotarium "Daniel Pickem et al.")
+(resourceType BR-Pickem-Robotarium notes)
+(level BR-Pickem-Robotarium beginner)
+(section BR-Pickem-Robotarium SwarmRobotics)
+(url BR-Pickem-Robotarium "https://doi.org/10.1109/ICRA.2017.7989200")
+(desc BR-Pickem-Robotarium "IEEE ICRA paper on the Georgia Tech Robotarium, a remotely accessible multi-robot platform for swarm experiments.")
+
+(isa BR-Robotarium-Simulator ReferenceWork)
+(title BR-Robotarium-Simulator "Robotarium MATLAB/Python Toolkit")
+(author BR-Robotarium-Simulator "Georgia Tech")
+(resourceType BR-Robotarium-Simulator code)
+(level BR-Robotarium-Simulator beginner)
+(section BR-Robotarium-Simulator SwarmRobotics)
+(url BR-Robotarium-Simulator "https://github.com/robotarium/robotarium_python_simulator")
+(desc BR-Robotarium-Simulator "Open-source Python simulator mirroring the Robotarium platform, enabling development and testing of swarm algorithms before deployment.")
+
+;; ── Collective Construction ──
+
+(isa BR-Werfel-TERMES ReferenceWork)
+(title BR-Werfel-TERMES "Designing Collective Behavior in a Termite-Inspired Robot Construction Team")
+(author BR-Werfel-TERMES "Justin Werfel, Kirstin Petersen & Radhika Nagpal")
+(resourceType BR-Werfel-TERMES notes)
+(level BR-Werfel-TERMES intermediate)
+(section BR-Werfel-TERMES SwarmRobotics)
+(url BR-Werfel-TERMES "https://doi.org/10.1126/science.1245842")
+(desc BR-Werfel-TERMES "Science paper on TERMES robots that build 3D structures using termite-inspired stigmergic algorithms without central coordination.")
+
+(isa BR-Werfel-CollectiveConstruction ReferenceWork)
+(title BR-Werfel-CollectiveConstruction "Collective Construction with Multiple Robots (AAAI Classic)")
+(author BR-Werfel-CollectiveConstruction "Justin Werfel & Radhika Nagpal")
+(resourceType BR-Werfel-CollectiveConstruction notes)
+(level BR-Werfel-CollectiveConstruction intermediate)
+(section BR-Werfel-CollectiveConstruction SwarmRobotics)
+(url BR-Werfel-CollectiveConstruction "https://doi.org/10.1007/978-3-540-30552-1_13")
+(desc BR-Werfel-CollectiveConstruction "Early paper on multi-robot construction formalising how simple agents can build complex structures through purely local rules.")
+
+(isa BR-Pinciroli-ARGoS ReferenceWork)
+(title BR-Pinciroli-ARGoS "ARGoS: A Large-Scale Multi-Robot Simulator")
+(author BR-Pinciroli-ARGoS "Carlo Pinciroli et al.")
+(resourceType BR-Pinciroli-ARGoS code)
+(level BR-Pinciroli-ARGoS intermediate)
+(section BR-Pinciroli-ARGoS SwarmRobotics)
+(url BR-Pinciroli-ARGoS "https://github.com/ilpincy/argos3")
+(desc BR-Pinciroli-ARGoS "Open-source multi-robot simulator designed for large swarms, supporting physics-based simulation of thousands of robots.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: BIO-INSPIRED SENSORS & ACTUATORS
+;; Bio-inspired sensing, artificial muscles, neuromorphic control
+;; ════════════════════════════════════════════════════════════
+
+;; ── Bio-Inspired Sensing ──
+
+(isa BR-Yang-ArtificialLateralLine ReferenceWork)
+(title BR-Yang-ArtificialLateralLine "Artificial Lateral Line Canals for Flow and Vortex Detection on Underwater Robots")
+(author BR-Yang-ArtificialLateralLine "Yang Bing-Lin et al.")
+(resourceType BR-Yang-ArtificialLateralLine notes)
+(level BR-Yang-ArtificialLateralLine intermediate)
+(section BR-Yang-ArtificialLateralLine SensorsActuators)
+(url BR-Yang-ArtificialLateralLine "https://doi.org/10.1088/1748-3190/11/4/046007")
+(desc BR-Yang-ArtificialLateralLine "Bioinspiration & Biomimetics paper on MEMS-based artificial lateral line sensors for hydrodynamic sensing on robotic fish.")
+
+(isa BR-Pearson-WhiskerSensing ReferenceWork)
+(title BR-Pearson-WhiskerSensing "Active Tactile Sensing Inspired by Rat Whiskers")
+(author BR-Pearson-WhiskerSensing "Mathew J. Pearson et al.")
+(resourceType BR-Pearson-WhiskerSensing notes)
+(level BR-Pearson-WhiskerSensing intermediate)
+(section BR-Pearson-WhiskerSensing SensorsActuators)
+(url BR-Pearson-WhiskerSensing "https://doi.org/10.1109/TNSRE.2011.2167235")
+(desc BR-Pearson-WhiskerSensing "IEEE TNSRE paper on the Whiskerbot platform, demonstrating texture classification and object localisation using biomimetic vibrissae.")
+
+(isa BR-Floreano-CurvACE ReferenceWork)
+(title BR-Floreano-CurvACE "CurvACE: A Curved Artificial Compound Eye")
+(author BR-Floreano-CurvACE "Dario Floreano et al.")
+(resourceType BR-Floreano-CurvACE notes)
+(level BR-Floreano-CurvACE advanced)
+(section BR-Floreano-CurvACE SensorsActuators)
+(url BR-Floreano-CurvACE "https://doi.org/10.1073/pnas.1219068110")
+(desc BR-Floreano-CurvACE "PNAS paper on a miniature curved compound-eye camera inspired by insect vision, achieving 180-degree field of view on a flexible PCB.")
+
+(isa BR-Delbruck-DVS ReferenceWork)
+(title BR-Delbruck-DVS "Neuromorphic Event-Based Vision Sensors (DVS)")
+(author BR-Delbruck-DVS "Tobi Delbruck & Patrick Lichtsteiner")
+(resourceType BR-Delbruck-DVS notes)
+(level BR-Delbruck-DVS advanced)
+(section BR-Delbruck-DVS SensorsActuators)
+(url BR-Delbruck-DVS "https://doi.org/10.1109/JSSC.2007.914337")
+(desc BR-Delbruck-DVS "IEEE JSSC paper on the Dynamic Vision Sensor, a retina-inspired camera that outputs events asynchronously with microsecond latency.")
+
+;; ── Artificial Muscles ──
+
+(isa BR-Haines-FishingLineMuscle ReferenceWork)
+(title BR-Haines-FishingLineMuscle "Artificial Muscles from Fishing Line and Sewing Thread")
+(author BR-Haines-FishingLineMuscle "Carter S. Haines et al.")
+(resourceType BR-Haines-FishingLineMuscle notes)
+(level BR-Haines-FishingLineMuscle beginner)
+(section BR-Haines-FishingLineMuscle SensorsActuators)
+(url BR-Haines-FishingLineMuscle "https://doi.org/10.1126/science.1246906")
+(desc BR-Haines-FishingLineMuscle "Science paper showing that twisted nylon fibres can produce powerful actuators rivalling biological muscle in specific work output.")
+
+(isa BR-BarCohen-EAPActuators ReferenceWork)
+(title BR-BarCohen-EAPActuators "Electroactive Polymer (EAP) Actuators as Artificial Muscles")
+(author BR-BarCohen-EAPActuators "Yoseph Bar-Cohen")
+(resourceType BR-BarCohen-EAPActuators book)
+(level BR-BarCohen-EAPActuators intermediate)
+(section BR-BarCohen-EAPActuators SensorsActuators)
+(url BR-BarCohen-EAPActuators "https://doi.org/10.1117/3.547465")
+(desc BR-BarCohen-EAPActuators "SPIE Press book covering the fundamentals and applications of EAP actuators, from ionic polymer gels to dielectric elastomers.")
+
+(isa BR-Acome-HASEL ReferenceWork)
+(title BR-Acome-HASEL "HASEL Artificial Muscles — Soft Capacitive Actuators")
+(author BR-Acome-HASEL "Eric Acome et al.")
+(resourceType BR-Acome-HASEL notes)
+(level BR-Acome-HASEL intermediate)
+(section BR-Acome-HASEL SensorsActuators)
+(url BR-Acome-HASEL "https://doi.org/10.1126/science.aao6139")
+(desc BR-Acome-HASEL "Science paper on hydraulically amplified self-healing electrostatic (HASEL) actuators combining the versatility of soft fluidic and dielectric elastomer actuators.")
+
+(isa BR-OpenSoftMachines-ActuatorLib ReferenceWork)
+(title BR-OpenSoftMachines-ActuatorLib "Soft Robotics Actuator Library — OpenSoftMachines")
+(author BR-OpenSoftMachines-ActuatorLib "Various Contributors")
+(resourceType BR-OpenSoftMachines-ActuatorLib code)
+(level BR-OpenSoftMachines-ActuatorLib beginner)
+(section BR-OpenSoftMachines-ActuatorLib SensorsActuators)
+(url BR-OpenSoftMachines-ActuatorLib "https://github.com/SoftRobotics/soft-actuator-library")
+(desc BR-OpenSoftMachines-ActuatorLib "Open-source library of soft actuator designs including McKibben muscles, PneuNets, and DEA configurations with fabrication guides.")
+
+;; ── Neuromorphic Control ──
+
+(isa BR-Mead-NeuromorphicSystems ReferenceWork)
+(title BR-Mead-NeuromorphicSystems "Neuromorphic Electronic Systems (Mead, 1990)")
+(author BR-Mead-NeuromorphicSystems "Carver Mead")
+(resourceType BR-Mead-NeuromorphicSystems notes)
+(level BR-Mead-NeuromorphicSystems advanced)
+(section BR-Mead-NeuromorphicSystems SensorsActuators)
+(url BR-Mead-NeuromorphicSystems "https://doi.org/10.1109/5.58356")
+(desc BR-Mead-NeuromorphicSystems "The foundational Proceedings of the IEEE paper that launched the field of neuromorphic engineering, inspiring brain-like computing for robots.")
+
+(isa BR-Davies-Loihi ReferenceWork)
+(title BR-Davies-Loihi "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning")
+(author BR-Davies-Loihi "Mike Davies et al.")
+(resourceType BR-Davies-Loihi notes)
+(level BR-Davies-Loihi advanced)
+(section BR-Davies-Loihi SensorsActuators)
+(url BR-Davies-Loihi "https://doi.org/10.1109/MM.2018.112130359")
+(desc BR-Davies-Loihi "IEEE Micro paper on Intel's Loihi neuromorphic chip, designed for spiking neural networks applicable to real-time robot control.")
+
+(isa BR-Nengo-SpikingNN ReferenceWork)
+(title BR-Nengo-SpikingNN "Spiking Neural Networks for Robot Control — Nengo Framework")
+(author BR-Nengo-SpikingNN "Applied Brain Research")
+(resourceType BR-Nengo-SpikingNN code)
+(level BR-Nengo-SpikingNN intermediate)
+(section BR-Nengo-SpikingNN SensorsActuators)
+(url BR-Nengo-SpikingNN "https://github.com/nengo/nengo")
+(desc BR-Nengo-SpikingNN "Open-source Python framework for building spiking neural networks, with tutorials on neuromorphic robot control using the NEF.")
+
+(isa BR-Scaramuzza-EventDrivenVision ReferenceWork)
+(title BR-Scaramuzza-EventDrivenVision "Event-Driven Perception for Robotics (Tutorial)")
+(author BR-Scaramuzza-EventDrivenVision "Davide Scaramuzza")
+(resourceType BR-Scaramuzza-EventDrivenVision video)
+(level BR-Scaramuzza-EventDrivenVision intermediate)
+(section BR-Scaramuzza-EventDrivenVision SensorsActuators)
+(url BR-Scaramuzza-EventDrivenVision "https://www.youtube.com/watch?v=LauQ6LWTkFM")
+(desc BR-Scaramuzza-EventDrivenVision "Lecture by Davide Scaramuzza on event cameras for high-speed robotic perception, covering algorithms for visual odometry and obstacle avoidance.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BioInspiredRoboticsReference 80)
+(totalSections BioInspiredRoboticsReference 7)
+(comment BioInspiredRoboticsReference
+  "7 sections: Overview (11), Soft Robotics (11), Legged Robots (12),
+   Aerial Robots (12), Aquatic Robots (11), Swarm Robotics (11),
+   Sensors & Actuators (12). Total: 80 resources.")

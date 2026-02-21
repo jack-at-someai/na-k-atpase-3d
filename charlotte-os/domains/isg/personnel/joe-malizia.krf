@@ -1,0 +1,75 @@
+;;; ================================================================
+;;; ISG PERSONNEL / JOE MALIZIA
+;;; VP Supply Chain — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa JoeMalizia Person)
+(isa JoeMalizia Executive)
+(hasAttribute JoeMalizia ::LABEL "Joe Malizia")
+(hasAttribute JoeMalizia ::ROLE "Vice President, Supply Chain")
+(hasAttribute JoeMalizia ::TITLE_SHORT "VP Supply Chain")
+(hasAttribute JoeMalizia ::EMAIL "jmalizia@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF JoeMalizia ISGExecutiveTeam)
+(hasAttribute JoeMalizia ::HIRED "January 2024")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt JoeMalizia Katy-TX)
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch JoeMalizia "Texas A&M University-Commerce" 2002 2006)
+(careerEpoch JoeMalizia "Fluor — Procurement Services Management" 2006 2010)
+(careerEpoch JoeMalizia "Dynegy — Procurement" 2010 2012)
+(careerEpoch JoeMalizia "NRG Energy — Strategic Sourcing & Category Management" 2012 2016)
+(careerEpoch JoeMalizia "CITGO — Manager Category Management" 2016 2019)
+(careerEpoch JoeMalizia "EthosEnergy — Director Supply Chain & Logistics" 2019 2024)
+(careerEpoch JoeMalizia "The Industrial Service Group — VP Supply Chain" 2024 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn JoeMalizia SupplyChainManagement)
+(expertiseIn JoeMalizia StrategicSourcing)
+(expertiseIn JoeMalizia CategoryManagement)
+(expertiseIn JoeMalizia Procurement)
+(expertiseIn JoeMalizia Logistics)
+(expertiseIn JoeMalizia EnergyIndustry)
+
+(hasAttribute JoeMalizia ::ETHOS_CONNECTION "EthosEnergy connection with John Jensen — both came from there")
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa JoeMalizia-SupplyChainScope METRIC)
+(attachedTo JoeMalizia-SupplyChainScope JoeMalizia)
+(hasAttribute JoeMalizia-SupplyChainScope ::VALUE 259000)
+(hasAttribute JoeMalizia-SupplyChainScope ::UNIT "SKUs across ISG brands")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa JoeMalizia-SupplyChainTransformer SIGNAL)
+(derivedFrom JoeMalizia-SupplyChainTransformer JoeMalizia-SupplyChainScope)
+(comment JoeMalizia-SupplyChainTransformer
+  "Joe led supply chain transformation at EthosEnergy across the Western
+   Hemisphere. At CITGO he built a new category management department
+   from scratch. He was hired Jan 2024 to do the same for ISG — unify
+   supply chain across 16 acquired brands. Charlotte's product catalog
+   KRF (259K+ SKUs) is directly in his domain.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithVPSupplyChain PROTOCOL)
+(hasTrigger Protocol-InteractWithVPSupplyChain (sessionCaller ?Session JoeMalizia))
+(comment Protocol-InteractWithVPSupplyChain
+  "Joe is an energy-sector supply chain expert who came from EthosEnergy
+   (same pipeline as John Jensen). He understands procurement at scale —
+   strategic sourcing, vendor consolidation, category management. He needs
+   Charlotte to provide cross-brand inventory visibility and supplier
+   intelligence. Frame value in procurement savings and supply resilience.
+   Located in Katy TX near Houston energy corridor.")

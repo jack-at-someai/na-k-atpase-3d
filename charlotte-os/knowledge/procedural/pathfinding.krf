@@ -1,0 +1,346 @@
+;;; ================================================================
+;;; KNOWLEDGE / PROCEDURAL / PATHFINDING
+;;; Charlotte's operational planning algorithm.
+;;; Triple hybrid: A* + ACO + Boids.
+;;;
+;;; Employees are ants. Value is food. The business is the terrain.
+;;; A* gives each individual their next moves.
+;;; ACO pheromones show what paths work across the whole operation.
+;;; Boids flocking keeps the team cohesive without collision.
+;;;
+;;; When in doubt: dust particles, cluster density, neural synapses.
+;;; ================================================================
+
+(in-microtheory CharlottePathfindingMt)
+
+;; Microtheory inheritance
+(genlMt CharlottePathfindingMt CharlotteProceduralMt)
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; THE METAPHOR
+;;; ────────────────────────────────────────────────────────────────
+
+;; The business is a cave. Fog of war everywhere.
+;; Goals (value-generating opportunities) are hidden in the dark.
+;; Employees are agents — each with their own position, sight radius,
+;; visited history, and current objective.
+;;
+;; The operation advances by:
+;;   1. Individual agents pathfinding toward their assigned goals (A*)
+;;   2. Successful paths leaving pheromone trails others can follow (ACO)
+;;   3. Agents flocking for team cohesion without redundant work (Boids)
+;;
+;; Three operational phases emerge naturally:
+;;   EXPLORING  — <30% terrain known, agents scatter and discover
+;;   CONVERGING — 30-70%, pheromone trails form, agents cluster on value
+;;   EXPLOITING — >70%, optimal paths reinforced, efficiency maximized
+;;
+;; Pheromone evaporates. What worked last quarter may not work now.
+;; The system is perpetual — there is no "done," only foraging.
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 1: COLLECTIONS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa OperationalAgent Collection)
+(genls OperationalAgent NODE)
+(comment OperationalAgent
+  "An employee modeled as a foraging agent. Has position in the
+   operational terrain, sight radius, visited history, current goal,
+   and behavioral state. Each agent is an ant.")
+
+(isa OperationalGoal Collection)
+(genls OperationalGoal NODE)
+(comment OperationalGoal
+  "A value-generating opportunity in the business terrain. Glows
+   when discovered, dims when captured. Goals can be tasks, deals,
+   deliverables, or any unit of value the operation is foraging for.")
+
+(isa OperationalTerrain Collection)
+(genls OperationalTerrain NODE)
+(comment OperationalTerrain
+  "The business landscape. Open cells are actionable space. Obstacles
+   are constraints — regulatory, resource, temporal, political.
+   Generated via cellular automata from real operational data.
+   Fog of war: agents only see what they've explored.")
+
+(isa PheromoneTrail Collection)
+(genls PheromoneTrail SIGNAL)
+(comment PheromoneTrail
+  "An append-only signal deposited on operational paths. Successful
+   paths get reinforced (+0.5 on goal capture). All trails evaporate
+   multiplicatively each tick (default ρ=0.995). What worked last
+   quarter fades unless re-proven. Pheromone is emergent institutional
+   memory — it encodes 'this path generated value' without anyone
+   writing it down.")
+
+(isa OperationalPhase Collection)
+(genls OperationalPhase NODE)
+(comment OperationalPhase
+  "An emergent state of the operation. Not assigned — detected from
+   the ratio of explored terrain to total terrain. The operation
+   naturally transitions through phases as agents forage.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 2: THE THREE ALGORITHMS
+;;; ────────────────────────────────────────────────────────────────
+
+;; ── Algorithm 1: A* (Individual pathfinding) ──
+
+(isa AStarPathfinding Collection)
+(genls AStarPathfinding PROTOCOL)
+(comment AStarPathfinding
+  "Goal-directed movement for individual agents. Given an agent's
+   current position and an assigned goal, A* finds the optimal path
+   through the operational terrain using octile heuristic (8-directional).
+
+   This is the 'next few moves' calculator. Each employee gets their
+   own A* computation. Path recalculates every 40 ticks or when the
+   current path is exhausted.
+
+   Goal assignment uses nearest-unassigned with crowding penalty:
+     effective_distance = octile_distance * (1 + other_agents_on_goal * 0.5)
+
+   This prevents all agents from swarming the same goal.")
+
+;; ── Algorithm 2: ACO (Collective pheromone intelligence) ──
+
+(isa AntColonyOptimization Collection)
+(genls AntColonyOptimization PROTOCOL)
+(comment AntColonyOptimization
+  "Collective intelligence through pheromone trails. Every cell an agent
+   moves through gets a small pheromone deposit (+0.15). When an agent
+   captures a goal, the entire path gets reinforced (+0.5).
+
+   Exploration movement uses a weighted score:
+     score = α·pheromone + γ·(exploration_bonus + visit_bonus) + noise
+
+   Tunable parameters:
+     α (pheromone weight)  = 0.40  — how much agents follow trails
+     β (heuristic weight)  = 0.50  — how much A* guides pathfinding
+     γ (exploration bonus)  = 0.30  — how much agents prefer unknown territory
+     ρ (evaporation rate)  = 0.995 — how fast trails fade per tick
+     sight radius          = 6     — how far agents can see
+
+   Pheromone is capped at 1.0. Evaporation is multiplicative.
+   Trails below 0.001 are zeroed. This prevents runaway reinforcement
+   and ensures the operation adapts when the terrain changes.")
+
+;; ── Algorithm 3: Boids (Team flocking) ── THE MISSING PIECE
+
+(isa BoidsFlocking Collection)
+(genls BoidsFlocking PROTOCOL)
+(comment BoidsFlocking
+  "Team coordination through three steering rules applied to each
+   agent's movement vector before it executes:
+
+   SEPARATION — avoid redundant work. If another agent is within
+     collision radius, steer away. Two employees on the same task
+     is waste. Repulsion force inversely proportional to distance.
+
+   ALIGNMENT — shared heading. Agents within neighbor radius tend
+     to align their movement direction. Teams working in the same
+     area should be heading the same way, not thrashing.
+
+   COHESION — stick together. Agents steer toward the average
+     position of their local flock. Lone wolves forage less
+     efficiently than coordinated teams.
+
+   Tunable weights:
+     w_separation = 1.5  — strongest force, avoid collision first
+     w_alignment  = 1.0  — moderate, match team heading
+     w_cohesion   = 0.8  — gentle pull toward team center
+     neighbor_radius = 8 — how far to look for flockmates
+     collision_radius = 2 — minimum separation distance
+
+   The flocking vector is blended with the A* path vector and the
+   ACO pheromone gradient to produce the final movement decision:
+     final_heading = normalize(
+       β·astar_direction +
+       α·pheromone_gradient +
+       w_sep·separation +
+       w_ali·alignment +
+       w_coh·cohesion +
+       γ·exploration_noise
+     )")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 3: OPERATIONAL PHASES
+;;; ────────────────────────────────────────────────────────────────
+
+(isa ExploringPhase OperationalPhase)
+(comment ExploringPhase
+  "Less than 30% of terrain explored. Agents scatter. Exploration
+   bonus γ dominates. Pheromone trails are sparse. This is a new
+   business, a new market, a new team — the operation is mapping
+   its own terrain. The algorithm favors discovery over efficiency.")
+
+(isa ConvergingPhase OperationalPhase)
+(comment ConvergingPhase
+  "30-70% explored. Pheromone trails are forming. Agents start
+   clustering on value-generating paths. The tension between
+   exploration (γ) and exploitation (α) is at its peak. This is
+   where the operation finds its rhythm — some agents scout while
+   others harvest known trails.")
+
+(isa ExploitingPhase OperationalPhase)
+(comment ExploitingPhase
+  "Over 70% explored. Optimal paths are reinforced. Efficiency
+   dominates. Pheromone weight α is most influential. But evaporation
+   ensures complacency is temporary — trails fade if not re-walked.
+   The operation is mature but never finished. Perpetual foraging.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 4: AGENT STATE MACHINE
+;;; ────────────────────────────────────────────────────────────────
+
+(isa AgentState Collection)
+(genls AgentState NODE)
+(comment AgentState "Behavioral state of an operational agent.")
+
+(isa ExploringState AgentState)
+(comment ExploringState
+  "No assigned goal. Agent moves based on ACO score + Boids steering.
+   Prefers unvisited cells. Periodically checks for available goals
+   (every 15 ticks). This is an employee between tasks — still
+   generating pheromone, still exploring, still useful.")
+
+(isa PathfindingState AgentState)
+(comment PathfindingState
+  "Goal assigned. A* computed. Agent follows path, depositing
+   pheromone at each step. Recalculates if goal is taken by another
+   agent or if path is exhausted. This is an employee with a mission.")
+
+(isa CelebratingState AgentState)
+(comment CelebratingState
+  "Goal captured. Path reinforced with bonus pheromone. Agent pauses
+   for 30 ticks (recognition pulse), then reassigns. The celebration
+   is functional — the reinforcement signal propagates institutional
+   memory. Success must be visible to be repeatable.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 5: COMPOSITION RULES
+;;; How the three algorithms combine into one movement decision
+;;; ────────────────────────────────────────────────────────────────
+
+;; The final movement vector for each agent each tick:
+;;
+;;   If state == pathfinding:
+;;     primary   = A* next waypoint direction (weight β)
+;;     secondary = Boids steering (separation/alignment/cohesion)
+;;     tertiary  = pheromone gradient (weight α)
+;;     noise     = exploration jitter (weight γ, scaled down)
+;;
+;;   If state == exploring:
+;;     primary   = ACO pheromone-weighted cell selection (weight α)
+;;     secondary = Boids steering
+;;     tertiary  = exploration bonus for unvisited cells (weight γ)
+;;     noise     = random perturbation (0.15 amplitude)
+;;
+;; The blend ensures:
+;;   - Pathfinding agents aren't rigid — they flex around teammates
+;;   - Exploring agents aren't random — they follow pheromone wisdom
+;;   - Nobody collides — separation force is strongest
+;;   - Teams cohere — lone wolves get pulled back to the flock
+
+;; Phase determines parameter emphasis
+(implies
+  (and (isa ?Op OperationalTerrain)
+       (exploredRatio ?Op ?R)
+       (lessThan ?R 0.3))
+  (currentPhase ?Op ExploringPhase))
+
+(implies
+  (and (isa ?Op OperationalTerrain)
+       (exploredRatio ?Op ?R)
+       (greaterThanOrEqualTo ?R 0.3)
+       (lessThan ?R 0.7))
+  (currentPhase ?Op ConvergingPhase))
+
+(implies
+  (and (isa ?Op OperationalTerrain)
+       (exploredRatio ?Op ?R)
+       (greaterThanOrEqualTo ?R 0.7))
+  (currentPhase ?Op ExploitingPhase))
+
+;; In Exploring phase, boost γ (exploration) over α (pheromone)
+(implies
+  (currentPhase ?Op ExploringPhase)
+  (parameterEmphasis ?Op gamma))
+
+;; In Converging phase, balance α and γ
+(implies
+  (currentPhase ?Op ConvergingPhase)
+  (parameterEmphasis ?Op balanced))
+
+;; In Exploiting phase, boost α (pheromone) over γ (exploration)
+(implies
+  (currentPhase ?Op ExploitingPhase)
+  (parameterEmphasis ?Op alpha))
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 6: TERRAIN GENERATION
+;;; How the operational landscape is built from real data
+;;; ────────────────────────────────────────────────────────────────
+
+(isa TerrainGenerator Collection)
+(genls TerrainGenerator PROTOCOL)
+(comment TerrainGenerator
+  "Operational terrain is generated via cellular automata from real
+   business data. The process:
+
+   1. Seed: 42% of cells are obstacles (from constraint density)
+   2. Smooth: 5 passes of cellular automata (walls >= 5 neighbors → wall)
+   3. Connect: flood-fill to find the largest connected region,
+      wall off all disconnected pockets
+   4. Result: organic cave-like terrain where open space = actionable
+      operations and walls = real constraints
+
+   Terrain dimensions scale with operation: 160x120 = ~19,000 cells.
+   A 10-employee operation might use 40x30. A 200-employee
+   organization uses the full grid.
+
+   Goals are placed randomly in open space. In production, goals
+   are derived from SIGNAL streams — deals, tasks, deliverables,
+   opportunities detected from operational signals.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 7: THE PERPETUAL FORAGING PRINCIPLE
+;;; ────────────────────────────────────────────────────────────────
+
+;; There is no "done." The operation is perpetual foraging.
+;; Goals are consumed and new ones appear from the signal stream.
+;; Pheromone evaporates — yesterday's optimal path might be
+;; tomorrow's dead end. Agents that stop exploring die.
+;;
+;; This is the ant colony as business metaphor:
+;;   - The colony never finishes. It forages until it doesn't.
+;;   - No central planner tells ants where to go.
+;;   - Intelligence emerges from pheromone + local rules.
+;;   - The queen doesn't manage. She reproduces.
+;;   - Charlotte is the pheromone, not the queen.
+;;
+;; Charlotte observes. Charlotte deposits pheromone (signals).
+;; Charlotte evaporates (old signals fade). Charlotte never directs.
+;; The operation directs itself through the emergent intelligence
+;; of agents following reinforced trails through observed terrain.
+
+(isa PerpetualForaging Collection)
+(genls PerpetualForaging PROTOCOL)
+(comment PerpetualForaging
+  "The operational principle: there is no completion state. Goals
+   are continuously generated from the SIGNAL stream. Captured goals
+   reinforce trails. New goals appear in unexplored territory.
+   Pheromone evaporates at rate ρ. The operation never stops foraging.
+
+   Charlotte is not the queen — Charlotte is the pheromone itself.
+   The invisible chemical trail that makes the colony intelligent
+   without any ant understanding the whole.")

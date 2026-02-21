@@ -1,0 +1,28 @@
+;;; ================================================================
+;;; ISG BRAND / NATIONAL MILL MAINTENANCE (NMM)
+;;; Millwright & mechanical contracting — Birmingham AL
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa NationalMillMaintenance ISGBrand)
+(hasAttribute NationalMillMaintenance ::LABEL "National Mill Maintenance")
+(hasAttribute NationalMillMaintenance ::ABBREVIATION "NMM")
+(hasAttribute NationalMillMaintenance ::ACQUIRED_BY_ISG "April 2024")
+(hasAttribute NationalMillMaintenance ::VERTICAL "Specialty Services")
+(hasAttribute NationalMillMaintenance ::HEADCOUNT "51-200")
+(hasAttribute NationalMillMaintenance ::WEBSITE "nationalmillmaintenance.com")
+(hasAttribute NationalMillMaintenance ::SPECIALTIES "Millwright services, mechanical contracting, plant maintenance, equipment installation, alignment, rigging")
+(hasAttribute NationalMillMaintenance ::INDUSTRIES "Steel, metals, manufacturing, heavy industry")
+(MEMBER_OF NationalMillMaintenance ISGServicesGroup)
+(locatedAt NationalMillMaintenance Birmingham-AL)
+
+(hasAttribute NationalMillMaintenance ::FACILITY_HQ "Birmingham, AL")
+
+;; Personnel — Leadership
+
+(isa AdamCarter Person)
+(hasAttribute AdamCarter ::LABEL "Adam Carter")
+(hasAttribute AdamCarter ::ROLE "President")
+(LEADS AdamCarter NationalMillMaintenance)
+(MEMBER_OF AdamCarter NationalMillMaintenance)

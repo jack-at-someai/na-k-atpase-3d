@@ -1,0 +1,302 @@
+;;; ════════════════════════════════════════════════════════════════
+;;; Al Pacino Demo — Career Knowledge Graph
+;;; Charlotte OS · KRF Visualizer Demo
+;;; ════════════════════════════════════════════════════════════════
+
+(in-microtheory AlPacinoDemoMt)
+
+;;; ── Collections ──────────────────────────────────────────────
+
+(isa Person Collection)
+(comment Person "A human individual")
+
+(isa Actor Collection)
+(comment Actor "A person who performs roles in films or theater")
+(genls Actor Person)
+
+(isa Director Collection)
+(comment Director "A person who directs the creative vision of a film")
+(genls Director Person)
+
+(isa Film Collection)
+(comment Film "A motion picture released for public viewing")
+
+(isa Award Collection)
+(comment Award "A formal recognition of achievement in the film industry")
+
+(isa Genre Collection)
+(comment Genre "A category of film defined by style, theme, or narrative structure")
+
+(isa Studio Collection)
+(comment Studio "A production company that finances and produces films")
+
+(isa Decade Collection)
+(comment Decade "A ten-year period used to group cultural output chronologically")
+
+;;; ── Genre Hierarchy ──────────────────────────────────────────
+
+(isa CrimeDrama Genre)
+(comment CrimeDrama "Films centered on criminal activity, moral ambiguity, and law enforcement")
+
+(isa Thriller Genre)
+(comment Thriller "Films designed to create suspense and tension")
+
+(isa Drama Genre)
+(comment Drama "Films emphasizing character development and emotional themes")
+
+(isa ComedyDrama Genre)
+(comment ComedyDrama "Films blending humorous and serious dramatic elements")
+
+(isa WarFilm Genre)
+(comment WarFilm "Films depicting armed conflict and its human consequences")
+
+(isa ActionFilm Genre)
+(comment ActionFilm "Films emphasizing physical feats, chases, and combat")
+
+(genls CrimeDrama Drama)
+(genls Thriller Drama)
+(genls ComedyDrama Drama)
+
+;;; ── Award Hierarchy ──────────────────────────────────────────
+
+(isa OscarAward Award)
+(comment OscarAward "Academy Award, the most prestigious honor in the American film industry")
+
+(isa GoldenGlobeAward Award)
+(comment GoldenGlobeAward "Award given by the Hollywood Foreign Press Association")
+
+(isa TonyAward Award)
+(comment TonyAward "Award recognizing excellence in Broadway theater")
+
+(isa BAFTAAward Award)
+(comment BAFTAAward "British Academy of Film and Television Arts award")
+
+(genls OscarAward Award)
+(genls GoldenGlobeAward Award)
+(genls TonyAward Award)
+(genls BAFTAAward Award)
+
+;;; ── Relations ────────────────────────────────────────────────
+
+(isa actedIn Predicate)
+(arity actedIn 2)
+(arg1Isa actedIn Actor)
+(arg2Isa actedIn Film)
+(comment actedIn "Indicates an actor performed a role in a film")
+
+(isa directedBy Predicate)
+(arity directedBy 2)
+(arg1Isa directedBy Film)
+(arg2Isa directedBy Director)
+(comment directedBy "Indicates which director helmed a film")
+
+(isa releasedInYear Predicate)
+(arity releasedInYear 2)
+(arg1Isa releasedInYear Film)
+(comment releasedInYear "The year a film was released to audiences")
+
+(isa hasGenre Predicate)
+(arity hasGenre 2)
+(arg1Isa hasGenre Film)
+(arg2Isa hasGenre Genre)
+(comment hasGenre "Assigns a genre classification to a film")
+
+(isa wonAward Predicate)
+(arity wonAward 2)
+(arg1Isa wonAward Person)
+(arg2Isa wonAward Award)
+(comment wonAward "Records that a person won a specific award")
+
+(isa nominatedFor Predicate)
+(arity nominatedFor 2)
+(arg1Isa nominatedFor Person)
+(arg2Isa nominatedFor Award)
+(comment nominatedFor "Records that a person was nominated for an award")
+
+(isa inDecade Predicate)
+(arity inDecade 2)
+(arg1Isa inDecade Film)
+(arg2Isa inDecade Decade)
+(comment inDecade "Places a film within its release decade")
+
+(isa producedBy Predicate)
+(arity producedBy 2)
+(arg1Isa producedBy Film)
+(arg2Isa producedBy Studio)
+(comment producedBy "The studio that produced a film")
+
+;;; ── Al Pacino ────────────────────────────────────────────────
+
+(isa AlPacino Actor)
+(comment AlPacino "Alfredo James Pacino, legendary American actor known for intense portrayals of complex characters")
+
+;;; ── Directors ────────────────────────────────────────────────
+
+(isa FrancisFordCoppola Director)
+(comment FrancisFordCoppola "Director of The Godfather trilogy, a master of epic American cinema")
+
+(isa BrianDePalma Director)
+(comment BrianDePalma "Director known for stylish thrillers and crime films")
+
+(isa MichaelMann Director)
+(comment MichaelMann "Director acclaimed for meticulous crime dramas and visual intensity")
+
+(isa MartinBrest Director)
+(comment MartinBrest "Director of Scent of a Woman")
+
+(isa SidneyLumet Director)
+(comment SidneyLumet "Prolific director known for socially conscious dramas")
+
+;;; ── Decade Instances ─────────────────────────────────────────
+
+(isa The1970s Decade)
+(isa The1980s Decade)
+(isa The1990s Decade)
+(isa The2000s Decade)
+(isa The2010s Decade)
+(isa The2020s Decade)
+
+;;; ── Studios ──────────────────────────────────────────────────
+
+(isa Paramount Studio)
+(isa Universal Studio)
+(isa WarnerBros Studio)
+(isa TwentiethCenturyFox Studio)
+
+;;; ── Films & Relationships ────────────────────────────────────
+
+(isa TheGodfather Film)
+(comment TheGodfather "1972 epic crime drama, widely considered one of the greatest films ever made")
+(actedIn AlPacino TheGodfather)
+(directedBy TheGodfather FrancisFordCoppola)
+(releasedInYear TheGodfather 1972)
+(hasGenre TheGodfather CrimeDrama)
+(inDecade TheGodfather The1970s)
+(producedBy TheGodfather Paramount)
+
+(isa TheGodfatherPartII Film)
+(comment TheGodfatherPartII "1974 sequel and prequel continuing the Corleone saga")
+(actedIn AlPacino TheGodfatherPartII)
+(directedBy TheGodfatherPartII FrancisFordCoppola)
+(releasedInYear TheGodfatherPartII 1974)
+(hasGenre TheGodfatherPartII CrimeDrama)
+(inDecade TheGodfatherPartII The1970s)
+(producedBy TheGodfatherPartII Paramount)
+
+(isa SerpicoPacino Film)
+(comment SerpicoPacino "1973 drama based on the true story of NYPD officer Frank Serpico")
+(actedIn AlPacino SerpicoPacino)
+(directedBy SerpicoPacino SidneyLumet)
+(releasedInYear SerpicoPacino 1973)
+(hasGenre SerpicoPacino CrimeDrama)
+(inDecade SerpicoPacino The1970s)
+
+(isa DogDayAfternoon Film)
+(comment DogDayAfternoon "1975 crime drama based on a real Brooklyn bank robbery")
+(actedIn AlPacino DogDayAfternoon)
+(directedBy DogDayAfternoon SidneyLumet)
+(releasedInYear DogDayAfternoon 1975)
+(hasGenre DogDayAfternoon CrimeDrama)
+(inDecade DogDayAfternoon The1970s)
+
+(isa Scarface Film)
+(comment Scarface "1983 crime epic about Cuban immigrant Tony Montana's rise and fall in Miami's drug trade")
+(actedIn AlPacino Scarface)
+(directedBy Scarface BrianDePalma)
+(releasedInYear Scarface 1983)
+(hasGenre Scarface CrimeDrama)
+(inDecade Scarface The1980s)
+(producedBy Scarface Universal)
+
+(isa ScentOfAWoman Film)
+(comment ScentOfAWoman "1992 drama for which Pacino won his only Best Actor Oscar")
+(actedIn AlPacino ScentOfAWoman)
+(directedBy ScentOfAWoman MartinBrest)
+(releasedInYear ScentOfAWoman 1992)
+(hasGenre ScentOfAWoman Drama)
+(inDecade ScentOfAWoman The1990s)
+(producedBy ScentOfAWoman Universal)
+
+(isa Heat Film)
+(comment Heat "1995 crime saga featuring the first on-screen pairing of Pacino and Robert De Niro")
+(actedIn AlPacino Heat)
+(directedBy Heat MichaelMann)
+(releasedInYear Heat 1995)
+(hasGenre Heat CrimeDrama)
+(inDecade Heat The1990s)
+(producedBy Heat WarnerBros)
+
+(isa CarlitosWay Film)
+(comment CarlitosWay "1993 crime drama about a reformed gangster trying to go straight")
+(actedIn AlPacino CarlitosWay)
+(directedBy CarlitosWay BrianDePalma)
+(releasedInYear CarlitosWay 1993)
+(hasGenre CarlitosWay CrimeDrama)
+(inDecade CarlitosWay The1990s)
+(producedBy CarlitosWay Universal)
+
+(isa TheIrishman Film)
+(comment TheIrishman "2019 epic crime film spanning decades of American organized crime")
+(actedIn AlPacino TheIrishman)
+(releasedInYear TheIrishman 2019)
+(hasGenre TheIrishman CrimeDrama)
+(inDecade TheIrishman The2010s)
+
+(isa GlengarryGlenRoss Film)
+(comment GlengarryGlenRoss "1992 ensemble drama about desperate real estate salesmen")
+(actedIn AlPacino GlengarryGlenRoss)
+(releasedInYear GlengarryGlenRoss 1992)
+(hasGenre GlengarryGlenRoss Drama)
+(inDecade GlengarryGlenRoss The1990s)
+
+;;; ── Awards ───────────────────────────────────────────────────
+
+(wonAward AlPacino OscarAward)
+(nominatedFor AlPacino OscarAward)
+(wonAward AlPacino TonyAward)
+(wonAward AlPacino GoldenGlobeAward)
+(nominatedFor AlPacino BAFTAAward)
+
+;;; ── Rules ────────────────────────────────────────────────────
+
+;; If an actor acted in a film and that film won Best Picture, the actor appeared in a Best Picture winner
+(implies
+  (and
+    (actedIn ?actor ?film)
+    (wonAward ?film BestPictureOscar))
+  (appearedInBestPictureWinner ?actor))
+
+;; If an actor acted in a film directed by a director, they have a collaboration
+(implies
+  (and
+    (actedIn ?actor ?film)
+    (directedBy ?film ?director))
+  (collaboratedWith ?actor ?director))
+
+;; If a film is a crime drama released in the 1970s, it is part of the New Hollywood era
+(implies
+  (and
+    (hasGenre ?film CrimeDrama)
+    (inDecade ?film The1970s))
+  (isa ?film NewHollywoodFilm))
+
+;; If an actor won both an Oscar and a Tony, they are a dual-medium star
+(implies
+  (and
+    (wonAward ?person OscarAward)
+    (wonAward ?person TonyAward))
+  (isa ?person DualMediumStar))
+
+;;; ── Heuristics ───────────────────────────────────────────────
+
+(isa typicalFilmBudget Predicate)
+(arity typicalFilmBudget 1)
+(comment typicalFilmBudget "Default estimated budget for a major studio film in millions USD")
+
+(defaultTrue (typicalFilmBudget 50))
+
+(isa typicalCareerSpan Predicate)
+(arity typicalCareerSpan 1)
+(comment typicalCareerSpan "Expected active career span of a leading actor in years")
+
+(defaultTrue (typicalCareerSpan 40))

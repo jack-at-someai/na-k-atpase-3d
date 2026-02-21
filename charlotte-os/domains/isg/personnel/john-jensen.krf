@@ -1,0 +1,82 @@
+;;; ================================================================
+;;; ISG PERSONNEL / JOHN JENSEN
+;;; Chief Operating Officer — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa JohnJensen Person)
+(isa JohnJensen Executive)
+(hasAttribute JohnJensen ::LABEL "John Jensen")
+(hasAttribute JohnJensen ::ROLE "Chief Operating Officer")
+(hasAttribute JohnJensen ::TITLE_SHORT "COO")
+(hasAttribute JohnJensen ::EMAIL "jjensen@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo JohnJensen JimRichard)
+(MEMBER_OF JohnJensen ISGExecutiveTeam)
+
+;; Oversees three verticals
+(LEADS JohnJensen ISGValveActuationGroup)
+(LEADS JohnJensen ISGCompressorGroup)
+(reportsTo DavedKarl JohnJensen)
+(reportsTo BartMiddleton JohnJensen)
+(reportsTo ChrisSeibel JohnJensen)
+(reportsTo EricChandler JohnJensen)
+(reportsTo DannyMorin JohnJensen)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt JohnJensen Atlanta-GA)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute JohnJensen ::ORG_LEVEL 2)
+(hasAttribute JohnJensen ::SPAN_OF_CONTROL "V&A, Compressor, and Pump verticals")
+(hasAttribute JohnJensen ::DECISION_AUTHORITY "Operational execution across three largest verticals")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch JohnJensen "University of Florida — MS Industrial & Systems Engineering" 1990 1995)
+(careerEpoch JohnJensen "EthosEnergy — Operations Leadership" 2005 2018)
+(careerEpoch JohnJensen "The Industrial Service Group — COO" 2019 9999)
+
+(hasAttribute JohnJensen ::CAREER_YEARS 25)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn JohnJensen Turbomachinery)
+(expertiseIn JohnJensen GasTurbineMRO)
+(expertiseIn JohnJensen EngineeringManagement)
+(expertiseIn JohnJensen IndustrialSystemsEngineering)
+(expertiseIn JohnJensen ProjectManagement)
+(expertiseIn JohnJensen PublicSpeaking)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa JohnJensen-OperationalScope METRIC)
+(attachedTo JohnJensen-OperationalScope JohnJensen)
+(hasAttribute JohnJensen-OperationalScope ::VALUE 3)
+(hasAttribute JohnJensen-OperationalScope ::UNIT "verticals under direct oversight")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa JohnJensen-CharlotteOSSponsorChain SIGNAL)
+(derivedFrom JohnJensen-CharlotteOSSponsorChain JohnJensen-OperationalScope)
+(comment JohnJensen-CharlotteOSSponsorChain
+  "Daved Karl (CIO, Charlotte OS signatory) reports to John. The compressor
+   vertical — Charlotte's initial deployment scope — falls under John's
+   operational authority. He is the operational sponsor chain for Charlotte.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCOO PROTOCOL)
+(hasTrigger Protocol-InteractWithCOO (sessionCaller ?Session JohnJensen))
+(comment Protocol-InteractWithCOO
+  "John is an engineer by training with deep turbomachinery expertise.
+   He values data-driven operational decisions. Frame Charlotte value
+   in throughput, uptime, and service efficiency. He oversees the
+   verticals where Charlotte deploys first — he needs to see results.")

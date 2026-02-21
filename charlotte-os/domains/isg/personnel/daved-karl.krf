@@ -1,0 +1,109 @@
+;;; ================================================================
+;;; ISG PERSONNEL / DAVED KARL
+;;; Chief Information & Security Officer — The Industrial Service Group
+;;; ================================================================
+;;;
+;;; CRITICAL: Daved is the Charlotte OS contract signatory.
+;;; He is the primary technical sponsor inside ISG.
+;;;
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa DavedKarl Person)
+(isa DavedKarl Executive)
+(hasAttribute DavedKarl ::LABEL "Daved Karl")
+(hasAttribute DavedKarl ::ROLE "Chief Information & Security Officer")
+(hasAttribute DavedKarl ::TITLE_SHORT "CISO")
+(hasAttribute DavedKarl ::EMAIL "dkarl@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo DavedKarl JohnJensen)
+(MEMBER_OF DavedKarl ISGExecutiveTeam)
+(MEMBER_OF DavedKarl ISGCharlotteLaunchTeam)
+
+;; Charlotte OS relationship
+(hasAttribute DavedKarl ::CHARLOTTE_ROLE "Contract signatory, primary technical sponsor")
+(hasAttribute DavedKarl ::CHARLOTTE_MEETING "Feb 24, 2026 launch — direct recipient")
+
+;; Systems ownership
+(GOVERNS DavedKarl ISG-NetSuiteERP)
+(GOVERNS DavedKarl ISG-Microsoft365)
+(GOVERNS DavedKarl ISG-CharlotteOS)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt DavedKarl Atlanta-GA)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute DavedKarl ::ORG_LEVEL 3)
+(hasAttribute DavedKarl ::SPAN_OF_CONTROL "Enterprise IT and security across all 16 brands")
+(hasAttribute DavedKarl ::DECISION_AUTHORITY "Technology stack, security policy, system integration, vendor selection")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch DavedKarl "VTI Instruments Corporation — IT" 2000 2005)
+(careerEpoch DavedKarl "Cohu Semiconductor Equipment Group — IT" 2005 2010)
+(careerEpoch DavedKarl "H-E Parts International — IT" 2010 2015)
+(careerEpoch DavedKarl "Williams Industrial Service Group — CIO" 2015 2019)
+(careerEpoch DavedKarl "The Industrial Service Group — CISO" 2019 9999)
+(careerEpoch DavedKarl "Western Governors University — MBA" 2019 2024)
+
+(hasAttribute DavedKarl ::EDUCATION "MBA, Western Governors University (2024); MSTM")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn DavedKarl EnterpriseSoftware)
+(expertiseIn DavedKarl BusinessIntelligence)
+(expertiseIn DavedKarl SystemIntegration)
+(expertiseIn DavedKarl ProjectManagement)
+(expertiseIn DavedKarl InformationSecurity)
+(expertiseIn DavedKarl ERPImplementation)
+(expertiseIn DavedKarl IndustrialIT)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa DavedKarl-IntegrationComplexity METRIC)
+(attachedTo DavedKarl-IntegrationComplexity DavedKarl)
+(hasAttribute DavedKarl-IntegrationComplexity ::VALUE 16)
+(hasAttribute DavedKarl-IntegrationComplexity ::UNIT "brands to unify under one IT stack")
+
+(isa DavedKarl-SystemsManaged METRIC)
+(attachedTo DavedKarl-SystemsManaged DavedKarl)
+(hasAttribute DavedKarl-SystemsManaged ::VALUE 3)
+(hasAttribute DavedKarl-SystemsManaged ::UNIT "major platforms (NetSuite, M365, Charlotte)")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa DavedKarl-CharlotteChampion SIGNAL)
+(derivedFrom DavedKarl-CharlotteChampion DavedKarl-IntegrationComplexity)
+(comment DavedKarl-CharlotteChampion
+  "Daved signed the Charlotte OS contract and is the internal champion.
+   He understands the integration pain of 16 acquired brands with
+   different legacy systems. Charlotte's value proposition — a unified
+   knowledge graph across all brands — directly addresses his core
+   challenge. He needs Charlotte to succeed.")
+
+(isa DavedKarl-SecurityMindset SIGNAL)
+(derivedFrom DavedKarl-SecurityMindset DavedKarl-IntegrationComplexity)
+(comment DavedKarl-SecurityMindset
+  "Daved holds the CISO title, not just CIO. Security is central to his
+   thinking. Any Charlotte deployment must address data isolation between
+   brands, access controls, and audit trails. The dive line property
+   directly supports his auditability requirements.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCISO PROTOCOL)
+(hasTrigger Protocol-InteractWithCISO (sessionCaller ?Session DavedKarl))
+(comment Protocol-InteractWithCISO
+  "Daved is Charlotte's internal champion. Treat him as a technical peer.
+   He understands IT architecture, ERP systems, and integration patterns.
+   Lead with technical substance, not sales language. He needs to report
+   Charlotte progress to John Jensen and ultimately Jim — help him build
+   the narrative. He will ask about security, data isolation, and
+   auditability first. The dive line is his strongest talking point.")

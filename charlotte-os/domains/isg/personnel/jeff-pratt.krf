@@ -1,0 +1,82 @@
+;;; ================================================================
+;;; ISG PERSONNEL / JEFF PRATT
+;;; VP Corporate Development — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa JeffPratt Person)
+(isa JeffPratt Executive)
+(hasAttribute JeffPratt ::LABEL "Jeff Pratt")
+(hasAttribute JeffPratt ::ROLE "Vice President, Corporate Development")
+(hasAttribute JeffPratt ::TITLE_SHORT "VP Corp Dev")
+(hasAttribute JeffPratt ::EMAIL "jpratt@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo JeffPratt JimRichard)
+(MEMBER_OF JeffPratt ISGExecutiveTeam)
+
+;; M&A collaboration
+(hasAttribute JeffPratt ::MA_PIPELINE "75+ active acquisition targets")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt JeffPratt Indianapolis-IN)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute JeffPratt ::ORG_LEVEL 2)
+(hasAttribute JeffPratt ::DECISION_AUTHORITY "M&A pipeline, target identification, deal structuring")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch JeffPratt "Indiana University — BS Finance, Kelley School of Business" 1990 1994)
+(careerEpoch JeffPratt "Xavier University — MBA Finance" 1994 1996)
+(careerEpoch JeffPratt "JPMorgan Chase — Senior Vice President" 1996 2005)
+(careerEpoch JeffPratt "STAR Financial Bank — Senior Commercial Banker" 2005 2009)
+(careerEpoch JeffPratt "Creekview Capital LLC — Founder" 2009 9999)
+(careerEpoch JeffPratt "Brady Ware Capital — Managing Director" 2012 2018)
+(careerEpoch JeffPratt "MPI Corporation — VP Mergers & Acquisitions" 2018 2022)
+(careerEpoch JeffPratt "The Industrial Service Group — VP Corporate Development" 2022 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn JeffPratt MergersAndAcquisitions)
+(expertiseIn JeffPratt CorporateFinance)
+(expertiseIn JeffPratt DealStructuring)
+(expertiseIn JeffPratt CommercialBanking)
+(expertiseIn JeffPratt DirectInvestment)
+(expertiseIn JeffPratt IndustrialServicesMA)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa JeffPratt-PipelineSize METRIC)
+(attachedTo JeffPratt-PipelineSize JeffPratt)
+(hasAttribute JeffPratt-PipelineSize ::VALUE 75)
+(hasAttribute JeffPratt-PipelineSize ::UNIT "active M&A targets")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa JeffPratt-DealFlowExpert SIGNAL)
+(derivedFrom JeffPratt-DealFlowExpert JeffPratt-PipelineSize)
+(comment JeffPratt-DealFlowExpert
+  "Jeff manages ISG's active acquisition pipeline of 75+ targets.
+   He is the primary contact for business owners considering selling
+   to ISG. He thinks in deal multiples, integration cost, and
+   strategic fit. Charlotte's competitive landscape KRF and market
+   intelligence directly serve his target evaluation process.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCorpDev PROTOCOL)
+(hasTrigger Protocol-InteractWithCorpDev (sessionCaller ?Session JeffPratt))
+(comment Protocol-InteractWithCorpDev
+  "Jeff is a finance professional (JPMorgan, Kelley School) who also
+   founded his own investment firm (Creekview Capital). He speaks in
+   deal terms — EBITDA multiples, revenue synergies, integration risk.
+   Charlotte's value to Jeff is market intelligence and competitive
+   landscape analysis for acquisition targets. He needs fast answers
+   on companies in the rotating equipment space.")

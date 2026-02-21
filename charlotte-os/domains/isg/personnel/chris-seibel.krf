@@ -1,0 +1,102 @@
+;;; ================================================================
+;;; ISG PERSONNEL / CHRIS SEIBEL
+;;; President, ISG Compressor Group
+;;; ================================================================
+;;;
+;;; CRITICAL: Compressor vertical is Charlotte's initial deployment scope.
+;;; Chris is the operational leader of the first Charlotte domain.
+;;;
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa ChrisSeibel Person)
+(isa ChrisSeibel Executive)
+(hasAttribute ChrisSeibel ::LABEL "Christopher Seibel")
+(hasAttribute ChrisSeibel ::PREFERRED_NAME "Chris")
+(hasAttribute ChrisSeibel ::ROLE "President, ISG Compressor Group")
+(hasAttribute ChrisSeibel ::TITLE_SHORT "President Compressors")
+(hasAttribute ChrisSeibel ::EMAIL "cseibel@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo ChrisSeibel JohnJensen)
+(MEMBER_OF ChrisSeibel ISGCompressorGroup)
+(LEADS ChrisSeibel ISGCompressorGroup)
+(MEMBER_OF ChrisSeibel ISGCharlotteLaunchTeam)
+
+;; Compressor Group brands
+(LEADS ChrisSeibel IndustrialAirPower)
+(LEADS ChrisSeibel IndustrialAirCenters)
+(LEADS ChrisSeibel CompressorTurbineServices)
+(LEADS ChrisSeibel TurbomachineryIndustries)
+(LEADS ChrisSeibel AirSpecialtyEquipment)
+
+(hasAttribute ChrisSeibel ::CHARLOTTE_ROLE "Operational leader of first Charlotte deployment vertical")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt ChrisSeibel Milwaukee-WI)
+(hasAttribute ChrisSeibel ::PRIMARY_FACILITY "Industrial Air Power HQ, Muskego, WI")
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute ChrisSeibel ::ORG_LEVEL 3)
+(hasAttribute ChrisSeibel ::SPAN_OF_CONTROL "5 compressor brands — IAP, IAC, CTS, TMI, ASE")
+(hasAttribute ChrisSeibel ::DECISION_AUTHORITY "Compressor operations, service delivery, brand strategy within group")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch ChrisSeibel "Concordia University Wisconsin — MBA" 2005 2008)
+(careerEpoch ChrisSeibel "Ingersoll Rand — Leadership roles" 2000 2018)
+(careerEpoch ChrisSeibel "The Industrial Service Group — President Compressor Group" 2018 9999)
+
+(hasAttribute ChrisSeibel ::INGERSOLL_BACKGROUND "Former Ingersoll Rand — major compressor OEM")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn ChrisSeibel CompressedAirSystems)
+(expertiseIn ChrisSeibel IndustrialCompressors)
+(expertiseIn ChrisSeibel AftermarketServices)
+(expertiseIn ChrisSeibel OEMDistribution)
+(expertiseIn ChrisSeibel ServiceOperations)
+(expertiseIn ChrisSeibel Turbomachinery)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa ChrisSeibel-BrandsManaged METRIC)
+(attachedTo ChrisSeibel-BrandsManaged ChrisSeibel)
+(hasAttribute ChrisSeibel-BrandsManaged ::VALUE 5)
+(hasAttribute ChrisSeibel-BrandsManaged ::UNIT "compressor brands under management")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa ChrisSeibel-FirstCharlotteDomain SIGNAL)
+(derivedFrom ChrisSeibel-FirstCharlotteDomain ChrisSeibel-BrandsManaged)
+(comment ChrisSeibel-FirstCharlotteDomain
+  "The compressor vertical is Charlotte's initial deployment scope per
+   the Feb 2026 contract. Chris's 5 brands (IAP, IAC, CTS, TMI, ASE)
+   are the first to be modeled in the ISG knowledge graph. His buy-in
+   is operationally critical — he needs to see Charlotte reduce service
+   friction and improve inventory visibility across his brands.")
+
+(isa ChrisSeibel-OEMInsider SIGNAL)
+(derivedFrom ChrisSeibel-OEMInsider ChrisSeibel-BrandsManaged)
+(comment ChrisSeibel-OEMInsider
+  "Chris came from Ingersoll Rand — one of the largest compressor OEMs.
+   He understands both the OEM and aftermarket sides. He knows which
+   OEM relationships matter, which parts move, and where the margin lives.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCompressorPres PROTOCOL)
+(hasTrigger Protocol-InteractWithCompressorPres (sessionCaller ?Session ChrisSeibel))
+(comment Protocol-InteractWithCompressorPres
+  "Chris is Charlotte's most important operational stakeholder — his
+   vertical goes first. He was a direct recipient on the launch meeting.
+   He needs to see Charlotte deliver concrete value: faster quoting,
+   better parts visibility, cross-brand inventory optimization. He
+   speaks compressor language — pressure, CFM, service intervals.
+   Former Ingersoll Rand, so he knows the OEM competitive landscape.")

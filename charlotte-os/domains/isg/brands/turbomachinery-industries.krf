@@ -1,0 +1,45 @@
+;;; ================================================================
+;;; ISG BRAND / TURBOMACHINERY INDUSTRIES
+;;; Premier rotating equipment repair — Corpus Christi & Deer Park TX
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa TurbomachineryIndustries ISGBrand)
+(hasAttribute TurbomachineryIndustries ::LABEL "Turbomachinery Industries")
+(hasAttribute TurbomachineryIndustries ::ABBREVIATION "TMI")
+(hasAttribute TurbomachineryIndustries ::FOUNDED 1979)
+(hasAttribute TurbomachineryIndustries ::VERTICAL "Compressor")
+(hasAttribute TurbomachineryIndustries ::HEADCOUNT "11-50")
+(hasAttribute TurbomachineryIndustries ::WEBSITE "turbo-ind.com")
+(hasAttribute TurbomachineryIndustries ::SPECIALTIES "Steam turbines, compressors, centrifuges, gearboxes, Elliott YR parts")
+(hasAttribute TurbomachineryIndustries ::FAMILY_HISTORY "Hickham family in turbomachinery since 1972 (I.W. Hickham Co → Sulzer Hickham → independent TMI)")
+(MEMBER_OF TurbomachineryIndustries ISGCompressorGroup)
+
+(hasAttribute TurbomachineryIndustries ::FACILITY_CC "1305 Vermont St, Corpus Christi, TX 78409")
+(hasAttribute TurbomachineryIndustries ::FACILITY_DP "1005 Georgia, Deer Park, TX 77536")
+
+;; Personnel
+
+(isa AndrewAdam Person)
+(hasAttribute AndrewAdam ::LABEL "Andrew Adam, P.E.")
+(hasAttribute AndrewAdam ::ROLE "President, IEW + CTS + Turbomachinery Industries")
+(hasAttribute AndrewAdam ::EDUCATION "BS, University of Missouri-Columbia")
+(hasAttribute AndrewAdam ::CAREER "GE → Xcel Energy → MD&A → Siemens → EthosEnergy → Power Services Group → Gund Company (VP) → ISG")
+(hasAttribute AndrewAdam ::CREDENTIAL "Licensed Professional Engineer")
+(locatedAt AndrewAdam CorpusChristi-TX)
+(LEADS AndrewAdam TurbomachineryIndustries)
+(MEMBER_OF AndrewAdam TurbomachineryIndustries)
+
+(isa ClydeDHickham Person)
+(hasAttribute ClydeDHickham ::LABEL "Clyde D. Hickham")
+(hasAttribute ClydeDHickham ::ROLE "Vice President & Director")
+(hasAttribute ClydeDHickham ::FAMILY "Hickham family — turbomachinery since 1972")
+(locatedAt ClydeDHickham DeerPark-TX)
+(MEMBER_OF ClydeDHickham TurbomachineryIndustries)
+
+(isa StevenAHickham Person)
+(hasAttribute StevenAHickham ::LABEL "Steven A. Hickham")
+(hasAttribute StevenAHickham ::ROLE "Director")
+(hasAttribute StevenAHickham ::NOTES "Notable enough for Wikipedia page")
+(MEMBER_OF StevenAHickham TurbomachineryIndustries)

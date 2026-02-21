@@ -1,0 +1,82 @@
+;;; ================================================================
+;;; ISG BRAND / INDUSTRIAL VALVE SERVICE (IVS)
+;;; Flagship V&A subsidiary — founded 1975, Mobile AL
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Brand Identity ───────────────────────────────────────────────
+
+(isa IndustrialValveService ISGBrand)
+(hasAttribute IndustrialValveService ::LABEL "Industrial Valve Sales & Service")
+(hasAttribute IndustrialValveService ::ABBREVIATION "IVS")
+(hasAttribute IndustrialValveService ::FOUNDED 1975)
+(hasAttribute IndustrialValveService ::ACQUIRED_BY_ISG 2019)
+(hasAttribute IndustrialValveService ::VERTICAL "Valve & Actuation")
+(hasAttribute IndustrialValveService ::REVENUE "$53.4M est.")
+(hasAttribute IndustrialValveService ::HEADCOUNT "98-158")
+(hasAttribute IndustrialValveService ::WEBSITE "indvalve.com")
+(hasAttribute IndustrialValveService ::CERTIFICATIONS "National Board VR, NB stamps; ASME V, UV")
+(MEMBER_OF IndustrialValveService ISGValveActuationGroup)
+
+;; ── Locations ────────────────────────────────────────────────────
+
+(locatedAt IndustrialValveService Mobile-AL)
+(hasAttribute IndustrialValveService ::FACILITY_HQ "5310 US-45, Eight Mile, AL 36613")
+(hasAttribute IndustrialValveService ::FACILITY_LA "9045 Industrial Drive, Bastrop, LA 71220")
+(hasAttribute IndustrialValveService ::FACILITY_TN "510 Industrial Drive SW, Cleveland, TN 37311")
+
+;; ── OEM Partnerships ─────────────────────────────────────────────
+
+(hasAttribute IndustrialValveService ::OEM_AUTHORIZED "Farris, Gestra, Rotork, Samson, Velan, Dyna-Flo, Bray/Flow-Tek, Crane")
+(hasAttribute IndustrialValveService ::OEM_SERVICED "Fisher, Masoneilan, Crosby, Kunkle, Anderson Greenwood, Limitorque, Flowserve")
+
+;; ── Personnel ────────────────────────────────────────────────────
+
+;; President (full profile in personnel/eric-chandler.krf)
+(LEADS EricChandler IndustrialValveService)
+
+(isa AlexJames Person)
+(hasAttribute AlexJames ::LABEL "Alex James")
+(hasAttribute AlexJames ::ROLE "Financial Controller")
+(hasAttribute AlexJames ::EDUCATION "BS Accounting, University of South Alabama")
+(locatedAt AlexJames Daphne-AL)
+(MEMBER_OF AlexJames IndustrialValveService)
+
+(isa ColbySmith Person)
+(hasAttribute ColbySmith ::LABEL "Colby Smith")
+(hasAttribute ColbySmith ::ROLE "Account Manager, Sales")
+(hasAttribute ColbySmith ::EDUCATION "University of South Alabama")
+(locatedAt ColbySmith Mobile-AL)
+(MEMBER_OF ColbySmith IndustrialValveService)
+
+(isa EricTucker Person)
+(hasAttribute EricTucker ::LABEL "Eric Tucker")
+(hasAttribute EricTucker ::ROLE "Account Manager")
+(expertiseIn EricTucker ChemicalProcessing)
+(expertiseIn EricTucker PulpAndPaper)
+(MEMBER_OF EricTucker IndustrialValveService)
+
+(isa DaltonSmith Person)
+(hasAttribute DaltonSmith ::LABEL "Dalton Smith")
+(hasAttribute DaltonSmith ::ROLE "Inside Sales Representative")
+(hasAttribute DaltonSmith ::TENURE "6+ years")
+(expertiseIn DaltonSmith ControlValves)
+(MEMBER_OF DaltonSmith IndustrialValveService)
+
+(isa DavidBylinowski Person)
+(hasAttribute DavidBylinowski ::LABEL "David Bylinowski")
+(hasAttribute DavidBylinowski ::ROLE "IT Manager")
+(locatedAt DavidBylinowski Mobile-AL)
+(MEMBER_OF DavidBylinowski IndustrialValveService)
+
+(isa SheliaCarter Person)
+(hasAttribute SheliaCarter ::LABEL "Shelia Carter")
+(hasAttribute SheliaCarter ::ROLE "Fleet Manager / Job Operations, Oil & Gas")
+(hasAttribute SheliaCarter ::EDUCATION "BS Business/Management, University of Southern Mississippi")
+(MEMBER_OF SheliaCarter IndustrialValveService)
+
+(isa EmilyHolifield Person)
+(hasAttribute EmilyHolifield ::LABEL "Emily Holifield")
+(hasAttribute EmilyHolifield ::ROLE "Job Operations Coordinator")
+(MEMBER_OF EmilyHolifield IndustrialValveService)

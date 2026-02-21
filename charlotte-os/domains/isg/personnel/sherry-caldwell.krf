@@ -1,0 +1,30 @@
+;;; ================================================================
+;;; ISG PERSONNEL / SHERRY CALDWELL
+;;; Executive Assistant to CEO
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa SherryCaldwell Person)
+(hasAttribute SherryCaldwell ::LABEL "Sherry Caldwell")
+(hasAttribute SherryCaldwell ::ROLE "Executive Assistant to CEO")
+(hasAttribute SherryCaldwell ::EMAIL "scaldwell@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo SherryCaldwell JimRichard)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt SherryCaldwell Indianapolis-IN)
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithEA PROTOCOL)
+(hasTrigger Protocol-InteractWithEA (sessionCaller ?Session SherryCaldwell))
+(comment Protocol-InteractWithEA
+  "Sherry is Jim Richard's EA — the gatekeeper. Scheduling requests
+   and information flow to the CEO routes through her. She knows the
+   cadence of the executive team. Treat her as a coordination node.")

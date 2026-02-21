@@ -1,0 +1,839 @@
+;;; ================================================================
+;;; REFERENCE / STRUCTURAL BIOMIMETICS
+;;; 81 resources across 7 sections
+;;; ================================================================
+;;;
+;;; Natural composites, silk, nacre & bone. Load-bearing architectures
+;;; from biology.
+;;;
+;;; Structural biomimetics is the science of understanding how living
+;;; organisms build load-bearing materials and translating those
+;;; strategies into engineered systems. From the mineralized collagen
+;;; of bone to the brick-and-mortar architecture of nacre, biology
+;;; achieves extraordinary mechanical performance using a limited
+;;; palette of weak constituents arranged in hierarchical, multi-scale
+;;; architectures.
+;;;
+;;; Learning path: Overview → Nacre & Bio-Ceramics → Silk & Bio-Fibers →
+;;; Bone & Skeletal → Wood & Plant Structures → Hierarchical Design →
+;;; Fabrication Methods
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa SB-Meyers-BioMatSci ReferenceWork)
+(title SB-Meyers-BioMatSci "Biological Materials Science")
+(author SB-Meyers-BioMatSci "Marc A. Meyers & Po-Yu Chen")
+(resourceType SB-Meyers-BioMatSci book)
+(level SB-Meyers-BioMatSci intermediate)
+(section SB-Meyers-BioMatSci StructuralBiomimeticsOverview)
+(url SB-Meyers-BioMatSci "https://www.cambridge.org/core/books/biological-materials-science/EDC36F5999F032F98464C60E1CA07460")
+(desc SB-Meyers-BioMatSci "Comprehensive Cambridge textbook covering biological materials, bioinspired materials, and biomaterials from a materials-science perspective. Ideal graduate-level reference with 644 pages spanning shells, silk, bone, and wood.")
+
+(isa SB-Fratzl-MatDesignNature ReferenceWork)
+(title SB-Fratzl-MatDesignNature "Materials Design Inspired by Nature: Function Through Inner Architecture")
+(author SB-Fratzl-MatDesignNature "Peter Fratzl, John Dunlop & Richard Weinkamer (Eds.)")
+(resourceType SB-Fratzl-MatDesignNature book)
+(level SB-Fratzl-MatDesignNature advanced)
+(section SB-Fratzl-MatDesignNature StructuralBiomimeticsOverview)
+(url SB-Fratzl-MatDesignNature "https://pubs.rsc.org/en/content/ebook/978-1-84973-553-7")
+(desc SB-Fratzl-MatDesignNature "Multi-author volume exploring how nature's inner architectures produce function, from self-assembly of mineralized tissues to actuation in plant systems.")
+
+(isa SB-Gibson-CellularSolids ReferenceWork)
+(title SB-Gibson-CellularSolids "Cellular Solids: Structure and Properties")
+(author SB-Gibson-CellularSolids "Lorna J. Gibson & Michael F. Ashby")
+(resourceType SB-Gibson-CellularSolids book)
+(level SB-Gibson-CellularSolids intermediate)
+(section SB-Gibson-CellularSolids StructuralBiomimeticsOverview)
+(url SB-Gibson-CellularSolids "https://www.cambridge.org/core/books/cellular-solids/BC25789552BAA8E3CAD5E1D105612AB5")
+(desc SB-Gibson-CellularSolids "Classic Cambridge text on honeycomb and foam mechanics with extensive treatment of natural cellular materials including wood, cork, and cancellous bone.")
+
+(isa SB-Estrin-ArchMatNatureEng ReferenceWork)
+(title SB-Estrin-ArchMatNatureEng "Architectured Materials in Nature and Engineering")
+(author SB-Estrin-ArchMatNatureEng "Yuri Estrin, Yves Brechet, John Dunlop & Peter Fratzl (Eds.)")
+(resourceType SB-Estrin-ArchMatNatureEng book)
+(level SB-Estrin-ArchMatNatureEng advanced)
+(section SB-Estrin-ArchMatNatureEng StructuralBiomimeticsOverview)
+(url SB-Estrin-ArchMatNatureEng "https://link.springer.com/book/10.1007/978-3-030-11942-3")
+(desc SB-Estrin-ArchMatNatureEng "Springer volume bridging architecture in biological systems with engineered architectured materials, covering topology, interfaces, and multi-functionality.")
+
+;; ── Lectures & Overviews ──
+
+(isa SB-Benyus-BiomimicryTED ReferenceWork)
+(title SB-Benyus-BiomimicryTED "Biomimicry in Action (TED Talk)")
+(author SB-Benyus-BiomimicryTED "Janine Benyus")
+(resourceType SB-Benyus-BiomimicryTED video)
+(level SB-Benyus-BiomimicryTED beginner)
+(section SB-Benyus-BiomimicryTED StructuralBiomimeticsOverview)
+(url SB-Benyus-BiomimicryTED "https://www.ted.com/talks/janine_benyus_biomimicry_in_action")
+(desc SB-Benyus-BiomimicryTED "Foundational 20-minute TED talk introducing biomimicry principles: how engineers can look to nature first when solving design problems in materials, structures, and systems.")
+
+(isa SB-MIT2A35-BiomimeticDesign ReferenceWork)
+(title SB-MIT2A35-BiomimeticDesign "Biomimetic Principles and Design (MIT OCW 2.A35)")
+(author SB-MIT2A35-BiomimeticDesign "Michael Triantafyllou, MIT")
+(resourceType SB-MIT2A35-BiomimeticDesign course)
+(level SB-MIT2A35-BiomimeticDesign beginner)
+(section SB-MIT2A35-BiomimeticDesign StructuralBiomimeticsOverview)
+(url SB-MIT2A35-BiomimeticDesign "https://ocw.mit.edu/courses/2-a35-biomimetic-principles-and-design-fall-2013/")
+(desc SB-MIT2A35-BiomimeticDesign "MIT freshman seminar introducing biomimetic design through systematic study of live organisms, covering locomotion, sensing, and structural adaptation.")
+
+(isa SB-MIT3054-CellularSolids ReferenceWork)
+(title SB-MIT3054-CellularSolids "Cellular Solids: Structure, Properties and Applications (MIT OCW 3.054)")
+(author SB-MIT3054-CellularSolids "Lorna J. Gibson, MIT")
+(resourceType SB-MIT3054-CellularSolids course)
+(level SB-MIT3054-CellularSolids intermediate)
+(section SB-MIT3054-CellularSolids StructuralBiomimeticsOverview)
+(url SB-MIT3054-CellularSolids "https://ocw.mit.edu/courses/3-054-cellular-solids-structure-properties-and-applications-spring-2015/")
+(desc SB-MIT3054-CellularSolids "Full MIT course with video lectures on honeycombs, foams, natural cellular materials (wood, trabecular bone), and biomedical applications such as tissue scaffolds.")
+
+(isa SB-MIT3052-Nanomechanics ReferenceWork)
+(title SB-MIT3052-Nanomechanics "Nanomechanics of Materials and Biomaterials (MIT OCW 3.052)")
+(author SB-MIT3052-Nanomechanics "Christine Ortiz, MIT")
+(resourceType SB-MIT3052-Nanomechanics course)
+(level SB-MIT3052-Nanomechanics advanced)
+(section SB-MIT3052-Nanomechanics StructuralBiomimeticsOverview)
+(url SB-MIT3052-Nanomechanics "https://ocw.mit.edu/courses/3-052-nanomechanics-of-materials-and-biomaterials-spring-2007/")
+(desc SB-MIT3052-Nanomechanics "Graduate-level MIT course exploring nanoscale mechanical behavior of synthetic and biological materials, including cartilage, bone, and nacre at the single-molecule level.")
+
+;; ── Review Articles ──
+
+(isa SB-Wegst-BioinspiredStructMat ReferenceWork)
+(title SB-Wegst-BioinspiredStructMat "Bioinspired Structural Materials")
+(author SB-Wegst-BioinspiredStructMat "Wegst, Bai, Saiz, Tomsia & Ritchie")
+(resourceType SB-Wegst-BioinspiredStructMat notes)
+(level SB-Wegst-BioinspiredStructMat intermediate)
+(section SB-Wegst-BioinspiredStructMat StructuralBiomimeticsOverview)
+(url SB-Wegst-BioinspiredStructMat "https://www.nature.com/articles/nmat4089")
+(desc SB-Wegst-BioinspiredStructMat "Landmark 2015 Nature Materials review surveying common design motifs in natural structural materials and the challenges of replicating hierarchical architectures synthetically.")
+
+(isa SB-Fratzl-BiomimeticMatResearch ReferenceWork)
+(title SB-Fratzl-BiomimeticMatResearch "Biomimetic Materials Research: What Can We Really Learn from Nature's Structural Materials?")
+(author SB-Fratzl-BiomimeticMatResearch "Peter Fratzl")
+(resourceType SB-Fratzl-BiomimeticMatResearch notes)
+(level SB-Fratzl-BiomimeticMatResearch intermediate)
+(section SB-Fratzl-BiomimeticMatResearch StructuralBiomimeticsOverview)
+(url SB-Fratzl-BiomimeticMatResearch "https://royalsocietypublishing.org/doi/10.1098/rsif.2007.0218")
+(desc SB-Fratzl-BiomimeticMatResearch "Influential essay in Journal of the Royal Society Interface arguing that the key lessons from nature are principles of hierarchical structuring and adaptive growth rather than specific chemistries.")
+
+(isa SB-Fratzl-NaturesHierarchical ReferenceWork)
+(title SB-Fratzl-NaturesHierarchical "Nature's Hierarchical Materials")
+(author SB-Fratzl-NaturesHierarchical "Peter Fratzl & Richard Weinkamer")
+(resourceType SB-Fratzl-NaturesHierarchical notes)
+(level SB-Fratzl-NaturesHierarchical intermediate)
+(section SB-Fratzl-NaturesHierarchical StructuralBiomimeticsOverview)
+(url SB-Fratzl-NaturesHierarchical "https://doi.org/10.1016/j.pmatsci.2007.06.001")
+(desc SB-Fratzl-NaturesHierarchical "Progress in Materials Science review detailing how hierarchy creates multi-functionality in bone, wood, and other biological composites across multiple length scales.")
+
+(isa SB-Zhao-BiomimeticAssembly ReferenceWork)
+(title SB-Zhao-BiomimeticAssembly "Biomimetic Structural Materials: Inspiration from Design and Assembly")
+(author SB-Zhao-BiomimeticAssembly "Zhao, Guo, Zhu, Espinosa & He")
+(resourceType SB-Zhao-BiomimeticAssembly notes)
+(level SB-Zhao-BiomimeticAssembly advanced)
+(section SB-Zhao-BiomimeticAssembly StructuralBiomimeticsOverview)
+(url SB-Zhao-BiomimeticAssembly "https://www.annualreviews.org/doi/10.1146/annurev-physchem-040215-112621")
+(desc SB-Zhao-BiomimeticAssembly "Annual Review of Physical Chemistry article examining the assembly principles behind nacre, bone, and silk and how they inform next-generation composite design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: NACRE & BIO-CERAMICS
+;; Brick-and-mortar architecture, toughening, synthetic nacre
+;; ════════════════════════════════════════════════════════════
+
+;; ── Biological Studies ──
+
+(isa SB-Barthelat-NacreDeformFracture ReferenceWork)
+(title SB-Barthelat-NacreDeformFracture "An Experimental Investigation of Deformation and Fracture of Nacre -- Mother of Pearl")
+(author SB-Barthelat-NacreDeformFracture "Francois Barthelat & Horacio D. Espinosa")
+(resourceType SB-Barthelat-NacreDeformFracture notes)
+(level SB-Barthelat-NacreDeformFracture advanced)
+(section SB-Barthelat-NacreDeformFracture NacreBioCeramics)
+(url SB-Barthelat-NacreDeformFracture "https://link.springer.com/article/10.1007/s11340-007-9040-1")
+(desc SB-Barthelat-NacreDeformFracture "Experimental Mechanics paper combining nanoindentation and in-situ SEM tensile tests to reveal how nacre's microstructure controls tablet sliding, crack bridging, and energy dissipation.")
+
+(isa SB-Barthelat-NacreMechProps ReferenceWork)
+(title SB-Barthelat-NacreMechProps "Mechanical Properties of Nacre Constituents and Their Impact on Mechanical Performance")
+(author SB-Barthelat-NacreMechProps "Barthelat, Li, Comi & Espinosa")
+(resourceType SB-Barthelat-NacreMechProps notes)
+(level SB-Barthelat-NacreMechProps advanced)
+(section SB-Barthelat-NacreMechProps NacreBioCeramics)
+(url SB-Barthelat-NacreMechProps "https://doi.org/10.1557/jmr.2006.0239")
+(desc SB-Barthelat-NacreMechProps "Journal of Materials Research study using nanoindentation of individual aragonite tablets from red abalone to measure elastic and inelastic properties at the constituent level.")
+
+(isa SB-Barthelat-NacreModelSystem ReferenceWork)
+(title SB-Barthelat-NacreModelSystem "Nacre from Mollusk Shells: A Model for High-Performance Structural Materials")
+(author SB-Barthelat-NacreModelSystem "Francois Barthelat")
+(resourceType SB-Barthelat-NacreModelSystem notes)
+(level SB-Barthelat-NacreModelSystem intermediate)
+(section SB-Barthelat-NacreModelSystem NacreBioCeramics)
+(url SB-Barthelat-NacreModelSystem "https://doi.org/10.1088/1748-3182/5/3/035001")
+(desc SB-Barthelat-NacreModelSystem "Bioinspiration & Biomimetics review establishing nacre as the model system for studying toughening by hierarchical architecture in biological ceramics.")
+
+(isa SB-Olson-NacreUltrastructure ReferenceWork)
+(title SB-Olson-NacreUltrastructure "Mollusk Shell Nacre Ultrastructure Correlates with Environmental Temperature and Pressure")
+(author SB-Olson-NacreUltrastructure "Olson, Metzler, Tamura et al.")
+(resourceType SB-Olson-NacreUltrastructure notes)
+(level SB-Olson-NacreUltrastructure advanced)
+(section SB-Olson-NacreUltrastructure NacreBioCeramics)
+(url SB-Olson-NacreUltrastructure "https://pubs.acs.org/doi/full/10.1021/ja210808s")
+(desc SB-Olson-NacreUltrastructure "JACS paper demonstrating that nacre tablet thickness and organic-layer spacing vary with environment, linking ultrastructural features to biomineralization conditions.")
+
+;; ── Synthetic Nacre ──
+
+(isa SB-Launey-ToughBioInspired ReferenceWork)
+(title SB-Launey-ToughBioInspired "Tough, Bio-Inspired Hybrid Materials")
+(author SB-Launey-ToughBioInspired "Launey, Munch, Alsem, Saiz, Tomsia & Ritchie")
+(resourceType SB-Launey-ToughBioInspired notes)
+(level SB-Launey-ToughBioInspired advanced)
+(section SB-Launey-ToughBioInspired NacreBioCeramics)
+(url SB-Launey-ToughBioInspired "https://www.science.org/doi/abs/10.1126/science.1164865")
+(desc SB-Launey-ToughBioInspired "Science paper on freeze-cast alumina-PMMA composites achieving nacre-like brick-and-mortar architectures with fracture toughness values exceeding 30 MPa m^(1/2).")
+
+(isa SB-NacreInspiredReview2023 ReferenceWork)
+(title SB-NacreInspiredReview2023 "A Review of Nacre-Inspired Materials: Chemistry, Strengthening-Deformation Mechanism, Synthesis, and Applications")
+(author SB-NacreInspiredReview2023 "Various authors")
+(resourceType SB-NacreInspiredReview2023 notes)
+(level SB-NacreInspiredReview2023 intermediate)
+(section SB-NacreInspiredReview2023 NacreBioCeramics)
+(url SB-NacreInspiredReview2023 "https://www.sciencedirect.com/science/article/abs/pii/S0079642523001007")
+(desc SB-NacreInspiredReview2023 "Comprehensive 2023 Progress in Materials Science review covering the full landscape of nacre-inspired composites from chemistry-level understanding to large-scale applications.")
+
+(isa SB-Yin-NacreTransparent ReferenceWork)
+(title SB-Yin-NacreTransparent "Impact-Resistant Nacre-Like Transparent Materials")
+(author SB-Yin-NacreTransparent "Yin, Hannard & Barthelat")
+(resourceType SB-Yin-NacreTransparent notes)
+(level SB-Yin-NacreTransparent advanced)
+(section SB-Yin-NacreTransparent NacreBioCeramics)
+(url SB-Yin-NacreTransparent "https://www.science.org/doi/10.1126/science.aaw8988")
+(desc SB-Yin-NacreTransparent "Science paper demonstrating that laser-engraved glass panels with nacre-inspired tablet architectures dramatically increase impact resistance while maintaining transparency.")
+
+(isa SB-Wan-BioBased-ArtNacre ReferenceWork)
+(title SB-Wan-BioBased-ArtNacre "Bio-Based Artificial Nacre with Excellent Mechanical and Barrier Properties")
+(author SB-Wan-BioBased-ArtNacre "Wan, Hu, Chen et al.")
+(resourceType SB-Wan-BioBased-ArtNacre notes)
+(level SB-Wan-BioBased-ArtNacre intermediate)
+(section SB-Wan-BioBased-ArtNacre NacreBioCeramics)
+(url SB-Wan-BioBased-ArtNacre "https://pubs.acs.org/doi/10.1021/acsnano.6b05780")
+(desc SB-Wan-BioBased-ArtNacre "ACS Nano paper presenting a facile in-situ reduction and cross-linking method to produce artificial nacre from montmorillonite and cellulose nanofibers.")
+
+;; ── Mechanical Modeling ──
+
+(isa SB-Barthelat-ToughnessAmplification ReferenceWork)
+(title SB-Barthelat-ToughnessAmplification "Toughness Amplification in Natural Composites")
+(author SB-Barthelat-ToughnessAmplification "Francois Barthelat & Reza Rabiei")
+(resourceType SB-Barthelat-ToughnessAmplification notes)
+(level SB-Barthelat-ToughnessAmplification advanced)
+(section SB-Barthelat-ToughnessAmplification NacreBioCeramics)
+(url SB-Barthelat-ToughnessAmplification "https://doi.org/10.1016/j.jmps.2011.03.007")
+(desc SB-Barthelat-ToughnessAmplification "Journal of the Mechanics and Physics of Solids paper presenting analytical and FE models of tablet pullout, crack bridging, and process-zone toughening in staggered composites.")
+
+(isa SB-Sun-NacreTougheningMech ReferenceWork)
+(title SB-Sun-NacreTougheningMech "The Toughening Mechanism of Nacre and Structural Materials Inspired by Nacre")
+(author SB-Sun-NacreTougheningMech "Sun & Bhushun")
+(resourceType SB-Sun-NacreTougheningMech notes)
+(level SB-Sun-NacreTougheningMech intermediate)
+(section SB-Sun-NacreTougheningMech NacreBioCeramics)
+(url SB-Sun-NacreTougheningMech "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5090675/")
+(desc SB-Sun-NacreTougheningMech "Open-access RSC Advances review synthesizing the main toughening mechanisms: crack deflection, fiber pullout, organic-layer viscoelasticity, and mineral bridging.")
+
+(isa SB-Luz-BiomimeticNacre ReferenceWork)
+(title SB-Luz-BiomimeticNacre "Biomimetic Design of Materials and Biomaterials Inspired by the Structure of Nacre")
+(author SB-Luz-BiomimeticNacre "Luz & Mano")
+(resourceType SB-Luz-BiomimeticNacre notes)
+(level SB-Luz-BiomimeticNacre intermediate)
+(section SB-Luz-BiomimeticNacre NacreBioCeramics)
+(url SB-Luz-BiomimeticNacre "https://royalsocietypublishing.org/doi/10.1098/rsta.2009.0007")
+(desc SB-Luz-BiomimeticNacre "Philosophical Transactions of the Royal Society A paper reviewing how hierarchical organization and nanoscale features produce the remarkable mechanical properties of nacre.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SILK & BIO-FIBERS
+;; Spider dragline silk, silkworm silk, recombinant production
+;; ════════════════════════════════════════════════════════════
+
+;; ── Silk Biology & Chemistry ──
+
+(isa SB-Vollrath-LiquidCrystalSilk ReferenceWork)
+(title SB-Vollrath-LiquidCrystalSilk "Liquid Crystalline Spinning of Spider Silk")
+(author SB-Vollrath-LiquidCrystalSilk "Fritz Vollrath & David P. Knight")
+(resourceType SB-Vollrath-LiquidCrystalSilk notes)
+(level SB-Vollrath-LiquidCrystalSilk advanced)
+(section SB-Vollrath-LiquidCrystalSilk SilkBioFibers)
+(url SB-Vollrath-LiquidCrystalSilk "https://www.nature.com/articles/35069000")
+(desc SB-Vollrath-LiquidCrystalSilk "Nature paper demonstrating that spider silk is spun from a liquid-crystalline dope via a sophisticated die, overturning the simple-composite model and establishing modern silk science.")
+
+(isa SB-Vendrely-SpiderSilkRecombinant ReferenceWork)
+(title SB-Vendrely-SpiderSilkRecombinant "Spider Silks: Recombinant Synthesis, Assembly, Spinning, and Engineering of Synthetic Proteins")
+(author SB-Vendrely-SpiderSilkRecombinant "Vendrely & Scheibel")
+(resourceType SB-Vendrely-SpiderSilkRecombinant notes)
+(level SB-Vendrely-SpiderSilkRecombinant advanced)
+(section SB-Vendrely-SpiderSilkRecombinant SilkBioFibers)
+(url SB-Vendrely-SpiderSilkRecombinant "https://pmc.ncbi.nlm.nih.gov/articles/PMC534800/")
+(desc SB-Vendrely-SpiderSilkRecombinant "Comprehensive review of spidroin gene structure, recombinant production strategies, in-vitro assembly, and biomimetic spinning approaches.")
+
+(isa SB-Eisoldt-SilkSpinning ReferenceWork)
+(title SB-Eisoldt-SilkSpinning "Silk Spinning in Silkworms and Spiders")
+(author SB-Eisoldt-SilkSpinning "Eisoldt, Smith & Scheibel")
+(resourceType SB-Eisoldt-SilkSpinning notes)
+(level SB-Eisoldt-SilkSpinning intermediate)
+(section SB-Eisoldt-SilkSpinning SilkBioFibers)
+(url SB-Eisoldt-SilkSpinning "https://pmc.ncbi.nlm.nih.gov/articles/PMC5000687/")
+(desc SB-Eisoldt-SilkSpinning "Comparative review of the spinning apparatus and molecular mechanisms in silkworms and spiders, highlighting shared principles and evolutionary divergence.")
+
+(isa SB-Hayashi-SilkProteinsGenes ReferenceWork)
+(title SB-Hayashi-SilkProteinsGenes "Spider Silk Proteins -- Mechanical Property and Gene Sequence")
+(author SB-Hayashi-SilkProteinsGenes "Hayashi, Shipley & Lewis")
+(resourceType SB-Hayashi-SilkProteinsGenes notes)
+(level SB-Hayashi-SilkProteinsGenes intermediate)
+(section SB-Hayashi-SilkProteinsGenes SilkBioFibers)
+(url SB-Hayashi-SilkProteinsGenes "https://bioone.org/journals/zoological-science/volume-22/issue-3/zsj.22.273/Spider-Silk-Proteins--Mechanical-Property-and-Gene-Sequence/10.2108/zsj.22.273.full")
+(desc SB-Hayashi-SilkProteinsGenes "Zoological Science review correlating spidroin gene sequences across spider species with the resulting mechanical properties of dragline, flagelliform, and minor ampullate silks.")
+
+;; ── Engineered Silk Materials ──
+
+(isa SB-Arndt-SupremeArtificialSilk ReferenceWork)
+(title SB-Arndt-SupremeArtificialSilk "Doing What Spiders Cannot -- A Road Map to Supreme Artificial Silk Fibers")
+(author SB-Arndt-SupremeArtificialSilk "Arndt, Mueller, Gosline et al.")
+(resourceType SB-Arndt-SupremeArtificialSilk notes)
+(level SB-Arndt-SupremeArtificialSilk advanced)
+(section SB-Arndt-SupremeArtificialSilk SilkBioFibers)
+(url SB-Arndt-SupremeArtificialSilk "https://pubs.acs.org/doi/10.1021/acsnano.0c08933")
+(desc SB-Arndt-SupremeArtificialSilk "ACS Nano perspective outlining the gap between natural and recombinant silk performance and proposing strategies for molecular-weight control, spinning optimization, and post-spin drawing.")
+
+(isa SB-SynBioSpiderSilk ReferenceWork)
+(title SB-SynBioSpiderSilk "Towards Engineering and Production of Artificial Spider Silk Using Tools of Synthetic Biology")
+(author SB-SynBioSpiderSilk "Various authors")
+(resourceType SB-SynBioSpiderSilk notes)
+(level SB-SynBioSpiderSilk intermediate)
+(section SB-SynBioSpiderSilk SilkBioFibers)
+(url SB-SynBioSpiderSilk "https://pmc.ncbi.nlm.nih.gov/articles/PMC9996717/")
+(desc SB-SynBioSpiderSilk "Open-access review covering synthetic-biology toolkits (E. coli, yeast, plants, transgenic silkworms) for producing high-molecular-weight spidroins at industrial scale.")
+
+(isa SB-Wen-TransgenicSilkworm ReferenceWork)
+(title SB-Wen-TransgenicSilkworm "Transgenic Silkworms (Bombyx mori) Produce Recombinant Spider Dragline Silk in Cocoons")
+(author SB-Wen-TransgenicSilkworm "Wen, Lan, Zhang et al.")
+(resourceType SB-Wen-TransgenicSilkworm notes)
+(level SB-Wen-TransgenicSilkworm advanced)
+(section SB-Wen-TransgenicSilkworm SilkBioFibers)
+(url SB-Wen-TransgenicSilkworm "https://link.springer.com/article/10.1007/s11033-009-9615-2")
+(desc SB-Wen-TransgenicSilkworm "Molecular Biology Reports paper demonstrating that piggyBac-transformed silkworms can spin cocoons containing MaSp1 dragline silk with enhanced tensile strength and elasticity.")
+
+(isa SB-SilkBiomedicalMaterials ReferenceWork)
+(title SB-SilkBiomedicalMaterials "Bioengineering of Spider Silks for the Production of Biomedical Materials")
+(author SB-SilkBiomedicalMaterials "Various authors")
+(resourceType SB-SilkBiomedicalMaterials notes)
+(level SB-SilkBiomedicalMaterials intermediate)
+(section SB-SilkBiomedicalMaterials SilkBioFibers)
+(url SB-SilkBiomedicalMaterials "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2022.958486/full")
+(desc SB-SilkBiomedicalMaterials "Frontiers in Bioengineering review of silk-based biomaterials for scaffolds, hydrogels, films, fibers, and nanoparticles in tissue engineering.")
+
+;; ── Applications & Industry ──
+
+(isa SB-BoltThreads-Microsilk ReferenceWork)
+(title SB-BoltThreads-Microsilk "Microsilk -- Vegan Silk Inspired by Spider Silk (Bolt Threads)")
+(author SB-BoltThreads-Microsilk "Bolt Threads")
+(resourceType SB-BoltThreads-Microsilk data)
+(level SB-BoltThreads-Microsilk beginner)
+(section SB-BoltThreads-Microsilk SilkBioFibers)
+(url SB-BoltThreads-Microsilk "https://boltthreads.com/technology/microsilk/")
+(desc SB-BoltThreads-Microsilk "Product page for Bolt Threads' Microsilk platform, describing how yeast fermentation produces spider-silk-inspired protein fibers for textiles in partnership with Patagonia.")
+
+(isa SB-SilkBiomimWearables ReferenceWork)
+(title SB-SilkBiomimWearables "Spider Silk Biomimetics Programs to Inform the Development of New Wearable Technologies")
+(author SB-SilkBiomimWearables "Various authors")
+(resourceType SB-SilkBiomimWearables notes)
+(level SB-SilkBiomimWearables intermediate)
+(section SB-SilkBiomimWearables SilkBioFibers)
+(url SB-SilkBiomimWearables "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00029/full")
+(desc SB-SilkBiomimWearables "Frontiers in Materials review exploring how spider-silk biomimetics inform next-generation wearable devices and smart textiles through tunable mechanical and sensing properties.")
+
+(isa SB-SilkBiomedTissueReview ReferenceWork)
+(title SB-SilkBiomedTissueReview "Review of Spider Silk Applications in Biomedical and Tissue Engineering")
+(author SB-SilkBiomedTissueReview "Various authors")
+(resourceType SB-SilkBiomedTissueReview notes)
+(level SB-SilkBiomedTissueReview beginner)
+(section SB-SilkBiomedTissueReview SilkBioFibers)
+(url SB-SilkBiomedTissueReview "https://www.mdpi.com/2313-7673/9/3/169")
+(desc SB-SilkBiomedTissueReview "Open-access 2024 Biomimetics journal review surveying spider silk in wound healing, drug delivery, nerve conduits, and bone scaffolds.")
+
+(isa SB-SilkBioproductionFeasibility ReferenceWork)
+(title SB-SilkBioproductionFeasibility "Disentangling the Web: An Interdisciplinary Review on the Potential and Feasibility of Spider Silk Bioproduction")
+(author SB-SilkBioproductionFeasibility "Various authors")
+(resourceType SB-SilkBioproductionFeasibility notes)
+(level SB-SilkBioproductionFeasibility intermediate)
+(section SB-SilkBioproductionFeasibility SilkBioFibers)
+(url SB-SilkBioproductionFeasibility "https://pubs.acs.org/doi/10.1021/acsbiomaterials.4c00145")
+(desc SB-SilkBioproductionFeasibility "ACS Biomaterials Science & Engineering review evaluating the technical and economic feasibility of scaling recombinant spider silk production for real-world applications.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: BONE & SKELETAL
+;; Mineralized collagen, Wolff's law, toughening, scaffolds
+;; ════════════════════════════════════════════════════════════
+
+;; ── Bone Biology & Mechanics ──
+
+(isa SB-Currey-BonesStructMech ReferenceWork)
+(title SB-Currey-BonesStructMech "Bones: Structure and Mechanics")
+(author SB-Currey-BonesStructMech "John D. Currey")
+(resourceType SB-Currey-BonesStructMech book)
+(level SB-Currey-BonesStructMech intermediate)
+(section SB-Currey-BonesStructMech BoneSkeletal)
+(url SB-Currey-BonesStructMech "https://press.princeton.edu/books/paperback/9780691180496/bones")
+(desc SB-Currey-BonesStructMech "Definitive Princeton University Press text on the mechanical design of bone, covering mineralization, microstructure, fracture, fatigue, and the mechanical adaptations of antler, dentine, and enamel.")
+
+(isa SB-Rho-BoneStructMech ReferenceWork)
+(title SB-Rho-BoneStructMech "The Structure and Mechanics of Bone")
+(author SB-Rho-BoneStructMech "Jae-Young Rho, Liisa Kuhn-Spearing & Peter Zioupos")
+(resourceType SB-Rho-BoneStructMech notes)
+(level SB-Rho-BoneStructMech intermediate)
+(section SB-Rho-BoneStructMech BoneSkeletal)
+(url SB-Rho-BoneStructMech "https://link.springer.com/article/10.1007/s10853-011-5914-9")
+(desc SB-Rho-BoneStructMech "Journal of Materials Science review covering bone hierarchy from nanoscale mineral crystals to macroscale cortical and trabecular organization, with extensive mechanical-property data.")
+
+(isa SB-Frost-WolffUtahParadigm ReferenceWork)
+(title SB-Frost-WolffUtahParadigm "From Wolff's Law to the Utah Paradigm: Insights About Bone Physiology and Its Clinical Applications")
+(author SB-Frost-WolffUtahParadigm "Harold M. Frost")
+(resourceType SB-Frost-WolffUtahParadigm notes)
+(level SB-Frost-WolffUtahParadigm advanced)
+(section SB-Frost-WolffUtahParadigm BoneSkeletal)
+(url SB-Frost-WolffUtahParadigm "https://onlinelibrary.wiley.com/doi/full/10.1002/ar.1049")
+(desc SB-Frost-WolffUtahParadigm "Anatomical Record paper tracing the evolution of understanding from Wolff's original law to the mechanostat model, clarifying how bone cells sense and respond to strain.")
+
+(isa SB-Huang-MultiscaleToughening ReferenceWork)
+(title SB-Huang-MultiscaleToughening "Multiscale Toughening Mechanisms in Biological Materials and Bioinspired Designs")
+(author SB-Huang-MultiscaleToughening "Huang, Rahbar, Ritchie et al.")
+(resourceType SB-Huang-MultiscaleToughening notes)
+(level SB-Huang-MultiscaleToughening advanced)
+(section SB-Huang-MultiscaleToughening BoneSkeletal)
+(url SB-Huang-MultiscaleToughening "https://onlinelibrary.wiley.com/doi/abs/10.1002/adma.201901561")
+(desc SB-Huang-MultiscaleToughening "Advanced Materials review cataloging intrinsic and extrinsic toughening mechanisms across hierarchical levels in bone, nacre, and tooth enamel.")
+
+;; ── Bone-Inspired Engineering ──
+
+(isa SB-BoneMultiscaleMechanics ReferenceWork)
+(title SB-BoneMultiscaleMechanics "Integrating Computational and Experimental Advances in Bone Multiscale Mechanics")
+(author SB-BoneMultiscaleMechanics "Various authors")
+(resourceType SB-BoneMultiscaleMechanics notes)
+(level SB-BoneMultiscaleMechanics advanced)
+(section SB-BoneMultiscaleMechanics BoneSkeletal)
+(url SB-BoneMultiscaleMechanics "https://www.sciencedirect.com/science/article/pii/S0079642525000490")
+(desc SB-BoneMultiscaleMechanics "Progress in Materials Science review bridging DFT, MD, and continuum-FE modeling with experimental techniques to build a bottom-up understanding of bone mechanics.")
+
+(isa SB-BoneMechanobiology ReferenceWork)
+(title SB-BoneMechanobiology "Multiscale Modeling of Bone Tissue Mechanobiology")
+(author SB-BoneMechanobiology "Various authors")
+(resourceType SB-BoneMechanobiology notes)
+(level SB-BoneMechanobiology advanced)
+(section SB-BoneMechanobiology BoneSkeletal)
+(url SB-BoneMechanobiology "https://www.sciencedirect.com/science/article/pii/S8756328221001940")
+(desc SB-BoneMechanobiology "Bone journal review surveying computational models that link cellular mechanotransduction to tissue-level remodeling, informing bone-inspired adaptive structures.")
+
+(isa SB-BoneToSoftTissue ReferenceWork)
+(title SB-BoneToSoftTissue "Biomimetic Approaches for the Design and Fabrication of Bone-to-Soft Tissue Interfaces")
+(author SB-BoneToSoftTissue "Various authors")
+(resourceType SB-BoneToSoftTissue notes)
+(level SB-BoneToSoftTissue intermediate)
+(section SB-BoneToSoftTissue BoneSkeletal)
+(url SB-BoneToSoftTissue "https://pubs.acs.org/doi/10.1021/acsbiomaterials.1c00620")
+(desc SB-BoneToSoftTissue "ACS Biomaterials Science & Engineering review on graded interfaces inspired by the tendon-bone enthesis, addressing gradient mineralization and fiber orientation.")
+
+(isa SB-Hambli-DataDrivenBoneSim ReferenceWork)
+(title SB-Hambli-DataDrivenBoneSim "Data-Driven Computational Simulation in Bone Mechanics")
+(author SB-Hambli-DataDrivenBoneSim "Hambli et al.")
+(resourceType SB-Hambli-DataDrivenBoneSim notes)
+(level SB-Hambli-DataDrivenBoneSim advanced)
+(section SB-Hambli-DataDrivenBoneSim BoneSkeletal)
+(url SB-Hambli-DataDrivenBoneSim "https://pubmed.ncbi.nlm.nih.gov/32681405/")
+(desc SB-Hambli-DataDrivenBoneSim "Review of machine-learning and data-driven approaches to predicting bone mechanical response, bridging traditional FEA with neural-network surrogates.")
+
+;; ── Biomedical Scaffolds ──
+
+(isa SB-3DPrintedBoneScaffolds ReferenceWork)
+(title SB-3DPrintedBoneScaffolds "Biomimetic Structural Design in 3D-Printed Scaffolds for Bone Tissue Engineering")
+(author SB-3DPrintedBoneScaffolds "Various authors")
+(resourceType SB-3DPrintedBoneScaffolds notes)
+(level SB-3DPrintedBoneScaffolds intermediate)
+(section SB-3DPrintedBoneScaffolds BoneSkeletal)
+(url SB-3DPrintedBoneScaffolds "https://www.sciencedirect.com/science/article/pii/S2590006425002224")
+(desc SB-3DPrintedBoneScaffolds "Recent review on how 3D-printed scaffolds replicate multi-level microporous bone architecture to support cellular processes while optimizing mechanical properties.")
+
+(isa SB-Velasco-BiodegradableScaffolds ReferenceWork)
+(title SB-Velasco-BiodegradableScaffolds "Design, Materials, and Mechanobiology of Biodegradable Scaffolds for Bone Tissue Engineering")
+(author SB-Velasco-BiodegradableScaffolds "Velasco et al.")
+(resourceType SB-Velasco-BiodegradableScaffolds notes)
+(level SB-Velasco-BiodegradableScaffolds intermediate)
+(section SB-Velasco-BiodegradableScaffolds BoneSkeletal)
+(url SB-Velasco-BiodegradableScaffolds "https://onlinelibrary.wiley.com/doi/10.1155/2015/729076")
+(desc SB-Velasco-BiodegradableScaffolds "Open-access BioMed Research International review covering scaffold design parameters, material selection, and the mechanobiological environment for bone regeneration.")
+
+(isa SB-Ti6Al4V-BoneScaffolds ReferenceWork)
+(title SB-Ti6Al4V-BoneScaffolds "Ti6Al4V Biomimetic Scaffolds for Bone Tissue Engineering: Fabrication, Biomechanics and Osseointegration")
+(author SB-Ti6Al4V-BoneScaffolds "Various authors")
+(resourceType SB-Ti6Al4V-BoneScaffolds notes)
+(level SB-Ti6Al4V-BoneScaffolds advanced)
+(section SB-Ti6Al4V-BoneScaffolds BoneSkeletal)
+(url SB-Ti6Al4V-BoneScaffolds "https://www.sciencedirect.com/science/article/pii/S0264127523007451")
+(desc SB-Ti6Al4V-BoneScaffolds "Materials & Design paper demonstrating that 65% porosity and 550 um pore size in titanium alloy scaffolds best mimics trabecular bone and promotes osseointegration.")
+
+(isa SB-ML-BoneScaffoldDesign ReferenceWork)
+(title SB-ML-BoneScaffoldDesign "Machine Learning Approaches for the Design of Biomechanically Compatible Bone Tissue Engineering Scaffolds")
+(author SB-ML-BoneScaffoldDesign "Various authors")
+(resourceType SB-ML-BoneScaffoldDesign notes)
+(level SB-ML-BoneScaffoldDesign advanced)
+(section SB-ML-BoneScaffoldDesign BoneSkeletal)
+(url SB-ML-BoneScaffoldDesign "https://www.sciencedirect.com/science/article/pii/S0045782524000987")
+(desc SB-ML-BoneScaffoldDesign "CMAME paper using ML to automatically identify TPMS scaffold microstructures satisfying mechanical, mechano-biological, and manufacturing constraints simultaneously.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: WOOD & PLANT STRUCTURES
+;; Cellulose, bamboo, nanocellulose, wood-inspired design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Plant Structural Biology ──
+
+(isa SB-Gibson-CellularMatNatureMed ReferenceWork)
+(title SB-Gibson-CellularMatNatureMed "Cellular Materials in Nature and Medicine")
+(author SB-Gibson-CellularMatNatureMed "Lorna J. Gibson, Michael F. Ashby & Brendan A. Harley")
+(resourceType SB-Gibson-CellularMatNatureMed book)
+(level SB-Gibson-CellularMatNatureMed intermediate)
+(section SB-Gibson-CellularMatNatureMed WoodPlantStructures)
+(url SB-Gibson-CellularMatNatureMed "https://www.cambridge.org/core/books/cellular-materials-in-nature-and-medicine/B0B0F25753CA045EFD1E07B4011E2B29")
+(desc SB-Gibson-CellularMatNatureMed "Cambridge text extending the cellular-solids framework to biological tissues including wood, cork, palm, and trabecular bone, with detailed structure-property models.")
+
+(isa SB-BambooMechBiomimetic ReferenceWork)
+(title SB-BambooMechBiomimetic "Mechanical Behavior of Bamboo, and Its Biomimetic Composites and Structural Members: A Systematic Review")
+(author SB-BambooMechBiomimetic "Various authors")
+(resourceType SB-BambooMechBiomimetic notes)
+(level SB-BambooMechBiomimetic intermediate)
+(section SB-BambooMechBiomimetic WoodPlantStructures)
+(url SB-BambooMechBiomimetic "https://link.springer.com/article/10.1007/s42235-023-00430-1")
+(desc SB-BambooMechBiomimetic "Journal of Bionic Engineering systematic review covering bamboo's gradient microstructure, mechanical properties, and how biomimetic composites replicate its architecture.")
+
+(isa SB-Huang-MultifunctionalBamboo ReferenceWork)
+(title SB-Huang-MultifunctionalBamboo "Multifunctional Bamboo Based Materials Empowered by Multiscale Hierarchical Structures")
+(author SB-Huang-MultifunctionalBamboo "Huang et al.")
+(resourceType SB-Huang-MultifunctionalBamboo notes)
+(level SB-Huang-MultifunctionalBamboo advanced)
+(section SB-Huang-MultifunctionalBamboo WoodPlantStructures)
+(url SB-Huang-MultifunctionalBamboo "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.2507844")
+(desc SB-Huang-MultifunctionalBamboo "Advanced Materials critical review summarizing bamboo's chemical composition, gradient and hollow structures, and new composite materials inspired by its structural features.")
+
+;; ── Cellulose & Nanocellulose ──
+
+(isa SB-BambooCelluloseCrystals ReferenceWork)
+(title SB-BambooCelluloseCrystals "Advanced Functional Materials Based on Bamboo Cellulose Fibers with Different Crystal Structures")
+(author SB-BambooCelluloseCrystals "Various authors")
+(resourceType SB-BambooCelluloseCrystals notes)
+(level SB-BambooCelluloseCrystals intermediate)
+(section SB-BambooCelluloseCrystals WoodPlantStructures)
+(url SB-BambooCelluloseCrystals "https://www.sciencedirect.com/science/article/abs/pii/S1359835X2100470X")
+(desc SB-BambooCelluloseCrystals "Composites Part A paper exploring how cellulose polymorphs (I, II, III) from bamboo influence properties of films, aerogels, and reinforced composites.")
+
+(isa SB-FlowAlignedNanofibrilHydrogels ReferenceWork)
+(title SB-FlowAlignedNanofibrilHydrogels "Bioinspired Structural Hydrogels with Highly Ordered Hierarchical Orientations by Flow-Induced Alignment of Nanofibrils")
+(author SB-FlowAlignedNanofibrilHydrogels "Various authors")
+(resourceType SB-FlowAlignedNanofibrilHydrogels notes)
+(level SB-FlowAlignedNanofibrilHydrogels advanced)
+(section SB-FlowAlignedNanofibrilHydrogels WoodPlantStructures)
+(url SB-FlowAlignedNanofibrilHydrogels "https://www.nature.com/articles/s41467-023-44481-8")
+(desc SB-FlowAlignedNanofibrilHydrogels "Nature Communications paper demonstrating flow-induced alignment of cellulose nanofibrils into hydrogels mimicking the anisotropic architecture of wood and tendon.")
+
+(isa SB-BambooCellulosePlasticSub ReferenceWork)
+(title SB-BambooCellulosePlasticSub "Transformation of Bamboo: From Multiscale Fibers to Robust and Degradable Cellulose-Based Materials for Plastic Substitution")
+(author SB-BambooCellulosePlasticSub "Various authors")
+(resourceType SB-BambooCellulosePlasticSub notes)
+(level SB-BambooCellulosePlasticSub intermediate)
+(section SB-BambooCellulosePlasticSub WoodPlantStructures)
+(url SB-BambooCellulosePlasticSub "https://pubmed.ncbi.nlm.nih.gov/40256834/")
+(desc SB-BambooCellulosePlasticSub "Study on multiscale interface engineering to transform bamboo into moldable, biodegradable cellulose materials with specific strength of ~271.8 kN m/kg and impact toughness of ~58 kJ/m2.")
+
+(isa SB-BambooFiberFoams ReferenceWork)
+(title SB-BambooFiberFoams "Characterization and Structural Properties of Bamboo Fibre Solid Foams")
+(author SB-BambooFiberFoams "Various authors")
+(resourceType SB-BambooFiberFoams notes)
+(level SB-BambooFiberFoams intermediate)
+(section SB-BambooFiberFoams WoodPlantStructures)
+(url SB-BambooFiberFoams "https://link.springer.com/article/10.1007/s10570-020-03565-0")
+(desc SB-BambooFiberFoams "Cellulose journal paper investigating bamboo-fiber-based solid foams as sustainable, lightweight structural materials with tunable porosity and mechanical performance.")
+
+;; ── Wood-Inspired Design ──
+
+(isa SB-BambooMoistureActuation ReferenceWork)
+(title SB-BambooMoistureActuation "Engineering Transverse Cell Deformation of Bamboo by Controlling Localized Moisture Content")
+(author SB-BambooMoistureActuation "Various authors")
+(resourceType SB-BambooMoistureActuation notes)
+(level SB-BambooMoistureActuation advanced)
+(section SB-BambooMoistureActuation WoodPlantStructures)
+(url SB-BambooMoistureActuation "https://www.nature.com/articles/s41467-025-59453-3")
+(desc SB-BambooMoistureActuation "Nature Communications paper demonstrating programmable shape change in bamboo through moisture control, inspiring hygroscopic actuators and adaptive building materials.")
+
+(isa SB-BioinspiredBuildingMaterials ReferenceWork)
+(title SB-BioinspiredBuildingMaterials "Bioinspired Building Materials -- Lessons from Nature")
+(author SB-BioinspiredBuildingMaterials "Various authors")
+(resourceType SB-BioinspiredBuildingMaterials notes)
+(level SB-BioinspiredBuildingMaterials beginner)
+(section SB-BioinspiredBuildingMaterials WoodPlantStructures)
+(url SB-BioinspiredBuildingMaterials "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2023.1283163/full")
+(desc SB-BioinspiredBuildingMaterials "Open-access Frontiers in Materials review of how wood, bamboo, and other plant structures inspire sustainable construction materials and green building design.")
+
+(isa SB-BambooFiberReinforcedPolymers ReferenceWork)
+(title SB-BambooFiberReinforcedPolymers "Replacing Plastic with Bamboo: A Review of the Properties and Green Applications of Bamboo-Fiber-Reinforced Polymer Composites")
+(author SB-BambooFiberReinforcedPolymers "Various authors")
+(resourceType SB-BambooFiberReinforcedPolymers notes)
+(level SB-BambooFiberReinforcedPolymers beginner)
+(section SB-BambooFiberReinforcedPolymers WoodPlantStructures)
+(url SB-BambooFiberReinforcedPolymers "https://pmc.ncbi.nlm.nih.gov/articles/PMC10647463/")
+(desc SB-BambooFiberReinforcedPolymers "Open-access Polymers review evaluating bamboo-fiber-reinforced composites as sustainable alternatives to petroleum-based plastics in structural and packaging applications.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: HIERARCHICAL DESIGN
+;; Multi-scale architecture, metamaterials, computational design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Principles of Hierarchy ──
+
+(isa SB-Barthelat-QuantBiomimetics ReferenceWork)
+(title SB-Barthelat-QuantBiomimetics "Quantitative Biomimetics of High-Performance Materials")
+(author SB-Barthelat-QuantBiomimetics "Barthelat et al.")
+(resourceType SB-Barthelat-QuantBiomimetics notes)
+(level SB-Barthelat-QuantBiomimetics advanced)
+(section SB-Barthelat-QuantBiomimetics HierarchicalDesign)
+(url SB-Barthelat-QuantBiomimetics "https://www.nature.com/articles/s41578-024-00753-3")
+(desc SB-Barthelat-QuantBiomimetics "Nature Reviews Materials article presenting a quantitative framework to assess how closely synthetic systems replicate the hierarchical features and performance of biological templates.")
+
+(isa SB-BioInspiredStructFunction ReferenceWork)
+(title SB-BioInspiredStructFunction "Biological and Bioinspired Materials: Structure Leading to Functional and Mechanical Performance")
+(author SB-BioInspiredStructFunction "Various authors")
+(resourceType SB-BioInspiredStructFunction notes)
+(level SB-BioInspiredStructFunction intermediate)
+(section SB-BioInspiredStructFunction HierarchicalDesign)
+(url SB-BioInspiredStructFunction "https://www.sciencedirect.com/science/article/pii/S2452199X20300943")
+(desc SB-BioInspiredStructFunction "Bioactive Materials review analyzing how hierarchical structuring in nacre, bone, silk, and wood leads to simultaneous optimization of multiple mechanical functions.")
+
+(isa SB-Barthelat-ArchMatReview ReferenceWork)
+(title SB-Barthelat-ArchMatReview "Architectured Materials in Engineering and Biology (Review)")
+(author SB-Barthelat-ArchMatReview "Francois Barthelat")
+(resourceType SB-Barthelat-ArchMatReview notes)
+(level SB-Barthelat-ArchMatReview intermediate)
+(section SB-Barthelat-ArchMatReview HierarchicalDesign)
+(url SB-Barthelat-ArchMatReview "https://www.colorado.edu/lab/barthelat/media/108")
+(desc SB-Barthelat-ArchMatReview "Full critical review establishing the concept of architectured materials and comparing biological examples (nacre, bone, wood) with engineered lattice and woven composites.")
+
+(isa SB-Fratzl-HierarchyMechAdapt ReferenceWork)
+(title SB-Fratzl-HierarchyMechAdapt "Hierarchical Structure and Mechanical Adaptation of Biological Materials")
+(author SB-Fratzl-HierarchyMechAdapt "Peter Fratzl & Richard Weinkamer")
+(resourceType SB-Fratzl-HierarchyMechAdapt notes)
+(level SB-Fratzl-HierarchyMechAdapt advanced)
+(section SB-Fratzl-HierarchyMechAdapt HierarchicalDesign)
+(url SB-Fratzl-HierarchyMechAdapt "https://link.springer.com/chapter/10.1007/1-4020-2648-X_2")
+(desc SB-Fratzl-HierarchyMechAdapt "Springer book chapter exploring how hierarchy enables mechanical adaptation in bone, wood, and tendon through remodeling, growth, and damage tolerance.")
+
+;; ── Bio-Inspired Metamaterials ──
+
+(isa SB-Berger-IsotropicStiffness ReferenceWork)
+(title SB-Berger-IsotropicStiffness "Mechanical Metamaterials at the Theoretical Limit of Isotropic Elastic Stiffness")
+(author SB-Berger-IsotropicStiffness "Berger, Wadley & McMeeking")
+(resourceType SB-Berger-IsotropicStiffness notes)
+(level SB-Berger-IsotropicStiffness advanced)
+(section SB-Berger-IsotropicStiffness HierarchicalDesign)
+(url SB-Berger-IsotropicStiffness "https://www.nature.com/articles/nature21075")
+(desc SB-Berger-IsotropicStiffness "Nature paper identifying plate-lattice topologies that reach the Hashin-Shtrikman upper bounds on stiffness, inspired by the load-distribution efficiency of biological cellular solids.")
+
+(isa SB-Zheng-UltralightMetamaterials ReferenceWork)
+(title SB-Zheng-UltralightMetamaterials "Ultralight, Ultrastiff Mechanical Metamaterials")
+(author SB-Zheng-UltralightMetamaterials "Zheng, Lee, Weisgraber et al.")
+(resourceType SB-Zheng-UltralightMetamaterials notes)
+(level SB-Zheng-UltralightMetamaterials advanced)
+(section SB-Zheng-UltralightMetamaterials HierarchicalDesign)
+(url SB-Zheng-UltralightMetamaterials "https://www.science.org/doi/10.1126/science.1252291")
+(desc SB-Zheng-UltralightMetamaterials "Science paper reporting micro-architected lattices fabricated by projection micro-stereolithography that maintain near-constant specific stiffness at ultralow densities.")
+
+(isa SB-HierarchicalDissipativeMetamaterials ReferenceWork)
+(title SB-HierarchicalDissipativeMetamaterials "Design and Fabrication of Bioinspired Hierarchical Dissipative Elastic Metamaterials")
+(author SB-HierarchicalDissipativeMetamaterials "Various authors")
+(resourceType SB-HierarchicalDissipativeMetamaterials notes)
+(level SB-HierarchicalDissipativeMetamaterials advanced)
+(section SB-HierarchicalDissipativeMetamaterials HierarchicalDesign)
+(url SB-HierarchicalDissipativeMetamaterials "https://link.aps.org/doi/10.1103/PhysRevApplied.10.024012")
+(desc SB-HierarchicalDissipativeMetamaterials "Physical Review Applied paper demonstrating that hierarchical lattice metamaterials with fractal-like substructures exhibit broadband wave attenuation mimicking the damping in biological tissues.")
+
+(isa SB-MechMetamaterialsBeyond ReferenceWork)
+(title SB-MechMetamaterialsBeyond "Mechanical Metamaterials and Beyond")
+(author SB-MechMetamaterialsBeyond "Various authors")
+(resourceType SB-MechMetamaterialsBeyond notes)
+(level SB-MechMetamaterialsBeyond intermediate)
+(section SB-MechMetamaterialsBeyond HierarchicalDesign)
+(url SB-MechMetamaterialsBeyond "https://www.nature.com/articles/s41467-023-41679-8")
+(desc SB-MechMetamaterialsBeyond "Nature Communications perspective surveying the full landscape of mechanical metamaterials, from auxetics to shape-morphing structures, with connections to biological inspiration.")
+
+;; ── Computational Design ──
+
+(isa SB-BioinspiredAMHierarchical ReferenceWork)
+(title SB-BioinspiredAMHierarchical "Bioinspired Additive Manufacturing of Hierarchical Materials: From Biostructures to Functions")
+(author SB-BioinspiredAMHierarchical "Various authors")
+(resourceType SB-BioinspiredAMHierarchical notes)
+(level SB-BioinspiredAMHierarchical intermediate)
+(section SB-BioinspiredAMHierarchical HierarchicalDesign)
+(url SB-BioinspiredAMHierarchical "https://spj.science.org/doi/10.34133/research.0164")
+(desc SB-BioinspiredAMHierarchical "Science Partner Journal review bridging computational topology optimization with additive manufacturing to produce hierarchical composites inspired by nacre, bone, and wood.")
+
+(isa SB-MIT-PredictiveMultiscale ReferenceWork)
+(title SB-MIT-PredictiveMultiscale "Predictive Multiscale Materials Design (MIT Professional Education)")
+(author SB-MIT-PredictiveMultiscale "Markus Buehler, MIT")
+(resourceType SB-MIT-PredictiveMultiscale course)
+(level SB-MIT-PredictiveMultiscale advanced)
+(section SB-MIT-PredictiveMultiscale HierarchicalDesign)
+(url SB-MIT-PredictiveMultiscale "https://professional.mit.edu/course-catalog/predictive-multiscale-materials-design")
+(desc SB-MIT-PredictiveMultiscale "MIT professional course on leveraging multi-scale modeling, machine learning, and additive manufacturing to design materials from molecules to structures, with biological applications.")
+
+(isa SB-MIT-LAMM ReferenceWork)
+(title SB-MIT-LAMM "Laboratory for Atomistic and Molecular Mechanics (LAMM)")
+(author SB-MIT-LAMM "Markus Buehler Lab, MIT")
+(resourceType SB-MIT-LAMM code)
+(level SB-MIT-LAMM advanced)
+(section SB-MIT-LAMM HierarchicalDesign)
+(url SB-MIT-LAMM "http://lamm.mit.edu/")
+(desc SB-MIT-LAMM "Research lab home page with publications, codes, and datasets for multi-scale computational modeling of biological and bio-inspired materials including silk, collagen, and bone.")
+
+(isa SB-BioinspiredAcousticMetamaterials ReferenceWork)
+(title SB-BioinspiredAcousticMetamaterials "Bioinspired Acoustic Metamaterials: From Natural Designs to Optimized Structures")
+(author SB-BioinspiredAcousticMetamaterials "Various authors")
+(resourceType SB-BioinspiredAcousticMetamaterials notes)
+(level SB-BioinspiredAcousticMetamaterials intermediate)
+(section SB-BioinspiredAcousticMetamaterials HierarchicalDesign)
+(url SB-BioinspiredAcousticMetamaterials "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2023.1176457/full")
+(desc SB-BioinspiredAcousticMetamaterials "Frontiers in Materials review on how natural acoustic-damping strategies (moth wings, owl feathers, spider webs) inspire the design of acoustic metamaterials through computational optimization.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: FABRICATION METHODS
+;; Additive manufacturing, freeze-casting, self-assembly
+;; ════════════════════════════════════════════════════════════
+
+;; ── Additive Manufacturing ──
+
+(isa SB-Yang-AMHierarchicalComposites ReferenceWork)
+(title SB-Yang-AMHierarchicalComposites "Bioinspired Additive Manufacturing of Hierarchical Materials: From Biostructures to Functions")
+(author SB-Yang-AMHierarchicalComposites "Yang, Song, Chen et al.")
+(resourceType SB-Yang-AMHierarchicalComposites notes)
+(level SB-Yang-AMHierarchicalComposites intermediate)
+(section SB-Yang-AMHierarchicalComposites FabricationMethods)
+(url SB-Yang-AMHierarchicalComposites "https://pmc.ncbi.nlm.nih.gov/articles/PMC10254471/")
+(desc SB-Yang-AMHierarchicalComposites "Open-access review cataloging AM techniques (DIW, SLA, inkjet, FDM) and their application to printing nacre-, bone-, and wood-inspired hierarchical composites.")
+
+(isa SB-MultiMat3DPrintedNacre ReferenceWork)
+(title SB-MultiMat3DPrintedNacre "Multi-Material 3D Printed Composites Inspired by Nacre: A Hard/Soft Mechanical Interplay")
+(author SB-MultiMat3DPrintedNacre "Various authors")
+(resourceType SB-MultiMat3DPrintedNacre notes)
+(level SB-MultiMat3DPrintedNacre intermediate)
+(section SB-MultiMat3DPrintedNacre FabricationMethods)
+(url SB-MultiMat3DPrintedNacre "https://www.nature.com/articles/s41598-025-91080-2")
+(desc SB-MultiMat3DPrintedNacre "Scientific Reports paper demonstrating multi-material 3D printing of nacre-inspired hard/soft architectures and characterizing the resulting mechanical interplay and toughness.")
+
+(isa SB-NaturalCellularAM ReferenceWork)
+(title SB-NaturalCellularAM "Natural Cellular Structures in Engineering Designs Built via Additive Manufacturing")
+(author SB-NaturalCellularAM "Various authors")
+(resourceType SB-NaturalCellularAM notes)
+(level SB-NaturalCellularAM beginner)
+(section SB-NaturalCellularAM FabricationMethods)
+(url SB-NaturalCellularAM "https://www.tandfonline.com/doi/full/10.1080/10667857.2024.2443211")
+(desc SB-NaturalCellularAM "Materials Technology review of how natural cellular morphologies (honeycomb, trabecular, plant parenchyma) are replicated through AM for lightweight engineering structures.")
+
+(isa SB-ContinuousReinforcedAM ReferenceWork)
+(title SB-ContinuousReinforcedAM "Bio-Inspired Continuously Reinforced Polymer Composites: Synthesis of Nature and Additive Manufacturing")
+(author SB-ContinuousReinforcedAM "Various authors")
+(resourceType SB-ContinuousReinforcedAM notes)
+(level SB-ContinuousReinforcedAM intermediate)
+(section SB-ContinuousReinforcedAM FabricationMethods)
+(url SB-ContinuousReinforcedAM "https://www.ije.ir/article_222858.html")
+(desc SB-ContinuousReinforcedAM "International Journal of Engineering review exploring how continuous fiber-reinforced 3D printing mimics the aligned fiber architectures found in tendon, bone, and wood.")
+
+;; ── Freeze-Casting & Templating ──
+
+(isa SB-Deville-FreezingColloids ReferenceWork)
+(title SB-Deville-FreezingColloids "Freezing Colloids: Observations, Principles, Control, and Use (Ice-Templating and Freeze-Casting)")
+(author SB-Deville-FreezingColloids "Sylvain Deville")
+(resourceType SB-Deville-FreezingColloids book)
+(level SB-Deville-FreezingColloids advanced)
+(section SB-Deville-FreezingColloids FabricationMethods)
+(url SB-Deville-FreezingColloids "https://link.springer.com/book/10.1007/978-3-319-50515-2")
+(desc SB-Deville-FreezingColloids "Springer monograph providing the definitive treatment of ice-templating science and its practical application to fabricating biomimetic lamellar and porous ceramic architectures.")
+
+(isa SB-Shao-FreezeCastingReview ReferenceWork)
+(title SB-Shao-FreezeCastingReview "Freeze Casting: From Low-Dimensional Building Blocks to Aligned Porous Structures -- A Review of Novel Materials, Methods, and Applications")
+(author SB-Shao-FreezeCastingReview "Shao et al.")
+(resourceType SB-Shao-FreezeCastingReview notes)
+(level SB-Shao-FreezeCastingReview intermediate)
+(section SB-Shao-FreezeCastingReview FabricationMethods)
+(url SB-Shao-FreezeCastingReview "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.201907176")
+(desc SB-Shao-FreezeCastingReview "Advanced Materials review covering freeze-casting of nanoparticles, polymer chains, nanofibers, and nanosheets into aligned porous scaffolds mimicking biological lamellae.")
+
+(isa SB-ZTA-FreezeCastNacre ReferenceWork)
+(title SB-ZTA-FreezeCastNacre "Hierarchical Self-Assembly of Zirconium Toughened Alumina Based Bioinspired Microporous Material by Freeze Casting")
+(author SB-ZTA-FreezeCastNacre "Various authors")
+(resourceType SB-ZTA-FreezeCastNacre notes)
+(level SB-ZTA-FreezeCastNacre advanced)
+(section SB-ZTA-FreezeCastNacre FabricationMethods)
+(url SB-ZTA-FreezeCastNacre "https://link.springer.com/article/10.1007/s10934-022-01316-z")
+(desc SB-ZTA-FreezeCastNacre "Journal of Porous Materials paper fabricating nacre-like ZTA-glass microporous structures via freeze-casting, demonstrating how ice templating recreates the brick-and-mortar motif.")
+
+(isa SB-IceTemplatedCeramicsReview ReferenceWork)
+(title SB-IceTemplatedCeramicsReview "Advances in Ice-Templated and Freeze-Casted Ceramics")
+(author SB-IceTemplatedCeramicsReview "Various authors")
+(resourceType SB-IceTemplatedCeramicsReview notes)
+(level SB-IceTemplatedCeramicsReview intermediate)
+(section SB-IceTemplatedCeramicsReview FabricationMethods)
+(url SB-IceTemplatedCeramicsReview "https://www.mdpi.com/2571-6131/2/4/42")
+(desc SB-IceTemplatedCeramicsReview "Open-access Encyclopedia of Ceramics article reviewing the state-of-the-art in ice-templated ceramics for biomedical, energy, and structural applications.")
+
+;; ── Self-Assembly Methods ──
+
+(isa SB-NacreInspiredSelfAssembly ReferenceWork)
+(title SB-NacreInspiredSelfAssembly "Nacre-Inspired Composites with Different Macroscopic Dimensions: Strategies for Improved Mechanical Performance and Applications")
+(author SB-NacreInspiredSelfAssembly "Various authors")
+(resourceType SB-NacreInspiredSelfAssembly notes)
+(level SB-NacreInspiredSelfAssembly intermediate)
+(section SB-NacreInspiredSelfAssembly FabricationMethods)
+(url SB-NacreInspiredSelfAssembly "https://www.nature.com/articles/s41427-018-0009-6")
+(desc SB-NacreInspiredSelfAssembly "NPG Asia Materials review of layer-by-layer, vacuum filtration, and electrophoretic self-assembly strategies for building nacre-inspired composites from 1D to 3D scales.")
+
+(isa SB-BioinspiredCompositeFabReview ReferenceWork)
+(title SB-BioinspiredCompositeFabReview "Bioinspired Composite Structures: A Comprehensive Review of Natural Materials, Fabrication Methods, and Engineering Applications")
+(author SB-BioinspiredCompositeFabReview "Various authors")
+(resourceType SB-BioinspiredCompositeFabReview notes)
+(level SB-BioinspiredCompositeFabReview beginner)
+(section SB-BioinspiredCompositeFabReview FabricationMethods)
+(url SB-BioinspiredCompositeFabReview "https://www.sciencedirect.com/science/article/pii/S2666682025000222")
+(desc SB-BioinspiredCompositeFabReview "Recent comprehensive review covering self-assembly, layer-by-layer, mineralization, and bio-templating methods for producing composites inspired by shell, bone, and silk.")
+
+(isa SB-MIT20462J-MolecularBiomat ReferenceWork)
+(title SB-MIT20462J-MolecularBiomat "Molecular Principles of Biomaterials (MIT OCW 20.462J)")
+(author SB-MIT20462J-MolecularBiomat "Darrell Irvine, MIT")
+(resourceType SB-MIT20462J-MolecularBiomat course)
+(level SB-MIT20462J-MolecularBiomat advanced)
+(section SB-MIT20462J-MolecularBiomat FabricationMethods)
+(url SB-MIT20462J-MolecularBiomat "https://ocw.mit.edu/courses/20-462j-molecular-principles-of-biomaterials-spring-2006/")
+(desc SB-MIT20462J-MolecularBiomat "MIT course on molecular-scale analysis and design of self-assembling biomaterials, covering polymer physics, protein folding, and supramolecular assembly for tissue engineering.")
+
+(isa SB-MIT20020-BioEngDesign ReferenceWork)
+(title SB-MIT20020-BioEngDesign "Introduction to Biological Engineering Design (MIT OCW 20.020)")
+(author SB-MIT20020-BioEngDesign "Natalie Kuldell et al., MIT")
+(resourceType SB-MIT20020-BioEngDesign course)
+(level SB-MIT20020-BioEngDesign beginner)
+(section SB-MIT20020-BioEngDesign FabricationMethods)
+(url SB-MIT20020-BioEngDesign "https://ocw.mit.edu/courses/20-020-introduction-to-biological-engineering-design-spring-2009/")
+(desc SB-MIT20020-BioEngDesign "MIT course introducing the principles of biological engineering design, including self-assembly and directed evolution approaches to building functional biological systems.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources StructuralBiomimeticsReference 81)
+(totalSections StructuralBiomimeticsReference 7)
+(comment StructuralBiomimeticsReference
+  "7 sections: Overview (12), Nacre & Bio-Ceramics (11), Silk & Bio-Fibers (12),
+   Bone & Skeletal (12), Wood & Plant Structures (10), Hierarchical Design (12),
+   Fabrication Methods (12). Total: 81 resources.")

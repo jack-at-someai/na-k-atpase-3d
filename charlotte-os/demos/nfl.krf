@@ -1,0 +1,281 @@
+;;; ════════════════════════════════════════════════════════════════
+;;; NFL Demo — Knowledge Representation of the National Football League
+;;; Charlotte OS · KRF Visualizer Demo
+;;; ════════════════════════════════════════════════════════════════
+
+(in-microtheory NFLDemoMt)
+
+;;; ── Collections ──────────────────────────────────────────────
+
+(isa League Collection)
+(comment League "A professional sports league governing multiple teams across conferences and divisions")
+
+(isa Conference Collection)
+(comment Conference "A major subdivision of a league, typically containing multiple divisions")
+
+(isa Division Collection)
+(comment Division "A grouping of teams within a conference that compete for divisional titles")
+
+(isa Team Collection)
+(comment Team "A professional football franchise competing in the NFL")
+
+(isa Player Collection)
+(comment Player "An individual athlete on an NFL team roster")
+
+(isa Coach Collection)
+(comment Coach "A person responsible for directing team strategy and player development")
+
+(isa Position Collection)
+(comment Position "A designated role on the football field with specific responsibilities")
+
+(isa Season Collection)
+(comment Season "A single year of NFL competition including preseason, regular season, and playoffs")
+
+(isa Game Collection)
+(comment Game "A single competitive match between two NFL teams")
+
+(isa Award Collection)
+(comment Award "A recognition given for outstanding performance in the NFL")
+
+;;; ── Hierarchy ────────────────────────────────────────────────
+
+(genls Conference League)
+(genls Division Conference)
+(genls Team Division)
+
+(isa AFCConference Conference)
+(comment AFCConference "The American Football Conference, one of two NFL conferences")
+(isa NFCConference Conference)
+(comment NFCConference "The National Football Conference, one of two NFL conferences")
+
+(isa AFCWest Division)
+(isa AFCEast Division)
+(isa AFCNorth Division)
+(isa AFCSouth Division)
+(isa NFCWest Division)
+(isa NFCEast Division)
+(isa NFCNorth Division)
+(isa NFCSouth Division)
+
+(genls OffensivePosition Position)
+(genls DefensivePosition Position)
+(genls SpecialTeamsPosition Position)
+
+(isa Quarterback OffensivePosition)
+(isa RunningBack OffensivePosition)
+(isa WideReceiver OffensivePosition)
+(isa TightEnd OffensivePosition)
+(isa OffensiveLineman OffensivePosition)
+
+(isa Cornerback DefensivePosition)
+(isa Safety DefensivePosition)
+(isa Linebacker DefensivePosition)
+(isa DefensiveEnd DefensivePosition)
+(isa DefensiveTackle DefensivePosition)
+
+(isa Kicker SpecialTeamsPosition)
+(isa Punter SpecialTeamsPosition)
+
+;;; ── Relations ────────────────────────────────────────────────
+
+(isa playsFor Predicate)
+(arity playsFor 2)
+(arg1Isa playsFor Player)
+(arg2Isa playsFor Team)
+(comment playsFor "Indicates which team a player is currently on the roster for")
+
+(isa coaches Predicate)
+(arity coaches 2)
+(arg1Isa coaches Coach)
+(arg2Isa coaches Team)
+(comment coaches "Indicates which team a coach leads as head coach")
+
+(isa inDivision Predicate)
+(arity inDivision 2)
+(arg1Isa inDivision Team)
+(arg2Isa inDivision Division)
+(comment inDivision "Assigns a team to its division")
+
+(isa inConference Predicate)
+(arity inConference 2)
+(arg1Isa inConference Division)
+(arg2Isa inConference Conference)
+(comment inConference "Assigns a division to its conference")
+
+(isa playsPosition Predicate)
+(arity playsPosition 2)
+(arg1Isa playsPosition Player)
+(arg2Isa playsPosition Position)
+(comment playsPosition "The primary position a player lines up at")
+
+(isa draftedInRound Predicate)
+(arity draftedInRound 2)
+(arg1Isa draftedInRound Player)
+(comment draftedInRound "The NFL Draft round in which a player was selected")
+
+(isa wonSuperBowl Predicate)
+(arity wonSuperBowl 2)
+(arg1Isa wonSuperBowl Team)
+(arg2Isa wonSuperBowl Season)
+(comment wonSuperBowl "Records that a team won the Super Bowl in a given season")
+
+;;; ── Team Instances ───────────────────────────────────────────
+
+(isa KansasCityChiefs Team)
+(inDivision KansasCityChiefs AFCWest)
+(comment KansasCityChiefs "Two-time consecutive Super Bowl champions (LVII, LVIII)")
+
+(isa SanFrancisco49ers Team)
+(inDivision SanFrancisco49ers NFCWest)
+
+(isa PhiladelphiaEagles Team)
+(inDivision PhiladelphiaEagles NFCEast)
+
+(isa BuffaloBills Team)
+(inDivision BuffaloBills AFCEast)
+
+(isa DetroitLions Team)
+(inDivision DetroitLions NFCNorth)
+
+(isa BaltimoreRavens Team)
+(inDivision BaltimoreRavens AFCNorth)
+
+(isa DallasCowboys Team)
+(inDivision DallasCowboys NFCEast)
+(comment DallasCowboys "Known as 'America's Team', five-time Super Bowl champions")
+
+(isa GreenBayPackers Team)
+(inDivision GreenBayPackers NFCNorth)
+
+(isa MiamiDolphins Team)
+(inDivision MiamiDolphins AFCEast)
+
+(isa HoustonTexans Team)
+(inDivision HoustonTexans AFCSouth)
+
+;;; ── Division-to-Conference ───────────────────────────────────
+
+(inConference AFCWest AFCConference)
+(inConference AFCEast AFCConference)
+(inConference AFCNorth AFCConference)
+(inConference AFCSouth AFCConference)
+(inConference NFCWest NFCConference)
+(inConference NFCEast NFCConference)
+(inConference NFCNorth NFCConference)
+(inConference NFCSouth NFCConference)
+
+;;; ── Player Instances ─────────────────────────────────────────
+
+(isa PatrickMahomes Player)
+(playsFor PatrickMahomes KansasCityChiefs)
+(playsPosition PatrickMahomes Quarterback)
+(draftedInRound PatrickMahomes 1)
+(comment PatrickMahomes "Three-time Super Bowl champion and two-time MVP")
+
+(isa JoshAllen Player)
+(playsFor JoshAllen BuffaloBills)
+(playsPosition JoshAllen Quarterback)
+(draftedInRound JoshAllen 1)
+
+(isa JalenHurts Player)
+(playsFor JalenHurts PhiladelphiaEagles)
+(playsPosition JalenHurts Quarterback)
+(draftedInRound JalenHurts 2)
+
+(isa LamarJackson Player)
+(playsFor LamarJackson BaltimoreRavens)
+(playsPosition LamarJackson Quarterback)
+(draftedInRound LamarJackson 1)
+(comment LamarJackson "Two-time NFL MVP known for dual-threat ability")
+
+(isa TravisKelce Player)
+(playsFor TravisKelce KansasCityChiefs)
+(playsPosition TravisKelce TightEnd)
+(draftedInRound TravisKelce 3)
+
+(isa TyreekHill Player)
+(playsFor TyreekHill MiamiDolphins)
+(playsPosition TyreekHill WideReceiver)
+(comment TyreekHill "One of the fastest players in NFL history")
+
+(isa MicahParsons Player)
+(playsFor MicahParsons DallasCowboys)
+(playsPosition MicahParsons Linebacker)
+(draftedInRound MicahParsons 1)
+
+(isa CJStroud Player)
+(playsFor CJStroud HoustonTexans)
+(playsPosition CJStroud Quarterback)
+(draftedInRound CJStroud 1)
+
+(isa JaredGoff Player)
+(playsFor JaredGoff DetroitLions)
+(playsPosition JaredGoff Quarterback)
+(draftedInRound JaredGoff 1)
+
+(isa ChristianMcCaffrey Player)
+(playsFor ChristianMcCaffrey SanFrancisco49ers)
+(playsPosition ChristianMcCaffrey RunningBack)
+(draftedInRound ChristianMcCaffrey 1)
+
+(isa JordanLove Player)
+(playsFor JordanLove GreenBayPackers)
+(playsPosition JordanLove Quarterback)
+(draftedInRound JordanLove 1)
+
+;;; ── Coach Instances ──────────────────────────────────────────
+
+(isa AndyReid Coach)
+(coaches AndyReid KansasCityChiefs)
+(comment AndyReid "Winningest active head coach with three Super Bowl titles")
+
+(isa SeanMcVay Coach)
+(coaches SeanMcVay SanFrancisco49ers)
+
+;;; ── Rules ────────────────────────────────────────────────────
+
+;; If a player plays a position and that position is offensive, the player is an offensive player
+(implies
+  (and
+    (playsPosition ?player ?pos)
+    (isa ?pos OffensivePosition))
+  (isa ?player OffensivePlayer))
+
+;; If a player is a quarterback on a team, that team has a starting QB
+(implies
+  (and
+    (playsFor ?player ?team)
+    (playsPosition ?player Quarterback))
+  (hasStartingQB ?team ?player))
+
+;; If a team is in a division and that division is in a conference, the team is in that conference
+(implies
+  (and
+    (inDivision ?team ?div)
+    (inConference ?div ?conf))
+  (teamInConference ?team ?conf))
+
+;; If a team won the Super Bowl, they are a champion
+(implies
+  (wonSuperBowl ?team ?season)
+  (isa ?team SuperBowlChampion))
+
+;;; ── Heuristics ───────────────────────────────────────────────
+
+(isa SalaryCap Predicate)
+(arity SalaryCap 1)
+(comment SalaryCap "The maximum total salary a team can pay its players in a season")
+
+(defaultTrue (SalaryCap 255000000))
+
+(isa rosterSize Predicate)
+(arity rosterSize 1)
+(comment rosterSize "The number of players on an active game-day roster")
+
+(defaultTrue (rosterSize 53))
+
+(isa gamesPerSeason Predicate)
+(arity gamesPerSeason 1)
+(comment gamesPerSeason "Number of regular season games each team plays")
+
+(defaultTrue (gamesPerSeason 17))

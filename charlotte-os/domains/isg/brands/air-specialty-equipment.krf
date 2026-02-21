@@ -1,0 +1,47 @@
+;;; ================================================================
+;;; ISG BRAND / AIR SPECIALTY & EQUIPMENT CO. (ASE)
+;;; Texas #1 compressed air service company — 5 locations
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa AirSpecialtyEquipment ISGBrand)
+(hasAttribute AirSpecialtyEquipment ::LABEL "Air Specialty & Equipment Co.")
+(hasAttribute AirSpecialtyEquipment ::ABBREVIATION "ASE")
+(hasAttribute AirSpecialtyEquipment ::FOUNDED 1984)
+(hasAttribute AirSpecialtyEquipment ::VERTICAL "Compressor")
+(hasAttribute AirSpecialtyEquipment ::HEADCOUNT "28-58")
+(hasAttribute AirSpecialtyEquipment ::REVENUE "$6.4M est.")
+(hasAttribute AirSpecialtyEquipment ::WEBSITE "airspecialty.com")
+(hasAttribute AirSpecialtyEquipment ::MARKET_POSITION "Texas #1 Compressed Air Service Company")
+(hasAttribute AirSpecialtyEquipment ::OEM_PARTNERS "Atlas Copco authorized")
+(MEMBER_OF AirSpecialtyEquipment ISGCompressorGroup)
+
+(hasAttribute AirSpecialtyEquipment ::FACILITY_CC "406 S. Navigation, Corpus Christi, TX 78405")
+(hasAttribute AirSpecialtyEquipment ::FACILITY_GREGORY "304 Highway 35, Gregory, TX 78359")
+(hasAttribute AirSpecialtyEquipment ::FACILITY_SA "105 Nell Deane Blvd, Schertz, TX 78154")
+(hasAttribute AirSpecialtyEquipment ::FACILITY_DP "2814 E P St, Deer Park, TX 77536")
+(hasAttribute AirSpecialtyEquipment ::FACILITY_DFW "3330 North Freeway, Fort Worth, TX 76111")
+
+;; Personnel
+
+(isa JoeyHammock Person)
+(hasAttribute JoeyHammock ::LABEL "Joey Hammock")
+(hasAttribute JoeyHammock ::ROLE "President")
+(hasAttribute JoeyHammock ::EDUCATION "Business Management, Texas A&M Corpus Christi")
+(hasAttribute JoeyHammock ::CAREER "VP Operations → President")
+(locatedAt JoeyHammock CorpusChristi-TX)
+(LEADS JoeyHammock AirSpecialtyEquipment)
+(MEMBER_OF JoeyHammock AirSpecialtyEquipment)
+
+(isa AaronRios Person)
+(hasAttribute AaronRios ::LABEL "Aaron Rios")
+(hasAttribute AaronRios ::ROLE "Director of Operations")
+(hasAttribute AaronRios ::EDUCATION "BAS Fire Science, Del Mar College")
+(hasAttribute AaronRios ::CAREER "CC Sales Rep → SA Branch Manager → Houston Branch Manager → Director of Operations")
+(MEMBER_OF AaronRios AirSpecialtyEquipment)
+
+(isa ScottBrownASE Person)
+(hasAttribute ScottBrownASE ::LABEL "Scott Brown")
+(hasAttribute ScottBrownASE ::ROLE "Product Sales Manager")
+(MEMBER_OF ScottBrownASE AirSpecialtyEquipment)

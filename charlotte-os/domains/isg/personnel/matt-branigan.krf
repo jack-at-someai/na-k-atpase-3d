@@ -1,0 +1,85 @@
+;;; ================================================================
+;;; ISG PERSONNEL / MATT BRANIGAN
+;;; VP Distribution (CDO) — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa MattBranigan Person)
+(isa MattBranigan Executive)
+(hasAttribute MattBranigan ::LABEL "Matt Branigan")
+(hasAttribute MattBranigan ::ROLE "Vice President, Distribution")
+(hasAttribute MattBranigan ::TITLE_SHORT "VP Distribution")
+(hasAttribute MattBranigan ::EMAIL "mbranigan@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo MattBranigan JimRichard)
+(MEMBER_OF MattBranigan ISGExecutiveTeam)
+(MEMBER_OF MattBranigan ISGCharlotteLaunchTeam)
+(reportsTo BryanLiBrandi MattBranigan)
+
+;; Systems ownership
+(GOVERNS MattBranigan ISG-BigCommerce)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt MattBranigan Indianapolis-IN)
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute MattBranigan ::ORG_LEVEL 2)
+(hasAttribute MattBranigan ::SPAN_OF_CONTROL "Distribution operations, e-commerce, marketing (through CMO)")
+(hasAttribute MattBranigan ::DECISION_AUTHORITY "Distribution strategy, e-commerce platform, channel partnerships")
+(hasAttribute MattBranigan ::HIRED 2025)
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch MattBranigan "Chippewa Valley Technical College — Associate of Business" 1995 1997)
+(careerEpoch MattBranigan "Lakeland College — BBA" 1997 2000)
+(careerEpoch MattBranigan "Colorado Technical University — Master's" 2005 2008)
+(careerEpoch MattBranigan "W.W. Grainger — Territory Sales to Sr Manager Metalworking" 2000 2015)
+(careerEpoch MattBranigan "LL Flooring — Director Pro Sales Operations" 2015 2018)
+(careerEpoch MattBranigan "Motion & Control Enterprises — VP & GM Fluid Power" 2018 2024)
+(careerEpoch MattBranigan "The Industrial Service Group — VP Distribution" 2025 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn MattBranigan IndustrialDistribution)
+(expertiseIn MattBranigan EcommerceOperations)
+(expertiseIn MattBranigan SalesManagement)
+(expertiseIn MattBranigan Metalworking)
+(expertiseIn MattBranigan FluidPower)
+(expertiseIn MattBranigan ChannelStrategy)
+
+(hasAttribute MattBranigan ::GRAINGER_TENURE "15 years — progressed from territory rep to senior management")
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa MattBranigan-DistributionExperience METRIC)
+(attachedTo MattBranigan-DistributionExperience MattBranigan)
+(hasAttribute MattBranigan-DistributionExperience ::VALUE 25)
+(hasAttribute MattBranigan-DistributionExperience ::UNIT "years in industrial distribution and sales")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa MattBranigan-EcommerceMandate SIGNAL)
+(derivedFrom MattBranigan-EcommerceMandate MattBranigan-DistributionExperience)
+(comment MattBranigan-EcommerceMandate
+  "Matt was hired in 2025 specifically to build ISG's distribution
+   and e-commerce capability. He owns BigCommerce. Charlotte's product
+   catalog KRF (259K+ SKUs) is directly relevant to his mission — he
+   needs a unified view of inventory across all 16 brands.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithVPDist PROTOCOL)
+(hasTrigger Protocol-InteractWithVPDist (sessionCaller ?Session MattBranigan))
+(comment Protocol-InteractWithVPDist
+  "Matt is new (2025 hire) and building from scratch. He's a Grainger
+   veteran — he understands industrial distribution at scale. Frame
+   Charlotte's catalog and inventory capabilities in terms he knows:
+   SKU rationalization, channel conflict, online conversion. He runs
+   the CMO (Bryan LiBrandi) — marketing requests may come through him.")

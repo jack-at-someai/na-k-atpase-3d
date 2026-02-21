@@ -1,0 +1,85 @@
+;;; ================================================================
+;;; ISG BRAND / RENEWAL SERVICE INC. (RSI)
+;;; North America's leading pump people — Rock Island IL, since 1984
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa RenewalServiceInc ISGBrand)
+(hasAttribute RenewalServiceInc ::LABEL "Renewal Service Inc.")
+(hasAttribute RenewalServiceInc ::ABBREVIATION "RSI")
+(hasAttribute RenewalServiceInc ::FOUNDED 1984)
+(hasAttribute RenewalServiceInc ::ACQUIRED_BY_ISG "August 2023")
+(hasAttribute RenewalServiceInc ::VERTICAL "Pumps")
+(hasAttribute RenewalServiceInc ::HEADCOUNT "30+")
+(hasAttribute RenewalServiceInc ::WEBSITE "rsipumps.com")
+(hasAttribute RenewalServiceInc ::FACILITY_HQ "2600 5th St, Rock Island, IL 61201 (60,000+ sq ft)")
+(hasAttribute RenewalServiceInc ::FACILITY_SOUTH "24 Eastern Ave, Sylacauga, AL 35150")
+(hasAttribute RenewalServiceInc ::SPECIALTIES "New, discontinued, rebuilt, surplus, and obsolete industrial pumps and pump parts")
+(hasAttribute RenewalServiceInc ::MOTTO "We are the pump people")
+(hasAttribute RenewalServiceInc ::CULTURE "Family business — Nonnenmann family (7+ members), Springsteen family (6+)")
+(MEMBER_OF RenewalServiceInc ISGServicesGroup)
+(locatedAt RenewalServiceInc RockIsland-IL)
+
+;; Personnel — Leadership
+
+(isa TomNonnenmann Person)
+(hasAttribute TomNonnenmann ::LABEL "Tom Nonnenmann")
+(hasAttribute TomNonnenmann ::ROLE "President / CFO")
+(hasAttribute TomNonnenmann ::NOTES "Son of founder John F. Nonnenmann. Previously Controller.")
+(LEADS TomNonnenmann RenewalServiceInc)
+(MEMBER_OF TomNonnenmann RenewalServiceInc)
+
+(isa BenNonnenmann Person)
+(hasAttribute BenNonnenmann ::LABEL "Ben Nonnenmann")
+(hasAttribute BenNonnenmann ::ROLE "Vice President, Production")
+(hasAttribute BenNonnenmann ::EDUCATION "St. Ambrose University")
+(MEMBER_OF BenNonnenmann RenewalServiceInc)
+
+(isa JoeNonnenmann Person)
+(hasAttribute JoeNonnenmann ::LABEL "Joe Nonnenmann")
+(hasAttribute JoeNonnenmann ::ROLE "Vice President, Production")
+(MEMBER_OF JoeNonnenmann RenewalServiceInc)
+
+(isa ChrisCarr Person)
+(hasAttribute ChrisCarr ::LABEL "Chris Carr")
+(hasAttribute ChrisCarr ::ROLE "Vice President, Sales")
+(hasAttribute ChrisCarr ::EDUCATION "Illinois State University")
+(MEMBER_OF ChrisCarr RenewalServiceInc)
+
+(isa ChristopherBestian Person)
+(hasAttribute ChristopherBestian ::LABEL "Christopher Bestian")
+(hasAttribute ChristopherBestian ::ROLE "Vice President, Inventory")
+(hasAttribute ChristopherBestian ::CAREER "Firefighter/Paramedic → Production Coordinator → Inventory Manager → VP")
+(MEMBER_OF ChristopherBestian RenewalServiceInc)
+
+(isa ChrisGardino Person)
+(hasAttribute ChrisGardino ::LABEL "Chris Gardino")
+(hasAttribute ChrisGardino ::ROLE "Vice President, Sales (SE Region)")
+(hasAttribute ChrisGardino ::CAREER "Central Components → Industrial Pump Manufacture → Southern Alloy → RSI")
+(MEMBER_OF ChrisGardino RenewalServiceInc)
+
+;; Sales
+
+(isa JonBickett Person)
+(hasAttribute JonBickett ::LABEL "Jon Bickett")
+(hasAttribute JonBickett ::ROLE "Account Manager")
+(MEMBER_OF JonBickett RenewalServiceInc)
+
+(isa SteveRummans Person)
+(hasAttribute SteveRummans ::LABEL "Steve Rummans")
+(hasAttribute SteveRummans ::ROLE "Account Manager, Iowa/Nebraska/South Dakota")
+(hasAttribute SteveRummans ::CAREER "Black Hawk Freight → Midland Plastics (VP Sales) → RSI")
+(MEMBER_OF SteveRummans RenewalServiceInc)
+
+;; Operations
+
+(isa SteveErichsen Person)
+(hasAttribute SteveErichsen ::LABEL "Steve Erichsen")
+(hasAttribute SteveErichsen ::ROLE "Head Machinist")
+(MEMBER_OF SteveErichsen RenewalServiceInc)
+
+(isa MikeSpringsteen Person)
+(hasAttribute MikeSpringsteen ::LABEL "Mike Springsteen")
+(hasAttribute MikeSpringsteen ::ROLE "Improvement Director")
+(MEMBER_OF MikeSpringsteen RenewalServiceInc)

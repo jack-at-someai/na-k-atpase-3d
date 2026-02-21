@@ -1,0 +1,984 @@
+;;; ================================================================
+;;; REFERENCE / ENTOMOLOGY
+;;; 97 resources across 8 sections — Insect biology, pollination &
+;;; biomimicry. Joseph's domain — swarm behavior and emergent
+;;; coordination.
+;;; ================================================================
+;;;
+;;; Entomology is the scientific study of insects — the most
+;;; species-rich, ecologically dominant, and evolutionarily successful
+;;; group of animals on Earth. Insects are planetary infrastructure:
+;;; they pollinate flowering plants, decompose organic matter, cycle
+;;; nutrients, control pest populations, and serve as the primary food
+;;; source for countless birds, fish, and mammals.
+;;;
+;;; Learning path: Overview → Morphology → Ecology → Pollination →
+;;; Biomimicry → Pest Science → Decline → Simulation
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Entomology
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa ENT-Triplehorn-BorrorDeLong ReferenceWork)
+(title ENT-Triplehorn-BorrorDeLong "Borror and DeLong's Introduction to the Study of Insects")
+(author ENT-Triplehorn-BorrorDeLong "Charles A. Triplehorn & Norman F. Johnson")
+(resourceType ENT-Triplehorn-BorrorDeLong book)
+(level ENT-Triplehorn-BorrorDeLong beginner)
+(section ENT-Triplehorn-BorrorDeLong EntomologyOverview)
+(url ENT-Triplehorn-BorrorDeLong "https://www.cengage.com/c/borror-and-delong-s-introduction-to-the-study-of-insects-7e-triplehorn/")
+(desc ENT-Triplehorn-BorrorDeLong "The definitive introductory entomology textbook, covering insect morphology, taxonomy, ecology, and collection methods across all major orders.")
+
+(isa ENT-Gullan-InsectsOutline ReferenceWork)
+(title ENT-Gullan-InsectsOutline "The Insects: An Outline of Entomology")
+(author ENT-Gullan-InsectsOutline "P.J. Gullan & P.S. Cranston")
+(resourceType ENT-Gullan-InsectsOutline book)
+(level ENT-Gullan-InsectsOutline beginner)
+(section ENT-Gullan-InsectsOutline EntomologyOverview)
+(url ENT-Gullan-InsectsOutline "https://www.wiley.com/en-us/The+Insects%3A+An+Outline+of+Entomology%2C+5th+Edition-p-9781118846155")
+(desc ENT-Gullan-InsectsOutline "A widely adopted university textbook providing a modern, integrative overview of insect biology with superb illustrations and up-to-date phylogenetics.")
+
+(isa ENT-Resh-EncyclopediaInsects ReferenceWork)
+(title ENT-Resh-EncyclopediaInsects "Encyclopedia of Insects")
+(author ENT-Resh-EncyclopediaInsects "Vincent H. Resh & Ring T. Carde (eds.)")
+(resourceType ENT-Resh-EncyclopediaInsects book)
+(level ENT-Resh-EncyclopediaInsects intermediate)
+(section ENT-Resh-EncyclopediaInsects EntomologyOverview)
+(url ENT-Resh-EncyclopediaInsects "https://www.elsevier.com/books/encyclopedia-of-insects/resh/978-0-12-374144-8")
+(desc ENT-Resh-EncyclopediaInsects "A comprehensive reference with 270 chapters by leading specialists covering every major topic in entomology, from anatomy to zoonoses.")
+
+(isa ENT-Eisner-ForLoveOfInsects ReferenceWork)
+(title ENT-Eisner-ForLoveOfInsects "For Love of Insects")
+(author ENT-Eisner-ForLoveOfInsects "Thomas Eisner")
+(resourceType ENT-Eisner-ForLoveOfInsects book)
+(level ENT-Eisner-ForLoveOfInsects beginner)
+(section ENT-Eisner-ForLoveOfInsects EntomologyOverview)
+(url ENT-Eisner-ForLoveOfInsects "https://www.hup.harvard.edu/books/9780674011816")
+(desc ENT-Eisner-ForLoveOfInsects "A beautifully written memoir and scientific narrative by the father of chemical ecology, revealing decades of discoveries about insect chemical defense.")
+
+;; ── Survey & Review Articles ──
+
+(isa ENT-Farrell-DiversityInsects ReferenceWork)
+(title ENT-Farrell-DiversityInsects "The Diversity of Insects")
+(author ENT-Farrell-DiversityInsects "Brian D. Farrell")
+(resourceType ENT-Farrell-DiversityInsects notes)
+(level ENT-Farrell-DiversityInsects intermediate)
+(section ENT-Farrell-DiversityInsects EntomologyOverview)
+(url ENT-Farrell-DiversityInsects "https://doi.org/10.1126/science.281.5376.555")
+(desc ENT-Farrell-DiversityInsects "A landmark Science paper examining the extraordinary species richness of phytophagous beetles and the role of plant-insect co-evolution in generating diversity.")
+
+(isa ENT-Misof-PhylogenomicsInsects ReferenceWork)
+(title ENT-Misof-PhylogenomicsInsects "Phylogenomics Resolves the Timing and Pattern of Insect Evolution")
+(author ENT-Misof-PhylogenomicsInsects "Bernhard Misof et al.")
+(resourceType ENT-Misof-PhylogenomicsInsects notes)
+(level ENT-Misof-PhylogenomicsInsects advanced)
+(section ENT-Misof-PhylogenomicsInsects EntomologyOverview)
+(url ENT-Misof-PhylogenomicsInsects "https://doi.org/10.1126/science.1257570")
+(desc ENT-Misof-PhylogenomicsInsects "The 1KITE project's landmark phylogenomic analysis of insect evolution using transcriptomes from over 1,400 species, resolving deep divergences.")
+
+(isa ENT-Stork-HowManySpecies ReferenceWork)
+(title ENT-Stork-HowManySpecies "How Many Species of Insects and Other Terrestrial Arthropods Are There on Earth?")
+(author ENT-Stork-HowManySpecies "Nigel E. Stork")
+(resourceType ENT-Stork-HowManySpecies notes)
+(level ENT-Stork-HowManySpecies intermediate)
+(section ENT-Stork-HowManySpecies EntomologyOverview)
+(url ENT-Stork-HowManySpecies "https://doi.org/10.1146/annurev-ento-020117-043348")
+(desc ENT-Stork-HowManySpecies "A comprehensive Annual Review of Entomology article evaluating species richness estimates, concluding approximately 5.5 million insect species exist globally.")
+
+(isa ENT-VanHuis-InsectsAsFoodFeed ReferenceWork)
+(title ENT-VanHuis-InsectsAsFoodFeed "Insects as Food and Feed: A Review")
+(author ENT-VanHuis-InsectsAsFoodFeed "Arnold van Huis")
+(resourceType ENT-VanHuis-InsectsAsFoodFeed notes)
+(level ENT-VanHuis-InsectsAsFoodFeed beginner)
+(section ENT-VanHuis-InsectsAsFoodFeed EntomologyOverview)
+(url ENT-VanHuis-InsectsAsFoodFeed "https://doi.org/10.1146/annurev-ento-120811-153704")
+(desc ENT-VanHuis-InsectsAsFoodFeed "Reviews the potential of edible insects as a sustainable protein source, covering nutritional value, farming methods, and cultural acceptance worldwide.")
+
+;; ── Introductory Courses ──
+
+(isa ENT-Coursera-Bugs101 ReferenceWork)
+(title ENT-Coursera-Bugs101 "Bugs 101: Insect-Human Interactions")
+(author ENT-Coursera-Bugs101 "University of Alberta via Coursera")
+(resourceType ENT-Coursera-Bugs101 course)
+(level ENT-Coursera-Bugs101 beginner)
+(section ENT-Coursera-Bugs101 EntomologyOverview)
+(url ENT-Coursera-Bugs101 "https://www.coursera.org/learn/bugs-101")
+(desc ENT-Coursera-Bugs101 "A popular MOOC exploring the diversity of insects and their complex relationships with humans, from pollination to disease transmission.")
+
+(isa ENT-NCState-ENT425 ReferenceWork)
+(title ENT-NCState-ENT425 "Introductory Entomology (ENT 425)")
+(author ENT-NCState-ENT425 "NC State University")
+(resourceType ENT-NCState-ENT425 course)
+(level ENT-NCState-ENT425 beginner)
+(section ENT-NCState-ENT425 EntomologyOverview)
+(url ENT-NCState-ENT425 "https://genent.cals.ncsu.edu/")
+(desc ENT-NCState-ENT425 "A comprehensive open-access entomology course covering insect anatomy, physiology, ecology, and identification with detailed lecture notes and images.")
+
+(isa ENT-BBC-InsectWorld ReferenceWork)
+(title ENT-BBC-InsectWorld "The Insect World (BBC Earth)")
+(author ENT-BBC-InsectWorld "BBC Earth")
+(resourceType ENT-BBC-InsectWorld video)
+(level ENT-BBC-InsectWorld beginner)
+(section ENT-BBC-InsectWorld EntomologyOverview)
+(url ENT-BBC-InsectWorld "https://www.youtube.com/watch?v=POwFP4lQJ14")
+(desc ENT-BBC-InsectWorld "A visually stunning documentary introduction to insect diversity, behavior, and ecological roles narrated with BBC Earth's signature production quality.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: MORPHOLOGY — Anatomy, Physiology & Systematics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Anatomy & Physiology ──
+
+(isa ENT-Nation-InsectPhysiology ReferenceWork)
+(title ENT-Nation-InsectPhysiology "Insect Physiology and Biochemistry")
+(author ENT-Nation-InsectPhysiology "James L. Nation")
+(resourceType ENT-Nation-InsectPhysiology book)
+(level ENT-Nation-InsectPhysiology intermediate)
+(section ENT-Nation-InsectPhysiology InsectMorphology)
+(url ENT-Nation-InsectPhysiology "https://www.routledge.com/Insect-Physiology-and-Biochemistry/Nation/p/book/9781482247589")
+(desc ENT-Nation-InsectPhysiology "A comprehensive textbook covering all major physiological systems of insects including respiration, circulation, excretion, endocrinology, and reproduction.")
+
+(isa ENT-Chapman-InsectsStructureFunction ReferenceWork)
+(title ENT-Chapman-InsectsStructureFunction "The Insects: Structure and Function")
+(author ENT-Chapman-InsectsStructureFunction "R.F. Chapman (ed. S.J. Simpson & A.E. Douglas)")
+(resourceType ENT-Chapman-InsectsStructureFunction book)
+(level ENT-Chapman-InsectsStructureFunction advanced)
+(section ENT-Chapman-InsectsStructureFunction InsectMorphology)
+(url ENT-Chapman-InsectsStructureFunction "https://www.cambridge.org/core/books/insects/1AC952FC18F4D41A72930AE50B10FC42")
+(desc ENT-Chapman-InsectsStructureFunction "The most authoritative reference on insect functional morphology, thoroughly revised in its fifth edition with modern molecular and physiological insights.")
+
+(isa ENT-Beutel-InsectMorphologyPhylogeny ReferenceWork)
+(title ENT-Beutel-InsectMorphologyPhylogeny "Insect Morphology and Phylogeny")
+(author ENT-Beutel-InsectMorphologyPhylogeny "Rolf G. Beutel, Frank Friedrich & Richard A.B. Leschen")
+(resourceType ENT-Beutel-InsectMorphologyPhylogeny book)
+(level ENT-Beutel-InsectMorphologyPhylogeny advanced)
+(section ENT-Beutel-InsectMorphologyPhylogeny InsectMorphology)
+(url ENT-Beutel-InsectMorphologyPhylogeny "https://www.degruyter.com/document/doi/10.1515/9783110264043/html")
+(desc ENT-Beutel-InsectMorphologyPhylogeny "A detailed treatment of insect morphology in a phylogenetic context, integrating traditional anatomy with modern cladistic analysis.")
+
+(isa ENT-NCState-AnatomyModule ReferenceWork)
+(title ENT-NCState-AnatomyModule "Insect Anatomy and Physiology (ENT 425 Module)")
+(author ENT-NCState-AnatomyModule "NC State University")
+(resourceType ENT-NCState-AnatomyModule notes)
+(level ENT-NCState-AnatomyModule beginner)
+(section ENT-NCState-AnatomyModule InsectMorphology)
+(url ENT-NCState-AnatomyModule "https://genent.cals.ncsu.edu/insect-identification/anatomy/")
+(desc ENT-NCState-AnatomyModule "Open-access illustrated lecture notes covering the external and internal anatomy of insects with labeled diagrams and microscopy images.")
+
+;; ── Metamorphosis & Development ──
+
+(isa ENT-Belles-InsectMetamorphosis ReferenceWork)
+(title ENT-Belles-InsectMetamorphosis "Insect Metamorphosis: From Natural History to Regulation of Development and Evolution")
+(author ENT-Belles-InsectMetamorphosis "Xavier Belles")
+(resourceType ENT-Belles-InsectMetamorphosis book)
+(level ENT-Belles-InsectMetamorphosis advanced)
+(section ENT-Belles-InsectMetamorphosis InsectMorphology)
+(url ENT-Belles-InsectMetamorphosis "https://www.elsevier.com/books/insect-metamorphosis/belles/978-0-12-813020-9")
+(desc ENT-Belles-InsectMetamorphosis "A thorough synthesis of metamorphosis research spanning historical observations, hormonal regulation, gene networks, and evolutionary origins.")
+
+(isa ENT-Ryan-MysteryMetamorphosis ReferenceWork)
+(title ENT-Ryan-MysteryMetamorphosis "The Mystery of Metamorphosis: A Scientific Detective Story")
+(author ENT-Ryan-MysteryMetamorphosis "Frank Ryan")
+(resourceType ENT-Ryan-MysteryMetamorphosis book)
+(level ENT-Ryan-MysteryMetamorphosis beginner)
+(section ENT-Ryan-MysteryMetamorphosis InsectMorphology)
+(url ENT-Ryan-MysteryMetamorphosis "https://www.chelseagreen.com/product/the-mystery-of-metamorphosis/")
+(desc ENT-Ryan-MysteryMetamorphosis "A popular science account tracing the history of metamorphosis research, from Fabre's field observations to modern molecular developmental biology.")
+
+(isa ENT-Riddiford-HormonalControl ReferenceWork)
+(title ENT-Riddiford-HormonalControl "Hormonal Control of Insect Metamorphosis")
+(author ENT-Riddiford-HormonalControl "Lynn M. Riddiford")
+(resourceType ENT-Riddiford-HormonalControl notes)
+(level ENT-Riddiford-HormonalControl advanced)
+(section ENT-Riddiford-HormonalControl InsectMorphology)
+(url ENT-Riddiford-HormonalControl "https://doi.org/10.1016/B978-0-12-384749-2.10011-1")
+(desc ENT-Riddiford-HormonalControl "An authoritative review of the ecdysone and juvenile hormone signaling cascades that orchestrate insect metamorphosis at the molecular level.")
+
+(isa ENT-DeepLook-CaterpillarButterfly ReferenceWork)
+(title ENT-DeepLook-CaterpillarButterfly "The Caterpillar to Butterfly Transformation (Deep Look)")
+(author ENT-DeepLook-CaterpillarButterfly "KQED Deep Look")
+(resourceType ENT-DeepLook-CaterpillarButterfly video)
+(level ENT-DeepLook-CaterpillarButterfly beginner)
+(section ENT-DeepLook-CaterpillarButterfly InsectMorphology)
+(url ENT-DeepLook-CaterpillarButterfly "https://www.youtube.com/watch?v=kVm5k99PGk0")
+(desc ENT-DeepLook-CaterpillarButterfly "Award-winning ultra-macro videography documenting the complete metamorphosis of a painted lady butterfly with expert narration.")
+
+;; ── Sensory Systems ──
+
+(isa ENT-Land-AnimalEyes ReferenceWork)
+(title ENT-Land-AnimalEyes "The Ecology of the Eyes of Insects")
+(author ENT-Land-AnimalEyes "Michael F. Land & Dan-Eric Nilsson")
+(resourceType ENT-Land-AnimalEyes book)
+(level ENT-Land-AnimalEyes intermediate)
+(section ENT-Land-AnimalEyes InsectMorphology)
+(url ENT-Land-AnimalEyes "https://global.oup.com/academic/product/animal-eyes-9780199581146")
+(desc ENT-Land-AnimalEyes "A comprehensive treatment of animal visual systems with extensive coverage of compound eyes, ocelli, and the optical physics behind insect vision.")
+
+(isa ENT-Hedwig-InsectHearing ReferenceWork)
+(title ENT-Hedwig-InsectHearing "Insect Hearing and Acoustic Communication")
+(author ENT-Hedwig-InsectHearing "Berthold Hedwig (ed.)")
+(resourceType ENT-Hedwig-InsectHearing book)
+(level ENT-Hedwig-InsectHearing advanced)
+(section ENT-Hedwig-InsectHearing InsectMorphology)
+(url ENT-Hedwig-InsectHearing "https://link.springer.com/book/10.1007/978-3-642-40462-7")
+(desc ENT-Hedwig-InsectHearing "A multi-author volume covering the diversity of insect auditory systems, from tympanal ears in moths to substrate vibration detection in treehoppers.")
+
+(isa ENT-Allison-PheromoneCommunication ReferenceWork)
+(title ENT-Allison-PheromoneCommunication "Pheromone Communication in Moths")
+(author ENT-Allison-PheromoneCommunication "Jeremy D. Allison & Ring T. Carde (eds.)")
+(resourceType ENT-Allison-PheromoneCommunication book)
+(level ENT-Allison-PheromoneCommunication advanced)
+(section ENT-Allison-PheromoneCommunication InsectMorphology)
+(url ENT-Allison-PheromoneCommunication "https://www.ucpress.edu/book/9780520278561/pheromone-communication-in-moths")
+(desc ENT-Allison-PheromoneCommunication "An in-depth review of moth olfactory systems, pheromone biosynthesis, antennal receptor biology, and the neural processing of chemical signals.")
+
+(isa ENT-Veritasium-HowInsectsSee ReferenceWork)
+(title ENT-Veritasium-HowInsectsSee "How Insects See (Veritasium)")
+(author ENT-Veritasium-HowInsectsSee "Veritasium / Derek Muller")
+(resourceType ENT-Veritasium-HowInsectsSee video)
+(level ENT-Veritasium-HowInsectsSee beginner)
+(section ENT-Veritasium-HowInsectsSee InsectMorphology)
+(url ENT-Veritasium-HowInsectsSee "https://www.youtube.com/watch?v=rhjQzGk3eJg")
+(desc ENT-Veritasium-HowInsectsSee "An accessible video exploration of compound eye optics, ultraviolet vision, and how insect visual perception differs fundamentally from vertebrate vision.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: ECOLOGY — Insect Ecology
+;; ════════════════════════════════════════════════════════════
+
+;; ── Population & Community Ecology ──
+
+(isa ENT-Schowalter-InsectEcology ReferenceWork)
+(title ENT-Schowalter-InsectEcology "Insect Ecology: An Ecosystem Approach")
+(author ENT-Schowalter-InsectEcology "Timothy D. Schowalter")
+(resourceType ENT-Schowalter-InsectEcology book)
+(level ENT-Schowalter-InsectEcology intermediate)
+(section ENT-Schowalter-InsectEcology InsectEcology)
+(url ENT-Schowalter-InsectEcology "https://www.elsevier.com/books/insect-ecology/schowalter/978-0-12-803033-2")
+(desc ENT-Schowalter-InsectEcology "A leading textbook treating insect ecology through an ecosystem lens, covering population regulation, community interactions, and biogeochemical cycling.")
+
+(isa ENT-Huffaker-EcologicalEntomology ReferenceWork)
+(title ENT-Huffaker-EcologicalEntomology "Ecological Entomology")
+(author ENT-Huffaker-EcologicalEntomology "Carl B. Huffaker & Andrew P. Gutierrez (eds.)")
+(resourceType ENT-Huffaker-EcologicalEntomology book)
+(level ENT-Huffaker-EcologicalEntomology advanced)
+(section ENT-Huffaker-EcologicalEntomology InsectEcology)
+(url ENT-Huffaker-EcologicalEntomology "https://www.wiley.com/en-us/Ecological+Entomology%2C+2nd+Edition-p-9780471244837")
+(desc ENT-Huffaker-EcologicalEntomology "A comprehensive multi-author reference on the ecological principles governing insect populations, from life table analysis to landscape ecology.")
+
+(isa ENT-Tscharntke-MultitrophicInteractions ReferenceWork)
+(title ENT-Tscharntke-MultitrophicInteractions "Multitrophic Level Interactions")
+(author ENT-Tscharntke-MultitrophicInteractions "Teja Tscharntke & Bradford A. Hawkins (eds.)")
+(resourceType ENT-Tscharntke-MultitrophicInteractions book)
+(level ENT-Tscharntke-MultitrophicInteractions advanced)
+(section ENT-Tscharntke-MultitrophicInteractions InsectEcology)
+(url ENT-Tscharntke-MultitrophicInteractions "https://www.cambridge.org/core/books/multitrophic-level-interactions/43A5A5B2DAE0BF0CE35ED6A8894C02A3")
+(desc ENT-Tscharntke-MultitrophicInteractions "An authoritative volume examining how interactions cascade across trophic levels, with insects as the central connecting nodes.")
+
+(isa ENT-CrashCourse-InsectPopEcology ReferenceWork)
+(title ENT-CrashCourse-InsectPopEcology "Insect Population Ecology (Crash Course)")
+(author ENT-CrashCourse-InsectPopEcology "CrashCourse")
+(resourceType ENT-CrashCourse-InsectPopEcology video)
+(level ENT-CrashCourse-InsectPopEcology beginner)
+(section ENT-CrashCourse-InsectPopEcology InsectEcology)
+(url ENT-CrashCourse-InsectPopEcology "https://www.youtube.com/watch?v=RBOsqmBQBQk")
+(desc ENT-CrashCourse-InsectPopEcology "An engaging animated introduction to population ecology concepts illustrated with insect examples including r/K selection and carrying capacity.")
+
+;; ── Chemical Ecology ──
+
+(isa ENT-Bell-ChemicalEcologyInsects ReferenceWork)
+(title ENT-Bell-ChemicalEcologyInsects "Chemical Ecology of Insects")
+(author ENT-Bell-ChemicalEcologyInsects "William J. Bell & Ring T. Carde (eds.)")
+(resourceType ENT-Bell-ChemicalEcologyInsects book)
+(level ENT-Bell-ChemicalEcologyInsects advanced)
+(section ENT-Bell-ChemicalEcologyInsects InsectEcology)
+(url ENT-Bell-ChemicalEcologyInsects "https://link.springer.com/book/10.1007/978-1-4899-3368-3")
+(desc ENT-Bell-ChemicalEcologyInsects "A foundational multi-author volume on insect semiochemistry covering pheromone biology, host-plant selection, and chemical defense mechanisms.")
+
+(isa ENT-Iason-PlantSecondaryMetabolites ReferenceWork)
+(title ENT-Iason-PlantSecondaryMetabolites "The Ecology of Plant Secondary Metabolites: From Genes to Global Processes")
+(author ENT-Iason-PlantSecondaryMetabolites "Glenn R. Iason, Marcel Dicke & Susan E. Hartley (eds.)")
+(resourceType ENT-Iason-PlantSecondaryMetabolites book)
+(level ENT-Iason-PlantSecondaryMetabolites advanced)
+(section ENT-Iason-PlantSecondaryMetabolites InsectEcology)
+(url ENT-Iason-PlantSecondaryMetabolites "https://www.cambridge.org/core/books/ecology-of-plant-secondary-metabolites/B4DD249ABD7D3EBB3E6F9E55BAE09BA0")
+(desc ENT-Iason-PlantSecondaryMetabolites "Explores how plant chemical defenses shape insect communities and drive co-evolutionary dynamics from molecular to ecosystem scales.")
+
+(isa ENT-Wyatt-PheromonesAnimalBehavior ReferenceWork)
+(title ENT-Wyatt-PheromonesAnimalBehavior "Pheromones and Animal Behavior: Chemical Signals and Signatures")
+(author ENT-Wyatt-PheromonesAnimalBehavior "Tristram D. Wyatt")
+(resourceType ENT-Wyatt-PheromonesAnimalBehavior book)
+(level ENT-Wyatt-PheromonesAnimalBehavior intermediate)
+(section ENT-Wyatt-PheromonesAnimalBehavior InsectEcology)
+(url ENT-Wyatt-PheromonesAnimalBehavior "https://www.cambridge.org/core/books/pheromones-and-animal-behavior/1E5640BDC71C0B41C0F361D0DE4B3E9D")
+(desc ENT-Wyatt-PheromonesAnimalBehavior "An accessible and thorough introduction to pheromone biology across the animal kingdom, with extensive insect coverage and evolutionary context.")
+
+(isa ENT-Berenbaum-ChemicalEcologyLanguage ReferenceWork)
+(title ENT-Berenbaum-ChemicalEcologyLanguage "Chemical Ecology: The Language of Bugs (iBiology)")
+(author ENT-Berenbaum-ChemicalEcologyLanguage "May Berenbaum / iBiology")
+(resourceType ENT-Berenbaum-ChemicalEcologyLanguage video)
+(level ENT-Berenbaum-ChemicalEcologyLanguage beginner)
+(section ENT-Berenbaum-ChemicalEcologyLanguage InsectEcology)
+(url ENT-Berenbaum-ChemicalEcologyLanguage "https://www.youtube.com/watch?v=GFSC1zCBb7U")
+(desc ENT-Berenbaum-ChemicalEcologyLanguage "A captivating lecture by pioneer chemical ecologist May Berenbaum on how insects use chemistry for communication, defense, and warfare.")
+
+;; ── Insect-Microbiome Interactions ──
+
+(isa ENT-Douglas-InsectSymbiontInteractions ReferenceWork)
+(title ENT-Douglas-InsectSymbiontInteractions "Insect-Symbiont Interactions")
+(author ENT-Douglas-InsectSymbiontInteractions "Angela E. Douglas")
+(resourceType ENT-Douglas-InsectSymbiontInteractions notes)
+(level ENT-Douglas-InsectSymbiontInteractions advanced)
+(section ENT-Douglas-InsectSymbiontInteractions InsectEcology)
+(url ENT-Douglas-InsectSymbiontInteractions "https://doi.org/10.1146/annurev-ento-010814-020822")
+(desc ENT-Douglas-InsectSymbiontInteractions "An Annual Review of Entomology article reviewing the molecular mechanisms, ecological consequences, and evolutionary dynamics of insect-microbe symbioses.")
+
+(isa ENT-Paracer-Symbiosis ReferenceWork)
+(title ENT-Paracer-Symbiosis "Symbiosis: An Introduction to Biological Associations")
+(author ENT-Paracer-Symbiosis "Surindar Paracer & Vernon Ahmadjian")
+(resourceType ENT-Paracer-Symbiosis book)
+(level ENT-Paracer-Symbiosis intermediate)
+(section ENT-Paracer-Symbiosis InsectEcology)
+(url ENT-Paracer-Symbiosis "https://global.oup.com/academic/product/symbiosis-9780195118063")
+(desc ENT-Paracer-Symbiosis "A comprehensive textbook on biological symbiosis with detailed chapters on insect-microbe associations including Buchnera in aphids and Wolbachia.")
+
+(isa ENT-Hammer-GutMicrobiomeInsects ReferenceWork)
+(title ENT-Hammer-GutMicrobiomeInsects "The Gut Microbiome of Insects: Diversity in Diet and Ecology")
+(author ENT-Hammer-GutMicrobiomeInsects "Tobin J. Hammer & Noah Fierer")
+(resourceType ENT-Hammer-GutMicrobiomeInsects notes)
+(level ENT-Hammer-GutMicrobiomeInsects intermediate)
+(section ENT-Hammer-GutMicrobiomeInsects InsectEcology)
+(url ENT-Hammer-GutMicrobiomeInsects "https://doi.org/10.1016/j.cois.2019.06.006")
+(desc ENT-Hammer-GutMicrobiomeInsects "A review examining how diet and ecological niche shape insect gut microbial communities, with implications for pest management and conservation.")
+
+(isa ENT-Werren-WolbachiaMasterManipulators ReferenceWork)
+(title ENT-Werren-WolbachiaMasterManipulators "Wolbachia: Master Manipulators of Invertebrate Biology")
+(author ENT-Werren-WolbachiaMasterManipulators "John H. Werren, Laura Baldo & Michael E. Clark")
+(resourceType ENT-Werren-WolbachiaMasterManipulators notes)
+(level ENT-Werren-WolbachiaMasterManipulators advanced)
+(section ENT-Werren-WolbachiaMasterManipulators InsectEcology)
+(url ENT-Werren-WolbachiaMasterManipulators "https://doi.org/10.1038/nrmicro1969")
+(desc ENT-Werren-WolbachiaMasterManipulators "A Nature Reviews Microbiology article on the most widespread intracellular symbiont on Earth, exploring its manipulation of insect reproduction and evolution.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: POLLINATION — Pollination Biology & Ecosystem Services
+;; ════════════════════════════════════════════════════════════
+
+;; ── Bee Biology & Apiology ──
+
+(isa ENT-Wilson-BeesInYourBackyard ReferenceWork)
+(title ENT-Wilson-BeesInYourBackyard "The Bees in Your Backyard: A Guide to North America's Bees")
+(author ENT-Wilson-BeesInYourBackyard "Joseph S. Wilson & Olivia Messinger Carril")
+(resourceType ENT-Wilson-BeesInYourBackyard book)
+(level ENT-Wilson-BeesInYourBackyard beginner)
+(section ENT-Wilson-BeesInYourBackyard PollinationBiology)
+(url ENT-Wilson-BeesInYourBackyard "https://press.princeton.edu/books/paperback/9780691160771/the-bees-in-your-backyard")
+(desc ENT-Wilson-BeesInYourBackyard "A beautifully illustrated field guide introducing the astonishing diversity of native North American bees beyond the familiar honeybee.")
+
+(isa ENT-Winston-BiologyHoneyBee ReferenceWork)
+(title ENT-Winston-BiologyHoneyBee "The Biology of the Honey Bee")
+(author ENT-Winston-BiologyHoneyBee "Mark L. Winston")
+(resourceType ENT-Winston-BiologyHoneyBee book)
+(level ENT-Winston-BiologyHoneyBee intermediate)
+(section ENT-Winston-BiologyHoneyBee PollinationBiology)
+(url ENT-Winston-BiologyHoneyBee "https://www.hup.harvard.edu/books/9780674074095")
+(desc ENT-Winston-BiologyHoneyBee "A classic and comprehensive treatment of honeybee biology covering development, social organization, communication, foraging, and colony reproduction.")
+
+(isa ENT-Seeley-LivesOfBees ReferenceWork)
+(title ENT-Seeley-LivesOfBees "The Lives of Bees: The Untold Story of the Honey Bee in the Wild")
+(author ENT-Seeley-LivesOfBees "Thomas D. Seeley")
+(resourceType ENT-Seeley-LivesOfBees book)
+(level ENT-Seeley-LivesOfBees beginner)
+(section ENT-Seeley-LivesOfBees PollinationBiology)
+(url ENT-Seeley-LivesOfBees "https://press.princeton.edu/books/hardcover/9780691166766/the-lives-of-bees")
+(desc ENT-Seeley-LivesOfBees "Seeley draws on decades of field research to reveal how wild honeybee colonies thrive without human management, offering lessons for sustainable beekeeping.")
+
+(isa ENT-Seeley-HoneybeeDemocracy ReferenceWork)
+(title ENT-Seeley-HoneybeeDemocracy "Honeybee Democracy")
+(author ENT-Seeley-HoneybeeDemocracy "Thomas D. Seeley")
+(resourceType ENT-Seeley-HoneybeeDemocracy book)
+(level ENT-Seeley-HoneybeeDemocracy intermediate)
+(section ENT-Seeley-HoneybeeDemocracy PollinationBiology)
+(url ENT-Seeley-HoneybeeDemocracy "https://press.princeton.edu/books/paperback/9780691147215/honeybee-democracy")
+(desc ENT-Seeley-HoneybeeDemocracy "An accessible account of collective decision-making in honeybee swarms, demonstrating how decentralized groups can make optimal choices.")
+
+;; ── Pollination Networks & Services ──
+
+(isa ENT-Waser-PlantPollinatorInteractions ReferenceWork)
+(title ENT-Waser-PlantPollinatorInteractions "Plant-Pollinator Interactions: From Specialization to Generalization")
+(author ENT-Waser-PlantPollinatorInteractions "Nickolas M. Waser & Jeff Ollerton (eds.)")
+(resourceType ENT-Waser-PlantPollinatorInteractions book)
+(level ENT-Waser-PlantPollinatorInteractions advanced)
+(section ENT-Waser-PlantPollinatorInteractions PollinationBiology)
+(url ENT-Waser-PlantPollinatorInteractions "https://press.uchicago.edu/ucp/books/book/chicago/P/bo3533228.html")
+(desc ENT-Waser-PlantPollinatorInteractions "A multi-author volume examining the spectrum from specialized to generalized pollination systems, network topology, and their evolutionary consequences.")
+
+(isa ENT-IPBES-TEEBPollination ReferenceWork)
+(title ENT-IPBES-TEEBPollination "The Economics of Ecosystems and Biodiversity (TEEB) for Agriculture: Pollination")
+(author ENT-IPBES-TEEBPollination "IPBES")
+(resourceType ENT-IPBES-TEEBPollination notes)
+(level ENT-IPBES-TEEBPollination intermediate)
+(section ENT-IPBES-TEEBPollination PollinationBiology)
+(url ENT-IPBES-TEEBPollination "https://doi.org/10.5281/zenodo.3402856")
+(desc ENT-IPBES-TEEBPollination "The IPBES assessment report on pollinators, pollination, and food production, providing the most comprehensive global evaluation of pollination services.")
+
+(isa ENT-Bascompte-PollinationNetworks ReferenceWork)
+(title ENT-Bascompte-PollinationNetworks "The Structure of Plant-Pollinator Interaction Networks")
+(author ENT-Bascompte-PollinationNetworks "Jordi Bascompte & Pedro Jordano")
+(resourceType ENT-Bascompte-PollinationNetworks notes)
+(level ENT-Bascompte-PollinationNetworks advanced)
+(section ENT-Bascompte-PollinationNetworks PollinationBiology)
+(url ENT-Bascompte-PollinationNetworks "https://doi.org/10.1146/annurev-ecolsys-110411-160300")
+(desc ENT-Bascompte-PollinationNetworks "A seminal review on the nested, modular architecture of pollination networks and how network structure buffers ecosystems against species loss.")
+
+(isa ENT-Schwartzberg-HiddenBeautyPollination ReferenceWork)
+(title ENT-Schwartzberg-HiddenBeautyPollination "The Hidden Beauty of Pollination (TED Talk)")
+(author ENT-Schwartzberg-HiddenBeautyPollination "Louie Schwartzberg")
+(resourceType ENT-Schwartzberg-HiddenBeautyPollination video)
+(level ENT-Schwartzberg-HiddenBeautyPollination beginner)
+(section ENT-Schwartzberg-HiddenBeautyPollination PollinationBiology)
+(url ENT-Schwartzberg-HiddenBeautyPollination "https://www.ted.com/talks/louie_schwartzberg_the_hidden_beauty_of_pollination")
+(desc ENT-Schwartzberg-HiddenBeautyPollination "Stunning time-lapse and macro photography revealing the intimate mechanics of pollination, accompanied by a meditation on nature's interconnectedness.")
+
+;; ── Pollinator Decline & Conservation ──
+
+(isa ENT-Benjamin-WorldWithoutBees ReferenceWork)
+(title ENT-Benjamin-WorldWithoutBees "A World Without Bees")
+(author ENT-Benjamin-WorldWithoutBees "Alison Benjamin & Brian McCallum")
+(resourceType ENT-Benjamin-WorldWithoutBees book)
+(level ENT-Benjamin-WorldWithoutBees beginner)
+(section ENT-Benjamin-WorldWithoutBees PollinationBiology)
+(url ENT-Benjamin-WorldWithoutBees "https://www.penguinrandomhouse.com/books/303893/a-world-without-bees-by-alison-benjamin-and-brian-mccallum/")
+(desc ENT-Benjamin-WorldWithoutBees "An accessible investigation into Colony Collapse Disorder, pesticide impacts, and the global implications of declining bee populations.")
+
+(isa ENT-Blacquiere-NeonicotinoidsInBees ReferenceWork)
+(title ENT-Blacquiere-NeonicotinoidsInBees "Neonicotinoids in Bees: A Review on Concentrations, Side-Effects, and Risk Assessment")
+(author ENT-Blacquiere-NeonicotinoidsInBees "Tjeerd Blacquiere et al.")
+(resourceType ENT-Blacquiere-NeonicotinoidsInBees notes)
+(level ENT-Blacquiere-NeonicotinoidsInBees advanced)
+(section ENT-Blacquiere-NeonicotinoidsInBees PollinationBiology)
+(url ENT-Blacquiere-NeonicotinoidsInBees "https://doi.org/10.1007/s10646-012-0863-x")
+(desc ENT-Blacquiere-NeonicotinoidsInBees "A widely cited review of neonicotinoid insecticide impacts on bee physiology, behavior, and colony viability at field-realistic exposure levels.")
+
+(isa ENT-Potts-SafeguardingPollinators ReferenceWork)
+(title ENT-Potts-SafeguardingPollinators "Safeguarding Pollinators and Their Values to Human Well-Being")
+(author ENT-Potts-SafeguardingPollinators "Simon G. Potts et al.")
+(resourceType ENT-Potts-SafeguardingPollinators notes)
+(level ENT-Potts-SafeguardingPollinators intermediate)
+(section ENT-Potts-SafeguardingPollinators PollinationBiology)
+(url ENT-Potts-SafeguardingPollinators "https://doi.org/10.1038/nature20588")
+(desc ENT-Potts-SafeguardingPollinators "A Nature paper synthesizing evidence on pollinator decline and proposing ten policy-relevant strategies for pollinator conservation globally.")
+
+(isa ENT-PBS-SilenceOfTheBees ReferenceWork)
+(title ENT-PBS-SilenceOfTheBees "Silence of the Bees (PBS Nature Documentary)")
+(author ENT-PBS-SilenceOfTheBees "PBS Nature")
+(resourceType ENT-PBS-SilenceOfTheBees video)
+(level ENT-PBS-SilenceOfTheBees beginner)
+(section ENT-PBS-SilenceOfTheBees PollinationBiology)
+(url ENT-PBS-SilenceOfTheBees "https://www.youtube.com/watch?v=JilYBVrFDhk")
+(desc ENT-PBS-SilenceOfTheBees "An Emmy-nominated PBS documentary investigating the mysterious disappearance of honeybee colonies and the scientists racing to find answers.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: BIOMIMICRY — Insect-Inspired Engineering
+;; ════════════════════════════════════════════════════════════
+
+;; ── Insect Flight & Micro Air Vehicles ──
+
+(isa ENT-Floreano-FlyingInsectsRobots ReferenceWork)
+(title ENT-Floreano-FlyingInsectsRobots "Flying Insects and Robots")
+(author ENT-Floreano-FlyingInsectsRobots "Dario Floreano & Jean-Christophe Zufferey (eds.)")
+(resourceType ENT-Floreano-FlyingInsectsRobots book)
+(level ENT-Floreano-FlyingInsectsRobots advanced)
+(section ENT-Floreano-FlyingInsectsRobots InsectBiomimicry)
+(url ENT-Floreano-FlyingInsectsRobots "https://link.springer.com/book/10.1007/978-3-540-89393-6")
+(desc ENT-Floreano-FlyingInsectsRobots "A multidisciplinary volume bridging insect flight biomechanics and robotics, covering sensory systems, control architectures, and MAV prototypes.")
+
+(isa ENT-Dudley-InsectFlightMechanisms ReferenceWork)
+(title ENT-Dudley-InsectFlightMechanisms "Insect Flight Mechanisms: Anatomy, Kinematics, Aerodynamics")
+(author ENT-Dudley-InsectFlightMechanisms "Robert Dudley")
+(resourceType ENT-Dudley-InsectFlightMechanisms book)
+(level ENT-Dudley-InsectFlightMechanisms advanced)
+(section ENT-Dudley-InsectFlightMechanisms InsectBiomimicry)
+(url ENT-Dudley-InsectFlightMechanisms "https://press.princeton.edu/books/paperback/9780691094915/the-biomechanics-of-insect-flight")
+(desc ENT-Dudley-InsectFlightMechanisms "The definitive monograph on the biomechanics of insect flight, integrating morphology, aerodynamics, energetics, and evolutionary history.")
+
+(isa ENT-Harvard-RoboBee ReferenceWork)
+(title ENT-Harvard-RoboBee "RoboBee: An Insect-Scale Flying Robot (Harvard Microrobotics Lab)")
+(author ENT-Harvard-RoboBee "Harvard Microrobotics Lab")
+(resourceType ENT-Harvard-RoboBee video)
+(level ENT-Harvard-RoboBee intermediate)
+(section ENT-Harvard-RoboBee InsectBiomimicry)
+(url ENT-Harvard-RoboBee "https://www.youtube.com/watch?v=MJbOoNpqabc")
+(desc ENT-Harvard-RoboBee "A demonstration video of Harvard's RoboBee project, showing a sub-gram flying robot inspired by insect wing mechanics and hovering flight.")
+
+(isa ENT-DeCroon-DelFly ReferenceWork)
+(title ENT-DeCroon-DelFly "DelFly: Design, Aerodynamics, and Artificial Intelligence of a Flapping Wing Robot")
+(author ENT-DeCroon-DelFly "G.C.H.E. de Croon et al.")
+(resourceType ENT-DeCroon-DelFly book)
+(level ENT-DeCroon-DelFly advanced)
+(section ENT-DeCroon-DelFly InsectBiomimicry)
+(url ENT-DeCroon-DelFly "https://link.springer.com/book/10.1007/978-94-017-9208-0")
+(desc ENT-DeCroon-DelFly "A complete account of the DelFly project — from bio-inspired design through aerodynamic analysis to autonomous flight with onboard vision.")
+
+;; ── Social Insect Algorithms ──
+
+(isa ENT-Dorigo-AntColonyOptimization ReferenceWork)
+(title ENT-Dorigo-AntColonyOptimization "Ant Colony Optimization")
+(author ENT-Dorigo-AntColonyOptimization "Marco Dorigo & Thomas Stutzle")
+(resourceType ENT-Dorigo-AntColonyOptimization book)
+(level ENT-Dorigo-AntColonyOptimization intermediate)
+(section ENT-Dorigo-AntColonyOptimization InsectBiomimicry)
+(url ENT-Dorigo-AntColonyOptimization "https://mitpress.mit.edu/9780262042192/ant-colony-optimization/")
+(desc ENT-Dorigo-AntColonyOptimization "The foundational text on ACO algorithms, showing how the pheromone trail-laying behavior of ants solves combinatorial optimization problems.")
+
+(isa ENT-Bonabeau-SwarmIntelligence ReferenceWork)
+(title ENT-Bonabeau-SwarmIntelligence "Swarm Intelligence: From Natural to Artificial Systems")
+(author ENT-Bonabeau-SwarmIntelligence "Eric Bonabeau, Marco Dorigo & Guy Theraulaz")
+(resourceType ENT-Bonabeau-SwarmIntelligence book)
+(level ENT-Bonabeau-SwarmIntelligence intermediate)
+(section ENT-Bonabeau-SwarmIntelligence InsectBiomimicry)
+(url ENT-Bonabeau-SwarmIntelligence "https://global.oup.com/academic/product/swarm-intelligence-9780195131598")
+(desc ENT-Bonabeau-SwarmIntelligence "A pioneering book establishing the theoretical foundations of swarm intelligence, drawing on ant colonies, bee swarms, and termite construction.")
+
+(isa ENT-Dorigo-ACOMetaheuristic ReferenceWork)
+(title ENT-Dorigo-ACOMetaheuristic "The Ant Colony Optimization Metaheuristic: Algorithms, Applications, and Advances")
+(author ENT-Dorigo-ACOMetaheuristic "Marco Dorigo, Gianni Di Caro & Luca M. Gambardella")
+(resourceType ENT-Dorigo-ACOMetaheuristic notes)
+(level ENT-Dorigo-ACOMetaheuristic intermediate)
+(section ENT-Dorigo-ACOMetaheuristic InsectBiomimicry)
+(url ENT-Dorigo-ACOMetaheuristic "https://doi.org/10.1007/978-1-4615-1507-4_11")
+(desc ENT-Dorigo-ACOMetaheuristic "A comprehensive overview of ACO variants and their applications to the traveling salesman problem, vehicle routing, and network design.")
+
+(isa ENT-Reducible-ACOExplained ReferenceWork)
+(title ENT-Reducible-ACOExplained "Ant Colony Optimization Explained (Reducible)")
+(author ENT-Reducible-ACOExplained "Reducible")
+(resourceType ENT-Reducible-ACOExplained video)
+(level ENT-Reducible-ACOExplained beginner)
+(section ENT-Reducible-ACOExplained InsectBiomimicry)
+(url ENT-Reducible-ACOExplained "https://www.youtube.com/watch?v=783ZtAF4j5g")
+(desc ENT-Reducible-ACOExplained "An animated explanation of how ant colony optimization algorithms work, with clear visualizations of pheromone dynamics and convergence behavior.")
+
+;; ── Insect Surface & Material Science ──
+
+(isa ENT-Parker-BiomimeticsOpticalNanostructures ReferenceWork)
+(title ENT-Parker-BiomimeticsOpticalNanostructures "Biomimetics of Optical Nanostructures")
+(author ENT-Parker-BiomimeticsOpticalNanostructures "Andrew R. Parker")
+(resourceType ENT-Parker-BiomimeticsOpticalNanostructures notes)
+(level ENT-Parker-BiomimeticsOpticalNanostructures advanced)
+(section ENT-Parker-BiomimeticsOpticalNanostructures InsectBiomimicry)
+(url ENT-Parker-BiomimeticsOpticalNanostructures "https://doi.org/10.1038/nphoton.2007.11")
+(desc ENT-Parker-BiomimeticsOpticalNanostructures "A Nature Photonics review of structural coloration in insects (Morpho butterfly wings, jewel beetles) and their translation into photonic materials.")
+
+(isa ENT-Ivanova-CicadaWingNanopillars ReferenceWork)
+(title ENT-Ivanova-CicadaWingNanopillars "Bio-Inspired Surfaces: Cicada Wing Nanopillar Bactericidal Mechanisms")
+(author ENT-Ivanova-CicadaWingNanopillars "Elena P. Ivanova et al.")
+(resourceType ENT-Ivanova-CicadaWingNanopillars notes)
+(level ENT-Ivanova-CicadaWingNanopillars advanced)
+(section ENT-Ivanova-CicadaWingNanopillars InsectBiomimicry)
+(url ENT-Ivanova-CicadaWingNanopillars "https://doi.org/10.1002/smll.201200528")
+(desc ENT-Ivanova-CicadaWingNanopillars "The landmark paper demonstrating that cicada wing nanopillar surfaces kill bacteria through mechanical rupture, inspiring a new class of antibacterial materials.")
+
+(isa ENT-Parker-FogBaskingBeetles ReferenceWork)
+(title ENT-Parker-FogBaskingBeetles "Fog-Basking Behaviour and Water Collection Efficiency in Namib Desert Beetles")
+(author ENT-Parker-FogBaskingBeetles "Andrew R. Parker & Chris R. Lawrence")
+(resourceType ENT-Parker-FogBaskingBeetles notes)
+(level ENT-Parker-FogBaskingBeetles intermediate)
+(section ENT-Parker-FogBaskingBeetles InsectBiomimicry)
+(url ENT-Parker-FogBaskingBeetles "https://doi.org/10.1038/35102108")
+(desc ENT-Parker-FogBaskingBeetles "The original Nature paper on the Stenocara beetle's fog-harvesting surface, which uses alternating hydrophilic and hydrophobic patches to capture water from air.")
+
+(isa ENT-NatureVideo-InsectMaterialsSurfaces ReferenceWork)
+(title ENT-NatureVideo-InsectMaterialsSurfaces "Insect-Inspired Materials and Surfaces (Nature Masterclass)")
+(author ENT-NatureVideo-InsectMaterialsSurfaces "Nature Video")
+(resourceType ENT-NatureVideo-InsectMaterialsSurfaces video)
+(level ENT-NatureVideo-InsectMaterialsSurfaces beginner)
+(section ENT-NatureVideo-InsectMaterialsSurfaces InsectBiomimicry)
+(url ENT-NatureVideo-InsectMaterialsSurfaces "https://www.youtube.com/watch?v=YZR1E3HX1zI")
+(desc ENT-NatureVideo-InsectMaterialsSurfaces "A short documentary on how insect surfaces — from moth-eye antireflection to butterfly wing iridescence — inspire next-generation functional materials.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: PEST SCIENCE — Pest Science & Integrated Pest Management
+;; ════════════════════════════════════════════════════════════
+
+;; ── Integrated Pest Management ──
+
+(isa ENT-Radcliffe-IPMConceptsTactics ReferenceWork)
+(title ENT-Radcliffe-IPMConceptsTactics "Integrated Pest Management: Concepts, Tactics, Strategies and Case Studies")
+(author ENT-Radcliffe-IPMConceptsTactics "Edward B. Radcliffe, William D. Hutchison & Rafael E. Cancelado (eds.)")
+(resourceType ENT-Radcliffe-IPMConceptsTactics book)
+(level ENT-Radcliffe-IPMConceptsTactics intermediate)
+(section ENT-Radcliffe-IPMConceptsTactics PestScience)
+(url ENT-Radcliffe-IPMConceptsTactics "https://www.cambridge.org/core/books/integrated-pest-management/BCC1F6E72B8B7ED5E47CB2C72B0AFC09")
+(desc ENT-Radcliffe-IPMConceptsTactics "A comprehensive textbook covering IPM principles, tactics, and case studies across major crop systems, with contributions from leading practitioners.")
+
+(isa ENT-UMN-IPMWorldTextbook ReferenceWork)
+(title ENT-UMN-IPMWorldTextbook "IPM World Textbook")
+(author ENT-UMN-IPMWorldTextbook "University of Minnesota")
+(resourceType ENT-UMN-IPMWorldTextbook notes)
+(level ENT-UMN-IPMWorldTextbook beginner)
+(section ENT-UMN-IPMWorldTextbook PestScience)
+(url ENT-UMN-IPMWorldTextbook "https://ipmworld.umn.edu/")
+(desc ENT-UMN-IPMWorldTextbook "A free, peer-reviewed online textbook providing foundational knowledge of integrated pest management principles and practices.")
+
+(isa ENT-USDA-DestructiveInsects ReferenceWork)
+(title ENT-USDA-DestructiveInsects "Destructive Insects: The Science of Pest Control (USDA)")
+(author ENT-USDA-DestructiveInsects "USDA APHIS")
+(resourceType ENT-USDA-DestructiveInsects data)
+(level ENT-USDA-DestructiveInsects beginner)
+(section ENT-USDA-DestructiveInsects PestScience)
+(url ENT-USDA-DestructiveInsects "https://www.aphis.usda.gov/plant-pests-diseases")
+(desc ENT-USDA-DestructiveInsects "USDA's official portal for plant pest and disease information, including invasive species alerts, regulatory updates, and management resources.")
+
+(isa ENT-VandenBroeck-RNAiInsectControl ReferenceWork)
+(title ENT-VandenBroeck-RNAiInsectControl "RNA Interference for Insect Control: From Research to Application")
+(author ENT-VandenBroeck-RNAiInsectControl "Jozef Vanden Broeck & Guy Smagghe (eds.)")
+(resourceType ENT-VandenBroeck-RNAiInsectControl book)
+(level ENT-VandenBroeck-RNAiInsectControl advanced)
+(section ENT-VandenBroeck-RNAiInsectControl PestScience)
+(url ENT-VandenBroeck-RNAiInsectControl "https://doi.org/10.1016/bs.aiip.2019.12.001")
+(desc ENT-VandenBroeck-RNAiInsectControl "A state-of-the-art review of RNAi-based pest management, covering dsRNA delivery mechanisms, target gene selection, and regulatory considerations.")
+
+;; ── Biological Control & SIT ──
+
+(isa ENT-Heimpel-BiologicalControl ReferenceWork)
+(title ENT-Heimpel-BiologicalControl "Biological Control: Ecology and Applications")
+(author ENT-Heimpel-BiologicalControl "George E. Heimpel & Nicholas J. Mills")
+(resourceType ENT-Heimpel-BiologicalControl book)
+(level ENT-Heimpel-BiologicalControl intermediate)
+(section ENT-Heimpel-BiologicalControl PestScience)
+(url ENT-Heimpel-BiologicalControl "https://www.cambridge.org/core/books/biological-control/68B9E038C56CEA27B5899F7A8AB5F877")
+(desc ENT-Heimpel-BiologicalControl "A modern textbook integrating ecological theory with biological control practice, covering classical, augmentative, and conservation approaches.")
+
+(isa ENT-Dyck-SterileInsectTechnique ReferenceWork)
+(title ENT-Dyck-SterileInsectTechnique "Sterile Insect Technique: Principles and Practice in Area-Wide Integrated Pest Management")
+(author ENT-Dyck-SterileInsectTechnique "Victor A. Dyck, Jorge Hendrichs & Alan S. Robinson (eds.)")
+(resourceType ENT-Dyck-SterileInsectTechnique book)
+(level ENT-Dyck-SterileInsectTechnique advanced)
+(section ENT-Dyck-SterileInsectTechnique PestScience)
+(url ENT-Dyck-SterileInsectTechnique "https://link.springer.com/book/10.1007/1-4020-4051-2")
+(desc ENT-Dyck-SterileInsectTechnique "The authoritative reference on SIT, covering the biology, mass-rearing, sterilization methods, and field application for controlling tsetse flies, fruit flies, and mosquitoes.")
+
+(isa ENT-IAEA-ScrewWormFly ReferenceWork)
+(title ENT-IAEA-ScrewWormFly "Eliminating the Screw-Worm Fly: A Success Story (IAEA)")
+(author ENT-IAEA-ScrewWormFly "IAEA")
+(resourceType ENT-IAEA-ScrewWormFly video)
+(level ENT-IAEA-ScrewWormFly beginner)
+(section ENT-IAEA-ScrewWormFly PestScience)
+(url ENT-IAEA-ScrewWormFly "https://www.youtube.com/watch?v=mkM0o0LBDII")
+(desc ENT-IAEA-ScrewWormFly "An IAEA documentary on the eradication of the New World screw-worm fly from North America using the sterile insect technique — one of entomology's greatest applied successes.")
+
+(isa ENT-WMP-WolbachiaMethod ReferenceWork)
+(title ENT-WMP-WolbachiaMethod "World Mosquito Program: Wolbachia Method")
+(author ENT-WMP-WolbachiaMethod "World Mosquito Program")
+(resourceType ENT-WMP-WolbachiaMethod notes)
+(level ENT-WMP-WolbachiaMethod intermediate)
+(section ENT-WMP-WolbachiaMethod PestScience)
+(url ENT-WMP-WolbachiaMethod "https://www.worldmosquitoprogram.org/en/work/wolbachia-method")
+(desc ENT-WMP-WolbachiaMethod "Overview of the Wolbachia-based strategy to reduce dengue, Zika, and chikungunya transmission by introducing Wolbachia-infected Aedes aegypti into wild populations.")
+
+;; ── Medical & Veterinary Entomology ──
+
+(isa ENT-Mullen-MedVetEntomology ReferenceWork)
+(title ENT-Mullen-MedVetEntomology "Medical and Veterinary Entomology")
+(author ENT-Mullen-MedVetEntomology "Gary R. Mullen & Lance A. Durden (eds.)")
+(resourceType ENT-Mullen-MedVetEntomology book)
+(level ENT-Mullen-MedVetEntomology intermediate)
+(section ENT-Mullen-MedVetEntomology PestScience)
+(url ENT-Mullen-MedVetEntomology "https://www.elsevier.com/books/medical-and-veterinary-entomology/mullen/978-0-12-814043-7")
+(desc ENT-Mullen-MedVetEntomology "The standard textbook covering biology, ecology, and medical significance of arthropod vectors including mosquitoes, ticks, lice, fleas, and biting flies.")
+
+(isa ENT-Spielman-Mosquito ReferenceWork)
+(title ENT-Spielman-Mosquito "Mosquito: The Story of Man's Deadliest Foe")
+(author ENT-Spielman-Mosquito "Andrew Spielman & Michael D'Antonio")
+(resourceType ENT-Spielman-Mosquito book)
+(level ENT-Spielman-Mosquito beginner)
+(section ENT-Spielman-Mosquito PestScience)
+(url ENT-Spielman-Mosquito "https://www.hachettebookgroup.com/titles/andrew-spielman/mosquito/9780786886678/")
+(desc ENT-Spielman-Mosquito "A gripping popular account of how mosquitoes have shaped human history, from Alexander the Great to the Panama Canal to modern malaria control.")
+
+(isa ENT-Burt-GeneDrivesMosquitoes ReferenceWork)
+(title ENT-Burt-GeneDrivesMosquitoes "Gene Drives in Mosquitoes: A Potential Tool for Malaria Elimination")
+(author ENT-Burt-GeneDrivesMosquitoes "Austin Burt et al. (Target Malaria)")
+(resourceType ENT-Burt-GeneDrivesMosquitoes notes)
+(level ENT-Burt-GeneDrivesMosquitoes advanced)
+(section ENT-Burt-GeneDrivesMosquitoes PestScience)
+(url ENT-Burt-GeneDrivesMosquitoes "https://doi.org/10.1038/s41576-022-00550-y")
+(desc ENT-Burt-GeneDrivesMosquitoes "A Nature Reviews Genetics article examining CRISPR-based gene drives designed to suppress Anopheles mosquito populations and reduce malaria transmission.")
+
+(isa ENT-TEDEd-MosquitoesDangerousAnimal ReferenceWork)
+(title ENT-TEDEd-MosquitoesDangerousAnimal "Mosquitoes: The Most Dangerous Animal in the World (TED-Ed)")
+(author ENT-TEDEd-MosquitoesDangerousAnimal "TED-Ed")
+(resourceType ENT-TEDEd-MosquitoesDangerousAnimal video)
+(level ENT-TEDEd-MosquitoesDangerousAnimal beginner)
+(section ENT-TEDEd-MosquitoesDangerousAnimal PestScience)
+(url ENT-TEDEd-MosquitoesDangerousAnimal "https://www.youtube.com/watch?v=KHkYMbOk9H4")
+(desc ENT-TEDEd-MosquitoesDangerousAnimal "An animated TED-Ed lesson explaining why mosquitoes are responsible for more human deaths than any other animal and how we fight back.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: DECLINE — Insect Decline & Conservation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Evidence & Scale of Decline ──
+
+(isa ENT-Hallmann-75PercentDecline ReferenceWork)
+(title ENT-Hallmann-75PercentDecline "More Than 75 Percent Decline over 27 Years in Total Flying Insect Biomass in Protected Areas")
+(author ENT-Hallmann-75PercentDecline "Caspar A. Hallmann et al.")
+(resourceType ENT-Hallmann-75PercentDecline notes)
+(level ENT-Hallmann-75PercentDecline intermediate)
+(section ENT-Hallmann-75PercentDecline InsectDecline)
+(url ENT-Hallmann-75PercentDecline "https://doi.org/10.1371/journal.pone.0185809")
+(desc ENT-Hallmann-75PercentDecline "The landmark Krefeld study that ignited global concern about insect decline, documenting dramatic biomass loss in German nature reserves using Malaise trap data.")
+
+(isa ENT-SanchezBayo-WorldwideDecline ReferenceWork)
+(title ENT-SanchezBayo-WorldwideDecline "Worldwide Decline of the Entomofauna: A Review of Its Drivers")
+(author ENT-SanchezBayo-WorldwideDecline "Francisco Sanchez-Bayo & Kris A.G. Wyckhuys")
+(resourceType ENT-SanchezBayo-WorldwideDecline notes)
+(level ENT-SanchezBayo-WorldwideDecline intermediate)
+(section ENT-SanchezBayo-WorldwideDecline InsectDecline)
+(url ENT-SanchezBayo-WorldwideDecline "https://doi.org/10.1016/j.biocon.2019.01.020")
+(desc ENT-SanchezBayo-WorldwideDecline "A comprehensive meta-review synthesizing 73 studies of insect decline across taxa and regions, identifying habitat change, pollution, and biological factors as primary drivers.")
+
+(isa ENT-Wagner-DeathByThousandCuts ReferenceWork)
+(title ENT-Wagner-DeathByThousandCuts "Insect Decline in the Anthropocene: Death by a Thousand Cuts")
+(author ENT-Wagner-DeathByThousandCuts "David L. Wagner et al.")
+(resourceType ENT-Wagner-DeathByThousandCuts notes)
+(level ENT-Wagner-DeathByThousandCuts intermediate)
+(section ENT-Wagner-DeathByThousandCuts InsectDecline)
+(url ENT-Wagner-DeathByThousandCuts "https://doi.org/10.1073/pnas.2023989118")
+(desc ENT-Wagner-DeathByThousandCuts "A PNAS perspectives article examining the synergistic effects of multiple stressors on insect populations and arguing that no single cause explains global patterns.")
+
+(isa ENT-Milman-InsectCrisis ReferenceWork)
+(title ENT-Milman-InsectCrisis "The Insect Crisis: The Fall of the Tiny Empires That Run the World")
+(author ENT-Milman-InsectCrisis "Oliver Milman")
+(resourceType ENT-Milman-InsectCrisis book)
+(level ENT-Milman-InsectCrisis beginner)
+(section ENT-Milman-InsectCrisis InsectDecline)
+(url ENT-Milman-InsectCrisis "https://wwnorton.com/books/The-Insect-Crisis/")
+(desc ENT-Milman-InsectCrisis "A journalist's accessible investigation of worldwide insect decline, combining field reporting, scientific interviews, and data analysis into a compelling narrative.")
+
+;; ── Drivers & Mechanisms ──
+
+(isa ENT-Forister-WeKnowEnoughToAct ReferenceWork)
+(title ENT-Forister-WeKnowEnoughToAct "Declines in Insect Abundance and Diversity: We Know Enough to Act Now")
+(author ENT-Forister-WeKnowEnoughToAct "Matthew L. Forister et al.")
+(resourceType ENT-Forister-WeKnowEnoughToAct notes)
+(level ENT-Forister-WeKnowEnoughToAct intermediate)
+(section ENT-Forister-WeKnowEnoughToAct InsectDecline)
+(url ENT-Forister-WeKnowEnoughToAct "https://doi.org/10.1111/cobi.13722")
+(desc ENT-Forister-WeKnowEnoughToAct "A Conservation Biology article arguing that despite data gaps, the evidence base for insect decline is sufficient to justify immediate policy and management action.")
+
+(isa ENT-Owens-LightPollutionInsectDeclines ReferenceWork)
+(title ENT-Owens-LightPollutionInsectDeclines "Light Pollution Is a Driver of Insect Declines")
+(author ENT-Owens-LightPollutionInsectDeclines "Avalon C.S. Owens et al.")
+(resourceType ENT-Owens-LightPollutionInsectDeclines notes)
+(level ENT-Owens-LightPollutionInsectDeclines intermediate)
+(section ENT-Owens-LightPollutionInsectDeclines InsectDecline)
+(url ENT-Owens-LightPollutionInsectDeclines "https://doi.org/10.1016/j.biocon.2019.108259")
+(desc ENT-Owens-LightPollutionInsectDeclines "A comprehensive review of the mechanisms through which artificial light at night disrupts insect ecology, from phototactic trapping to disrupted circadian rhythms.")
+
+(isa ENT-Woodcock-NeonicotinoidsWildBees ReferenceWork)
+(title ENT-Woodcock-NeonicotinoidsWildBees "Impacts of Neonicotinoid Use on Long-Term Population Changes in Wild Bees in England")
+(author ENT-Woodcock-NeonicotinoidsWildBees "Ben A. Woodcock et al.")
+(resourceType ENT-Woodcock-NeonicotinoidsWildBees notes)
+(level ENT-Woodcock-NeonicotinoidsWildBees advanced)
+(section ENT-Woodcock-NeonicotinoidsWildBees InsectDecline)
+(url ENT-Woodcock-NeonicotinoidsWildBees "https://doi.org/10.1038/s41467-016-0215-2")
+(desc ENT-Woodcock-NeonicotinoidsWildBees "A Nature Communications study linking long-term wild bee population trends to landscape-scale neonicotinoid usage patterns across England.")
+
+(isa ENT-Yong-InsectApocalypseNotSoFast ReferenceWork)
+(title ENT-Yong-InsectApocalypseNotSoFast "Insect Apocalypse? Not So Fast (Atlantic)")
+(author ENT-Yong-InsectApocalypseNotSoFast "Ed Yong / The Atlantic")
+(resourceType ENT-Yong-InsectApocalypseNotSoFast notes)
+(level ENT-Yong-InsectApocalypseNotSoFast beginner)
+(section ENT-Yong-InsectApocalypseNotSoFast InsectDecline)
+(url ENT-Yong-InsectApocalypseNotSoFast "https://www.theatlantic.com/science/archive/2019/02/insect-apocalypse-really-upon-us/583018/")
+(desc ENT-Yong-InsectApocalypseNotSoFast "An award-winning science journalism piece critically examining the insect apocalypse narrative, highlighting methodological concerns and geographic biases in the data.")
+
+;; ── Conservation Strategies ──
+
+(isa ENT-Samways-InsectConservation ReferenceWork)
+(title ENT-Samways-InsectConservation "Insect Conservation: A Handbook of Approaches and Methods")
+(author ENT-Samways-InsectConservation "Michael J. Samways, Melodie A. McGeoch & Tim R. New")
+(resourceType ENT-Samways-InsectConservation book)
+(level ENT-Samways-InsectConservation intermediate)
+(section ENT-Samways-InsectConservation InsectDecline)
+(url ENT-Samways-InsectConservation "https://global.oup.com/academic/product/insect-conservation-9780199298235")
+(desc ENT-Samways-InsectConservation "A practical handbook covering survey methods, habitat management, landscape-scale planning, and policy frameworks for conserving insect biodiversity.")
+
+(isa ENT-Forister-EightSimpleActions ReferenceWork)
+(title ENT-Forister-EightSimpleActions "Eight Simple Actions That Individuals Can Take to Save Insects from Global Declines")
+(author ENT-Forister-EightSimpleActions "Matt J. Forister et al.")
+(resourceType ENT-Forister-EightSimpleActions notes)
+(level ENT-Forister-EightSimpleActions beginner)
+(section ENT-Forister-EightSimpleActions InsectDecline)
+(url ENT-Forister-EightSimpleActions "https://doi.org/10.1073/pnas.2002547117")
+(desc ENT-Forister-EightSimpleActions "A PNAS paper outlining actionable steps individuals can take to support insect populations, from reducing pesticide use to planting native gardens.")
+
+(isa ENT-Cardoso-ScientistsWarning ReferenceWork)
+(title ENT-Cardoso-ScientistsWarning "Scientists' Warning to Humanity on Insect Extinctions")
+(author ENT-Cardoso-ScientistsWarning "Pedro Cardoso et al.")
+(resourceType ENT-Cardoso-ScientistsWarning notes)
+(level ENT-Cardoso-ScientistsWarning intermediate)
+(section ENT-Cardoso-ScientistsWarning InsectDecline)
+(url ENT-Cardoso-ScientistsWarning "https://doi.org/10.1016/j.biocon.2019.108426")
+(desc ENT-Cardoso-ScientistsWarning "A formal warning signed by 70+ scientists proposing a roadmap for insect conservation including research priorities, management actions, and societal engagement.")
+
+(isa ENT-Buglife-InsectConservation ReferenceWork)
+(title ENT-Buglife-InsectConservation "Insect Conservation (Buglife UK)")
+(author ENT-Buglife-InsectConservation "Buglife")
+(resourceType ENT-Buglife-InsectConservation data)
+(level ENT-Buglife-InsectConservation beginner)
+(section ENT-Buglife-InsectConservation InsectDecline)
+(url ENT-Buglife-InsectConservation "https://www.buglife.org.uk/")
+(desc ENT-Buglife-InsectConservation "The website of Europe's leading invertebrate conservation charity, offering species guides, habitat management advice, and citizen science project portals.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: SIMULATION — Computational Entomology & Containerized Ecosystems
+;; ════════════════════════════════════════════════════════════
+
+;; ── Agent-Based Modeling ──
+
+(isa ENT-Wilensky-IntroABM ReferenceWork)
+(title ENT-Wilensky-IntroABM "An Introduction to Agent-Based Modeling: Modeling Natural, Social, and Engineered Complex Systems with NetLogo")
+(author ENT-Wilensky-IntroABM "Uri Wilensky & William Rand")
+(resourceType ENT-Wilensky-IntroABM book)
+(level ENT-Wilensky-IntroABM beginner)
+(section ENT-Wilensky-IntroABM ComputationalEntomology)
+(url ENT-Wilensky-IntroABM "https://mitpress.mit.edu/9780262731898/an-introduction-to-agent-based-modeling/")
+(desc ENT-Wilensky-IntroABM "The standard ABM textbook using NetLogo, with extensive examples of insect colony simulations including ants, termites, and bee foraging models.")
+
+(isa ENT-Wilensky-NetLogoAnts ReferenceWork)
+(title ENT-Wilensky-NetLogoAnts "NetLogo Ant Colony Model")
+(author ENT-Wilensky-NetLogoAnts "Uri Wilensky / Northwestern University")
+(resourceType ENT-Wilensky-NetLogoAnts code)
+(level ENT-Wilensky-NetLogoAnts beginner)
+(section ENT-Wilensky-NetLogoAnts ComputationalEntomology)
+(url ENT-Wilensky-NetLogoAnts "http://ccl.northwestern.edu/netlogo/models/Ants")
+(desc ENT-Wilensky-NetLogoAnts "The classic NetLogo ant foraging model demonstrating how simple pheromone-following rules produce efficient colony-level food retrieval — a gateway to agent-based entomological modeling.")
+
+(isa ENT-Mesa-ABMPython ReferenceWork)
+(title ENT-Mesa-ABMPython "Mesa: Agent-Based Modeling in Python")
+(author ENT-Mesa-ABMPython "Project Mesa Contributors")
+(resourceType ENT-Mesa-ABMPython code)
+(level ENT-Mesa-ABMPython intermediate)
+(section ENT-Mesa-ABMPython ComputationalEntomology)
+(url ENT-Mesa-ABMPython "https://github.com/projectmesa/mesa")
+(desc ENT-Mesa-ABMPython "A modern Python framework for agent-based modeling with built-in visualization, data collection, and batch-run capabilities for insect population and ecology simulations.")
+
+(isa ENT-Grimm-IndividualBasedEcology ReferenceWork)
+(title ENT-Grimm-IndividualBasedEcology "Individual-Based Ecology of Insect Communities")
+(author ENT-Grimm-IndividualBasedEcology "Volker Grimm & Steven F. Railsback")
+(resourceType ENT-Grimm-IndividualBasedEcology book)
+(level ENT-Grimm-IndividualBasedEcology advanced)
+(section ENT-Grimm-IndividualBasedEcology ComputationalEntomology)
+(url ENT-Grimm-IndividualBasedEcology "https://press.princeton.edu/books/paperback/9780691096667/individual-based-modeling-and-ecology")
+(desc ENT-Grimm-IndividualBasedEcology "A rigorous treatment of individual-based modeling in ecology with detailed protocols for model design, calibration, and analysis applicable to insect community dynamics.")
+
+(isa ENT-GAMA-SpatialSimulation ReferenceWork)
+(title ENT-GAMA-SpatialSimulation "GAMA Platform: Agent-Based Spatial Simulation")
+(author ENT-GAMA-SpatialSimulation "GAMA Platform Team")
+(resourceType ENT-GAMA-SpatialSimulation code)
+(level ENT-GAMA-SpatialSimulation intermediate)
+(section ENT-GAMA-SpatialSimulation ComputationalEntomology)
+(url ENT-GAMA-SpatialSimulation "https://github.com/gama-platform/gama")
+(desc ENT-GAMA-SpatialSimulation "An open-source platform for spatially explicit agent-based simulations, widely used for modeling insect-borne disease spread and pest population dynamics in landscapes.")
+
+;; ── Computer Vision & Identification ──
+
+(isa ENT-iNaturalist-InsectCV ReferenceWork)
+(title ENT-iNaturalist-InsectCV "iNaturalist Computer Vision: Insect Identification")
+(author ENT-iNaturalist-InsectCV "iNaturalist / California Academy of Sciences")
+(resourceType ENT-iNaturalist-InsectCV data)
+(level ENT-iNaturalist-InsectCV beginner)
+(section ENT-iNaturalist-InsectCV ComputationalEntomology)
+(url ENT-iNaturalist-InsectCV "https://www.inaturalist.org/")
+(desc ENT-iNaturalist-InsectCV "The world's largest biodiversity citizen science platform, using computer vision trained on 100M+ observations to automatically identify insect species from photographs.")
+
+(isa ENT-Bjerge-AutomatedInsectMonitoring ReferenceWork)
+(title ENT-Bjerge-AutomatedInsectMonitoring "Automated Insect Monitoring with Deep Learning")
+(author ENT-Bjerge-AutomatedInsectMonitoring "Kim Bjerge et al.")
+(resourceType ENT-Bjerge-AutomatedInsectMonitoring notes)
+(level ENT-Bjerge-AutomatedInsectMonitoring advanced)
+(section ENT-Bjerge-AutomatedInsectMonitoring ComputationalEntomology)
+(url ENT-Bjerge-AutomatedInsectMonitoring "https://doi.org/10.1111/2041-210X.13618")
+(desc ENT-Bjerge-AutomatedInsectMonitoring "A Methods in Ecology and Evolution paper presenting deep learning pipelines for automated insect detection and classification from camera trap images.")
+
+(isa ENT-InsectCV-Dataset ReferenceWork)
+(title ENT-InsectCV-Dataset "InsectCV: A Dataset for Insect Detection and Classification")
+(author ENT-InsectCV-Dataset "Various Contributors")
+(resourceType ENT-InsectCV-Dataset code)
+(level ENT-InsectCV-Dataset intermediate)
+(section ENT-InsectCV-Dataset ComputationalEntomology)
+(url ENT-InsectCV-Dataset "https://github.com/quarrying/awesome-insect-recognition")
+(desc ENT-InsectCV-Dataset "A curated list of datasets, models, and papers for insect recognition using computer vision, including links to benchmark datasets and pretrained models.")
+
+(isa ENT-Wu-IP102 ReferenceWork)
+(title ENT-Wu-IP102 "ip102: A Large-Scale Benchmark Dataset for Insect Pest Recognition")
+(author ENT-Wu-IP102 "Xiaoping Wu et al.")
+(resourceType ENT-Wu-IP102 data)
+(level ENT-Wu-IP102 intermediate)
+(section ENT-Wu-IP102 ComputationalEntomology)
+(url ENT-Wu-IP102 "https://github.com/xpwu95/IP102")
+(desc ENT-Wu-IP102 "A benchmark dataset of 75,000 images across 102 insect pest species, widely used for training and evaluating deep learning classification models.")
+
+;; ── Containerized Ecosystem Simulation ──
+
+(isa ENT-Gotelli-EcoSimR ReferenceWork)
+(title ENT-Gotelli-EcoSimR "EcoSimR: Null Models for Community Ecology in R")
+(author ENT-Gotelli-EcoSimR "Nicholas J. Gotelli & Aaron M. Ellison")
+(resourceType ENT-Gotelli-EcoSimR code)
+(level ENT-Gotelli-EcoSimR intermediate)
+(section ENT-Gotelli-EcoSimR ComputationalEntomology)
+(url ENT-Gotelli-EcoSimR "https://github.com/GotelliLab/EcoSimR")
+(desc ENT-Gotelli-EcoSimR "An R package for running null model analyses of ecological communities, containerizable for reproducible batch analyses of insect assemblage data.")
+
+(isa ENT-Argonne-RepastSimphony ReferenceWork)
+(title ENT-Argonne-RepastSimphony "Repast Simphony: Agent-Based Modeling Toolkit")
+(author ENT-Argonne-RepastSimphony "Argonne National Laboratory")
+(resourceType ENT-Argonne-RepastSimphony code)
+(level ENT-Argonne-RepastSimphony advanced)
+(section ENT-Argonne-RepastSimphony ComputationalEntomology)
+(url ENT-Argonne-RepastSimphony "https://repast.github.io/")
+(desc ENT-Argonne-RepastSimphony "A Java-based agent modeling toolkit from Argonne National Lab supporting distributed simulations of insect populations scalable across cloud computing clusters.")
+
+(isa ENT-Cook-DockerDataScience ReferenceWork)
+(title ENT-Cook-DockerDataScience "Docker for Data Science: Building Reproducible Computational Environments")
+(author ENT-Cook-DockerDataScience "Joshua Cook")
+(resourceType ENT-Cook-DockerDataScience book)
+(level ENT-Cook-DockerDataScience intermediate)
+(section ENT-Cook-DockerDataScience ComputationalEntomology)
+(url ENT-Cook-DockerDataScience "https://link.springer.com/book/10.1007/978-1-4842-3012-1")
+(desc ENT-Cook-DockerDataScience "A practical guide to containerizing scientific computing workflows with Docker, directly applicable to packaging and distributing insect ecosystem simulations as reproducible services.")
+
+(isa ENT-NetLogo-DockerReady ReferenceWork)
+(title ENT-NetLogo-DockerReady "Ecological Modeling with NetLogo (Docker-Ready)")
+(author ENT-NetLogo-DockerReady "NetLogo Community / Docker Hub")
+(resourceType ENT-NetLogo-DockerReady code)
+(level ENT-NetLogo-DockerReady intermediate)
+(section ENT-NetLogo-DockerReady ComputationalEntomology)
+(url ENT-NetLogo-DockerReady "https://github.com/NetLogo/NetLogo")
+(desc ENT-NetLogo-DockerReady "The open-source NetLogo repository, which can be containerized in Docker for headless batch execution of ecological models — ideal for parameter sweeps of insect population dynamics.")
+
+(isa ENT-Sherlock-DigitalTwinsEcosystems ReferenceWork)
+(title ENT-Sherlock-DigitalTwinsEcosystems "Digital Twins for Ecosystems: Concept, Challenges, and Opportunities")
+(author ENT-Sherlock-DigitalTwinsEcosystems "Mark Sherlock & Peter van der Putten")
+(resourceType ENT-Sherlock-DigitalTwinsEcosystems notes)
+(level ENT-Sherlock-DigitalTwinsEcosystems advanced)
+(section ENT-Sherlock-DigitalTwinsEcosystems ComputationalEntomology)
+(url ENT-Sherlock-DigitalTwinsEcosystems "https://doi.org/10.1016/j.ecoinf.2023.102032")
+(desc ENT-Sherlock-DigitalTwinsEcosystems "A review of digital twin concepts applied to ecological systems, examining how sensor networks, simulation models, and real-time data fusion create virtual ecosystem replicas.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources EntomologyReference 97)
+(totalSections EntomologyReference 8)
+(comment EntomologyReference
+  "8 sections: Overview (11), Morphology (12), Ecology (12),
+   Pollination (12), Biomimicry (12), Pest Science (12),
+   Decline (12), Simulation (14). Total: 97 resources.")

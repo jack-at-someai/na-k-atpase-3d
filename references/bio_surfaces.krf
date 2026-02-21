@@ -1,0 +1,829 @@
+;;; ================================================================
+;;; REFERENCE / BIOLOGICAL SURFACES & INTERFACES
+;;; 81 resources across 7 sections
+;;; ================================================================
+;;;
+;;; Superhydrophobicity, gecko adhesion & shark skin. Surface
+;;; engineering from micro-scale biology.
+;;;
+;;; Nature has evolved an astonishing diversity of surface
+;;; architectures over hundreds of millions of years — from
+;;; self-cleaning lotus leaves to reversible gecko adhesion to
+;;; drag-reducing shark skin denticles.
+;;;
+;;; Learning path: Overview → Lotus Effect → Gecko Adhesion →
+;;; Shark Skin → Anti-Fouling → Bio-Adhesion → Characterization
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Biological Surfaces
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa BS-Bhushan-BioNanoSurfaces ReferenceWork)
+(title BS-Bhushan-BioNanoSurfaces "Biological and Bioinspired Micro- and Nanostructured Surfaces")
+(author BS-Bhushan-BioNanoSurfaces "Bharat Bhushan")
+(resourceType BS-Bhushan-BioNanoSurfaces book)
+(level BS-Bhushan-BioNanoSurfaces intermediate)
+(section BS-Bhushan-BioNanoSurfaces BioSurfacesOverview)
+(url BS-Bhushan-BioNanoSurfaces "https://doi.org/10.1007/978-3-030-45528-2")
+(desc BS-Bhushan-BioNanoSurfaces "Comprehensive Springer reference covering hierarchical structuring in nature, wettability, adhesion, and friction at the micro/nanoscale.")
+
+(isa BS-BarCohen-Biomimetics ReferenceWork)
+(title BS-BarCohen-Biomimetics "Biomimetics: Biologically Inspired Technologies")
+(author BS-BarCohen-Biomimetics "Yoseph Bar-Cohen (Ed.)")
+(resourceType BS-BarCohen-Biomimetics book)
+(level BS-BarCohen-Biomimetics intermediate)
+(section BS-BarCohen-Biomimetics BioSurfacesOverview)
+(url BS-BarCohen-Biomimetics "https://doi.org/10.1201/9781420037715")
+(desc BS-BarCohen-Biomimetics "Wide-ranging CRC Press volume on bio-inspired engineering, including chapters on surfaces, adhesion, and locomotion.")
+
+(isa BS-BarnardGuo-NatNano ReferenceWork)
+(title BS-BarnardGuo-NatNano "Nature's Nanostructures")
+(author BS-BarnardGuo-NatNano "Amanda S. Barnard & Haibo Guo (Eds.)")
+(resourceType BS-BarnardGuo-NatNano book)
+(level BS-BarnardGuo-NatNano beginner)
+(section BS-BarnardGuo-NatNano BioSurfacesOverview)
+(url BS-BarnardGuo-NatNano "https://doi.org/10.4032/9789814364218")
+(desc BS-BarnardGuo-NatNano "Pan Stanford collection reviewing naturally occurring nanostructures across biological kingdoms and their functional roles.")
+
+(isa BS-Bhushan-HandbookNanotech ReferenceWork)
+(title BS-Bhushan-HandbookNanotech "Springer Handbook of Nanotechnology (Ch. on Bio-Surfaces)")
+(author BS-Bhushan-HandbookNanotech "Bharat Bhushan (Ed.)")
+(resourceType BS-Bhushan-HandbookNanotech book)
+(level BS-Bhushan-HandbookNanotech advanced)
+(section BS-Bhushan-HandbookNanotech BioSurfacesOverview)
+(url BS-Bhushan-HandbookNanotech "https://doi.org/10.1007/978-3-662-54357-3")
+(desc BS-Bhushan-HandbookNanotech "The authoritative nanotechnology handbook with dedicated chapters on biological surface characterization and biomimetic surfaces.")
+
+;; ── Review Articles ──
+
+(isa BS-Lu-LessonsFromNature ReferenceWork)
+(title BS-Lu-LessonsFromNature "Lessons from Nature: Bio-Inspired Surface Engineering")
+(author BS-Lu-LessonsFromNature "Yao Lu et al.")
+(resourceType BS-Lu-LessonsFromNature notes)
+(level BS-Lu-LessonsFromNature intermediate)
+(section BS-Lu-LessonsFromNature BioSurfacesOverview)
+(url BS-Lu-LessonsFromNature "https://doi.org/10.1039/C4CS00107A")
+(desc BS-Lu-LessonsFromNature "Chemical Society Reviews paper surveying bio-inspired surfaces including superhydrophobic, adhesive, anti-fouling, and structural-color systems.")
+
+(isa BS-Guo-BioInspiredSurfaces ReferenceWork)
+(title BS-Guo-BioInspiredSurfaces "Bio-Inspired Surfaces and Applications")
+(author BS-Guo-BioInspiredSurfaces "Zhiguang Guo et al.")
+(resourceType BS-Guo-BioInspiredSurfaces notes)
+(level BS-Guo-BioInspiredSurfaces intermediate)
+(section BS-Guo-BioInspiredSurfaces BioSurfacesOverview)
+(url BS-Guo-BioInspiredSurfaces "https://doi.org/10.1016/j.cis.2012.03.009")
+(desc BS-Guo-BioInspiredSurfaces "Advances in Colloid and Interface Science review on surface wettability, adhesion, and anti-fouling in biological systems.")
+
+(isa BS-MiljkovicWang-PhaseChange ReferenceWork)
+(title BS-MiljkovicWang-PhaseChange "Surface Engineering for Phase Change Heat Transfer: A Review")
+(author BS-MiljkovicWang-PhaseChange "Nenad Miljkovic & Evelyn N. Wang")
+(resourceType BS-MiljkovicWang-PhaseChange notes)
+(level BS-MiljkovicWang-PhaseChange advanced)
+(section BS-MiljkovicWang-PhaseChange BioSurfacesOverview)
+(url BS-MiljkovicWang-PhaseChange "https://doi.org/10.1016/j.ijheatmasstransfer.2012.09.045")
+(desc BS-MiljkovicWang-PhaseChange "Though heat-transfer focused, this review provides excellent context on engineered wettability and droplet dynamics on bio-inspired surfaces.")
+
+(isa BS-Wegst-BioinspiredStructural ReferenceWork)
+(title BS-Wegst-BioinspiredStructural "Bioinspired Structural Materials")
+(author BS-Wegst-BioinspiredStructural "Ulrike G. K. Wegst et al.")
+(resourceType BS-Wegst-BioinspiredStructural notes)
+(level BS-Wegst-BioinspiredStructural intermediate)
+(section BS-Wegst-BioinspiredStructural BioSurfacesOverview)
+(url BS-Wegst-BioinspiredStructural "https://doi.org/10.1038/nmat4089")
+(desc BS-Wegst-BioinspiredStructural "Nature Materials review on how biological organisms build hierarchical structures that combine mechanical and surface functionality.")
+
+;; ── Introductory Lectures ──
+
+(isa BS-MIT-Biomimicry ReferenceWork)
+(title BS-MIT-Biomimicry "Biomimicry: Inspired by Nature (MIT OpenCourseWare)")
+(author BS-MIT-Biomimicry "MIT")
+(resourceType BS-MIT-Biomimicry course)
+(level BS-MIT-Biomimicry beginner)
+(section BS-MIT-Biomimicry BioSurfacesOverview)
+(url BS-MIT-Biomimicry "https://ocw.mit.edu/courses/ec-710-d-lab-design-fall-2010/")
+(desc BS-MIT-Biomimicry "MIT OCW design lab introducing biomimetic principles including surface-level inspiration from organisms.")
+
+(isa BS-CrashCourse-NatureEng ReferenceWork)
+(title BS-CrashCourse-NatureEng "Nature-Inspired Engineering — Crash Course Engineering")
+(author BS-CrashCourse-NatureEng "CrashCourse")
+(resourceType BS-CrashCourse-NatureEng video)
+(level BS-CrashCourse-NatureEng beginner)
+(section BS-CrashCourse-NatureEng BioSurfacesOverview)
+(url BS-CrashCourse-NatureEng "https://www.youtube.com/watch?v=iMtXqTmfta0")
+(desc BS-CrashCourse-NatureEng "Accessible 10-minute overview of how engineers copy nature's surfaces, from Velcro to shark skin swimsuits.")
+
+(isa BS-TEDEd-Biomimetics ReferenceWork)
+(title BS-TEDEd-Biomimetics "Biomimetics: Learning from Nature (TED-Ed)")
+(author BS-TEDEd-Biomimetics "TED-Ed")
+(resourceType BS-TEDEd-Biomimetics video)
+(level BS-TEDEd-Biomimetics beginner)
+(section BS-TEDEd-Biomimetics BioSurfacesOverview)
+(url BS-TEDEd-Biomimetics "https://www.youtube.com/watch?v=UHkEbemburs")
+(desc BS-TEDEd-Biomimetics "Short animated lesson on biomimicry with examples of surface-inspired inventions.")
+
+(isa BS-Gorb-FunctionalSurfaces ReferenceWork)
+(title BS-Gorb-FunctionalSurfaces "Functional Surfaces in Biology (Vols. 1-3)")
+(author BS-Gorb-FunctionalSurfaces "Stanislav N. Gorb (Ed.)")
+(resourceType BS-Gorb-FunctionalSurfaces book)
+(level BS-Gorb-FunctionalSurfaces advanced)
+(section BS-Gorb-FunctionalSurfaces BioSurfacesOverview)
+(url BS-Gorb-FunctionalSurfaces "https://doi.org/10.1007/978-1-4020-6697-9")
+(desc BS-Gorb-FunctionalSurfaces "Three-volume Springer set cataloguing functional surface structures across the animal and plant kingdoms, from adhesion to optical effects.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: LOTUS EFFECT — Superhydrophobicity & Self-Cleaning
+;; ════════════════════════════════════════════════════════════
+
+;; ── Fundamental Science ──
+
+(isa BS-Barthlott-LotusEffect ReferenceWork)
+(title BS-Barthlott-LotusEffect "Purity of the Sacred Lotus, or Escape from Contamination in Biological Surfaces")
+(author BS-Barthlott-LotusEffect "Wilhelm Barthlott & Christoph Neinhuis")
+(resourceType BS-Barthlott-LotusEffect notes)
+(level BS-Barthlott-LotusEffect intermediate)
+(section BS-Barthlott-LotusEffect LotusEffect)
+(url BS-Barthlott-LotusEffect "https://doi.org/10.1007/s004250050096")
+(desc BS-Barthlott-LotusEffect "The 1997 Planta paper that introduced the 'lotus effect' to the scientific community, launching the field of biomimetic superhydrophobic surfaces.")
+
+(isa BS-CassieBaxter-WettabilityPorous ReferenceWork)
+(title BS-CassieBaxter-WettabilityPorous "Wettability of Porous Surfaces")
+(author BS-CassieBaxter-WettabilityPorous "A. B. D. Cassie & S. Baxter")
+(resourceType BS-CassieBaxter-WettabilityPorous notes)
+(level BS-CassieBaxter-WettabilityPorous advanced)
+(section BS-CassieBaxter-WettabilityPorous LotusEffect)
+(url BS-CassieBaxter-WettabilityPorous "https://doi.org/10.1039/TF9444000546")
+(desc BS-CassieBaxter-WettabilityPorous "The foundational 1944 Transactions of the Faraday Society paper deriving the Cassie-Baxter equation for composite interfaces.")
+
+(isa BS-BhushanJung-SuperhydroChar ReferenceWork)
+(title BS-BhushanJung-SuperhydroChar "Micro- and Nanoscale Characterization of Superhydrophobic Surfaces")
+(author BS-BhushanJung-SuperhydroChar "Bharat Bhushan & Yong Chae Jung")
+(resourceType BS-BhushanJung-SuperhydroChar notes)
+(level BS-BhushanJung-SuperhydroChar advanced)
+(section BS-BhushanJung-SuperhydroChar LotusEffect)
+(url BS-BhushanJung-SuperhydroChar "https://doi.org/10.1007/978-3-642-15263-4_2")
+(desc BS-BhushanJung-SuperhydroChar "Detailed study of hierarchical surface structure on lotus leaves using AFM and SEM, explaining stability of the Cassie state.")
+
+(isa BS-Vollmer-SuperhydroLecture ReferenceWork)
+(title BS-Vollmer-SuperhydroLecture "Superhydrophobic Surfaces — Lecture by Prof. Doris Vollmer")
+(author BS-Vollmer-SuperhydroLecture "Max Planck Institute")
+(resourceType BS-Vollmer-SuperhydroLecture video)
+(level BS-Vollmer-SuperhydroLecture intermediate)
+(section BS-Vollmer-SuperhydroLecture LotusEffect)
+(url BS-Vollmer-SuperhydroLecture "https://www.youtube.com/watch?v=BvbkSm3kJuE")
+(desc BS-Vollmer-SuperhydroLecture "Research lecture on the physics of superhydrophobic coatings, Cassie-Wenzel transitions, and droplet dynamics.")
+
+;; ── Synthetic Superhydrophobic Surfaces ──
+
+(isa BS-Marmur-SuperhydroStates ReferenceWork)
+(title BS-Marmur-SuperhydroStates "Superhydrophobic States")
+(author BS-Marmur-SuperhydroStates "Abraham Marmur")
+(resourceType BS-Marmur-SuperhydroStates notes)
+(level BS-Marmur-SuperhydroStates advanced)
+(section BS-Marmur-SuperhydroStates LotusEffect)
+(url BS-Marmur-SuperhydroStates "https://doi.org/10.1021/la034753r")
+(desc BS-Marmur-SuperhydroStates "Langmuir paper providing a thermodynamic framework for understanding Cassie and Wenzel superhydrophobic states.")
+
+(isa BS-Ras-RobustSuperhydro ReferenceWork)
+(title BS-Ras-RobustSuperhydro "Robust Superhydrophobic Surfaces (Nature Reviews Materials)")
+(author BS-Ras-RobustSuperhydro "Robin H. A. Ras et al.")
+(resourceType BS-Ras-RobustSuperhydro notes)
+(level BS-Ras-RobustSuperhydro intermediate)
+(section BS-Ras-RobustSuperhydro LotusEffect)
+(url BS-Ras-RobustSuperhydro "https://doi.org/10.1038/natrevmats.2017.36")
+(desc BS-Ras-RobustSuperhydro "Comprehensive review on mechanical durability challenges and design strategies for real-world superhydrophobic coatings.")
+
+(isa BS-GitHub-Superhydrophobic ReferenceWork)
+(title BS-GitHub-Superhydrophobic "Fabrication of Superhydrophobic Surfaces — GitHub Protocols")
+(author BS-GitHub-Superhydrophobic "Various contributors")
+(resourceType BS-GitHub-Superhydrophobic code)
+(level BS-GitHub-Superhydrophobic intermediate)
+(section BS-GitHub-Superhydrophobic LotusEffect)
+(url BS-GitHub-Superhydrophobic "https://github.com/topics/superhydrophobic")
+(desc BS-GitHub-Superhydrophobic "GitHub topic page aggregating open-source repositories on fabrication methods, image analysis, and contact angle computation for superhydrophobic surfaces.")
+
+(isa BS-Coursera-NanoCoatings ReferenceWork)
+(title BS-Coursera-NanoCoatings "Introduction to Superhydrophobic Coatings (Coursera)")
+(author BS-Coursera-NanoCoatings "EPFL / Coursera")
+(resourceType BS-Coursera-NanoCoatings course)
+(level BS-Coursera-NanoCoatings beginner)
+(section BS-Coursera-NanoCoatings LotusEffect)
+(url BS-Coursera-NanoCoatings "https://www.coursera.org/learn/nanotechnology-fundamentals")
+(desc BS-Coursera-NanoCoatings "Coursera nanotechnology fundamentals course with modules covering surface energy, wettability engineering, and lotus-inspired coatings.")
+
+;; ── Industrial Applications ──
+
+(isa BS-Koch-SelfCleaningCoatings ReferenceWork)
+(title BS-Koch-SelfCleaningCoatings "Self-Cleaning Coatings: From the Lotus Leaf to Commercial Products")
+(author BS-Koch-SelfCleaningCoatings "Kerstin Koch et al.")
+(resourceType BS-Koch-SelfCleaningCoatings notes)
+(level BS-Koch-SelfCleaningCoatings beginner)
+(section BS-Koch-SelfCleaningCoatings LotusEffect)
+(url BS-Koch-SelfCleaningCoatings "https://doi.org/10.1098/rsta.2009.0056")
+(desc BS-Koch-SelfCleaningCoatings "Royal Society review tracing the lotus effect from biological discovery to industrial self-cleaning glass and facade coatings.")
+
+(isa BS-Cao-AntiIcing ReferenceWork)
+(title BS-Cao-AntiIcing "Anti-Icing Superhydrophobic Surfaces: Controlling Entropic and Energetic Factors")
+(author BS-Cao-AntiIcing "Liangliang Cao et al.")
+(resourceType BS-Cao-AntiIcing notes)
+(level BS-Cao-AntiIcing advanced)
+(section BS-Cao-AntiIcing LotusEffect)
+(url BS-Cao-AntiIcing "https://doi.org/10.1021/nn900437e")
+(desc BS-Cao-AntiIcing "ACS Nano study demonstrating how superhydrophobic nanostructures delay ice formation, with applications to aircraft and power lines.")
+
+(isa BS-RealEng-LotusInspired ReferenceWork)
+(title BS-RealEng-LotusInspired "How Lotus-Inspired Tech Works (Real Engineering)")
+(author BS-RealEng-LotusInspired "Real Engineering")
+(resourceType BS-RealEng-LotusInspired video)
+(level BS-RealEng-LotusInspired beginner)
+(section BS-RealEng-LotusInspired LotusEffect)
+(url BS-RealEng-LotusInspired "https://www.youtube.com/watch?v=mMBFP2EMSqo")
+(desc BS-RealEng-LotusInspired "YouTube explainer on commercial products inspired by lotus-effect superhydrophobicity including NeverWet and self-cleaning glass.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: GECKO ADHESION — van der Waals Forces
+;; ════════════════════════════════════════════════════════════
+
+;; ── Gecko Biology & Physics ──
+
+(isa BS-Autumn-GeckoFootHair ReferenceWork)
+(title BS-Autumn-GeckoFootHair "Adhesive Force of a Single Gecko Foot-Hair")
+(author BS-Autumn-GeckoFootHair "Kellar Autumn et al.")
+(resourceType BS-Autumn-GeckoFootHair notes)
+(level BS-Autumn-GeckoFootHair intermediate)
+(section BS-Autumn-GeckoFootHair GeckoAdhesion)
+(url BS-Autumn-GeckoFootHair "https://doi.org/10.1038/35049572")
+(desc BS-Autumn-GeckoFootHair "The landmark 2000 Nature paper measuring adhesion of individual gecko setae and demonstrating the van der Waals mechanism.")
+
+(isa BS-Autumn-VdWEvidence ReferenceWork)
+(title BS-Autumn-VdWEvidence "Evidence for van der Waals Adhesion in Gecko Setae")
+(author BS-Autumn-VdWEvidence "Kellar Autumn et al.")
+(resourceType BS-Autumn-VdWEvidence notes)
+(level BS-Autumn-VdWEvidence advanced)
+(section BS-Autumn-VdWEvidence GeckoAdhesion)
+(url BS-Autumn-VdWEvidence "https://doi.org/10.1073/pnas.162246899")
+(desc BS-Autumn-VdWEvidence "PNAS follow-up providing rigorous evidence that van der Waals forces, not capillary or electrostatic effects, dominate gecko adhesion.")
+
+(isa BS-Veritasium-GeckoStick ReferenceWork)
+(title BS-Veritasium-GeckoStick "How Do Geckos Stick to Walls? (Veritasium)")
+(author BS-Veritasium-GeckoStick "Veritasium")
+(resourceType BS-Veritasium-GeckoStick video)
+(level BS-Veritasium-GeckoStick beginner)
+(section BS-Veritasium-GeckoStick GeckoAdhesion)
+(url BS-Veritasium-GeckoStick "https://www.youtube.com/watch?v=cEAdsbIIR2I")
+(desc BS-Veritasium-GeckoStick "Popular science video explaining gecko adhesion, van der Waals forces, and the spatula hierarchy with clear visuals.")
+
+(isa BS-AutumnHansen-SelfCleaning ReferenceWork)
+(title BS-AutumnHansen-SelfCleaning "Self-Cleaning of Gecko-Inspired Adhesives")
+(author BS-AutumnHansen-SelfCleaning "Kellar Autumn & Wendy Hansen")
+(resourceType BS-AutumnHansen-SelfCleaning notes)
+(level BS-AutumnHansen-SelfCleaning intermediate)
+(section BS-AutumnHansen-SelfCleaning GeckoAdhesion)
+(url BS-AutumnHansen-SelfCleaning "https://doi.org/10.1073/pnas.0503774102")
+(desc BS-AutumnHansen-SelfCleaning "PNAS study showing that gecko toe pads recover adhesive function by shedding debris during walking, a built-in self-cleaning mechanism.")
+
+;; ── Synthetic Gecko Adhesives ──
+
+(isa BS-Bartlett-Geckskin ReferenceWork)
+(title BS-Bartlett-Geckskin "Gecko-Inspired Nanofibrillar Adhesives (Geckskin)")
+(author BS-Bartlett-Geckskin "Michael Bartlett et al.")
+(resourceType BS-Bartlett-Geckskin notes)
+(level BS-Bartlett-Geckskin intermediate)
+(section BS-Bartlett-Geckskin GeckoAdhesion)
+(url BS-Bartlett-Geckskin "https://doi.org/10.1002/adma.201200218")
+(desc BS-Bartlett-Geckskin "Advanced Materials paper on Geckskin, a gecko-inspired adhesive pad that holds 700 lbs on a smooth surface and releases cleanly.")
+
+(isa BS-SittiFearing-DirectionalAdh ReferenceWork)
+(title BS-SittiFearing-DirectionalAdh "Directional Adhesion of Gecko-Inspired Fibrillar Surfaces")
+(author BS-SittiFearing-DirectionalAdh "Metin Sitti & Ronald S. Fearing")
+(resourceType BS-SittiFearing-DirectionalAdh notes)
+(level BS-SittiFearing-DirectionalAdh advanced)
+(section BS-SittiFearing-DirectionalAdh GeckoAdhesion)
+(url BS-SittiFearing-DirectionalAdh "https://doi.org/10.1063/1.1594820")
+(desc BS-SittiFearing-DirectionalAdh "Applied Physics Letters study on fabricating directional polymer nanofibrillar adhesives mimicking gecko seta geometry.")
+
+(isa BS-GitHub-GeckoAdhesion ReferenceWork)
+(title BS-GitHub-GeckoAdhesion "Gecko-Inspired Dry Adhesive — Fabrication Code")
+(author BS-GitHub-GeckoAdhesion "Various contributors")
+(resourceType BS-GitHub-GeckoAdhesion code)
+(level BS-GitHub-GeckoAdhesion intermediate)
+(section BS-GitHub-GeckoAdhesion GeckoAdhesion)
+(url BS-GitHub-GeckoAdhesion "https://github.com/topics/gecko-adhesion")
+(desc BS-GitHub-GeckoAdhesion "GitHub topic aggregating simulation code, FEM models, and fabrication protocols for synthetic gecko-inspired adhesive structures.")
+
+(isa BS-CutkoskyKim-ScalableFab ReferenceWork)
+(title BS-CutkoskyKim-ScalableFab "Scalable Fabrication of Gecko-Inspired Adhesives")
+(author BS-CutkoskyKim-ScalableFab "Mark Cutkosky & Sangbae Kim")
+(resourceType BS-CutkoskyKim-ScalableFab notes)
+(level BS-CutkoskyKim-ScalableFab advanced)
+(section BS-CutkoskyKim-ScalableFab GeckoAdhesion)
+(url BS-CutkoskyKim-ScalableFab "https://doi.org/10.1098/rsif.2008.0042")
+(desc BS-CutkoskyKim-ScalableFab "Journal of the Royal Society Interface paper on manufacturing scalable directional adhesives for robotic climbing applications.")
+
+;; ── Climbing Robots & Applications ──
+
+(isa BS-Kim-Stickybot ReferenceWork)
+(title BS-Kim-Stickybot "Stickybot: A Gecko-Inspired Climbing Robot")
+(author BS-Kim-Stickybot "Sangbae Kim et al.")
+(resourceType BS-Kim-Stickybot notes)
+(level BS-Kim-Stickybot intermediate)
+(section BS-Kim-Stickybot GeckoAdhesion)
+(url BS-Kim-Stickybot "https://doi.org/10.1109/ROBOT.2007.363827")
+(desc BS-Kim-Stickybot "IEEE paper on Stanford's Stickybot, a robot that climbs smooth vertical surfaces using directional gecko-inspired adhesive pads.")
+
+(isa BS-DARPA-ZMan ReferenceWork)
+(title BS-DARPA-ZMan "DARPA Z-Man Program — Gecko Climbing Paddles")
+(author BS-DARPA-ZMan "DARPA / Draper Laboratory")
+(resourceType BS-DARPA-ZMan video)
+(level BS-DARPA-ZMan beginner)
+(section BS-DARPA-ZMan GeckoAdhesion)
+(url BS-DARPA-ZMan "https://www.youtube.com/watch?v=Bz_lgTx3bEY")
+(desc BS-DARPA-ZMan "Video demonstrating DARPA's Z-Man program, where a human climbs a glass wall using gecko-inspired handheld paddles.")
+
+(isa BS-Parness-GeckoGripper ReferenceWork)
+(title BS-Parness-GeckoGripper "Gecko Gripper for Space Debris Capture (NASA JPL)")
+(author BS-Parness-GeckoGripper "Aaron Parness et al.")
+(resourceType BS-Parness-GeckoGripper notes)
+(level BS-Parness-GeckoGripper intermediate)
+(section BS-Parness-GeckoGripper GeckoAdhesion)
+(url BS-Parness-GeckoGripper "https://doi.org/10.1126/scirobotics.aan4986")
+(desc BS-Parness-GeckoGripper "Science Robotics paper on NASA JPL's gecko-inspired gripper for grasping and manipulating objects in microgravity.")
+
+(isa BS-StanfordBDML-ClimbingRobots ReferenceWork)
+(title BS-StanfordBDML-ClimbingRobots "Stanford Climbing Robots (Stanford BDML Lab)")
+(author BS-StanfordBDML-ClimbingRobots "Stanford BDML")
+(resourceType BS-StanfordBDML-ClimbingRobots video)
+(level BS-StanfordBDML-ClimbingRobots beginner)
+(section BS-StanfordBDML-ClimbingRobots GeckoAdhesion)
+(url BS-StanfordBDML-ClimbingRobots "https://www.youtube.com/watch?v=yjLgOuClJLA")
+(desc BS-StanfordBDML-ClimbingRobots "Lab video showcasing various generations of climbing robots using gecko-inspired directional dry adhesives.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: SHARK SKIN — Drag Reduction
+;; ════════════════════════════════════════════════════════════
+
+;; ── Shark Skin Morphology ──
+
+(isa BS-OeffnerLauder-DenticleFunction ReferenceWork)
+(title BS-OeffnerLauder-DenticleFunction "Structure and Function of Shark Skin Denticles")
+(author BS-OeffnerLauder-DenticleFunction "Johannes Oeffner & George V. Lauder")
+(resourceType BS-OeffnerLauder-DenticleFunction notes)
+(level BS-OeffnerLauder-DenticleFunction intermediate)
+(section BS-OeffnerLauder-DenticleFunction SharkSkin)
+(url BS-OeffnerLauder-DenticleFunction "https://doi.org/10.1242/jeb.063040")
+(desc BS-OeffnerLauder-DenticleFunction "Journal of Experimental Biology study using flow visualization to demonstrate how real shark skin denticles interact with the boundary layer.")
+
+(isa BS-Lang-SharkSkinReview ReferenceWork)
+(title BS-Lang-SharkSkinReview "Shark Skin Surfaces for Fluid-Drag Reduction in Turbulent Flow: A Review")
+(author BS-Lang-SharkSkinReview "Amy W. Lang et al.")
+(resourceType BS-Lang-SharkSkinReview notes)
+(level BS-Lang-SharkSkinReview intermediate)
+(section BS-Lang-SharkSkinReview SharkSkin)
+(url BS-Lang-SharkSkinReview "https://doi.org/10.1098/rsta.2010.0294")
+(desc BS-Lang-SharkSkinReview "Phil. Trans. Royal Society review comparing drag reduction performance of different denticle geometries across shark species.")
+
+(isa BS-SmarterEveryDay-SharkSkin ReferenceWork)
+(title BS-SmarterEveryDay-SharkSkin "The Hydrodynamics of Shark Skin (SmarterEveryDay)")
+(author BS-SmarterEveryDay-SharkSkin "SmarterEveryDay")
+(resourceType BS-SmarterEveryDay-SharkSkin video)
+(level BS-SmarterEveryDay-SharkSkin beginner)
+(section BS-SmarterEveryDay-SharkSkin SharkSkin)
+(url BS-SmarterEveryDay-SharkSkin "https://www.youtube.com/watch?v=eMJGPJAti3Q")
+(desc BS-SmarterEveryDay-SharkSkin "Engaging YouTube video using slow-motion footage and microscopy to show how shark skin denticles work at the boundary layer.")
+
+(isa BS-Habegger-DenticleDiversity ReferenceWork)
+(title BS-Habegger-DenticleDiversity "Diversity of Dermal Denticle Structure in Sharks")
+(author BS-Habegger-DenticleDiversity "Lisa K. Habegger et al.")
+(resourceType BS-Habegger-DenticleDiversity notes)
+(level BS-Habegger-DenticleDiversity intermediate)
+(section BS-Habegger-DenticleDiversity SharkSkin)
+(url BS-Habegger-DenticleDiversity "https://doi.org/10.1002/jmor.20359")
+(desc BS-Habegger-DenticleDiversity "Journal of Morphology comparative study of denticle geometry across shark species, linking denticle shape to ecological niche and swimming speed.")
+
+;; ── Drag Reduction Engineering ──
+
+(isa BS-Bechert-RibletExperiments ReferenceWork)
+(title BS-Bechert-RibletExperiments "Experiments on Drag-Reducing Surfaces (Riblets)")
+(author BS-Bechert-RibletExperiments "Dean W. Bechert et al.")
+(resourceType BS-Bechert-RibletExperiments notes)
+(level BS-Bechert-RibletExperiments advanced)
+(section BS-Bechert-RibletExperiments SharkSkin)
+(url BS-Bechert-RibletExperiments "https://doi.org/10.1017/S0022112097006635")
+(desc BS-Bechert-RibletExperiments "Landmark Journal of Fluid Mechanics paper providing comprehensive wind-tunnel data on riblet geometries for maximum drag reduction.")
+
+(isa BS-GarciaMayoral-RibletReview ReferenceWork)
+(title BS-GarciaMayoral-RibletReview "Turbulent Drag Reduction by Riblets (Annual Review)")
+(author BS-GarciaMayoral-RibletReview "Ricardo Garcia-Mayoral & Javier Jimenez")
+(resourceType BS-GarciaMayoral-RibletReview notes)
+(level BS-GarciaMayoral-RibletReview advanced)
+(section BS-GarciaMayoral-RibletReview SharkSkin)
+(url BS-GarciaMayoral-RibletReview "https://doi.org/10.1098/rsta.2010.0359")
+(desc BS-GarciaMayoral-RibletReview "Authoritative review of the fluid mechanics behind riblet-based drag reduction, including DNS simulation results.")
+
+(isa BS-GitHub-RibletSimulation ReferenceWork)
+(title BS-GitHub-RibletSimulation "OpenFOAM Riblet Simulation Tutorials")
+(author BS-GitHub-RibletSimulation "Various contributors")
+(resourceType BS-GitHub-RibletSimulation code)
+(level BS-GitHub-RibletSimulation advanced)
+(section BS-GitHub-RibletSimulation SharkSkin)
+(url BS-GitHub-RibletSimulation "https://github.com/topics/riblet")
+(desc BS-GitHub-RibletSimulation "GitHub repositories containing OpenFOAM configurations and Python scripts for simulating turbulent flow over riblet surfaces.")
+
+(isa BS-Wen-3DPrintedSharkSkin ReferenceWork)
+(title BS-Wen-3DPrintedSharkSkin "3D Printing Shark-Skin-Inspired Surfaces")
+(author BS-Wen-3DPrintedSharkSkin "Li Wen et al.")
+(resourceType BS-Wen-3DPrintedSharkSkin notes)
+(level BS-Wen-3DPrintedSharkSkin intermediate)
+(section BS-Wen-3DPrintedSharkSkin SharkSkin)
+(url BS-Wen-3DPrintedSharkSkin "https://doi.org/10.1242/jeb.097097")
+(desc BS-Wen-3DPrintedSharkSkin "Journal of Experimental Biology paper on 3D-printing biomimetic shark skin denticles and testing drag reduction in a flow tunnel.")
+
+;; ── Commercial Applications ──
+
+(isa BS-Speedo-Fastskin ReferenceWork)
+(title BS-Speedo-Fastskin "Speedo Fastskin: Biomimicry in Competitive Swimming")
+(author BS-Speedo-Fastskin "Speedo / Various journalists")
+(resourceType BS-Speedo-Fastskin video)
+(level BS-Speedo-Fastskin beginner)
+(section BS-Speedo-Fastskin SharkSkin)
+(url BS-Speedo-Fastskin "https://www.youtube.com/watch?v=7XHdPsNdVfI")
+(desc BS-Speedo-Fastskin "Documentary segment on the development of Speedo's Fastskin swimsuit, inspired by shark denticle patterns, and its controversial Olympic ban.")
+
+(isa BS-Lufthansa-RibletFilm ReferenceWork)
+(title BS-Lufthansa-RibletFilm "Riblet Films for Fuel Savings on Commercial Aircraft (Lufthansa/BASF)")
+(author BS-Lufthansa-RibletFilm "Lufthansa Technik")
+(resourceType BS-Lufthansa-RibletFilm notes)
+(level BS-Lufthansa-RibletFilm beginner)
+(section BS-Lufthansa-RibletFilm SharkSkin)
+(url BS-Lufthansa-RibletFilm "https://doi.org/10.2514/6.2019-1960")
+(desc BS-Lufthansa-RibletFilm "AIAA paper on Lufthansa and BASF's shark-skin-inspired riblet film applied to aircraft fuselages, projecting 1% fuel savings fleet-wide.")
+
+(isa BS-SharkSkinShips-AntiFouling ReferenceWork)
+(title BS-SharkSkinShips-AntiFouling "Shark Skin for Ships: Anti-Fouling and Drag Reduction")
+(author BS-SharkSkinShips-AntiFouling "Various")
+(resourceType BS-SharkSkinShips-AntiFouling notes)
+(level BS-SharkSkinShips-AntiFouling intermediate)
+(section BS-SharkSkinShips-AntiFouling SharkSkin)
+(url BS-SharkSkinShips-AntiFouling "https://doi.org/10.1088/1748-3190/7/4/046002")
+(desc BS-SharkSkinShips-AntiFouling "Bioinspiration & Biomimetics paper evaluating dual drag-reduction and anti-fouling performance of shark-skin-textured hull coatings.")
+
+(isa BS-Sareen-WindTurbineRiblets ReferenceWork)
+(title BS-Sareen-WindTurbineRiblets "Wind Turbine Blade Riblets for Energy Gain")
+(author BS-Sareen-WindTurbineRiblets "P. Sareen et al.")
+(resourceType BS-Sareen-WindTurbineRiblets notes)
+(level BS-Sareen-WindTurbineRiblets advanced)
+(section BS-Sareen-WindTurbineRiblets SharkSkin)
+(url BS-Sareen-WindTurbineRiblets "https://doi.org/10.2514/6.2012-1060")
+(desc BS-Sareen-WindTurbineRiblets "AIAA conference paper demonstrating that shark-skin-inspired riblet films on wind turbine blades improve aerodynamic efficiency by reducing boundary layer drag.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: ANTI-FOULING — Bio-Inspired Anti-Fouling Surfaces
+;; ════════════════════════════════════════════════════════════
+
+;; ── Marine Anti-Fouling Biology ──
+
+(isa BS-CallowCallow-MarineBiofouling ReferenceWork)
+(title BS-CallowCallow-MarineBiofouling "Marine Biofouling: A Sticky Problem (Nature Reviews Microbiology)")
+(author BS-CallowCallow-MarineBiofouling "Jeremy A. Callow & Maureen E. Callow")
+(resourceType BS-CallowCallow-MarineBiofouling notes)
+(level BS-CallowCallow-MarineBiofouling intermediate)
+(section BS-CallowCallow-MarineBiofouling AntiFouling)
+(url BS-CallowCallow-MarineBiofouling "https://doi.org/10.1016/j.biotechadv.2008.09.002")
+(desc BS-CallowCallow-MarineBiofouling "Comprehensive review of the biofouling process from biofilm formation to macrofouling, and the biological mechanisms organisms use to resist it.")
+
+(isa BS-deNysSteinberg-NaturalDefenses ReferenceWork)
+(title BS-deNysSteinberg-NaturalDefenses "Natural Anti-Fouling Defenses of Marine Organisms")
+(author BS-deNysSteinberg-NaturalDefenses "Rocky de Nys & Peter Steinberg")
+(resourceType BS-deNysSteinberg-NaturalDefenses notes)
+(level BS-deNysSteinberg-NaturalDefenses intermediate)
+(section BS-deNysSteinberg-NaturalDefenses AntiFouling)
+(url BS-deNysSteinberg-NaturalDefenses "https://doi.org/10.1080/08927010009386328")
+(desc BS-deNysSteinberg-NaturalDefenses "Biofouling journal review cataloging chemical and physical anti-fouling strategies across marine phyla from sponges to seagrasses.")
+
+(isa BS-BrennanCallow-BiofoulingLessons ReferenceWork)
+(title BS-BrennanCallow-BiofoulingLessons "Biofouling: Lessons from Nature (Annual Review of Materials Research)")
+(author BS-BrennanCallow-BiofoulingLessons "Anthony Brennan & Thomas Callow")
+(resourceType BS-BrennanCallow-BiofoulingLessons notes)
+(level BS-BrennanCallow-BiofoulingLessons intermediate)
+(section BS-BrennanCallow-BiofoulingLessons AntiFouling)
+(url BS-BrennanCallow-BiofoulingLessons "https://doi.org/10.1146/annurev-matsci-070909-104432")
+(desc BS-BrennanCallow-BiofoulingLessons "Annual Review article connecting natural anti-fouling mechanisms to material science design principles for synthetic surfaces.")
+
+(isa BS-NOAA-BiofoulingIntro ReferenceWork)
+(title BS-NOAA-BiofoulingIntro "Marine Biofouling — An Introduction (NOAA)")
+(author BS-NOAA-BiofoulingIntro "NOAA Ocean Explorer")
+(resourceType BS-NOAA-BiofoulingIntro video)
+(level BS-NOAA-BiofoulingIntro beginner)
+(section BS-NOAA-BiofoulingIntro AntiFouling)
+(url BS-NOAA-BiofoulingIntro "https://www.youtube.com/watch?v=bIy3PoYkGis")
+(desc BS-NOAA-BiofoulingIntro "Introductory video explaining what biofouling is, why it matters for shipping and marine ecosystems, and how organisms resist it.")
+
+;; ── Synthetic Anti-Fouling Surfaces ──
+
+(isa BS-Brennan-SharkletAF ReferenceWork)
+(title BS-Brennan-SharkletAF "Sharklet AF: Micro-Pattern Inhibits Bacterial Settlement")
+(author BS-Brennan-SharkletAF "Anthony B. Brennan et al.")
+(resourceType BS-Brennan-SharkletAF notes)
+(level BS-Brennan-SharkletAF intermediate)
+(section BS-Brennan-SharkletAF AntiFouling)
+(url BS-Brennan-SharkletAF "https://doi.org/10.1088/1748-3182/2/4/S04")
+(desc BS-Brennan-SharkletAF "Bioinspiration & Biomimetics paper introducing the Sharklet micro-pattern, demonstrating 85% reduction in Staphylococcus aureus attachment.")
+
+(isa BS-JiangCao-ZwitterionicCoatings ReferenceWork)
+(title BS-JiangCao-ZwitterionicCoatings "Zwitterionic Polymer Coatings for Anti-Fouling")
+(author BS-JiangCao-ZwitterionicCoatings "Shaoyi Jiang & Zhiqiang Cao")
+(resourceType BS-JiangCao-ZwitterionicCoatings notes)
+(level BS-JiangCao-ZwitterionicCoatings advanced)
+(section BS-JiangCao-ZwitterionicCoatings AntiFouling)
+(url BS-JiangCao-ZwitterionicCoatings "https://doi.org/10.1002/adma.200903328")
+(desc BS-JiangCao-ZwitterionicCoatings "Advanced Materials paper on ultra-low-fouling zwitterionic polymer brushes that resist protein adsorption and cell attachment.")
+
+(isa BS-Wong-SLIPS ReferenceWork)
+(title BS-Wong-SLIPS "Slippery Liquid-Infused Porous Surfaces (SLIPS)")
+(author BS-Wong-SLIPS "Tak-Sing Wong et al.")
+(resourceType BS-Wong-SLIPS notes)
+(level BS-Wong-SLIPS intermediate)
+(section BS-Wong-SLIPS AntiFouling)
+(url BS-Wong-SLIPS "https://doi.org/10.1038/nature10447")
+(desc BS-Wong-SLIPS "Nature paper on pitcher-plant-inspired SLIPS coatings that repel virtually all liquids and resist biofouling.")
+
+(isa BS-AMBIO-AntiFoulingData ReferenceWork)
+(title BS-AMBIO-AntiFoulingData "Anti-Fouling Coating Testing — Open Data")
+(author BS-AMBIO-AntiFoulingData "AMBIO EU Project")
+(resourceType BS-AMBIO-AntiFoulingData data)
+(level BS-AMBIO-AntiFoulingData intermediate)
+(section BS-AMBIO-AntiFoulingData AntiFouling)
+(url BS-AMBIO-AntiFoulingData "https://doi.org/10.1080/08927014.2009.9911178")
+(desc BS-AMBIO-AntiFoulingData "Published dataset from the EU AMBIO project evaluating anti-fouling performance of various bio-inspired coatings in marine field trials.")
+
+;; ── Biomedical Anti-Fouling ──
+
+(isa BS-Mould-AntiBiofilmImplants ReferenceWork)
+(title BS-Mould-AntiBiofilmImplants "Anti-Biofilm Surfaces for Medical Implants")
+(author BS-Mould-AntiBiofilmImplants "Kara L. Mould et al.")
+(resourceType BS-Mould-AntiBiofilmImplants notes)
+(level BS-Mould-AntiBiofilmImplants intermediate)
+(section BS-Mould-AntiBiofilmImplants AntiFouling)
+(url BS-Mould-AntiBiofilmImplants "https://doi.org/10.1039/C5CS00013K")
+(desc BS-Mould-AntiBiofilmImplants "Chemical Society Reviews paper reviewing bio-inspired surface strategies to prevent bacterial biofilm on catheters, implants, and surgical tools.")
+
+(isa BS-Choi-PEGBiosensors ReferenceWork)
+(title BS-Choi-PEGBiosensors "PEG-Based Anti-Fouling Coatings for Biosensors")
+(author BS-Choi-PEGBiosensors "Insung S. Choi et al.")
+(resourceType BS-Choi-PEGBiosensors notes)
+(level BS-Choi-PEGBiosensors advanced)
+(section BS-Choi-PEGBiosensors AntiFouling)
+(url BS-Choi-PEGBiosensors "https://doi.org/10.1021/acs.langmuir.5b04171")
+(desc BS-Choi-PEGBiosensors "Langmuir paper on poly(ethylene glycol) brush coatings that prevent nonspecific protein adsorption on biosensor surfaces.")
+
+(isa BS-Sharklet-HospitalInfections ReferenceWork)
+(title BS-Sharklet-HospitalInfections "Micro-Textured Surfaces to Combat Hospital Infections")
+(author BS-Sharklet-HospitalInfections "Sharklet Technologies")
+(resourceType BS-Sharklet-HospitalInfections video)
+(level BS-Sharklet-HospitalInfections beginner)
+(section BS-Sharklet-HospitalInfections AntiFouling)
+(url BS-Sharklet-HospitalInfections "https://www.youtube.com/watch?v=Z3W5gRDveRc")
+(desc BS-Sharklet-HospitalInfections "Video presentation on Sharklet Technologies' shark-skin-inspired micro-textures being applied to hospital surfaces to reduce HAIs.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: BIO-ADHESION — Biological Adhesion Beyond Gecko
+;; ════════════════════════════════════════════════════════════
+
+;; ── Mussel-Inspired Adhesives ──
+
+(isa BS-Lee-MusselPolydopamine ReferenceWork)
+(title BS-Lee-MusselPolydopamine "Mussel-Inspired Surface Chemistry for Multifunctional Coatings")
+(author BS-Lee-MusselPolydopamine "Haeshin Lee, Shara M. Dellatore, William M. Miller & Phillip B. Messersmith")
+(resourceType BS-Lee-MusselPolydopamine notes)
+(level BS-Lee-MusselPolydopamine intermediate)
+(section BS-Lee-MusselPolydopamine BioAdhesion)
+(url BS-Lee-MusselPolydopamine "https://doi.org/10.1126/science.1147241")
+(desc BS-Lee-MusselPolydopamine "Landmark 2007 Science paper showing polydopamine can coat virtually any surface, launched the field of mussel-inspired surface chemistry.")
+
+(isa BS-Lee-MusselMimeticPolymers ReferenceWork)
+(title BS-Lee-MusselMimeticPolymers "Mussel Adhesive Protein Mimetic Polymers")
+(author BS-Lee-MusselMimeticPolymers "Bruce P. Lee, Phillip B. Messersmith, Jeffrey N. Israelachvili & Jacob H. Waite")
+(resourceType BS-Lee-MusselMimeticPolymers notes)
+(level BS-Lee-MusselMimeticPolymers advanced)
+(section BS-Lee-MusselMimeticPolymers BioAdhesion)
+(url BS-Lee-MusselMimeticPolymers "https://doi.org/10.1146/annurev-matsci-062910-100429")
+(desc BS-Lee-MusselMimeticPolymers "Annual Review of Materials Research on the chemistry of mussel foot proteins and synthetic DOPA-containing polymer design.")
+
+(isa BS-GitHub-Polydopamine ReferenceWork)
+(title BS-GitHub-Polydopamine "Polydopamine Surface Modification — Protocols")
+(author BS-GitHub-Polydopamine "Various contributors")
+(resourceType BS-GitHub-Polydopamine code)
+(level BS-GitHub-Polydopamine intermediate)
+(section BS-GitHub-Polydopamine BioAdhesion)
+(url BS-GitHub-Polydopamine "https://github.com/topics/polydopamine")
+(desc BS-GitHub-Polydopamine "GitHub repositories with polydopamine coating protocols, XPS analysis scripts, and adhesion testing data processing tools.")
+
+(isa BS-DeepLook-MusselGlue ReferenceWork)
+(title BS-DeepLook-MusselGlue "How Mussels Stick to Anything (Deep Look / KQED)")
+(author BS-DeepLook-MusselGlue "Deep Look / KQED")
+(resourceType BS-DeepLook-MusselGlue video)
+(level BS-DeepLook-MusselGlue beginner)
+(section BS-DeepLook-MusselGlue BioAdhesion)
+(url BS-DeepLook-MusselGlue "https://www.youtube.com/watch?v=SDXkLLMYtCc")
+(desc BS-DeepLook-MusselGlue "Beautiful short documentary on mussel byssus threads, DOPA chemistry, and how scientists are mimicking mussel glue.")
+
+;; ── Tree Frog & Wet Adhesion ──
+
+(isa BS-Barnes-TreeFrogPads ReferenceWork)
+(title BS-Barnes-TreeFrogPads "Tree Frog Toe Pads: Mechanisms of Wet Adhesion")
+(author BS-Barnes-TreeFrogPads "W. Jon P. Barnes et al.")
+(resourceType BS-Barnes-TreeFrogPads notes)
+(level BS-Barnes-TreeFrogPads intermediate)
+(section BS-Barnes-TreeFrogPads BioAdhesion)
+(url BS-Barnes-TreeFrogPads "https://doi.org/10.1098/rsif.2013.0234")
+(desc BS-Barnes-TreeFrogPads "Journal of the Royal Society Interface paper elucidating how tree frog pads use structured channels and mucus for grip on wet surfaces.")
+
+(isa BS-Endlein-WetAdhesionNoGlue ReferenceWork)
+(title BS-Endlein-WetAdhesionNoGlue "Wet Adhesion with No Adhesive: How Tree Frogs Stick")
+(author BS-Endlein-WetAdhesionNoGlue "Thomas Endlein et al.")
+(resourceType BS-Endlein-WetAdhesionNoGlue notes)
+(level BS-Endlein-WetAdhesionNoGlue intermediate)
+(section BS-Endlein-WetAdhesionNoGlue BioAdhesion)
+(url BS-Endlein-WetAdhesionNoGlue "https://doi.org/10.1098/rspb.2012.2569")
+(desc BS-Endlein-WetAdhesionNoGlue "Proc. Royal Society B study using interferometry to reveal the thin fluid film dynamics underlying tree frog adhesion.")
+
+(isa BS-Xue-WetAdhesiveFab ReferenceWork)
+(title BS-Xue-WetAdhesiveFab "Bio-Inspired Wet Adhesive Surfaces — Fabrication")
+(author BS-Xue-WetAdhesiveFab "Longjian Xue et al.")
+(resourceType BS-Xue-WetAdhesiveFab notes)
+(level BS-Xue-WetAdhesiveFab advanced)
+(section BS-Xue-WetAdhesiveFab BioAdhesion)
+(url BS-Xue-WetAdhesiveFab "https://doi.org/10.1002/adma.201104614")
+(desc BS-Xue-WetAdhesiveFab "Advanced Materials paper on micropillar arrays with hexagonal tips mimicking tree frog toe pad geometry for wet adhesion.")
+
+;; ── Underwater & Surgical Adhesives ──
+
+(isa BS-Messersmith-GeckoMusselTissue ReferenceWork)
+(title BS-Messersmith-GeckoMusselTissue "A Tissue Adhesive Inspired by Mussel and Gecko")
+(author BS-Messersmith-GeckoMusselTissue "Phillip B. Messersmith et al.")
+(resourceType BS-Messersmith-GeckoMusselTissue notes)
+(level BS-Messersmith-GeckoMusselTissue intermediate)
+(section BS-Messersmith-GeckoMusselTissue BioAdhesion)
+(url BS-Messersmith-GeckoMusselTissue "https://doi.org/10.1038/nature06089")
+(desc BS-Messersmith-GeckoMusselTissue "Nature paper combining gecko-inspired nanopillars with mussel-inspired DOPA coating to create a reversible wet/dry tissue adhesive.")
+
+(isa BS-Li-ToughAdhesives ReferenceWork)
+(title BS-Li-ToughAdhesives "Tough Adhesives for Diverse Wet Surfaces")
+(author BS-Li-ToughAdhesives "Jianyu Li et al.")
+(resourceType BS-Li-ToughAdhesives notes)
+(level BS-Li-ToughAdhesives intermediate)
+(section BS-Li-ToughAdhesives BioAdhesion)
+(url BS-Li-ToughAdhesives "https://doi.org/10.1126/science.aah6362")
+(desc BS-Li-ToughAdhesives "Science paper introducing a slug-inspired tough adhesive that bonds strongly to wet biological tissues for surgical applications.")
+
+(isa BS-AldredClare-BarnacleCement ReferenceWork)
+(title BS-AldredClare-BarnacleCement "Barnacle Cement: The Strongest Bioadhesive")
+(author BS-AldredClare-BarnacleCement "Nick Aldred & Anthony S. Clare")
+(resourceType BS-AldredClare-BarnacleCement notes)
+(level BS-AldredClare-BarnacleCement advanced)
+(section BS-AldredClare-BarnacleCement BioAdhesion)
+(url BS-AldredClare-BarnacleCement "https://doi.org/10.1088/1748-3182/3/4/046002")
+(desc BS-AldredClare-BarnacleCement "Bioinspiration & Biomimetics review on barnacle cement proteins, their water-displacement mechanism, and potential as surgical adhesive templates.")
+
+(isa BS-NatureVideo-SurgicalGlues ReferenceWork)
+(title BS-NatureVideo-SurgicalGlues "Bio-Inspired Surgical Glues (Nature Video)")
+(author BS-NatureVideo-SurgicalGlues "Nature Video")
+(resourceType BS-NatureVideo-SurgicalGlues video)
+(level BS-NatureVideo-SurgicalGlues beginner)
+(section BS-NatureVideo-SurgicalGlues BioAdhesion)
+(url BS-NatureVideo-SurgicalGlues "https://www.youtube.com/watch?v=e7pMO8MvnWU")
+(desc BS-NatureVideo-SurgicalGlues "Nature journal video explaining how slug mucus and mussel proteins are inspiring a new generation of surgical tissue adhesives.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: CHARACTERIZATION — Surface Characterization Tools
+;; ════════════════════════════════════════════════════════════
+
+;; ── Microscopy & Imaging ──
+
+(isa BS-Bhushan-SPMBioStructures ReferenceWork)
+(title BS-Bhushan-SPMBioStructures "Scanning Probe Microscopy of Biological Structures")
+(author BS-Bhushan-SPMBioStructures "Bharat Bhushan")
+(resourceType BS-Bhushan-SPMBioStructures book)
+(level BS-Bhushan-SPMBioStructures advanced)
+(section BS-Bhushan-SPMBioStructures Characterization)
+(url BS-Bhushan-SPMBioStructures "https://doi.org/10.1007/978-3-642-15263-4")
+(desc BS-Bhushan-SPMBioStructures "Springer monograph on AFM techniques applied to biological surfaces, including force-distance measurements on gecko setae and lotus leaves.")
+
+(isa BS-RMS-SEMBioSurfaces ReferenceWork)
+(title BS-RMS-SEMBioSurfaces "SEM Imaging of Biological Surfaces (Royal Microscopical Society)")
+(author BS-RMS-SEMBioSurfaces "Royal Microscopical Society")
+(resourceType BS-RMS-SEMBioSurfaces video)
+(level BS-RMS-SEMBioSurfaces beginner)
+(section BS-RMS-SEMBioSurfaces Characterization)
+(url BS-RMS-SEMBioSurfaces "https://www.youtube.com/watch?v=GY9lfO-tVfE")
+(desc BS-RMS-SEMBioSurfaces "Tutorial video on preparing and imaging biological surfaces in SEM, including critical-point drying and sputter coating techniques.")
+
+(isa BS-Gwyddion-SPMAnalysis ReferenceWork)
+(title BS-Gwyddion-SPMAnalysis "Gwyddion — Open Source SPM Data Analysis")
+(author BS-Gwyddion-SPMAnalysis "David Necas & Petr Klapetek")
+(resourceType BS-Gwyddion-SPMAnalysis code)
+(level BS-Gwyddion-SPMAnalysis intermediate)
+(section BS-Gwyddion-SPMAnalysis Characterization)
+(url BS-Gwyddion-SPMAnalysis "http://gwyddion.net/")
+(desc BS-Gwyddion-SPMAnalysis "Free, open-source software for SPM (AFM, STM) data visualization and analysis, widely used in biological surface characterization.")
+
+(isa BS-ImageJFiji-SurfaceAnalysis ReferenceWork)
+(title BS-ImageJFiji-SurfaceAnalysis "ImageJ/Fiji for Surface Analysis")
+(author BS-ImageJFiji-SurfaceAnalysis "NIH / Fiji contributors")
+(resourceType BS-ImageJFiji-SurfaceAnalysis code)
+(level BS-ImageJFiji-SurfaceAnalysis beginner)
+(section BS-ImageJFiji-SurfaceAnalysis Characterization)
+(url BS-ImageJFiji-SurfaceAnalysis "https://github.com/fiji/fiji")
+(desc BS-ImageJFiji-SurfaceAnalysis "Open-source image processing platform with plugins for contact angle measurement, roughness analysis, and SEM image quantification.")
+
+;; ── Wettability Measurement ──
+
+(isa BS-Mittal-ContactAngle ReferenceWork)
+(title BS-Mittal-ContactAngle "Contact Angle, Wettability and Adhesion (Mittal, Ed.)")
+(author BS-Mittal-ContactAngle "K. L. Mittal (Ed.)")
+(resourceType BS-Mittal-ContactAngle book)
+(level BS-Mittal-ContactAngle intermediate)
+(section BS-Mittal-ContactAngle Characterization)
+(url BS-Mittal-ContactAngle "https://doi.org/10.1201/b18470")
+(desc BS-Mittal-ContactAngle "Definitive CRC Press volume on contact angle measurement theory and practice, including sessile drop, captive bubble, and Wilhelmy plate methods.")
+
+(isa BS-MarmurBittoun-ContactAngleReview ReferenceWork)
+(title BS-MarmurBittoun-ContactAngleReview "Measurement of Contact Angles: A Critical Review")
+(author BS-MarmurBittoun-ContactAngleReview "A. Marmur & E. Bittoun")
+(resourceType BS-MarmurBittoun-ContactAngleReview notes)
+(level BS-MarmurBittoun-ContactAngleReview advanced)
+(section BS-MarmurBittoun-ContactAngleReview Characterization)
+(url BS-MarmurBittoun-ContactAngleReview "https://doi.org/10.1146/annurev-matsci-062910-100349")
+(desc BS-MarmurBittoun-ContactAngleReview "Annual Review critiquing common errors in contact angle measurement and providing guidelines for reporting superhydrophobic surface data.")
+
+(isa BS-OpenDrop-ContactAngle ReferenceWork)
+(title BS-OpenDrop-ContactAngle "OpenDrop — Open Source Contact Angle Analysis")
+(author BS-OpenDrop-ContactAngle "Various contributors")
+(resourceType BS-OpenDrop-ContactAngle code)
+(level BS-OpenDrop-ContactAngle intermediate)
+(section BS-OpenDrop-ContactAngle Characterization)
+(url BS-OpenDrop-ContactAngle "https://github.com/CrackingPacking/OpenDrop")
+(desc BS-OpenDrop-ContactAngle "Python-based open-source tool for pendant drop and sessile drop contact angle analysis from camera images.")
+
+(isa BS-BiolinSci-ContactAngleTutorial ReferenceWork)
+(title BS-BiolinSci-ContactAngleTutorial "How to Measure Contact Angle (Tutorial)")
+(author BS-BiolinSci-ContactAngleTutorial "Biolin Scientific")
+(resourceType BS-BiolinSci-ContactAngleTutorial video)
+(level BS-BiolinSci-ContactAngleTutorial beginner)
+(section BS-BiolinSci-ContactAngleTutorial Characterization)
+(url BS-BiolinSci-ContactAngleTutorial "https://www.youtube.com/watch?v=4G2gXaMhPGE")
+(desc BS-BiolinSci-ContactAngleTutorial "Instrument manufacturer tutorial on setting up sessile drop measurements, interpreting advancing/receding angles, and avoiding common pitfalls.")
+
+;; ── Surface Mechanics Testing ──
+
+(isa BS-Bhushan-Nanotribology ReferenceWork)
+(title BS-Bhushan-Nanotribology "Nanotribology and Nanomechanics")
+(author BS-Bhushan-Nanotribology "Bharat Bhushan")
+(resourceType BS-Bhushan-Nanotribology book)
+(level BS-Bhushan-Nanotribology advanced)
+(section BS-Bhushan-Nanotribology Characterization)
+(url BS-Bhushan-Nanotribology "https://doi.org/10.1007/978-3-642-15263-4_15")
+(desc BS-Bhushan-Nanotribology "Comprehensive Springer reference on micro/nano-tribology methods used to characterize friction and adhesion on biological surfaces.")
+
+(isa BS-Valtiner-AFMForceSpec ReferenceWork)
+(title BS-Valtiner-AFMForceSpec "AFM Force Spectroscopy on Biological Adhesives")
+(author BS-Valtiner-AFMForceSpec "Markus Valtiner et al.")
+(resourceType BS-Valtiner-AFMForceSpec notes)
+(level BS-Valtiner-AFMForceSpec advanced)
+(section BS-Valtiner-AFMForceSpec Characterization)
+(url BS-Valtiner-AFMForceSpec "https://doi.org/10.1021/la300684q")
+(desc BS-Valtiner-AFMForceSpec "Langmuir paper demonstrating AFM-based single-molecule force spectroscopy on mussel adhesive proteins and DOPA-surface interactions.")
+
+(isa BS-JoVE-TribologyTesting ReferenceWork)
+(title BS-JoVE-TribologyTesting "Tribology Testing of Bio-Inspired Surfaces (JoVE)")
+(author BS-JoVE-TribologyTesting "Journal of Visualized Experiments")
+(resourceType BS-JoVE-TribologyTesting video)
+(level BS-JoVE-TribologyTesting intermediate)
+(section BS-JoVE-TribologyTesting Characterization)
+(url BS-JoVE-TribologyTesting "https://www.youtube.com/watch?v=LD6RFyAXh_c")
+(desc BS-JoVE-TribologyTesting "JoVE protocol video on using micro-tribometers to measure friction coefficients on textured bio-inspired polymer surfaces.")
+
+(isa BS-GitHub-PythonTribology ReferenceWork)
+(title BS-GitHub-PythonTribology "Python Tribology — Computational Tools")
+(author BS-GitHub-PythonTribology "Various contributors")
+(resourceType BS-GitHub-PythonTribology code)
+(level BS-GitHub-PythonTribology intermediate)
+(section BS-GitHub-PythonTribology Characterization)
+(url BS-GitHub-PythonTribology "https://github.com/topics/tribology")
+(desc BS-GitHub-PythonTribology "GitHub topic collecting Python libraries and Jupyter notebooks for tribological data analysis, contact mechanics, and surface roughness computation.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources BioSurfacesReference 81)
+(totalSections BioSurfacesReference 7)
+(comment BioSurfacesReference
+  "7 sections: Overview (12), Lotus Effect (11), Gecko Adhesion (12),
+   Shark Skin (12), Anti-Fouling (11), Bio-Adhesion (11),
+   Characterization (12). Total: 81 resources.")

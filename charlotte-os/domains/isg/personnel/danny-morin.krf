@@ -1,0 +1,65 @@
+;;; ================================================================
+;;; ISG PERSONNEL / DANNY MORIN
+;;; President, Morin Process Equipment
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa DannyMorin Person)
+(isa DannyMorin SubsidiaryPresident)
+(hasAttribute DannyMorin ::LABEL "Danny Morin")
+(hasAttribute DannyMorin ::ROLE "President, Morin Process Equipment")
+(hasAttribute DannyMorin ::EMAIL "dmorin@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo DannyMorin JohnJensen)
+(LEADS DannyMorin MorinProcessEquipment)
+
+;; Co-founded with wife
+(hasAttribute DannyMorin ::CO_FOUNDER "April Morin (wife)")
+(hasAttribute DannyMorin ::RELATIONSHIP_TO_CEO "Long personal relationship with Jim Richard")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt DannyMorin Pelham-AL)
+(hasAttribute DannyMorin ::SERVICE_TERRITORY "AL, GA, FL, MS, TN, AR, KY")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch DannyMorin "Morin Process Equipment — Co-founder & President" 2007 9999)
+(careerEpoch DannyMorin "Morin Repair Services — Co-founder" 2008 9999)
+(careerEpoch DannyMorin "Joined ISG platform" 2020 9999)
+
+(hasAttribute DannyMorin ::FOUNDER_YEARS "15+ years growing independently before ISG")
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn DannyMorin PumpRepair)
+(expertiseIn DannyMorin HeatExchangers)
+(expertiseIn DannyMorin ValveService)
+(expertiseIn DannyMorin ProcessMechanical)
+(expertiseIn DannyMorin RotatingEquipmentRepair)
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa DannyMorin-FounderOperator SIGNAL)
+(comment DannyMorin-FounderOperator
+  "Danny co-founded Morin Process Equipment with his wife April in 2007.
+   After 15 years of independent growth, he joined ISG through a long
+   personal relationship with Jim Richard. His quote: 'What would have
+   required 8-10 years of traditional growth could be accelerated to
+   2-3 years through ISG capital backing.' Classic founder who sees
+   the platform advantage — treat him as an owner, not a division head.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithMorin PROTOCOL)
+(hasTrigger Protocol-InteractWithMorin (sessionCaller ?Session DannyMorin))
+(comment Protocol-InteractWithMorin
+  "Danny is a founder-operator in the southeastern US. He thinks in
+   repair jobs, customer relationships, and shop floor operations.
+   He covers 7 states and specializes in pumps, heat exchangers, and
+   process mechanical equipment. Practical, hands-on, relationship-driven.")

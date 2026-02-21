@@ -1,0 +1,863 @@
+;;; ================================================================
+;;; REFERENCE / ECOLOGICAL SYSTEMS DESIGN
+;;; 85 resources across 7 sections
+;;; ================================================================
+;;;
+;;; Circular economy & regenerative design. Closed-loop systems that
+;;; mirror ecosystem nutrient cycles.
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Introduction to Ecological Systems Design
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa ESD-McHarg-DesignWithNature ReferenceWork)
+(title ESD-McHarg-DesignWithNature "Design with Nature")
+(author ESD-McHarg-DesignWithNature "Ian McHarg")
+(resourceType ESD-McHarg-DesignWithNature book)
+(level ESD-McHarg-DesignWithNature beginner)
+(section ESD-McHarg-DesignWithNature EcologicalSystemsDesignOverview)
+(url ESD-McHarg-DesignWithNature "https://www.wiley.com/en-us/Design+with+Nature-p-9780471114604")
+(desc ESD-McHarg-DesignWithNature "The landmark 1969 book that pioneered ecological land-use planning, arguing that natural processes should guide the design of human settlements and infrastructure.")
+
+(isa ESD-VanDerRynCowan-EcologicalDesign ReferenceWork)
+(title ESD-VanDerRynCowan-EcologicalDesign "Ecological Design")
+(author ESD-VanDerRynCowan-EcologicalDesign "Sim Van der Ryn & Stuart Cowan")
+(resourceType ESD-VanDerRynCowan-EcologicalDesign book)
+(level ESD-VanDerRynCowan-EcologicalDesign beginner)
+(section ESD-VanDerRynCowan-EcologicalDesign EcologicalSystemsDesignOverview)
+(url ESD-VanDerRynCowan-EcologicalDesign "https://islandpress.org/books/ecological-design-tenth-anniversary-edition")
+(desc ESD-VanDerRynCowan-EcologicalDesign "A foundational guide that proposes five principles for integrating ecological thinking into design practice, from architecture to agriculture.")
+
+(isa ESD-Benyus-Biomimicry ReferenceWork)
+(title ESD-Benyus-Biomimicry "Biomimicry: Innovation Inspired by Nature")
+(author ESD-Benyus-Biomimicry "Janine Benyus")
+(resourceType ESD-Benyus-Biomimicry book)
+(level ESD-Benyus-Biomimicry beginner)
+(section ESD-Benyus-Biomimicry EcologicalSystemsDesignOverview)
+(url ESD-Benyus-Biomimicry "https://www.harpercollins.com/products/biomimicry-janine-m-benyus")
+(desc ESD-Benyus-Biomimicry "Introduces biomimicry as a design discipline, showing how engineers and designers can emulate nature's time-tested patterns and strategies.")
+
+(isa ESD-Hawken-EcologyOfCommerce ReferenceWork)
+(title ESD-Hawken-EcologyOfCommerce "The Ecology of Commerce")
+(author ESD-Hawken-EcologyOfCommerce "Paul Hawken")
+(resourceType ESD-Hawken-EcologyOfCommerce book)
+(level ESD-Hawken-EcologyOfCommerce beginner)
+(section ESD-Hawken-EcologyOfCommerce EcologicalSystemsDesignOverview)
+(url ESD-Hawken-EcologyOfCommerce "https://www.harpercollins.com/products/the-ecology-of-commerce-revised-edition-paul-hawken")
+(desc ESD-Hawken-EcologyOfCommerce "Argues that business and environmental interests are not opposed, proposing an industrial system modeled on biological metabolism.")
+
+(isa ESD-Meadows-ThinkingInSystems ReferenceWork)
+(title ESD-Meadows-ThinkingInSystems "Thinking in Systems: A Primer")
+(author ESD-Meadows-ThinkingInSystems "Donella Meadows")
+(resourceType ESD-Meadows-ThinkingInSystems book)
+(level ESD-Meadows-ThinkingInSystems beginner)
+(section ESD-Meadows-ThinkingInSystems EcologicalSystemsDesignOverview)
+(url ESD-Meadows-ThinkingInSystems "https://www.chelseagreen.com/product/thinking-in-systems/")
+(desc ESD-Meadows-ThinkingInSystems "An accessible introduction to systems dynamics and feedback loops, providing the conceptual toolkit for understanding ecosystems and designing systemic interventions.")
+
+;; ── Review Articles ──
+
+(isa ESD-White-IndustrialEcologyGoals ReferenceWork)
+(title ESD-White-IndustrialEcologyGoals "Industrial Ecology: Goals and Definitions")
+(author ESD-White-IndustrialEcologyGoals "Robert White")
+(resourceType ESD-White-IndustrialEcologyGoals notes)
+(level ESD-White-IndustrialEcologyGoals intermediate)
+(section ESD-White-IndustrialEcologyGoals EcologicalSystemsDesignOverview)
+(url ESD-White-IndustrialEcologyGoals "https://doi.org/10.1016/B978-0-08-052381-0.50005-4")
+(desc ESD-White-IndustrialEcologyGoals "An early overview that defines industrial ecology and maps its relationship to environmental science, engineering, and public policy.")
+
+(isa ESD-Guiltinan-CircularEconomyReview ReferenceWork)
+(title ESD-Guiltinan-CircularEconomyReview "A Review of the Circular Economy and its Implementation")
+(author ESD-Guiltinan-CircularEconomyReview "Guiltinan et al.")
+(resourceType ESD-Guiltinan-CircularEconomyReview notes)
+(level ESD-Guiltinan-CircularEconomyReview intermediate)
+(section ESD-Guiltinan-CircularEconomyReview EcologicalSystemsDesignOverview)
+(url ESD-Guiltinan-CircularEconomyReview "https://doi.org/10.1111/jiec.12605")
+(desc ESD-Guiltinan-CircularEconomyReview "A comprehensive review examining circular economy definitions, conceptual frameworks, and barriers to implementation across sectors.")
+
+(isa ESD-Reed-RegenerativeDevelopment ReferenceWork)
+(title ESD-Reed-RegenerativeDevelopment "Regenerative Development and Design: A Framework for Evolving Sustainability")
+(author ESD-Reed-RegenerativeDevelopment "Bill Reed")
+(resourceType ESD-Reed-RegenerativeDevelopment notes)
+(level ESD-Reed-RegenerativeDevelopment intermediate)
+(section ESD-Reed-RegenerativeDevelopment EcologicalSystemsDesignOverview)
+(url ESD-Reed-RegenerativeDevelopment "https://doi.org/10.1080/09613218.2007.9496515")
+(desc ESD-Reed-RegenerativeDevelopment "Introduces the trajectory from green to sustainable to regenerative design, proposing a framework for human systems that co-evolve with living systems.")
+
+(isa ESD-Frosch-IndustrialEcologyConcept ReferenceWork)
+(title ESD-Frosch-IndustrialEcologyConcept "The Concept of Industrial Ecology: Origins and Future Directions")
+(author ESD-Frosch-IndustrialEcologyConcept "Robert Frosch")
+(resourceType ESD-Frosch-IndustrialEcologyConcept notes)
+(level ESD-Frosch-IndustrialEcologyConcept intermediate)
+(section ESD-Frosch-IndustrialEcologyConcept EcologicalSystemsDesignOverview)
+(url ESD-Frosch-IndustrialEcologyConcept "https://doi.org/10.1162/jiec.1992.1.1.1")
+(desc ESD-Frosch-IndustrialEcologyConcept "One of the seminal papers in the field, articulating the vision of industrial systems as analogues to biological ecosystems.")
+
+;; ── Introductory Courses ──
+
+(isa ESD-Delft-CircularEconomyIntro ReferenceWork)
+(title ESD-Delft-CircularEconomyIntro "Circular Economy: An Introduction")
+(author ESD-Delft-CircularEconomyIntro "Delft University of Technology")
+(resourceType ESD-Delft-CircularEconomyIntro course)
+(level ESD-Delft-CircularEconomyIntro beginner)
+(section ESD-Delft-CircularEconomyIntro EcologicalSystemsDesignOverview)
+(url ESD-Delft-CircularEconomyIntro "https://www.edx.org/learn/circular-economy/delft-university-of-technology-circular-economy-an-introduction")
+(desc ESD-Delft-CircularEconomyIntro "A free edX course covering the basics of circular economy thinking, from linear to circular business models, with real-world case studies.")
+
+(isa ESD-OpenUniv-SystemsThinking ReferenceWork)
+(title ESD-OpenUniv-SystemsThinking "Systems Thinking In Practice")
+(author ESD-OpenUniv-SystemsThinking "The Open University")
+(resourceType ESD-OpenUniv-SystemsThinking course)
+(level ESD-OpenUniv-SystemsThinking beginner)
+(section ESD-OpenUniv-SystemsThinking EcologicalSystemsDesignOverview)
+(url ESD-OpenUniv-SystemsThinking "https://www.open.edu/openlearn/science-maths-technology/systems-thinking-and-practice/content-section-0")
+(desc ESD-OpenUniv-SystemsThinking "Free course on systems thinking fundamentals, teaching how to identify feedback loops, emergent properties, and leverage points in complex systems.")
+
+(isa ESD-BiomimicryInst-BeginnersGuide ReferenceWork)
+(title ESD-BiomimicryInst-BeginnersGuide "Biomimicry: A Beginner's Guide")
+(author ESD-BiomimicryInst-BeginnersGuide "Biomimicry Institute")
+(resourceType ESD-BiomimicryInst-BeginnersGuide video)
+(level ESD-BiomimicryInst-BeginnersGuide beginner)
+(section ESD-BiomimicryInst-BeginnersGuide EcologicalSystemsDesignOverview)
+(url ESD-BiomimicryInst-BeginnersGuide "https://www.youtube.com/watch?v=sf4oW8OtaPY")
+(desc ESD-BiomimicryInst-BeginnersGuide "Janine Benyus introduces biomimicry and explains how designers and engineers can learn from 3.8 billion years of evolutionary R&D.")
+
+(isa ESD-Yale-WhatIsIndustrialEcology ReferenceWork)
+(title ESD-Yale-WhatIsIndustrialEcology "What is Industrial Ecology?")
+(author ESD-Yale-WhatIsIndustrialEcology "Yale University")
+(resourceType ESD-Yale-WhatIsIndustrialEcology video)
+(level ESD-Yale-WhatIsIndustrialEcology beginner)
+(section ESD-Yale-WhatIsIndustrialEcology EcologicalSystemsDesignOverview)
+(url ESD-Yale-WhatIsIndustrialEcology "https://www.youtube.com/watch?v=GKFYBjpraus")
+(desc ESD-Yale-WhatIsIndustrialEcology "A concise introduction to the field from Yale's Center for Industrial Ecology, covering core concepts and research directions.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: CIRCULAR ECONOMY
+;; Closed-loop systems, biological & technical cycles, policy
+;; ════════════════════════════════════════════════════════════
+
+;; ── Circular Economy Frameworks ──
+
+(isa ESD-EMF-TowardsCircularEconomy ReferenceWork)
+(title ESD-EMF-TowardsCircularEconomy "Towards the Circular Economy (Vol. 1)")
+(author ESD-EMF-TowardsCircularEconomy "Ellen MacArthur Foundation")
+(resourceType ESD-EMF-TowardsCircularEconomy notes)
+(level ESD-EMF-TowardsCircularEconomy beginner)
+(section ESD-EMF-TowardsCircularEconomy CircularEconomy)
+(url ESD-EMF-TowardsCircularEconomy "https://www.ellenmacarthurfoundation.org/towards-the-circular-economy-vol-1-an-economic-and-business-rationale-for-an")
+(desc ESD-EMF-TowardsCircularEconomy "The foundational report that popularized the circular economy concept, laying out economic rationale and the butterfly diagram of biological and technical cycles.")
+
+(isa ESD-McDonoughBraungart-CradleToCradle ReferenceWork)
+(title ESD-McDonoughBraungart-CradleToCradle "Cradle to Cradle: Remaking the Way We Make Things")
+(author ESD-McDonoughBraungart-CradleToCradle "William McDonough & Michael Braungart")
+(resourceType ESD-McDonoughBraungart-CradleToCradle book)
+(level ESD-McDonoughBraungart-CradleToCradle beginner)
+(section ESD-McDonoughBraungart-CradleToCradle CircularEconomy)
+(url ESD-McDonoughBraungart-CradleToCradle "https://www.northpointpress.com/books/cradle-to-cradle/")
+(desc ESD-McDonoughBraungart-CradleToCradle "The influential manifesto proposing that products be designed from the start for perpetual cycling, with no concept of waste.")
+
+(isa ESD-Webster-CircularEconomyFlows ReferenceWork)
+(title ESD-Webster-CircularEconomyFlows "The Circular Economy: A Wealth of Flows")
+(author ESD-Webster-CircularEconomyFlows "Ken Webster")
+(resourceType ESD-Webster-CircularEconomyFlows book)
+(level ESD-Webster-CircularEconomyFlows intermediate)
+(section ESD-Webster-CircularEconomyFlows CircularEconomy)
+(url ESD-Webster-CircularEconomyFlows "https://www.ellenmacarthurfoundation.org/a-new-dynamic-2-effective-systems-in-a-circular-economy")
+(desc ESD-Webster-CircularEconomyFlows "A detailed exploration of circular economy theory drawing on systems thinking, complexity science, and real business cases.")
+
+(isa ESD-KirchherrReikeHekkert-CEDefinitions ReferenceWork)
+(title ESD-KirchherrReikeHekkert-CEDefinitions "Circular Economy: A Review of Definitions, Processes and Impacts")
+(author ESD-KirchherrReikeHekkert-CEDefinitions "Kirchherr, Reike & Hekkert")
+(resourceType ESD-KirchherrReikeHekkert-CEDefinitions notes)
+(level ESD-KirchherrReikeHekkert-CEDefinitions intermediate)
+(section ESD-KirchherrReikeHekkert-CEDefinitions CircularEconomy)
+(url ESD-KirchherrReikeHekkert-CEDefinitions "https://doi.org/10.1016/j.resconrec.2017.09.005")
+(desc ESD-KirchherrReikeHekkert-CEDefinitions "Analyzes 114 definitions of the circular economy, identifying core dimensions and common misconceptions in the literature.")
+
+;; ── Business Model Innovation ──
+
+(isa ESD-OsterwalderPigneur-BusinessModelGen ReferenceWork)
+(title ESD-OsterwalderPigneur-BusinessModelGen "Business Model Generation")
+(author ESD-OsterwalderPigneur-BusinessModelGen "Alexander Osterwalder & Yves Pigneur")
+(resourceType ESD-OsterwalderPigneur-BusinessModelGen book)
+(level ESD-OsterwalderPigneur-BusinessModelGen beginner)
+(section ESD-OsterwalderPigneur-BusinessModelGen CircularEconomy)
+(url ESD-OsterwalderPigneur-BusinessModelGen "https://www.wiley.com/en-us/Business+Model+Generation-p-9780470876411")
+(desc ESD-OsterwalderPigneur-BusinessModelGen "The business model canvas toolkit, widely used to prototype circular business models including product-as-service and sharing platforms.")
+
+(isa ESD-TUDelft-CircularBusinessModel ReferenceWork)
+(title ESD-TUDelft-CircularBusinessModel "The Circular Economy Business Model")
+(author ESD-TUDelft-CircularBusinessModel "TU Delft (edX)")
+(resourceType ESD-TUDelft-CircularBusinessModel course)
+(level ESD-TUDelft-CircularBusinessModel intermediate)
+(section ESD-TUDelft-CircularBusinessModel CircularEconomy)
+(url ESD-TUDelft-CircularBusinessModel "https://www.edx.org/learn/circular-economy/delft-university-of-technology-engineering-design-for-a-circular-economy")
+(desc ESD-TUDelft-CircularBusinessModel "Explores how companies can redesign products and business models for circularity, with engineering case studies and design challenges.")
+
+(isa ESD-Mentink-CircularBusinessModels ReferenceWork)
+(title ESD-Mentink-CircularBusinessModels "Circular Business Models: Defining a Concept and Framing an Emerging Research Field")
+(author ESD-Mentink-CircularBusinessModels "Mentink")
+(resourceType ESD-Mentink-CircularBusinessModels notes)
+(level ESD-Mentink-CircularBusinessModels advanced)
+(section ESD-Mentink-CircularBusinessModels CircularEconomy)
+(url ESD-Mentink-CircularBusinessModels "https://doi.org/10.3390/su12114904")
+(desc ESD-Mentink-CircularBusinessModels "A systematic review that categorizes circular business model archetypes: access models, extending product value, and resource recovery.")
+
+(isa ESD-EMF-CaseStudies ReferenceWork)
+(title ESD-EMF-CaseStudies "Ellen MacArthur Foundation Case Studies")
+(author ESD-EMF-CaseStudies "Ellen MacArthur Foundation")
+(resourceType ESD-EMF-CaseStudies data)
+(level ESD-EMF-CaseStudies beginner)
+(section ESD-EMF-CaseStudies CircularEconomy)
+(url ESD-EMF-CaseStudies "https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/examples")
+(desc ESD-EMF-CaseStudies "A curated collection of real-world circular economy case studies from companies like Renault, Philips, and Interface.")
+
+;; ── Policy & Implementation ──
+
+(isa ESD-EU-CircularEconomyActionPlan ReferenceWork)
+(title ESD-EU-CircularEconomyActionPlan "EU Circular Economy Action Plan")
+(author ESD-EU-CircularEconomyActionPlan "European Commission")
+(resourceType ESD-EU-CircularEconomyActionPlan notes)
+(level ESD-EU-CircularEconomyActionPlan intermediate)
+(section ESD-EU-CircularEconomyActionPlan CircularEconomy)
+(url ESD-EU-CircularEconomyActionPlan "https://environment.ec.europa.eu/strategy/circular-economy-action-plan_en")
+(desc ESD-EU-CircularEconomyActionPlan "The official EU policy framework for transitioning to a circular economy, covering product design, waste reduction, and secondary raw materials.")
+
+(isa ESD-OECD-CircularEconomyPolicies ReferenceWork)
+(title ESD-OECD-CircularEconomyPolicies "Policies for the Circular Economy")
+(author ESD-OECD-CircularEconomyPolicies "OECD")
+(resourceType ESD-OECD-CircularEconomyPolicies notes)
+(level ESD-OECD-CircularEconomyPolicies advanced)
+(section ESD-OECD-CircularEconomyPolicies CircularEconomy)
+(url ESD-OECD-CircularEconomyPolicies "https://www.oecd.org/en/topics/sub-issues/circular-economy-and-resource-productivity.html")
+(desc ESD-OECD-CircularEconomyPolicies "OECD analysis of policy instruments for circular economy transitions, including extended producer responsibility and green public procurement.")
+
+(isa ESD-WBCSD-CEPractitionerGuide ReferenceWork)
+(title ESD-WBCSD-CEPractitionerGuide "Circular Economy Practitioner Guide")
+(author ESD-WBCSD-CEPractitionerGuide "World Business Council for Sustainable Development")
+(resourceType ESD-WBCSD-CEPractitionerGuide notes)
+(level ESD-WBCSD-CEPractitionerGuide intermediate)
+(section ESD-WBCSD-CEPractitionerGuide CircularEconomy)
+(url ESD-WBCSD-CEPractitionerGuide "https://www.ceguide.org/")
+(desc ESD-WBCSD-CEPractitionerGuide "A practical guide for businesses looking to implement circular economy strategies, with tools, frameworks, and step-by-step processes.")
+
+(isa ESD-Stahel-CircularEconomyTED ReferenceWork)
+(title ESD-Stahel-CircularEconomyTED "Circular Economy: Getting the Background Right")
+(author ESD-Stahel-CircularEconomyTED "Walter Stahel (TED Talk)")
+(resourceType ESD-Stahel-CircularEconomyTED video)
+(level ESD-Stahel-CircularEconomyTED beginner)
+(section ESD-Stahel-CircularEconomyTED CircularEconomy)
+(url ESD-Stahel-CircularEconomyTED "https://www.youtube.com/watch?v=JMh9hDS0MKE")
+(desc ESD-Stahel-CircularEconomyTED "Walter Stahel, who coined the phrase 'cradle to cradle' in 1970s architecture, explains the performance economy and its circular logic.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: INDUSTRIAL ECOLOGY
+;; Industrial symbiosis, LCA, material flow analysis
+;; ════════════════════════════════════════════════════════════
+
+;; ── Industrial Symbiosis ──
+
+(isa ESD-FroschGallopoulos-IndustrialEcosystems ReferenceWork)
+(title ESD-FroschGallopoulos-IndustrialEcosystems "Industrial Ecology and Industrial Ecosystems")
+(author ESD-FroschGallopoulos-IndustrialEcosystems "Robert Frosch & Nicholas Gallopoulos")
+(resourceType ESD-FroschGallopoulos-IndustrialEcosystems notes)
+(level ESD-FroschGallopoulos-IndustrialEcosystems intermediate)
+(section ESD-FroschGallopoulos-IndustrialEcosystems IndustrialEcology)
+(url ESD-FroschGallopoulos-IndustrialEcosystems "https://doi.org/10.1038/scientificamerican0989-144")
+(desc ESD-FroschGallopoulos-IndustrialEcosystems "The 1989 Scientific American article that launched the field, proposing that industrial systems should mimic the cycling behavior of biological ecosystems.")
+
+(isa ESD-Kalundborg-Symbiosis ReferenceWork)
+(title ESD-Kalundborg-Symbiosis "The Kalundborg Symbiosis")
+(author ESD-Kalundborg-Symbiosis "Kalundborg Symbiosis")
+(resourceType ESD-Kalundborg-Symbiosis data)
+(level ESD-Kalundborg-Symbiosis beginner)
+(section ESD-Kalundborg-Symbiosis IndustrialEcology)
+(url ESD-Kalundborg-Symbiosis "https://www.symbiosis.dk/en/")
+(desc ESD-Kalundborg-Symbiosis "Official site of the world's first industrial symbiosis network, documenting how companies in Kalundborg, Denmark exchange waste streams as resources.")
+
+(isa ESD-Chertow-IndustrialSymbiosis ReferenceWork)
+(title ESD-Chertow-IndustrialSymbiosis "Industrial Symbiosis: Literature and Taxonomy")
+(author ESD-Chertow-IndustrialSymbiosis "Marian Chertow")
+(resourceType ESD-Chertow-IndustrialSymbiosis notes)
+(level ESD-Chertow-IndustrialSymbiosis advanced)
+(section ESD-Chertow-IndustrialSymbiosis IndustrialEcology)
+(url ESD-Chertow-IndustrialSymbiosis "https://doi.org/10.1146/annurev.energy.25.1.313")
+(desc ESD-Chertow-IndustrialSymbiosis "A comprehensive literature review that defines industrial symbiosis, classifies examples, and identifies enabling factors for successful exchanges.")
+
+(isa ESD-AyresAyres-HandbookIndustrialEcology ReferenceWork)
+(title ESD-AyresAyres-HandbookIndustrialEcology "Handbook of Industrial Ecology")
+(author ESD-AyresAyres-HandbookIndustrialEcology "Robert Ayres & Leslie Ayres (Eds.)")
+(resourceType ESD-AyresAyres-HandbookIndustrialEcology book)
+(level ESD-AyresAyres-HandbookIndustrialEcology advanced)
+(section ESD-AyresAyres-HandbookIndustrialEcology IndustrialEcology)
+(url ESD-AyresAyres-HandbookIndustrialEcology "https://www.e-elgar.com/shop/usd/a-handbook-of-industrial-ecology-9781840645064.html")
+(desc ESD-AyresAyres-HandbookIndustrialEcology "An authoritative reference covering the full scope of industrial ecology: theory, methods, case studies, and policy implications.")
+
+;; ── Life Cycle Assessment ──
+
+(isa ESD-KlopfferGrahl-LCATheoryPractice ReferenceWork)
+(title ESD-KlopfferGrahl-LCATheoryPractice "Life Cycle Assessment: Theory and Practice")
+(author ESD-KlopfferGrahl-LCATheoryPractice "Walter Klopffer & Birgit Grahl")
+(resourceType ESD-KlopfferGrahl-LCATheoryPractice book)
+(level ESD-KlopfferGrahl-LCATheoryPractice intermediate)
+(section ESD-KlopfferGrahl-LCATheoryPractice IndustrialEcology)
+(url ESD-KlopfferGrahl-LCATheoryPractice "https://www.springer.com/gp/book/9783319564746")
+(desc ESD-KlopfferGrahl-LCATheoryPractice "A comprehensive textbook covering LCA methodology, including goal and scope definition, inventory analysis, impact assessment, and interpretation.")
+
+(isa ESD-EPA-LCAPrinciplesPractice ReferenceWork)
+(title ESD-EPA-LCAPrinciplesPractice "Life Cycle Assessment: Principles and Practice")
+(author ESD-EPA-LCAPrinciplesPractice "US EPA (EPA/600/R-06/060)")
+(resourceType ESD-EPA-LCAPrinciplesPractice notes)
+(level ESD-EPA-LCAPrinciplesPractice beginner)
+(section ESD-EPA-LCAPrinciplesPractice IndustrialEcology)
+(url ESD-EPA-LCAPrinciplesPractice "https://www.epa.gov/sites/default/files/2014-04/documents/framework-psa-lca-702702.pdf")
+(desc ESD-EPA-LCAPrinciplesPractice "The EPA's practical guide to LCA, explaining the four-phase ISO 14040 framework with clear examples and decision flowcharts.")
+
+(isa ESD-Leiden-IntroToLCA ReferenceWork)
+(title ESD-Leiden-IntroToLCA "Introduction to Life Cycle Assessment")
+(author ESD-Leiden-IntroToLCA "Universiteit Leiden (Coursera)")
+(resourceType ESD-Leiden-IntroToLCA course)
+(level ESD-Leiden-IntroToLCA beginner)
+(section ESD-Leiden-IntroToLCA IndustrialEcology)
+(url ESD-Leiden-IntroToLCA "https://www.coursera.org/learn/life-cycle-assessment")
+(desc ESD-Leiden-IntroToLCA "A structured online course from Leiden University walking through each phase of LCA with hands-on exercises and real product case studies.")
+
+(isa ESD-GreenDelta-openLCA ReferenceWork)
+(title ESD-GreenDelta-openLCA "openLCA — Open Source Life Cycle Assessment Software")
+(author ESD-GreenDelta-openLCA "GreenDelta")
+(resourceType ESD-GreenDelta-openLCA code)
+(level ESD-GreenDelta-openLCA intermediate)
+(section ESD-GreenDelta-openLCA IndustrialEcology)
+(url ESD-GreenDelta-openLCA "https://github.com/GreenDelta/olca-app")
+(desc ESD-GreenDelta-openLCA "The GitHub repository for openLCA, a free and open-source LCA software widely used in research and industry for environmental modeling.")
+
+;; ── Material Flow Analysis ──
+
+(isa ESD-BrunnerRechberger-MFAHandbook ReferenceWork)
+(title ESD-BrunnerRechberger-MFAHandbook "Practical Handbook of Material Flow Analysis")
+(author ESD-BrunnerRechberger-MFAHandbook "Paul Brunner & Helmut Rechberger")
+(resourceType ESD-BrunnerRechberger-MFAHandbook book)
+(level ESD-BrunnerRechberger-MFAHandbook intermediate)
+(section ESD-BrunnerRechberger-MFAHandbook IndustrialEcology)
+(url ESD-BrunnerRechberger-MFAHandbook "https://www.taylorfrancis.com/books/mono/10.1201/9780203507209/practical-handbook-material-flow-analysis-paul-brunner-helmut-rechberger")
+(desc ESD-BrunnerRechberger-MFAHandbook "The standard reference for MFA methodology, covering system definition, data reconciliation, uncertainty analysis, and software implementation.")
+
+(isa ESD-TUVienna-STAN ReferenceWork)
+(title ESD-TUVienna-STAN "STAN — Substance Flow Analysis Software")
+(author ESD-TUVienna-STAN "TU Vienna")
+(resourceType ESD-TUVienna-STAN code)
+(level ESD-TUVienna-STAN intermediate)
+(section ESD-TUVienna-STAN IndustrialEcology)
+(url ESD-TUVienna-STAN "https://www.stan2web.net/")
+(desc ESD-TUVienna-STAN "Free software from the Vienna University of Technology for performing material flow analysis with graphical Sankey diagrams and data reconciliation.")
+
+(isa ESD-WRI-WeightOfNations ReferenceWork)
+(title ESD-WRI-WeightOfNations "The Weight of Nations: Material Outflows from Industrial Economies")
+(author ESD-WRI-WeightOfNations "World Resources Institute")
+(resourceType ESD-WRI-WeightOfNations data)
+(level ESD-WRI-WeightOfNations intermediate)
+(section ESD-WRI-WeightOfNations IndustrialEcology)
+(url ESD-WRI-WeightOfNations "https://www.wri.org/research/weight-nations-material-outflows-industrial-economies")
+(desc ESD-WRI-WeightOfNations "A landmark WRI report quantifying total material outflows from five industrial countries, revealing the scale of hidden material flows.")
+
+(isa ESD-Eurostat-EWMFAHandbook ReferenceWork)
+(title ESD-Eurostat-EWMFAHandbook "Economy-Wide Material Flow Accounts (EW-MFA) Handbook")
+(author ESD-Eurostat-EWMFAHandbook "Eurostat")
+(resourceType ESD-Eurostat-EWMFAHandbook notes)
+(level ESD-Eurostat-EWMFAHandbook advanced)
+(section ESD-Eurostat-EWMFAHandbook IndustrialEcology)
+(url ESD-Eurostat-EWMFAHandbook "https://ec.europa.eu/eurostat/web/environment/material-flows-and-resource-productivity")
+(desc ESD-Eurostat-EWMFAHandbook "Eurostat's methodological guide for compiling economy-wide material flow accounts, the basis for domestic material consumption indicators.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: CRADLE-TO-CRADLE DESIGN
+;; C2C philosophy, material health, certification
+;; ════════════════════════════════════════════════════════════
+
+;; ── C2C Philosophy ──
+
+(isa ESD-McDonoughBraungart-C2CBook ReferenceWork)
+(title ESD-McDonoughBraungart-C2CBook "Cradle to Cradle: Remaking the Way We Make Things")
+(author ESD-McDonoughBraungart-C2CBook "William McDonough & Michael Braungart")
+(resourceType ESD-McDonoughBraungart-C2CBook book)
+(level ESD-McDonoughBraungart-C2CBook beginner)
+(section ESD-McDonoughBraungart-C2CBook CradleToCradle)
+(url ESD-McDonoughBraungart-C2CBook "https://www.northpointpress.com/books/cradle-to-cradle/")
+(desc ESD-McDonoughBraungart-C2CBook "The original manifesto that articulates the C2C vision: a world of abundance where human industry nourishes rather than depletes natural systems.")
+
+(isa ESD-McDonoughBraungart-Upcycle ReferenceWork)
+(title ESD-McDonoughBraungart-Upcycle "The Upcycle: Beyond Sustainability — Designing for Abundance")
+(author ESD-McDonoughBraungart-Upcycle "William McDonough & Michael Braungart")
+(resourceType ESD-McDonoughBraungart-Upcycle book)
+(level ESD-McDonoughBraungart-Upcycle intermediate)
+(section ESD-McDonoughBraungart-Upcycle CradleToCradle)
+(url ESD-McDonoughBraungart-Upcycle "https://www.northpointpress.com/books/the-upcycle/")
+(desc ESD-McDonoughBraungart-Upcycle "The sequel to Cradle to Cradle, presenting a decade of implementation experience and a vision for scaling C2C principles to cities and economies.")
+
+(isa ESD-McDonough-C2CTED ReferenceWork)
+(title ESD-McDonough-C2CTED "William McDonough: Cradle to Cradle Design")
+(author ESD-McDonough-C2CTED "TED")
+(resourceType ESD-McDonough-C2CTED video)
+(level ESD-McDonough-C2CTED beginner)
+(section ESD-McDonough-C2CTED CradleToCradle)
+(url ESD-McDonough-C2CTED "https://www.youtube.com/watch?v=IoRjz8iTVoo")
+(desc ESD-McDonough-C2CTED "McDonough's TED talk explaining C2C principles through compelling examples from architecture, manufacturing, and urban design.")
+
+(isa ESD-BraungartMcDonoughBollinger-HealthyEmissions ReferenceWork)
+(title ESD-BraungartMcDonoughBollinger-HealthyEmissions "Cradle to Cradle: Creating Healthy Emissions — A Strategy for Eco-Effective Product and System Design")
+(author ESD-BraungartMcDonoughBollinger-HealthyEmissions "Braungart, McDonough & Bollinger")
+(resourceType ESD-BraungartMcDonoughBollinger-HealthyEmissions notes)
+(level ESD-BraungartMcDonoughBollinger-HealthyEmissions intermediate)
+(section ESD-BraungartMcDonoughBollinger-HealthyEmissions CradleToCradle)
+(url ESD-BraungartMcDonoughBollinger-HealthyEmissions "https://doi.org/10.1016/j.jclepro.2006.08.003")
+(desc ESD-BraungartMcDonoughBollinger-HealthyEmissions "An academic articulation of C2C theory, contrasting eco-efficiency with eco-effectiveness and detailing the concept of healthy emissions.")
+
+;; ── Material Health & Chemistry ──
+
+(isa ESD-C2CInstitute-CertifiedStandard ReferenceWork)
+(title ESD-C2CInstitute-CertifiedStandard "Cradle to Cradle Certified Product Standard (Version 4.0)")
+(author ESD-C2CInstitute-CertifiedStandard "Cradle to Cradle Products Innovation Institute")
+(resourceType ESD-C2CInstitute-CertifiedStandard notes)
+(level ESD-C2CInstitute-CertifiedStandard advanced)
+(section ESD-C2CInstitute-CertifiedStandard CradleToCradle)
+(url ESD-C2CInstitute-CertifiedStandard "https://www.c2ccertified.org/the-standard")
+(desc ESD-C2CInstitute-CertifiedStandard "The official C2C certification standard, detailing assessment criteria for material health, circularity, clean air, water stewardship, and social fairness.")
+
+(isa ESD-CleanProdAction-GreenScreen ReferenceWork)
+(title ESD-CleanProdAction-GreenScreen "GreenScreen for Safer Chemicals")
+(author ESD-CleanProdAction-GreenScreen "Clean Production Action")
+(resourceType ESD-CleanProdAction-GreenScreen data)
+(level ESD-CleanProdAction-GreenScreen intermediate)
+(section ESD-CleanProdAction-GreenScreen CradleToCradle)
+(url ESD-CleanProdAction-GreenScreen "https://www.greenscreenchemicals.org/")
+(desc ESD-CleanProdAction-GreenScreen "A chemical hazard assessment tool used in C2C certification to benchmark chemicals against health and environmental criteria and identify safer alternatives.")
+
+(isa ESD-ChemFORWARD-ChemicalFootprint ReferenceWork)
+(title ESD-ChemFORWARD-ChemicalFootprint "ChemFORWARD — Chemical Footprint Project")
+(author ESD-ChemFORWARD-ChemicalFootprint "ChemFORWARD")
+(resourceType ESD-ChemFORWARD-ChemicalFootprint data)
+(level ESD-ChemFORWARD-ChemicalFootprint intermediate)
+(section ESD-ChemFORWARD-ChemicalFootprint CradleToCradle)
+(url ESD-ChemFORWARD-ChemicalFootprint "https://www.chemforward.org/")
+(desc ESD-ChemFORWARD-ChemicalFootprint "A nonprofit platform providing standardized chemical hazard data to help manufacturers assess material health and reduce toxic substances in products.")
+
+(isa ESD-HBN-PharosDatabase ReferenceWork)
+(title ESD-HBN-PharosDatabase "Healthy Building Network — Pharos Database")
+(author ESD-HBN-PharosDatabase "Healthy Building Network")
+(resourceType ESD-HBN-PharosDatabase data)
+(level ESD-HBN-PharosDatabase intermediate)
+(section ESD-HBN-PharosDatabase CradleToCradle)
+(url ESD-HBN-PharosDatabase "https://pharosproject.net/")
+(desc ESD-HBN-PharosDatabase "A comprehensive database for evaluating chemical ingredients in building products, widely used alongside C2C certification for material health assessment.")
+
+;; ── Certified Products & Case Studies ──
+
+(isa ESD-C2CInstitute-ProductRegistry ReferenceWork)
+(title ESD-C2CInstitute-ProductRegistry "C2C Certified Product Registry")
+(author ESD-C2CInstitute-ProductRegistry "Cradle to Cradle Products Innovation Institute")
+(resourceType ESD-C2CInstitute-ProductRegistry data)
+(level ESD-C2CInstitute-ProductRegistry beginner)
+(section ESD-C2CInstitute-ProductRegistry CradleToCradle)
+(url ESD-C2CInstitute-ProductRegistry "https://www.c2ccertified.org/products/registry")
+(desc ESD-C2CInstitute-ProductRegistry "The official searchable database of all Cradle to Cradle Certified products, spanning textiles, building materials, packaging, and consumer goods.")
+
+(isa ESD-Interface-MissionZero ReferenceWork)
+(title ESD-Interface-MissionZero "Interface: Mission Zero to Climate Take Back")
+(author ESD-Interface-MissionZero "Interface Inc.")
+(resourceType ESD-Interface-MissionZero notes)
+(level ESD-Interface-MissionZero beginner)
+(section ESD-Interface-MissionZero CradleToCradle)
+(url ESD-Interface-MissionZero "https://www.interface.com/sustainability/")
+(desc ESD-Interface-MissionZero "How carpet manufacturer Interface transformed its business using C2C principles, achieving carbon-negative flooring products.")
+
+(isa ESD-McDonoughPartners-Park2020 ReferenceWork)
+(title ESD-McDonoughPartners-Park2020 "Case Study: Park 20|20 — Cradle to Cradle Business District")
+(author ESD-McDonoughPartners-Park2020 "William McDonough + Partners")
+(resourceType ESD-McDonoughPartners-Park2020 video)
+(level ESD-McDonoughPartners-Park2020 intermediate)
+(section ESD-McDonoughPartners-Park2020 CradleToCradle)
+(url ESD-McDonoughPartners-Park2020 "https://www.youtube.com/watch?v=iG5fRt6c0Kc")
+(desc ESD-McDonoughPartners-Park2020 "Documentary on Park 20|20 in the Netherlands, the world's first C2C-inspired business park, showcasing material passports and circular building design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: REGENERATIVE DESIGN
+;; Regenerative theory, permaculture, living buildings
+;; ════════════════════════════════════════════════════════════
+
+;; ── Regenerative Design Theory ──
+
+(isa ESD-MangReed-RegenerativeDevelopment ReferenceWork)
+(title ESD-MangReed-RegenerativeDevelopment "Regenerative Development and Design")
+(author ESD-MangReed-RegenerativeDevelopment "Regenesis Group (Pamela Mang & Bill Reed)")
+(resourceType ESD-MangReed-RegenerativeDevelopment book)
+(level ESD-MangReed-RegenerativeDevelopment intermediate)
+(section ESD-MangReed-RegenerativeDevelopment RegenerativeDesign)
+(url ESD-MangReed-RegenerativeDevelopment "https://www.wiley.com/en-us/Regenerative+Development+and+Design%3A+A+Framework+for+Evolving+Sustainability-p-9781118972861")
+(desc ESD-MangReed-RegenerativeDevelopment "A comprehensive framework for regenerative practice, integrating living systems thinking with place-based approaches to design and development.")
+
+(isa ESD-Lyle-RegenerativeImperative ReferenceWork)
+(title ESD-Lyle-RegenerativeImperative "The Regenerative Imperative: A New Paradigm for Sustainability")
+(author ESD-Lyle-RegenerativeImperative "John Tillman Lyle")
+(resourceType ESD-Lyle-RegenerativeImperative book)
+(level ESD-Lyle-RegenerativeImperative intermediate)
+(section ESD-Lyle-RegenerativeImperative RegenerativeDesign)
+(url ESD-Lyle-RegenerativeImperative "https://www.wiley.com/en-us/Regenerative+Design+for+Sustainable+Development-p-9780471555827")
+(desc ESD-Lyle-RegenerativeImperative "Lyle's pioneering work on regenerative design for landscapes and communities, proposing strategies for self-renewing human settlements.")
+
+(isa ESD-Reed-ShiftToRegeneration ReferenceWork)
+(title ESD-Reed-ShiftToRegeneration "A Shift from Sustainability to Regeneration")
+(author ESD-Reed-ShiftToRegeneration "Bill Reed")
+(resourceType ESD-Reed-ShiftToRegeneration video)
+(level ESD-Reed-ShiftToRegeneration beginner)
+(section ESD-Reed-ShiftToRegeneration RegenerativeDesign)
+(url ESD-Reed-ShiftToRegeneration "https://www.youtube.com/watch?v=3v_1DaOOgBw")
+(desc ESD-Reed-ShiftToRegeneration "Bill Reed explains the spectrum from conventional to regenerative design, arguing that true sustainability requires active participation in living systems.")
+
+(isa ESD-Wahl-RegenerativeCultures ReferenceWork)
+(title ESD-Wahl-RegenerativeCultures "The Philosophy of Regenerative Design")
+(author ESD-Wahl-RegenerativeCultures "Daniel Wahl")
+(resourceType ESD-Wahl-RegenerativeCultures book)
+(level ESD-Wahl-RegenerativeCultures beginner)
+(section ESD-Wahl-RegenerativeCultures RegenerativeDesign)
+(url ESD-Wahl-RegenerativeCultures "https://www.triarchypress.net/designing-regenerative-cultures.html")
+(desc ESD-Wahl-RegenerativeCultures "Designing Regenerative Cultures explores how to create conditions for life to thrive, weaving together ecology, economics, governance, and worldview.")
+
+;; ── Permaculture & Agriculture ──
+
+(isa ESD-Mollison-PermacultureManual ReferenceWork)
+(title ESD-Mollison-PermacultureManual "Permaculture: A Designers' Manual")
+(author ESD-Mollison-PermacultureManual "Bill Mollison")
+(resourceType ESD-Mollison-PermacultureManual book)
+(level ESD-Mollison-PermacultureManual intermediate)
+(section ESD-Mollison-PermacultureManual RegenerativeDesign)
+(url ESD-Mollison-PermacultureManual "https://www.tagari.com/product/permaculture-a-designers-manual/")
+(desc ESD-Mollison-PermacultureManual "The definitive permaculture reference, covering design principles, water harvesting, soil building, agroforestry, and community planning across all climates.")
+
+(isa ESD-Lawton-IntroPermaculture ReferenceWork)
+(title ESD-Lawton-IntroPermaculture "Introduction to Permaculture")
+(author ESD-Lawton-IntroPermaculture "Geoff Lawton (Online Course)")
+(resourceType ESD-Lawton-IntroPermaculture course)
+(level ESD-Lawton-IntroPermaculture beginner)
+(section ESD-Lawton-IntroPermaculture RegenerativeDesign)
+(url ESD-Lawton-IntroPermaculture "https://www.geofflawton.com/")
+(desc ESD-Lawton-IntroPermaculture "A comprehensive online permaculture design course from one of the world's leading practitioners, covering ethics, principles, and hands-on design.")
+
+(isa ESD-Hawken-Drawdown ReferenceWork)
+(title ESD-Hawken-Drawdown "Drawdown: The Most Comprehensive Plan Ever Proposed to Reverse Global Warming")
+(author ESD-Hawken-Drawdown "Paul Hawken (Ed.)")
+(resourceType ESD-Hawken-Drawdown book)
+(level ESD-Hawken-Drawdown beginner)
+(section ESD-Hawken-Drawdown RegenerativeDesign)
+(url ESD-Hawken-Drawdown "https://drawdown.org/the-book")
+(desc ESD-Hawken-Drawdown "Ranks 80 solutions to climate change by impact, with regenerative agriculture and silvopasture among the top strategies for carbon sequestration.")
+
+(isa ESD-Tickell-KissTheGround ReferenceWork)
+(title ESD-Tickell-KissTheGround "Kiss the Ground")
+(author ESD-Tickell-KissTheGround "Josh Tickell (Director)")
+(resourceType ESD-Tickell-KissTheGround video)
+(level ESD-Tickell-KissTheGround beginner)
+(section ESD-Tickell-KissTheGround RegenerativeDesign)
+(url ESD-Tickell-KissTheGround "https://www.youtube.com/watch?v=K3-V1j-zMZw")
+(desc ESD-Tickell-KissTheGround "An acclaimed documentary on regenerative agriculture, showing how healthy soil can sequester carbon, restore ecosystems, and revitalize farming communities.")
+
+(isa ESD-Rodale-RegenerativeOrganic ReferenceWork)
+(title ESD-Rodale-RegenerativeOrganic "Rodale Institute: Regenerative Organic Agriculture and Climate Change")
+(author ESD-Rodale-RegenerativeOrganic "Rodale Institute")
+(resourceType ESD-Rodale-RegenerativeOrganic notes)
+(level ESD-Rodale-RegenerativeOrganic intermediate)
+(section ESD-Rodale-RegenerativeOrganic RegenerativeDesign)
+(url ESD-Rodale-RegenerativeOrganic "https://rodaleinstitute.org/why-organic/organic-farming-practices/regenerative-organic-agriculture/")
+(desc ESD-Rodale-RegenerativeOrganic "Research from the Rodale Institute's 40-year Farming Systems Trial comparing regenerative organic and conventional farming yields, energy use, and soil health.")
+
+;; ── Living Buildings ──
+
+(isa ESD-ILFI-LivingBuildingChallenge ReferenceWork)
+(title ESD-ILFI-LivingBuildingChallenge "Living Building Challenge Standard (Version 4.1)")
+(author ESD-ILFI-LivingBuildingChallenge "International Living Future Institute")
+(resourceType ESD-ILFI-LivingBuildingChallenge notes)
+(level ESD-ILFI-LivingBuildingChallenge intermediate)
+(section ESD-ILFI-LivingBuildingChallenge RegenerativeDesign)
+(url ESD-ILFI-LivingBuildingChallenge "https://living-future.org/lbc/")
+(desc ESD-ILFI-LivingBuildingChallenge "The official standard for the world's most ambitious green building certification, organized around seven performance areas or 'petals.'")
+
+(isa ESD-BullittFoundation-BullittCenter ReferenceWork)
+(title ESD-BullittFoundation-BullittCenter "The Bullitt Center: A Living Building Case Study")
+(author ESD-BullittFoundation-BullittCenter "Bullitt Foundation")
+(resourceType ESD-BullittFoundation-BullittCenter video)
+(level ESD-BullittFoundation-BullittCenter beginner)
+(section ESD-BullittFoundation-BullittCenter RegenerativeDesign)
+(url ESD-BullittFoundation-BullittCenter "https://www.youtube.com/watch?v=MRqEMIDPlek")
+(desc ESD-BullittFoundation-BullittCenter "A video tour of the Bullitt Center in Seattle, often called the greenest commercial building in the world, certified under the Living Building Challenge.")
+
+(isa ESD-ILFI-LBCCaseStudies ReferenceWork)
+(title ESD-ILFI-LBCCaseStudies "Living Building Challenge Case Studies")
+(author ESD-ILFI-LBCCaseStudies "International Living Future Institute")
+(resourceType ESD-ILFI-LBCCaseStudies data)
+(level ESD-ILFI-LBCCaseStudies intermediate)
+(section ESD-ILFI-LBCCaseStudies RegenerativeDesign)
+(url ESD-ILFI-LBCCaseStudies "https://living-future.org/lbc/case-studies/")
+(desc ESD-ILFI-LBCCaseStudies "A collection of certified Living Building projects with detailed performance data on energy, water, materials, and occupant satisfaction.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: ECOSYSTEM SERVICES & NATURAL CAPITAL
+;; Valuation frameworks, natural capital accounting, NbS
+;; ════════════════════════════════════════════════════════════
+
+;; ── Ecosystem Services Frameworks ──
+
+(isa ESD-Costanza-EcosystemServicesValue ReferenceWork)
+(title ESD-Costanza-EcosystemServicesValue "The Value of the World's Ecosystem Services and Natural Capital")
+(author ESD-Costanza-EcosystemServicesValue "Robert Costanza et al.")
+(resourceType ESD-Costanza-EcosystemServicesValue notes)
+(level ESD-Costanza-EcosystemServicesValue intermediate)
+(section ESD-Costanza-EcosystemServicesValue EcosystemServices)
+(url ESD-Costanza-EcosystemServicesValue "https://doi.org/10.1038/387253a0")
+(desc ESD-Costanza-EcosystemServicesValue "The landmark 1997 Nature paper that first estimated the global value of ecosystem services at $33 trillion per year, sparking a new research field.")
+
+(isa ESD-UN-MillenniumEcosystemAssessment ReferenceWork)
+(title ESD-UN-MillenniumEcosystemAssessment "Millennium Ecosystem Assessment: Ecosystems and Human Well-being")
+(author ESD-UN-MillenniumEcosystemAssessment "United Nations")
+(resourceType ESD-UN-MillenniumEcosystemAssessment notes)
+(level ESD-UN-MillenniumEcosystemAssessment intermediate)
+(section ESD-UN-MillenniumEcosystemAssessment EcosystemServices)
+(url ESD-UN-MillenniumEcosystemAssessment "https://www.millenniumassessment.org/en/index.html")
+(desc ESD-UN-MillenniumEcosystemAssessment "The comprehensive UN assessment of the state of the world's ecosystems, establishing the four-category framework for ecosystem services.")
+
+(isa ESD-UNEP-TEEB ReferenceWork)
+(title ESD-UNEP-TEEB "The Economics of Ecosystems and Biodiversity (TEEB)")
+(author ESD-UNEP-TEEB "UNEP")
+(resourceType ESD-UNEP-TEEB data)
+(level ESD-UNEP-TEEB intermediate)
+(section ESD-UNEP-TEEB EcosystemServices)
+(url ESD-UNEP-TEEB "https://teebweb.org/")
+(desc ESD-UNEP-TEEB "A global initiative drawing attention to the economic benefits of biodiversity, providing tools and methods for valuing ecosystem services in policy.")
+
+(isa ESD-Helm-NaturalCapital ReferenceWork)
+(title ESD-Helm-NaturalCapital "Natural Capital: Valuing the Planet")
+(author ESD-Helm-NaturalCapital "Dieter Helm")
+(resourceType ESD-Helm-NaturalCapital book)
+(level ESD-Helm-NaturalCapital intermediate)
+(section ESD-Helm-NaturalCapital EcosystemServices)
+(url ESD-Helm-NaturalCapital "https://yalebooks.yale.edu/book/9780300210989/natural-capital/")
+(desc ESD-Helm-NaturalCapital "An economist's argument for a natural capital approach to environmental policy, proposing aggregate natural capital rules and compensation mechanisms.")
+
+;; ── Natural Capital Accounting ──
+
+(isa ESD-UN-SEEA ReferenceWork)
+(title ESD-UN-SEEA "System of Environmental-Economic Accounting (SEEA)")
+(author ESD-UN-SEEA "United Nations")
+(resourceType ESD-UN-SEEA data)
+(level ESD-UN-SEEA advanced)
+(section ESD-UN-SEEA EcosystemServices)
+(url ESD-UN-SEEA "https://seea.un.org/")
+(desc ESD-UN-SEEA "The UN's international statistical standard for environmental-economic accounting, providing a framework for measuring natural capital alongside GDP.")
+
+(isa ESD-CapitalsCoalition-NaturalCapitalProtocol ReferenceWork)
+(title ESD-CapitalsCoalition-NaturalCapitalProtocol "Natural Capital Protocol")
+(author ESD-CapitalsCoalition-NaturalCapitalProtocol "Capitals Coalition")
+(resourceType ESD-CapitalsCoalition-NaturalCapitalProtocol notes)
+(level ESD-CapitalsCoalition-NaturalCapitalProtocol intermediate)
+(section ESD-CapitalsCoalition-NaturalCapitalProtocol EcosystemServices)
+(url ESD-CapitalsCoalition-NaturalCapitalProtocol "https://capitalscoalition.org/capitals-approach/natural-capital-protocol/")
+(desc ESD-CapitalsCoalition-NaturalCapitalProtocol "A standardized framework for businesses to identify, measure, and value their direct and indirect impacts and dependencies on natural capital.")
+
+(isa ESD-Stanford-InVEST ReferenceWork)
+(title ESD-Stanford-InVEST "InVEST — Integrated Valuation of Ecosystem Services and Tradeoffs")
+(author ESD-Stanford-InVEST "Stanford Natural Capital Project")
+(resourceType ESD-Stanford-InVEST code)
+(level ESD-Stanford-InVEST intermediate)
+(section ESD-Stanford-InVEST EcosystemServices)
+(url ESD-Stanford-InVEST "https://github.com/natcap/invest")
+(desc ESD-Stanford-InVEST "Open-source software that models and maps ecosystem services like carbon storage, water purification, and crop pollination to inform land-use decisions.")
+
+(isa ESD-ARIES-EcosystemServicesAI ReferenceWork)
+(title ESD-ARIES-EcosystemServicesAI "ARIES — Artificial Intelligence for Ecosystem Services")
+(author ESD-ARIES-EcosystemServicesAI "ARIES Consortium")
+(resourceType ESD-ARIES-EcosystemServicesAI code)
+(level ESD-ARIES-EcosystemServicesAI advanced)
+(section ESD-ARIES-EcosystemServicesAI EcosystemServices)
+(url ESD-ARIES-EcosystemServicesAI "https://aries.integratedmodelling.org/")
+(desc ESD-ARIES-EcosystemServicesAI "A modeling platform that uses AI and semantic web technologies to rapidly assess ecosystem services at multiple scales with context-appropriate models.")
+
+;; ── Nature-Based Solutions ──
+
+(isa ESD-IUCN-NatureBasedSolutions ReferenceWork)
+(title ESD-IUCN-NatureBasedSolutions "Nature-Based Solutions for Climate Change Adaptation and Mitigation")
+(author ESD-IUCN-NatureBasedSolutions "IUCN")
+(resourceType ESD-IUCN-NatureBasedSolutions notes)
+(level ESD-IUCN-NatureBasedSolutions beginner)
+(section ESD-IUCN-NatureBasedSolutions EcosystemServices)
+(url ESD-IUCN-NatureBasedSolutions "https://www.iucn.org/theme/nature-based-solutions")
+(desc ESD-IUCN-NatureBasedSolutions "The IUCN's global standard for nature-based solutions, defining principles, criteria, and indicators for NbS design and implementation.")
+
+(isa ESD-EPA-GreenInfrastructure ReferenceWork)
+(title ESD-EPA-GreenInfrastructure "Green Infrastructure and Climate Change")
+(author ESD-EPA-GreenInfrastructure "US EPA")
+(resourceType ESD-EPA-GreenInfrastructure notes)
+(level ESD-EPA-GreenInfrastructure beginner)
+(section ESD-EPA-GreenInfrastructure EcosystemServices)
+(url ESD-EPA-GreenInfrastructure "https://www.epa.gov/green-infrastructure")
+(desc ESD-EPA-GreenInfrastructure "EPA resources on green infrastructure approaches including rain gardens, green roofs, permeable pavements, and urban tree canopy for stormwater management.")
+
+(isa ESD-WorldBank-SpongeCities ReferenceWork)
+(title ESD-WorldBank-SpongeCities "Sponge Cities: Water-Resilient Urban Design")
+(author ESD-WorldBank-SpongeCities "World Bank")
+(resourceType ESD-WorldBank-SpongeCities video)
+(level ESD-WorldBank-SpongeCities beginner)
+(section ESD-WorldBank-SpongeCities EcosystemServices)
+(url ESD-WorldBank-SpongeCities "https://www.youtube.com/watch?v=cKqALiGA_os")
+(desc ESD-WorldBank-SpongeCities "An overview of China's Sponge City initiative, which uses green infrastructure to absorb, clean, and reuse rainwater in urban environments.")
+
+(isa ESD-Kabisch-NbSUrbanAreas ReferenceWork)
+(title ESD-Kabisch-NbSUrbanAreas "Nature-Based Solutions to Climate Change Adaptation in Urban Areas")
+(author ESD-Kabisch-NbSUrbanAreas "Kabisch et al. (Eds.)")
+(resourceType ESD-Kabisch-NbSUrbanAreas book)
+(level ESD-Kabisch-NbSUrbanAreas advanced)
+(section ESD-Kabisch-NbSUrbanAreas EcosystemServices)
+(url ESD-Kabisch-NbSUrbanAreas "https://www.springer.com/gp/book/9783319536507")
+(desc ESD-Kabisch-NbSUrbanAreas "An open-access Springer volume examining how urban nature-based solutions can address climate risks while delivering biodiversity and well-being co-benefits.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: ASSESSMENT TOOLS & DATABASES
+;; LCA software, sustainability metrics, design decision tools
+;; ════════════════════════════════════════════════════════════
+
+;; ── LCA Software & Databases ──
+
+(isa ESD-GreenDelta-openLCATool ReferenceWork)
+(title ESD-GreenDelta-openLCATool "openLCA — Open Source LCA Software")
+(author ESD-GreenDelta-openLCATool "GreenDelta")
+(resourceType ESD-GreenDelta-openLCATool code)
+(level ESD-GreenDelta-openLCATool intermediate)
+(section ESD-GreenDelta-openLCATool AssessmentTools)
+(url ESD-GreenDelta-openLCATool "https://github.com/GreenDelta/olca-app")
+(desc ESD-GreenDelta-openLCATool "A free, open-source life cycle assessment tool supporting all LCA phases, compatible with major databases including ecoinvent and USLCI.")
+
+(isa ESD-Mutel-Brightway2 ReferenceWork)
+(title ESD-Mutel-Brightway2 "Brightway2 — Python LCA Framework")
+(author ESD-Mutel-Brightway2 "Chris Mutel")
+(resourceType ESD-Mutel-Brightway2 code)
+(level ESD-Mutel-Brightway2 advanced)
+(section ESD-Mutel-Brightway2 AssessmentTools)
+(url ESD-Mutel-Brightway2 "https://github.com/brightway-lca/brightway2")
+(desc ESD-Mutel-Brightway2 "An open-source Python framework for advanced LCA calculations, enabling uncertainty analysis, parametric modeling, and integration with data science workflows.")
+
+(isa ESD-Ecoinvent-Database ReferenceWork)
+(title ESD-Ecoinvent-Database "ecoinvent Database")
+(author ESD-Ecoinvent-Database "ecoinvent Association")
+(resourceType ESD-Ecoinvent-Database data)
+(level ESD-Ecoinvent-Database intermediate)
+(section ESD-Ecoinvent-Database AssessmentTools)
+(url ESD-Ecoinvent-Database "https://ecoinvent.org/")
+(desc ESD-Ecoinvent-Database "The world's most comprehensive and consistent LCA database, containing over 18,000 datasets covering energy, transport, materials, and waste treatment.")
+
+(isa ESD-NREL-USLCI ReferenceWork)
+(title ESD-NREL-USLCI "US Life Cycle Inventory Database (USLCI)")
+(author ESD-NREL-USLCI "NREL")
+(resourceType ESD-NREL-USLCI data)
+(level ESD-NREL-USLCI intermediate)
+(section ESD-NREL-USLCI AssessmentTools)
+(url ESD-NREL-USLCI "https://www.nrel.gov/lci/")
+(desc ESD-NREL-USLCI "A free, publicly available database of life cycle inventory data for commonly used materials, products, and processes in the United States.")
+
+(isa ESD-GreenDelta-openLCANexus ReferenceWork)
+(title ESD-GreenDelta-openLCANexus "openLCA Nexus — LCA Data Repository")
+(author ESD-GreenDelta-openLCANexus "GreenDelta")
+(resourceType ESD-GreenDelta-openLCANexus data)
+(level ESD-GreenDelta-openLCANexus intermediate)
+(section ESD-GreenDelta-openLCANexus AssessmentTools)
+(url ESD-GreenDelta-openLCANexus "https://nexus.openlca.org/")
+(desc ESD-GreenDelta-openLCANexus "A central repository for accessing both free and commercial LCA databases in openLCA format, including ELCD, USLCI, and agribalyse.")
+
+;; ── Sustainability Metrics ──
+
+(isa ESD-Rockstrom-PlanetaryBoundaries ReferenceWork)
+(title ESD-Rockstrom-PlanetaryBoundaries "Planetary Boundaries: Exploring the Safe Operating Space for Humanity")
+(author ESD-Rockstrom-PlanetaryBoundaries "Rockstrom et al.")
+(resourceType ESD-Rockstrom-PlanetaryBoundaries notes)
+(level ESD-Rockstrom-PlanetaryBoundaries intermediate)
+(section ESD-Rockstrom-PlanetaryBoundaries AssessmentTools)
+(url ESD-Rockstrom-PlanetaryBoundaries "https://doi.org/10.1038/461472a")
+(desc ESD-Rockstrom-PlanetaryBoundaries "The seminal 2009 Nature paper proposing nine planetary boundaries within which humanity must operate to maintain a stable Earth system.")
+
+(isa ESD-WRIWBCSD-GHGProtocol ReferenceWork)
+(title ESD-WRIWBCSD-GHGProtocol "The GHG Protocol Corporate Standard")
+(author ESD-WRIWBCSD-GHGProtocol "WRI & WBCSD")
+(resourceType ESD-WRIWBCSD-GHGProtocol notes)
+(level ESD-WRIWBCSD-GHGProtocol intermediate)
+(section ESD-WRIWBCSD-GHGProtocol AssessmentTools)
+(url ESD-WRIWBCSD-GHGProtocol "https://ghgprotocol.org/corporate-standard")
+(desc ESD-WRIWBCSD-GHGProtocol "The most widely used international accounting standard for measuring and reporting greenhouse gas emissions from corporate operations.")
+
+(isa ESD-WFN-WaterFootprintManual ReferenceWork)
+(title ESD-WFN-WaterFootprintManual "Water Footprint Assessment Manual")
+(author ESD-WFN-WaterFootprintManual "Water Footprint Network")
+(resourceType ESD-WFN-WaterFootprintManual notes)
+(level ESD-WFN-WaterFootprintManual intermediate)
+(section ESD-WFN-WaterFootprintManual AssessmentTools)
+(url ESD-WFN-WaterFootprintManual "https://waterfootprint.org/en/resources/publications/water-footprint-assessment-manual/")
+(desc ESD-WFN-WaterFootprintManual "A comprehensive guide to water footprint assessment methodology, covering green, blue, and grey water footprints for products, processes, and nations.")
+
+(isa ESD-EPDIntl-EnvironmentalProductDeclarations ReferenceWork)
+(title ESD-EPDIntl-EnvironmentalProductDeclarations "Environmental Product Declarations (EPD) International")
+(author ESD-EPDIntl-EnvironmentalProductDeclarations "EPD International")
+(resourceType ESD-EPDIntl-EnvironmentalProductDeclarations data)
+(level ESD-EPDIntl-EnvironmentalProductDeclarations intermediate)
+(section ESD-EPDIntl-EnvironmentalProductDeclarations AssessmentTools)
+(url ESD-EPDIntl-EnvironmentalProductDeclarations "https://www.environdec.com/")
+(desc ESD-EPDIntl-EnvironmentalProductDeclarations "The global program for Type III environmental declarations based on ISO 14025 and EN 15804, providing standardized environmental data for products.")
+
+;; ── Design Decision Tools ──
+
+(isa ESD-EMF-MaterialMapper ReferenceWork)
+(title ESD-EMF-MaterialMapper "MaterialMapper — Circular Material Selection")
+(author ESD-EMF-MaterialMapper "Ellen MacArthur Foundation")
+(resourceType ESD-EMF-MaterialMapper data)
+(level ESD-EMF-MaterialMapper beginner)
+(section ESD-EMF-MaterialMapper AssessmentTools)
+(url ESD-EMF-MaterialMapper "https://www.ellenmacarthurfoundation.org/resources/learn/circular-design-toolkit")
+(desc ESD-EMF-MaterialMapper "A toolkit helping designers select materials and design strategies for circular products, with prompts for biological and technical cycle thinking.")
+
+(isa ESD-EMF-Circulytics ReferenceWork)
+(title ESD-EMF-Circulytics "Circulytics — Company Circularity Measurement")
+(author ESD-EMF-Circulytics "Ellen MacArthur Foundation")
+(resourceType ESD-EMF-Circulytics data)
+(level ESD-EMF-Circulytics intermediate)
+(section ESD-EMF-Circulytics AssessmentTools)
+(url ESD-EMF-Circulytics "https://www.ellenmacarthurfoundation.org/resources/circulytics/overview")
+(desc ESD-EMF-Circulytics "A comprehensive circularity measurement tool for companies, assessing enablers and outcomes across the full value chain.")
+
+(isa ESD-OneClickLCA-BuildingLCA ReferenceWork)
+(title ESD-OneClickLCA-BuildingLCA "One Click LCA — Building Life Cycle Assessment")
+(author ESD-OneClickLCA-BuildingLCA "One Click LCA")
+(resourceType ESD-OneClickLCA-BuildingLCA code)
+(level ESD-OneClickLCA-BuildingLCA intermediate)
+(section ESD-OneClickLCA-BuildingLCA AssessmentTools)
+(url ESD-OneClickLCA-BuildingLCA "https://www.oneclicklca.com/")
+(desc ESD-OneClickLCA-BuildingLCA "Cloud-based LCA software specifically designed for the construction industry, integrating with BIM workflows and EPD databases.")
+
+(isa ESD-ActivityBrowser-GUIBrightway2 ReferenceWork)
+(title ESD-ActivityBrowser-GUIBrightway2 "Activity Browser — GUI for Brightway2")
+(author ESD-ActivityBrowser-GUIBrightway2 "LCA-ActivityBrowser")
+(resourceType ESD-ActivityBrowser-GUIBrightway2 code)
+(level ESD-ActivityBrowser-GUIBrightway2 advanced)
+(section ESD-ActivityBrowser-GUIBrightway2 AssessmentTools)
+(url ESD-ActivityBrowser-GUIBrightway2 "https://github.com/LCA-ActivityBrowser/activity-browser")
+(desc ESD-ActivityBrowser-GUIBrightway2 "An open-source graphical interface for the Brightway2 LCA framework, making advanced life cycle assessment accessible without writing Python code.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources EcologicalSystemsDesignReference 85)
+(totalSections EcologicalSystemsDesignReference 7)
+(comment EcologicalSystemsDesignReference
+  "7 sections: Overview (13), Circular Economy (12), Industrial Ecology (12),
+   Cradle-to-Cradle (11), Regenerative Design (12), Ecosystem Services (12),
+   Assessment Tools (13). Total: 85 resources.")

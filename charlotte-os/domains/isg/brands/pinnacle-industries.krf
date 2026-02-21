@@ -1,0 +1,31 @@
+;;; ================================================================
+;;; ISG BRAND / PINNACLE INDUSTRIES LTD.
+;;; Compressor & blower distribution — Pasadena TX, 40+ years
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa PinnacleIndustries ISGBrand)
+(hasAttribute PinnacleIndustries ::LABEL "Pinnacle Industries Ltd.")
+(hasAttribute PinnacleIndustries ::VERTICAL "Compressors")
+(hasAttribute PinnacleIndustries ::HEADCOUNT "11-50")
+(hasAttribute PinnacleIndustries ::WEBSITE "pinnacleindustriesltd.com")
+(hasAttribute PinnacleIndustries ::SPECIALTIES "Air and gas compressor distribution, blowers, vacuum systems, aftermarket parts and service")
+(hasAttribute PinnacleIndustries ::INDUSTRIES "Petrochemical, refining, manufacturing, oil & gas")
+(MEMBER_OF PinnacleIndustries ISGCompressorGroup)
+(locatedAt PinnacleIndustries Pasadena-TX)
+
+(hasAttribute PinnacleIndustries ::FACILITY_HQ "Pasadena, TX")
+
+;; Personnel — Leadership
+
+(isa GregHolden Person)
+(hasAttribute GregHolden ::LABEL "Greg Holden")
+(hasAttribute GregHolden ::ROLE "President")
+(LEADS GregHolden PinnacleIndustries)
+(MEMBER_OF GregHolden PinnacleIndustries)
+
+(isa GeorgeHolden Person)
+(hasAttribute GeorgeHolden ::LABEL "George Holden")
+(hasAttribute GeorgeHolden ::ROLE "Founder / Chairman")
+(MEMBER_OF GeorgeHolden PinnacleIndustries)

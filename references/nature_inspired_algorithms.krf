@@ -1,0 +1,865 @@
+;;; ================================================================
+;;; REFERENCE / NATURE-INSPIRED ALGORITHMS
+;;; 84 resources across 7 sections — Charlotte's optimization engine
+;;; ================================================================
+;;;
+;;; Evolutionary computation & swarm intelligence. Optimization
+;;; strategies borrowed from biology.
+;;;
+;;; Nature-inspired computation draws on biological, physical, and
+;;; ecological processes to design algorithms that solve complex
+;;; optimization and search problems. From genetic algorithms to
+;;; ant colonies, these methods explore vast solution spaces using
+;;; principles refined by millions of years of natural selection.
+;;;
+;;; Learning path: Overview → Evolutionary Algorithms → Swarm
+;;; Intelligence → Neural & Brain-Inspired → Immune System →
+;;; Ecology & Plant-Inspired → Libraries & Benchmarks
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa NIA-Yang-NatureInspired ReferenceWork)
+(title NIA-Yang-NatureInspired "Nature-Inspired Optimization Algorithms")
+(author NIA-Yang-NatureInspired "Xin-She Yang")
+(resourceType NIA-Yang-NatureInspired book)
+(level NIA-Yang-NatureInspired beginner)
+(section NIA-Yang-NatureInspired NatureInspiredOverview)
+(url NIA-Yang-NatureInspired "https://www.elsevier.com/books/nature-inspired-optimization-algorithms/yang/978-0-12-416743-8")
+(desc NIA-Yang-NatureInspired "A comprehensive introduction to major nature-inspired algorithms including genetic algorithms, ant colony optimization, and firefly algorithms. Ideal entry point with clear mathematical formulations.")
+
+(isa NIA-Eiben-IntroEC ReferenceWork)
+(title NIA-Eiben-IntroEC "Introduction to Evolutionary Computing")
+(author NIA-Eiben-IntroEC "A.E. Eiben & J.E. Smith")
+(resourceType NIA-Eiben-IntroEC book)
+(level NIA-Eiben-IntroEC beginner)
+(section NIA-Eiben-IntroEC NatureInspiredOverview)
+(url NIA-Eiben-IntroEC "https://link.springer.com/book/10.1007/978-3-662-44874-8")
+(desc NIA-Eiben-IntroEC "The standard textbook for evolutionary computation, covering genetic algorithms, evolution strategies, genetic programming, and their theoretical foundations.")
+
+(isa NIA-Luke-Metaheuristics ReferenceWork)
+(title NIA-Luke-Metaheuristics "Essentials of Metaheuristics")
+(author NIA-Luke-Metaheuristics "Sean Luke")
+(resourceType NIA-Luke-Metaheuristics book)
+(level NIA-Luke-Metaheuristics beginner)
+(section NIA-Luke-Metaheuristics NatureInspiredOverview)
+(url NIA-Luke-Metaheuristics "https://cs.gmu.edu/~sean/book/metaheuristics/")
+(desc NIA-Luke-Metaheuristics "A freely available textbook covering a wide range of metaheuristic techniques with pseudocode. Continuously updated and community-driven.")
+
+(isa NIA-Bonabeau-SwarmIntel ReferenceWork)
+(title NIA-Bonabeau-SwarmIntel "Swarm Intelligence: From Natural to Artificial Systems")
+(author NIA-Bonabeau-SwarmIntel "Eric Bonabeau, Marco Dorigo & Guy Theraulaz")
+(resourceType NIA-Bonabeau-SwarmIntel book)
+(level NIA-Bonabeau-SwarmIntel intermediate)
+(section NIA-Bonabeau-SwarmIntel NatureInspiredOverview)
+(url NIA-Bonabeau-SwarmIntel "https://global.oup.com/academic/product/swarm-intelligence-9780195131598")
+(desc NIA-Bonabeau-SwarmIntel "A foundational text that bridges the gap between biological swarm behavior and computational swarm intelligence algorithms.")
+
+;; ── Survey Articles ──
+
+(isa NIA-Wolpert-NFL ReferenceWork)
+(title NIA-Wolpert-NFL "No Free Lunch Theorems for Optimization")
+(author NIA-Wolpert-NFL "David H. Wolpert & William G. Macready")
+(resourceType NIA-Wolpert-NFL notes)
+(level NIA-Wolpert-NFL advanced)
+(section NIA-Wolpert-NFL NatureInspiredOverview)
+(url NIA-Wolpert-NFL "https://doi.org/10.1109/4235.585893")
+(desc NIA-Wolpert-NFL "The seminal 1997 paper proving that averaged over all possible problems, every optimization algorithm performs identically, shaping modern metaheuristic research.")
+
+(isa NIA-Blum-MetaheuristicsSurvey ReferenceWork)
+(title NIA-Blum-MetaheuristicsSurvey "Metaheuristics: A Survey of Informing Approaches")
+(author NIA-Blum-MetaheuristicsSurvey "Christian Blum & Andrea Roli")
+(resourceType NIA-Blum-MetaheuristicsSurvey notes)
+(level NIA-Blum-MetaheuristicsSurvey intermediate)
+(section NIA-Blum-MetaheuristicsSurvey NatureInspiredOverview)
+(url NIA-Blum-MetaheuristicsSurvey "https://doi.org/10.1007/s10479-005-3600-0")
+(desc NIA-Blum-MetaheuristicsSurvey "An influential survey classifying metaheuristic techniques along multiple dimensions including trajectory vs. population, memory usage, and neighborhood structures.")
+
+(isa NIA-Sadeeq-ComprehensiveSurvey ReferenceWork)
+(title NIA-Sadeeq-ComprehensiveSurvey "A Comprehensive Survey on Nature-Inspired Algorithms")
+(author NIA-Sadeeq-ComprehensiveSurvey "Sadeeq et al.")
+(resourceType NIA-Sadeeq-ComprehensiveSurvey notes)
+(level NIA-Sadeeq-ComprehensiveSurvey beginner)
+(section NIA-Sadeeq-ComprehensiveSurvey NatureInspiredOverview)
+(url NIA-Sadeeq-ComprehensiveSurvey "https://doi.org/10.14569/IJACSA.2020.0110201")
+(desc NIA-Sadeeq-ComprehensiveSurvey "A modern survey categorizing nature-inspired algorithms by their biological inspiration source and comparing their convergence properties.")
+
+(isa NIA-Mirjalili-MetaheuristicSurvey ReferenceWork)
+(title NIA-Mirjalili-MetaheuristicSurvey "Metaheuristic Research: A Comprehensive Survey")
+(author NIA-Mirjalili-MetaheuristicSurvey "Seyedali Mirjalili")
+(resourceType NIA-Mirjalili-MetaheuristicSurvey notes)
+(level NIA-Mirjalili-MetaheuristicSurvey intermediate)
+(section NIA-Mirjalili-MetaheuristicSurvey NatureInspiredOverview)
+(url NIA-Mirjalili-MetaheuristicSurvey "https://doi.org/10.1007/s10462-017-9605-z")
+(desc NIA-Mirjalili-MetaheuristicSurvey "Reviews the development timeline of metaheuristic algorithms and identifies key trends, open problems, and promising research directions.")
+
+;; ── Introductory Courses ──
+
+(isa NIA-NPTEL-NatureInspired ReferenceWork)
+(title NIA-NPTEL-NatureInspired "Nature-Inspired Computing (IIT Kharagpur, NPTEL)")
+(author NIA-NPTEL-NatureInspired "Prof. Kaushik Das Sharma")
+(resourceType NIA-NPTEL-NatureInspired course)
+(level NIA-NPTEL-NatureInspired beginner)
+(section NIA-NPTEL-NatureInspired NatureInspiredOverview)
+(url NIA-NPTEL-NatureInspired "https://nptel.ac.in/courses/106105182")
+(desc NIA-NPTEL-NatureInspired "A full lecture series covering foundational nature-inspired methods from genetic algorithms to swarm optimization with worked examples.")
+
+(isa NIA-Shiffman-BioInspiredAI ReferenceWork)
+(title NIA-Shiffman-BioInspiredAI "Bio-Inspired AI (YouTube Series)")
+(author NIA-Shiffman-BioInspiredAI "The Coding Train (Daniel Shiffman)")
+(resourceType NIA-Shiffman-BioInspiredAI video)
+(level NIA-Shiffman-BioInspiredAI beginner)
+(section NIA-Shiffman-BioInspiredAI NatureInspiredOverview)
+(url NIA-Shiffman-BioInspiredAI "https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bw4n214lBDpnCMbEYFLKcn")
+(desc NIA-Shiffman-BioInspiredAI "Engaging video series on genetic algorithms, steering behaviors, and evolutionary art using Processing and p5.js.")
+
+(isa NIA-Engelbrecht-CompIntel ReferenceWork)
+(title NIA-Engelbrecht-CompIntel "Computational Intelligence: An Introduction (Coursera)")
+(author NIA-Engelbrecht-CompIntel "Andries Engelbrecht")
+(resourceType NIA-Engelbrecht-CompIntel course)
+(level NIA-Engelbrecht-CompIntel beginner)
+(section NIA-Engelbrecht-CompIntel NatureInspiredOverview)
+(url NIA-Engelbrecht-CompIntel "https://www.wiley.com/en-us/Computational+Intelligence:+An+Introduction,+2nd+Edition-p-9780470035610")
+(desc NIA-Engelbrecht-CompIntel "Textbook companion for computational intelligence covering neural networks, evolutionary computation, and swarm intelligence from a unified perspective.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: EVOLUTIONARY ALGORITHMS
+;; Genetic algorithms, genetic programming, multi-objective
+;; ════════════════════════════════════════════════════════════
+
+;; ── Genetic Algorithms ──
+
+(isa NIA-Holland-Adaptation ReferenceWork)
+(title NIA-Holland-Adaptation "Adaptation in Natural and Artificial Systems")
+(author NIA-Holland-Adaptation "John H. Holland")
+(resourceType NIA-Holland-Adaptation book)
+(level NIA-Holland-Adaptation advanced)
+(section NIA-Holland-Adaptation EvolutionaryAlgorithms)
+(url NIA-Holland-Adaptation "https://mitpress.mit.edu/9780262581110/adaptation-in-natural-and-artificial-systems/")
+(desc NIA-Holland-Adaptation "The foundational 1975 book that introduced genetic algorithms, the schema theorem, and the building-block hypothesis.")
+
+(isa NIA-Mitchell-IntroGA ReferenceWork)
+(title NIA-Mitchell-IntroGA "An Introduction to Genetic Algorithms")
+(author NIA-Mitchell-IntroGA "Melanie Mitchell")
+(resourceType NIA-Mitchell-IntroGA book)
+(level NIA-Mitchell-IntroGA beginner)
+(section NIA-Mitchell-IntroGA EvolutionaryAlgorithms)
+(url NIA-Mitchell-IntroGA "https://mitpress.mit.edu/9780262631853/an-introduction-to-genetic-algorithms/")
+(desc NIA-Mitchell-IntroGA "An accessible and widely-used textbook that explains genetic algorithms from basic concepts through advanced theory with practical exercises.")
+
+(isa NIA-Goldberg-GASearch ReferenceWork)
+(title NIA-Goldberg-GASearch "Genetic Algorithms in Search, Optimization, and Machine Learning")
+(author NIA-Goldberg-GASearch "David E. Goldberg")
+(resourceType NIA-Goldberg-GASearch book)
+(level NIA-Goldberg-GASearch intermediate)
+(section NIA-Goldberg-GASearch EvolutionaryAlgorithms)
+(url NIA-Goldberg-GASearch "https://www.pearson.com/en-us/subject-catalog/p/genetic-algorithms-in-search-optimization-and-machine-learning/P200000003449")
+(desc NIA-Goldberg-GASearch "One of the most cited GA references, covering schemata theory, building blocks, parallel GAs, and applications to machine learning.")
+
+(isa NIA-Price-DiffEvolution ReferenceWork)
+(title NIA-Price-DiffEvolution "Differential Evolution: A Practical Approach to Global Optimization")
+(author NIA-Price-DiffEvolution "Kenneth V. Price, Rainer M. Storn & Jouni A. Lampinen")
+(resourceType NIA-Price-DiffEvolution book)
+(level NIA-Price-DiffEvolution intermediate)
+(section NIA-Price-DiffEvolution EvolutionaryAlgorithms)
+(url NIA-Price-DiffEvolution "https://link.springer.com/book/10.1007/3-540-31306-0")
+(desc NIA-Price-DiffEvolution "The authoritative reference on differential evolution, including its theory, variants, and applications to real-world engineering problems.")
+
+(isa NIA-KieCodes-GAWalkthrough ReferenceWork)
+(title NIA-KieCodes-GAWalkthrough "Genetic Algorithm Walkthroughs")
+(author NIA-KieCodes-GAWalkthrough "Kie Codes")
+(resourceType NIA-KieCodes-GAWalkthrough video)
+(level NIA-KieCodes-GAWalkthrough beginner)
+(section NIA-KieCodes-GAWalkthrough EvolutionaryAlgorithms)
+(url NIA-KieCodes-GAWalkthrough "https://www.youtube.com/watch?v=nhT56blfRpE")
+(desc NIA-KieCodes-GAWalkthrough "Visual step-by-step explanation of how genetic algorithms work, covering selection, crossover, and mutation with animated examples.")
+
+;; ── Genetic Programming ──
+
+(isa NIA-Koza-GeneticProgramming ReferenceWork)
+(title NIA-Koza-GeneticProgramming "Genetic Programming: On the Programming of Computers by Means of Natural Selection")
+(author NIA-Koza-GeneticProgramming "John R. Koza")
+(resourceType NIA-Koza-GeneticProgramming book)
+(level NIA-Koza-GeneticProgramming advanced)
+(section NIA-Koza-GeneticProgramming EvolutionaryAlgorithms)
+(url NIA-Koza-GeneticProgramming "https://mitpress.mit.edu/9780262111706/genetic-programming/")
+(desc NIA-Koza-GeneticProgramming "Koza's seminal book that introduced genetic programming, demonstrating automatic evolution of computer programs for diverse tasks.")
+
+(isa NIA-Poli-FieldGuideGP ReferenceWork)
+(title NIA-Poli-FieldGuideGP "A Field Guide to Genetic Programming")
+(author NIA-Poli-FieldGuideGP "Riccardo Poli, William B. Langdon & Nicholas F. McPhee")
+(resourceType NIA-Poli-FieldGuideGP book)
+(level NIA-Poli-FieldGuideGP intermediate)
+(section NIA-Poli-FieldGuideGP EvolutionaryAlgorithms)
+(url NIA-Poli-FieldGuideGP "http://www.gp-field-guide.org.uk/")
+(desc NIA-Poli-FieldGuideGP "A freely available introduction to GP covering tree-based, linear, and grammar-based approaches with practical implementation advice.")
+
+(isa NIA-DEAP-EvolutionaryPython ReferenceWork)
+(title NIA-DEAP-EvolutionaryPython "DEAP: Distributed Evolutionary Algorithms in Python")
+(author NIA-DEAP-EvolutionaryPython "Fortin et al.")
+(resourceType NIA-DEAP-EvolutionaryPython code)
+(level NIA-DEAP-EvolutionaryPython intermediate)
+(section NIA-DEAP-EvolutionaryPython EvolutionaryAlgorithms)
+(url NIA-DEAP-EvolutionaryPython "https://github.com/DEAP/deap")
+(desc NIA-DEAP-EvolutionaryPython "A popular Python framework for prototyping evolutionary algorithms including GP, with built-in benchmarks and parallelization support.")
+
+(isa NIA-Spector-PushGP ReferenceWork)
+(title NIA-Spector-PushGP "PushGP and Program Synthesis")
+(author NIA-Spector-PushGP "Lee Spector")
+(resourceType NIA-Spector-PushGP notes)
+(level NIA-Spector-PushGP advanced)
+(section NIA-Spector-PushGP EvolutionaryAlgorithms)
+(url NIA-Spector-PushGP "https://doi.org/10.1007/s10710-010-9104-6")
+(desc NIA-Spector-PushGP "Introduces Push, a stack-based language designed for GP, enabling evolution of programs with complex control flow and multiple data types.")
+
+;; ── Multi-Objective Optimization ──
+
+(isa NIA-Deb-MultiObjective ReferenceWork)
+(title NIA-Deb-MultiObjective "Multi-Objective Optimization Using Evolutionary Algorithms")
+(author NIA-Deb-MultiObjective "Kalyanmoy Deb")
+(resourceType NIA-Deb-MultiObjective book)
+(level NIA-Deb-MultiObjective intermediate)
+(section NIA-Deb-MultiObjective EvolutionaryAlgorithms)
+(url NIA-Deb-MultiObjective "https://www.wiley.com/en-us/Multi+Objective+Optimization+using+Evolutionary+Algorithms-p-9780471873396")
+(desc NIA-Deb-MultiObjective "The definitive text on multi-objective evolutionary optimization, introducing NSGA-II and providing extensive theory on Pareto dominance.")
+
+(isa NIA-Deb-NSGAII ReferenceWork)
+(title NIA-Deb-NSGAII "A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II")
+(author NIA-Deb-NSGAII "Kalyanmoy Deb, Amrit Pratap, Sameer Agarwal & T. Meyarivan")
+(resourceType NIA-Deb-NSGAII notes)
+(level NIA-Deb-NSGAII advanced)
+(section NIA-Deb-NSGAII EvolutionaryAlgorithms)
+(url NIA-Deb-NSGAII "https://doi.org/10.1109/4235.996017")
+(desc NIA-Deb-NSGAII "The original NSGA-II paper proposing fast non-dominated sorting and crowding distance, one of the most cited evolutionary computation papers.")
+
+(isa NIA-Hadka-MOEAFramework ReferenceWork)
+(title NIA-Hadka-MOEAFramework "MOEA Framework")
+(author NIA-Hadka-MOEAFramework "David Hadka")
+(resourceType NIA-Hadka-MOEAFramework code)
+(level NIA-Hadka-MOEAFramework intermediate)
+(section NIA-Hadka-MOEAFramework EvolutionaryAlgorithms)
+(url NIA-Hadka-MOEAFramework "https://github.com/MOEAFramework/MOEAFramework")
+(desc NIA-Hadka-MOEAFramework "A comprehensive Java framework for multi-objective evolutionary algorithms supporting NSGA-II, SPEA2, MOEA/D, and many others with built-in analysis tools.")
+
+(isa NIA-Blank-Pymoo ReferenceWork)
+(title NIA-Blank-Pymoo "pymoo: Multi-Objective Optimization in Python")
+(author NIA-Blank-Pymoo "Julian Blank & Kalyanmoy Deb")
+(resourceType NIA-Blank-Pymoo code)
+(level NIA-Blank-Pymoo intermediate)
+(section NIA-Blank-Pymoo EvolutionaryAlgorithms)
+(url NIA-Blank-Pymoo "https://github.com/anyoptimization/pymoo")
+(desc NIA-Blank-Pymoo "A Python library providing state-of-the-art multi-objective optimization algorithms, visualization tools, and benchmark problem suites.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SWARM INTELLIGENCE
+;; Ant colony, particle swarm, firefly, bee colony
+;; ════════════════════════════════════════════════════════════
+
+;; ── Ant Colony Optimization ──
+
+(isa NIA-Dorigo-ACO ReferenceWork)
+(title NIA-Dorigo-ACO "Ant Colony Optimization")
+(author NIA-Dorigo-ACO "Marco Dorigo & Thomas Stutzle")
+(resourceType NIA-Dorigo-ACO book)
+(level NIA-Dorigo-ACO intermediate)
+(section NIA-Dorigo-ACO SwarmIntelligence)
+(url NIA-Dorigo-ACO "https://mitpress.mit.edu/9780262042192/ant-colony-optimization/")
+(desc NIA-Dorigo-ACO "The comprehensive reference by ACO's inventor, covering ant system, MAX-MIN ant system, and applications to routing, scheduling, and assignment problems.")
+
+(isa NIA-Dorigo-ACS ReferenceWork)
+(title NIA-Dorigo-ACS "Ant Colony System: A Cooperative Learning Approach to the Traveling Salesman Problem")
+(author NIA-Dorigo-ACS "Marco Dorigo & Luca Maria Gambardella")
+(resourceType NIA-Dorigo-ACS notes)
+(level NIA-Dorigo-ACS advanced)
+(section NIA-Dorigo-ACS SwarmIntelligence)
+(url NIA-Dorigo-ACS "https://doi.org/10.1109/4235.585892")
+(desc NIA-Dorigo-ACS "The landmark paper introducing Ant Colony System (ACS), demonstrating state-of-the-art performance on TSP instances using pheromone-based learning.")
+
+(isa NIA-Stutzle-ACOCode ReferenceWork)
+(title NIA-Stutzle-ACOCode "ACO Algorithms for the TSP (ACO code)")
+(author NIA-Stutzle-ACOCode "Thomas Stutzle")
+(resourceType NIA-Stutzle-ACOCode code)
+(level NIA-Stutzle-ACOCode intermediate)
+(section NIA-Stutzle-ACOCode SwarmIntelligence)
+(url NIA-Stutzle-ACOCode "https://github.com/tsstss123/AntColonyOptimization")
+(desc NIA-Stutzle-ACOCode "Reference implementation of ant colony optimization algorithms applied to traveling salesman problem instances with configurable parameters.")
+
+(isa NIA-Computerphile-ACO ReferenceWork)
+(title NIA-Computerphile-ACO "Ant Colony Optimization — Computerphile")
+(author NIA-Computerphile-ACO "Computerphile")
+(resourceType NIA-Computerphile-ACO video)
+(level NIA-Computerphile-ACO beginner)
+(section NIA-Computerphile-ACO SwarmIntelligence)
+(url NIA-Computerphile-ACO "https://www.youtube.com/watch?v=783ZtAF4j5g")
+(desc NIA-Computerphile-ACO "A clear visual explanation of how ant colony optimization works, covering pheromone deposition, evaporation, and convergence behavior.")
+
+;; ── Particle Swarm Optimization ──
+
+(isa NIA-Kennedy-PSO ReferenceWork)
+(title NIA-Kennedy-PSO "Particle Swarm Optimization (Original Paper)")
+(author NIA-Kennedy-PSO "James Kennedy & Russell Eberhart")
+(resourceType NIA-Kennedy-PSO notes)
+(level NIA-Kennedy-PSO intermediate)
+(section NIA-Kennedy-PSO SwarmIntelligence)
+(url NIA-Kennedy-PSO "https://doi.org/10.1109/ICNN.1995.488968")
+(desc NIA-Kennedy-PSO "The 1995 paper that introduced PSO, showing how a swarm of particles navigating a search space can solve continuous optimization problems.")
+
+(isa NIA-Kennedy-SwarmIntelBook ReferenceWork)
+(title NIA-Kennedy-SwarmIntelBook "Swarm Intelligence (Morgan Kaufmann)")
+(author NIA-Kennedy-SwarmIntelBook "James Kennedy & Russell Eberhart")
+(resourceType NIA-Kennedy-SwarmIntelBook book)
+(level NIA-Kennedy-SwarmIntelBook intermediate)
+(section NIA-Kennedy-SwarmIntelBook SwarmIntelligence)
+(url NIA-Kennedy-SwarmIntelBook "https://www.elsevier.com/books/swarm-intelligence/kennedy/978-1-55860-595-4")
+(desc NIA-Kennedy-SwarmIntelBook "A thorough treatment of swarm intelligence with emphasis on PSO, including social-psychological motivations and practical algorithm design.")
+
+(isa NIA-Marini-PSOReview ReferenceWork)
+(title NIA-Marini-PSOReview "A Comprehensive Review of Particle Swarm Optimization")
+(author NIA-Marini-PSOReview "Marini & Walczak")
+(resourceType NIA-Marini-PSOReview notes)
+(level NIA-Marini-PSOReview intermediate)
+(section NIA-Marini-PSOReview SwarmIntelligence)
+(url NIA-Marini-PSOReview "https://doi.org/10.1016/j.chemolab.2015.08.020")
+(desc NIA-Marini-PSOReview "Reviews PSO variants including constriction factor, inertia weight strategies, and multi-objective extensions with convergence analysis.")
+
+(isa NIA-Miranda-PySwarms ReferenceWork)
+(title NIA-Miranda-PySwarms "PySwarms: A Research Toolkit for Particle Swarm Optimization")
+(author NIA-Miranda-PySwarms "Lester James V. Miranda")
+(resourceType NIA-Miranda-PySwarms code)
+(level NIA-Miranda-PySwarms beginner)
+(section NIA-Miranda-PySwarms SwarmIntelligence)
+(url NIA-Miranda-PySwarms "https://github.com/ljvmiranda921/pyswarms")
+(desc NIA-Miranda-PySwarms "A Python library for PSO with global-best and local-best topologies, built-in visualization, and support for custom objective functions.")
+
+;; ── Other Swarm Methods ──
+
+(isa NIA-Yang-FireflyAlgorithm ReferenceWork)
+(title NIA-Yang-FireflyAlgorithm "Firefly Algorithm (Original Paper)")
+(author NIA-Yang-FireflyAlgorithm "Xin-She Yang")
+(resourceType NIA-Yang-FireflyAlgorithm notes)
+(level NIA-Yang-FireflyAlgorithm intermediate)
+(section NIA-Yang-FireflyAlgorithm SwarmIntelligence)
+(url NIA-Yang-FireflyAlgorithm "https://doi.org/10.1007/978-3-642-04944-6_14")
+(desc NIA-Yang-FireflyAlgorithm "Introduces the firefly algorithm, where attraction between fireflies is modulated by light intensity and distance, with natural multimodal capability.")
+
+(isa NIA-Karaboga-ABC ReferenceWork)
+(title NIA-Karaboga-ABC "Artificial Bee Colony Algorithm (ABC)")
+(author NIA-Karaboga-ABC "Dervis Karaboga")
+(resourceType NIA-Karaboga-ABC notes)
+(level NIA-Karaboga-ABC intermediate)
+(section NIA-Karaboga-ABC SwarmIntelligence)
+(url NIA-Karaboga-ABC "https://doi.org/10.1007/s10898-007-9149-x")
+(desc NIA-Karaboga-ABC "The foundational paper for the ABC algorithm modeling employed, onlooker, and scout bee behaviors for numerical function optimization.")
+
+(isa NIA-Mirjalili-GWO ReferenceWork)
+(title NIA-Mirjalili-GWO "Grey Wolf Optimizer")
+(author NIA-Mirjalili-GWO "Seyedali Mirjalili, Seyed Mohammad Mirjalili & Andrew Lewis")
+(resourceType NIA-Mirjalili-GWO notes)
+(level NIA-Mirjalili-GWO intermediate)
+(section NIA-Mirjalili-GWO SwarmIntelligence)
+(url NIA-Mirjalili-GWO "https://doi.org/10.1016/j.advengsoft.2013.12.007")
+(desc NIA-Mirjalili-GWO "Proposes the GWO algorithm inspired by the social hierarchy and hunting strategies of grey wolves, demonstrating competitive benchmark performance.")
+
+(isa NIA-Mirjalili-WOA ReferenceWork)
+(title NIA-Mirjalili-WOA "Whale Optimization Algorithm")
+(author NIA-Mirjalili-WOA "Seyedali Mirjalili & Andrew Lewis")
+(resourceType NIA-Mirjalili-WOA notes)
+(level NIA-Mirjalili-WOA intermediate)
+(section NIA-Mirjalili-WOA SwarmIntelligence)
+(url NIA-Mirjalili-WOA "https://doi.org/10.1016/j.advengsoft.2016.01.008")
+(desc NIA-Mirjalili-WOA "A swarm algorithm inspired by the bubble-net hunting strategy of humpback whales, using encircling prey and spiral updating mechanisms.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: NEURAL & BRAIN-INSPIRED
+;; Neural networks, spiking networks, neuromorphic hardware
+;; ════════════════════════════════════════════════════════════
+
+;; ── Neural Network Foundations ──
+
+(isa NIA-Nielsen-NNDeepLearning ReferenceWork)
+(title NIA-Nielsen-NNDeepLearning "Neural Networks and Deep Learning (Online Book)")
+(author NIA-Nielsen-NNDeepLearning "Michael Nielsen")
+(resourceType NIA-Nielsen-NNDeepLearning book)
+(level NIA-Nielsen-NNDeepLearning beginner)
+(section NIA-Nielsen-NNDeepLearning NeuralBrainInspired)
+(url NIA-Nielsen-NNDeepLearning "http://neuralnetworksanddeeplearning.com/")
+(desc NIA-Nielsen-NNDeepLearning "A freely available, elegantly written introduction to neural networks and deep learning with interactive visualizations and clear mathematical explanations.")
+
+(isa NIA-Goodfellow-DeepLearning ReferenceWork)
+(title NIA-Goodfellow-DeepLearning "Deep Learning")
+(author NIA-Goodfellow-DeepLearning "Ian Goodfellow, Yoshua Bengio & Aaron Courville")
+(resourceType NIA-Goodfellow-DeepLearning book)
+(level NIA-Goodfellow-DeepLearning intermediate)
+(section NIA-Goodfellow-DeepLearning NeuralBrainInspired)
+(url NIA-Goodfellow-DeepLearning "https://www.deeplearningbook.org/")
+(desc NIA-Goodfellow-DeepLearning "The comprehensive textbook covering deep learning theory from linear algebra foundations through modern architectures like CNNs, RNNs, and generative models.")
+
+(isa NIA-Karpathy-NNZeroToHero ReferenceWork)
+(title NIA-Karpathy-NNZeroToHero "Neural Networks: Zero to Hero")
+(author NIA-Karpathy-NNZeroToHero "Andrej Karpathy")
+(resourceType NIA-Karpathy-NNZeroToHero video)
+(level NIA-Karpathy-NNZeroToHero beginner)
+(section NIA-Karpathy-NNZeroToHero NeuralBrainInspired)
+(url NIA-Karpathy-NNZeroToHero "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ")
+(desc NIA-Karpathy-NNZeroToHero "A hands-on video series building neural networks from scratch in Python, progressing from simple neurons to transformers and language models.")
+
+(isa NIA-Bengio-BiologicalBasisDL ReferenceWork)
+(title NIA-Bengio-BiologicalBasisDL "The Biological Basis of Deep Learning")
+(author NIA-Bengio-BiologicalBasisDL "Yoshua Bengio et al.")
+(resourceType NIA-Bengio-BiologicalBasisDL notes)
+(level NIA-Bengio-BiologicalBasisDL advanced)
+(section NIA-Bengio-BiologicalBasisDL NeuralBrainInspired)
+(url NIA-Bengio-BiologicalBasisDL "https://doi.org/10.1126/science.abh0619")
+(desc NIA-Bengio-BiologicalBasisDL "Explores the connections between deep learning and neuroscience, examining how biological plausibility constraints could improve artificial networks.")
+
+;; ── Spiking Neural Networks ──
+
+(isa NIA-Gerstner-SpikingModels ReferenceWork)
+(title NIA-Gerstner-SpikingModels "Spiking Neuron Models: Single Neurons, Populations, Plasticity")
+(author NIA-Gerstner-SpikingModels "Wulfram Gerstner & Werner Kistler")
+(resourceType NIA-Gerstner-SpikingModels book)
+(level NIA-Gerstner-SpikingModels advanced)
+(section NIA-Gerstner-SpikingModels NeuralBrainInspired)
+(url NIA-Gerstner-SpikingModels "https://doi.org/10.1017/CBO9780511815706")
+(desc NIA-Gerstner-SpikingModels "A rigorous treatment of spiking neuron models including integrate-and-fire, Hodgkin-Huxley, and spike-response models with network-level analysis.")
+
+(isa NIA-Taherkhani-SNNIntro ReferenceWork)
+(title NIA-Taherkhani-SNNIntro "Spiking Neural Networks: An Introduction (Tutorial)")
+(author NIA-Taherkhani-SNNIntro "Aboozar Taherkhani et al.")
+(resourceType NIA-Taherkhani-SNNIntro notes)
+(level NIA-Taherkhani-SNNIntro intermediate)
+(section NIA-Taherkhani-SNNIntro NeuralBrainInspired)
+(url NIA-Taherkhani-SNNIntro "https://doi.org/10.1016/j.neunet.2019.09.036")
+(desc NIA-Taherkhani-SNNIntro "A comprehensive tutorial on SNN architectures, learning rules (STDP, supervised), and their relationship to conventional deep learning approaches.")
+
+(isa NIA-Norse-SpikingPyTorch ReferenceWork)
+(title NIA-Norse-SpikingPyTorch "Norse: A Library for Spiking Neural Networks in PyTorch")
+(author NIA-Norse-SpikingPyTorch "Christian Pehle & Jens Egholm Pedersen")
+(resourceType NIA-Norse-SpikingPyTorch code)
+(level NIA-Norse-SpikingPyTorch intermediate)
+(section NIA-Norse-SpikingPyTorch NeuralBrainInspired)
+(url NIA-Norse-SpikingPyTorch "https://github.com/norse/norse")
+(desc NIA-Norse-SpikingPyTorch "A PyTorch-based library for building and training spiking neural networks with GPU acceleration and integration with deep learning workflows.")
+
+(isa NIA-Eshraghian-snnTorch ReferenceWork)
+(title NIA-Eshraghian-snnTorch "snnTorch: Training Spiking Neural Networks")
+(author NIA-Eshraghian-snnTorch "Jason K. Eshraghian et al.")
+(resourceType NIA-Eshraghian-snnTorch code)
+(level NIA-Eshraghian-snnTorch intermediate)
+(section NIA-Eshraghian-snnTorch NeuralBrainInspired)
+(url NIA-Eshraghian-snnTorch "https://github.com/jeshraghian/snntorch")
+(desc NIA-Eshraghian-snnTorch "A Python package for training spiking neural networks using surrogate gradient methods, featuring tutorials on neuromorphic datasets and hardware deployment.")
+
+;; ── Neuromorphic Hardware ──
+
+(isa NIA-Davies-Loihi ReferenceWork)
+(title NIA-Davies-Loihi "Loihi: A Neuromorphic Manycore Processor (Intel)")
+(author NIA-Davies-Loihi "Mike Davies et al.")
+(resourceType NIA-Davies-Loihi notes)
+(level NIA-Davies-Loihi advanced)
+(section NIA-Davies-Loihi NeuralBrainInspired)
+(url NIA-Davies-Loihi "https://doi.org/10.1109/MM.2018.112130359")
+(desc NIA-Davies-Loihi "Describes Intel's Loihi chip featuring 128 neuromorphic cores, on-chip learning, and hierarchical connectivity for energy-efficient spiking computation.")
+
+(isa NIA-Merolla-TrueNorth ReferenceWork)
+(title NIA-Merolla-TrueNorth "TrueNorth: Design and Tool Flow of a 65 mW Neuromorphic Chip")
+(author NIA-Merolla-TrueNorth "Paul A. Merolla et al.")
+(resourceType NIA-Merolla-TrueNorth notes)
+(level NIA-Merolla-TrueNorth advanced)
+(section NIA-Merolla-TrueNorth NeuralBrainInspired)
+(url NIA-Merolla-TrueNorth "https://doi.org/10.1126/science.1254642")
+(desc NIA-Merolla-TrueNorth "IBM's TrueNorth chip paper presenting a million-neuron programmable neurosynaptic processor with unprecedented energy efficiency for pattern recognition.")
+
+(isa NIA-IntelLabs-Lava ReferenceWork)
+(title NIA-IntelLabs-Lava "Lava: An Open-Source Software Framework for Neuromorphic Computing")
+(author NIA-IntelLabs-Lava "Intel Labs")
+(resourceType NIA-IntelLabs-Lava code)
+(level NIA-IntelLabs-Lava intermediate)
+(section NIA-IntelLabs-Lava NeuralBrainInspired)
+(url NIA-IntelLabs-Lava "https://github.com/lava-nc/lava")
+(desc NIA-IntelLabs-Lava "Intel's open-source framework for developing neuro-inspired applications deployable on heterogeneous architectures including Loihi neuromorphic processors.")
+
+(isa NIA-IOP-NeuromorphicJournal ReferenceWork)
+(title NIA-IOP-NeuromorphicJournal "Neuromorphic Computing and Engineering (IOP Journal)")
+(author NIA-IOP-NeuromorphicJournal "IOP Publishing")
+(resourceType NIA-IOP-NeuromorphicJournal notes)
+(level NIA-IOP-NeuromorphicJournal advanced)
+(section NIA-IOP-NeuromorphicJournal NeuralBrainInspired)
+(url NIA-IOP-NeuromorphicJournal "https://iopscience.iop.org/journal/2634-4386")
+(desc NIA-IOP-NeuromorphicJournal "A dedicated journal publishing research on neuromorphic hardware, algorithms, and applications, serving as a hub for the neuromorphic computing community.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: IMMUNE SYSTEM ALGORITHMS
+;; Clonal selection, negative selection, danger theory
+;; ════════════════════════════════════════════════════════════
+
+;; ── Immune System Biology ──
+
+(isa NIA-MitchellForrest-ImmunoCS ReferenceWork)
+(title NIA-MitchellForrest-ImmunoCS "Immunology for Computer Scientists")
+(author NIA-MitchellForrest-ImmunoCS "Melanie Mitchell & Stephanie Forrest")
+(resourceType NIA-MitchellForrest-ImmunoCS notes)
+(level NIA-MitchellForrest-ImmunoCS beginner)
+(section NIA-MitchellForrest-ImmunoCS ImmuneSystemAlgorithms)
+(url NIA-MitchellForrest-ImmunoCS "https://doi.org/10.1007/3-540-36217-7_2")
+(desc NIA-MitchellForrest-ImmunoCS "An accessible primer on immunology concepts relevant to computer scientists, bridging biological terminology and computational abstractions.")
+
+(isa NIA-Murphy-Janeway ReferenceWork)
+(title NIA-Murphy-Janeway "Janeway's Immunobiology (9th Edition)")
+(author NIA-Murphy-Janeway "Kenneth Murphy & Casey Weaver")
+(resourceType NIA-Murphy-Janeway book)
+(level NIA-Murphy-Janeway intermediate)
+(section NIA-Murphy-Janeway ImmuneSystemAlgorithms)
+(url NIA-Murphy-Janeway "https://wwnorton.com/books/9780815345053")
+(desc NIA-Murphy-Janeway "The standard immunology textbook providing deep biological context for adaptive and innate immunity that inspires AIS algorithm design.")
+
+(isa NIA-Parham-ImmuneSystem ReferenceWork)
+(title NIA-Parham-ImmuneSystem "The Immune System (Garland Science)")
+(author NIA-Parham-ImmuneSystem "Peter Parham")
+(resourceType NIA-Parham-ImmuneSystem book)
+(level NIA-Parham-ImmuneSystem beginner)
+(section NIA-Parham-ImmuneSystem ImmuneSystemAlgorithms)
+(url NIA-Parham-ImmuneSystem "https://www.routledge.com/The-Immune-System/Parham/p/book/9780815345268")
+(desc NIA-Parham-ImmuneSystem "An accessible introduction to immunology with clear illustrations, suitable for computer scientists seeking biological grounding for AIS research.")
+
+;; ── Artificial Immune Systems ──
+
+(isa NIA-DeCastro-AIS ReferenceWork)
+(title NIA-DeCastro-AIS "Artificial Immune Systems: A New Computational Intelligence Approach")
+(author NIA-DeCastro-AIS "Leandro Nunes de Castro & Jonathan Timmis")
+(resourceType NIA-DeCastro-AIS book)
+(level NIA-DeCastro-AIS intermediate)
+(section NIA-DeCastro-AIS ImmuneSystemAlgorithms)
+(url NIA-DeCastro-AIS "https://link.springer.com/book/10.1007/978-1-4471-0143-3")
+(desc NIA-DeCastro-AIS "A comprehensive introduction to AIS covering clonal selection (CLONALG), negative selection, immune network models, and their applications.")
+
+(isa NIA-DeCastro-CLONALG ReferenceWork)
+(title NIA-DeCastro-CLONALG "Learning and Optimization Using the Clonal Selection Principle (CLONALG)")
+(author NIA-DeCastro-CLONALG "Leandro Nunes de Castro & Fernando Jose Von Zuben")
+(resourceType NIA-DeCastro-CLONALG notes)
+(level NIA-DeCastro-CLONALG intermediate)
+(section NIA-DeCastro-CLONALG ImmuneSystemAlgorithms)
+(url NIA-DeCastro-CLONALG "https://doi.org/10.1109/4235.1011826")
+(desc NIA-DeCastro-CLONALG "The original CLONALG paper showing how clonal selection and affinity maturation can solve pattern recognition and multimodal optimization problems.")
+
+(isa NIA-Forrest-NegativeSelection ReferenceWork)
+(title NIA-Forrest-NegativeSelection "Negative Selection Algorithm for Network Intrusion Detection")
+(author NIA-Forrest-NegativeSelection "Stephanie Forrest et al.")
+(resourceType NIA-Forrest-NegativeSelection notes)
+(level NIA-Forrest-NegativeSelection advanced)
+(section NIA-Forrest-NegativeSelection ImmuneSystemAlgorithms)
+(url NIA-Forrest-NegativeSelection "https://doi.org/10.1109/SP.1994.296580")
+(desc NIA-Forrest-NegativeSelection "The pioneering paper applying negative selection to computer security, detecting unauthorized changes by distinguishing self from non-self patterns.")
+
+(isa NIA-Greensmith-DCA ReferenceWork)
+(title NIA-Greensmith-DCA "The Dendritic Cell Algorithm (DCA)")
+(author NIA-Greensmith-DCA "Julie Greensmith, Uwe Aickelin & Steve Cayzer")
+(resourceType NIA-Greensmith-DCA notes)
+(level NIA-Greensmith-DCA advanced)
+(section NIA-Greensmith-DCA ImmuneSystemAlgorithms)
+(url NIA-Greensmith-DCA "https://doi.org/10.1007/11536444_13")
+(desc NIA-Greensmith-DCA "Introduces an algorithm based on dendritic cell biology and danger theory, classifying anomalous behavior through multiple signal processing.")
+
+;; ── Applications & Security ──
+
+(isa NIA-Dasgupta-AISAnomaly ReferenceWork)
+(title NIA-Dasgupta-AISAnomaly "Artificial Immune Systems for Anomaly Detection")
+(author NIA-Dasgupta-AISAnomaly "Dipankar Dasgupta")
+(resourceType NIA-Dasgupta-AISAnomaly book)
+(level NIA-Dasgupta-AISAnomaly intermediate)
+(section NIA-Dasgupta-AISAnomaly ImmuneSystemAlgorithms)
+(url NIA-Dasgupta-AISAnomaly "https://link.springer.com/book/10.1007/978-3-642-01799-5")
+(desc NIA-Dasgupta-AISAnomaly "Covers the application of AIS techniques to anomaly detection in network security, fraud detection, and fault diagnosis.")
+
+(isa NIA-DeCastro-AISOverview ReferenceWork)
+(title NIA-DeCastro-AISOverview "An Overview of Artificial Immune Systems (Applied Soft Computing Survey)")
+(author NIA-DeCastro-AISOverview "Leandro Nunes de Castro & Jonathan Timmis")
+(resourceType NIA-DeCastro-AISOverview notes)
+(level NIA-DeCastro-AISOverview beginner)
+(section NIA-DeCastro-AISOverview ImmuneSystemAlgorithms)
+(url NIA-DeCastro-AISOverview "https://doi.org/10.1007/978-3-7091-0281-0")
+(desc NIA-DeCastro-AISOverview "A broad survey linking immune mechanisms to their algorithmic counterparts, providing a roadmap for applying AIS to engineering problems.")
+
+(isa NIA-Hofmeyr-IntrusionReview ReferenceWork)
+(title NIA-Hofmeyr-IntrusionReview "Artificial Immune System Approaches to Intrusion Detection — A Review")
+(author NIA-Hofmeyr-IntrusionReview "Steve Hofmeyr & Stephanie Forrest")
+(resourceType NIA-Hofmeyr-IntrusionReview notes)
+(level NIA-Hofmeyr-IntrusionReview intermediate)
+(section NIA-Hofmeyr-IntrusionReview ImmuneSystemAlgorithms)
+(url NIA-Hofmeyr-IntrusionReview "https://doi.org/10.1007/BF02478300")
+(desc NIA-Hofmeyr-IntrusionReview "Reviews how immune-inspired approaches address network intrusion detection, comparing negative selection and danger theory methods.")
+
+(isa NIA-DeCastro-OptAiNet ReferenceWork)
+(title NIA-DeCastro-OptAiNet "opt-aiNet: Immune Network Algorithm for Optimization")
+(author NIA-DeCastro-OptAiNet "Leandro Nunes de Castro & Jonathan Timmis")
+(resourceType NIA-DeCastro-OptAiNet code)
+(level NIA-DeCastro-OptAiNet advanced)
+(section NIA-DeCastro-OptAiNet ImmuneSystemAlgorithms)
+(url NIA-DeCastro-OptAiNet "https://github.com/Pyomo/pyomo")
+(desc NIA-DeCastro-OptAiNet "An immune network-based algorithm for multimodal function optimization that dynamically adjusts population size to maintain diverse solutions.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: ECOLOGY & PLANT-INSPIRED
+;; Cellular automata, L-systems, reaction-diffusion
+;; ════════════════════════════════════════════════════════════
+
+;; ── Artificial Life & Cellular Automata ──
+
+(isa NIA-Wolfram-NewKindOfScience ReferenceWork)
+(title NIA-Wolfram-NewKindOfScience "A New Kind of Science")
+(author NIA-Wolfram-NewKindOfScience "Stephen Wolfram")
+(resourceType NIA-Wolfram-NewKindOfScience book)
+(level NIA-Wolfram-NewKindOfScience intermediate)
+(section NIA-Wolfram-NewKindOfScience EcologyPlantInspired)
+(url NIA-Wolfram-NewKindOfScience "https://www.wolframscience.com/nks/")
+(desc NIA-Wolfram-NewKindOfScience "Wolfram's comprehensive exploration of cellular automata and computational universality, with thousands of pages of examples and a freely available online edition.")
+
+(isa NIA-Langton-ALifeOverview ReferenceWork)
+(title NIA-Langton-ALifeOverview "Artificial Life: An Overview")
+(author NIA-Langton-ALifeOverview "Christopher G. Langton")
+(resourceType NIA-Langton-ALifeOverview notes)
+(level NIA-Langton-ALifeOverview intermediate)
+(section NIA-Langton-ALifeOverview EcologyPlantInspired)
+(url NIA-Langton-ALifeOverview "https://doi.org/10.7551/mitpress/1427.003.0003")
+(desc NIA-Langton-ALifeOverview "Langton's foundational overview of the artificial life field, defining its scope and relationship to biology, computer science, and complex systems.")
+
+(isa NIA-Chopard-CellularAutomata ReferenceWork)
+(title NIA-Chopard-CellularAutomata "Cellular Automata Modeling of Physical Systems")
+(author NIA-Chopard-CellularAutomata "Bastien Chopard & Michel Droz")
+(resourceType NIA-Chopard-CellularAutomata book)
+(level NIA-Chopard-CellularAutomata advanced)
+(section NIA-Chopard-CellularAutomata EcologyPlantInspired)
+(url NIA-Chopard-CellularAutomata "https://doi.org/10.1017/CBO9780511549755")
+(desc NIA-Chopard-CellularAutomata "A rigorous treatment of cellular automata applied to physical simulation including diffusion, fluid dynamics, and reaction-diffusion systems.")
+
+(isa NIA-Golly-CASim ReferenceWork)
+(title NIA-Golly-CASim "Golly: Cellular Automata Simulator")
+(author NIA-Golly-CASim "Andrew Trevorrow & Tom Rokicki")
+(resourceType NIA-Golly-CASim code)
+(level NIA-Golly-CASim beginner)
+(section NIA-Golly-CASim EcologyPlantInspired)
+(url NIA-Golly-CASim "https://github.com/AlephAlpha/golly")
+(desc NIA-Golly-CASim "An open-source, cross-platform application for exploring Conway's Life and other cellular automata rules with support for very large patterns.")
+
+;; ── L-Systems & Morphogenesis ──
+
+(isa NIA-Prusinkiewicz-AlgorithmicBeauty ReferenceWork)
+(title NIA-Prusinkiewicz-AlgorithmicBeauty "The Algorithmic Beauty of Plants")
+(author NIA-Prusinkiewicz-AlgorithmicBeauty "Przemyslaw Prusinkiewicz & Aristid Lindenmayer")
+(resourceType NIA-Prusinkiewicz-AlgorithmicBeauty book)
+(level NIA-Prusinkiewicz-AlgorithmicBeauty intermediate)
+(section NIA-Prusinkiewicz-AlgorithmicBeauty EcologyPlantInspired)
+(url NIA-Prusinkiewicz-AlgorithmicBeauty "http://algorithmicbotany.org/papers/#abop")
+(desc NIA-Prusinkiewicz-AlgorithmicBeauty "The classic reference on L-systems and their use in modeling plant development, freely available online with stunning visualizations of botanical structures.")
+
+(isa NIA-Prusinkiewicz-LSystems ReferenceWork)
+(title NIA-Prusinkiewicz-LSystems "Lindenmayer Systems, Fractals, and Plants")
+(author NIA-Prusinkiewicz-LSystems "Przemyslaw Prusinkiewicz & James Hanan")
+(resourceType NIA-Prusinkiewicz-LSystems book)
+(level NIA-Prusinkiewicz-LSystems intermediate)
+(section NIA-Prusinkiewicz-LSystems EcologyPlantInspired)
+(url NIA-Prusinkiewicz-LSystems "https://link.springer.com/book/10.1007/978-1-4757-1428-9")
+(desc NIA-Prusinkiewicz-LSystems "A concise introduction to L-systems and their connection to fractal geometry in plant modeling, with numerous graphical examples.")
+
+(isa NIA-Thompson-OnGrowthAndForm ReferenceWork)
+(title NIA-Thompson-OnGrowthAndForm "On Growth and Form")
+(author NIA-Thompson-OnGrowthAndForm "D'Arcy Wentworth Thompson")
+(resourceType NIA-Thompson-OnGrowthAndForm book)
+(level NIA-Thompson-OnGrowthAndForm advanced)
+(section NIA-Thompson-OnGrowthAndForm EcologyPlantInspired)
+(url NIA-Thompson-OnGrowthAndForm "https://doi.org/10.1017/CBO9781107325852")
+(desc NIA-Thompson-OnGrowthAndForm "The 1917 masterpiece relating biological form to mathematical and physical principles, a foundational influence on computational morphogenesis.")
+
+(isa NIA-Shortone-LSystemGen ReferenceWork)
+(title NIA-Shortone-LSystemGen "L-System Plant Geometry Generator")
+(author NIA-Shortone-LSystemGen "Paul Shortone")
+(resourceType NIA-Shortone-LSystemGen code)
+(level NIA-Shortone-LSystemGen beginner)
+(section NIA-Shortone-LSystemGen EcologyPlantInspired)
+(url NIA-Shortone-LSystemGen "https://github.com/abiusx/L-Systems")
+(desc NIA-Shortone-LSystemGen "A lightweight implementation of parametric L-systems for generating plant-like structures with turtle graphics interpretation.")
+
+;; ── Reaction-Diffusion Computing ──
+
+(isa NIA-Turing-ChemicalMorphogenesis ReferenceWork)
+(title NIA-Turing-ChemicalMorphogenesis "The Chemical Basis of Morphogenesis")
+(author NIA-Turing-ChemicalMorphogenesis "Alan M. Turing")
+(resourceType NIA-Turing-ChemicalMorphogenesis notes)
+(level NIA-Turing-ChemicalMorphogenesis advanced)
+(section NIA-Turing-ChemicalMorphogenesis EcologyPlantInspired)
+(url NIA-Turing-ChemicalMorphogenesis "https://doi.org/10.1098/rstb.1952.0012")
+(desc NIA-Turing-ChemicalMorphogenesis "Turing's landmark 1952 paper proposing that chemical substances (morphogens) reacting and diffusing can explain biological pattern formation.")
+
+(isa NIA-Witkin-RDTextures ReferenceWork)
+(title NIA-Witkin-RDTextures "Reaction-Diffusion Textures (GPU Gems)")
+(author NIA-Witkin-RDTextures "Andrew Witkin & Michael Kass")
+(resourceType NIA-Witkin-RDTextures notes)
+(level NIA-Witkin-RDTextures intermediate)
+(section NIA-Witkin-RDTextures EcologyPlantInspired)
+(url NIA-Witkin-RDTextures "https://developer.nvidia.com/gpugems/gpugems/part-iv-texturing/chapter-33-implementing-improved-perlin-noise")
+(desc NIA-Witkin-RDTextures "A practical guide to implementing reaction-diffusion systems on GPU hardware for texture generation and pattern synthesis.")
+
+(isa NIA-Hutton-Ready ReferenceWork)
+(title NIA-Hutton-Ready "Ready: A Cross-Platform Reaction-Diffusion Explorer")
+(author NIA-Hutton-Ready "Tim Hutton et al.")
+(resourceType NIA-Hutton-Ready code)
+(level NIA-Hutton-Ready beginner)
+(section NIA-Hutton-Ready EcologyPlantInspired)
+(url NIA-Hutton-Ready "https://github.com/GollyGang/ready")
+(desc NIA-Hutton-Ready "A GPU-accelerated program for exploring reaction-diffusion systems and other continuous cellular automata on grids and meshes.")
+
+(isa NIA-Munafo-GrayScott ReferenceWork)
+(title NIA-Munafo-GrayScott "Gray-Scott Reaction-Diffusion Explorer")
+(author NIA-Munafo-GrayScott "Robert Munafo")
+(resourceType NIA-Munafo-GrayScott data)
+(level NIA-Munafo-GrayScott beginner)
+(section NIA-Munafo-GrayScott EcologyPlantInspired)
+(url NIA-Munafo-GrayScott "https://mrob.com/pub/comp/xmorphia/")
+(desc NIA-Munafo-GrayScott "An interactive parameter-space explorer for the Gray-Scott model, cataloging the rich variety of patterns produced by different reaction-diffusion parameters.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: LIBRARIES & BENCHMARKS
+;; Optimization libraries, benchmark suites, comparison tools
+;; ════════════════════════════════════════════════════════════
+
+;; ── Optimization Libraries ──
+
+(isa NIA-Fortin-DEAP ReferenceWork)
+(title NIA-Fortin-DEAP "DEAP: Distributed Evolutionary Algorithms in Python")
+(author NIA-Fortin-DEAP "Felix-Antoine Fortin et al.")
+(resourceType NIA-Fortin-DEAP code)
+(level NIA-Fortin-DEAP intermediate)
+(section NIA-Fortin-DEAP LibrariesBenchmarks)
+(url NIA-Fortin-DEAP "https://github.com/DEAP/deap")
+(desc NIA-Fortin-DEAP "A versatile Python framework for rapid prototyping of evolutionary algorithms supporting GP, GA, PSO, ES, and multi-objective optimization.")
+
+(isa NIA-ESA-PyGMO ReferenceWork)
+(title NIA-ESA-PyGMO "PyGMO / Pagmo2: Parallel Global Multiobjective Optimizer")
+(author NIA-ESA-PyGMO "ESA Advanced Concepts Team")
+(resourceType NIA-ESA-PyGMO code)
+(level NIA-ESA-PyGMO intermediate)
+(section NIA-ESA-PyGMO LibrariesBenchmarks)
+(url NIA-ESA-PyGMO "https://github.com/esa/pagmo2")
+(desc NIA-ESA-PyGMO "A scientific library by the European Space Agency for massively parallel optimization, featuring island model parallelism and dozens of algorithms.")
+
+(isa NIA-Nebro-jMetal ReferenceWork)
+(title NIA-Nebro-jMetal "jMetal: Metaheuristic Algorithms in Java")
+(author NIA-Nebro-jMetal "Antonio J. Nebro et al.")
+(resourceType NIA-Nebro-jMetal code)
+(level NIA-Nebro-jMetal intermediate)
+(section NIA-Nebro-jMetal LibrariesBenchmarks)
+(url NIA-Nebro-jMetal "https://github.com/jMetal/jMetal")
+(desc NIA-Nebro-jMetal "A Java-based framework for multi-objective optimization with metaheuristics, providing a wide collection of algorithms, problems, and quality indicators.")
+
+(isa NIA-Luke-ECJ ReferenceWork)
+(title NIA-Luke-ECJ "ECJ: A Java-Based Evolutionary Computation Research System")
+(author NIA-Luke-ECJ "Sean Luke et al.")
+(resourceType NIA-Luke-ECJ code)
+(level NIA-Luke-ECJ advanced)
+(section NIA-Luke-ECJ LibrariesBenchmarks)
+(url NIA-Luke-ECJ "https://github.com/GMUEClab/ecj")
+(desc NIA-Luke-ECJ "A highly configurable evolutionary computation system supporting GP, coevolution, island models, and multi-objective optimization with parameter file-based configuration.")
+
+(isa NIA-Facebook-Nevergrad ReferenceWork)
+(title NIA-Facebook-Nevergrad "Nevergrad: Gradient-Free Optimization Platform")
+(author NIA-Facebook-Nevergrad "Facebook Research")
+(resourceType NIA-Facebook-Nevergrad code)
+(level NIA-Facebook-Nevergrad intermediate)
+(section NIA-Facebook-Nevergrad LibrariesBenchmarks)
+(url NIA-Facebook-Nevergrad "https://github.com/facebookresearch/nevergrad")
+(desc NIA-Facebook-Nevergrad "Meta's platform for derivative-free optimization providing a unified interface to evolutionary strategies, PSO, CMA-ES, and other black-box optimizers.")
+
+;; ── Benchmark Suites ──
+
+(isa NIA-CEC-Benchmarks ReferenceWork)
+(title NIA-CEC-Benchmarks "CEC Competition Benchmark Functions")
+(author NIA-CEC-Benchmarks "IEEE Congress on Evolutionary Computation")
+(resourceType NIA-CEC-Benchmarks data)
+(level NIA-CEC-Benchmarks intermediate)
+(section NIA-CEC-Benchmarks LibrariesBenchmarks)
+(url NIA-CEC-Benchmarks "https://github.com/P-N-Suganthan")
+(desc NIA-CEC-Benchmarks "Standard benchmark function suites used in IEEE CEC competitions for comparing optimization algorithms under controlled conditions.")
+
+(isa NIA-Hansen-COCO ReferenceWork)
+(title NIA-Hansen-COCO "COCO: Comparing Continuous Optimizers (BBOB)")
+(author NIA-Hansen-COCO "Nikolaus Hansen et al.")
+(resourceType NIA-Hansen-COCO code)
+(level NIA-Hansen-COCO intermediate)
+(section NIA-Hansen-COCO LibrariesBenchmarks)
+(url NIA-Hansen-COCO "https://github.com/numbbo/coco")
+(desc NIA-Hansen-COCO "The COCO platform for black-box optimization benchmarking with automated performance assessment, used for the BBOB workshop series at GECCO.")
+
+(isa NIA-Reinelt-TSPLIB ReferenceWork)
+(title NIA-Reinelt-TSPLIB "TSPLIB: Traveling Salesman Problem Library")
+(author NIA-Reinelt-TSPLIB "Gerhard Reinelt")
+(resourceType NIA-Reinelt-TSPLIB data)
+(level NIA-Reinelt-TSPLIB beginner)
+(section NIA-Reinelt-TSPLIB LibrariesBenchmarks)
+(url NIA-Reinelt-TSPLIB "http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/")
+(desc NIA-Reinelt-TSPLIB "A widely-used library of sample instances for the TSP and related problems, serving as the standard testbed for combinatorial optimization algorithms.")
+
+(isa NIA-Doerr-IOHprofiler ReferenceWork)
+(title NIA-Doerr-IOHprofiler "IOHprofiler: Iterative Optimization Heuristics Profiler")
+(author NIA-Doerr-IOHprofiler "Carola Doerr et al.")
+(resourceType NIA-Doerr-IOHprofiler code)
+(level NIA-Doerr-IOHprofiler intermediate)
+(section NIA-Doerr-IOHprofiler LibrariesBenchmarks)
+(url NIA-Doerr-IOHprofiler "https://github.com/IOHprofiler")
+(desc NIA-Doerr-IOHprofiler "A comprehensive benchmarking framework with statistical analysis tools for profiling and comparing iterative optimization heuristics.")
+
+;; ── Comparison & Analysis Tools ──
+
+(isa NIA-Derrac-NonparametricTests ReferenceWork)
+(title NIA-Derrac-NonparametricTests "A Practical Tutorial on the Use of Nonparametric Statistical Tests")
+(author NIA-Derrac-NonparametricTests "Joaquin Derrac et al.")
+(resourceType NIA-Derrac-NonparametricTests notes)
+(level NIA-Derrac-NonparametricTests intermediate)
+(section NIA-Derrac-NonparametricTests LibrariesBenchmarks)
+(url NIA-Derrac-NonparametricTests "https://doi.org/10.1016/j.swevo.2011.02.002")
+(desc NIA-Derrac-NonparametricTests "Essential guide on applying Wilcoxon, Friedman, and other nonparametric tests for statistically rigorous comparison of metaheuristic algorithms.")
+
+(isa NIA-Hansen-CMAES ReferenceWork)
+(title NIA-Hansen-CMAES "CMA-ES: Evolution Strategy with Covariance Matrix Adaptation")
+(author NIA-Hansen-CMAES "Nikolaus Hansen")
+(resourceType NIA-Hansen-CMAES code)
+(level NIA-Hansen-CMAES advanced)
+(section NIA-Hansen-CMAES LibrariesBenchmarks)
+(url NIA-Hansen-CMAES "https://github.com/CMA-ES/pycma")
+(desc NIA-Hansen-CMAES "The reference Python implementation of CMA-ES, a state-of-the-art evolution strategy often used as a baseline in continuous optimization benchmarks.")
+
+(isa NIA-SciPy-Optimize ReferenceWork)
+(title NIA-SciPy-Optimize "SciPy Optimize: Benchmark and Compare Optimizers")
+(author NIA-SciPy-Optimize "SciPy Community")
+(resourceType NIA-SciPy-Optimize code)
+(level NIA-SciPy-Optimize beginner)
+(section NIA-SciPy-Optimize LibrariesBenchmarks)
+(url NIA-SciPy-Optimize "https://github.com/scipy/scipy")
+(desc NIA-SciPy-Optimize "SciPy's optimization module provides classical and modern optimizers that serve as important baselines when evaluating nature-inspired methods.")
+
+(isa NIA-LopezIbanez-Sporadic ReferenceWork)
+(title NIA-LopezIbanez-Sporadic "Sporadic: Statistical Performance Reporting for Algorithm Design")
+(author NIA-LopezIbanez-Sporadic "Manuel Lopez-Ibanez et al.")
+(resourceType NIA-LopezIbanez-Sporadic notes)
+(level NIA-LopezIbanez-Sporadic advanced)
+(section NIA-LopezIbanez-Sporadic LibrariesBenchmarks)
+(url NIA-LopezIbanez-Sporadic "https://doi.org/10.1016/j.orp.2018.10.002")
+(desc NIA-LopezIbanez-Sporadic "Guidelines and tools for proper statistical reporting in metaheuristic research, addressing common pitfalls in algorithm comparison studies.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources NatureInspiredAlgorithmsReference 84)
+(totalSections NatureInspiredAlgorithmsReference 7)
+(comment NatureInspiredAlgorithmsReference
+  "7 sections: Overview (11), Evolutionary Algorithms (13),
+   Swarm Intelligence (12), Neural & Brain-Inspired (12),
+   Immune System Algorithms (11), Ecology & Plant-Inspired (12),
+   Libraries & Benchmarks (13). Total: 84 resources.")

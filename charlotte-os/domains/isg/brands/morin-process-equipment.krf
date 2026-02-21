@@ -1,0 +1,80 @@
+;;; ================================================================
+;;; ISG BRAND / MORIN PROCESS EQUIPMENT + MORIN REPAIR SERVICES
+;;; Founded 2007 — 5 divisions, 100+ employees, Southeast US
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa MorinProcessEquipment ISGBrand)
+(hasAttribute MorinProcessEquipment ::LABEL "Morin Process Equipment")
+(hasAttribute MorinProcessEquipment ::FOUNDED 2007)
+(hasAttribute MorinProcessEquipment ::VERTICAL "Pumps")
+(hasAttribute MorinProcessEquipment ::HEADCOUNT "100+")
+(hasAttribute MorinProcessEquipment ::WEBSITE "morinprocess.com")
+(hasAttribute MorinProcessEquipment ::DIVISIONS "Morin Process Equipment, Morin Repair Services, Morin Valves & Controls, Morin Marine, Morin Power")
+(hasAttribute MorinProcessEquipment ::TERRITORY "AL, GA, FL, MS, TN, AR, KY, LA")
+(hasAttribute MorinProcessEquipment ::OEM_PARTNERS "BAC, SAMSON, Weir Minerals, Alfa Laval, KSB, Howden, Siemens/Flender")
+(MEMBER_OF MorinProcessEquipment ISGMotorPumpGroup)
+
+(hasAttribute MorinProcessEquipment ::FACILITY_HQ "301A Cahaba Valley Pkwy N, Pelham, AL 35124")
+(hasAttribute MorinProcessEquipment ::FACILITY_REPAIR "75 Safety Way, Decatur, AL 35601 (25,000 sq ft)")
+(hasAttribute MorinProcessEquipment ::FACILITY_MOBILE "1438 Industrial Pkwy, Saraland, AL 36571")
+
+;; President (Danny Morin — full profile in personnel/)
+(LEADS DannyMorin MorinProcessEquipment)
+
+(isa AprilMorin Person)
+(hasAttribute AprilMorin ::LABEL "April Morin")
+(hasAttribute AprilMorin ::ROLE "Co-Founder / Owner")
+(hasAttribute AprilMorin ::EDUCATION "University of Alabama at Birmingham")
+(hasAttribute AprilMorin ::CAREER "National Center for Sports Safety (Executive Director) → Co-founded Morin Companies 2007")
+(locatedAt AprilMorin Pelham-AL)
+(MEMBER_OF AprilMorin MorinProcessEquipment)
+
+(isa JimTraylor Person)
+(hasAttribute JimTraylor ::LABEL "Jim Traylor")
+(hasAttribute JimTraylor ::ROLE "Division Manager, Valves & Controls")
+(hasAttribute JimTraylor ::CAREER "Morin Actuator (Intl Sales Mgr) → Bray → Tyco Flow Control → Morin V&C")
+(MEMBER_OF JimTraylor MorinProcessEquipment)
+
+(isa JimRouton Person)
+(hasAttribute JimRouton ::LABEL "Jim Routon")
+(hasAttribute JimRouton ::ROLE "General Manager, Morin Repair Services")
+(locatedAt JimRouton Decatur-AL)
+(MEMBER_OF JimRouton MorinProcessEquipment)
+
+(isa ThomasJohns Person)
+(hasAttribute ThomasJohns ::LABEL "Thomas Johns")
+(hasAttribute ThomasJohns ::ROLE "Outside Sales Engineer")
+(hasAttribute ThomasJohns ::EDUCATION "University of Alabama at Birmingham")
+(locatedAt ThomasJohns Saraland-AL)
+(MEMBER_OF ThomasJohns MorinProcessEquipment)
+
+(isa SteveWigley Person)
+(hasAttribute SteveWigley ::LABEL "Steve Wigley")
+(hasAttribute SteveWigley ::ROLE "Sales Engineer")
+(hasAttribute SteveWigley ::EXPERTISE "27 years fluid handling systems, pumps, heat exchangers, valves, filtration")
+(MEMBER_OF SteveWigley MorinProcessEquipment)
+
+(isa TannerDement Person)
+(hasAttribute TannerDement ::LABEL "Tanner Dement")
+(hasAttribute TannerDement ::ROLE "Outside Sales Representative")
+(hasAttribute TannerDement ::EDUCATION "Mississippi State University, Industrial Technology")
+(hasAttribute TannerDement ::CAREER "Tronox (Reliability Engineer) → ADCO Companies → Morin")
+(MEMBER_OF TannerDement MorinProcessEquipment)
+
+(isa DrakeHollingsworth Person)
+(hasAttribute DrakeHollingsworth ::LABEL "Drake Hollingsworth")
+(hasAttribute DrakeHollingsworth ::ROLE "Sales Engineer, North AL / North GA / East TN")
+(hasAttribute DrakeHollingsworth ::EDUCATION "BS Chemical Engineering, University of Alabama Huntsville")
+(MEMBER_OF DrakeHollingsworth MorinProcessEquipment)
+
+(isa TonyMaples Person)
+(hasAttribute TonyMaples ::LABEL "Tony Maples")
+(hasAttribute TonyMaples ::ROLE "Engineered Sales, Middle TN & KY")
+(MEMBER_OF TonyMaples MorinProcessEquipment)
+
+(isa KyleSimonelli Person)
+(hasAttribute KyleSimonelli ::LABEL "Kyle Simonelli")
+(hasAttribute KyleSimonelli ::ROLE "GA Sales Engineer, South")
+(MEMBER_OF KyleSimonelli MorinProcessEquipment)

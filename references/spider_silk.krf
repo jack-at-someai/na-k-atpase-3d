@@ -1,0 +1,196 @@
+;;; ================================================================
+;;; REFERENCE / SPIDER SILK
+;;; Silk biology, biomaterials & husbandry.
+;;; The strongest biological fiber — tensile strength meets elasticity.
+;;; ================================================================
+;;;
+;;; Spider silk is the core subject of the Biomaterials research segment.
+;;; Dragline silk combines tensile strength (~1.3 GPa), low density
+;;; (1/6 of steel), 30-40% extensibility, and toughness exceeding Kevlar
+;;; — all spun at room temperature from a protein feedstock.
+;;;
+;;; The spider is both factory and research subject: social species
+;;; exhibit swarm intelligence, webs are emergent graph constructions,
+;;; and vibrational signaling functions as a distributed nervous system.
+;;;
+;;; Knowledge path: Silk Properties → Spider Biology → Social Behavior →
+;;; Web Architecture → Vibrational Signaling → Humane Husbandry → Farm Concept
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: SCOPE — Biomaterials research segment
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-BiomaterialsSegment ResearchSegment)
+(comment SS-BiomaterialsSegment
+  "One of six business research segments — the Biomaterials vertical.
+   Covers spider silk, biomimetic materials, synthetic silk engineering,
+   and swarm intelligence applications.")
+(segmentDomain SS-BiomaterialsSegment "Spider silk, biomimetic materials")
+(segmentLead SS-BiomaterialsSegment "Research arm")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: DRAGLINE SILK PROPERTIES
+;; Tensile strength, density, extensibility, toughness
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-DraglineSilk BiologicalMaterial)
+(comment SS-DraglineSilk
+  "Spider dragline silk — the structural radial thread of orb webs
+   and the lifeline (dragline) trailing behind a moving spider.
+   The benchmark fiber for biomaterials research.")
+(tensileStrength SS-DraglineSilk "~1.3 GPa")
+(densityRelativeToSteel SS-DraglineSilk "1/6")
+(extensibility SS-DraglineSilk "30-40%")
+(comment SS-DraglineSilkToughness
+  "Dragline silk toughness exceeds Kevlar — it absorbs more energy
+   per unit volume before breaking than any synthetic high-performance fiber.")
+(isa SS-DraglineSilkToughness MaterialProperty)
+(toughnessExceeds SS-DraglineSilk "Kevlar")
+
+(isa SS-SilkProduction BiologicalProcess)
+(comment SS-SilkProduction
+  "Silk is spun at room temperature in water from a protein feedstock.
+   No industrial process comes close to replicating this combination
+   of properties. The material is biocompatible, biodegradable,
+   and self-assembling.")
+(spinningCondition SS-SilkProduction "Room temperature, aqueous")
+(feedstock SS-SilkProduction "Protein (spidroin)")
+(materialProperty SS-SilkProduction "Biocompatible")
+(materialProperty SS-SilkProduction "Biodegradable")
+(materialProperty SS-SilkProduction "Self-assembling")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: SOCIAL SPIDER SPECIES
+;; Cooperative behavior, colony structure, candidates for farming
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-AnelosimusEximius SocialSpiderSpecies)
+(comment SS-AnelosimusEximius
+  "Anelosimus eximius — a social spider exhibiting cooperative web
+   construction, collective prey capture, and division of labor.
+   Primary candidate for colony-scale silk farming.")
+(genus SS-AnelosimusEximius "Anelosimus")
+(species SS-AnelosimusEximius "eximius")
+(behavior SS-AnelosimusEximius "Cooperative web construction")
+(behavior SS-AnelosimusEximius "Collective prey capture")
+(behavior SS-AnelosimusEximius "Division of labor")
+(farmCandidate SS-AnelosimusEximius "Primary")
+
+(isa SS-StegodyphusDumicola SocialSpiderSpecies)
+(comment SS-StegodyphusDumicola
+  "Stegodyphus dumicola — a social spider species and primary candidate
+   for humane colony-scale silk extraction research.")
+(genus SS-StegodyphusDumicola "Stegodyphus")
+(species SS-StegodyphusDumicola "dumicola")
+(farmCandidate SS-StegodyphusDumicola "Primary")
+
+(isa SS-SocialSpiderSwarmIntelligence SwarmIntelligencePhenomenon)
+(comment SS-SocialSpiderSwarmIntelligence
+  "Social spiders (Anelosimus, Stegodyphus) exhibit genuine swarm
+   intelligence in arachnids — cooperative construction, collective
+   decision-making, and emergent division of labor without central control.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: WEB ARCHITECTURE
+;; Emergent graph construction, network science
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-WebArchitecture EmergentStructure)
+(comment SS-WebArchitecture
+  "Web architecture is an emergent optimization process — no blueprint,
+   no central plan, just local rules producing geometrically precise
+   structures. The web is a graph. The spider is a graph builder.
+   This is Charlotte's domain.")
+(constructionMethod SS-WebArchitecture "Local rules only")
+(structureType SS-WebArchitecture "Graph")
+(builderRole SS-WebArchitecture "Spider as graph builder")
+(property SS-WebArchitecture "Geometrically precise")
+(property SS-WebArchitecture "No central plan")
+(property SS-WebArchitecture "Emergent optimization")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: VIBRATIONAL SIGNALING
+;; Distributed communication, extended nervous system
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-VibrationalSignaling DistributedCommunicationSystem)
+(comment SS-VibrationalSignaling
+  "Vibrational signaling through silk threads is a distributed
+   communication network — the web functions as an extended nervous
+   system. Information propagates through the structure itself.")
+(medium SS-VibrationalSignaling "Silk threads")
+(networkType SS-VibrationalSignaling "Distributed")
+(analogy SS-VibrationalSignaling "Extended nervous system")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: FARM CONCEPT
+;; Humane spider management for research-grade silk extraction
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-FarmConcept ResearchFacilityConcept)
+(comment SS-FarmConcept
+  "Humane spider management for research-grade silk extraction.
+   The farm is a future build — the reference hub is the
+   prerequisite knowledge map.")
+(status SS-FarmConcept "Future build")
+(candidateSpecies SS-FarmConcept SS-AnelosimusEximius)
+(candidateSpecies SS-FarmConcept SS-StegodyphusDumicola)
+
+(isa SS-FarmEnvironment ControlledEnvironment)
+(comment SS-FarmEnvironment
+  "Controlled environment parameters: humidity, temperature, light cycle,
+   prey supply, and vibration isolation.")
+(parameter SS-FarmEnvironment "Humidity")
+(parameter SS-FarmEnvironment "Temperature")
+(parameter SS-FarmEnvironment "Light cycle")
+(parameter SS-FarmEnvironment "Prey supply")
+(parameter SS-FarmEnvironment "Vibration isolation")
+
+(isa SS-FarmMethods ExtractionMethodology)
+(comment SS-FarmMethods
+  "Non-lethal forced silking for individual species research.
+   Colony-scale observation for swarm intelligence studies.")
+(method SS-FarmMethods "Non-lethal forced silking")
+(method SS-FarmMethods "Colony-scale observation")
+
+(isa SS-FarmEthics EthicalFramework)
+(comment SS-FarmEthics
+  "Ethical framework for humane spider husbandry: enrichment,
+   natural behavior expression, and minimal stress protocols.")
+(principle SS-FarmEthics "Enrichment")
+(principle SS-FarmEthics "Natural behavior expression")
+(principle SS-FarmEthics "Minimal stress protocols")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: REFERENCE HUB
+;; Knowledge map for the Biomaterials segment
+;; ════════════════════════════════════════════════════════════
+
+(isa SS-ReferenceHub KnowledgeMap)
+(comment SS-ReferenceHub
+  "The index.html reference hub maps the knowledge space across
+   spider silk biology, husbandry, collective behavior, web architecture,
+   synthetic silk, applications, and swarm robotics. Same pattern as
+   the neuroscience, biomimicry, and ocean science hubs.")
+(coverageDomain SS-ReferenceHub "Spider silk biology")
+(coverageDomain SS-ReferenceHub "Husbandry")
+(coverageDomain SS-ReferenceHub "Collective behavior")
+(coverageDomain SS-ReferenceHub "Web architecture")
+(coverageDomain SS-ReferenceHub "Synthetic silk")
+(coverageDomain SS-ReferenceHub "Applications")
+(coverageDomain SS-ReferenceHub "Swarm robotics")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalSections SpiderSilkReference 7)
+(comment SpiderSilkReference
+  "7 sections: Scope (1), Dragline Silk Properties (3),
+   Social Spider Species (3), Web Architecture (1),
+   Vibrational Signaling (1), Farm Concept (4),
+   Reference Hub (1). Total: 14 knowledge assertions.")

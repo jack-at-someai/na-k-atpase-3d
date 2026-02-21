@@ -1,0 +1,631 @@
+;;; ================================================================
+;;; REFERENCE / SWARM INTELLIGENCE
+;;; 51 papers across 10 sections — Charlotte's origin curriculum
+;;; ================================================================
+;;;
+;;; Mike Rubenstein's Swarm Intelligence course, Northwestern
+;;; University, Fall 2019. The foundational curriculum that inspired
+;;; Charlotte's approach to universal substrate modeling.
+;;;
+;;; "Simple local rules → emergent global behavior." Every paper
+;;; demonstrates this same pattern. Charlotte generalizes it into
+;;; five primitives (NODE, EDGE, METRIC, SIGNAL, PROTOCOL) that
+;;; model any domain where identities emit signals over time.
+;;;
+;;; Inspired by Mike Rubenstein's Kilobots — 1,024 robots
+;;; self-assembling into arbitrary shapes using only local sensing
+;;; and vibration-based locomotion.
+;;;
+;;; Learning path: Modular Reconfiguration → Aerial & Micro →
+;;; Localization & Logistics → Self-Assembly → Construction →
+;;; Stigmergy → Evolution → Flocking → Transport & Decision
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: MODULAR SELF-RECONFIGURATION — 9 papers
+;; Identical modules rearranging connectivity to change shape,
+;; locomote, and self-repair
+;; ════════════════════════════════════════════════════════════
+
+;; ── Survey & Foundations ──
+
+(isa SI-Yim-ModularSurvey ReferenceWork)
+(title SI-Yim-ModularSurvey "Modular self-reconfigurable robot systems [grand challenges of robotics]")
+(presentedBy SI-Yim-ModularSurvey "Mike Rubenstein")
+(resourceType SI-Yim-ModularSurvey paper)
+(level SI-Yim-ModularSurvey advanced)
+(section SI-Yim-ModularSurvey ModularSelfReconfiguration)
+(url SI-Yim-ModularSurvey "https://authors.library.caltech.edu/18122/1/Yim2007p8960Ieee_Robot_Autom_Mag.pdf")
+(desc SI-Yim-ModularSurvey "Comprehensive survey of modular self-reconfigurable robot systems. Grand challenges including locomotion, self-repair, and morphological adaptation through module rearrangement.")
+
+(isa SI-Romanishin-3DMBlocks ReferenceWork)
+(title SI-Romanishin-3DMBlocks "3D M-Blocks: Self-reconfiguring robots capable of locomotion via pivoting in three dimensions")
+(presentedBy SI-Romanishin-3DMBlocks "Alex Samland")
+(resourceType SI-Romanishin-3DMBlocks paper)
+(level SI-Romanishin-3DMBlocks advanced)
+(section SI-Romanishin-3DMBlocks ModularSelfReconfiguration)
+(url SI-Romanishin-3DMBlocks "https://ieeexplore.ieee.org/iel7/7128761/7138973/07139450.pdf")
+(desc SI-Romanishin-3DMBlocks "Cubic modules that pivot and attach in three dimensions using inertial actuation and permanent magnets. Locomotion without external moving parts.")
+
+(isa SI-Gilpin-RobotPebbles ReferenceWork)
+(title SI-Gilpin-RobotPebbles "Robot pebbles: One centimeter modules for programmable matter through self-disassembly")
+(presentedBy SI-Gilpin-RobotPebbles "Sophia Huang")
+(resourceType SI-Gilpin-RobotPebbles paper)
+(level SI-Gilpin-RobotPebbles advanced)
+(section SI-Gilpin-RobotPebbles ModularSelfReconfiguration)
+(url SI-Gilpin-RobotPebbles "https://ieeexplore.ieee.org/iel5/5501116/5509124/05509817.pdf")
+(desc SI-Gilpin-RobotPebbles "Centimeter-scale modules for programmable matter. Shape formation via selective self-disassembly rather than active reconfiguration.")
+
+(isa SI-Swissler-FireAnt ReferenceWork)
+(title SI-Swissler-FireAnt "FireAnt: A Modular Robot with Full-Body Continuous Docks")
+(presentedBy SI-Swissler-FireAnt "Petras Swissler")
+(resourceType SI-Swissler-FireAnt paper)
+(level SI-Swissler-FireAnt advanced)
+(section SI-Swissler-FireAnt ModularSelfReconfiguration)
+(url SI-Swissler-FireAnt "http://users.eecs.northwestern.edu/~mrubenst/ICRA18_fireant.pdf")
+(desc SI-Swissler-FireAnt "Northwestern modular robot with continuous docking surfaces on all faces. Any-orientation attachment enables robust self-reconfiguration without precise alignment.")
+
+(isa SI-White-StochasticFluidic ReferenceWork)
+(title SI-White-StochasticFluidic "A robotic module for stochastic fluidic assembly of 3D self-reconfiguring structures")
+(presentedBy SI-White-StochasticFluidic "Keith Languet")
+(resourceType SI-White-StochasticFluidic paper)
+(level SI-White-StochasticFluidic advanced)
+(section SI-White-StochasticFluidic ModularSelfReconfiguration)
+(url SI-White-StochasticFluidic "https://ieeexplore.ieee.org/iel5/5501116/5509124/05509455.pdf")
+(desc SI-White-StochasticFluidic "Modules that self-assemble in fluid environments using stochastic encounters rather than deterministic motion planning. Passive assembly driven by environmental forces.")
+
+(isa SI-Murata-MTran ReferenceWork)
+(title SI-Murata-MTran "M-Tran: Self-Reconfigurable Modular Robotic System")
+(presentedBy SI-Murata-MTran "Sandra Nissim")
+(resourceType SI-Murata-MTran paper)
+(level SI-Murata-MTran advanced)
+(section SI-Murata-MTran ModularSelfReconfiguration)
+(url SI-Murata-MTran "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1159221")
+(desc SI-Murata-MTran "Modular robotic system with two-unit modules capable of both lattice and chain configurations. Hardware platform for studying self-reconfiguration algorithms.")
+
+;; ── Advanced Reconfiguration ──
+
+(isa SI-Dorigo-SwarmBot ReferenceWork)
+(title SI-Dorigo-SwarmBot "SWARM-BOT: From Concept to Implementation")
+(presentedBy SI-Dorigo-SwarmBot "Josh Cohen")
+(resourceType SI-Dorigo-SwarmBot paper)
+(level SI-Dorigo-SwarmBot advanced)
+(section SI-Dorigo-SwarmBot ModularSelfReconfiguration)
+(url SI-Dorigo-SwarmBot "https://infoscience.epfl.ch/record/63950/files/856.pdf")
+(desc SI-Dorigo-SwarmBot "From concept to hardware: autonomous robots that physically connect to form a swarm-bot. Emergent collective locomotion and obstacle traversal.")
+
+(isa SI-Stoy-SelfRepair ReferenceWork)
+(title SI-Stoy-SelfRepair "Self-repair through scale independent self-reconfiguration")
+(presentedBy SI-Stoy-SelfRepair "Dhanvin Kodiatar")
+(resourceType SI-Stoy-SelfRepair paper)
+(level SI-Stoy-SelfRepair advanced)
+(section SI-Stoy-SelfRepair ModularSelfReconfiguration)
+(url SI-Stoy-SelfRepair "https://www.researchgate.net/profile/Kasper_Stoy2/publication/224755772")
+(desc SI-Stoy-SelfRepair "Self-repair algorithms that work regardless of robot scale. Damaged modules detected and replaced through local reconfiguration rules.")
+
+(isa SI-Murata-AmoeboidModular ReferenceWork)
+(title SI-Murata-AmoeboidModular "An amoeboid modular robot that exhibits real-time adaptive reconfiguration")
+(presentedBy SI-Murata-AmoeboidModular "Sandra Nissim")
+(resourceType SI-Murata-AmoeboidModular paper)
+(level SI-Murata-AmoeboidModular advanced)
+(section SI-Murata-AmoeboidModular ModularSelfReconfiguration)
+(url SI-Murata-AmoeboidModular "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5354279")
+(desc SI-Murata-AmoeboidModular "Modular robot that moves like an amoeba, adaptively reconfiguring in real-time to navigate through constrained spaces.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: AERIAL & SPACE SWARMS — 4 papers
+;; Coordinating flying agents from micro-scale to orbital
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Rubenstein-SatellitePosition ReferenceWork)
+(title SI-Rubenstein-SatellitePosition "Bio-Inspired Position Control of Satellite Constellations")
+(presentedBy SI-Rubenstein-SatellitePosition "Mike Rubenstein")
+(resourceType SI-Rubenstein-SatellitePosition paper)
+(level SI-Rubenstein-SatellitePosition advanced)
+(section SI-Rubenstein-SatellitePosition AerialSpaceSwarms)
+(url SI-Rubenstein-SatellitePosition "https://nxr.northwestern.edu/sites/default/files/publications/DARS18a.pdf")
+(desc SI-Rubenstein-SatellitePosition "Applying swarm separation-alignment-cohesion rules to satellite constellation management. Bio-inspired position control in orbital mechanics.")
+
+(isa SI-Piccoli-Piccolissimo ReferenceWork)
+(title SI-Piccoli-Piccolissimo "Piccolissimo: The smallest micro aerial vehicle")
+(presentedBy SI-Piccoli-Piccolissimo "Jack Richard")
+(resourceType SI-Piccoli-Piccolissimo paper)
+(level SI-Piccoli-Piccolissimo advanced)
+(section SI-Piccoli-Piccolissimo AerialSpaceSwarms)
+(url SI-Piccoli-Piccolissimo "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7989378")
+(desc SI-Piccoli-Piccolissimo "The world's smallest micro aerial vehicle at 2.4cm. Single actuator design achieving controlled flight through passive stability and body rotation.")
+(courseNote SI-Piccoli-Piccolissimo "Just skim over vehicle Maneuverability section")
+
+(isa SI-Oung-DistributedFlightArray ReferenceWork)
+(title SI-Oung-DistributedFlightArray "The distributed flight array")
+(presentedBy SI-Oung-DistributedFlightArray "Katarina Popovic")
+(resourceType SI-Oung-DistributedFlightArray paper)
+(level SI-Oung-DistributedFlightArray advanced)
+(section SI-Oung-DistributedFlightArray AerialSpaceSwarms)
+(url SI-Oung-DistributedFlightArray "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5509882")
+(desc SI-Oung-DistributedFlightArray "Multiple single-rotor units dock together to form a flying platform. Individual units cannot fly alone but collectively achieve stable flight.")
+(courseNote SI-Oung-DistributedFlightArray "Skim section 3 and 5")
+
+(isa SI-Augugliaro-TensileStructures ReferenceWork)
+(title SI-Augugliaro-TensileStructures "Building Tensile Structures with Flying Machines")
+(presentedBy SI-Augugliaro-TensileStructures "Efe Saatci")
+(resourceType SI-Augugliaro-TensileStructures paper)
+(level SI-Augugliaro-TensileStructures advanced)
+(section SI-Augugliaro-TensileStructures AerialSpaceSwarms)
+(url SI-Augugliaro-TensileStructures "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6696853")
+(desc SI-Augugliaro-TensileStructures "Quadrotors autonomously weaving rope to construct tensile architectural structures. Aerial construction without scaffolding or human intervention.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: MICRO-ROBOTICS & KILOBOTS — 3 papers
+;; Miniaturized robots enabling massive-scale experiments
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Donald-ElectrostaticMEMS ReferenceWork)
+(title SI-Donald-ElectrostaticMEMS "An untethered, electrostatic, globally controllable MEMS micro-robot")
+(presentedBy SI-Donald-ElectrostaticMEMS "Efe Saatci")
+(resourceType SI-Donald-ElectrostaticMEMS paper)
+(level SI-Donald-ElectrostaticMEMS advanced)
+(section SI-Donald-ElectrostaticMEMS MicroRoboticsKilobots)
+(url SI-Donald-ElectrostaticMEMS "https://ieeexplore.ieee.org/iel5/84/33485/01588903.pdf")
+(desc SI-Donald-ElectrostaticMEMS "MEMS-scale untethered micro-robot controlled via global electrostatic fields. Locomotion at scales where traditional actuation fails.")
+
+(isa SI-Sayed-HoverBots ReferenceWork)
+(title SI-Sayed-HoverBots "HoverBots: Precise Locomotion Using Robots That Are Designed for Manufacturability")
+(presentedBy SI-Sayed-HoverBots "John Mamish")
+(resourceType SI-Sayed-HoverBots paper)
+(level SI-Sayed-HoverBots advanced)
+(section SI-Sayed-HoverBots MicroRoboticsKilobots)
+(url SI-Sayed-HoverBots "https://www.researchgate.net/profile/Mohammed_E_Sayed/publication/320872807")
+(desc SI-Sayed-HoverBots "Low-friction hovering robots designed for manufacturability. Precise locomotion on air-bearing surfaces enabling large-scale swarm experiments.")
+
+(isa SI-Rubenstein-Kilobot ReferenceWork)
+(title SI-Rubenstein-Kilobot "Kilobot: A Low Cost Scalable Robot System for Collective Behaviors")
+(presentedBy SI-Rubenstein-Kilobot "Mike Rubenstein")
+(resourceType SI-Rubenstein-Kilobot paper)
+(level SI-Rubenstein-Kilobot advanced)
+(section SI-Rubenstein-Kilobot MicroRoboticsKilobots)
+(url SI-Rubenstein-Kilobot "https://ieeexplore.ieee.org/iel5/6215071/6224548/06224638.pdf")
+(desc SI-Rubenstein-Kilobot "The Kilobot platform: 1,024 simple robots demonstrating self-assembly into arbitrary 2D shapes using only local sensing and vibration-based locomotion. The direct hardware inspiration for Charlotte's substrate model.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: LOCALIZATION & LOGISTICS — 5 papers
+;; How agents determine position and coordinate movement
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Wurman-KivaWarehouses ReferenceWork)
+(title SI-Wurman-KivaWarehouses "Coordinating hundreds of cooperative, autonomous vehicles in warehouses")
+(presentedBy SI-Wurman-KivaWarehouses "Christine Garver")
+(resourceType SI-Wurman-KivaWarehouses paper)
+(level SI-Wurman-KivaWarehouses advanced)
+(section SI-Wurman-KivaWarehouses LocalizationLogistics)
+(url SI-Wurman-KivaWarehouses "https://www.aaai.org/ojs/index.php/aimagazine/article/download/2082/1981/")
+(desc SI-Wurman-KivaWarehouses "Kiva Systems warehouse robotics: hundreds of autonomous vehicles coordinating pick-and-place operations. Industrial-scale swarm logistics in production environments.")
+
+(isa SI-Nagpal-GlobalCoordinate ReferenceWork)
+(title SI-Nagpal-GlobalCoordinate "Organizing a Global Coordinate System from Local Information on an Ad Hoc Sensor Network")
+(presentedBy SI-Nagpal-GlobalCoordinate "Jordan Zax")
+(resourceType SI-Nagpal-GlobalCoordinate paper)
+(level SI-Nagpal-GlobalCoordinate advanced)
+(section SI-Nagpal-GlobalCoordinate LocalizationLogistics)
+(url SI-Nagpal-GlobalCoordinate "https://ssr.seas.harvard.edu/files/ssr/files/ipsn03-nagpal.pdf")
+(desc SI-Nagpal-GlobalCoordinate "Building global coordinate systems from purely local neighbor information on ad hoc sensor networks. No GPS required — position emerges from local exchanges.")
+(courseNote SI-Nagpal-GlobalCoordinate "Skip section 3.2 and 3.3")
+
+(isa SI-Moore-RobustLocalization ReferenceWork)
+(title SI-Moore-RobustLocalization "Robust Distributed Network Localization with Noisy Range Measurements")
+(presentedBy SI-Moore-RobustLocalization "Devdhar Kodiatar")
+(resourceType SI-Moore-RobustLocalization paper)
+(level SI-Moore-RobustLocalization advanced)
+(section SI-Moore-RobustLocalization LocalizationLogistics)
+(url SI-Moore-RobustLocalization "http://rvsn.csail.mit.edu/netloc/sensys04.pdf")
+(desc SI-Moore-RobustLocalization "Distributed localization algorithms robust to noisy range measurements. Agents converge on accurate positions despite imperfect sensing.")
+(courseNote SI-Moore-RobustLocalization "Skip section 3")
+
+(isa SI-Mauve-PositionBasedRouting ReferenceWork)
+(title SI-Mauve-PositionBasedRouting "A Survey on Position-Based Routing in Mobile Ad Hoc Networks")
+(presentedBy SI-Mauve-PositionBasedRouting "Hay Try")
+(resourceType SI-Mauve-PositionBasedRouting paper)
+(level SI-Mauve-PositionBasedRouting advanced)
+(section SI-Mauve-PositionBasedRouting LocalizationLogistics)
+(url SI-Mauve-PositionBasedRouting "https://ieeexplore.ieee.org/iel5/65/20878/00967595.pdf")
+(desc SI-Mauve-PositionBasedRouting "Survey of routing protocols that use geographic position rather than network topology. Position-based forwarding in mobile ad hoc networks.")
+(courseNote SI-Mauve-PositionBasedRouting "Stop at comparisons section")
+
+(isa SI-Dresner-TrafficReservation ReferenceWork)
+(title SI-Dresner-TrafficReservation "Multiagent traffic management: A reservation-based intersection control mechanism")
+(presentedBy SI-Dresner-TrafficReservation "Josh Cohen")
+(resourceType SI-Dresner-TrafficReservation paper)
+(level SI-Dresner-TrafficReservation advanced)
+(section SI-Dresner-TrafficReservation LocalizationLogistics)
+(url SI-Dresner-TrafficReservation "https://dl.acm.org/ft_gateway.cfm?id=1018799&ftid=291117&dwn=1")
+(desc SI-Dresner-TrafficReservation "Reservation-based intersection control replacing traffic lights with agent negotiation. Distributed traffic management through multiagent protocols.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: SELF-ASSEMBLY & SHAPE FORMATION — 8 papers
+;; Agents autonomously organizing into target shapes
+;; ════════════════════════════════════════════════════════════
+
+;; ── Shape Duplication & Compilation ──
+
+(isa SI-Rubenstein-ShapeDuplication ReferenceWork)
+(title SI-Rubenstein-ShapeDuplication "A Distributed Algorithm for 2D Shape Duplication with Smart Pebble Robots")
+(presentedBy SI-Rubenstein-ShapeDuplication "Jack Richard")
+(resourceType SI-Rubenstein-ShapeDuplication paper)
+(level SI-Rubenstein-ShapeDuplication advanced)
+(section SI-Rubenstein-ShapeDuplication SelfAssemblyShapeFormation)
+(url SI-Rubenstein-ShapeDuplication "https://ieeexplore.ieee.org/iel5/6215071/6224548/06225227.pdf")
+(desc SI-Rubenstein-ShapeDuplication "Distributed algorithm where smart pebble robots duplicate 2D shapes. Each pebble uses only local communication to determine whether it belongs to the target shape.")
+
+(isa SI-Nagpal-GlobalToLocal ReferenceWork)
+(title SI-Nagpal-GlobalToLocal "Biologically-inspired self-assembly of two-dimensional shapes using global-to-local compilation")
+(resourceType SI-Nagpal-GlobalToLocal paper)
+(level SI-Nagpal-GlobalToLocal advanced)
+(section SI-Nagpal-GlobalToLocal SelfAssemblyShapeFormation)
+(url SI-Nagpal-GlobalToLocal "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.163.5&rep=rep1&type=pdf")
+(desc SI-Nagpal-GlobalToLocal "Compiling global shape specifications into local agent behaviors. Top-down design produces bottom-up execution — the bridge between intent and emergence.")
+
+(isa SI-Chen-RobustFormation ReferenceWork)
+(title SI-Chen-RobustFormation "Robust and self-repairing formation control for swarms of mobile agents")
+(resourceType SI-Chen-RobustFormation paper)
+(level SI-Chen-RobustFormation advanced)
+(section SI-Chen-RobustFormation SelfAssemblyShapeFormation)
+(url SI-Chen-RobustFormation "http://new.aaai.org/Papers/AAAI/2005/AAAI05-010.pdf")
+(desc SI-Chen-RobustFormation "Formation control algorithms that self-repair when agents fail or join. Robust swarm shapes maintained through local consensus rules.")
+
+;; ── Physical Assembly ──
+
+(isa SI-OGrady-SelfAssemblyTerrain ReferenceWork)
+(title SI-OGrady-SelfAssemblyTerrain "Self-assembly on demand in a group of physical autonomous mobile robots navigating rough terrain")
+(presentedBy SI-OGrady-SelfAssemblyTerrain "Drew Kersnar")
+(resourceType SI-OGrady-SelfAssemblyTerrain paper)
+(level SI-OGrady-SelfAssemblyTerrain advanced)
+(section SI-OGrady-SelfAssemblyTerrain SelfAssemblyShapeFormation)
+(url SI-OGrady-SelfAssemblyTerrain "https://infoscience.epfl.ch/record/90571/files/LNCS-3630OGrady-etal2005.pdf")
+(desc SI-OGrady-SelfAssemblyTerrain "Physical robots self-assembling on demand to traverse rough terrain. Individual agents connect when the environment requires collective morphology.")
+
+(isa SI-Gauci-SelfDisassembly ReferenceWork)
+(title SI-Gauci-SelfDisassembly "Programmable Self-Disassembly for Shape Formation in Large-Scale Robot Collectives")
+(presentedBy SI-Gauci-SelfDisassembly "Mike Rubenstein")
+(resourceType SI-Gauci-SelfDisassembly paper)
+(level SI-Gauci-SelfDisassembly advanced)
+(section SI-Gauci-SelfDisassembly SelfAssemblyShapeFormation)
+(url SI-Gauci-SelfDisassembly "https://ssr.seas.harvard.edu/files/ssr/files/dars2016-gauci.pdf")
+(desc SI-Gauci-SelfDisassembly "Shape formation by selective disassembly from a connected mass. Subtractive approach: start fully connected, remove modules until target shape remains.")
+(courseNote SI-Gauci-SelfDisassembly "Skim or skip section 1")
+
+(isa SI-Chen-BrazilNutSegregation ReferenceWork)
+(title SI-Chen-BrazilNutSegregation "Segregation in swarms of e-puck robots based on the brazil nut effect")
+(presentedBy SI-Chen-BrazilNutSegregation "Katarina Popovic")
+(resourceType SI-Chen-BrazilNutSegregation paper)
+(level SI-Chen-BrazilNutSegregation advanced)
+(section SI-Chen-BrazilNutSegregation SelfAssemblyShapeFormation)
+(url SI-Chen-BrazilNutSegregation "http://naturalrobotics.group.shef.ac.uk/publications/2012-aamas-chen.pdf")
+(desc SI-Chen-BrazilNutSegregation "Robot segregation inspired by the Brazil nut effect in granular physics. Size-based self-sorting emerges from simple vibration and collision dynamics.")
+
+;; ── Lattice & Morphogenesis ──
+
+(isa SI-Butler-ScalableHoleMotion ReferenceWork)
+(title SI-Butler-ScalableHoleMotion "Scalable shape sculpting via hole motion: Motion planning in lattice-constrained modular robots")
+(presentedBy SI-Butler-ScalableHoleMotion "Dhanvin Kodiatar")
+(resourceType SI-Butler-ScalableHoleMotion paper)
+(level SI-Butler-ScalableHoleMotion advanced)
+(section SI-Butler-ScalableHoleMotion SelfAssemblyShapeFormation)
+(url SI-Butler-ScalableHoleMotion "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1641915")
+(desc SI-Butler-ScalableHoleMotion "Shape sculpting by moving holes through a lattice of modules. Scalable motion planning where vacancies propagate to reconfigure the structure.")
+
+(isa SI-Rubenstein-ControllableMorphogenesis ReferenceWork)
+(title SI-Rubenstein-ControllableMorphogenesis "Toward Controllable Morphogenesis in Large Robot Swarms")
+(presentedBy SI-Rubenstein-ControllableMorphogenesis "Keith Languet")
+(resourceType SI-Rubenstein-ControllableMorphogenesis paper)
+(level SI-Rubenstein-ControllableMorphogenesis advanced)
+(section SI-Rubenstein-ControllableMorphogenesis SelfAssemblyShapeFormation)
+(url SI-Rubenstein-ControllableMorphogenesis "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8755393")
+(desc SI-Rubenstein-ControllableMorphogenesis "Controlling morphogenesis in large robot swarms. Bridging developmental biology concepts with programmable shape formation at scale.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: COLLECTIVE CONSTRUCTION — 5 papers
+;; Building structures without central planning
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Lindsey-CubicConstruction ReferenceWork)
+(title SI-Lindsey-CubicConstruction "Construction of cubic structures with quadrotor teams")
+(presentedBy SI-Lindsey-CubicConstruction "Sun Hay Try")
+(resourceType SI-Lindsey-CubicConstruction paper)
+(level SI-Lindsey-CubicConstruction advanced)
+(section SI-Lindsey-CubicConstruction CollectiveConstruction)
+(url SI-Lindsey-CubicConstruction "http://www.roboticsproceedings.org/rss07/p25.pdf")
+(desc SI-Lindsey-CubicConstruction "Quadrotor teams autonomously constructing cubic structures from building elements. Aerial construction coordination without human intervention.")
+(courseNote SI-Lindsey-CubicConstruction "Skip appendix")
+
+(isa SI-Yun-TrussReconfiguration ReferenceWork)
+(title SI-Yun-TrussReconfiguration "Structure-Reconfiguring Robots: Autonomous Truss Reconfiguration and Manipulation")
+(presentedBy SI-Yun-TrussReconfiguration "Alex Samland")
+(resourceType SI-Yun-TrussReconfiguration paper)
+(level SI-Yun-TrussReconfiguration advanced)
+(section SI-Yun-TrussReconfiguration CollectiveConstruction)
+(url SI-Yun-TrussReconfiguration "https://scholar.google.com/scholar?output=instlink&q=info:Fjj_QJoZ7pcJ:scholar.google.com/")
+(desc SI-Yun-TrussReconfiguration "Robots that autonomously reconfigure truss structures. The structure itself is the robot — beams and joints rearrange to achieve new configurations.")
+
+(isa SI-Theraulaz-CoordinatedBuilding ReferenceWork)
+(title SI-Theraulaz-CoordinatedBuilding "Coordination in Distributed Building")
+(presentedBy SI-Theraulaz-CoordinatedBuilding "Keith Languet")
+(resourceType SI-Theraulaz-CoordinatedBuilding paper)
+(level SI-Theraulaz-CoordinatedBuilding advanced)
+(section SI-Theraulaz-CoordinatedBuilding CollectiveConstruction)
+(url SI-Theraulaz-CoordinatedBuilding "https://www.researchgate.net/profile/Guy_Theraulaz/publication/6081132")
+(desc SI-Theraulaz-CoordinatedBuilding "Coordination mechanisms in distributed building inspired by social insects. Local construction rules produce globally coherent structures.")
+
+(isa SI-Werfel-CollectiveConstruction ReferenceWork)
+(title SI-Werfel-CollectiveConstruction "Collective construction with robot swarms")
+(presentedBy SI-Werfel-CollectiveConstruction "Drew Kersnar")
+(resourceType SI-Werfel-CollectiveConstruction paper)
+(level SI-Werfel-CollectiveConstruction advanced)
+(section SI-Werfel-CollectiveConstruction CollectiveConstruction)
+(url SI-Werfel-CollectiveConstruction "http://people.seas.harvard.edu/~jkwerfel/morpheng.pdf")
+(desc SI-Werfel-CollectiveConstruction "Robot swarms building 3D structures using only local sensing and communication. Morphogenetic engineering where the structure guides its own construction.")
+(courseNote SI-Werfel-CollectiveConstruction "Read up to, not including, section 3")
+
+(isa SI-Werfel-TermiteInspired ReferenceWork)
+(title SI-Werfel-TermiteInspired "Designing collective behavior in a termite-inspired robot construction team")
+(presentedBy SI-Werfel-TermiteInspired "Sophia Huang")
+(resourceType SI-Werfel-TermiteInspired paper)
+(level SI-Werfel-TermiteInspired advanced)
+(section SI-Werfel-TermiteInspired CollectiveConstruction)
+(url SI-Werfel-TermiteInspired "https://scholar.google.com/scholar?output=instlink&q=info:QR_9RcRsVWIJ:scholar.google.com/")
+(desc SI-Werfel-TermiteInspired "TERMES project: robots inspired by termite mound construction. Stigmergic building where the partially-built structure guides further construction activity.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: STIGMERGY & PHEROMONES — 4 papers
+;; Indirect communication through environment modification
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Holland-StigmergyRobotics ReferenceWork)
+(title SI-Holland-StigmergyRobotics "From local actions to global tasks: Stigmergy and collective robotics")
+(presentedBy SI-Holland-StigmergyRobotics "Devdhar Kodiatar")
+(resourceType SI-Holland-StigmergyRobotics paper)
+(level SI-Holland-StigmergyRobotics advanced)
+(section SI-Holland-StigmergyRobotics StigmergyPheromones)
+(url SI-Holland-StigmergyRobotics "https://www.researchgate.net/profile/Owen_Holland/publication/242614488")
+(desc SI-Holland-StigmergyRobotics "Foundational paper on stigmergy in collective robotics. Environment as shared memory: agents modify the world and other agents respond to those modifications.")
+
+(isa SI-Szymanski-DistributedShortest ReferenceWork)
+(title SI-Szymanski-DistributedShortest "Distributed shortest-path finding by a micro-robot swarm")
+(presentedBy SI-Szymanski-DistributedShortest "Christine Garver")
+(resourceType SI-Szymanski-DistributedShortest paper)
+(level SI-Szymanski-DistributedShortest advanced)
+(section SI-Szymanski-DistributedShortest StigmergyPheromones)
+(url SI-Szymanski-DistributedShortest "http://swarmrobot.org/publications/ANTS2006-Szymanski.pdf")
+(desc SI-Szymanski-DistributedShortest "Micro-robot swarm finding shortest paths through pheromone-like trail reinforcement. Distributed pathfinding without global map knowledge.")
+
+(isa SI-Garnier-AlicePheromone ReferenceWork)
+(title SI-Garnier-AlicePheromone "Alice in pheromone land: An experimental setup for the study of ant-like robots")
+(presentedBy SI-Garnier-AlicePheromone "Josh Cohen")
+(resourceType SI-Garnier-AlicePheromone paper)
+(level SI-Garnier-AlicePheromone advanced)
+(section SI-Garnier-AlicePheromone StigmergyPheromones)
+(url SI-Garnier-AlicePheromone "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4223153")
+(desc SI-Garnier-AlicePheromone "Experimental platform for studying ant-like pheromone communication in physical robots. Alice robots deposit and sense virtual pheromone trails.")
+
+(isa SI-Vaughan-WhistlingDark ReferenceWork)
+(title SI-Vaughan-WhistlingDark "Whistling in the dark: cooperative trail following in uncertain localization space")
+(presentedBy SI-Vaughan-WhistlingDark "Sandra Nissim")
+(resourceType SI-Vaughan-WhistlingDark paper)
+(level SI-Vaughan-WhistlingDark advanced)
+(section SI-Vaughan-WhistlingDark StigmergyPheromones)
+(url SI-Vaughan-WhistlingDark "https://scholar.google.com/scholar_url?url=http://www2.hawaii.edu/~nreed/ics606/papers/Vaughn00localize.pdf")
+(desc SI-Vaughan-WhistlingDark "Cooperative trail following when robots cannot reliably localize themselves. Indirect communication compensates for uncertain position knowledge.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: EVOLUTIONARY DESIGN — 5 papers
+;; Using evolution to design morphologies and behaviors
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Labella-TaskAllocation ReferenceWork)
+(title SI-Labella-TaskAllocation "Self-organised task allocation in a group of robots")
+(presentedBy SI-Labella-TaskAllocation "Jack Richard")
+(resourceType SI-Labella-TaskAllocation paper)
+(level SI-Labella-TaskAllocation advanced)
+(section SI-Labella-TaskAllocation EvolutionaryDesign)
+(url SI-Labella-TaskAllocation "http://iridia.ulb.ac.be/~mdorigo/Published_papers/2004/LabDorDen2004dars.pdf")
+(desc SI-Labella-TaskAllocation "Self-organized task allocation where robots autonomously distribute themselves across tasks based on local success rates. No central scheduler needed.")
+(courseNote SI-Labella-TaskAllocation "Up to section 5, not including")
+
+(isa SI-Sims-EvolvingCreatures ReferenceWork)
+(title SI-Sims-EvolvingCreatures "Evolving virtual creatures")
+(presentedBy SI-Sims-EvolvingCreatures "Dhanvin Kodiatar")
+(resourceType SI-Sims-EvolvingCreatures paper)
+(level SI-Sims-EvolvingCreatures advanced)
+(section SI-Sims-EvolvingCreatures EvolutionaryDesign)
+(url SI-Sims-EvolvingCreatures "http://people.reed.edu/~jimfix/math385/lec01.1/Animation/p15-sims-evolving.pdf")
+(desc SI-Sims-EvolvingCreatures "Karl Sims' seminal work: evolving both morphology and neural control of virtual creatures simultaneously. Genotype encodes body plan and brain together.")
+
+(isa SI-Trianni-EvolvingPhototaxis ReferenceWork)
+(title SI-Trianni-EvolvingPhototaxis "Evolving an Integrated Phototaxis and Hole-avoidance Behavior for a Swarm-bot")
+(presentedBy SI-Trianni-EvolvingPhototaxis "Jordan Zax")
+(resourceType SI-Trianni-EvolvingPhototaxis paper)
+(level SI-Trianni-EvolvingPhototaxis advanced)
+(section SI-Trianni-EvolvingPhototaxis EvolutionaryDesign)
+(url SI-Trianni-EvolvingPhototaxis "https://pdfs.semanticscholar.org/eb6d/37439dee622e47ba58c8e084dad085fc3737.pdf")
+(desc SI-Trianni-EvolvingPhototaxis "Evolutionary optimization producing integrated phototaxis and obstacle avoidance in swarm-bots. Multiple behaviors co-evolved into a single controller.")
+
+(isa SI-Christensen-EvolvingATRON ReferenceWork)
+(title SI-Christensen-EvolvingATRON "Evolution of shape-changing and self-repairing control for the ATRON self-reconfigurable robot")
+(resourceType SI-Christensen-EvolvingATRON paper)
+(level SI-Christensen-EvolvingATRON advanced)
+(section SI-Christensen-EvolvingATRON EvolutionaryDesign)
+(url SI-Christensen-EvolvingATRON "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1642084")
+(desc SI-Christensen-EvolvingATRON "Evolutionary algorithms producing shape-changing and self-repairing controllers for the ATRON modular robot. Evolved control outperforms hand-designed rules.")
+
+(isa SI-Cheney-SoftRobots ReferenceWork)
+(title SI-Cheney-SoftRobots "Unshackling Evolution: Evolving Soft Robots with Multiple Materials and a Powerful Generative Encoding")
+(presentedBy SI-Cheney-SoftRobots "Sophia Huang")
+(resourceType SI-Cheney-SoftRobots paper)
+(level SI-Cheney-SoftRobots advanced)
+(section SI-Cheney-SoftRobots EvolutionaryDesign)
+(url SI-Cheney-SoftRobots "http://jeffclune.com/publications/2013_Softbots_GECCO.pdf")
+(desc SI-Cheney-SoftRobots "Evolving soft robots with heterogeneous materials using CPPN generative encoding. Evolution discovers locomotion strategies impossible with hand-design.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 8: FLOCKING & BOIDS — 4 papers
+;; Three local rules → globally coherent flock motion
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Reynolds-FlocksBoids ReferenceWork)
+(title SI-Reynolds-FlocksBoids "Flocks, herds and schools: A distributed behavioral model")
+(presentedBy SI-Reynolds-FlocksBoids "Katarina Popovic")
+(resourceType SI-Reynolds-FlocksBoids paper)
+(level SI-Reynolds-FlocksBoids advanced)
+(section SI-Reynolds-FlocksBoids FlockingBoids)
+(url SI-Reynolds-FlocksBoids "https://www.researchgate.net/profile/Craig_Reynolds2/publication/2797343")
+(desc SI-Reynolds-FlocksBoids "Craig Reynolds' 1987 Boids model: separation, alignment, cohesion. Three local rules producing globally coherent flock motion. The conceptual ancestor of Charlotte's recursive substrate model.")
+(courseNote SI-Reynolds-FlocksBoids "Skip introduction and our foreflocks, stop at other applications")
+
+(isa SI-Vasarhelyi-ReynoldsFixedWing ReferenceWork)
+(title SI-Vasarhelyi-ReynoldsFixedWing "Reynolds flocking in reality with fixed-wing robots: communication range vs. maximum turning rate")
+(presentedBy SI-Vasarhelyi-ReynoldsFixedWing "Devdhar Kodiatar")
+(resourceType SI-Vasarhelyi-ReynoldsFixedWing paper)
+(level SI-Vasarhelyi-ReynoldsFixedWing advanced)
+(section SI-Vasarhelyi-ReynoldsFixedWing FlockingBoids)
+(url SI-Vasarhelyi-ReynoldsFixedWing "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6095129")
+(desc SI-Vasarhelyi-ReynoldsFixedWing "Implementing Reynolds flocking on physical fixed-wing aircraft. Trade-off between communication range and turning constraints in real-world flocking.")
+
+(isa SI-Vaughan-RobotSheepdog ReferenceWork)
+(title SI-Vaughan-RobotSheepdog "Robot sheepdog project achieves automatic flock control")
+(presentedBy SI-Vaughan-RobotSheepdog "Jordan Zax")
+(resourceType SI-Vaughan-RobotSheepdog paper)
+(level SI-Vaughan-RobotSheepdog advanced)
+(section SI-Vaughan-RobotSheepdog FlockingBoids)
+(url SI-Vaughan-RobotSheepdog "https://pdfs.semanticscholar.org/e6ab/17160acf25bfc2a22b1f27371edeb50ce2b4.pdf")
+(desc SI-Vaughan-RobotSheepdog "Robot sheepdog automatically controlling a flock of ducks. Exploiting flocking behavior to herd agents toward goals using a single controller.")
+
+(isa SI-Spears-ArtificialPhysics ReferenceWork)
+(title SI-Spears-ArtificialPhysics "Using artificial physics to control agents")
+(presentedBy SI-Spears-ArtificialPhysics "Alex Samland")
+(resourceType SI-Spears-ArtificialPhysics paper)
+(level SI-Spears-ArtificialPhysics advanced)
+(section SI-Spears-ArtificialPhysics FlockingBoids)
+(url SI-Spears-ArtificialPhysics "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=810278")
+(desc SI-Spears-ArtificialPhysics "Virtual force fields governing agent motion through artificial physics. Attraction, repulsion, and friction forces creating stable spatial formations.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 9: COLLECTIVE TRANSPORT & DECISION — 4 papers
+;; Swarms moving objects and making group choices
+;; ════════════════════════════════════════════════════════════
+
+(isa SI-Wilson-TransportingTall ReferenceWork)
+(title SI-Wilson-TransportingTall "A strategy for transporting tall objects with a swarm of miniature mobile robots")
+(presentedBy SI-Wilson-TransportingTall "Christine Garver")
+(resourceType SI-Wilson-TransportingTall paper)
+(level SI-Wilson-TransportingTall advanced)
+(section SI-Wilson-TransportingTall CollectiveTransportDecision)
+(url SI-Wilson-TransportingTall "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6630674")
+(desc SI-Wilson-TransportingTall "Strategy for miniature robot swarms transporting objects taller than themselves. Coordinated pushing and tilting without explicit communication.")
+
+(isa SI-Kube-AntTransport ReferenceWork)
+(title SI-Kube-AntTransport "Toward the development of a material transport system using swarms of ant-like robots")
+(presentedBy SI-Kube-AntTransport "Drew Kersnar")
+(resourceType SI-Kube-AntTransport paper)
+(level SI-Kube-AntTransport advanced)
+(section SI-Kube-AntTransport CollectiveTransportDecision)
+(url SI-Kube-AntTransport "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=292070")
+(desc SI-Kube-AntTransport "Early ant-inspired collective transport system. Simple robots cooperatively moving objects through emergent force coordination.")
+
+(isa SI-Rubenstein-CollectiveTransport ReferenceWork)
+(title SI-Rubenstein-CollectiveTransport "Collective transport of complex objects by simple robots: theory and experiments")
+(presentedBy SI-Rubenstein-CollectiveTransport "Mike Rubenstein")
+(resourceType SI-Rubenstein-CollectiveTransport paper)
+(level SI-Rubenstein-CollectiveTransport advanced)
+(section SI-Rubenstein-CollectiveTransport CollectiveTransportDecision)
+(url SI-Rubenstein-CollectiveTransport "http://users.eecs.northwestern.edu/~mrubenst/aamas13")
+(desc SI-Rubenstein-CollectiveTransport "Theory and experiments on simple robots collectively transporting complex-shaped objects. Formal analysis of when cooperative transport succeeds or fails.")
+
+(isa SI-Seeley-StopSignals ReferenceWork)
+(title SI-Seeley-StopSignals "Stop signals provide cross inhibition in collective decision-making by honeybee swarms")
+(presentedBy SI-Seeley-StopSignals "Efe Saatci")
+(resourceType SI-Seeley-StopSignals paper)
+(level SI-Seeley-StopSignals advanced)
+(section SI-Seeley-StopSignals CollectiveTransportDecision)
+(url SI-Seeley-StopSignals "https://science.sciencemag.org/content/335/6064/108.full.pdf")
+(desc SI-Seeley-StopSignals "Honeybee swarms use stop signals for cross-inhibition during collective nest-site selection. Biological decision-making without voting — inhibitory signals break deadlocks.")
+
+;; ════════════════════════════════════════════════════════════
+;; COURSE METADATA & CHARLOTTE CONNECTION
+;; ════════════════════════════════════════════════════════════
+
+;; ── Course Record ──
+
+(isa SI-CourseMetadata CourseRecord)
+(courseTitle SI-CourseMetadata "Swarm Intelligence")
+(courseInstitution SI-CourseMetadata "Northwestern University")
+(courseTerm SI-CourseMetadata "Fall 2019")
+(courseInstructor SI-CourseMetadata "Mike Rubenstein")
+(totalPapers SI-CourseMetadata 51)
+(totalWeeks SI-CourseMetadata 13)
+(totalTopics SI-CourseMetadata 10)
+(totalStudents SI-CourseMetadata 12)
+(comment SI-CourseMetadata
+  "The foundational curriculum that inspired Charlotte's approach to
+   universal substrate modeling. Every paper demonstrates the same
+   pattern: simple local rules producing emergent global behavior.
+   Charlotte generalizes this into five primitives that model any
+   domain where identities emit signals over time.")
+
+;; ── Guest Speakers ──
+
+(isa SI-GuestLecture-Cohen GuestLecture)
+(speaker SI-GuestLecture-Cohen "Itai Cohen")
+(date SI-GuestLecture-Cohen "October 10, 2019")
+(location SI-GuestLecture-Cohen "Tech F160")
+
+(isa SI-GuestLecture-Leonard GuestLecture)
+(speaker SI-GuestLecture-Leonard "Naomi Leonard")
+(date SI-GuestLecture-Leonard "October 24, 2019")
+(location SI-GuestLecture-Leonard "Tech F160")
+
+;; ── Your Presentations (Jack Richard) ──
+
+(yourPresentation SI-Piccoli-Piccolissimo "Paper #8 — Aerial Swarms")
+(yourPresentation SI-Rubenstein-ShapeDuplication "Paper #19 — Self-Assembly")
+(yourPresentation SI-Labella-TaskAllocation "Paper #35 — Evolutionary Design")
+
+;; ── Charlotte Substrate Mapping ──
+
+(isa SI-SubstrateMapping CharlotteMapping)
+(comment SI-SubstrateMapping
+  "The swarm intelligence curriculum maps directly to Charlotte's
+   five primitives:
+   NODE     = Agent / Robot / Module — any identity with state
+   EDGE     = Neighbor link / Communication / Pheromone trail
+   METRIC   = Speed / Distance / Pheromone level / Signal strength
+   SIGNAL   = Collision / Assembly / Task complete / Shape achieved
+   PROTOCOL = Separation / Alignment / Cohesion / Recruitment rule")
+
+;; ── Mike Rubenstein — Unofficial Mentor ──
+
+(isa SI-MentorRecord MentorRecord)
+(mentorName SI-MentorRecord "Michael Rubenstein")
+(mentorAffiliation SI-MentorRecord "Harvard University, Northwestern University")
+(comment SI-MentorRecord
+  "Creator of the Kilobot platform: 1,024 tiny robots demonstrating
+   self-assembly into arbitrary 2D shapes using only local sensing
+   and vibration-based locomotion. His Fall 2019 swarm intelligence
+   course was the direct inspiration for Charlotte's approach:
+   local rules producing global order across multiple industries
+   using a single universal substrate.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources SwarmIntelligenceReference 51)
+(totalSections SwarmIntelligenceReference 10)
+(comment SwarmIntelligenceReference
+  "51 papers across 10 sections: Modular Self-Reconfiguration (9),
+   Aerial & Space Swarms (4), Micro-Robotics & Kilobots (3),
+   Localization & Logistics (5), Self-Assembly & Shape Formation (8),
+   Collective Construction (5), Stigmergy & Pheromones (4),
+   Evolutionary Design (5), Flocking & Boids (4), Collective
+   Transport & Decision (4).")

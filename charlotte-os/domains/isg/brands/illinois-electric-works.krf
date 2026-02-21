@@ -1,0 +1,61 @@
+;;; ================================================================
+;;; ISG BRAND / ILLINOIS ELECTRIC WORKS (IEW)
+;;; First EASA-accredited motor repair facility in the US — since 1931
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+(isa IllinoisElectricWorks ISGBrand)
+(hasAttribute IllinoisElectricWorks ::LABEL "Illinois Electric Works")
+(hasAttribute IllinoisElectricWorks ::ABBREVIATION "IEW")
+(hasAttribute IllinoisElectricWorks ::FOUNDED "1931 (E. St. Louis); reopened 1983; relocated Granite City 1999")
+(hasAttribute IllinoisElectricWorks ::ACQUIRED_BY_ISG "November 2023")
+(hasAttribute IllinoisElectricWorks ::VERTICAL "Electric Motors")
+(hasAttribute IllinoisElectricWorks ::HEADCOUNT "51-200")
+(hasAttribute IllinoisElectricWorks ::WEBSITE "illinoiselectric.com")
+(hasAttribute IllinoisElectricWorks ::FACILITY "2161 Adams St, Granite City, IL 62040")
+(hasAttribute IllinoisElectricWorks ::DISTINCTION "First EASA-accredited motor repair facility in the United States")
+(hasAttribute IllinoisElectricWorks ::CAPABILITIES "AC/DC motors (fractional HP to 20,000+ HP, up to 40 tons), cranes, generators, pumps, VFDs")
+(hasAttribute IllinoisElectricWorks ::OEM_DISTRIBUTOR "Toshiba, US Motors, Tatung, Marathon, GE, TECO-Westinghouse, WEG, Emerson, Baldor, Siemens")
+(MEMBER_OF IllinoisElectricWorks ISGMotorPumpGroup)
+(locatedAt IllinoisElectricWorks GraniteCity-IL)
+
+;; Personnel
+
+(isa DaleHamil Person)
+(hasAttribute DaleHamil ::LABEL "Dale Hamil")
+(hasAttribute DaleHamil ::ROLE "President")
+(hasAttribute DaleHamil ::NOTES "Co-reopened IEW in 1983 with Ernie Hodge. 35+ years operating")
+(LEADS DaleHamil IllinoisElectricWorks)
+(MEMBER_OF DaleHamil IllinoisElectricWorks)
+
+(isa BradBoatman Person)
+(hasAttribute BradBoatman ::LABEL "Brad Boatman")
+(hasAttribute BradBoatman ::ROLE "VFD Division Manager / Electrical Controls")
+(hasAttribute BradBoatman ::EDUCATION "Industrial Electricity, Southwestern Illinois College")
+(hasAttribute BradBoatman ::TENURE "Since 1993")
+(MEMBER_OF BradBoatman IllinoisElectricWorks)
+
+(isa MichaelBongner Person)
+(hasAttribute MichaelBongner ::LABEL "Michael Bongner")
+(hasAttribute MichaelBongner ::ROLE "Product Manager")
+(hasAttribute MichaelBongner ::CAREER "US Navy Nuclear Power School → Handling Systems → Zeller Technologies → IEW")
+(hasAttribute MichaelBongner ::NOTES "Published article on modernizing 1910 vintage crane")
+(MEMBER_OF MichaelBongner IllinoisElectricWorks)
+
+(isa DouglasBritt Person)
+(hasAttribute DouglasBritt ::LABEL "Douglas Britt")
+(hasAttribute DouglasBritt ::ROLE "Sales Engineer / Technical Services")
+(hasAttribute DouglasBritt ::CAREER "Progressive roles: Crane Customer Service → Sales Engineer → Sales Leader")
+(MEMBER_OF DouglasBritt IllinoisElectricWorks)
+
+(isa DaleSchaefer Person)
+(hasAttribute DaleSchaefer ::LABEL "Dale Schaefer")
+(hasAttribute DaleSchaefer ::ROLE "Shop Foreman")
+(locatedAt DaleSchaefer Bethalto-IL)
+(MEMBER_OF DaleSchaefer IllinoisElectricWorks)
+
+(isa KeithBurton Person)
+(hasAttribute KeithBurton ::LABEL "Keith Burton")
+(hasAttribute KeithBurton ::ROLE "Sales Engineer")
+(MEMBER_OF KeithBurton IllinoisElectricWorks)

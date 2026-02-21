@@ -1,0 +1,899 @@
+;;; ================================================================
+;;; REFERENCE / LIVESTOCK SCIENCE
+;;; 87 resources across 7 sections — Genetics, breeding, reproduction
+;;; & show industry. The domain knowledge behind Sounder and swine
+;;; genetics.
+;;; ================================================================
+;;;
+;;; Livestock Science is a multidisciplinary field encompassing
+;;; genetics, reproduction, nutrition, health, and management of
+;;; domesticated animals raised for food, fiber, and exhibition.
+;;;
+;;; Show pig breeding represents a high-stakes, data-rich vertical
+;;; where EPDs, phenotypic evaluations, nutritional protocols, and
+;;; health management decisions all converge.
+;;;
+;;; Learning path: Foundational Texts → Genetics & Breeding →
+;;; Reproduction → Nutrition & Growth → Show Industry →
+;;; Herd Management → Veterinary Science → Datasets & Software
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW — Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa LS-Falconer-QuantGenetics ReferenceWork)
+(title LS-Falconer-QuantGenetics "Introduction to Quantitative Genetics")
+(author LS-Falconer-QuantGenetics "Falconer & Mackay")
+(resourceType LS-Falconer-QuantGenetics book)
+(level LS-Falconer-QuantGenetics intermediate)
+(section LS-Falconer-QuantGenetics LivestockScienceOverview)
+(url LS-Falconer-QuantGenetics "https://www.pearson.com/en-us/subject-catalog/p/introduction-to-quantitative-genetics/P200000003561")
+(desc LS-Falconer-QuantGenetics "The definitive textbook on quantitative genetics — heritability, selection response, genetic correlations. Essential foundation for understanding EPDs and breeding value estimation.")
+
+(isa LS-VanDerWerf-AnimalBreeding ReferenceWork)
+(title LS-VanDerWerf-AnimalBreeding "Animal Breeding and Genetics")
+(author LS-VanDerWerf-AnimalBreeding "Julius van der Werf, et al. — University of New England")
+(resourceType LS-VanDerWerf-AnimalBreeding course)
+(level LS-VanDerWerf-AnimalBreeding intermediate)
+(section LS-VanDerWerf-AnimalBreeding LivestockScienceOverview)
+(url LS-VanDerWerf-AnimalBreeding "https://jvanderw.une.edu.au/ABGbook/ABGbook.html")
+(desc LS-VanDerWerf-AnimalBreeding "Open-access animal breeding genetics textbook covering BLUP, genomic selection, and breeding program design for livestock species.")
+
+(isa LS-Senger-PathwaysPregnancy ReferenceWork)
+(title LS-Senger-PathwaysPregnancy "Pathways to Pregnancy and Parturition")
+(author LS-Senger-PathwaysPregnancy "P.L. Senger")
+(resourceType LS-Senger-PathwaysPregnancy book)
+(level LS-Senger-PathwaysPregnancy intermediate)
+(section LS-Senger-PathwaysPregnancy LivestockScienceOverview)
+(url LS-Senger-PathwaysPregnancy "https://www.redlandspublishing.com/")
+(desc LS-Senger-PathwaysPregnancy "Comprehensive reproductive physiology textbook covering estrous cycles, pregnancy, and parturition across livestock species. Standard reference for swine reproduction.")
+
+(isa LS-Purdue-PorkIndustryHandbook ReferenceWork)
+(title LS-Purdue-PorkIndustryHandbook "Pork Industry Handbook")
+(author LS-Purdue-PorkIndustryHandbook "Purdue University Extension")
+(resourceType LS-Purdue-PorkIndustryHandbook notes)
+(level LS-Purdue-PorkIndustryHandbook beginner)
+(section LS-Purdue-PorkIndustryHandbook LivestockScienceOverview)
+(url LS-Purdue-PorkIndustryHandbook "https://www.extension.purdue.edu/extmedia/pork-industry-handbook/")
+(desc LS-Purdue-PorkIndustryHandbook "Comprehensive collection of fact sheets covering all aspects of pork production — genetics, nutrition, health, facilities, and management.")
+
+(isa LS-Grandin-GeneticsBehavior ReferenceWork)
+(title LS-Grandin-GeneticsBehavior "Genetics and the Behavior of Domestic Animals")
+(author LS-Grandin-GeneticsBehavior "Temple Grandin & Mark Deesing")
+(resourceType LS-Grandin-GeneticsBehavior book)
+(level LS-Grandin-GeneticsBehavior intermediate)
+(section LS-Grandin-GeneticsBehavior LivestockScienceOverview)
+(url LS-Grandin-GeneticsBehavior "https://www.elsevier.com/books/genetics-and-the-behavior-of-domestic-animals/grandin/978-0-12-394586-0")
+(desc LS-Grandin-GeneticsBehavior "Explores the genetic basis of behavior in livestock, including temperament and handling traits relevant to show ring performance.")
+
+(isa LS-JAS-Journal ReferenceWork)
+(title LS-JAS-Journal "Journal of Animal Science")
+(author LS-JAS-Journal "American Society of Animal Science")
+(resourceType LS-JAS-Journal notes)
+(level LS-JAS-Journal advanced)
+(section LS-JAS-Journal LivestockScienceOverview)
+(url LS-JAS-Journal "https://academic.oup.com/jas")
+(desc LS-JAS-Journal "Premier peer-reviewed journal publishing research on animal genetics, nutrition, physiology, and management. Essential for staying current with swine science.")
+
+(isa LS-Elsevier-LivestockScience ReferenceWork)
+(title LS-Elsevier-LivestockScience "Livestock Science (Elsevier Journal)")
+(author LS-Elsevier-LivestockScience "Elsevier")
+(resourceType LS-Elsevier-LivestockScience notes)
+(level LS-Elsevier-LivestockScience advanced)
+(section LS-Elsevier-LivestockScience LivestockScienceOverview)
+(url LS-Elsevier-LivestockScience "https://www.sciencedirect.com/journal/livestock-science")
+(desc LS-Elsevier-LivestockScience "International journal covering animal production science including breeding, nutrition, and welfare across all livestock species.")
+
+(isa LS-Holden-SwineScience ReferenceWork)
+(title LS-Holden-SwineScience "Swine Science")
+(author LS-Holden-SwineScience "Palmer Holden & M.E. Ensminger")
+(resourceType LS-Holden-SwineScience book)
+(level LS-Holden-SwineScience beginner)
+(section LS-Holden-SwineScience LivestockScienceOverview)
+(url LS-Holden-SwineScience "https://www.pearson.com/en-us/subject-catalog/p/swine-science/P200000003668")
+(desc LS-Holden-SwineScience "Comprehensive introductory text covering swine breeds, genetics, reproduction, nutrition, health, and management. Ideal starting reference.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: GENETICS & BREEDING
+;; EPDs, heritability, breed registries, crossbreeding systems
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & References ──
+
+(isa LS-Falconer-QuantGeneticsGBR ReferenceWork)
+(title LS-Falconer-QuantGeneticsGBR "Introduction to Quantitative Genetics")
+(author LS-Falconer-QuantGeneticsGBR "Falconer & Mackay")
+(resourceType LS-Falconer-QuantGeneticsGBR book)
+(level LS-Falconer-QuantGeneticsGBR intermediate)
+(section LS-Falconer-QuantGeneticsGBR GeneticsBreeding)
+(url LS-Falconer-QuantGeneticsGBR "https://www.pearson.com/en-us/subject-catalog/p/introduction-to-quantitative-genetics/P200000003561")
+(desc LS-Falconer-QuantGeneticsGBR "Gold-standard textbook on heritability, selection response (R = h²S), genetic drift, and inbreeding. Foundational for all EPD-based selection programs.")
+
+(isa LS-Bourdon-UnderstandingBreeding ReferenceWork)
+(title LS-Bourdon-UnderstandingBreeding "Understanding Animal Breeding")
+(author LS-Bourdon-UnderstandingBreeding "Richard M. Bourdon")
+(resourceType LS-Bourdon-UnderstandingBreeding book)
+(level LS-Bourdon-UnderstandingBreeding intermediate)
+(section LS-Bourdon-UnderstandingBreeding GeneticsBreeding)
+(url LS-Bourdon-UnderstandingBreeding "https://www.pearson.com/en-us/subject-catalog/p/understanding-animal-breeding/P200000003527")
+(desc LS-Bourdon-UnderstandingBreeding "Applied animal breeding textbook covering EPDs, accuracy, selection indices, mating systems, and breeding program design. Written with livestock producers in mind.")
+
+(isa LS-Lasley-GeneticsLivestock ReferenceWork)
+(title LS-Lasley-GeneticsLivestock "Genetics of Livestock Improvement")
+(author LS-Lasley-GeneticsLivestock "John F. Lasley")
+(resourceType LS-Lasley-GeneticsLivestock book)
+(level LS-Lasley-GeneticsLivestock intermediate)
+(section LS-Lasley-GeneticsLivestock GeneticsBreeding)
+(url LS-Lasley-GeneticsLivestock "https://www.pearson.com/en-us/subject-catalog/p/genetics-of-livestock-improvement/P200000003573")
+(desc LS-Lasley-GeneticsLivestock "Classic text on livestock genetics with practical applications for cattle and swine breeding programs. Covers both qualitative and quantitative traits.")
+
+(isa LS-NSR-BreedingGenetics ReferenceWork)
+(title LS-NSR-BreedingGenetics "Breeding and Genetics — National Swine Registry")
+(author LS-NSR-BreedingGenetics "NSR")
+(resourceType LS-NSR-BreedingGenetics notes)
+(level LS-NSR-BreedingGenetics beginner)
+(section LS-NSR-BreedingGenetics GeneticsBreeding)
+(url LS-NSR-BreedingGenetics "https://nationalswine.com/")
+(desc LS-NSR-BreedingGenetics "Breed registry for Yorkshire, Duroc, Hampshire, and Landrace. Publishes EPDs, sire summaries, and genetic trend data for registered seedstock.")
+
+;; ── Breed Registries & Genetic Evaluation ──
+
+(isa LS-NSR-Registry ReferenceWork)
+(title LS-NSR-Registry "National Swine Registry (NSR)")
+(author LS-NSR-Registry "NSR")
+(resourceType LS-NSR-Registry data)
+(level LS-NSR-Registry beginner)
+(section LS-NSR-Registry GeneticsBreeding)
+(url LS-NSR-Registry "https://nationalswine.com/")
+(desc LS-NSR-Registry "Central registry for four major U.S. swine breeds. Provides EPDs for backfat, loin muscle area, days to 250, and number born alive. Maintains pedigree records.")
+
+(isa LS-ABA-Registry ReferenceWork)
+(title LS-ABA-Registry "American Berkshire Association (ABA)")
+(author LS-ABA-Registry "ABA")
+(resourceType LS-ABA-Registry data)
+(level LS-ABA-Registry beginner)
+(section LS-ABA-Registry GeneticsBreeding)
+(url LS-ABA-Registry "https://americanberkshire.com/")
+(desc LS-ABA-Registry "Breed registry for Berkshire hogs. Known for meat quality (pH, marbling, color). Publishes Berkshire-specific EPDs and maintains herd book records.")
+
+(isa LS-CPS-Registry ReferenceWork)
+(title LS-CPS-Registry "Certified Pedigreed Swine (CPS)")
+(author LS-CPS-Registry "CPS")
+(resourceType LS-CPS-Registry data)
+(level LS-CPS-Registry beginner)
+(section LS-CPS-Registry GeneticsBreeding)
+(url LS-CPS-Registry "https://cpswine.com/")
+(desc LS-CPS-Registry "Registry for Chester White, Poland China, and Spotted breeds. Publishes genetic evaluations and sire summaries for registered populations.")
+
+(isa LS-NSIF-Guidelines ReferenceWork)
+(title LS-NSIF-Guidelines "National Swine Improvement Federation (NSIF) Guidelines")
+(author LS-NSIF-Guidelines "NSIF")
+(resourceType LS-NSIF-Guidelines notes)
+(level LS-NSIF-Guidelines intermediate)
+(section LS-NSIF-Guidelines GeneticsBreeding)
+(url LS-NSIF-Guidelines "https://www.nsif.com/")
+(desc LS-NSIF-Guidelines "Industry guidelines for swine genetic evaluation, on-farm testing, ultrasound scanning protocols, and EPD calculation methodologies. Standard for seedstock programs.")
+
+;; ── University Extension & Applied Genetics ──
+
+(isa LS-IowaState-SwineGenetics ReferenceWork)
+(title LS-IowaState-SwineGenetics "Swine Genetics — Iowa State Extension")
+(author LS-IowaState-SwineGenetics "Iowa State University")
+(resourceType LS-IowaState-SwineGenetics notes)
+(level LS-IowaState-SwineGenetics beginner)
+(section LS-IowaState-SwineGenetics GeneticsBreeding)
+(url LS-IowaState-SwineGenetics "https://www.extension.iastate.edu/ipic/swine-genetics")
+(desc LS-IowaState-SwineGenetics "Extension publications on crossbreeding systems, EPD interpretation, breed selection, and genetic improvement strategies for Iowa pork producers.")
+
+(isa LS-PennState-BreedingGestation ReferenceWork)
+(title LS-PennState-BreedingGestation "Swine Breeding and Gestation Management")
+(author LS-PennState-BreedingGestation "Penn State Extension")
+(resourceType LS-PennState-BreedingGestation notes)
+(level LS-PennState-BreedingGestation intermediate)
+(section LS-PennState-BreedingGestation GeneticsBreeding)
+(url LS-PennState-BreedingGestation "https://extension.psu.edu/animals-and-livestock/swine")
+(desc LS-PennState-BreedingGestation "Practical guides on mating management, boar selection, gilt development, and reproductive performance optimization for swine operations.")
+
+(isa LS-Purdue-AppliedSwineGenetics ReferenceWork)
+(title LS-Purdue-AppliedSwineGenetics "Applied Swine Genetics")
+(author LS-Purdue-AppliedSwineGenetics "Purdue University Extension")
+(resourceType LS-Purdue-AppliedSwineGenetics notes)
+(level LS-Purdue-AppliedSwineGenetics intermediate)
+(section LS-Purdue-AppliedSwineGenetics GeneticsBreeding)
+(url LS-Purdue-AppliedSwineGenetics "https://www.extension.purdue.edu/extmedia/AS/AS-SwineGenetics.html")
+(desc LS-Purdue-AppliedSwineGenetics "Extension publications covering heritability estimates for swine traits, use of EPDs in selection, and crossbreeding system design for commercial and seedstock herds.")
+
+(isa LS-Rothschild-PigGenetics ReferenceWork)
+(title LS-Rothschild-PigGenetics "Pig Genetics and Genomics")
+(author LS-Rothschild-PigGenetics "Max Rothschild — Iowa State University")
+(resourceType LS-Rothschild-PigGenetics book)
+(level LS-Rothschild-PigGenetics advanced)
+(section LS-Rothschild-PigGenetics GeneticsBreeding)
+(url LS-Rothschild-PigGenetics "https://www.cabidigitallibrary.org/doi/book/10.1079/9781845937560.0000")
+(desc LS-Rothschild-PigGenetics "Advanced reference covering molecular genetics, QTL mapping, marker-assisted selection, and genomic tools applied to swine improvement.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: REPRODUCTION
+;; Estrous cycles, gestation, AI, estrus synchronization
+;; ════════════════════════════════════════════════════════════
+
+;; ── Textbooks & Core References ──
+
+(isa LS-Senger-PathwaysRepro ReferenceWork)
+(title LS-Senger-PathwaysRepro "Pathways to Pregnancy and Parturition")
+(author LS-Senger-PathwaysRepro "P.L. Senger")
+(resourceType LS-Senger-PathwaysRepro book)
+(level LS-Senger-PathwaysRepro intermediate)
+(section LS-Senger-PathwaysRepro Reproduction)
+(url LS-Senger-PathwaysRepro "https://www.redlandspublishing.com/")
+(desc LS-Senger-PathwaysRepro "The standard reproductive physiology textbook for animal science programs. Covers neuroendocrine control, folliculogenesis, spermatogenesis, pregnancy, and parturition.")
+
+(isa LS-Hafez-ReproductionDomestic ReferenceWork)
+(title LS-Hafez-ReproductionDomestic "Reproduction in Domestic Animals (Hafez)")
+(author LS-Hafez-ReproductionDomestic "Hafez & Hafez")
+(resourceType LS-Hafez-ReproductionDomestic book)
+(level LS-Hafez-ReproductionDomestic intermediate)
+(section LS-Hafez-ReproductionDomestic Reproduction)
+(url LS-Hafez-ReproductionDomestic "https://www.wiley.com/en-us/Reproduction+in+Farm+Animals-p-9781118710289")
+(desc LS-Hafez-ReproductionDomestic "Classic reference covering comparative reproductive anatomy, endocrinology, and assisted reproduction across livestock species including detailed swine chapters.")
+
+(isa LS-IowaState-BoarStudAI ReferenceWork)
+(title LS-IowaState-BoarStudAI "Boar Stud Management & AI Techniques")
+(author LS-IowaState-BoarStudAI "Iowa State University Extension")
+(resourceType LS-IowaState-BoarStudAI notes)
+(level LS-IowaState-BoarStudAI intermediate)
+(section LS-IowaState-BoarStudAI Reproduction)
+(url LS-IowaState-BoarStudAI "https://www.extension.iastate.edu/ipic/")
+(desc LS-IowaState-BoarStudAI "Practical extension guides on semen collection, evaluation, extension, and insemination timing for swine AI programs. Includes protocols for on-farm use.")
+
+(isa LS-SRF-ControlPigRepro ReferenceWork)
+(title LS-SRF-ControlPigRepro "Control of Pig Reproduction (SRF Series)")
+(author LS-SRF-ControlPigRepro "Society for Reproduction and Fertility")
+(resourceType LS-SRF-ControlPigRepro book)
+(level LS-SRF-ControlPigRepro advanced)
+(section LS-SRF-ControlPigRepro Reproduction)
+(url LS-SRF-ControlPigRepro "https://www.cambridge.org/core/books/control-of-pig-reproduction/AA5D4EF7F6C5DEBD22F4C4F0AB88CD55")
+(desc LS-SRF-ControlPigRepro "Advanced reference on reproductive endocrinology, ovarian function, and technologies for controlling and synchronizing reproduction in swine.")
+
+;; ── Applied Reproduction & Management ──
+
+(isa LS-PIC-ReproGuide ReferenceWork)
+(title LS-PIC-ReproGuide "Swine Reproduction Guide — PIC")
+(author LS-PIC-ReproGuide "PIC (Pig Improvement Company)")
+(resourceType LS-PIC-ReproGuide notes)
+(level LS-PIC-ReproGuide intermediate)
+(section LS-PIC-ReproGuide Reproduction)
+(url LS-PIC-ReproGuide "https://www.pic.com/resources/")
+(desc LS-PIC-ReproGuide "Technical bulletins on gilt development, estrus detection, AI timing, farrowing management, and reproductive benchmarks from a major genetics company.")
+
+(isa LS-NatlHogFarmer-GiltDev ReferenceWork)
+(title LS-NatlHogFarmer-GiltDev "Gilt Development and Breeding Management")
+(author LS-NatlHogFarmer-GiltDev "National Hog Farmer")
+(resourceType LS-NatlHogFarmer-GiltDev notes)
+(level LS-NatlHogFarmer-GiltDev beginner)
+(section LS-NatlHogFarmer-GiltDev Reproduction)
+(url LS-NatlHogFarmer-GiltDev "https://www.nationalhogfarmer.com/reproduction")
+(desc LS-NatlHogFarmer-GiltDev "Applied articles on gilt selection, boar exposure protocols, body condition targets, and breeding herd replacement strategies.")
+
+(isa LS-Missouri-SwineReproPhys ReferenceWork)
+(title LS-Missouri-SwineReproPhys "Swine Reproductive Physiology")
+(author LS-Missouri-SwineReproPhys "University of Missouri Extension")
+(resourceType LS-Missouri-SwineReproPhys notes)
+(level LS-Missouri-SwineReproPhys intermediate)
+(section LS-Missouri-SwineReproPhys Reproduction)
+(url LS-Missouri-SwineReproPhys "https://extension.missouri.edu/programs/swine/")
+(desc LS-Missouri-SwineReproPhys "Extension publications on estrous cycle management, heat detection, and reproductive failure diagnosis in commercial and seedstock swine operations.")
+
+(isa LS-Theriogenology-Journal ReferenceWork)
+(title LS-Theriogenology-Journal "Reproductive Technologies in Swine")
+(author LS-Theriogenology-Journal "Theriogenology (Journal)")
+(resourceType LS-Theriogenology-Journal notes)
+(level LS-Theriogenology-Journal advanced)
+(section LS-Theriogenology-Journal Reproduction)
+(url LS-Theriogenology-Journal "https://www.sciencedirect.com/journal/theriogenology")
+(desc LS-Theriogenology-Journal "Leading journal for animal reproduction research. Publishes studies on AI, embryo transfer, cryopreservation, and reproductive biotechnologies in swine.")
+
+;; ── Hormones & Estrus Synchronization ──
+
+(isa LS-Merck-MatrixAltrenogest ReferenceWork)
+(title LS-Merck-MatrixAltrenogest "Matrix (Altrenogest) for Estrus Synchronization")
+(author LS-Merck-MatrixAltrenogest "Merck Animal Health")
+(resourceType LS-Merck-MatrixAltrenogest notes)
+(level LS-Merck-MatrixAltrenogest intermediate)
+(section LS-Merck-MatrixAltrenogest Reproduction)
+(url LS-Merck-MatrixAltrenogest "https://www.merck-animal-health-usa.com/species/swine")
+(desc LS-Merck-MatrixAltrenogest "Product information and protocols for altrenogest-based estrus synchronization in gilts. Standard tool for batch farrowing management in show and commercial herds.")
+
+(isa LS-IowaStateVet-ProstaglandinOxytocin ReferenceWork)
+(title LS-IowaStateVet-ProstaglandinOxytocin "Prostaglandin & Oxytocin Use in Swine Reproduction")
+(author LS-IowaStateVet-ProstaglandinOxytocin "Iowa State Veterinary Extension")
+(resourceType LS-IowaStateVet-ProstaglandinOxytocin notes)
+(level LS-IowaStateVet-ProstaglandinOxytocin advanced)
+(section LS-IowaStateVet-ProstaglandinOxytocin Reproduction)
+(url LS-IowaStateVet-ProstaglandinOxytocin "https://vetmed.iastate.edu/vdpam/new-vdpam-page/food-supply-veterinary-medicine/swine")
+(desc LS-IowaStateVet-ProstaglandinOxytocin "Veterinary protocols for prostaglandin-based parturition induction, oxytocin use during farrowing, and hormonal intervention for reproductive disorders.")
+
+(isa LS-PigSite-ReproFailure ReferenceWork)
+(title LS-PigSite-ReproFailure "Reproductive Failure in Swine — Diagnostic Approach")
+(author LS-PigSite-ReproFailure "Pig Site / 5m Publishing")
+(resourceType LS-PigSite-ReproFailure notes)
+(level LS-PigSite-ReproFailure intermediate)
+(section LS-PigSite-ReproFailure Reproduction)
+(url LS-PigSite-ReproFailure "https://www.thepigsite.com/articles/reproductive-failure-in-swine")
+(desc LS-PigSite-ReproFailure "Diagnostic decision trees for investigating reproductive failure — returns to estrus, small litters, mummified fetuses, abortions, and anestrus in sow herds.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: NUTRITION & GROWTH
+;; Feed conversion, amino acids, phase feeding, show pig diets
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core References & Standards ──
+
+(isa LS-NRC-NutrientRequirements ReferenceWork)
+(title LS-NRC-NutrientRequirements "Nutrient Requirements of Swine (NRC)")
+(author LS-NRC-NutrientRequirements "National Research Council")
+(resourceType LS-NRC-NutrientRequirements book)
+(level LS-NRC-NutrientRequirements advanced)
+(section LS-NRC-NutrientRequirements NutritionGrowth)
+(url LS-NRC-NutrientRequirements "https://nap.nationalacademies.org/catalog/13298/nutrient-requirements-of-swine-eleventh-revised-edition")
+(desc LS-NRC-NutrientRequirements "The authoritative reference for swine nutrient requirements. Provides detailed tables for energy, amino acids, minerals, and vitamins across all production stages. 11th Revised Edition.")
+
+(isa LS-Cheeke-AppliedAnimalNutrition ReferenceWork)
+(title LS-Cheeke-AppliedAnimalNutrition "Applied Animal Nutrition")
+(author LS-Cheeke-AppliedAnimalNutrition "Peter Cheeke & Ellen Dierenfeld")
+(resourceType LS-Cheeke-AppliedAnimalNutrition book)
+(level LS-Cheeke-AppliedAnimalNutrition intermediate)
+(section LS-Cheeke-AppliedAnimalNutrition NutritionGrowth)
+(url LS-Cheeke-AppliedAnimalNutrition "https://www.pearson.com/en-us/subject-catalog/p/applied-animal-nutrition-feeds-and-feeding/P200000003507")
+(desc LS-Cheeke-AppliedAnimalNutrition "Comprehensive animal nutrition textbook covering digestive physiology, feedstuffs, ration formulation, and species-specific nutrition including swine.")
+
+(isa LS-KState-SwineNutritionGuide ReferenceWork)
+(title LS-KState-SwineNutritionGuide "Swine Nutrition Guide")
+(author LS-KState-SwineNutritionGuide "Kansas State University")
+(resourceType LS-KState-SwineNutritionGuide notes)
+(level LS-KState-SwineNutritionGuide intermediate)
+(section LS-KState-SwineNutritionGuide NutritionGrowth)
+(url LS-KState-SwineNutritionGuide "https://www.asi.k-state.edu/research-and-extension/swine/")
+(desc LS-KState-SwineNutritionGuide "K-State applied swine nutrition publications covering diet formulation, amino acid requirements, feed additives, and grow-finish feeding programs.")
+
+(isa LS-Lewis-SwineNutrition ReferenceWork)
+(title LS-Lewis-SwineNutrition "Swine Nutrition")
+(author LS-Lewis-SwineNutrition "Austin Lewis & Lee Southern")
+(resourceType LS-Lewis-SwineNutrition book)
+(level LS-Lewis-SwineNutrition advanced)
+(section LS-Lewis-SwineNutrition NutritionGrowth)
+(url LS-Lewis-SwineNutrition "https://www.taylorfrancis.com/books/edit/10.1201/9781315381473/swine-nutrition-austin-lewis-lee-southern")
+(desc LS-Lewis-SwineNutrition "Advanced reference text covering amino acid nutrition, energy metabolism, mineral and vitamin requirements, and feed processing effects in swine.")
+
+;; ── Show Pig Feeding & Growth Management ──
+
+(isa LS-Purina-HonorShowChow ReferenceWork)
+(title LS-Purina-HonorShowChow "Honor Show Chow Feeding Guide")
+(author LS-Purina-HonorShowChow "Purina Animal Nutrition")
+(resourceType LS-Purina-HonorShowChow notes)
+(level LS-Purina-HonorShowChow beginner)
+(section LS-Purina-HonorShowChow NutritionGrowth)
+(url LS-Purina-HonorShowChow "https://www.purinamills.com/show-animal-feed/products/show-pig-feed")
+(desc LS-Purina-HonorShowChow "Product line and feeding guides for the Honor Show Chow show pig feed program. Includes phase-feeding recommendations and body condition management tips.")
+
+(isa LS-TexasAM-ShowPigNutrition ReferenceWork)
+(title LS-TexasAM-ShowPigNutrition "Show Pig Nutrition and Feeding")
+(author LS-TexasAM-ShowPigNutrition "Texas A&M AgriLife Extension")
+(resourceType LS-TexasAM-ShowPigNutrition notes)
+(level LS-TexasAM-ShowPigNutrition beginner)
+(section LS-TexasAM-ShowPigNutrition NutritionGrowth)
+(url LS-TexasAM-ShowPigNutrition "https://animalscience.tamu.edu/extension/swine/")
+(desc LS-TexasAM-ShowPigNutrition "Extension guide on show pig feeding programs covering feed selection, feeding schedules, and nutritional strategies to optimize muscle and condition for the show ring.")
+
+(isa LS-IowaState-GrowthCurves ReferenceWork)
+(title LS-IowaState-GrowthCurves "Growth Curves and Feed Management")
+(author LS-IowaState-GrowthCurves "Iowa State Extension — IPIC")
+(resourceType LS-IowaState-GrowthCurves notes)
+(level LS-IowaState-GrowthCurves intermediate)
+(section LS-IowaState-GrowthCurves NutritionGrowth)
+(url LS-IowaState-GrowthCurves "https://www.extension.iastate.edu/ipic/nutrition")
+(desc LS-IowaState-GrowthCurves "Publications on modeling swine growth curves, adjusting feed intake for target weight and condition, and using ADG projections for show date planning.")
+
+(isa LS-UKentucky-FeedAdditives ReferenceWork)
+(title LS-UKentucky-FeedAdditives "Feed Additives and Growth Promotants in Swine")
+(author LS-UKentucky-FeedAdditives "University of Kentucky Extension")
+(resourceType LS-UKentucky-FeedAdditives notes)
+(level LS-UKentucky-FeedAdditives intermediate)
+(section LS-UKentucky-FeedAdditives NutritionGrowth)
+(url LS-UKentucky-FeedAdditives "https://afs.ca.uky.edu/swine")
+(desc LS-UKentucky-FeedAdditives "Extension guide covering feed additives including antibiotics, probiotics, organic acids, and beta-agonists (ractopamine) in swine diets. Includes withdrawal times and show rules.")
+
+;; ── Feed Science & Formulation Tools ──
+
+(isa LS-Feedstuffs-Database ReferenceWork)
+(title LS-Feedstuffs-Database "Feedstuffs Magazine & Database")
+(author LS-Feedstuffs-Database "Feedstuffs")
+(resourceType LS-Feedstuffs-Database data)
+(level LS-Feedstuffs-Database intermediate)
+(section LS-Feedstuffs-Database NutritionGrowth)
+(url LS-Feedstuffs-Database "https://www.feedstuffs.com/")
+(desc LS-Feedstuffs-Database "Industry publication and ingredient database covering feed markets, ingredient analysis, and ration formulation tools for livestock nutritionists.")
+
+(isa LS-INRA-FeedTables ReferenceWork)
+(title LS-INRA-FeedTables "INRA-CIRAD-AFZ Feed Tables")
+(author LS-INRA-FeedTables "INRA/AFZ")
+(resourceType LS-INRA-FeedTables data)
+(level LS-INRA-FeedTables advanced)
+(section LS-INRA-FeedTables NutritionGrowth)
+(url LS-INRA-FeedTables "https://www.feedtables.com/")
+(desc LS-INRA-FeedTables "Comprehensive online database of feed ingredient composition including amino acid profiles, digestibility coefficients, and energy values for swine diet formulation.")
+
+(isa LS-UMinn-DietFormulation ReferenceWork)
+(title LS-UMinn-DietFormulation "Swine Diet Formulation — Spreadsheet Tools")
+(author LS-UMinn-DietFormulation "University of Minnesota Extension")
+(resourceType LS-UMinn-DietFormulation code)
+(level LS-UMinn-DietFormulation intermediate)
+(section LS-UMinn-DietFormulation NutritionGrowth)
+(url LS-UMinn-DietFormulation "https://extension.umn.edu/swine-nutrition-and-feed")
+(desc LS-UMinn-DietFormulation "Downloadable spreadsheet tools for swine diet formulation using linear programming. Includes ingredient databases and nutrient requirement tables.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: SHOW INDUSTRY
+;; Showmanship, judging, fitting, major expositions
+;; ════════════════════════════════════════════════════════════
+
+;; ── Showmanship & Exhibition Guides ──
+
+(isa LS-OhioState-4HShowmanship ReferenceWork)
+(title LS-OhioState-4HShowmanship "4-H Swine Showmanship Guide")
+(author LS-OhioState-4HShowmanship "Ohio State University Extension")
+(resourceType LS-OhioState-4HShowmanship notes)
+(level LS-OhioState-4HShowmanship beginner)
+(section LS-OhioState-4HShowmanship ShowIndustry)
+(url LS-OhioState-4HShowmanship "https://ohio4h.org/animals/swine")
+(desc LS-OhioState-4HShowmanship "Comprehensive 4-H showmanship guide covering pig handling, driving techniques, positioning for the judge, and show ring etiquette for youth exhibitors.")
+
+(isa LS-FFA-LivestockEvalCDE ReferenceWork)
+(title LS-FFA-LivestockEvalCDE "FFA Livestock Evaluation Career Development Event")
+(author LS-FFA-LivestockEvalCDE "National FFA Organization")
+(resourceType LS-FFA-LivestockEvalCDE notes)
+(level LS-FFA-LivestockEvalCDE beginner)
+(section LS-FFA-LivestockEvalCDE ShowIndustry)
+(url LS-FFA-LivestockEvalCDE "https://www.ffa.org/cde-lde-descriptions/")
+(desc LS-FFA-LivestockEvalCDE "Official FFA livestock evaluation CDE materials including judging rubrics, oral reasons frameworks, and practice classes for swine evaluation.")
+
+(isa LS-Purdue-FittingGrooming ReferenceWork)
+(title LS-Purdue-FittingGrooming "Fitting and Grooming Show Pigs")
+(author LS-Purdue-FittingGrooming "Purdue University Extension")
+(resourceType LS-Purdue-FittingGrooming notes)
+(level LS-Purdue-FittingGrooming beginner)
+(section LS-Purdue-FittingGrooming ShowIndustry)
+(url LS-Purdue-FittingGrooming "https://www.extension.purdue.edu/extmedia/4H/4H-Swine.html")
+(desc LS-Purdue-FittingGrooming "Step-by-step guide to show pig preparation including washing, clipping, skin conditioning, and day-of-show grooming techniques.")
+
+(isa LS-SullivanSupply-ShowRing ReferenceWork)
+(title LS-SullivanSupply-ShowRing "Show Ring Success — The Showman's Guide")
+(author LS-SullivanSupply-ShowRing "Sullivan Supply")
+(resourceType LS-SullivanSupply-ShowRing notes)
+(level LS-SullivanSupply-ShowRing beginner)
+(section LS-SullivanSupply-ShowRing ShowIndustry)
+(url LS-SullivanSupply-ShowRing "https://sullivansupply.com/")
+(desc LS-SullivanSupply-ShowRing "Industry-leading show supply company providing educational resources, video tutorials, and product guides for fitting and grooming across species including swine.")
+
+;; ── Livestock Judging & Evaluation ──
+
+(isa LS-OkState-JudgingManual ReferenceWork)
+(title LS-OkState-JudgingManual "Livestock Judging Manual")
+(author LS-OkState-JudgingManual "Oklahoma State University")
+(resourceType LS-OkState-JudgingManual notes)
+(level LS-OkState-JudgingManual intermediate)
+(section LS-OkState-JudgingManual ShowIndustry)
+(url LS-OkState-JudgingManual "https://extension.okstate.edu/programs/4-h-youth-development/livestock/")
+(desc LS-OkState-JudgingManual "Comprehensive livestock judging manual covering market hog evaluation, breeding gilt selection, oral reasons delivery, and comparative terminology for swine classes.")
+
+(isa LS-USDA-GradingSwine ReferenceWork)
+(title LS-USDA-GradingSwine "Evaluating and Grading Swine")
+(author LS-USDA-GradingSwine "USDA Agricultural Marketing Service")
+(resourceType LS-USDA-GradingSwine notes)
+(level LS-USDA-GradingSwine intermediate)
+(section LS-USDA-GradingSwine ShowIndustry)
+(url LS-USDA-GradingSwine "https://www.ams.usda.gov/grades-standards/swine")
+(desc LS-USDA-GradingSwine "Official USDA grading standards for barrows and gilts. Covers yield grades, quality grades, and carcass evaluation criteria used in industry and contest grading.")
+
+(isa LS-UNebraska-VisualAppraisal ReferenceWork)
+(title LS-UNebraska-VisualAppraisal "Visual Appraisal of Market Hogs")
+(author LS-UNebraska-VisualAppraisal "University of Nebraska Extension")
+(resourceType LS-UNebraska-VisualAppraisal notes)
+(level LS-UNebraska-VisualAppraisal intermediate)
+(section LS-UNebraska-VisualAppraisal ShowIndustry)
+(url LS-UNebraska-VisualAppraisal "https://beef.unl.edu/cattleproduction/livestock-judging")
+(desc LS-UNebraska-VisualAppraisal "Guide to visual evaluation of market hogs covering structural soundness assessment, muscling evaluation, and lean growth prediction from live animal appraisal.")
+
+(isa LS-TexasAM-OralReasons ReferenceWork)
+(title LS-TexasAM-OralReasons "Oral Reasons — A Guide to Livestock Judging")
+(author LS-TexasAM-OralReasons "Texas A&M Meat Science")
+(resourceType LS-TexasAM-OralReasons notes)
+(level LS-TexasAM-OralReasons intermediate)
+(section LS-TexasAM-OralReasons ShowIndustry)
+(url LS-TexasAM-OralReasons "https://animalscience.tamu.edu/academics/meat-science/")
+(desc LS-TexasAM-OralReasons "Framework for delivering oral reasons in livestock judging contests including terminology, structure (grant-initial-middle-final), and comparative language for swine classes.")
+
+;; ── Major Shows & Industry Organizations ──
+
+(isa LS-WorldPorkExpo ReferenceWork)
+(title LS-WorldPorkExpo "World Pork Expo")
+(author LS-WorldPorkExpo "National Pork Producers Council")
+(resourceType LS-WorldPorkExpo data)
+(level LS-WorldPorkExpo beginner)
+(section LS-WorldPorkExpo ShowIndustry)
+(url LS-WorldPorkExpo "https://www.worldpork.org/")
+(desc LS-WorldPorkExpo "The largest pork-specific trade show and exhibition in the world, held annually in Des Moines, Iowa. Features junior and open swine shows, educational seminars, and trade exhibits.")
+
+(isa LS-NAILE ReferenceWork)
+(title LS-NAILE "North American International Livestock Exposition (NAILE)")
+(author LS-NAILE "Kentucky State Fair Board")
+(resourceType LS-NAILE data)
+(level LS-NAILE beginner)
+(section LS-NAILE ShowIndustry)
+(url LS-NAILE "https://livestockexpo.org/")
+(desc LS-NAILE "One of the largest purebred livestock shows in North America held annually in Louisville, KY. Premier venue for show pig competition and genetics showcasing.")
+
+(isa LS-TeamPurebred ReferenceWork)
+(title LS-TeamPurebred "Team Purebred")
+(author LS-TeamPurebred "Team Purebred")
+(resourceType LS-TeamPurebred notes)
+(level LS-TeamPurebred beginner)
+(section LS-TeamPurebred ShowIndustry)
+(url LS-TeamPurebred "https://teampurebred.com/")
+(desc LS-TeamPurebred "National junior swine organization providing point-based recognition for youth exhibitors showing registered purebred swine across sanctioned shows.")
+
+(isa LS-Showpig ReferenceWork)
+(title LS-Showpig "Showpig.com")
+(author LS-Showpig "Showpig.com")
+(resourceType LS-Showpig data)
+(level LS-Showpig beginner)
+(section LS-Showpig ShowIndustry)
+(url LS-Showpig "https://showpig.com/")
+(desc LS-Showpig "Industry marketplace and community hub for show pig breeders and exhibitors. Includes sale listings, show results, breeder directories, and industry news.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: HERD MANAGEMENT
+;; Record keeping, biosecurity, facility design, production metrics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Record Keeping & Data Management ──
+
+(isa LS-PigCHAMP-HerdMgmt ReferenceWork)
+(title LS-PigCHAMP-HerdMgmt "PigCHAMP")
+(author LS-PigCHAMP-HerdMgmt "PigCHAMP Inc.")
+(resourceType LS-PigCHAMP-HerdMgmt code)
+(level LS-PigCHAMP-HerdMgmt intermediate)
+(section LS-PigCHAMP-HerdMgmt HerdManagement)
+(url LS-PigCHAMP-HerdMgmt "https://www.pigchamp.com/")
+(desc LS-PigCHAMP-HerdMgmt "Industry-standard swine herd management software. Tracks reproductive performance, production metrics, health events, and generates benchmarking reports for sow herds.")
+
+(isa LS-EasyPig ReferenceWork)
+(title LS-EasyPig "Easy Pig")
+(author LS-EasyPig "Agritec Software")
+(resourceType LS-EasyPig code)
+(level LS-EasyPig beginner)
+(section LS-EasyPig HerdManagement)
+(url LS-EasyPig "https://www.easypig.com/")
+(desc LS-EasyPig "Cloud-based pig herd management system designed for smaller operations. Tracks breeding, farrowing, growth, and health records with mobile access.")
+
+(isa LS-SMS-Benchmarking ReferenceWork)
+(title LS-SMS-Benchmarking "Swine Management Services Benchmarking")
+(author LS-SMS-Benchmarking "Swine Management Services")
+(resourceType LS-SMS-Benchmarking data)
+(level LS-SMS-Benchmarking intermediate)
+(section LS-SMS-Benchmarking HerdManagement)
+(url LS-SMS-Benchmarking "https://www.swinems.com/")
+(desc LS-SMS-Benchmarking "SMS publishes quarterly benchmarking reports comparing reproductive and production performance metrics across U.S. sow farms. Establishes industry KPI targets.")
+
+(isa LS-UIllinois-RecordKeeping ReferenceWork)
+(title LS-UIllinois-RecordKeeping "Record Keeping for Show Pig Operations")
+(author LS-UIllinois-RecordKeeping "University of Illinois Extension")
+(resourceType LS-UIllinois-RecordKeeping notes)
+(level LS-UIllinois-RecordKeeping beginner)
+(section LS-UIllinois-RecordKeeping HerdManagement)
+(url LS-UIllinois-RecordKeeping "https://extension.illinois.edu/animals-and-livestock")
+(desc LS-UIllinois-RecordKeeping "Extension guide on essential records for show pig breeders including pedigree tracking, performance records, health logs, and financial record-keeping for youth projects.")
+
+;; ── Biosecurity & Health Protocols ──
+
+(isa LS-SecurePorkSupply ReferenceWork)
+(title LS-SecurePorkSupply "Secure Pork Supply Plan")
+(author LS-SecurePorkSupply "USDA APHIS / Iowa State")
+(resourceType LS-SecurePorkSupply notes)
+(level LS-SecurePorkSupply intermediate)
+(section LS-SecurePorkSupply HerdManagement)
+(url LS-SecurePorkSupply "https://www.securepork.org/")
+(desc LS-SecurePorkSupply "National biosecurity framework for swine operations. Includes site-specific biosecurity plans, movement controls, and business continuity guidance for disease outbreak scenarios.")
+
+(isa LS-PQAPlus ReferenceWork)
+(title LS-PQAPlus "Pork Quality Assurance Plus (PQA Plus)")
+(author LS-PQAPlus "National Pork Board")
+(resourceType LS-PQAPlus notes)
+(level LS-PQAPlus beginner)
+(section LS-PQAPlus HerdManagement)
+(url LS-PQAPlus "https://porkcheckoff.org/certification-programs/pqa-plus/")
+(desc LS-PQAPlus "Industry certification program covering animal welfare, food safety, and on-farm management practices. Required for many show exhibitions and commercial marketing channels.")
+
+(isa LS-AASV-BiosecurityProtocols ReferenceWork)
+(title LS-AASV-BiosecurityProtocols "Swine Biosecurity Protocols")
+(author LS-AASV-BiosecurityProtocols "American Association of Swine Veterinarians")
+(resourceType LS-AASV-BiosecurityProtocols notes)
+(level LS-AASV-BiosecurityProtocols intermediate)
+(section LS-AASV-BiosecurityProtocols HerdManagement)
+(url LS-AASV-BiosecurityProtocols "https://www.aasv.org/resources/")
+(desc LS-AASV-BiosecurityProtocols "AASV guidelines on entry protocols, shower-in/shower-out procedures, downtime requirements, and transport biosecurity for maintaining herd health status.")
+
+;; ── Facility Design & Environment ──
+
+(isa LS-MWPS-SwineHousingHandbook ReferenceWork)
+(title LS-MWPS-SwineHousingHandbook "Swine Housing and Equipment Handbook")
+(author LS-MWPS-SwineHousingHandbook "Midwest Plan Service (MWPS)")
+(resourceType LS-MWPS-SwineHousingHandbook book)
+(level LS-MWPS-SwineHousingHandbook intermediate)
+(section LS-MWPS-SwineHousingHandbook HerdManagement)
+(url LS-MWPS-SwineHousingHandbook "https://www-mwps.sws.iastate.edu/")
+(desc LS-MWPS-SwineHousingHandbook "Engineering reference for swine facility design including ventilation, heating, flooring, pen layouts, and environmental control systems for all production stages.")
+
+(isa LS-PennState-SmallScaleFacility ReferenceWork)
+(title LS-PennState-SmallScaleFacility "Small-Scale Swine Facility Design")
+(author LS-PennState-SmallScaleFacility "Penn State Extension")
+(resourceType LS-PennState-SmallScaleFacility notes)
+(level LS-PennState-SmallScaleFacility beginner)
+(section LS-PennState-SmallScaleFacility HerdManagement)
+(url LS-PennState-SmallScaleFacility "https://extension.psu.edu/animals-and-livestock/swine")
+(desc LS-PennState-SmallScaleFacility "Facility design guide scaled for small and show pig operations covering barn layouts, pen sizes, ventilation basics, and manure management for 10–100 sow operations.")
+
+(isa LS-NCState-EnvironmentalMgmt ReferenceWork)
+(title LS-NCState-EnvironmentalMgmt "Environmental Management in Swine Production")
+(author LS-NCState-EnvironmentalMgmt "North Carolina State Extension")
+(resourceType LS-NCState-EnvironmentalMgmt notes)
+(level LS-NCState-EnvironmentalMgmt intermediate)
+(section LS-NCState-EnvironmentalMgmt HerdManagement)
+(url LS-NCState-EnvironmentalMgmt "https://swine.ces.ncsu.edu/")
+(desc LS-NCState-EnvironmentalMgmt "Extension resources on temperature management, ventilation design, waste handling, and environmental regulations affecting swine facility operations.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: VETERINARY SCIENCE
+;; Disease prevention, vaccination, show health management
+;; ════════════════════════════════════════════════════════════
+
+;; ── Core Veterinary References ──
+
+(isa LS-Zimmerman-DiseasesOfSwine ReferenceWork)
+(title LS-Zimmerman-DiseasesOfSwine "Diseases of Swine")
+(author LS-Zimmerman-DiseasesOfSwine "Zimmerman, Karriker, Ramirez, Schwartz & Stevenson")
+(resourceType LS-Zimmerman-DiseasesOfSwine book)
+(level LS-Zimmerman-DiseasesOfSwine advanced)
+(section LS-Zimmerman-DiseasesOfSwine VeterinaryScience)
+(url LS-Zimmerman-DiseasesOfSwine "https://www.wiley.com/en-us/Diseases+of+Swine%2C+11th+Edition-p-9781119350927")
+(desc LS-Zimmerman-DiseasesOfSwine "The definitive veterinary reference for swine diseases. 11th edition covers infectious, metabolic, and toxicologic diseases with detailed diagnosis, treatment, and prevention protocols.")
+
+(isa LS-MerckVet-Swine ReferenceWork)
+(title LS-MerckVet-Swine "Merck Veterinary Manual — Swine")
+(author LS-MerckVet-Swine "Merck & Co.")
+(resourceType LS-MerckVet-Swine notes)
+(level LS-MerckVet-Swine intermediate)
+(section LS-MerckVet-Swine VeterinaryScience)
+(url LS-MerckVet-Swine "https://www.merckvetmanual.com/management-and-nutrition/management-of-pigs")
+(desc LS-MerckVet-Swine "Free online veterinary reference covering swine diseases, nutrition, management, and pharmacology. Continuously updated by veterinary experts.")
+
+(isa LS-PigSite-DiseaseGuide ReferenceWork)
+(title LS-PigSite-DiseaseGuide "The Pig Site — Disease Reference")
+(author LS-PigSite-DiseaseGuide "5m Publishing")
+(resourceType LS-PigSite-DiseaseGuide notes)
+(level LS-PigSite-DiseaseGuide intermediate)
+(section LS-PigSite-DiseaseGuide VeterinaryScience)
+(url LS-PigSite-DiseaseGuide "https://www.thepigsite.com/disease-guide/")
+(desc LS-PigSite-DiseaseGuide "Online disease reference guide with detailed entries for each major swine disease including clinical signs, diagnosis, treatment, and prevention strategies.")
+
+(isa LS-AASV-SwineDiseaseManual ReferenceWork)
+(title LS-AASV-SwineDiseaseManual "Swine Disease Manual")
+(author LS-AASV-SwineDiseaseManual "American Association of Swine Veterinarians")
+(resourceType LS-AASV-SwineDiseaseManual book)
+(level LS-AASV-SwineDiseaseManual intermediate)
+(section LS-AASV-SwineDiseaseManual VeterinaryScience)
+(url LS-AASV-SwineDiseaseManual "https://www.aasv.org/swine-disease-manual/")
+(desc LS-AASV-SwineDiseaseManual "Pocket reference for field veterinarians covering clinical identification, differential diagnosis, and treatment protocols for common swine diseases.")
+
+;; ── Vaccination & Preventive Medicine ──
+
+(isa LS-IowaStateVet-VaccinationGuide ReferenceWork)
+(title LS-IowaStateVet-VaccinationGuide "Swine Vaccination Guidelines")
+(author LS-IowaStateVet-VaccinationGuide "Iowa State Veterinary Diagnostic Lab")
+(resourceType LS-IowaStateVet-VaccinationGuide notes)
+(level LS-IowaStateVet-VaccinationGuide intermediate)
+(section LS-IowaStateVet-VaccinationGuide VeterinaryScience)
+(url LS-IowaStateVet-VaccinationGuide "https://vetmed.iastate.edu/vdpam/new-vdpam-page/food-supply-veterinary-medicine/swine/swine-diseases")
+(desc LS-IowaStateVet-VaccinationGuide "Evidence-based vaccination recommendations for commercial and seedstock swine herds including timing, routes, and product selection for major swine pathogens.")
+
+(isa LS-SHIC-PRRSControl ReferenceWork)
+(title LS-SHIC-PRRSControl "PRRS Elimination and Control Strategies")
+(author LS-SHIC-PRRSControl "Swine Health Information Center (SHIC)")
+(resourceType LS-SHIC-PRRSControl notes)
+(level LS-SHIC-PRRSControl advanced)
+(section LS-SHIC-PRRSControl VeterinaryScience)
+(url LS-SHIC-PRRSControl "https://www.swinehealth.org/prrs/")
+(desc LS-SHIC-PRRSControl "Comprehensive PRRS resource including regional elimination strategies, load-close-expose protocols, McREBEL procedures, and area/regional control programs.")
+
+(isa LS-UKentucky-SwineParasites ReferenceWork)
+(title LS-UKentucky-SwineParasites "Internal and External Parasites of Swine")
+(author LS-UKentucky-SwineParasites "University of Kentucky Extension")
+(resourceType LS-UKentucky-SwineParasites notes)
+(level LS-UKentucky-SwineParasites intermediate)
+(section LS-UKentucky-SwineParasites VeterinaryScience)
+(url LS-UKentucky-SwineParasites "https://afs.ca.uky.edu/swine")
+(desc LS-UKentucky-SwineParasites "Extension guide on common swine parasites (Ascaris, Trichuris, Sarcoptic mange) including identification, treatment protocols, deworming schedules, and resistance management.")
+
+(isa LS-NPB-AntibioticStewardship ReferenceWork)
+(title LS-NPB-AntibioticStewardship "Antibiotic Use and Stewardship in Swine")
+(author LS-NPB-AntibioticStewardship "National Pork Board")
+(resourceType LS-NPB-AntibioticStewardship notes)
+(level LS-NPB-AntibioticStewardship intermediate)
+(section LS-NPB-AntibioticStewardship VeterinaryScience)
+(url LS-NPB-AntibioticStewardship "https://porkcheckoff.org/certification-programs/")
+(desc LS-NPB-AntibioticStewardship "Industry guidelines on responsible antibiotic use including VFD (Veterinary Feed Directive) requirements, withdrawal times, and antimicrobial stewardship principles.")
+
+;; ── Show-Related Health Management ──
+
+(isa LS-USDA-ExhibitionHealthReqs ReferenceWork)
+(title LS-USDA-ExhibitionHealthReqs "Health Requirements for Swine Exhibition")
+(author LS-USDA-ExhibitionHealthReqs "USDA APHIS VS")
+(resourceType LS-USDA-ExhibitionHealthReqs notes)
+(level LS-USDA-ExhibitionHealthReqs beginner)
+(section LS-USDA-ExhibitionHealthReqs VeterinaryScience)
+(url LS-USDA-ExhibitionHealthReqs "https://www.aphis.usda.gov/aphis/ourfocus/animalhealth/nvap/NVAP-Reference-Guide/Animal-Specific/Swine")
+(desc LS-USDA-ExhibitionHealthReqs "Federal and state health certificate requirements, testing protocols (brucellosis, pseudorabies), and import/export regulations for exhibition swine.")
+
+(isa LS-OhioState-ShowHealthBiosecurity ReferenceWork)
+(title LS-OhioState-ShowHealthBiosecurity "Swine Show Health and Biosecurity")
+(author LS-OhioState-ShowHealthBiosecurity "Ohio State University Extension")
+(resourceType LS-OhioState-ShowHealthBiosecurity notes)
+(level LS-OhioState-ShowHealthBiosecurity beginner)
+(section LS-OhioState-ShowHealthBiosecurity VeterinaryScience)
+(url LS-OhioState-ShowHealthBiosecurity "https://ohio4h.org/animals/swine")
+(desc LS-OhioState-ShowHealthBiosecurity "Guide for youth exhibitors on pre-show health checks, post-show isolation protocols, and biosecurity practices to protect home herds from show-acquired pathogens.")
+
+(isa LS-MSU-SkinConditions ReferenceWork)
+(title LS-MSU-SkinConditions "Common Skin Conditions in Show Pigs")
+(author LS-MSU-SkinConditions "Michigan State University Extension")
+(resourceType LS-MSU-SkinConditions notes)
+(level LS-MSU-SkinConditions beginner)
+(section LS-MSU-SkinConditions VeterinaryScience)
+(url LS-MSU-SkinConditions "https://www.canr.msu.edu/swine/")
+(desc LS-MSU-SkinConditions "Identification and treatment of skin conditions affecting show pigs including mange, ringworm, greasy pig disease, sunburn, and pityriasis rosea.")
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: DATASETS & SOFTWARE
+;; Government data, genomics tools, herd management platforms
+;; ════════════════════════════════════════════════════════════
+
+;; ── Government & Industry Data ──
+
+(isa LS-USDA-NASS-HogsPigs ReferenceWork)
+(title LS-USDA-NASS-HogsPigs "USDA NASS — Hogs and Pigs Report")
+(author LS-USDA-NASS-HogsPigs "USDA National Agricultural Statistics Service")
+(resourceType LS-USDA-NASS-HogsPigs data)
+(level LS-USDA-NASS-HogsPigs beginner)
+(section LS-USDA-NASS-HogsPigs DatasetsSoftware)
+(url LS-USDA-NASS-HogsPigs "https://usda.library.cornell.edu/concern/publications/rj430453j")
+(desc LS-USDA-NASS-HogsPigs "Quarterly report on U.S. swine inventory, breeding herd size, pig crop, and farrowing intentions. Essential market intelligence for production planning and breeding decisions.")
+
+(isa LS-USDA-ERS-HogPork ReferenceWork)
+(title LS-USDA-ERS-HogPork "USDA ERS — Hog and Pork Sector Data")
+(author LS-USDA-ERS-HogPork "USDA Economic Research Service")
+(resourceType LS-USDA-ERS-HogPork data)
+(level LS-USDA-ERS-HogPork intermediate)
+(section LS-USDA-ERS-HogPork DatasetsSoftware)
+(url LS-USDA-ERS-HogPork "https://www.ers.usda.gov/topics/animal-products/hogs-pork/")
+(desc LS-USDA-ERS-HogPork "Economic research data on pork production costs, trade, per capita consumption, farm-to-retail price spreads, and industry structure analysis.")
+
+(isa LS-USDA-MarketNews-Swine ReferenceWork)
+(title LS-USDA-MarketNews-Swine "USDA Market News — Swine Reports")
+(author LS-USDA-MarketNews-Swine "USDA AMS Market News")
+(resourceType LS-USDA-MarketNews-Swine data)
+(level LS-USDA-MarketNews-Swine beginner)
+(section LS-USDA-MarketNews-Swine DatasetsSoftware)
+(url LS-USDA-MarketNews-Swine "https://www.ams.usda.gov/market-news/livestock-poultry-grain")
+(desc LS-USDA-MarketNews-Swine "Daily and weekly market reports including negotiated hog prices, cutout values, slaughter data, and carcass merit premiums/discounts.")
+
+(isa LS-NPB-ResearchDatabase ReferenceWork)
+(title LS-NPB-ResearchDatabase "National Pork Board Research Database")
+(author LS-NPB-ResearchDatabase "National Pork Board (Checkoff)")
+(resourceType LS-NPB-ResearchDatabase data)
+(level LS-NPB-ResearchDatabase intermediate)
+(section LS-NPB-ResearchDatabase DatasetsSoftware)
+(url LS-NPB-ResearchDatabase "https://porkcheckoff.org/pork-production/research/")
+(desc LS-NPB-ResearchDatabase "Searchable database of checkoff-funded research projects covering genetics, nutrition, health, welfare, and pork quality. Includes final reports and producer-facing summaries.")
+
+;; ── Genetic Evaluation & Genomics Software ──
+
+(isa LS-NSIF-GeneticEvalPrograms ReferenceWork)
+(title LS-NSIF-GeneticEvalPrograms "NSIF Swine Genetic Evaluation Programs")
+(author LS-NSIF-GeneticEvalPrograms "National Swine Improvement Federation")
+(resourceType LS-NSIF-GeneticEvalPrograms code)
+(level LS-NSIF-GeneticEvalPrograms intermediate)
+(section LS-NSIF-GeneticEvalPrograms DatasetsSoftware)
+(url LS-NSIF-GeneticEvalPrograms "https://www.nsif.com/")
+(desc LS-NSIF-GeneticEvalPrograms "NSIF guidelines and standards for on-farm performance testing, central test station protocols, ultrasound scanning, and genetic evaluation methodologies across U.S. swine breeds.")
+
+(isa LS-BLUPF90 ReferenceWork)
+(title LS-BLUPF90 "BLUPF90 Family of Programs")
+(author LS-BLUPF90 "Ignacy Misztal — University of Georgia")
+(resourceType LS-BLUPF90 code)
+(level LS-BLUPF90 advanced)
+(section LS-BLUPF90 DatasetsSoftware)
+(url LS-BLUPF90 "http://nce.ads.uga.edu/wiki/doku.php?id=readme.blupf90")
+(desc LS-BLUPF90 "Suite of programs for genetic evaluation including BLUP, REML variance component estimation, and single-step genomic BLUP (ssGBLUP). Widely used in livestock breeding research.")
+
+(isa LS-Neogen-GGPPorcine ReferenceWork)
+(title LS-Neogen-GGPPorcine "Neogen GeneSeek Genomic Profiler (GGP) Porcine")
+(author LS-Neogen-GGPPorcine "Neogen Corporation")
+(resourceType LS-Neogen-GGPPorcine data)
+(level LS-Neogen-GGPPorcine advanced)
+(section LS-Neogen-GGPPorcine DatasetsSoftware)
+(url LS-Neogen-GGPPorcine "https://www.neogen.com/categories/genomics/ggp-porcine/")
+(desc LS-Neogen-GGPPorcine "Commercial SNP genotyping arrays for pigs (GGP Porcine HD: ~62K SNPs). Used for genomic selection, parentage verification, and genetic defect screening in seedstock programs.")
+
+(isa LS-USDA-AGIL ReferenceWork)
+(title LS-USDA-AGIL "AGIL (Animal Genomics and Improvement Laboratory)")
+(author LS-USDA-AGIL "USDA ARS")
+(resourceType LS-USDA-AGIL data)
+(level LS-USDA-AGIL advanced)
+(section LS-USDA-AGIL DatasetsSoftware)
+(url LS-USDA-AGIL "https://www.ars.usda.gov/northeast-area/beltsville-md-barc/beltsville-agricultural-research-center/agil/")
+(desc LS-USDA-AGIL "USDA research lab developing genomic evaluation methods for livestock. Publishes research on genetic evaluation accuracy, genomic prediction, and breed composition estimation.")
+
+;; ── Herd Management & Production Software ──
+
+(isa LS-PigCHAMP-Software ReferenceWork)
+(title LS-PigCHAMP-Software "PigCHAMP")
+(author LS-PigCHAMP-Software "PigCHAMP Inc.")
+(resourceType LS-PigCHAMP-Software code)
+(level LS-PigCHAMP-Software intermediate)
+(section LS-PigCHAMP-Software DatasetsSoftware)
+(url LS-PigCHAMP-Software "https://www.pigchamp.com/")
+(desc LS-PigCHAMP-Software "Comprehensive sow herd management system tracking breeding, farrowing, weaning, and health events. Industry benchmark data enables performance comparison across operations.")
+
+(isa LS-MetaFarms ReferenceWork)
+(title LS-MetaFarms "MetaFarms")
+(author LS-MetaFarms "MetaFarms Inc.")
+(resourceType LS-MetaFarms code)
+(level LS-MetaFarms intermediate)
+(section LS-MetaFarms DatasetsSoftware)
+(url LS-MetaFarms "https://www.metafarms.com/")
+(desc LS-MetaFarms "Cloud-based livestock production platform for record keeping, compliance reporting, and production analytics. Integrates sow farm, nursery, and finisher data across multi-site operations.")
+
+(isa LS-IowaState-IPIC ReferenceWork)
+(title LS-IowaState-IPIC "Iowa State — Iowa Pork Industry Center")
+(author LS-IowaState-IPIC "Iowa State University")
+(resourceType LS-IowaState-IPIC data)
+(level LS-IowaState-IPIC beginner)
+(section LS-IowaState-IPIC DatasetsSoftware)
+(url LS-IowaState-IPIC "https://www.ipic.iastate.edu/")
+(desc LS-IowaState-IPIC "Central resource hub for Iowa pork production data, extension publications, management tools, and decision aids from Iowa State University's pork industry center.")
+
+(isa LS-PIC-TechResources ReferenceWork)
+(title LS-PIC-TechResources "Pig Improvement Company (PIC) Technical Resources")
+(author LS-PIC-TechResources "PIC / Genus plc")
+(resourceType LS-PIC-TechResources notes)
+(level LS-PIC-TechResources intermediate)
+(section LS-PIC-TechResources DatasetsSoftware)
+(url LS-PIC-TechResources "https://www.pic.com/resources/")
+(desc LS-PIC-TechResources "Technical bulletins, management guides, and production benchmarks from one of the world's largest swine genetics companies. Covers nutrition, reproduction, and health management.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources LivestockScienceReference 87)
+(totalSections LivestockScienceReference 8)
+(comment LivestockScienceReference
+  "8 sections: Overview (8), Genetics & Breeding (12), Reproduction (11),
+   Nutrition & Growth (11), Show Industry (12), Herd Management (10),
+   Veterinary Science (11), Datasets & Software (12). Total: 87 resources.")

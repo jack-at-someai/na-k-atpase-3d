@@ -1,0 +1,1954 @@
+;;; ================================================================
+;;; REFERENCE / ATOMIC DESIGN
+;;; 194 resources across 10 sections — Component hierarchy & design systems. Atoms-molecules-organisms for Charlotte's interface layer.
+;;; ================================================================
+;;;
+;;; Atomic Design is a methodology for creating design systems,
+;;; introduced by Brad Frost. Interfaces are composed of atoms,
+;;; molecules, organisms, templates, and pages.
+;;;
+;;; This reference maps the convex hull of design system knowledge —
+;;; from color science and typography at the atomic level, through
+;;; interaction patterns and accessibility at the molecular level,
+;;; to HCI theory and game-theoretic decision design at the
+;;; systemic level.
+;;;
+;;; Learning path: Overview → Atoms → Molecules → Organisms →
+;;; Templates & Pages → Color Theory → HCI → Perception →
+;;; Game Theory → Design Systems at Scale
+;;;
+;;; ================================================================
+
+(in-microtheory CharlotteReferenceMt)
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 0: OVERVIEW
+;; Foundational orientation
+;; ════════════════════════════════════════════════════════════
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 1: ATOMS — Foundations
+;; Color, typography, spacing, icons
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational Texts ──
+
+(isa AD-AtomicDesign ReferenceWork)
+(title AD-AtomicDesign "Atomic Design")
+(author AD-AtomicDesign "Brad Frost")
+(resourceType AD-AtomicDesign book)
+(level AD-AtomicDesign beginner)
+(section AD-AtomicDesign AtomsFoundations)
+(url AD-AtomicDesign "https://atomicdesign.bradfrost.com/")
+(desc AD-AtomicDesign "The definitive text on atomic design methodology. Free to read online. Covers atoms through pages with practical examples.")
+
+(isa AD-TheElementsTypographicStyle ReferenceWork)
+(title AD-TheElementsTypographicStyle "The Elements of Typographic Style")
+(author AD-TheElementsTypographicStyle "Robert Bringhurst")
+(resourceType AD-TheElementsTypographicStyle book)
+(level AD-TheElementsTypographicStyle intermediate)
+(section AD-TheElementsTypographicStyle AtomsFoundations)
+(url AD-TheElementsTypographicStyle "https://www.goodreads.com/book/show/44735.The_Elements_of_Typographic_Style")
+(desc AD-TheElementsTypographicStyle "The typographer's bible. Covers rhythm, proportion, harmony, and the relationship between type and the page.")
+
+(isa AD-InteractionColor ReferenceWork)
+(title AD-InteractionColor "Interaction of Color")
+(author AD-InteractionColor "Josef Albers")
+(resourceType AD-InteractionColor book)
+(level AD-InteractionColor beginner)
+(section AD-InteractionColor AtomsFoundations)
+(url AD-InteractionColor "https://yalebooks.yale.edu/book/9780300179354/interaction-of-color/")
+(desc AD-InteractionColor "Foundational exploration of how colors behave in relation to each other. Changed how artists and designers understand color perception.")
+
+(isa AD-ATypePrimer ReferenceWork)
+(title AD-ATypePrimer "A Type Primer")
+(author AD-ATypePrimer "John Kane")
+(resourceType AD-ATypePrimer book)
+(level AD-ATypePrimer beginner)
+(section AD-ATypePrimer AtomsFoundations)
+(url AD-ATypePrimer "https://www.goodreads.com/book/show/926222.A_Type_Primer")
+(desc AD-ATypePrimer "Clear, practical introduction to typography. Covers anatomy of letterforms, setting type, and designing with type.")
+
+(isa AD-DesignSystems ReferenceWork)
+(title AD-DesignSystems "Design Systems")
+(author AD-DesignSystems "Alla Kholmatova")
+(resourceType AD-DesignSystems book)
+(level AD-DesignSystems beginner)
+(section AD-DesignSystems AtomsFoundations)
+(url AD-DesignSystems "https://www.smashingmagazine.com/design-systems-book/")
+(desc AD-DesignSystems "Practical guide to creating effective design systems. Covers patterns, practices, and principles from real-world systems.")
+
+
+;; ── Color Fundamentals ──
+
+(isa AD-ANerdsGuideColor ReferenceWork)
+(title AD-ANerdsGuideColor "A Nerd's Guide to Color on the Web")
+(author AD-ANerdsGuideColor "Sarah Drasner")
+(resourceType AD-ANerdsGuideColor notes)
+(level AD-ANerdsGuideColor beginner)
+(section AD-ANerdsGuideColor AtomsFoundations)
+(url AD-ANerdsGuideColor "https://css-tricks.com/nerds-guide-color-web/")
+(desc AD-ANerdsGuideColor "Comprehensive guide to color on the web: hex, RGB, HSL, and newer color spaces. Practical and well-illustrated.")
+
+(isa AD-ColorContrastAccessibleColor ReferenceWork)
+(title AD-ColorContrastAccessibleColor "Color & Contrast (Accessible Color Guide)")
+(author AD-ColorContrastAccessibleColor "Aatash Parikh")
+(resourceType AD-ColorContrastAccessibleColor tool)
+(level AD-ColorContrastAccessibleColor beginner)
+(section AD-ColorContrastAccessibleColor AtomsFoundations)
+(url AD-ColorContrastAccessibleColor "https://colorandcontrast.com/")
+(desc AD-ColorContrastAccessibleColor "Interactive guide to accessible color combinations. Visualizes WCAG contrast ratios with real-time preview.")
+
+(isa AD-OKLCHColorPickerConverter ReferenceWork)
+(title AD-OKLCHColorPickerConverter "OKLCH Color Picker & Converter")
+(author AD-OKLCHColorPickerConverter "Evil Martians")
+(resourceType AD-OKLCHColorPickerConverter tool)
+(level AD-OKLCHColorPickerConverter intermediate)
+(section AD-OKLCHColorPickerConverter AtomsFoundations)
+(url AD-OKLCHColorPickerConverter "https://oklch.com/")
+(desc AD-OKLCHColorPickerConverter "Interactive OKLCH color picker. OKLCH is the most perceptually uniform color space available in CSS.")
+
+(isa AD-PracticalColorTheoryFor ReferenceWork)
+(title AD-PracticalColorTheoryFor "Practical Color Theory for People Who Code")
+(author AD-PracticalColorTheoryFor "Natalya Shelburne")
+(resourceType AD-PracticalColorTheoryFor notes)
+(level AD-PracticalColorTheoryFor beginner)
+(section AD-PracticalColorTheoryFor AtomsFoundations)
+(url AD-PracticalColorTheoryFor "https://tallys.github.io/color-theory/")
+(desc AD-PracticalColorTheoryFor "Color theory translated for developers. Covers hue, saturation, lightness, and building palettes programmatically.")
+
+(isa AD-AccessibleColorSystemsStripe ReferenceWork)
+(title AD-AccessibleColorSystemsStripe "Accessible Color Systems (Stripe)")
+(author AD-AccessibleColorSystemsStripe "Daryl Koopersmith & Wilson Miner")
+(resourceType AD-AccessibleColorSystemsStripe notes)
+(level AD-AccessibleColorSystemsStripe intermediate)
+(section AD-AccessibleColorSystemsStripe AtomsFoundations)
+(url AD-AccessibleColorSystemsStripe "https://stripe.com/blog/accessible-color-systems")
+(desc AD-AccessibleColorSystemsStripe "How Stripe built an accessible color system. Methodology for generating palettes that meet WCAG AA across all combinations.")
+
+
+;; ── Typography ──
+
+(isa AD-PracticalTypography ReferenceWork)
+(title AD-PracticalTypography "Practical Typography")
+(author AD-PracticalTypography "Matthew Butterick")
+(resourceType AD-PracticalTypography book)
+(level AD-PracticalTypography beginner)
+(section AD-PracticalTypography AtomsFoundations)
+(url AD-PracticalTypography "https://practicaltypography.com/")
+(desc AD-PracticalTypography "Free online book covering typography essentials: font choice, page margins, line spacing, and body text formatting.")
+
+(isa AD-ResponsiveTypographyTheBasics ReferenceWork)
+(title AD-ResponsiveTypographyTheBasics "Responsive Typography: The Basics")
+(author AD-ResponsiveTypographyTheBasics "Jason Pamental")
+(resourceType AD-ResponsiveTypographyTheBasics book)
+(level AD-ResponsiveTypographyTheBasics intermediate)
+(section AD-ResponsiveTypographyTheBasics AtomsFoundations)
+(url AD-ResponsiveTypographyTheBasics "https://www.goodreads.com/book/show/23131622-responsive-typography")
+(desc AD-ResponsiveTypographyTheBasics "How typography adapts across screen sizes. Covers fluid type, viewport units, and responsive type scales.")
+
+(isa AD-TypeScale ReferenceWork)
+(title AD-TypeScale "Type Scale")
+(author AD-TypeScale "Jeremy Church")
+(resourceType AD-TypeScale tool)
+(level AD-TypeScale beginner)
+(section AD-TypeScale AtomsFoundations)
+(url AD-TypeScale "https://typescale.com/")
+(desc AD-TypeScale "Visual calculator for building type scales based on musical intervals (major third, perfect fourth, etc.).")
+
+(isa AD-VariableFontsGuide ReferenceWork)
+(title AD-VariableFontsGuide "Variable Fonts Guide")
+(author AD-VariableFontsGuide "MDN Web Docs")
+(resourceType AD-VariableFontsGuide notes)
+(level AD-VariableFontsGuide intermediate)
+(section AD-VariableFontsGuide AtomsFoundations)
+(url AD-VariableFontsGuide "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide")
+(desc AD-VariableFontsGuide "Comprehensive guide to OpenType variable fonts in CSS. Weight, width, slant, and custom axes.")
+
+(isa AD-ThinkingWithType ReferenceWork)
+(title AD-ThinkingWithType "Thinking with Type")
+(author AD-ThinkingWithType "Ellen Lupton")
+(resourceType AD-ThinkingWithType book)
+(level AD-ThinkingWithType beginner)
+(section AD-ThinkingWithType AtomsFoundations)
+(url AD-ThinkingWithType "https://www.goodreads.com/book/show/69736.Thinking_with_Type")
+(desc AD-ThinkingWithType "Widely used design school textbook. Covers letter, text, and grid with historical context and practical exercises.")
+
+
+;; ── Spacing & Scale ──
+
+(isa AD-SpaceDesignSystems ReferenceWork)
+(title AD-SpaceDesignSystems "Space in Design Systems")
+(author AD-SpaceDesignSystems "Nathan Curtis")
+(resourceType AD-SpaceDesignSystems notes)
+(level AD-SpaceDesignSystems intermediate)
+(section AD-SpaceDesignSystems AtomsFoundations)
+(url AD-SpaceDesignSystems "https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62")
+(desc AD-SpaceDesignSystems "Definitive guide to spacing in design systems. Covers inset, stack, inline, and grid spacing models.")
+
+(isa AD-ThePointGridSystem ReferenceWork)
+(title AD-ThePointGridSystem "The 8-Point Grid System")
+(author AD-ThePointGridSystem "Spec.fm")
+(resourceType AD-ThePointGridSystem notes)
+(level AD-ThePointGridSystem beginner)
+(section AD-ThePointGridSystem AtomsFoundations)
+(url AD-ThePointGridSystem "https://spec.fm/specifics/8-pt-grid")
+(desc AD-ThePointGridSystem "Why 8px is the most popular base unit for spacing grids. Aligns to common screen densities and creates visual rhythm.")
+
+(isa AD-ModularScale ReferenceWork)
+(title AD-ModularScale "Modular Scale")
+(author AD-ModularScale "Tim Brown & Scott Kellum")
+(resourceType AD-ModularScale tool)
+(level AD-ModularScale beginner)
+(section AD-ModularScale AtomsFoundations)
+(url AD-ModularScale "https://www.modularscale.com/")
+(desc AD-ModularScale "Calculator for creating proportional scales using musical ratios. Applicable to type, spacing, and layout.")
+
+(isa AD-LayoutAndComposition ReferenceWork)
+(title AD-LayoutAndComposition "Layout and Composition")
+(author AD-LayoutAndComposition "Alex White")
+(resourceType AD-LayoutAndComposition book)
+(level AD-LayoutAndComposition intermediate)
+(section AD-LayoutAndComposition AtomsFoundations)
+(url AD-LayoutAndComposition "https://www.goodreads.com/book/show/579394.The_Elements_of_Graphic_Design")
+(desc AD-LayoutAndComposition "The Elements of Graphic Design. Covers space, unity, page architecture, and the use of white space.")
+
+
+;; ── Iconography & Symbols ──
+
+(isa AD-TheNounProject ReferenceWork)
+(title AD-TheNounProject "The Noun Project")
+(author AD-TheNounProject "Noun Project")
+(resourceType AD-TheNounProject tool)
+(level AD-TheNounProject beginner)
+(section AD-TheNounProject AtomsFoundations)
+(url AD-TheNounProject "https://thenounproject.com/")
+(desc AD-TheNounProject "Library of over 5 million icons. Useful for understanding icon conventions and visual metaphors.")
+
+(isa AD-PhosphorIcons ReferenceWork)
+(title AD-PhosphorIcons "Phosphor Icons")
+(author AD-PhosphorIcons "Tobias Fried & Helena Zhang")
+(resourceType AD-PhosphorIcons tool)
+(level AD-PhosphorIcons beginner)
+(section AD-PhosphorIcons AtomsFoundations)
+(url AD-PhosphorIcons "https://phosphoricons.com/")
+(desc AD-PhosphorIcons "Flexible icon family with 6 weights. Well-designed system that demonstrates consistent icon design principles.")
+
+(isa AD-IconUsabilityNNG ReferenceWork)
+(title AD-IconUsabilityNNG "Icon Usability (NNG)")
+(author AD-IconUsabilityNNG "Aurora Harley, Nielsen Norman Group")
+(resourceType AD-IconUsabilityNNG notes)
+(level AD-IconUsabilityNNG beginner)
+(section AD-IconUsabilityNNG AtomsFoundations)
+(url AD-IconUsabilityNNG "https://www.nngroup.com/articles/icon-usability/")
+(desc AD-IconUsabilityNNG "Research-based guidelines for icon design: when to use icons alone, with labels, and recognition vs. recall.")
+
+(isa AD-DesigningBetterIcons ReferenceWork)
+(title AD-DesigningBetterIcons "Designing Better Icons")
+(author AD-DesigningBetterIcons "Scott Lewis")
+(resourceType AD-DesigningBetterIcons video)
+(level AD-DesigningBetterIcons beginner)
+(section AD-DesigningBetterIcons AtomsFoundations)
+(url AD-DesigningBetterIcons "https://www.youtube.com/watch?v=0SDoXKe0wPQ")
+(desc AD-DesigningBetterIcons "Practical guide to icon design: grid systems, optical alignment, stroke consistency, and metaphor selection.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 2: MOLECULES — Composition
+;; Component composition, forms, micro-interactions, a11y
+;; ════════════════════════════════════════════════════════════
+
+;; ── Component Composition ──
+
+(isa AD-DesigningInterfaces ReferenceWork)
+(title AD-DesigningInterfaces "Designing Interfaces")
+(author AD-DesigningInterfaces "Jenifer Tidwell, Charles Brewer & Aynne Valencia")
+(resourceType AD-DesigningInterfaces book)
+(level AD-DesigningInterfaces intermediate)
+(section AD-DesigningInterfaces MoleculesComposition)
+(url AD-DesigningInterfaces "https://www.oreilly.com/library/view/designing-interfaces-3rd/9781492051954/")
+(desc AD-DesigningInterfaces "Pattern library of UI components: navigation, lists, forms, actions, and information display. Third edition covers mobile and responsive.")
+
+(isa AD-Refactoring ReferenceWork)
+(title AD-Refactoring "Refactoring UI")
+(author AD-Refactoring "Adam Wathan & Steve Schoger")
+(resourceType AD-Refactoring book)
+(level AD-Refactoring beginner)
+(section AD-Refactoring MoleculesComposition)
+(url AD-Refactoring "https://www.refactoringui.com/")
+(desc AD-Refactoring "Practical design tips for developers. Covers hierarchy, spacing, color, typography, and component design with before/after examples.")
+
+(isa AD-ComponentDrivenDevelopment ReferenceWork)
+(title AD-ComponentDrivenDevelopment "Component-Driven Development")
+(author AD-ComponentDrivenDevelopment "Chromatic (Storybook)")
+(resourceType AD-ComponentDrivenDevelopment notes)
+(level AD-ComponentDrivenDevelopment beginner)
+(section AD-ComponentDrivenDevelopment MoleculesComposition)
+(url AD-ComponentDrivenDevelopment "https://www.componentdriven.org/")
+(desc AD-ComponentDrivenDevelopment "Methodology for building UIs from the bottom up: components in isolation, compose into screens, iterate with real data.")
+
+(isa AD-PatternsDevComponentPatterns ReferenceWork)
+(title AD-PatternsDevComponentPatterns "Patterns.dev — Component Patterns")
+(author AD-PatternsDevComponentPatterns "Lydia Hallie & Addy Osmani")
+(resourceType AD-PatternsDevComponentPatterns notes)
+(level AD-PatternsDevComponentPatterns intermediate)
+(section AD-PatternsDevComponentPatterns MoleculesComposition)
+(url AD-PatternsDevComponentPatterns "https://www.patterns.dev/")
+(desc AD-PatternsDevComponentPatterns "Modern web development patterns including compound components, render props, hooks patterns, and performance optimization.")
+
+(isa AD-CompoundComponentsPattern ReferenceWork)
+(title AD-CompoundComponentsPattern "Compound Components Pattern")
+(author AD-CompoundComponentsPattern "Kent C. Dodds")
+(resourceType AD-CompoundComponentsPattern notes)
+(level AD-CompoundComponentsPattern intermediate)
+(section AD-CompoundComponentsPattern MoleculesComposition)
+(url AD-CompoundComponentsPattern "https://kentcdodds.com/blog/compound-components-with-react-hooks")
+(desc AD-CompoundComponentsPattern "How to build flexible molecule-level components using the compound component pattern. Shares implicit state between children.")
+
+
+;; ── Form Design ──
+
+(isa AD-WebFormDesign ReferenceWork)
+(title AD-WebFormDesign "Web Form Design")
+(author AD-WebFormDesign "Luke Wroblewski")
+(resourceType AD-WebFormDesign book)
+(level AD-WebFormDesign beginner)
+(section AD-WebFormDesign MoleculesComposition)
+(url AD-WebFormDesign "https://rosenfeldmedia.com/books/web-form-design/")
+(desc AD-WebFormDesign "The definitive guide to form UX. Covers label placement, input types, validation, error handling, and progressive disclosure.")
+
+(isa AD-FormDesignPatterns ReferenceWork)
+(title AD-FormDesignPatterns "Form Design Patterns")
+(author AD-FormDesignPatterns "Adam Silver")
+(resourceType AD-FormDesignPatterns book)
+(level AD-FormDesignPatterns intermediate)
+(section AD-FormDesignPatterns MoleculesComposition)
+(url AD-FormDesignPatterns "https://www.smashingmagazine.com/printed-books/form-design-patterns/")
+(desc AD-FormDesignPatterns "Practical patterns for accessible, usable forms. Registration, checkout, filtering, and complex multi-step forms.")
+
+(isa AD-InlineValidationWebForms ReferenceWork)
+(title AD-InlineValidationWebForms "Inline Validation in Web Forms (Research)")
+(author AD-InlineValidationWebForms "Luke Wroblewski")
+(resourceType AD-InlineValidationWebForms paper)
+(level AD-InlineValidationWebForms beginner)
+(section AD-InlineValidationWebForms MoleculesComposition)
+(url AD-InlineValidationWebForms "https://alistapart.com/article/inline-validation-in-web-forms/")
+(desc AD-InlineValidationWebForms "Eye-tracking study showing how inline validation improves form completion. Evidence-based form design.")
+
+(isa AD-BestPracticesForForm ReferenceWork)
+(title AD-BestPracticesForForm "Best Practices for Form Design (Google)")
+(author AD-BestPracticesForForm "Google Web Fundamentals")
+(resourceType AD-BestPracticesForForm course)
+(level AD-BestPracticesForForm beginner)
+(section AD-BestPracticesForForm MoleculesComposition)
+(url AD-BestPracticesForForm "https://web.dev/learn/forms")
+(desc AD-BestPracticesForForm "Google's guide to modern form design. Covers input types, autocomplete, validation, and accessibility.")
+
+
+;; ── Micro-Interactions ──
+
+(isa AD-MicrointeractionsDesigningWithDetails ReferenceWork)
+(title AD-MicrointeractionsDesigningWithDetails "Microinteractions: Designing with Details")
+(author AD-MicrointeractionsDesigningWithDetails "Dan Saffer")
+(resourceType AD-MicrointeractionsDesigningWithDetails book)
+(level AD-MicrointeractionsDesigningWithDetails beginner)
+(section AD-MicrointeractionsDesigningWithDetails MoleculesComposition)
+(url AD-MicrointeractionsDesigningWithDetails "https://www.oreilly.com/library/view/microinteractions/9781491945957/")
+(desc AD-MicrointeractionsDesigningWithDetails "The definitive book on micro-interactions. Covers triggers, rules, feedback, and loops/modes for small design moments.")
+
+(isa AD-TheIllusionLifeDisney ReferenceWork)
+(title AD-TheIllusionLifeDisney "The Illusion of Life: Disney Animation")
+(author AD-TheIllusionLifeDisney "Ollie Johnston & Frank Thomas")
+(resourceType AD-TheIllusionLifeDisney book)
+(level AD-TheIllusionLifeDisney intermediate)
+(section AD-TheIllusionLifeDisney MoleculesComposition)
+(url AD-TheIllusionLifeDisney "https://www.goodreads.com/book/show/106889.The_Illusion_of_Life")
+(desc AD-TheIllusionLifeDisney "Disney's 12 principles of animation. Squash, stretch, anticipation, and follow-through apply directly to UI motion design.")
+
+(isa AD-AnimationPrinciplesForThe ReferenceWork)
+(title AD-AnimationPrinciplesForThe "Animation Principles for the Web")
+(author AD-AnimationPrinciplesForThe "Rachel Nabors")
+(resourceType AD-AnimationPrinciplesForThe notes)
+(level AD-AnimationPrinciplesForThe beginner)
+(section AD-AnimationPrinciplesForThe MoleculesComposition)
+(url AD-AnimationPrinciplesForThe "https://rachelnabors.com/css-animations-guide/")
+(desc AD-AnimationPrinciplesForThe "Applies animation principles to web interfaces. Easing, timing, and the psychology of perceived performance.")
+
+(isa AD-MaterialMotionGuidelines ReferenceWork)
+(title AD-MaterialMotionGuidelines "Material Motion Guidelines")
+(author AD-MaterialMotionGuidelines "Google Material Design")
+(resourceType AD-MaterialMotionGuidelines notes)
+(level AD-MaterialMotionGuidelines intermediate)
+(section AD-MaterialMotionGuidelines MoleculesComposition)
+(url AD-MaterialMotionGuidelines "https://m3.material.io/styles/motion/overview")
+(desc AD-MaterialMotionGuidelines "Google's comprehensive motion design system. Transition patterns, easing curves, and duration guidelines.")
+
+(isa AD-DesigningInterfaceAnimation ReferenceWork)
+(title AD-DesigningInterfaceAnimation "Designing Interface Animation")
+(author AD-DesigningInterfaceAnimation "Val Head")
+(resourceType AD-DesigningInterfaceAnimation book)
+(level AD-DesigningInterfaceAnimation intermediate)
+(section AD-DesigningInterfaceAnimation MoleculesComposition)
+(url AD-DesigningInterfaceAnimation "https://rosenfeldmedia.com/books/designing-interface-animation/")
+(desc AD-DesigningInterfaceAnimation "Meaningful motion in UI design. Covers animation purpose, performance, choreography, and building an animation style guide.")
+
+
+;; ── Accessibility Patterns ──
+
+(isa AD-InclusiveComponents ReferenceWork)
+(title AD-InclusiveComponents "Inclusive Components")
+(author AD-InclusiveComponents "Heydon Pickering")
+(resourceType AD-InclusiveComponents book)
+(level AD-InclusiveComponents intermediate)
+(section AD-InclusiveComponents MoleculesComposition)
+(url AD-InclusiveComponents "https://inclusive-components.design/")
+(desc AD-InclusiveComponents "Pattern library of accessible component implementations. Toggle buttons, tabbed interfaces, data tables, tooltips, and more.")
+
+(isa AD-WAIARIAAuthoringPractices ReferenceWork)
+(title AD-WAIARIAAuthoringPractices "WAI-ARIA Authoring Practices")
+(author AD-WAIARIAAuthoringPractices "W3C")
+(resourceType AD-WAIARIAAuthoringPractices notes)
+(level AD-WAIARIAAuthoringPractices intermediate)
+(section AD-WAIARIAAuthoringPractices MoleculesComposition)
+(url AD-WAIARIAAuthoringPractices "https://www.w3.org/WAI/ARIA/apg/")
+(desc AD-WAIARIAAuthoringPractices "Official W3C patterns for accessible widgets. Accordion, breadcrumb, carousel, dialog, menu, tabs, tree view, and more.")
+
+(isa AD-AWebForEveryone ReferenceWork)
+(title AD-AWebForEveryone "A Web for Everyone")
+(author AD-AWebForEveryone "Sarah Horton & Whitney Quesenbery")
+(resourceType AD-AWebForEveryone book)
+(level AD-AWebForEveryone beginner)
+(section AD-AWebForEveryone MoleculesComposition)
+(url AD-AWebForEveryone "https://rosenfeldmedia.com/books/a-web-for-everyone/")
+(desc AD-AWebForEveryone "Accessible UX design from personas through implementation. Bridges the gap between accessibility standards and user experience.")
+
+(isa AD-AccessibilityForEveryone ReferenceWork)
+(title AD-AccessibilityForEveryone "Accessibility for Everyone")
+(author AD-AccessibilityForEveryone "Laura Kalbag")
+(resourceType AD-AccessibilityForEveryone book)
+(level AD-AccessibilityForEveryone beginner)
+(section AD-AccessibilityForEveryone MoleculesComposition)
+(url AD-AccessibilityForEveryone "https://abookapart.com/products/accessibility-for-everyone")
+(desc AD-AccessibilityForEveryone "Concise introduction to web accessibility. Covers disabilities, guidelines, content, design, and development practices.")
+
+(isa AD-AxeCoreAccessibilityTesting ReferenceWork)
+(title AD-AxeCoreAccessibilityTesting "axe-core Accessibility Testing")
+(author AD-AxeCoreAccessibilityTesting "Deque Systems")
+(resourceType AD-AxeCoreAccessibilityTesting code)
+(level AD-AxeCoreAccessibilityTesting intermediate)
+(section AD-AxeCoreAccessibilityTesting MoleculesComposition)
+(url AD-AxeCoreAccessibilityTesting "https://github.com/dequelabs/axe-core")
+(desc AD-AxeCoreAccessibilityTesting "Industry-standard accessibility testing engine. Automated WCAG 2.1 checking that integrates into development workflows.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 3: ORGANISMS — Complex Components
+;; Navigation, data display, content, responsive
+;; ════════════════════════════════════════════════════════════
+
+;; ── Navigation Systems ──
+
+(isa AD-DontMakeThink ReferenceWork)
+(title AD-DontMakeThink "Don't Make Me Think")
+(author AD-DontMakeThink "Steve Krug")
+(resourceType AD-DontMakeThink book)
+(level AD-DontMakeThink beginner)
+(section AD-DontMakeThink OrganismsComplexComponents)
+(url AD-DontMakeThink "https://www.goodreads.com/book/show/18197267-don-t-make-me-think-revisited")
+(desc AD-DontMakeThink "The classic web usability book. Covers navigation conventions, homepage design, and usability testing in plain language.")
+
+(isa AD-InformationArchitecture ReferenceWork)
+(title AD-InformationArchitecture "Information Architecture")
+(author AD-InformationArchitecture "Louis Rosenfeld, Peter Morville & Jorge Arango")
+(resourceType AD-InformationArchitecture book)
+(level AD-InformationArchitecture intermediate)
+(section AD-InformationArchitecture OrganismsComplexComponents)
+(url AD-InformationArchitecture "https://www.oreilly.com/library/view/information-architecture-4th/9781491911679/")
+(desc AD-InformationArchitecture "The polar bear book. Comprehensive guide to organizing information: taxonomy, navigation systems, search, and labeling.")
+
+(isa AD-NavigationPatternsForResponsive ReferenceWork)
+(title AD-NavigationPatternsForResponsive "Navigation Patterns for Responsive Design")
+(author AD-NavigationPatternsForResponsive "Brad Frost")
+(resourceType AD-NavigationPatternsForResponsive notes)
+(level AD-NavigationPatternsForResponsive beginner)
+(section AD-NavigationPatternsForResponsive OrganismsComplexComponents)
+(url AD-NavigationPatternsForResponsive "https://bradfrost.com/blog/post/responsive-nav-patterns/")
+(desc AD-NavigationPatternsForResponsive "Survey of responsive navigation patterns: hamburger, priority+, toggle, footer anchor, and multi-level approaches.")
+
+(isa AD-CommandPalettePattern ReferenceWork)
+(title AD-CommandPalettePattern "Command Palette Pattern")
+(author AD-CommandPalettePattern "Maggie Appleton")
+(resourceType AD-CommandPalettePattern notes)
+(level AD-CommandPalettePattern intermediate)
+(section AD-CommandPalettePattern OrganismsComplexComponents)
+(url AD-CommandPalettePattern "https://maggieappleton.com/command-bar")
+(desc AD-CommandPalettePattern "Analysis of the command palette pattern (Cmd+K). How keyboard-driven navigation is reshaping complex application UIs.")
+
+
+;; ── Data Display ──
+
+(isa AD-TheVisualDisplayQuantitative ReferenceWork)
+(title AD-TheVisualDisplayQuantitative "The Visual Display of Quantitative Information")
+(author AD-TheVisualDisplayQuantitative "Edward Tufte")
+(resourceType AD-TheVisualDisplayQuantitative book)
+(level AD-TheVisualDisplayQuantitative intermediate)
+(section AD-TheVisualDisplayQuantitative OrganismsComplexComponents)
+(url AD-TheVisualDisplayQuantitative "https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/")
+(desc AD-TheVisualDisplayQuantitative "The foundational text on data visualization. Data-ink ratio, chartjunk, graphical integrity, and the principles of graphical excellence.")
+
+(isa AD-EnvisioningInformation ReferenceWork)
+(title AD-EnvisioningInformation "Envisioning Information")
+(author AD-EnvisioningInformation "Edward Tufte")
+(resourceType AD-EnvisioningInformation book)
+(level AD-EnvisioningInformation intermediate)
+(section AD-EnvisioningInformation OrganismsComplexComponents)
+(url AD-EnvisioningInformation "https://www.edwardtufte.com/book/envisioning-information/")
+(desc AD-EnvisioningInformation "How to present complex information on a 2D surface. Escaping flatland, micro/macro readings, layering, and small multiples.")
+
+(isa AD-VisualizationAnalysisDesign ReferenceWork)
+(title AD-VisualizationAnalysisDesign "Visualization Analysis & Design")
+(author AD-VisualizationAnalysisDesign "Tamara Munzner")
+(resourceType AD-VisualizationAnalysisDesign book)
+(level AD-VisualizationAnalysisDesign advanced)
+(section AD-VisualizationAnalysisDesign OrganismsComplexComponents)
+(url AD-VisualizationAnalysisDesign "https://www.cs.ubc.ca/~tmm/vadbook/")
+(desc AD-VisualizationAnalysisDesign "Systematic framework for visualization design. What-why-how analysis, marks and channels, spatial layout, and evaluation.")
+
+(isa AD-D3DataDrivenDocuments ReferenceWork)
+(title AD-D3DataDrivenDocuments "D3.js — Data-Driven Documents")
+(author AD-D3DataDrivenDocuments "Mike Bostock")
+(resourceType AD-D3DataDrivenDocuments code)
+(level AD-D3DataDrivenDocuments intermediate)
+(section AD-D3DataDrivenDocuments OrganismsComplexComponents)
+(url AD-D3DataDrivenDocuments "https://d3js.org/")
+(desc AD-D3DataDrivenDocuments "The definitive JavaScript library for data visualization. Bindable data, transitions, and SVG/Canvas rendering.")
+
+(isa AD-ObservablePlot ReferenceWork)
+(title AD-ObservablePlot "Observable Plot")
+(author AD-ObservablePlot "Observable")
+(resourceType AD-ObservablePlot code)
+(level AD-ObservablePlot beginner)
+(section AD-ObservablePlot OrganismsComplexComponents)
+(url AD-ObservablePlot "https://observablehq.com/plot/")
+(desc AD-ObservablePlot "High-level charting library built on D3. Concise API for exploratory data visualization with sensible defaults.")
+
+(isa AD-DataTablesDesignPatterns ReferenceWork)
+(title AD-DataTablesDesignPatterns "Data Tables Design Patterns")
+(author AD-DataTablesDesignPatterns "Andrew Coyle")
+(resourceType AD-DataTablesDesignPatterns notes)
+(level AD-DataTablesDesignPatterns beginner)
+(section AD-DataTablesDesignPatterns OrganismsComplexComponents)
+(url AD-DataTablesDesignPatterns "https://medium.com/nextux/design-better-data-tables-4ecc99d23356")
+(desc AD-DataTablesDesignPatterns "Comprehensive survey of data table patterns: fixed headers, sorting, filtering, pagination, row expansion, and inline editing.")
+
+
+;; ── Content Patterns ──
+
+(isa AD-EveryLayout ReferenceWork)
+(title AD-EveryLayout "Every Layout")
+(author AD-EveryLayout "Andy Bell & Heydon Pickering")
+(resourceType AD-EveryLayout book)
+(level AD-EveryLayout intermediate)
+(section AD-EveryLayout OrganismsComplexComponents)
+(url AD-EveryLayout "https://every-layout.dev/")
+(desc AD-EveryLayout "CSS layout primitives that compose into any interface: Stack, Sidebar, Cluster, Center, Cover, Grid, Frame, and Switcher.")
+
+(isa AD-CardsComponentDesign ReferenceWork)
+(title AD-CardsComponentDesign "Cards: UI Component Design")
+(author AD-CardsComponentDesign "Nielsen Norman Group")
+(resourceType AD-CardsComponentDesign notes)
+(level AD-CardsComponentDesign beginner)
+(section AD-CardsComponentDesign OrganismsComplexComponents)
+(url AD-CardsComponentDesign "https://www.nngroup.com/articles/cards-component/")
+(desc AD-CardsComponentDesign "Research-based guidelines for card design: content hierarchy, interaction, sizing, and common card anti-patterns.")
+
+(isa AD-UIPatternsCollection ReferenceWork)
+(title AD-UIPatternsCollection "UI Patterns (Collection)")
+(author AD-UIPatternsCollection "Anders Toxboe")
+(resourceType AD-UIPatternsCollection tool)
+(level AD-UIPatternsCollection beginner)
+(section AD-UIPatternsCollection OrganismsComplexComponents)
+(url AD-UIPatternsCollection "https://ui-patterns.com/")
+(desc AD-UIPatternsCollection "Large collection of UI design patterns. Input, navigation, content, social, and e-commerce patterns with examples.")
+
+(isa AD-ContainerQueriesQuickStart ReferenceWork)
+(title AD-ContainerQueriesQuickStart "Container Queries: A Quick Start Guide")
+(author AD-ContainerQueriesQuickStart "Ahmad Shadeed")
+(resourceType AD-ContainerQueriesQuickStart notes)
+(level AD-ContainerQueriesQuickStart intermediate)
+(section AD-ContainerQueriesQuickStart OrganismsComplexComponents)
+(url AD-ContainerQueriesQuickStart "https://ishadeed.com/article/css-container-query-guide/")
+(desc AD-ContainerQueriesQuickStart "How CSS container queries enable truly responsive components. Components adapt based on their container, not the viewport.")
+
+
+;; ── Responsive Components ──
+
+(isa AD-ResponsiveComponentsPatterns ReferenceWork)
+(title AD-ResponsiveComponentsPatterns "Responsive Components (Patterns)")
+(author AD-ResponsiveComponentsPatterns "Philip Walton")
+(resourceType AD-ResponsiveComponentsPatterns notes)
+(level AD-ResponsiveComponentsPatterns advanced)
+(section AD-ResponsiveComponentsPatterns OrganismsComplexComponents)
+(url AD-ResponsiveComponentsPatterns "https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/")
+(desc AD-ResponsiveComponentsPatterns "Early exploration of responsive component patterns using ResizeObserver, before container queries landed natively.")
+
+(isa AD-TheStateResponsiveDesign ReferenceWork)
+(title AD-TheStateResponsiveDesign "The State of Responsive Design")
+(author AD-TheStateResponsiveDesign "Ethan Marcotte")
+(resourceType AD-TheStateResponsiveDesign notes)
+(level AD-TheStateResponsiveDesign intermediate)
+(section AD-TheStateResponsiveDesign OrganismsComplexComponents)
+(url AD-TheStateResponsiveDesign "https://ethanmarcotte.com/")
+(desc AD-TheStateResponsiveDesign "Reflections from the creator of responsive web design on where the discipline is headed in the container query era.")
+
+(isa AD-ModernFluidTypographyWith ReferenceWork)
+(title AD-ModernFluidTypographyWith "Modern Fluid Typography with clamp()")
+(author AD-ModernFluidTypographyWith "Adrian Bece")
+(resourceType AD-ModernFluidTypographyWith notes)
+(level AD-ModernFluidTypographyWith intermediate)
+(section AD-ModernFluidTypographyWith OrganismsComplexComponents)
+(url AD-ModernFluidTypographyWith "https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/")
+(desc AD-ModernFluidTypographyWith "How to create fluid type and spacing that scales smoothly between breakpoints using CSS clamp(), eliminating hard breakpoints.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 4: TEMPLATES & PAGES — Layout
+;; Grids, responsive design, layout patterns, page architecture
+;; ════════════════════════════════════════════════════════════
+
+;; ── Grid Systems ──
+
+(isa AD-GridSystemsGraphicDesign ReferenceWork)
+(title AD-GridSystemsGraphicDesign "Grid Systems in Graphic Design")
+(author AD-GridSystemsGraphicDesign "Josef Müller-Brockmann")
+(resourceType AD-GridSystemsGraphicDesign book)
+(level AD-GridSystemsGraphicDesign intermediate)
+(section AD-GridSystemsGraphicDesign TemplatesPages)
+(url AD-GridSystemsGraphicDesign "https://www.goodreads.com/book/show/350962.Grid_Systems_in_Graphic_Design")
+(desc AD-GridSystemsGraphicDesign "The foundational text on grid systems. Covers columns, margins, modules, and the mathematical basis of typographic grids.")
+
+(isa AD-OrderingDisorderGridPrinciples ReferenceWork)
+(title AD-OrderingDisorderGridPrinciples "Ordering Disorder: Grid Principles for Web Design")
+(author AD-OrderingDisorderGridPrinciples "Khoi Vinh")
+(resourceType AD-OrderingDisorderGridPrinciples book)
+(level AD-OrderingDisorderGridPrinciples beginner)
+(section AD-OrderingDisorderGridPrinciples TemplatesPages)
+(url AD-OrderingDisorderGridPrinciples "https://www.goodreads.com/book/show/9712450-ordering-disorder")
+(desc AD-OrderingDisorderGridPrinciples "Adapting print grid principles to the web. Practical approach to creating flexible, proportional grid layouts.")
+
+(isa AD-CSSGridLayoutMDN ReferenceWork)
+(title AD-CSSGridLayoutMDN "CSS Grid Layout (MDN)")
+(author AD-CSSGridLayoutMDN "MDN Web Docs")
+(resourceType AD-CSSGridLayoutMDN notes)
+(level AD-CSSGridLayoutMDN beginner)
+(section AD-CSSGridLayoutMDN TemplatesPages)
+(url AD-CSSGridLayoutMDN "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout")
+(desc AD-CSSGridLayoutMDN "Comprehensive reference for CSS Grid. Tracks, lines, areas, auto-placement, and alignment in the native grid system.")
+
+(isa AD-AnInteractiveGuideCSS ReferenceWork)
+(title AD-AnInteractiveGuideCSS "An Interactive Guide to CSS Grid")
+(author AD-AnInteractiveGuideCSS "Josh W. Comeau")
+(resourceType AD-AnInteractiveGuideCSS notes)
+(level AD-AnInteractiveGuideCSS beginner)
+(section AD-AnInteractiveGuideCSS TemplatesPages)
+(url AD-AnInteractiveGuideCSS "https://www.joshwcomeau.com/css/interactive-guide-to-grid/")
+(desc AD-AnInteractiveGuideCSS "Visual, interactive guide to CSS Grid. Builds intuition through hands-on examples of grid behavior.")
+
+(isa AD-ANewCanonPage ReferenceWork)
+(title AD-ANewCanonPage "A New Canon of Page Layout")
+(author AD-ANewCanonPage "Mark Boulton")
+(resourceType AD-ANewCanonPage notes)
+(level AD-ANewCanonPage intermediate)
+(section AD-ANewCanonPage TemplatesPages)
+(url AD-ANewCanonPage "https://www.markboulton.co.uk/journal/a-richer-canvas/")
+(desc AD-ANewCanonPage "Rethinking grid design for the web. Argues for moving beyond the column-based grid to more flexible compositional frameworks.")
+
+
+;; ── Responsive Design ──
+
+(isa AD-ResponsiveWebDesign ReferenceWork)
+(title AD-ResponsiveWebDesign "Responsive Web Design")
+(author AD-ResponsiveWebDesign "Ethan Marcotte")
+(resourceType AD-ResponsiveWebDesign book)
+(level AD-ResponsiveWebDesign beginner)
+(section AD-ResponsiveWebDesign TemplatesPages)
+(url AD-ResponsiveWebDesign "https://abookapart.com/products/responsive-web-design")
+(desc AD-ResponsiveWebDesign "The book that defined responsive web design. Fluid grids, flexible images, and media queries as the three pillars.")
+
+(isa AD-ResponsiveWebDesignOriginal ReferenceWork)
+(title AD-ResponsiveWebDesignOriginal "Responsive Web Design (Original Article)")
+(author AD-ResponsiveWebDesignOriginal "Ethan Marcotte")
+(resourceType AD-ResponsiveWebDesignOriginal paper)
+(level AD-ResponsiveWebDesignOriginal beginner)
+(section AD-ResponsiveWebDesignOriginal TemplatesPages)
+(url AD-ResponsiveWebDesignOriginal "https://alistapart.com/article/responsive-web-design/")
+(desc AD-ResponsiveWebDesignOriginal "The A List Apart article that launched the responsive design movement. Coined the term and laid out the core approach.")
+
+(isa AD-IntrinsicWebDesign ReferenceWork)
+(title AD-IntrinsicWebDesign "Intrinsic Web Design")
+(author AD-IntrinsicWebDesign "Jen Simmons")
+(resourceType AD-IntrinsicWebDesign video)
+(level AD-IntrinsicWebDesign intermediate)
+(section AD-IntrinsicWebDesign TemplatesPages)
+(url AD-IntrinsicWebDesign "https://www.youtube.com/watch?v=AMPKmh98XLY")
+(desc AD-IntrinsicWebDesign "Beyond responsive: using CSS Grid and Flexbox for layouts that are intrinsically flexible. Squish, stretch, wrap, and overflow.")
+
+(isa AD-LearnResponsiveDesign ReferenceWork)
+(title AD-LearnResponsiveDesign "Learn Responsive Design")
+(author AD-LearnResponsiveDesign "Jeremy Keith (web.dev)")
+(resourceType AD-LearnResponsiveDesign course)
+(level AD-LearnResponsiveDesign beginner)
+(section AD-LearnResponsiveDesign TemplatesPages)
+(url AD-LearnResponsiveDesign "https://web.dev/learn/design/")
+(desc AD-LearnResponsiveDesign "Google's comprehensive course on responsive design. Media queries, typography, images, theming, and interaction.")
+
+(isa AD-UtopiaFluidResponsiveDesign ReferenceWork)
+(title AD-UtopiaFluidResponsiveDesign "Utopia: Fluid Responsive Design")
+(author AD-UtopiaFluidResponsiveDesign "James Gilyead & Trys Mudford")
+(resourceType AD-UtopiaFluidResponsiveDesign tool)
+(level AD-UtopiaFluidResponsiveDesign intermediate)
+(section AD-UtopiaFluidResponsiveDesign TemplatesPages)
+(url AD-UtopiaFluidResponsiveDesign "https://utopia.fyi/")
+(desc AD-UtopiaFluidResponsiveDesign "Calculator for fluid type and space scales. Generates CSS clamp() values for seamless responsive design without breakpoints.")
+
+
+;; ── Layout Patterns ──
+
+(isa AD-LayoutPatternsWebDev ReferenceWork)
+(title AD-LayoutPatternsWebDev "Layout Patterns (web.dev)")
+(author AD-LayoutPatternsWebDev "Una Kravets")
+(resourceType AD-LayoutPatternsWebDev notes)
+(level AD-LayoutPatternsWebDev beginner)
+(section AD-LayoutPatternsWebDev TemplatesPages)
+(url AD-LayoutPatternsWebDev "https://web.dev/patterns/layout/")
+(desc AD-LayoutPatternsWebDev "Collection of modern CSS layout patterns: sidebar, pancake stack, holy grail, RAM, and super-centered.")
+
+(isa AD-1LineLayouts ReferenceWork)
+(title AD-1LineLayouts "1-Line Layouts")
+(author AD-1LineLayouts "Una Kravets")
+(resourceType AD-1LineLayouts code)
+(level AD-1LineLayouts beginner)
+(section AD-1LineLayouts TemplatesPages)
+(url AD-1LineLayouts "https://1linelayouts.glitch.me/")
+(desc AD-1LineLayouts "Ten modern CSS layout techniques in a single line of code each. Demonstrates the power of modern CSS layout.")
+
+(isa AD-EveryLayoutBell ReferenceWork)
+(title AD-EveryLayoutBell "Every Layout")
+(author AD-EveryLayoutBell "Andy Bell & Heydon Pickering")
+(resourceType AD-EveryLayoutBell book)
+(level AD-EveryLayoutBell intermediate)
+(section AD-EveryLayoutBell TemplatesPages)
+(url AD-EveryLayoutBell "https://every-layout.dev/")
+(desc AD-EveryLayoutBell "Compositional layout primitives: Stack, Sidebar, Cluster, Switcher, Cover, Grid. Axiomatic CSS for intrinsic layouts.")
+
+(isa AD-FlexboxFroggy ReferenceWork)
+(title AD-FlexboxFroggy "Flexbox Froggy")
+(author AD-FlexboxFroggy "Codepip")
+(resourceType AD-FlexboxFroggy tool)
+(level AD-FlexboxFroggy beginner)
+(section AD-FlexboxFroggy TemplatesPages)
+(url AD-FlexboxFroggy "https://flexboxfroggy.com/")
+(desc AD-FlexboxFroggy "Interactive game for learning CSS Flexbox. 24 levels covering justify-content, align-items, flex-direction, and more.")
+
+(isa AD-GridGarden ReferenceWork)
+(title AD-GridGarden "Grid Garden")
+(author AD-GridGarden "Codepip")
+(resourceType AD-GridGarden tool)
+(level AD-GridGarden beginner)
+(section AD-GridGarden TemplatesPages)
+(url AD-GridGarden "https://cssgridgarden.com/")
+(desc AD-GridGarden "Interactive game for learning CSS Grid. 28 levels covering grid-column, grid-row, grid-template, and grid-area.")
+
+
+;; ── Page Architecture ──
+
+(isa AD-DesigningForTheWeb ReferenceWork)
+(title AD-DesigningForTheWeb "Designing for the Web")
+(author AD-DesigningForTheWeb "Mark Boulton")
+(resourceType AD-DesigningForTheWeb book)
+(level AD-DesigningForTheWeb beginner)
+(section AD-DesigningForTheWeb TemplatesPages)
+(url AD-DesigningForTheWeb "https://www.designingfortheweb.co.uk/")
+(desc AD-DesigningForTheWeb "Free online book on web design fundamentals. Typography, layout, color, and the process of designing for the web.")
+
+(isa AD-FShapedPatternFor ReferenceWork)
+(title AD-FShapedPatternFor "F-Shaped Pattern for Reading (Research)")
+(author AD-FShapedPatternFor "Jakob Nielsen")
+(resourceType AD-FShapedPatternFor paper)
+(level AD-FShapedPatternFor beginner)
+(section AD-FShapedPatternFor TemplatesPages)
+(url AD-FShapedPatternFor "https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/")
+(desc AD-FShapedPatternFor "Eye-tracking study showing how users scan web pages in an F-shaped pattern. Foundational for page layout decisions.")
+
+(isa AD-VisualHierarchyDesign ReferenceWork)
+(title AD-VisualHierarchyDesign "Visual Hierarchy in UI Design")
+(author AD-VisualHierarchyDesign "Nielsen Norman Group")
+(resourceType AD-VisualHierarchyDesign notes)
+(level AD-VisualHierarchyDesign beginner)
+(section AD-VisualHierarchyDesign TemplatesPages)
+(url AD-VisualHierarchyDesign "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/")
+(desc AD-VisualHierarchyDesign "How size, color, contrast, spacing, and position create visual hierarchy. Research-based guidelines for page layout.")
+
+(isa AD-AboveTheFoldRevisited ReferenceWork)
+(title AD-AboveTheFoldRevisited "Above the Fold Revisited")
+(author AD-AboveTheFoldRevisited "Amy Schade, NNG")
+(resourceType AD-AboveTheFoldRevisited paper)
+(level AD-AboveTheFoldRevisited beginner)
+(section AD-AboveTheFoldRevisited TemplatesPages)
+(url AD-AboveTheFoldRevisited "https://www.nngroup.com/articles/page-fold-manifesto/")
+(desc AD-AboveTheFoldRevisited "Research on how users interact with content above and below the fold. Users scroll, but priority placement still matters.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 5: COLOR THEORY
+;; Color science, spaces, harmony, accessibility, UI color
+;; ════════════════════════════════════════════════════════════
+
+;; ── Color Science & Perception ──
+
+(isa AD-TheArtColor ReferenceWork)
+(title AD-TheArtColor "The Art of Color")
+(author AD-TheArtColor "Johannes Itten")
+(resourceType AD-TheArtColor book)
+(level AD-TheArtColor intermediate)
+(section AD-TheArtColor ColorTheory)
+(url AD-TheArtColor "https://www.goodreads.com/book/show/1385498.The_Art_of_Color")
+(desc AD-TheArtColor "Bauhaus master's comprehensive color theory. Seven color contrasts, color harmony, subjective color experience, and color expression.")
+
+(isa AD-InteractionColorAlbers ReferenceWork)
+(title AD-InteractionColorAlbers "Interaction of Color")
+(author AD-InteractionColorAlbers "Josef Albers")
+(resourceType AD-InteractionColorAlbers book)
+(level AD-InteractionColorAlbers beginner)
+(section AD-InteractionColorAlbers ColorTheory)
+(url AD-InteractionColorAlbers "https://yalebooks.yale.edu/book/9780300179354/interaction-of-color/")
+(desc AD-InteractionColorAlbers "Foundational work on color relativity. How colors change appearance based on their neighbors. Exercises in seeing.")
+
+(isa AD-TheDimensionsColour ReferenceWork)
+(title AD-TheDimensionsColour "The Dimensions of Colour")
+(author AD-TheDimensionsColour "David Briggs")
+(resourceType AD-TheDimensionsColour notes)
+(level AD-TheDimensionsColour intermediate)
+(section AD-TheDimensionsColour ColorTheory)
+(url AD-TheDimensionsColour "https://www.huevaluechroma.com/")
+(desc AD-TheDimensionsColour "Free online resource covering color science for artists and designers. Comprehensive treatment of hue, value, and chroma.")
+
+(isa AD-ColorAndLightGuide ReferenceWork)
+(title AD-ColorAndLightGuide "Color and Light: A Guide for the Realist Painter")
+(author AD-ColorAndLightGuide "James Gurney")
+(resourceType AD-ColorAndLightGuide book)
+(level AD-ColorAndLightGuide beginner)
+(section AD-ColorAndLightGuide ColorTheory)
+(url AD-ColorAndLightGuide "https://www.goodreads.com/book/show/8142965-color-and-light")
+(desc AD-ColorAndLightGuide "How light behaves in the real world: subsurface scattering, specular highlights, color temperature, and atmospheric perspective.")
+
+(isa AD-ColorAppearanceModels ReferenceWork)
+(title AD-ColorAppearanceModels "Color Appearance Models")
+(author AD-ColorAppearanceModels "Mark D. Fairchild")
+(resourceType AD-ColorAppearanceModels book)
+(level AD-ColorAppearanceModels advanced)
+(section AD-ColorAppearanceModels ColorTheory)
+(url AD-ColorAppearanceModels "https://www.wiley.com/en-us/Color+Appearance+Models,+3rd+Edition-p-9781119967033")
+(desc AD-ColorAppearanceModels "Definitive technical reference for how humans perceive color. CIELAB, CIECAM02, and computational models of color appearance.")
+
+
+;; ── Color Systems & Spaces ──
+
+(isa AD-APerceptualColorSpace ReferenceWork)
+(title AD-APerceptualColorSpace "A Perceptual Color Space for Image Processing (OKLAB)")
+(author AD-APerceptualColorSpace "Björn Ottosson")
+(resourceType AD-APerceptualColorSpace paper)
+(level AD-APerceptualColorSpace advanced)
+(section AD-APerceptualColorSpace ColorTheory)
+(url AD-APerceptualColorSpace "https://bottosson.github.io/posts/oklab/")
+(desc AD-APerceptualColorSpace "The paper that introduced OKLAB and OKLCH. A perceptually uniform color space that's now in CSS Color Level 4.")
+
+(isa AD-LCHColorsCSSWhat ReferenceWork)
+(title AD-LCHColorsCSSWhat "LCH Colors in CSS: What, Why, and How?")
+(author AD-LCHColorsCSSWhat "Lea Verou")
+(resourceType AD-LCHColorsCSSWhat notes)
+(level AD-LCHColorsCSSWhat intermediate)
+(section AD-LCHColorsCSSWhat ColorTheory)
+(url AD-LCHColorsCSSWhat "https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/")
+(desc AD-LCHColorsCSSWhat "Why LCH is superior to HSL for design work. Perceptual uniformity, wider gamut, and practical CSS usage.")
+
+(isa AD-TheMunsellColorSystem ReferenceWork)
+(title AD-TheMunsellColorSystem "The Munsell Color System")
+(author AD-TheMunsellColorSystem "Albert Munsell")
+(resourceType AD-TheMunsellColorSystem notes)
+(level AD-TheMunsellColorSystem intermediate)
+(section AD-TheMunsellColorSystem ColorTheory)
+(url AD-TheMunsellColorSystem "https://munsell.com/color-education/")
+(desc AD-TheMunsellColorSystem "The first systematic color ordering based on perceptual attributes: hue, value, and chroma. Foundation of modern color science.")
+
+(isa AD-CSSColorLevelSpecification ReferenceWork)
+(title AD-CSSColorLevelSpecification "CSS Color Level 4 Specification")
+(author AD-CSSColorLevelSpecification "W3C")
+(resourceType AD-CSSColorLevelSpecification notes)
+(level AD-CSSColorLevelSpecification advanced)
+(section AD-CSSColorLevelSpecification ColorTheory)
+(url AD-CSSColorLevelSpecification "https://www.w3.org/TR/css-color-4/")
+(desc AD-CSSColorLevelSpecification "The specification introducing oklch(), oklab(), color(), color-mix(), and relative color syntax to CSS.")
+
+(isa AD-ColorSpacesBartoszCiechanowski ReferenceWork)
+(title AD-ColorSpacesBartoszCiechanowski "Color Spaces (Bartosz Ciechanowski)")
+(author AD-ColorSpacesBartoszCiechanowski "Bartosz Ciechanowski")
+(resourceType AD-ColorSpacesBartoszCiechanowski notes)
+(level AD-ColorSpacesBartoszCiechanowski intermediate)
+(section AD-ColorSpacesBartoszCiechanowski ColorTheory)
+(url AD-ColorSpacesBartoszCiechanowski "https://ciechanow.ski/color-spaces/")
+(desc AD-ColorSpacesBartoszCiechanowski "Interactive visual explainer of color spaces. Beautiful illustrations showing how RGB, HSL, LAB, and LCH relate to each other.")
+
+
+;; ── Color Harmony & Palettes ──
+
+(isa AD-ThePrinciplesHarmonyAnd ReferenceWork)
+(title AD-ThePrinciplesHarmonyAnd "The Principles of Harmony and Contrast of Colours")
+(author AD-ThePrinciplesHarmonyAnd "Michel Eugène Chevreul")
+(resourceType AD-ThePrinciplesHarmonyAnd book)
+(level AD-ThePrinciplesHarmonyAnd advanced)
+(section AD-ThePrinciplesHarmonyAnd ColorTheory)
+(url AD-ThePrinciplesHarmonyAnd "https://www.goodreads.com/book/show/2272234.The_Principles_of_Harmony_and_Contrast_of_Colours")
+(desc AD-ThePrinciplesHarmonyAnd "The original text on simultaneous contrast. How adjacent colors alter each other's appearance. Influenced the Impressionists.")
+
+(isa AD-ColorHarmoniesBeyondThe ReferenceWork)
+(title AD-ColorHarmoniesBeyondThe "Color Harmonies: Beyond the Basics")
+(author AD-ColorHarmoniesBeyondThe "Nita Leland")
+(resourceType AD-ColorHarmoniesBeyondThe book)
+(level AD-ColorHarmoniesBeyondThe beginner)
+(section AD-ColorHarmoniesBeyondThe ColorTheory)
+(url AD-ColorHarmoniesBeyondThe "https://www.goodreads.com/book/show/115992.Exploring_Color")
+(desc AD-ColorHarmoniesBeyondThe "Practical exploration of color harmonies: complementary, analogous, triadic, split-complementary, and tetradic schemes.")
+
+(isa AD-HuemintColorPaletteGenerator ReferenceWork)
+(title AD-HuemintColorPaletteGenerator "Huemint — AI Color Palette Generator")
+(author AD-HuemintColorPaletteGenerator "Huemint")
+(resourceType AD-HuemintColorPaletteGenerator tool)
+(level AD-HuemintColorPaletteGenerator beginner)
+(section AD-HuemintColorPaletteGenerator ColorTheory)
+(url AD-HuemintColorPaletteGenerator "https://huemint.com/")
+(desc AD-HuemintColorPaletteGenerator "Machine learning-powered palette generator. Generates harmonious palettes for specific UI contexts: website, brand, gradient.")
+
+(isa AD-Coolors ReferenceWork)
+(title AD-Coolors "Coolors")
+(author AD-Coolors "Fabrizio Bianchi")
+(resourceType AD-Coolors tool)
+(level AD-Coolors beginner)
+(section AD-Coolors ColorTheory)
+(url AD-Coolors "https://coolors.co/")
+(desc AD-Coolors "Popular palette generator with color blindness simulation, contrast checking, and export to various formats.")
+
+(isa AD-BuildingColorPalettesFor ReferenceWork)
+(title AD-BuildingColorPalettesFor "Building Color Palettes for Design Systems")
+(author AD-BuildingColorPalettesFor "Lydia Hallie")
+(resourceType AD-BuildingColorPalettesFor video)
+(level AD-BuildingColorPalettesFor intermediate)
+(section AD-BuildingColorPalettesFor ColorTheory)
+(url AD-BuildingColorPalettesFor "https://www.youtube.com/watch?v=eXcKOqviLE0")
+(desc AD-BuildingColorPalettesFor "How to build systematic color palettes with consistent lightness steps, semantic naming, and theme support.")
+
+
+;; ── Color Accessibility ──
+
+(isa AD-WCAGUnderstandingContrastMinimum ReferenceWork)
+(title AD-WCAGUnderstandingContrastMinimum "WCAG 2.2: Understanding Contrast (Minimum)")
+(author AD-WCAGUnderstandingContrastMinimum "W3C WAI")
+(resourceType AD-WCAGUnderstandingContrastMinimum notes)
+(level AD-WCAGUnderstandingContrastMinimum beginner)
+(section AD-WCAGUnderstandingContrastMinimum ColorTheory)
+(url AD-WCAGUnderstandingContrastMinimum "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html")
+(desc AD-WCAGUnderstandingContrastMinimum "Official WCAG guidelines for color contrast. 4.5:1 for normal text, 3:1 for large text. The minimum standard for accessibility.")
+
+(isa AD-WhoCanUse ReferenceWork)
+(title AD-WhoCanUse "Who Can Use")
+(author AD-WhoCanUse "Corey Ginnivan")
+(resourceType AD-WhoCanUse tool)
+(level AD-WhoCanUse beginner)
+(section AD-WhoCanUse ColorTheory)
+(url AD-WhoCanUse "https://www.whocanuse.com/")
+(desc AD-WhoCanUse "Shows how color combinations appear for people with different vision types. Simulates protanopia, deuteranopia, tritanopia, and more.")
+
+(isa AD-APCAContrastCalculator ReferenceWork)
+(title AD-APCAContrastCalculator "APCA Contrast Calculator")
+(author AD-APCAContrastCalculator "Andrew Somers (Myndex)")
+(resourceType AD-APCAContrastCalculator tool)
+(level AD-APCAContrastCalculator intermediate)
+(section AD-APCAContrastCalculator ColorTheory)
+(url AD-APCAContrastCalculator "https://www.myndex.com/APCA/")
+(desc AD-APCAContrastCalculator "Advanced Perceptual Contrast Algorithm. The next-generation contrast method being developed for WCAG 3.0. More accurate than current ratios.")
+
+(isa AD-ColorAccessibilityWorkflows ReferenceWork)
+(title AD-ColorAccessibilityWorkflows "Color Accessibility Workflows")
+(author AD-ColorAccessibilityWorkflows "Geri Coady")
+(resourceType AD-ColorAccessibilityWorkflows book)
+(level AD-ColorAccessibilityWorkflows beginner)
+(section AD-ColorAccessibilityWorkflows ColorTheory)
+(url AD-ColorAccessibilityWorkflows "https://abookapart.com/products/color-accessibility-workflows")
+(desc AD-ColorAccessibilityWorkflows "Practical guide to designing with color accessibility in mind. Testing tools, patterns, and common pitfalls.")
+
+
+;; ── Color in UI ──
+
+(isa AD-MaterialDesignDynamicColor ReferenceWork)
+(title AD-MaterialDesignDynamicColor "Material Design 3: Dynamic Color")
+(author AD-MaterialDesignDynamicColor "Google")
+(resourceType AD-MaterialDesignDynamicColor notes)
+(level AD-MaterialDesignDynamicColor intermediate)
+(section AD-MaterialDesignDynamicColor ColorTheory)
+(url AD-MaterialDesignDynamicColor "https://m3.material.io/styles/color/dynamic-color/overview")
+(desc AD-MaterialDesignDynamicColor "Google's system for generating personalized color schemes from a single seed color. Tonal palettes and color roles.")
+
+(isa AD-DarkModeDesignGuidelines ReferenceWork)
+(title AD-DarkModeDesignGuidelines "Dark Mode Design Guidelines")
+(author AD-DarkModeDesignGuidelines "Apple Human Interface Guidelines")
+(resourceType AD-DarkModeDesignGuidelines notes)
+(level AD-DarkModeDesignGuidelines beginner)
+(section AD-DarkModeDesignGuidelines ColorTheory)
+(url AD-DarkModeDesignGuidelines "https://developer.apple.com/design/human-interface-guidelines/dark-mode")
+(desc AD-DarkModeDesignGuidelines "Apple's comprehensive dark mode guidance. Semantic colors, elevated surfaces, vibrancy, and accessibility considerations.")
+
+(isa AD-DesigningSystematicColors ReferenceWork)
+(title AD-DesigningSystematicColors "Designing Systematic Colors")
+(author AD-DesigningSystematicColors "Linda Dong (Lyft)")
+(resourceType AD-DesigningSystematicColors notes)
+(level AD-DesigningSystematicColors intermediate)
+(section AD-DesigningSystematicColors ColorTheory)
+(url AD-DesigningSystematicColors "https://design.lyft.com/re-approaching-color-9e604ba22c88")
+(desc AD-DesigningSystematicColors "How Lyft rebuilt their color system. Perceptually uniform lightness curves, accessibility-first, and programmatic generation.")
+
+(isa AD-RadixColors ReferenceWork)
+(title AD-RadixColors "Radix Colors")
+(author AD-RadixColors "Modulz")
+(resourceType AD-RadixColors code)
+(level AD-RadixColors intermediate)
+(section AD-RadixColors ColorTheory)
+(url AD-RadixColors "https://www.radix-ui.com/colors")
+(desc AD-RadixColors "Open-source color system for building design systems. 12-step scales for backgrounds, interactive components, borders, and text.")
+
+(isa AD-OpenColor ReferenceWork)
+(title AD-OpenColor "Open Color")
+(author AD-OpenColor "yeun")
+(resourceType AD-OpenColor code)
+(level AD-OpenColor beginner)
+(section AD-OpenColor ColorTheory)
+(url AD-OpenColor "https://yeun.github.io/open-color/")
+(desc AD-OpenColor "Open-source color scheme optimized for UI design. 12 hues with 10 lightness steps each, designed for consistency.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 6: HUMAN-COMPUTER INTERACTION
+;; Foundational HCI, cognition, usability, interaction models, a11y
+;; ════════════════════════════════════════════════════════════
+
+;; ── Foundational HCI ──
+
+(isa AD-TheDesignEverydayThings ReferenceWork)
+(title AD-TheDesignEverydayThings "The Design of Everyday Things")
+(author AD-TheDesignEverydayThings "Don Norman")
+(resourceType AD-TheDesignEverydayThings book)
+(level AD-TheDesignEverydayThings beginner)
+(section AD-TheDesignEverydayThings HumanComputerInteraction)
+(url AD-TheDesignEverydayThings "https://www.goodreads.com/book/show/840.The_Design_of_Everyday_Things")
+(desc AD-TheDesignEverydayThings "The foundational HCI text. Affordances, signifiers, mappings, feedback, and conceptual models. Required reading for every designer.")
+
+(isa AD-DesigningTheUserInterface ReferenceWork)
+(title AD-DesigningTheUserInterface "Designing the User Interface")
+(author AD-DesigningTheUserInterface "Ben Shneiderman, Catherine Plaisant, et al.")
+(resourceType AD-DesigningTheUserInterface book)
+(level AD-DesigningTheUserInterface intermediate)
+(section AD-DesigningTheUserInterface HumanComputerInteraction)
+(url AD-DesigningTheUserInterface "https://www.cs.umd.edu/~ben/goldenrules.html")
+(desc AD-DesigningTheUserInterface "Comprehensive HCI textbook. Eight golden rules of interface design, direct manipulation, and information visualization.")
+
+(isa AD-AboutFaceTheEssentials ReferenceWork)
+(title AD-AboutFaceTheEssentials "About Face: The Essentials of Interaction Design")
+(author AD-AboutFaceTheEssentials "Alan Cooper, Robert Reimann & David Cronin")
+(resourceType AD-AboutFaceTheEssentials book)
+(level AD-AboutFaceTheEssentials intermediate)
+(section AD-AboutFaceTheEssentials HumanComputerInteraction)
+(url AD-AboutFaceTheEssentials "https://www.goodreads.com/book/show/289062.About_Face_3")
+(desc AD-AboutFaceTheEssentials "Goal-directed design methodology. Personas, scenarios, and interaction design principles for digital products.")
+
+(isa AD-TheHumaneInterface ReferenceWork)
+(title AD-TheHumaneInterface "The Humane Interface")
+(author AD-TheHumaneInterface "Jef Raskin")
+(resourceType AD-TheHumaneInterface book)
+(level AD-TheHumaneInterface intermediate)
+(section AD-TheHumaneInterface HumanComputerInteraction)
+(url AD-TheHumaneInterface "https://www.goodreads.com/book/show/344726.The_Humane_Interface")
+(desc AD-TheHumaneInterface "Radical rethinking of interface design by the creator of the Macintosh project. Modes, habituation, and cognetics.")
+
+(isa AD-HumanComputerInteraction5440 ReferenceWork)
+(title AD-HumanComputerInteraction5440 "Human-Computer Interaction (CS 5440)")
+(author AD-HumanComputerInteraction5440 "Jeff Bigham (CMU)")
+(resourceType AD-HumanComputerInteraction5440 course)
+(level AD-HumanComputerInteraction5440 beginner)
+(section AD-HumanComputerInteraction5440 HumanComputerInteraction)
+(url AD-HumanComputerInteraction5440 "https://www.youtube.com/playlist?list=PLumQbMONBEG_2oKVKFAVCTmRhVfkaPr3C")
+(desc AD-HumanComputerInteraction5440 "Carnegie Mellon HCI course. Covers design thinking, prototyping, evaluation, accessibility, and AI in HCI.")
+
+
+;; ── Cognitive Psychology ──
+
+(isa AD-DesigningWithTheMind ReferenceWork)
+(title AD-DesigningWithTheMind "Designing with the Mind in Mind")
+(author AD-DesigningWithTheMind "Jeff Johnson")
+(resourceType AD-DesigningWithTheMind book)
+(level AD-DesigningWithTheMind beginner)
+(section AD-DesigningWithTheMind HumanComputerInteraction)
+(url AD-DesigningWithTheMind "https://www.goodreads.com/book/show/8564020-designing-with-the-mind-in-mind")
+(desc AD-DesigningWithTheMind "Cognitive psychology principles applied to UI design. Perception, attention, memory, learning, and decision-making for designers.")
+
+(isa AD-100ThingsEveryDesigner ReferenceWork)
+(title AD-100ThingsEveryDesigner "100 Things Every Designer Needs to Know About People")
+(author AD-100ThingsEveryDesigner "Susan Weinschenk")
+(resourceType AD-100ThingsEveryDesigner book)
+(level AD-100ThingsEveryDesigner beginner)
+(section AD-100ThingsEveryDesigner HumanComputerInteraction)
+(url AD-100ThingsEveryDesigner "https://www.goodreads.com/book/show/10003966-100-things-every-designer-needs-to-know-about-people")
+(desc AD-100ThingsEveryDesigner "Accessible survey of psychology for designers. How people see, read, remember, think, feel, decide, and are motivated.")
+
+(isa AD-CognitiveLoadTheory ReferenceWork)
+(title AD-CognitiveLoadTheory "Cognitive Load Theory in UX")
+(author AD-CognitiveLoadTheory "Kathryn Whitenton, NNG")
+(resourceType AD-CognitiveLoadTheory notes)
+(level AD-CognitiveLoadTheory beginner)
+(section AD-CognitiveLoadTheory HumanComputerInteraction)
+(url AD-CognitiveLoadTheory "https://www.nngroup.com/articles/minimize-cognitive-load/")
+(desc AD-CognitiveLoadTheory "How to minimize cognitive load in interfaces. Intrinsic, extraneous, and germane load applied to UX design decisions.")
+
+(isa AD-MillersLawTheMagical ReferenceWork)
+(title AD-MillersLawTheMagical "Miller's Law: The Magical Number Seven")
+(author AD-MillersLawTheMagical "George A. Miller")
+(resourceType AD-MillersLawTheMagical paper)
+(level AD-MillersLawTheMagical intermediate)
+(section AD-MillersLawTheMagical HumanComputerInteraction)
+(url AD-MillersLawTheMagical "https://psycnet.apa.org/record/1957-02914-001")
+(desc AD-MillersLawTheMagical "The classic paper on working memory capacity. Often misinterpreted — it's about chunking, not about limiting menus to 7 items.")
+
+(isa AD-MentalModelsNNG ReferenceWork)
+(title AD-MentalModelsNNG "Mental Models (NNG)")
+(author AD-MentalModelsNNG "Jakob Nielsen")
+(resourceType AD-MentalModelsNNG notes)
+(level AD-MentalModelsNNG beginner)
+(section AD-MentalModelsNNG HumanComputerInteraction)
+(url AD-MentalModelsNNG "https://www.nngroup.com/articles/mental-models/")
+(desc AD-MentalModelsNNG "How users' mental models of a system differ from the actual system model, and why this gap causes usability problems.")
+
+
+;; ── Usability Engineering ──
+
+(isa AD-UsabilityEngineering ReferenceWork)
+(title AD-UsabilityEngineering "Usability Engineering")
+(author AD-UsabilityEngineering "Jakob Nielsen")
+(resourceType AD-UsabilityEngineering book)
+(level AD-UsabilityEngineering intermediate)
+(section AD-UsabilityEngineering HumanComputerInteraction)
+(url AD-UsabilityEngineering "https://www.goodreads.com/book/show/1867.Usability_Engineering")
+(desc AD-UsabilityEngineering "The foundational usability text. Defines usability metrics, heuristic evaluation, and discount usability testing methods.")
+
+(isa AD-10UsabilityHeuristicsFor ReferenceWork)
+(title AD-10UsabilityHeuristicsFor "10 Usability Heuristics for User Interface Design")
+(author AD-10UsabilityHeuristicsFor "Jakob Nielsen")
+(resourceType AD-10UsabilityHeuristicsFor notes)
+(level AD-10UsabilityHeuristicsFor beginner)
+(section AD-10UsabilityHeuristicsFor HumanComputerInteraction)
+(url AD-10UsabilityHeuristicsFor "https://www.nngroup.com/articles/ten-usability-heuristics/")
+(desc AD-10UsabilityHeuristicsFor "The most-used heuristic evaluation framework. Visibility, match, control, consistency, error prevention, recognition, flexibility, aesthetics, recovery, help.")
+
+(isa AD-RocketSurgeryMadeEasy ReferenceWork)
+(title AD-RocketSurgeryMadeEasy "Rocket Surgery Made Easy")
+(author AD-RocketSurgeryMadeEasy "Steve Krug")
+(resourceType AD-RocketSurgeryMadeEasy book)
+(level AD-RocketSurgeryMadeEasy beginner)
+(section AD-RocketSurgeryMadeEasy HumanComputerInteraction)
+(url AD-RocketSurgeryMadeEasy "https://www.goodreads.com/book/show/6434440-rocket-surgery-made-easy")
+(desc AD-RocketSurgeryMadeEasy "Practical guide to DIY usability testing. How to run a test, what to look for, and how to prioritize fixes.")
+
+(isa AD-MeasuringTheUserExperience ReferenceWork)
+(title AD-MeasuringTheUserExperience "Measuring the User Experience")
+(author AD-MeasuringTheUserExperience "Tom Tullis & Bill Albert")
+(resourceType AD-MeasuringTheUserExperience book)
+(level AD-MeasuringTheUserExperience intermediate)
+(section AD-MeasuringTheUserExperience HumanComputerInteraction)
+(url AD-MeasuringTheUserExperience "https://www.goodreads.com/book/show/3025900-measuring-the-user-experience")
+(desc AD-MeasuringTheUserExperience "Quantitative methods for UX. Task success, time-on-task, errors, satisfaction, SUS scores, and statistical analysis.")
+
+(isa AD-SystemUsabilityScaleSUS ReferenceWork)
+(title AD-SystemUsabilityScaleSUS "System Usability Scale (SUS)")
+(author AD-SystemUsabilityScaleSUS "John Brooke")
+(resourceType AD-SystemUsabilityScaleSUS paper)
+(level AD-SystemUsabilityScaleSUS beginner)
+(section AD-SystemUsabilityScaleSUS HumanComputerInteraction)
+(url AD-SystemUsabilityScaleSUS "https://www.usability.gov/how-to-and-tools/methods/system-usability-scale.html")
+(desc AD-SystemUsabilityScaleSUS "The industry-standard quick usability questionnaire. 10 questions producing a 0-100 score. Simple, reliable, and widely benchmarked.")
+
+
+;; ── Interaction Models ──
+
+(isa AD-FittssLawModelingMovement ReferenceWork)
+(title AD-FittssLawModelingMovement "Fitts's Law: Modeling Movement Time in HCI")
+(author AD-FittssLawModelingMovement "Paul Fitts")
+(resourceType AD-FittssLawModelingMovement paper)
+(level AD-FittssLawModelingMovement beginner)
+(section AD-FittssLawModelingMovement HumanComputerInteraction)
+(url AD-FittssLawModelingMovement "https://www.interaction-design.org/literature/article/fitts-s-law-the-importance-of-size-and-distance-in-ui-design")
+(desc AD-FittssLawModelingMovement "The time to acquire a target is a function of distance and size. Foundational for button sizing, touch targets, and menu design.")
+
+(isa AD-HicksLawMakingThe ReferenceWork)
+(title AD-HicksLawMakingThe "Hick's Law: Making the Choice Easier")
+(author AD-HicksLawMakingThe "William Edmund Hick")
+(resourceType AD-HicksLawMakingThe paper)
+(level AD-HicksLawMakingThe beginner)
+(section AD-HicksLawMakingThe HumanComputerInteraction)
+(url AD-HicksLawMakingThe "https://www.interaction-design.org/literature/article/hick-s-law-making-the-choice-easier")
+(desc AD-HicksLawMakingThe "Decision time increases logarithmically with the number of choices. Applies to navigation menus, option sets, and feature disclosure.")
+
+(isa AD-DirectManipulationInterfaces ReferenceWork)
+(title AD-DirectManipulationInterfaces "Direct Manipulation Interfaces")
+(author AD-DirectManipulationInterfaces "Edwin Hutchins, James Hollan & Don Norman")
+(resourceType AD-DirectManipulationInterfaces paper)
+(level AD-DirectManipulationInterfaces intermediate)
+(section AD-DirectManipulationInterfaces HumanComputerInteraction)
+(url AD-DirectManipulationInterfaces "https://dl.acm.org/doi/10.1207/s15327051hci0104_2")
+(desc AD-DirectManipulationInterfaces "The theory behind direct manipulation: continuous representation, physical actions, rapid feedback. Why drag-and-drop feels natural.")
+
+(isa AD-Laws ReferenceWork)
+(title AD-Laws "Laws of UX")
+(author AD-Laws "Jon Yablonski")
+(resourceType AD-Laws notes)
+(level AD-Laws beginner)
+(section AD-Laws HumanComputerInteraction)
+(url AD-Laws "https://lawsofux.com/")
+(desc AD-Laws "Beautifully designed collection of UX laws: Fitts, Hick, Jakob, Miller, Doherty, Tesler, and more. Each with clear explanations and examples.")
+
+(isa AD-TheGulfExecutionAnd ReferenceWork)
+(title AD-TheGulfExecutionAnd "The Gulf of Execution and Evaluation")
+(author AD-TheGulfExecutionAnd "Don Norman")
+(resourceType AD-TheGulfExecutionAnd notes)
+(level AD-TheGulfExecutionAnd beginner)
+(section AD-TheGulfExecutionAnd HumanComputerInteraction)
+(url AD-TheGulfExecutionAnd "https://www.nngroup.com/articles/two-ux-gulfs-evaluation-execution/")
+(desc AD-TheGulfExecutionAnd "Norman's model of the gap between user intentions and system actions (execution) and between system state and user understanding (evaluation).")
+
+
+;; ── Accessibility ──
+
+(isa AD-WebContentAccessibilityGuidelines ReferenceWork)
+(title AD-WebContentAccessibilityGuidelines "Web Content Accessibility Guidelines (WCAG) 2.2")
+(author AD-WebContentAccessibilityGuidelines "W3C WAI")
+(resourceType AD-WebContentAccessibilityGuidelines notes)
+(level AD-WebContentAccessibilityGuidelines intermediate)
+(section AD-WebContentAccessibilityGuidelines HumanComputerInteraction)
+(url AD-WebContentAccessibilityGuidelines "https://www.w3.org/TR/WCAG22/")
+(desc AD-WebContentAccessibilityGuidelines "The international standard for web accessibility. Perceivable, operable, understandable, and robust (POUR) principles.")
+
+(isa AD-InclusiveDesignPrinciples ReferenceWork)
+(title AD-InclusiveDesignPrinciples "Inclusive Design Principles")
+(author AD-InclusiveDesignPrinciples "Paciello Group")
+(resourceType AD-InclusiveDesignPrinciples notes)
+(level AD-InclusiveDesignPrinciples beginner)
+(section AD-InclusiveDesignPrinciples HumanComputerInteraction)
+(url AD-InclusiveDesignPrinciples "https://inclusivedesignprinciples.org/")
+(desc AD-InclusiveDesignPrinciples "Seven principles for designing inclusive experiences: comparable, considerate, consistent, controlled, contextual, contributory, and compliant.")
+
+(isa AD-MismatchHowInclusionShapes ReferenceWork)
+(title AD-MismatchHowInclusionShapes "Mismatch: How Inclusion Shapes Design")
+(author AD-MismatchHowInclusionShapes "Kat Holmes")
+(resourceType AD-MismatchHowInclusionShapes book)
+(level AD-MismatchHowInclusionShapes beginner)
+(section AD-MismatchHowInclusionShapes HumanComputerInteraction)
+(url AD-MismatchHowInclusionShapes "https://mitpress.mit.edu/9780262539487/mismatch/")
+(desc AD-MismatchHowInclusionShapes "Reframes disability as a mismatched interaction between a person and their environment. Inclusion as a design driver.")
+
+(isa AD-TheAccessibilityStyledForm ReferenceWork)
+(title AD-TheAccessibilityStyledForm "The Accessibility of Styled Form Controls")
+(author AD-TheAccessibilityStyledForm "Scott O'Hara")
+(resourceType AD-TheAccessibilityStyledForm code)
+(level AD-TheAccessibilityStyledForm intermediate)
+(section AD-TheAccessibilityStyledForm HumanComputerInteraction)
+(url AD-TheAccessibilityStyledForm "https://scottaohara.github.io/a11y_styled_form_controls/")
+(desc AD-TheAccessibilityStyledForm "Accessible implementations of custom-styled form controls. Checkboxes, radios, switches, selects, and range sliders.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 7: GAME THEORY & DECISION DESIGN
+;; Decision theory, incentives, behavioral economics, gamification
+;; ════════════════════════════════════════════════════════════
+
+;; ── Decision Theory Foundations ──
+
+(isa AD-TheoryGamesAndEconomic ReferenceWork)
+(title AD-TheoryGamesAndEconomic "Theory of Games and Economic Behavior")
+(author AD-TheoryGamesAndEconomic "John von Neumann & Oskar Morgenstern")
+(resourceType AD-TheoryGamesAndEconomic book)
+(level AD-TheoryGamesAndEconomic advanced)
+(section AD-TheoryGamesAndEconomic GameTheoryDecisionDesign)
+(url AD-TheoryGamesAndEconomic "https://press.princeton.edu/books/paperback/9780691130613/theory-of-games-and-economic-behavior")
+(desc AD-TheoryGamesAndEconomic "The founding text of game theory and decision theory. Establishes expected utility, minimax, and the mathematical framework for strategic interaction.")
+
+(isa AD-TheFoundationsStatistics ReferenceWork)
+(title AD-TheFoundationsStatistics "The Foundations of Statistics")
+(author AD-TheFoundationsStatistics "Leonard Savage")
+(resourceType AD-TheFoundationsStatistics book)
+(level AD-TheFoundationsStatistics advanced)
+(section AD-TheFoundationsStatistics GameTheoryDecisionDesign)
+(url AD-TheFoundationsStatistics "https://www.goodreads.com/book/show/1613tried.The_Foundations_of_Statistics")
+(desc AD-TheFoundationsStatistics "Subjective expected utility theory. How rational agents should make decisions under uncertainty. Foundation for Bayesian decision theory.")
+
+(isa AD-RationalChoiceTheoryStanford ReferenceWork)
+(title AD-RationalChoiceTheoryStanford "Rational Choice Theory (Stanford Encyclopedia)")
+(author AD-RationalChoiceTheoryStanford "Sven Ove Hansson")
+(resourceType AD-RationalChoiceTheoryStanford notes)
+(level AD-RationalChoiceTheoryStanford intermediate)
+(section AD-RationalChoiceTheoryStanford GameTheoryDecisionDesign)
+(url AD-RationalChoiceTheoryStanford "https://plato.stanford.edu/entries/rationality-instrumental/")
+(desc AD-RationalChoiceTheoryStanford "Comprehensive overview of instrumental rationality and rational choice. The theoretical basis for understanding how users \"should\" choose.")
+
+(isa AD-DecisionTheoryBriefIntroduction ReferenceWork)
+(title AD-DecisionTheoryBriefIntroduction "Decision Theory: A Brief Introduction")
+(author AD-DecisionTheoryBriefIntroduction "Sven Ove Hansson")
+(resourceType AD-DecisionTheoryBriefIntroduction paper)
+(level AD-DecisionTheoryBriefIntroduction beginner)
+(section AD-DecisionTheoryBriefIntroduction GameTheoryDecisionDesign)
+(url AD-DecisionTheoryBriefIntroduction "https://people.kth.se/~sMDCoh/decisiontheory.pdf")
+(desc AD-DecisionTheoryBriefIntroduction "Accessible introduction to normative and descriptive decision theory. Good starting point before behavioral economics.")
+
+
+;; ── Incentive Design ──
+
+(isa AD-NudgeImprovingDecisionsAbout ReferenceWork)
+(title AD-NudgeImprovingDecisionsAbout "Nudge: Improving Decisions About Health, Wealth, and Happiness")
+(author AD-NudgeImprovingDecisionsAbout "Richard Thaler & Cass Sunstein")
+(resourceType AD-NudgeImprovingDecisionsAbout book)
+(level AD-NudgeImprovingDecisionsAbout beginner)
+(section AD-NudgeImprovingDecisionsAbout GameTheoryDecisionDesign)
+(url AD-NudgeImprovingDecisionsAbout "https://www.goodreads.com/book/show/3450744-nudge")
+(desc AD-NudgeImprovingDecisionsAbout "The foundational text on choice architecture. How the structure of choices influences decisions. Default effects, feedback, mapping, and structuring.")
+
+(isa AD-HookedHowBuildHabit ReferenceWork)
+(title AD-HookedHowBuildHabit "Hooked: How to Build Habit-Forming Products")
+(author AD-HookedHowBuildHabit "Nir Eyal")
+(resourceType AD-HookedHowBuildHabit book)
+(level AD-HookedHowBuildHabit beginner)
+(section AD-HookedHowBuildHabit GameTheoryDecisionDesign)
+(url AD-HookedHowBuildHabit "https://www.goodreads.com/book/show/22668729-hooked")
+(desc AD-HookedHowBuildHabit "The Hook Model: trigger, action, variable reward, investment. Framework for designing engaging products (use ethically).")
+
+(isa AD-EvilDesign ReferenceWork)
+(title AD-EvilDesign "Evil by Design")
+(author AD-EvilDesign "Chris Nodder")
+(resourceType AD-EvilDesign book)
+(level AD-EvilDesign intermediate)
+(section AD-EvilDesign GameTheoryDecisionDesign)
+(url AD-EvilDesign "https://www.goodreads.com/book/show/17261244-evil-by-design")
+(desc AD-EvilDesign "How persuasive design patterns work — and when they cross into manipulation. Maps the seven deadly sins to design patterns.")
+
+(isa AD-DarkPatternsDeceptiveDesign ReferenceWork)
+(title AD-DarkPatternsDeceptiveDesign "Dark Patterns: Deceptive Design")
+(author AD-DarkPatternsDeceptiveDesign "Harry Brignull")
+(resourceType AD-DarkPatternsDeceptiveDesign notes)
+(level AD-DarkPatternsDeceptiveDesign beginner)
+(section AD-DarkPatternsDeceptiveDesign GameTheoryDecisionDesign)
+(url AD-DarkPatternsDeceptiveDesign "https://www.deceptive.design/")
+(desc AD-DarkPatternsDeceptiveDesign "Taxonomy of deceptive design patterns. Understanding dark patterns is essential for ethical design — know them to avoid them.")
+
+(isa AD-PersuasiveTechnology ReferenceWork)
+(title AD-PersuasiveTechnology "Persuasive Technology")
+(author AD-PersuasiveTechnology "B.J. Fogg")
+(resourceType AD-PersuasiveTechnology book)
+(level AD-PersuasiveTechnology intermediate)
+(section AD-PersuasiveTechnology GameTheoryDecisionDesign)
+(url AD-PersuasiveTechnology "https://www.goodreads.com/book/show/227603.Persuasive_Technology")
+(desc AD-PersuasiveTechnology "How computers can be designed to influence attitudes and behaviors. The Fogg Behavior Model: motivation, ability, and triggers.")
+
+
+;; ── Behavioral Economics ──
+
+(isa AD-ThinkingFastAndSlow ReferenceWork)
+(title AD-ThinkingFastAndSlow "Thinking, Fast and Slow")
+(author AD-ThinkingFastAndSlow "Daniel Kahneman")
+(resourceType AD-ThinkingFastAndSlow book)
+(level AD-ThinkingFastAndSlow beginner)
+(section AD-ThinkingFastAndSlow GameTheoryDecisionDesign)
+(url AD-ThinkingFastAndSlow "https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow")
+(desc AD-ThinkingFastAndSlow "Nobel laureate's synthesis of decades of research. System 1 (fast, intuitive) vs. System 2 (slow, deliberate). Biases, heuristics, and prospect theory.")
+
+(isa AD-PredictablyIrrational ReferenceWork)
+(title AD-PredictablyIrrational "Predictably Irrational")
+(author AD-PredictablyIrrational "Dan Ariely")
+(resourceType AD-PredictablyIrrational book)
+(level AD-PredictablyIrrational beginner)
+(section AD-PredictablyIrrational GameTheoryDecisionDesign)
+(url AD-PredictablyIrrational "https://www.goodreads.com/book/show/1713426.Predictably_Irrational")
+(desc AD-PredictablyIrrational "Systematic irrationality in human decision-making. Decoy effect, anchoring, free pricing, and social vs. market norms. Directly applicable to UI design.")
+
+(isa AD-MisbehavingTheMakingBehavioral ReferenceWork)
+(title AD-MisbehavingTheMakingBehavioral "Misbehaving: The Making of Behavioral Economics")
+(author AD-MisbehavingTheMakingBehavioral "Richard Thaler")
+(resourceType AD-MisbehavingTheMakingBehavioral book)
+(level AD-MisbehavingTheMakingBehavioral beginner)
+(section AD-MisbehavingTheMakingBehavioral GameTheoryDecisionDesign)
+(url AD-MisbehavingTheMakingBehavioral "https://www.goodreads.com/book/show/26530355-misbehaving")
+(desc AD-MisbehavingTheMakingBehavioral "How behavioral economics emerged as a field. Mental accounting, endowment effect, fairness, and the gap between Econs and Humans.")
+
+(isa AD-ProspectTheoryAnalysisDecision ReferenceWork)
+(title AD-ProspectTheoryAnalysisDecision "Prospect Theory: An Analysis of Decision Under Risk")
+(author AD-ProspectTheoryAnalysisDecision "Daniel Kahneman & Amos Tversky")
+(resourceType AD-ProspectTheoryAnalysisDecision paper)
+(level AD-ProspectTheoryAnalysisDecision advanced)
+(section AD-ProspectTheoryAnalysisDecision GameTheoryDecisionDesign)
+(url AD-ProspectTheoryAnalysisDecision "https://www.jstor.org/stable/1914185")
+(desc AD-ProspectTheoryAnalysisDecision "The paper that launched behavioral economics. Loss aversion, reference dependence, and the S-shaped value function.")
+
+(isa AD-CognitiveBiasesDesign ReferenceWork)
+(title AD-CognitiveBiasesDesign "Cognitive Biases in UX Design")
+(author AD-CognitiveBiasesDesign "David Dylan Thomas")
+(resourceType AD-CognitiveBiasesDesign book)
+(level AD-CognitiveBiasesDesign beginner)
+(section AD-CognitiveBiasesDesign GameTheoryDecisionDesign)
+(url AD-CognitiveBiasesDesign "https://abookapart.com/products/design-for-cognitive-bias")
+(desc AD-CognitiveBiasesDesign "Direct application of cognitive biases to UX. Framing, anchoring, confirmation bias, and sunk cost applied to interface design decisions.")
+
+
+;; ── Convex Hull & Strategy Spaces ──
+
+(isa AD-ComputationalGeometryAlgorithmsAnd ReferenceWork)
+(title AD-ComputationalGeometryAlgorithmsAnd "Computational Geometry: Algorithms and Applications")
+(author AD-ComputationalGeometryAlgorithmsAnd "Mark de Berg et al.")
+(resourceType AD-ComputationalGeometryAlgorithmsAnd book)
+(level AD-ComputationalGeometryAlgorithmsAnd advanced)
+(section AD-ComputationalGeometryAlgorithmsAnd GameTheoryDecisionDesign)
+(url AD-ComputationalGeometryAlgorithmsAnd "https://www.cs.uu.nl/geobook/")
+(desc AD-ComputationalGeometryAlgorithmsAnd "Definitive text on computational geometry including convex hull algorithms. The mathematical foundation for understanding design space boundaries.")
+
+(isa AD-MultiObjectiveOptimizationDesign ReferenceWork)
+(title AD-MultiObjectiveOptimizationDesign "Multi-Objective Optimization in Design")
+(author AD-MultiObjectiveOptimizationDesign "various")
+(resourceType AD-MultiObjectiveOptimizationDesign paper)
+(level AD-MultiObjectiveOptimizationDesign advanced)
+(section AD-MultiObjectiveOptimizationDesign GameTheoryDecisionDesign)
+(url AD-MultiObjectiveOptimizationDesign "https://link.springer.com/article/10.1007/s00158-015-1374-2")
+(desc AD-MultiObjectiveOptimizationDesign "Pareto frontiers in design: the boundary of designs where no objective can be improved without worsening another. The convex hull of the design space.")
+
+(isa AD-DesignSpaceExploration ReferenceWork)
+(title AD-DesignSpaceExploration "Design Space Exploration")
+(author AD-DesignSpaceExploration "Hartmut Ehrig et al.")
+(resourceType AD-DesignSpaceExploration notes)
+(level AD-DesignSpaceExploration intermediate)
+(section AD-DesignSpaceExploration GameTheoryDecisionDesign)
+(url AD-DesignSpaceExploration "https://www.interaction-design.org/literature/topics/design-space-analysis")
+(desc AD-DesignSpaceExploration "Systematic exploration of the space of possible designs. Trade-off analysis, design dimensions, and mapping the boundaries of possibility.")
+
+
+;; ── Gamification Frameworks ──
+
+(isa AD-ActionableGamificationBeyondPoints ReferenceWork)
+(title AD-ActionableGamificationBeyondPoints "Actionable Gamification: Beyond Points, Badges, and Leaderboards")
+(author AD-ActionableGamificationBeyondPoints "Yu-kai Chou")
+(resourceType AD-ActionableGamificationBeyondPoints book)
+(level AD-ActionableGamificationBeyondPoints beginner)
+(section AD-ActionableGamificationBeyondPoints GameTheoryDecisionDesign)
+(url AD-ActionableGamificationBeyondPoints "https://www.goodreads.com/book/show/25416321-actionable-gamification")
+(desc AD-ActionableGamificationBeyondPoints "The Octalysis framework: 8 core drives of motivation. Goes beyond superficial gamification to understand intrinsic motivation.")
+
+(isa AD-RealityBroken ReferenceWork)
+(title AD-RealityBroken "Reality Is Broken")
+(author AD-RealityBroken "Jane McGonigal")
+(resourceType AD-RealityBroken book)
+(level AD-RealityBroken beginner)
+(section AD-RealityBroken GameTheoryDecisionDesign)
+(url AD-RealityBroken "https://www.goodreads.com/book/show/7821348-reality-is-broken")
+(desc AD-RealityBroken "Why games make us better and how they can change the world. The psychology of voluntary engagement and intrinsic motivation.")
+
+(isa AD-FlowThePsychologyOptimal ReferenceWork)
+(title AD-FlowThePsychologyOptimal "Flow: The Psychology of Optimal Experience")
+(author AD-FlowThePsychologyOptimal "Mihaly Csikszentmihalyi")
+(resourceType AD-FlowThePsychologyOptimal book)
+(level AD-FlowThePsychologyOptimal beginner)
+(section AD-FlowThePsychologyOptimal GameTheoryDecisionDesign)
+(url AD-FlowThePsychologyOptimal "https://www.goodreads.com/book/show/66354.Flow")
+(desc AD-FlowThePsychologyOptimal "The science of optimal experience. Flow state requires clear goals, immediate feedback, and balance between challenge and skill — directly applicable to UX.")
+
+(isa AD-ForTheWinHow ReferenceWork)
+(title AD-ForTheWinHow "For the Win: How Game Thinking Can Revolutionize Your Business")
+(author AD-ForTheWinHow "Kevin Werbach & Dan Hunter")
+(resourceType AD-ForTheWinHow book)
+(level AD-ForTheWinHow beginner)
+(section AD-ForTheWinHow GameTheoryDecisionDesign)
+(url AD-ForTheWinHow "https://www.goodreads.com/book/show/15841464-for-the-win")
+(desc AD-ForTheWinHow "Framework for applying game elements to business contexts. Mechanics, dynamics, components, and the player journey.")
+
+(isa AD-SelfDeterminationTheory ReferenceWork)
+(title AD-SelfDeterminationTheory "Self-Determination Theory in UX")
+(author AD-SelfDeterminationTheory "Raluca Budiu, NNG")
+(resourceType AD-SelfDeterminationTheory notes)
+(level AD-SelfDeterminationTheory beginner)
+(section AD-SelfDeterminationTheory GameTheoryDecisionDesign)
+(url AD-SelfDeterminationTheory "https://www.nngroup.com/articles/self-determination-theory-ux/")
+(desc AD-SelfDeterminationTheory "Autonomy, competence, and relatedness applied to UX. The psychological needs framework that underlies sustainable engagement.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 8: PERCEPTION & COGNITION
+;; Gestalt, visual hierarchy, attention, emotion, semiotics
+;; ════════════════════════════════════════════════════════════
+
+;; ── Gestalt Principles ──
+
+(isa AD-ArtAndVisualPerception ReferenceWork)
+(title AD-ArtAndVisualPerception "Art and Visual Perception")
+(author AD-ArtAndVisualPerception "Rudolf Arnheim")
+(resourceType AD-ArtAndVisualPerception book)
+(level AD-ArtAndVisualPerception intermediate)
+(section AD-ArtAndVisualPerception PerceptionCognition)
+(url AD-ArtAndVisualPerception "https://www.goodreads.com/book/show/6186.Art_and_Visual_Perception")
+(desc AD-ArtAndVisualPerception "The foundational text on visual perception in art and design. Balance, shape, form, growth, space, light, color, movement, tension, and expression.")
+
+(isa AD-GestaltPrinciplesForData ReferenceWork)
+(title AD-GestaltPrinciplesForData "Gestalt Principles for Data Visualization")
+(author AD-GestaltPrinciplesForData "Nadieh Bremer")
+(resourceType AD-GestaltPrinciplesForData video)
+(level AD-GestaltPrinciplesForData beginner)
+(section AD-GestaltPrinciplesForData PerceptionCognition)
+(url AD-GestaltPrinciplesForData "https://www.youtube.com/watch?v=X3dUGvZFc5A")
+(desc AD-GestaltPrinciplesForData "Beautiful talk applying Gestalt principles to data visualization. Proximity, similarity, enclosure, connection, and continuity with visual examples.")
+
+(isa AD-GestaltPrinciplesDesign ReferenceWork)
+(title AD-GestaltPrinciplesDesign "Gestalt Principles in UI Design")
+(author AD-GestaltPrinciplesDesign "Aurora Harley, NNG")
+(resourceType AD-GestaltPrinciplesDesign notes)
+(level AD-GestaltPrinciplesDesign beginner)
+(section AD-GestaltPrinciplesDesign PerceptionCognition)
+(url AD-GestaltPrinciplesDesign "https://www.nngroup.com/articles/gestalt-proximity/")
+(desc AD-GestaltPrinciplesDesign "Series of articles applying each Gestalt principle to interface design. Practical examples showing proximity, similarity, and common region in real UIs.")
+
+(isa AD-UniversalPrinciplesDesign ReferenceWork)
+(title AD-UniversalPrinciplesDesign "Universal Principles of Design")
+(author AD-UniversalPrinciplesDesign "William Lidwell, Kritina Holden & Jill Butler")
+(resourceType AD-UniversalPrinciplesDesign book)
+(level AD-UniversalPrinciplesDesign beginner)
+(section AD-UniversalPrinciplesDesign PerceptionCognition)
+(url AD-UniversalPrinciplesDesign "https://www.goodreads.com/book/show/130730.Universal_Principles_of_Design")
+(desc AD-UniversalPrinciplesDesign "125 design principles including all Gestalt laws, with examples from architecture, product design, and visual communication.")
+
+(isa AD-LawsSimplicity ReferenceWork)
+(title AD-LawsSimplicity "Laws of Simplicity")
+(author AD-LawsSimplicity "John Maeda")
+(resourceType AD-LawsSimplicity book)
+(level AD-LawsSimplicity beginner)
+(section AD-LawsSimplicity PerceptionCognition)
+(url AD-LawsSimplicity "https://www.goodreads.com/book/show/225111.The_Laws_of_Simplicity")
+(desc AD-LawsSimplicity "Ten laws for simplifying complex systems: reduce, organize, time, learn, differences, context, emotion, trust, failure, and \"the one.\"")
+
+
+;; ── Visual Hierarchy ──
+
+(isa AD-VisualGrammar ReferenceWork)
+(title AD-VisualGrammar "Visual Grammar")
+(author AD-VisualGrammar "Christian Leborg")
+(resourceType AD-VisualGrammar book)
+(level AD-VisualGrammar beginner)
+(section AD-VisualGrammar PerceptionCognition)
+(url AD-VisualGrammar "https://www.goodreads.com/book/show/232413.Visual_Grammar")
+(desc AD-VisualGrammar "Concise taxonomy of visual elements and their relationships. Abstract objects, activities, and relations that form the basis of visual communication.")
+
+(isa AD-VisualThinkingForDesign ReferenceWork)
+(title AD-VisualThinkingForDesign "Visual Thinking for Design")
+(author AD-VisualThinkingForDesign "Colin Ware")
+(resourceType AD-VisualThinkingForDesign book)
+(level AD-VisualThinkingForDesign intermediate)
+(section AD-VisualThinkingForDesign PerceptionCognition)
+(url AD-VisualThinkingForDesign "https://www.goodreads.com/book/show/3657220-visual-thinking-for-design")
+(desc AD-VisualThinkingForDesign "How the visual system processes information for design. Pre-attentive processing, pattern perception, and visual queries.")
+
+(isa AD-LayoutEssentials100Design ReferenceWork)
+(title AD-LayoutEssentials100Design "Layout Essentials: 100 Design Principles")
+(author AD-LayoutEssentials100Design "Beth Tondreau")
+(resourceType AD-LayoutEssentials100Design book)
+(level AD-LayoutEssentials100Design beginner)
+(section AD-LayoutEssentials100Design PerceptionCognition)
+(url AD-LayoutEssentials100Design "https://www.goodreads.com/book/show/6411622-layout-essentials")
+(desc AD-LayoutEssentials100Design "Practical layout principles: grids, hierarchy, white space, typography, and the anatomy of effective page layouts.")
+
+(isa AD-PreAttentiveVisualProperties ReferenceWork)
+(title AD-PreAttentiveVisualProperties "Pre-Attentive Visual Properties in Visualization")
+(author AD-PreAttentiveVisualProperties "Christopher G. Healey")
+(resourceType AD-PreAttentiveVisualProperties notes)
+(level AD-PreAttentiveVisualProperties intermediate)
+(section AD-PreAttentiveVisualProperties PerceptionCognition)
+(url AD-PreAttentiveVisualProperties "https://www.csc2.ncsu.edu/faculty/healey/PP/")
+(desc AD-PreAttentiveVisualProperties "Interactive demonstration of pre-attentive visual properties: color, form, spatial position, and motion. What the eye detects in under 200ms.")
+
+
+;; ── Attention & Memory ──
+
+(isa AD-InformationVisualizationPerceptionFor ReferenceWork)
+(title AD-InformationVisualizationPerceptionFor "Information Visualization: Perception for Design")
+(author AD-InformationVisualizationPerceptionFor "Colin Ware")
+(resourceType AD-InformationVisualizationPerceptionFor book)
+(level AD-InformationVisualizationPerceptionFor advanced)
+(section AD-InformationVisualizationPerceptionFor PerceptionCognition)
+(url AD-InformationVisualizationPerceptionFor "https://www.goodreads.com/book/show/13677463-information-visualization")
+(desc AD-InformationVisualizationPerceptionFor "Definitive text on perception for visualization. Color, texture, motion, pattern, and how the visual brain creates meaning from data.")
+
+(isa AD-TheInvisibleGorilla ReferenceWork)
+(title AD-TheInvisibleGorilla "The Invisible Gorilla")
+(author AD-TheInvisibleGorilla "Christopher Chabris & Daniel Simons")
+(resourceType AD-TheInvisibleGorilla book)
+(level AD-TheInvisibleGorilla beginner)
+(section AD-TheInvisibleGorilla PerceptionCognition)
+(url AD-TheInvisibleGorilla "https://www.goodreads.com/book/show/7783191-the-invisible-gorilla")
+(desc AD-TheInvisibleGorilla "Inattentional blindness and the illusions of attention. Why users miss obvious UI elements and how to design for limited attention.")
+
+(isa AD-ChangeBlindnessUserInterfaces ReferenceWork)
+(title AD-ChangeBlindnessUserInterfaces "Change Blindness in User Interfaces")
+(author AD-ChangeBlindnessUserInterfaces "Jakob Nielsen")
+(resourceType AD-ChangeBlindnessUserInterfaces notes)
+(level AD-ChangeBlindnessUserInterfaces beginner)
+(section AD-ChangeBlindnessUserInterfaces PerceptionCognition)
+(url AD-ChangeBlindnessUserInterfaces "https://www.nngroup.com/articles/change-blindness/")
+(desc AD-ChangeBlindnessUserInterfaces "How users fail to notice changes on screen, even significant ones. Design implications for notifications, updates, and state changes.")
+
+(isa AD-RecognitionOverRecallUser ReferenceWork)
+(title AD-RecognitionOverRecallUser "Recognition Over Recall in User Interfaces")
+(author AD-RecognitionOverRecallUser "Raluca Budiu, NNG")
+(resourceType AD-RecognitionOverRecallUser notes)
+(level AD-RecognitionOverRecallUser beginner)
+(section AD-RecognitionOverRecallUser PerceptionCognition)
+(url AD-RecognitionOverRecallUser "https://www.nngroup.com/articles/recognition-and-recall/")
+(desc AD-RecognitionOverRecallUser "Why recognition is easier than recall and how to design interfaces that leverage this. Menus over commands, autocomplete over free text.")
+
+
+;; ── Emotional Design ──
+
+(isa AD-EmotionalDesign ReferenceWork)
+(title AD-EmotionalDesign "Emotional Design")
+(author AD-EmotionalDesign "Don Norman")
+(resourceType AD-EmotionalDesign book)
+(level AD-EmotionalDesign beginner)
+(section AD-EmotionalDesign PerceptionCognition)
+(url AD-EmotionalDesign "https://www.goodreads.com/book/show/841.Emotional_Design")
+(desc AD-EmotionalDesign "Three levels of design processing: visceral (appearance), behavioral (function), and reflective (meaning). Why attractive things work better.")
+
+(isa AD-DesigningForEmotion ReferenceWork)
+(title AD-DesigningForEmotion "Designing for Emotion")
+(author AD-DesigningForEmotion "Aarron Walter")
+(resourceType AD-DesigningForEmotion book)
+(level AD-DesigningForEmotion beginner)
+(section AD-DesigningForEmotion PerceptionCognition)
+(url AD-DesigningForEmotion "https://abookapart.com/products/designing-for-emotion")
+(desc AD-DesigningForEmotion "Maslow's hierarchy applied to UX: functional, reliable, usable, and pleasurable. How to design interfaces that create emotional connections.")
+
+(isa AD-SeductiveInteractionDesign ReferenceWork)
+(title AD-SeductiveInteractionDesign "Seductive Interaction Design")
+(author AD-SeductiveInteractionDesign "Stephen Anderson")
+(resourceType AD-SeductiveInteractionDesign book)
+(level AD-SeductiveInteractionDesign intermediate)
+(section AD-SeductiveInteractionDesign PerceptionCognition)
+(url AD-SeductiveInteractionDesign "https://www.goodreads.com/book/show/10273130-seductive-interaction-design")
+(desc AD-SeductiveInteractionDesign "Psychology of engagement in UX. Curiosity, feedback loops, playfulness, and the science of creating delightful interactions.")
+
+(isa AD-TheAestheticUsabilityEffect ReferenceWork)
+(title AD-TheAestheticUsabilityEffect "The Aesthetic-Usability Effect")
+(author AD-TheAestheticUsabilityEffect "Kate Moran, NNG")
+(resourceType AD-TheAestheticUsabilityEffect notes)
+(level AD-TheAestheticUsabilityEffect beginner)
+(section AD-TheAestheticUsabilityEffect PerceptionCognition)
+(url AD-TheAestheticUsabilityEffect "https://www.nngroup.com/articles/aesthetic-usability-effect/")
+(desc AD-TheAestheticUsabilityEffect "Research showing that aesthetically pleasing designs are perceived as more usable. Beautiful design builds trust and tolerance for minor usability issues.")
+
+
+;; ── Semiotics ──
+
+(isa AD-SemioticsTheBasics ReferenceWork)
+(title AD-SemioticsTheBasics "Semiotics: The Basics")
+(author AD-SemioticsTheBasics "Daniel Chandler")
+(resourceType AD-SemioticsTheBasics book)
+(level AD-SemioticsTheBasics beginner)
+(section AD-SemioticsTheBasics PerceptionCognition)
+(url AD-SemioticsTheBasics "https://www.goodreads.com/book/show/686498.Semiotics")
+(desc AD-SemioticsTheBasics "Clear introduction to the study of signs. Signifier/signified, icon/index/symbol, denotation/connotation applied to visual communication.")
+
+(isa AD-TheSemioticsEmoji ReferenceWork)
+(title AD-TheSemioticsEmoji "The Semiotics of Emoji")
+(author AD-TheSemioticsEmoji "Marcel Danesi")
+(resourceType AD-TheSemioticsEmoji book)
+(level AD-TheSemioticsEmoji intermediate)
+(section AD-TheSemioticsEmoji PerceptionCognition)
+(url AD-TheSemioticsEmoji "https://www.goodreads.com/book/show/33830721-the-semiotics-of-emoji")
+(desc AD-TheSemioticsEmoji "How emoji function as a sign system. Relevant to understanding how icons and visual symbols communicate in interfaces.")
+
+(isa AD-IconClassificationResemblanceReference ReferenceWork)
+(title AD-IconClassificationResemblanceReference "Icon Classification: Resemblance, Reference, and Arbitrary")
+(author AD-IconClassificationResemblanceReference "Page Laubheimer, NNG")
+(resourceType AD-IconClassificationResemblanceReference notes)
+(level AD-IconClassificationResemblanceReference beginner)
+(section AD-IconClassificationResemblanceReference PerceptionCognition)
+(url AD-IconClassificationResemblanceReference "https://www.nngroup.com/articles/classifying-icons/")
+(desc AD-IconClassificationResemblanceReference "Three types of icon-meaning relationships: resemblance (looks like the thing), reference (associated with the thing), and arbitrary (learned convention).")
+
+(isa AD-VisualCommunicationImagesWith ReferenceWork)
+(title AD-VisualCommunicationImagesWith "Visual Communication: Images with Messages")
+(author AD-VisualCommunicationImagesWith "Paul Martin Lester")
+(resourceType AD-VisualCommunicationImagesWith book)
+(level AD-VisualCommunicationImagesWith intermediate)
+(section AD-VisualCommunicationImagesWith PerceptionCognition)
+(url AD-VisualCommunicationImagesWith "https://www.goodreads.com/book/show/134790.Visual_Communication")
+(desc AD-VisualCommunicationImagesWith "Comprehensive visual communication textbook. Covers visual perception, persuasion, semiotics, and the role of images in meaning-making.")
+
+
+;; ════════════════════════════════════════════════════════════
+;; SECTION 9: DESIGN SYSTEMS AT SCALE
+;; Tokens, component libraries, governance, tooling, case studies
+;; ════════════════════════════════════════════════════════════
+
+;; ── Design Tokens ──
+
+(isa AD-DesignTokensW3CCommunity ReferenceWork)
+(title AD-DesignTokensW3CCommunity "Design Tokens W3C Community Group")
+(author AD-DesignTokensW3CCommunity "W3C")
+(resourceType AD-DesignTokensW3CCommunity notes)
+(level AD-DesignTokensW3CCommunity intermediate)
+(section AD-DesignTokensW3CCommunity DesignSystemsAtScale)
+(url AD-DesignTokensW3CCommunity "https://www.w3.org/community/design-tokens/")
+(desc AD-DesignTokensW3CCommunity "The emerging standard for design token format. JSON-based specification for cross-platform token exchange.")
+
+(isa AD-StyleDictionary ReferenceWork)
+(title AD-StyleDictionary "Style Dictionary")
+(author AD-StyleDictionary "Amazon")
+(resourceType AD-StyleDictionary code)
+(level AD-StyleDictionary intermediate)
+(section AD-StyleDictionary DesignSystemsAtScale)
+(url AD-StyleDictionary "https://amzn.github.io/style-dictionary/")
+(desc AD-StyleDictionary "Build system for design tokens. Transforms tokens into platform-specific outputs: CSS, SCSS, iOS, Android, and more.")
+
+(isa AD-TokensStudioForFigma ReferenceWork)
+(title AD-TokensStudioForFigma "Tokens Studio for Figma")
+(author AD-TokensStudioForFigma "Tokens Studio")
+(resourceType AD-TokensStudioForFigma tool)
+(level AD-TokensStudioForFigma beginner)
+(section AD-TokensStudioForFigma DesignSystemsAtScale)
+(url AD-TokensStudioForFigma "https://tokens.studio/")
+(desc AD-TokensStudioForFigma "Figma plugin for managing design tokens. Connects Figma to code via token JSON files with Git sync.")
+
+(isa AD-DesignTokensBeyondThe ReferenceWork)
+(title AD-DesignTokensBeyondThe "Design Tokens — Beyond the Basics")
+(author AD-DesignTokensBeyondThe "Cristiano Rastelli")
+(resourceType AD-DesignTokensBeyondThe video)
+(level AD-DesignTokensBeyondThe intermediate)
+(section AD-DesignTokensBeyondThe DesignSystemsAtScale)
+(url AD-DesignTokensBeyondThe "https://www.youtube.com/watch?v=Ka1I5TphDB0")
+(desc AD-DesignTokensBeyondThe "Deep dive into token architecture: naming conventions, aliasing, theming, and multi-platform token management.")
+
+(isa AD-NamingTokensDesignSystems ReferenceWork)
+(title AD-NamingTokensDesignSystems "Naming Tokens in Design Systems")
+(author AD-NamingTokensDesignSystems "Nathan Curtis")
+(resourceType AD-NamingTokensDesignSystems notes)
+(level AD-NamingTokensDesignSystems intermediate)
+(section AD-NamingTokensDesignSystems DesignSystemsAtScale)
+(url AD-NamingTokensDesignSystems "https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676")
+(desc AD-NamingTokensDesignSystems "Systematic approach to token naming. Category-type-item pattern and how to create names that scale across themes and platforms.")
+
+
+;; ── Component Libraries ──
+
+(isa AD-ModularWebDesign ReferenceWork)
+(title AD-ModularWebDesign "Modular Web Design")
+(author AD-ModularWebDesign "Nathan Curtis")
+(resourceType AD-ModularWebDesign book)
+(level AD-ModularWebDesign intermediate)
+(section AD-ModularWebDesign DesignSystemsAtScale)
+(url AD-ModularWebDesign "https://www.goodreads.com/book/show/7170547-modular-web-design")
+(desc AD-ModularWebDesign "How to create reusable component libraries. Component definition, documentation, governance, and organizational adoption.")
+
+(isa AD-Storybook ReferenceWork)
+(title AD-Storybook "Storybook")
+(author AD-Storybook "Storybook maintainers")
+(resourceType AD-Storybook tool)
+(level AD-Storybook beginner)
+(section AD-Storybook DesignSystemsAtScale)
+(url AD-Storybook "https://storybook.js.org/")
+(desc AD-Storybook "The standard tool for developing UI components in isolation. Documentation, visual testing, and interaction testing for component libraries.")
+
+(isa AD-ChromaticVisualRegressionTesting ReferenceWork)
+(title AD-ChromaticVisualRegressionTesting "Chromatic (Visual Regression Testing)")
+(author AD-ChromaticVisualRegressionTesting "Chromatic")
+(resourceType AD-ChromaticVisualRegressionTesting tool)
+(level AD-ChromaticVisualRegressionTesting intermediate)
+(section AD-ChromaticVisualRegressionTesting DesignSystemsAtScale)
+(url AD-ChromaticVisualRegressionTesting "https://www.chromatic.com/")
+(desc AD-ChromaticVisualRegressionTesting "Visual regression testing for Storybook. Catches unintended visual changes in components across browsers and viewports.")
+
+(isa AD-ComponentDrivenUserInterfaces ReferenceWork)
+(title AD-ComponentDrivenUserInterfaces "Component-Driven User Interfaces")
+(author AD-ComponentDrivenUserInterfaces "Varun Vachhar (Chromatic)")
+(resourceType AD-ComponentDrivenUserInterfaces notes)
+(level AD-ComponentDrivenUserInterfaces beginner)
+(section AD-ComponentDrivenUserInterfaces DesignSystemsAtScale)
+(url AD-ComponentDrivenUserInterfaces "https://www.componentdriven.org/")
+(desc AD-ComponentDrivenUserInterfaces "Methodology for building UIs from components. Build, test, document, and combine components into screens.")
+
+(isa AD-HeadlessPatterns ReferenceWork)
+(title AD-HeadlessPatterns "Headless UI Patterns")
+(author AD-HeadlessPatterns "Diego Haz")
+(resourceType AD-HeadlessPatterns notes)
+(level AD-HeadlessPatterns advanced)
+(section AD-HeadlessPatterns DesignSystemsAtScale)
+(url AD-HeadlessPatterns "https://www.merrickchristensen.com/articles/headless-user-interface-components/")
+(desc AD-HeadlessPatterns "Separation of component logic from presentation. Build accessible, unstyled components that teams can style to match any design system.")
+
+
+;; ── Governance & Documentation ──
+
+(isa AD-DesignSystemsKholmatova ReferenceWork)
+(title AD-DesignSystemsKholmatova "Design Systems")
+(author AD-DesignSystemsKholmatova "Alla Kholmatova")
+(resourceType AD-DesignSystemsKholmatova book)
+(level AD-DesignSystemsKholmatova beginner)
+(section AD-DesignSystemsKholmatova DesignSystemsAtScale)
+(url AD-DesignSystemsKholmatova "https://www.smashingmagazine.com/design-systems-book/")
+(desc AD-DesignSystemsKholmatova "Practical guide covering how to establish, maintain, and evolve a design system. Pattern definition, naming, and governance models.")
+
+(isa AD-TeamModelsForScaling ReferenceWork)
+(title AD-TeamModelsForScaling "Team Models for Scaling Design Systems")
+(author AD-TeamModelsForScaling "Nathan Curtis")
+(resourceType AD-TeamModelsForScaling notes)
+(level AD-TeamModelsForScaling intermediate)
+(section AD-TeamModelsForScaling DesignSystemsAtScale)
+(url AD-TeamModelsForScaling "https://medium.com/eightshapes-llc/team-models-for-scaling-a-design-system-2cf9d03be6a0")
+(desc AD-TeamModelsForScaling "Organizational models for design system teams: solitary, centralized, federated, and cyclical. Pros and cons of each approach.")
+
+(isa AD-TheComponentGallery ReferenceWork)
+(title AD-TheComponentGallery "The Component Gallery")
+(author AD-TheComponentGallery "Various")
+(resourceType AD-TheComponentGallery tool)
+(level AD-TheComponentGallery beginner)
+(section AD-TheComponentGallery DesignSystemsAtScale)
+(url AD-TheComponentGallery "https://component.gallery/")
+(desc AD-TheComponentGallery "Collection of design system components across major systems. Compare implementations of the same component pattern across organizations.")
+
+(isa AD-ADRsArchitectureDecisionRecords ReferenceWork)
+(title AD-ADRsArchitectureDecisionRecords "ADRs (Architecture Decision Records)")
+(author AD-ADRsArchitectureDecisionRecords "Michael Nygard")
+(resourceType AD-ADRsArchitectureDecisionRecords notes)
+(level AD-ADRsArchitectureDecisionRecords intermediate)
+(section AD-ADRsArchitectureDecisionRecords DesignSystemsAtScale)
+(url AD-ADRsArchitectureDecisionRecords "https://adr.github.io/")
+(desc AD-ADRsArchitectureDecisionRecords "Lightweight format for recording architectural decisions. Essential for documenting the \"why\" behind design system choices.")
+
+(isa AD-ContributionModelsForDesign ReferenceWork)
+(title AD-ContributionModelsForDesign "Contribution Models for Design Systems")
+(author AD-ContributionModelsForDesign "Nathan Curtis")
+(resourceType AD-ContributionModelsForDesign notes)
+(level AD-ContributionModelsForDesign intermediate)
+(section AD-ContributionModelsForDesign DesignSystemsAtScale)
+(url AD-ContributionModelsForDesign "https://medium.com/eightshapes-llc/contributions-to-design-systems-89261a9363d8")
+(desc AD-ContributionModelsForDesign "How teams contribute to design systems: guidelines, processes, quality gates, and recognition models for contributors.")
+
+
+;; ── Tooling & Infrastructure ──
+
+(isa AD-FigmaForDesignSystems ReferenceWork)
+(title AD-FigmaForDesignSystems "Figma for Design Systems")
+(author AD-FigmaForDesignSystems "Figma")
+(resourceType AD-FigmaForDesignSystems notes)
+(level AD-FigmaForDesignSystems beginner)
+(section AD-FigmaForDesignSystems DesignSystemsAtScale)
+(url AD-FigmaForDesignSystems "https://www.figma.com/best-practices/components-styles-and-shared-libraries/")
+(desc AD-FigmaForDesignSystems "Figma's official guide to building design systems. Components, styles, libraries, variables, and team collaboration.")
+
+(isa AD-DesignSystemVersioning ReferenceWork)
+(title AD-DesignSystemVersioning "Design System Versioning")
+(author AD-DesignSystemVersioning "Nathan Curtis")
+(resourceType AD-DesignSystemVersioning notes)
+(level AD-DesignSystemVersioning intermediate)
+(section AD-DesignSystemVersioning DesignSystemsAtScale)
+(url AD-DesignSystemVersioning "https://medium.com/eightshapes-llc/versioning-design-systems-48cceb5ace4d")
+(desc AD-DesignSystemVersioning "Semantic versioning for design systems. Breaking changes, deprecation strategies, and migration paths for consuming teams.")
+
+(isa AD-VisualRegressionTestingFor ReferenceWork)
+(title AD-VisualRegressionTestingFor "Visual Regression Testing for Design Systems")
+(author AD-VisualRegressionTestingFor "Varun Vachhar")
+(resourceType AD-VisualRegressionTestingFor notes)
+(level AD-VisualRegressionTestingFor intermediate)
+(section AD-VisualRegressionTestingFor DesignSystemsAtScale)
+(url AD-VisualRegressionTestingFor "https://storybook.js.org/docs/writing-tests/visual-testing")
+(desc AD-VisualRegressionTestingFor "How to set up visual regression testing with Storybook and Chromatic. Catch visual regressions before they ship.")
+
+(isa AD-FigmaPluginAPI ReferenceWork)
+(title AD-FigmaPluginAPI "Figma Plugin API")
+(author AD-FigmaPluginAPI "Figma")
+(resourceType AD-FigmaPluginAPI code)
+(level AD-FigmaPluginAPI advanced)
+(section AD-FigmaPluginAPI DesignSystemsAtScale)
+(url AD-FigmaPluginAPI "https://www.figma.com/plugin-docs/")
+(desc AD-FigmaPluginAPI "Build custom Figma plugins to automate design system workflows: token sync, lint, generate code, and enforce standards.")
+
+
+;; ── Case Studies ──
+
+(isa AD-MaterialDesignGoogle ReferenceWork)
+(title AD-MaterialDesignGoogle "Material Design (Google)")
+(author AD-MaterialDesignGoogle "Google")
+(resourceType AD-MaterialDesignGoogle notes)
+(level AD-MaterialDesignGoogle beginner)
+(section AD-MaterialDesignGoogle DesignSystemsAtScale)
+(url AD-MaterialDesignGoogle "https://m3.material.io/")
+(desc AD-MaterialDesignGoogle "Google's comprehensive design system. Material 3 covers dynamic color, typography, motion, and components across platforms.")
+
+(isa AD-LightningDesignSystemSalesforce ReferenceWork)
+(title AD-LightningDesignSystemSalesforce "Lightning Design System (Salesforce)")
+(author AD-LightningDesignSystemSalesforce "Salesforce")
+(resourceType AD-LightningDesignSystemSalesforce notes)
+(level AD-LightningDesignSystemSalesforce intermediate)
+(section AD-LightningDesignSystemSalesforce DesignSystemsAtScale)
+(url AD-LightningDesignSystemSalesforce "https://www.lightningdesignsystem.com/")
+(desc AD-LightningDesignSystemSalesforce "Enterprise design system for Salesforce. Tokens, components, patterns, and accessibility standards for complex business applications.")
+
+(isa AD-CarbonDesignSystemIBM ReferenceWork)
+(title AD-CarbonDesignSystemIBM "Carbon Design System (IBM)")
+(author AD-CarbonDesignSystemIBM "IBM")
+(resourceType AD-CarbonDesignSystemIBM notes)
+(level AD-CarbonDesignSystemIBM intermediate)
+(section AD-CarbonDesignSystemIBM DesignSystemsAtScale)
+(url AD-CarbonDesignSystemIBM "https://carbondesignsystem.com/")
+(desc AD-CarbonDesignSystemIBM "IBM's open-source design system. Comprehensive components, data visualization, patterns, and contribution guidelines.")
+
+(isa AD-PolarisShopify ReferenceWork)
+(title AD-PolarisShopify "Polaris (Shopify)")
+(author AD-PolarisShopify "Shopify")
+(resourceType AD-PolarisShopify notes)
+(level AD-PolarisShopify intermediate)
+(section AD-PolarisShopify DesignSystemsAtScale)
+(url AD-PolarisShopify "https://polaris.shopify.com/")
+(desc AD-PolarisShopify "Shopify's design system for building admin experiences. Tokens, components, patterns, and content guidelines.")
+
+(isa AD-SpectrumAdobe ReferenceWork)
+(title AD-SpectrumAdobe "Spectrum (Adobe)")
+(author AD-SpectrumAdobe "Adobe")
+(resourceType AD-SpectrumAdobe notes)
+(level AD-SpectrumAdobe intermediate)
+(section AD-SpectrumAdobe DesignSystemsAtScale)
+(url AD-SpectrumAdobe "https://spectrum.adobe.com/")
+(desc AD-SpectrumAdobe "Adobe's cross-platform design system. Inclusive design, internationalization, and consistency across Creative Cloud products.")
+
+(isa AD-PrimerGitHub ReferenceWork)
+(title AD-PrimerGitHub "Primer (GitHub)")
+(author AD-PrimerGitHub "GitHub")
+(resourceType AD-PrimerGitHub code)
+(level AD-PrimerGitHub intermediate)
+(section AD-PrimerGitHub DesignSystemsAtScale)
+(url AD-PrimerGitHub "https://primer.style/")
+(desc AD-PrimerGitHub "GitHub's open-source design system. CSS framework, React components, and design guidelines powering GitHub's interface.")
+
+;; ════════════════════════════════════════════════════════════
+;; STATISTICS
+;; ════════════════════════════════════════════════════════════
+
+(totalResources AtomicDesignReference 194)
+(totalSections AtomicDesignReference 10)
+(comment AtomicDesignReference
+  "10 sections: Overview (0), Atoms (23), Molecules (19), Organisms (17),
+   Templates & Pages (19), Color Theory (24), HCI (24), Game Theory (22),
+   Perception (21), Design Systems at Scale (25). Total: 194 resources.")

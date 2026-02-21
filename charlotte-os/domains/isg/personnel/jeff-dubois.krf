@@ -1,0 +1,78 @@
+;;; ================================================================
+;;; ISG PERSONNEL / JEFF DUBOIS
+;;; Chief Financial Officer — The Industrial Service Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa JeffDubois Person)
+(isa JeffDubois Executive)
+(hasAttribute JeffDubois ::LABEL "Jeff DuBois")
+(hasAttribute JeffDubois ::ROLE "Chief Financial Officer")
+(hasAttribute JeffDubois ::TITLE_SHORT "CFO")
+(hasAttribute JeffDubois ::EMAIL "jdubois@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(reportsTo JeffDubois JimRichard)
+(MEMBER_OF JeffDubois ISGExecutiveTeam)
+
+;; HR aligned under finance
+(reportsTo SteveMeacham JeffDubois)
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt JeffDubois Pendleton-IN)
+(hasAttribute JeffDubois ::HQ "ISG Corporate, Indianapolis, IN")
+
+;; ── Topological Plane: Org Position ──────────────────────────────
+
+(hasAttribute JeffDubois ::ORG_LEVEL 2)
+(hasAttribute JeffDubois ::DECISION_AUTHORITY "Financial controls, reporting, HR oversight, PE reporting")
+(hasAttribute JeffDubois ::SYSTEMS_OWNED "NetSuite ERP, financial reporting infrastructure")
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch JeffDubois "Manchester College (now Manchester University)" 1993 1998)
+(careerEpoch JeffDubois "Jarden Home Brands — Finance/Accounting" 1998 2005)
+(careerEpoch JeffDubois "Calumet Specialty Products Partners — Asst Plant Operations Controller" 2005 2010)
+(careerEpoch JeffDubois "Closure Systems International (CSI) — Finance" 2010 2015)
+(careerEpoch JeffDubois "The Industrial Service Group — CFO" 2019 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn JeffDubois GeneralLedger)
+(expertiseIn JeffDubois Forecasting)
+(expertiseIn JeffDubois USGAAP)
+(expertiseIn JeffDubois FinancialAnalysis)
+(expertiseIn JeffDubois SECFilings)
+(expertiseIn JeffDubois PEReporting)
+
+;; ── Valuation Plane: Metrics ─────────────────────────────────────
+
+(isa JeffDubois-FinancialOversight METRIC)
+(attachedTo JeffDubois-FinancialOversight JeffDubois)
+(hasAttribute JeffDubois-FinancialOversight ::VALUE 450)
+(hasAttribute JeffDubois-FinancialOversight ::UNIT "million USD revenue under oversight")
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa JeffDubois-MultiEntityComplexity SIGNAL)
+(derivedFrom JeffDubois-MultiEntityComplexity JeffDubois-FinancialOversight)
+(comment JeffDubois-MultiEntityComplexity
+  "Jeff manages financials across 16 acquired brands, each with different
+   legacy systems, chart of accounts, and reporting structures. Integration
+   complexity is a defining challenge of his role.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithCFO PROTOCOL)
+(hasTrigger Protocol-InteractWithCFO (sessionCaller ?Session JeffDubois))
+(comment Protocol-InteractWithCFO
+  "Jeff is numbers-first. Present data in financial terms — ROI, cost
+   avoidance, margin impact. He manages PE reporting to TJC, so frame
+   Charlotte OS value in EBITDA contribution and operational efficiency.
+   He oversees HR through Steve Meacham — people-related requests may
+   route through him.")

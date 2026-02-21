@@ -1,13 +1,13 @@
 ;;; ================================================================
 ;;; REFERENCE / CONVEX HULL LIBRARY
-;;; The 25 reference domains bounding Charlotte's knowledge surface
+;;; The 27 reference domains bounding Charlotte's knowledge surface
 ;;; ================================================================
 
 (in-microtheory CharlotteReferenceMt)
 
 ;; ── Convex Hull Reference Library ──
 ;;
-;; These 25 domains define the boundary of Charlotte's reference
+;; These 27 domains define the boundary of Charlotte's reference
 ;; knowledge. Each domain is a point on the convex hull — together
 ;; they enclose the space of knowledge Charlotte can reason about.
 ;; Every domain decomposes into weighted knowledge types per the
@@ -27,7 +27,7 @@
 (isa KnowledgePrimitives ReferenceDomain)
 (hasAttribute KnowledgePrimitives ::LABEL "Knowledge Primitives")
 (hasAttribute KnowledgePrimitives ::ICON "\uD83D\uDCD6")
-(hasAttribute KnowledgePrimitives ::PATH "references/knowledge/")
+(hasAttribute KnowledgePrimitives ::PATH "references/knowledge_primitives.krf")
 (comment KnowledgePrimitives
   "Structural, declarative, procedural, heuristic & meta knowledge.
    The five vertices of the convex hull itself.")
@@ -42,7 +42,7 @@
 (isa FormalLogic ReferenceDomain)
 (hasAttribute FormalLogic ::LABEL "Formal Logic")
 (hasAttribute FormalLogic ::ICON "\u2200")
-(hasAttribute FormalLogic ::PATH "references/formal-logic/")
+(hasAttribute FormalLogic ::PATH "references/formal_logic.krf")
 (comment FormalLogic
   "Propositional logic, first-order logic, lambda calculus & Lisp.
    The inference engine beneath Charlotte's KRF substrate.")
@@ -57,7 +57,7 @@
 (isa GraphTheory ReferenceDomain)
 (hasAttribute GraphTheory ::LABEL "Graph Theory")
 (hasAttribute GraphTheory ::ICON "\u229B")
-(hasAttribute GraphTheory ::PATH "references/graph-theory/")
+(hasAttribute GraphTheory ::PATH "references/graph_theory.krf")
 (comment GraphTheory
   "Knowledge graphs, ontologies & graph databases.
    The relational fabric of NODE-EDGE primitives.")
@@ -72,7 +72,7 @@
 (isa Topology ReferenceDomain)
 (hasAttribute Topology ::LABEL "Topology")
 (hasAttribute Topology ::ICON "\u25CE")
-(hasAttribute Topology ::PATH "references/topology/")
+(hasAttribute Topology ::PATH "references/topology.krf")
 (comment Topology
   "Algebraic topology, topological data analysis & higher dimensions.
    Shape-invariant reasoning for spatial substrate.")
@@ -87,7 +87,7 @@
 (isa GameTheory ReferenceDomain)
 (hasAttribute GameTheory ::LABEL "Game Theory")
 (hasAttribute GameTheory ::ICON "\u265F")
-(hasAttribute GameTheory ::PATH "references/game-theory/")
+(hasAttribute GameTheory ::PATH "references/game_theory.krf")
 (comment GameTheory
   "Nash equilibrium, mechanism design & evolutionary strategy.
    Multi-agent decision theory for PROTOCOL primitives.")
@@ -102,7 +102,7 @@
 (isa SystemsArchitecture ReferenceDomain)
 (hasAttribute SystemsArchitecture ::LABEL "Systems Architecture")
 (hasAttribute SystemsArchitecture ::ICON "\uD83C\uDFD7")
-(hasAttribute SystemsArchitecture ::PATH "references/systems-architecture/")
+(hasAttribute SystemsArchitecture ::PATH "references/systems_architecture.krf")
 (comment SystemsArchitecture
   "Distributed systems, DDD & event-driven design.
    The engineering patterns behind Charlotte's container model.")
@@ -127,7 +127,7 @@
 (isa CognitiveScience ReferenceDomain)
 (hasAttribute CognitiveScience ::LABEL "Cognitive Science")
 (hasAttribute CognitiveScience ::ICON "\uD83E\uDDE0")
-(hasAttribute CognitiveScience ::PATH "references/cognitive-science/")
+(hasAttribute CognitiveScience ::PATH "references/cognitive_science.krf")
 (comment CognitiveScience
   "Predictive coding, Bayesian brain & resonance.
    Charlotte's observer model — perception as inference.")
@@ -142,7 +142,7 @@
 (isa SignalProcessing ReferenceDomain)
 (hasAttribute SignalProcessing ::LABEL "Signal Processing")
 (hasAttribute SignalProcessing ::ICON "\u3030")
-(hasAttribute SignalProcessing ::PATH "references/signal-processing/")
+(hasAttribute SignalProcessing ::PATH "references/signal_processing.krf")
 (comment SignalProcessing
   "Time series, frequency domain & drift detection.
    The math behind SIGNAL primitives and METRIC computation.")
@@ -157,7 +157,7 @@
 (isa Neuroscience ReferenceDomain)
 (hasAttribute Neuroscience ::LABEL "Neuroscience")
 (hasAttribute Neuroscience ::ICON "\uD83E\uDDEC")
-(hasAttribute Neuroscience ::PATH "references/neuroscience/")
+(hasAttribute Neuroscience ::PATH "references/neuroscience.krf")
 (comment Neuroscience
   "Neural geometry reference hub.
    How biological networks encode spatial and temporal structure.")
@@ -175,14 +175,14 @@
 
 (isa DataComputeCluster ReferenceDomainCluster)
 (comment DataComputeCluster
-  "Temporal databases, spatial computing, knowledge primitives,
-   atomic design — how data is stored, indexed, and rendered.")
+  "Temporal databases, spatial computing, atomic design —
+   how data is stored, indexed, and rendered.")
 
 ;; ── Temporal Databases ──
 (isa TemporalDatabases ReferenceDomain)
 (hasAttribute TemporalDatabases ::LABEL "Temporal Databases")
 (hasAttribute TemporalDatabases ::ICON "\u23F1")
-(hasAttribute TemporalDatabases ::PATH "references/temporal-databases/")
+(hasAttribute TemporalDatabases ::PATH "references/temporal_databases.krf")
 (comment TemporalDatabases
   "Event sourcing, bitemporal modeling & CQRS.
    The storage theory behind Charlotte's temporal spine.")
@@ -197,7 +197,7 @@
 (isa SpatialComputing ReferenceDomain)
 (hasAttribute SpatialComputing ::LABEL "Spatial Computing")
 (hasAttribute SpatialComputing ::ICON "\uD83C\uDF0D")
-(hasAttribute SpatialComputing ::PATH "references/spatial-computing/")
+(hasAttribute SpatialComputing ::PATH "references/spatial_computing.krf")
 (comment SpatialComputing
   "GIS, spatial databases & geospatial algorithms.
    The indexing theory behind Charlotte's spatial planes.")
@@ -212,7 +212,7 @@
 (isa AtomicDesign ReferenceDomain)
 (hasAttribute AtomicDesign ::LABEL "Atomic Design")
 (hasAttribute AtomicDesign ::ICON "\u269B")
-(hasAttribute AtomicDesign ::PATH "references/atomic-design/")
+(hasAttribute AtomicDesign ::PATH "references/atomic_design.krf")
 (comment AtomicDesign
   "Component hierarchy & design systems.
    Atoms-molecules-organisms for Charlotte's interface layer.")
@@ -231,13 +231,14 @@
 (isa BiologyCluster ReferenceDomainCluster)
 (comment BiologyCluster
   "Biomimicry, entomology, livestock science, nature-inspired
-   algorithms — intelligence observed in living systems.")
+   algorithms, swarm intelligence, ocean science — intelligence
+   observed in living systems.")
 
 ;; ── Biomimicry ──
 (isa Biomimicry ReferenceDomain)
 (hasAttribute Biomimicry ::LABEL "Biomimicry")
 (hasAttribute Biomimicry ::ICON "\uD83C\uDF3F")
-(hasAttribute Biomimicry ::PATH "references/biomimicry/")
+(hasAttribute Biomimicry ::PATH "references/biomimicry.krf")
 (comment Biomimicry
   "Principles, methodology & case studies.
    Design by emulating nature's time-tested patterns.")
@@ -252,7 +253,7 @@
 (isa Entomology ReferenceDomain)
 (hasAttribute Entomology ::LABEL "Entomology")
 (hasAttribute Entomology ::ICON "\uD83D\uDC1B")
-(hasAttribute Entomology ::PATH "references/entomology/")
+(hasAttribute Entomology ::PATH "references/entomology.krf")
 (comment Entomology
   "Insect biology, pollination & biomimicry.
    Joseph's domain — swarm behavior and emergent coordination.")
@@ -267,7 +268,7 @@
 (isa LivestockScience ReferenceDomain)
 (hasAttribute LivestockScience ::LABEL "Livestock Science")
 (hasAttribute LivestockScience ::ICON "\uD83D\uDC04")
-(hasAttribute LivestockScience ::PATH "references/livestock-science/")
+(hasAttribute LivestockScience ::PATH "references/livestock_science.krf")
 (comment LivestockScience
   "Genetics, breeding, reproduction & show industry.
    The domain knowledge behind Sounder and swine genetics.")
@@ -282,7 +283,7 @@
 (isa NatureInspiredAlgorithms ReferenceDomain)
 (hasAttribute NatureInspiredAlgorithms ::LABEL "Nature-Inspired Algorithms")
 (hasAttribute NatureInspiredAlgorithms ::ICON "\uD83E\uDDEC")
-(hasAttribute NatureInspiredAlgorithms ::PATH "references/nature-inspired-algorithms/")
+(hasAttribute NatureInspiredAlgorithms ::PATH "references/nature_inspired_algorithms.krf")
 (comment NatureInspiredAlgorithms
   "Evolutionary computation & swarm intelligence.
    Optimization strategies borrowed from biology.")
@@ -292,6 +293,36 @@
 (decomposition NatureInspiredAlgorithms HeuristicKnowledge 0.25)
 (decomposition NatureInspiredAlgorithms MetaKnowledge 0.10)
 (clusterMember BiologyCluster NatureInspiredAlgorithms)
+
+;; ── Swarm Intelligence ──
+(isa SwarmIntelligence ReferenceDomain)
+(hasAttribute SwarmIntelligence ::LABEL "Swarm Intelligence")
+(hasAttribute SwarmIntelligence ::ICON "\uD83D\uDC1D")
+(hasAttribute SwarmIntelligence ::PATH "references/swarm_intelligence.krf")
+(comment SwarmIntelligence
+  "Rubenstein's Kilobots, flocking, stigmergy & collective construction.
+   Charlotte's origin curriculum — local rules producing global order.")
+(decomposition SwarmIntelligence StructuralKnowledge 0.20)
+(decomposition SwarmIntelligence DeclarativeKnowledge 0.15)
+(decomposition SwarmIntelligence ProceduralKnowledge 0.30)
+(decomposition SwarmIntelligence HeuristicKnowledge 0.25)
+(decomposition SwarmIntelligence MetaKnowledge 0.10)
+(clusterMember BiologyCluster SwarmIntelligence)
+
+;; ── Ocean Science ──
+(isa OceanScience ReferenceDomain)
+(hasAttribute OceanScience ::LABEL "Ocean Science")
+(hasAttribute OceanScience ::ICON "\uD83C\uDF0A")
+(hasAttribute OceanScience ::PATH "references/ocean_science.krf")
+(comment OceanScience
+  "Marine biology, oceanography, coral reefs & deep sea.
+   Sea Lion's domain — swarm observation beneath the surface.")
+(decomposition OceanScience StructuralKnowledge 0.15)
+(decomposition OceanScience DeclarativeKnowledge 0.30)
+(decomposition OceanScience ProceduralKnowledge 0.15)
+(decomposition OceanScience HeuristicKnowledge 0.25)
+(decomposition OceanScience MetaKnowledge 0.15)
+(clusterMember BiologyCluster OceanScience)
 
 ;; ════════════════════════════════════════════════════════════
 ;; CLUSTER 5: BIO-ENGINEERING
@@ -309,7 +340,7 @@
 (isa BioArchitecture ReferenceDomain)
 (hasAttribute BioArchitecture ::LABEL "Bio-Architecture")
 (hasAttribute BioArchitecture ::ICON "\uD83C\uDFDB")
-(hasAttribute BioArchitecture ::PATH "references/bio-architecture/")
+(hasAttribute BioArchitecture ::PATH "references/bio_architecture.krf")
 (comment BioArchitecture
   "Termite ventilation, shells & tensegrity.
    Buildings that breathe, flex, and self-regulate.")
@@ -324,7 +355,7 @@
 (isa BioInspiredRobotics ReferenceDomain)
 (hasAttribute BioInspiredRobotics ::LABEL "Bio-Inspired Robotics")
 (hasAttribute BioInspiredRobotics ::ICON "\uD83E\uDD16")
-(hasAttribute BioInspiredRobotics ::PATH "references/bio-inspired-robotics/")
+(hasAttribute BioInspiredRobotics ::PATH "references/bio_inspired_robotics.krf")
 (comment BioInspiredRobotics
   "Soft robotics, legged robots & swarm systems.
    Machines built on biological movement principles.")
@@ -339,7 +370,7 @@
 (isa BioLocomotion ReferenceDomain)
 (hasAttribute BioLocomotion ::LABEL "Bio-Locomotion")
 (hasAttribute BioLocomotion ::ICON "\uD83E\uDD8E")
-(hasAttribute BioLocomotion ::PATH "references/bio-locomotion/")
+(hasAttribute BioLocomotion ::PATH "references/bio_locomotion.krf")
 (comment BioLocomotion
   "Flight, swimming & collective motion.
    How bodies move through fluid, air, and terrain.")
@@ -354,7 +385,7 @@
 (isa BioOptics ReferenceDomain)
 (hasAttribute BioOptics ::LABEL "Bio-Optics & Photonics")
 (hasAttribute BioOptics ::ICON "\uD83D\uDD2C")
-(hasAttribute BioOptics ::PATH "references/bio-optics-photonics/")
+(hasAttribute BioOptics ::PATH "references/bio_optics.krf")
 (comment BioOptics
   "Structural color, bioluminescence & camouflage.
    Light manipulation strategies evolved by nature.")
@@ -369,7 +400,7 @@
 (isa BioSurfaces ReferenceDomain)
 (hasAttribute BioSurfaces ::LABEL "Bio-Surfaces")
 (hasAttribute BioSurfaces ::ICON "\uD83E\uDDEB")
-(hasAttribute BioSurfaces ::PATH "references/bio-surfaces/")
+(hasAttribute BioSurfaces ::PATH "references/bio_surfaces.krf")
 (comment BioSurfaces
   "Superhydrophobicity, gecko adhesion & shark skin.
    Surface engineering from micro-scale biology.")
@@ -384,7 +415,7 @@
 (isa BiomimeticMaterials ReferenceDomain)
 (hasAttribute BiomimeticMaterials ::LABEL "Biomimetic Materials")
 (hasAttribute BiomimeticMaterials ::ICON "\uD83E\uDDEA")
-(hasAttribute BiomimeticMaterials ::PATH "references/biomimetic-materials/")
+(hasAttribute BiomimeticMaterials ::PATH "references/biomimetic_materials.krf")
 (comment BiomimeticMaterials
   "Self-healing, shape memory & hierarchical composites.
    Materials designed by studying biological structures.")
@@ -399,7 +430,7 @@
 (isa StructuralBiomimetics ReferenceDomain)
 (hasAttribute StructuralBiomimetics ::LABEL "Structural Biomimetics")
 (hasAttribute StructuralBiomimetics ::ICON "\uD83E\uDDB4")
-(hasAttribute StructuralBiomimetics ::PATH "references/structural-biomimetics/")
+(hasAttribute StructuralBiomimetics ::PATH "references/structural_biomimetics.krf")
 (comment StructuralBiomimetics
   "Natural composites, silk, nacre & bone.
    Load-bearing architectures from biology.")
@@ -414,7 +445,7 @@
 (isa SpiderSilk ReferenceDomain)
 (hasAttribute SpiderSilk ::LABEL "Spider Silk")
 (hasAttribute SpiderSilk ::ICON "\uD83D\uDD77")
-(hasAttribute SpiderSilk ::PATH "references/spider-silk/")
+(hasAttribute SpiderSilk ::PATH "references/spider_silk.krf")
 (comment SpiderSilk
   "Silk biology, biomaterials & husbandry.
    The strongest biological fiber — tensile strength meets elasticity.")
@@ -429,7 +460,7 @@
 (isa EcologicalSystemsDesign ReferenceDomain)
 (hasAttribute EcologicalSystemsDesign ::LABEL "Ecological Systems Design")
 (hasAttribute EcologicalSystemsDesign ::ICON "\u267B")
-(hasAttribute EcologicalSystemsDesign ::PATH "references/ecological-systems-design/")
+(hasAttribute EcologicalSystemsDesign ::PATH "references/ecological_systems_design.krf")
 (comment EcologicalSystemsDesign
   "Circular economy & regenerative design.
    Closed-loop systems that mirror ecosystem nutrient cycles.")
@@ -472,6 +503,17 @@
 (informs LivestockScience Biomimicry)
 (informs NatureInspiredAlgorithms BioInspiredRobotics)
 
+;; Swarm Intelligence edges
+(informs Entomology SwarmIntelligence)
+(informs Biomimicry SwarmIntelligence)
+(informs SwarmIntelligence NatureInspiredAlgorithms)
+(informs SwarmIntelligence BioInspiredRobotics)
+
+;; Ocean Science edges
+(informs OceanScience Biomimicry)
+(informs OceanScience BioLocomotion)
+(informs OceanScience EcologicalSystemsDesign)
+
 ;; Bio-engineering internal edges
 (informs BioLocomotion BioInspiredRobotics)
 (informs BioOptics BiomimeticMaterials)
@@ -485,15 +527,15 @@
 ;; COMPLETENESS ASSERTION
 ;; ════════════════════════════════════════════════════════════
 
-;; The 25 domains define the convex hull boundary of Charlotte's
+;; The 27 domains define the convex hull boundary of Charlotte's
 ;; reference knowledge. Any new reference domain must either
 ;; decompose into existing hull vertices or extend the hull.
 
 (isa ConvexHullLibrary ReferenceLibrary)
-(hullBoundarySize ConvexHullLibrary 25)
+(hullBoundarySize ConvexHullLibrary 27)
 (comment ConvexHullLibrary
-  "25 reference domains across 5 clusters: Foundations (6),
-   Cognition & Signal (3), Data & Compute (3), Biology (4),
+  "27 reference domains across 5 clusters: Foundations (6),
+   Cognition & Signal (3), Data & Compute (3), Biology (6),
    Bio-Engineering (9). Together they bound the knowledge
    surface Charlotte can reason about. Interior points are
    weighted combinations of these boundary domains.")
@@ -514,6 +556,8 @@
 (hullBoundaryMember ConvexHullLibrary Entomology)
 (hullBoundaryMember ConvexHullLibrary LivestockScience)
 (hullBoundaryMember ConvexHullLibrary NatureInspiredAlgorithms)
+(hullBoundaryMember ConvexHullLibrary SwarmIntelligence)
+(hullBoundaryMember ConvexHullLibrary OceanScience)
 (hullBoundaryMember ConvexHullLibrary BioArchitecture)
 (hullBoundaryMember ConvexHullLibrary BioInspiredRobotics)
 (hullBoundaryMember ConvexHullLibrary BioLocomotion)

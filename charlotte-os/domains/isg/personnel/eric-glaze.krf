@@ -1,0 +1,59 @@
+;;; ================================================================
+;;; ISG PERSONNEL / ERIC GLAZE
+;;; President (Consultant), Services Group
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa EricGlaze Person)
+(isa EricGlaze Executive)
+(hasAttribute EricGlaze ::LABEL "Eric Glaze")
+(hasAttribute EricGlaze ::ROLE "President (Consultant), Services Group")
+(hasAttribute EricGlaze ::EMAIL "eglaze@isgservice.com")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF EricGlaze ISGServicesGroup)
+
+;; Long history with Jim Richard
+(hasAttribute EricGlaze ::RELATIONSHIP_TO_CEO "Served as CFO & COO at Jim's prior company, Industrial Service Solutions")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt EricGlaze Garnett-KS)
+
+;; ── Temporal Plane: Career Epochs ────────────────────────────────
+
+(careerEpoch EricGlaze "San Diego State University — BS Accountancy" 1990 1994)
+(careerEpoch EricGlaze "East Kansas Agri-Energy — CFO" 2000 2008)
+(careerEpoch EricGlaze "Industrial Service Solutions — CFO & COO" 2008 2019)
+(careerEpoch EricGlaze "The Industrial Service Group — President (Consultant)" 2019 9999)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn EricGlaze FinancialManagement)
+(expertiseIn EricGlaze Operations)
+(expertiseIn EricGlaze IndustrialServices)
+(expertiseIn EricGlaze Accounting)
+
+;; ── Valuation Plane: Signals ─────────────────────────────────────
+
+(isa EricGlaze-TrustedAdvisor SIGNAL)
+(comment EricGlaze-TrustedAdvisor
+  "Eric served as both CFO and COO at Jim Richard's prior company
+   (Industrial Service Solutions) before ISG was formed. He is an
+   inner-circle advisor with deep operational and financial knowledge
+   of how Jim builds platforms. Now serves in a senior consulting
+   capacity — trusted voice, institutional memory.")
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithGlaze PROTOCOL)
+(hasTrigger Protocol-InteractWithGlaze (sessionCaller ?Session EricGlaze))
+(comment Protocol-InteractWithGlaze
+  "Eric is Jim's long-time CFO/COO from the pre-ISG era. He has
+   institutional memory of the entire platform-building journey.
+   Treat him as a senior advisor with both financial and operational
+   depth. He's based in rural Kansas — pragmatic, no-nonsense.")

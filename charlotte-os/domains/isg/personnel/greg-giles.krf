@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; ISG PERSONNEL / GREG GILES
+;;; Co-Owner, Georgia Western LLC
+;;; ================================================================
+
+(in-microtheory ISGPersonnelMt)
+
+;; ── Ontological Plane: Identity ──────────────────────────────────
+
+(isa GregGiles Person)
+(hasAttribute GregGiles ::LABEL "Greg Giles")
+(hasAttribute GregGiles ::ROLE "Co-Owner, Georgia Western LLC")
+
+;; ── Ontological Plane: Relationships ─────────────────────────────
+
+(MEMBER_OF GregGiles ISGValveActuationGroup)
+
+;; Co-founded Georgia Western with Neil Hutcheson
+(hasAttribute GregGiles ::CO_FOUNDER "Neil Hutcheson")
+
+;; ── Geospatial Plane: Location ───────────────────────────────────
+
+(locatedAt GregGiles Kennesaw-GA)
+
+;; ── Theoretical Plane (Kd-space): Expertise ──────────────────────
+
+(expertiseIn GregGiles ElectricValveActuators)
+(expertiseIn GregGiles IndustrialDistribution)
+
+;; ── Valuation Plane: Protocols ───────────────────────────────────
+
+(isa Protocol-InteractWithGiles PROTOCOL)
+(hasTrigger Protocol-InteractWithGiles (sessionCaller ?Session GregGiles))
+(comment Protocol-InteractWithGiles
+  "Greg co-founded Georgia Western in 1992 with Neil Hutcheson.
+   He continues operations post-ISG acquisition. Founder-operator
+   with 30+ years in actuator distribution.")
