@@ -54,7 +54,7 @@ class Config:
 
     # Anthropic
     ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
-    CLAUDE_MODEL: str = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5-20250929")
+    CLAUDE_MODEL: str = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
     CLAUDE_MAX_TOKENS: int = int(os.getenv("CLAUDE_MAX_TOKENS", "500"))
     CLAUDE_MAX_TOKENS_BRIEFING: int = int(os.getenv("CLAUDE_MAX_TOKENS_BRIEFING", "2000"))
     CLAUDE_MAX_TOKENS_SMS: int = int(os.getenv("CLAUDE_MAX_TOKENS_SMS", "250"))
