@@ -9,9 +9,10 @@ from tools.filesystem import TOOLS as FS_TOOLS, handle as fs_handle
 from tools.shell import TOOLS as SHELL_TOOLS, handle as shell_handle
 from tools.charlotte import TOOLS as CHARLOTTE_TOOLS, handle as charlotte_handle
 from tools.notes import TOOLS as NOTES_TOOLS, handle as notes_handle
+from tools.krf import TOOLS as KRF_TOOLS, handle as krf_handle
 
 # Combined tool list for Claude API
-ALL_TOOLS = FS_TOOLS + SHELL_TOOLS + CHARLOTTE_TOOLS + NOTES_TOOLS
+ALL_TOOLS = FS_TOOLS + SHELL_TOOLS + CHARLOTTE_TOOLS + NOTES_TOOLS + KRF_TOOLS
 
 # Dispatch map: tool_name -> async handler function
 HANDLERS = {}
@@ -20,6 +21,7 @@ for _tools, _handler in [
     (SHELL_TOOLS, shell_handle),
     (CHARLOTTE_TOOLS, charlotte_handle),
     (NOTES_TOOLS, notes_handle),
+    (KRF_TOOLS, krf_handle),
 ]:
     for _tool in _tools:
         HANDLERS[_tool["name"]] = _handler

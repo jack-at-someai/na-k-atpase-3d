@@ -40,6 +40,7 @@ from deepgram_client import DeepgramStreamer, DemoDeepgramStreamer
 from elevenlabs_client import ElevenLabsTTS, DemoElevenLabsTTS
 from twilio_handler import handle_voice_webhook, TwilioMediaStream, generate_sms_twiml, validate_twilio_signature
 from tools.notes import set_store as set_notes_store
+from tools.krf import init_krf_index
 
 log = logging.getLogger("charlotte.voice")
 
@@ -904,6 +905,7 @@ async def on_startup(app: web.Application):
     store = SessionStore()
     await store.init()
     set_notes_store(store)
+    await init_krf_index()
     agent = ClaudeAgent()
     log.info("Charlotte Voice Agent started")
     log.info(Config.log_status())
