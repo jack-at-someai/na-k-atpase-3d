@@ -121,6 +121,9 @@ class Session:
         self.briefing_topic: str = ""
         self.briefing_started_at: float = 0.0
         self.briefing_turn_count: int = 0
+        # SMS primitive mode state
+        self.sms_mode: str = "general"  # general | node | edge | metric | signal | protocol
+        self.sms_last_entity: str = ""  # last-queried entity for context carry
 
     def add_message(self, role: str, content: str, tool_use: str | None = None):
         self.messages.append({

@@ -548,6 +548,52 @@ async def handle_twilio_media(request: web.Request) -> web.WebSocketResponse:
 # Twilio SMS handler
 # ===========================================================================
 
+# ── SMS primitive mode constants ──────────────────────────────────────
+
+_SMS_PREFIX_MAP = {
+    "n:": "node", "e:": "edge", "m:": "metric",
+    "s:": "signal", "p:": "protocol",
+    "/node": "node", "/edge": "edge", "/metric": "metric",
+    "/signal": "signal", "/protocol": "protocol",
+}
+_SMS_RESET_COMMANDS = frozenset({"x", "reset", "/reset", "/general", "/exit"})
+_SMS_HELP_COMMANDS = frozenset({"?", "/help", "help", "/modes"})
+_SMS_MODE_SOURCE = {
+    "general": "sms", "node": "sms_node", "edge": "sms_edge",
+    "metric": "sms_metric", "signal": "sms_signal", "protocol": "sms_protocol",
+}
+_SMS_MODE_TAGS = {
+    "node": "[N]", "edge": "[E]", "metric": "[M]",
+    "signal": "[S]", "protocol": "[P]",
+}
+
+_SMS_HELP_TEXT = (
+    "Charlotte SMS modes:\n"
+    "n: entity — Node (who/what)\n"
+    "e: entity — Edge (relationships)\n"
+    "m: entity — Metric (numbers)\n"
+    "s: entity — Signal (conditions)\n"
+    "p: entity — Protocol (procedures)\n"
+    "x — reset to general\n"
+    "? — this help\n"
+    "Entity carries across mode switches."
+)
+
+
+def _parse_sms_mode(body: str) -> tuple[str | None, str]:
+    """Parse SMS body for mode prefix. Returns (mode_or_None, cleaned_body)."""
+    lower = body.lower().strip()
+    # Check reset commands
+    if lower in _SMS_RESET_COMMANDS:
+        return ("reset", "")
+    # Check prefix map (case-insensitive, ordered longest-first to avoid partial matches)
+    for prefix in sorted(_SMS_PREFIX_MAP, key=len, reverse=True):
+        if lower.startswith(prefix):
+            rest = body[len(prefix):].strip()
+            return (_SMS_PREFIX_MAP[prefix], rest)
+    return (None, body)
+
+
 async def handle_twilio_sms(request: web.Request) -> web.Response:
     """POST /twilio/sms — handle incoming SMS messages."""
     from urllib.parse import urlparse
@@ -578,17 +624,67 @@ async def handle_twilio_sms(request: web.Request) -> web.Response:
 
     # Use sender phone number as session identifier for continuity
     session = await store.get_or_create(sender, source="sms")
+
+    # ── Help handler ──────────────────────────────────────────────────
+    if body.lower().strip() in _SMS_HELP_COMMANDS:
+        mode_label = session.sms_mode if session.sms_mode != "general" else "general"
+        help_reply = _SMS_HELP_TEXT + f"\nCurrent: {mode_label}"
+        twiml = generate_sms_twiml(help_reply)
+        return web.Response(text=twiml, content_type="application/xml")
+
+    # ── Parse prefix ──────────────────────────────────────────────────
+    parsed_mode, cleaned_body = _parse_sms_mode(body)
+
+    # Handle reset
+    if parsed_mode == "reset":
+        session.sms_mode = "general"
+        session.sms_last_entity = ""
+        twiml = generate_sms_twiml("Mode reset. Back to general Charlotte.")
+        return web.Response(text=twiml, content_type="application/xml")
+
+    # Mode switch
+    if parsed_mode and parsed_mode != "reset":
+        session.sms_mode = parsed_mode
+        log.info("SMS mode switch [%s]: %s", sender, parsed_mode)
+
+    # ── Context carry (primitive modes only) ──────────────────────────
+    query_for_claude = cleaned_body
+    if session.sms_mode != "general":
+        if not cleaned_body and session.sms_last_entity:
+            # Empty query after mode switch — re-query last entity in new mode
+            query_for_claude = f"(regarding: {session.sms_last_entity})"
+        elif not cleaned_body and not session.sms_last_entity:
+            # No entity context at all — prompt for one
+            tag = _SMS_MODE_TAGS.get(session.sms_mode, "")
+            twiml = generate_sms_twiml(f"{tag} Mode set to {session.sms_mode}. Send an entity to query.")
+            return web.Response(text=twiml, content_type="application/xml")
+        elif len(cleaned_body.split()) <= 3 and session.sms_last_entity:
+            # Short query — inject entity context
+            query_for_claude = f"{cleaned_body} (regarding: {session.sms_last_entity})"
+        else:
+            # Longer query — update entity context
+            session.sms_last_entity = cleaned_body
+
+    # ── Save and build messages ───────────────────────────────────────
     await store.save_message(session, "user", body)
     messages = session.get_claude_messages()
 
+    # If context-enriched query differs from raw body, replace last message for Claude
+    if query_for_claude != body and query_for_claude:
+        messages[-1] = {"role": "user", "content": query_for_claude}
+
+    # ── Pick source key and tokens ────────────────────────────────────
+    source_key = _SMS_MODE_SOURCE.get(session.sms_mode, "sms")
+    max_tokens = Config.CLAUDE_MAX_TOKENS_SMS if session.sms_mode != "general" else None
+
     try:
-        response_text = await agent.respond(messages, source="sms")
+        response_text = await agent.respond(messages, source=source_key, max_tokens=max_tokens)
     except Exception:
         log.exception("Claude error processing SMS")
         response_text = "Sorry, I hit an error processing that. Try again in a moment."
 
     await store.save_message(session, "assistant", response_text)
-    log.info("SMS reply to %s: %s", sender, response_text[:200])
+    log.info("SMS reply to %s [%s]: %s", sender, session.sms_mode, response_text[:200])
 
     # Publish to MQTT
     try:
@@ -600,6 +696,8 @@ async def handle_twilio_sms(request: web.Request) -> web.Response:
                 "from": sender,
                 "body": body[:500],
                 "reply": response_text[:500],
+                "mode": session.sms_mode,
+                "last_entity": session.sms_last_entity,
                 "timestamp": time.time(),
             }))
     except Exception:

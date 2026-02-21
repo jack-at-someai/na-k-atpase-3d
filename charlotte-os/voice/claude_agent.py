@@ -81,7 +81,67 @@ SMS interaction rules:
 - You can take notes, read/write files, run commands, and interact with Charlotte's MQTT systems.
 - The texter may be Jack (the architect), a team member, or anyone with access. Be helpful to all.
 
-You are running at home on Jack's Pi 5, connected to the Charlotte nervous system. You have access to local files and systems."""
+You are running at home on Jack's Pi 5, connected to the Charlotte nervous system. You have access to local files and systems.
+
+Primitive mode hints — when in general SMS mode:
+If a question clearly maps to one of Charlotte's five primitives, format your answer with the matching tag and compact style to help the user discover primitive modes:
+- Entity/identity questions → [N] tag, list key attributes
+- Relationship questions → [E] tag, directed A -> B format
+- Numeric/measurement questions → [M] tag, key: value pairs
+- Status/condition questions → [S] tag, priority-ordered conditions
+- Process/procedure questions → [P] tag, trigger → action format
+This is optional — only use when the fit is obvious. General questions get normal conversational replies."""
+
+# ── SMS primitive mode rules ───────────────────────────────────────────
+
+_SMS_MODE_PREAMBLE = """
+SMS primitive mode rules:
+- Keep responses under 300 characters (fits 2 SMS segments). Brevity is mandatory.
+- Plain text only — no markdown, no bullet points, no code blocks.
+- Prefix every response with the mode tag shown below.
+- If entity context is provided (regarding: ...), scope your answer to that entity.
+- You have access to tools for KRF file lookup. Use read_file to check knowledge graph files when needed.
+- Pipe-separate multiple items. Use abbreviations freely."""
+
+_SMS_NODE_RULES = _SMS_MODE_PREAMBLE + """
+Mode: NODE — entity lookup lens.
+Tag: [N]
+Return entities with their key attribute (role, vertical, location, type).
+Format: [N] Entity Name | attr1 | attr2 | summary stat
+If multiple entities match, list up to 5, one per line, each tagged [N].
+Prioritize identity and classification over metrics."""
+
+_SMS_EDGE_RULES = _SMS_MODE_PREAMBLE + """
+Mode: EDGE — relationship lens.
+Tag: [E]
+Return directed relationships: A -> B (relationship-type).
+Pipe-separate multiple relationships on one line, or use one per line if complex.
+Format: [E] A -> B (type) | C -> D (type)
+Focus on structural connections: owns, manages, supplies, competes-with, reports-to."""
+
+_SMS_METRIC_RULES = _SMS_MODE_PREAMBLE + """
+Mode: METRIC — measurement lens.
+Tag: [M]
+Return key-value pairs for quantitative data.
+Format: [M] Rev: $241M | Headcount: 1,300 | SKUs: 259K
+Pipe-separate metrics. Use standard abbreviations (Rev, HC, YoY, QoQ).
+Prioritize the most important 3-5 metrics. Include units."""
+
+_SMS_SIGNAL_RULES = _SMS_MODE_PREAMBLE + """
+Mode: SIGNAL — active conditions lens.
+Tag: [S]
+Return active conditions and alerts, priority-ordered (highest first).
+Format: [S] Condition: STATUS | Condition: VALUE
+Statuses: ACTIVE, MODERATE, LOW, CLEAR, RISING, FALLING.
+Focus on what's happening now — anomalies, trends, alerts."""
+
+_SMS_PROTOCOL_RULES = _SMS_MODE_PREAMBLE + """
+Mode: PROTOCOL — procedure lens.
+Tag: [P]
+Return trigger → action format for operational procedures.
+Format: [P] WHEN trigger → THEN action
+Include dive line trace when possible: PROTOCOL ← SIGNAL ← METRIC ← NODE.
+Focus on what to do and why, traced back to source data."""
 
 # ── Assembled system prompts: substrate + channel rules ────────────────
 
@@ -96,6 +156,11 @@ SYSTEM_PROMPTS = {
     "sms": SYSTEM_PROMPT_SMS,
     "phone_briefing": SYSTEM_PROMPT_BRIEFING,
     "app_briefing": SYSTEM_PROMPT_BRIEFING,
+    "sms_node": _SUBSTRATE + "\n" + _SMS_NODE_RULES,
+    "sms_edge": _SUBSTRATE + "\n" + _SMS_EDGE_RULES,
+    "sms_metric": _SUBSTRATE + "\n" + _SMS_METRIC_RULES,
+    "sms_signal": _SUBSTRATE + "\n" + _SMS_SIGNAL_RULES,
+    "sms_protocol": _SUBSTRATE + "\n" + _SMS_PROTOCOL_RULES,
 }
 
 # Default for backwards compat
