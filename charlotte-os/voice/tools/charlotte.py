@@ -67,6 +67,24 @@ TOOLS = [
             "properties": {},
         },
     },
+    {
+        "name": "send_sms",
+        "description": "Send an outbound SMS text message via Twilio. Use to proactively notify Jack or other contacts.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "to": {
+                    "type": "string",
+                    "description": "Recipient phone number in E.164 format (e.g. '+18475551234')",
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Message text to send",
+                },
+            },
+            "required": ["to", "body"],
+        },
+    },
 ]
 
 
@@ -120,5 +138,33 @@ async def handle(name: str, args: dict) -> str:
             status["uptime"] = "unknown"
 
         return json.dumps(status, indent=2)
+
+    elif name == "send_sms":
+        to = args["to"]
+        body = args["body"]
+
+        if Config.DEMO:
+            return f"DEMO: Would send SMS to {to}: {body}"
+
+        if not Config.TWILIO_ACCOUNT_SID or not Config.TWILIO_AUTH_TOKEN:
+            return "Error: Twilio credentials not configured"
+        if not Config.TWILIO_PHONE_NUMBER:
+            return "Error: TWILIO_PHONE_NUMBER not set in .env"
+
+        try:
+            from twilio.rest import Client
+            client = Client(Config.TWILIO_ACCOUNT_SID, Config.TWILIO_AUTH_TOKEN)
+            message = client.messages.create(
+                body=body,
+                from_=Config.TWILIO_PHONE_NUMBER,
+                to=to,
+            )
+            log.info("SMS sent to %s: sid=%s", to, message.sid)
+            return f"SMS sent to {to}"
+        except ImportError:
+            return "Error: twilio package not installed (pip install twilio)"
+        except Exception as e:
+            log.error("SMS send failed: %s", e)
+            return f"Error sending SMS: {e}"
 
     return f"Unknown tool: {name}"
