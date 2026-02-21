@@ -64,13 +64,53 @@ class ElevenLabsTTS:
         self._running = True
         log.info("ElevenLabs connected (format=%s)", self._output_format)
 
+    # ── Incremental streaming interface ──────────────────────────────────
+    # Use send_text() + flush() + receive_audio() for pipelined TTS where
+    # text arrives in chunks (e.g., streamed from Claude sentence by sentence).
+
+    async def send_text(self, text: str):
+        """Send a text chunk for incremental synthesis.
+        ElevenLabs will start generating audio as soon as it has enough text."""
+        if not self._ws or not self._running:
+            return
+        await self._ws.send(json.dumps({
+            "text": text + " ",
+            "try_trigger_generation": True,
+        }))
+
+    async def flush(self):
+        """Signal end of text input. Call once after all send_text() calls."""
+        if not self._ws or not self._running:
+            return
+        await self._ws.send(json.dumps({"text": ""}))
+
+    async def receive_audio(self):
+        """Yield audio chunks (base64) until synthesis is complete (isFinal).
+        Run this concurrently with send_text() calls for pipelined TTS."""
+        if not self._ws or not self._running:
+            return
+        try:
+            while True:
+                msg = await asyncio.wait_for(self._ws.recv(), timeout=30.0)
+                data = json.loads(msg)
+                audio_b64 = data.get("audio")
+                if audio_b64:
+                    yield audio_b64
+                if data.get("isFinal"):
+                    break
+        except asyncio.TimeoutError:
+            log.warning("ElevenLabs receive timeout")
+        except websockets.ConnectionClosed:
+            log.warning("ElevenLabs connection closed during receive")
+            self._running = False
+        except Exception:
+            log.exception("ElevenLabs receive error")
+
+    # ── One-shot interface (backwards compat) ─────────────────────────────
+
     async def synthesize(self, text: str):
-        """
-        Send text and yield audio chunks as base64 strings.
-        Each chunk is a complete audio segment ready to play.
-        """
+        """Send full text and yield audio chunks. Use for non-streaming callers."""
         if Config.DEMO:
-            # Yield a tiny silent mulaw frame for demo
             yield base64.b64encode(b"\xff" * 160).decode("ascii")
             return
 
@@ -78,37 +118,10 @@ class ElevenLabsTTS:
             log.warning("ElevenLabs not connected, skipping TTS")
             return
 
-        try:
-            # Send text chunk
-            await self._ws.send(json.dumps({
-                "text": text + " ",
-                "try_trigger_generation": True,
-            }))
-
-            # Send empty string to signal end of input
-            await self._ws.send(json.dumps({
-                "text": "",
-            }))
-
-            # Receive audio chunks until final
-            while True:
-                msg = await asyncio.wait_for(self._ws.recv(), timeout=30.0)
-                data = json.loads(msg)
-
-                audio_b64 = data.get("audio")
-                if audio_b64:
-                    yield audio_b64
-
-                if data.get("isFinal"):
-                    break
-
-        except asyncio.TimeoutError:
-            log.warning("ElevenLabs response timeout")
-        except websockets.ConnectionClosed:
-            log.warning("ElevenLabs connection closed during synthesis")
-            self._running = False
-        except Exception:
-            log.exception("ElevenLabs synthesis error")
+        await self.send_text(text)
+        await self.flush()
+        async for chunk in self.receive_audio():
+            yield chunk
 
     async def close(self):
         """Close the ElevenLabs WebSocket."""
@@ -125,14 +138,34 @@ class ElevenLabsTTS:
 class DemoElevenLabsTTS(ElevenLabsTTS):
     """Demo mode: returns silent audio without API calls."""
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._demo_text = ""
+
     async def connect(self):
         self._running = True
+        self._demo_text = ""
         log.info("DEMO: ElevenLabs TTS ready (simulated)")
+
+    async def send_text(self, text: str):
+        self._demo_text += text
+
+    async def flush(self):
+        pass  # receive_audio handles the demo output
+
+    async def receive_audio(self):
+        """Yield silent chunks proportional to accumulated text."""
+        await asyncio.sleep(0.1)  # Simulate processing delay
+        words = self._demo_text.split()
+        chunk_size = 1600
+        for _ in range(0, max(len(words), 1), 3):
+            yield base64.b64encode(b"\xff" * chunk_size).decode("ascii")
+            await asyncio.sleep(0.2)
+        self._demo_text = ""
 
     async def synthesize(self, text: str):
         """Yield a small silent mulaw chunk per ~word for timing simulation."""
         words = text.split()
-        # ~200ms of silence per word at 8kHz mulaw
         chunk_size = 1600
         for _ in range(0, len(words), 3):
             yield base64.b64encode(b"\xff" * chunk_size).decode("ascii")
@@ -140,4 +173,5 @@ class DemoElevenLabsTTS(ElevenLabsTTS):
 
     async def close(self):
         self._running = False
+        self._demo_text = ""
         log.info("DEMO: ElevenLabs disconnected")

@@ -1,9 +1,9 @@
 """
 Charlotte Voice Agent — Deepgram Streaming STT
 ================================================
-Opens a persistent WebSocket to Deepgram Nova-2 for real-time transcription.
+Opens a persistent WebSocket to Deepgram for real-time transcription.
+Supports Nova-2 (silence-based endpointing) and Flux (model-based turn detection).
 Accepts raw audio bytes (mulaw 8kHz for Twilio, PCM 16kHz for app).
-Yields final transcripts via callback.
 """
 
 import asyncio
@@ -26,26 +26,61 @@ class DeepgramStreamer:
         self,
         on_transcript,
         on_speech_started=None,
+        on_utterance=None,
+        on_eager_utterance=None,
+        on_utterance_cancelled=None,
         encoding: str = "mulaw",
         sample_rate: int = 8000,
     ):
         """
         Args:
-            on_transcript: async callback(text: str, is_final: bool)
-            on_speech_started: async callback() — for barge-in detection
+            on_transcript: async callback(text, is_final) — every transcript event (for logging/display)
+            on_speech_started: async callback() — barge-in detection (SpeechStarted / StartOfTurn)
+            on_utterance: async callback(text) — complete utterance, ready for agent processing
+            on_eager_utterance: async callback(text) — speculative utterance (Flux EagerEndOfTurn)
+            on_utterance_cancelled: async callback() — cancel speculative work (Flux TurnResumed)
             encoding: "mulaw" for Twilio, "linear16" for app PCM
             sample_rate: 8000 for Twilio, 16000 for app
         """
         self._on_transcript = on_transcript
         self._on_speech_started = on_speech_started
+        self._on_utterance = on_utterance
+        self._on_eager_utterance = on_eager_utterance
+        self._on_utterance_cancelled = on_utterance_cancelled
         self._encoding = encoding
         self._sample_rate = sample_rate
+        self._model = Config.DEEPGRAM_MODEL
         self._ws = None
         self._running = False
         self._ready = False
         self._receive_task = None
         self._send_task = None
         self._audio_queue = asyncio.Queue()
+        self._turn_text = ""  # Accumulated transcript for the current turn
+
+    def _build_url(self) -> str:
+        """Build the Deepgram WebSocket URL with model-appropriate params."""
+        params = (
+            f"encoding={self._encoding}"
+            f"&sample_rate={self._sample_rate}"
+            f"&channels=1"
+            f"&model={self._model}"
+            f"&punctuate=true"
+            f"&interim_results=true"
+            f"&vad_events=true"
+        )
+
+        if self._model == "flux":
+            params += (
+                f"&eot_threshold={Config.DEEPGRAM_EOT_THRESHOLD}"
+                f"&eager_eot_threshold={Config.DEEPGRAM_EAGER_EOT_THRESHOLD}"
+                f"&eot_silence_threshold_ms={Config.DEEPGRAM_EOT_SILENCE_MS}"
+            )
+        else:
+            # Nova-2: use silence-based endpointing
+            params += "&endpointing=300"
+
+        return f"{self.DEEPGRAM_WSS}?{params}"
 
     async def connect(self):
         """Open WebSocket connection to Deepgram."""
@@ -55,17 +90,7 @@ class DeepgramStreamer:
             self._ready = True
             return
 
-        params = (
-            f"encoding={self._encoding}"
-            f"&sample_rate={self._sample_rate}"
-            f"&channels=1"
-            f"&model=nova-2"
-            f"&punctuate=true"
-            f"&interim_results=true"
-            f"&endpointing=300"
-            f"&vad_events=true"
-        )
-        url = f"{self.DEEPGRAM_WSS}?{params}"
+        url = self._build_url()
         headers = {"Authorization": f"Token {Config.DEEPGRAM_API_KEY}"}
 
         self._ws = await websockets.connect(
@@ -79,7 +104,7 @@ class DeepgramStreamer:
         self._ready = True
         self._receive_task = asyncio.create_task(self._receive_loop())
         self._send_task = asyncio.create_task(self._send_loop())
-        log.info("Deepgram connected (%s @ %dHz)", self._encoding, self._sample_rate)
+        log.info("Deepgram connected (%s, %s @ %dHz)", self._model, self._encoding, self._sample_rate)
 
     async def send_audio(self, audio_bytes: bytes):
         """Queue raw audio bytes for sending to Deepgram."""
@@ -117,14 +142,13 @@ class DeepgramStreamer:
             self._running = False
 
     async def _receive_loop(self):
-        """Listen for transcription results from Deepgram. Auto-reconnects on 1011."""
+        """Listen for transcription results and turn events from Deepgram."""
         while self._running:
             msg_count = 0
             try:
                 async for msg in self._ws:
                     msg_count += 1
                     if isinstance(msg, bytes):
-                        log.debug("Deepgram binary message (%d bytes)", len(msg))
                         continue
                     data = json.loads(msg)
                     msg_type = data.get("type", "")
@@ -133,20 +157,35 @@ class DeepgramStreamer:
                         log.info("Deepgram msg #%d: type=%s", msg_count, msg_type)
 
                     if msg_type == "Results":
-                        alt = data.get("channel", {}).get("alternatives", [{}])[0]
-                        text = alt.get("transcript", "").strip()
-                        is_final = data.get("is_final", False)
-                        speech_final = data.get("speech_final", False)
-                        if text:
-                            log.info("Deepgram transcript (final=%s, speech_final=%s): %s", is_final, speech_final, text)
-                            await self._on_transcript(text, is_final or speech_final)
-                        elif is_final:
-                            log.debug("Deepgram empty final result (silence)")
+                        await self._handle_results(data)
 
                     elif msg_type == "SpeechStarted":
                         log.info("Deepgram: speech started")
                         if self._on_speech_started:
                             await self._on_speech_started()
+
+                    elif msg_type == "StartOfTurn":
+                        log.info("Deepgram Flux: start of turn")
+                        if self._on_speech_started:
+                            await self._on_speech_started()
+
+                    elif msg_type == "EagerEndOfTurn":
+                        turn_text = self._turn_text.strip()
+                        log.info("Deepgram Flux: eager end of turn — %s", turn_text[:200])
+                        if turn_text and self._on_eager_utterance:
+                            await self._on_eager_utterance(turn_text)
+
+                    elif msg_type == "EndOfTurn":
+                        turn_text = self._turn_text.strip()
+                        log.info("Deepgram Flux: end of turn — %s", turn_text[:200])
+                        if turn_text and self._on_utterance:
+                            await self._on_utterance(turn_text)
+                        self._turn_text = ""  # Reset for next turn
+
+                    elif msg_type == "TurnResumed":
+                        log.info("Deepgram Flux: turn resumed — user still speaking")
+                        if self._on_utterance_cancelled:
+                            await self._on_utterance_cancelled()
 
                     elif msg_type == "Metadata":
                         log.info("Deepgram metadata: request_id=%s", data.get("request_id", "?"))
@@ -168,9 +207,38 @@ class DeepgramStreamer:
                 log.exception("Deepgram receive error (after %d msgs) — reconnecting", msg_count)
                 await self._reconnect()
 
+    async def _handle_results(self, data: dict):
+        """Process a Results message — transcript text, accumulate for turn detection."""
+        alt = data.get("channel", {}).get("alternatives", [{}])[0]
+        text = alt.get("transcript", "").strip()
+        is_final = data.get("is_final", False)
+        speech_final = data.get("speech_final", False)
+
+        if text:
+            log.info("Deepgram transcript (final=%s, speech_final=%s): %s", is_final, speech_final, text)
+            await self._on_transcript(text, is_final or speech_final)
+
+            # Accumulate finalized text for the current turn
+            if is_final:
+                if self._turn_text:
+                    self._turn_text += " " + text
+                else:
+                    self._turn_text = text
+
+        elif is_final:
+            log.debug("Deepgram empty final result (silence)")
+
+        # Nova-2 fallback: fire on_utterance on speech_final since Nova-2 has no turn events
+        if self._model != "flux" and speech_final and self._on_utterance:
+            turn_text = self._turn_text.strip()
+            if turn_text:
+                await self._on_utterance(turn_text)
+                self._turn_text = ""
+
     async def _reconnect(self):
         """Reconnect to Deepgram after a disconnect."""
         self._ws = None
+        self._turn_text = ""
         for attempt in range(5):
             if not self._running:
                 return
@@ -178,17 +246,7 @@ class DeepgramStreamer:
             log.info("Deepgram reconnect attempt %d in %ds", attempt + 1, wait)
             await asyncio.sleep(wait)
             try:
-                params = (
-                    f"encoding={self._encoding}"
-                    f"&sample_rate={self._sample_rate}"
-                    f"&channels=1"
-                    f"&model=nova-2"
-                    f"&punctuate=true"
-                    f"&interim_results=true"
-                    f"&endpointing=300"
-                    f"&vad_events=true"
-                )
-                url = f"{self.DEEPGRAM_WSS}?{params}"
+                url = self._build_url()
                 headers = {"Authorization": f"Token {Config.DEEPGRAM_API_KEY}"}
                 self._ws = await websockets.connect(
                     url,
@@ -228,6 +286,7 @@ class DeepgramStreamer:
             except asyncio.CancelledError:
                 pass
             self._receive_task = None
+        self._turn_text = ""
         log.info("Deepgram disconnected")
 
 
@@ -258,6 +317,8 @@ class DemoDeepgramStreamer(DeepgramStreamer):
             text = self._DEMO_PHRASES[self._demo_index % len(self._DEMO_PHRASES)]
             self._demo_index += 1
         await self._on_transcript(text, True)
+        if self._on_utterance:
+            await self._on_utterance(text)
 
     async def close(self):
         self._running = False

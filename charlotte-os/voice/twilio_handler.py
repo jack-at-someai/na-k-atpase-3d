@@ -54,6 +54,17 @@ def generate_twiml(stream_url: str) -> str:
 </Response>"""
 
 
+def generate_sms_twiml(body: str) -> str:
+    """Generate TwiML that replies to an incoming SMS."""
+    # Escape XML special characters in the response body
+    import xml.sax.saxutils
+    escaped = xml.sax.saxutils.escape(body)
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Message>{escaped}</Message>
+</Response>"""
+
+
 async def handle_voice_webhook(request: web.Request) -> web.Response:
     """
     POST /twilio/voice — Twilio calls this when someone dials the number.
