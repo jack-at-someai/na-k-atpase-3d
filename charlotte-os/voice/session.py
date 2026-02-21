@@ -47,6 +47,61 @@ CREATE INDEX IF NOT EXISTS idx_notes_title ON notes(title);
 """
 
 
+class ConversationProfile:
+    """Per-session speaker profile — adapts Charlotte's style to match the caller."""
+
+    _QUESTION_STARTERS = frozenset((
+        "what", "where", "when", "how", "why", "who", "which",
+        "is", "are", "can", "does", "do", "will", "would", "could", "should",
+    ))
+
+    def __init__(self):
+        self.turn_count: int = 0
+        self.avg_words: float = 10.0  # Start neutral
+        self.total_questions: int = 0
+        self.total_commands: int = 0
+
+    def update(self, utterance: str):
+        """Update profile with a new user utterance."""
+        words = len(utterance.split())
+        self.turn_count += 1
+        # Exponential moving average — recent turns weighted more
+        alpha = 0.4
+        self.avg_words = (1 - alpha) * self.avg_words + alpha * words
+
+        # Classify utterance
+        lower = utterance.lower().strip()
+        first_word = lower.split()[0] if lower.split() else ""
+        if lower.endswith("?") or first_word in self._QUESTION_STARTERS:
+            self.total_questions += 1
+        elif words <= 5 and not lower.endswith("?"):
+            self.total_commands += 1
+
+    @property
+    def style(self) -> str:
+        if self.avg_words < 5:
+            return "terse"
+        elif self.avg_words > 20:
+            return "verbose"
+        return "balanced"
+
+    def style_hint(self) -> str:
+        """One-line system prompt hint. Empty string if balanced or not enough data."""
+        if self.turn_count < 2:
+            return ""  # Not enough data to profile yet
+        if self.style == "terse":
+            return (
+                f"\nCaller style: brief and direct (avg ~{self.avg_words:.0f} words/turn). "
+                "Match their pace — respond in 1 sentence when possible."
+            )
+        elif self.style == "verbose":
+            return (
+                f"\nCaller style: conversational and detailed (avg ~{self.avg_words:.0f} words/turn). "
+                "You can give slightly longer responses (2-3 sentences) when helpful."
+            )
+        return ""
+
+
 class Session:
     """One conversation session — persists across calls/connections."""
 
@@ -58,6 +113,14 @@ class Session:
         self.stream_sid: str | None = None  # Twilio stream ID
         self.deepgram_ws = None
         self.active = True
+        self.profile = ConversationProfile()
+        # Mode state: "conversational", "minutes", or "briefing"
+        self.mode: str = "conversational"
+        self.minutes_transcript: list[dict] = []
+        self.minutes_started_at: float = 0.0
+        self.briefing_topic: str = ""
+        self.briefing_started_at: float = 0.0
+        self.briefing_turn_count: int = 0
 
     def add_message(self, role: str, content: str, tool_use: str | None = None):
         self.messages.append({

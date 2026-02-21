@@ -43,6 +43,10 @@ class Config:
 
     # Deepgram
     DEEPGRAM_API_KEY: str = os.getenv("DEEPGRAM_API_KEY", "")
+    DEEPGRAM_MODEL: str = os.getenv("DEEPGRAM_MODEL", "nova-2")  # "nova-2" or "flux"
+    DEEPGRAM_EOT_THRESHOLD: float = float(os.getenv("DEEPGRAM_EOT_THRESHOLD", "0.7"))
+    DEEPGRAM_EAGER_EOT_THRESHOLD: float = float(os.getenv("DEEPGRAM_EAGER_EOT_THRESHOLD", "0.4"))
+    DEEPGRAM_EOT_SILENCE_MS: int = int(os.getenv("DEEPGRAM_EOT_SILENCE_MS", "5000"))
 
     # ElevenLabs
     ELEVENLABS_API_KEY: str = os.getenv("ELEVENLABS_API_KEY", "")
@@ -52,6 +56,7 @@ class Config:
     ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
     CLAUDE_MODEL: str = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5-20250929")
     CLAUDE_MAX_TOKENS: int = int(os.getenv("CLAUDE_MAX_TOKENS", "500"))
+    CLAUDE_MAX_TOKENS_BRIEFING: int = int(os.getenv("CLAUDE_MAX_TOKENS_BRIEFING", "2000"))
 
     # MQTT
     MQTT_HOST: str = os.getenv("MQTT_HOST", "localhost")
@@ -93,7 +98,7 @@ class Config:
         """Return a safe status string (no secrets)."""
         keys = {
             "Twilio": bool(cls.TWILIO_ACCOUNT_SID and cls.TWILIO_AUTH_TOKEN),
-            "Deepgram": bool(cls.DEEPGRAM_API_KEY),
+            "Deepgram": f"{cls.DEEPGRAM_MODEL} ({'OK' if cls.DEEPGRAM_API_KEY else 'missing'})",
             "ElevenLabs": bool(cls.ELEVENLABS_API_KEY),
             "Anthropic": bool(cls.ANTHROPIC_API_KEY),
             "MQTT": f"{cls.MQTT_HOST}:{cls.MQTT_PORT}",
