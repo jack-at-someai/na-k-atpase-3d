@@ -34,6 +34,10 @@
 ;; Format: (hasAttribute PersonID ::PHONE "+1XXXXXXXXXX")
 ;; Format: (hasAttribute PersonID ::EMAIL "user@isgservice.com")
 
+;; ── Charlotte OS ──
+
+(hasAttribute JackRichard ::PHONE "+18477703566")
+
 ;; ── C-Suite ──
 
 (hasAttribute JimRichard ::EMAIL "jtrichard@isgservice.com")

@@ -1,0 +1,43 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / JACK RICHARD
+;;; Co-Founder & Chief Architect
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa JackRichard Person)
+(isa JackRichard Founder)
+(isa JackRichard Imagineer)
+(hasAttribute JackRichard ::LABEL "Jack Richard")
+(hasAttribute JackRichard ::ROLE "Co-Founder & Chief Architect")
+(hasAttribute JackRichard ::PHONE "+18477703566")
+(hasAttribute JackRichard ::PILLAR "brain")
+(hasAttribute JackRichard ::AFFILIATION "Lake Forest -> Northwestern MSAI (1st cohort). LineLeap -> Charlotte.")
+
+(MEMBER_OF JackRichard SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JackRichard PillarBrain)
+
+;; Expertise
+(expertiseIn JackRichard KnowledgeRepresentation)
+(expertiseIn JackRichard SwarmIntelligence)
+(expertiseIn JackRichard ArtificialIntelligence)
+(expertiseIn JackRichard SystemArchitecture)
+(expertiseIn JackRichard FirstOrderLogic)
+(expertiseIn JackRichard CognitiveArchitecture)
+
+;; Career epochs
+(careerEpoch JackRichard "Lake Forest Academy — High School" 2010 2014)
+(careerEpoch JackRichard "Northwestern University — M.S. Artificial Intelligence (1st cohort)" 2018 2020)
+(careerEpoch JackRichard "LineLeap — Founder" 2017 2023)
+(careerEpoch JackRichard "Charlotte OS — Chief Architect" 2023 9999)
+(careerEpoch JackRichard "SomeAI — Co-Founder & Chief Architect" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJack PROTOCOL)
+(comment Protocol-InteractWithJack
+  "Built Charlotte's substrate. The divergent force. Thinks in
+   knowledge graphs, first-order logic, and swarm dynamics.
+   Northwestern MSAI first cohort. PhD-track swarm intelligence.
+   Mentored by Kris Hammond and influenced by Ken Forbus.")
