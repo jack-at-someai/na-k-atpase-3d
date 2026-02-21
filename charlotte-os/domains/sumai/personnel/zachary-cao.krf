@@ -1,0 +1,39 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / ZACHARY CAO
+;;; Co-Founder & Dir. Org Intelligence
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa ZacharyCao Person)
+(isa ZacharyCao Founder)
+(isa ZacharyCao Imagineer)
+(hasAttribute ZacharyCao ::LABEL "Zachary Cao")
+(hasAttribute ZacharyCao ::ROLE "Co-Founder & Dir. Org Intelligence")
+(hasAttribute ZacharyCao ::PILLAR "brain")
+(hasAttribute ZacharyCao ::AFFILIATION "Rose-Hulman CS + M.S. Eng. Mgmt. ServiceNow -> SomeAI.")
+
+(MEMBER_OF ZacharyCao SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar ZacharyCao PillarBrain)
+
+;; Expertise
+(expertiseIn ZacharyCao ComputerScience)
+(expertiseIn ZacharyCao EngineeringManagement)
+(expertiseIn ZacharyCao OrganizationalIntelligence)
+(expertiseIn ZacharyCao ServiceNowPlatform)
+(expertiseIn ZacharyCao SystemsThinking)
+
+;; Career epochs
+(careerEpoch ZacharyCao "Rose-Hulman Institute of Technology — B.S. Computer Science" 2016 2020)
+(careerEpoch ZacharyCao "Rose-Hulman Institute of Technology — M.S. Engineering Management" 2020 2021)
+(careerEpoch ZacharyCao "ServiceNow — Engineer" 2021 2025)
+(careerEpoch ZacharyCao "SomeAI — Co-Founder & Dir. Org Intelligence" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithZachary PROTOCOL)
+(comment Protocol-InteractWithZachary
+  "Organizational systems as Charlotte substrate. Rose-Hulman CS rigor
+   plus ServiceNow enterprise platform experience. Thinks in workflows,
+   org structures, and process intelligence.")

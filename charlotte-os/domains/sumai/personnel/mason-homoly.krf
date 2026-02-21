@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / MASON HOMOLY
+;;; Construction Operations
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa MasonHomoly Person)
+(isa MasonHomoly Imagineer)
+(hasAttribute MasonHomoly ::LABEL "Mason Homoly")
+(hasAttribute MasonHomoly ::ROLE "Construction Operations")
+(hasAttribute MasonHomoly ::PILLAR "touch")
+(hasAttribute MasonHomoly ::AFFILIATION "Mizzou Civil Eng. VP Operations, Homoly Design + Build.")
+
+(MEMBER_OF MasonHomoly SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar MasonHomoly PillarTouch)
+
+;; Expertise
+(expertiseIn MasonHomoly CivilEngineering)
+(expertiseIn MasonHomoly ConstructionOperations)
+(expertiseIn MasonHomoly DesignBuild)
+(expertiseIn MasonHomoly ProjectManagement)
+
+;; Career epochs
+(careerEpoch MasonHomoly "University of Missouri — B.S. Civil Engineering" 2018 2022)
+(careerEpoch MasonHomoly "Homoly Design + Build — VP Operations" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithMason PROTOCOL)
+(comment Protocol-InteractWithMason
+  "Homoly father-son pair (with Andrew). Full lifecycle: design ->
+   construction. Mizzou Civil Eng. The touch pillar's construction
+   dimension — physical building, materials, structural execution.")

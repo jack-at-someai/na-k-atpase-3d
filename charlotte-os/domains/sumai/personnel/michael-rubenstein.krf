@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. MICHAEL RUBENSTEIN
+;;; Mentor — Swarm Robotics
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa MichaelRubenstein Person)
+(isa MichaelRubenstein Mentor)
+(hasAttribute MichaelRubenstein ::LABEL "Dr. Michael Rubenstein")
+(hasAttribute MichaelRubenstein ::ROLE "Mentor — Swarm Robotics")
+(hasAttribute MichaelRubenstein ::PILLAR "brain")
+(hasAttribute MichaelRubenstein ::AFFILIATION "Northwestern. Purdue/USC PhD. Kilobots: 1024-robot swarm in Science (2014).")
+
+(MEMBER_OF MichaelRubenstein SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar MichaelRubenstein PillarBrain)
+
+;; Expertise
+(expertiseIn MichaelRubenstein SwarmRobotics)
+(expertiseIn MichaelRubenstein SelfAssembly)
+(expertiseIn MichaelRubenstein DistributedSystems)
+(expertiseIn MichaelRubenstein MultiRobotSystems)
+
+;; Career epochs
+(careerEpoch MichaelRubenstein "Purdue/USC — PhD Robotics" 2005 2012)
+(careerEpoch MichaelRubenstein "Harvard — Kilobots, 1024-robot swarm (Science, 2014)" 2012 2016)
+(careerEpoch MichaelRubenstein "Northwestern University — Professor" 2016 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithMichaelR PROTOCOL)
+(comment Protocol-InteractWithMichaelR
+  "2nd most influential mentor. Self-assembly without central control
+   = Charlotte. Kilobots: 1024-robot swarm published in Science (2014).
+   Northwestern. The brain pillar's swarm mentor — distributed
+   intelligence, emergent behavior, decentralized coordination.")

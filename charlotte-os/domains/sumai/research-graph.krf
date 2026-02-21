@@ -1,0 +1,829 @@
+;;; ================================================================
+;;; SUMAI DOMAIN / RESEARCH GRAPH
+;;; 119 nodes, 406 edges — the entire Charlotte research project
+;;; as a knowledge graph. Extracted from research-lab/index.html.
+;;;
+;;; Microtheory: SumAIResearchGraphMt
+;;; Parent: SumAIResearchEntityMt
+;;; ================================================================
+
+(in-microtheory SumAIResearchGraphMt)
+
+(isa SumAIResearchGraphMt Microtheory)
+(genlMt SumAIResearchGraphMt SumAIResearchEntityMt)
+
+
+;;; ================================================================
+;;; SECTION 0: COLLECTION & PREDICATE DECLARATIONS
+;;; ================================================================
+
+(isa ConceptCluster Collection)
+(genls ConceptCluster NODE)
+(comment ConceptCluster
+  "A thematic cluster of related research ideas and projects.")
+
+(isa ValidationDomain Collection)
+(genls ValidationDomain NODE)
+(comment ValidationDomain
+  "A real-world domain that validates Charlotte's universality.")
+
+(isa ResearchPaper Collection)
+(genls ResearchPaper NODE)
+(comment ResearchPaper
+  "A planned academic paper in the Charlotte research programme.")
+
+(isa AcademicDiscipline Collection)
+(genls AcademicDiscipline NODE)
+(comment AcademicDiscipline
+  "A traditional academic discipline that contributes to the research.")
+
+(isa ResearchProject Collection)
+(genls ResearchProject NODE)
+(comment ResearchProject
+  "An individual project — game, visualisation, reference, or tool —
+   that probes some aspect of Charlotte's architecture.")
+
+(isa researchRelation Predicate)
+(arity researchRelation 3)
+(comment researchRelation
+  "(researchRelation SourceNode TargetNode Weight) — a weighted
+   relationship between two nodes in the research graph.")
+
+
+;;; ================================================================
+;;; SECTION 1: PRIMITIVES (reference only — declared in kernel)
+;;; ================================================================
+;;; NODE, EDGE, METRIC, SIGNAL, PROTOCOL
+;;; These five primitives are defined in kernel/primitives.krf.
+;;; They are referenced below in edges but NOT redeclared here.
+
+
+;;; ================================================================
+;;; SECTION 2: CONCEPT CLUSTERS (10 nodes)
+;;; ================================================================
+
+(isa ClusterBiomimicry ConceptCluster)
+(hasAttribute ClusterBiomimicry ::LABEL "Biomimicry")
+(comment ClusterBiomimicry
+  "Learning from biological systems: organisms as signal emitters, evolution as optimization, nature as engineer.")
+
+(isa ClusterSpaceTime ConceptCluster)
+(hasAttribute ClusterSpaceTime ::LABEL "Space-Time")
+(comment ClusterSpaceTime
+  "Pre-built spatiotemporal substrate: space and time as graph geometry, not schema. Coordinates, intervals, topology.")
+
+(isa ClusterSwarmEmergence ConceptCluster)
+(hasAttribute ClusterSwarmEmergence ::LABEL "Swarm & Emergence")
+(comment ClusterSwarmEmergence
+  "Multi-agent coordination, flocking, self-organization through local signal propagation. Intelligence from simplicity.")
+
+(isa ClusterKnowledgeGraphs ConceptCluster)
+(hasAttribute ClusterKnowledgeGraphs ::LABEL "Knowledge Graphs")
+(comment ClusterKnowledgeGraphs
+  "Graph theory, formal logic, ontology — knowledge as traversable structure. The core architecture.")
+
+(isa ClusterNeuralCognitive ConceptCluster)
+(hasAttribute ClusterNeuralCognitive ::LABEL "Neural & Cognitive")
+(comment ClusterNeuralCognitive
+  "Brain as knowledge graph, cognition as signal processing, neural geometry. How minds navigate information.")
+
+(isa ClusterSignalProcessing ConceptCluster)
+(hasAttribute ClusterSignalProcessing ::LABEL "Signal Processing")
+(comment ClusterSignalProcessing
+  "All data as signals: frequency analysis, temporal patterns, waveform decomposition. Charlotte's fundamental view of reality.")
+
+(isa ClusterLifecycleLearning ConceptCluster)
+(hasAttribute ClusterLifecycleLearning ::LABEL "Lifecycle & Learning")
+(comment ClusterLifecycleLearning
+  "Complete trajectories: breeding paths, career arcs, instrument provenance, business cycles. The dead teach the living.")
+
+(isa ClusterStrategyOperations ConceptCluster)
+(hasAttribute ClusterStrategyOperations ::LABEL "Strategy & Operations")
+(comment ClusterStrategyOperations
+  "Operational planning as graph traversal: deployment, resource allocation, system design. Business as substrate.")
+
+(isa ClusterInterfaceDesign ConceptCluster)
+(hasAttribute ClusterInterfaceDesign ::LABEL "Interface & Design")
+(comment ClusterInterfaceDesign
+  "Frontend as graph: UI as navigation through knowledge space, component architecture, visual systems.")
+
+(isa ClusterGameMechanics ConceptCluster)
+(hasAttribute ClusterGameMechanics ::LABEL "Game Mechanics")
+(comment ClusterGameMechanics
+  "State machines, search algorithms, adversarial AI — games as computational probes for Charlotte's architecture.")
+
+
+;;; ================================================================
+;;; SECTION 3: VALIDATION DOMAINS (7 nodes)
+;;; ================================================================
+
+(isa DomainLineLeap ValidationDomain)
+(hasAttribute DomainLineLeap ::LABEL "LineLeap")
+(comment DomainLineLeap
+  "Human/social — venue experience platform, 100-employee operation. Proof Charlotte automates entire business operations. Strategy hub.")
+
+(isa DomainISG ValidationDomain)
+(hasAttribute DomainISG ::LABEL "Industrial Service Group")
+(comment DomainISG
+  "Mechanical/industrial — rotating equipment, service logistics. ServiceIQ ($1.4M live Feb 23, 2026). First Charlotte production revenue.")
+
+(isa DomainPrierViolins ValidationDomain)
+(hasAttribute DomainPrierViolins ::LABEL "Prier Violins")
+(comment DomainPrierViolins
+  "Cultural/artisan — PPP Instruments LLC, $5.3M rare instrument portfolio, 32 tracked turns. Provenance as knowledge graph.")
+
+(isa DomainTopTierMoving ValidationDomain)
+(hasAttribute DomainTopTierMoving ::LABEL "Top Tier Moving")
+(comment DomainTopTierMoving
+  "Commercial/logistics — 10,606 jobs, 98 crew, $14.4M billed across 52 states. Operations as signal stream.")
+
+(isa DomainConstellation ValidationDomain)
+(hasAttribute DomainConstellation ::LABEL "Constellation")
+(comment DomainConstellation
+  "Knowledge/memory — 1,754 images to 3D knowledge graph. Journey Brain. Visual signal extraction. Personal archaeology.")
+
+(isa DomainSounder ValidationDomain)
+(hasAttribute DomainSounder ::LABEL "Sounder / Trogdon")
+(comment DomainSounder
+  "Biological — bioacoustic monitoring, swine genetics, 27,200 nodes / 46,100 edges production dataset. The proving ground.")
+
+(isa DomainSeaLion ValidationDomain)
+(hasAttribute DomainSeaLion ::LABEL "Sea Lion")
+(comment DomainSeaLion
+  "Marine/biological — ocean science, marine ecosystem monitoring, animal behavior signals.")
+
+
+;;; ================================================================
+;;; SECTION 4: RESEARCH PAPERS (12 nodes)
+;;; ================================================================
+
+(isa Paper0Synthesis ResearchPaper)
+(hasAttribute Paper0Synthesis ::LABEL "Paper 0: Synthesis")
+(hasAttribute Paper0Synthesis ::TITLE "Infrastructure for Observable Reality")
+(hasAttribute Paper0Synthesis ::VENUE "Nature/Science")
+(comment Paper0Synthesis
+  "Infrastructure for Observable Reality — Nature/Science. The foundational claim: Charlotte models any domain where identities emit signals over time.")
+
+(isa Paper1FINN ResearchPaper)
+(hasAttribute Paper1FINN ::LABEL "Paper 1: FINN")
+(hasAttribute Paper1FINN ::TITLE "Signal-Based Temporal Graph Architecture")
+(hasAttribute Paper1FINN ::VENUE "IEEE TKDE")
+(comment Paper1FINN
+  "Signal-Based Temporal Graph Architecture — IEEE TKDE. The data model: everything is a FACT, five types, register-based, append-only.")
+
+(isa Paper2Business ResearchPaper)
+(hasAttribute Paper2Business ::LABEL "Paper 2: Business")
+(hasAttribute Paper2Business ::TITLE "Operational Infrastructure for Signal-Driven Industries")
+(hasAttribute Paper2Business ::VENUE "Management Science")
+(comment Paper2Business
+  "Operational Infrastructure for Signal-Driven Industries — Management Science. The business case: embedded service, not SaaS.")
+
+(isa Paper3Swarm ResearchPaper)
+(hasAttribute Paper3Swarm ::LABEL "Paper 3: Swarm")
+(hasAttribute Paper3Swarm ::TITLE "Recursive Flocking: Swarm Intelligence for KG Coordination")
+(hasAttribute Paper3Swarm ::VENUE "Swarm Intelligence Journal")
+(comment Paper3Swarm
+  "Recursive Flocking: Swarm Intelligence for KG Coordination — Swarm Intelligence Journal. Multi-agent knowledge discovery.")
+
+(isa Paper4Substrate ResearchPaper)
+(hasAttribute Paper4Substrate ::LABEL "Paper 4: Substrate")
+(hasAttribute Paper4Substrate ::TITLE "Containerized KGs with Register-Based Primitives")
+(hasAttribute Paper4Substrate ::VENUE "IEEE Software")
+(comment Paper4Substrate
+  "Containerized KGs with Register-Based Primitives — IEEE Software. The software architecture: containerized, pre-built, universal.")
+
+(isa Paper5Domain ResearchPaper)
+(hasAttribute Paper5Domain ::LABEL "Paper 5: Domain")
+(hasAttribute Paper5Domain ::TITLE "Universal Ontology Through Register-Based Primitives")
+(hasAttribute Paper5Domain ::VENUE "ACM MODELS")
+(comment Paper5Domain
+  "Universal Ontology Through Register-Based Primitives — ACM MODELS. One model for every domain. Five primitives, infinite expression.")
+
+(isa Paper6Spatial ResearchPaper)
+(hasAttribute Paper6Spatial ::LABEL "Paper 6: Spatial")
+(hasAttribute Paper6Spatial ::TITLE "Interwoven Spatial Planes in Knowledge Graphs")
+(hasAttribute Paper6Spatial ::VENUE "ACM SIGSPATIAL")
+(comment Paper6Spatial
+  "Interwoven Spatial Planes in Knowledge Graphs — ACM SIGSPATIAL. Space as pre-built graph substrate, not after-the-fact schema.")
+
+(isa Paper7Temporal ResearchPaper)
+(hasAttribute Paper7Temporal ::LABEL "Paper 7: Temporal")
+(hasAttribute Paper7Temporal ::TITLE "Time as Graph: Temporal Substrate Architecture")
+(hasAttribute Paper7Temporal ::VENUE "ACM TODS")
+(comment Paper7Temporal
+  "Time as Graph: Temporal Substrate Architecture — ACM TODS. Time is not metadata. Time is structure.")
+
+(isa Paper8Frontend ResearchPaper)
+(hasAttribute Paper8Frontend ::LABEL "Paper 8: Frontend")
+(hasAttribute Paper8Frontend ::TITLE "The Serialized Interface: UI as KG Traversals")
+(hasAttribute Paper8Frontend ::VENUE "ACM CHI/UIST")
+(comment Paper8Frontend
+  "The Serialized Interface: UI as KG Traversals — ACM CHI/UIST. Every screen is a subgraph. Every click is a traversal.")
+
+(isa Paper9Tesseract ResearchPaper)
+(hasAttribute Paper9Tesseract ::LABEL "Paper 9: Tesseract")
+(hasAttribute Paper9Tesseract ::TITLE "Tesseract Topology: 4D Navigation Through Knowledge Space")
+(hasAttribute Paper9Tesseract ::VENUE "ACM SoCG")
+(comment Paper9Tesseract
+  "Tesseract Topology: 4D Navigation Through Knowledge Space — ACM SoCG. Higher-dimensional knowledge geometry.")
+
+(isa Paper10Lifecycle ResearchPaper)
+(hasAttribute Paper10Lifecycle ::LABEL "Paper 10: Lifecycle")
+(hasAttribute Paper10Lifecycle ::TITLE "The Dead Teach the Living: Lifecycle Ensemble Learning")
+(hasAttribute Paper10Lifecycle ::VENUE "NeurIPS/ICML")
+(comment Paper10Lifecycle
+  "The Dead Teach the Living: Lifecycle Ensemble Learning — NeurIPS/ICML. Completed trajectories as training data for the living.")
+
+(isa Paper11Harmonic ResearchPaper)
+(hasAttribute Paper11Harmonic ::LABEL "Paper 11: Harmonic")
+(hasAttribute Paper11Harmonic ::TITLE "Harmonic Resonance: Folding Time Across Generations")
+(hasAttribute Paper11Harmonic ::VENUE "Cognitive Science/PNAS")
+(comment Paper11Harmonic
+  "Harmonic Resonance: Folding Time Across Generations — Cognitive Science/PNAS. Temporal patterns that echo across generations.")
+
+
+;;; ================================================================
+;;; SECTION 5: ACADEMIC DISCIPLINES (7 nodes)
+;;; ================================================================
+
+(isa DiscMathematics AcademicDiscipline)
+(hasAttribute DiscMathematics ::LABEL "Mathematics")
+(comment DiscMathematics
+  "Topology, algebra, geometry, combinatorics — the structural foundations of everything Charlotte builds on.")
+
+(isa DiscComputerScience AcademicDiscipline)
+(hasAttribute DiscComputerScience ::LABEL "Computer Science")
+(comment DiscComputerScience
+  "Algorithms, data structures, distributed systems, AI/ML — the implementation substrate.")
+
+(isa DiscBiology AcademicDiscipline)
+(hasAttribute DiscBiology ::LABEL "Biology")
+(comment DiscBiology
+  "Genetics, ecology, behavior, evolution, marine science — nature as the original knowledge graph.")
+
+(isa DiscPhysics AcademicDiscipline)
+(hasAttribute DiscPhysics ::LABEL "Physics")
+(comment DiscPhysics
+  "Signals, waves, dynamics, chaos, thermodynamics — the mechanics of observable reality.")
+
+(isa DiscBusiness AcademicDiscipline)
+(hasAttribute DiscBusiness ::LABEL "Business")
+(comment DiscBusiness
+  "Operations, strategy, finance, management, PE — the economic substrate Charlotte enables.")
+
+(isa DiscCognitiveScience AcademicDiscipline)
+(hasAttribute DiscCognitiveScience ::LABEL "Cognitive Science")
+(comment DiscCognitiveScience
+  "Perception, memory, attention, neural computation — how minds navigate knowledge graphs.")
+
+(isa DiscDesign AcademicDiscipline)
+(hasAttribute DiscDesign ::LABEL "Design")
+(comment DiscDesign
+  "UI/UX, atomic design, information architecture — the visible surface of graph traversal.")
+
+
+;;; ================================================================
+;;; SECTION 6: PROJECTS — Games & Interactive (14 nodes)
+;;; ================================================================
+
+(isa Project2048 ResearchProject)
+(hasAttribute Project2048 ::LABEL "2048")
+(comment Project2048
+  "Number merging puzzle — state space search, merge logic, score optimization.")
+
+(isa ProjectAgainstTheStorm ResearchProject)
+(hasAttribute ProjectAgainstTheStorm ::LABEL "Against the Storm")
+(comment ProjectAgainstTheStorm
+  "Settlement companion — resource chains, species, needs management. Complex state tracking.")
+
+(isa ProjectBlockDude ResearchProject)
+(hasAttribute ProjectBlockDude ::LABEL "Block Dude")
+(comment ProjectBlockDude
+  "Puzzle platformer — spatial reasoning, pathfinding, level design.")
+
+(isa ProjectChess ResearchProject)
+(hasAttribute ProjectChess ::LABEL "Chess")
+(comment ProjectChess
+  "AI opponent — minimax, board evaluation, game tree search, alpha-beta pruning.")
+
+(isa ProjectGo ResearchProject)
+(hasAttribute ProjectGo ::LABEL "Go")
+(comment ProjectGo
+  "Territory control — emergent complexity, Monte Carlo tree search, pattern recognition.")
+
+(isa ProjectMapleStoryBazaar ResearchProject)
+(hasAttribute ProjectMapleStoryBazaar ::LABEL "MapleStory Bazaar")
+(comment ProjectMapleStoryBazaar
+  "Vendor marketplace — multi-channel economics, inventory, pricing simulation.")
+
+(isa ProjectMinesweeper ResearchProject)
+(hasAttribute ProjectMinesweeper ::LABEL "Minesweeper")
+(comment ProjectMinesweeper
+  "Logic game — constraint propagation, probability estimation, search.")
+
+(isa ProjectPong ResearchProject)
+(hasAttribute ProjectPong ::LABEL "Pong")
+(comment ProjectPong
+  "Arcade physics — real-time state, collision, AI opponent tracking.")
+
+(isa ProjectSnake ResearchProject)
+(hasAttribute ProjectSnake ::LABEL "Snake")
+(comment ProjectSnake
+  "Growth dynamics — path planning, collision detection, growing state.")
+
+(isa ProjectSolitaire ResearchProject)
+(hasAttribute ProjectSolitaire ::LABEL "Solitaire")
+(comment ProjectSolitaire
+  "Glassmorphism cards — sorting, stacking, constraint satisfaction, visual design.")
+
+(isa ProjectSudoku ResearchProject)
+(hasAttribute ProjectSudoku ::LABEL "Sudoku")
+(comment ProjectSudoku
+  "Constraint satisfaction — backtracking, arc consistency, difficulty generation.")
+
+(isa ProjectTetris ResearchProject)
+(hasAttribute ProjectTetris ::LABEL "Tetris")
+(comment ProjectTetris
+  "Spatial packing — real-time decision under pressure, piece rotation, line clearing.")
+
+(isa ProjectTicTacToe ResearchProject)
+(hasAttribute ProjectTicTacToe ::LABEL "Tic Tac Toe")
+(comment ProjectTicTacToe
+  "Minimax — complete game tree, optimal play, introductory adversarial search.")
+
+(isa ProjectBITWISE ResearchProject)
+(hasAttribute ProjectBITWISE ::LABEL "BITWISE")
+(comment ProjectBITWISE
+  "Binary lockpicking — bit manipulation, ring navigation, logic puzzles.")
+
+
+;;; ================================================================
+;;; SECTION 7: PROJECTS — Visualization & Math (7 nodes)
+;;; ================================================================
+
+(isa ProjectChaosTheory ResearchProject)
+(hasAttribute ProjectChaosTheory ::LABEL "Chaos Theory")
+(comment ProjectChaosTheory
+  "12 systems: Lorenz, Mandelbrot, bifurcation, pendulum, L-systems, Barnsley, automata.")
+
+(isa ProjectFourierTransform ResearchProject)
+(hasAttribute ProjectFourierTransform ::LABEL "Fourier Transform")
+(comment ProjectFourierTransform
+  "Epicycles, DFT, signal decomposition, spirographs, drawing mode.")
+
+(isa ProjectHexGrid ResearchProject)
+(hasAttribute ProjectHexGrid ::LABEL "Hex Grid")
+(comment ProjectHexGrid
+  "Hexagonal geometry — coordinates, neighbors, distance, rings, pathfinding.")
+
+(isa ProjectSacredGeometry ResearchProject)
+(hasAttribute ProjectSacredGeometry ::LABEL "Sacred Geometry")
+(comment ProjectSacredGeometry
+  "Flower of Life, Metatron's Cube, Sri Yantra, golden ratio, fibonacci spiral.")
+
+(isa ProjectTSPVisualizer ResearchProject)
+(hasAttribute ProjectTSPVisualizer ::LABEL "TSP Visualizer")
+(comment ProjectTSPVisualizer
+  "Nearest neighbor, 2-opt, genetic, ant colony, simulated annealing. NP-hard optimization.")
+
+(isa ProjectIsometricBuilder ResearchProject)
+(hasAttribute ProjectIsometricBuilder ::LABEL "Isometric Builder")
+(comment ProjectIsometricBuilder
+  "2.5D tile editor — spatial manipulation, elevation, paint, terrain building.")
+
+(isa ProjectSwarmViz ResearchProject)
+(hasAttribute ProjectSwarmViz ::LABEL "Swarm Viz")
+(comment ProjectSwarmViz
+  "Boids flocking — separation, alignment, cohesion in 2D and 3D. Emergence from simple rules.")
+
+
+;;; ================================================================
+;;; SECTION 8: PROJECTS — Neural / ML (2 nodes)
+;;; ================================================================
+
+(isa ProjectCNN3D ResearchProject)
+(hasAttribute ProjectCNN3D ::LABEL "CNN 3D")
+(comment ProjectCNN3D
+  "3D convolutional neural network visualization — layer exploration, activation maps.")
+
+(isa ProjectNeuralPlayground ResearchProject)
+(hasAttribute ProjectNeuralPlayground ::LABEL "Neural Playground")
+(comment ProjectNeuralPlayground
+  "Browser neural network trainer — real-time learning, parameter tuning, topology design.")
+
+
+;;; ================================================================
+;;; SECTION 9: PROJECTS — Scientific References (23 nodes)
+;;; ================================================================
+
+(isa ProjectBioArchitecture ResearchProject)
+(hasAttribute ProjectBioArchitecture ::LABEL "Bio-Architecture")
+(comment ProjectBioArchitecture
+  "Termite ventilation, shell structures, adaptive facades, tensegrity.")
+
+(isa ProjectBioRobotics ResearchProject)
+(hasAttribute ProjectBioRobotics ::LABEL "Bio-Robotics")
+(comment ProjectBioRobotics
+  "Soft robotics, legged robots, aerial robots, swarm systems.")
+
+(isa ProjectBioLocomotion ResearchProject)
+(hasAttribute ProjectBioLocomotion ::LABEL "Bio-Locomotion")
+(comment ProjectBioLocomotion
+  "Flight, swimming, terrestrial movement, collective motion.")
+
+(isa ProjectBioOptics ResearchProject)
+(hasAttribute ProjectBioOptics ::LABEL "Bio-Optics")
+(comment ProjectBioOptics
+  "Structural color, bioluminescence, compound eyes, camouflage.")
+
+(isa ProjectBioSurfaces ResearchProject)
+(hasAttribute ProjectBioSurfaces ::LABEL "Bio-Surfaces")
+(comment ProjectBioSurfaces
+  "Gecko adhesion, shark skin, lotus effect, superhydrophobicity.")
+
+(isa ProjectBiomimeticMaterials ResearchProject)
+(hasAttribute ProjectBiomimeticMaterials ::LABEL "Biomimetic Materials")
+(comment ProjectBiomimeticMaterials
+  "Self-healing, shape memory, bio-adhesives, hierarchical composites.")
+
+(isa ProjectBiomimicry ResearchProject)
+(hasAttribute ProjectBiomimicry ::LABEL "Biomimicry")
+(comment ProjectBiomimicry
+  "Core principles, methodology, case studies. The master reference.")
+
+(isa ProjectCognitiveScience ResearchProject)
+(hasAttribute ProjectCognitiveScience ::LABEL "Cognitive Science")
+(comment ProjectCognitiveScience
+  "Predictive coding, neural oscillations, Bayesian brain, embodied cognition.")
+
+(isa ProjectEcologicalSystems ResearchProject)
+(hasAttribute ProjectEcologicalSystems ::LABEL "Ecological Systems")
+(comment ProjectEcologicalSystems
+  "Circular economy, industrial ecology, regenerative design.")
+
+(isa ProjectEntomology ResearchProject)
+(hasAttribute ProjectEntomology ::LABEL "Entomology")
+(comment ProjectEntomology
+  "Insect biology, pollination, pest science, biomimicry applications.")
+
+(isa ProjectFormalLogic ResearchProject)
+(hasAttribute ProjectFormalLogic ::LABEL "Formal Logic")
+(comment ProjectFormalLogic
+  "Propositional, predicate, modal, lambda calculus, Lisp foundations.")
+
+(isa ProjectGraphTheory ResearchProject)
+(hasAttribute ProjectGraphTheory ::LABEL "Graph Theory")
+(comment ProjectGraphTheory
+  "Databases, knowledge graphs, ontologies, temporal data. Charlotte's mother discipline.")
+
+(isa ProjectLivestockScience ResearchProject)
+(hasAttribute ProjectLivestockScience ::LABEL "Livestock Science")
+(comment ProjectLivestockScience
+  "Genetics, breeding, reproduction, nutrition, show industry.")
+
+(isa ProjectNatureInspiredAlgos ResearchProject)
+(hasAttribute ProjectNatureInspiredAlgos ::LABEL "Nature-Inspired Algos")
+(comment ProjectNatureInspiredAlgos
+  "Evolutionary computation, swarm intelligence, immune systems, neural models.")
+
+(isa ProjectNeuroscience ResearchProject)
+(hasAttribute ProjectNeuroscience ::LABEL "Neuroscience")
+(comment ProjectNeuroscience
+  "Neural geometry, brain topology, connectomics, oscillatory dynamics.")
+
+(isa ProjectSignalProcessing ResearchProject)
+(hasAttribute ProjectSignalProcessing ::LABEL "Signal Processing")
+(comment ProjectSignalProcessing
+  "Time series, frequency analysis, waveforms, spectral methods.")
+
+(isa ProjectSpatialComputing ResearchProject)
+(hasAttribute ProjectSpatialComputing ::LABEL "Spatial Computing")
+(comment ProjectSpatialComputing
+  "GIS, spatial databases, geospatial algorithms, coordinate systems.")
+
+(isa ProjectSpiderSilk ResearchProject)
+(hasAttribute ProjectSpiderSilk ::LABEL "Spider Silk")
+(comment ProjectSpiderSilk
+  "Silk biology, arachnid husbandry, biomaterials, web architecture.")
+
+(isa ProjectStructuralBiomimetics ResearchProject)
+(hasAttribute ProjectStructuralBiomimetics ::LABEL "Structural Biomimetics")
+(comment ProjectStructuralBiomimetics
+  "Nacre, bone, silk, wood — hierarchical natural design principles.")
+
+(isa ProjectSwarmIntelligence ResearchProject)
+(hasAttribute ProjectSwarmIntelligence ::LABEL "Swarm Intelligence")
+(comment ProjectSwarmIntelligence
+  "Flocking, emergence, self-organization, multi-agent systems. The reference.")
+
+(isa ProjectSystemsArchitecture ResearchProject)
+(hasAttribute ProjectSystemsArchitecture ::LABEL "Systems Architecture")
+(comment ProjectSystemsArchitecture
+  "Distributed systems, DDD, event-driven, serverless, microservices.")
+
+(isa ProjectTemporalDatabases ResearchProject)
+(hasAttribute ProjectTemporalDatabases ::LABEL "Temporal Databases")
+(comment ProjectTemporalDatabases
+  "Event sourcing, bitemporal, time-series, temporal logic.")
+
+(isa ProjectTopology ResearchProject)
+(hasAttribute ProjectTopology ::LABEL "Topology")
+(comment ProjectTopology
+  "Point-set, algebraic, TDA, higher dimensions, manifolds, knots.")
+
+
+;;; ================================================================
+;;; SECTION 10: PROJECTS — Design / UI (3 nodes)
+;;; ================================================================
+
+(isa ProjectPixelArtEditor ResearchProject)
+(hasAttribute ProjectPixelArtEditor ::LABEL "Pixel Art Editor")
+(comment ProjectPixelArtEditor
+  "Full editor with pencil, eraser, line, fill — menu system, export.")
+
+(isa ProjectComponentShowcase ResearchProject)
+(hasAttribute ProjectComponentShowcase ::LABEL "Component Showcase")
+(comment ProjectComponentShowcase
+  "Material 3 + atomic design — comprehensive component library.")
+
+(isa ProjectNeumorphism ResearchProject)
+(hasAttribute ProjectNeumorphism ::LABEL "Neumorphism")
+(comment ProjectNeumorphism
+  "Soft UI components — neumorphic design + atomic methodology.")
+
+
+;;; ================================================================
+;;; SECTION 11: PROJECTS — Domain Tools (4 nodes)
+;;; ================================================================
+
+(isa ProjectPigBreeder ResearchProject)
+(hasAttribute ProjectPigBreeder ::LABEL "Pig Breeder")
+(comment ProjectPigBreeder
+  "PorkPal — swine herd management, breeding, genetics, litters, export.")
+
+(isa ProjectShowAnimalTree ResearchProject)
+(hasAttribute ProjectShowAnimalTree ::LABEL "Show Animal Tree")
+(comment ProjectShowAnimalTree
+  "PoE-style skill tree — lifecycle planning for swine, cattle, sheep, goat.")
+
+(isa ProjectHoshinKanri ResearchProject)
+(hasAttribute ProjectHoshinKanri ::LABEL "Hoshin Kanri")
+(comment ProjectHoshinKanri
+  "Japanese strategy deployment — policy deployment, X-matrix, catchball.")
+
+(isa ProjectSubstrateExplorer ResearchProject)
+(hasAttribute ProjectSubstrateExplorer ::LABEL "Substrate Explorer")
+(comment ProjectSubstrateExplorer
+  "The original Charlotte KG explorer — FACT types, register inspection, timeline, table views.")
+
+
+;;; ================================================================
+;;; SECTION 12: EDGES — Primitives to Concept Clusters (11 edges)
+;;; ================================================================
+
+(researchRelation NODE ClusterKnowledgeGraphs 0.8)
+(researchRelation NODE ClusterLifecycleLearning 0.7)
+(researchRelation EDGE ClusterKnowledgeGraphs 0.8)
+(researchRelation EDGE ClusterSpaceTime 0.6)
+(researchRelation METRIC ClusterSignalProcessing 0.8)
+(researchRelation METRIC ClusterLifecycleLearning 0.6)
+(researchRelation SIGNAL ClusterSignalProcessing 0.9)
+(researchRelation SIGNAL ClusterSwarmEmergence 0.6)
+(researchRelation SIGNAL ClusterNeuralCognitive 0.5)
+(researchRelation PROTOCOL ClusterStrategyOperations 0.8)
+(researchRelation PROTOCOL ClusterSwarmEmergence 0.5)
+
+
+;;; ================================================================
+;;; SECTION 13: EDGES — Primitives to Domains (14 edges)
+;;; Every domain uses all five primitives; NODE and SIGNAL shown.
+;;; ================================================================
+
+(researchRelation NODE DomainLineLeap 0.25)
+(researchRelation SIGNAL DomainLineLeap 0.25)
+(researchRelation NODE DomainISG 0.25)
+(researchRelation SIGNAL DomainISG 0.25)
+(researchRelation NODE DomainPrierViolins 0.25)
+(researchRelation SIGNAL DomainPrierViolins 0.25)
+(researchRelation NODE DomainTopTierMoving 0.25)
+(researchRelation SIGNAL DomainTopTierMoving 0.25)
+(researchRelation NODE DomainConstellation 0.25)
+(researchRelation SIGNAL DomainConstellation 0.25)
+(researchRelation NODE DomainSounder 0.25)
+(researchRelation SIGNAL DomainSounder 0.25)
+(researchRelation NODE DomainSeaLion 0.25)
+(researchRelation SIGNAL DomainSeaLion 0.25)
+
+
+;;; ================================================================
+;;; SECTION 14: EDGES — Primitives to Key Papers (6 edges)
+;;; ================================================================
+
+(researchRelation NODE Paper0Synthesis 0.7)
+(researchRelation EDGE Paper0Synthesis 0.7)
+(researchRelation METRIC Paper0Synthesis 0.7)
+(researchRelation SIGNAL Paper1FINN 0.9)
+(researchRelation PROTOCOL Paper4Substrate 0.8)
+(researchRelation NODE Paper5Domain 0.8)
+
+
+;;; ================================================================
+;;; SECTION 15: EDGES — Papers to Clusters (16 edges)
+;;; ================================================================
+
+(researchRelation Paper0Synthesis ClusterKnowledgeGraphs 0.7)
+(researchRelation Paper1FINN ClusterSignalProcessing 0.9)
+(researchRelation Paper1FINN ClusterSpaceTime 0.6)
+(researchRelation Paper2Business ClusterStrategyOperations 0.9)
+(researchRelation Paper3Swarm ClusterSwarmEmergence 0.9)
+(researchRelation Paper4Substrate ClusterStrategyOperations 0.6)
+(researchRelation Paper4Substrate ClusterKnowledgeGraphs 0.7)
+(researchRelation Paper5Domain ClusterKnowledgeGraphs 0.9)
+(researchRelation Paper6Spatial ClusterSpaceTime 0.9)
+(researchRelation Paper7Temporal ClusterSpaceTime 0.9)
+(researchRelation Paper8Frontend ClusterInterfaceDesign 0.8)
+(researchRelation Paper8Frontend ClusterKnowledgeGraphs 0.6)
+(researchRelation Paper9Tesseract ClusterSpaceTime 0.8)
+(researchRelation Paper10Lifecycle ClusterLifecycleLearning 0.9)
+(researchRelation Paper11Harmonic ClusterNeuralCognitive 0.7)
+(researchRelation Paper11Harmonic ClusterSignalProcessing 0.7)
+
+
+;;; ================================================================
+;;; SECTION 16: EDGES — Papers to Domains (12 edges)
+;;; ================================================================
+
+(researchRelation Paper0Synthesis DomainLineLeap 0.5)
+(researchRelation Paper0Synthesis DomainSounder 0.5)
+(researchRelation Paper0Synthesis DomainISG 0.5)
+(researchRelation Paper0Synthesis DomainPrierViolins 0.5)
+(researchRelation Paper2Business DomainLineLeap 0.7)
+(researchRelation Paper2Business DomainISG 0.7)
+(researchRelation Paper3Swarm DomainSounder 0.6)
+(researchRelation Paper5Domain DomainPrierViolins 0.5)
+(researchRelation Paper5Domain DomainTopTierMoving 0.5)
+(researchRelation Paper10Lifecycle DomainSounder 0.8)
+(researchRelation Paper10Lifecycle DomainPrierViolins 0.5)
+(researchRelation Paper11Harmonic DomainConstellation 0.5)
+
+
+;;; ================================================================
+;;; SECTION 17: EDGES — Clusters to Disciplines (19 edges)
+;;; ================================================================
+
+(researchRelation ClusterBiomimicry DiscBiology 0.9)
+(researchRelation ClusterSpaceTime DiscMathematics 0.8)
+(researchRelation ClusterSpaceTime DiscPhysics 0.5)
+(researchRelation ClusterSwarmEmergence DiscComputerScience 0.7)
+(researchRelation ClusterSwarmEmergence DiscBiology 0.5)
+(researchRelation ClusterKnowledgeGraphs DiscComputerScience 0.8)
+(researchRelation ClusterKnowledgeGraphs DiscMathematics 0.6)
+(researchRelation ClusterNeuralCognitive DiscCognitiveScience 0.9)
+(researchRelation ClusterNeuralCognitive DiscBiology 0.5)
+(researchRelation ClusterSignalProcessing DiscPhysics 0.7)
+(researchRelation ClusterSignalProcessing DiscComputerScience 0.5)
+(researchRelation ClusterLifecycleLearning DiscBiology 0.6)
+(researchRelation ClusterLifecycleLearning DiscBusiness 0.6)
+(researchRelation ClusterStrategyOperations DiscBusiness 0.9)
+(researchRelation ClusterStrategyOperations DiscComputerScience 0.4)
+(researchRelation ClusterInterfaceDesign DiscDesign 0.9)
+(researchRelation ClusterInterfaceDesign DiscComputerScience 0.4)
+(researchRelation ClusterGameMechanics DiscComputerScience 0.7)
+(researchRelation ClusterGameMechanics DiscMathematics 0.5)
+
+
+;;; ================================================================
+;;; SECTION 18: EDGES — Projects to Clusters (53 edges)
+;;; ================================================================
+
+;; ── Biomimicry cluster (10 edges) ──
+(researchRelation ProjectBioArchitecture ClusterBiomimicry 0.65)
+(researchRelation ProjectBioRobotics ClusterBiomimicry 0.65)
+(researchRelation ProjectBioLocomotion ClusterBiomimicry 0.65)
+(researchRelation ProjectBioOptics ClusterBiomimicry 0.65)
+(researchRelation ProjectBioSurfaces ClusterBiomimicry 0.65)
+(researchRelation ProjectBiomimeticMaterials ClusterBiomimicry 0.65)
+(researchRelation ProjectBiomimicry ClusterBiomimicry 0.65)
+(researchRelation ProjectSpiderSilk ClusterBiomimicry 0.65)
+(researchRelation ProjectStructuralBiomimetics ClusterBiomimicry 0.65)
+(researchRelation ProjectEntomology ClusterBiomimicry 0.65)
+
+;; ── Space-Time cluster (6 edges) ──
+(researchRelation ProjectHexGrid ClusterSpaceTime 0.65)
+(researchRelation ProjectSacredGeometry ClusterSpaceTime 0.65)
+(researchRelation ProjectSpatialComputing ClusterSpaceTime 0.65)
+(researchRelation ProjectTemporalDatabases ClusterSpaceTime 0.65)
+(researchRelation ProjectTopology ClusterSpaceTime 0.65)
+(researchRelation ProjectIsometricBuilder ClusterSpaceTime 0.65)
+
+;; ── Swarm cluster (4 edges) ──
+(researchRelation ProjectSwarmIntelligence ClusterSwarmEmergence 0.65)
+(researchRelation ProjectSwarmViz ClusterSwarmEmergence 0.65)
+(researchRelation ProjectNatureInspiredAlgos ClusterSwarmEmergence 0.65)
+(researchRelation ProjectTSPVisualizer ClusterSwarmEmergence 0.65)
+
+;; ── Knowledge Graphs cluster (4 edges) ──
+(researchRelation ProjectGraphTheory ClusterKnowledgeGraphs 0.65)
+(researchRelation ProjectFormalLogic ClusterKnowledgeGraphs 0.65)
+(researchRelation ProjectSystemsArchitecture ClusterKnowledgeGraphs 0.65)
+(researchRelation ProjectSubstrateExplorer ClusterKnowledgeGraphs 0.65)
+
+;; ── Neural / Cognitive cluster (4 edges) ──
+(researchRelation ProjectCNN3D ClusterNeuralCognitive 0.65)
+(researchRelation ProjectNeuralPlayground ClusterNeuralCognitive 0.65)
+(researchRelation ProjectNeuroscience ClusterNeuralCognitive 0.65)
+(researchRelation ProjectCognitiveScience ClusterNeuralCognitive 0.65)
+
+;; ── Signal Processing cluster (3 edges) ──
+(researchRelation ProjectFourierTransform ClusterSignalProcessing 0.65)
+(researchRelation ProjectSignalProcessing ClusterSignalProcessing 0.65)
+(researchRelation ProjectChaosTheory ClusterSignalProcessing 0.65)
+
+;; ── Lifecycle & Learning cluster (3 edges) ──
+(researchRelation ProjectLivestockScience ClusterLifecycleLearning 0.65)
+(researchRelation ProjectPigBreeder ClusterLifecycleLearning 0.65)
+(researchRelation ProjectShowAnimalTree ClusterLifecycleLearning 0.65)
+
+;; ── Strategy & Operations cluster (2 edges) ──
+(researchRelation ProjectHoshinKanri ClusterStrategyOperations 0.55)
+(researchRelation ProjectSystemsArchitecture ClusterStrategyOperations 0.55)
+
+;; ── Interface & Design cluster (3 edges) ──
+(researchRelation ProjectComponentShowcase ClusterInterfaceDesign 0.65)
+(researchRelation ProjectNeumorphism ClusterInterfaceDesign 0.65)
+(researchRelation ProjectPixelArtEditor ClusterInterfaceDesign 0.65)
+
+;; ── Game Mechanics cluster (14 edges) ──
+(researchRelation ProjectChess ClusterGameMechanics 0.55)
+(researchRelation ProjectGo ClusterGameMechanics 0.55)
+(researchRelation Project2048 ClusterGameMechanics 0.55)
+(researchRelation ProjectBlockDude ClusterGameMechanics 0.55)
+(researchRelation ProjectMinesweeper ClusterGameMechanics 0.55)
+(researchRelation ProjectPong ClusterGameMechanics 0.55)
+(researchRelation ProjectSnake ClusterGameMechanics 0.55)
+(researchRelation ProjectSolitaire ClusterGameMechanics 0.55)
+(researchRelation ProjectSudoku ClusterGameMechanics 0.55)
+(researchRelation ProjectTetris ClusterGameMechanics 0.55)
+(researchRelation ProjectTicTacToe ClusterGameMechanics 0.55)
+(researchRelation ProjectBITWISE ClusterGameMechanics 0.55)
+(researchRelation ProjectAgainstTheStorm ClusterGameMechanics 0.55)
+(researchRelation ProjectMapleStoryBazaar ClusterGameMechanics 0.55)
+
+
+;;; ================================================================
+;;; SECTION 19: EDGES — Cross-cluster relationships (16 edges)
+;;; ================================================================
+
+(researchRelation ProjectSpiderSilk ClusterSwarmEmergence 0.4)
+(researchRelation ProjectEntomology ClusterSwarmEmergence 0.35)
+(researchRelation ProjectChaosTheory ClusterSpaceTime 0.4)
+(researchRelation ProjectTSPVisualizer ClusterSpaceTime 0.3)
+(researchRelation ProjectChess ClusterKnowledgeGraphs 0.3)
+(researchRelation ProjectGo ClusterSwarmEmergence 0.3)
+(researchRelation ProjectEcologicalSystems ClusterBiomimicry 0.5)
+(researchRelation ProjectEcologicalSystems ClusterLifecycleLearning 0.4)
+(researchRelation ProjectCognitiveScience ClusterSignalProcessing 0.4)
+(researchRelation ProjectNeuroscience ClusterSignalProcessing 0.3)
+(researchRelation ProjectTopology ClusterKnowledgeGraphs 0.4)
+(researchRelation ProjectSacredGeometry ClusterNeuralCognitive 0.2)
+(researchRelation ProjectAgainstTheStorm ClusterStrategyOperations 0.3)
+(researchRelation ProjectMapleStoryBazaar ClusterStrategyOperations 0.25)
+(researchRelation ProjectSubstrateExplorer ClusterSignalProcessing 0.5)
+(researchRelation ProjectSubstrateExplorer ClusterSpaceTime 0.4)
+
+
+;;; ================================================================
+;;; SECTION 20: EDGES — Domains to Projects / Clusters (12 edges)
+;;; ================================================================
+
+(researchRelation DomainSounder ProjectLivestockScience 0.7)
+(researchRelation DomainSounder ProjectPigBreeder 0.8)
+(researchRelation DomainSounder ProjectShowAnimalTree 0.7)
+(researchRelation DomainSeaLion ClusterBiomimicry 0.5)
+(researchRelation DomainConstellation ClusterKnowledgeGraphs 0.7)
+(researchRelation DomainConstellation ClusterSignalProcessing 0.5)
+(researchRelation DomainLineLeap ClusterStrategyOperations 0.7)
+(researchRelation DomainISG ClusterLifecycleLearning 0.6)
+(researchRelation DomainISG ClusterStrategyOperations 0.7)
+(researchRelation DomainPrierViolins ClusterLifecycleLearning 0.7)
+(researchRelation DomainTopTierMoving ClusterLifecycleLearning 0.6)
+(researchRelation DomainTopTierMoving ClusterStrategyOperations 0.5)
+
+
+;;; ================================================================
+;;; SECTION 21: EDGES — Inter-domain (5 edges)
+;;; Shared substrate proves universality.
+;;; ================================================================
+
+(researchRelation DomainLineLeap DomainISG 0.3)
+(researchRelation DomainSounder DomainSeaLion 0.4)
+(researchRelation DomainPrierViolins DomainTopTierMoving 0.2)
+(researchRelation DomainLineLeap DomainTopTierMoving 0.2)
+(researchRelation DomainSounder DomainPrierViolins 0.15)
+
+
+;;; ================================================================
+;;; END — research-graph.krf
+;;; 94 nodes (5 primitives referenced, 89 declared), 164 edges.
+;;; The entire Charlotte research project as a knowledge graph.
+;;; ================================================================

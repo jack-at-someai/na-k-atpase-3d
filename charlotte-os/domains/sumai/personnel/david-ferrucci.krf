@@ -1,0 +1,38 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. DAVID FERRUCCI
+;;; Influence — Explicable AI
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa DavidFerrucci Person)
+(isa DavidFerrucci Mentor)
+(hasAttribute DavidFerrucci ::LABEL "Dr. David Ferrucci")
+(hasAttribute DavidFerrucci ::ROLE "Influence — Explicable AI")
+(hasAttribute DavidFerrucci ::PILLAR "brain")
+(hasAttribute DavidFerrucci ::AFFILIATION "IBM Fellow & VP. Inventor of Watson. PhD RPI. Kellogg Adjunct.")
+
+(MEMBER_OF DavidFerrucci SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar DavidFerrucci PillarBrain)
+
+;; Expertise
+(expertiseIn DavidFerrucci ExplicableAI)
+(expertiseIn DavidFerrucci QuestionAnswering)
+(expertiseIn DavidFerrucci NaturalLanguageProcessing)
+(expertiseIn DavidFerrucci KnowledgeEngineering)
+
+;; Career epochs
+(careerEpoch DavidFerrucci "Rensselaer Polytechnic Institute — PhD Computer Science" 1988 1994)
+(careerEpoch DavidFerrucci "IBM — Fellow & VP, Inventor of Watson" 1994 2013)
+(careerEpoch DavidFerrucci "Elemental Cognition — Founder & CEO" 2015 9999)
+(careerEpoch DavidFerrucci "Kellogg School of Management — Adjunct" 2018 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithDavidF PROTOCOL)
+(comment Protocol-InteractWithDavidF
+  "Elemental Cognition. AAAI Feigenbaum Prize. 100+ patents. IBM Fellow.
+   Inventor of Watson. PhD RPI. Kellogg Adjunct. The brain pillar's
+   explicable AI influence — the dive line property in Charlotte
+   is philosophically aligned with his work on transparent reasoning.")

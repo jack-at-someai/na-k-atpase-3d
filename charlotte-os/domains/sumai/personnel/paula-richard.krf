@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / PAULA RICHARD
+;;; Co-Founder & CEO, SomeAI
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa PaulaRichard Person)
+(isa PaulaRichard Founder)
+(isa PaulaRichard Imagineer)
+(hasAttribute PaulaRichard ::LABEL "Paula Richard")
+(hasAttribute PaulaRichard ::ROLE "Co-Founder & CEO, SomeAI")
+(hasAttribute PaulaRichard ::PILLAR "brain")
+(hasAttribute PaulaRichard ::AFFILIATION "CEO of the convergent engine. Deployment, operations.")
+
+(MEMBER_OF PaulaRichard SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar PaulaRichard PillarBrain)
+
+;; Expertise
+(expertiseIn PaulaRichard OperationsManagement)
+(expertiseIn PaulaRichard DeploymentStrategy)
+(expertiseIn PaulaRichard ExecutiveLeadership)
+(expertiseIn PaulaRichard ConvergentExecution)
+
+;; Career epochs
+(careerEpoch PaulaRichard "SomeAI — Co-Founder & CEO" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithPaula PROTOCOL)
+(comment Protocol-InteractWithPaula
+  "Pepper Potts to Tony Stark. The convergent engine — she deploys
+   what the divergent force builds. Operations, execution, client
+   delivery. The CEO who ships.")

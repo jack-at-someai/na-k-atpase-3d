@@ -1,0 +1,320 @@
+;;; ================================================================
+;;; SUMAI DOMAIN / OASIS CAMPUS
+;;; The OASIS research campus — Central Place Theory hexagonal
+;;; tessellation. 16 functional zones + 3 green spaces.
+;;;
+;;; Microtheory: SumAIOASISCampusMt
+;;; Parent: SumAIResearchEntityMt → SomeAIBusinessModelMt
+;;; Primitives: NODE, EDGE
+;;; ================================================================
+
+(in-microtheory SumAIOASISCampusMt)
+
+(isa SumAIOASISCampusMt Microtheory)
+(genlMt SumAIOASISCampusMt SumAIResearchEntityMt)
+
+
+;;; ================================================================
+;;; SECTION 1: CAMPUS ZONE TYPE
+;;; ================================================================
+
+(isa CampusZone Collection)
+(genls CampusZone NODE)
+(comment CampusZone
+  "A hex cell in the OASIS campus. Central Place Theory (Christaller,
+   1933) states hexagonal tessellation maximizes accessibility, minimizes
+   travel distance, and creates natural hierarchies of specialization.")
+
+(isa hexCoord Predicate)
+(arity hexCoord 3)
+(arg1Isa hexCoord CampusZone)
+(comment hexCoord
+  "(hexCoord ZoneServerCore 0 0) — axial hex coordinates (q, r).
+   Pointy-top hexes. Used for adjacency computation.")
+
+(isa adjacentZone Predicate)
+(arity adjacentZone 2)
+(arg1Isa adjacentZone CampusZone)
+(arg2Isa adjacentZone CampusZone)
+(comment adjacentZone "(adjacentZone ZoneServerCore ZoneSightLab) — these zones share a hex edge.")
+
+(isa zonePillar Predicate)
+(arity zonePillar 2)
+(arg1Isa zonePillar CampusZone)
+(arg2Isa zonePillar SensoryPillar)
+(comment zonePillar "(zonePillar ZoneSightLab PillarSight) — this zone serves this pillar.")
+
+
+;;; ================================================================
+;;; SECTION 2: CENTER — SERVER CORE
+;;; ================================================================
+
+(isa ZoneServerCore CampusZone)
+(hasAttribute ZoneServerCore ::LABEL "Server Core")
+(hasAttribute ZoneServerCore ::SQ_FT "~8,000 sq ft")
+(hasAttribute ZoneServerCore ::DESCRIPTION
+  "Central compute cluster. GPU servers, NAS, Claude instances, network
+   backbone. Charlotte's brain. All data flows through here.")
+(hexCoord ZoneServerCore 0 0)
+(zonePillar ZoneServerCore PillarBrain)
+
+
+;;; ================================================================
+;;; SECTION 3: RING 1 — SIX PILLAR LABS
+;;; ================================================================
+
+(isa ZoneSightLab CampusZone)
+(hasAttribute ZoneSightLab ::LABEL "Sight Lab")
+(hasAttribute ZoneSightLab ::SQ_FT "~6,000 sq ft")
+(hasAttribute ZoneSightLab ::DESCRIPTION
+  "Computer vision, medical imaging, optics. Cameras, microscopes, LiDAR,
+   drone bay. Matt Hughes (optical), Matthew Dale (aerospace), Paul
+   Beinhoff (neuroimaging), Josh Hunt (radiology).")
+(hexCoord ZoneSightLab 1 0)
+(zonePillar ZoneSightLab PillarSight)
+
+(isa ZoneTouchLab CampusZone)
+(hasAttribute ZoneTouchLab ::LABEL "Touch Lab")
+(hasAttribute ZoneTouchLab ::SQ_FT "~6,000 sq ft")
+(hasAttribute ZoneTouchLab ::DESCRIPTION
+  "Haptics, robotics, biomechanics, structural engineering. 3D printers,
+   CNC, Kilobot swarm testbed. Brandon Bochat (biomedical), Ethan Kaese
+   (mechanical), Kristen Hughes (structural).")
+(hexCoord ZoneTouchLab 0 1)
+(zonePillar ZoneTouchLab PillarTouch)
+
+(isa ZoneTasteLab CampusZone)
+(hasAttribute ZoneTasteLab ::LABEL "Taste Lab")
+(hasAttribute ZoneTasteLab ::SQ_FT "~4,000 sq ft")
+(hasAttribute ZoneTasteLab ::DESCRIPTION
+  "Molecular gastronomy, chemical analysis, culinary R&D kitchen. Diego
+   Calzada (trained under Albert Adria). Flavor AI, atmospheric design.")
+(hexCoord ZoneTasteLab -1 1)
+(zonePillar ZoneTasteLab PillarTaste)
+
+(isa ZoneSoundLab CampusZone)
+(hasAttribute ZoneSoundLab ::LABEL "Sound Lab")
+(hasAttribute ZoneSoundLab ::SQ_FT "~4,000 sq ft")
+(hasAttribute ZoneSoundLab ::DESCRIPTION
+  "Acoustics, signal processing, vibration analysis. Anechoic chamber,
+   mic arrays, oscilloscopes, SDR. Corey Bochat (defense sensors),
+   DJ Kim (ocean acoustics).")
+(hexCoord ZoneSoundLab -1 0)
+(zonePillar ZoneSoundLab PillarSound)
+
+(isa ZoneSmellLab CampusZone)
+(hasAttribute ZoneSmellLab ::LABEL "Smell Lab")
+(hasAttribute ZoneSmellLab ::SQ_FT "~4,000 sq ft")
+(hasAttribute ZoneSmellLab ::DESCRIPTION
+  "Olfactory sensing, chemical detection, environmental monitoring.
+   E-nose arrays, spectrometers, gas chromatography. Austin Salisbury
+   (chemical instrumentation, Marathon Petroleum).")
+(hexCoord ZoneSmellLab 0 -1)
+(zonePillar ZoneSmellLab PillarSmell)
+
+(isa ZoneBrainLab CampusZone)
+(hasAttribute ZoneBrainLab ::LABEL "Brain Lab")
+(hasAttribute ZoneBrainLab ::SQ_FT "~6,000 sq ft")
+(hasAttribute ZoneBrainLab ::DESCRIPTION
+  "AI research, swarm intelligence, knowledge representation. Rubenstein's
+   Kilobot arena. Qualitative reasoning workstations. Charlotte
+   development floor.")
+(hexCoord ZoneBrainLab 1 -1)
+(zonePillar ZoneBrainLab PillarBrain)
+
+
+;;; ================================================================
+;;; SECTION 4: RING 2 — SUPPORT & SHARED FACILITIES
+;;; ================================================================
+
+(isa ZoneFabrication CampusZone)
+(hasAttribute ZoneFabrication ::LABEL "Fabrication Bay")
+(hasAttribute ZoneFabrication ::SQ_FT "~5,000 sq ft")
+(hasAttribute ZoneFabrication ::DESCRIPTION
+  "Industrial fabrication. Heavy CNC, laser cutters, welding, large-format
+   3D printing. Reverse engineering teardown stations. Shared across all pillars.")
+(hexCoord ZoneFabrication 2 0)
+
+(isa ZoneDroneField CampusZone)
+(hasAttribute ZoneDroneField ::LABEL "Drone Field")
+(hasAttribute ZoneDroneField ::SQ_FT "~2 acres")
+(hasAttribute ZoneDroneField ::DESCRIPTION
+  "Outdoor test range for autonomous flight, drone swarms, and aerial
+   imaging. FAA-cleared airspace. Matthew Dale's BVLOS testing zone.")
+(hexCoord ZoneDroneField 2 -1)
+(zonePillar ZoneDroneField PillarSight)
+
+(isa ZoneMedicalWing CampusZone)
+(hasAttribute ZoneMedicalWing ::LABEL "Medical Wing")
+(hasAttribute ZoneMedicalWing ::SQ_FT "~3,000 sq ft")
+(hasAttribute ZoneMedicalWing ::DESCRIPTION
+  "Clinical observation, telemedicine, biometric monitoring. Dr. Riley
+   Spencer (family medicine), Dr. Josh Hunt (radiology), Dr. Paul
+   Beinhoff (neuroimaging).")
+(hexCoord ZoneMedicalWing 1 1)
+
+(isa ZoneCulinaryCommons CampusZone)
+(hasAttribute ZoneCulinaryCommons ::LABEL "Culinary Commons")
+(hasAttribute ZoneCulinaryCommons ::SQ_FT "~3,500 sq ft")
+(hasAttribute ZoneCulinaryCommons ::DESCRIPTION
+  "Research kitchen + communal dining. Where Taste pillar experiments
+   become shared meals. Albert Adria's influence space. Open to the
+   entire campus.")
+(hexCoord ZoneCulinaryCommons -1 2)
+(zonePillar ZoneCulinaryCommons PillarTaste)
+
+(isa ZoneGreenhouse CampusZone)
+(hasAttribute ZoneGreenhouse ::LABEL "Greenhouse")
+(hasAttribute ZoneGreenhouse ::SQ_FT "~2,000 sq ft")
+(hasAttribute ZoneGreenhouse ::DESCRIPTION
+  "Controlled-environment agriculture. Plant VOC research, soil sensing,
+   atmospheric sampling. Sounder's digital twin of agricultural operations.")
+(hexCoord ZoneGreenhouse -2 2)
+(zonePillar ZoneGreenhouse PillarSmell)
+
+(isa ZoneMarineLab CampusZone)
+(hasAttribute ZoneMarineLab ::LABEL "Marine Lab")
+(hasAttribute ZoneMarineLab ::SQ_FT "~2,500 sq ft")
+(hasAttribute ZoneMarineLab ::DESCRIPTION
+  "Aquatic research. Hydrophone arrays, reef monitoring simulations,
+   underwater acoustics. DJ Kim's ocean engineering domain.")
+(hexCoord ZoneMarineLab -2 1)
+(zonePillar ZoneMarineLab PillarSound)
+
+(isa ZoneConferenceHex CampusZone)
+(hasAttribute ZoneConferenceHex ::LABEL "Conference Hex")
+(hasAttribute ZoneConferenceHex ::SQ_FT "~3,000 sq ft")
+(hasAttribute ZoneConferenceHex ::DESCRIPTION
+  "Meeting rooms, presentation theater, Charlotte OS live demo room.
+   Where clients see the before/after. ISG pitch room.")
+(hexCoord ZoneConferenceHex -1 -1)
+
+(isa ZoneResidenceHex CampusZone)
+(hasAttribute ZoneResidenceHex ::LABEL "Residence Hex")
+(hasAttribute ZoneResidenceHex ::SQ_FT "~8,000 sq ft")
+(hasAttribute ZoneResidenceHex ::DESCRIPTION
+  "On-campus housing for visiting researchers, summer interns, and core
+   team during intensive sprints. 12 units.")
+(hexCoord ZoneResidenceHex 0 -2)
+
+(isa ZoneFitnessRecovery CampusZone)
+(hasAttribute ZoneFitnessRecovery ::LABEL "Fitness & Recovery")
+(hasAttribute ZoneFitnessRecovery ::SQ_FT "~3,000 sq ft")
+(hasAttribute ZoneFitnessRecovery ::DESCRIPTION
+  "Gym, recovery room, outdoor training area. Matt Hughes's bodybuilding
+   research meets Austin Neibarger's chiropractic expertise. The body
+   as research subject.")
+(hexCoord ZoneFitnessRecovery 1 -2)
+
+(isa ZoneCommonsLibrary CampusZone)
+(hasAttribute ZoneCommonsLibrary ::LABEL "Commons & Library")
+(hasAttribute ZoneCommonsLibrary ::SQ_FT "~4,000 sq ft")
+(hasAttribute ZoneCommonsLibrary ::DESCRIPTION
+  "Open workspace, reference library, whiteboard walls. Where cross-pillar
+   conversations happen naturally. Coffee bar.")
+(hexCoord ZoneCommonsLibrary 2 -2)
+
+
+;;; ================================================================
+;;; SECTION 5: GREEN SPACES
+;;; ================================================================
+
+(isa ZoneCentralGreen CampusZone)
+(hasAttribute ZoneCentralGreen ::LABEL "Central Green")
+(hasAttribute ZoneCentralGreen ::SQ_FT "~1 acre")
+(hasAttribute ZoneCentralGreen ::DESCRIPTION
+  "Open lawn. Outdoor events, swarm demonstrations, team gatherings.
+   The physical substrate where people collide.")
+(hexCoord ZoneCentralGreen 0 2)
+
+(isa ZoneWestGarden CampusZone)
+(hasAttribute ZoneWestGarden ::LABEL "West Garden")
+(hasAttribute ZoneWestGarden ::SQ_FT "~0.5 acres")
+(hasAttribute ZoneWestGarden ::DESCRIPTION "Meditation garden, walking paths, benches. Divergent thinking space.")
+(hexCoord ZoneWestGarden -2 0)
+
+(isa ZoneEastMeadow CampusZone)
+(hasAttribute ZoneEastMeadow ::LABEL "East Meadow")
+(hasAttribute ZoneEastMeadow ::SQ_FT "~1 acre")
+(hasAttribute ZoneEastMeadow ::DESCRIPTION
+  "Natural area. Wildlife observation, environmental sensor array,
+   outdoor acoustics testing.")
+(hexCoord ZoneEastMeadow 2 1)
+
+
+;;; ================================================================
+;;; SECTION 6: ADJACENCY EDGES
+;;; Two hex cells are adjacent if max(|dq|, |dr|, |dq+dr|) == 1.
+;;; ================================================================
+
+;; Center (0,0) → Ring 1
+(adjacentZone ZoneServerCore ZoneSightLab)
+(adjacentZone ZoneServerCore ZoneTouchLab)
+(adjacentZone ZoneServerCore ZoneTasteLab)
+(adjacentZone ZoneServerCore ZoneSoundLab)
+(adjacentZone ZoneServerCore ZoneSmellLab)
+(adjacentZone ZoneServerCore ZoneBrainLab)
+
+;; Ring 1 internal adjacencies
+(adjacentZone ZoneSightLab ZoneTouchLab)
+(adjacentZone ZoneTouchLab ZoneTasteLab)
+(adjacentZone ZoneTasteLab ZoneSoundLab)
+(adjacentZone ZoneSoundLab ZoneSmellLab)
+(adjacentZone ZoneSmellLab ZoneBrainLab)
+(adjacentZone ZoneBrainLab ZoneSightLab)
+
+;; Ring 1 → Ring 2
+(adjacentZone ZoneSightLab ZoneFabrication)
+(adjacentZone ZoneSightLab ZoneMedicalWing)
+(adjacentZone ZoneSightLab ZoneDroneField)
+(adjacentZone ZoneTouchLab ZoneMedicalWing)
+(adjacentZone ZoneTouchLab ZoneCulinaryCommons)
+(adjacentZone ZoneTouchLab ZoneCentralGreen)
+(adjacentZone ZoneTasteLab ZoneCulinaryCommons)
+(adjacentZone ZoneTasteLab ZoneGreenhouse)
+(adjacentZone ZoneTasteLab ZoneMarineLab)
+(adjacentZone ZoneSoundLab ZoneMarineLab)
+(adjacentZone ZoneSoundLab ZoneWestGarden)
+(adjacentZone ZoneSoundLab ZoneConferenceHex)
+(adjacentZone ZoneSmellLab ZoneConferenceHex)
+(adjacentZone ZoneSmellLab ZoneResidenceHex)
+(adjacentZone ZoneSmellLab ZoneBrainLab)
+(adjacentZone ZoneBrainLab ZoneFitnessRecovery)
+(adjacentZone ZoneBrainLab ZoneCommonsLibrary)
+(adjacentZone ZoneBrainLab ZoneDroneField)
+
+;; Ring 2 internal adjacencies
+(adjacentZone ZoneFabrication ZoneDroneField)
+(adjacentZone ZoneFabrication ZoneMedicalWing)
+(adjacentZone ZoneFabrication ZoneEastMeadow)
+(adjacentZone ZoneMedicalWing ZoneCentralGreen)
+(adjacentZone ZoneCulinaryCommons ZoneGreenhouse)
+(adjacentZone ZoneCulinaryCommons ZoneCentralGreen)
+(adjacentZone ZoneGreenhouse ZoneMarineLab)
+(adjacentZone ZoneMarineLab ZoneWestGarden)
+(adjacentZone ZoneConferenceHex ZoneResidenceHex)
+(adjacentZone ZoneConferenceHex ZoneWestGarden)
+(adjacentZone ZoneResidenceHex ZoneFitnessRecovery)
+(adjacentZone ZoneFitnessRecovery ZoneCommonsLibrary)
+(adjacentZone ZoneCommonsLibrary ZoneDroneField)
+(adjacentZone ZoneDroneField ZoneEastMeadow)
+
+
+;;; ================================================================
+;;; SECTION 7: CAMPUS DESIGN PRINCIPLES
+;;; ================================================================
+
+(comment SumAIOASISCampusMt
+  "Central Place Theory: the server core sits at the geographic center.
+   Six pillar labs surround it at equal distance. Shared facilities fill
+   the interstitial hexes. Every point on campus is within 2 hex-steps
+   of the core and 1 hex-step of a pillar lab. The property is designed
+   so Charlotte can observe the entire campus as a living substrate —
+   every building, every room, every researcher is a NODE emitting SIGNALs.")
+
+
+;;; ================================================================
+;;; END — campus.krf
+;;; 19 campus zones (1 center + 6 pillar labs + 9 support + 3 green).
+;;; Hex coordinates for spatial layout. Adjacency edges for traversal.
+;;; ================================================================

@@ -1,0 +1,40 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / KRISTEN HUGHES, PE
+;;; Structural & Civil Engineering
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa KristenHughes Person)
+(isa KristenHughes Imagineer)
+(hasAttribute KristenHughes ::LABEL "Kristen Hughes, PE")
+(hasAttribute KristenHughes ::ROLE "Structural & Civil Engineering")
+(hasAttribute KristenHughes ::PILLAR "touch")
+(hasAttribute KristenHughes ::AFFILIATION "Rose-Hulman B.S. + M.Eng. PE licensed. Schaefer, 8yr.")
+
+(MEMBER_OF KristenHughes SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar KristenHughes PillarTouch)
+
+;; Expertise
+(expertiseIn KristenHughes StructuralEngineering)
+(expertiseIn KristenHughes CivilEngineering)
+(expertiseIn KristenHughes ConstructionManagement)
+(expertiseIn KristenHughes ProfessionalEngineering)
+
+;; Career epochs
+(careerEpoch KristenHughes "Rose-Hulman Institute of Technology — B.S. Civil Engineering" 2016 2020)
+(careerEpoch KristenHughes "Rose-Hulman Institute of Technology — M.Eng." 2020 2021)
+(careerEpoch KristenHughes "Schaefer — Structural Engineer, 8yr" 2016 2024)
+(careerEpoch KristenHughes "Skanska — Engineer" 2018 2019)
+(careerEpoch KristenHughes "Bowen — Engineer" 2019 2020)
+(careerEpoch KristenHughes "Kiewit — Engineer" 2020 2021)
+(careerEpoch KristenHughes "PE License — Professional Engineer" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithKristen PROTOCOL)
+(comment Protocol-InteractWithKristen
+  "Skanska, Bowen, Kiewit. Hughes pair: optical + structural
+   (with Matt). Rose-Hulman B.S. + M.Eng. PE licensed. The touch
+   pillar's structural dimension — buildings, loads, physical forces.")

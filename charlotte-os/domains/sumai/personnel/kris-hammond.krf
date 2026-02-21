@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / KRIS HAMMOND
+;;; Mentor — AI & Entrepreneurship
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa KrisHammond Person)
+(isa KrisHammond Mentor)
+(hasAttribute KrisHammond ::LABEL "Kris Hammond")
+(hasAttribute KrisHammond ::ROLE "Mentor — AI & Entrepreneurship")
+(hasAttribute KrisHammond ::PILLAR "brain")
+(hasAttribute KrisHammond ::AFFILIATION "AAAI Fellow. Osborn Prof, Northwestern. Narrative Science -> Salesforce.")
+
+(MEMBER_OF KrisHammond SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar KrisHammond PillarBrain)
+
+;; Expertise
+(expertiseIn KrisHammond ArtificialIntelligence)
+(expertiseIn KrisHammond NaturalLanguageGeneration)
+(expertiseIn KrisHammond AIEntrepreneurship)
+(expertiseIn KrisHammond ComputerScience)
+
+;; Career epochs
+(careerEpoch KrisHammond "Northwestern University — Osborn Professor of CS" 1995 9999)
+(careerEpoch KrisHammond "Narrative Science — Co-Founder & CEO" 2010 2022)
+(careerEpoch KrisHammond "Salesforce — Acquisition of Narrative Science" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithKrisHammond PROTOCOL)
+(comment Protocol-InteractWithKrisHammond
+  "Jack's mentor through Northwestern & LineLeap. AAAI Fellow.
+   Osborn Professor at Northwestern. Narrative Science -> Salesforce.
+   The brain pillar's entrepreneurship mentor — where AI research
+   meets company building.")

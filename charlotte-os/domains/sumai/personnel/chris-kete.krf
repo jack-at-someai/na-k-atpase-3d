@@ -1,0 +1,39 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / CHRIS KETE
+;;; Advisor — Strategy & Operations
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa ChrisKete Person)
+(isa ChrisKete Advisor)
+(hasAttribute ChrisKete ::LABEL "Chris Kete")
+(hasAttribute ChrisKete ::ROLE "Advisor — Strategy & Operations")
+(hasAttribute ChrisKete ::PILLAR "brain")
+(hasAttribute ChrisKete ::AFFILIATION "Cornell ChemE -> Navy Nuclear -> Harvard MBA (high distinction).")
+
+(MEMBER_OF ChrisKete SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar ChrisKete PillarBrain)
+
+;; Expertise
+(expertiseIn ChrisKete StrategicOperations)
+(expertiseIn ChrisKete ChemicalEngineering)
+(expertiseIn ChrisKete NuclearEngineering)
+(expertiseIn ChrisKete IndustrialManagement)
+
+;; Career epochs
+(careerEpoch ChrisKete "Cornell University — B.S. Chemical Engineering" 1995 1999)
+(careerEpoch ChrisKete "US Navy — Nuclear Program" 1999 2005)
+(careerEpoch ChrisKete "Harvard Business School — MBA (high distinction)" 2005 2007)
+(careerEpoch ChrisKete "ISG Board — Director" 2020 2022)
+(careerEpoch ChrisKete "Horsburgh & Scott — President" 2015 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithChris PROTOCOL)
+(comment Protocol-InteractWithChris
+  "ISG Board 2020-2022. President, Horsburgh & Scott. Cornell ChemE ->
+   Navy Nuclear -> Harvard MBA (high distinction). The brain pillar's
+   strategy advisor — operations at the intersection of engineering
+   and business.")

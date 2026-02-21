@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / AUSTIN SALISBURY, PE
+;;; Chemical Sensing & Instrumentation
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa AustinSalisbury Person)
+(isa AustinSalisbury Imagineer)
+(hasAttribute AustinSalisbury ::LABEL "Austin Salisbury, PE")
+(hasAttribute AustinSalisbury ::ROLE "Chemical Sensing & Instrumentation")
+(hasAttribute AustinSalisbury ::PILLAR "smell")
+(hasAttribute AustinSalisbury ::AFFILIATION "Rose-Hulman ME+EE (dual). 8yr Marathon Petroleum. PE licensed.")
+
+(MEMBER_OF AustinSalisbury SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar AustinSalisbury PillarSmell)
+
+;; Expertise
+(expertiseIn AustinSalisbury ChemicalSensing)
+(expertiseIn AustinSalisbury ProcessInstrumentation)
+(expertiseIn AustinSalisbury ProcessAnalyzers)
+(expertiseIn AustinSalisbury SafetyInstrumentedSystems)
+(expertiseIn AustinSalisbury ElectricalEngineering)
+
+;; Career epochs
+(careerEpoch AustinSalisbury "Rose-Hulman Institute of Technology — B.S. ME + EE (dual degree)" 2012 2016)
+(careerEpoch AustinSalisbury "Marathon Petroleum — Process Engineer, 8yr" 2016 2024)
+(careerEpoch AustinSalisbury "PE License — Professional Engineer" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithAustinS PROTOCOL)
+(comment Protocol-InteractWithAustinS
+  "Process analyzers, safety instrumented systems. Rose-Hulman dual
+   ME+EE. 8yr Marathon Petroleum. PE licensed. The smell pillar's
+   industrial anchor — chemical detection and process instrumentation.")

@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / MATT HUGHES
+;;; Optical Engineering & Photonics
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa MattHughes Person)
+(isa MattHughes Imagineer)
+(hasAttribute MattHughes ::LABEL "Matt Hughes")
+(hasAttribute MattHughes ::ROLE "Optical Engineering & Photonics")
+(hasAttribute MattHughes ::PILLAR "sight")
+(hasAttribute MattHughes ::AFFILIATION "Rose-Hulman Optical Eng. Lake Forest. Natural bodybuilder w/ CP (219K).")
+
+(MEMBER_OF MattHughes SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar MattHughes PillarSight)
+
+;; Expertise
+(expertiseIn MattHughes OpticalEngineering)
+(expertiseIn MattHughes Photonics)
+(expertiseIn MattHughes LensDesign)
+(expertiseIn MattHughes SignalResearch)
+
+;; Career epochs
+(careerEpoch MattHughes "Lake Forest Academy — High School" 2012 2016)
+(careerEpoch MattHughes "Rose-Hulman Institute of Technology — B.S. Optical Engineering" 2016 2020)
+(careerEpoch MattHughes "Optical Engineering — Industry" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithMattH PROTOCOL)
+(comment Protocol-InteractWithMattH
+  "Sight pillar hardware. Cerebral palsy as lived signal research.
+   Natural bodybuilder with 219K following. Lake Forest connection.
+   Hughes pair: optical + structural (with Kristen).")

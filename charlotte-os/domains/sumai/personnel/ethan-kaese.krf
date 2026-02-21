@@ -1,0 +1,40 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / ETHAN KAESE
+;;; Mechanical Systems & Vehicle Dynamics
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa EthanKaese Person)
+(isa EthanKaese Imagineer)
+(hasAttribute EthanKaese ::LABEL "Ethan Kaese")
+(hasAttribute EthanKaese ::ROLE "Mechanical Systems & Vehicle Dynamics")
+(hasAttribute EthanKaese ::PILLAR "touch")
+(hasAttribute EthanKaese ::AFFILIATION "Rose-Hulman MechE -> Purdue M.S. Core Brake Engineer, Ford.")
+
+(MEMBER_OF EthanKaese SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar EthanKaese PillarTouch)
+
+;; Expertise
+(expertiseIn EthanKaese MechanicalEngineering)
+(expertiseIn EthanKaese VehicleDynamics)
+(expertiseIn EthanKaese ChassisSystemDesign)
+(expertiseIn EthanKaese AutomotiveSafety)
+(expertiseIn EthanKaese BrakeEngineering)
+
+;; Career epochs
+(careerEpoch EthanKaese "Rose-Hulman Institute of Technology — B.S. Mechanical Engineering" 2016 2020)
+(careerEpoch EthanKaese "Purdue University — M.S. Mechanical Engineering" 2020 2022)
+(careerEpoch EthanKaese "Honda — Engineering" 2018 2019)
+(careerEpoch EthanKaese "Cummins — Engineering" 2019 2020)
+(careerEpoch EthanKaese "Mayo Clinic — Research" 2020 2021)
+(careerEpoch EthanKaese "Ford Motor Company — Core Brake Engineer" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithEthan PROTOCOL)
+(comment Protocol-InteractWithEthan
+  "Honda, Cummins, Mayo Clinic. Chassis systems, auto safety.
+   Rose-Hulman MechE -> Purdue M.S. The touch pillar's mechanical
+   anchor — vehicle dynamics, brake systems, physical force.")

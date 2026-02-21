@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. NORBERTO CALZADA
+;;; Advisor — Research Lab Board
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa NorbertoCalzada Person)
+(isa NorbertoCalzada Advisor)
+(hasAttribute NorbertoCalzada ::LABEL "Dr. Norberto Calzada")
+(hasAttribute NorbertoCalzada ::ROLE "Advisor — Research Lab Board")
+(hasAttribute NorbertoCalzada ::PILLAR "sight")
+(hasAttribute NorbertoCalzada ::AFFILIATION "FACC, FSCAI. Interventional Cardiologist, Panama City.")
+
+(MEMBER_OF NorbertoCalzada SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar NorbertoCalzada PillarSight)
+
+;; Expertise
+(expertiseIn NorbertoCalzada InterventionalCardiology)
+(expertiseIn NorbertoCalzada MedicalImaging)
+(expertiseIn NorbertoCalzada CatheterizationLab)
+(expertiseIn NorbertoCalzada ClinicalResearch)
+
+;; Career epochs
+(careerEpoch NorbertoCalzada "Medical School — Cardiology Training" 1995 2005)
+(careerEpoch NorbertoCalzada "Johns Hopkins-affiliated Hospital Punta Pacifica — Interventional Cardiologist" 2005 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithNorberto PROTOCOL)
+(comment Protocol-InteractWithNorberto
+  "Johns Hopkins-affiliated Hospital Punta Pacifica. FACC, FSCAI.
+   Interventional Cardiologist, Panama City. The sight pillar's
+   clinical advisor — cardiac imaging, catheter-based intervention.")

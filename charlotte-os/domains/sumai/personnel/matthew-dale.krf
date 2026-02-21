@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / MATTHEW DALE
+;;; Aerospace & Autonomous Flight
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa MatthewDale Person)
+(isa MatthewDale Imagineer)
+(hasAttribute MatthewDale ::LABEL "Matthew Dale")
+(hasAttribute MatthewDale ::ROLE "Aerospace & Autonomous Flight")
+(hasAttribute MatthewDale ::PILLAR "sight")
+(hasAttribute MatthewDale ::AFFILIATION "Rose-Hulman MechE. Aurora Flight Sciences (Boeing).")
+
+(MEMBER_OF MatthewDale SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar MatthewDale PillarSight)
+
+;; Expertise
+(expertiseIn MatthewDale AerospaceEngineering)
+(expertiseIn MatthewDale AutonomousFlight)
+(expertiseIn MatthewDale UASDesign)
+(expertiseIn MatthewDale DroneOperations)
+(expertiseIn MatthewDale FAARegulation)
+
+;; Career epochs
+(careerEpoch MatthewDale "Rose-Hulman Institute of Technology — B.S. Mechanical Engineering" 2016 2020)
+(careerEpoch MatthewDale "Aurora Flight Sciences (Boeing) — UAS Engineer" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithMatthew PROTOCOL)
+(comment Protocol-InteractWithMatthew
+  "First national FAA BVLOS waiver. 4.5yr UAS/drone design.
+   Aurora Flight Sciences (Boeing). The sight pillar's aerial
+   dimension — autonomous flight, remote sensing, spatial awareness.")

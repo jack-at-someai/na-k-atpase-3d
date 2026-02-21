@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / EVAN MOSIER
+;;; Industrial Distribution & Supply Chain
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa EvanMosier Person)
+(isa EvanMosier Imagineer)
+(hasAttribute EvanMosier ::LABEL "Evan Mosier")
+(hasAttribute EvanMosier ::ROLE "Industrial Distribution & Supply Chain")
+(hasAttribute EvanMosier ::PILLAR "touch")
+(hasAttribute EvanMosier ::AFFILIATION "Mizzou Health Sciences. Sr Merchandising Analyst, Grainger (~9yr).")
+
+(MEMBER_OF EvanMosier SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar EvanMosier PillarTouch)
+
+;; Expertise
+(expertiseIn EvanMosier IndustrialDistribution)
+(expertiseIn EvanMosier SupplyChainManagement)
+(expertiseIn EvanMosier Merchandising)
+(expertiseIn EvanMosier IndustrialProducts)
+
+;; Career epochs
+(careerEpoch EvanMosier "Lake Forest Academy — High School" 2010 2014)
+(careerEpoch EvanMosier "University of Missouri — Health Sciences" 2014 2018)
+(careerEpoch EvanMosier "W.W. Grainger — Sr. Merchandising Analyst, ~9yr" 2017 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithEvan PROTOCOL)
+(comment Protocol-InteractWithEvan
+  "Lake Forest + Mizzou. Grainger = ISG supply chain layer.
+   Mosier pair (with Molly, dual-Grainger). The touch pillar's
+   distribution dimension — industrial products, supply chain, logistics.")

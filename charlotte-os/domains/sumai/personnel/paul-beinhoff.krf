@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. PAUL BEINHOFF
+;;; Director, Medical Imaging
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa PaulBeinhoff Person)
+(isa PaulBeinhoff Imagineer)
+(hasAttribute PaulBeinhoff ::LABEL "Dr. Paul Beinhoff")
+(hasAttribute PaulBeinhoff ::ROLE "Director, Medical Imaging")
+(hasAttribute PaulBeinhoff ::PILLAR "sight")
+(hasAttribute PaulBeinhoff ::AFFILIATION "UIUC -> MCW -> Johns Hopkins Psychiatry. 7 publications.")
+
+(MEMBER_OF PaulBeinhoff SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar PaulBeinhoff PillarSight)
+
+;; Expertise
+(expertiseIn PaulBeinhoff MedicalImaging)
+(expertiseIn PaulBeinhoff Psychiatry)
+(expertiseIn PaulBeinhoff Neuroscience)
+(expertiseIn PaulBeinhoff ClinicalResearch)
+
+;; Career epochs
+(careerEpoch PaulBeinhoff "UIUC — Undergraduate" 2010 2014)
+(careerEpoch PaulBeinhoff "Medical College of Wisconsin — M.D." 2014 2018)
+(careerEpoch PaulBeinhoff "Johns Hopkins — Psychiatry Residency" 2018 2022)
+(careerEpoch PaulBeinhoff "SumAI — Director, Medical Imaging" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithPaul PROTOCOL)
+(comment Protocol-InteractWithPaul
+  "Head of all medical imaging entity relationships. UIUC -> MCW ->
+   Johns Hopkins Psychiatry. 7 publications. The sight pillar's
+   clinical anchor — where imaging meets diagnosis.")

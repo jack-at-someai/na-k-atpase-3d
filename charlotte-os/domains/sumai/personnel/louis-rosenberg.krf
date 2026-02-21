@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. LOUIS ROSENBERG
+;;; Influence — Collective Intelligence
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa LouisRosenberg Person)
+(isa LouisRosenberg Mentor)
+(hasAttribute LouisRosenberg ::LABEL "Dr. Louis Rosenberg")
+(hasAttribute LouisRosenberg ::ROLE "Influence — Collective Intelligence")
+(hasAttribute LouisRosenberg ::PILLAR "brain")
+(hasAttribute LouisRosenberg ::AFFILIATION "PhD Stanford. Invented AR (1992). Unanimous AI. 300+ patents.")
+
+(MEMBER_OF LouisRosenberg SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar LouisRosenberg PillarBrain)
+
+;; Expertise
+(expertiseIn LouisRosenberg CollectiveIntelligence)
+(expertiseIn LouisRosenberg SwarmAI)
+(expertiseIn LouisRosenberg AugmentedReality)
+(expertiseIn LouisRosenberg ConvictionDynamics)
+
+;; Career epochs
+(careerEpoch LouisRosenberg "Stanford University — PhD (Invented AR, 1992)" 1988 1994)
+(careerEpoch LouisRosenberg "Unanimous AI — Founder & CEO" 2014 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithLouisR PROTOCOL)
+(comment Protocol-InteractWithLouisR
+  "Jack researched 2yr. Swarm AI, conviction, entrenchment, resonance.
+   PhD Stanford. Invented AR (1992). Unanimous AI. 300+ patents.
+   The brain pillar's collective intelligence influence — swarm
+   dynamics, conviction modeling, group decision-making.")

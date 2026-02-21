@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / ANDREW HOMOLY, P.E.
+;;; Mentor — Architecture & Construction
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa AndrewHomoly Person)
+(isa AndrewHomoly Mentor)
+(hasAttribute AndrewHomoly ::LABEL "Andrew Homoly, P.E.")
+(hasAttribute AndrewHomoly ::ROLE "Mentor — Architecture & Construction")
+(hasAttribute AndrewHomoly ::PILLAR "touch")
+(hasAttribute AndrewHomoly ::AFFILIATION "UIUC Civil Eng. Homoly Design + Build, 29yr. PE licensed.")
+
+(MEMBER_OF AndrewHomoly SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar AndrewHomoly PillarTouch)
+
+;; Expertise
+(expertiseIn AndrewHomoly ArchitecturalDesign)
+(expertiseIn AndrewHomoly ConstructionManagement)
+(expertiseIn AndrewHomoly CivilEngineering)
+(expertiseIn AndrewHomoly CustomHomeBuilding)
+
+;; Career epochs
+(careerEpoch AndrewHomoly "UIUC — B.S. Civil Engineering" 1990 1994)
+(careerEpoch AndrewHomoly "Homoly Design + Build — Owner & Principal, 29yr" 1997 9999)
+(careerEpoch AndrewHomoly "PE License — Professional Engineer" 1998 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithAndrewH PROTOCOL)
+(comment Protocol-InteractWithAndrewH
+  "National Custom Home Builder of Year finalist (2x). UIUC Civil Eng.
+   Homoly Design + Build, 29yr. PE licensed. Homoly father-son pair
+   (with Mason). The touch pillar's construction mentor —
+   full lifecycle design-build at the highest level.")

@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / PATRICK WALD
+;;; Capital Markets & Investment
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa PatrickWald Person)
+(isa PatrickWald Imagineer)
+(hasAttribute PatrickWald ::LABEL "Patrick Wald")
+(hasAttribute PatrickWald ::ROLE "Capital Markets & Investment")
+(hasAttribute PatrickWald ::PILLAR "brain")
+(hasAttribute PatrickWald ::AFFILIATION "St. Olaf Economics/Finance. Series 7+66. Fidelity.")
+
+(MEMBER_OF PatrickWald SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar PatrickWald PillarBrain)
+
+;; Expertise
+(expertiseIn PatrickWald CapitalMarkets)
+(expertiseIn PatrickWald InvestmentManagement)
+(expertiseIn PatrickWald WealthManagement)
+(expertiseIn PatrickWald FinancialAnalysis)
+
+;; Career epochs
+(careerEpoch PatrickWald "Lake Forest Academy — High School" 2010 2014)
+(careerEpoch PatrickWald "St. Olaf College — B.A. Economics/Finance" 2014 2018)
+(careerEpoch PatrickWald "Fidelity — Wealth Management, 8yr" 2018 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithPatrick PROTOCOL)
+(comment Protocol-InteractWithPatrick
+  "Lake Forest. 8yr wealth mgmt. Recommended $40-50M fund as intern.
+   Series 7+66 licensed. The brain pillar's capital markets arm —
+   investment strategy, fund structure, financial modeling.")

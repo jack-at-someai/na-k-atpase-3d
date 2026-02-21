@@ -1,0 +1,291 @@
+;;; ================================================================
+;;; KNOWLEDGE / THESIS
+;;; SomeAI's investment thesis and Charlotte's strategic position.
+;;; Mined from the thesis draft — the "why this exists" document.
+;;; ================================================================
+
+(in-microtheory CharlotteThesisMt)
+
+;; Microtheory inheritance
+(genlMt CharlotteThesisMt CharlotteDeclarativeMt)
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 1: THE ABSTRACT — WHAT CHARLOTTE IS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa CharlotteSubstrate Collection)
+(genls CharlotteSubstrate PROTOCOL)
+(comment CharlotteSubstrate
+  "Charlotte is the first layer of an infinite stack of operating systems.
+   Every business that wants to be a business gets its own OS — custom-compiled
+   to its own operations, its own vocabulary, its own rhythm. A pig farm runs
+   on a different instruction set than a violin dealer, which runs on a
+   different instruction set than a moving company. But because every OS is
+   built on top of Charlotte, they are all interoperable by construction.
+   They can all talk to each other. They can all learn from each other.
+   The kernel never changes.
+
+   Charlotte is the universal layer: five primitives — Node, Edge, Metric,
+   Signal, Protocol — and a temporal spine running from epoch to millisecond.
+   The observer lives on this spine in Kd-space, placing signals on metric
+   lines. Each domain OS stacked on top shrinks the convex hull of the
+   knowledge space — restricting the vocabulary, tightening the instruction
+   set, compiling a full end-to-end pipeline into the smallest possible
+   encoding for that specific business.
+
+   Layer 1 is universal. Layer N is bespoke. Every layer in between is just
+   a tighter ontology.
+
+   The result is not one product. It is an infinite number of products — each
+   one custom, each one small enough to be invisible, each one powerful enough
+   to run an entire operation — all stacked on the same kernel, all sharing
+   the same temporal spine, all speaking the same language at the bottom.
+
+   The correct measure of technological progress is not how much technology
+   people use. It is how little they notice.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 2: THE FIVE PRIMITIVES
+;;; ────────────────────────────────────────────────────────────────
+
+;; These are defined architecturally elsewhere; here we capture their
+;; thesis-level descriptions — the pitch versions.
+
+(isa ThesisPrimitive Collection)
+(comment ThesisPrimitive
+  "The five universal primitives that form Charlotte's kernel.
+   Everything above them is domain-specific compilation.")
+
+(isa ThesisNode ThesisPrimitive)
+(comment ThesisNode
+  "The identity. An observable entity that persists through time.")
+
+(isa ThesisEdge ThesisPrimitive)
+(comment ThesisEdge
+  "The relationship. A typed connection between two nodes.")
+
+(isa ThesisMetric ThesisPrimitive)
+(comment ThesisMetric
+  "The measure. A quantifiable dimension observed along.")
+
+(isa ThesisSignal ThesisPrimitive)
+(comment ThesisSignal
+  "The event. A timestamped observation emitted on a metric.")
+
+(isa ThesisProtocol ThesisPrimitive)
+(comment ThesisProtocol
+  "The rule. A constraint governing signal propagation.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 3: THE 97% THESIS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa NinetySeven Collection)
+(genls NinetySeven NODE)
+(comment NinetySeven
+  "The 97% Thesis: there are 33.2 million small businesses in the United
+   States. 97% were built before AI existed. Most predate broadband internet.
+   Many predate the personal computer. These businesses — corner-store
+   libraries, family coffee shops, third-generation hardware stores — do not
+   need more technology. They need the complexity of modernity to stop
+   eroding them while they do what they were built to do.
+
+   Charlotte is titanium injected directly into the bone. The business does
+   not change. The owner learns nothing new. No new screens. No new logins.
+   No training. No migration. The substrate observes the signals the business
+   already emits — transactions, schedules, inventory, deliveries — and
+   converts them into structural intelligence. Devices manage themselves.
+   The infrastructure thinks so the owner does not have to.
+
+   The endgame is not a world with more technology everywhere. It is a world
+   with less visible technology and more underlying intelligence.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 4: THE ABSORPTION MODEL
+;;; ────────────────────────────────────────────────────────────────
+
+(isa AbsorptionModel Collection)
+(genls AbsorptionModel PROTOCOL)
+(comment AbsorptionModel
+  "The technology industry built one-size-fits-all software for the 3% of
+   businesses born digital. Charlotte builds an infinite number of bespoke
+   operating systems for the other 97%. Each business gets its own OS —
+   compiled from its own signals, shrunk to its own instruction set —
+   without knowing it exists.
+
+   The adoption tax disappears because there is nothing to adopt. The
+   infrastructure observes what the business already does and compiles
+   itself around it.
+
+   At 1% penetration of American small businesses paying $1K-$10K/month
+   for invisible infrastructure, the market generates $6B ARR — exceeding
+   Palantir, Snowflake, and MongoDB.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 5: THE PE BEACHHEAD
+;;; ────────────────────────────────────────────────────────────────
+
+(isa PEBeachhead Collection)
+(genls PEBeachhead PROTOCOL)
+(comment PEBeachhead
+  "PE firms manage approximately 26,000 portfolio companies — 0.08% of all
+   businesses. Charlotte eliminates $770K-$3.4M/year in integration tax per
+   company. Post-acquisition integration drops from 12-24 months to hours.
+   The fund deploys the infrastructure; portfolio companies never know it
+   is there.
+
+   From this beachhead, the same substrate extends to the 33 million
+   businesses that have never adopted enterprise software and never will.
+
+   LTV:CAC exceeds 50:1. Churn is less than 5% — not because switching is
+   hard, but because there is nothing to switch from. The infrastructure is
+   invisible. You cannot abandon what you never noticed.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 6: FIRST REVENUE
+;;; ────────────────────────────────────────────────────────────────
+
+(isa FirstRevenue Collection)
+(genls FirstRevenue NODE)
+(comment FirstRevenue
+  "The first industrial sector contract goes live February 23, 2026 —
+   $1.4M over 2 years for Charlotte-powered equipment intelligence deployed
+   into a major MRO platform across 42 locations.
+
+   This is the PE beachhead — not the ceiling. Each deployment proves the
+   substrate works across a new domain, reduces onboarding cost by 30-40%,
+   and generates cross-client intelligence that makes every subsequent
+   deployment faster.
+
+   The pattern scales from PE portfolio companies (~26,000) to mid-market
+   (~200,000) to the 33 million businesses that have never had access to
+   this kind of infrastructure and never should have needed to ask.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 7: THE RESEARCH LAB
+;;; ────────────────────────────────────────────────────────────────
+
+(isa SomeAIResearchLab Collection)
+(genls SomeAIResearchLab NODE)
+(comment SomeAIResearchLab
+  "35 people across 6 sensory pillars. Co-founders from Northwestern,
+   Mizzou, and Rose-Hulman. 3 physicians (Johns Hopkins psychiatry,
+   Barrow/Neuralink radiology, family medicine). 9 Rose-Hulman engineers
+   spanning optical, mechanical, biomedical, chemical, civil, aerospace,
+   and computer science. A chef trained under the #2 in the world (Albert
+   Adria). A defense systems engineer from NSWC Crane. A Ford brake
+   engineer. An Aurora/Boeing aerospace designer. Two Grainger analysts
+   with 17 combined years in industrial distribution.
+
+   Advisors include an IBM Fellow who invented Watson (Ferrucci), the
+   inventor of augmented reality (Rosenberg), the founder of qualitative
+   physics (Forbus), and the creator of Kilobots — a thousand-robot swarm
+   published in Science (Rubenstein). Mentored by an AAAI Fellow who
+   co-founded Narrative Science (Hammond).
+
+   Production dataset: 27,200 nodes, 46,100 edges across eight domains.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 8: SERENGETI OASIS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa SerengetiOasis Collection)
+(genls SerengetiOasis NODE)
+(comment SerengetiOasis
+  "The endgame is a purpose-built 50-200 acre property where dozens of
+   businesses run side-by-side, each on its own compiled OS, all stacked
+   on Charlotte. A coffee shop, a veterinary clinic, a co-working space,
+   a logistics hub — each with a different instruction set, different
+   metrics, different protocols — all sharing the same temporal spine,
+   all visible to each other.
+
+   Having them co-located allows real-time analysis of resonance between
+   operating systems: how fast signals propagate across business boundaries,
+   where patterns compound, what emerges when bespoke systems talk to each
+   other.
+
+   The village is simultaneously a revenue-generating commercial district,
+   a live research environment, and a proof that infinite bespoke OSes can
+   interoperate on one kernel.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 9: REVENUE MODEL — THREE LAYERS
+;;; ────────────────────────────────────────────────────────────────
+
+(isa RevenueModel Collection)
+(genls RevenueModel PROTOCOL)
+(comment RevenueModel
+  "Three revenue layers, each a different market depth:
+
+   Layer 1 — PE Beachhead: ~26,000 portfolio companies at $100K+/month.
+   At 1% penetration: $312M ARR.
+
+   Layer 2 — Mid-Market Expansion: ~200,000 companies ($10M-$1B revenue)
+   at $5K-$50K/month. At 1% penetration: $780M ARR.
+
+   Layer 3 — The 97% (Small Business America): 33,200,000 businesses at
+   $500-$3K/month (invisible infrastructure). At 1% penetration: $6.0B ARR.
+
+   Combined at 1% penetration: $7.1B ARR.
+
+   The 97% layer is the paradigm shift. These businesses do not buy
+   software. They never have. Charlotte does not ask them to. The substrate
+   observes what they already do and makes it legible — no screens, no
+   logins, no training. At 1% penetration with invisible infrastructure
+   pricing, the small business layer alone generates more ARR than
+   Palantir's entire 2025 revenue.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 10: FORECASTED VALUATION
+;;; ────────────────────────────────────────────────────────────────
+
+(isa ForecastedValuation Collection)
+(genls ForecastedValuation NODE)
+(comment ForecastedValuation
+  "Grounded in comparable company analysis against Palantir ($324B,
+   48-96x P/S), Databricks ($134B, 28x ARR), Snowflake ($75B, 12-17x),
+   MongoDB ($34B), Toast ($20B), and Samsara ($14.5B).
+
+   Year 5 Revenue: $82M-$108M ARR (PE + mid-market clusters, 900-11K
+   businesses). Year 10 Revenue: $920M-$1.2B ARR.
+
+   97% Layer additive: Year 5 $0-$500M, Year 10 $1B-$6B (0.1%-1% small
+   business penetration as absorption model scales).
+
+   Gross Margin: 74% at Year 5, 85%+ at Year 10. No onboarding, no
+   training, no support tickets — pure observation.
+
+   Low-End Valuation (PE + mid-market only, 15-25x ARR):
+   Year 5: $750M-$1.5B. Year 10: $4B-$16B.
+
+   High-End Valuation (with 97% layer, 30-50x ARR, category creation
+   premium): Year 5: $3B-$6B. Year 10: $25B-$50B+.
+
+   Pre-revenue seed valuation: $25M-$50M with PE network access.
+   $50M-$100M with signed property LOI.
+
+   The structural moat is not code — it is 8 years of cross-domain
+   research, 13 papers across 13 venues, 5 architectural innovations no
+   competitor has replicated, and a substrate that serves 33.2 million
+   businesses without asking a single one to change.")
+
+
+;;; ────────────────────────────────────────────────────────────────
+;;; PART 11: THE CORE PRINCIPLE
+;;; ────────────────────────────────────────────────────────────────
+
+(isa CorePrinciple Collection)
+(genls CorePrinciple NODE)
+(comment CorePrinciple
+  "The correct measure of technological progress is not how much technology
+   people use. It is how little they notice.")

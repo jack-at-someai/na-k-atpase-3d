@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DJ KIM
+;;; Advisor — Ocean Science
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa DJKim Person)
+(isa DJKim Advisor)
+(hasAttribute DJKim ::LABEL "DJ Kim")
+(hasAttribute DJKim ::ROLE "Advisor — Ocean Science")
+(hasAttribute DJKim ::PILLAR "sound")
+(hasAttribute DJKim ::AFFILIATION "Ocean Engineer, US Navy. Pentagon (Amphibious Warfare).")
+
+(MEMBER_OF DJKim SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar DJKim PillarSound)
+
+;; Expertise
+(expertiseIn DJKim OceanEngineering)
+(expertiseIn DJKim NavalOperations)
+(expertiseIn DJKim AmphibiousWarfare)
+(expertiseIn DJKim UnderwaterAcoustics)
+(expertiseIn DJKim MaritimeSystems)
+
+;; Career epochs
+(careerEpoch DJKim "M.S. Ocean Engineering" 2010 2014)
+(careerEpoch DJKim "US Navy — Ocean Engineer" 2014 9999)
+(careerEpoch DJKim "Pentagon — Amphibious Warfare Division" 2018 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithDJ PROTOCOL)
+(comment Protocol-InteractWithDJ
+  "M.S. Ocean Engineering. Global naval deployments. Pentagon
+   (Amphibious Warfare). The sound pillar's ocean advisor —
+   underwater acoustics, maritime systems, global deployment experience.")

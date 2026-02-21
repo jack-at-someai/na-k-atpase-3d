@@ -1,0 +1,543 @@
+;;; ================================================================
+;;; SERENGETI DOMAIN / CATALYST
+;;; Private equity catalyst, property strategy, scoring heuristic,
+;;; and top candidate properties for the OASIS research campus.
+;;;
+;;; Microtheory: SerengetiCatalystMt
+;;; Parent: SomeAIBusinessModelMt → CharlotteKernelMt
+;;; ================================================================
+
+(in-microtheory SerengetiCatalystMt)
+
+(isa SerengetiCatalystMt Microtheory)
+(genlMt SerengetiCatalystMt SomeAIBusinessModelMt)
+
+
+;;; ================================================================
+;;; SECTION 1: SERENGETI ENTITY — PE CATALYST ATTRIBUTES
+;;; (Serengeti is declared as PrivateEquityCatalyst in closed-loop.krf.
+;;;  This section adds property-strategy-specific attributes.)
+;;; ================================================================
+
+(hasAttribute Serengeti ::MODEL
+  "Research lab → retire into Serengeti → fund next generation.
+   The cyclical engine that turns industry expertise into campus
+   capital and campus capital into the next wave of Imagineers.")
+
+(hasAttribute Serengeti ::GENERATIONAL_FLYWHEEL
+  "Mentors and engineers retire into Serengeti. Their capital,
+   networks, and domain expertise fund and guide the next
+   generation. Jim Richard and Andrew Homoly are the founding
+   anchors of the current cycle.")
+
+(hasAttribute Serengeti ::KEY_PERSON_JIM_RICHARD
+  "Jim Richard — Jack's father. Founding Serengeti anchor.
+   Provides capital commitment, business network, and
+   generational continuity for the PE catalyst.")
+
+(hasAttribute Serengeti ::KEY_PERSON_ANDREW_HOMOLY
+  "Andrew Homoly — Mason Homoly's father. Homoly Construction.
+   Founding Serengeti anchor. Construction expertise for campus
+   build-out. Capital commitment to the generational flywheel.")
+
+
+;;; ================================================================
+;;; SECTION 2: TWO-REGION PROPERTY STRATEGY — PROTOCOL
+;;; ================================================================
+
+(isa Protocol-TwoRegionStrategy PROTOCOL)
+(comment Protocol-TwoRegionStrategy
+  "Serengeti acquires property in two regions to serve distinct
+   strategic functions. Florida is the primary campus: year-round
+   operations, PE-facing, client proximity. IL/IN is the secondary
+   hub: Midwest research, agricultural operations, lower cost base.
+   Both regions target 50-200 acres at below-market prices.")
+
+;; ── FL Primary Campus ──
+
+(isa Region-FL NODE)
+(hasAttribute Region-FL ::LABEL "Florida — Primary Campus")
+(hasAttribute Region-FL ::ROLE "Year-round operations, PE-facing, client proximity")
+(hasAttribute Region-FL ::CLIENT_PROXIMITY "ISG headquartered in FL region")
+(hasAttribute Region-FL ::TARGET_ACRES "50-200 acres")
+(hasAttribute Region-FL ::TARGET_PRICE "$500K-$3M")
+(hasAttribute Region-FL ::CLIMATE_ADVANTAGE
+  "Year-round outdoor research. Drone field, greenhouse, marine
+   lab all benefit from subtropical climate. No seasonal shutdown.")
+
+;; ── IL/IN Secondary Hub ──
+
+(isa Region-ILIN NODE)
+(hasAttribute Region-ILIN ::LABEL "IL/IN — Midwest Hub")
+(hasAttribute Region-ILIN ::ROLE "Midwest research base, agricultural operations, lower cost")
+(hasAttribute Region-ILIN ::CLIENT_PROXIMITY "Sounder agricultural research, Midwest industrial clients")
+(hasAttribute Region-ILIN ::TARGET_ACRES "50-200 acres")
+(hasAttribute Region-ILIN ::TARGET_PRICE "$300K-$1.5M")
+(hasAttribute Region-ILIN ::COST_ADVANTAGE
+  "Significantly lower price-per-acre than Florida. Tillable
+   acreage generates income while campus is under development.
+   Proximity to IL/IN universities for talent pipeline.")
+
+
+;;; ================================================================
+;;; SECTION 3: PROPERTY SCORING HEURISTIC — PROTOCOL
+;;; ================================================================
+
+(isa Protocol-PropertyScoring PROTOCOL)
+(comment Protocol-PropertyScoring
+  "Eight-dimension weighted scoring heuristic for evaluating
+   candidate properties. Each dimension scored 1-10, then
+   multiplied by its weight. Final score is the weighted sum.
+   Hard filters eliminate properties before scoring begins.")
+
+;; ── Hard Filters ──
+
+(hasAttribute Protocol-PropertyScoring ::HARD_FILTER_MIN_ACRES "20")
+(hasAttribute Protocol-PropertyScoring ::HARD_FILTER_MAX_PPA "$25,000/acre")
+(hasAttribute Protocol-PropertyScoring ::HARD_FILTER_ROAD_ACCESS "Must have road access")
+(hasAttribute Protocol-PropertyScoring ::HARD_FILTER_NOT_SOLD "Must not be sold or under contract")
+
+;; ── Dimension 1: Price Per Acre (25%) ──
+
+(isa ScoringDim-PricePerAcre NODE)
+(hasAttribute ScoringDim-PricePerAcre ::LABEL "Price Per Acre")
+(hasAttribute ScoringDim-PricePerAcre ::WEIGHT "0.25")
+(hasAttribute ScoringDim-PricePerAcre ::DIRECTION "Lower is better")
+(hasAttribute ScoringDim-PricePerAcre ::SCALE
+  "$2K/ac=10, $8K/ac=7, $15K/ac=4, $25K+/ac=1")
+
+;; ── Dimension 2: Acreage (15%) ──
+
+(isa ScoringDim-Acreage NODE)
+(hasAttribute ScoringDim-Acreage ::LABEL "Acreage")
+(hasAttribute ScoringDim-Acreage ::WEIGHT "0.15")
+(hasAttribute ScoringDim-Acreage ::DIRECTION "More is better")
+(hasAttribute ScoringDim-Acreage ::SCALE
+  "200+ ac=10, 100-200 ac=8, 50-100 ac=6, 20-50 ac=4")
+
+;; ── Dimension 3: Metro Proximity (20%) ──
+
+(isa ScoringDim-MetroProximity NODE)
+(hasAttribute ScoringDim-MetroProximity ::LABEL "Metro Proximity")
+(hasAttribute ScoringDim-MetroProximity ::WEIGHT "0.20")
+(hasAttribute ScoringDim-MetroProximity ::DIRECTION "Closer is better")
+(hasAttribute ScoringDim-MetroProximity ::SCALE
+  "<1 hr=10, 1-1.5 hr=7, 1.5-2 hr=4, 2+ hr=2")
+
+;; ── Dimension 4: Infrastructure (15%) ──
+
+(isa ScoringDim-Infrastructure NODE)
+(hasAttribute ScoringDim-Infrastructure ::LABEL "Infrastructure")
+(hasAttribute ScoringDim-Infrastructure ::WEIGHT "0.15")
+(hasAttribute ScoringDim-Infrastructure ::DIRECTION "More existing infrastructure is better")
+(hasAttribute ScoringDim-Infrastructure ::CRITERIA
+  "Existing buildings, wells, power lines, rail access.
+   Each adds to score. Turnkey > partial > raw land.")
+
+;; ── Dimension 5: Mixed-Use Character (10%) ──
+
+(isa ScoringDim-MixedUse NODE)
+(hasAttribute ScoringDim-MixedUse ::LABEL "Mixed-Use Character")
+(hasAttribute ScoringDim-MixedUse ::WEIGHT "0.10")
+(hasAttribute ScoringDim-MixedUse ::DIRECTION "More diversity is better")
+(hasAttribute ScoringDim-MixedUse ::CRITERIA
+  "Ideal mix: tillable + wooded + buildable. Supports
+   agriculture research, natural buffer, and campus construction.")
+
+;; ── Dimension 6: Water Features (5%) ──
+
+(isa ScoringDim-WaterFeatures NODE)
+(hasAttribute ScoringDim-WaterFeatures ::LABEL "Water Features")
+(hasAttribute ScoringDim-WaterFeatures ::WEIGHT "0.05")
+(hasAttribute ScoringDim-WaterFeatures ::DIRECTION "More water is better")
+(hasAttribute ScoringDim-WaterFeatures ::CRITERIA
+  "Ponds, creeks, springs, river frontage. Adds aesthetic,
+   research, and recreational value.")
+
+;; ── Dimension 7: Expansion Potential (5%) ──
+
+(isa ScoringDim-ExpansionPotential NODE)
+(hasAttribute ScoringDim-ExpansionPotential ::LABEL "Expansion Potential")
+(hasAttribute ScoringDim-ExpansionPotential ::WEIGHT "0.05")
+(hasAttribute ScoringDim-ExpansionPotential ::DIRECTION "More adjacent parcels is better")
+(hasAttribute ScoringDim-ExpansionPotential ::CRITERIA
+  "Adjacent parcels available for future acquisition.
+   Low-density surroundings. Room to grow without conflict.")
+
+;; ── Dimension 8: Income Potential (5%) ──
+
+(isa ScoringDim-IncomePotential NODE)
+(hasAttribute ScoringDim-IncomePotential ::LABEL "Income Potential")
+(hasAttribute ScoringDim-IncomePotential ::WEIGHT "0.05")
+(hasAttribute ScoringDim-IncomePotential ::DIRECTION "More income streams is better")
+(hasAttribute ScoringDim-IncomePotential ::CRITERIA
+  "Tillable acres, CRP payments, existing agricultural
+   operations, timber revenue. Income offsets holding costs
+   while campus is under development.")
+
+;; ── Tier Thresholds ──
+
+(hasAttribute Protocol-PropertyScoring ::TIER_S "7.50 and above")
+(hasAttribute Protocol-PropertyScoring ::TIER_A "7.00 — 7.49")
+(hasAttribute Protocol-PropertyScoring ::TIER_B "6.50 — 6.99")
+(hasAttribute Protocol-PropertyScoring ::TIER_C "6.00 — 6.49")
+(hasAttribute Protocol-PropertyScoring ::TIER_D "5.00 — 5.99")
+(hasAttribute Protocol-PropertyScoring ::TIER_F "Below 5.00")
+
+
+;;; ================================================================
+;;; SECTION 4: CANDIDATE PROPERTY TYPE
+;;; ================================================================
+
+(isa CandidateProperty Collection)
+(genls CandidateProperty NODE)
+(comment CandidateProperty
+  "A real property evaluated as a potential OASIS campus site.
+   Scored by Protocol-PropertyScoring across 8 dimensions.
+   Each candidate has location, acreage, price, score, and tier.")
+
+
+;;; ================================================================
+;;; SECTION 5: TOP 10 FL CANDIDATES
+;;; ================================================================
+
+;; ── FL-01: Econfina Riverfront 936 ──
+
+(isa FL-EconfinaRiverfront936 CandidateProperty)
+(hasAttribute FL-EconfinaRiverfront936 ::LABEL "Econfina Riverfront 936")
+(hasAttribute FL-EconfinaRiverfront936 ::COUNTY "Jefferson")
+(hasAttribute FL-EconfinaRiverfront936 ::STATE "FL")
+(hasAttribute FL-EconfinaRiverfront936 ::ACRES "936")
+(hasAttribute FL-EconfinaRiverfront936 ::PRICE "$2,200,000")
+(hasAttribute FL-EconfinaRiverfront936 ::PPA "$2,300")
+(hasAttribute FL-EconfinaRiverfront936 ::SCORE "7.20")
+(hasAttribute FL-EconfinaRiverfront936 ::TIER "A")
+(hasAttribute FL-EconfinaRiverfront936 ::REGION "FL")
+
+;; ── FL-02: Pasco Hidden Lake 589 Ac ──
+
+(isa FL-PascoHiddenLake589 CandidateProperty)
+(hasAttribute FL-PascoHiddenLake589 ::LABEL "Pasco Hidden Lake 589 Ac")
+(hasAttribute FL-PascoHiddenLake589 ::COUNTY "Pasco")
+(hasAttribute FL-PascoHiddenLake589 ::STATE "FL")
+(hasAttribute FL-PascoHiddenLake589 ::ACRES "589")
+(hasAttribute FL-PascoHiddenLake589 ::PRICE "$1,700,000")
+(hasAttribute FL-PascoHiddenLake589 ::PPA "$2,851")
+(hasAttribute FL-PascoHiddenLake589 ::SCORE "6.92")
+(hasAttribute FL-PascoHiddenLake589 ::TIER "B")
+(hasAttribute FL-PascoHiddenLake589 ::REGION "FL")
+
+;; ── FL-03: 940 Ac Hike Lake Preserve ──
+
+(isa FL-HikeLakePreserve940 CandidateProperty)
+(hasAttribute FL-HikeLakePreserve940 ::LABEL "940 Ac Hike Lake Preserve")
+(hasAttribute FL-HikeLakePreserve940 ::COUNTY "Madison")
+(hasAttribute FL-HikeLakePreserve940 ::STATE "FL")
+(hasAttribute FL-HikeLakePreserve940 ::ACRES "940")
+(hasAttribute FL-HikeLakePreserve940 ::PRICE "$1,600,000")
+(hasAttribute FL-HikeLakePreserve940 ::PPA "$1,650")
+(hasAttribute FL-HikeLakePreserve940 ::SCORE "6.85")
+(hasAttribute FL-HikeLakePreserve940 ::TIER "B")
+(hasAttribute FL-HikeLakePreserve940 ::REGION "FL")
+
+;; ── FL-04: 432 Ac Apalachicola River Bluff ──
+
+(isa FL-ApalachicolaBluff432 CandidateProperty)
+(hasAttribute FL-ApalachicolaBluff432 ::LABEL "432 Ac Apalachicola River Bluff")
+(hasAttribute FL-ApalachicolaBluff432 ::COUNTY "Liberty")
+(hasAttribute FL-ApalachicolaBluff432 ::STATE "FL")
+(hasAttribute FL-ApalachicolaBluff432 ::ACRES "432")
+(hasAttribute FL-ApalachicolaBluff432 ::PRICE "$1,300,000")
+(hasAttribute FL-ApalachicolaBluff432 ::PPA "$3,000")
+(hasAttribute FL-ApalachicolaBluff432 ::SCORE "6.65")
+(hasAttribute FL-ApalachicolaBluff432 ::TIER "B")
+(hasAttribute FL-ApalachicolaBluff432 ::REGION "FL")
+
+;; ── FL-05: 588 Ac Apalachicola Frontage ──
+
+(isa FL-ApalachicolaFrontage588 CandidateProperty)
+(hasAttribute FL-ApalachicolaFrontage588 ::LABEL "588 Ac Apalachicola Frontage")
+(hasAttribute FL-ApalachicolaFrontage588 ::COUNTY "Liberty")
+(hasAttribute FL-ApalachicolaFrontage588 ::STATE "FL")
+(hasAttribute FL-ApalachicolaFrontage588 ::ACRES "588")
+(hasAttribute FL-ApalachicolaFrontage588 ::PRICE "$1,500,000")
+(hasAttribute FL-ApalachicolaFrontage588 ::PPA "$2,600")
+(hasAttribute FL-ApalachicolaFrontage588 ::SCORE "6.60")
+(hasAttribute FL-ApalachicolaFrontage588 ::TIER "B")
+(hasAttribute FL-ApalachicolaFrontage588 ::REGION "FL")
+
+;; ── FL-06: Hardee 245 Ac Ranchland ──
+
+(isa FL-Hardee245Ranchland CandidateProperty)
+(hasAttribute FL-Hardee245Ranchland ::LABEL "Hardee 245 Ac Ranchland")
+(hasAttribute FL-Hardee245Ranchland ::COUNTY "Hardee")
+(hasAttribute FL-Hardee245Ranchland ::STATE "FL")
+(hasAttribute FL-Hardee245Ranchland ::ACRES "245")
+(hasAttribute FL-Hardee245Ranchland ::PRICE "Contact for price")
+(hasAttribute FL-Hardee245Ranchland ::PPA "$7,500")
+(hasAttribute FL-Hardee245Ranchland ::SCORE "6.42")
+(hasAttribute FL-Hardee245Ranchland ::TIER "C")
+(hasAttribute FL-Hardee245Ranchland ::REGION "FL")
+
+;; ── FL-07: Hwy 90 403 Acres ──
+
+(isa FL-Hwy90Madison403 CandidateProperty)
+(hasAttribute FL-Hwy90Madison403 ::LABEL "Hwy 90 403 Acres")
+(hasAttribute FL-Hwy90Madison403 ::COUNTY "Madison")
+(hasAttribute FL-Hwy90Madison403 ::STATE "FL")
+(hasAttribute FL-Hwy90Madison403 ::ACRES "403")
+(hasAttribute FL-Hwy90Madison403 ::PRICE "$1,200,000")
+(hasAttribute FL-Hwy90Madison403 ::PPA "$3,000")
+(hasAttribute FL-Hwy90Madison403 ::SCORE "6.33")
+(hasAttribute FL-Hwy90Madison403 ::TIER "C")
+(hasAttribute FL-Hwy90Madison403 ::REGION "FL")
+
+;; ── FL-08: 193 Ac Turn-Key Ranch w/ Home ──
+
+(isa FL-TurnKeyRanch193 CandidateProperty)
+(hasAttribute FL-TurnKeyRanch193 ::LABEL "193 Ac Turn-Key Ranch w/ Home")
+(hasAttribute FL-TurnKeyRanch193 ::COUNTY "Madison")
+(hasAttribute FL-TurnKeyRanch193 ::STATE "FL")
+(hasAttribute FL-TurnKeyRanch193 ::ACRES "193")
+(hasAttribute FL-TurnKeyRanch193 ::PRICE "$1,200,000")
+(hasAttribute FL-TurnKeyRanch193 ::PPA "$6,203")
+(hasAttribute FL-TurnKeyRanch193 ::SCORE "6.15")
+(hasAttribute FL-TurnKeyRanch193 ::TIER "C")
+(hasAttribute FL-TurnKeyRanch193 ::REGION "FL")
+
+;; ── FL-09: Polk Lake Lizzie Pasture 241 Ac ──
+
+(isa FL-PolkLakeLizzie241 CandidateProperty)
+(hasAttribute FL-PolkLakeLizzie241 ::LABEL "Polk Lake Lizzie Pasture 241 Ac")
+(hasAttribute FL-PolkLakeLizzie241 ::COUNTY "Polk")
+(hasAttribute FL-PolkLakeLizzie241 ::STATE "FL")
+(hasAttribute FL-PolkLakeLizzie241 ::ACRES "241")
+(hasAttribute FL-PolkLakeLizzie241 ::PRICE "$1,600,000")
+(hasAttribute FL-PolkLakeLizzie241 ::PPA "$6,847")
+(hasAttribute FL-PolkLakeLizzie241 ::SCORE "6.00")
+(hasAttribute FL-PolkLakeLizzie241 ::TIER "C")
+(hasAttribute FL-PolkLakeLizzie241 ::REGION "FL")
+
+;; ── FL-10: 437 Ac Recreational Timber ──
+
+(isa FL-RecreationalTimber437 CandidateProperty)
+(hasAttribute FL-RecreationalTimber437 ::LABEL "437 Ac Recreational Timber")
+(hasAttribute FL-RecreationalTimber437 ::COUNTY "Jackson")
+(hasAttribute FL-RecreationalTimber437 ::STATE "FL")
+(hasAttribute FL-RecreationalTimber437 ::ACRES "437")
+(hasAttribute FL-RecreationalTimber437 ::PRICE "$1,400,000")
+(hasAttribute FL-RecreationalTimber437 ::PPA "$3,249")
+(hasAttribute FL-RecreationalTimber437 ::SCORE "5.97")
+(hasAttribute FL-RecreationalTimber437 ::TIER "D")
+(hasAttribute FL-RecreationalTimber437 ::REGION "FL")
+
+
+;;; ================================================================
+;;; SECTION 6: TOP 10 IL/IN CANDIDATES
+;;; ================================================================
+
+;; ── ILIN-01: Vigo 153.84 Ac Railroad ──
+
+(isa ILIN-VigoRailroad154 CandidateProperty)
+(hasAttribute ILIN-VigoRailroad154 ::LABEL "Vigo 153.84 Ac Railroad")
+(hasAttribute ILIN-VigoRailroad154 ::COUNTY "Vigo")
+(hasAttribute ILIN-VigoRailroad154 ::STATE "IN")
+(hasAttribute ILIN-VigoRailroad154 ::ACRES "154")
+(hasAttribute ILIN-VigoRailroad154 ::PRICE "$723,800")
+(hasAttribute ILIN-VigoRailroad154 ::PPA "$4,709")
+(hasAttribute ILIN-VigoRailroad154 ::SCORE "6.67")
+(hasAttribute ILIN-VigoRailroad154 ::TIER "B")
+(hasAttribute ILIN-VigoRailroad154 ::REGION "IL-IN")
+
+;; ── ILIN-02: Crawford 276 Ac Whitetails ──
+
+(isa ILIN-Crawford276Whitetails CandidateProperty)
+(hasAttribute ILIN-Crawford276Whitetails ::LABEL "Crawford 276 Ac Whitetails")
+(hasAttribute ILIN-Crawford276Whitetails ::COUNTY "Crawford")
+(hasAttribute ILIN-Crawford276Whitetails ::STATE "IL")
+(hasAttribute ILIN-Crawford276Whitetails ::ACRES "276")
+(hasAttribute ILIN-Crawford276Whitetails ::PRICE "$750,000")
+(hasAttribute ILIN-Crawford276Whitetails ::PPA "$2,717")
+(hasAttribute ILIN-Crawford276Whitetails ::SCORE "6.62")
+(hasAttribute ILIN-Crawford276Whitetails ::TIER "B")
+(hasAttribute ILIN-Crawford276Whitetails ::REGION "IL-IN")
+
+;; ── ILIN-03: Vigo Trinity Tillable 196.5 Ac ──
+
+(isa ILIN-VigoTrinityTillable196 CandidateProperty)
+(hasAttribute ILIN-VigoTrinityTillable196 ::LABEL "Vigo Trinity Tillable 196.5 Ac")
+(hasAttribute ILIN-VigoTrinityTillable196 ::COUNTY "Vigo")
+(hasAttribute ILIN-VigoTrinityTillable196 ::STATE "IN")
+(hasAttribute ILIN-VigoTrinityTillable196 ::ACRES "196")
+(hasAttribute ILIN-VigoTrinityTillable196 ::PRICE "$1,400,000")
+(hasAttribute ILIN-VigoTrinityTillable196 ::PPA "$7,201")
+(hasAttribute ILIN-VigoTrinityTillable196 ::SCORE "6.23")
+(hasAttribute ILIN-VigoTrinityTillable196 ::TIER "C")
+(hasAttribute ILIN-VigoTrinityTillable196 ::REGION "IL-IN")
+
+;; ── ILIN-04: 101 Ac Martinsville ──
+
+(isa ILIN-ClarkMartinsville101 CandidateProperty)
+(hasAttribute ILIN-ClarkMartinsville101 ::LABEL "101 Ac Martinsville")
+(hasAttribute ILIN-ClarkMartinsville101 ::COUNTY "Clark")
+(hasAttribute ILIN-ClarkMartinsville101 ::STATE "IL")
+(hasAttribute ILIN-ClarkMartinsville101 ::ACRES "101")
+(hasAttribute ILIN-ClarkMartinsville101 ::PRICE "Contact for price")
+(hasAttribute ILIN-ClarkMartinsville101 ::PPA "N/A")
+(hasAttribute ILIN-ClarkMartinsville101 ::SCORE "6.20")
+(hasAttribute ILIN-ClarkMartinsville101 ::TIER "C")
+(hasAttribute ILIN-ClarkMartinsville101 ::REGION "IL-IN")
+
+;; ── ILIN-05: Clark Hunt Farm 135.8 Ac ──
+
+(isa ILIN-ClarkHuntFarm136 CandidateProperty)
+(hasAttribute ILIN-ClarkHuntFarm136 ::LABEL "Clark Hunt Farm 135.8 Ac")
+(hasAttribute ILIN-ClarkHuntFarm136 ::COUNTY "Clark")
+(hasAttribute ILIN-ClarkHuntFarm136 ::STATE "IL")
+(hasAttribute ILIN-ClarkHuntFarm136 ::ACRES "136")
+(hasAttribute ILIN-ClarkHuntFarm136 ::PRICE "$549,000")
+(hasAttribute ILIN-ClarkHuntFarm136 ::PPA "$4,044")
+(hasAttribute ILIN-ClarkHuntFarm136 ::SCORE "6.17")
+(hasAttribute ILIN-ClarkHuntFarm136 ::TIER "C")
+(hasAttribute ILIN-ClarkHuntFarm136 ::REGION "IL-IN")
+
+;; ── ILIN-06: 149.5 Ac Timothy ──
+
+(isa ILIN-CumberlandTimothy150 CandidateProperty)
+(hasAttribute ILIN-CumberlandTimothy150 ::LABEL "149.5 Ac Timothy")
+(hasAttribute ILIN-CumberlandTimothy150 ::COUNTY "Cumberland")
+(hasAttribute ILIN-CumberlandTimothy150 ::STATE "IL")
+(hasAttribute ILIN-CumberlandTimothy150 ::ACRES "150")
+(hasAttribute ILIN-CumberlandTimothy150 ::PRICE "$986,700")
+(hasAttribute ILIN-CumberlandTimothy150 ::PPA "$6,600")
+(hasAttribute ILIN-CumberlandTimothy150 ::SCORE "6.17")
+(hasAttribute ILIN-CumberlandTimothy150 ::TIER "C")
+(hasAttribute ILIN-CumberlandTimothy150 ::REGION "IL-IN")
+
+;; ── ILIN-07: Edgar 177 Ac Grandview 4-tract ──
+
+(isa ILIN-EdgarGrandview177 CandidateProperty)
+(hasAttribute ILIN-EdgarGrandview177 ::LABEL "Edgar 177 Ac Grandview 4-tract")
+(hasAttribute ILIN-EdgarGrandview177 ::COUNTY "Edgar")
+(hasAttribute ILIN-EdgarGrandview177 ::STATE "IL")
+(hasAttribute ILIN-EdgarGrandview177 ::ACRES "177")
+(hasAttribute ILIN-EdgarGrandview177 ::PRICE "$1,100,000")
+(hasAttribute ILIN-EdgarGrandview177 ::PPA "$6,413")
+(hasAttribute ILIN-EdgarGrandview177 ::SCORE "6.12")
+(hasAttribute ILIN-EdgarGrandview177 ::TIER "C")
+(hasAttribute ILIN-EdgarGrandview177 ::REGION "IL-IN")
+
+;; ── ILIN-08: Vigo Darwin Ferry 159 Ac ──
+
+(isa ILIN-VigoDarwinFerry159 CandidateProperty)
+(hasAttribute ILIN-VigoDarwinFerry159 ::LABEL "Vigo Darwin Ferry 159 Ac")
+(hasAttribute ILIN-VigoDarwinFerry159 ::COUNTY "Vigo")
+(hasAttribute ILIN-VigoDarwinFerry159 ::STATE "IN")
+(hasAttribute ILIN-VigoDarwinFerry159 ::ACRES "159")
+(hasAttribute ILIN-VigoDarwinFerry159 ::PRICE "$557,550")
+(hasAttribute ILIN-VigoDarwinFerry159 ::PPA "$3,506")
+(hasAttribute ILIN-VigoDarwinFerry159 ::SCORE "6.10")
+(hasAttribute ILIN-VigoDarwinFerry159 ::TIER "C")
+(hasAttribute ILIN-VigoDarwinFerry159 ::REGION "IL-IN")
+
+;; ── ILIN-09: Gillespy Farm 229.87 Ac ──
+
+(isa ILIN-EdgarGillespyFarm230 CandidateProperty)
+(hasAttribute ILIN-EdgarGillespyFarm230 ::LABEL "Gillespy Farm 229.87 Ac")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::COUNTY "Edgar")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::STATE "IL")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::ACRES "230")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::PRICE "Contact for price")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::PPA "$14,000")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::SCORE "6.00")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::TIER "C")
+(hasAttribute ILIN-EdgarGillespyFarm230 ::REGION "IL-IN")
+
+;; ── ILIN-10: 79.57 Ac Two-State ──
+
+(isa ILIN-EdgarTwoState80 CandidateProperty)
+(hasAttribute ILIN-EdgarTwoState80 ::LABEL "79.57 Ac Two-State")
+(hasAttribute ILIN-EdgarTwoState80 ::COUNTY "Edgar")
+(hasAttribute ILIN-EdgarTwoState80 ::STATE "IL")
+(hasAttribute ILIN-EdgarTwoState80 ::ACRES "80")
+(hasAttribute ILIN-EdgarTwoState80 ::PRICE "$636,560")
+(hasAttribute ILIN-EdgarTwoState80 ::PPA "$8,000")
+(hasAttribute ILIN-EdgarTwoState80 ::SCORE "6.00")
+(hasAttribute ILIN-EdgarTwoState80 ::TIER "C")
+(hasAttribute ILIN-EdgarTwoState80 ::REGION "IL-IN")
+
+
+;;; ================================================================
+;;; SECTION 7: MARKET BENCHMARKS — METRICs
+;;; ================================================================
+
+;; ── Florida Benchmarks ──
+
+(isa Metric-FL-AllFarmlandStatewide METRIC)
+(hasAttribute Metric-FL-AllFarmlandStatewide ::LABEL "FL All Farmland Statewide Avg")
+(hasAttribute Metric-FL-AllFarmlandStatewide ::VALUE "$10,404/ac")
+(hasAttribute Metric-FL-AllFarmlandStatewide ::SOURCE "Saunders 2024")
+(hasAttribute Metric-FL-AllFarmlandStatewide ::REGION "FL")
+
+(isa Metric-FL-InteriorCropland METRIC)
+(hasAttribute Metric-FL-InteriorCropland ::LABEL "FL Interior Cropland (Hardee/DeSoto/Highlands)")
+(hasAttribute Metric-FL-InteriorCropland ::VALUE "$4,500-$6,000/ac")
+(hasAttribute Metric-FL-InteriorCropland ::SOURCE "Saunders 2024")
+(hasAttribute Metric-FL-InteriorCropland ::REGION "FL")
+
+(isa Metric-FL-RanchRecreation METRIC)
+(hasAttribute Metric-FL-RanchRecreation ::LABEL "FL Ranch & Recreation (50-500ac)")
+(hasAttribute Metric-FL-RanchRecreation ::VALUE "$8,998/ac")
+(hasAttribute Metric-FL-RanchRecreation ::YOY_CHANGE "-4.7%")
+(hasAttribute Metric-FL-RanchRecreation ::SOURCE "Saunders 2024")
+(hasAttribute Metric-FL-RanchRecreation ::REGION "FL")
+
+(isa Metric-FL-CitrusLand METRIC)
+(hasAttribute Metric-FL-CitrusLand ::LABEL "FL Citrus Land")
+(hasAttribute Metric-FL-CitrusLand ::VALUE "$13,700/ac")
+(hasAttribute Metric-FL-CitrusLand ::YOY_CHANGE "+47%")
+(hasAttribute Metric-FL-CitrusLand ::SOURCE "Saunders 2024")
+(hasAttribute Metric-FL-CitrusLand ::REGION "FL")
+
+(isa Metric-FL-Timberland METRIC)
+(hasAttribute Metric-FL-Timberland ::LABEL "FL Timberland")
+(hasAttribute Metric-FL-Timberland ::VALUE "$2,867/ac")
+(hasAttribute Metric-FL-Timberland ::SOURCE "Saunders 2024")
+(hasAttribute Metric-FL-Timberland ::REGION "FL")
+
+;; ── IL/IN County Benchmarks ──
+
+(isa Metric-ILIN-EdgarIL METRIC)
+(hasAttribute Metric-ILIN-EdgarIL ::LABEL "Edgar County, IL Avg")
+(hasAttribute Metric-ILIN-EdgarIL ::VALUE "$14,179/ac avg")
+(hasAttribute Metric-ILIN-EdgarIL ::HIGH "$17,412/ac high")
+(hasAttribute Metric-ILIN-EdgarIL ::REGION "IL-IN")
+
+(isa Metric-ILIN-ClarkIL METRIC)
+(hasAttribute Metric-ILIN-ClarkIL ::LABEL "Clark County, IL Avg")
+(hasAttribute Metric-ILIN-ClarkIL ::VALUE "$7,734/ac avg")
+(hasAttribute Metric-ILIN-ClarkIL ::REGION "IL-IN")
+
+(isa Metric-ILIN-CumberlandIL METRIC)
+(hasAttribute Metric-ILIN-CumberlandIL ::LABEL "Cumberland County, IL Avg")
+(hasAttribute Metric-ILIN-CumberlandIL ::VALUE "$10,503/ac avg")
+(hasAttribute Metric-ILIN-CumberlandIL ::REGION "IL-IN")
+
+(isa Metric-ILIN-CrawfordIL METRIC)
+(hasAttribute Metric-ILIN-CrawfordIL ::LABEL "Crawford County, IL Avg")
+(hasAttribute Metric-ILIN-CrawfordIL ::VALUE "$9,076/ac avg")
+(hasAttribute Metric-ILIN-CrawfordIL ::REGION "IL-IN")
+
+(isa Metric-ILIN-VigoIN METRIC)
+(hasAttribute Metric-ILIN-VigoIN ::LABEL "Vigo County, IN Avg")
+(hasAttribute Metric-ILIN-VigoIN ::VALUE "$7,588/ac avg")
+(hasAttribute Metric-ILIN-VigoIN ::REGION "IL-IN")
+
+
+;;; ================================================================
+;;; END — catalyst.krf
+;;; 1 PE catalyst entity (extended). 2 region NODEs. 2 PROTOCOLs
+;;; (strategy + scoring). 8 scoring dimensions. 20 candidate
+;;; properties (10 FL + 10 IL/IN). 10 market benchmark METRICs.
+;;; The engine that turns land into lab.
+;;; ================================================================

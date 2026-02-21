@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / JET SETHI
+;;; Quantum Physics -> Precision Health
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa JetSethi Person)
+(isa JetSethi Imagineer)
+(hasAttribute JetSethi ::LABEL "Jet Sethi")
+(hasAttribute JetSethi ::ROLE "Quantum Physics -> Precision Health")
+(hasAttribute JetSethi ::PILLAR "brain")
+(hasAttribute JetSethi ::AFFILIATION "Rose-Hulman Physics -> Miami U. M.S. (Quantum Info).")
+
+(MEMBER_OF JetSethi SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JetSethi PillarBrain)
+
+;; Expertise
+(expertiseIn JetSethi QuantumPhysics)
+(expertiseIn JetSethi QuantumInformation)
+(expertiseIn JetSethi NonlinearOptics)
+(expertiseIn JetSethi PrecisionHealth)
+(expertiseIn JetSethi DementiaResearch)
+
+;; Career epochs
+(careerEpoch JetSethi "Rose-Hulman Institute of Technology — B.S. Physics" 2016 2020)
+(careerEpoch JetSethi "Miami University — M.S. Quantum Information" 2020 2022)
+(careerEpoch JetSethi "Precision Health Research — Dementia" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJet PROTOCOL)
+(comment Protocol-InteractWithJet
+  "Nonlinear optics, quantum entanglement, dementia research.
+   Rose-Hulman physics rigor meets quantum information theory.
+   The brain pillar's quantum edge — where physics meets cognition.")

@@ -1,0 +1,66 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / JIM RICHARD
+;;; Leader — Chairman RE, CEO ISG
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+;;; ── Microtheory & Collection Declarations (first file only) ────
+
+(isa SumAIPersonnelMt Microtheory)
+(genlMt SumAIPersonnelMt SumAIResearchEntityMt)
+
+(isa SumAITeam Collection)
+(genls SumAITeam NODE)
+
+(isa assignedToPillar Predicate)
+(arity assignedToPillar 2)
+(arg1Isa assignedToPillar Person)
+(arg2Isa assignedToPillar SensoryPillar)
+
+(isa Founder Collection)
+(comment Founder "Co-founder of SumAI/SomeAI.")
+
+(isa Imagineer Collection)
+(comment Imagineer "Core team member of the SumAI research entity.")
+
+(isa Advisor Collection)
+(comment Advisor "External advisor or mentor to SumAI.")
+
+(isa Mentor Collection)
+(comment Mentor "Mentor who shaped a SumAI founder or core member.")
+
+;;; ── Cross-Domain Reference ────────────────────────────────────
+;;; CROSS-DOMAIN: JimRichard already declared as (isa JimRichard Person)
+;;; in ISGPersonnelMt (domains/isg/personnel/jim-richard.krf).
+;;; This file adds SumAI-specific edges only.
+
+(isa JimRichard Founder)
+(isa JimRichard Imagineer)
+(hasAttribute JimRichard ::LABEL "Jim Richard")
+(hasAttribute JimRichard ::ROLE "Leader — Chairman RE, CEO ISG")
+(hasAttribute JimRichard ::PILLAR "brain")
+(hasAttribute JimRichard ::AFFILIATION "40+ years industrial service + PE. Richard Enterprises Chairman.")
+
+(MEMBER_OF JimRichard SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JimRichard PillarBrain)
+
+;; Expertise (SumAI-specific — ISG expertise lives in ISG personnel file)
+(expertiseIn JimRichard PlatformEconomics)
+(expertiseIn JimRichard IndustrialAcquisitions)
+(expertiseIn JimRichard OperationalLeadership)
+(expertiseIn JimRichard PrivateEquityStrategy)
+
+;; Career epochs (SumAI perspective — full career in ISG file)
+(careerEpoch JimRichard "Industrial Service Solutions — Founder & CEO" 2010 2019)
+(careerEpoch JimRichard "The Industrial Service Group — CEO" 2019 9999)
+(careerEpoch JimRichard "Richard Enterprises — Chairman" 2019 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJim PROTOCOL)
+(comment Protocol-InteractWithJim
+  "Built ISG from acquisition to PE platform. Father of Jack and Joseph.
+   Values directness, ROI, and platform economics. Thinks in growth
+   multiples. The industrial patriarch — convergence personified.")

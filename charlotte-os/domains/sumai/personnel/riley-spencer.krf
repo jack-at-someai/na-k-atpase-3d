@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. RILEY SPENCER
+;;; Family Medicine
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa RileySpencer Person)
+(isa RileySpencer Imagineer)
+(hasAttribute RileySpencer ::LABEL "Dr. Riley Spencer")
+(hasAttribute RileySpencer ::ROLE "Family Medicine")
+(hasAttribute RileySpencer ::PILLAR "touch")
+(hasAttribute RileySpencer ::AFFILIATION "MD. MacMurray -> Ross University -> FWMEP, Fort Wayne.")
+
+(MEMBER_OF RileySpencer SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar RileySpencer PillarTouch)
+
+;; Expertise
+(expertiseIn RileySpencer FamilyMedicine)
+(expertiseIn RileySpencer PatientCare)
+(expertiseIn RileySpencer ClinicalDiagnosis)
+(expertiseIn RileySpencer RuralMedicine)
+
+;; Career epochs
+(careerEpoch RileySpencer "MacMurray College — Pre-Med" 2012 2016)
+(careerEpoch RileySpencer "Ross University School of Medicine — M.D." 2016 2020)
+(careerEpoch RileySpencer "Fort Wayne Medical Education Program — Family Medicine Residency" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithRiley PROTOCOL)
+(comment Protocol-InteractWithRiley
+  "Paris, IL — grew up with Logan. The whole-patient observer.
+   Family medicine is touch at its most human: palpation, physical
+   exam, hands-on diagnosis. The generalist who sees the full picture.")

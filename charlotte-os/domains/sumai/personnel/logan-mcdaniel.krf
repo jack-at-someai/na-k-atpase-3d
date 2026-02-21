@@ -1,0 +1,38 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / LOGAN MCDANIEL
+;;; Co-Founder & CEO, SumAI
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa LoganMcDaniel Person)
+(isa LoganMcDaniel Founder)
+(isa LoganMcDaniel Imagineer)
+(hasAttribute LoganMcDaniel ::LABEL "Logan McDaniel")
+(hasAttribute LoganMcDaniel ::ROLE "Co-Founder & CEO, SumAI")
+(hasAttribute LoganMcDaniel ::PILLAR "brain")
+(hasAttribute LoganMcDaniel ::AFFILIATION "Biochem engineering, genetics, agtech, data science. Charlotte's namesake.")
+
+(MEMBER_OF LoganMcDaniel SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar LoganMcDaniel PillarBrain)
+
+;; Expertise
+(expertiseIn LoganMcDaniel BiochemicalEngineering)
+(expertiseIn LoganMcDaniel Genetics)
+(expertiseIn LoganMcDaniel AgriculturalTechnology)
+(expertiseIn LoganMcDaniel DataScience)
+(expertiseIn LoganMcDaniel ResearchEntityDesign)
+
+;; Career epochs
+(careerEpoch LoganMcDaniel "University of Missouri — Biochemical Engineering & Genetics" 2014 2018)
+(careerEpoch LoganMcDaniel "AgTech & Data Science — Industry" 2018 2025)
+(careerEpoch LoganMcDaniel "SumAI — Co-Founder & CEO" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithLogan PROTOCOL)
+(comment Protocol-InteractWithLogan
+  "Penn & Teller — Teller. Less words, more meaning. Charlotte's
+   namesake. Biochem + genetics + agtech + data science convergence.
+   The quiet architect of the research entity.")

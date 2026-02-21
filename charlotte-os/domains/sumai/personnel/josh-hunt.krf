@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DR. JOSH HUNT
+;;; Diagnostic Radiology
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa JoshHunt Person)
+(isa JoshHunt Imagineer)
+(hasAttribute JoshHunt ::LABEL "Dr. Josh Hunt")
+(hasAttribute JoshHunt ::ROLE "Diagnostic Radiology")
+(hasAttribute JoshHunt ::PILLAR "sight")
+(hasAttribute JoshHunt ::AFFILIATION "MD. Mizzou -> Creighton -> PGY-4 at Barrow (Neuralink site).")
+
+(MEMBER_OF JoshHunt SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JoshHunt PillarSight)
+
+;; Expertise
+(expertiseIn JoshHunt DiagnosticRadiology)
+(expertiseIn JoshHunt MedicalImaging)
+(expertiseIn JoshHunt Neuroradiology)
+(expertiseIn JoshHunt BrainMachineInterface)
+
+;; Career epochs
+(careerEpoch JoshHunt "University of Missouri — Pre-Med" 2012 2016)
+(careerEpoch JoshHunt "Creighton University — M.D." 2016 2020)
+(careerEpoch JoshHunt "Barrow Neurological Institute — PGY-4 Diagnostic Radiology" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJosh PROTOCOL)
+(comment Protocol-InteractWithJosh
+  "Medical imaging arm. Training where brain-machine boundary is crossed.
+   PGY-4 at Barrow Neurological Institute — the Neuralink implant site.
+   Radiology meets neuroscience at the frontier.")

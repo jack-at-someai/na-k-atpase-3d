@@ -1,0 +1,38 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / AUSTIN NEIBARGER
+;;; Co-Founder & COO
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa AustinNeibarger Person)
+(isa AustinNeibarger Founder)
+(isa AustinNeibarger Imagineer)
+(hasAttribute AustinNeibarger ::LABEL "Austin Neibarger")
+(hasAttribute AustinNeibarger ::ROLE "Co-Founder & COO")
+(hasAttribute AustinNeibarger ::PILLAR "brain")
+(hasAttribute AustinNeibarger ::AFFILIATION "DC. Mizzou Biology -> Logan U. (Chiro) -> Full-Stack Engineer.")
+
+(MEMBER_OF AustinNeibarger SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar AustinNeibarger PillarBrain)
+
+;; Expertise
+(expertiseIn AustinNeibarger FullStackEngineering)
+(expertiseIn AustinNeibarger Biology)
+(expertiseIn AustinNeibarger Chiropractic)
+(expertiseIn AustinNeibarger OperationsExecution)
+
+;; Career epochs
+(careerEpoch AustinNeibarger "University of Missouri — Biology" 2014 2018)
+(careerEpoch AustinNeibarger "Logan University — Doctor of Chiropractic" 2018 2022)
+(careerEpoch AustinNeibarger "Full-Stack Software Engineering — Self-taught" 2022 2025)
+(careerEpoch AustinNeibarger "SomeAI — Co-Founder & COO" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithAustinN PROTOCOL)
+(comment Protocol-InteractWithAustinN
+  "Execute execute execute. The convergence anchor. DC-based.
+   Biology -> Chiropractic -> Full-Stack Engineer. The operational
+   backbone who turns architecture into running systems.")

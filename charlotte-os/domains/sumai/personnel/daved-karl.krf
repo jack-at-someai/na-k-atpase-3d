@@ -1,0 +1,39 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DAVED KARL
+;;; Mentor — Enterprise Technology
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+;;; ── Cross-Domain Reference ────────────────────────────────────
+;;; CROSS-DOMAIN: DavedKarl already declared as (isa DavedKarl Person)
+;;; in ISGPersonnelMt (domains/isg/personnel/daved-karl.krf).
+;;; This file adds SumAI-specific edges only.
+
+(isa DavedKarl Mentor)
+(hasAttribute DavedKarl ::LABEL "Daved Karl")
+(hasAttribute DavedKarl ::ROLE "Mentor — Enterprise Technology")
+(hasAttribute DavedKarl ::PILLAR "brain")
+(hasAttribute DavedKarl ::AFFILIATION "CISSP, Six Sigma CT. CIO/CISO at ISG. 30+ years enterprise IT.")
+
+(MEMBER_OF DavedKarl SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar DavedKarl PillarBrain)
+
+;; Expertise (SumAI-specific — ISG expertise lives in ISG personnel file)
+(expertiseIn DavedKarl EnterpriseTechnology)
+(expertiseIn DavedKarl CybersecurityStrategy)
+(expertiseIn DavedKarl SixSigma)
+(expertiseIn DavedKarl ERPArchitecture)
+
+;; Career epochs (SumAI perspective — full career in ISG file)
+(careerEpoch DavedKarl "Enterprise IT — 30+ years across industrial platforms" 1995 9999)
+(careerEpoch DavedKarl "The Industrial Service Group — CIO/CISO" 2015 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithDaved PROTOCOL)
+(comment Protocol-InteractWithDaved
+  "Built ISG tech stack. Every major ERP platform. CISSP + Six Sigma
+   Certified Technologist. 30+ years enterprise IT. The mentor who
+   bridges Charlotte OS to industrial-grade IT infrastructure.")

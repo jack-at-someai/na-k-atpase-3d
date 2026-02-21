@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DIEGO CALZADA
+;;; Sensory Manipulation & Culinary
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa DiegoCalzada Person)
+(isa DiegoCalzada Imagineer)
+(hasAttribute DiegoCalzada ::LABEL "Diego Calzada")
+(hasAttribute DiegoCalzada ::ROLE "Sensory Manipulation & Culinary")
+(hasAttribute DiegoCalzada ::PILLAR "taste")
+(hasAttribute DiegoCalzada ::AFFILIATION "Trained at Enigma, Barcelona under Albert Adria.")
+
+(MEMBER_OF DiegoCalzada SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar DiegoCalzada PillarTaste)
+
+;; Expertise
+(expertiseIn DiegoCalzada MolecularGastronomy)
+(expertiseIn DiegoCalzada SensoryManipulation)
+(expertiseIn DiegoCalzada CulinaryScience)
+(expertiseIn DiegoCalzada AtmosphericDesign)
+
+;; Career epochs
+(careerEpoch DiegoCalzada "Enigma Barcelona — Culinary Training under Albert Adria" 2020 2024)
+(careerEpoch DiegoCalzada "SumAI — Sensory Manipulation & Culinary" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithDiego PROTOCOL)
+(comment Protocol-InteractWithDiego
+  "Mentor: Albert Adria (#2 Chef in the World). Trained at Enigma,
+   Barcelona. Taste pillar anchor — molecular gastronomy as a lens
+   for understanding chemical perception and sensory manipulation.")

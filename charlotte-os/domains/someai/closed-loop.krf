@@ -1,0 +1,270 @@
+;;; ================================================================
+;;; SOMEAI DOMAIN / CLOSED LOOP
+;;; The three-entity recursive engine: SumAI → SomeAI → Serengeti.
+;;; Research discovers. Deployment deploys. Capital funds the cycle.
+;;; Charlotte is the shared substrate all three run on.
+;;;
+;;; Microtheory: SomeAIClosedLoopMt
+;;; Parent: SomeAIBusinessModelMt → CharlotteKernelMt
+;;; Primitives: NODE, EDGE, METRIC, SIGNAL, PROTOCOL
+;;; ================================================================
+
+(in-microtheory SomeAIClosedLoopMt)
+
+(isa SomeAIClosedLoopMt Microtheory)
+(genlMt SomeAIClosedLoopMt SomeAIBusinessModelMt)
+
+
+;;; ================================================================
+;;; SECTION 1: ONTOLOGY — ENTITY TYPES
+;;; ================================================================
+
+(isa ResearchOrganization Collection)
+(genls ResearchOrganization NODE)
+(comment ResearchOrganization
+  "A divergent engine — an entity whose purpose is to widen the
+   research frontier. SumAI is the only current instance. Research
+   organizations produce discoveries and consume funding.")
+
+(isa DeploymentOrganization Collection)
+(genls DeploymentOrganization NODE)
+(comment DeploymentOrganization
+  "A convergent engine — an entity that takes research outputs
+   and deploys them into client operations. SomeAI is the only
+   current instance. Deployment organizations produce revenue
+   and consume discoveries.")
+
+(isa PrivateEquityCatalyst Collection)
+(genls PrivateEquityCatalyst NODE)
+(comment PrivateEquityCatalyst
+  "A capital entity that funds the research-deployment loop.
+   Serengeti is the only current instance. PE catalysts produce
+   funding and consume revenue returns.")
+
+(isa SharedSubstrate Collection)
+(genls SharedSubstrate NODE)
+(comment SharedSubstrate
+  "Infrastructure shared across all entities in the loop.
+   Charlotte OS is the shared substrate — the graph that
+   SumAI researches on, SomeAI deploys through, and
+   Serengeti monitors for returns.")
+
+
+;;; ================================================================
+;;; SECTION 2: ENTITY INSTANCES
+;;; ================================================================
+
+;; ── SumAI ──
+
+(isa SumAI ResearchOrganization)
+(hasAttribute SumAI ::LABEL "SumAI")
+(hasAttribute SumAI ::FULL_NAME "Sigma AI")
+(hasAttribute SumAI ::ETYMOLOGY "I SUM AI in my research lab.")
+(hasAttribute SumAI ::ROLE "Divergent research engine")
+(hasAttribute SumAI ::MISSION
+  "Maintain the frontier, widen research exposure, and maintain Charlotte.
+   Study the senses individually, then combine them systematically until
+   the combinations themselves reveal new disciplines.")
+(hasAttribute SumAI ::FIRST_LAB "OASIS")
+
+;; ── SomeAI ──
+
+(isa SomeAI DeploymentOrganization)
+(isa SomeAI OperatingCompany)
+(hasAttribute SomeAI ::LABEL "SomeAI")
+(hasAttribute SomeAI ::ETYMOLOGY "I give Some AI to the public.")
+(hasAttribute SomeAI ::ROLE "Convergent deployment engine")
+(hasAttribute SomeAI ::MISSION
+  "Consolidate research into tangible, deployable solutions. Take what
+   SumAI discovers and deploy it into agriculture, industrial service,
+   sports, medicine, ocean conservation — wherever Charlotte can observe
+   reality and make it legible.")
+
+;; ── Serengeti ──
+
+(isa Serengeti PrivateEquityCatalyst)
+(hasAttribute Serengeti ::LABEL "Serengeti")
+(hasAttribute Serengeti ::ROLE "Private equity catalyst and generational flywheel")
+(hasAttribute Serengeti ::MISSION
+  "Fund the research lab, acquire campus property, and retire mentors
+   into the ecosystem. The cyclical engine: research lab → retire into
+   Serengeti → fund next generation.")
+
+;; ── Charlotte OS ──
+
+(isa CharlotteOS SharedSubstrate)
+(hasAttribute CharlotteOS ::LABEL "Charlotte OS")
+(hasAttribute CharlotteOS ::ROLE "Operating system for operations")
+(hasAttribute CharlotteOS ::DESCRIPTION
+  "The graph that all three entities run on. SumAI researches through it,
+   SomeAI deploys it, Serengeti monitors it. Five primitives: NODE, EDGE,
+   METRIC, SIGNAL, PROTOCOL.")
+
+
+;;; ================================================================
+;;; SECTION 3: LOOP EDGES — THE CLOSED CYCLE
+;;; ================================================================
+
+;; ── Predicate declarations ──
+
+(isa fundsResearch Predicate)
+(arity fundsResearch 2)
+(arg1Isa fundsResearch PrivateEquityCatalyst)
+(arg2Isa fundsResearch ResearchOrganization)
+(comment fundsResearch
+  "(fundsResearch Serengeti SumAI) — capital flows from PE catalyst
+   to research organization. Funds lab operations, campus acquisition,
+   researcher salaries.")
+
+(isa discoveryFlow Predicate)
+(arity discoveryFlow 2)
+(arg1Isa discoveryFlow ResearchOrganization)
+(arg2Isa discoveryFlow DeploymentOrganization)
+(comment discoveryFlow
+  "(discoveryFlow SumAI SomeAI) — research discoveries flow from
+   the divergent engine to the convergent engine for deployment.")
+
+(isa fieldDataFlow Predicate)
+(arity fieldDataFlow 2)
+(arg1Isa fieldDataFlow DeploymentOrganization)
+(arg2Isa fieldDataFlow ResearchOrganization)
+(comment fieldDataFlow
+  "(fieldDataFlow SomeAI SumAI) — real-world operational signals from
+   client deployments flow back to the research lab as training data
+   and research problems.")
+
+(isa revenueReturn Predicate)
+(arity revenueReturn 2)
+(arg1Isa revenueReturn DeploymentOrganization)
+(arg2Isa revenueReturn PrivateEquityCatalyst)
+(comment revenueReturn
+  "(revenueReturn SomeAI Serengeti) — deployment revenue returns to
+   the PE catalyst, fueling the next cycle of investment.")
+
+(isa runsOnSubstrate Predicate)
+(arity runsOnSubstrate 2)
+(arg1Isa runsOnSubstrate NODE)
+(arg2Isa runsOnSubstrate SharedSubstrate)
+(comment runsOnSubstrate
+  "(runsOnSubstrate SumAI CharlotteOS) — this entity operates on
+   the shared substrate. Charlotte is the common infrastructure.")
+
+;; ── Loop instantiation ──
+
+(fundsResearch Serengeti SumAI)
+(discoveryFlow SumAI SomeAI)
+(fieldDataFlow SomeAI SumAI)
+(revenueReturn SomeAI Serengeti)
+(runsOnSubstrate SumAI CharlotteOS)
+(runsOnSubstrate SomeAI CharlotteOS)
+(runsOnSubstrate Serengeti CharlotteOS)
+
+
+;;; ================================================================
+;;; SECTION 4: THE PRIDE MODEL
+;;; ================================================================
+
+(isa TeamRole Collection)
+(comment TeamRole "A role in the pride structure.")
+
+(isa Imagineer TeamRole)
+(comment Imagineer
+  "Active scientists and engineers in their late 20s to early 30s.
+   Each leads research in one of the six pillars. They are the hunters —
+   the people doing the frontier work.")
+
+(isa Mentor TeamRole)
+(comment Mentor
+  "Industry veterans in their 40s to 80s, paired 1-to-many with
+   Imagineers. Neuro and heart surgeons, experimental chefs, professors.
+   They keep the Imagineers on the frontier by providing decades of
+   domain expertise, pattern recognition, and access to problems
+   worth solving.")
+
+(isa Advisor TeamRole)
+(comment Advisor
+  "Industry leaders who advise on strategic direction. Not necessarily
+   mentoring individuals but steering the research agenda. Territorial
+   anchors who define where the pride operates.")
+
+(comment TeamRole
+  "The pride model: Imagineers are the hunters, Mentors are the
+   experienced pride members who teach hunting patterns, Advisors are
+   the territorial anchors. Everyone benefits from the collective
+   knowledge density. The Serengeti metaphor made literal.")
+
+
+;;; ================================================================
+;;; SECTION 5: TWO PATHS TO HEX CAMPUS
+;;; ================================================================
+
+(isa PathToHexCampus Collection)
+(genls PathToHexCampus NODE)
+(comment PathToHexCampus
+  "The two routes to realizing the OASIS research campus.")
+
+(isa OrganicGrowthPath PathToHexCampus)
+(hasAttribute OrganicGrowthPath ::LABEL "Organic Growth")
+(hasAttribute OrganicGrowthPath ::DESCRIPTION
+  "Enough clients paying monthly retainers to become self-sustaining.
+   Revenue from SomeAI deployments funds campus construction directly.")
+
+(isa PEFundingPath PathToHexCampus)
+(hasAttribute PEFundingPath ::LABEL "PE Funding")
+(hasAttribute PEFundingPath ::DESCRIPTION
+  "Enough traction to attract PE investment. Serengeti or external PE
+   funds campus acquisition and construction. Revenue repays and cycles.")
+
+
+;;; ================================================================
+;;; SECTION 6: THE DUALITY PROTOCOL
+;;; ================================================================
+
+(isa Protocol-InnovationCycle PROTOCOL)
+(comment Protocol-InnovationCycle
+  "The fundamental protocol governing the SumAI-SomeAI duality.
+   SumAI pushes the frontier outward (divergent). SomeAI pulls
+   deployable solutions inward (convergent). Innovation pumped
+   constantly into the industries we touch. Neither engine works
+   without the other. Research without deployment is academic.
+   Deployment without research is stagnation.")
+
+(isa Protocol-GenerationalFlywheel PROTOCOL)
+(comment Protocol-GenerationalFlywheel
+  "Serengeti's generational recycling protocol. Mentors and engineers
+   retire into Serengeti. Their capital and networks fund the next
+   generation of Imagineers. The cycle repeats across generations.
+   Jim Richard + Andrew Homoly are current-generation Serengeti anchors.
+   Their children (Jack Richard, Mason Homoly) are current-generation
+   Imagineers. The dead teach the living — literally.")
+
+
+;;; ================================================================
+;;; SECTION 7: BUSINESS MODEL EDGES
+;;; ================================================================
+
+;; Each SomeAI client consumes Charlotte, which is maintained by SumAI
+(isa clientConsumes Predicate)
+(arity clientConsumes 2)
+(arg1Isa clientConsumes NODE)
+(arg2Isa clientConsumes SharedSubstrate)
+(comment clientConsumes
+  "(clientConsumes ISGParent CharlotteOS) — a client operates on
+   Charlotte. Each client's deployment generates field data that
+   flows back to SumAI.")
+
+;; The recursive thesis: the graph IS the industry
+(comment SomeAIClosedLoopMt
+  "The business model is recursive: SomeAI ships Charlotte → clients
+   embed it → each client consumes its industry → the graph IS the
+   industry. Two paths to hex campus: enough clients → self-sustaining,
+   OR enough traction → PE funding. Serengeti funds → SumAI researches
+   → SomeAI deploys → revenue returns → cycle repeats.")
+
+
+;;; ================================================================
+;;; END — closed-loop.krf
+;;; Three entity types. Three entity instances. One shared substrate.
+;;; Four loop edges. Two campus paths. Two master protocols.
+;;; The engine that makes everything else possible.
+;;; ================================================================

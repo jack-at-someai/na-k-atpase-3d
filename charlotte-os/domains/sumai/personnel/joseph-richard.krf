@@ -1,0 +1,39 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / JOSEPH RICHARD
+;;; Co-Founder & Chief AI Officer
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa JosephRichard Person)
+(isa JosephRichard Founder)
+(isa JosephRichard Imagineer)
+(hasAttribute JosephRichard ::LABEL "Joseph Richard")
+(hasAttribute JosephRichard ::ROLE "Co-Founder & Chief AI Officer")
+(hasAttribute JosephRichard ::PILLAR "brain")
+(hasAttribute JosephRichard ::AFFILIATION "Head of Biomimicry Research. Delphi/Aptiv -> LineLeap VP Eng.")
+
+(MEMBER_OF JosephRichard SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JosephRichard PillarBrain)
+
+;; Expertise
+(expertiseIn JosephRichard BiomimicryResearch)
+(expertiseIn JosephRichard AutomotiveEngineering)
+(expertiseIn JosephRichard Entomology)
+(expertiseIn JosephRichard ArtificialIntelligence)
+(expertiseIn JosephRichard SoftwareEngineering)
+
+;; Career epochs
+(careerEpoch JosephRichard "Michigan State University — B.S. (Mentor: Dr. Goddard, Entomology)" 2014 2018)
+(careerEpoch JosephRichard "Delphi/Aptiv — Automotive Engineering" 2018 2021)
+(careerEpoch JosephRichard "LineLeap — VP Engineering" 2021 2023)
+(careerEpoch JosephRichard "SomeAI — Co-Founder & Chief AI Officer" 2026 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJoseph PROTOCOL)
+(comment Protocol-InteractWithJoseph
+  "Mentor: Dr. Goddard, MSU (Entomology). Head of Biomimicry Research.
+   Delphi/Aptiv engineering rigor meets biological systems thinking.
+   The bridge between insect swarm behavior and Charlotte's architecture.")

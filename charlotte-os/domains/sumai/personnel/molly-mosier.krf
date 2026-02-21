@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / MOLLY MOSIER
+;;; Fine Art & Customer Lifecycle
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa MollyMosier Person)
+(isa MollyMosier Imagineer)
+(hasAttribute MollyMosier ::LABEL "Molly Mosier")
+(hasAttribute MollyMosier ::ROLE "Fine Art & Customer Lifecycle")
+(hasAttribute MollyMosier ::PILLAR "sight")
+(hasAttribute MollyMosier ::AFFILIATION "American Academy of Art — BFA Oil Painting. Grainger (~8yr).")
+
+(MEMBER_OF MollyMosier SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar MollyMosier PillarSight)
+
+;; Expertise
+(expertiseIn MollyMosier FineArt)
+(expertiseIn MollyMosier OilPainting)
+(expertiseIn MollyMosier ColorPerception)
+(expertiseIn MollyMosier CustomerLifecycle)
+
+;; Career epochs
+(careerEpoch MollyMosier "American Academy of Art — BFA Oil Painting" 2014 2018)
+(careerEpoch MollyMosier "W.W. Grainger — Customer Lifecycle, ~8yr" 2018 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithMolly PROTOCOL)
+(comment Protocol-InteractWithMolly
+  "Mosier pair (dual-Grainger, with Evan). Exceptional color perception.
+   BFA Oil Painting. The sight pillar's artistic dimension — color
+   theory, visual perception, and human aesthetic response.")

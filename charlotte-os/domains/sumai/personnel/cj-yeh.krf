@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / C.J. YEH
+;;; Mentor — Experience Design
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa CJYeh Person)
+(isa CJYeh Mentor)
+(hasAttribute CJYeh ::LABEL "C.J. Yeh")
+(hasAttribute CJYeh ::ROLE "Mentor — Experience Design")
+(hasAttribute CJYeh ::PILLAR "sight")
+(hasAttribute CJYeh ::AFFILIATION "Tenured Full Professor, FIT (23yr). Parsons founding faculty.")
+
+(MEMBER_OF CJYeh SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar CJYeh PillarSight)
+
+;; Expertise
+(expertiseIn CJYeh ExperienceDesign)
+(expertiseIn CJYeh DesignEducation)
+(expertiseIn CJYeh VisualCommunication)
+(expertiseIn CJYeh CreativeDirection)
+
+;; Career epochs
+(careerEpoch CJYeh "Parsons School of Design — Founding Faculty" 1995 2003)
+(careerEpoch CJYeh "Fashion Institute of Technology — Tenured Full Professor, 23yr" 2003 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithCJ PROTOCOL)
+(comment Protocol-InteractWithCJ
+  "10 books. TEDx + UN speaker. Johns Hopkins Creative Advisor.
+   Tenured Full Professor at FIT for 23 years. Parsons founding
+   faculty. The sight pillar's design mentor — experience design
+   as a discipline. Connected to Diego Abad (FIT).")

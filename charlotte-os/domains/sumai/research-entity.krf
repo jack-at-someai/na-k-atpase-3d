@@ -1,0 +1,504 @@
+;;; ================================================================
+;;; SUMAI DOMAIN / RESEARCH ENTITY
+;;; Core identity, six sensory pillars, progression levels,
+;;; 8-year rotation, cross-sensory combinations, deployment
+;;; verticals, and the innovation cycle.
+;;;
+;;; Microtheory: SumAIResearchEntityMt
+;;; Parent: SomeAIBusinessModelMt → CharlotteKernelMt
+;;; Primitives: NODE, EDGE, METRIC, SIGNAL, PROTOCOL
+;;; ================================================================
+
+(in-microtheory SumAIResearchEntityMt)
+
+(isa SumAIResearchEntityMt Microtheory)
+(genlMt SumAIResearchEntityMt SomeAIBusinessModelMt)
+
+
+;;; ================================================================
+;;; SECTION 1: SENSORY PILLAR TYPE
+;;; ================================================================
+
+(isa SensoryPillar Collection)
+(genls SensoryPillar NODE)
+(comment SensoryPillar
+  "One of six research pillars organized around human senses.
+   The senses are the universal interface between reality and
+   observation. Charlotte is the infrastructure for observable reality.
+   SumAI studies the senses. The connection is structural, not
+   metaphorical.")
+
+(isa hasPillarDomain Predicate)
+(arity hasPillarDomain 2)
+(arg1Isa hasPillarDomain SensoryPillar)
+(comment hasPillarDomain "(hasPillarDomain PillarSight ?domain) — the research domain this pillar covers.")
+
+(isa hasPillarApplications Predicate)
+(arity hasPillarApplications 2)
+(arg1Isa hasPillarApplications SensoryPillar)
+(comment hasPillarApplications "(hasPillarApplications PillarSight ?apps) — real-world applications of this pillar.")
+
+(isa hasPillarColor Predicate)
+(arity hasPillarColor 2)
+(arg1Isa hasPillarColor SensoryPillar)
+(comment hasPillarColor "(hasPillarColor PillarSight ?hex) — brand color for this pillar.")
+
+
+;;; ================================================================
+;;; SECTION 2: THE SIX PILLARS
+;;; ================================================================
+
+;; ── Sight ──
+
+(isa PillarSight SensoryPillar)
+(hasAttribute PillarSight ::LABEL "Sight")
+(hasPillarDomain PillarSight "Computer vision, medical imaging, spatial computing")
+(hasPillarApplications PillarSight
+  "Medical imaging, sports video analysis, satellite/drone imagery, autonomous navigation")
+(hasPillarColor PillarSight "#4A9EFF")
+
+;; ── Touch ──
+
+(isa PillarTouch SensoryPillar)
+(hasAttribute PillarTouch ::LABEL "Touch")
+(hasPillarDomain PillarTouch "Haptics, robotics, sensory interfaces, biomechanics")
+(hasPillarApplications PillarTouch
+  "Surgical robotics, agricultural soil/texture sensing, prosthetics, VR/AR haptics")
+(hasPillarColor PillarTouch "#5BC97A")
+
+;; ── Taste ──
+
+(isa PillarTaste SensoryPillar)
+(hasAttribute PillarTaste ::LABEL "Taste")
+(hasPillarDomain PillarTaste "Molecular gastronomy, chemical analysis, atmospheric design")
+(hasPillarApplications PillarTaste
+  "Culinary science, food safety, pharmaceutical taste-masking, environmental monitoring")
+(hasPillarColor PillarTaste "#FF9F43")
+
+;; ── Sound ──
+
+(isa PillarSound SensoryPillar)
+(hasAttribute PillarSound ::LABEL "Sound")
+(hasPillarDomain PillarSound "Acoustics, signal processing, audio AI, communication")
+(hasPillarApplications PillarSound
+  "Marine biology (whale songs, reef health), music/speech AI, industrial vibration analysis, sonar")
+(hasPillarColor PillarSound "#A855F7")
+
+;; ── Smell ──
+
+(isa PillarSmell SensoryPillar)
+(hasAttribute PillarSmell ::LABEL "Smell")
+(hasPillarDomain PillarSmell "Olfactory sensing, chemical detection, environmental monitoring")
+(hasPillarApplications PillarSmell
+  "Plant/animal health diagnostics, air quality, explosive/drug detection, disease screening")
+(hasPillarColor PillarSmell "#14B8A6")
+
+;; ── Brain ──
+
+(isa PillarBrain SensoryPillar)
+(hasAttribute PillarBrain ::LABEL "Brain")
+(hasPillarDomain PillarBrain "Charlotte OS, knowledge integration, multimodal fusion")
+(hasPillarApplications PillarBrain
+  "The center — where all sensory research converges into Charlotte's unified substrate")
+(hasPillarColor PillarBrain "#E53E3E")
+(comment PillarBrain
+  "The Brain pillar maintains Charlotte itself — the infrastructure
+   for observable reality that makes all other pillars possible.")
+
+
+;;; ================================================================
+;;; SECTION 3: PROGRESSION LEVELS
+;;; ================================================================
+
+(isa ProgressionLevel Collection)
+(genls ProgressionLevel NODE)
+(comment ProgressionLevel
+  "Depth within a single sensory pillar. Every researcher enters
+   the OASIS at Level I of their primary sense.")
+
+(isa hasLevelNumber Predicate)
+(arity hasLevelNumber 2)
+(arg1Isa hasLevelNumber ProgressionLevel)
+(comment hasLevelNumber "(hasLevelNumber LevelI 1) — ordinal position of the level.")
+
+(isa hasLevelYearRange Predicate)
+(arity hasLevelYearRange 3)
+(arg1Isa hasLevelYearRange ProgressionLevel)
+(comment hasLevelYearRange "(hasLevelYearRange LevelI 1 2) — typical year range for this level.")
+
+(isa LevelI-Fundamentals ProgressionLevel)
+(hasAttribute LevelI-Fundamentals ::LABEL "Level I: Fundamentals")
+(hasLevelNumber LevelI-Fundamentals 1)
+(hasLevelYearRange LevelI-Fundamentals 1 2)
+(comment LevelI-Fundamentals "Sensing, signal acquisition, basic AI models.")
+
+(isa LevelII-Advanced ProgressionLevel)
+(hasAttribute LevelII-Advanced ::LABEL "Level II: Advanced")
+(hasLevelNumber LevelII-Advanced 2)
+(hasLevelYearRange LevelII-Advanced 2 3)
+(comment LevelII-Advanced "Real-time processing, domain-specific applications.")
+
+(isa LevelIII-Expert ProgressionLevel)
+(hasAttribute LevelIII-Expert ::LABEL "Level III: Expert")
+(hasLevelNumber LevelIII-Expert 3)
+(hasLevelYearRange LevelIII-Expert 3 5)
+(comment LevelIII-Expert "Novel research, pushing the frontier of that sense.")
+
+(isa LevelIV-Pioneer ProgressionLevel)
+(hasAttribute LevelIV-Pioneer ::LABEL "Level IV: Pioneer")
+(hasLevelNumber LevelIV-Pioneer 4)
+(hasLevelYearRange LevelIV-Pioneer 5 7)
+(comment LevelIV-Pioneer "Contributions that define the field.")
+
+(isa LevelV-Architect ProgressionLevel)
+(hasAttribute LevelV-Architect ::LABEL "Level V: Architect")
+(hasLevelNumber LevelV-Architect 5)
+(hasLevelYearRange LevelV-Architect 7 8)
+(comment LevelV-Architect
+  "Designing the infrastructure that future researchers build on.
+   Full multimodal integration or deep single-sense mastery.")
+
+
+;;; ================================================================
+;;; SECTION 4: 8-YEAR ROTATION PROTOCOL
+;;; ================================================================
+
+(isa Protocol-EightYearRotation PROTOCOL)
+(comment Protocol-EightYearRotation
+  "A hypothetical full rotation through the OASIS:
+   Years 1-2: Primary sense Level I-II — foundational mastery.
+   Years 2-3: Primary sense Level III + first cross-sensory — expert + breadth.
+   Years 3-5: Two-sense combinations, primary to Level IV — novel cross-modal research.
+   Years 5-7: Three-sense combinations, mentoring new Level I — pioneer status.
+   Years 7-8: Four/five-sense integration or deep specialization (Level V) — architect or full multimodal.
+   Researchers can also choose to specialize — staying in Smell I through
+   Smell V without branching, becoming the world's deepest expert in
+   olfactory AI. Both paths are valued. The hexagonal layout supports
+   both breadth and depth naturally.")
+
+
+;;; ================================================================
+;;; SECTION 5: CROSS-SENSORY COMBINATIONS
+;;; ================================================================
+
+(isa CrossSensoryResearch Collection)
+(genls CrossSensoryResearch NODE)
+(comment CrossSensoryResearch
+  "Research at the intersection of two or more sensory pillars.
+   These are the boundary zones in the hexagonal layout where
+   cross-pillar research happens.")
+
+(isa involvesPillar Predicate)
+(arity involvesPillar 2)
+(arg1Isa involvesPillar CrossSensoryResearch)
+(arg2Isa involvesPillar SensoryPillar)
+(comment involvesPillar "(involvesPillar CrossSight-Touch PillarSight) — this cross-sensory research involves this pillar.")
+
+(isa hasCombinationOrder Predicate)
+(arity hasCombinationOrder 2)
+(arg1Isa hasCombinationOrder CrossSensoryResearch)
+(comment hasCombinationOrder "(hasCombinationOrder CrossSight-Touch 2) — number of senses combined.")
+
+;; ── 10 Pairwise combinations ──
+
+(isa CrossSight-Touch CrossSensoryResearch)
+(hasAttribute CrossSight-Touch ::LABEL "Sight + Touch")
+(hasCombinationOrder CrossSight-Touch 2)
+(involvesPillar CrossSight-Touch PillarSight)
+(involvesPillar CrossSight-Touch PillarTouch)
+(comment CrossSight-Touch "Surgical robotics, haptic feedback from visual input.")
+
+(isa CrossSight-Sound CrossSensoryResearch)
+(hasAttribute CrossSight-Sound ::LABEL "Sight + Sound")
+(hasCombinationOrder CrossSight-Sound 2)
+(involvesPillar CrossSight-Sound PillarSight)
+(involvesPillar CrossSight-Sound PillarSound)
+(comment CrossSight-Sound "Audio-visual scene understanding, lip reading.")
+
+(isa CrossSight-Taste CrossSensoryResearch)
+(hasAttribute CrossSight-Taste ::LABEL "Sight + Taste")
+(hasCombinationOrder CrossSight-Taste 2)
+(involvesPillar CrossSight-Taste PillarSight)
+(involvesPillar CrossSight-Taste PillarTaste)
+(comment CrossSight-Taste "Visual food quality assessment, plating science.")
+
+(isa CrossSight-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Smell ::LABEL "Sight + Smell")
+(hasCombinationOrder CrossSight-Smell 2)
+(involvesPillar CrossSight-Smell PillarSight)
+(involvesPillar CrossSight-Smell PillarSmell)
+(comment CrossSight-Smell "Crop health imaging + VOC detection, disease screening.")
+
+(isa CrossTouch-Taste CrossSensoryResearch)
+(hasAttribute CrossTouch-Taste ::LABEL "Touch + Taste")
+(hasCombinationOrder CrossTouch-Taste 2)
+(involvesPillar CrossTouch-Taste PillarTouch)
+(involvesPillar CrossTouch-Taste PillarTaste)
+(comment CrossTouch-Taste "Texture-flavor correlation, food science.")
+
+(isa CrossTouch-Sound CrossSensoryResearch)
+(hasAttribute CrossTouch-Sound ::LABEL "Touch + Sound")
+(hasCombinationOrder CrossTouch-Sound 2)
+(involvesPillar CrossTouch-Sound PillarTouch)
+(involvesPillar CrossTouch-Sound PillarSound)
+(comment CrossTouch-Sound "Vibration analysis, haptic audio feedback.")
+
+(isa CrossTouch-Smell CrossSensoryResearch)
+(hasAttribute CrossTouch-Smell ::LABEL "Touch + Smell")
+(hasCombinationOrder CrossTouch-Smell 2)
+(involvesPillar CrossTouch-Smell PillarTouch)
+(involvesPillar CrossTouch-Smell PillarSmell)
+(comment CrossTouch-Smell "Soil quality + plant VOC sensing, agricultural diagnostics.")
+
+(isa CrossTaste-Sound CrossSensoryResearch)
+(hasAttribute CrossTaste-Sound ::LABEL "Taste + Sound")
+(hasCombinationOrder CrossTaste-Sound 2)
+(involvesPillar CrossTaste-Sound PillarTaste)
+(involvesPillar CrossTaste-Sound PillarSound)
+(comment CrossTaste-Sound "Atmospheric dining, sonic seasoning research.")
+
+(isa CrossTaste-Smell CrossSensoryResearch)
+(hasAttribute CrossTaste-Smell ::LABEL "Taste + Smell")
+(hasCombinationOrder CrossTaste-Smell 2)
+(involvesPillar CrossTaste-Smell PillarTaste)
+(involvesPillar CrossTaste-Smell PillarSmell)
+(comment CrossTaste-Smell "Molecular gastronomy, pharmaceutical formulation.")
+
+(isa CrossSound-Smell CrossSensoryResearch)
+(hasAttribute CrossSound-Smell ::LABEL "Sound + Smell")
+(hasCombinationOrder CrossSound-Smell 2)
+(involvesPillar CrossSound-Smell PillarSound)
+(involvesPillar CrossSound-Smell PillarSmell)
+(comment CrossSound-Smell "Environmental monitoring — gas leak detection via acoustic + chemical.")
+
+;; ── 10 Triple combinations ──
+
+(isa CrossSight-Touch-Sound CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Sound ::LABEL "Sight + Touch + Sound")
+(hasCombinationOrder CrossSight-Touch-Sound 3)
+(involvesPillar CrossSight-Touch-Sound PillarSight)
+(involvesPillar CrossSight-Touch-Sound PillarTouch)
+(involvesPillar CrossSight-Touch-Sound PillarSound)
+(comment CrossSight-Touch-Sound "Autonomous manipulation with sensory feedback.")
+
+(isa CrossSight-Touch-Taste CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Taste ::LABEL "Sight + Touch + Taste")
+(hasCombinationOrder CrossSight-Touch-Taste 3)
+(involvesPillar CrossSight-Touch-Taste PillarSight)
+(involvesPillar CrossSight-Touch-Taste PillarTouch)
+(involvesPillar CrossSight-Touch-Taste PillarTaste)
+(comment CrossSight-Touch-Taste "Food production quality control — vision + texture + flavor.")
+
+(isa CrossSight-Touch-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Smell ::LABEL "Sight + Touch + Smell")
+(hasCombinationOrder CrossSight-Touch-Smell 3)
+(involvesPillar CrossSight-Touch-Smell PillarSight)
+(involvesPillar CrossSight-Touch-Smell PillarTouch)
+(involvesPillar CrossSight-Touch-Smell PillarSmell)
+(comment CrossSight-Touch-Smell "Agricultural digital twin — crop imaging + soil + VOC.")
+
+(isa CrossSight-Sound-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Sound-Smell ::LABEL "Sight + Sound + Smell")
+(hasCombinationOrder CrossSight-Sound-Smell 3)
+(involvesPillar CrossSight-Sound-Smell PillarSight)
+(involvesPillar CrossSight-Sound-Smell PillarSound)
+(involvesPillar CrossSight-Sound-Smell PillarSmell)
+(comment CrossSight-Sound-Smell "Environmental monitoring fusion.")
+
+(isa CrossSight-Sound-Taste CrossSensoryResearch)
+(hasAttribute CrossSight-Sound-Taste ::LABEL "Sight + Sound + Taste")
+(hasCombinationOrder CrossSight-Sound-Taste 3)
+(involvesPillar CrossSight-Sound-Taste PillarSight)
+(involvesPillar CrossSight-Sound-Taste PillarSound)
+(involvesPillar CrossSight-Sound-Taste PillarTaste)
+(comment CrossSight-Sound-Taste "Dining experience design — plating + ambience + flavor.")
+
+(isa CrossSight-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Taste-Smell ::LABEL "Sight + Taste + Smell")
+(hasCombinationOrder CrossSight-Taste-Smell 3)
+(involvesPillar CrossSight-Taste-Smell PillarSight)
+(involvesPillar CrossSight-Taste-Smell PillarTaste)
+(involvesPillar CrossSight-Taste-Smell PillarSmell)
+(comment CrossSight-Taste-Smell "Sensory food science — visual + flavor + aroma.")
+
+(isa CrossTouch-Sound-Smell CrossSensoryResearch)
+(hasAttribute CrossTouch-Sound-Smell ::LABEL "Touch + Sound + Smell")
+(hasCombinationOrder CrossTouch-Sound-Smell 3)
+(involvesPillar CrossTouch-Sound-Smell PillarTouch)
+(involvesPillar CrossTouch-Sound-Smell PillarSound)
+(involvesPillar CrossTouch-Sound-Smell PillarSmell)
+(comment CrossTouch-Sound-Smell "Industrial safety — vibration + acoustics + chemical.")
+
+(isa CrossTouch-Sound-Taste CrossSensoryResearch)
+(hasAttribute CrossTouch-Sound-Taste ::LABEL "Touch + Sound + Taste")
+(hasCombinationOrder CrossTouch-Sound-Taste 3)
+(involvesPillar CrossTouch-Sound-Taste PillarTouch)
+(involvesPillar CrossTouch-Sound-Taste PillarSound)
+(involvesPillar CrossTouch-Sound-Taste PillarTaste)
+(comment CrossTouch-Sound-Taste "Texture + sonic + flavor — multisensory food research.")
+
+(isa CrossTouch-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossTouch-Taste-Smell ::LABEL "Touch + Taste + Smell")
+(hasCombinationOrder CrossTouch-Taste-Smell 3)
+(involvesPillar CrossTouch-Taste-Smell PillarTouch)
+(involvesPillar CrossTouch-Taste-Smell PillarTaste)
+(involvesPillar CrossTouch-Taste-Smell PillarSmell)
+(comment CrossTouch-Taste-Smell "Full culinary science stack — the Enigma connection.")
+
+(isa CrossSound-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossSound-Taste-Smell ::LABEL "Sound + Taste + Smell")
+(hasCombinationOrder CrossSound-Taste-Smell 3)
+(involvesPillar CrossSound-Taste-Smell PillarSound)
+(involvesPillar CrossSound-Taste-Smell PillarTaste)
+(involvesPillar CrossSound-Taste-Smell PillarSmell)
+(comment CrossSound-Taste-Smell "Atmospheric dining — ambience + flavor + aroma.")
+
+;; ── 5 Quadruple combinations ──
+
+(isa CrossSight-Touch-Sound-Taste CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Sound-Taste ::LABEL "Sight + Touch + Sound + Taste")
+(hasCombinationOrder CrossSight-Touch-Sound-Taste 4)
+(involvesPillar CrossSight-Touch-Sound-Taste PillarSight)
+(involvesPillar CrossSight-Touch-Sound-Taste PillarTouch)
+(involvesPillar CrossSight-Touch-Sound-Taste PillarSound)
+(involvesPillar CrossSight-Touch-Sound-Taste PillarTaste)
+
+(isa CrossSight-Touch-Sound-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Sound-Smell ::LABEL "Sight + Touch + Sound + Smell")
+(hasCombinationOrder CrossSight-Touch-Sound-Smell 4)
+(involvesPillar CrossSight-Touch-Sound-Smell PillarSight)
+(involvesPillar CrossSight-Touch-Sound-Smell PillarTouch)
+(involvesPillar CrossSight-Touch-Sound-Smell PillarSound)
+(involvesPillar CrossSight-Touch-Sound-Smell PillarSmell)
+
+(isa CrossSight-Touch-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Touch-Taste-Smell ::LABEL "Sight + Touch + Taste + Smell")
+(hasCombinationOrder CrossSight-Touch-Taste-Smell 4)
+(involvesPillar CrossSight-Touch-Taste-Smell PillarSight)
+(involvesPillar CrossSight-Touch-Taste-Smell PillarTouch)
+(involvesPillar CrossSight-Touch-Taste-Smell PillarTaste)
+(involvesPillar CrossSight-Touch-Taste-Smell PillarSmell)
+
+(isa CrossSight-Sound-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossSight-Sound-Taste-Smell ::LABEL "Sight + Sound + Taste + Smell")
+(hasCombinationOrder CrossSight-Sound-Taste-Smell 4)
+(involvesPillar CrossSight-Sound-Taste-Smell PillarSight)
+(involvesPillar CrossSight-Sound-Taste-Smell PillarSound)
+(involvesPillar CrossSight-Sound-Taste-Smell PillarTaste)
+(involvesPillar CrossSight-Sound-Taste-Smell PillarSmell)
+
+(isa CrossTouch-Sound-Taste-Smell CrossSensoryResearch)
+(hasAttribute CrossTouch-Sound-Taste-Smell ::LABEL "Touch + Sound + Taste + Smell")
+(hasCombinationOrder CrossTouch-Sound-Taste-Smell 4)
+(involvesPillar CrossTouch-Sound-Taste-Smell PillarTouch)
+(involvesPillar CrossTouch-Sound-Taste-Smell PillarSound)
+(involvesPillar CrossTouch-Sound-Taste-Smell PillarTaste)
+(involvesPillar CrossTouch-Sound-Taste-Smell PillarSmell)
+
+;; ── 1 Penta combination (full multimodal) ──
+
+(isa CrossAllFiveSenses CrossSensoryResearch)
+(hasAttribute CrossAllFiveSenses ::LABEL "Sight + Touch + Taste + Sound + Smell")
+(hasCombinationOrder CrossAllFiveSenses 5)
+(involvesPillar CrossAllFiveSenses PillarSight)
+(involvesPillar CrossAllFiveSenses PillarTouch)
+(involvesPillar CrossAllFiveSenses PillarTaste)
+(involvesPillar CrossAllFiveSenses PillarSound)
+(involvesPillar CrossAllFiveSenses PillarSmell)
+(comment CrossAllFiveSenses
+  "The most difficult implementation. Years of combined research to
+   unlock. Full multimodal AI — Charlotte observing reality through
+   all channels simultaneously. The innermost ring around Brain.")
+
+
+;;; ================================================================
+;;; SECTION 6: DEPLOYMENT VERTICALS
+;;; ================================================================
+
+(isa DeploymentVertical Collection)
+(genls DeploymentVertical NODE)
+(comment DeploymentVertical
+  "A real-world domain where SumAI research converges into SomeAI
+   deployments. Each vertical is a convergent application of research
+   that started as divergent exploration in the OASIS.")
+
+(isa primarySense Predicate)
+(arity primarySense 2)
+(arg1Isa primarySense DeploymentVertical)
+(arg2Isa primarySense SensoryPillar)
+(comment primarySense "(primarySense VerticalAgriTech PillarSight) — primary sensory pillar for this vertical.")
+
+(isa VerticalAgriTech DeploymentVertical)
+(hasAttribute VerticalAgriTech ::LABEL "Agriculture Tech")
+(hasAttribute VerticalAgriTech ::STATE "Sounder deployed, farm-by-farm digital twin strategy")
+(primarySense VerticalAgriTech PillarSight)
+(primarySense VerticalAgriTech PillarSmell)
+(primarySense VerticalAgriTech PillarTouch)
+
+(isa VerticalIndustrial DeploymentVertical)
+(hasAttribute VerticalIndustrial ::LABEL "Industrial Service")
+(hasAttribute VerticalIndustrial ::STATE "ISG deployed, ServiceIQ live Feb 2026")
+(primarySense VerticalIndustrial PillarTouch)
+(primarySense VerticalIndustrial PillarSound)
+
+(isa VerticalMedicine DeploymentVertical)
+(hasAttribute VerticalMedicine ::LABEL "Medicine")
+(hasAttribute VerticalMedicine ::STATE "Medical imaging, neuroscience, psychiatry, surgical robotics")
+(primarySense VerticalMedicine PillarSight)
+(primarySense VerticalMedicine PillarTouch)
+(primarySense VerticalMedicine PillarBrain)
+
+(isa VerticalOcean DeploymentVertical)
+(hasAttribute VerticalOcean ::LABEL "Ocean Science")
+(hasAttribute VerticalOcean ::STATE "Swarm intelligence for reef restoration, microdrone ecosystem cleanup")
+(primarySense VerticalOcean PillarSound)
+(primarySense VerticalOcean PillarSight)
+(primarySense VerticalOcean PillarSmell)
+
+(isa VerticalBiomimicry DeploymentVertical)
+(hasAttribute VerticalBiomimicry ::LABEL "Biomimicry")
+(hasAttribute VerticalBiomimicry ::STATE "Animal science, inter-species relationship modeling — the umbrella")
+(primarySense VerticalBiomimicry PillarSight)
+(primarySense VerticalBiomimicry PillarTouch)
+(primarySense VerticalBiomimicry PillarTaste)
+(primarySense VerticalBiomimicry PillarSound)
+(primarySense VerticalBiomimicry PillarSmell)
+(comment VerticalBiomimicry "All senses — the umbrella vertical.")
+
+
+;;; ================================================================
+;;; SECTION 7: INNOVATION CYCLE PROTOCOL
+;;; ================================================================
+
+(isa Protocol-InnovationCycle-Detail PROTOCOL)
+(comment Protocol-InnovationCycle-Detail
+  "The detailed flow:
+   1. SumAI discovers (divergent exploration in the OASIS).
+   2. Discoveries flow to SomeAI via discoveryFlow.
+   3. SomeAI deploys into client operations (ISG, Sounder, etc.).
+   4. Deployments generate real-world signals (field data).
+   5. Field data flows back to SumAI via fieldDataFlow.
+   6. SumAI refines research based on real problems.
+   7. Charlotte is the substrate both engines run on.
+   8. The Brain pillar maintains Charlotte itself.
+   Cycle repeats. The question is never 'what can Charlotte do?'
+   The question is 'what can Charlotte observe?'")
+
+
+;;; ================================================================
+;;; SECTION 8: FOUNDING METADATA
+;;; ================================================================
+
+(hasAttribute SumAI ::FOUNDED "2026-02-14")
+(hasAttribute SumAI ::FIRST_ARTICULATION "2026-02-14")
+(comment SumAI
+  "First articulated February 14, 2026. The OASIS exists in concept.
+   The people are real. The research is underway.")
+
+
+;;; ================================================================
+;;; END — research-entity.krf
+;;; 6 sensory pillars. 5 progression levels. 26 cross-sensory
+;;; combinations (10 pair + 10 triple + 5 quad + 1 penta).
+;;; 5 deployment verticals. 2 protocols. The research engine defined.
+;;; ================================================================

@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / COREY BOCHAT
+;;; Defense Systems & Sensors
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa CoreyBochat Person)
+(isa CoreyBochat Imagineer)
+(hasAttribute CoreyBochat ::LABEL "Corey Bochat")
+(hasAttribute CoreyBochat ::ROLE "Defense Systems & Sensors")
+(hasAttribute CoreyBochat ::PILLAR "sound")
+(hasAttribute CoreyBochat ::AFFILIATION "Rose-Hulman MechE. Sr. Systems Engineer, SAIC. 6yr NSWC Crane.")
+
+(MEMBER_OF CoreyBochat SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar CoreyBochat PillarSound)
+
+;; Expertise
+(expertiseIn CoreyBochat DefenseSystems)
+(expertiseIn CoreyBochat SensorEngineering)
+(expertiseIn CoreyBochat MILSTDTesting)
+(expertiseIn CoreyBochat SystemsEngineering)
+(expertiseIn CoreyBochat AcousticSensors)
+
+;; Career epochs
+(careerEpoch CoreyBochat "Rose-Hulman Institute of Technology — B.S. Mechanical Engineering" 2016 2020)
+(careerEpoch CoreyBochat "NSWC Crane — Defense Engineer, 6yr" 2020 2026)
+(careerEpoch CoreyBochat "SAIC — Sr. Systems Engineer" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithCorey PROTOCOL)
+(comment Protocol-InteractWithCorey
+  "USMC G-BOSS program. MIL-STD testing. Bochat brothers (with Brandon).
+   Sound pillar's defense dimension — acoustic sensors, signal
+   processing, military-grade systems engineering at NSWC Crane.")

@@ -1,0 +1,37 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / KEN FORBUS
+;;; Influence — Knowledge Representation
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa KenForbus Person)
+(isa KenForbus Mentor)
+(hasAttribute KenForbus ::LABEL "Ken Forbus")
+(hasAttribute KenForbus ::ROLE "Influence — Knowledge Representation")
+(hasAttribute KenForbus ::PILLAR "brain")
+(hasAttribute KenForbus ::AFFILIATION "AAAI+ACM+CogSci+AAAS Fellow. Murphy Prof, Northwestern. MIT PhD AI.")
+
+(MEMBER_OF KenForbus SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar KenForbus PillarBrain)
+
+;; Expertise
+(expertiseIn KenForbus KnowledgeRepresentation)
+(expertiseIn KenForbus QualitativePhysics)
+(expertiseIn KenForbus AnalogicalReasoning)
+(expertiseIn KenForbus CognitiveArchitecture)
+(expertiseIn KenForbus FirstOrderLogic)
+
+;; Career epochs
+(careerEpoch KenForbus "MIT — PhD Artificial Intelligence" 1978 1984)
+(careerEpoch KenForbus "Northwestern University — Walter P. Murphy Professor of CS" 1984 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithKenForbus PROTOCOL)
+(comment Protocol-InteractWithKenForbus
+  "Founder of qualitative physics. Charlotte's KRF is his field.
+   AAAI+ACM+CogSci+AAAS Fellow. Murphy Professor at Northwestern.
+   MIT PhD in AI. Companions cognitive architecture, CycL, microtheories,
+   analogical reasoning. The intellectual foundation Charlotte stands on.")

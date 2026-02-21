@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / JON GILBERT
+;;; Advisor — PE & Deal Structure
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa JonGilbert Person)
+(isa JonGilbert Advisor)
+(hasAttribute JonGilbert ::LABEL "Jon Gilbert")
+(hasAttribute JonGilbert ::ROLE "Advisor — PE & Deal Structure")
+(hasAttribute JonGilbert ::PILLAR "brain")
+(hasAttribute JonGilbert ::AFFILIATION "KCM Capital co-founder. Northwestern Medill -> Michigan MBA+MPP.")
+
+(MEMBER_OF JonGilbert SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar JonGilbert PillarBrain)
+
+;; Expertise
+(expertiseIn JonGilbert PrivateEquity)
+(expertiseIn JonGilbert DealStructure)
+(expertiseIn JonGilbert PlatformAcquisitions)
+(expertiseIn JonGilbert InvestmentStrategy)
+
+;; Career epochs
+(careerEpoch JonGilbert "Northwestern University — Medill School of Journalism" 1995 1999)
+(careerEpoch JonGilbert "University of Michigan — MBA + MPP" 2000 2002)
+(careerEpoch JonGilbert "KCM Capital — Co-Founder & Managing Partner" 2005 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithJon PROTOCOL)
+(comment Protocol-InteractWithJon
+  "$1B+ invested, 80+ buyouts. ISG parent + H&S board. KCM Capital
+   co-founder. Northwestern -> Michigan MBA+MPP. The brain pillar's
+   PE advisor — deal structure, platform economics, capital deployment.")

@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / BRANDON BOCHAT
+;;; Biomedical Eng & Additive Mfg
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa BrandonBochat Person)
+(isa BrandonBochat Imagineer)
+(hasAttribute BrandonBochat ::LABEL "Brandon Bochat")
+(hasAttribute BrandonBochat ::ROLE "Biomedical Eng & Additive Mfg")
+(hasAttribute BrandonBochat ::PILLAR "touch")
+(hasAttribute BrandonBochat ::AFFILIATION "Rose-Hulman BME. Sr. Dev Engineer, Zimmer Biomet.")
+
+(MEMBER_OF BrandonBochat SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar BrandonBochat PillarTouch)
+
+;; Expertise
+(expertiseIn BrandonBochat BiomedicalEngineering)
+(expertiseIn BrandonBochat AdditiveManufacturing)
+(expertiseIn BrandonBochat OrthopedicImplants)
+(expertiseIn BrandonBochat ThreeDPrinting)
+
+;; Career epochs
+(careerEpoch BrandonBochat "Rose-Hulman Institute of Technology — B.S. Biomedical Engineering" 2016 2020)
+(careerEpoch BrandonBochat "Zimmer Biomet — Sr. Development Engineer" 2020 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithBrandon PROTOCOL)
+(comment Protocol-InteractWithBrandon
+  "3D-printed orthopedic implants. Bochat brothers (with Corey).
+   Touch pillar's biomedical anchor — where additive manufacturing
+   meets the human body. Physical form factor engineering.")

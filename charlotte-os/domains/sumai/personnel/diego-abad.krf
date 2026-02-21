@@ -1,0 +1,36 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / DIEGO ABAD
+;;; Visual Design & Brand Communication
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa DiegoAbad Person)
+(isa DiegoAbad Imagineer)
+(hasAttribute DiegoAbad ::LABEL "Diego Abad")
+(hasAttribute DiegoAbad ::ROLE "Visual Design & Brand Communication")
+(hasAttribute DiegoAbad ::PILLAR "sight")
+(hasAttribute DiegoAbad ::AFFILIATION "FIT — BFA Advertising & Digital Design. Bilingual EN/ES.")
+
+(MEMBER_OF DiegoAbad SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar DiegoAbad PillarSight)
+
+;; Expertise
+(expertiseIn DiegoAbad VisualDesign)
+(expertiseIn DiegoAbad BrandCommunication)
+(expertiseIn DiegoAbad AdvertisingDesign)
+(expertiseIn DiegoAbad DigitalDesign)
+(expertiseIn DiegoAbad BilingualCommunication)
+
+;; Career epochs
+(careerEpoch DiegoAbad "Fashion Institute of Technology — BFA Advertising & Digital Design" 2018 2022)
+(careerEpoch DiegoAbad "Freelance Design — adidas and others" 2022 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithDiegoA PROTOCOL)
+(comment Protocol-InteractWithDiegoA
+  "Connected to C.J. Yeh (FIT). Freelance design, adidas.
+   Bilingual EN/ES. The sight pillar's visual communication
+   arm — advertising, brand identity, digital design.")

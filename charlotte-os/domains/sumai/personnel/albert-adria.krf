@@ -1,0 +1,35 @@
+;;; ================================================================
+;;; SUMAI PERSONNEL / ALBERT ADRIA
+;;; Advisor — Taste Pillar
+;;; ================================================================
+
+(in-microtheory SumAIPersonnelMt)
+
+(isa AlbertAdria Person)
+(isa AlbertAdria Advisor)
+(hasAttribute AlbertAdria ::LABEL "Albert Adria")
+(hasAttribute AlbertAdria ::ROLE "Advisor — Taste Pillar")
+(hasAttribute AlbertAdria ::PILLAR "taste")
+(hasAttribute AlbertAdria ::AFFILIATION "#2 Best Chef in the World. Enigma Barcelona. 23yr El Bulli.")
+
+(MEMBER_OF AlbertAdria SumAITeam)
+
+;; Pillar assignment
+(assignedToPillar AlbertAdria PillarTaste)
+
+;; Expertise
+(expertiseIn AlbertAdria MolecularGastronomy)
+(expertiseIn AlbertAdria SensoryDesign)
+(expertiseIn AlbertAdria CulinaryInnovation)
+(expertiseIn AlbertAdria RestaurantConceptDesign)
+
+;; Career epochs
+(careerEpoch AlbertAdria "El Bulli — Pastry Chef & Creative Director, 23yr" 1985 2011)
+(careerEpoch AlbertAdria "Enigma Barcelona — Chef & Owner" 2017 9999)
+
+;; Interaction protocol
+(isa Protocol-InteractWithAlbert PROTOCOL)
+(comment Protocol-InteractWithAlbert
+  "21+ books. 8 Michelin stars (career). #2 Best Chef in the World.
+   The taste pillar's apex advisor — molecular gastronomy as a model
+   for sensory manipulation and perception engineering.")
